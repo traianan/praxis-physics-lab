@@ -190,3 +190,7 @@ Conform excluderilor proiectului, `dist/`, `outputs/` și snapshoturile original
 ## Pagini publice
 
 Aplicația online include [Despre](public/despre/index.html), [Contact](public/contact/index.html) și [Confidențialitate și cookies](public/confidentialitate/index.html), în RO/EN. Textele sunt generate din `scripts/site-pages.mjs`. Preferințele pot fi memorate local doar după acord; răspunsurile și rezultatele nu sunt persistente. Detalii și verificări: [docs/PAGINI_PUBLICE_SI_CONFIDENTIALITATE.md](docs/PAGINI_PUBLICE_SI_CONFIDENTIALITATE.md).
+
+## Laboratoare recente
+
+Bara laterală arată ultimele trei laboratoare, ordonate după data adăugării în aplicație. Pentru un laborator nou completează `addedOn` și `addedOrder` în catalog, conform [docs/LABORATOARE_RECENTE.md](docs/LABORATOARE_RECENTE.md).

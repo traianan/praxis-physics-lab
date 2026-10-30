@@ -1,7 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
-import { chapters, simulations, findSimulations, getHomeSimulations } from '../public/catalog.js';
+import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSimulations } from '../public/catalog.js';
+
+test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
+ const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
+ assert.deepEqual(latest.map(sim=>sim.id),['miscarea-circulara-uniforma','figuri-chladni','compunerea-oscilatiilor']);
+ assert.ok(latest.every(sim=>sim.addedOn==='2026-10-30'));
+ assert.equal(getLatestSimulations(1)[0].id,'miscarea-circulara-uniforma');
+ assert.deepEqual(simulations.map(sim=>sim.id),original);
+});
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
  const home=getHomeSimulations();assert.equal(home.length,7);
  for(const chapter of chapters)assert.ok(home.filter(sim=>sim.chapter===chapter.id).length<=2);

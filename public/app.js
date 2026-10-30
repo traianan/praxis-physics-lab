@@ -1,4 +1,4 @@
-import {chapters,simulations,findSimulations,getHomeSimulations,localizeCatalog} from './catalog.js';
+import {chapters,simulations,findSimulations,getHomeSimulations,getLatestSimulations,localizeCatalog} from './catalog.js';
 import {createBoardController} from './board.js';
 import {prepareAdvertising} from './advertising.js';
 const i18n=window.PraxisI18n;
@@ -15,6 +15,8 @@ const paths={motion:'<path d="M4 24h24M7 21l6-9 7 4 7-11M22 5h5v5"/><circle cx="
 const icon=c=>`<svg viewBox="0 0 32 32" aria-hidden="true">${paths[c.icon]}</svg>`;
 const count=id=>simulations.filter(s=>s.chapter===id).length;
 function renderChapters(){
+ const dates=new Intl.DateTimeFormat(i18n.locale,{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
+ $('sidebar-latest-list').innerHTML=getLatestSimulations().map(sim=>`<li><a href="${sim.href}" data-simulation><span>${sim.title}</span><time datetime="${sim.addedOn}">${dates.format(new Date(sim.addedOn+'T00:00:00Z'))}</time></a></li>`).join('');
  $('chapter-nav').innerHTML=`<a href="#" class="chapter-link all ${!selected?'selected':''}" ${!selected?'aria-current="page"':''}><span class="all-icon">▦</span><span>Toate capitolele</span><span class="nav-count">7</span></a>`+chapters.map(c=>`<a href="#capitol/${c.id}" class="chapter-link ${selected===c.id?'selected':''}" style="--chapter:${c.color}" ${selected===c.id?'aria-current="page"':''}><span class="nav-icon">${icon(c)}</span><span>${c.title}</span>${count(c.id)?'<span class="available-dot" aria-label="Simulare disponibilă"></span>':''}</a>`).join('');
  $('chapter-grid').innerHTML=chapters.map((c,i)=>`<a class="chapter-card" href="#capitol/${c.id}" style="--chapter:${c.color}"><span class="chapter-art">${icon(c)}</span><div><h3>${c.title}</h3><span>${count(c.id)?(count(c.id)===1?'1 simulare disponibilă':count(c.id)+' simulări disponibile'):'În pregătire'}</span></div><span class="chapter-number">0${i+1}</span></a>`).join('');
 }
