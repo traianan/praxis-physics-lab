@@ -171,9 +171,10 @@
     "materialDone": "Cycle complete",
     "materialPermanent": "Permanent deformation",
     "materialRecovered": "Original shape restored",
-    "materialCycleNote": "With “Load to fracture (R)”, the marker follows the entire curve in 6 s at 1×; the specimen breaks exactly at R, then the fragments separate. The marker stays at R to record fracture; afterwards the specimen transmits no force. Otherwise, the level (%) sets maximum loading on the schematic curve, not real strain in percent: unloading follows in an 8 s cycle. The dashed line is the plastic unloading path, leaving permanent extension; it is not continued loading towards R. Auto repeat restores a fresh specimen. Reset keeps your settings. Curves, fracture and magnified deformation are schematic; elastomer recovery is idealized without hysteresis.",
+    "materialCycleNote": "With “Load to fracture (R)”, the marker follows the entire curve in 6 s at 1×; the specimen breaks exactly at R, then the fragments separate. The marker stays at R to record fracture; afterwards the specimen transmits no force. Otherwise, the level (%) sets maximum loading on the schematic curve, not real strain in percent: unloading follows in an 8 s cycle. The dashed line is the plastic unloading path, leaving permanent extension; it is not continued loading towards R. Auto repeat restores a fresh specimen. Reset keeps your settings. Curves, fracture and magnified deformation are schematic; elastomer recovery is idealized without hysteresis. For the ductile metal, the cross-section narrows locally and progressively between M and R; fracture occurs at the neck. The shape change is magnified for visibility. Unloading from this region retains the permanent neck. This necking model is not applied to the brittle material or elastomer.",
     "materialFractureMode": "Load to fracture (R)",
-    "materialBroken": "R · Specimen fractured — transmitted force drops to zero"
+    "materialBroken": "R · Specimen fractured — transmitted force drops to zero",
+    "materialNecking": "Necking · from M towards R"
   },
   "problems": [
     [

@@ -171,9 +171,10 @@
       "materialDone": "Ciclu încheiat",
       "materialPermanent": "Deformație permanentă",
       "materialRecovered": "Revenire la forma inițială",
-      "materialCycleNote": "Cu „Încărcare până la rupere (R)”, punctul parcurge întreaga curbă în 6 s la 1×; corpul se rupe exact la R, apoi fragmentele se separă. Marcatorul rămâne la R ca reper al ruperii; după rupere proba nu mai transmite forță. Fără această opțiune, nivelul (%) fixează încărcarea maximă pe curba schematică, nu deformația reală în procente: urmează descărcarea, într-un ciclu de 8 s. Dreapta punctată este traseul descărcării plastice, care lasă alungire permanentă; nu este continuarea încărcării spre R. Repetarea reface o probă nouă. Reset păstrează reglajele. Curbele, ruperea și deformarea amplificată sunt schematice; pentru elastomer se idealizează revenirea fără histerezis.",
+      "materialCycleNote": "Cu „Încărcare până la rupere (R)”, punctul parcurge întreaga curbă în 6 s la 1×; corpul se rupe exact la R, apoi fragmentele se separă. Marcatorul rămâne la R ca reper al ruperii; după rupere proba nu mai transmite forță. Fără această opțiune, nivelul (%) fixează încărcarea maximă pe curba schematică, nu deformația reală în procente: urmează descărcarea, într-un ciclu de 8 s. Dreapta punctată este traseul descărcării plastice, care lasă alungire permanentă; nu este continuarea încărcării spre R. Repetarea reface o probă nouă. Reset păstrează reglajele. Curbele, ruperea și deformarea amplificată sunt schematice; pentru elastomer se idealizează revenirea fără histerezis. La metalul ductil, între M și R, secțiunea se îngustează local și progresiv; ruperea apare în zona gâtuirii. Forma este amplificată pentru vizibilitate. La descărcarea din această regiune se păstrează gâtuirea permanentă. Acest model de gâtuire nu se aplică materialului fragil sau elastomerului.",
       "materialFractureMode": "Încărcare până la rupere (R)",
-      "materialBroken": "R · Corp rupt — forța transmisă devine zero"
+      "materialBroken": "R · Corp rupt — forța transmisă devine zero",
+      "materialNecking": "Gâtuire · de la M spre R"
     },
     "problems": [
       [
@@ -526,9 +527,10 @@
       "materialDone": "Cycle complete",
       "materialPermanent": "Permanent deformation",
       "materialRecovered": "Original shape restored",
-      "materialCycleNote": "With “Load to fracture (R)”, the marker follows the entire curve in 6 s at 1×; the specimen breaks exactly at R, then the fragments separate. The marker stays at R to record fracture; afterwards the specimen transmits no force. Otherwise, the level (%) sets maximum loading on the schematic curve, not real strain in percent: unloading follows in an 8 s cycle. The dashed line is the plastic unloading path, leaving permanent extension; it is not continued loading towards R. Auto repeat restores a fresh specimen. Reset keeps your settings. Curves, fracture and magnified deformation are schematic; elastomer recovery is idealized without hysteresis.",
+      "materialCycleNote": "With “Load to fracture (R)”, the marker follows the entire curve in 6 s at 1×; the specimen breaks exactly at R, then the fragments separate. The marker stays at R to record fracture; afterwards the specimen transmits no force. Otherwise, the level (%) sets maximum loading on the schematic curve, not real strain in percent: unloading follows in an 8 s cycle. The dashed line is the plastic unloading path, leaving permanent extension; it is not continued loading towards R. Auto repeat restores a fresh specimen. Reset keeps your settings. Curves, fracture and magnified deformation are schematic; elastomer recovery is idealized without hysteresis. For the ductile metal, the cross-section narrows locally and progressively between M and R; fracture occurs at the neck. The shape change is magnified for visibility. Unloading from this region retains the permanent neck. This necking model is not applied to the brittle material or elastomer.",
       "materialFractureMode": "Load to fracture (R)",
-      "materialBroken": "R · Specimen fractured — transmitted force drops to zero"
+      "materialBroken": "R · Specimen fractured — transmitted force drops to zero",
+      "materialNecking": "Necking · from M towards R"
     },
     "problems": [
       [

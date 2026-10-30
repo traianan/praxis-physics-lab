@@ -17,3 +17,11 @@ test('fracture reaches R before separation and removes transmitted load at the s
   for(const t of [0,1,3,5]){const q=M.fracture(kind,t);near(q.y,M.stress(kind,q.x));near(q.x,end[0]*t/6);assert.equal(q.unloading,false);}
  }
 });
+test('ductile necking starts at M, grows towards R and persists through fracture and plastic unloading',()=>{
+ const atM=6*.70/.94;near(M.fracture('ductile',atM).neck,0);
+ let previous=0;for(let i=1;i<=20;i++){const t=atM+(6-atM)*i/20,q=M.fracture('ductile',t);near(q.neck,i/20);assert.ok(q.neck>previous);previous=q.neck;if(i<20)assert.equal(q.broken,false);}
+ near(M.fracture('ductile',6).neck,1);near(M.fracture('ductile',8).neck,1);
+ const peak=M.cycle('ductile',90,4);assert.ok(peak.neck>0);near(M.cycle('ductile',90,8).neck,peak.neck);near(M.cycle('ductile',60,4).neck,0);
+ for(const kind of ['brittle','elastomer'])for(const t of [0,4,5,6,8])near(M.fracture(kind,t).neck,0);
+ near(M.fracture('ductile',0).neck,0);
+});
