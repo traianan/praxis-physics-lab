@@ -16,13 +16,15 @@ const icon=c=>`<svg viewBox="0 0 32 32" aria-hidden="true">${paths[c.icon]}</svg
 const count=id=>simulations.filter(s=>s.chapter===id).length;
 function renderChapters(){
  const dates=new Intl.DateTimeFormat(i18n.locale,{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
- $('sidebar-latest-list').innerHTML=getLatestSimulations().map(sim=>`<li><a href="${sim.href}" data-simulation><span>${sim.title}</span><time datetime="${sim.addedOn}">${dates.format(new Date(sim.addedOn+'T00:00:00Z'))}</time></a></li>`).join('');
+ const latestLinks=getLatestSimulations().map(sim=>`<li><a href="${sim.href}" data-simulation><span>${sim.title}</span><time datetime="${sim.addedOn}">${dates.format(new Date(sim.addedOn+'T00:00:00Z'))}</time></a></li>`).join('');
+ for(const id of ['sidebar-latest-list','home-latest-list'])$(id).innerHTML=latestLinks;
  $('chapter-nav').innerHTML=`<a href="#" class="chapter-link all ${!selected?'selected':''}" ${!selected?'aria-current="page"':''}><span class="all-icon">▦</span><span>Toate capitolele</span><span class="nav-count">7</span></a>`+chapters.map(c=>`<a href="#capitol/${c.id}" class="chapter-link ${selected===c.id?'selected':''}" style="--chapter:${c.color}" ${selected===c.id?'aria-current="page"':''}><span class="nav-icon">${icon(c)}</span><span>${c.title}</span>${count(c.id)?'<span class="available-dot" aria-label="Simulare disponibilă"></span>':''}</a>`).join('');
  $('chapter-grid').innerHTML=chapters.map((c,i)=>`<a class="chapter-card" href="#capitol/${c.id}" style="--chapter:${c.color}"><span class="chapter-art">${icon(c)}</span><div><h3>${c.title}</h3><span>${count(c.id)?(count(c.id)===1?'1 simulare disponibilă':count(c.id)+' simulări disponibile'):'În pregătire'}</span></div><span class="chapter-number">0${i+1}</span></a>`).join('');
 }
 function render(){
  const c=chapters.find(c=>c.id===selected),found=findSimulations(selected,query);
  const home=!selected&&!query.trim(),visible=home?getHomeSimulations():found;
+ $('home-latest').hidden=!home;
  $('breadcrumb-title').textContent=c?c.title.toLocaleUpperCase('ro'):'FIZICĂ';
  $('page-title').innerHTML=c?c.title:'Fizica prinde sens.<br><span>Când o explorezi.</span>';
  $('page-description').textContent=c?'Experimentele acestui capitol, adunate într-un singur loc.':'Simulări interactive pentru întrebări, predicții și descoperiri la clasă.';

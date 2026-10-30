@@ -24,3 +24,7 @@ Conform înregistrărilor de integrare din README, în ordinea apariției:
 3. Mișcarea circulară uniformă — 30 octombrie 2026, `addedOrder: 3`.
 
 Lista din interfață afișează ordinea inversă, cu cel mai nou primul. Verificări: sortare și păstrarea registrului, RO/EN, destinații HTTP 200, acces din panoul de capitole pe mobil; 175 de teste trecute.
+
+## Acces direct pe pagina principală mobilă
+
+La lățimi de cel mult 850 px, secțiunea „Ultimele laboratoare adăugate” apare imediat sub introducere, înainte de căutare și capitole. Folosește aceleași date și același renderer ca lista laterală, inclusiv datele de integrare și traducerile RO/EN. Nu necesită deschiderea panoului de capitole. Secțiunea apare pe pagina principală, se ascunde în timpul căutării sau la alegerea unui capitol și reapare la revenirea la pagina principală. Pe desktop lista rămâne în bara laterală. Verificat la 320, 390, 768 și 1440 px și cu schimbarea limbii.
