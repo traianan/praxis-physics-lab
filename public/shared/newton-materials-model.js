@@ -7,5 +7,9 @@
   const x=unloading?peak+(residual-peak)*u:peak*u,y=unloading&&plastic?top*(1-u):stress(kind,x);
   return {x,y,peak,top,residual,plastic,unloading,done:phase===8};
  }
- scope.PraxisMaterialModel=Object.freeze({curves,stress,cycle});
+ function fracture(kind,t){
+  const end=curves[kind].at(-1),phase=Math.min(8,Math.max(0,t)),x=end[0]*Math.min(1,phase/6),y=stress(kind,x),broken=phase>=6;
+  return {x,y,peak:end[0],top:end[1],residual:0,plastic:false,unloading:false,broken,gap:broken?2+16*Math.min(1,phase-6):0,load:broken?0:y,done:phase===8};
+ }
+ scope.PraxisMaterialModel=Object.freeze({curves,stress,cycle,fracture});
 })(typeof window==='undefined'?globalThis:window);

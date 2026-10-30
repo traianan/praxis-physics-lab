@@ -10,3 +10,10 @@ test('elastic specimens recover completely; loading and unloading retrace withou
 test('plastic unloading is continuous, has the initial elastic slope and retains strain at zero stress',()=>{
  for(const level of [30,60,90]){const top=M.cycle('ductile',level,4),end=M.cycle('ductile',level,8),middle=M.cycle('ductile',level,6);assert.ok(end.x>0&&end.x<top.x);near(end.y,0);near((top.y-middle.y)/(top.x-middle.x),.42/.16);near(M.cycle('ductile',level,4+1e-10).y,top.y);near(end.x,end.residual);}
 });
+test('fracture reaches R before separation and removes transmitted load at the same instant',()=>{
+ for(const kind of ['ductile','brittle','elastomer']){
+  const end=M.curves[kind].at(-1),before=M.fracture(kind,6-1e-6),hit=M.fracture(kind,6),after=M.fracture(kind,7),done=M.fracture(kind,8);
+  assert.equal(before.broken,false);assert.ok(before.x<end[0]&&before.load>0);near(hit.x,end[0]);near(hit.y,end[1]);assert.equal(hit.broken,true);near(hit.load,0);assert.ok(hit.gap>0&&after.gap>hit.gap);near(done.x,hit.x);near(done.y,hit.y);assert.equal(done.done,true);
+  for(const t of [0,1,3,5]){const q=M.fracture(kind,t);near(q.y,M.stress(kind,q.x));near(q.x,end[0]*t/6);assert.equal(q.unloading,false);}
+ }
+});
