@@ -1,0 +1,702 @@
+[
+  {
+    "id": "oglinzi-si-lentile",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2560,
+        "scroll": 2560,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 2560
+        },
+        "children": [
+          {
+            "id": "laborator",
+            "cls": "",
+            "left": 0,
+            "right": 0,
+            "width": 2560
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "laborator",
+            "cls": "",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "miscarea-rectilinie",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 2545
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "",
+            "left": 433,
+            "right": 433,
+            "width": 1680
+          },
+          {
+            "id": "",
+            "cls": "",
+            "left": 653,
+            "right": 653,
+            "width": 1240
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          },
+          {
+            "id": "",
+            "cls": "",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unde-mecanice",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2552,
+        "scroll": 2552,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 2552
+        },
+        "children": [
+          {
+            "id": "root",
+            "cls": "",
+            "left": 0,
+            "right": 0,
+            "width": 2552
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "root",
+            "cls": "",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "calcul-vectorial",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 2545
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "layout",
+            "left": 433,
+            "right": 433,
+            "width": 1680
+          },
+          {
+            "id": "",
+            "cls": "",
+            "left": 0,
+            "right": 0,
+            "width": 2545
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "layout",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          },
+          {
+            "id": "",
+            "cls": "",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "viteza-si-acceleratia",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 2545
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "main-container",
+            "left": 433,
+            "right": 433,
+            "width": 1680
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "main-container",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "miscarea-curbilinie-plana",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 2545
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "wrap",
+            "left": 569,
+            "right": 569,
+            "width": 1408
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "wrap",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "notiuni-termodinamice",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 2545
+        },
+        "children": [
+          {
+            "id": "drawerBg",
+            "cls": "drawer-bg",
+            "left": 0,
+            "right": 0,
+            "width": 2545
+          },
+          {
+            "id": "drawer",
+            "cls": "drawer",
+            "left": 2554,
+            "right": -449,
+            "width": 440
+          },
+          {
+            "id": "",
+            "cls": "layout",
+            "left": 433,
+            "right": 433,
+            "width": 1680
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "drawerBg",
+            "cls": "drawer-bg",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          },
+          {
+            "id": "drawer",
+            "cls": "drawer",
+            "left": 398,
+            "right": -398,
+            "width": 390
+          },
+          {
+            "id": "",
+            "cls": "layout",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "calorimetrie",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 2545
+        },
+        "children": [
+          {
+            "id": "drawerBg",
+            "cls": "drawer-bg",
+            "left": 0,
+            "right": 0,
+            "width": 2545
+          },
+          {
+            "id": "drawer",
+            "cls": "drawer",
+            "left": 2554,
+            "right": -449,
+            "width": 440
+          },
+          {
+            "id": "",
+            "cls": "layout",
+            "left": 433,
+            "right": 433,
+            "width": 1680
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "drawerBg",
+            "cls": "drawer-bg",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          },
+          {
+            "id": "drawer",
+            "cls": "drawer",
+            "left": 398,
+            "right": -398,
+            "width": 390
+          },
+          {
+            "id": "",
+            "cls": "layout",
+            "left": 0,
+            "right": 0,
+            "width": 390
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "principiul-i-al-termodinamicii",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 433,
+          "right": 433,
+          "width": 1680
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "app",
+            "left": 457,
+            "right": 457,
+            "width": 1632
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "",
+            "cls": "app",
+            "left": 12,
+            "right": 12,
+            "width": 366
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "interactii-atomice",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 569,
+          "right": 569,
+          "width": 1408
+        },
+        "children": [
+          {
+            "id": "sim",
+            "cls": "",
+            "left": 585,
+            "right": 585,
+            "width": 1376
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "sim",
+            "cls": "",
+            "left": 16,
+            "right": 16,
+            "width": 358
+          },
+          {
+            "id": "",
+            "cls": "model-note",
+            "left": 16,
+            "right": 16,
+            "width": 358
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "principiul-i-aplicatii",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2560,
+        "scroll": 2560,
+        "root": {
+          "left": 576,
+          "right": 576,
+          "width": 1408
+        },
+        "children": [
+          {
+            "id": "main",
+            "cls": "",
+            "left": 592,
+            "right": 592,
+            "width": 1376
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "main",
+            "cls": "",
+            "left": 8,
+            "right": 8,
+            "width": 374
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "transformari-stare-agregare",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 569,
+          "right": 569,
+          "width": 1408
+        },
+        "children": [
+          {
+            "id": "main",
+            "cls": "",
+            "left": 585,
+            "right": 585,
+            "width": 1376
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "main",
+            "cls": "",
+            "left": 8,
+            "right": 8,
+            "width": 374
+          },
+          {
+            "id": "",
+            "cls": "model-note",
+            "left": 8,
+            "right": 8,
+            "width": 374
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "oscilator-mecanic",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 569,
+          "right": 569,
+          "width": 1408
+        },
+        "children": [
+          {
+            "id": "s111",
+            "cls": "chapter",
+            "left": 585,
+            "right": 585,
+            "width": 1376
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "s111",
+            "cls": "chapter",
+            "left": 16,
+            "right": 16,
+            "width": 358
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "oscilatori-mecanici-cuplati",
+    "views": [
+      {
+        "viewport": "2560x1200x1",
+        "W": 2545,
+        "scroll": 2545,
+        "root": {
+          "left": 553,
+          "right": 553,
+          "width": 1440
+        },
+        "children": [
+          {
+            "id": "teorie",
+            "cls": "",
+            "left": 569,
+            "right": 569,
+            "width": 1408
+          }
+        ]
+      },
+      {
+        "viewport": "390x844x2,mobile,touch",
+        "W": 390,
+        "scroll": 390,
+        "root": {
+          "left": 0,
+          "right": 0,
+          "width": 390
+        },
+        "children": [
+          {
+            "id": "teorie",
+            "cls": "",
+            "left": 16,
+            "right": 16,
+            "width": 358
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "locale": "ro",
+  "namespace": "chapters/lumina-si-radiatii",
+  "title": "Lumină și radiații",
+  "messages": {
+    "Lumină și radiații": "Lumină și radiații",
+    "LUMINĂ ȘI RADIAȚII": "LUMINĂ ȘI RADIAȚII",
+    "Oglinzi și lentile": "Oglinzi și lentile",
+    "Optică geometrică": "Optică geometrică",
+    "Laborator de optică geometrică": "Laborator de optică geometrică",
+    "Mută obiectul, urmărește razele și descoperă cum se formează imaginea prin lentile și oglinzi.": "Mută obiectul, urmărește razele și descoperă cum se formează imaginea prin lentile și oglinzi.",
+    "Construcția imaginii printr-o lentilă convergentă, cu obiect, raze și imagine inversată": "Construcția imaginii printr-o lentilă convergentă, cu obiect, raze și imagine inversată",
+    "Lentilă și traseul razelor": "Lentilă și traseul razelor"
+  },
+  "simulations": {
+    "oglinzi-si-lentile": {
+      "title": "Oglinzi și lentile",
+      "subtitle": "Laborator de optică geometrică",
+      "description": "Mută obiectul, urmărește razele și descoperă cum se formează imaginea prin lentile și oglinzi.",
+      "tags": [
+        "Optică geometrică",
+        "Touch",
+        "Mod tablă",
+        "Offline"
+      ],
+      "keywords": "lentile oglinzi optica lumina focar curbura reflexie refractie aberatii imagine lenses mirrors optics light focus curvature reflection refraction aberrations image"
+    }
+  }
+}

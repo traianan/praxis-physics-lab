@@ -1,0 +1,2 @@
+/* Small shared clock for interactive diagrams, calibrated independently of refresh rate. */
+(()=>{window.PraxisAnimationClock={create(rate=1,maxStep=.1){let previous=null;return {step(stamp){if(!Number.isFinite(stamp))return 0;if(previous===null){previous=stamp;return 0;}if(stamp<previous)return 0;const delta=Math.min(maxStep,Math.max(0,(stamp-previous)/1000));previous=stamp;return delta*rate;},reset(){previous=null;}};}};})();

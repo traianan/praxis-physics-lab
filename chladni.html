@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Figuri Chladni pe disc metalic</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#eef1f4;--panel:#fff;--ink:#17212b;--mute:#566474;--line:#cfd7df;--acc:#0b7285;--accbg:#d9eef2;--bench:#dfe5ea;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141b23;--panel:#1f2a36;--ink:#e8edf2;--mute:#9aa8b6;--line:#35445a;--acc:#5cc3d6;--accbg:#1b3a43;--bench:#0f151c}}
+:root[data-theme="dark"]{--bg:#141b23;--panel:#1f2a36;--ink:#e8edf2;--mute:#9aa8b6;--line:#35445a;--acc:#5cc3d6;--accbg:#1b3a43;--bench:#0f151c}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif}
+*,*::before,*::after{box-sizing:inherit}
+main{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:0 0 4px}
+.sub{color:var(--mute);margin:0 0 16px;max-width:60ch}
+.grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr) 340px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.stage{background:var(--bench);border-radius:14px;padding:12px}
+canvas{display:block;width:100%;height:auto;aspect-ratio:1/1;border-radius:10px}
+.readout{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;margin-top:10px}
+.readout b{font-size:1.9rem;font-variant-numeric:tabular-nums}
+.readout span{color:var(--mute)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px}
+label{display:flex;justify-content:space-between;font-weight:600;font-size:.92rem;margin-bottom:4px}
+label output{font-variant-numeric:tabular-nums;color:var(--acc)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:inherit}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+button{font:inherit;font-weight:600;padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.chips button{padding:5px 8px;font-size:.82rem;font-weight:600;background:var(--accbg);border-color:transparent;color:var(--ink)}
+.chips button.cur{background:var(--acc);color:#fff}
+h2{font-size:1rem;margin:0}
+.calc{margin-top:16px;line-height:1.55}
+.calc code{display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:6px 0;font-family:ui-monospace,Menlo,monospace;font-size:.92rem;overflow-x:auto;white-space:nowrap}
+</style>
+</head>
+<body>
+<main>
+<h1>Figuri Chladni pe un disc metalic</h1>
+<p class="sub">Nisipul se strânge pe liniile nodale, unde discul nu vibrează. Crește frecvența generatorului și urmărește cum apar diametrele și cercurile nodale.</p>
+<div class="grid">
+<section>
+<div class="stage"><canvas id="cv" width="640" height="640" aria-label="Disc metalic cu nisip"></canvas></div>
+<div class="readout"><b id="fOut">0 Hz</b><span id="modeOut"></span></div>
+<div class="calc">
+<h2>Formula frecvențelor</h2>
+<code>f(n,s) = λ² / (2π a²) · √( D / (ρ h) )</code>
+<code>D = E h³ / ( 12 (1 − ν²) )</code>
+<p id="dims"></p>
+</div>
+</section>
+<aside class="panel">
+<div>
+<label for="fr">Frecvența generatorului <output id="frO"></output></label>
+<input id="fr" type="range" min="50" max="4200" step="1" value="50">
+</div>
+<div class="row">
+<button id="sweep" aria-pressed="false">Creștere automată</button>
+<button id="snd" aria-pressed="false">Sunet</button>
+</div>
+<div>
+<label for="sp">Viteza de creștere <output id="spO"></output></label>
+<input id="sp" type="range" min="20" max="400" step="10" value="150">
+</div>
+<div>
+<label for="amp">Amplitudinea <output id="ampO"></output></label>
+<input id="amp" type="range" min="0.1" max="1" step="0.05" value="0.7">
+</div>
+<div>
+<label for="cnt">Cantitatea de nisip <output id="cntO"></output></label>
+<input id="cnt" type="range" min="2000" max="16000" step="1000" value="9000">
+</div>
+<div class="row">
+<button id="shake">Amestecă nisipul</button>
+<button id="ctr" class="on" aria-pressed="true">Excitație în centru</button>
+</div>
+<div>
+<label for="mat">Material</label>
+<select id="mat">
+<option value="69,2700">Aluminiu (E = 69 GPa, ρ = 2700 kg/m³)</option>
+<option value="200,7850">Oțel (E = 200 GPa, ρ = 7850 kg/m³)</option>
+<option value="100,8500">Alamă (E = 100 GPa, ρ = 8500 kg/m³)</option>
+</select>
+</div>
+<div>
+<label for="rad">Raza discului a <output id="radO"></output></label>
+<input id="rad" type="range" min="5" max="15" step="0.5" value="10">
+</div>
+<div>
+<label for="thk">Grosimea h <output id="thkO"></output></label>
+<input id="thk" type="range" min="0.5" max="3" step="0.1" value="1">
+</div>
+<div>
+<h2>Frecvențe de rezonanță</h2>
+<div class="row chips" id="chips"></div>
+</div>
+</aside>
+</div>
+</main>
+<script>
+const NU=0.33,G=120,Q=45;
+const MODES=[[2,0,5.358],[0,1,9.003],[3,0,12.44],[1,1,20.52],[4,0,21.84],[5,0,33.18],[2,1,35.25],[0,2,38.50],[6,0,46.9],[3,1,52.91],[1,2,59.86],[7,0,63.1],[4,1,73.41],[2,2,83.9],[0,3,87.80],[0,4,156.8],[5,1,96.8],[3,2,111.3],[1,3,118.9]].sort((a,b)=>a[2]-b[2]);
+function bes(n,x,s){if(n<0){const v=bes(-n,x,s);return s<0&&(n&1)?-v:v}let t=1;for(let i=1;i<=n;i++)t*=x/2/i;let sum=t;const q=x*x/4;for(let k=0;k<40;k++){t*=s*q/((k+1)*(k+1+n));sum+=t}return sum}
+function coef(n,x){const J=bes(n,x,-1),Jp=(bes(n-1,x,-1)-bes(n+1,x,-1))/2,Jpp=-Jp/x-(1-n*n/(x*x))*J;
+const I=bes(n,x,1),Ip=(bes(n-1,x,1)+bes(n+1,x,1))/2,Ipp=-Ip/x+(1+n*n/(x*x))*I;
+const mJ=Jpp+NU*(Jp/x-n*n*J/(x*x)),mI=Ipp+NU*(Ip/x-n*n*I/(x*x));return -mJ/mI}
+const fields=MODES.map(([n,s,l2])=>{const x=Math.sqrt(l2),C=coef(n,x),F=new Float32Array(G*G);let m=0;
+for(let j=0;j<G;j++)for(let i=0;i<G;i++){const X=(i+.5)/G*2-1,Y=(j+.5)/G*2-1,r=Math.hypot(X,Y);if(r>1)continue;
+const v=(bes(n,x*r,-1)+C*bes(n,x*r,1))*Math.cos(n*Math.atan2(Y,X));F[j*G+i]=v;m=Math.max(m,Math.abs(v))}
+for(let k=0;k<F.length;k++)F[k]/=m;return F});
+const $=id=>document.getElementById(id);
+const cv=$('cv'),ctx=cv.getContext('2d'),W=cv.width;
+let f=50,sweeping=false,ctrOnly=true,amp=.7,N=9000,K=1,fm=[],comb=new Float32Array(G*G),gAmp=0,inv=1,dirty=true;
+let xs,ys;
+function scatter(){xs=new Float32Array(N);ys=new Float32Array(N);for(let i=0;i<N;i++){const r=Math.sqrt(Math.random())*.97,t=Math.random()*6.2832;xs[i]=r*Math.cos(t);ys[i]=r*Math.sin(t)}}
+function props(){const[E,rho]=$('mat').value.split(',').map(Number),a=$('rad').value/100,h=$('thk').value/1000;
+const D=E*1e9*h**3/(12*(1-NU*NU));K=Math.sqrt(D/(rho*h))/(2*Math.PI*a*a);
+fm=MODES.map(m=>m[2]*K);
+$('radO').textContent=(a*100).toFixed(1).replace('.',',')+' cm';$('thkO').textContent=(h*1000).toFixed(1).replace('.',',')+' mm';
+$('dims').innerHTML='Disc cu diametrul '+(2*a*100).toFixed(0)+' cm (a = '+(a*100).toFixed(1).replace('.',',')+' cm), grosimea h = '+(h*1000).toFixed(1).replace('.',',')+' mm. Rigiditatea D = '+D.toFixed(2).replace('.',',')+' N·m. Factorul 1/(2π a²)·√(D/ρh) = '+K.toFixed(2).replace('.',',')+' Hz. Discul este liber, cu ν = 0,33. n este numărul de diametre nodale, s este numărul de cercuri nodale.';
+const max=Math.max(3200,Math.ceil(fm[fm.length-1]*1.05));
+chips();dirty=true}
+function chips(){const c=$('chips');c.innerHTML='';MODES.forEach((m,i)=>{if(fm[i]>4300||(ctrOnly&&m[0]>0))return;const b=document.createElement('button');b.textContent=Math.round(fm[i])+' Hz ('+m[0]+','+m[1]+')';b.title=m[0]+' diametre, '+m[1]+' cercuri';b.onclick=()=>{setF(fm[i]);stopSweep()};b.dataset.i=i;c.appendChild(b)})}
+function setF(v){f=Math.max(50,Math.min(4200,v));$('fr').value=f;dirty=true;if(osc)osc.frequency.value=f}
+function compute(){comb.fill(0);let S=0,idx=[],w=[];
+for(let i=0;i<fm.length;i++){const u=f/fm[i];let R2=1/(((1-u*u)**2)+(u/Q)**2);if(ctrOnly&&MODES[i][0]>0)R2=0;w.push(R2);if(R2>S)S=R2}
+comb.fill(0);for(let i=0;i<fm.length;i++){if(w[i]<S*.02)continue;const F=fields[i],k=w[i]/S;for(let j=0;j<comb.length;j++)comb[j]+=F[j]*k}
+let m=0;for(let j=0;j<comb.length;j++)m=Math.max(m,Math.abs(comb[j]));inv=m?1/m:0;
+gAmp=Math.min(1,S/(.2*Q*Q));
+let best=0,bd=1e9;for(let i=0;i<fm.length;i++){if(ctrOnly&&MODES[i][0]>0)continue;const d=Math.abs(fm[i]-f);if(d<bd){bd=d;best=i}}
+const near=bd/fm[best]<.03;
+$('modeOut').textContent=near?'Rezonanță: '+MODES[best][0]+' diametre nodale, '+MODES[best][1]+' cercuri nodale':'Între rezonanțe: nisipul rămâne amestecat';
+document.querySelectorAll('#chips button').forEach(b=>b.classList.toggle('cur',near&&+b.dataset.i===best));
+$('fOut').textContent=Math.round(f)+' Hz';$('frO').textContent=Math.round(f)+' Hz';dirty=false}
+function stepP(){const g=gAmp*amp;if(g<.02)return;const st=.06*g;
+for(let i=0;i<N;i++){const gi=((xs[i]+1)*.5*G)|0,gj=((ys[i]+1)*.5*G)|0;
+const a=Math.abs(comb[gj*G+gi])*inv;const s=st*a*a*a;if(a*g<.09)continue;
+let x=xs[i]+(Math.random()-.5)*2*s,y=ys[i]+(Math.random()-.5)*2*s;const r=Math.hypot(x,y);if(r>.985){x*=.97/r;y*=.97/r}
+xs[i]=x;ys[i]=y}}
+const light=()=>matchMedia('(prefers-color-scheme: light)').matches;
+function draw(){const c=W/2,R=c*.93;ctx.clearRect(0,0,W,W);
+const gr=ctx.createRadialGradient(c*.8,c*.75,R*.1,c,c,R);gr.addColorStop(0,'#4a5663');gr.addColorStop(1,'#242d37');
+ctx.fillStyle='#46515d';ctx.beginPath();ctx.arc(c,c+4,R+3,0,6.2832);ctx.fill();
+ctx.fillStyle=gr;ctx.beginPath();ctx.arc(c,c,R,0,6.2832);ctx.fill();
+ctx.fillStyle='#ffefb8';const s=W>500?2.8:2;
+for(let i=0;i<N;i++)ctx.fillRect(c+xs[i]*R*.985-s/2,c+ys[i]*R*.985-s/2,s,s)}
+let last=performance.now();
+function loop(t){const dt=Math.min(.05,(t-last)/1000);last=t;
+if(sweeping){setF(f+$('sp').value*dt);if(f>=4200)stopSweep()}
+if(dirty)compute();stepP();draw();requestAnimationFrame(loop)}
+function stopSweep(){sweeping=false;$('sweep').classList.remove('on');$('sweep').setAttribute('aria-pressed','false');$('sweep').textContent='Creștere automată'}
+$('sweep').onclick=()=>{if(sweeping){stopSweep();return}if(f>=4190)setF(50);sweeping=true;$('sweep').classList.add('on');$('sweep').setAttribute('aria-pressed','true');$('sweep').textContent='Oprește creșterea'}
+$('fr').oninput=e=>{stopSweep();setF(+e.target.value)}
+$('sp').oninput=e=>$('spO').textContent=e.target.value+' Hz/s';
+$('amp').oninput=e=>{amp=+e.target.value;$('ampO').textContent=Math.round(amp*100)+'%'}
+$('cnt').oninput=e=>{N=+e.target.value;$('cntO').textContent=N;scatter()}
+$('shake').onclick=scatter;
+$('ctr').onclick=e=>{ctrOnly=!ctrOnly;e.target.classList.toggle('on',ctrOnly);e.target.setAttribute('aria-pressed',ctrOnly);chips();dirty=true;scatter()};
+['mat','rad','thk'].forEach(id=>$(id).oninput=props);
+let ac,osc,gn;
+$('snd').onclick=()=>{const b=$('snd');if(osc){osc.stop();osc=null;b.classList.remove('on');b.setAttribute('aria-pressed','false');return}
+ac=ac||new (window.AudioContext||window.webkitAudioContext)();osc=ac.createOscillator();gn=ac.createGain();gn.gain.value=.04;osc.frequency.value=f;osc.connect(gn).connect(ac.destination);osc.start();b.classList.add('on');b.setAttribute('aria-pressed','true')}
+$('spO').textContent='150 Hz/s';$('ampO').textContent='70%';$('cntO').textContent=N;
+scatter();props();requestAnimationFrame(loop);
+</script>
+</body>
+</html>

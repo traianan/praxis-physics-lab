@@ -1,0 +1,53 @@
+body[data-praxis-course="oscilator-mecanic"]{--bg:var(--praxis-color-canvas);--panel:var(--praxis-color-surface);--panel-2:#f0f5f3;--ink:var(--praxis-color-ink);--muted:var(--praxis-color-muted);--accent:var(--praxis-color-primary);--accent-2:#825d1a;--ok:#206348;--bad:#a52c3d;--line:var(--praxis-color-border);--radius:var(--praxis-radius-card)}
+body[data-praxis-course="oscilator-mecanic"] #praxis-original{max-width:88rem;padding:0 1rem 2rem}
+#praxis-original .chapter[hidden]{display:none!important}
+body[data-praxis-course="oscilator-mecanic"] .chapter{margin:0 0 1rem}
+body[data-praxis-course="oscilator-mecanic"] h2{color:var(--ink);font-size:1.5rem;scroll-margin-top:7rem}
+body[data-praxis-course="oscilator-mecanic"] h3{color:var(--ink);font-size:1.1875rem}
+body[data-praxis-course="oscilator-mecanic"] .defbox{background:#edf4fb;color:var(--ink)}
+body[data-praxis-course="oscilator-mecanic"] :is(.observ,.formula-box,.exercise){background:#f0f5f3;color:var(--ink)}
+body[data-praxis-course="oscilator-mecanic"] .demo-shell{background:var(--panel);height:auto}
+body[data-praxis-course="oscilator-mecanic"] .demo-body{overflow-x:auto;min-width:0}
+body[data-praxis-course="oscilator-mecanic"] canvas{background:#f8faf9!important;min-width:640px;border-color:var(--line);touch-action:pan-y}
+body[data-praxis-course="oscilator-mecanic"] :is(.readout,.q-expl){background:#f0f5f3!important;color:var(--ink)!important;white-space:normal;overflow-wrap:anywhere}
+body[data-praxis-course="oscilator-mecanic"] :is(p,li,summary,td,.q-text,.hint,.val){opacity:1;color:var(--ink)}
+body[data-praxis-course="oscilator-mecanic"] :is(.hint,.readout,.demo-controls){font-size:.875rem}
+body[data-praxis-course="oscilator-mecanic"] .demo-controls{align-items:center;gap:.75rem;min-width:0}
+body[data-praxis-course="oscilator-mecanic"] .demo-controls label{flex-wrap:wrap;white-space:normal}
+body[data-praxis-course="oscilator-mecanic"] .demo-controls :is(button,select){min-height:44px}
+body[data-praxis-course="oscilator-mecanic"] .demo-controls button{background:var(--praxis-color-primary-soft);color:var(--praxis-color-primary);border:1px solid var(--line)}
+body[data-praxis-course="oscilator-mecanic"] :is(.fx,[data-fx-inline]){max-width:100%;overflow-x:auto}
+body[data-praxis-course="oscilator-mecanic"] [data-fx-inline]{display:inline-block;vertical-align:middle}
+body[data-praxis-course="oscilator-mecanic"] .fx{display:block;padding:.5rem 0}
+body[data-praxis-course="oscilator-mecanic"] [data-fx-inline].fx{display:inline-block;padding:0}
+body[data-praxis-course="oscilator-mecanic"] .praxis-lab-nav .tabs{display:flex;flex-wrap:wrap;gap:.35rem}
+body[data-praxis-course="oscilator-mecanic"] #nav a{color:var(--ink);background:var(--panel);border:1px solid var(--line);font-size:.875rem;min-height:44px;padding:.6rem .8rem;border-radius:8px}
+body[data-praxis-course="oscilator-mecanic"] #nav a.active{background:var(--praxis-color-primary);color:white}
+body[data-praxis-course="oscilator-mecanic"] .katex{color:var(--ink)}
+
+body[data-praxis-course="oscilator-mecanic"] .demo-body canvas{max-width:960px;margin-inline:auto}
+
+/* Inline mathematics must never acquire native scrollbars. Only long block equations scroll. */
+body[data-praxis-course="oscilator-mecanic"] [data-fx-inline],
+body[data-praxis-course="oscilator-mecanic"] [data-fx-inline].fx{display:inline;overflow:visible;max-width:none;vertical-align:baseline;line-height:inherit}
+body[data-praxis-course="oscilator-mecanic"] .fx:not([data-fx-inline]){overflow-x:auto;overflow-y:hidden}
+
+body[data-praxis-course="oscilator-mecanic"] #demo-examples canvas{min-width:0!important;width:100%}
+
+body[data-praxis-course="oscilator-mecanic"] .pendulum-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin:1rem 0}
+body[data-praxis-course="oscilator-mecanic"] .pendulum-guide button{display:flex;flex-direction:column;gap:.4rem;align-items:flex-start;text-align:left;padding:.8rem;background:#f0f5f3;color:var(--ink);border:1px solid var(--line);border-radius:10px;font:inherit;cursor:pointer}
+body[data-praxis-course="oscilator-mecanic"] .pendulum-guide button:nth-child(2){background:#e4f1e9}
+body[data-praxis-course="oscilator-mecanic"] .pendulum-guide button[aria-pressed="true"]{outline:2px solid var(--praxis-color-primary);outline-offset:1px}
+body[data-praxis-course="oscilator-mecanic"] .pendulum-guide small{color:var(--praxis-color-primary);font-weight:600;margin-top:auto}
+body[data-praxis-course="oscilator-mecanic"] .pendulum-vectors{display:flex;gap:1.2rem;flex-wrap:wrap;margin:.75rem 0}
+body[data-praxis-course="oscilator-mecanic"] .pendulum-vectors label{display:flex;align-items:center;gap:.4rem;min-height:44px}
+@media(max-width:650px){body[data-praxis-course="oscilator-mecanic"] .pendulum-guide{grid-template-columns:1fr}}
+
+body[data-praxis-course="oscilator-mecanic"] .pendulum-workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:.8rem;align-items:center}
+body[data-praxis-course="oscilator-mecanic"] .pendulum-scene{min-width:0;overflow-x:auto}
+@media(min-width:1100px){
+ body[data-praxis-course="oscilator-mecanic"] .pendulum-workspace{grid-template-columns:minmax(640px,1fr) 285px;gap:1rem}
+ body[data-praxis-course="oscilator-mecanic"] #demo-pendulum .pendulum-guide{grid-template-columns:1fr;gap:.6rem;margin:0}
+ body[data-praxis-course="oscilator-mecanic"] #demo-pendulum .pendulum-guide button{padding:.65rem;gap:.3rem;font-size:.875rem;line-height:1.35}
+ body[data-praxis-course="oscilator-mecanic"] #demo-pendulum .pendulum-guide span{font-weight:400}
+}

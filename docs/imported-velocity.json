@@ -1,0 +1,37 @@
+{
+  "id": "viteza-si-acceleratia",
+  "source": "sources/viteza-si-acceleratia",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "3fef9439ae04afc81f85b72dc03bc02c58c5a9b2b30fa09f3c95f835f5f874d6"
+    },
+    {
+      "path": "app.js",
+      "sha256": "2e34aaf5324a64a34d76dae90033c5af73f71a0787e5e503c521f60339e30beb"
+    },
+    {
+      "path": "style.css",
+      "sha256": "f17a06719f3980262cd327f0dd0400e74a067feb288b0e198a4dbfd5634bc6e4"
+    },
+    {
+      "path": "README_INSTRUCTIUNI.txt",
+      "sha256": "4b3b4ea2de6667f94a875ef06410d645e6f2a2e07bf51d27038e9ffc44edcf5e"
+    },
+    {
+      "path": "Viteza_si_acceleratia_SingleFile.html",
+      "sha256": "67ae3b73fd48462c419592cb293b08d3bcf5bf77ba4d20f40e0192924fd20e0f"
+    }
+  ],
+  "adaptedFiles": [
+    "index.html",
+    "app.js"
+  ],
+  "shared": [
+    "course.js",
+    "velocity.js",
+    "velocity-canvas.js",
+    "velocity-labels.js",
+    "velocity.css"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "source": "D:/ProiecteAI/Unde-mecanice-restructurata/Unde-Mecanice.html",
+  "version": "2026-10-26",
+  "sha256": "4b9c27ed14ba4a8a70cb5ed20a530c367878c58a7a9c31bd6a1037ac89364867",
+  "bytes": 461472,
+  "moduleSha256": "70710c4ea280fa2fe404feed941dd0279b876f166fd9e011851372022f2c6204",
+  "topics": 19,
+  "screens": 37,
+  "adaptations": [
+    "shared shell and styles",
+    "embedded RO/EN dictionaries",
+    "mouse to Pointer Events adapter",
+    "global audio mute and master volume",
+    "reversible physical corrections documented in VERIFICARE_FIZICA_UNDE.md",
+    "fixed earlier-front Huygens construction",
+    "checked numerical problems and quiz keys"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "locale": "en",
+  "namespace": "courses/unde-mecanice/assessment",
+  "messages": {
+    "Resetează": "Reset",
+    "răspuns în {p0}": "answer in {p0}",
+    "răspuns în": "answer in",
+    "Răspuns numeric": "Numeric answer",
+    "Verifică": "Check",
+    "✓ Corect!": "✓ Correct!",
+    "✗ Mai încearcă": "✗ Try again",
+    "Rezolvare pe pași:": "Step-by-step solution:",
+    "Valoare așteptată:": "Expected value:",
+    "verificate • Scor:": "checked • Score:",
+    "• Timp:": "• Time:",
+    "Reia testul": "Restart test",
+    "✓ Verificat": "✓ Checked",
+    "Verificat": "Checked",
+    "Greșit.": "Incorrect.",
+    "Explicație:": "Explanation:",
+    "Rezultat final:": "Final result:",
+    "🎉 Excelent! Ai peste 70% – stăpânești undele mecanice!": "🎉 Excellent! Above 70% – you understand mechanical waves!",
+    "👍 Bine! Mai repetă lecțiile cu <70%.": "👍 Good! Review lessons where you scored below 70%.",
+    "📚 Reia teoria – undele mecanice cer atenție la formule.": "📚 Review the theory – mechanical waves require attention to formulas."
+  }
+}

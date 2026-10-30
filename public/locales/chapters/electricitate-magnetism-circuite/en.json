@@ -1,0 +1,10 @@
+{
+  "locale": "en",
+  "namespace": "chapters/electricitate-magnetism-circuite",
+  "title": "Electricity, magnetism and circuits",
+  "messages": {
+    "Electricitate, magnetism și circuite": "Electricity, magnetism and circuits",
+    "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITY, MAGNETISM AND CIRCUITS"
+  },
+  "simulations": {}
+}

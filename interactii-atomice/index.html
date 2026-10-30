@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Interacții atomice — simulare interactivă</title>
+<meta name="description" content="Simulare interactivă: potențialul Lennard-Jones, forțele de atracție și de respingere dintre doi atomi.">
+<meta name="theme-color" content="#1a1d26">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="stylesheet" href="./vendor/fonts/fonts.css">
+<style>
+:root{--paper:#f4efe4;--card:#fbf8f1;--ink:#1a1d26;--ink-2:#3a3d47;--muted:#6f6a5f;--rule:#d9cfba;--a:#c8402a;--b:#1f5a8a;--c:#2e7d57;--o:#b07a12;--plum:#7b3f61;
+--display:"Fraunces",Georgia,serif;--body:"Source Serif 4",Georgia,serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:18px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--b)}a:hover{color:var(--a)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+header.top{padding:34px 0 18px;border-bottom:1px solid var(--rule)}
+.eyebrow{font:12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h1{font:300 clamp(40px,7vw,84px)/1 var(--display);letter-spacing:-.03em;margin:10px 0 8px}
+h1 em{font-style:italic;font-weight:500;color:var(--a)}
+.lede{max-width:760px;color:var(--ink-2)}
+.topbar{position:fixed;top:12px;right:14px;z-index:20;display:flex;gap:8px}
+.btn{font:600 14px var(--body);display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:1.4px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;cursor:pointer;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.on{background:var(--ink);color:var(--paper)}
+.topbar .btn{background:rgba(251,248,241,.94);box-shadow:0 6px 20px -10px rgba(40,30,10,.45)}
+.topbar .btn:hover,.topbar .btn.on{background:var(--ink);color:var(--paper)}
+.sim{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;margin:24px 0}
+.stage{background:var(--card);border:1px solid var(--rule);position:relative}
+#cv{display:block;width:100%;height:600px;touch-action:none}
+.zoom{position:absolute;left:10px;top:10px;display:flex;flex-direction:column;gap:4px}
+.zoom .btn{width:32px;height:32px;padding:0;justify-content:center;font-size:18px;background:var(--card)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px 14px;border-top:1px solid var(--rule)}
+.bar .sp{flex:1}
+.ro{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule)}
+.ro div{padding:8px 14px;border-right:1px solid var(--rule)}
+.ro dt{font-size:13px;color:var(--muted);font-style:italic}
+.ro dd{font:600 14px var(--mono);white-space:nowrap}
+.panel{background:var(--card);border:1px solid var(--rule);padding:14px 16px;margin-bottom:14px}
+.panel h3{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.panel label{display:flex;align-items:center;gap:8px;font-size:15.5px;padding:3px 0;cursor:pointer}
+.panel input[type=radio]{accent-color:var(--a);width:16px;height:16px}
+.panel .hd{display:grid;grid-template-columns:1fr 1fr;font:11px var(--mono);color:var(--muted);margin:-2px 0 4px 24px}
+.pair{display:grid;grid-template-columns:1fr 1fr;flex:1}
+.panel .sl{display:block;margin-top:8px;font-size:14.5px}
+.sl input{width:100%;accent-color:var(--plum)}
+.sl small{display:flex;justify-content:space-between;font:11px var(--mono);color:var(--muted)}
+.custom-only{opacity:.4;pointer-events:none;transition:.2s}
+.custom .custom-only{opacity:1;pointer-events:auto}
+.key{display:inline-block;width:22px;height:4px;vertical-align:middle;margin-right:4px;border-radius:2px}
+.hint{font:12px var(--mono);color:var(--muted);padding:8px 14px;border-top:1px solid var(--rule)}
+section{padding:28px 0;border-top:1px solid var(--rule)}
+h2{font:400 clamp(28px,4vw,42px)/1.1 var(--display);margin-bottom:14px}
+h2 em{color:var(--a)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+p{margin-bottom:.8em}
+.box{border:1px solid var(--rule);border-left:3px solid var(--b);background:var(--card);padding:14px 18px;margin:1em 0}
+.box.app{border-left-color:var(--c)}.box.warn{border-left-color:var(--o)}
+.f{font-family:var(--mono);font-size:16px;background:var(--paper);padding:10px 12px;margin:.6em 0;overflow-x:auto;white-space:nowrap}
+.quiz{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.q{background:var(--card);border:1px solid var(--rule);padding:14px 16px}
+.q p{font-weight:600}
+.q button{display:block;width:100%;text-align:left;font:15.5px var(--body);padding:7px 10px;margin:5px 0;border:1px solid var(--rule);background:var(--paper);cursor:pointer;border-radius:6px}
+.q button:hover{border-color:var(--ink)}
+.q button.ok{background:#dcefe2;border-color:var(--c)}
+.q button.bad{background:#f6dcd6;border-color:var(--a)}
+.q .ex{font-size:15px;color:var(--ink-2);margin-top:6px;display:none}
+.q.done .ex{display:block}
+#score{font:600 15px var(--mono)}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.links a{display:block;border:1px solid var(--rule);background:var(--card);padding:12px 14px;text-decoration:none;color:var(--ink)}
+.links a small{display:block;font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.links a:hover{border-color:var(--a)}
+footer{padding:24px 0 40px;font:12px var(--mono);color:var(--muted)}
+.file .other-lessons{display:none!important}
+@media (max-width:900px){.sim{grid-template-columns:1fr}.cols{grid-template-columns:1fr}#cv{height:480px}.ro{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){body{font-size:16.5px}.wrap{padding:0 12px}#cv{height:420px}.topbar .lbl{display:none}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="btn" href="#top" title="Acasă — începutul paginii">⌂ <span class="lbl">Acasă</span></a>
+  <button class="btn on" id="soundBtn" title="Sunet pornit/oprit">♪ <span class="lbl">Sunet</span></button>
+</div>
+
+<header class="top" id="top"><div class="wrap">
+  <div class="eyebrow">Fizică · Structura substanței · Simulare</div>
+  <h1>Interacții <em>atomice</em></h1>
+  <p class="lede">Doi atomi se atrag când sunt depărtați și se resping când ajung prea aproape. Trage atomul mobil, dă-i drumul și urmărește cum oscilează în jurul distanței de echilibru, pe curba energiei potențiale.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="sim" id="sim">
+    <div class="stage">
+      <canvas id="cv" aria-label="Graficul energiei potențiale și cei doi atomi"></canvas>
+      <div class="zoom"><button class="btn" data-z="1" title="Mărește graficul">+</button><button class="btn" data-z="-1" title="Micșorează graficul">−</button></div>
+      <div class="ro">
+        <div><dt>distanța r</dt><dd id="oR">–</dd></div>
+        <div><dt>energia U</dt><dd id="oU">–</dd></div>
+        <div><dt>forța rezultantă</dt><dd id="oF">–</dd></div>
+        <div><dt>echilibru r₀</dt><dd id="oR0">–</dd></div>
+      </div>
+      <div class="bar">
+        <button class="btn on" id="play">❚❚ Pauză</button>
+        <button class="btn" id="step" title="Avansează un pas (în pauză)">» Pas</button>
+        <label><input type="radio" name="sp" value="1" checked> Normal</label>
+        <label><input type="radio" name="sp" value="0.25"> Lent</label>
+        <span class="sp"></span>
+        <button class="btn" id="reset">↺ Resetează</button>
+      </div>
+      <div class="hint">Trage atomul din dreapta (sau punctul de pe grafic). Atomul din stânga este fixat cu o pioneză.</div>
+    </div>
+
+    <aside>
+      <div class="panel" id="pairs">
+        <h3>Perechea de atomi</h3>
+        <div class="hd"><span>Fixat</span><span>Mobil</span></div>
+      </div>
+      <div class="panel" id="custom">
+        <h3>Atracție personalizată</h3>
+        <label class="sl custom-only">Diametrul atomului (σ): <b id="oS"></b>
+          <input type="range" id="sS" min="200" max="500" step="1"><small><span>mic</span><span>mare</span></small></label>
+        <label class="sl custom-only">Intensitatea interacțiunii (ε): <b id="oE"></b>
+          <input type="range" id="sE" min="20" max="300" step="1"><small><span>slabă</span><span>puternică</span></small></label>
+      </div>
+      <div class="panel">
+        <h3>Forțe</h3>
+        <label><input type="radio" name="fm" value="none"> Ascunde forțele</label>
+        <label><input type="radio" name="fm" value="total" checked> Forța rezultantă <span class="key" style="background:#2e7d57"></span></label>
+        <label><input type="radio" name="fm" value="comp"> Atracție + respingere</label>
+        <div style="font-size:13.5px;color:var(--muted);margin:4px 0 0 24px"><span class="key" style="background:#e08a1e"></span>atracție (van der Waals)<br><span class="key" style="background:#c0397e"></span>respingere (suprapunerea norilor electronici)</div>
+      </div>
+    </aside>
+  </div>
+
+  <section id="teorie">
+    <h2>Ce <em>arată</em> simularea</h2>
+    <div class="cols">
+      <div>
+        <p>Între doi atomi neutri (de exemplu doi atomi de neon) acționează simultan două forțe:</p>
+        <div class="box"><b>Atracția van der Waals</b> — norii electronici se polarizează reciproc, iar dipolii momentani se atrag. Forța scade lent cu distanța (energia ∝ −1/r⁶).</div>
+        <div class="box warn"><b>Respingerea</b> — la distanțe mici, norii electronici se suprapun și atomii se resping puternic. Forța crește foarte brusc (energia ∝ 1/r¹²).</div>
+        <p>Energia potențială a perechii este bine descrisă de <b>potențialul Lennard-Jones</b>:</p>
+        <div class="f">U(r) = 4ε [ (σ/r)¹² − (σ/r)⁶ ]</div>
+      </div>
+      <div>
+        <p><b>σ</b> (diametrul atomului) este distanța la care U = 0. <b>ε</b> (intensitatea interacțiunii) este adâncimea „gropii” de potențial.</p>
+        <p>Forța este panta curbei, cu semn schimbat: F = −dU/dr. Acolo unde curba coboară spre dreapta atomii se resping; unde urcă spre dreapta se atrag.</p>
+        <div class="f">r₀ = 2<sup>1/6</sup>·σ ≈ 1,12·σ &nbsp;&nbsp; U(r₀) = −ε</div>
+        <p>La distanța de echilibru r₀ forța rezultantă este zero, iar energia este minimă. Dacă îl deplasezi și îi dai drumul, atomul mobil oscilează în jurul lui r₀. Mișcarea este ca o vibrație a unei molecule.</p>
+        <div class="box app"><b>De reținut:</b> cu cât ε este mai mare, cu atât atomii sunt legați mai puternic. De aceea argonul (ε mai mare) fierbe la o temperatură mai mare (87 K) decât neonul (27 K).</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="test">
+    <h2>Verifică-te <em>rapid</em></h2>
+    <p id="score">Scor: 0 / 0</p>
+    <div class="quiz" id="quiz"></div>
+  </section>
+
+  <section class="other-lessons">
+    <h2>Alte <em>lecții</em></h2>
+    <div class="links">
+      <a href="../index.html"><small>Lecția</small>Calcul vectorial</a>
+      <a href="../notiuni-termodinamice/"><small>1.1</small>Noțiuni termodinamice de bază</a>
+      <a href="../calorimetrie/"><small>1.2</small>Calorimetrie</a>
+      <a href="../unde-mecanice/"><small>1.3.1</small>Unde mecanice</a>
+    </div>
+  </section>
+</main>
+<footer class="wrap">Simulare inspirată de „Atomic Interactions” (PhET, University of Colorado Boulder). Valorile σ și ε sunt aproximative. Funcționează și offline.</footer>
+<script src="./js/app.js"></script>
+</body>
+</html>

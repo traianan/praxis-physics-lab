@@ -1,0 +1,14 @@
+{
+  "id": "principiul-i-al-termodinamicii",
+  "source": "sources/principiul-i-al-termodinamicii/original.html",
+  "sha256": "9776fef3efccc8ae265985b0906880f6e92d446b130f9cb2fb12bb9c15078b22",
+  "sections": 6,
+  "graphs": 12,
+  "adaptations": [
+    "Shared Praxis UI and favicon",
+    "Embedded RO/EN dictionaries and local fonts",
+    "Textbook references and numbering removed",
+    "Responsive plots at device pixel ratio",
+    "Input validation and corrected constant-energy interpretation"
+  ]
+}

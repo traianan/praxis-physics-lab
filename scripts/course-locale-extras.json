@@ -1,0 +1,55 @@
+{
+  "calcul-vectorial/ui": {
+    "Lecție interactivă de fizică: mărimi vectoriale, componente, adunare, scădere, înmulțire cu un scalar, descompunere, produs scalar, produs vectorial și produs mixt.": "Interactive physics lesson: vector quantities, components, addition, subtraction, scalar multiplication, decomposition, dot product, cross product and scalar triple product.",
+    "Mărimi scalare și mărimi vectoriale": "Scalar and vector quantities",
+    "Descompunerea unui vector": "Resolving a vector",
+    "Produsul mixt și dublul produs vectorial": "Scalar and vector triple products",
+    "Verifică ce ai învățat": "Check what you have learned",
+    "Resurse și descărcare": "Resources and downloads",
+    "Masa": "Mass",
+    "Temperatura": "Temperature",
+    "egali": "equal",
+    "nedefinit": "undefined",
+    "paraleli": "parallel",
+    "perpendiculari": "perpendicular",
+    "Vectorul inițial este nul; rezultatul este nul pentru orice scalar.": "The initial vector is zero; the result is zero for every scalar.",
+    "Unghiul cu un vector nul nu este definit; produsul scalar este zero.": "An angle involving a zero vector is undefined; the dot product is zero.",
+    ", sens opus dacă": ", and opposite direction if",
+    "; pentru": "; for",
+    "— pentru": "— for",
+    "forța are sens opus câmpului!": "the force points opposite to the field!"
+  },
+  "miscarea-rectilinie/problems": {
+    "A {p0}-a secundă este intervalul de la": "Second number {p0} is the interval from",
+    "(doar a {p0}-a secundă)": "(second number {p0} only)",
+    "= {p0} m și": "= {p0} m and",
+    "= {p0} s, exact la mijloc între {p1} s și {p2} s. Iar": "= {p0} s, exactly midway between {p1} s and {p2} s. Also,",
+    "= 0 la plecare. Mobilul din B accelerează spre A, adică în sens negativ: accelerația lui este −{p0} m/s².": "= 0 at departure. The body from B accelerates towards A, in the negative direction: its acceleration is −{p0} m/s².",
+    "(pornire)": "(start)",
+    "= {p0} s, deci": "= {p0} s, so"
+  },
+  "miscarea-rectilinie/mruv": {
+    "= {p0} m, apoi se întoarce: mișcare accelerată în sensul {p1}.": "= {p0} m, then reverses: speeding up in the {p1} direction."
+  },
+  "miscarea-rectilinie/ui": {
+    "medie": "medium",
+    "egale": "equal",
+    "Interpretare": "Interpretation",
+    "pozitiv": "positive",
+    "negativ": "negative",
+    "Formula pentru distanța de oprire este scrisă pentru v₀ > 0 și a < 0. În cazul general, −v₀²/(2a) este deplasarea cu semn până la oprire; distanța parcursă rămâne pozitivă.": "The stopping-distance formula is written for v₀ > 0 and a < 0. In the general case, −v₀²/(2a) is the signed displacement to the stop; distance travelled remains positive.",
+    "Traiectoria este o elipsă. Planetele se mișcă pe elipse în jurul Soarelui (legile lui Kepler). Animația ilustrează forma traiectoriei; nu calculează mișcarea orbitală kepleriană.": "The path is an ellipse. Planets move on ellipses around the Sun (Kepler’s laws). The animation illustrates the path shape; it does not calculate Keplerian orbital motion.",
+    "Datele nu descriu o mișcare cu durată nenegativă. Verifică semnele și deplasarea.": "The data do not describe motion with a non-negative duration. Check the signs and displacement.",
+    "Introdu valori numerice finite.": "Enter finite numerical values.",
+    "Accelerația nu se poate determina unic din aceste date.": "Acceleration cannot be uniquely determined from these data.",
+    "Deplasarea nu se poate determina fără durată.": "Displacement cannot be determined without a duration.",
+    "Soluții cu durată nenegativă:": "Solutions with non-negative duration:",
+    "Repaus: deplasarea este 0 m pentru orice durată.": "At rest: displacement is 0 m for any duration.",
+    "Corpul ajunge în": "The body reaches",
+    "Ascunde": "Hide"
+  },
+  "calcul-vectorial/interactive": {
+    "Pentru α = 90°, R = √(a² + b²) = √(9 + 16) = 5.": "For α = 90°, R = √(a² + b²) = √(9 + 16) = 5.",
+    "G_t = mg sin α; componenta normală este G_n = mg cos α.": "G_t = mg sin α; the normal component is G_n = mg cos α."
+  }
+}

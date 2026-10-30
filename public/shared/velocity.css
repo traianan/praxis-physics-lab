@@ -1,0 +1,42 @@
+/* Presentation adapter for the imported velocity laboratory. */
+body[data-praxis-course=viteza-si-acceleratia]{--vec-pos:var(--praxis-science-purple);--vec-vel:var(--praxis-science-green);--vec-vel-avg:var(--praxis-science-teal);--vec-acc:var(--praxis-science-red);--vec-acc-t:var(--praxis-science-orange);--vec-acc-n:var(--praxis-science-purple)}
+body[data-praxis-course=viteza-si-acceleratia]{--bg-dark:var(--praxis-color-canvas);--bg-card:var(--praxis-color-surface);--bg-card-alt:var(--praxis-color-primary-soft);--bg-surface:var(--praxis-color-canvas);--text-main:var(--praxis-color-ink);--text-muted:var(--praxis-color-muted);--border-color:var(--praxis-color-border);--shadow:none;display:block}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original{max-width:none;margin:0;padding:0}
+body[data-praxis-course=viteza-si-acceleratia] .velocity-navigation:empty{display:none}
+body[data-praxis-course=viteza-si-acceleratia] .praxis-course-nav-select{display:none}
+body[data-praxis-course=viteza-si-acceleratia] .tabs{display:flex;flex-wrap:wrap;gap:.5rem}
+body[data-praxis-course=viteza-si-acceleratia] .main-container{width:100%;max-width:100rem;margin:0 auto;padding:0 1.5rem 1.5rem}
+body[data-praxis-course=viteza-si-acceleratia] :is(.card,.control-panel,.canvas-card){padding:1rem;border-radius:var(--praxis-radius-card);min-width:0;box-shadow:none}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .card.theory-card{padding:1rem}
+body[data-praxis-course=viteza-si-acceleratia] :is(.theory-hero,.poly-equations-banner,.poly-eq-item){background:var(--praxis-color-primary-soft);border-color:var(--praxis-color-border);padding:1rem}
+body[data-praxis-course=viteza-si-acceleratia] :is(.theory-list li,.formula-box,.poly-eq-math,.telemetry-value,.slider-header span:first-child){color:var(--praxis-color-ink)}
+body[data-praxis-course=viteza-si-acceleratia] :is(.control-group h4,.comparison-table th,.slider-val){color:var(--praxis-color-primary)}
+body[data-praxis-course=viteza-si-acceleratia] .control-group{border-color:var(--praxis-color-border)}
+body[data-praxis-course=viteza-si-acceleratia] .transport-bar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+body[data-praxis-course=viteza-si-acceleratia] .transport-bar .btn{overflow-wrap:normal}
+body[data-praxis-course=viteza-si-acceleratia] #tab-curbiliniu .slider-header{display:grid;grid-template-columns:minmax(0,1fr);gap:.5rem}
+body[data-praxis-course=viteza-si-acceleratia] #tab-curbiliniu .slider-val{justify-self:stretch;text-align:right}
+body[data-praxis-course=viteza-si-acceleratia] .lab-layout{grid-template-columns:minmax(18rem,22rem) minmax(0,1fr);gap:1rem}
+body[data-praxis-course=viteza-si-acceleratia] :is(.canvas-workspace,.canvas-card,.canvas-wrapper){min-width:0;max-width:100%}
+body[data-praxis-course=viteza-si-acceleratia] .canvas-wrapper{background:var(--praxis-color-canvas);padding:.5rem;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control)}
+body[data-praxis-course=viteza-si-acceleratia] canvas{display:block;max-width:100%;height:auto}
+body[data-praxis-course=viteza-si-acceleratia] .praxis-range-stepper{display:flex;align-items:center;gap:.375rem;width:100%}
+body[data-praxis-course=viteza-si-acceleratia] .praxis-range-stepper input{min-width:0;flex:1;width:100%}
+body[data-praxis-course=viteza-si-acceleratia] .app-footer{background:var(--praxis-color-surface);padding:1rem}
+body[data-praxis-course=viteza-si-acceleratia] .theory-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,27rem),1fr))}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .theory-card h3{display:block;overflow-wrap:anywhere}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .theory-card{overflow-wrap:anywhere}
+body[data-praxis-course=viteza-si-acceleratia] .formula-box{overflow-x:auto;font-family:var(--praxis-font-formula)}
+body[data-praxis-course=viteza-si-acceleratia] .badge{font-size:var(--praxis-text-small);color:var(--praxis-color-primary);background:var(--praxis-color-primary-soft);border-color:var(--praxis-color-border)}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original :is(h3,h4){color:var(--praxis-color-ink)!important;text-transform:none}
+body[data-praxis-course=viteza-si-acceleratia] :is(.theory-card,.poly-equations-banner) [style*="color:"]:not(.color-dot){color:var(--praxis-color-ink)!important}
+body[data-praxis-course=viteza-si-acceleratia] #poly-out-nature{color:var(--praxis-color-ink)!important}
+body[data-praxis-course=viteza-si-acceleratia] .checkbox-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+body[data-praxis-course=viteza-si-acceleratia] .check-label{display:grid!important;grid-template-columns:1.1rem minmax(0,1fr);align-items:start;min-width:0;gap:.4rem;overflow-wrap:normal}
+body[data-praxis-course=viteza-si-acceleratia] .check-label input{margin-top:.35rem}
+body[data-praxis-course=viteza-si-acceleratia] .check-text{display:block;min-width:0;line-height:1.8}
+body[data-praxis-course=viteza-si-acceleratia] .math-symbol{display:inline-block;white-space:nowrap;overflow-wrap:normal;word-break:normal}
+body[data-praxis-course=viteza-si-acceleratia] .check-label:has(:is(#curv-chk-atan,#curv-chk-avg,#curv-chk-hodograph)){grid-column:1/-1}
+body[data-praxis-course=viteza-si-acceleratia] .telemetry-caption{display:block;min-width:0;line-height:1.7}
+@media(max-width:64rem){body[data-praxis-course=viteza-si-acceleratia] .lab-layout{grid-template-columns:1fr}}
+@media(max-width:40rem){body[data-praxis-course=viteza-si-acceleratia] .main-container{padding:0 .75rem .75rem}body[data-praxis-course=viteza-si-acceleratia] .theory-hero{display:block}body[data-praxis-course=viteza-si-acceleratia] .telemetry-bar{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-praxis-course=viteza-si-acceleratia] .comparison-table{display:block;overflow-x:auto}}

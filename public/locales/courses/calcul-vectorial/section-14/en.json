@@ -1,0 +1,29 @@
+{
+  "locale": "en",
+  "namespace": "courses/calcul-vectorial/section-14",
+  "messages": {
+    "Pentru aprofundare": "Further exploration",
+    "Resurse": "Resources",
+    "și descărcare": "and downloads",
+    "Descărcare · ZIP ≈ 1,3 MB": "Download · ZIP ≈ 1.3 MB",
+    "Descarcă lecția": "Download the lesson",
+    "Toată lecția pentru calculator sau stick: dezarhivează și deschide": "The whole lesson for your computer or USB drive: extract the archive and open",
+    "— funcționează fără internet.": "— works without internet.",
+    "Simulare · PhET Colorado": "Simulation · PhET Colorado",
+    "Adunarea vectorilor": "Vector addition",
+    "Simularea clasică a Universității Colorado, disponibilă în limba română.": "The classic University of Colorado simulation, available in Romanian.",
+    "Enciclopedie · Wikipedia": "Encyclopedia · Wikipedia",
+    "Definiția riguroasă și istoria noțiunii de vector.": "A rigorous definition and history of the vector concept.",
+    "Produs scalar": "Dot product",
+    "Proprietăți, interpretare geometrică și generalizări.": "Properties, geometric meaning and generalisations.",
+    "Produs vectorial": "Cross product",
+    "Regula mâinii drepte, determinantul și aplicații.": "The right-hand rule, determinants and applications.",
+    "Referință · HyperPhysics": "Reference · HyperPhysics",
+    "Hartă conceptuală a operațiilor cu vectori (în engleză).": "A concept map of vector operations (in English).",
+    "Curs video · Khan Academy": "Video course · Khan Academy",
+    "Lecții video și exerciții cu rezolvare pas cu pas.": "Video lessons and exercises with step-by-step solutions.",
+    "index.html": "index.html",
+    "Vector": "Vector",
+    "Vectors": "Vectors"
+  }
+}

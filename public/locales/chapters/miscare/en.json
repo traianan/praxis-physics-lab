@@ -1,0 +1,79 @@
+{
+  "locale": "en",
+  "namespace": "chapters/miscare",
+  "title": "Motion",
+  "messages": {
+    "Mișcare": "Motion",
+    "MIȘCARE": "MOTION",
+    "Mișcarea rectilinie": "Rectilinear motion",
+    "Calcul vectorial": "Vector algebra",
+    "Viteza și accelerația": "Velocity and acceleration",
+    "Mișcarea curbilinie plană": "Planar curvilinear motion"
+  },
+  "simulations": {
+    "miscarea-rectilinie": {
+      "title": "Rectilinear motion",
+      "subtitle": "Kinematics: uniform and uniformly accelerated motion",
+      "description": "Motion types, MRU/MRUV simulations and graphs, 20 solved problems and test mode.",
+      "tags": [
+        "Kinematics",
+        "Problems",
+        "Test",
+        "Offline"
+      ],
+      "keywords": "rectilinear motion kinematics speed velocity acceleration graphs problems mru mruv",
+      "alt": "Rectilinear motion and position and velocity graphs"
+    },
+    "calcul-vectorial": {
+      "title": "Vector algebra",
+      "subtitle": "Mathematical tools for physics",
+      "description": "14 sections covering vectors, components, operations, decomposition, dot and cross products, a calculator and quiz.",
+      "tags": [
+        "Vectors",
+        "Interactive figures",
+        "Calculator",
+        "Offline"
+      ],
+      "keywords": "vectors vector algebra components unit vectors addition dot cross triple product decomposition",
+      "alt": "Vector addition and components"
+    },
+    "viteza-si-acceleratia": {
+      "title": "Velocity and acceleration",
+      "subtitle": "Vectors, trajectories and position functions",
+      "description": "Theory and three labs: rectilinear motion, planar motion and polynomial laws, with vectors and synchronised graphs.",
+      "tags": [
+        "Kinematics",
+        "Vectors",
+        "Graphs",
+        "Offline"
+      ],
+      "alt": "Curved trajectory with velocity and acceleration vectors",
+      "keywords": "velocity acceleration kinematics planar circular elliptical projectile polynomial tangential normal average instantaneous"
+    },
+    "miscarea-curbilinie-plana": {
+      "title": "Planar curvilinear motion",
+      "subtitle": "Planar trajectories, velocity and acceleration",
+      "description": "A complete lesson covering theory, average and instantaneous velocity, circles, ellipses, an editable trajectory, acceleration components and the osculating circle.",
+      "tags": [
+        "Kinematics",
+        "Editable trajectories",
+        "Vectors",
+        "Offline"
+      ],
+      "alt": "Elliptical trajectory with velocity and acceleration vectors",
+      "keywords": "mechanics planar curvilinear motion velocity acceleration tangent normal curvature osculating circle ellipse bezier"
+    },
+    "miscarea-circulara-uniforma": {
+      "title": "Uniform circular motion",
+      "subtitle": "Vectors, forces and banked curves",
+      "description": "Six theory topics, two interactive laboratories, two worked problems and five questions: period, frequency, acceleration, centripetal force and cornering.",
+      "alt": "Particle on a circle with tangential velocity and inward acceleration",
+      "tags": [
+        "Kinematics",
+        "Dynamics",
+        "Touch",
+        "Offline"
+      ]
+    }
+  }
+}

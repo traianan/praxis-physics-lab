@@ -1,0 +1,10 @@
+:root{
+ --praxis-color-ink:#1d3339;--praxis-color-muted:#526970;--praxis-color-primary:#17685f;--praxis-color-primary-hover:#104f49;--praxis-color-primary-soft:#e4eeea;
+ --praxis-color-surface:#fffefa;--praxis-color-canvas:#f5f5f1;--praxis-color-border:#d5e0dc;--praxis-color-focus:#297f75;--praxis-color-error:#a33d35;
+ --praxis-font-ui:Segoe UI,Arial,sans-serif;--praxis-font-formula:Georgia,Times New Roman,serif;
+ --praxis-text-small:13px;--praxis-text-body:16px;--praxis-text-label:14px;--praxis-text-heading:1.5rem;--praxis-text-title:1.875rem;--praxis-text-title-compact:1.625rem;--praxis-text-subheading:1.25rem;--praxis-text-minor-heading:1.125rem;
+ --praxis-space-1:4px;--praxis-space-2:8px;--praxis-space-3:12px;--praxis-space-4:16px;--praxis-space-5:24px;--praxis-space-6:32px;
+ --praxis-radius-control:7px;--praxis-radius-card:12px;--praxis-radius-dialog:15px;--praxis-target-min:44px;--praxis-slider-thumb:26px;
+ --praxis-optics-calm-object:#ce963f;--praxis-optics-calm-image:#4f9698;--praxis-optics-vivid-object:#ffad00;--praxis-optics-vivid-image:#005be8;
+ --praxis-motion-fast:150ms;--praxis-shadow-dialog:0 25px 100px #213d3426;
+}

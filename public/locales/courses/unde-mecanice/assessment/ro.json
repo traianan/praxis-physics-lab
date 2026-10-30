@@ -1,0 +1,26 @@
+{
+  "locale": "ro",
+  "namespace": "courses/unde-mecanice/assessment",
+  "messages": {
+    "Resetează": "Resetează",
+    "răspuns în {p0}": "răspuns în {p0}",
+    "răspuns în": "răspuns în",
+    "Răspuns numeric": "Răspuns numeric",
+    "Verifică": "Verifică",
+    "✓ Corect!": "✓ Corect!",
+    "✗ Mai încearcă": "✗ Mai încearcă",
+    "Rezolvare pe pași:": "Rezolvare pe pași:",
+    "Valoare așteptată:": "Valoare așteptată:",
+    "verificate • Scor:": "verificate • Scor:",
+    "• Timp:": "• Timp:",
+    "Reia testul": "Reia testul",
+    "✓ Verificat": "✓ Verificat",
+    "Verificat": "Verificat",
+    "Greșit.": "Greșit.",
+    "Explicație:": "Explicație:",
+    "Rezultat final:": "Rezultat final:",
+    "🎉 Excelent! Ai peste 70% – stăpânești undele mecanice!": "🎉 Excelent! Ai peste 70% – stăpânești undele mecanice!",
+    "👍 Bine! Mai repetă lecțiile cu <70%.": "👍 Bine! Mai repetă lecțiile cu <70%.",
+    "📚 Reia teoria – undele mecanice cer atenție la formule.": "📚 Reia teoria – undele mecanice cer atenție la formule."
+  }
+}

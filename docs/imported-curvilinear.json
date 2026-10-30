@@ -1,0 +1,17 @@
+{
+  "id": "miscarea-curbilinie-plana",
+  "source": "sources/miscarea-curbilinie-plana/index.html",
+  "sha256": "3c72a2d12ac0e04053ed8989896b9701bc5c9e0f541c9f9a3ca0595840fb6a1e",
+  "sections": [
+    "teorie",
+    "viteza",
+    "acceleratie"
+  ],
+  "canvas": [
+    "theoryCanvas",
+    "simEllipse",
+    "sim1",
+    "sim2"
+  ],
+  "duplicates": "Original lesson and repeated concepts preserved"
+}

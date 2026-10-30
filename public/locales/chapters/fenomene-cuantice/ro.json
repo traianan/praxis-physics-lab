@@ -1,0 +1,10 @@
+{
+  "locale": "ro",
+  "namespace": "chapters/fenomene-cuantice",
+  "title": "Fenomene cuantice",
+  "messages": {
+    "Fenomene cuantice": "Fenomene cuantice",
+    "FENOMENE CUANTICE": "FENOMENE CUANTICE"
+  },
+  "simulations": {}
+}

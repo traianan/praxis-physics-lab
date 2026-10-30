@@ -1,0 +1,43 @@
+/* The curvilinear lesson follows the common Praxis presentation contract. */
+body[data-praxis-course=miscarea-curbilinie-plana]{--bg:var(--praxis-color-canvas);--bg2:var(--praxis-color-canvas);--card:var(--praxis-color-surface);--card2:var(--praxis-color-primary-soft);--line:var(--praxis-color-border);--line2:var(--praxis-color-border);--ink:var(--praxis-color-ink);--muted:var(--praxis-color-muted);--muted2:var(--praxis-color-muted);--gold:var(--praxis-color-primary);--gold2:var(--praxis-color-primary);--green:var(--praxis-science-green);--red:var(--praxis-science-red);--amber:var(--praxis-science-orange);--violet:var(--praxis-science-purple);--cyan:var(--praxis-science-blue);--sans:var(--praxis-font-ui);--serif:var(--praxis-font-formula);overflow-x:visible}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(.bg-glow,.tabbar:empty,.praxis-course-nav-select,.rn,.no,.crumb){display:none!important}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original{max-width:none;margin:0;padding:0}
+body[data-praxis-course=miscarea-curbilinie-plana] .wrap{max-width:88rem;padding:0 1.5rem}
+body[data-praxis-course=miscarea-curbilinie-plana] .tabbar{display:none}
+body[data-praxis-course=miscarea-curbilinie-plana] .praxis-lab-nav .tabs{display:flex;flex-wrap:wrap;position:static;max-width:none;width:auto;padding:.25rem}
+body[data-praxis-course=miscarea-curbilinie-plana] .panel{padding:0 0 1rem}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original>main.wrap{max-width:88rem;padding-top:0}
+body[data-praxis-course=miscarea-curbilinie-plana] .praxis-lab-nav .tab-btn{flex:none;white-space:nowrap}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(p.txt,.sub,.def dd,.note p,.quiz .ans,.fcard .why){color:var(--praxis-color-ink);font-weight:400}
+body[data-praxis-course=miscarea-curbilinie-plana] .fcard .lbl{font:600 var(--praxis-text-label)/1.5 var(--praxis-font-ui);letter-spacing:normal;text-transform:none}
+body[data-praxis-course=miscarea-curbilinie-plana] select option{background:var(--praxis-color-surface);color:var(--praxis-color-ink)}
+body[data-praxis-course=miscarea-curbilinie-plana] .note{background:var(--praxis-color-primary-soft);border-color:var(--praxis-color-border)}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(h2,h3,h4){display:block;letter-spacing:normal;text-transform:none}
+body[data-praxis-course=miscarea-curbilinie-plana] h2{margin:0 0 .5rem}
+body[data-praxis-course=miscarea-curbilinie-plana] h3{margin:1.125rem 0 .5rem}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(.ctrl,.stat,.quiz,.def,.eqbox,.callout,.formula-card){background:var(--praxis-color-surface);border-color:var(--praxis-color-border);border-radius:var(--praxis-radius-card);min-width:0;box-shadow:none}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(.stat,.seg){background:var(--praxis-color-primary-soft)}
+body[data-praxis-course=miscarea-curbilinie-plana] .lab{grid-template-columns:minmax(0,1fr) minmax(18rem,21rem);gap:1rem;align-items:start}
+body[data-praxis-course=miscarea-curbilinie-plana] .lab .stage{height:28rem;min-height:28rem}
+body[data-praxis-course=miscarea-curbilinie-plana] .curvilinear-visual{display:flex;flex-direction:column;gap:.625rem;min-width:0}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(.controls,.defs){gap:.625rem}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(.lab,.fgrid,.defs,.note){margin-block:.75rem}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(.ctrl,.fcard,.quiz,.def,.note){padding:.75rem 1rem}
+body[data-praxis-course=miscarea-curbilinie-plana] .ctrl{gap:.625rem}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(.sub,p.txt){margin-bottom:.75rem}
+body[data-praxis-course=miscarea-curbilinie-plana] .sld{margin-bottom:.5rem}
+body[data-praxis-course=miscarea-curbilinie-plana] .ctrl h4{margin-bottom:.5rem}
+body[data-praxis-course=miscarea-curbilinie-plana] .quiz{margin-block:.5rem}
+body[data-praxis-course=miscarea-curbilinie-plana] .pn{margin-top:1.25rem;gap:.75rem}
+body[data-praxis-course=miscarea-curbilinie-plana] .pn a{padding:.75rem 1rem}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(.stage,.controls){min-width:0}
+body[data-praxis-course=miscarea-curbilinie-plana] .stage{background:var(--praxis-color-canvas);border-color:var(--praxis-color-border);border-radius:var(--praxis-radius-card)}
+body[data-praxis-course=miscarea-curbilinie-plana] .legend{background:#ffffffed;padding:.25rem .5rem;border-radius:var(--praxis-radius-control);font-size:var(--praxis-text-small)}
+body[data-praxis-course=miscarea-curbilinie-plana] #s2Scale{font:400 var(--praxis-text-small)/1.4 var(--praxis-font-ui)!important;max-width:calc(100% - 2rem);padding:4px;background:#ffffffed;border-radius:var(--praxis-radius-control);pointer-events:none}
+body[data-praxis-course=miscarea-curbilinie-plana] .sld .praxis-range-stepper{grid-column:1/-1}
+body[data-praxis-course=miscarea-curbilinie-plana] .sld input[type=range]{width:0}
+body[data-praxis-course=miscarea-curbilinie-plana] .tgl{flex-wrap:wrap}
+body[data-praxis-course=miscarea-curbilinie-plana] .tgl :is(vec,sub){flex:none}
+body[data-praxis-course=miscarea-curbilinie-plana] .math-symbol{display:inline-block;white-space:nowrap}
+@media(max-width:64rem){body[data-praxis-course=miscarea-curbilinie-plana] .lab{grid-template-columns:1fr}}
+@media(max-width:40rem){body[data-praxis-course=miscarea-curbilinie-plana] .wrap{padding:0 .75rem}body[data-praxis-course=miscarea-curbilinie-plana] .reads{grid-template-columns:repeat(2,minmax(0,1fr))}}

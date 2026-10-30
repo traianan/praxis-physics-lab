@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-28",
+  "method": "Chrome tablet emulation, touch enabled; all 16 topic tabs, state persistence, contents, keyboard and RO/EN round trip; errata section removed",
+  "results": [
+    {
+      "viewport": "768x1024",
+      "language": "ro",
+      "touch": "true",
+      "samples": 18,
+      "groups": 7,
+      "sections": 16,
+      "issues": []
+    },
+    {
+      "viewport": "768x1024",
+      "language": "en",
+      "touch": "true",
+      "samples": 18,
+      "groups": 7,
+      "sections": 16,
+      "issues": []
+    },
+    {
+      "viewport": "1024x768",
+      "language": "ro",
+      "touch": "true",
+      "samples": 18,
+      "groups": 7,
+      "sections": 16,
+      "issues": []
+    },
+    {
+      "viewport": "1024x768",
+      "language": "en",
+      "touch": "true",
+      "samples": 18,
+      "groups": 7,
+      "sections": 16,
+      "issues": []
+    }
+  ]
+}

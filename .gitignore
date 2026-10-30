@@ -1,0 +1,18 @@
+dist/
+outputs/
+node_modules/
+.vercel/
+*.log
+sources/
+
+# Local tooling and private configuration
+.serena/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.jks
+*.keystore
+__pycache__/
+*.pyc

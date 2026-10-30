@@ -1,0 +1,150 @@
+{
+  "desktop": {
+    "viewport": "1920x1080",
+    "dpr": 1,
+    "touch": true,
+    "topics": 6,
+    "samples": 361,
+    "standalone": false,
+    "networkResources": 16,
+    "results": [
+      {
+        "id": "gen_t2",
+        "value": 273,
+        "expected": 273
+      },
+      {
+        "id": "ex21_result",
+        "value": 101396.2,
+        "expected": 101396.16000000005
+      },
+      {
+        "id": "ex22_result",
+        "value": 32019.8,
+        "expected": 32019.84
+      },
+      {
+        "id": "ex31_result",
+        "value": 49.97,
+        "expected": 49.97415130105119
+      },
+      {
+        "id": "ex41_result",
+        "value": 406.01,
+        "expected": 406.00954025824495
+      }
+    ],
+    "issues": []
+  },
+  "portrait": {
+    "viewport": "768x1024",
+    "dpr": 2,
+    "touch": true,
+    "topics": 6,
+    "samples": 361,
+    "standalone": false,
+    "networkResources": 16,
+    "results": [
+      {
+        "id": "gen_t2",
+        "value": 273,
+        "expected": 273
+      },
+      {
+        "id": "ex21_result",
+        "value": 101396.2,
+        "expected": 101396.16000000005
+      },
+      {
+        "id": "ex22_result",
+        "value": 32019.8,
+        "expected": 32019.84
+      },
+      {
+        "id": "ex31_result",
+        "value": 49.97,
+        "expected": 49.97415130105119
+      },
+      {
+        "id": "ex41_result",
+        "value": 406.01,
+        "expected": 406.00954025824495
+      }
+    ],
+    "issues": []
+  },
+  "landscape": {
+    "viewport": "1024x768",
+    "dpr": 2,
+    "touch": true,
+    "topics": 6,
+    "samples": 361,
+    "standalone": false,
+    "networkResources": 16,
+    "results": [
+      {
+        "id": "gen_t2",
+        "value": 273,
+        "expected": 273
+      },
+      {
+        "id": "ex21_result",
+        "value": 101396.2,
+        "expected": 101396.16000000005
+      },
+      {
+        "id": "ex22_result",
+        "value": 32019.8,
+        "expected": 32019.84
+      },
+      {
+        "id": "ex31_result",
+        "value": 49.97,
+        "expected": 49.97415130105119
+      },
+      {
+        "id": "ex41_result",
+        "value": 406.01,
+        "expected": 406.00954025824495
+      }
+    ],
+    "issues": []
+  },
+  "offline": {
+    "viewport": "768x1024",
+    "dpr": 2,
+    "touch": true,
+    "topics": 6,
+    "samples": 361,
+    "standalone": true,
+    "networkResources": 0,
+    "results": [
+      {
+        "id": "gen_t2",
+        "value": 273,
+        "expected": 273
+      },
+      {
+        "id": "ex21_result",
+        "value": 101396.2,
+        "expected": 101396.16000000005
+      },
+      {
+        "id": "ex22_result",
+        "value": 32019.8,
+        "expected": 32019.84
+      },
+      {
+        "id": "ex31_result",
+        "value": 49.97,
+        "expected": 49.97415130105119
+      },
+      {
+        "id": "ex41_result",
+        "value": 406.01,
+        "expected": 406.00954025824495
+      }
+    ],
+    "issues": []
+  }
+}

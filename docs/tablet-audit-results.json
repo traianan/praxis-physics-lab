@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-28",
+  "method": "Chrome tablet emulation; Romanian; touch mode enabled; DPR 2; DOM/formula overflow and rendered Canvas/SVG text bounds/intersections",
+  "results": [
+    {
+      "id": "viteza-si-acceleratia",
+      "profile": "768x1024",
+      "touch": "true",
+      "samples": 15,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "miscarea-rectilinie",
+      "profile": "768x1024",
+      "touch": "true",
+      "samples": 4,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "calcul-vectorial",
+      "profile": "768x1024",
+      "touch": "true",
+      "samples": 1,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "unde-mecanice",
+      "profile": "768x1024",
+      "touch": "true",
+      "samples": 37,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "optica",
+      "profile": "768x1024",
+      "touch": "true",
+      "samples": 5,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "miscarea-curbilinie-plana",
+      "profile": "768x1024",
+      "touch": "true",
+      "samples": 25,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "viteza-si-acceleratia",
+      "profile": "1024x768",
+      "touch": "true",
+      "samples": 15,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "miscarea-rectilinie",
+      "profile": "1024x768",
+      "touch": "true",
+      "samples": 4,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "calcul-vectorial",
+      "profile": "1024x768",
+      "touch": "true",
+      "samples": 1,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "unde-mecanice",
+      "profile": "1024x768",
+      "touch": "true",
+      "samples": 37,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "optica",
+      "profile": "1024x768",
+      "touch": "true",
+      "samples": 5,
+      "issues": [],
+      "total": 0
+    },
+    {
+      "id": "miscarea-curbilinie-plana",
+      "profile": "1024x768",
+      "touch": "true",
+      "samples": 25,
+      "issues": [],
+      "total": 0
+    }
+  ]
+}

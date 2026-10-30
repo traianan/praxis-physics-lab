@@ -1,0 +1,42 @@
+{
+  "id": "transformari-stare-agregare",
+  "source": "Transformari de stare de agregare",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "32820c44fda922f4c908fd4c93989f29cb9675a356c3a24d5d41f098bc2a3171"
+    },
+    {
+      "path": "css/styles.css",
+      "sha256": "9affd7fed216b37b5203a22320c574686956348ad352b3031a1be932372b0805"
+    },
+    {
+      "path": "js/math.js",
+      "sha256": "6bf800216d99fba823f241f6db23b7297958494180a4162bf7bd8765e238de37"
+    },
+    {
+      "path": "js/i18n.js",
+      "sha256": "e1966a6599224df68d0fda67c09f4cf41cabe2614bdd185c83247dbc565db0d1"
+    },
+    {
+      "path": "js/audio.js",
+      "sha256": "dd364c44765b9544e9e87b73f17dddc98a063599b0887211a12b829fe1e82165"
+    },
+    {
+      "path": "js/sims.js",
+      "sha256": "26045c65b0fc972eca18e3d9c8ba8c9930447641b9f1db59b9b246fd27613c05"
+    },
+    {
+      "path": "js/quiz.js",
+      "sha256": "023063ed45afb5d2382e0a421ab4e81919cda04bf635a47c3ae036d6ac05afba"
+    },
+    {
+      "path": "js/app.js",
+      "sha256": "ec3a33fb0dad80b8ce6245042250d0b1548edd4645bc0c5c456f338ecab09ac0"
+    }
+  ],
+  "sections": 12,
+  "simulations": 11,
+  "questions": 15,
+  "problems": 2
+}

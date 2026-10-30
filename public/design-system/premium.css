@@ -1,0 +1,22 @@
+/* Quiet hierarchy: warm paper, deep teal, readable slate, and restrained depth. */
+:root{--praxis-surface-raised:#fffefa;--praxis-surface-muted:#eef2ef;--praxis-accent-brass:#ae8545;--praxis-shadow-card:0 2px 4px #173c3205,0 12px 32px -24px #173c3226;--praxis-shadow-hover:0 8px 28px -16px #173c3238}
+body{background:var(--praxis-color-canvas)}
+.topbar,.praxis-lab-header.topbar{background:var(--praxis-surface-raised);border-bottom-color:var(--praxis-color-border);box-shadow:0 1px 0 #fff8,0 4px 20px #173c3204}
+.chapter-card,.simulation-card,.scene-card,.control-panel,.result-card,body[data-praxis-laboratory] #praxis-original :is(.card,.demo,.fig,.panel,.quiz-shell){box-shadow:var(--praxis-shadow-card)}
+.chapter-card,.simulation-card{background:var(--praxis-surface-raised);transition:border-color 150ms ease,box-shadow 150ms ease}
+.chapter-card:hover,.simulation-card:hover{border-color:var(--praxis-color-primary);box-shadow:var(--praxis-shadow-hover)}
+.button.primary{background:linear-gradient(145deg,#217768,#14584f);border-color:#14584f;box-shadow:0 2px 4px #173c3214}
+.button.primary:hover{background:var(--praxis-color-primary-hover)}
+.button.secondary,.praxis-language{background:var(--praxis-surface-raised)}
+.praxis-course-tools{background:var(--praxis-surface-muted);border-color:var(--praxis-color-border)}
+.praxis-lab-intro p,.product-name,.runtime{color:var(--praxis-color-muted)}
+body[data-praxis-laboratory] .praxis-lab-nav .tabs{background:var(--praxis-surface-muted);border-radius:10px}
+body[data-praxis-laboratory] .praxis-lab-nav :is(.tab.active,.tab[aria-selected=true],.tab[aria-current=page]){background:var(--praxis-color-primary);color:#fff;border-color:var(--praxis-color-primary);box-shadow:0 2px 6px #173c321a}
+body[data-praxis-laboratory] #praxis-original :is(.model-note,.demo-hint,.sec-lead){color:var(--praxis-color-muted)}
+.praxis-content-key{margin:1rem 0;border-top:1px solid var(--praxis-color-border);padding-top:.75rem}
+.praxis-content-key summary{cursor:pointer;color:var(--praxis-color-primary);min-height:44px;display:flex;align-items:center;font-weight:600}
+.praxis-content-key ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:.75rem;list-style:none;padding:0;margin:.5rem 0}
+.praxis-content-key li{display:flex;align-items:center;gap:.5rem;font-size:.875rem}
+[data-content-icon]::before{content:"";display:inline-block;width:1.05em;height:1.05em;flex:0 0 1.05em;vertical-align:-.12em;margin-inline-end:.45em;background:currentColor;mask:var(--content-icon) center/contain no-repeat;-webkit-mask:var(--content-icon) center/contain no-repeat;opacity:.82}
+.praxis-content-key [data-content-icon]::before{margin-inline-end:0;color:var(--praxis-color-primary)}
+@media(prefers-reduced-motion:reduce){.chapter-card,.simulation-card{transition:none}}

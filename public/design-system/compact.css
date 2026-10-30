@@ -1,0 +1,184 @@
+/* Shared density rules: preserve reading size and touch targets, reduce empty layout. */
+.praxis-lab-header.topbar{height:auto;min-height:68px;padding-block:8px}
+.praxis-lab-intro,.praxis-lab-nav{padding-top:10px;padding-bottom:10px}.praxis-lab-intro p{margin-top:4px}.praxis-lab-nav{padding-top:0}
+.praxis-course-tools{margin-bottom:10px;padding:8px 12px;gap:12px}
+body[data-praxis-laboratory] #praxis-original>main{max-width:105rem;padding:16px 24px 24px}
+body[data-praxis-laboratory] #praxis-original .hero{padding-top:12px;min-height:0;margin-block:6px 16px}
+body[data-praxis-laboratory] #praxis-original .block{margin-bottom:20px}
+body[data-praxis-laboratory] #praxis-original .card{padding:.75rem 1rem}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .card.sim{padding:0}
+body[data-praxis-laboratory] #praxis-original .layout{max-width:105rem;gap:0 28px;padding-inline:24px;grid-template-columns:210px minmax(0,1fr)}
+body[data-praxis-laboratory] #praxis-original nav.toc{padding-top:16px;height:auto;max-height:calc(100dvh - var(--course-header) - 16px);overflow:auto}
+body[data-praxis-laboratory] #praxis-original .sec{padding-block:20px}
+body[data-praxis-laboratory] #praxis-original .sec-head{margin-bottom:16px}
+body[data-praxis-laboratory] #praxis-original .cols{gap:24px}
+body[data-praxis-laboratory] #praxis-original .fig canvas{height:320px}
+body[data-praxis-laboratory] #praxis-original .fig canvas.h3d{height:340px!important}
+body[data-praxis-laboratory] #praxis-original .text h3{margin-top:1em}
+body[data-praxis-course=unde-mecanice] .lesson-redesign div:has(>aside){width:100%;max-width:105rem!important;padding:0 24px 16px!important}
+body[data-praxis-course=unde-mecanice] .lesson-navigation{padding:10px 24px 12px}
+body[data-praxis-course=unde-mecanice] .lesson-hero{margin-bottom:8px}
+body[data-praxis-course=unde-mecanice] .lesson-topics-panel{padding-top:10px}
+body[data-praxis-course=unde-mecanice] .lesson-group-note{margin-bottom:8px!important}
+body[data-praxis-course=unde-mecanice] .lesson-skip{margin-top:8px}
+body[data-praxis-course=unde-mecanice] .lesson-redesign main>section{margin-top:0!important;scroll-margin-top:8px}
+body[data-praxis-course=unde-mecanice] .lesson-section{padding:16px}
+body[data-praxis-course=unde-mecanice] .lesson-section h2{margin:4px 0 12px}
+body[data-praxis-course=unde-mecanice] .lesson-section :is(h3,h4){margin-top:12px;margin-bottom:10px}
+body[data-praxis-course=unde-mecanice] .lesson-parts{padding-bottom:12px;margin-bottom:12px;gap:8px}
+body[data-praxis-course=unde-mecanice] .lesson-part-content>div{margin-block:12px}
+body[data-praxis-course=unde-mecanice] .lesson-part-content>p{margin-bottom:12px}
+body[data-praxis-course=unde-mecanice] .lesson-section .border{padding:12px!important}
+body[data-praxis-course=unde-mecanice] .lesson-section :is(.gap-2,.gap-3){gap:12px!important}
+body[data-praxis-course=unde-mecanice] .lesson-section canvas{padding:0!important;margin:0;width:100%;height:auto!important}
+.praxis-wave-figure{margin:0 auto 10px;width:100%;max-width:min(100%,var(--wave-render-width));min-width:0;align-self:start}
+.praxis-wave-figure figcaption{font:400 var(--praxis-text-small)/1.4 var(--praxis-font-ui);color:var(--praxis-color-muted);padding-top:5px}
+.praxis-wave-figure figcaption:empty{display:none}
+body[data-praxis-course=unde-mecanice] .lesson-recording-help{margin-bottom:12px;padding:0 12px}
+body[data-praxis-course=unde-mecanice] .lesson-recording-help summary{padding:10px 0;min-height:44px;cursor:pointer;color:var(--praxis-color-primary);font-weight:600}
+body[data-praxis-course=unde-mecanice] .lesson-recording-help p{margin:0 0 8px!important}
+[data-instrument-layout]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:start}
+[data-instrument-role=heading]{grid-column:1/-1;flex-wrap:wrap;gap:8px;margin:0!important}
+[data-instrument-role=heading] h3{margin:0!important}
+[data-instrument-role=note],[data-instrument-role=actions]{grid-column:1/-1;margin:0!important}
+[data-instrument-role=visual]{width:100%;max-width:32rem;justify-self:center;margin:0!important}
+[data-instrument-role=analysis]{margin:0!important;width:100%;min-width:0}
+[data-instrument-role=controls]{margin:0!important;width:100%}
+[data-instrument-layout] .lesson-drum-svg{max-height:21rem;width:100%;margin:0}
+@media(min-width:1050px){
+ [data-instrument-layout]{grid-template-columns:minmax(0,min(45%,32rem)) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto;column-gap:20px}
+ [data-instrument-role=visual]{grid-column:1;grid-row:2/4}
+ [data-instrument-role=analysis]{grid-column:2;grid-row:2}
+ [data-instrument-role=controls]{grid-column:2;grid-row:3;align-self:start}
+ [data-instrument-role=actions]{grid-row:4}
+}
+@media(max-width:1049px){[data-instrument-role=visual]{max-width:32rem}}
+@media(max-width:900px){body[data-praxis-laboratory] #praxis-original .layout{grid-template-columns:minmax(0,1fr)}body[data-praxis-laboratory] #praxis-original .cols{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:760px){.praxis-lab-header.topbar{height:auto;min-height:68px}body[data-praxis-laboratory] #praxis-original>main{padding:12px 16px}body[data-praxis-course=unde-mecanice] .lesson-redesign div:has(>aside){padding-inline:16px!important}body[data-praxis-course=unde-mecanice] .lesson-section{padding:12px}body[data-praxis-course=unde-mecanice] .lesson-navigation{padding-inline:16px}}
+html:has(body[data-praxis-laboratory]){scroll-padding-top:calc(var(--course-header) + 12px)}
+/* Catalogue: compact previews and chapter cards, keep the existing board pagination. */
+:root:not([data-library-board=true]) .intro{min-height:0;margin-bottom:18px}
+:root:not([data-library-board=true]) .intro-art svg{max-height:130px}
+:root:not([data-library-board=true]) .chapter-card{min-height:84px;padding:14px}
+:root:not([data-library-board=true]) .catalog-tools{margin-bottom:18px}
+:root:not([data-library-board=true]) .simulations-section{margin-top:24px}
+:root:not([data-library-board=true]) .simulation-image>img{min-height:170px;object-fit:contain}
+:root:not([data-library-board=true]) .simulation-body{padding:18px 20px}
+:root:not([data-library-board=true]) .simulation-body h3{margin-block:6px}
+@media print{.praxis-wave-figure{break-inside:avoid}[data-instrument-layout]{display:block}}
+
+@media(min-width:1050px){[data-instrument-layout=simple] [data-instrument-role=controls]{grid-row:2/4;align-self:center}}
+
+body[data-praxis-course=unde-mecanice] .lesson-redesign .min-h-screen{min-height:0!important}
+body[data-praxis-course=unde-mecanice] .lesson-bottom{max-width:105rem;margin-inline:auto;padding:8px 24px}
+body[data-praxis-course=unde-mecanice] .lesson-footer{padding:8px 24px 16px}
+#laborator-content-2 [data-instrument-role=visual]{max-width:28rem}
+
+body[data-praxis-course=unde-mecanice] .lesson-redesign .min-h-screen>header{display:none!important}
+.praxis-wave-native-action{order:2}
+
+body[data-praxis-laboratory] #praxis-original .card.pad{padding:12px 16px}
+body[data-praxis-laboratory] #praxis-original :is(.sim-side,.sim-main){padding:12px;gap:10px}
+:root:not([data-library-board=true]) .topbar:not(.praxis-lab-header){height:68px;min-height:68px;padding-block:8px}
+:root:not([data-library-board=true]) .shell{min-height:calc(100dvh - 68px)}
+[data-instrument-layout]:not([data-signal-ready]) [data-instrument-role=analysis] canvas{display:none!important}
+[data-instrument-layout]:not([data-signal-ready]) [data-instrument-role=analysis] figcaption{padding:10px 12px;border:1px dashed var(--praxis-color-border);border-radius:var(--praxis-radius-control);background:var(--praxis-color-canvas)}
+
+/* Consistent space around scientific formulas, separate from compact interface spacing. */
+:root{--praxis-formula-padding-y:.75rem;--praxis-formula-padding-x:1rem;--praxis-reading-gap:.75rem}
+body[data-praxis-laboratory] #praxis-original :is(.box,.fcard){padding:var(--praxis-formula-padding-y) var(--praxis-formula-padding-x)}
+body[data-praxis-laboratory] #praxis-original :is(.box,.fgrid,.note){margin-block:var(--praxis-reading-gap)}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .formula,
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .formula-box{padding:var(--praxis-formula-padding-y) var(--praxis-formula-padding-x)}
+body[data-praxis-course=calcul-vectorial] #praxis-original .katex-display{padding:.5rem 0;margin-block:var(--praxis-reading-gap);overflow-x:auto;overflow-y:hidden}
+body[data-praxis-course=calcul-vectorial] #praxis-original .box .katex-display{padding:.25rem 0;margin-block:.5rem}
+body[data-praxis-course=calcul-vectorial] #praxis-original .text p{margin-bottom:var(--praxis-reading-gap)}
+body[data-praxis-course=calcul-vectorial] #praxis-original .sec{padding-block:1rem}
+body[data-praxis-course=calcul-vectorial] #praxis-original .sec-head{margin-bottom:.75rem}
+body[data-praxis-course=calcul-vectorial] #praxis-original .cols{gap:1rem}
+body[data-praxis-course=calcul-vectorial] #praxis-original .fig-h{padding:.625rem 1rem}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .block{margin-bottom:1rem}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .hero{margin-block:0 .75rem;padding-top:0}
+/* Reserve space for the longest explanation without an inner scrollbar. */
+body[data-praxis-course=miscarea-rectilinie] #tipuri .hero{padding:1rem 1.25rem;border-radius:var(--praxis-radius-card)}
+body[data-praxis-course=miscarea-rectilinie] #tipuri .hero h2{margin:0}
+body[data-praxis-course=miscarea-rectilinie] #tipuri .hero p{margin:.875rem 0 0}
+body[data-praxis-course=miscarea-rectilinie] #tipuri .type-card{align-items:stretch}
+body[data-praxis-course=miscarea-rectilinie] #tipuri .type-card>.info{contain:none;height:auto;min-width:0;min-height:var(--motion-info-height,0px);overflow:visible;overflow-wrap:anywhere;scrollbar-gutter:auto}
+body[data-praxis-course=miscarea-rectilinie] #tipuri .type-card>.info .kv{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+body[data-praxis-course=miscarea-rectilinie] #tipuri .type-card>.info .kv>*{min-width:0}
+@media(max-width:1080px){body[data-praxis-course=miscarea-rectilinie] #tipuri .type-card{grid-template-columns:minmax(0,1fr)}}
+body[data-praxis-course=miscarea-rectilinie] #tipuri .type-card>.info[data-measuring-motion]{position:absolute;visibility:hidden;pointer-events:none;height:auto!important;min-height:0!important;contain:none!important;left:0;top:0}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original :is(.sim-side,.sim-main){padding:.75rem;gap:.5rem}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original :is(.grid-2,.grid-3){gap:.75rem}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .formula-list{gap:.5rem}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .theory-grid{align-items:start;gap:1rem}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original :is(.control-panel,.canvas-card){padding:.75rem;gap:.75rem}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .control-group{padding-bottom:.75rem}
+body[data-praxis-course=unde-mecanice] .lesson-section{padding:.75rem 1rem}
+body[data-praxis-course=unde-mecanice] .lesson-section [style*="var(--formula-bg)"]{padding:var(--praxis-formula-padding-y) var(--praxis-formula-padding-x)!important;margin-block:var(--praxis-reading-gap)}
+body[data-praxis-course=unde-mecanice] .lesson-part-content>div{margin-block:var(--praxis-reading-gap)}
+:root:not([data-board=true]) .app-shell .page-intro{margin-top:0;padding-block:.5rem}
+:root:not([data-board=true]) body[data-praxis-laboratory] .equation-card{padding:var(--praxis-formula-padding-y) var(--praxis-formula-padding-x)}
+:root:not([data-board=true]) .app-shell .page-footer{padding-block:.75rem;margin-top:0}
+.praxis-signal-idle-note{display:block;font-weight:400}
+[data-signal-ready] .praxis-signal-idle-note{display:none}
+
+body[data-praxis-laboratory] #praxis-original .fig canvas.mini{height:110px!important}
+/* Tablet reading layout: preserve full-size formulas and interactive figures. */
+@media(max-width:1199px){
+ body[data-praxis-course=calcul-vectorial] #praxis-original .layout{grid-template-columns:minmax(0,1fr)}
+ body[data-praxis-course=calcul-vectorial] #praxis-original nav.toc{display:none}
+ body[data-praxis-course=calcul-vectorial] #praxis-original .cols{grid-template-columns:minmax(0,1fr)}
+}
+/* Panels size to their own content rather than the height of a neighbouring plot. */
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .card.sim{align-items:start}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original :is(.sim-side,.sim-main){align-self:start}
+body[data-praxis-course=interactii-atomice] #praxis-original .sim{align-items:start}
+body[data-praxis-course=calorimetrie] #praxis-original .q{align-self:start}
+body[data-praxis-course=unde-mecanice] .lesson-section .grid{align-items:start}
+/* The glossary and formula map have very different lengths: use independent full-width grids. */
+body[data-praxis-course=unde-mecanice] #glosar-content-0>.grid{grid-template-columns:minmax(0,1fr);gap:1rem}
+body[data-praxis-course=unde-mecanice] #glosar-content-0>.grid>div:first-child>.grid,
+body[data-praxis-course=unde-mecanice] #glosar-content-0>.grid>div:last-child>.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));max-height:none;overflow:visible;padding-right:0;gap:.75rem}
+/* Keep the full optics scene and board layout while letting the controls end naturally. */
+:root:not([data-board=true]) body[data-praxis-laboratory] .app-shell .control-panel{align-self:start}
+
+/* Reading panels have real inner space and follow the page's vertical scroll. */
+body[data-praxis-laboratory] #praxis-original :is(.panel,.hero,.theory-hero,.hero-panel,.callout,.status,.readout,.coupled-readout,.sim-panel,.calc-card){box-sizing:border-box;min-width:0;padding:1rem 1.25rem;overflow-wrap:anywhere}
+body[data-praxis-laboratory] #praxis-original :is(.panel,.hero,.theory-hero,.hero-panel,.callout,.status,.readout,.coupled-readout,.sim-panel,.calc-card)>:first-child{margin-top:0}
+body[data-praxis-laboratory] #praxis-original :is(.panel,.hero,.theory-hero,.hero-panel,.callout,.status,.readout,.coupled-readout,.sim-panel,.calc-card)>:last-child{margin-bottom:0}
+body[data-praxis-laboratory] #praxis-original :is(.log,.pb-list,nav.toc){max-height:none;overflow:visible}
+body[data-praxis-laboratory] #praxis-original nav.toc{position:static;padding:1rem}
+body[data-praxis-laboratory] [data-praxis-stable]{box-sizing:border-box;min-width:0;min-height:var(--praxis-panel-height,0px);max-height:none;overflow:visible;overflow-wrap:anywhere}
+body[data-praxis-laboratory] button[data-praxis-stable]{min-height:max(var(--praxis-control-height),var(--praxis-panel-height,0px))!important}
+body[data-praxis-laboratory] [data-praxis-panel-probe]{position:absolute!important;left:0!important;top:0!important;visibility:hidden!important;pointer-events:none!important;min-height:0!important;height:auto!important;max-height:none!important;contain:none!important;overflow:visible!important;margin:0!important;box-sizing:border-box!important}
+/* Keep the space occupied by mode-specific controls; hidden controls stay inert. */
+body[data-praxis-course=compunerea-oscilatiilor] #praxis-original #ratioPresets[hidden],
+body[data-praxis-course=compunerea-oscilatiilor] #praxis-original #wyGroup[style*="display: none"],
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original :is(#pCustomHelp,#s2CustomHelp)[hidden]{display:block!important;visibility:hidden}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .sld[hidden]{display:grid!important;visibility:hidden}
+body[data-praxis-course=transformari-stare-agregare] #praxis-original #boilHeatingControls[hidden]{display:block!important;visibility:hidden}
+body[data-praxis-course=transformari-stare-agregare] #praxis-original #boilThresholdLegend[hidden]{display:flex!important;visibility:hidden}
+body[data-praxis-course=transformari-stare-agregare] #praxis-original :is(#fieSyringe,#boilPush)[hidden]{display:inline-block!important;visibility:hidden}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original :is(#curv-lbl-p1,#curv-lbl-p2,#curv-lbl-p3){display:inline-block}
+@media(max-width:600px){body[data-praxis-laboratory] #praxis-original :is(.panel,.hero,.theory-hero,.hero-panel,.callout,.status,.readout,.coupled-readout,.sim-panel,.calc-card){padding:.875rem 1rem}}
+.praxis-lab-intro>div{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.praxis-course-tools label{min-width:0;max-width:100%}.praxis-course-tools select{min-width:0;max-width:100%}
+body[data-praxis-laboratory] #praxis-original button{white-space:normal;overflow-wrap:anywhere;max-width:100%}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original :is(.grid-2,.grid-3)>*{min-width:0}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .pb-layout>*{min-width:0;max-width:100%}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .pb-answers{min-width:0;flex-wrap:wrap;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr))}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .pb-answers>*{min-width:0;max-width:100%;flex-wrap:wrap}
+@media(max-width:900px){body[data-praxis-course=miscarea-rectilinie] #praxis-original .pb-layout{grid-template-columns:minmax(0,1fr)}}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .formula{min-width:0;max-width:100%;flex-wrap:wrap;gap:.5rem 1rem}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .formula .eq{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:65rem){
+ body[data-praxis-laboratory] #praxis-original div:has(>table[data-praxis-responsive]){min-width:0;max-width:100%;overflow:visible!important}
+ body[data-praxis-laboratory] #praxis-original table[data-praxis-responsive]{display:block;min-width:0!important;width:100%;max-width:100%;table-layout:fixed}
+ body[data-praxis-laboratory] #praxis-original table[data-praxis-responsive] thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ body[data-praxis-laboratory] #praxis-original table[data-praxis-responsive] tbody{display:grid;gap:1rem}
+ body[data-praxis-laboratory] #praxis-original table[data-praxis-responsive] tr{display:block;border:1px solid var(--praxis-color-border);border-radius:10px;padding:.5rem;min-width:0}
+ body[data-praxis-laboratory] #praxis-original table[data-praxis-responsive] tbody :is(td,th){display:block;width:auto!important;min-width:0;max-width:100%;box-sizing:border-box;padding:.75rem;white-space:normal;overflow-wrap:anywhere;text-align:left}
+ body[data-praxis-laboratory] #praxis-original [data-praxis-table-label]::before{content:attr(data-praxis-table-label);display:block;margin-bottom:.5rem;font:600 var(--praxis-text-label)/1.5 var(--praxis-font-ui);color:var(--praxis-color-muted)}
+}

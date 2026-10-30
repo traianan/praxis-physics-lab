@@ -1,0 +1,83 @@
+{
+  "locale": "en",
+  "namespace": "chapters/caldura-termodinamica",
+  "title": "Heat and thermodynamics",
+  "messages": {
+    "Căldură și termodinamică": "Heat and thermodynamics",
+    "CĂLDURĂ ȘI TERMODINAMICĂ": "HEAT AND THERMODYNAMICS"
+  },
+  "simulations": {
+    "notiuni-termodinamice": {
+      "title": "Basic thermodynamic concepts",
+      "subtitle": "Molecules, temperature, heat and energy",
+      "description": "13 interactive figures on matter, the mole, thermodynamic processes, heat transfer, temperature and heat capacity, with a glossary, quiz and problems.",
+      "alt": "Gas in a piston cylinder, thermometer and pressure–volume diagram",
+      "tags": [
+        "Thermodynamics",
+        "Simulations",
+        "Problems",
+        "Offline"
+      ]
+    },
+    "calorimetrie": {
+      "title": "Calorimetry",
+      "subtitle": "Heat balance and calorimetric experiments",
+      "description": "Seven simulations about heat capacity, thermal equilibrium, calorimeters, water mixing and material identification, with a quiz and problems.",
+      "alt": "Calorimeter with water, thermometer and metal sample",
+      "tags": [
+        "Calorimetry",
+        "Experiments",
+        "Quiz",
+        "Offline"
+      ]
+    },
+    "principiul-i-al-termodinamicii": {
+      "title": "First law of thermodynamics",
+      "subtitle": "Energy balance and ideal gas laws",
+      "description": "The first law, ideal gas laws, 12 synchronized p–V, V–T and p–T diagrams for four processes, with simulators and exercise calculators.",
+      "alt": "Gas piston and pressure–volume diagram for an isothermal process",
+      "tags": [
+        "Thermodynamics",
+        "Ideal gas",
+        "Calculators",
+        "Offline"
+      ]
+    },
+    "interactii-atomice": {
+      "title": "Atomic interactions",
+      "subtitle": "Attraction, repulsion and the Lennard-Jones potential",
+      "description": "Seven atom pairs, forces and potential energy, customizable parameters, explanations and six quiz questions.",
+      "alt": "Two atoms with attractive and repulsive forces on a Lennard-Jones potential curve",
+      "tags": [
+        "Thermodynamics",
+        "Atoms",
+        "Forces",
+        "Offline"
+      ]
+    },
+    "principiul-i-aplicatii": {
+      "title": "Applications of the first law of thermodynamics",
+      "subtitle": "Molar heat capacities and ideal gas processes",
+      "description": "11 topics, nine demonstrations on molar heat capacities and isochoric, isobaric, isothermal, adiabatic and polytropic processes, six worked problems and 13 questions.",
+      "alt": "Piston cylinder with isothermal and adiabatic curves on a pressure–volume diagram",
+      "tags": [
+        "Thermodynamics",
+        "Processes",
+        "Quiz",
+        "Offline"
+      ]
+    },
+    "transformari-stare-agregare": {
+      "title": "Phase changes",
+      "subtitle": "Melting, vaporisation, liquefaction and phase diagrams",
+      "description": "12 topics, 11 demonstrations about phase changes, gas liquefaction, Andrews isotherms and the critical point, two worked problems and 15 questions.",
+      "alt": "Ice, liquid water and vapour with a heating curve and triple point",
+      "tags": [
+        "Thermodynamics",
+        "Phase changes",
+        "Quiz",
+        "Offline"
+      ]
+    }
+  }
+}

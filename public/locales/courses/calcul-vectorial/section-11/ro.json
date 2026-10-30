@@ -1,0 +1,26 @@
+{
+  "locale": "ro",
+  "namespace": "courses/calcul-vectorial/section-11",
+  "messages": {
+    "Calculator": "Calculator",
+    "Introdu componentele a trei vectori în spațiu. Toate operațiile se recalculează instantaneu, iar scena 3D afișează \\(\\vec a\\), \\(\\vec b\\), \\(\\vec a+\\vec b\\) și \\(\\vec a\\times\\vec b\\).": "Introdu componentele a trei vectori în spațiu. Toate operațiile se recalculează instantaneu, iar scena 3D afișează \\(\\vec a\\), \\(\\vec b\\), \\(\\vec a+\\vec b\\) și \\(\\vec a\\times\\vec b\\).",
+    "Exemplu aleator": "Exemplu aleator",
+    "Versorii i, j, k": "Versorii i, j, k",
+    "Fig. 11 — Vizualizare 3D": "Fig. 11 — Vizualizare 3D",
+    "scară automată · trage pentru a roti": "scară automată · trage pentru a roti",
+    "Rotație": "Rotație",
+    "a + b": "a + b",
+    "a × b": "a × b",
+    "Laborator": "Laborator",
+    "vectorial": "vectorial",
+    "x": "x",
+    "y": "y",
+    "z": "z",
+    "a": "a",
+    "b": "b",
+    "c": "c",
+    "k": "k",
+    "Introdu componentele a trei vectori în spațiu. Toate operațiile se recalculează instantaneu, iar scena 3D afișează": "Introdu componentele a trei vectori în spațiu. Toate operațiile se recalculează instantaneu, iar scena 3D afișează",
+    "și": "și"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "locale": "en",
+  "namespace": "chapters/lucru-energie-putere",
+  "title": "Work, energy and power",
+  "messages": {
+    "Lucru mecanic, energie și putere": "Work, energy and power",
+    "LUCRU MECANIC, ENERGIE ȘI PUTERE": "WORK, ENERGY AND POWER"
+  },
+  "simulations": {}
+}

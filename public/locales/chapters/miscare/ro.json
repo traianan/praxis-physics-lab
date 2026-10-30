@@ -1,0 +1,79 @@
+{
+  "locale": "ro",
+  "namespace": "chapters/miscare",
+  "title": "Mișcare",
+  "messages": {
+    "Mișcare": "Mișcare",
+    "MIȘCARE": "MIȘCARE",
+    "Mișcarea rectilinie": "Mișcarea rectilinie",
+    "Calcul vectorial": "Calcul vectorial",
+    "Viteza și accelerația": "Viteza și accelerația",
+    "Mișcarea curbilinie plană": "Mișcarea curbilinie plană"
+  },
+  "simulations": {
+    "miscarea-rectilinie": {
+      "title": "Mișcarea rectilinie",
+      "subtitle": "Cinematică: MRU și MRUV",
+      "description": "Tipuri de mișcări, simulări și grafice MRU/MRUV, 20 de probleme rezolvate și Mod Test.",
+      "tags": [
+        "MRU / MRUV",
+        "Probleme",
+        "Test",
+        "Offline"
+      ],
+      "keywords": "miscare rectilinie cinematica viteza acceleratie grafice probleme mru mruv",
+      "alt": "Mișcare rectilinie și graficele poziției și vitezei"
+    },
+    "calcul-vectorial": {
+      "title": "Calcul vectorial",
+      "subtitle": "Instrumente matematice pentru fizică",
+      "description": "14 secțiuni cu vectori, componente, operații, descompunere, produse scalar și vectorial, calculator și autoevaluare.",
+      "tags": [
+        "Vectori",
+        "Figuri interactive",
+        "Calculator",
+        "Offline"
+      ],
+      "keywords": "calcul vectorial vectori componente versori adunare produs scalar vectorial mixt descompunere",
+      "alt": "Adunarea vectorilor și componentele lor"
+    },
+    "viteza-si-acceleratia": {
+      "title": "Viteza și accelerația",
+      "subtitle": "Vectori, traiectorii și legi de mișcare",
+      "description": "Teorie și trei laboratoare: mișcare rectilinie, mișcare în plan și legi polinomiale, cu vectori și grafice sincronizate.",
+      "tags": [
+        "Cinematică",
+        "Vectori",
+        "Grafice",
+        "Offline"
+      ],
+      "alt": "Traiectorie curbilinie cu vectorii viteză și accelerație",
+      "keywords": "velocity acceleration kinematics planar circular elliptical projectile polynomial tangential normal average instantaneous"
+    },
+    "miscarea-curbilinie-plana": {
+      "title": "Mișcarea curbilinie plană",
+      "subtitle": "Traiectorii, viteză și accelerație în plan",
+      "description": "Lecție completă cu teorie, viteză medie și instantanee, cerc, elipsă, traiectorie editabilă, descompunerea accelerației și cercul osculator.",
+      "tags": [
+        "Cinematică",
+        "Traiectorii editabile",
+        "Vectori",
+        "Offline"
+      ],
+      "alt": "Traiectorie eliptică cu vectorii viteză și accelerație",
+      "keywords": "mechanics planar curvilinear motion velocity acceleration tangent normal curvature osculating circle ellipse bezier"
+    },
+    "miscarea-circulara-uniforma": {
+      "title": "Mișcarea circulară uniformă",
+      "subtitle": "Vectori, forțe și curbe supraînălțate",
+      "description": "Șase teme teoretice, două laboratoare interactive, două probleme rezolvate și cinci întrebări: perioadă, frecvență, accelerație, forță centripetă și viraje.",
+      "alt": "Mobil pe cerc cu vectorul viteză tangent și accelerația orientată spre centru",
+      "tags": [
+        "Cinematică",
+        "Dinamică",
+        "Touch",
+        "Offline"
+      ]
+    }
+  }
+}

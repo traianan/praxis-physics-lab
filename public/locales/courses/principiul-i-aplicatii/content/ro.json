@@ -1,0 +1,615 @@
+{
+  "locale": "ro",
+  "namespace": "courses/principiul-i-aplicatii/content",
+  "messages": {},
+  "strings": {
+    "a11y.skip": "Sari la conținut",
+    "brand.sub": "Aplicații · gazul ideal",
+    "nav.home": "Introducere",
+    "nav.group.theory": "Teorie",
+    "nav.quiz": "Verificare",
+    "nav.links": "Linkuri",
+    "ui.sound": "Sunet",
+    "ui.home": "Home",
+    "ui.animate": "Animați",
+    "ui.run": "Rulează",
+    "ui.reset": "Reset",
+    "ui.show": "Arată",
+    "ui.hide": "Ascunde",
+    "ui.showAll": "Deschide toți pașii",
+    "ui.hideAll": "Închide pașii",
+    "ui.answer": "Răspuns",
+    "home.eyebrow": "Fizică · clasa a X-a · Termodinamică",
+    "home.title1": "Aplicarea principiului I",
+    "home.title2": "la transformările gazului ideal",
+    "home.lead": "De la căldurile molare la procesele politrope, cu demonstrații interactive, formule, probleme rezolvate și un test de verificare.",
+    "home.cta.start": "Începe lecția",
+    "home.cta.quiz": "Sari la verificare",
+    "home.cta.table": "Tabelul sinteză",
+    "home.fact.processes": "transformări studiate",
+    "home.fact.examples": "probleme rezolvate",
+    "home.fact.quiz": "întrebări de verificare",
+    "home.law.label": "Principiul I al termodinamicii",
+    "home.law.note": "Variația energiei interne egalează căldura primită minus lucrul mecanic efectuat de gaz.",
+    "home.offline": "Funcționează complet offline · fără biblioteci externe",
+    "home.map.title": "Harta lecției",
+    "home.map.1": "Căldurile molare ale gazului ideal — deducerea C_V, C_p și a relației lui R. Mayer",
+    "home.map.2": "Valori experimentale versus valori teoretice (gaz monoatomic și biatomic)",
+    "home.map.3": "Transformarea izocoră și o problemă rezolvată",
+    "home.map.4": "Transformarea izobară și o problemă rezolvată",
+    "home.map.5": "Transformarea izotermă — lucrul mecanic și aria de sub curbă",
+    "home.map.6": "Transformarea adiabatică, exponentul adiabatic și probleme rezolvate",
+    "home.map.7": "Sinteza celor patru transformări și o problemă cu piston",
+    "home.map.8": "Procese politrope — familia pVⁿ = constant",
+    "sec.calorice.short": "Căldurile molare",
+    "sec.calorice.title": "Călduri molare",
+    "sec.calorice.lead": "Din ecuațiile calorice de stare se obțin ușor, folosind primul principiu al termodinamicii, expresiile căldurilor molare.",
+    "cal.p1": "Să considerăm un gaz monoatomic supus unei transformări izocore, când ΔV = 0, deci L<sub>if</sub> = 0. Conform primului principiu:",
+    "cal.p2": "Atunci definiția căldurii molare la volum constant poate fi rescrisă în forma:",
+    "cal.p3": "Dar, din ecuația calorică de stare pentru gazul monoatomic rezultă ΔU = (3/2)·ν·R·ΔT, deci:",
+    "cal.p4": "De aici, folosind relația lui R. Mayer, C<sub>p</sub> = C<sub>V</sub> + R, rezultă:",
+    "cal.p5": "În mod analog, pentru un gaz biatomic (numărătoarea gradelor de libertate dă 5 în loc de 3):",
+    "cal.p6": "Raportul γ = C<sub>p</sub>/C<sub>V</sub> se numește <i>exponent adiabatic</i>:",
+    "cal.mono": "gaz monoatomic",
+    "cal.bi": "gaz biatomic",
+    "cal.demo.title": "Demo · grade de libertate → γ",
+    "cal.demo.hint": "Alege tipul de moleculă și urmărește cum se schimbă căldurile molare și exponentul adiabatic.",
+    "cal.demo.mono": "Monoatomic",
+    "cal.demo.di": "Biatomic",
+    "cal.demo.poly": "Poliatomică neliniară",
+    "cal.demo.i": "Grade de libertate i",
+    "sec.tabel141.short": "Valori experimentale",
+    "sec.tabel141.title": "Valori experimentale",
+    "sec.tabel141.lead": "Aceste valori teoretice trebuie comparate cu valorile experimentale pentru a valida sau infirma ecuațiile calorice de stare.",
+    "tab141.cap": "Compararea teoriei cu experimentul",
+    "tab141.gas": "Gazul",
+    "tab141.cv": "C_V",
+    "tab141.cp": "C_p",
+    "tab141.theory": "Valoare teoretică γ",
+    "tab141.dev": "Abatere",
+    "tab141.chart.title": "Grafic animat · teorie vs. experiment",
+    "tab141.chart.hint": "Apasă butonul pentru a anima barele. Abaterile mici arată că ecuațiile calorice deduse pentru gazul ideal sunt valabile, cu bună aproximație, și pentru gazele reale.",
+    "tab141.lg.teory": "teorie",
+    "tab141.lg.exp": "experimental",
+    "tab141.p1": "Comparând valorile teoretice cu cele experimentale constatăm că ecuațiile calorice de stare, deduse pentru gazul <i>ideal</i> monoatomic și, respectiv, biatomic, sunt valabile cu o bună aproximație și pentru gazele <i>reale</i>. Le vom aplica în continuare primului principiu în studiul transformărilor simple ale gazului ideal.",
+    "tab141.note": "Modelul rigid descrie aproximativ gazele monoatomice și biatomice în domeniul în care rotațiile relevante sunt active și vibrațiile sunt neglijabile. Valorile experimentale pot diferi din cauza temperaturii și a interacțiunilor moleculare.",
+    "tab141.slider.title": "Testează tu",
+    "tab141.slider.t": "Temperatura",
+    "tab141.slider.hint": "La 300 K un gaz biatomic are i = 5 (3 translații + 2 rotații).",
+    "tr.izocor.short": "Transformarea izocoră",
+    "tr.izocor.title": "Transformarea izocoră · V = constant",
+    "tr.izocor.lead": "În transformarea izocoră volumul este constant, ΔV = 0, deci gazul nu efectuează lucru mecanic.",
+    "izoc.p1": "Folosind această relație și definițiile căldurii molare, respectiv a căldurii specifice, se poate scrie:",
+    "izoc.p2": "Toată căldura primită de gaz se duce în energia lui internă; presiunea crește proporțional cu temperatura (Charles):",
+    "izoc.kf1.t": "Ce rămâne fix",
+    "izoc.kf2.t": "Ce se transferă",
+    "izoc.kf3.t": "Sunet",
+    "izoc.kf3.d": "ritmul șocurilor moleculare crește odată cu p",
+    "izoc.demo.title": "Demo · vas rigid închis",
+    "izoc.demo.q": "Căldura Q",
+    "tr.izobar.short": "Transformarea izobară",
+    "tr.izobar.title": "Transformarea izobară · p = constant",
+    "tr.izobar.lead": "Presiunea rămâne constantă, deci gazul efectuează lucru mecanic în timpul dilatării.",
+    "izob.f1": "lucrul mecanic",
+    "izob.f2": "prin ecuația de stare",
+    "izob.f3": "căldura schimbată",
+    "izob.p1": "Utilizând aceste expresii în ecuația generală a primului principiu, ΔU = Q<sub>if</sub> − L<sub>if</sub>, și relația lui R. Mayer, se obține:",
+    "izob.p2": "Interpretare: la presiune constantă, căldura furnizată se împarte între creșterea energiei interne și lucrul mecanic de împingere a pistonului.",
+    "izob.gap.tag": "Deducerea variației energiei interne",
+    "izob.gap.body": "Din relația lui Mayer, C_p − R = C_V, rezultă ΔU = νC_pΔT − νRΔT = νC_VΔT.",
+    "izob.demo.title": "Demo · piston mobil",
+    "izob.demo.t": "Temperatura T",
+    "izob.demo.p": "Presiunea p",
+    "tr.izoterm.short": "Transformarea izotermă",
+    "tr.izoterm.title": "Transformarea izotermă · T = constant",
+    "tr.izoterm.lead": "Temperatura este constantă, deci energia internă a unui gaz ideal nu se modifică.",
+    "izo.p1": "Conform primului principiu, toată căldura schimbată cu exteriorul se transformă în lucru mecanic. Cu ecuația termică de stare și p = νRT/V rezultă:",
+    "izo.p2": "Graficul este o hiperbolă. Modulul lucrului mecanic este aria de sub curbă: L > 0 la destindere și L < 0 la comprimare. Demonstrația folosește T = 300 K și volumul minim 10 L.",
+    "izo.kf1": "pV = constant",
+    "izo.kf2": "|L| = aria",
+    "izo.kf3": "ΔU = 0",
+    "izo.demo.title": "Demo · aria de sub hiperbolă",
+    "izo.demo.v": "Volumul maxim al procesului V_max",
+    "izo.demo.n": "Cantitate ν",
+    "izo.demo.anim": "Animare destindere",
+    "izo.demo.comp": "Compresie",
+    "tr.adiabat.short": "Transformarea adiabatică",
+    "tr.adiabat.title": "Transformarea adiabatică · Q = 0",
+    "tr.adiabat.lead": "În transformarea adiabatică, prin definiție, gazul nu schimbă căldură cu mediul.",
+    "ad.f1": "legea transformării",
+    "ad.p1": "Folosind ecuația termică de stare, ecuația transformării adiabactice poate fi rescrisă astfel:",
+    "ad.p2": "Iar lucrul mecanic adiabatic se scrie în trei forme echivalente:",
+    "ad.p3": "Atunci, conform primului principiu (Q = 0), variația energiei interne este ΔU = ν·C_V·(T_f − T_i) = m·c_V·(T_f − T_i).",
+    "ad.obs.title": "Observații",
+    "ad.obs1": "Ecuația transformării adiabactice a fost obținută în 1823 de Siméon-Denis Poisson.",
+    "ad.obs2": "Exponentul adiabatic este supraunitar: pentru gazul monoatomic γ = 5/3, iar pentru cel biatomic γ = 7/5.",
+    "ad.obs3": "Deoarece γ &gt; 1, în procesul adiabatic presiunea variază în funcție de volum mai rapid decât în transformarea izotermă. De aceea adiabata este înclinată mai puternic decât izoterma și <b>o adiabată și o izotermă se intersectează într-un singur punct</b>.",
+    "ad.demo.title": "Demo · adiabata și izoterma",
+    "ad.demo.g": "Exponentul γ (fără unitate)",
+    "ad.demo.v": "Raportul V_f/V_i (fără unitate)",
+    "ad.demo.pump": "Revino la V_i",
+    "ad.demo.hint": "Compresia adiabatică ridică temperatura — tonul auditiv urcă odată cu ea.",
+    "sec.sinteza.short": "Sinteză",
+    "sec.sinteza.title": "Sinteza transformărilor",
+    "sec.sinteza.lead": "Apasă pe o celulă pentru a vedea transformarea corespunzătoare în graficul animat.",
+    "synth.corner": "Procesul ↓ / Mărimea →",
+    "synth.chart.title": "Graficul procesului ales",
+    "synth.caption.hint": "Selectează un rând din tabel.",
+    "synth.heat.title": "Circuitul complet, într-o singură imagine",
+    "synth.heat.p": "Căldura primită de gaz se împarte mereu în două: energia internă (care la gazul ideal depinde doar de temperatură) și lucrul mecanic. Rata de împărțire este tocmai γ.",
+    "sec.politrop.short": "Procese politrope",
+    "sec.politrop.title": "Procese politrope",
+    "sec.politrop.lead": "Se numește proces (transformare) politropă procesul unui sistem termodinamic închis (ν = constant) în care căldura molară rămâne constantă.",
+    "pol.p1": "Legea după care se desfășoară un astfel de proces este, unde n este indicele politropic și este o constantă care poate lua valori în intervalul (−∞, ∞):",
+    "pol.p2": "Eliminând presiunea, respectiv volumul, cu ajutorul ecuației termice de stare, se obțin relațiile echivalente:",
+    "pol.p3": "Variația energiei interne într-o transformare politropă se calculează cu relația:",
+    "pol.p4": "Iar pentru calculul lucrului mecanic (mai puțin transformarea izotermă) este valabilă relația:",
+    "pol.p5": "Din relațiile (4) și (5), utilizând și relația Robert Mayer, se poate demonstra că:",
+    "pol.p6": "Pentru valori corespunzătoare ale lui n se pot obține din ecuația (1) legile proceselor simple ale gazului ideal. Un caz particular este procesul liniar în coordonate (p, V), p = constant · V.",
+    "pol.demo.title": "Demo · familia politropelor",
+    "pol.demo.n": "Indicele n",
+    "pol.demo.proc": "Procesul",
+    "pol.demo.shape": "Panta",
+    "pol.demo.hint": "Coborâți cursorul sub 0 sau peste γ și priviți cum curba se rotește prin toate procesele simple.",
+    "ex141.title": "Încălzirea izobară a 2 kg de oxigen",
+    "ex141.text": "Pentru a încălzi izobar cu ΔT = 5 K o cantitate de oxigen de masă m = 2 kg este necesar să se transmită gazului căldura Q = 9,16 kJ. Aflați: a) căldura specifică izobară c<sub>p</sub> a oxigenului; b) lucrul mecanic L efectuat de gaz în cursul dilatării izobare; c) variația ΔU a energiei interne a gazului în procesul considerat.",
+    "ex142.title": "Încălzirea oxigenului într-un vas de volum constant",
+    "ex142.text": "Într-un vas de volum constant se află o cantitate de oxigen de masă m = 1 g și căldură specifică izocoră c<sub>V</sub> = 700 J/(kg·K), la temperatura t = 27 °C și presiunea p₁ = 100 kPa. Aflați căldura Q necesară pentru încălzirea oxigenului, astfel încât presiunea sa să devină p₂ = 200 kPa.",
+    "ex143.title": "Deduces cele două relații Poisson și formula lucrului adiabatic",
+    "ex143.text": "Deduceți cele două relații de mai sus (T·V<sup>γ−1</sup> = constant și T·p<sup>(1−γ)/γ</sup> = constant). Folosind ecuația transformării adiabactice se poate arăta apoi expresia lucrului mecanic.",
+    "ex144.title": "Lucrul mecanic într-o destindere adiabatică",
+    "ex144.text": "Aflați lucrul mecanic L efectuat de gazul ideal într-o transformare adiabatică de la presiunea p₁ între volumele V₁ și V₂. Se dă coeficientul adiabatic γ. Aplicație: p₁ = 1 bar; V₁ = 10 cm³; V₂ = 20 cm³; γ = 1,4.",
+    "ex145.title": "Pompa verticală cu piston — problemă integratoare",
+    "ex145.text": "Un corp de pompă vertical de secțiune S, prevăzut cu un piston mobil de masă M, conține masa m de azot la temperatura t₁. Presiunea atmosferică este p<sub>a</sub>. Gazul suferă o încălzire izobară până la temperatura T₂, după care pistonul este blocat și corpul de pompă este pus în legătură cu un vas de volum V₂. Aflați: a) înălțimea h față de baza corpului de pompă la care se află inițial pistonul; b) lucrul mecanic L efectuat de gaz în cursul încălzirii izobare; c) presiunea finală p<sub>f</sub> după stabilirea legăturii.",
+    "ex145.data": "Aplicație: S = 0,01 m²; M = 50 kg; m = 14 g; t₁ = 27 °C; p_a = 1 bar; T₂ = 400 K; V₂ = 3 dm³; p₂ = 4·10⁵ Pa; g = 10 m/s².",
+    "ex1411.title": "Procesul liniar în coordonate (p, V)",
+    "ex1411.text": "Pentru o cantitate constantă de gaz ideal care urmează procesul liniar p = kV, determinați indicele politropic n, căldura molară C și lucrul mecanic L între temperaturile T_i și T_f.",
+    "quiz.title": "Probleme de verificare",
+    "quiz.lead": "Treisprezece întrebări despre transformările gazului ideal. Primești feedback imediat și un semnal sonor pentru fiecare răspuns, dacă sunetul este activ.",
+    "quiz.score": "puncte",
+    "quiz.check": "Verifică răspunsul",
+    "quiz.next": "Întrebarea următoare →",
+    "quiz.restart": "Reia testul",
+    "quiz.need": "Alege sau completează un răspuns înainte de a verifica.",
+    "quiz.correct": "Corect!",
+    "quiz.wrong": "Nu exact.",
+    "quiz.numeric": "Răspuns numeric",
+    "quiz.result": "Rezultatul testului",
+    "quiz.again": "Reia testul",
+    "quiz.great": "Excelent — stăpânești conceptele lecției.",
+    "quiz.good": "Bine — câteva detalii mai merită reluate.",
+    "quiz.low": "Reia secțiunile marcate roșu și încearcă din nou.",
+    "res.title": "Linkuri și resurse",
+    "res.lead": "Aplicația funcționează offline; linkurile de mai jos au nevoie de conexiune.",
+    "dyn.mono": "monoatomic",
+    "dyn.di": "biatomic",
+    "dyn.poly": "polyatomic",
+    "dyn.degrees": "grade de libertate",
+    "dyn.izocor": "Izocor",
+    "dyn.izobar": "Izobar",
+    "dyn.izoterm": "Izoterm",
+    "dyn.adiabat": "Adiabatic",
+    "dyn.linear": "Liniar (p = ct·V)",
+    "dyn.free": "Liber",
+    "dyn.caption.izocor": "Izocoră: urcă pe verticală — aria de sub curbă este nulă, L = 0.",
+    "dyn.caption.izobar": "Izobară: linie orizontală, iar L = p·ΔV este dreptunghiul hașurat.",
+    "dyn.caption.izoterm": "Izotermă: ramură de hiperbolă; aria de sub curbă este L = νRT·ln(V_f/V_i).",
+    "dyn.caption.adiabat": "Adiabată: aceiași extremi, dar curbă mai abruptă (γ > 1); aria este lucrul mecanic adiabatic.",
+    "toast.soundOn": "Sunet pornit",
+    "toast.soundOff": "Sunet oprit",
+    "toast.lang": "Interfața este acum în",
+    "toast.copied": "Formula a fost copiată",
+    "units.J": "J",
+    "units.kJ": "kJ",
+    "units.mol": "moli",
+    "cal.rotate": "Alege axa, apoi trage molecula cu mouseul sau degetul pentru a roti cadrul rigid. Trage de originea O pentru a deplasa întregul sistem. Tastatură: săgeți pentru rotație, Alt + săgeți pentru deplasare, Home pentru resetare.",
+    "cal.axis": "Axa de rotație",
+    "cal.resetView": "Resetează perspectiva",
+    "pol.vertical": "Diagramă verticală: V constant; dp/dV nu este finit.",
+    "cal.degrees.mono": "<strong>3 translații = 3 grade de libertate.</strong> Centrul atomului se poate deplasa independent pe Ox, Oy și Oz. Modelul monoatomic nu include rotații sau vibrații interne.",
+    "cal.degrees.di": "<strong>3 translații + 2 rotații = 5 grade de libertate.</strong> Legătura rămâne aliniată cu Ox; cadrul se poate roti numai în jurul axelor perpendiculare Oy și Oz. Rotația în jurul legăturii și vibrațiile nu sunt incluse în acest model rigid.",
+    "cal.degrees.poly": "<strong>3 translații + 3 rotații = 6 grade de libertate.</strong> Exemplul este o moleculă neliniară rigidă, care se poate roti în jurul a trei axe independente. O moleculă poliatomică liniară are numai două rotații relevante. Vibrațiile nu sunt incluse.",
+    "problem.1": "Problema 1",
+    "problem.2": "Problema 2",
+    "problem.3": "Problema 3",
+    "problem.4": "Problema 4",
+    "problem.5": "Problema 5",
+    "problem.6": "Problema 6"
+  },
+  "steps": {
+    "ex142": [
+      {
+        "t": "Scriem datele problemei",
+        "f": [
+          "m=1\\ \\mathrm{g}=10^{-3}\\ \\mathrm{kg}",
+          "c_{V}=700\\ \\mathrm{J/(kg\\cdot K)}",
+          "T_{1}=t_{1}+T_{0}=300{,}15\\ \\mathrm{K}",
+          "p_{1}=100\\ \\mathrm{kPa},\\ p_{2}=200\\ \\mathrm{kPa}"
+        ]
+      },
+      {
+        "t": "Volum constant ⇒ L = 0, deci toată căldura merge în energie internă",
+        "f": [
+          "Q=m\\ c_{V}\\,(T_{2}-T_{1})"
+        ],
+        "n": "Aceasta este expresia căldurii pentru o transformare izocoră."
+      },
+      {
+        "t": "Legea transformării izocore ne dă temperatura finală",
+        "f": [
+          "\\frac{p_{1}}{T_{1}}=\\frac{p_{2}}{T_{2}}\\Rightarrow T_{2}=T_{1}\\cdot\\frac{p_{2}}{p_{1}}"
+        ]
+      },
+      {
+        "t": "Înlocuim și obținem o formulă într-un singur pas",
+        "f": [
+          "Q=m\\ c_{V}\\ T_{1}\\left(\\frac{p_{2}}{p_{1}}-1\\right)"
+        ]
+      },
+      {
+        "t": "Calcul numeric",
+        "f": [
+          "Q=10^{-3}\\cdot 700\\cdot 300{,}15\\cdot\\left(\\frac{200}{100}-1\\right)\\ \\mathrm{J}",
+          "Q=0{,}7\\cdot 300{,}15\\cdot 1\\ \\mathrm{J}=210{,}1\\ \\mathrm{J}"
+        ]
+      }
+    ],
+    "ex141": [
+      {
+        "t": "a) Căldura specifică izobară, din definiție",
+        "f": [
+          "c_{p}=\\frac{1}{m}\\cdot\\frac{Q}{\\Delta T}=\\frac{1}{2\\ \\mathrm{kg}}\\cdot\\frac{9160\\ \\mathrm{J}}{5\\ \\mathrm{K}}=916\\ \\mathrm{J/(kg\\cdot K)}"
+        ]
+      },
+      {
+        "t": "b) Lucrul mecanic în dilatarea izobară",
+        "f": [
+          "L=\\nu R\\Delta T=\\frac{m}{\\mu}R\\,(T_{f}-T_{i})",
+          "L=\\frac{2}{32\\cdot 10^{-3}}\\cdot 8{,}314\\cdot 5\\ \\mathrm{J}=2598\\ \\mathrm{J}\\approx 2{,}6\\ \\mathrm{kJ}"
+        ],
+        "n": "Pentru oxigen μ = 32·10⁻³ kg/mol."
+      },
+      {
+        "t": "c) Variația energiei interne, prin principiul I",
+        "f": [
+          "\\Delta U=Q-L=9160\\ \\mathrm{J}-2598\\ \\mathrm{J}=6562\\ \\mathrm{J}\\approx 6{,}56\\ \\mathrm{kJ}"
+        ]
+      },
+      {
+        "t": "Verificare cu C_V",
+        "f": [
+          "\\Delta U=\\nu C_{V}\\Delta T=\\frac{m}{\\mu}\\cdot\\frac{5}{2}R\\cdot 5\\ \\mathrm{J}"
+        ],
+        "n": "Rezultatul 6,5 kJ confirmă că, la presiune constantă, circa 72 % din căldură rămâne în gaz, iar 28 % pleacă în lucru mecanic."
+      }
+    ],
+    "ex143": [
+      {
+        "t": "Pornim din legea adiabatei și din ecuația termică de stare",
+        "f": [
+          "pV^{\\gamma}=\\mathrm{constant}",
+          "pV=\\nu RT"
+        ]
+      },
+      {
+        "t": "Eliminăm presiunea: p = νRT/V",
+        "f": [
+          "\\frac{\\nu RT}{V}\\cdot V^{\\gamma}=\\mathrm{constant}\\Rightarrow T\\,V^{\\gamma-1}=\\mathrm{constant}"
+        ]
+      },
+      {
+        "t": "Eliminăm volumul: V = νRT/p",
+        "f": [
+          "p\\left(\\frac{\\nu RT}{p}\\right)^{\\gamma}=\\mathrm{constant}\\Rightarrow T\\,p^{\\frac{1-\\gamma}{\\gamma}}=\\mathrm{constant}"
+        ]
+      },
+      {
+        "t": "Lucrul mecanic se calculează ca arie sub curbă",
+        "f": [
+          "L=\\int_{V_{i}}^{V_{f}}p\\,dV=K\\int_{V_{i}}^{V_{f}}V^{-\\gamma}dV",
+          "L=\\frac{p_{i}V_{i}-p_{f}V_{f}}{\\gamma-1}=-\\frac{p_{f}V_{f}-p_{i}V_{i}}{\\gamma-1}"
+        ]
+      },
+      {
+        "t": "Trecem la temperaturi cu pV = νRT",
+        "f": [
+          "L=-\\frac{\\nu R\\,(T_{f}-T_{i})}{\\gamma-1}"
+        ]
+      },
+      {
+        "t": "Relația lui R. Mayer în formă utilă",
+        "f": [
+          "\\frac{R}{\\gamma-1}=C_{V}\\Rightarrow L=-\\nu C_{V}(T_{f}-T_{i})",
+          "\\Delta U=-L=\\nu C_{V}(T_{f}-T_{i})"
+        ],
+        "n": "Semnul minus arată că, la destindere (T_f < T_i), gazul își scade energia internă pentru că lucrează împotriva exteriorului."
+      }
+    ],
+    "ex144": [
+      {
+        "t": "Formula lucrului adiabatic dedusă mai sus",
+        "f": [
+          "L=-\\frac{p_{f}V_{f}-p_{i}V_{i}}{\\gamma-1}"
+        ]
+      },
+      {
+        "t": "Din ecuația adiabatei rezultă presiunea finală",
+        "f": [
+          "p_{1}V_{1}^{\\gamma}=p_{2}V_{2}^{\\gamma}\\Rightarrow p_{2}=p_{1}\\left(\\frac{V_{1}}{V_{2}}\\right)^{\\gamma}"
+        ]
+      },
+      {
+        "t": "Înlocuim și factorizăm p₁V₁",
+        "f": [
+          "L=p_{1}V_{1}\\cdot\\frac{1-\\left(\\frac{V_{1}}{V_{2}}\\right)^{\\gamma-1}}{\\gamma-1}"
+        ]
+      },
+      {
+        "t": "Calcul numeric",
+        "f": [
+          "p_{1}V_{1}=10^{5}\\cdot 10\\cdot 10^{-6}=1\\ \\mathrm{J}",
+          "2^{0{,}4}=1{,}3195\\Rightarrow \\left(\\tfrac{1}{2}\\right)^{0{,}4}=0{,}7579",
+          "L=1\\cdot\\frac{1-0{,}7579}{0{,}4}=0{,}6\\ \\mathrm{J}"
+        ],
+        "n": "La calculul numeric se folosește egalitatea 2⁰·⁴ = 1,3195."
+      }
+    ],
+    "ex145": [
+      {
+        "t": "Starea 1 — ecuația de stare scrisă pentru gazul de sub piston",
+        "f": [
+          "p_{1}S h=\\frac{m}{\\mu}R\\,(t_{1}+T_{0})\\Rightarrow h=\\frac{m}{\\mu}R\\cdot\\frac{t_{1}+T_{0}}{p_{1}S}"
+        ]
+      },
+      {
+        "t": "Condiția de echilibru a pistonului ne dă presiunea gazului",
+        "f": [
+          "p_{a}S+Mg=p_{1}S\\Rightarrow p_{1}=p_{a}+\\frac{Mg}{S}=1{,}5\\cdot 10^{5}\\ \\mathrm{Pa}"
+        ]
+      },
+      {
+        "t": "a) Înălțimea inițială a pistonului",
+        "f": [
+          "h=\\frac{m}{\\mu}R\\cdot\\frac{t_{1}+T_{0}}{p_{a}S+Mg}=0{,}831\\ \\mathrm{m}"
+        ]
+      },
+      {
+        "t": "b) Lucrul mecanic în încălzirea izobară 1 → 2",
+        "f": [
+          "L=\\frac{m}{\\mu}R\\left[T_{2}-(t_{1}+T_{0})\\right]=415{,}7\\ \\mathrm{J}"
+        ],
+        "n": "Azot: μ = 28·10⁻³ kg/mol, deci m/μ = 0,5 mol."
+      },
+      {
+        "t": "c) După blocarea pistonului, gazul ocupă volumul",
+        "f": [
+          "V'_{2}=S h\\cdot\\frac{T_{2}}{t_{1}+T_{0}}=11{,}08\\cdot 10^{-3}\\ \\mathrm{m}^{3}"
+        ]
+      },
+      {
+        "t": "Amestecarea cu gazul din vas (temperatură comună T₂)",
+        "f": [
+          "p_{f}=\\frac{p_{1}V'_{2}+p_{2}V_{2}}{V'_{2}+V_{2}}=\\frac{1{,}5\\cdot 10^{5}\\cdot 11{,}08\\cdot 10^{-3}+4\\cdot 10^{5}\\cdot 3\\cdot 10^{-3}}{14{,}08\\cdot 10^{-3}}",
+          "p_{f}\\approx 2{,}03\\cdot 10^{5}\\ \\mathrm{Pa}"
+        ]
+      }
+    ],
+    "ex1411": [
+      {
+        "t": "Pentru un politrop, C se exprimă din relația (6) și (4)",
+        "f": [
+          "n=\\frac{C-C_{p}}{C-C_{V}}\\Rightarrow C=\\frac{C_{p}-nC_{V}}{1-n}"
+        ]
+      },
+      {
+        "t": "Procesul liniar p = k·V are indicele n = −1",
+        "f": [
+          "pV^{-1}=\\mathrm{constant}\\Rightarrow p=kV"
+        ]
+      },
+      {
+        "t": "Căldura molară a procesului liniar",
+        "f": [
+          "C=\\frac{C_{p}+C_{V}}{2}=\\frac{\\gamma+1}{2}\\,C_{V}"
+        ]
+      },
+      {
+        "t": "Lucrul mecanic este aria trapezului de sub dreaptă",
+        "f": [
+          "L=\\frac{p_{i}+p_{f}}{2}\\,(V_{f}-V_{i})=\\frac{\\nu R\\,(T_{f}-T_{i})}{2}"
+        ],
+        "n": "Pentru n = −1 relația (5) dă exact L = −νRΔT/(−1−1) = νRΔT/2."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "type": "mc",
+      "tag": "1 / 13",
+      "ok": 1,
+      "text": {
+        "q": "Într-o transformare izocoră a unui gaz ideal, care dintre mărimi este nulă?",
+        "opts": [
+          "Variația energiei interne ΔU",
+          "Lucrul mecanic L_if",
+          "Căldura schimbată Q_if",
+          "Variația presiunii"
+        ],
+        "why": "ΔV = 0 ⇒ L_if = 0, deci tot Q_if se transformă în ΔU."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "2 / 13",
+      "unit": "J/(mol·K)",
+      "tol": 0.06,
+      "ok": 12.47,
+      "text": {
+        "q": "Câtă este căldura molară la volum constant C_V pentru un gaz monoatomic? (R = 8,314 J/(mol·K))",
+        "why": "C_V = (3/2)·R = 12,471 J/(mol·K)."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "3 / 13",
+      "ok": 0,
+      "text": {
+        "q": "Care este enunțul corect al relației lui R. Mayer?",
+        "opts": [
+          "C_p = C_V + R",
+          "C_V = C_p + R",
+          "C_p · C_V = R",
+          "C_p = γ · C_V"
+        ],
+        "why": "C_p = C_V + R; de aici C_p = (5/2)R pentru un gaz monoatomic."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "4 / 13",
+      "ok": 1,
+      "text": {
+        "q": "Pentru un gaz biatomic, exponentul adiabatic γ valează:",
+        "opts": [
+          "5/3 ≈ 1,667",
+          "7/5 = 1,400",
+          "3/2 = 1,500",
+          "1,394 doar pentru orice gaz"
+        ],
+        "why": "C_V = (5/2)R și C_p = (7/2)R, deci γ = 7/5 = 1,400."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "5 / 13",
+      "unit": "J/(kg·K)",
+      "tol": 0.03,
+      "ok": 916,
+      "text": {
+        "q": "Oxigen: m = 2 kg, ΔT = 5 K, Q = 9,16 kJ la presiune constantă. Care este căldura specifică izobară c_p?",
+        "why": "c_p = Q/(m·ΔT) = 9160/(2·5) = 916 J/(kg·K)."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "6 / 13",
+      "unit": "kJ",
+      "tol": 0.06,
+      "ok": 6.56,
+      "text": {
+        "q": "La problema de mai sus, care este variația energiei interne ΔU, știind că L = 2,598 kJ?",
+        "why": "ΔU = Q − L = 9,16 − 2,598 = 6,56 kJ."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "7 / 13",
+      "ok": 2,
+      "text": {
+        "q": "Care expresie a lucrului mecanic corespunde transformării izoterme?",
+        "opts": [
+          "L = p·(V_f − V_i)",
+          "L = νR(T_f − T_i)",
+          "L = νRT·ln(V_f/V_i)",
+          "L = −νC_V(T_f − T_i)"
+        ],
+        "why": "La T constant, p = νRT/V, iar integrala dă logaritmul natural al raportului de volume."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "8 / 13",
+      "unit": "J",
+      "tol": 0.05,
+      "ok": 210,
+      "text": {
+        "q": "Vas rigid: m = 1 g oxigen, c_V = 700 J/(kg·K), T₁ = 300,15 K, p₁ = 100 kPa → p₂ = 200 kPa. Câtă este căldura Q corectă?",
+        "why": "Q = m·c_V·T₁·(p₂/p₁ − 1) = 0,7·300,15·1 ≈ 210 J."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "9 / 13",
+      "ok": 1,
+      "text": {
+        "q": "De ce adiabata este mai înclinată decât izoterma în coordonate (p, V)?",
+        "opts": [
+          "Pentru că temperatura scade întotdeauna",
+          "Pentru că γ > 1, deci presiunea variază mai rapid cu V",
+          "Pentru că volumul rămâne constant",
+          "Pentru că Q = ΔU"
+        ],
+        "why": "p ∝ V^(−γ) față de p ∝ V^(−1); cum γ > 1, adiabata coboară mai abrupt, iar cele două curbe se taie într-un singur punct."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "10 / 13",
+      "ok": 1,
+      "text": {
+        "q": "Care este corespondența corectă pentru transformarea adiabatică?",
+        "opts": [
+          "Q = νC_pΔT, L = 0",
+          "Q = 0, L = −νC_V(T_f − T_i)",
+          "ΔU = 0, Q = L",
+          "L = νR(T_f − T_i), Q = 0"
+        ],
+        "why": "Q_if = 0, deci L_if = −ΔU = −νC_V(T_f − T_i)."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "11 / 13",
+      "unit": "J",
+      "tol": 0.12,
+      "ok": 0.6,
+      "text": {
+        "q": "Destindere adiabatică: p₁ = 1 bar, V₁ = 10 cm³ → V₂ = 20 cm³, γ = 1,4. Cât este lucrul mecanic L?",
+        "why": "L = p₁V₁·[1 − (V₁/V₂)^(γ−1)]/(γ−1) = 1·(1 − 0,7579)/0,4 ≈ 0,6 J."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "12 / 13",
+      "ok": 3,
+      "text": {
+        "q": "Într-un proces politrop pVⁿ = constant, ce proces simplu corespunde lui n → ∞?",
+        "opts": [
+          "Izobar (p = constant)",
+          "Izoterm (pV = constant)",
+          "Adiabatic (pV^γ = constant)",
+          "Izocor (V = constant)"
+        ],
+        "why": "n = 0 ⇒ izobar, n = 1 ⇒ izoterm, n = γ ⇒ adiabatic, n → ∞ ⇒ izocor."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "13 / 13",
+      "ok": 2,
+      "text": {
+        "q": "Din relația n = (C − C_p)/(C − C_V), ce înseamnă n = γ pentru căldura molară C a procesului?",
+        "opts": [
+          "C = C_p",
+          "C = C_V",
+          "C = 0",
+          "C = ∞"
+        ],
+        "why": "Pentru C = 0, n = (0 − C_p)/(0 − C_V) = C_p/C_V = γ: adiabata este politropa cu căldură molară nulă."
+      }
+    }
+  ],
+  "answers": {
+    "ex142": "Q ≈ 210,1 J",
+    "ex141": "a) c_p = 916 J/(kg·K);  b) L = 2598 J ≈ 2,6 kJ;  c) ΔU = 6562 J ≈ 6,56 kJ",
+    "ex143": "T·V^(γ−1) = ct,  T·p^((1−γ)/γ) = ct,  L_if = −νC_V(T_f − T_i)",
+    "ex144": "L = p₁V₁·[1 − (V₁/V₂)^(γ−1)]/(γ−1) = 0,6 J",
+    "ex145": "a) h = 0,831 m;  b) L = 415,7 J;  c) p_f ≈ 2,03·10⁵ Pa",
+    "ex1411": "n = −1,  C = (C_p + C_V)/2,  L = νR(T_f − T_i)/2"
+  },
+  "temperatures": [
+    "La %T K folosim modelul biatomic rigid: 3 translații + 2 rotații, i = 5. Domeniul exact de aplicabilitate depinde de gaz.",
+    "La %T K vibrațiile pot deveni importante, în funcție de gaz. Nu există un prag universal la 600 K; atunci C_V și γ nu mai sunt constante.",
+    "La %T K unele rotații pot fi slab excitate, în funcție de gaz. Pragurile sunt specifice moleculei; modelul clasic cu i = 5 poate să nu fie aplicabil."
+  ]
+}

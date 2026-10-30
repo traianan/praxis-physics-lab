@@ -1,0 +1,257 @@
+0|Planar curvilinear motion · Grade 9 physics
+1|Physics · Grade 9 · Particle kinematics
+2|Planar
+3|curvilinear
+4|motion
+5|An interactive lesson on describing motion along a curved path: position, velocity and acceleration, with animations, simulations and formulas explained step by step.
+6|Material created by
+7|Prof. Traian Anghel
+8|· Nicolae Iorga National College
+9|Section I
+10|Theory
+11|Section II
+12|Velocity vector
+13|Section III
+14|Acceleration vector
+15|Start
+16|Section I · Theory
+17|Theory — describing motion along a curve
+18|You have already studied rectilinear motion: a particle moves along a straight line. In reality, most motion follows curved paths. Here we introduce how to describe them.
+19|What is planar curvilinear motion?
+20|A particle undergoes
+21|planar curvilinear motion
+22|if its trajectory is a
+23|curve lying in a plane
+24|. Relative to a chosen reference frame, the particle's position is described by the position vector
+25|(t), with two coordinates: x(t) and y(t).
+26|🎡 A point on a carousel — the circle
+27|✏️ A point moving along a curve drawn in a plane
+28|🎢 A roller-coaster car — a general curve
+29|⬭ A particle on an elliptical track
+30|Kinematic quantities at a glance
+31|Position vector
+32|joins the origin of the reference frame to the particle's position at time t. Its tip traces the trajectory.
+33|Trajectory
+34|the curve formed by the particle's successive positions. In planar curvilinear motion, it is a plane curve (circle, parabola, ellipse…).
+35|Displacement vector Δ
+36|₁ — the chord joining the initial and final positions.
+37|Distance travelled s
+38|the length of the path travelled
+39|along the trajectory
+40|. Remember: s ≥ |Δ
+41||; equality holds only on a straight path without reversal.
+42|Velocity
+43|measures how fast and in which direction position changes — explained in
+44|Acceleration
+45|measures how quickly
+46|velocity
+47|changes (in magnitude or direction) — explained in
+48|Average velocity and acceleration vectors
+49|Consider the interval from t₁ to t₂, with Δt = t₂ − t₁ > 0. The subscript m denotes the average over this interval.
+50|Average velocity vector
+51|The average velocity vector is the displacement vector divided by the time taken for that displacement.
+52|For nonzero displacement, it points in the direction of displacement, from the initial to the final position. SI unit: m/s.
+53|Average acceleration vector
+54|The average acceleration vector is the change in the velocity vector divided by the time over which this change occurs.
+55|For a nonzero change, it has the direction and orientation of the vector Δ
+56|. This describes a change in magnitude, direction or both. SI unit: m/s².
+57|For average acceleration, velocities are subtracted
+58|as vectors
+59|Average speed and the magnitude of average velocity
+60|These are two different scalar quantities, both measured in m/s. The first uses the
+61|distance travelled along the trajectory
+62|, while the second uses the
+63|magnitude of the displacement between the initial and final positions
+64|. In this lesson, we explicitly call the first quantity “average speed” to avoid confusion.
+65|Average speed
+66|The total distance travelled divided by the total time. It includes the entire path, including any sections travelled after reversing direction. It has no direction or orientation.
+67|Magnitude of average velocity
+68|The straight-line distance between the initial and final positions divided by the same time. It depends on the endpoints and duration, not on the length of the path followed.
+69|Comparison over the same interval
+70|Equality holds for
+71|rectilinear motion without a change of direction
+72|during the interval. The particle follows a
+73|straight trajectory
+74|from its initial to its final position without reversing. Speed need not be constant. For a curved path of nonzero length, average speed is strictly greater.
+75|Example: half a circle
+76|A particle travels along a semicircle of radius R = 10 m in Δt = 5 s. The path length is s = πR = 10π m, while the displacement magnitude is the diameter: |Δ
+77|Average speed:
+78|Magnitude of average velocity:
+79|| = 20/5 = 4 m/s. The vector points along the diameter, from the initial to the final position.
+80|One complete revolution
+81|If the same particle travels around a complete circle in 10 s, it returns to its initial position. Then Δ
+82|, so average velocity and its magnitude are zero. Average speed remains positive: 20π/10 = 2π m/s ≈ 6.28 m/s.
+83|At a given instant, speed is the magnitude of instantaneous velocity. Over a finite interval, the average of the speed and the magnitude of average velocity generally differ. Average speed is also generally different from the arithmetic mean of the initial and final speeds.
+84|The essential difference: displacement ≠ distance
+85|In the figure below, the particle moves from A to B
+86|along the trajectory
+87|(the green line), while its displacement is the chord AB (the dashed line). As Δt decreases, the chord approaches the
+88|tangent to the trajectory
+89|— the key to defining instantaneous velocity.
+90|trajectory
+91|displacement and extended secant AB
+92|instantaneous velocity, tangent at A
+93|Play
+94|Reset
+95|Pause
+96|Observe how B approaches A and the chord AB rotates towards the tangent: as Δt → 0, the direction of displacement approaches the direction of velocity.
+97|Remember
+98|In curvilinear motion,
+99|the direction of motion continually changes
+100|, even if the particle moves “equally fast”. Velocity and acceleration must therefore be treated as
+101|vectors
+102|, rather than just numbers.
+103|Check your understanding
+104|A runner completes a circular track and returns to the starting point. What is the displacement? What is the distance travelled?
+105|Show answer
+106|Displacement is zero
+107|(final position = initial position), while the distance travelled equals the track length. This is the classic example showing that Δ
+108|and s are different quantities.
+109|Can a particle have constant
+110|speed
+111|and still have nonzero acceleration?
+112|On a curve, the direction of velocity changes, so the velocity vector changes — which means there is acceleration. Details in
+113|← Previous
+114|Next →
+115|Section II · Velocity vector
+116|Velocity tells us both “how fast” and “which way”. In curvilinear motion, “which way” changes at every instant.
+117|Average and instantaneous velocity
+118|Between t₁ and t₂, the particle undergoes a displacement Δ
+119|is the displacement vector divided by the duration; as Δt becomes very small, we obtain
+120|instantaneous velocity
+121|Average velocity (vector)
+122|Has the direction and orientation of displacement Δ
+123|(of the chord).
+124|Instantaneous velocity
+125|lim
+126|The chord approaches the tangent ⇒
+127|is tangent to the trajectory.
+128|Key property
+129|In any curvilinear motion,
+130|the velocity vector is tangent to the trajectory
+131|at the particle's current position and points in the
+132|direction of motion
+133|. If the path is curved, its direction
+134|changes continuously.
+135|Experiment: a general planar trajectory
+136|Start with a general plane curve. The velocity vector is tangent to the curve and points in the direction of motion. Compare it with a circle and an ellipse, or design a custom curve. The shape of a trajectory alone does not determine speed.
+137|Parameters
+138|Trajectory
+139|General curve
+140|Circle
+141|Ellipse
+142|Custom curve
+143|Drag P₀…P₅ using a mouse or finger. P₀ and P₅ are the trajectory endpoints. The intermediate points control its shape without necessarily lying on the curve. Horizontal dragging preserves their order.
+144|Restore shape
+145|Horizontal size a (u)
+146|Traversal time (s)
+147|Vertical size b (u)
+148|Calculated quantities
+149|Observe
+150|Compare the arrows at different points on the path. The displayed arrow length is constant for readability. Read the speed in the numerical box. In the general case, both direction and magnitude change. In the circular example, speed remains constant. In the elliptical example, speed varies. These observations describe the particular motions used in the simulations.
+151|Special case: uniform circular motion
+152|Use the sliders to change the
+153|radius
+154|period
+155|of the motion. Observe how the green velocity vector stays tangent to the circle and perpendicular to the radius.
+156|(tangent)
+157|Radius R
+158|Period T
+159|Animation speed
+160|Options
+161|Show vectors
+162|Show radii
+163|The velocity arrow has a constant displayed length. Increase R or decrease T: the numerical speed increases, while
+164|remains
+165|tangent
+166|. Its direction changes regardless — which is why uniform circular motion has acceleration (see
+167|Formulas for circular motion
+168|Speed (uniform circular motion)
+169|Circumference divided by the period of one complete revolution.
+170|Angular velocity
+171|[rad/s]
+172|The angle swept by the radius per unit time.
+173|Why do we describe velocity as a vector rather than just a number?
+174|Because it has
+175|(how fast),
+176|direction
+177|(tangent to the trajectory) and
+178|orientation
+179|(the direction of motion). On a curve, direction matters as much as magnitude.
+180|Two particles move around the same circle: one with T = 4 s, the other with T = 8 s. Which has the greater speed?
+181|The one with the
+182|shorter period
+183|(T = 4 s): it travels the same distance 2πR in half the time, so its speed is twice as large.
+184|Section III · Acceleration vector
+185|III.
+186|Acceleration tells us how quickly velocity changes. On a curve, velocity can change in two ways: its
+187|. We therefore resolve acceleration into two components.
+188|Average and instantaneous acceleration
+189|Average acceleration
+190|Change in the velocity vector divided by the duration.
+191|Instantaneous acceleration
+192|In curvilinear motion, it is generally NOT tangent to the trajectory.
+193|Resolving acceleration:
+194|At a point with nonzero velocity and nonzero curvature, we choose two natural directions:
+195|the tangent
+196|(the direction of velocity) and
+197|the normal
+198|(perpendicular to the tangent, pointing towards the inside of the curve). Projecting acceleration onto these directions gives:
+199|Tangential acceleration
+200|Along the direction of velocity. Describes changes in the
+201|magnitude
+202|of velocity. aₜ is positive when speed increases and negative when it decreases.
+203|Normal acceleration
+204|Perpendicular to velocity, towards the centre of curvature. Describes changes in the
+205|direction
+206|of velocity. R is the local radius of curvature.
+207|Total acceleration — Pythagoras' theorem (
+208|Special case: the circle
+209|uniform circular motion
+210|, v = const ⇒
+211|= 0, so all acceleration is normal:
+212|, always directed towards the centre. This is why it is also called
+213|centripetal
+214|Experiment: resolution into components
+215|Start with a general plane curve. Observe velocity changes and resolve acceleration along the tangent and normal. Compare it with a circle, an ellipse or a custom curve. The traversal time determines the pace of the illustrated motion. For an open curve, the animation stops at the end of the displayed section. Change the parameters and observe the vectors:
+216|total acceleration
+217|tangential component
+218|normal component
+219|, together with the
+220|osculating circle
+221|osculating circle
+222|Displayed vectors
+223|Total acceleration
+224|Resolution
+225|Osculating circle
+226|Calculated quantities (u = simulation units)
+227|The velocity arrow has a constant displayed length. All accelerations share the automatic scale shown in the drawing, preserving their vector sum. A zero component has no arrow. The total acceleration (red) is the hypotenuse of the right triangle formed by the components
+228|(amber) and
+229|(violet). The osculating circle (blue) has radius
+230|and touches the trajectory at the current point — the path locally behaves like this circle.
+231|The osculating circle — the circle that “hugs” the curve
+232|At a point with nonzero velocity and curvature, a trajectory can be locally approximated by a circle:
+233|. Its centre lies on the normal to the trajectory (at the point called the
+234|centre of curvature
+235|) and its radius is
+236|, called the
+237|radius of curvature
+238|. The more tightly the path curves, the smaller R is and the greater
+239|= v²/R becomes.
+240|Radius of curvature
+241|For a circular path, the radius of curvature equals the circle's radius at every point.
+242|Normal acceleration (rewritten)
+243|Valid at every point with nonzero velocity. R is the radius of the osculating circle at that point.
+244|Compare two sections of a path at the same speed: the smaller the radius of curvature R, the larger the normal acceleration. This describes a faster change in velocity direction.
+245|A car travels at a constant 60 km/h along a winding road. Does it have acceleration?
+246|Its speed is constant (aₜ = 0), but its direction changes in bends, so there is normal acceleration aₙ = v²/R, pointing towards the inside of the curve.
+247|What happens to aₙ if speed doubles on the same curve?
+248|quadruples
+249|: aₙ = v²/R depends on speed squared. At the same radius of curvature, doubling speed makes normal acceleration four times as large.
+250|When is total acceleration purely tangential?
+251|When the normal component is zero and speed changes. This occurs in nonuniform rectilinear motion and can occur at a point of zero curvature on a curved path.
+252|Restart the lesson ↺
+253|Back to theory
+254|Teaching material created by Prof. Traian Anghel
+255|Nicolae Iorga National College
+256|PLANAR CURVILINEAR MOTION · PARTICLE KINEMATICS · GRADE 9

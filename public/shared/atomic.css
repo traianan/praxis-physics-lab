@@ -1,0 +1,30 @@
+/* Layout only; shared Praxis tokens, typography and controls remain authoritative. */
+body[data-praxis-course=interactii-atomice]{margin:0}
+body[data-praxis-course=interactii-atomice] .praxis-lab-header{position:sticky;top:0;right:auto;box-shadow:none}
+body[data-praxis-course=interactii-atomice] .praxis-lab-nav .tabs{display:flex;gap:.5rem;flex-wrap:wrap}
+body[data-praxis-course=interactii-atomice] .praxis-course-nav-select{display:none!important}
+body[data-praxis-course=interactii-atomice] .praxis-lab-nav .tab{min-height:44px;padding:.5rem 1rem;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control);background:var(--praxis-color-surface);color:var(--praxis-color-primary);font:600 .875rem var(--praxis-font-ui)}
+body[data-praxis-course=interactii-atomice] .praxis-lab-nav .tab.active{background:var(--praxis-color-primary-soft);border-color:var(--praxis-color-primary)}
+body[data-praxis-course=interactii-atomice] #praxis-original{max-width:88rem;padding:0 1rem}
+body[data-praxis-course=interactii-atomice] [hidden]{display:none!important}
+#praxis-original .sim{grid-template-columns:minmax(0,1fr) 20rem;margin:1rem 0;gap:1rem}
+#praxis-original .sim>*{min-width:0}
+#praxis-original #cv{height:34rem}
+#praxis-original .stage,#praxis-original .panel,#praxis-original .q{border-radius:var(--praxis-radius-card)}
+#praxis-original .panel h3{font-size:1.125rem;text-transform:none;letter-spacing:normal}
+#praxis-original .sl{font-size:.875rem}
+#praxis-original .sl small,#praxis-original .hd,#praxis-original .hint{font:.8125rem/1.5 var(--praxis-font-ui)}
+#praxis-original .sl.custom-only{display:flex;flex-wrap:wrap}
+#praxis-original .custom-only .praxis-range-stepper,#praxis-original .custom-only small{flex-basis:100%}
+#praxis-original .zoom .btn{width:44px;height:44px}
+#praxis-original .ro{grid-template-columns:repeat(2,minmax(0,1fr))}
+#praxis-original .ro dd{white-space:normal;font-size:.875rem}
+#praxis-original .quiz{grid-template-columns:repeat(2,minmax(0,1fr))}
+#praxis-original .q button{font:inherit;white-space:normal}
+#praxis-original .f{font:1rem/1.6 var(--praxis-font-formula);white-space:normal}
+#praxis-original .model-note{font-size:.8125rem;color:var(--praxis-color-muted)}
+#praxis-original .btn.on{background:var(--praxis-color-primary-soft);border-color:var(--praxis-color-primary)}
+#praxis-original .bar label,#praxis-original .panel label:not(.sl){min-height:44px}
+:root[data-course-touch=true] #praxis-original .panel label,:root[data-course-touch=true] #praxis-original .bar label{min-height:52px}
+@media(max-width:1000px){#praxis-original .sim{grid-template-columns:1fr}#praxis-original .cols{grid-template-columns:1fr}#praxis-original .quiz{grid-template-columns:1fr}}
+@media(max-width:520px){#praxis-original #cv{height:28rem}#praxis-original .ro div{padding:.5rem}#praxis-original .panel{padding:.75rem}}

@@ -1,0 +1,319 @@
+{
+  "importedAt": "2026-10-28T17:48:23.192Z",
+  "courses": [
+    {
+      "id": "miscarea-rectilinie",
+      "repo": "miscarea-rectilinie",
+      "title": "Mișcarea rectilinie",
+      "url": "https://github.com/traianan/miscarea-rectilinie",
+      "commit": "1a815091c9cdc1112c070498a45966e43b92b7af",
+      "files": [
+        {
+          "path": "css/style.css",
+          "sha256": "f6a8745bf9d81184aa4c16d11cef87bf2a74f5617e9bbb67e89ef1b1103574cd"
+        },
+        {
+          "path": "fonts/fraunces-latin-400-italic.woff2",
+          "sha256": "475b154af19c6b4ef371db22078b5044a078ce2467e11ef22a7b87f77837caf3"
+        },
+        {
+          "path": "fonts/fraunces-latin-400-normal.woff2",
+          "sha256": "e558f39453a9c611908be04294b50dea5f21ae6c49b41c6e47f4115e91f90209"
+        },
+        {
+          "path": "fonts/fraunces-latin-600-normal.woff2",
+          "sha256": "3a1de7711d147bad4422825045f87597fd77cca72e7c96d3b0a81735d00dda82"
+        },
+        {
+          "path": "fonts/fraunces-latin-ext-400-italic.woff2",
+          "sha256": "f95e78d6c6569d367d861bf38ee05cda0b6d71fe5f16278dbdd807c80b4bcfef"
+        },
+        {
+          "path": "fonts/fraunces-latin-ext-400-normal.woff2",
+          "sha256": "06e8dc8c2543a472414c40b585f0e87abf09e1e6ec7e17daec215e234822a76c"
+        },
+        {
+          "path": "fonts/fraunces-latin-ext-600-normal.woff2",
+          "sha256": "69e09c7910e64d829e051f023af4c38a2e74b61d9e9439502f56edd7154b117c"
+        },
+        {
+          "path": "fonts/jetbrains-mono-latin-400-normal.woff2",
+          "sha256": "14425ba9c695763c1547f48a206b7aa60350a33ae23de09f0407877f3fcd89eb"
+        },
+        {
+          "path": "fonts/jetbrains-mono-latin-ext-400-normal.woff2",
+          "sha256": "505dfba8ecbe77e82765f36d317ed7ef4ac42719dc5f4ae68d1c483fd22d0d14"
+        },
+        {
+          "path": "fonts/source-sans-3-latin-400-italic.woff2",
+          "sha256": "3c230c03425a2866e4b57954f3173fc149dba2634e9ee32c681b41d96c7f06fe"
+        },
+        {
+          "path": "fonts/source-sans-3-latin-400-normal.woff2",
+          "sha256": "0f73f35e08cde0a2f10c109c6e01d71459d97e4099ecd9a50f1b6c0209e4de2b"
+        },
+        {
+          "path": "fonts/source-sans-3-latin-600-normal.woff2",
+          "sha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38"
+        },
+        {
+          "path": "fonts/source-sans-3-latin-ext-400-italic.woff2",
+          "sha256": "97f4d6bf2b17b55107975f652bfe47e4443c261cae6a022482611a6c5c8cf7af"
+        },
+        {
+          "path": "fonts/source-sans-3-latin-ext-400-normal.woff2",
+          "sha256": "f5706bb057951632456ecbc496dfd01f0e1598718cb31c464c74a6b1fe79c837"
+        },
+        {
+          "path": "fonts/source-sans-3-latin-ext-600-normal.woff2",
+          "sha256": "5727d1da676bb59d22a985ccb0506219e25e847738214fec4eb00c17bed81ffc"
+        },
+        {
+          "path": "index.html",
+          "sha256": "31739b0f7144ea90dbcdc5b78980d1680d2f0a230c7dff226fe569edff69312a"
+        },
+        {
+          "path": "js/app.js",
+          "sha256": "f133be5e0d009a5e1042c9f65c9018822d73083d10c8c6a25db647f111c18739"
+        },
+        {
+          "path": "js/core.js",
+          "sha256": "983ad81e7a57c984dd269e1147a859fa2f73f66e6911b505f9e696be4620fbe5"
+        },
+        {
+          "path": "js/plot.js",
+          "sha256": "4013b7978e8300752500d5d4eae1e4e348a5f9edc85809e638a3e7895b2aa1c3"
+        },
+        {
+          "path": "js/sec1-tipuri.js",
+          "sha256": "cdc2e9b0eab479619827580de763e2c9d81a7375d752e6a1666d679aa4674e87"
+        },
+        {
+          "path": "js/sec2-mru.js",
+          "sha256": "6539562bd149ca5d71a087df2c65c545f000a1f9b6cd0d8d40d34bcac99e0178"
+        },
+        {
+          "path": "js/sec3-mruv.js",
+          "sha256": "f0c9df5ae82346654d3c647de9aacc23e3fa5bed7f78026f68ccdf196da2773a"
+        },
+        {
+          "path": "js/sec4-probleme.js",
+          "sha256": "dbbb3aea5f3bf0373a54a76a090a3083a13b1c526c55017a2494e79929daead0"
+        },
+        {
+          "path": "js/sec4-test.js",
+          "sha256": "b4901756aeefd9e48de20e06368c08fe3356dc1508cceefe963cb2ce0d33d5a6"
+        },
+        {
+          "path": "js/track.js",
+          "sha256": "da65ce83165492701b3437087fadea7b21ffbcc3e43d05e6fec6b327eafb0ef6"
+        },
+        {
+          "path": "miscarea-rectilinie-offline.zip",
+          "sha256": "c79757bfc8f998c13e562711299dcad6f7023a7884869e2849a9ea83511d55a8"
+        }
+      ],
+      "adaptedFiles": [
+        "index.html",
+        "js/app.js",
+        "js/core.js",
+        "js/track.js",
+        "js/plot.js",
+        "js/sec1-tipuri.js",
+        "js/sec2-mru.js",
+        "js/sec3-mruv.js",
+        "js/sec4-probleme.js",
+        "js/sec4-test.js"
+      ]
+    },
+    {
+      "id": "calcul-vectorial",
+      "repo": "vectori",
+      "title": "Calcul vectorial",
+      "url": "https://github.com/traianan/vectori",
+      "commit": "cb16156207f8bc62590dd6507280524e1e548abc",
+      "files": [
+        {
+          "path": "calcul-vectorial.zip",
+          "sha256": "ec4752f9540f070666e4a3aa1f5da5240c72648f7b582d7f7930ba7440b873e2"
+        },
+        {
+          "path": "icons/apple-touch-icon.png",
+          "sha256": "678c9eef0afc37385e6ace3f4eb8b27b1ad242d5e860416494e693484db98d7a"
+        },
+        {
+          "path": "icons/icon-192.png",
+          "sha256": "53243813b1bffcbda6d82307efa8ab8095135fcf99a6580567784ac302fcbc2c"
+        },
+        {
+          "path": "icons/icon-512.png",
+          "sha256": "f1a343d37d7745d438fcfc60955bd3d3488dd8f784c990b10d700315297e9137"
+        },
+        {
+          "path": "icons/icon-maskable-192.png",
+          "sha256": "46ca14047a1263716118cb5da32dec446ce8b1e17dea28275213f68e8652ae33"
+        },
+        {
+          "path": "icons/icon-maskable-512.png",
+          "sha256": "b2ebd7685952057e64ac682a6714f849250683c446adb58771ab6cba5391cecf"
+        },
+        {
+          "path": "icons/icon.svg",
+          "sha256": "77cc031920ef5ad7d234c5d3371c8e25f8b468a1cc61bf4a94aef3f854dd92f7"
+        },
+        {
+          "path": "index.html",
+          "sha256": "96478b949c93da79afe1d009fa76b55a59e9c49bad863fff0424cea48b6ed34b"
+        },
+        {
+          "path": "manifest.webmanifest",
+          "sha256": "c96fcc4d3a8d3bd735964315a2a4f19df29c6b64ccd27293c65408b80b03c081"
+        },
+        {
+          "path": "sw.js",
+          "sha256": "f4678b297b22539e7077a2e6876a59251d1552c1239d605191ab55afcd0b0ded"
+        },
+        {
+          "path": "vendor/fonts/fonts.css",
+          "sha256": "2eba3c58c437e840ed6d3ca0a107a035551ebb18e9d288572bd32334926f1c69"
+        },
+        {
+          "path": "vendor/fonts/Fraunces-italic-latin-ext-6cc8f6.woff2",
+          "sha256": "4983926d3a16544eedcd2233448bd8a43f711e7bf1fabaae8431e78e0b798635"
+        },
+        {
+          "path": "vendor/fonts/Fraunces-italic-latin-feced2.woff2",
+          "sha256": "066710ce7ed235a339d3d6cdcc8b55c0bea5632232662d83aacea25852108271"
+        },
+        {
+          "path": "vendor/fonts/Fraunces-normal-latin-39ce20.woff2",
+          "sha256": "7234ed860a9cc83045413c4faee63c960a8f2d1917adcf728119307d56e0d783"
+        },
+        {
+          "path": "vendor/fonts/Fraunces-normal-latin-ext-796716.woff2",
+          "sha256": "a2930b27d13a228bd9ab6a49269b5f800237892ad560cb9dd7fab01b1620f88e"
+        },
+        {
+          "path": "vendor/fonts/JetBrainsMono-normal-latin-480c06.woff2",
+          "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+        },
+        {
+          "path": "vendor/fonts/JetBrainsMono-normal-latin-ext-ba1653.woff2",
+          "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52"
+        },
+        {
+          "path": "vendor/fonts/SourceSerif4-italic-latin-d27161.woff2",
+          "sha256": "96e6393209728ab93c334ae739af8a040cd2006c82e8614d6465a8084db88f89"
+        },
+        {
+          "path": "vendor/fonts/SourceSerif4-italic-latin-ext-042db4.woff2",
+          "sha256": "2078240cee94e627d0e180d56d74a11b2a1d387bbd61a9b7269f0a43df756896"
+        },
+        {
+          "path": "vendor/fonts/SourceSerif4-normal-latin-3084ac.woff2",
+          "sha256": "f2ea9c12d2fe9bd3a9589b02ad2c0909da88f30938c91adc838c4f4098f9f9e0"
+        },
+        {
+          "path": "vendor/fonts/SourceSerif4-normal-latin-ext-ea2a53.woff2",
+          "sha256": "155f6e701097cc269cf8d5d7ac86795f263f1afbeb47c14d1d747108c9335389"
+        },
+        {
+          "path": "vendor/katex/contrib/auto-render.min.js",
+          "sha256": "7b57d427ac6270677daf8d8380ded2cc73336f9149a167b8e1fe0d6ef66604ae"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_AMS-Regular.woff2",
+          "sha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2",
+          "sha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2",
+          "sha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2",
+          "sha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2",
+          "sha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Main-Bold.woff2",
+          "sha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2",
+          "sha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Main-Italic.woff2",
+          "sha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+          "sha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2",
+          "sha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Math-Italic.woff2",
+          "sha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2",
+          "sha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2",
+          "sha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2",
+          "sha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Script-Regular.woff2",
+          "sha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Size1-Regular.woff2",
+          "sha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Size2-Regular.woff2",
+          "sha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Size3-Regular.woff2",
+          "sha256": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Size4-Regular.woff2",
+          "sha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0"
+        },
+        {
+          "path": "vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2",
+          "sha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b"
+        },
+        {
+          "path": "vendor/katex/katex.min.css",
+          "sha256": "5a0ff74f11887f7260dc16b216906f51352b84ca29f21abb9a14b62a2ca6eb15"
+        },
+        {
+          "path": "vendor/katex/katex.min.js",
+          "sha256": "e6bfe5deebd4c7ccd272055bab63bd3ab2c73b907b6e6a22d352740a81381fd4"
+        }
+      ],
+      "adaptedFiles": [
+        "index.html",
+        "sw.js"
+      ]
+    }
+  ]
+}

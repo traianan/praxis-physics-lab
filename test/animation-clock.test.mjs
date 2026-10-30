@@ -1,0 +1,4 @@
+import test from'node:test';import assert from'node:assert/strict';import vm from'node:vm';import{readFile}from'node:fs/promises';
+const window={};vm.runInNewContext(await readFile(new URL('../public/shared/animation-clock.js',import.meta.url),'utf8'),{window});
+test('instrument motion advances equally at 30, 60 and 120 Hz',()=>{for(const rate of [1.2,3.6,60])for(const fps of [30,60,120]){const clock=window.PraxisAnimationClock.create(rate);let t=0;for(let i=0;i<=fps*3;i++)t+=clock.step(i*1000/fps);assert.ok(Math.abs(t-rate*3)<1e-9,rate+' at '+fps+'Hz');}});
+test('animation clocks reject invalid timestamps, clamp resume gaps and reset without jumps',()=>{const clock=window.PraxisAnimationClock.create(1);assert.equal(clock.step(NaN),0);assert.equal(clock.step(100),0);assert.equal(clock.step(50),0);assert.equal(clock.step(10050),.1);clock.reset();assert.equal(clock.step(100000),0);assert.ok(Math.abs(clock.step(100020)-.02)<1e-9);});

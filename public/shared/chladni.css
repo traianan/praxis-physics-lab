@@ -1,0 +1,36 @@
+body[data-praxis-course="figuri-chladni"] #praxis-original{max-width:90rem;margin:auto;padding:0 clamp(8px,1vw,16px) 2rem;line-height:1.6;container-type:inline-size}
+body[data-praxis-course="figuri-chladni"] *{box-sizing:border-box}
+#praxis-original [data-chladni-section][hidden]{display:none!important}
+#praxis-original .grid{display:grid;grid-template-columns:minmax(0,44rem) 22rem;justify-content:center;gap:1rem;align-items:start}
+#praxis-original .grid>*{min-width:0}
+#praxis-original .panel,#praxis-original .calc{background:var(--praxis-color-surface);border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);padding:1rem}
+#praxis-original aside.panel{display:flex;flex-direction:column;gap:1rem}
+#praxis-original .stage{padding:10px;background:#e0e7e4;border-radius:12px;width:100%;max-width:680px;margin-inline:auto}
+#praxis-original #cv{display:block;width:100%;height:auto;aspect-ratio:1;touch-action:none;border-radius:10px}
+#praxis-original .readout{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem;margin:.7rem 0;font-variant-numeric:tabular-nums}
+#praxis-original .readout b{font-size:1.5rem}
+#praxis-original #modeOut{flex-basis:100%;width:100%}
+#praxis-original #fOut{flex-basis:100%;width:100%;min-width:0;font-variant-numeric:tabular-nums}
+#praxis-original :is(.sub,.hint){color:var(--praxis-color-muted);font-size:.95rem}
+#praxis-original .row{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0}
+#praxis-original label{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.4rem}
+#praxis-original output{font-variant-numeric:tabular-nums;font-weight:650}
+#praxis-original :is(button,select){min-height:44px;padding:.5rem .75rem;font:inherit;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control);background:var(--praxis-color-surface);color:var(--praxis-color-primary);cursor:pointer;touch-action:manipulation;max-width:100%}
+#praxis-original :is(button.on,button.cur){background:var(--praxis-color-primary);color:white}
+#praxis-original button:disabled{opacity:.55;cursor:default}
+#praxis-original input[type=range],#praxis-original select{width:100%;min-width:0}
+#praxis-original .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+#praxis-original .chips button{font-size:.85rem;overflow-wrap:anywhere}
+#praxis-original .calc{margin-top:1rem}
+#praxis-original .calc code,#praxis-original .formula{display:block;overflow-x:auto;max-width:100%;padding:.6rem;font:1.1rem/1.8 var(--praxis-font-formula);background:var(--praxis-color-primary-soft);border-radius:8px;margin:.5rem 0}
+#praxis-original details>summary{min-height:44px;cursor:pointer;padding:.5rem 0;font-weight:650}
+:root[data-course-touch=true] #praxis-original details>summary{min-height:52px}
+#praxis-original .chladni-theory{max-width:65rem;margin:auto;display:grid;gap:1rem}
+#praxis-original .chladni-theory h2{margin-top:0}
+#praxis-original a{overflow-wrap:anywhere}
+#praxis-original .frequency-control{margin:.75rem 0}
+#praxis-original label.nodal-toggle{justify-content:flex-start;min-height:44px}
+#praxis-original .nodal-toggle input{width:22px;height:22px;accent-color:var(--praxis-color-primary)}
+:root[data-course-touch=true] #praxis-original label.nodal-toggle{min-height:52px}
+#praxis-original .stage:focus-within{outline:2px solid var(--praxis-color-focus);outline-offset:3px}
+@container(max-width:65rem){#praxis-original .grid{grid-template-columns:minmax(0,1fr)}}

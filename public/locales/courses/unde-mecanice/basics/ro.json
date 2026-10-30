@@ -1,0 +1,31 @@
+{
+  "locale": "ro",
+  "namespace": "courses/unde-mecanice/basics",
+  "messages": {
+    "→ direcția de propagare v": "→ direcția de propagare v",
+    "Transversală (perpendicular)": "Transversală (perpendicular)",
+    "Punctele oscilează": "Punctele oscilează",
+    "pe propagare. Ex: coardă, undă EM.": "pe propagare. Ex: coardă, undă EM.",
+    "Longitudinală (paralel)": "Longitudinală (paralel)",
+    "cu v. Zone roșii = compresie, albastre = dilatare. Ex: sunet în aer.": "cu v. Zone roșii = compresie, albastre = dilatare. Ex: sunet în aer.",
+    "⏸ Pauză": "⏸ Pauză",
+    "▶ Play": "▶ Pornește",
+    "Viteză": "Viteză",
+    "De suprafață pe apă = compus: traiectorie eliptică (transversal + longitudinal)": "De suprafață pe apă = compus: traiectorie eliptică (transversal + longitudinal)",
+    "Pauză": "Pauză",
+    "Play": "Pornește",
+    "y = A sin(ωt - kx) =": "y = A sin(ωt - kx) =",
+    "Click pe canvas = emite front nou. Fronturile punctate mici sunt surse Huygens secundare.": "Click pe canvas = emite front nou. Fronturile punctate mici sunt surse Huygens secundare.",
+    "Reset": "Resetează",
+    "Fronturi plane paralele": "Fronturi plane paralele",
+    "A = const, I = const (sursă la ∞)": "A = const, I = const (sursă la ∞)",
+    "Sferic: A∝1/r={p0}, I∝1/r²={p1}": "Sferic: A∝1/r={p0}, I∝1/r²={p1}",
+    "Sferic: A∝1/r={p0}, I∝1/r": "Sferic: A∝1/r={p0}, I∝1/r",
+    "Sferic: A∝1/r=": "Sferic: A∝1/r=",
+    "Rază = direcția v, front ⊥ rază": "Rază = direcția v, front ⊥ rază",
+    "r față de sursă sferică:": "r față de sursă sferică:",
+    "Plană: sursă la infinit, fronturi plane paralele, I=const. Sferică: fronturi sferice, A~1/r, I~P/4πr². Raza = ⊥ pe front.": "Plană: sursă la infinit, fronturi plane paralele, I=const. Sferică: fronturi sferice, A~1/r, I~P/4πr². Raza = ⊥ pe front.",
+    "Plană: sursă la infinit, fronturi plane paralele, I=const. Sferică: fronturi sferice, A~1/r, I~P/4πr": "Plană: sursă la infinit, fronturi plane paralele, I=const. Sferică: fronturi sferice, A~1/r, I~P/4πr",
+    ". Raza = ⊥ pe front.": ". Raza = ⊥ pe front."
+  }
+}

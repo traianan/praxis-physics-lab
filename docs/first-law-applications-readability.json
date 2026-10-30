@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-29",
+  "browser": "Chromium",
+  "viewports": [
+    "390x844 DPR 2",
+    "1440x1000 DPR 2"
+  ],
+  "criteria": {
+    "normalText": 4.5,
+    "largeText": 3
+  },
+  "scope": "Visible HTML reading text, including opened solutions; mathematical glyphs and Canvas labels inspected separately. Disabled buttons excluded. This is a focused readability audit, not a full accessibility certification.",
+  "counts": {
+    "ro/praxis/home": 50,
+    "ro/praxis/calorice": 42,
+    "ro/praxis/tabel141": 70,
+    "ro/praxis/izocor": 45,
+    "ro/praxis/izobar": 59,
+    "ro/praxis/izoterm": 38,
+    "ro/praxis/adiabat": 108,
+    "ro/praxis/sinteza": 54,
+    "ro/praxis/politrop": 54,
+    "ro/praxis/quiz": 22,
+    "ro/praxis/resurse": 23,
+    "ro/vivid/home": 50,
+    "ro/vivid/calorice": 42,
+    "ro/vivid/tabel141": 70,
+    "ro/vivid/izocor": 45,
+    "ro/vivid/izobar": 59,
+    "ro/vivid/izoterm": 38,
+    "ro/vivid/adiabat": 108,
+    "ro/vivid/sinteza": 54,
+    "ro/vivid/politrop": 54,
+    "ro/vivid/quiz": 22,
+    "ro/vivid/resurse": 23,
+    "en/praxis/home": 50,
+    "en/praxis/calorice": 42,
+    "en/praxis/tabel141": 70,
+    "en/praxis/izocor": 45,
+    "en/praxis/izobar": 59,
+    "en/praxis/izoterm": 38,
+    "en/praxis/adiabat": 108,
+    "en/praxis/sinteza": 54,
+    "en/praxis/politrop": 54,
+    "en/praxis/quiz": 22,
+    "en/praxis/resurse": 23,
+    "en/vivid/home": 50,
+    "en/vivid/calorice": 42,
+    "en/vivid/tabel141": 70,
+    "en/vivid/izocor": 45,
+    "en/vivid/izobar": 59,
+    "en/vivid/izoterm": 38,
+    "en/vivid/adiabat": 108,
+    "en/vivid/sinteza": 54,
+    "en/vivid/politrop": 54,
+    "en/vivid/quiz": 22,
+    "en/vivid/resurse": 23
+  },
+  "findings": [],
+  "quiz": {
+    "questions": 13,
+    "combinations": 4,
+    "checks": 52,
+    "emptyQuestions": 0,
+    "contrastFindings": 0
+  },
+  "zoom": {
+    "scales": [
+      100,
+      200
+    ],
+    "sections": 11,
+    "horizontalPageOverflow": 0,
+    "mathErrors": 0
+  }
+}

@@ -1,0 +1,91 @@
+body[data-praxis-course=principiul-i-al-termodinamicii]{margin:0}
+body[data-praxis-course=principiul-i-al-termodinamicii],body[data-praxis-course=principiul-i-al-termodinamicii] *,body[data-praxis-course=principiul-i-al-termodinamicii] *::before,body[data-praxis-course=principiul-i-al-termodinamicii] *::after{box-sizing:border-box}
+body[data-praxis-course=principiul-i-al-termodinamicii]{background:var(--praxis-color-canvas);color:var(--praxis-color-ink)}
+body[data-praxis-course=principiul-i-al-termodinamicii] #praxis-original{--bg-deep:var(--praxis-color-canvas);--text-muted:var(--praxis-color-muted);--text-dim:var(--praxis-color-muted);--accent:var(--praxis-color-primary);--border:var(--praxis-color-border);padding:0 24px 24px;max-width:1680px;margin:auto;font-family:var(--praxis-font-ui)}
+#praxis-original .app{min-width:0}
+body[data-praxis-course=principiul-i-al-termodinamicii] .praxis-course-nav-select{display:none}
+body[data-praxis-course=principiul-i-al-termodinamicii] .praxis-lab-nav .tabs{display:flex;flex-wrap:wrap;gap:6px;width:100%;padding:4px;background:var(--praxis-color-primary-soft);border-radius:9px}
+body[data-praxis-course=principiul-i-al-termodinamicii] .nav-btn{flex:0 1 auto;white-space:normal;max-width:100%;margin:0;min-height:var(--praxis-control-height);font:600 var(--praxis-text-label)/1.4 var(--praxis-font-ui);padding:8px 12px}
+body[data-praxis-course=principiul-i-al-termodinamicii] .nav-btn.active{background:var(--praxis-color-primary);color:white}
+body[data-praxis-course=principiul-i-al-termodinamicii] .section[hidden]{display:none!important}
+body[data-praxis-course=principiul-i-al-termodinamicii] :is(.card,.sim-panel,.calc-card){min-width:0;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);padding:16px;background:white}
+body[data-praxis-course=principiul-i-al-termodinamicii] .card{margin-bottom:16px}
+body[data-praxis-course=principiul-i-al-termodinamicii] :is(h2,h3,h4){font-family:var(--praxis-font-ui);line-height:1.4;color:var(--praxis-color-ink);margin:0 0 12px}
+body[data-praxis-course=principiul-i-al-termodinamicii] h2{font-size:1.2rem}
+body[data-praxis-course=principiul-i-al-termodinamicii] h3{font-size:1.05rem;margin-top:16px}
+body[data-praxis-course=principiul-i-al-termodinamicii] :is(p,ul){margin:0 0 12px;line-height:1.7}
+body[data-praxis-course=principiul-i-al-termodinamicii] ul{padding-left:22px}
+body[data-praxis-course=principiul-i-al-termodinamicii] li{margin-bottom:6px}
+body[data-praxis-course=principiul-i-al-termodinamicii] :is(.formula,.enunt,.obs,.result-box){padding:12px 16px;margin:12px 0;border-radius:8px;border:1px solid var(--praxis-color-border);background:var(--praxis-color-canvas);line-height:1.8;overflow-wrap:break-word}
+body[data-praxis-course=principiul-i-al-termodinamicii] .formula{text-align:center;font-family:var(--praxis-font-formula);border-left:3px solid var(--praxis-color-primary);font-size:1rem}
+body[data-praxis-course=principiul-i-al-termodinamicii] .enunt{border-left:3px solid var(--praxis-color-primary)}
+body[data-praxis-course=principiul-i-al-termodinamicii] .value{font-weight:700;color:var(--praxis-color-primary);font-variant-numeric:tabular-nums}
+body[data-praxis-course=principiul-i-al-termodinamicii] :is(.interactive,.calc-grid){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:12px}
+body[data-praxis-course=principiul-i-al-termodinamicii] :is(.sim-panel,.calc-card){background:var(--praxis-color-canvas)}
+body[data-praxis-course=principiul-i-al-termodinamicii] :is(.control,.input-group){margin-bottom:12px;min-width:0}
+body[data-praxis-course=principiul-i-al-termodinamicii] label{display:block;margin-bottom:6px;font-size:.875rem;line-height:1.5}
+body[data-praxis-course=principiul-i-al-termodinamicii] .control label{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+body[data-praxis-course=principiul-i-al-termodinamicii] input[type=number]{width:100%;min-width:0;min-height:var(--praxis-control-height);padding:8px 12px;border:1px solid var(--praxis-color-border);border-radius:8px;background:white;color:var(--praxis-color-ink);font:inherit}
+body[data-praxis-course=principiul-i-al-termodinamicii] .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:var(--praxis-control-height);border:1px solid var(--praxis-color-primary);border-radius:8px;padding:10px 12px;background:var(--praxis-color-primary);color:white;font:600 .875rem/1.5 var(--praxis-font-ui);white-space:normal}
+body[data-praxis-course=principiul-i-al-termodinamicii] canvas{display:block;width:100%;height:18.75rem;background:white;border:1px solid var(--praxis-color-border);border-radius:8px}
+body[data-praxis-course=principiul-i-al-termodinamicii] .chart-readout{display:block;font-size:.875rem;margin-top:8px;line-height:1.6;color:var(--praxis-color-ink)}
+body[data-praxis-course=principiul-i-al-termodinamicii] .process-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+body[data-praxis-course=principiul-i-al-termodinamicii] .process-tags .tag{padding:6px 10px;background:var(--praxis-color-primary-soft);border-radius:8px;font-size:.8rem}
+body[data-praxis-course=principiul-i-al-termodinamicii] .data-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:.875rem;margin-top:12px}
+body[data-praxis-course=principiul-i-al-termodinamicii] .data-table :is(td,th){padding:10px 12px;border:1px solid var(--praxis-color-border);text-align:left;overflow-wrap:break-word}
+body[data-praxis-course=principiul-i-al-termodinamicii] .data-table th{background:var(--praxis-color-primary-soft)}
+body[data-praxis-course=principiul-i-al-termodinamicii] .piston-demo{height:200px;position:relative;overflow:hidden;border:1px solid var(--praxis-color-border);border-radius:8px;margin-top:12px;background:white}
+body[data-praxis-course=principiul-i-al-termodinamicii] :is(.cylinder,.piston,.piston-rod){position:absolute;left:50%;transform:translateX(-50%)}
+body[data-praxis-course=principiul-i-al-termodinamicii] .cylinder{bottom:20px;width:80px;height:140px;border:3px solid #5e776e;border-top:none;background:linear-gradient(to top,#d8e9e2,white)}
+body[data-praxis-course=principiul-i-al-termodinamicii] .piston{width:86px;height:12px;background:#7b9290;border-radius:3px;transition:bottom .25s ease}
+body[data-praxis-course=principiul-i-al-termodinamicii] .piston-rod{width:8px;background:#7b9290;transition:height .25s ease,bottom .25s ease}
+body[data-praxis-course=principiul-i-al-termodinamicii] .calc-error{display:block;color:#a13f35;font-weight:600;margin-top:8px;line-height:1.6}
+@media(max-width:1199px){body[data-praxis-course=principiul-i-al-termodinamicii] :is(.interactive,.calc-grid){grid-template-columns:1fr}}
+@media(max-width:600px){body[data-praxis-course=principiul-i-al-termodinamicii] #praxis-original{padding-inline:12px}body[data-praxis-course=principiul-i-al-termodinamicii] :is(.card,.sim-panel,.calc-card){padding:12px}body[data-praxis-course=principiul-i-al-termodinamicii] .data-table :is(td,th){padding:8px 4px;font-size:.8rem}}
+@media(prefers-reduced-motion:reduce){body[data-praxis-course=principiul-i-al-termodinamicii] :is(.piston,.piston-rod){transition:none}}
+
+body[data-praxis-course=principiul-i-al-termodinamicii] .section:not(.active){display:none}
+
+html[data-praxis-standalone=true] .offline-download{display:none}
+
+body[data-praxis-course=principiul-i-al-termodinamicii] .cylinder{background:white}
+body[data-praxis-course=principiul-i-al-termodinamicii] .gas-layer{position:absolute;bottom:0;left:0;width:100%;background:#c8ded6;transition:height .25s ease}
+@media(prefers-reduced-motion:reduce){body[data-praxis-course=principiul-i-al-termodinamicii] .gas-layer{transition:none}}
+
+body[data-praxis-course=principiul-i-al-termodinamicii] .input-group>label{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px 12px}
+body[data-praxis-course=principiul-i-al-termodinamicii] .parameter-value{font:600 .9rem/1.5 var(--praxis-font-ui);color:var(--praxis-color-primary);font-variant-numeric:tabular-nums;max-width:100%;overflow-wrap:anywhere}
+body[data-praxis-course=principiul-i-al-termodinamicii] .input-group.is-unknown .praxis-range-stepper{display:none}
+body[data-praxis-course=principiul-i-al-termodinamicii] #clap_unknown{width:100%;max-width:100%;padding:10px 12px;border:1px solid var(--praxis-color-border);border-radius:8px;background:white;color:var(--praxis-color-ink)}
+body[data-praxis-course=principiul-i-al-termodinamicii] .fraction{display:inline-grid;grid-template-rows:auto auto;align-items:center;vertical-align:middle;line-height:1.4;text-align:center;margin:0 .2em;white-space:nowrap}
+body[data-praxis-course=principiul-i-al-termodinamicii] .fraction>span{padding:.1em .35em}
+body[data-praxis-course=principiul-i-al-termodinamicii] .fraction>span:first-child{border-bottom:1px solid currentColor}
+body[data-praxis-course=principiul-i-al-termodinamicii] .formula-bracket{white-space:nowrap}
+body[data-praxis-course=principiul-i-al-termodinamicii] .calculation-formula{font-size:1.05rem;line-height:2}
+body[data-praxis-course=principiul-i-al-termodinamicii] p.calculation-note{color:var(--praxis-color-muted)}
+
+body[data-praxis-course=principiul-i-al-termodinamicii] .interactive.transform-interactive{grid-template-columns:1fr}
+body[data-praxis-course=principiul-i-al-termodinamicii] .transform-graphs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:16px;min-width:0}
+body[data-praxis-course=principiul-i-al-termodinamicii] .transform-controls{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px 20px;align-items:center}
+body[data-praxis-course=principiul-i-al-termodinamicii] .transform-controls>h4,body[data-praxis-course=principiul-i-al-termodinamicii] .transform-controls>p{grid-column:1/-1;margin-bottom:0}
+body[data-praxis-course=principiul-i-al-termodinamicii] .transform-controls :is(.result-box,.control,.piston-demo){margin:0}
+body[data-praxis-course=principiul-i-al-termodinamicii] .graph-panel{overflow:visible}
+body[data-praxis-course=principiul-i-al-termodinamicii] .graph-panel .chart-readout{white-space:pre-line}
+
+body[data-praxis-course=principiul-i-al-termodinamicii] #boyle .transform-controls{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1199px){body[data-praxis-course=principiul-i-al-termodinamicii] .transform-controls,body[data-praxis-course=principiul-i-al-termodinamicii] #boyle .transform-controls{grid-template-columns:1fr}}
+
+/* Compact reading layout: related inputs and their results stay together. */
+body[data-praxis-course=principiul-i-al-termodinamicii] :is(.calc-grid,.interactive){align-items:start}
+body[data-praxis-course=principiul-i-al-termodinamicii] .calc-grid:has(>.calc-card:only-child){grid-template-columns:1fr}
+body[data-praxis-course=principiul-i-al-termodinamicii] .parameter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:10px 16px;min-width:0}
+body[data-praxis-course=principiul-i-al-termodinamicii] .parameter-grid>.input-group{margin:0}
+body[data-praxis-course=principiul-i-al-termodinamicii] .general-states{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,23rem),1fr));gap:12px;align-items:start}
+body[data-praxis-course=principiul-i-al-termodinamicii] .parameter-grid>.input-group:last-child:nth-child(odd){grid-column:1/-1}
+body[data-praxis-course=principiul-i-al-termodinamicii] .state-answer{display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;margin-top:10px;padding:10px 12px;border:1px solid var(--praxis-color-border);border-radius:8px;background:white}
+body[data-praxis-course=principiul-i-al-termodinamicii] .state-answer :is(.formula,.result-box){margin:0;padding:2px 0;border:0;background:transparent;flex:1 1 auto}
+body[data-praxis-course=principiul-i-al-termodinamicii] .general-summary{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-top:12px}
+body[data-praxis-course=principiul-i-al-termodinamicii] .general-summary :is(h4,p){margin:0}
+body[data-praxis-course=principiul-i-al-termodinamicii] .general-summary p{color:var(--praxis-color-muted)}
+body[data-praxis-course=principiul-i-al-termodinamicii] .general-constants{display:flex;flex-wrap:wrap;gap:8px 24px;width:100%;padding:10px 12px;border:1px solid var(--praxis-color-border);border-radius:8px;background:var(--praxis-color-canvas);font-variant-numeric:tabular-nums}
+body[data-praxis-course=principiul-i-al-termodinamicii] .calc-error:empty{display:none}
+body[data-praxis-course=principiul-i-al-termodinamicii] .calc-card>.parameter-grid~.calculation-formula{margin-top:10px}

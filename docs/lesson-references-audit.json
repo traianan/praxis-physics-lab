@@ -1,0 +1,71 @@
+{
+  "lessons": 13,
+  "findings": 0,
+  "results": [
+    {
+      "id": "oglinzi-si-lentile",
+      "files": 1,
+      "references": []
+    },
+    {
+      "id": "miscarea-rectilinie",
+      "files": 10,
+      "references": []
+    },
+    {
+      "id": "unde-mecanice",
+      "files": 1,
+      "references": []
+    },
+    {
+      "id": "calcul-vectorial",
+      "files": 4,
+      "references": []
+    },
+    {
+      "id": "viteza-si-acceleratia",
+      "files": 2,
+      "references": []
+    },
+    {
+      "id": "miscarea-curbilinie-plana",
+      "files": 2,
+      "references": []
+    },
+    {
+      "id": "notiuni-termodinamice",
+      "files": 7,
+      "references": []
+    },
+    {
+      "id": "calorimetrie",
+      "files": 7,
+      "references": []
+    },
+    {
+      "id": "principiul-i-al-termodinamicii",
+      "files": 1,
+      "references": []
+    },
+    {
+      "id": "interactii-atomice",
+      "files": 2,
+      "references": []
+    },
+    {
+      "id": "principiul-i-aplicatii",
+      "files": 9,
+      "references": []
+    },
+    {
+      "id": "transformari-stare-agregare",
+      "files": 9,
+      "references": []
+    },
+    {
+      "id": "oscilator-mecanic",
+      "files": 5,
+      "references": []
+    }
+  ]
+}

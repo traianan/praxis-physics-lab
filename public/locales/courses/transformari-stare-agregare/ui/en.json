@@ -1,0 +1,8 @@
+{
+  "locale": "en",
+  "namespace": "courses/transformari-stare-agregare/ui",
+  "messages": {
+    "Transformări de stare de agregare": "Phase changes",
+    "Laborator interactiv de căldură și termodinamică": "Interactive heat and thermodynamics laboratory"
+  }
+}

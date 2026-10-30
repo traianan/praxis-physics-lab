@@ -1,0 +1,1 @@
+{"enabled":false,"provider":null,"publisherId":null,"model":"advertising-only","placements":["catalog-after-results","chapter-footer"],"excludedModes":["offline","localhost","board","simulation"],"requiresProviderConsentIntegration":true}

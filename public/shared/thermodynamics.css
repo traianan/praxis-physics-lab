@@ -1,0 +1,54 @@
+/* The imported lesson uses the current Praxis reading, formula and touch contracts. */
+body[data-praxis-course=notiuni-termodinamice]{overflow-x:visible}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original>.topbar{display:none}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .rv{opacity:1;transform:none;transition:none}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .sec{padding-block:1rem}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .sec-head{margin-bottom:.75rem}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .cols{gap:1rem}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .fig{position:static;box-shadow:none;margin:0}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .fig canvas{height:25rem}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .fig canvas.mini{height:10rem!important}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original :is(.text p,.text ul,.text ol){margin-bottom:.75rem}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .sliders{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:.75rem;padding:.75rem 1rem}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .sl{grid-template-columns:minmax(0,1fr) auto;gap:0 .5rem;min-width:0}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .sl>span:first-child{grid-column:1;grid-row:1}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .sl>output{grid-column:2;grid-row:1}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .sl>.praxis-range-stepper{grid-column:1/-1;grid-row:2;min-width:0}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original :is(.ctrl,.chips,.readouts,.chap,.links){padding:.75rem 1rem;gap:.75rem}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original :is(.box,.fig,.quiz,.prob){border-radius:var(--praxis-radius-card)}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original :is(.box,.eq,.eqs){padding:.75rem 1rem;margin-block:.75rem}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .katex-display{margin:.5rem 0;padding:.25rem 0}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .thermo-notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:.75rem}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original :is(.fig-h,.ro,.ctrl,.opts,.prob-actions){flex-wrap:wrap}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .drawer{top:var(--course-header);height:calc(100dvh - var(--course-header));max-width:100%;z-index:350}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .drawer-bg{z-index:340}
+body[data-praxis-course=notiuni-termodinamice] #praxis-original :is(.drawer-h,.drawer-f){padding:.75rem 1rem}
+@media(max-width:1199px){
+ body[data-praxis-course=notiuni-termodinamice] #praxis-original .layout{grid-template-columns:minmax(0,1fr)}
+ body[data-praxis-course=notiuni-termodinamice] #praxis-original nav.toc{display:none}
+ body[data-praxis-course=notiuni-termodinamice] #praxis-original .cols{grid-template-columns:minmax(0,1fr)}
+ body[data-praxis-course=notiuni-termodinamice] #praxis-original .cols.flip .text{order:0}
+}
+@media(max-width:900px){
+ body[data-praxis-course=notiuni-termodinamice] #praxis-original .recap thead{display:none}
+ body[data-praxis-course=notiuni-termodinamice] #praxis-original .recap :is(tbody,tr,td){display:block;width:100%}
+ body[data-praxis-course=notiuni-termodinamice] #praxis-original .recap tr{border-bottom:1px solid var(--praxis-color-border);padding:.75rem}
+ body[data-praxis-course=notiuni-termodinamice] #praxis-original .recap td{border:0;padding:.25rem;overflow-wrap:anywhere}
+}
+
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .recap tr[hidden]{display:none!important}
+
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .btn.on{background:var(--praxis-color-primary-soft)!important;border-color:var(--praxis-color-primary)!important;color:var(--praxis-color-primary)!important}
+
+body[data-praxis-course=notiuni-termodinamice] #drawerBody a>span{display:none}
+body[data-praxis-course=notiuni-termodinamice] #drawerBody a{grid-template-columns:minmax(0,1fr)}
+
+/* Only the chosen topic is visible. Navigation wraps instead of scrolling sideways. */
+body[data-praxis-course=notiuni-termodinamice] #praxis-original .layout{grid-template-columns:minmax(0,1fr)}
+body[data-praxis-course=notiuni-termodinamice] :is(#praxis-original nav.toc,.praxis-course-sections){display:none!important}
+body[data-praxis-course=notiuni-termodinamice] :is(.thermo-topic-group,.sec)[hidden]{display:none!important}
+body[data-praxis-course=notiuni-termodinamice] .thermo-tabs,
+body[data-praxis-course=notiuni-termodinamice] .thermo-subtabs{display:flex;flex-wrap:wrap;gap:6px;max-width:100%;width:100%;padding:4px;border-radius:9px;background:var(--praxis-color-primary-soft);overflow:visible}
+body[data-praxis-course=notiuni-termodinamice] .thermo-subtabs{margin:0 0 12px}
+body[data-praxis-course=notiuni-termodinamice] :is(.thermo-tabs,.thermo-subtabs) .tab{white-space:normal;text-align:center;flex:0 1 auto;max-width:100%;margin:0;font:600 var(--praxis-text-label)/1.4 var(--praxis-font-ui);min-height:var(--praxis-control-height);padding:8px 12px;border-radius:var(--praxis-radius-control)}
+body[data-praxis-course=notiuni-termodinamice] .praxis-lab-nav{scroll-margin-top:var(--course-header)}

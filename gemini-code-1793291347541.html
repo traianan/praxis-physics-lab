@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oscilatori mecanici cuplați - Clasa XI</title>
+<style>
+:root{
+  --blue:#0e7490;--blue-dark:#0c4a6e;--blue-light:#e0f2fe;--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--accent:#06b6d4;--warn:#f59e0b;--red:#ef4444;--green:#10b981;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+header{background:linear-gradient(135deg,var(--blue-dark),var(--blue));color:white;padding:24px 20px;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px rgba(0,0,0,.15)}
+header h1{margin:0;font-size:26px}
+header p{margin:6px 0 0;opacity:.9;font-size:13px}
+.tabs{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.tab-btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:white;padding:9px 16px;border-radius:999px;cursor:pointer;font-weight:600;font-size:13px;transition:.2s}
+.tab-btn.active{background:white;color:var(--blue-dark)}
+main{max-width:1180px;margin:20px auto;padding:0 14px 60px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.04);margin-bottom:14px}
+.card h2{margin:0 0 6px;font-size:18px;color:var(--blue-dark)}
+.card h3{margin:12px 0 6px;font-size:14px;color:var(--blue)}
+.badge{display:inline-block;background:var(--blue-light);color:var(--blue-dark);padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;margin-bottom:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+.formula{background:#f1f5f9;border:1px dashed #cbd5e1;border-radius:10px;padding:10px 12px;font-family:ui-monospace,monospace;font-size:13px;margin:8px 0}
+.def{border-left:4px solid var(--accent);background:#ecfeff;padding:10px 12px;border-radius:8px;margin:10px 0;font-size:13px}
+.canvas-wrap{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:6px;display:flex;justify-content:center;align-items:center}
+canvas{display:block;border-radius:8px;background:white;max-width:100%}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;margin-top:10px}
+@media(max-width:700px){.controls{grid-template-columns:1fr}}
+.ctrl{display:flex;flex-direction:column;gap:3px}
+.ctrl label{font-size:11px;font-weight:600;color:var(--muted);display:flex;justify-content:space-between}
+.btn-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.btn{border:1px solid var(--border);background:white;padding:6px 11px;border-radius:999px;cursor:pointer;font-weight:600;font-size:11px;transition:.15s}
+.btn.primary{background:var(--blue);color:white;border-color:var(--blue)}
+.btn.active{background:var(--blue-dark);color:white}
+.btn:hover{transform:translateY(-1px)}
+.sim-row{display:grid;grid-template-columns:1.25fr 1fr;gap:12px}
+@media(max-width:950px){.sim-row{grid-template-columns:1fr}}
+.muted{color:var(--muted);font-size:11px}
+.lab-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.lab-nav button{padding:6px 11px;border-radius:999px;border:1px solid var(--border);background:white;cursor:pointer;font-weight:600;font-size:11px}
+.lab-nav button.active{background:var(--blue);color:white;border-color:var(--blue)}
+.hidden{display:none !important}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th,td{border:1px solid var(--border);padding:5px 6px}
+th{background:#f1f5f9}
+.q{border:1px solid var(--border);border-radius:12px;padding:10px;margin-bottom:8px;background:#fff}
+.q.correct{border-color:var(--green);background:#f0fdf4}
+.q.wrong{border-color:var(--red);background:#fef2f2}
+.q h4{margin:0 0 6px;font-size:13px}
+.q label{display:flex;gap:6px;padding:5px 7px;border-radius:8px;cursor:pointer;font-size:12px}
+.q label:hover{background:#f8fafc}
+.score{font-size:20px;font-weight:800;color:var(--blue-dark)}
+</style>
+</head>
+<body>
+<header>
+<h1>Oscilatori mecanici cuplați</h1>
+<p>Clasa a XI-a, cap. 1.2 – Teorie + Laborator virtual + Evaluare – aplicație offline</p>
+<div class="tabs">
+<button class="tab-btn active" id="btnTeorie" onclick="switchTab('teorie')">Teorie</button>
+<button class="tab-btn" id="btnLab" onclick="switchTab('lab')">Laborator virtual</button>
+<button class="tab-btn" id="btnEval" onclick="switchTab('eval')">Evaluare & Raport</button>
+</div>
+</header>
+<main>
+<section id="teorie">
+<div class="card">
+<span class="badge">TEORIE</span>
+<h2>1. Oscilator liber și oscilator forțat</h2>
+<p style="font-size:13px">În prezența frecării, oscilațiile libere sunt amortizate. Pentru a le întreține se aplică o forță periodică externă coliniară cu deplasarea. După regimul tranzitoriu sistemul execută oscilații forțate cu pulsația forței.</p>
+<div class="grid2">
+<div>
+<div class="formula">F<sub>rez</sub> = F₀·cos(Ωt) - k·x - r·v<br>m·a = F₀cosΩt - k·x - r·v</div>
+<ul style="font-size:12px;margin:0;padding-left:16px">
+<li><b>k</b> – constanta elastică [N/m], forța elastică Fₑₗ = -k·x</li>
+<li><b>r</b> – coeficient de frecare vâscoasă [N·s/m], forța de amortizare Fᵣ = -r·v</li>
+<li><b>b = r/(2m)</b> – factor de amortizare [s⁻¹]</li>
+<li><b>F₀cosΩt</b> – forța excitatoare armonică cu pulsația Ω</li>
+</ul>
+</div>
+<div>
+<div class="formula">Regim staționar: x(t)=A·cos(Ωt+φ)<br>A = F₀ / [ m·√((Ω²-ω₀²)² + 4b²Ω²) ]<br>ω₀ = √(k/m), b = r/(2m)</div>
+<p class="muted">Amplitudinea depinde de Ω. La rezonanță A_max = F₀/(r·ω₀) = F₀/(2·m·b·ω₀).</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>2. Rezonanța</h2>
+<div class="def"><b>Definiție:</b> Rezonanța este procesul selectiv de transfer maxim de energie între două sisteme fizice, când pulsația excitatorului Ω este egală cu pulsația proprie ω a rezonatorului.</div>
+<div class="grid2">
+<div class="canvas-wrap"><canvas id="teoRes" width="420" height="200"></canvas></div>
+<div style="font-size:12px">
+<p>Condiția de rezonanță: Ω ≈ ω₀. Transferul de energie din exterior către oscilator este maxim, amplitudinea devine maximă, limitată doar de amortizare.</p>
+<ul style="margin:0;padding-left:16px"><li>Ω≪ω₀ → A≈F₀/k (regim static)</li><li>Ω=ω₀ → A_max</li><li>Ω≫ω₀ → A→0</li><li>Amortizare mică → vârf ascuțit, selectivitate mare</li></ul>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>3. Oscilatori cuplați</h2>
+<div class="grid2">
+<div style="font-size:12px">
+<b>Cuplaj slab:</b> pendule legate printr-un fir întins. Transferul complet de energie are loc când perioadele sunt egale, T₁=T₂. Altfel apar doar oscilații parazitare. Energia pendulează între pendule – fenomenul bătăilor.<br><br>
+<b>Cuplaj strâns:</b> pendule legate cu resort, pendul dublu, bobine cu magneți. Apar moduri normale:<br>
+• <b>Simetric</b> (în fază): θ₁=θ₂, ω₁=√(g/L), resort neîntins<br>
+• <b>Antisimetric</b> (opoziție): θ₁=-θ₂, ω₂=√(g/L+2kc/m), resort solicitat maxim<br>
+Bătăile: T_b = 2π/|ω₂-ω₁|
+</div>
+<div class="canvas-wrap"><canvas id="teoBeat" width="400" height="110"></canvas></div>
+</div>
+</div>
+
+<div class="card">
+<h2>4. Aplicații</h2>
+<div class="grid2">
+<div style="font-size:12px"><b>Efecte de evitat:</b> Tacoma Narrows (1940) – vânt cu pulsație apropiată de modul torsional; Millennium Bridge Londra (2000) – excitație laterală de la pașii pietonilor ~1Hz; microfonie, vibrații în instalații.<br><b>Aplicații utile:</b> ceas cu pendulă (Huygens 1656) – T=2s, ancora eliberează energie în porții egale cu pierderea; amortizor auto – m·x''+r·x'+k·x=0, c_crit=2√(mk), regim optim aproape critic; instrumente muzicale – unde staționare.</div>
+<div class="canvas-wrap"><canvas id="teoDamp" width="400" height="110"></canvas></div>
+</div>
+</div>
+</section>
+
+<section id="lab" class="hidden">
+<div class="card">
+<span class="badge">LABORATOR VIRTUAL</span>
+<h2>Laborator virtual – 4 experimente interactive</h2>
+<p class="muted">Toate simulările rulează offline. Folosește Play / Pauză / Reset și sliderele. Poți exporta datele în CSV și capturile în PNG pentru caiet.</p>
+<div class="lab-nav">
+<button class="active" onclick="switchLab(1)" id="lbtn1">1. Rezonanța</button>
+<button onclick="switchLab(2)" id="lbtn2">2. Cuplaj slab</button>
+<button onclick="switchLab(3)" id="lbtn3">3. Cuplaj strâns</button>
+<button onclick="switchLab(4)" id="lbtn4">4. Amortizor</button>
+</div>
+</div>
+
+<div class="card lab-panel" id="lab1">
+<h2>Exp.1 – Oscilator elastic forțat</h2>
+<p class="muted">Ecuație: m·x'' + r·x' + k·x = F₀cosΩt, cu r=2mb. Forța F(t) acționează vertical, pe direcția resortului.</p>
+<div class="sim-row">
+<div>
+<div class="canvas-wrap"><canvas id="c1main" width="520" height="340"></canvas></div>
+<div class="btn-row"><button class="btn primary" id="b1play" onclick="togglePlay(1)">▶ Play</button><button class="btn" onclick="resetLab(1)">↺ Reset</button><button class="btn" onclick="autoSweep(1)">Ω sweep</button></div>
+<div class="btn-row"><button class="btn" onclick="exportCSV(1)">⬇ CSV x(t)</button><button class="btn" onclick="exportResonanceCSV()">⬇ CSV A(Ω)</button><button class="btn" onclick="captureCanvas('c1main','rezonanta.png')">📸 PNG simulare</button></div>
+</div>
+<div>
+<div class="canvas-wrap"><canvas id="c1res" width="430" height="170"></canvas></div>
+<div class="canvas-wrap" style="margin-top:6px"><canvas id="c1time" width="430" height="140"></canvas></div>
+<div class="controls">
+<div class="ctrl"><label>ω₀ = √(k/m) <span id="v_w0">3.00 rad/s</span></label><input type="range" id="s_w0" min="0.8" max="6" step="0.05" value="3"></div>
+<div class="ctrl"><label>Ω excitator <span id="v_Om">3.00 rad/s</span></label><input type="range" id="s_Om" min="0.2" max="8" step="0.05" value="3"></div>
+<div class="ctrl"><label>b = r/(2m) [s⁻¹] <span id="v_b">0.25</span></label><input type="range" id="s_b" min="0.05" max="1.5" step="0.05" value="0.25"></div>
+<div class="ctrl"><label>F₀ [N] <span id="v_F0">5.0 N</span></label><input type="range" id="s_F0" min="0.5" max="12" step="0.2" value="5"></div>
+</div>
+<div class="formula" id="f1out">—</div>
+</div>
+</div>
+</div>
+
+<div class="card lab-panel hidden" id="lab2">
+<h2>Exp.2 – Cuplaj slab de pendule gravitaționale</h2>
+<div class="sim-row">
+<div>
+<div class="canvas-wrap"><canvas id="c2main" width="520" height="300"></canvas></div>
+<div class="btn-row"><button class="btn primary" id="b2play" onclick="togglePlay(2)">▶ Play</button><button class="btn" onclick="resetLab(2)">↺ Reset</button><button class="btn" onclick="excite1()">Excit P1</button><button class="btn" onclick="setEqualL()">L1=L2</button><button class="btn" onclick="exportCSV(2)">⬇ CSV</button><button class="btn" onclick="captureCanvas('c2main')">📸 PNG</button></div>
+<div class="canvas-wrap" style="margin-top:6px"><canvas id="c2en" width="520" height="120"></canvas></div>
+</div>
+<div>
+<div class="canvas-wrap"><canvas id="c2time" width="430" height="180"></canvas></div>
+<div class="controls">
+<div class="ctrl"><label>L1 <span id="v_L1">1.00 m</span></label><input type="range" id="s_L1" min="0.4" max="2" step="0.02" value="1"></div>
+<div class="ctrl"><label>L2 <span id="v_L2">1.00 m</span></label><input type="range" id="s_L2" min="0.4" max="2" step="0.02" value="1"></div>
+<div class="ctrl"><label>κ cuplaj <span id="v_k2">0.08</span></label><input type="range" id="s_k2" min="0.01" max="0.4" step="0.01" value="0.08"></div>
+<div class="ctrl"><label>γ amortizare <span id="v_g2">0.02</span></label><input type="range" id="s_g2" min="0" max="0.15" step="0.01" value="0.02"></div>
+<div class="ctrl"><label>θ1₀ <span id="v_th1">30°</span></label><input type="range" id="s_th1" min="5" max="45" step="1" value="30"></div>
+</div>
+<div class="formula" id="f2out">—</div>
+</div>
+</div>
+</div>
+
+<div class="card lab-panel hidden" id="lab3">
+<h2>Exp.3 – Cuplaj strâns – moduri normale și bătăi</h2>
+<div class="sim-row">
+<div>
+<div class="canvas-wrap"><canvas id="c3main" width="520" height="300"></canvas></div>
+<div class="btn-row"><button class="btn primary" id="b3play" onclick="togglePlay(3)">▶ Play</button><button class="btn" onclick="resetLab(3)">↺ Reset</button><button class="btn active" id="m3bata" onclick="setMode3('batai')">Bătăi</button><button class="btn" id="m3sim" onclick="setMode3('sim')">Simetric</button><button class="btn" id="m3anti" onclick="setMode3('anti')">Antisimetric</button><button class="btn" onclick="exportCSV(3)">⬇ CSV</button></div>
+<div class="canvas-wrap" style="margin-top:6px"><canvas id="c3time" width="520" height="140"></canvas></div>
+</div>
+<div>
+<div class="controls">
+<div class="ctrl"><label>L <span id="v_L3">1.0 m</span></label><input type="range" id="s_L3" min="0.5" max="1.8" step="0.05" value="1"></div>
+<div class="ctrl"><label>kc resort <span id="v_k3">1.2 N/m</span></label><input type="range" id="s_k3" min="0.2" max="4" step="0.1" value="1.2"></div>
+<div class="ctrl"><label>m <span id="v_m3">1.0 kg</span></label><input type="range" id="s_m3" min="0.3" max="2" step="0.1" value="1"></div>
+</div>
+<div class="formula" id="f3out">—</div>
+<div class="canvas-wrap"><canvas id="c3spec" width="430" height="130"></canvas></div>
+</div>
+</div>
+</div>
+
+<div class="card lab-panel hidden" id="lab4">
+<h2>Exp.4 – Regimuri de amortizare – amortizorul</h2>
+<div class="sim-row">
+<div>
+<div class="canvas-wrap"><canvas id="c4main" width="520" height="300"></canvas></div>
+<div class="btn-row"><button class="btn primary" id="b4play" onclick="togglePlay(4)">▶ Play</button><button class="btn" onclick="resetLab(4)">↺ Reset</button><button class="btn" onclick="bump4()">Șoc</button><button class="btn" onclick="exportCSV(4)">⬇ CSV</button></div>
+<div class="canvas-wrap" style="margin-top:6px"><canvas id="c4time" width="520" height="130"></canvas></div>
+</div>
+<div>
+<div class="controls">
+<div class="ctrl"><label>m <span id="v_m4">2.0 kg</span></label><input type="range" id="s_m4" min="0.5" max="5" step="0.1" value="2"></div>
+<div class="ctrl"><label>k <span id="v_k4">25 N/m</span></label><input type="range" id="s_k4" min="5" max="100" step="1" value="25"></div>
+<div class="ctrl"><label>r (c) coef. frecare [Ns/m] <span id="v_c4">10 Ns/m</span></label><input type="range" id="s_c4" min="0" max="50" step="0.5" value="10"></div>
+</div>
+<div class="formula" id="f4out">—</div>
+<p class="muted">Subamortizat c&lt;c_crit, critic c=c_crit, supraamortizat c&gt;c_crit. Pentru amortizor optim c≈0.7·c_crit.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="eval" class="hidden">
+<div class="card">
+<span class="badge">EVALUARE & RAPORT</span>
+<h2>Test grilă – 10 întrebări</h2>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+<input id="elevNume" placeholder="Nume elev" style="padding:7px 10px;border:1px solid var(--border);border-radius:999px">
+<input id="elevClasa" placeholder="Clasa" style="padding:7px 10px;border:1px solid var(--border);border-radius:999px;width:100px">
+<button class="btn primary" onclick="genRaport()">⬇ Raport .txt</button>
+<button class="btn" onclick="resetQuiz()">↺ Reset test</button>
+</div>
+<div id="quiz"></div>
+<div id="scoreBox" class="score">Scor: — / 10</div>
+<div class="btn-row"><button class="btn primary" onclick="checkQuiz()">Verifică</button><button class="btn" onclick="exportQuizCSV()">⬇ CSV rezultate</button></div>
+</div>
+</section>
+</main>
+
+<script>
+function switchTab(name){['teorie','lab','eval'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==name)); ['btnTeorie','btnLab','btnEval'].forEach((bid,i)=>{const map=['teorie','lab','eval']; document.getElementById(bid).classList.toggle('active',map[i]===name);}); if(name==='teorie') drawTeo();}
+function switchLab(n){for(let i=1;i<=4;i++){document.getElementById('lab'+i).classList.toggle('hidden',i!==n); document.getElementById('lbtn'+i).classList.toggle('active',i===n);} activeLab=n;}
+let activeLab=1;
+function togglePlay(n){labs[n].playing=!labs[n].playing; document.getElementById('b'+n+'play').textContent=labs[n].playing?'⏸ Pauză':'▶ Play'; if(labs[n].playing) requestAnimationFrame(labs[n].loop);}
+function resetLab(n){labs[n].reset();}
+function downloadFile(name,content,type='text/csv'){const blob=new Blob([content],{type}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=name; a.click(); URL.revokeObjectURL(url);}
+function captureCanvas(id,fn){const c=document.getElementById(id); const url=c.toDataURL('image/png'); const a=document.createElement('a'); a.href=url; a.download=fn||id+'.png'; a.click();}
+function exportResonanceCSV(){const w0=parseFloat(document.getElementById('s_w0').value); const b=parseFloat(document.getElementById('s_b').value); const F0=parseFloat(document.getElementById('s_F0').value); const m=1; let csv='Omega[rad/s],A[m],r=2mb[Ns/m]\n'; for(let Om=0.2;Om<=8;Om+=0.05){let A=F0/(m*Math.sqrt((Om*Om-w0*w0)**2+4*b*b*Om*Om)); let r=2*m*b; csv+=Om.toFixed(3)+','+A.toFixed(5)+','+r.toFixed(3)+'\n';} downloadFile('curba_rezonanta.csv',csv);}
+function exportCSV(n){
+ if(n===1){let csv='t[s],x[m],v[m/s],F_extern[N]\n'; labs[1].hist.forEach(p=>{let Om=parseFloat(document.getElementById('s_Om').value); let F0=parseFloat(document.getElementById('s_F0').value); let F=F0*Math.cos(Om*p.t); csv+=p.t.toFixed(3)+','+p.x.toFixed(5)+','+p.v.toFixed(5)+','+F.toFixed(3)+'\n';}); downloadFile('exp1_rezonanta.csv',csv);}
+ if(n===2){let csv='t[s],theta1[rad],theta2[rad],E1[J],E2[J]\n'; for(let i=0;i<labs[2].hist.length;i++){let h=labs[2].hist[i]; let e=labs[2].enHist[i]||{e1:0,e2:0}; csv+=(i*0.016).toFixed(3)+','+h.th1.toFixed(5)+','+h.th2.toFixed(5)+','+e.e1.toFixed(5)+','+e.e2.toFixed(5)+'\n';} downloadFile('exp2_cuplaj_slab.csv',csv);}
+ if(n===3){let csv='t[s],theta1[rad],theta2[rad]\n'; for(let i=0;i<labs[3].hist.length;i++){let h=labs[3].hist[i]; csv+=(i*0.016).toFixed(3)+','+h.th1.toFixed(5)+','+h.th2.toFixed(5)+'\n';} downloadFile('exp3_cuplaj_strans.csv',csv);}
+ if(n===4){let csv='t[s],x[m],v[m/s]\n'; labs[4].hist.forEach((p,i)=>{csv+=(i*0.016).toFixed(3)+','+p.x.toFixed(5)+','+(p.v||0).toFixed(5)+'\n';}); downloadFile('exp4_amortizor.csv',csv);}
+}
+function drawTeo(){
+ const c=document.getElementById('teoRes'); if(!c) return; const ctx=c.getContext('2d'); const W=c.width,H=c.height; ctx.clearRect(0,0,W,H); ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+ ctx.strokeStyle='#cbd5e1';ctx.beginPath();ctx.moveTo(40,H-30);ctx.lineTo(W-10,H-30);ctx.moveTo(40,H-30);ctx.lineTo(40,10);ctx.stroke();
+ const w0=3,F=5,m=1; function A(Om,b){return F/(m*Math.sqrt((Om*Om-w0*w0)**2+4*b*b*Om*Om));} const maxOm=6; function plot(b,color){ctx.strokeStyle=color;ctx.lineWidth=2;ctx.beginPath(); for(let i=0;i<=400;i++){let Om=i/400*maxOm; let a=A(Om,b); let x=40+i/400*(W-60); let y=H-30 - Math.min(a*40, H-50); if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);}ctx.stroke();} plot(0.2,'#0e7490');plot(0.5,'#06b6d4');plot(1.0,'#94a3b8');
+ ctx.strokeStyle='#f59e0b';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(40+(w0/maxOm)*(W-60),H-30);ctx.lineTo(40+(w0/maxOm)*(W-60),12);ctx.stroke();ctx.setLineDash([]);
+ const cb=document.getElementById('teoBeat'); if(cb){const cx=cb.getContext('2d'); const Wb=cb.width,Hb=cb.height; cx.clearRect(0,0,Wb,Hb); cx.fillStyle='#fff';cx.fillRect(0,0,Wb,Hb); cx.strokeStyle='#e2e8f0';cx.beginPath();cx.moveTo(0,Hb/2);cx.lineTo(Wb,Hb/2);cx.stroke(); const w1=0.21,w2=0.25; cx.strokeStyle='#0e7490';cx.lineWidth=1.5;cx.beginPath(); for(let i=0;i<Wb;i++){let t=i/30; let y=Math.cos(w1*t)*Math.cos((w2-w1)/2*t); let yy=Hb/2 - y*40; if(i===0) cx.moveTo(i,yy); else cx.lineTo(i,yy);}cx.stroke();}
+ const cd=document.getElementById('teoDamp'); if(cd){const cx=cd.getContext('2d'); const Wd=cd.width,Hd=cd.height; cx.clearRect(0,0,Wd,Hd); cx.fillStyle='#fff';cx.fillRect(0,0,Wd,Hd); cx.strokeStyle='#e2e8f0';cx.beginPath();cx.moveTo(0,Hd/2);cx.lineTo(Wd,Hd/2);cx.stroke(); function drawDamp(cRatio,color){let m=1,k=4; let cc=2*Math.sqrt(m*k); let b=cRatio*cc/2; let omega0=Math.sqrt(k/m); let disc=b*b - m*k; cx.strokeStyle=color;cx.lineWidth=1.5;cx.beginPath(); for(let i=0;i<Wd;i++){let t=i/60; let x; if(disc<0){let wd=Math.sqrt(k/m - b*b); x=Math.exp(-b*t)*Math.cos(wd*t);} else if(Math.abs(disc)<0.001){x=(1+t)*Math.exp(-omega0*t);} else {let r1=(-b+Math.sqrt(disc))/m; let r2=(-b-Math.sqrt(disc))/m; x=0.5*Math.exp(r1*t)+0.5*Math.exp(r2*t);} let y=Hd/2 - x*35; if(i===0) cx.moveTo(i,y); else cx.lineTo(i,y);}cx.stroke();} drawDamp(0.2,'#0e7490'); drawDamp(1.0,'#0c4a6e'); drawDamp(1.8,'#94a3b8');}
+}
+const labs={};
+labs[1]={playing:false,x:0,v:0,t:0,hist:[],OmSweep:false,reset(){this.x=0;this.v=0;this.t=0;this.hist=[];this.OmSweep=false; document.getElementById('s_Om').value=parseFloat(document.getElementById('s_w0').value); this.draw();},draw(){
+ const cM=document.getElementById('c1main'); const ctx=cM.getContext('2d'); const W=cM.width,H=cM.height; ctx.clearRect(0,0,W,H); ctx.fillStyle='#f8fafc';ctx.fillRect(0,0,W,H);
+ const w0=parseFloat(document.getElementById('s_w0').value); const Om=parseFloat(document.getElementById('s_Om').value); const b=parseFloat(document.getElementById('s_b').value); const F0=parseFloat(document.getElementById('s_F0').value); const m=1; const r=2*m*b;
+ const scale=28,topY=50,restLen=110; const xPix=this.x*scale; const massY=topY+restLen+xPix;
+ ctx.fillStyle='#0c4a6e';ctx.fillRect(W/2-60,20,120,6);
+ ctx.strokeStyle='#0e7490';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(W/2,26); let ey=massY-18; for(let i=0;i<10;i++){let yy=26+(ey-26)*i/10; let xx=W/2 + (i%2?16:-16); if(i===0||i===9) xx=W/2; ctx.lineTo(xx,yy);}ctx.lineTo(W/2,ey);ctx.stroke();
+ ctx.fillStyle='#0bc5ea';ctx.strokeStyle='#0c4a6e';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(W/2-28,massY-16,56,32,8);ctx.fill();ctx.stroke();
+ const force=Math.cos(Om*this.t)*F0; const arrowLen=force*4; const ax=W/2, ay0=massY+20, ay1=ay0+arrowLen;
+ ctx.strokeStyle='#ef4444';ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(ax,ay0);ctx.lineTo(ax,ay1);ctx.stroke();
+ const dir=arrowLen>=0?1:-1; ctx.beginPath();ctx.moveTo(ax-6,ay1-8*dir);ctx.lineTo(ax,ay1);ctx.lineTo(ax+6,ay1-8*dir);ctx.stroke();
+ ctx.fillStyle='#ef4444';ctx.font='11px sans-serif';ctx.fillText('F(t)=F₀cosΩt',ax+10,ay1+4*dir);
+ ctx.fillStyle='#0f172a';ctx.font='11px sans-serif';ctx.fillText('r=2mb='+r.toFixed(2)+' Ns/m',10,H-8);
+ const cR=document.getElementById('c1res'); const ctxR=cR.getContext('2d'); const Wr=cR.width,Hr=cR.height; ctxR.clearRect(0,0,Wr,Hr);ctxR.fillStyle='#fff';ctxR.fillRect(0,0,Wr,Hr); ctxR.strokeStyle='#e2e8f0';ctxR.beginPath();ctxR.moveTo(40,Hr-20);ctxR.lineTo(Wr-10,Hr-20);ctxR.moveTo(40,Hr-20);ctxR.lineTo(40,10);ctxR.stroke(); const maxOm=8,maxA=6; function A_theo(o){return F0/(m*Math.sqrt((o*o-w0*w0)**2+4*b*b*o*o));} ctxR.strokeStyle='#0e7490';ctxR.lineWidth=2;ctxR.beginPath(); for(let i=0;i<=Wr-50;i++){let o=i/(Wr-50)*maxOm; let a=A_theo(o); let xx=40+i; let yy=Hr-20 - Math.min(a/maxA*(Hr-30), Hr-30); if(i===0) ctxR.moveTo(xx,yy); else ctxR.lineTo(xx,yy);}ctxR.stroke(); let aNow=A_theo(Om); let xm=40+Om/maxOm*(Wr-50); let ym=Hr-20 - Math.min(aNow/maxA*(Hr-30), Hr-30); ctxR.fillStyle='#ef4444';ctxR.beginPath();ctxR.arc(xm,ym,4,0,Math.PI*2);ctxR.fill();
+ const cT=document.getElementById('c1time'); const ctxT=cT.getContext('2d'); const Wt=cT.width,Ht=cT.height; ctxT.clearRect(0,0,Wt,Ht);ctxT.fillStyle='#fff';ctxT.fillRect(0,0,Wt,Ht); ctxT.strokeStyle='#e2e8f0';ctxT.beginPath();ctxT.moveTo(40,Ht/2);ctxT.lineTo(Wt-10,Ht/2);ctxT.stroke(); ctxT.strokeStyle='#0e7490';ctxT.lineWidth=1.5;ctxT.beginPath(); for(let i=0;i<this.hist.length;i++){let p=this.hist[i]; let xx=40+i/400*(Wt-50); let yy=Ht/2 - p.x*18; if(i===0) ctxT.moveTo(xx,yy); else ctxT.lineTo(xx,yy);}ctxT.stroke();
+ document.getElementById('f1out').textContent='A_theo='+aNow.toFixed(3)+' m | r=2mb='+(2*m*b).toFixed(2)+' | b=r/(2m)=' + b.toFixed(2);
+}};
+labs[1].loop=function(){if(!labs[1].playing) return; const w0=parseFloat(document.getElementById('s_w0').value); const b=parseFloat(document.getElementById('s_b').value); const F0=parseFloat(document.getElementById('s_F0').value); let Om=parseFloat(document.getElementById('s_Om').value); if(labs[1].OmSweep){Om+=0.012; if(Om>8){Om=0.2; labs[1].OmSweep=false;} document.getElementById('s_Om').value=Om.toFixed(2); document.getElementById('v_Om').textContent=Om.toFixed(2)+' rad/s';} const m=1,dt=0.016; const a=(F0/m*Math.cos(Om*labs[1].t) - w0*w0*labs[1].x - 2*b*labs[1].v); labs[1].v+=a*dt; labs[1].x+=labs[1].v*dt; labs[1].t+=dt; labs[1].hist.push({x:labs[1].x,v:labs[1].v,t:labs[1].t}); if(labs[1].hist.length>400) labs[1].hist.shift(); labs[1].draw(); requestAnimationFrame(labs[1].loop);};
+
+labs[2]={playing:false,th1:0.523,th2:0,w1:0,w2:0,t:0,hist:[],enHist:[],reset(){const th0=parseFloat(document.getElementById('s_th1').value)*Math.PI/180; this.th1=th0; this.th2=0; this.w1=0; this.w2=0; this.t=0; this.hist=[]; this.enHist=[]; this.draw();},draw(){
+ const cM=document.getElementById('c2main'); const ctx=cM.getContext('2d'); const W=cM.width,H=cM.height; ctx.clearRect(0,0,W,H); ctx.fillStyle='#f8fafc';ctx.fillRect(0,0,W,H);
+ const L1=parseFloat(document.getElementById('s_L1').value); const L2=parseFloat(document.getElementById('s_L2').value); const scale=85; const p1={x:W/2-85,y:55},p2={x:W/2+85,y:55};
+ const x1=p1.x+Math.sin(this.th1)*L1*scale, y1=p1.y+Math.cos(this.th1)*L1*scale; const x2=p2.x+Math.sin(this.th2)*L2*scale, y2=p2.y+Math.cos(this.th2)*L2*scale;
+ ctx.fillStyle='#0c4a6e';ctx.fillRect(p1.x-70,35,240,6); ctx.strokeStyle='#94a3b8';ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(p1.x,p1.y+18);ctx.lineTo(p2.x,p2.y+18);ctx.stroke();ctx.setLineDash([]);
+ ctx.strokeStyle='#0e7490';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(x1,y1);ctx.moveTo(p2.x,p2.y);ctx.lineTo(x2,y2);ctx.stroke();
+ ctx.fillStyle='#06b6d4';ctx.beginPath();ctx.arc(x1,y1,13,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.beginPath();ctx.arc(x2,y2,13,0,Math.PI*2);ctx.fill();ctx.stroke();
+ const cT=document.getElementById('c2time'); const ctxT=cT.getContext('2d'); const Wt=cT.width,Ht=cT.height; ctxT.clearRect(0,0,Wt,Ht);ctxT.fillStyle='#fff';ctxT.fillRect(0,0,Wt,Ht); ctxT.strokeStyle='#e2e8f0';ctxT.beginPath();ctxT.moveTo(40,Ht/2);ctxT.lineTo(Wt-10,Ht/2);ctxT.stroke(); ctxT.strokeStyle='#0e7490';ctxT.beginPath(); for(let i=0;i<this.hist.length;i++){let p=this.hist[i]; let xx=40+i/400*(Wt-50); let yy=Ht/2 - p.th1*55; if(i===0) ctxT.moveTo(xx,yy); else ctxT.lineTo(xx,yy);}ctxT.stroke(); ctxT.strokeStyle='#f59e0b';ctxT.beginPath(); for(let i=0;i<this.hist.length;i++){let p=this.hist[i]; let xx=40+i/400*(Wt-50); let yy=Ht/2 - p.th2*55; if(i===0) ctxT.moveTo(xx,yy); else ctxT.lineTo(xx,yy);}ctxT.stroke();
+ const cE=document.getElementById('c2en'); const ctxE=cE.getContext('2d'); const We=cE.width,He=cE.height; ctxE.clearRect(0,0,We,He);ctxE.fillStyle='#fff';ctxE.fillRect(0,0,We,He); ctxE.strokeStyle='#0e7490';ctxE.beginPath(); for(let i=0;i<this.enHist.length;i++){let p=this.enHist[i]; let xx=40+i/400*(We-50); let yy=He-20 - p.e1*110; if(i===0) ctxE.moveTo(xx,yy); else ctxE.lineTo(xx,yy);}ctxE.stroke(); ctxE.strokeStyle='#f59e0b';ctxE.beginPath(); for(let i=0;i<this.enHist.length;i++){let p=this.enHist[i]; let xx=40+i/400*(We-50); let yy=He-20 - p.e2*110; if(i===0) ctxE.moveTo(xx,yy); else ctxE.lineTo(xx,yy);}ctxE.stroke();
+ const g=9.81,T1=2*Math.PI*Math.sqrt(L1/g),T2=2*Math.PI*Math.sqrt(L2/g); document.getElementById('f2out').textContent='T1='+T1.toFixed(2)+'s T2='+T2.toFixed(2)+'s |Δ|='+Math.abs(T1-T2).toFixed(3)+' → '+(Math.abs(T1-T2)<0.1?'REZONANȚĂ':'fără');
+}};
+labs[2].loop=function(){if(!labs[2].playing) return; const L1=parseFloat(document.getElementById('s_L1').value); const L2=parseFloat(document.getElementById('s_L2').value); const kc=parseFloat(document.getElementById('s_k2').value); const gamma=parseFloat(document.getElementById('s_g2').value); const g=9.81,dt=0.016; const a1= -g/L1*Math.sin(labs[2].th1) - kc*(labs[2].th1-labs[2].th2) - gamma*labs[2].w1; const a2= -g/L2*Math.sin(labs[2].th2) - kc*(labs[2].th2-labs[2].th1) - gamma*labs[2].w2; labs[2].w1+=a1*dt; labs[2].w2+=a2*dt; labs[2].th1+=labs[2].w1*dt; labs[2].th2+=labs[2].w2*dt; labs[2].hist.push({th1:labs[2].th1,th2:labs[2].th2}); if(labs[2].hist.length>400) labs[2].hist.shift(); const m=1; const e1=0.5*m*(L1*labs[2].w1)**2 + m*g*L1*(1-Math.cos(labs[2].th1)); const e2=0.5*m*(L2*labs[2].w2)**2 + m*g*L2*(1-Math.cos(labs[2].th2)); labs[2].enHist.push({e1:e1,e2:e2}); if(labs[2].enHist.length>400) labs[2].enHist.shift(); labs[2].draw(); requestAnimationFrame(labs[2].loop);};
+function excite1(){labs[2].reset(); labs[2].playing=true; document.getElementById('b2play').textContent='⏸ Pauză'; requestAnimationFrame(labs[2].loop);}
+function setEqualL(){document.getElementById('s_L2').value=document.getElementById('s_L1').value; document.getElementById('v_L2').textContent=parseFloat(document.getElementById('s_L1').value).toFixed(2)+' m'; labs[2].reset();}
+
+labs[3]={playing:false,th1:0.35,th2:0,w1:0,w2:0,t:0,mode:'batai',hist:[],reset(){if(this.mode==='sim'){this.th1=0.35;this.th2=0.35;}else if(this.mode==='anti'){this.th1=0.35;this.th2=-0.35;}else{this.th1=0.35;this.th2=0;} this.w1=0;this.w2=0;this.t=0;this.hist=[]; this.draw();},draw(){
+ const cM=document.getElementById('c3main'); const ctx=cM.getContext('2d'); const W=cM.width,H=cM.height; ctx.clearRect(0,0,W,H); ctx.fillStyle='#f8fafc';ctx.fillRect(0,0,W,H);
+ const L=parseFloat(document.getElementById('s_L3').value); const kc=parseFloat(document.getElementById('s_k3').value); const scale=85; const p1={x:W/2-80,y:50},p2={x:W/2+80,y:50};
+ const x1=p1.x+Math.sin(this.th1)*L*scale, y1=p1.y+Math.cos(this.th1)*L*scale; const x2=p2.x+Math.sin(this.th2)*L*scale, y2=p2.y+Math.cos(this.th2)*L*scale;
+ ctx.fillStyle='#0c4a6e';ctx.fillRect(p1.x-60,30,240,6); ctx.strokeStyle='#06b6d4';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x1,y1-8); for(let i=0;i<=12;i++){let t=i/12; let xx=x1+(x2-x1)*t+(i%2?5:-5); let yy=y1-8+(y2-y1)*t; if(i===0) ctx.moveTo(x1,y1-8); else ctx.lineTo(xx,yy);}ctx.stroke();
+ ctx.strokeStyle='#0e7490';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(x1,y1);ctx.moveTo(p2.x,p2.y);ctx.lineTo(x2,y2);ctx.stroke(); ctx.fillStyle='#06b6d4';ctx.beginPath();ctx.arc(x1,y1,13,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.beginPath();ctx.arc(x2,y2,13,0,Math.PI*2);ctx.fill();ctx.stroke();
+ const cT=document.getElementById('c3time'); const ctxT=cT.getContext('2d'); const Wt=cT.width,Ht=cT.height; ctxT.clearRect(0,0,Wt,Ht);ctxT.fillStyle='#fff';ctxT.fillRect(0,0,Wt,Ht); ctxT.strokeStyle='#e2e8f0';ctxT.beginPath();ctxT.moveTo(40,Ht/2);ctxT.lineTo(Wt-10,Ht/2);ctxT.stroke(); ctxT.strokeStyle='#0e7490';ctxT.beginPath(); for(let i=0;i<this.hist.length;i++){let p=this.hist[i]; let xx=40+i/500*(Wt-50); let yy=Ht/2 - p.th1*55; if(i===0) ctxT.moveTo(xx,yy); else ctxT.lineTo(xx,yy);}ctxT.stroke(); ctxT.strokeStyle='#f59e0b';ctxT.beginPath(); for(let i=0;i<this.hist.length;i++){let p=this.hist[i]; let xx=40+i/500*(Wt-50); let yy=Ht/2 - p.th2*55; if(i===0) ctxT.moveTo(xx,yy); else ctxT.lineTo(xx,yy);}ctxT.stroke();
+ const cS=document.getElementById('c3spec'); const ctxS=cS.getContext('2d'); const Ws=cS.width,Hs=cS.height; ctxS.clearRect(0,0,Ws,Hs);ctxS.fillStyle='#fff';ctxS.fillRect(0,0,Ws,Hs); const g=9.81,m=parseFloat(document.getElementById('s_m3').value); const ws=Math.sqrt(g/L),wa=Math.sqrt(g/L+2*kc/m); ctxS.fillStyle='#334155';ctxS.font='10px sans-serif';ctxS.fillText('ωs='+ws.toFixed(2)+' ωa='+wa.toFixed(2),10,12);
+ document.getElementById('f3out').textContent='ωs=√(g/L)='+ws.toFixed(2)+', ωa=√(g/L+2kc/m)='+wa.toFixed(2)+', Tb='+ (2*Math.PI/Math.abs(wa-ws)).toFixed(2)+'s';
+}};
+labs[3].loop=function(){if(!labs[3].playing) return; const L=parseFloat(document.getElementById('s_L3').value); const kc=parseFloat(document.getElementById('s_k3').value); const m=parseFloat(document.getElementById('s_m3').value); const g=9.81,gamma=0.02,dt=0.016; const a1= -g/L*Math.sin(labs[3].th1) - kc/m*(labs[3].th1-labs[3].th2) - gamma*labs[3].w1; const a2= -g/L*Math.sin(labs[3].th2) - kc/m*(labs[3].th2-labs[3].th1) - gamma*labs[3].w2; labs[3].w1+=a1*dt; labs[3].w2+=a2*dt; labs[3].th1+=labs[3].w1*dt; labs[3].th2+=labs[3].w2*dt; labs[3].hist.push({th1:labs[3].th1,th2:labs[3].th2}); if(labs[3].hist.length>500) labs[3].hist.shift(); labs[3].draw(); requestAnimationFrame(labs[3].loop);};
+function setMode3(mode){labs[3].mode=mode; document.getElementById('m3bata').classList.toggle('active', mode==='batai'); document.getElementById('m3sim').classList.toggle('active', mode==='sim'); document.getElementById('m3anti').classList.toggle('active', mode==='anti'); labs[3].reset();}
+
+labs[4]={playing:false,x:0.5,v:0,t:0,hist:[],reset(){this.x=0.5;this.v=0;this.t=0;this.hist=[];this.draw();},draw(){
+ const cM=document.getElementById('c4main'); const ctx=cM.getContext('2d'); const W=cM.width,H=cM.height; ctx.clearRect(0,0,W,H); ctx.fillStyle='#f8fafc';ctx.fillRect(0,0,W,H);
+ const m=parseFloat(document.getElementById('s_m4').value); const k=parseFloat(document.getElementById('s_k4').value); const c=parseFloat(document.getElementById('s_c4').value); const cc=2*Math.sqrt(m*k); const topY=60,rest=120,scale=80,massY=topY+rest+this.x*scale;
+ ctx.fillStyle='#0c4a6e';ctx.fillRect(W/2-60,30,120,8); ctx.strokeStyle='#0e7490';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(W/2,38); let ey=massY-22; for(let i=0;i<10;i++){let yy=38+(ey-38)*i/10; let xx=W/2 + (i%2?16:-16); if(i===0||i===9) xx=W/2; ctx.lineTo(xx,yy);}ctx.lineTo(W/2,ey);ctx.stroke();
+ ctx.fillStyle='#06b6d4';ctx.beginPath();ctx.roundRect(W/2-36,massY-22,72,44,8);ctx.fill();ctx.stroke();
+ let regime=c<cc*0.98?'SUBAMORTIZAT':c>cc*1.02?'SUPRAAMORTIZAT':'CRITIC'; let color=regime==='SUBAMORTIZAT'?'#0e7490':regime==='CRITIC'?'#0c4a6e':'#f59e0b'; ctx.fillStyle=color;ctx.font='bold 12px sans-serif';ctx.fillText(regime,W/2+80,60);
+ document.getElementById('f4out').innerHTML='r ≡ c = '+c.toFixed(1)+' Ns/m, c_crit=2√(mk)='+cc.toFixed(2)+' → '+regime+' (b=r/2m='+(c/(2*m)).toFixed(2)+')';
+ const cT=document.getElementById('c4time'); const ctxT=cT.getContext('2d'); const Wt=cT.width,Ht=cT.height; ctxT.clearRect(0,0,Wt,Ht);ctxT.fillStyle='#fff';ctxT.fillRect(0,0,Wt,Ht); ctxT.strokeStyle='#e2e8f0';ctxT.beginPath();ctxT.moveTo(40,Ht/2);ctxT.lineTo(Wt-10,Ht/2);ctxT.stroke(); ctxT.strokeStyle=color;ctxT.lineWidth=1.8;ctxT.beginPath(); for(let i=0;i<this.hist.length;i++){let p=this.hist[i]; let xx=40+i/600*(Wt-50); let yy=Ht/2 - p.x*70; if(i===0) ctxT.moveTo(xx,yy); else ctxT.lineTo(xx,yy);}ctxT.stroke();
+}};
+labs[4].loop=function(){if(!labs[4].playing) return; const m=parseFloat(document.getElementById('s_m4').value); const k=parseFloat(document.getElementById('s_k4').value); const c=parseFloat(document.getElementById('s_c4').value); const dt=0.016; const a=(-k*labs[4].x - c*labs[4].v)/m; labs[4].v+=a*dt; labs[4].x+=labs[4].v*dt; labs[4].hist.push({x:labs[4].x,v:labs[4].v}); if(labs[4].hist.length>600) labs[4].hist.shift(); labs[4].draw(); if(Math.abs(labs[4].x)<0.001 && Math.abs(labs[4].v)<0.001){labs[4].playing=false; document.getElementById('b4play').textContent='▶ Play';} else requestAnimationFrame(labs[4].loop);};
+function bump4(){labs[4].x=0.8;labs[4].v=0;labs[4].hist=[];labs[4].playing=true;document.getElementById('b4play').textContent='⏸ Pauză';requestAnimationFrame(labs[4].loop);}
+
+function bindSliders(){const maps=[['s_w0','v_w0',v=>parseFloat(v).toFixed(2)+' rad/s'],['s_Om','v_Om',v=>parseFloat(v).toFixed(2)+' rad/s'],['s_b','v_b',v=>v],['s_F0','v_F0',v=>parseFloat(v).toFixed(1)+' N'],['s_L1','v_L1',v=>parseFloat(v).toFixed(2)+' m'],['s_L2','v_L2',v=>parseFloat(v).toFixed(2)+' m'],['s_k2','v_k2',v=>v],['s_g2','v_g2',v=>v],['s_th1','v_th1',v=>v+'°'],['s_L3','v_L3',v=>parseFloat(v).toFixed(1)+' m'],['s_k3','v_k3',v=>parseFloat(v).toFixed(1)+' N/m'],['s_m3','v_m3',v=>parseFloat(v).toFixed(1)+' kg'],['s_m4','v_m4',v=>parseFloat(v).toFixed(1)+' kg'],['s_k4','v_k4',v=>v+' N/m'],['s_c4','v_c4',v=>v+' Ns/m']]; maps.forEach(([sid,vid,fmt])=>{const s=document.getElementById(sid); if(!s) return; s.addEventListener('input',()=>{document.getElementById(vid).textContent=fmt(s.value); labs[1].draw&&labs[1].draw(); labs[2].draw&&labs[2].draw(); labs[3].draw&&labs[3].draw(); labs[4].draw&&labs[4].draw();});});}
+bindSliders();
+function autoSweep(n){labs[1].OmSweep=true; if(!labs[1].playing){labs[1].playing=true;document.getElementById('b1play').textContent='⏸ Pauză'; requestAnimationFrame(labs[1].loop);} }
+
+const questions=[
+{ q:"1. Relația dintre r și b este:", opts:["r = b","r = 2·m·b și b = r/(2m)","r = b²"], ans:1, exp:"r [Ns/m] este coeficientul de frecare vâscoasă, b [s⁻¹] este factorul de amortizare."},
+{ q:"2. Forța excitatoare F₀cosΩt trebuie să fie:", opts:["Perpendiculară pe deplasare","Coliniară cu deplasarea x","Orizontală mereu"], ans:1, exp:"Doar componenta coliniară efectuează lucru mecanic."},
+{ q:"3. Rezonanța apare când:", opts:["Ω≪ω₀","Ω≈ω₀","Ω≫ω₀"], ans:1, exp:"Transfer maxim când pulsația excitatorului = pulsația proprie."},
+{ q:"4. Amplitudinea la rezonanță A_max =", opts:["F₀/k","F₀/(r·ω₀)=F₀/(2mbω₀)","0"], ans:1, exp:"Limitată doar de amortizare."},
+{ q:"5. Cuplaj slab: transfer complet când:", opts:["T1≠T2","T1=T2","m1≠m2"], ans:1, exp:"Condiția de rezonanță între pendule."},
+{ q:"6. Mod simetric:", opts:["ω mare, resort solicitat","ω=√(g/L), resort neîntins, în fază","fără oscilație"], ans:1, exp:"În fază resortul nu se întinde."},
+{ q:"7. Bătăi = ?", opts:["Un singur mod","Superpoziția modurilor simetric+antisimetric","Doar frecare"], ans:1, exp:"Interferența a două frecvențe apropiate."},
+{ q:"8. Tacoma Narrows:", opts:["Prea greu","Rezonanță aeroelastică la vânt","Corodare"], ans:1, exp:"Vânt cu pulsație apropiată de modul torsional."},
+{ q:"9. Millennium Bridge:", opts:["Mașini","Excitație laterală sincronă de la pași 1Hz","Cutremur"], ans:1, exp:"Pietoni sincronizați cu balansul lateral."},
+{ q:"10. c_crit pentru amortizor:", opts:["√(mk)","2√(mk)","k/m"], ans:1, exp:"c_crit=2√(mk)."},
+];
+let quizAnswers=Array(questions.length).fill(-1);
+function renderQuiz(){const container=document.getElementById('quiz'); container.innerHTML=''; questions.forEach((qq,i)=>{const div=document.createElement('div'); div.className='q'; div.id='q'+i; div.innerHTML=`<h4>${qq.q}</h4>`+qq.opts.map((o,j)=>`<label><input type="radio" name="q${i}" value="${j}" onchange="quizAnswers[${i}]=${j}"><span>${o}</span></label>`).join('')+`<div class="muted" id="exp${i}" style="display:none;margin-top:4px"></div>`; container.appendChild(div);});}
+function checkQuiz(){let score=0; questions.forEach((qq,i)=>{const div=document.getElementById('q'+i); const exp=document.getElementById('exp'+i); const sel=quizAnswers[i]; div.classList.remove('correct','wrong'); if(sel===-1){exp.style.display='block'; exp.textContent=qq.exp; return;} if(sel===qq.ans){score++; div.classList.add('correct'); exp.textContent='✓ Corect! '+qq.exp;} else {div.classList.add('wrong'); exp.textContent='✗ Greșit. Corect: '+qq.opts[qq.ans]+'. '+qq.exp;} exp.style.display='block';}); document.getElementById('scoreBox').textContent='Scor: '+score+' / '+questions.length; window._lastScore=score;}
+function resetQuiz(){quizAnswers=Array(questions.length).fill(-1); renderQuiz(); document.getElementById('scoreBox').textContent='Scor: — / 10';}
+function exportQuizCSV(){let csv='Intrebare,Raspuns dat,Corect,OK\n'; questions.forEach((qq,i)=>{let dat=quizAnswers[i]>=0?qq.opts[quizAnswers[i]]:'-'; let cor=qq.opts[qq.ans]; let ok=quizAnswers[i]===qq.ans?'DA':'NU'; csv+=`"${qq.q}","${dat}","${cor}",${ok}\n`;}); downloadFile('quiz_rezultate.csv',csv);}
+function genRaport(){const nume=document.getElementById('elevNume').value||'Elev'; const clasa=document.getElementById('elevClasa').value||'-'; let txt=`RAPORT LABORATOR - Oscilatori cuplati\nElev: ${nume} Clasa: ${clasa}\nData: ${new Date().toLocaleString('ro-RO')}\nDefinitii: k [N/m] elastica, r [Ns/m] coef frecare vascoasa Fr=-r·v, b=r/(2m) [s⁻¹] factor amortizare\nForta externa F(t)=F0cosΩt coliniara cu x\nParametri: ω0=${document.getElementById('s_w0').value}, Ω=${document.getElementById('s_Om').value}, b=${document.getElementById('s_b').value}, r=2mb=${(2*1*parseFloat(document.getElementById('s_b').value)).toFixed(2)}\nQuiz scor: ${window._lastScore!==undefined?window._lastScore+'/10':'neefectuat'}\n`; downloadFile(`Raport_${nume.replace(/\s+/g,'_')}.txt`,txt,'text/plain');}
+renderQuiz();
+window.addEventListener('load',()=>{drawTeo(); labs[1].reset(); labs[2].reset(); labs[3].reset(); labs[4].reset(); labs[1].draw(); labs[2].draw(); labs[3].draw(); labs[4].draw();});
+</script>
+</body>
+</html>

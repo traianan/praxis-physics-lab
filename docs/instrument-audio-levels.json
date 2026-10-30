@@ -1,0 +1,294 @@
+{
+  "date": "2026-10-27",
+  "method": "Chromium OfflineAudioContext, deterministic reference synthesis, actual production instrumentOutput processing; RMS first 1 s before user master; not a LUFS or speaker SPL measurement",
+  "sampleRate": 48000,
+  "reference": {
+    "guitar": {
+      "before": {
+        "peak": 0.6717633605003357,
+        "rms1": 0.2169406487848333,
+        "rms05": 0.24006887591349535,
+        "finite": true
+      },
+      "after": {
+        "peak": 0.836117684841156,
+        "rms1": 0.3224078878377973,
+        "rms05": 0.3143699376975671,
+        "finite": true
+      }
+    },
+    "bowl": {
+      "before": {
+        "peak": 0.6888887286186218,
+        "rms1": 0.17740709229374435,
+        "rms05": 0.2095297049500004,
+        "finite": true
+      },
+      "after": {
+        "peak": 0.8187360167503357,
+        "rms1": 0.3920627823524266,
+        "rms05": 0.3748450743599575,
+        "finite": true
+      }
+    },
+    "drum": {
+      "before": {
+        "peak": 0.7238509058952332,
+        "rms1": 0.16853082942360145,
+        "rms05": 0.2267825857338714,
+        "finite": true
+      },
+      "after": {
+        "peak": 0.8343806862831116,
+        "rms1": 0.4752136096149128,
+        "rms05": 0.46474462381851867,
+        "finite": true
+      }
+    },
+    "xylophone": {
+      "before": {
+        "peak": 1.3991750478744507,
+        "rms1": 0.17595436210085738,
+        "rms05": 0.24705672643238982,
+        "finite": true
+      },
+      "after": {
+        "peak": 0.8134931325912476,
+        "rms1": 0.3126099669555808,
+        "rms05": 0.41657603608042487,
+        "finite": true
+      }
+    }
+  },
+  "spreadDb": 3.6377209870817,
+  "stress": [
+    {
+      "id": "guitar",
+      "options": {
+        "frequency": 55
+      },
+      "result": {
+        "peak": 0.8301520943641663,
+        "rms1": 0.32736455730477926,
+        "rms05": 0.32175619175702597,
+        "finite": true
+      }
+    },
+    {
+      "id": "guitar",
+      "options": {
+        "frequency": 220,
+        "strike": 0.1,
+        "decay": 0.999,
+        "cutoff": 5000
+      },
+      "result": {
+        "peak": 0.821038007736206,
+        "rms1": 0.29075826183983294,
+        "rms05": 0.2697713860401873,
+        "finite": true
+      }
+    },
+    {
+      "id": "guitar",
+      "options": {
+        "frequency": 110,
+        "strike": 0.9,
+        "decay": 0.95,
+        "cutoff": 1000
+      },
+      "result": {
+        "peak": 0.8133488893508911,
+        "rms1": 0.15591895936783545,
+        "rms05": 0.21766163350505785,
+        "finite": true
+      }
+    },
+    {
+      "id": "bowl",
+      "options": {
+        "frequency": 100,
+        "force": 1
+      },
+      "result": {
+        "peak": 0.8371050357818604,
+        "rms1": 0.4200607189591166,
+        "rms05": 0.4020512578286112,
+        "finite": true
+      }
+    },
+    {
+      "id": "bowl",
+      "options": {
+        "frequency": 300,
+        "force": 1,
+        "material": "sticla"
+      },
+      "result": {
+        "peak": 0.8699620366096497,
+        "rms1": 0.37902107564918014,
+        "rms05": 0.3637241399890412,
+        "finite": true
+      }
+    },
+    {
+      "id": "bowl",
+      "options": {
+        "frequency": 200,
+        "force": 0.2,
+        "material": "alama"
+      },
+      "result": {
+        "peak": 0.19608312845230103,
+        "rms1": 0.05556976865512677,
+        "rms05": 0.06414919088713379,
+        "finite": true
+      }
+    },
+    {
+      "id": "drum",
+      "options": {
+        "frequency": 60,
+        "strike": 0
+      },
+      "result": {
+        "peak": 0.8209893703460693,
+        "rms1": 0.5171030559542757,
+        "rms05": 0.5060402156055094,
+        "finite": true
+      }
+    },
+    {
+      "id": "drum",
+      "options": {
+        "frequency": 250,
+        "strike": 0.95
+      },
+      "result": {
+        "peak": 0.7170128226280212,
+        "rms1": 0.16965221398461497,
+        "rms05": 0.2176152211539416,
+        "finite": true
+      }
+    },
+    {
+      "id": "drum",
+      "options": {
+        "frequency": 120,
+        "strike": 0.228
+      },
+      "result": {
+        "peak": 0.8373355865478516,
+        "rms1": 0.47032299819611106,
+        "rms05": 0.4595119217221884,
+        "finite": true
+      }
+    },
+    {
+      "id": "drum",
+      "options": {
+        "frequency": 120,
+        "strike": 0,
+        "mode": 1
+      },
+      "result": {
+        "peak": 0,
+        "rms1": 0,
+        "rms05": 0,
+        "finite": true
+      }
+    },
+    {
+      "id": "xylophone",
+      "options": {
+        "frequency": 200
+      },
+      "result": {
+        "peak": 0.8139200210571289,
+        "rms1": 0.31838483244718974,
+        "rms05": 0.42516852197373445,
+        "finite": true
+      }
+    },
+    {
+      "id": "xylophone",
+      "options": {
+        "frequency": 800
+      },
+      "result": {
+        "peak": 0.8085401654243469,
+        "rms1": 0.30882916552760026,
+        "rms05": 0.4109349435176238,
+        "finite": true
+      }
+    },
+    {
+      "id": "guitar",
+      "options": {
+        "hits": [
+          0,
+          0.03,
+          0.06,
+          0.09
+        ]
+      },
+      "result": {
+        "peak": 0.8282120227813721,
+        "rms1": 0.35230762445747305,
+        "rms05": 0.34170990160320774,
+        "finite": true
+      }
+    },
+    {
+      "id": "bowl",
+      "options": {
+        "hits": [
+          0,
+          0.03,
+          0.06,
+          0.09
+        ]
+      },
+      "result": {
+        "peak": 0.8247476816177368,
+        "rms1": 0.34466764486859797,
+        "rms05": 0.3454112056264716,
+        "finite": true
+      }
+    },
+    {
+      "id": "drum",
+      "options": {
+        "hits": [
+          0,
+          0.03,
+          0.06,
+          0.09
+        ]
+      },
+      "result": {
+        "peak": 0.8289839029312134,
+        "rms1": 0.5032195294250369,
+        "rms05": 0.48776445683744,
+        "finite": true
+      }
+    },
+    {
+      "id": "xylophone",
+      "options": {
+        "hits": [
+          0,
+          0.03,
+          0.06,
+          0.09
+        ]
+      },
+      "result": {
+        "peak": 0.8746752142906189,
+        "rms1": 0.3265443078961682,
+        "rms05": 0.4201398394465078,
+        "finite": true
+      }
+    }
+  ]
+}

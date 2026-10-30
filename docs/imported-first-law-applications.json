@@ -1,0 +1,48 @@
+{
+  "id": "principiul-i-aplicatii",
+  "source": "principiul-i-aplicatii",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "c959e0bd563b18b00972fcf18c1441e4ea03fa3c2161dfed32d91becb9724dfc"
+    },
+    {
+      "path": "css/styles.css",
+      "sha256": "0e117dee7d63d05f337f9e72bc99e6ab99a8767f495b76ab84abe9b6f6d53156"
+    },
+    {
+      "path": "js/math.js",
+      "sha256": "1040dc2cc49d1c49113479a70ef46192120f16d72314fb87224c96ce97911be1"
+    },
+    {
+      "path": "js/i18n.js",
+      "sha256": "5b4e76d462f563a468cd5d5dfb01e92d030c4447d2d968298120bb1d134b5c71"
+    },
+    {
+      "path": "js/audio.js",
+      "sha256": "de6ac6233783e4f34662fe276a2e6ecc71fe462079f05779dea1f96aa27108ec"
+    },
+    {
+      "path": "js/sims.js",
+      "sha256": "33f20ef8a9680273c8e8178450466eeb98bf9f9449800d73c72d5e2664ad4b7c"
+    },
+    {
+      "path": "js/quiz.js",
+      "sha256": "00bb68d2916ace4e4aceb65d10dd516257bf77da518566db03c9e86077209f16"
+    },
+    {
+      "path": "js/app.js",
+      "sha256": "06f516c4f6c85f330c463f3102ecad888379824dd79cf0efee47077d9f81cb01"
+    }
+  ],
+  "sections": 11,
+  "simulations": 9,
+  "questions": 13,
+  "adaptations": [
+    "Shared header, local RO/EN JSON, sound and display preferences",
+    "Responsive topic tabs and preserved simulation state",
+    "Stable canvas dimensions across pixel ratio changes",
+    "Consistent diatomic heat capacities for polytropic calculator",
+    "Keyboard accessible worked solutions"
+  ]
+}

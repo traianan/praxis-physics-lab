@@ -1,0 +1,221 @@
+{
+  "version": "1.1.0",
+  "stylesheets": [
+    "tokens.css",
+    "components.css",
+    "lab-layout.css",
+    "laboratory.css",
+    "compact.css"
+  ],
+  "principles": {
+    "minimumTouchTarget": 44,
+    "languageContent": "JSON namespaces; no translations in styles",
+    "boardScale": "100–300%; automatic fit and pagination",
+    "formulas": "Scientific symbols and Cartesian conventions are identical in RO and EN"
+  },
+  "components": {
+    "labHeader": {
+      "script": "shared/lab-header.js",
+      "stylesheet": "design-system/lab-layout.css",
+      "selector": ".praxis-lab-header",
+      "desktopHeight": 68,
+      "logoAction": "Home clears filters and opens all chapters",
+      "sharedBy": [
+        "oglinzi-si-lentile",
+        "miscarea-rectilinie",
+        "calcul-vectorial",
+        "unde-mecanice"
+      ]
+    },
+    "primaryButton": {
+      "selector": ".button.primary",
+      "background": "--praxis-color-primary",
+      "text": "white",
+      "radius": "--praxis-radius-control",
+      "minimumHeight": "--praxis-target-min"
+    },
+    "secondaryButton": {
+      "selector": ".button.secondary",
+      "surface": "--praxis-color-surface",
+      "border": "--praxis-color-border",
+      "text": "--praxis-color-primary"
+    },
+    "iconButton": {
+      "selector": ".icon-button",
+      "minimumHeight": 44,
+      "accessibleName": "required"
+    },
+    "slider": {
+      "selector": "input[type=range]",
+      "accent": "--praxis-color-primary",
+      "touchThumb": "--praxis-slider-thumb",
+      "fineControls": "minus / plus, 44px each; units and step declared by the simulation"
+    },
+    "numberField": {
+      "selector": "input[type=number]",
+      "locale": "PraxisI18n.locale",
+      "units": "display separately; never concatenate into input value"
+    },
+    "languageSelector": {
+      "selector": ".praxis-language",
+      "options": [
+        "ro",
+        "en"
+      ],
+      "minimumHeight": 44
+    },
+    "soundToggle": {
+      "selector": ".praxis-sound-toggle",
+      "default": "off",
+      "volumeControl": "deferred until a laboratory requires physical sound"
+    },
+    "formula": {
+      "selector": ".formula, .fraction",
+      "font": "--praxis-font-formula",
+      "scientificNotation": "retain signs, units, symbols; explanatory text belongs to locale JSON"
+    },
+    "card": {
+      "selectors": [
+        ".chapter-card",
+        ".simulation-card",
+        ".lb-chapter"
+      ],
+      "radius": "--praxis-radius-card",
+      "border": "--praxis-color-border"
+    },
+    "dialog": {
+      "selector": "dialog",
+      "radius": "--praxis-radius-dialog",
+      "shadow": "--praxis-shadow-dialog",
+      "interaction": "native focus containment, Escape, explicit close button"
+    },
+    "advertisement": {
+      "selector": ".ad-slot",
+      "empty": "hidden; no layout space",
+      "excludedModes": [
+        "local",
+        "offline",
+        "board",
+        "simulation"
+      ]
+    },
+    "scientificColorSelector": {
+      "selector": "#course-colors",
+      "options": [
+        "praxis",
+        "vivid"
+      ],
+      "scope": "semantic Canvas and plot colors",
+      "persisted": true
+    },
+    "touchMode": {
+      "selector": "#course-touch",
+      "minimumTarget": 52,
+      "sliderThumb": 32,
+      "vectorHandleRadius": 34,
+      "state": "aria-pressed",
+      "persisted": true
+    },
+    "lessonHeading": {
+      "selectors": [
+        "#praxis-original h1",
+        "#praxis-original h2",
+        "#praxis-original h3",
+        "#praxis-original h4"
+      ],
+      "tokens": [
+        "--praxis-text-title",
+        "--praxis-text-heading",
+        "--praxis-text-subheading",
+        "--praxis-text-minor-heading"
+      ],
+      "basePixels": [
+        30,
+        24,
+        20,
+        18
+      ],
+      "font": "--praxis-font-ui",
+      "color": "--praxis-color-ink",
+      "responsiveScale": "rem; follows Text / display preference",
+      "decoration": "none",
+      "sectionHeaderLayout": "full-width block"
+    },
+    "laboratoryPresentation": {
+      "stylesheet": "design-system/laboratory.css",
+      "scope": "body[data-praxis-laboratory]",
+      "body": "--praxis-text-body",
+      "buttonAndField": "--praxis-text-label",
+      "caption": "--praxis-text-small",
+      "minimumControlHeight": 44,
+      "touchControlHeight": 52,
+      "sliderTrack": 4,
+      "thumb": 26,
+      "touchThumb": 32,
+      "scientificContent": "preserve formulas, coordinates and semantic colour palettes",
+      "boardMode": "retains its adaptive scaling"
+    },
+    "physicalAudioVolume": {
+      "selector": ".praxis-wave-volume",
+      "range": [
+        0,
+        100
+      ],
+      "step": 1,
+      "default": 35,
+      "mute": "PraxisSound.enabled",
+      "storage": "praxis-waves-volume",
+      "scope": "synthesis and audio clips"
+    },
+    "instrumentLayout": {
+      "selector": "[data-instrument-layout]",
+      "columns": "drawing + analysis/controls on desktop; stacked on narrow screens",
+      "figureScale": "native aspect ratio; bounded rem sizes follow reading zoom",
+      "recordingHelp": "native details/summary; content retained",
+      "emptySignal": "compact prompt until the first generated signal",
+      "minimumTarget": 44
+    },
+    "scientificPalette": {
+      "script": "shared/scientific-colors.js",
+      "storageKey": "praxis-course-colors",
+      "modes": [
+        "praxis",
+        "vivid"
+      ],
+      "scope": "All laboratory Canvas, gradients, SVG and legends; spectral wavelengths retain physical colours"
+    },
+    "link": {
+      "selector": "a[href]",
+      "stylesheet": "design-system/links.css",
+      "colorToken": "--praxis-color-link",
+      "states": "normal, visited, hover and active share one colour",
+      "distribution": "scripts/link-presentation.mjs embeds the shared rule in library, labs and offline exports"
+    }
+  },
+  "scientificPalettes": {
+    "calm": {
+      "object": "--praxis-optics-calm-object",
+      "image": "--praxis-optics-calm-image"
+    },
+    "vivid": {
+      "object": "--praxis-optics-vivid-object",
+      "image": "--praxis-optics-vivid-image"
+    },
+    "note": "Educational ray and wavelength colours are semantic exceptions, shared UI controls still use the common tokens."
+  },
+  "contentTypes": {
+    "catalog": "design-system/content-types.json",
+    "runtime": "shared/content-types.js",
+    "attribute": "data-content-type",
+    "iconFamilies": [
+      "book",
+      "flask",
+      "chart",
+      "pencil",
+      "check",
+      "formula",
+      "link"
+    ],
+    "policy": "Use one small decorative icon per meaningful heading or navigation item. Keep its text label. Never decorate individual equations, scientific symbols, controls or every paragraph."
+  }
+}

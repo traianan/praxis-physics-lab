@@ -1,0 +1,10 @@
+{
+  "favicon": "public/assets/favicon.svg",
+  "format": "embedded SVG, identical on all pages",
+  "verified": {
+    "public": 10,
+    "dist": 10,
+    "outputs/offline-lessons": 8,
+    "standaloneArchives": 8
+  }
+}

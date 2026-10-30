@@ -1,0 +1,72 @@
+{
+  "locale": "en",
+  "namespace": "chapters/sunete-si-unde",
+  "title": "Sound and waves",
+  "messages": {
+    "Sunete și unde": "Sound and waves",
+    "SUNETE ȘI UNDE": "SOUND AND WAVES"
+  },
+  "simulations": {
+    "unde-mecanice": {
+      "title": "Mechanical waves",
+      "subtitle": "Waves, sound and experiments",
+      "description": "19 topics covering propagation, interference, sound, musical instruments and seismic waves, with 7 problems, tests and a laboratory journal.",
+      "alt": "Wavefronts and harmonic oscillations",
+      "tags": [
+        "Waves",
+        "Sound",
+        "Experiments",
+        "Offline"
+      ],
+      "keywords": "mechanical waves sound acoustics interference doppler huygens tsunami seismic sonometer kundt"
+    },
+    "oscilator-mecanic": {
+      "title": "Mechanical oscillator",
+      "subtitle": "Periodic phenomena and harmonic oscillations",
+      "description": "Four topics, eleven demonstrations and six worked problems: quantities, damping, phase, pendulums and energy.",
+      "alt": "Spring–mass oscillator and displacement graph",
+      "tags": [
+        "Oscillations",
+        "Pendulums",
+        "Problems",
+        "Offline"
+      ]
+    },
+    "oscilatori-mecanici-cuplati": {
+      "title": "Coupled mechanical oscillators",
+      "subtitle": "Resonance, energy transfer and normal modes",
+      "description": "Four interactive experiments on forced oscillations, weak and strong coupling, beats and damping; ten questions, CSV exports and a report.",
+      "alt": "Two spring-coupled pendulums exchanging energy",
+      "tags": [
+        "Oscillations",
+        "Resonance",
+        "Experiments",
+        "Offline"
+      ]
+    },
+    "compunerea-oscilatiilor": {
+      "title": "Superposition of oscillations",
+      "subtitle": "Perpendicular oscillations and Lissajous figures",
+      "description": "Equal and different angular frequencies, 12 presets, nine quick ratios, contacts, symmetries, pauses at extrema, sound and PNG export, with seven theory topics.",
+      "alt": "Lissajous figure and its component oscillations along perpendicular axes",
+      "tags": [
+        "Oscillations",
+        "Lissajous",
+        "Experiments",
+        "Offline"
+      ]
+    },
+    "figuri-chladni": {
+      "title": "Chladni figures",
+      "subtitle": "Nodes, resonance and vibrating disks",
+      "description": "19 modal families on a metal disk, animated sand, a touch-controlled exciter, frequency, materials and geometry, with theory, activities and self-checks.",
+      "alt": "Sand along nodal diameters and circles on a metal disk",
+      "tags": [
+        "Oscillations",
+        "Resonance",
+        "Touch",
+        "Offline"
+      ]
+    }
+  }
+}

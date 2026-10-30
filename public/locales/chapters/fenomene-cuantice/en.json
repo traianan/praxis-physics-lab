@@ -1,0 +1,10 @@
+{
+  "locale": "en",
+  "namespace": "chapters/fenomene-cuantice",
+  "title": "Quantum phenomena",
+  "messages": {
+    "Fenomene cuantice": "Quantum phenomena",
+    "FENOMENE CUANTICE": "QUANTUM PHENOMENA"
+  },
+  "simulations": {}
+}

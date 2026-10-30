@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-28",
+  "method": "All three views, all substances, mass endpoints; actual glyph centering and fit within fixed boxes; tablet touch RO/EN",
+  "results": [
+    {
+      "viewport": "768x1024",
+      "language": "ro",
+      "samples": 44,
+      "issues": [],
+      "title": "Fig. 4 — Masă molară și cantitate de substanță",
+      "legend": "Mr, μ, ν, N, m, amestecuri"
+    },
+    {
+      "viewport": "768x1024",
+      "language": "en",
+      "samples": 44,
+      "issues": [],
+      "title": "Fig. 4 — Molar mass and amount of substance",
+      "legend": "Mr, μ, ν, N, m, mixtures"
+    },
+    {
+      "viewport": "1024x768",
+      "language": "ro",
+      "samples": 44,
+      "issues": [],
+      "title": "Fig. 4 — Masă molară și cantitate de substanță",
+      "legend": "Mr, μ, ν, N, m, amestecuri"
+    },
+    {
+      "viewport": "1024x768",
+      "language": "en",
+      "samples": 44,
+      "issues": [],
+      "title": "Fig. 4 — Molar mass and amount of substance",
+      "legend": "Mr, μ, ν, N, m, mixtures"
+    }
+  ]
+}

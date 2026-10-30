@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="1.4 Aplicarea principiului I al termodinamicii la transformările gazului ideal — teorie, demonstrații interactive și probleme. Mantea & Garabet, Fizica clasa a X-a." />
+<meta name="color-scheme" content="dark" />
+<title>1.4 · Aplicarea principiului I al termodinamicii | Fizica clasa a X-a</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0e17'/%3E%3Cpath d='M7 22V10h5M7 16h4M15 22l4-12 4 12M16.5 18h5' stroke='%233b82f6' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Sari la conținut</a>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#home" data-nav="home">
+      <span class="brand-mark" aria-hidden="true">ΔU</span>
+      <span class="brand-text">
+        <strong>Principiul I</strong>
+        <small data-i18n="brand.sub">Aplicații · gazul ideal</small>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Navigare principală">
+      <a href="#home" data-nav="home" data-i18n="nav.home">Home</a>
+      <div class="nav-group">
+        <button class="nav-group-btn" type="button" aria-expanded="false">
+          <span data-i18n="nav.group.theory">Teorie</span> <span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-flyout">
+          <a href="#calorice" data-nav="calorice" data-i18n="sec.calorice.short">1.4 · Căldurile molare</a>
+          <a href="#tabel141" data-nav="tabel141" data-i18n="sec.tabel141.short">Tabel 1.4.1 · valori experimentale</a>
+          <a href="#izocor" data-nav="izocor" data-i18n="tr.izocor.short">Transformarea izocoră</a>
+          <a href="#izobar" data-nav="izobar" data-i18n="tr.izobar.short">Transformarea izobară</a>
+          <a href="#izoterm" data-nav="izoterm" data-i18n="tr.izoterm.short">Transformarea izotermă</a>
+          <a href="#adiabat" data-nav="adiabat" data-i18n="tr.adiabat.short">Transformarea adiabatică</a>
+          <a href="#sinteza" data-nav="sinteza" data-i18n="sec.sinteza.short">Tabelul 1.4.2 · sinteză</a>
+          <a href="#politrop" data-nav="politrop" data-i18n="sec.politrop.short">1.4.1 · Procese politrope</a>
+        </div>
+      </div>
+      <a href="#quiz" data-nav="quiz" data-i18n="nav.quiz">Verificare</a>
+      <a href="#resurse" data-nav="resurse" data-i18n="nav.links">Linkuri</a>
+    </nav>
+
+    <div class="header-tools">
+      <div class="lang-switch" role="group" aria-label="Limbă / Language">
+        <button type="button" data-lang="ro" class="on">RO</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <button class="icon-btn" id="soundBtn" type="button" aria-pressed="true" title="Sunet pornit/oprit">
+        <span class="snd-on" aria-hidden="true">♪</span>
+        <span data-i18n="ui.sound">Sunet</span>
+      </button>
+      <a class="icon-btn" href="https://traianan.github.io/" target="_blank" rel="noopener noreferrer" title="Pagina principală">
+        <span aria-hidden="true">⌂</span><span data-i18n="ui.home">Home</span>
+      </a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+  </div>
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+</header>
+
+<!-- ============================ MAIN ============================ -->
+<main id="main">
+
+<!-- ---------------------------- HOME ---------------------------- -->
+<section class="view on" id="view-home">
+  <div class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="home.eyebrow">Fizică · clasa a X-a · Termodinamică</p>
+      <h1><span data-i18n="home.title1">Aplicarea principiului I</span> <em data-i18n="home.title2">la transformările gazului ideal</em></h1>
+      <p class="lead" data-i18n="home.lead">Subcapitolul 1.4, paginile 33–38 din manualul Mantea &amp; Garabet: de la căldurile molare la procesele politrope, cu demonstrații interactive, formule, probleme rezolvate și un test de verificare.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#calorice" data-nav="calorice" data-i18n="home.cta.start">Începe lecția</a>
+        <a class="btn ghost" href="#quiz" data-nav="quiz" data-i18n="home.cta.quiz">Sari la verificare</a>
+        <a class="btn ghost" href="#sinteza" data-nav="sinteza" data-i18n="home.cta.table">Tabelul sinteză</a>
+      </div>
+      <ul class="hero-facts">
+        <li><b>4</b><span data-i18n="home.fact.processes">transformări studiate</span></li>
+        <li><b>5</b><span data-i18n="home.fact.examples">probleme rezolvate din manual</span></li>
+       <li><b>13</b><span data-i18n="home.fact.quiz">întrebări de verificare</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-panel">
+      <div class="law-card">
+        <p class="law-label" data-i18n="home.law.label">Principiul I al termodinamicii</p>
+        <div class="fx big" data-fx="\Delta U = Q_{if} - L_{if}"></div>
+        <p class="law-note" data-i18n="home.law.note">Variația energiei interne egalează căldura primită minus lucrul mecanic efectuat de gaz.</p>
+      </div>
+      <div class="mini-tiles">
+        <a href="#izocor" data-nav="izocor" class="tile"><span class="tile-k">V</span><span data-i18n="tr.izocor.short">Izocoră</span><small>L = 0</small></a>
+        <a href="#izobar" data-nav="izobar" class="tile"><span class="tile-k">p</span><span data-i18n="tr.izobar.short">Izobară</span><small data-fx-inline="L = p\,\Delta V"></small></a>
+        <a href="#izoterm" data-nav="izoterm" class="tile"><span class="tile-k">T</span><span data-i18n="tr.izoterm.short">Izotermă</span><small>ΔU = 0</small></a>
+        <a href="#adiabat" data-nav="adiabat" class="tile"><span class="tile-k">Q</span><span data-i18n="tr.adiabat.short">Adiabatică</span><small>Q = 0</small></a>
+      </div>
+      <div class="offline-chip" data-i18n="home.offline">Funcționează complet offline · fără biblioteci externe</div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <span class="notice-icon" aria-hidden="true">✎</span>
+    <div>
+      <b data-i18n="home.err.title">Corecturi aduse textului manualului</b>
+      <ul class="err-list">
+        <li><b data-i18n="home.err1.tag">Ex. 1.4.2, p.35</b> — <span data-i18n="home.err1.body">la calculul final manualul înmulțește cu 2 în loc de 1: (p₂/p₁ − 1) = (200/100 − 1) = 1. Răspunsul corect este Q ≈ 210 J, nu 420,2 J.</span></li>
+        <li><b data-i18n="home.err2.tag">Ex. 1.4.4, p.37</b> — <span data-i18n="home.err2.body">enunțul cere lucrul a „1 kmol de gaz”, dar datele (V₁ = 10 cm³, p₁ = 1 bar) corespund la circa 4·10⁻⁷ mol. Rezultatul 0,6 J e corect pentru volumele date, nu pentru 1 kmol.</span></li>
+        <li><b data-i18n="home.err3.tag">p.35</b> — <span data-i18n="home.err3.body">propoziția care aplică principiul I în transformarea izobară rămâne neterminată („se găsește că …”); forma corectă este ΔU = Q − L = ν(C_p − C_V)ΔT = νC_VΔT.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="block">
+    <h2 data-i18n="home.map.title">Harta subcapitolului</h2>
+    <ol class="toc">
+      <li><a href="#calorice" data-nav="calorice"><b>1.4</b><span data-i18n="home.map.1">Căldurile molare ale gazului ideal — deducerea C_V, C_p și a relației lui R. Mayer</span></a></li>
+      <li><a href="#tabel141" data-nav="tabel141"><b>1.4.1</b><span data-i18n="home.map.2">Valori experimentale versus valori teoretice (gaz monoatomic și biatomic)</span></a></li>
+      <li><a href="#izocor" data-nav="izocor"><b>—</b><span data-i18n="home.map.3">Transformarea izocoră + Exercițiul 1.4.2</span></a></li>
+      <li><a href="#izobar" data-nav="izobar"><b>—</b><span data-i18n="home.map.4">Transformarea izobară + Exercițiul 1.4.1</span></a></li>
+      <li><a href="#izoterm" data-nav="izoterm"><b>—</b><span data-i18n="home.map.5">Transformarea izotermă — lucrul mecanic și aria de sub curbă</span></a></li>
+      <li><a href="#adiabat" data-nav="adiabat"><b>—</b><span data-i18n="home.map.6">Transformarea adiabatică, exponentul adiabatic, Ec. 1.4.3 și 1.4.4</span></a></li>
+      <li><a href="#sinteza" data-nav="sinteza"><b>1.4.2</b><span data-i18n="home.map.7">Tabelul sinteză al celor patru transformări + Exercițiul 1.4.5</span></a></li>
+      <li><a href="#politrop" data-nav="politrop"><b>1.4.1</b><span data-i18n="home.map.8">Procese politrope — familia pVⁿ = constant</span></a></li>
+    </ol>
+  </section>
+</section>
+
+<!-- --------------------- 1.4 CALDURI MOLARE --------------------- -->
+<section class="view" id="view-calorice">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker">Subcapitolul 1.4 · pagina 33</p>
+    <h2 data-i18n="sec.calorice.title">1.4. Aplicarea principiului I la transformările gazului ideal</h2>
+    <p class="sec-lead" data-i18n="sec.calorice.lead">Din ecuațiile calorice de stare se obțin ușor, folosind primul principiu al termodinamicii, expresiile căldurilor molare.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <p data-i18n="cal.p1">Să considerăm un gaz monoatomic supus unei transformări izocore, când ΔV = 0, deci L<sub>if</sub> = 0. Conform primului principiu:</p>
+      <div class="fx center" data-fx="\Delta U = Q_{if}"></div>
+      <p data-i18n="cal.p2">Atunci definiția căldurii molare la volum constant poate fi rescrisă în forma:</p>
+      <div class="fx center" data-fx="C_{V} = \frac{1}{\nu}\cdot\frac{\Delta U}{\Delta T}"></div>
+      <p data-i18n="cal.p3">Dar, din ecuația calorică de stare pentru gazul monoatomic rezultă ΔU = (3/2)·ν·R·ΔT, deci:</p>
+      <div class="hl"><div class="fx" data-fx="C_{V} = \frac{3}{2}\cdot R = 12{,}471\ \mathrm{J/(mol\cdot K)}"></div></div>
+      <p data-i18n="cal.p4">De aici, folosind relația lui R. Mayer, C<sub>p</sub> = C<sub>V</sub> + R, rezultă:</p>
+      <div class="hl"><div class="fx" data-fx="C_{p} = \frac{5}{2}\cdot R = 20{,}785\ \mathrm{J/(mol\cdot K)}"></div></div>
+      <p data-i18n="cal.p5">În mod analog, pentru un gaz biatomic (numărătoarea gradelor de libertate dă 5 în loc de 3):</p>
+      <div class="hl hl-gold">
+        <div class="fx" data-fx="C_{V} = \frac{5}{2}R = 20{,}785\ \mathrm{J/(mol\cdot K)},\qquad C_{p} = \frac{7}{2}R = 29{,}099\ \mathrm{J/(mol\cdot K)}"></div>
+      </div>
+      <p data-i18n="cal.p6">Raportul γ = C<sub>p</sub>/C<sub>V</sub> se numește <i>exponent adiabatic</i>:</p>
+      <div class="two-col">
+        <div class="hl"><small data-i18n="cal.mono">gaz monoatomic</small><div class="fx" data-fx="\gamma = \frac{5}{3} = 1{,}667"></div></div>
+        <div class="hl"><small data-i18n="cal.bi">gaz biatomic</small><div class="fx" data-fx="\gamma = \frac{7}{5} = 1{,}400"></div></div>
+      </div>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="cal.demo.title">Demo · grade de libertate → γ</h3>
+      <p class="demo-hint" data-i18n="cal.demo.hint">Alege tipul de moleculă și urmărește cum se schimbă căldurile molare și exponentul adiabatic.</p>
+      <div class="seg" role="group" id="molType">
+        <button type="button" data-mol="mono" class="on" data-i18n="cal.demo.mono">Monoatomic</button>
+        <button type="button" data-mol="di" data-i18n="cal.demo.di">Biatomic</button>
+        <button type="button" data-mol="poly" data-i18n="cal.demo.poly">Polyatomic</button>
+      </div>
+      <div class="mol-viz"><canvas id="molCanvas" width="360" height="190" role="img" aria-label="Reprezentarea moleculei și a gradelor de libertate"></canvas></div>
+      <dl class="readout" id="gammaReadout">
+        <div><dt data-i18n="cal.demo.i">Grade de libertate i</dt><dd id="ro-i">3</dd></div>
+        <div><dt>C_V</dt><dd id="ro-cv">12,47</dd></div>
+        <div><dt>C_p</dt><dd id="ro-cp">20,79</dd></div>
+        <div class="accent"><dt>γ = C_p/C_V</dt><dd id="ro-gamma">1,667</dd></div>
+      </dl>
+      <div class="formula-live" id="gammaFormula"></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ------------------------ TABEL 1.4.1 ------------------------- -->
+<section class="view" id="view-tabel141">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker2">pagina 34</p>
+    <h2 data-i18n="sec.tabel141.title">Tabelul 1.4.1. Călduri molare — valori experimentale</h2>
+    <p class="sec-lead" data-i18n="sec.tabel141.lead">Aceste valori teoretice trebuie comparate cu valorile experimentale pentru a valida sau infirma ecuațiile calorice de stare.</p>
+  </header>
+
+  <div class="table-wrap">
+    <table class="data">
+      <caption data-i18n="tab141.cap">Tabelul 1.4.1 — compararea teoriei cu experimentul</caption>
+      <thead>
+        <tr>
+          <th scope="col" data-i18n="tab141.gas">Gazul</th>
+          <th scope="col"><span data-i18n="tab141.cv">C_V</span> <small>[J/(mol·K)]</small></th>
+          <th scope="col"><span data-i18n="tab141.cp">C_p</span> <small>[J/(mol·K)]</small></th>
+          <th scope="col">γ = C_p/C_V</th>
+          <th scope="col" data-i18n="tab141.theory">Valoare teoretică γ</th>
+          <th scope="col" data-i18n="tab141.dev">Abatere</th>
+        </tr>
+      </thead>
+      <tbody id="tab141Body"></tbody>
+    </table>
+  </div>
+
+  <div class="grid-2">
+    <aside class="demo">
+      <h3 data-i18n="tab141.chart.title">Grafic animat · teorie vs. experiment</h3>
+      <p class="demo-hint" data-i18n="tab141.chart.hint">Apasă butonul pentru a anima barele. Abaterile mici arată că ecuațiile calorice deduse pentru gazul ideal sunt valabile, cu bună aproximare, și pentru gazele reale.</p>
+      <button class="btn primary" id="chart141Play" type="button" data-i18n="ui.animate">Animați</button>
+      <canvas id="chart141" width="520" height="300" role="img" aria-label="Grafic cu bare comparând gamma teoretic cu gamma experimental"></canvas>
+      <div class="legend"><span class="lg lg-a"></span><small data-i18n="tab141.lg.teory">teorie</small><span class="lg lg-b"></span><small data-i18n="tab141.lg.exp">experimental</small></div>
+    </aside>
+    <div class="prose">
+      <p data-i18n="tab141.p1">Comparând valorile teoretice cu cele experimentale constatăm că ecuațiile calorice de stare, deduse pentru gazul <i>ideal</i> monoatomic și, respectiv, biatomic, sunt valabile cu o bună aproximație și pentru gazele <i>reale</i>.</p>
+      <div class="quote" data-i18n="tab141.note">Observație: H₂ și N₂ se potrivesc aproape perfect modelului biatomic la temperatura camerei; O₂ se abate puțin (γ = 1,394 în loc de 1,400), pentru că la 300 K vibrația moleculară începe deja să „nghe” câteva grade de libertate.</div>
+      <div class="callout">
+        <b data-i18n="tab141.slider.title">Testează tu</b>
+        <label class="slider-row"><span data-i18n="tab141.slider.t">Temperatura</span><input type="range" id="tempSlide" min="100" max="1200" step="10" value="300" /><output id="tempOut">300 K</output></label>
+        <p class="small" id="tempComment" data-i18n="tab141.slider.hint">La 300 K un gaz biatomic are i = 5 (3 translații + 2 rotații).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- -------------------------- IZOCOR ---------------------------- -->
+<section class="view" id="view-izocor">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker3">pagina 34–35</p>
+    <h2 data-i18n="tr.izocor.title">Transformarea izocoră · V = constant</h2>
+    <p class="sec-lead" data-i18n="tr.izocor.lead">În transformarea izocoră volumul este constant, ΔV = 0, deci gazul nu efectuează lucru mecanic.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <div class="fx center big" data-fx="L_{if} = 0 \quad\Rightarrow\quad \Delta U = Q_{if}"></div>
+      <p data-i18n="izoc.p1">Folosind această relație și definițiile căldurii molare, respectiv a căldurii specifice, se poate scrie:</p>
+      <div class="hl"><div class="fx" data-fx="\Delta U = Q_{if} = \nu\cdot C_{V}\cdot(T_{f}-T_{i}) = m\cdot c_{V}\cdot(T_{f}-T_{i})"></div></div>
+      <p data-i18n="izoc.p2">Toată căldura primită de gaz se duce în energia lui internă; presiunea crește proporțional cu temperatura (Charles):</p>
+      <div class="fx center" data-fx="\frac{p}{T} = \mathrm{constant}"></div>
+      <div class="keyfacts">
+        <div><b data-i18n="izoc.kf1.t">Ce rămâne fix</b><span>V</span></div>
+        <div><b data-i18n="izoc.kf2.t">Ce se transferă</b><span>Q = ΔU</span></div>
+        <div><b data-i18n="izoc.kf3.t">Sunet</b><span data-i18n="izoc.kf3.d">ritmul șocurilor moleculare crește odată cu p</span></div>
+      </div>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="izoc.demo.title">Demo · vas rigid închis</h3>
+      <label class="slider-row"><span data-i18n="izoc.demo.q">Căldura Q</span><input type="range" id="izocQ" min="0" max="100" value="25" /><output id="izocQOut">25 %</output></label>
+      <div class="sim-frame"><canvas id="izocCanvas" width="420" height="260" role="img" aria-label="Simulare cu molecule într-un vas rigid"></canvas></div>
+      <dl class="readout four">
+        <div><dt>T</dt><dd id="izocT">300 K</dd></div>
+        <div><dt>p</dt><dd id="izocP">1,00 bar</dd></div>
+        <div><dt>ΔU</dt><dd id="izocU">0 J</dd></div>
+        <div class="accent"><dt>L</dt><dd id="izocL">0 J</dd></div>
+      </dl>
+      <div class="btn-row">
+        <button class="btn small" id="izocPlay" type="button" data-i18n="ui.run">Rulează</button>
+        <button class="btn small ghost" id="izocReset" type="button" data-i18n="ui.reset">Reset</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="example" id="ex-142">
+    <h3><span class="ex-badge">Ex. 1.4.2</span> <span data-i18n="ex142.title">Încălzirea oxigenului într-un vas de volum constant</span></h3>
+    <p class="statement" data-i18n="ex142.text">Într-un vas de volum constant se află o cantitate de oxigen de masă m = 1 g și căldură specifică izocoră c_V = 700 J/(kg·K), la temperatura t = 27 °C și presiunea p₁ = 100 kPa. Aflați căldura Q necesară pentru încălzirea oxigenului, astfel încât presiunea sa să devină p₂ = 200 kPa.</p>
+    <ol class="steps" data-steps="ex142"></ol>
+    <div class="err-flag"><b data-i18n="ex142.err.tag">Eroare în manual</b> <span data-i18n="ex142.err.body">Manualul scrie „= 0,7 · 300,15 · 2 J = 420,2 J”. Paranteza este (p₂/p₁ − 1) = (200/100 − 1) = 1, nu 2. Valoarea corectă este Q ≈ 210 J.</span></div>
+    <div class="answer" id="ex142answer"></div>
+  </div>
+</section>
+
+<!-- -------------------------- IZOBAR ---------------------------- -->
+<section class="view" id="view-izobar">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker4">pagina 35</p>
+    <h2 data-i18n="tr.izobar.title">Transformarea izobară · p = constant</h2>
+    <p class="sec-lead" data-i18n="tr.izobar.lead">Presiunea rămâne constantă, deci gazul efectuează lucru mecanic în timpul dilatării.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <div class="three-formulas">
+        <div class="hl"><small data-i18n="izob.f1">lucrul mecanic</small><div class="fx" data-fx="L_{if} = p\cdot(V_{f}-V_{i})"></div></div>
+        <div class="hl"><small data-i18n="izob.f2">prin ecuația de stare</small><div class="fx" data-fx="L_{if} = \nu\cdot R\cdot(T_{f}-T_{i})"></div></div>
+        <div class="hl"><small data-i18n="izob.f3">căldura schimbată</small><div class="fx" data-fx="Q_{if} = \nu\cdot C_{p}\cdot(T_{f}-T_{i}) = m\cdot c_{p}\cdot(T_{f}-T_{i})"></div></div>
+      </div>
+      <p data-i18n="izob.p1">Utilizând aceste expresii în ecuația generală a primului principiu, ΔU = Q<sub>if</sub> − L<sub>if</sub>, și relația lui R. Mayer, se obține:</p>
+      <div class="hl hl-gold"><div class="fx" data-fx="\Delta U = \nu\cdot C_{V}\cdot(T_{f}-T_{i}) = m\cdot c_{V}\cdot(T_{f}-T_{i})"></div></div>
+      <div class="callout warn">
+        <b data-i18n="izob.gap.tag">Text lipsă în manual (p.35)</b>
+        <span data-i18n="izob.gap.body">Propoziția „se găsește că …” rămâne fără concluzie. Dezvoltarea care lipsește este ΔU = νC_pΔT − νRΔT = ν(C_p − R)ΔT = νC_VΔT, adică exact relația evidențiată mai sus.</span>
+      </div>
+      <p data-i18n="izob.p2">Interpretare: la presiune constantă, căldura furnizată se împarte între creșterea energiei interne și lucrul mecanic de împingere a pistonului.</p>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="izob.demo.title">Demo · piston mobil</h3>
+      <label class="slider-row"><span data-i18n="izob.demo.t">Temperatura T</span><input type="range" id="izobT" min="280" max="620" step="5" value="300" /><output id="izobTOut">300 K</output></label>
+      <label class="slider-row"><span data-i18n="izob.demo.p">Presiunea p</span><input type="range" id="izobP" min="50" max="300" step="5" value="100" /><output id="izobPOut">100 kPa</output></label>
+      <div class="sim-frame"><canvas id="izobCanvas" width="420" height="260" role="img" aria-label="Simulare cu piston care se ridică la presiune constantă"></canvas></div>
+      <div class="energy-split" id="izobSplit" aria-label="Împărțirea căldurii"></div>
+      <dl class="readout four">
+        <div><dt>V</dt><dd id="izobV">24,0 L</dd></div>
+        <div><dt>Q</dt><dd id="izobQ">0 J</dd></div>
+        <div><dt>ΔU</dt><dd id="izobU">0 J</dd></div>
+        <div class="accent"><dt>L</dt><dd id="izobL">0 J</dd></div>
+      </dl>
+    </aside>
+  </div>
+
+  <div class="example" id="ex-141">
+    <h3><span class="ex-badge">Ex. 1.4.1</span> <span data-i18n="ex141.title">Încălzirea izobară a 2 kg de oxigen</span></h3>
+    <p class="statement" data-i18n="ex141.text">Pentru a încălzi izobar cu ΔT = 5 K o cantitate de oxigen de masă m = 2 kg este necesar să se transmită gazului căldura Q = 9,16 kJ. Aflați: a) căldura specifică izobară c_p a oxigenului; b) lucrul mecanic L efectuat de gaz în cursul dilatării izobare; c) variația ΔU a energiei interne a gazului în procesul considerat.</p>
+    <ol class="steps" data-steps="ex141"></ol>
+    <div class="answer" id="ex141answer"></div>
+  </div>
+</section>
+
+<!-- -------------------------- IZOTERM --------------------------- -->
+<section class="view" id="view-izoterm">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker5">pagina 34–35</p>
+    <h2 data-i18n="tr.izoterm.title">Transformarea izotermă · T = constant</h2>
+    <p class="sec-lead" data-i18n="tr.izoterm.lead">Temperatura este constantă, deci energia internă a unui gaz ideal nu se modifică.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <div class="fx center big" data-fx="\Delta U = 0 \quad\Rightarrow\quad L_{if} = Q_{if}"></div>
+      <p data-i18n="izo.p1">Conform primului principiu, toată căldura schimbată cu exteriorul se transformă în lucru mecanic. Cu ecuația termică de stare și p = νRT/V rezultă:</p>
+      <div class="hl"><div class="fx" data-fx="L_{if} = Q_{if} = \nu\cdot R\cdot T\cdot\ln\frac{V_{f}}{V_{i}} = 2{,}3\cdot \nu\cdot R\cdot T\cdot\lg\frac{V_{f}}{V_{i}}"></div></div>
+      <p data-i18n="izo.p2">Grafic, procesul este o ramură de hiperbolă (Boyle–Mariotte), iar lucrul mecanic este aria de sub curbă — exact ceea ce arată demonstrația alăturată.</p>
+      <div class="keyfacts">
+        <div><b data-i18n="izo.kf1">pV = constant</b><span>hiperbola</span></div>
+        <div><b data-i18n="izo.kf2">Aria = L</b><span>ln(V_f/V_i)</span></div>
+        <div><b data-i18n="izo.kf3">ΔU = 0</b><span>Q = L</span></div>
+      </div>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="izo.demo.title">Demo · aria de sub hiperbolă</h3>
+      <label class="slider-row"><span data-i18n="izo.demo.v">Volum final V_f</span><input type="range" id="izoV" min="10" max="60" step="1" value="20" /><output id="izoVOut">20 L</output></label>
+      <label class="slider-row"><span data-i18n="izo.demo.n">Cantitate ν</span><input type="range" id="izoN" min="1" max="10" step="1" value="2" /><output id="izoNOut">2 moli</output></label>
+      <div class="sim-frame"><canvas id="izoCanvas" width="420" height="300" role="img" aria-label="Grafic presiune-volum cu aria de sub izotermă hașurată"></canvas></div>
+      <dl class="readout three">
+        <div class="accent"><dt>L = Q</dt><dd id="izoL">0 J</dd></div>
+        <div><dt>p_i</dt><dd id="izoPi">0</dd></div>
+        <div><dt>p_f</dt><dd id="izoPf">0</dd></div>
+      </dl>
+      <div class="btn-row">
+        <button class="btn small" id="izoAnim" type="button" data-i18n="izo.demo.anim">Animare destindere</button>
+        <button class="btn small ghost" id="izoComp" type="button" data-i18n="izo.demo.comp">Compresie</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- -------------------------- ADIABAT --------------------------- -->
+<section class="view" id="view-adiabat">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker6">pagina 35–37</p>
+    <h2 data-i18n="tr.adiabat.title">Transformarea adiabatică · Q = 0</h2>
+    <p class="sec-lead" data-i18n="tr.adiabat.lead">În transformarea adiabatică, prin definiție, gazul nu schimbă căldură cu mediul.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <div class="hl"><small data-i18n="ad.f1">legea transformării</small><div class="fx" data-fx="p\cdot V^{\gamma} = \mathrm{constant}"></div></div>
+      <p data-i18n="ad.p1">Folosind ecuația termică de stare, ecuația transformării adiabactice poate fi rescrisă astfel:</p>
+      <div class="two-col">
+        <div class="fx" data-fx="T\cdot V^{\gamma-1} = \mathrm{constant}"></div>
+        <div class="fx" data-fx="T\cdot p^{\frac{1-\gamma}{\gamma}} = \mathrm{constant}"></div>
+      </div>
+      <p data-i18n="ad.p2">Iar lucrul mecanic adiabatic se scrie în trei forme echivalente:</p>
+      <div class="hl hl-gold">
+        <div class="fx" data-fx="L_{if} = -\frac{p_{f}V_{f}-p_{i}V_{i}}{\gamma-1} = -\frac{\nu R\,(T_{f}-T_{i})}{\gamma-1} = -\nu\cdot C_{V}\cdot(T_{f}-T_{i})"></div>
+      </div>
+      <p data-i18n="ad.p3">Atunci, conform primului principiu (Q = 0), variația energiei interne este ΔU = ν·C_V·(T_f − T_i) = m·c_V·(T_f − T_i).</p>
+
+      <h3 data-i18n="ad.obs.title">Observații</h3>
+      <ol class="obs">
+        <li data-i18n="ad.obs1">Ecuația transformării adiabactice a fost obținută în 1823 de Siméon-Denis Poisson.</li>
+        <li data-i18n="ad.obs2">Exponentul adiabatic este supraunitar: pentru gazul monoatomic γ = 5/3, iar pentru cel biatomic γ = 7/5.</li>
+        <li data-i18n="ad.obs3">Deoarece γ &gt; 1, în procesul adiabatic presiunea variază în funcție de volum mai rapid decât în transformarea izotermă. De aceea adiabata este înclinată mai puternic decât izoterma și <b>o adiabată și o izotermă se intersectează într-un singur punct</b>.</li>
+      </ol>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="ad.demo.title">Demo · adiabata vs. izoterma (fig. 1.4.1)</h3>
+      <label class="slider-row"><span data-i18n="ad.demo.g">Exponentul γ</span><input type="range" id="adGamma" min="100" max="180" step="1" value="140" /><output id="adGammaOut">γ = 1,40</output></label>
+      <label class="slider-row"><span data-i18n="ad.demo.v">Factorul de destindere V_f/V_i</span><input type="range" id="adV" min="10" max="60" step="1" value="25" /><output id="adVOut">2,5</output></label>
+      <div class="sim-frame"><canvas id="adCanvas" width="420" height="300" role="img" aria-label="Grafic comparând o izotermă cu o adiabata în coordonate presiune-volum"></canvas></div>
+      <dl class="readout four">
+        <div><dt>p_f/p_i</dt><dd id="adPr">1,00</dd></div>
+        <div><dt>T_f/T_i</dt><dd id="adTr">1,00</dd></div>
+        <div><dt>ΔU</dt><dd id="adU">0 J</dd></div>
+        <div class="accent"><dt>L</dt><dd id="adL">0 J</dd></div>
+      </dl>
+      <div class="btn-row">
+        <button class="btn small" id="adPump" type="button" data-i18n="ad.demo.pump">Pompă rapidă (sunet)</button>
+      </div>
+      <p class="demo-hint" data-i18n="ad.demo.hint">Compresia adiabatică ridica temperatura — tonul auditiv urcă odată cu ea.</p>
+    </aside>
+  </div>
+
+  <div class="example" id="ex-143">
+    <h3><span class="ex-badge">Ex. 1.4.3</span> <span data-i18n="ex143.title">Deduces cele două relații Poisson și formula lucrului adiabatic</span></h3>
+    <p class="statement" data-i18n="ex143.text">Deduceți cele două relații de mai sus (T·V^(γ−1) = constant și T·p^((1−γ)/γ) = constant). Folosind ecuația transformării adiabactice se poate arăta apoi expresia lucrului mecanic.</p>
+    <ol class="steps" data-steps="ex143"></ol>
+    <div class="answer" id="ex143answer"></div>
+  </div>
+
+  <div class="example" id="ex-144">
+    <h3><span class="ex-badge">Ex. 1.4.4</span> <span data-i18n="ex144.title">Lucrul mecanic într-o destindere adiabatică</span></h3>
+    <p class="statement" data-i18n="ex144.text">Aflați lucrul mecanic L efectuat de gazul ideal într-o transformare adiabatică de la presiunea p₁ între volumele V₁ și V₂. Se dă coeficientul adiabatic γ. Aplicație: p₁ = 1 bar; V₁ = 10 cm³; V₂ = 20 cm³; γ = 1,4.</p>
+    <ol class="steps" data-steps="ex144"></ol>
+    <div class="err-flag"><b data-i18n="ex144.err.tag">Inconsecvență în enunț</b> <span data-i18n="ex144.err.body">Enunțul manualului vorbește de „1 kmol de gaz ideal”, dar datele numerice (V₁ = 10 cm³) corespund unei cantități de ordinul 10⁻⁶ mol. Calculul și rezultatul 0,6 J sunt corecte pentru volumele date.</span></div>
+    <div class="answer" id="ex144answer"></div>
+  </div>
+</section>
+
+<!-- ------------------------- SINTEZA 1.4.2 ---------------------- -->
+<section class="view" id="view-sinteza">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker7">pagina 36–37</p>
+    <h2 data-i18n="sec.sinteza.title">Tabelul 1.4.2 · rezultatele sintetizate</h2>
+    <p class="sec-lead" data-i18n="sec.sinteza.lead">Apasă pe o celulă pentru a vedea transformarea corespunzătoare în graficul animat.</p>
+  </header>
+
+  <div class="table-wrap">
+    <table class="data synth" id="synthTable">
+      <thead>
+        <tr>
+          <th scope="col"><span class="diag" data-i18n="synth.corner">Procesul ↓ / Mărimea →</span></th>
+          <th scope="col">L<sub>if</sub></th>
+          <th scope="col">Q<sub>if</sub></th>
+          <th scope="col">ΔU ≡ U_f − U_i</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-tr="izocor"><th scope="row" data-i18n="tr.izocor.short">Izocor</th>
+          <td>0</td>
+          <td><span class="fx" data-fx="\nu\,C_{V}(T_{f}-T_{i})"></span></td>
+          <td><span class="fx" data-fx="\nu\,C_{V}(T_{f}-T_{i})"></span></td></tr>
+        <tr data-tr="izobar"><th scope="row" data-i18n="tr.izobar.short">Izobar</th>
+          <td><span class="fx" data-fx="\nu\,R\,(T_{f}-T_{i})"></span></td>
+          <td><span class="fx" data-fx="\nu\,C_{p}(T_{f}-T_{i})"></span></td>
+          <td><span class="fx" data-fx="\nu\,C_{V}(T_{f}-T_{i})"></span></td></tr>
+        <tr data-tr="izoterm"><th scope="row" data-i18n="tr.izoterm.short">Izoterm</th>
+          <td><span class="fx" data-fx="\nu\,R\,T\ln\frac{V_{f}}{V_{i}}"></span></td>
+          <td><span class="fx" data-fx="\nu\,R\,T\ln\frac{V_{f}}{V_{i}}"></span></td>
+          <td>0</td></tr>
+        <tr data-tr="adiabat"><th scope="row" data-i18n="tr.adiabat.short">Adiabatic</th>
+          <td><span class="fx" data-fx="-\nu\,C_{V}(T_{f}-T_{i})"></span></td>
+          <td>0</td>
+          <td><span class="fx" data-fx="\nu\,C_{V}(T_{f}-T_{i})"></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-2">
+    <aside class="demo">
+      <h3 data-i18n="synth.chart.title">Graficul procesului ales</h3>
+      <div class="sim-frame"><canvas id="synthCanvas" width="460" height="300" role="img" aria-label="Graficul presiune-volum al transformării selectate"></canvas></div>
+      <p class="small" id="synthCaption" data-i18n="synth.caption.hint">Selectează un rând din tabel.</p>
+    </aside>
+    <div class="prose">
+      <h3 data-i18n="synth.heat.title">Circuitul complet, într-o singură imagine</h3>
+      <p data-i18n="synth.heat.p">Căldura primită de gaz se împarte mereu în două: energia internă (care la gazul ideal depinde doar de temperatură) și lucrul mecanic. Rata de împărțire este tocmai γ.</p>
+      <div class="sim-frame short"><canvas id="ratioCanvas" width="460" height="190" role="img" aria-label="Grafic cu bare arătând împărțirea căldurii pentru fiecare transformare"></canvas></div>
+      <div class="legend"><span class="lg lg-c"></span><small>ΔU</small><span class="lg lg-a"></span><small>L</small><span class="lg lg-none"></span><small>Q = 0</small></div>
+    </div>
+  </div>
+
+  <div class="example" id="ex-145">
+    <h3><span class="ex-badge">Ex. 1.4.5</span> <span data-i18n="ex145.title">Pompa verticală cu piston — problemă integratoare</span></h3>
+    <p class="statement" data-i18n="ex145.text">Un corp de pompă vertical de secțiune S, prevăzut cu un piston mobil de masă M, conține masa m de azot la temperatura t₁. Presiunea atmosferică este p_a. Gazul suferă o încălzizare izobară până la temperatura T₂, după care pistonul este blocat și corpul de pompă este pus în legătură cu un vas de volum V₂. Aflați: a) înălțimea h față de baza corpului de pompă la care se află inițial pistonul; b) lucrul mecanic L efectuat de gaz în cursul încălzirii izobare; c) presiunea finală p_f după stabilirea legăturii.</p>
+    <p class="small" data-i18n="ex145.data">Aplicație: S = 0,01 m²; M = 50 kg; m = 14 g; t₁ = 27 °C; p_a = 1 bar; T₂ = 400 K; V₂ = 3 dm³; p₂ = 4·10⁵ Pa; g = 10 m/s².</p>
+    <ol class="steps" data-steps="ex145"></ol>
+    <div class="answer" id="ex145answer"></div>
+  </div>
+</section>
+
+<!-- ------------------------- POLITROPE -------------------------- -->
+<section class="view" id="view-politrop">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker8">pagina 38</p>
+    <h2 data-i18n="sec.politrop.title">1.4.1. Procese politrope</h2>
+    <p class="sec-lead" data-i18n="sec.politrop.lead">Se numește proces (transformare) politropă procesul unui sistem termodinamic închis (ν = constant) în care căldura molară rămâne constantă.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <p data-i18n="pol.p1">Legea după care se desfășoară un astfel de proces este, unde n este indicele politropic și este o constantă care poate lua valori în intervalul (−∞, ∞):</p>
+      <div class="hl"><div class="fx" data-fx="p\,V^{n} = \mathrm{constant}\quad(1)"></div></div>
+      <p data-i18n="pol.p2">Eliminând presiunea, respectiv volumul, cu ajutorul ecuației termice de stare, se obțin relațiile echivalente:</p>
+      <div class="two-col">
+        <div class="fx" data-fx="T\,V^{n-1} = \mathrm{constant}\quad(2)"></div>
+        <div class="fx" data-fx="p^{\,1-n}\,T^{\,n} = \mathrm{constant}\quad(3)"></div>
+      </div>
+      <p data-i18n="pol.p3">Variația energiei interne într-o transformare politropă se calculează cu relația:</p>
+      <div class="fx center" data-fx="\Delta U = \nu C_{V}\Delta T \quad(4)"></div>
+      <p data-i18n="pol.p4">Iar pentru calculul lucrului mecanic (mai puțin transformarea izotermă) este valabilă relația:</p>
+      <div class="fx center" data-fx="L = -\frac{\nu R\,\Delta T}{n-1}\quad(5),\qquad Q = \nu C\Delta T\quad(6)"></div>
+      <p data-i18n="pol.p5">Din relațiile (4) și (5), utilizând și relația Robert Mayer, se poate demonstra că:</p>
+      <div class="hl hl-gold"><div class="fx" data-fx="n = \frac{C-C_{p}}{C-C_{V}}\qquad\Longleftrightarrow\qquad C = \frac{C_{p}-n\,C_{V}}{1-n}"></div></div>
+      <p data-i18n="pol.p6">Pentru valori corespunzătoare ale lui n se pot obține din ecuația (1) legile proceselor simple ale gazului ideal. Un caz particular este procesul liniar în coordonate (p, V), p = constant · V.</p>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="pol.demo.title">Demo · familia politropelor</h3>
+      <label class="slider-row"><span data-i18n="pol.demo.n">Indicele n</span><input type="range" id="polN" min="-100" max="400" step="1" value="100" /><output id="polNOut">n = 1,00</output></label>
+      <div class="sim-frame"><canvas id="polCanvas" width="440" height="320" role="img" aria-label="Familia de curbe politrope în coordonate presiune-volum"></canvas></div>
+      <div class="seg small" id="polJump">
+        <button type="button" data-n="-100">n = −1</button>
+        <button type="button" data-n="0">n = 0</button>
+        <button type="button" data-n="100" class="on">n = 1</button>
+        <button type="button" data-n="140">n = γ</button>
+        <button type="button" data-n="400">n → ∞</button>
+      </div>
+      <dl class="readout three">
+        <div class="accent"><dt data-i18n="pol.demo.proc">Procesul</dt><dd id="polName">Izoterm</dd></div>
+        <div><dt>C (J/mol·K)</dt><dd id="polC">∞</dd></div>
+        <div><dt data-i18n="pol.demo.shape">Panta</dt><dd id="polSlope">−1/V</dd></div>
+      </dl>
+      <p class="demo-hint" data-i18n="pol.demo.hint">Cufundă cursorul sub 0 sau peste γ și privește cum curba se rotește prin toate procesele simple.</p>
+    </aside>
+  </div>
+
+  <div class="example" id="ex-1411">
+    <h3><span class="ex-badge">Ex. 1.4.1.1</span> <span data-i18n="ex1411.title">Procesul liniar în coordonate (p, V)</span></h3>
+    <p class="statement" data-i18n="ex1411.text">Stabiliți expresiile L, γ și V pentru procese liniare în coordonate (p, V) utilizând relațiile (4), (5) și (6).</p>
+    <ol class="steps" data-steps="ex1411"></ol>
+    <div class="answer" id="ex1411answer"></div>
+  </div>
+</section>
+
+<!-- ---------------------------- QUIZ ---------------------------- -->
+<section class="view" id="view-quiz">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker9">autoevaluare</p>
+    <h2 data-i18n="quiz.title">Probleme de verificare</h2>
+    <p class="sec-lead" data-i18n="quiz.lead">Traisprezece întrebări acoperind tot subcapitolul 1.4. Primești feedback imediat și auzi un semnal la fiecare răspuns.</p>
+  </header>
+  <div class="quiz-shell">
+    <div class="quiz-top">
+      <div class="quiz-score"><span id="quizScore">0</span><small data-i18n="quiz.score">puncte</small></div>
+      <div class="quiz-progress"><i id="quizBar"></i></div>
+      <div class="quiz-count"><span id="quizIdx">1</span> / <span id="quizTot">12</span></div>
+    </div>
+    <div id="quizBody"></div>
+    <div class="btn-row">
+      <button class="btn primary" id="quizCheck" type="button" data-i18n="quiz.check">Verifică răspunsul</button>
+      <button class="btn ghost" id="quizNext" type="button" disabled data-i18n="quiz.next">Întrebarea următoare →</button>
+      <button class="btn ghost" id="quizRestart" type="button" data-i18n="quiz.restart">Reia testul</button>
+    </div>
+    <div class="quiz-result" id="quizResult" hidden></div>
+  </div>
+</section>
+
+<!-- --------------------------- RESURSE -------------------------- -->
+<section class="view" id="view-resurse">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker10">bibliografie și linkuri</p>
+    <h2 data-i18n="res.title">Linkuri și resurse</h2>
+    <p class="sec-lead" data-i18n="res.lead">Aplicația funcționează offline; linkurile de mai jos au nevoie de conexiune.</p>
+  </header>
+  <div class="link-grid" id="linkGrid"></div>
+  <div class="prose">
+    <h3 data-i18n="res.src.title">Sursă</h3>
+    <p data-i18n="res.src.body">Constantin Mantea, Mihaela Garabet — Fizică, manual pentru clasa a X-a, Editura ALL Educational, ISBN 978-606-587-227-1, subcapitolul 1.4 și 1.4.1, paginile 33–38. Conținutul de aici este o resursă didactică originală inspirată de structura și de exigențele manualului, nu o reproducere a acestuia.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="foot-inner">
+    <div>
+      <b>1.4 · <span data-i18n="foot.title">Aplicarea principiului I al termodinamicii</span></b>
+      <p class="small" data-i18n="foot.sub">Fizică, clasa a X-a · paginile 33–38 · Mantea &amp; Garabet</p>
+    </div>
+    <nav class="foot-nav">
+      <a href="#home" data-nav="home" data-i18n="nav.home">Home</a>
+      <a href="#sinteza" data-nav="sinteza" data-i18n="sec.sinteza.short">Sinteză</a>
+      <a href="#quiz" data-nav="quiz" data-i18n="nav.quiz">Verificare</a>
+      <a href="#resurse" data-nav="resurse" data-i18n="nav.links">Linkuri</a>
+    </nav>
+    <p class="small muted" data-i18n="foot.license">Proiect didactic · folosiți-l liber la clasă.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" title="Sus" aria-label="Înapoi sus">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/math.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/sims.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

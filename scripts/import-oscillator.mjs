@@ -1,0 +1,103 @@
+import {readFile,writeFile,mkdir,cp} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {withFavicon} from './favicon.mjs';
+const root=new URL('../',import.meta.url),id='oscilator-mecanic',source='oscillator-mecanic';
+const read=async p=>(await readFile(new URL(p,root),'utf8')).replaceAll('\r\n','\n');
+const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
+const clean=s=>s.replace(/\([^)]*(?:fig\.|figura|1\.1\.)[^)]*\)/gi,'').replace(/\b1\.1\.\d+(?:\.\d+)*\.?\s*(?:[–-]\s*)?/g,'').replace(/(?:din|după|conform) manual(?:ul)?(?: scanat)?/gi,'').replace(/\s*\(manual\)/gi,'').replace(/\bmanual(?:ul)?\b|subcapitol(?:ul|ului)?/gi,'').replace(/\s+\./g,'.');
+let html=await read(source+'/index.html');
+let body=html.match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
+body=body.replace(/<section id="corectii"[\s\S]*?<\/section>/,'').replace(/<footer[\s\S]*?<\/footer>/,'').replace(/<p class="erratum-note">[\s\S]*?<\/p>/,'<p class="hint">Viteza maximă este 0,4 m/s = 40 cm/s.</p>').replace(/<p class="hint">Experiment virtual din manual:[\s\S]*?<\/p>/g,'');
+body=clean(body).replace(/<!--[\s\S]*?-->/g,'').replace('Exemple din','Exemple').replace('Suntele:','Sunete:').replace('membrane timpan (seism)','membrană de timpan și oscilații seismice');
+body=body.replace(/De câte ori o forță[\s\S]*?până la restabilirea ei\./,'O forță de revenire tinde să readucă un corp spre poziția de echilibru stabil. În funcție de amortizare, revenirea poate fi oscilatorie sau aperiodică.');
+body=body.replace(/Aceeași idee o vei folosi la\s*/,'Aceeași idee este folosită în studiul amortizării.').replace('Realizați dispozitivele din figura ','Studiați sisteme precum ').replace('amortizare înregistrată ca în  (','amortizare (').replace(/Regimurile reproduce seriile fig\.\s*\([^)]*\), după diluarea progresivă a iaurtului\./,'Presetele ilustrează trecerea de la revenirea aperiodică, prin amortizarea critică, la oscilații slab amortizate.').replace('Întrebare :','Întrebare:').replace('În experimentul  ,','În experiment,').replace('Reprezentați grafic ecuația mișcării de la Scrieți','Reprezentați grafic mișcarea y₁(t) = 0,1 cos(4t) m. Scrieți');
+body=body.replace('diferență de 2%','diferență de aproximativ 0,17%');
+body=body.replaceAll('Amplitudine A <input','Amplitudine A (m) <input').replaceAll('Lungime fir <input','Lungime fir (m) <input').replaceAll('Lungime L <input','Lungime L (m) <input').replaceAll('Coeficient amortizare b <input','Coeficient amortizare b (s⁻¹) <input').replaceAll('Perioadă T <input','Perioadă T (s) <input').replace('🔊 Tic la întrecerea echilibrului','🔊 Tic la trecerea prin echilibru').replace('🔊 Ton cu frecvența ν = ω/2π (urechea „audе" pulsația)','🔊 Reprezentare sonoră a fazorului (frecvență adusă în domeniul audibil)');
+body=body.replace('Perioadă T′ <input','Perioada proprie T₀ (s) <input').replace('data-sl="b" min="0.02" max="4.0"','data-sl="b" min="0.02" max="20.0"');
+body=body.replace('<h3>Exerciții rezolvate','<h3 data-content-type="problem">Probleme rezolvate');
+body=body.replace('<h2>Probleme de verificare','<h2 data-content-type="assessment">Probleme de verificare');
+body=body.replace('<h4>Demonstrație:', '<h4 data-content-type="simulation">Demonstrație:');
+body=body.replace('<h3>Energia oscilatorului armonic','<h3 data-content-type="formula">Energia oscilatorului armonic');
+body=body.replace(/(<p><strong>Ex\.\s*)(<\/strong>)/g,(_,a,b)=>a+b);
+let ex=0;body=body.replace(/<strong>Ex\.\s*<\/strong>/g,()=>'<strong>Problema '+(++ex)+'.</strong>');
+body=body.replace('Reprezentați grafic ecuația mișcării de la .','Reprezentați grafic mișcarea y₁(t) = 0,1 cos(4t) m.').replace('la Ex. ,','în problema cu două resorturi,');
+body=body.replace(/<canvas id="([^"]+)"><\/canvas>/g,'<canvas id="$1" width="640" height="320"></canvas>');
+body=body.replace(/(<div class="demo-shell" id="demo-(?:oscillator|phasor)">[\s\S]*?<div class="demo-controls">)/g,'$1<label>Viteza redării <select data-sl="speed"><option value="0.25">0,25×</option><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>');
+const attr=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
+body=body.replace(/\$\$([\s\S]*?)\$\$/g,(_,fx)=>'<div class="fx" data-fx="'+attr(fx.trim())+'"></div>').replace(/\\\(([\s\S]*?)\\\)/g,(_,fx)=>'<span data-fx-inline="'+attr(fx)+'"></span>');
+body=body.replace('</section>','</section>');
+body=body.replace(/(id="demo-examples"[\s\S]*?<canvas[^>]*height=")320/,(_,prefix)=>prefix+'280');
+body=body.replace(/Patru procese oscilatorii\s*, în mișcare:[\s\S]*?Apasă pe fiecare pentru sunet\./,"Patru exemple în mișcare: balansoar, pendul gravitațional, coardă de chitară și oscilații seismice. Membrana timpanului oscilează și ea sub acțiunea sunetului. Apasă pe fiecare rând pentru sunet.");
+const pendulumGuide='<div class="pendulum-guide"><button type="button" data-pendulum-phase="3.141592653589793" aria-pressed="false"><strong>A — punct de întoarcere</strong><span>v = 0 m/s</span><span>Forța de revenire este maximă, spre E.</span><span>Pendulul își schimbă sensul.</span><small>Examinează A</small></button><button type="button" data-pendulum-phase="1.5707963267948966" aria-pressed="false"><strong>E — poziție de echilibru</strong><span>Viteza este maximă.</span><span>Forța tangențială de revenire este zero.</span><small>Examinează E</small></button><button type="button" data-pendulum-phase="0" aria-pressed="false"><strong>B — punct de întoarcere</strong><span>v = 0 m/s</span><span>Forța de revenire este maximă, spre E.</span><span>Pendulul își schimbă sensul.</span><small>Examinează B</small></button></div><p class="hint">Apasă pe un card pentru a opri animația în poziția respectivă. Reia mișcarea cu Redă.</p><div class="pendulum-vectors"><label><input type="checkbox" data-pendulum-vector="showVelocity" checked>Vectorul viteză</label><label><input type="checkbox" data-pendulum-vector="showForce" checked>Vectorul forță de revenire</label></div>';
+body=body.replace(/(id="demo-pendulum"[\s\S]*?)(<div class="demo-controls">)/,(_,prefix,controls)=>prefix+pendulumGuide+controls);
+body=body.replace(/(id="demo-pendulum"[\s\S]*?)(<canvas[^>]*><\/canvas>)\s*(<div class="pendulum-guide">[\s\S]*?<\/button><\/div>)/,(_,prefix,canvas,guide)=>prefix+'<div class="pendulum-workspace"><div class="pendulum-scene">'+canvas+'</div>'+guide+'</div>');
+const notes='<div class="observ"><p>Modelul amortizat folosește ẍ + 2b ẋ + ω₀²x = 0. Pentru b &lt; ω₀, pulsația amortizată este ωd = √(ω₀² − b²), iar T′ = 2π/ωd. La b = ω₀ revenirea este critic amortizată; la b &gt; ω₀ este aperiodică. Decrementul și numărul de oscilații până la înjumătățire se definesc numai în regimul oscilatoriu.</p><p>Sunetele sunt reprezentări didactice; frecvențele foarte joase sunt aduse în domeniul audibil.</p></div>';
+body=body.replace(/(<section id="s113"[\s\S]*?<\/h2>)/,(_,head)=>head+notes);
+body+='<p class="offline-download"><a class="button secondary" href="./oscilator-mecanic.zip" download>Descarcă laboratorul offline</a></p>';
+const topics=[['s111','Fenomene periodice','theory'],['s112','Mărimi caracteristice','formula'],['s113','Amortizare','experiment'],['s114','Model armonic','simulation'],['quiz','Verificare','assessment']];
+const nav='<nav id="nav" class="tabs" aria-label="Secțiunea lecției">'+topics.map(([key,title,type])=>'<a class="tab" href="#'+key+'" data-tab="'+key+'" data-content-type="'+type+'">'+title+'</a>').join('')+'</nav>';
+let translations={};try{translations=JSON.parse(await read('scripts/oscillator-translations.json'));}catch{}
+for(const lang of ['ro','en'])await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?translations:Object.fromEntries(Object.keys(translations).map(k=>[k,k]))},null,2)+'\n');
+const ns=['common','chapters/sunete-si-unde','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
+const styles=['design-system/tokens.css','simulari/'+id+'/css/styles.css','design-system/components.css','shared/course.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/oscillator.css'];
+const scripts=['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js'];
+const head=styles.map(x=>'<link rel="stylesheet" href="../../'+x+'">').join('')+'<link rel="stylesheet" href="vendor/katex/katex.min.css"><script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded})+');</script>'+scripts.map(x=>'<script src="../../shared/'+x+'"></script>').join('')+'<script src="vendor/katex/katex.min.js"></script><script src="../../shared/first-law-applications-math.js" defer></script><script src="../../shared/first-law-applications-canvas.js"></script><script src="../../shared/oscillator-model.js"></script>';
+await mkdir(new URL('public/simulari/'+id+'/js/',root),{recursive:true});await cp(new URL(source+'/css',root),new URL('public/simulari/'+id+'/css',root),{recursive:true});await cp(new URL('public/simulari/calorimetrie/vendor',root),new URL('public/simulari/'+id+'/vendor',root),{recursive:true});
+await write('public/simulari/'+id+'/index.html',withFavicon('<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oscilatorul mecanic — Praxis</title>'+head+'</head><body data-praxis-course="'+id+'" data-praxis-laboratory="true"><main id="praxis-original">'+nav+body+'</main><script src="js/app.js"></script><script src="js/demos.js"></script><script src="../../shared/course.js" data-course="'+id+'" data-title="Oscilatorul mecanic" defer></script><script src="../../shared/oscillator.js" defer></script></body></html>'));
+let app=clean(await read(source+'/js/app.js'));
+app=app.replace(/const Sound = [\s\S]*?\n\/\* ---------------------------------------------------------------\n \* App/,await read('scripts/adaptations/oscillator-sound.js')+'\n/* ---------------------------------------------------------------\n * App');
+if(!app.includes('function stop(){for(const tone'))throw new Error('Sound adaptation failed');
+app=app.replace(/\/\* Buton global sunet \*\/[\s\S]*?\n\}\)\(\);/,'');
+app=app.replace(/function fitCanvas\(cv\) \{[\s\S]*?\n  \}/,'function fitCanvas(cv){const r=PraxisApplicationsCanvas.prepare(cv);return {ctx:r.g,w:r.w,h:r.h};}').replace('demos.push({ shell, state });','demos.push({shell,state,spec});');
+app=app.replace('return { register, fitCanvas, Sound };','return { register, fitCanvas, Sound, demos };');
+app=app.replace('if (state.running) { state.t += dt;',"const active=!document.hidden&&!shell.closest('.chapter').hidden;\n      if (state.running && active) { state.t += dt;");
+app=app.replace('      const { ctx, w, h } = fitCanvas(cv);','      if(!active){requestAnimationFrame(loop);return;}\n      const { ctx, w, h } = fitCanvas(cv);');
+app=app.replace('Math.max(320, Math.round(r.width * dpr))','Math.max(1, Math.round(r.width * dpr))').replace('Math.max(160, Math.round(r.height * dpr))','Math.max(1, Math.round(r.height * dpr))');
+app=app.replace('Jumătate din distanța dintre punctele de întoarcere','Valoarea vitezei maxime').replace('2π√(0,4)','2π√(0,04)').replace('Cu crește vâscozitatea mediului','În regimul oscilatoriu, când crește vâscozitatea mediului').replace('După câte oscilații complete amplitudinea scade la jumătate?','După câte perioade amplitudinea scade la jumătate?').replace('amortizare puternică (în apă oscilația se stinge înainte de a doua întoarcere)','amplitudinea se înjumătățește înaintea încheierii primei perioade').replace('eroare < 2% la ~5,7°','eroare de aproximativ 0,17% la ~5,7°');
+app=app.replace('const opts = [...item.opts];','const order=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}const opts=order.map(i=>item.opts[i]);').replace('oi === item.a','order[oi] === item.a').replace('box.children[item.a]','box.children[order.indexOf(item.a)]');
+app=app.replace(/\(function buildQuiz\(\) \{[\s\S]*$/,await read('scripts/adaptations/oscillator-quiz.js'));
+app=app.replace(/    const loop = \(ts\) => \{[\s\S]*?    demos.push\(\{shell,state,spec\}\);/, '    demos.push({shell,state,spec});');
+app=app.replace('  return { register, fitCanvas, Sound, demos };', `  function tick(ts){
+    for(const {shell,state,spec} of demos){
+      if(document.hidden||shell.closest('.chapter').hidden){state.last=0;continue;}
+      const rect=shell.getBoundingClientRect();if(rect.bottom<0||rect.top>innerHeight){state.last=0;continue;}
+      const dt=state.last?Math.min((ts-state.last)/1000,.05):0;state.last=ts;
+      const step=dt*(+state.sliders.speed?.value||1);if(state.running){state.t+=step;spec.frame?.(state,step);}
+      const {ctx,w,h}=fitCanvas(shell.querySelector('canvas'));ctx.clearRect(0,0,w,h);spec.render(ctx,w,h,state);
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  return {register,fitCanvas,Sound,demos};`);
+await write('public/simulari/'+id+'/js/app.js',app);
+let demos=clean(await read(source+'/js/demos.js'));
+demos=demos.replace("`${size}px", "`${Math.max(12,size)}px");
+demos=demos.replace("ink: '#e2e8f0'", "ink: '#253f46'").replace("muted: '#94a3b8'", "muted: '#526970'").replace("grid: '#1f2d44'", "grid: '#d5e0dc'");
+demos=demos.replace('aperiodic: 4.0','aperiodic: 4.0');
+demos=demos.replace('const b = presets[sel.value];',"const w0=2*Math.PI/+s.sliders.T.value;const b=sel.value==='aperiodic'?1.4*w0:sel.value==='tranzitoriu'?w0:presets[sel.value];");
+demos=demos.replace('onParam(s) { s.samples = []; }','onParam(s) { s.samples = []; s.t=0; }');
+demos=demos.replace(/    const k1 = 40;[\s\S]*?\n    if \(!s.running\) return;/,"    const value=PraxisOscillatorModel.damped(s.t,w0,b,1,b<w0?-b:0);s.x=value.x;s.v=value.v;\n    if (!s.running) return;");
+demos=demos.replace("s.regime = b < w0 / 4 ? 'oscilatoriu amortizat' : (b < w0 ? 'tranzitoriu (cvasiaperiodic)' : 'aperiodic (fără oscilații)');","s.regime=Math.abs(b-w0)<1e-6?'critic amortizat':b<w0?'oscilatoriu amortizat':'aperiodic (fără oscilații)';");
+demos=demos.replace('const D = b * T, Nhalf = Math.log(2) / Math.max(D, 1e-9);','const w0=2*Math.PI/T,period=b<w0?2*Math.PI/Math.sqrt(w0*w0-b*b):null;const D=period===null?null:b*period,Nhalf=D===null?null:Math.log(2)/D;');
+demos=demos.replace('${D.toFixed(2)}','${D===null?\'—\':D.toFixed(2)}').replace('${Nhalf.toFixed(1)}','${Nhalf===null?\'—\':Nhalf.toFixed(1)}');
+demos=demos.replace(/App.register\(\{\n  id: 'demo-amort',[\s\S]*?\n\}\);/,await read('scripts/adaptations/oscillator-damping.js'));
+demos=demos.replace("if (sign === 1 && s.lastSign === -1) s.N++;","s.N=Math.floor(s.t*Math.sqrt(9.81/L)/(2*Math.PI)+1e-9);").replace("if (k === 'L' || k === 'A') { s.N = 0;","if (k === 'L' || k === 'A') { s.t=0;s.N = 0;").replace("onParam(s) { s.samples = []; s.N = 0;","onParam(s) { s.t=0;s.samples = []; s.N = 0;").replaceAll('s.thHarmonic','s.th1').replaceAll('s.thReal','s.th2');
+demos=demos.replace(/App.register\(\{\n  id: 'demo-oscillator',[\s\S]*?\n\}\);/,'').replace(/App.register\(\{\n  id: 'demo-phasor',[\s\S]*?\n\}\);/,'');
+demos+='\n'+await read('scripts/adaptations/oscillator-motion.js');
+demos=demos.replace('R = (h - 90) * (L / 2.5 + 0.3)', 'R = Math.min(204,(h - 90) * (L / 2.5 + 0.3))');
+demos=demos.replace("label(ctx, 'Gt (forță de revenire)', bx + tx * Gt + 4, by + ty * Gt - 4, C.red, 11);","label(ctx, 'Gt (forță de revenire)', 20, 278, C.red, 12);");
+demos=demos.replace('const R = (h - 84) * Math.min(1, L / 1.4);','const R = 144 * Math.min(1, L / 1.4);');
+demos=demos.replace("label(ctx, 'zona „unghiuri mici” (θ < 6°)', ox1, oy + 12","label(ctx, 'zona „unghiuri mici” (θ < 6°)', ox1, h - 58");
+demos=demos.replace('s.pReal === null ? 2 * half : 0.75 * s.pReal + 0.25 * 2 * half','s.pReal === null ? half : 0.75 * s.pReal + 0.25 * half');
+demos=demos.replace('s.init = false; s.pReal = null;','s.init = false; s.pReal = null; s.tHalf=undefined;');
+demos=demos.replace('const d = struck ? 3 * Math.sin(s.t * 55) : 0;', 'const d = struck ? 3 * Math.sin(s.t * 14) : 0;');
+demos=demos.replace("label(ctx, c.name, cw * i + 8, h - 12, c.color, 12);","const words=PraxisI18n.tr(c.name).split(' ');let row='',line=0;for(const word of words){if(ctx.measureText(row+' '+word).width>cw-16&&row){label(ctx,row,cw*i+8,h-30+line*15,c.color,12);row=word;line++;}else row+=(row?' ':'')+word;}label(ctx,row,cw*i+8,h-30+line*15,c.color,12);");
+demos=demos.replace('Math.floor((e.clientX - r.left) / (r.width / 4))','Math.min(3,Math.floor((e.clientY-r.top)/(r.height/4)))');
+demos+='\n'+await read('scripts/adaptations/oscillator-audit.js');
+await write('public/simulari/'+id+'/js/demos.js',demos);
+const files=['index.html','css/styles.css','js/app.js','js/demos.js'];await write('docs/imported-oscillator.json',JSON.stringify({id,source,files:await Promise.all(files.map(async path=>({path,sha256:createHash('sha256').update(await readFile(new URL(source+'/'+path,root))).digest('hex')}))),topics:4,questions:18,simulations:(body.match(/<canvas /g)||[]).length,problems:6,languages:['ro','en'],excluded:'Compunerea oscilațiilor, bătăi și Lissajous: laborator separat, la cererea utilizatorului.'},null,2)+'\n');
+const simulation={id,chapter:'sunete-si-unde',title:'Oscilatorul mecanic',subtitle:'Fenomene periodice și oscilații armonice',description:'Patru teme, unsprezece demonstrații, șase probleme rezolvate și verificări: mărimi, amortizare, fază, pendule și energie.',href:'./simulari/'+id+'/index.html',image:'./assets/oscilator-mecanic.svg',alt:'Resort și corp oscilant, cu graficul elongației',tags:['Oscilații','Pendule','Probleme','Offline'],keywords:'oscilator mecanic armonic pendul resort perioada frecventa amplitudine faza amortizare energie',status:'available'};
+let catalog=await read('public/catalog.js');if(!catalog.includes('"id":"'+id+'"'))await write('public/catalog.js',catalog.replace('\n];\nexport const normalize',',\n '+JSON.stringify(simulation)+'\n];\nexport const normalize'));
+for(const lang of ['ro','en']){const path='public/locales/chapters/sunete-si-unde/'+lang+'.json',data=JSON.parse(await read(path));data.simulations[id]=lang==='ro'?Object.fromEntries(['title','subtitle','description','alt','tags'].map(k=>[k,simulation[k]])):{title:'Mechanical oscillator',subtitle:'Periodic phenomena and harmonic oscillations',description:'Four topics, eleven demonstrations and six worked problems: quantities, damping, phase, pendulums and energy.',alt:'Spring–mass oscillator and displacement graph',tags:['Oscillations','Pendulums','Problems','Offline']};await write(path,JSON.stringify(data,null,2)+'\n');}
+console.log('Integrat: Oscilatorul mecanic');

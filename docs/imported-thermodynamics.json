@@ -1,0 +1,191 @@
+{
+  "id": "notiuni-termodinamice",
+  "source": "sources/notiuni-termodinamice/site",
+  "files": [
+    {
+      "path": "css/lectie.css",
+      "sha256": "39427119780655590b802d190dc47ddc9fb67adc79bfef5769eddf85f6483daa"
+    },
+    {
+      "path": "icons/apple-touch-icon.png",
+      "sha256": "a8251b84c63b3b73c0500d7105dadb434ba8c230ed1ae79087830af08aedb8c0"
+    },
+    {
+      "path": "icons/icon-192.png",
+      "sha256": "179ef4640c2be7fcf237573894134e32501dd95b5e49429687c6f5ddf7df52de"
+    },
+    {
+      "path": "icons/icon-512.png",
+      "sha256": "89f3e289bf885ef393a7b2d525d0ba785d185ece2062059e1b9ccefafb426011"
+    },
+    {
+      "path": "icons/icon-maskable-192.png",
+      "sha256": "9806d75b03b563380aa3bdb5c60f610649cdab468479df9c7b02837e0b808dd7"
+    },
+    {
+      "path": "icons/icon-maskable-512.png",
+      "sha256": "d4e99d66a97548e3ce054fe41c74d797c811ee8333501b5d3709fc697e73bd15"
+    },
+    {
+      "path": "icons/icon.svg",
+      "sha256": "c145f39f1a81a88982483bf126041d7275888f6562c80f9fc4e357cb69dc75da"
+    },
+    {
+      "path": "index.html",
+      "sha256": "156a979635da500c3d3f7effc21ee46c7c9475bfccefac4e8b27b0e9e44e534c"
+    },
+    {
+      "path": "js/baza.js",
+      "sha256": "6766807624c180f8d6ac68f29571dc4a44021bcecd67313a61df180d900f201c"
+    },
+    {
+      "path": "js/figuri-1.js",
+      "sha256": "03b22df2cdfea0843d23eb9fc8282bef3563a2503e06d0addffbff9b81d6fe5d"
+    },
+    {
+      "path": "js/figuri-2.js",
+      "sha256": "541322b84d57d47410d89501ff2641a58b321347919aaf6cff80d6c861b20614"
+    },
+    {
+      "path": "js/lectie.js",
+      "sha256": "81a7b4cd31f41aa65c281ba8903eec311c55ae5be69421a1ed98b98f4e74f600"
+    },
+    {
+      "path": "vendor/fonts/fonts.css",
+      "sha256": "8dc448cd9c89b393f84501bd6dc7285341e506caff042e78029453b0d03e284b"
+    },
+    {
+      "path": "vendor/fonts/Fraunces-italic-latin-ext-6cc8f6.woff2",
+      "sha256": "4983926d3a16544eedcd2233448bd8a43f711e7bf1fabaae8431e78e0b798635"
+    },
+    {
+      "path": "vendor/fonts/Fraunces-italic-latin-feced2.woff2",
+      "sha256": "066710ce7ed235a339d3d6cdcc8b55c0bea5632232662d83aacea25852108271"
+    },
+    {
+      "path": "vendor/fonts/Fraunces-normal-latin-39ce20.woff2",
+      "sha256": "7234ed860a9cc83045413c4faee63c960a8f2d1917adcf728119307d56e0d783"
+    },
+    {
+      "path": "vendor/fonts/Fraunces-normal-latin-ext-796716.woff2",
+      "sha256": "a2930b27d13a228bd9ab6a49269b5f800237892ad560cb9dd7fab01b1620f88e"
+    },
+    {
+      "path": "vendor/fonts/JetBrainsMono-normal-latin-480c06.woff2",
+      "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+    },
+    {
+      "path": "vendor/fonts/JetBrainsMono-normal-latin-ext-ba1653.woff2",
+      "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52"
+    },
+    {
+      "path": "vendor/fonts/SourceSerif4-italic-latin-d27161.woff2",
+      "sha256": "96e6393209728ab93c334ae739af8a040cd2006c82e8614d6465a8084db88f89"
+    },
+    {
+      "path": "vendor/fonts/SourceSerif4-italic-latin-ext-042db4.woff2",
+      "sha256": "2078240cee94e627d0e180d56d74a11b2a1d387bbd61a9b7269f0a43df756896"
+    },
+    {
+      "path": "vendor/fonts/SourceSerif4-normal-latin-3084ac.woff2",
+      "sha256": "f2ea9c12d2fe9bd3a9589b02ad2c0909da88f30938c91adc838c4f4098f9f9e0"
+    },
+    {
+      "path": "vendor/fonts/SourceSerif4-normal-latin-ext-ea2a53.woff2",
+      "sha256": "155f6e701097cc269cf8d5d7ac86795f263f1afbeb47c14d1d747108c9335389"
+    },
+    {
+      "path": "vendor/katex/contrib/auto-render.min.js",
+      "sha256": "7b57d427ac6270677daf8d8380ded2cc73336f9149a167b8e1fe0d6ef66604ae"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_AMS-Regular.woff2",
+      "sha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2",
+      "sha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2",
+      "sha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2",
+      "sha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2",
+      "sha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Main-Bold.woff2",
+      "sha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2",
+      "sha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Main-Italic.woff2",
+      "sha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+      "sha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2",
+      "sha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Math-Italic.woff2",
+      "sha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2",
+      "sha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2",
+      "sha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2",
+      "sha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Script-Regular.woff2",
+      "sha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Size1-Regular.woff2",
+      "sha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Size2-Regular.woff2",
+      "sha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Size3-Regular.woff2",
+      "sha256": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Size4-Regular.woff2",
+      "sha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2",
+      "sha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b"
+    },
+    {
+      "path": "vendor/katex/katex.min.css",
+      "sha256": "f0dbfcc2940b4d788c805c1a1e117e898d2814b0f1a52bf16640543216e0964d"
+    },
+    {
+      "path": "vendor/katex/katex.min.js",
+      "sha256": "e6bfe5deebd4c7ccd272055bab63bd3ab2c73b907b6e6a22d352740a81381fd4"
+    }
+  ],
+  "excluded": "Textbook references and errata section, publisher numbering, decorative hero and original PWA registration"
+}

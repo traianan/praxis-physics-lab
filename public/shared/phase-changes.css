@@ -1,0 +1,71 @@
+body[data-praxis-course="transformari-stare-agregare"]{background:var(--praxis-color-canvas);background-image:none}
+body[data-praxis-course="transformari-stare-agregare"]::before{display:none}
+.praxis-lab-nav:has([data-nav="topire"]) .praxis-course-nav-select{display:none!important}
+#praxis-original .demo{position:static;align-self:start}
+#praxis-original .grid-2{align-items:start}
+#praxis-original :is(.state p,.state h4,.tree-node,.stage-label,.bar-value){color:var(--praxis-color-ink)}
+#praxis-original .model-note{font-size:.875rem;line-height:1.6;color:var(--praxis-color-muted)}
+#praxis-original .readout{grid-template-columns:repeat(2,minmax(0,1fr))}
+#praxis-original .readout dd{color:var(--praxis-color-ink);font-size:.9375rem;white-space:normal;overflow-wrap:anywhere}
+#praxis-original .diagram-tree{max-width:100%;overflow-x:auto}
+#praxis-original .step-head{font:inherit;border:0;background:transparent}
+#praxis-original :is(.def,.obs-list li,.vt-root){color:var(--praxis-color-ink)}
+#praxis-original .def-tag{color:var(--praxis-color-primary)}
+#praxis-original .dual-table{align-items:start}
+#praxis-original .sim-frame{overflow-x:auto;overflow-y:hidden;max-width:100%}
+#praxis-original canvas{display:block;max-width:none}
+#praxis-original .phase-legend{display:flex;flex-wrap:wrap;gap:.5rem 1rem;list-style:none;padding:0;margin:.75rem 0;font-size:.875rem;color:var(--praxis-color-ink)}
+#praxis-original .phase-legend li{display:flex;align-items:center;gap:.4rem}
+#praxis-original .phase-legend i{width:1.5rem;height:3px;background:var(--cyan)}
+#praxis-original .phase-legend .vaporisation{background:var(--gold)}
+#praxis-original .phase-legend .sublimation{background:var(--violet)}
+#praxis-original #view-fierbere [hidden]{display:none!important}
+#praxis-original #view-fierbere .phase-legend .melting{background:var(--accent)}
+#praxis-original .boil-events{font-size:.875rem;margin:.5rem 0;color:var(--praxis-color-muted)}
+#praxis-original .boiling-protocol{padding:.75rem 1rem;margin:1rem 0;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);background:var(--praxis-color-surface)}
+#praxis-original .boiling-protocol li{margin:.5rem 0}
+#praxis-original .evaporation-rate{padding:.75rem 1rem;margin:1rem 0;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);background:var(--praxis-color-surface)}
+#praxis-original .andrews-legend .current{background:var(--accent)}
+#praxis-original .andrews-legend .below{background:var(--gold)}
+#praxis-original .andrews-legend .critical{background:var(--violet)}
+#praxis-original .andrews-legend .above{background:var(--green)}
+@media(min-width:1200px){#praxis-original .andrews-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+@media(max-width:700px){#praxis-original .dual-table{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:700px){#praxis-original .states{grid-template-columns:1fr}}
+
+#praxis-original .andrews-legend .envelope{height:0;background:none;border-top:3px dotted var(--praxis-color-ink)}
+
+#praxis-original .liquefaction-history{margin-top:1.5rem;width:100%;min-width:0}
+#praxis-original .liquefaction-history table{width:100%;min-width:0;table-layout:fixed}
+#praxis-original .liquefaction-history :is(th,td){color:var(--praxis-color-ink);text-align:left;white-space:normal;overflow-wrap:anywhere;padding:.5rem}
+#praxis-original .liquefaction-history thead th:first-child{width:18%}
+#praxis-original .liquefaction-history thead th:nth-child(n+2){width:12%}
+#praxis-original .liquefaction-history thead th:nth-child(6){width:8%}
+#praxis-original .liquefaction-history thead th:nth-child(7){width:26%}
+#praxis-original .liquefaction-history tbody th{font-weight:500}
+#praxis-original .liquefaction-history details li{margin:.5rem 0}
+#praxis-original .liquefaction-history .boiling-value{font-size:.875rem;white-space:normal;font-variant-numeric:tabular-nums}
+#praxis-original .liquefaction-history .critical-value{background:var(--praxis-color-primary-soft)}
+@media(max-width:700px){
+ #praxis-original .liquefaction-history :is(table,tbody){display:block;width:100%;min-width:0}
+ #praxis-original .liquefaction-history thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ #praxis-original .liquefaction-history tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:2px solid var(--praxis-color-border)}
+ #praxis-original .liquefaction-history tbody tr:last-child{border-bottom:0}
+ #praxis-original .liquefaction-history tbody tr>th{grid-column:1/-1;width:auto;font-weight:600;background:var(--praxis-color-surface)}
+ #praxis-original .liquefaction-history tbody td{display:block;min-width:0;white-space:normal}
+ #praxis-original .liquefaction-history tbody td::before{content:attr(data-label);display:block;font-size:.75rem;font-weight:600;line-height:1.5;margin-bottom:.25rem}
+}
+
+#praxis-original .liquefaction-notes{margin-top:1.5rem}
+
+#praxis-original :is(.andrews-graph-notes,.liquefaction-notes,.andrews-grid>.demo,.liquefaction-history){padding:1rem;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);color:var(--praxis-color-ink)}
+#praxis-original :is(.andrews-graph-notes,.andrews-grid>.demo){background:#eef5fb;background:color-mix(in srgb,var(--accent) 6%,var(--praxis-color-surface));border-color:color-mix(in srgb,var(--accent) 25%,var(--praxis-color-border))}
+#praxis-original :is(.liquefaction-notes,.liquefaction-history){background:#fff7e8;background:color-mix(in srgb,var(--gold) 10%,var(--praxis-color-surface));border-color:color-mix(in srgb,var(--gold) 30%,var(--praxis-color-border))}
+#praxis-original :is(.andrews-graph-notes,.liquefaction-notes)>:first-child{margin-top:0}
+#praxis-original :is(.andrews-graph-notes,.liquefaction-notes)>:last-child{margin-bottom:0}
+#praxis-original .liquefaction-notes .model-note{color:var(--praxis-color-ink)}
+
+#praxis-original .andrews-grid>.demo .sim-frame{background:transparent}
+#praxis-original .liquefaction-history :is(.table-wrap,tbody tr>th){background:transparent}
+#praxis-original .liquefaction-history thead th,#praxis-original .liquefaction-history .critical-value{background:#fff0d8;background:color-mix(in srgb,var(--gold) 18%,var(--praxis-color-surface))}
+#praxis-original .liquefaction-history table.data tbody tr:hover{background:color-mix(in srgb,var(--gold) 6%,var(--praxis-color-surface))}

@@ -1,0 +1,1497 @@
+{
+  "date": "2026-10-27",
+  "viewport": [
+    1920,
+    1080
+  ],
+  "before": [
+    {
+      "topic": "clasificare",
+      "part": "clasificare-content-0",
+      "height": 1043,
+      "canvases": [
+        {
+          "logical": [
+            340,
+            140
+          ],
+          "width": 521,
+          "height": 215
+        },
+        {
+          "logical": [
+            340,
+            140
+          ],
+          "width": 521,
+          "height": 215
+        }
+      ]
+    },
+    {
+      "topic": "clasificare",
+      "part": "clasificare-content-1",
+      "height": 1018,
+      "canvases": [
+        {
+          "logical": [
+            360,
+            200
+          ],
+          "width": 537,
+          "height": 298
+        },
+        {
+          "logical": [
+            360,
+            200
+          ],
+          "width": 537,
+          "height": 298
+        }
+      ]
+    },
+    {
+      "topic": "clasificare",
+      "part": "clasificare-content-2",
+      "height": 1986,
+      "canvases": [
+        {
+          "logical": [
+            800,
+            350
+          ],
+          "width": 1084,
+          "height": 474
+        },
+        {
+          "logical": [
+            800,
+            170
+          ],
+          "width": 1084,
+          "height": 230
+        }
+      ]
+    },
+    {
+      "topic": "clasificare",
+      "part": "clasificare-content-3",
+      "height": 2929,
+      "canvases": [
+        {
+          "logical": [
+            900,
+            500
+          ],
+          "width": 900,
+          "height": 500
+        },
+        {
+          "logical": [
+            900,
+            500
+          ],
+          "width": 1084,
+          "height": 602
+        }
+      ]
+    },
+    {
+      "topic": "marimi",
+      "part": "marimi-content-0",
+      "height": 1072,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            220
+          ],
+          "width": 1092,
+          "height": 334
+        }
+      ]
+    },
+    {
+      "topic": "marimi",
+      "part": "marimi-content-1",
+      "height": 1117,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            200
+          ],
+          "width": 1092,
+          "height": 303
+        }
+      ]
+    },
+    {
+      "topic": "ecuatia",
+      "part": "ecuatia-content-0",
+      "height": 1080,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            260
+          ],
+          "width": 1092,
+          "height": 394
+        }
+      ]
+    },
+    {
+      "topic": "ecuatia",
+      "part": "ecuatia-content-1",
+      "height": 1113,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            220
+          ],
+          "width": 1092,
+          "height": 334
+        }
+      ]
+    },
+    {
+      "topic": "huygens",
+      "part": "huygens-content-0",
+      "height": 952,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            340
+          ],
+          "width": 1092,
+          "height": 516
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-0",
+      "height": 1256,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            360
+          ],
+          "width": 1092,
+          "height": 546
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-1",
+      "height": 867,
+      "canvases": [
+        {
+          "logical": [
+            360,
+            160
+          ],
+          "width": 537,
+          "height": 239
+        },
+        {
+          "logical": [
+            360,
+            160
+          ],
+          "width": 537,
+          "height": 239
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-2",
+      "height": 1016,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            300
+          ],
+          "width": 1092,
+          "height": 455
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-3",
+      "height": 936,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            300
+          ],
+          "width": 1092,
+          "height": 455
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-4",
+      "height": 756,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            180
+          ],
+          "width": 1092,
+          "height": 273
+        }
+      ]
+    },
+    {
+      "topic": "interferenta",
+      "part": "interferenta-content-0",
+      "height": 1141,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            340
+          ],
+          "width": 1092,
+          "height": 516
+        }
+      ]
+    },
+    {
+      "topic": "interferenta",
+      "part": "interferenta-content-1",
+      "height": 970,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            200
+          ],
+          "width": 1092,
+          "height": 303
+        }
+      ]
+    },
+    {
+      "topic": "stationare",
+      "part": "stationare-content-0",
+      "height": 1195,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            240
+          ],
+          "width": 1092,
+          "height": 364
+        }
+      ]
+    },
+    {
+      "topic": "instrumente",
+      "part": "instrumente-content-0",
+      "height": 1148,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            200
+          ],
+          "width": 1092,
+          "height": 303
+        }
+      ]
+    },
+    {
+      "topic": "acustica",
+      "part": "acustica-content-0",
+      "height": 1033,
+      "canvases": []
+    },
+    {
+      "topic": "doppler",
+      "part": "doppler-content-0",
+      "height": 1029,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            260
+          ],
+          "width": 1092,
+          "height": 394
+        }
+      ]
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-0",
+      "height": 354,
+      "canvases": []
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-1",
+      "height": 1454,
+      "canvases": [
+        {
+          "logical": [
+            480,
+            180
+          ],
+          "width": 1084,
+          "height": 407
+        },
+        {
+          "logical": [
+            480,
+            80
+          ],
+          "width": 1084,
+          "height": 181
+        }
+      ]
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-2",
+      "height": 1902,
+      "canvases": [
+        {
+          "logical": [
+            480,
+            360
+          ],
+          "width": 1084,
+          "height": 813
+        },
+        {
+          "logical": [
+            240,
+            100
+          ],
+          "width": 533,
+          "height": 222
+        },
+        {
+          "logical": [
+            240,
+            100
+          ],
+          "width": 533,
+          "height": 222
+        }
+      ]
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-3",
+      "height": 1297,
+      "canvases": []
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-4",
+      "height": 962,
+      "canvases": [
+        {
+          "logical": [
+            480,
+            200
+          ],
+          "width": 1084,
+          "height": 452
+        }
+      ]
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-0",
+      "height": 497,
+      "canvases": []
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-1",
+      "height": 1499,
+      "canvases": [
+        {
+          "logical": [
+            560,
+            200
+          ],
+          "width": 1084,
+          "height": 387
+        },
+        {
+          "logical": [
+            260,
+            140
+          ],
+          "width": 499,
+          "height": 269
+        }
+      ]
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-2",
+      "height": 1136,
+      "canvases": [
+        {
+          "logical": [
+            800,
+            180
+          ],
+          "width": 1084,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-3",
+      "height": 1169,
+      "canvases": [
+        {
+          "logical": [
+            560,
+            130
+          ],
+          "width": 1084,
+          "height": 252
+        },
+        {
+          "logical": [
+            560,
+            140
+          ],
+          "width": 1084,
+          "height": 271
+        }
+      ]
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-4",
+      "height": 4640,
+      "canvases": [
+        {
+          "logical": [
+            800,
+            300
+          ],
+          "width": 1084,
+          "height": 407
+        },
+        {
+          "logical": [
+            800,
+            150
+          ],
+          "width": 1084,
+          "height": 203
+        },
+        {
+          "logical": [
+            560,
+            320
+          ],
+          "width": 479,
+          "height": 274
+        },
+        {
+          "logical": [
+            560,
+            360
+          ],
+          "width": 479,
+          "height": 308
+        },
+        {
+          "logical": [
+            420,
+            260
+          ],
+          "width": 500,
+          "height": 310
+        }
+      ]
+    },
+    {
+      "topic": "rezonanta-cladiri",
+      "part": "rezonanta-cladiri-content-0",
+      "height": 2406,
+      "canvases": [
+        {
+          "logical": [
+            400,
+            500
+          ],
+          "width": 386,
+          "height": 483
+        },
+        {
+          "logical": [
+            520,
+            220
+          ],
+          "width": 648,
+          "height": 274
+        }
+      ]
+    },
+    {
+      "topic": "jurnal",
+      "part": "jurnal-content-0",
+      "height": 894,
+      "canvases": [
+        {
+          "logical": [
+            380,
+            180
+          ],
+          "width": 521,
+          "height": 247
+        }
+      ]
+    },
+    {
+      "topic": "probleme",
+      "part": "probleme-content-0",
+      "height": 1920,
+      "canvases": []
+    },
+    {
+      "topic": "test1",
+      "part": "test1-content-0",
+      "height": 4747,
+      "canvases": []
+    },
+    {
+      "topic": "test2",
+      "part": "test2-content-0",
+      "height": 4747,
+      "canvases": []
+    },
+    {
+      "topic": "glosar",
+      "part": "glosar-content-0",
+      "height": 2460,
+      "canvases": []
+    },
+    {
+      "topic": "ghid-profesor",
+      "part": "ghid-profesor-content-0",
+      "height": 1915,
+      "canvases": []
+    }
+  ],
+  "after": [
+    {
+      "topic": "clasificare",
+      "part": "clasificare-content-0",
+      "height": 827,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            340,
+            140
+          ],
+          "width": 425,
+          "height": 175
+        },
+        {
+          "logical": [
+            340,
+            140
+          ],
+          "width": 425,
+          "height": 175
+        }
+      ]
+    },
+    {
+      "topic": "clasificare",
+      "part": "clasificare-content-1",
+      "height": 824,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            360,
+            200
+          ],
+          "width": 450,
+          "height": 250
+        },
+        {
+          "logical": [
+            360,
+            200
+          ],
+          "width": 450,
+          "height": 250
+        }
+      ]
+    },
+    {
+      "topic": "clasificare",
+      "part": "clasificare-content-2",
+      "height": 1685,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            800,
+            350
+          ],
+          "width": 1000,
+          "height": 438
+        },
+        {
+          "logical": [
+            800,
+            170
+          ],
+          "width": 1000,
+          "height": 213
+        }
+      ]
+    },
+    {
+      "topic": "clasificare",
+      "part": "clasificare-content-3",
+      "height": 2485,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            900,
+            500
+          ],
+          "width": 900,
+          "height": 500
+        },
+        {
+          "logical": [
+            900,
+            500
+          ],
+          "width": 900,
+          "height": 500
+        }
+      ]
+    },
+    {
+      "topic": "marimi",
+      "part": "marimi-content-0",
+      "height": 889,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            220
+          ],
+          "width": 900,
+          "height": 275
+        }
+      ]
+    },
+    {
+      "topic": "marimi",
+      "part": "marimi-content-1",
+      "height": 935,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            200
+          ],
+          "width": 900,
+          "height": 250
+        }
+      ]
+    },
+    {
+      "topic": "ecuatia",
+      "part": "ecuatia-content-0",
+      "height": 861,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            260
+          ],
+          "width": 900,
+          "height": 325
+        }
+      ]
+    },
+    {
+      "topic": "ecuatia",
+      "part": "ecuatia-content-1",
+      "height": 900,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            220
+          ],
+          "width": 900,
+          "height": 275
+        }
+      ]
+    },
+    {
+      "topic": "huygens",
+      "part": "huygens-content-0",
+      "height": 767,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            340
+          ],
+          "width": 900,
+          "height": 425
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-0",
+      "height": 998,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            360
+          ],
+          "width": 900,
+          "height": 450
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-1",
+      "height": 684,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            360,
+            160
+          ],
+          "width": 450,
+          "height": 200
+        },
+        {
+          "logical": [
+            360,
+            160
+          ],
+          "width": 450,
+          "height": 200
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-2",
+      "height": 838,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            300
+          ],
+          "width": 900,
+          "height": 375
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-3",
+      "height": 756,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            300
+          ],
+          "width": 900,
+          "height": 375
+        }
+      ]
+    },
+    {
+      "topic": "reflexie",
+      "part": "reflexie-content-4",
+      "height": 606,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            180
+          ],
+          "width": 900,
+          "height": 225
+        }
+      ]
+    },
+    {
+      "topic": "interferenta",
+      "part": "interferenta-content-0",
+      "height": 926,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            340
+          ],
+          "width": 900,
+          "height": 425
+        }
+      ]
+    },
+    {
+      "topic": "interferenta",
+      "part": "interferenta-content-1",
+      "height": 783,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            200
+          ],
+          "width": 900,
+          "height": 250
+        }
+      ]
+    },
+    {
+      "topic": "stationare",
+      "part": "stationare-content-0",
+      "height": 965,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            240
+          ],
+          "width": 900,
+          "height": 300
+        }
+      ]
+    },
+    {
+      "topic": "instrumente",
+      "part": "instrumente-content-0",
+      "height": 933,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            200
+          ],
+          "width": 900,
+          "height": 250
+        }
+      ]
+    },
+    {
+      "topic": "acustica",
+      "part": "acustica-content-0",
+      "height": 880,
+      "overflow": false,
+      "canvases": []
+    },
+    {
+      "topic": "doppler",
+      "part": "doppler-content-0",
+      "height": 772,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            720,
+            260
+          ],
+          "width": 900,
+          "height": 325
+        }
+      ]
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-0",
+      "height": 284,
+      "overflow": false,
+      "canvases": []
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-1",
+      "height": 624,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            480,
+            180
+          ],
+          "width": 512,
+          "height": 192
+        },
+        {
+          "logical": [
+            480,
+            80
+          ],
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-2",
+      "height": 764,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            480,
+            360
+          ],
+          "width": 448,
+          "height": 336
+        },
+        {
+          "logical": [
+            240,
+            100
+          ],
+          "width": 0,
+          "height": 0
+        },
+        {
+          "logical": [
+            240,
+            100
+          ],
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-3",
+      "height": 677,
+      "overflow": false,
+      "canvases": []
+    },
+    {
+      "topic": "laborator",
+      "part": "laborator-content-4",
+      "height": 546,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            480,
+            200
+          ],
+          "width": 512,
+          "height": 213
+        }
+      ]
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-0",
+      "height": 373,
+      "overflow": false,
+      "canvases": []
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-1",
+      "height": 1149,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            560,
+            200
+          ],
+          "width": 700,
+          "height": 250
+        },
+        {
+          "logical": [
+            260,
+            140
+          ],
+          "width": 325,
+          "height": 175
+        }
+      ]
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-2",
+      "height": 859,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            800,
+            180
+          ],
+          "width": 1000,
+          "height": 225
+        }
+      ]
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-3",
+      "height": 865,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            560,
+            130
+          ],
+          "width": 700,
+          "height": 163
+        },
+        {
+          "logical": [
+            560,
+            140
+          ],
+          "width": 700,
+          "height": 175
+        }
+      ]
+    },
+    {
+      "topic": "lab-avansat",
+      "part": "lab-avansat-content-4",
+      "height": 4041,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            800,
+            300
+          ],
+          "width": 1000,
+          "height": 375
+        },
+        {
+          "logical": [
+            800,
+            150
+          ],
+          "width": 1000,
+          "height": 188
+        },
+        {
+          "logical": [
+            560,
+            320
+          ],
+          "width": 700,
+          "height": 400
+        },
+        {
+          "logical": [
+            560,
+            360
+          ],
+          "width": 700,
+          "height": 450
+        },
+        {
+          "logical": [
+            420,
+            260
+          ],
+          "width": 525,
+          "height": 325
+        }
+      ]
+    },
+    {
+      "topic": "rezonanta-cladiri",
+      "part": "rezonanta-cladiri-content-0",
+      "height": 1880,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            400,
+            500
+          ],
+          "width": 394,
+          "height": 493
+        },
+        {
+          "logical": [
+            520,
+            220
+          ],
+          "width": 650,
+          "height": 275
+        }
+      ]
+    },
+    {
+      "topic": "jurnal",
+      "part": "jurnal-content-0",
+      "height": 746,
+      "overflow": false,
+      "canvases": [
+        {
+          "logical": [
+            380,
+            180
+          ],
+          "width": 475,
+          "height": 225
+        }
+      ]
+    },
+    {
+      "topic": "probleme",
+      "part": "probleme-content-0",
+      "height": 1482,
+      "overflow": false,
+      "canvases": []
+    },
+    {
+      "topic": "test1",
+      "part": "test1-content-0",
+      "height": 3709,
+      "overflow": false,
+      "canvases": []
+    },
+    {
+      "topic": "test2",
+      "part": "test2-content-0",
+      "height": 3709,
+      "overflow": false,
+      "canvases": []
+    },
+    {
+      "topic": "glosar",
+      "part": "glosar-content-0",
+      "height": 2250,
+      "overflow": false,
+      "canvases": []
+    },
+    {
+      "topic": "ghid-profesor",
+      "part": "ghid-profesor-content-0",
+      "height": 1486,
+      "overflow": false,
+      "canvases": []
+    }
+  ],
+  "comparison": [
+    {
+      "part": "clasificare-content-0",
+      "before": 1043,
+      "after": 827,
+      "percent": 21,
+      "overflow": false
+    },
+    {
+      "part": "clasificare-content-1",
+      "before": 1018,
+      "after": 824,
+      "percent": 19,
+      "overflow": false
+    },
+    {
+      "part": "clasificare-content-2",
+      "before": 1986,
+      "after": 1685,
+      "percent": 15,
+      "overflow": false
+    },
+    {
+      "part": "clasificare-content-3",
+      "before": 2929,
+      "after": 2485,
+      "percent": 15,
+      "overflow": false
+    },
+    {
+      "part": "marimi-content-0",
+      "before": 1072,
+      "after": 889,
+      "percent": 17,
+      "overflow": false
+    },
+    {
+      "part": "marimi-content-1",
+      "before": 1117,
+      "after": 935,
+      "percent": 16,
+      "overflow": false
+    },
+    {
+      "part": "ecuatia-content-0",
+      "before": 1080,
+      "after": 861,
+      "percent": 20,
+      "overflow": false
+    },
+    {
+      "part": "ecuatia-content-1",
+      "before": 1113,
+      "after": 900,
+      "percent": 19,
+      "overflow": false
+    },
+    {
+      "part": "huygens-content-0",
+      "before": 952,
+      "after": 767,
+      "percent": 19,
+      "overflow": false
+    },
+    {
+      "part": "reflexie-content-0",
+      "before": 1256,
+      "after": 998,
+      "percent": 21,
+      "overflow": false
+    },
+    {
+      "part": "reflexie-content-1",
+      "before": 867,
+      "after": 684,
+      "percent": 21,
+      "overflow": false
+    },
+    {
+      "part": "reflexie-content-2",
+      "before": 1016,
+      "after": 838,
+      "percent": 18,
+      "overflow": false
+    },
+    {
+      "part": "reflexie-content-3",
+      "before": 936,
+      "after": 756,
+      "percent": 19,
+      "overflow": false
+    },
+    {
+      "part": "reflexie-content-4",
+      "before": 756,
+      "after": 606,
+      "percent": 20,
+      "overflow": false
+    },
+    {
+      "part": "interferenta-content-0",
+      "before": 1141,
+      "after": 926,
+      "percent": 19,
+      "overflow": false
+    },
+    {
+      "part": "interferenta-content-1",
+      "before": 970,
+      "after": 783,
+      "percent": 19,
+      "overflow": false
+    },
+    {
+      "part": "stationare-content-0",
+      "before": 1195,
+      "after": 965,
+      "percent": 19,
+      "overflow": false
+    },
+    {
+      "part": "instrumente-content-0",
+      "before": 1148,
+      "after": 933,
+      "percent": 19,
+      "overflow": false
+    },
+    {
+      "part": "acustica-content-0",
+      "before": 1033,
+      "after": 880,
+      "percent": 15,
+      "overflow": false
+    },
+    {
+      "part": "doppler-content-0",
+      "before": 1029,
+      "after": 772,
+      "percent": 25,
+      "overflow": false
+    },
+    {
+      "part": "laborator-content-0",
+      "before": 354,
+      "after": 284,
+      "percent": 20,
+      "overflow": false
+    },
+    {
+      "part": "laborator-content-1",
+      "before": 1454,
+      "after": 624,
+      "percent": 57,
+      "overflow": false
+    },
+    {
+      "part": "laborator-content-2",
+      "before": 1902,
+      "after": 764,
+      "percent": 60,
+      "overflow": false
+    },
+    {
+      "part": "laborator-content-3",
+      "before": 1297,
+      "after": 677,
+      "percent": 48,
+      "overflow": false
+    },
+    {
+      "part": "laborator-content-4",
+      "before": 962,
+      "after": 546,
+      "percent": 43,
+      "overflow": false
+    },
+    {
+      "part": "lab-avansat-content-0",
+      "before": 497,
+      "after": 373,
+      "percent": 25,
+      "overflow": false
+    },
+    {
+      "part": "lab-avansat-content-1",
+      "before": 1499,
+      "after": 1149,
+      "percent": 23,
+      "overflow": false
+    },
+    {
+      "part": "lab-avansat-content-2",
+      "before": 1136,
+      "after": 859,
+      "percent": 24,
+      "overflow": false
+    },
+    {
+      "part": "lab-avansat-content-3",
+      "before": 1169,
+      "after": 865,
+      "percent": 26,
+      "overflow": false
+    },
+    {
+      "part": "lab-avansat-content-4",
+      "before": 4640,
+      "after": 4041,
+      "percent": 13,
+      "overflow": false
+    },
+    {
+      "part": "rezonanta-cladiri-content-0",
+      "before": 2406,
+      "after": 1880,
+      "percent": 22,
+      "overflow": false
+    },
+    {
+      "part": "jurnal-content-0",
+      "before": 894,
+      "after": 746,
+      "percent": 17,
+      "overflow": false
+    },
+    {
+      "part": "probleme-content-0",
+      "before": 1920,
+      "after": 1482,
+      "percent": 23,
+      "overflow": false
+    },
+    {
+      "part": "test1-content-0",
+      "before": 4747,
+      "after": 3709,
+      "percent": 22,
+      "overflow": false
+    },
+    {
+      "part": "test2-content-0",
+      "before": 4747,
+      "after": 3709,
+      "percent": 22,
+      "overflow": false
+    },
+    {
+      "part": "glosar-content-0",
+      "before": 2460,
+      "after": 2250,
+      "percent": 9,
+      "overflow": false
+    },
+    {
+      "part": "ghid-profesor-content-0",
+      "before": 1915,
+      "after": 1486,
+      "percent": 22,
+      "overflow": false
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+import{readFile}from'node:fs/promises';
+export async function adaptMotionBehavior(code,file,reverse=false){const patches=JSON.parse((await readFile(new URL('./motion-behavior-patches.json',import.meta.url),'utf8')).replace(/^\uFEFF/,''));for(const p of (reverse?patches.toReversed():patches).filter(p=>p.file===file)){const from=reverse?p.after:p.before,to=reverse?p.before:p.after;if(code.split(from).length!==(p.count??1)+1)throw Error('Motion behavior patch mismatch: '+file+' / '+from);code=code.replaceAll(from,to);}return code;}

@@ -1,0 +1,16 @@
+{
+  "id": "compunerea-oscilatiilor",
+  "source": "compunerea_oscilatiilor/",
+  "hashes": {
+    "index.html": "1102248cf7c5a6d45ae7d0cf02750de050f2837c07d1eedc90b4db9d30bc018a",
+    "teorie.html": "3315935b681072d7059a37b6f8279f23aa7140e4a7247c55793f3452d678b44a",
+    "style.css": "43fef4e967fc3de93aed34110183e270a802a4d097e672c51a1536a132331dec",
+    "app.js": "cb2ff30fdbeaf2530ba5107d8031fe70af90cada986bf5f071c0d053f38721ef",
+    "README.txt": "14bff008a2fe263f79c842d4d123edf1205ccb4e05a507ffb31e66b17b29c81e"
+  },
+  "canvases": 3,
+  "presets": 12,
+  "quickRatios": 9,
+  "theoryTopics": 7,
+  "historicalNotes": 1
+}

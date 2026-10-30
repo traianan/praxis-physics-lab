@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="1.5 Transformări de stare de agregare — topire și solidificare, vaporizare și condensare, sublimare, punctul triplu. Teorie interactivă, demonstrații animate și probleme de verificare. Mantea & Garabet, Fizica clasa a X-a." />
+<meta name="color-scheme" content="dark" />
+<title>1.5 · Transformări de stare de agregare | Fizica clasa a X-a</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0e17'/%3E%3Cpath d='M8 21h16M10 21c0-4 3-4 3-7a3 3 0 016 0c0 3 3 3 3 7' stroke='%2338bdf8' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='11' r='2' fill='%23f59e0b'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Sari la conținut</a>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#home" data-nav="home">
+      <span class="brand-mark" aria-hidden="true">λ</span>
+      <span class="brand-text">
+        <strong>Stări de agregare</strong>
+        <small data-i18n="brand.sub">Transformări · 1.5</small>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Navigare principală">
+      <a href="#home" data-nav="home" data-i18n="nav.home">Home</a>
+      <div class="nav-group">
+        <button class="nav-group-btn" type="button" aria-expanded="false">
+          <span data-i18n="nav.group.theory">Teorie</span> <span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-flyout">
+          <a href="#topire" data-nav="topire" data-i18n="sec.topire.short">1.5.1 · Topirea și solidificarea</a>
+          <a href="#anomalie" data-nav="anomalie" data-i18n="sec.anomalie.short">Fig. 1.5.1.2 · Anomalia volumului</a>
+          <a href="#tabele" data-nav="tabele" data-i18n="sec.tabele.short">Tabelele 1.5.1.1 și 1.5.1.2</a>
+          <a href="#vaporizare" data-nav="vaporizare" data-i18n="sec.vaporizare.short">1.5.2 · Vaporizarea și condensarea</a>
+          <a href="#vid" data-nav="vid" data-i18n="sec.vid.short">1.5.2.1 · Vaporizarea în vid</a>
+          <a href="#evap" data-nav="evap" data-i18n="sec.evap.short">Activitate experimentală · Evaporarea</a>
+          <a href="#fierbere" data-nav="fierbere" data-i18n="sec.fierbere.short">Activitate experimentală · Fierberea</a>
+          <a href="#faze" data-nav="faze" data-i18n="sec.faze.short">1.5.3 · Sublimarea și punctul triplu</a>
+        </div>
+      </div>
+      <a href="#quiz" data-nav="quiz" data-i18n="nav.quiz">Verificare</a>
+      <a href="#resurse" data-nav="resurse" data-i18n="nav.links">Linkuri</a>
+    </nav>
+
+    <div class="header-tools">
+      <div class="lang-switch" role="group" aria-label="Limbă / Language">
+        <button type="button" data-lang="ro" class="on">RO</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <button class="icon-btn" id="soundBtn" type="button" aria-pressed="true" title="Sunet pornit/oprit">
+        <span class="snd-on" aria-hidden="true">♪</span>
+        <span data-i18n="ui.sound">Sunet</span>
+      </button>
+      <a class="icon-btn" href="https://traianan.github.io/" target="_blank" rel="noopener noreferrer" title="Pagina principală">
+        <span aria-hidden="true">⌂</span><span data-i18n="ui.home">Home</span>
+      </a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+  </div>
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+</header>
+
+<!-- ============================ MAIN ============================ -->
+<main id="main">
+
+<!-- ---------------------------- HOME ---------------------------- -->
+<section class="view on" id="view-home">
+  <div class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="home.eyebrow">Fizică · clasa a X-a · Termodinamică</p>
+      <h1><span data-i18n="home.title1">Transformări de stare</span> <em data-i18n="home.title2">de agregare</em></h1>
+      <p class="lead" data-i18n="home.lead">Subcapitolul 1.5, paginile 38–45 din manualul Mantea &amp; Garabet: topire și solidificare, vaporizare și condensare, vaporizarea în vid, evaporare, fierbere, sublimare și punctul triplu — cu demonstrații animate, formule, probleme rezolvate și un test de verificare.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#topire" data-nav="topire" data-i18n="home.cta.start">Începe lecția</a>
+        <a class="btn ghost" href="#quiz" data-nav="quiz" data-i18n="home.cta.quiz">Sari la verificare</a>
+        <a class="btn ghost" href="#faze" data-nav="faze" data-i18n="home.cta.diagram">Diagrama de faze</a>
+      </div>
+      <ul class="hero-facts">
+        <li><b>3</b><span data-i18n="home.fact.states">stări de agregare</span></li>
+        <li><b>6</b><span data-i18n="home.fact.transitions">transformări studiate</span></li>
+        <li><b>2</b><span data-i18n="home.fact.examples">probleme rezolvate din manual</span></li>
+        <li><b>13</b><span data-i18n="home.fact.quiz">întrebări de verificare</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-panel">
+      <div class="law-card">
+        <p class="law-label" data-i18n="home.law.label">Căldura latentă schimbată la schimbarea stării</p>
+        <div class="fx big" data-fx="Q = \lambda\cdot m"></div>
+        <p class="law-note" data-i18n="home.law.note">Cât timp are loc schimbarea stării de agregare, temperatura rămâne constantă: toată căldura „se cheltuie” pentru învingerea forțelor de coeziune.</p>
+      </div>
+      <div class="mini-tiles">
+        <a href="#topire" data-nav="topire" class="tile"><span class="tile-k">λ_t</span><span data-i18n="home.tile.topire">Topire / solidificare</span><small>gheață: 334 kJ/kg</small></a>
+        <a href="#vaporizare" data-nav="vaporizare" class="tile"><span class="tile-k">λ_v</span><span data-i18n="home.tile.vap">Vaporizare / condensare</span><small>apă: 2,26·10⁶ J/kg</small></a>
+        <a href="#vid" data-nav="vid" class="tile"><span class="tile-k">p_m</span><span data-i18n="home.tile.sat">Vapori saturanți</span><small>echilibru dinamic</small></a>
+        <a href="#faze" data-nav="faze" class="tile"><span class="tile-k">T_tr</span><span data-i18n="home.tile.triple">Punctul triplu</span><small>273,16 K</small></a>
+      </div>
+      <div class="offline-chip" data-i18n="home.offline">Funcționează complet offline · fără biblioteci externe</div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <span class="notice-icon" aria-hidden="true">✎</span>
+    <div>
+      <b data-i18n="home.err.title">Corecturi și completări aduse textului manualului</b>
+      <ul class="err-list">
+        <li><b data-i18n="home.err1.tag">p.39–40 vs. p.40</b> — <span data-i18n="home.err1.body">Tabelul 1.5.1.2 dă pentru gheață λ_t = 334 kJ/kg, dar Exercițiul 1.5.1.1 folosește 3,35·10⁵ J/kg. Cu valoarea din tabel, Q₂ = 33 400 J, iar căldura totală devine Q = 77 300 J, nu 77 400 J.</span></li>
+        <li><b data-i18n="home.err2.tag">Ex. 1.5.2.1, p.45</b> — <span data-i18n="home.err2.body">La „se cunosc” este înscrisă și căldura specifică c, care nu intervine în rezolvare: picătura pornește de la 0 °C, deci nu există etapă de încălzire. Datele necesare sunt doar λ_g și λ_v.</span></li>
+        <li><b data-i18n="home.err3.tag">Ex. 1.5.2.1, p.45</b> — <span data-i18n="home.err3.body">Exercițiul se oprește la formula f = λ_v/(λ_g + λ_v), fără rezultat numeric, iar subcapitolul nu dă nicăieri valoarea lui λ_v. Cu λ_v = 2,83·10⁶ J/kg (apă la 0 °C) și λ_g = 3,34·10⁵ J/kg rezultă f ≈ 0,89, adică îngheață aproape 9/10 din picătură.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="block">
+    <h2 data-i18n="home.states.title">Corpurile pot exista în trei stări de agregare</h2>
+    <div class="states">
+      <div class="state s-solid"><span class="dot" aria-hidden="true"></span><h4 data-i18n="home.state.solid">Solidă</h4><p data-i18n="home.state.solid.d">Moleculele sunt legate în rețea cristalină; formă și volum proprii.</p></div>
+      <div class="state s-lich"><span class="dot" aria-hidden="true"></span><h4 data-i18n="home.state.lichid">Lichidă</h4><p data-i18n="home.state.lichid.d">Coeziune mai slabă; volum propriu, dar forma vasului.</p></div>
+      <div class="state s-vap"><span class="dot" aria-hidden="true"></span><h4 data-i18n="home.state.vapori">Gazoasă</h4><p data-i18n="home.state.vapori.d">Forțe de coeziune neglijabile; ocupă tot volumul disponibil.</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 data-i18n="home.map.title">Harta subcapitolului</h2>
+    <ol class="toc">
+      <li><a href="#topire" data-nav="topire"><b>1.5.1</b><span data-i18n="home.map.1">Topirea și solidificarea — curba de încălzire, căldura latentă specifică de topire</span></a></li>
+      <li><a href="#anomalie" data-nav="anomalie"><b>fig. 1.5.1.2</b><span data-i18n="home.map.2">Anomalia volumului: gheața, bismutul, aliajele de plumb cu stibiu</span></a></li>
+      <li><a href="#tabele" data-nav="tabele"><b>1.5.1.1–2</b><span data-i18n="home.map.3">Temeperaturi de topire și călduri latente specifice, tabel cu tabel</span></a></li>
+      <li><a href="#vaporizare" data-nav="vaporizare"><b>1.5.2</b><span data-i18n="home.map.4">Vaporizarea și condensarea, λ_v = Q/m și arborele clasificării</span></a></li>
+      <li><a href="#vid" data-nav="vid"><b>1.5.2.1</b><span data-i18n="home.map.5">Vaporizarea în vid — tuburile Torricelli, vaporii saturanți, echilibrul dinamic</span></a></li>
+      <li><a href="#evap" data-nav="evap"><b>AE</b><span data-i18n="home.map.6">Activitatea experimentală Evaporarea — de ce scade temperatura lichidului</span></a></li>
+      <li><a href="#fierbere" data-nav="fierbere"><b>AE</b><span data-i18n="home.map.7">Activitatea experimentală Fierberea — presiunea și temperatura de fierbere + Ex. 1.5.2.1</span></a></li>
+      <li><a href="#faze" data-nav="faze"><b>1.5.3</b><span data-i18n="home.map.8">Sublimarea, desublimarea și punctul triplu — diagrama de stare</span></a></li>
+    </ol>
+  </section>
+</section>
+
+<!-- --------------------- 1.5.1 TOPIREA ȘI SOLIDIFICAREA --------- -->
+<section class="view" id="view-topire">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker1">Subcapitolul 1.5 · pagina 39</p>
+    <h2 data-i18n="sec.topire.title">1.5.1. Topirea și solidificarea</h2>
+    <p class="sec-lead" data-i18n="sec.topire.lead">Corpurile pot exista în trei stări de agregare: solidă, lichidă și gazoasă. Trecerea de la una la alta se face cu schimb de căldură la temperatură constantă.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <div class="def"><span class="def-tag" data-i18n="ui.def">Definiție</span><span data-i18n="top.def1">Se numește <b>topire</b> fenomenul de trecere a unei substanțe din stare solidă în stare lichidă.</span></div>
+      <div class="def"><span class="def-tag" data-i18n="ui.def2">Definiție</span><span data-i18n="top.def2">Se numește <b>solidificare</b> (sau <b>cristalizare</b>) fenomenul de trecere a unei substanțe din stare lichidă în stare solidă.</span></div>
+
+      <p class="small" data-i18n="top.exp">Experimental se constată că:</p>
+      <ol class="obs-list">
+        <li data-i18n="top.obs1">topirea are loc cu absorbție de căldură din exterior, iar solidificarea cu cedare de căldură în exterior;</li>
+        <li data-i18n="top.obs2">în timpul topirii substanțelor cristaline temperatura rămâne constantă, la o valoare numită <b>temperatura de topire</b>; aceste substanțe cristalizează tot la o temperatură constantă, numită <b>temperatură de cristalizare</b>, egală cu temperatura de topire;</li>
+        <li data-i18n="top.obs3">substanțele amorfe (cum este, de exemplu, smoala) nu au o temperatură precisă de topire: prin încălzire ele se înmoaie treptat și devin din ce în ce mai fluide, pe măsură ce temperatura lor crește.</li>
+      </ol>
+
+      <div class="callout"><b data-i18n="top.salt.tag">Observație</b><span data-i18n="top.salt.body">Temperatura de cristalizare este influențată de dizolvarea unor substanțe. De exemplu, o soluție saturată de sare de bucătărie în apă îngheață la aproximativ −20 °C (eutecticul NaCl–apă este la −21,1 °C, pentru circa 23 % sare).</span></div>
+
+      <p data-i18n="top.p1">În timpul topirii unei substanțe cristaline temperatura ei rămâne constantă (segmentul AB din figura 1.5.1.1). Aceasta înseamnă că energia cinetică medie a moleculelor rămâne constantă: căldura primită din exterior este „cheltuită” în întregime pentru ruperea legăturilor din rețeaua cristalină, deci pentru creșterea, în exclusivitate, a energiei potențiale a sistemului de molecule.</p>
+      <p data-i18n="top.p2">De aceea căldura primită din exterior în timpul topirii este numită <b>căldură latentă de topire</b>. În punctele de pe segmentul AB substanța aflată în stare solidă coexistă cu substanța aflată în stare lichidă.</p>
+      <p data-i18n="top.p3">Topirea este un proces reversibil. De aceea, în procesul invers, solidificarea, căldura cedată exteriorului — numită <b>căldură latentă de solidificare</b> — este egală, în modul, cu căldura latentă de topire.</p>
+
+      <div class="hl hl-gold">
+        <small data-i18n="top.def.lambda">Căldură latentă specifică de topire (solidificare)</small>
+        <div class="fx" data-fx="\lambda_{t} = \frac{Q}{m}\qquad\Longleftrightarrow\qquad Q = \lambda_{t}\cdot m"></div>
+      </div>
+      <p data-i18n="top.p4">unde λ_t este căldura latentă specifică de topire (respectiv, de solidificare), [λ_t] = J/kg, Q este căldura latentă schimbată de masa m de substanță, [Q] = J, [m] = kg. Căldura latentă specifică de topire și temperatura de topire sunt mărimi caracteristice pentru fiecare substanță.</p>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="top.demo.title">Demo · curba de încălzire (fig. 1.5.1.1)</h3>
+      <div class="seg small" id="subJump">
+        <button type="button" data-sub="crist" class="on" data-i18n="top.demo.crist">Substanță cristalină</button>
+        <button type="button" data-sub="amorf" data-i18n="top.demo.amorf">Substanță amorfă</button>
+      </div>
+      <label class="slider-row"><span data-i18n="top.demo.p">Puterea sursei</span><input type="range" id="incP" min="50" max="600" step="10" value="250" /><output id="incPOut">250 W</output></label>
+      <label class="slider-row"><span data-i18n="top.demo.m">Masa probei</span><input type="range" id="incM" min="20" max="500" step="10" value="100" /><output id="incMOut">100 g</output></label>
+      <div class="sim-frame"><canvas id="incCanvas" width="440" height="300" role="img" aria-label="Grafic temperatură-timp cu un platou de topire pentru substanța cristalină și o curbă continuă pentru cea amorfă"></canvas></div>
+      <dl class="readout four">
+        <div><dt>T</dt><dd id="incT">−20 °C</dd></div>
+        <div class="accent"><dt data-i18n="top.demo.state">Starea</dt><dd id="incState">—</dd></div>
+        <div><dt>Q</dt><dd id="incQ">0 J</dd></div>
+        <div><dt data-i18n="top.demo.fused">Topit</dt><dd id="incFrac">0 %</dd></div>
+      </dl>
+      <div class="btn-row">
+        <button class="btn small" id="incRun" type="button" data-i18n="ui.run">Rulează</button>
+        <button class="btn small ghost" id="incReset" type="button" data-i18n="ui.reset">Reset</button>
+      </div>
+      <p class="demo-hint" data-i18n="top.demo.hint">Pe platoul AB auzi un „tic” rar: fiecare tic este o legătură de rețea ruptă, nu o molecule mai rapidă.</p>
+    </aside>
+  </div>
+
+  <div class="example" id="ex-1511">
+    <h3><span class="ex-badge">Ex. 1.5.1.1</span> <span data-i18n="ex1511.title">Gheață de la −10 °C transformată în apă de 100 °C</span></h3>
+    <p class="statement" data-i18n="ex1511.text">Aflați căldura Q necesară pentru a transforma în apă la temperatura de 100 °C o cantitate de gheață de masă m = 100 g, aflată inițial la temperatura de t₀ = −10 °C. Se dau: căldura specifică a gheții c_g = 2090 J/(kg·K), căldura latentă specifică de topire a gheții λ_t = 3,35·10⁵ J/kg și căldura specifică a apei c_a = 4181 J/(kg·K).</p>
+    <ol class="steps" data-steps="ex1511"></ol>
+    <div class="err-flag"><b data-i18n="ex1511.err.tag">Inconsecvență de date în manual</b> <span data-i18n="ex1511.err.body">Enunțul folosește λ_t = 3,35·10⁵ J/kg, în timp ce Tabelul 1.5.1.2 (pagina alăturată) listează 334 kJ/kg. Diferența este de 0,3 %: cu valoarea din tabel Q₂ = 33 400 J și Q = 77 300 J.</span></div>
+    <div class="answer" id="ex1511answer"></div>
+  </div>
+
+  <section class="block">
+    <div class="grid-2">
+      <div class="prose">
+        <h3 data-i18n="etapa.title">Extindere: de la gheață la abur</h3>
+        <p data-i18n="etapa.p">Problema de mai sus are trei etape. Dacă încălzirea continuă, apar două etape noi: vaporizarea la 100 °C și încălzirea aburului. Bara de mai jos arată cât „costă” fiecare etapă — se vede imediat că schimbarea stării de agregare domină bugetul de energie.</p>
+        <p class="small" data-i18n="etapa.note">Valori utilizate: c_g = 2090, c_a = 4181 J/(kg·K); λ_t = 3,34·10⁵ J/kg; λ_v = 2,26·10⁶ J/kg (la 100 °C); c_abur = 2010 J/(kg·K). λ_v nu este dat în subcapitolul 1.5 — este completat din tabelele standard.</p>
+      </div>
+      <aside class="demo">
+        <h3 data-i18n="etapa.demo.title">Demo · bugetul de căldură pe etape</h3>
+        <label class="slider-row"><span data-i18n="etapa.demo.t">Temperatura finală</span><input type="range" id="etapaT" min="-10" max="130" step="1" value="100" /><output id="etapaTOut">100 °C</output></label>
+        <label class="slider-row"><span data-i18n="etapa.demo.m">Masa</span><input type="range" id="etapaM" min="10" max="500" step="10" value="100" /><output id="etapaMOut">100 g</output></label>
+        <div class="sim-frame short"><canvas id="etapaCanvas" width="440" height="220" role="img" aria-label="Grafic cu bare pentru căldura din fiecare etapă a încălzirii"></canvas></div>
+        <div class="energy-split" id="etapaBar" aria-label="Împărțirea căldurii pe etape"></div>
+        <div class="stage-key">
+          <span><i style="background:#60a5fa"></i><span data-i18n="etapa.s1">gheață → 0 °C</span></span>
+          <span><i style="background:#38bdf8"></i><span data-i18n="etapa.s2">topire</span></span>
+          <span><i style="background:#f59e0b"></i><span data-i18n="etapa.s3">apă → 100 °C</span></span>
+          <span><i style="background:#f43f5e"></i><span data-i18n="etapa.s4">vaporizare</span></span>
+        </div>
+        <dl class="readout three">
+          <div class="accent"><dt>Q total</dt><dd id="etapaQ">0 J</dd></div>
+          <div><dt data-i18n="etapa.stare">Starea finală</dt><dd id="etapaState">—</dd></div>
+          <div><dt data-i18n="etapa.max">Etapa dominantă</dt><dd id="etapaMax">—</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+</section>
+
+<!-- --------------------- ANOMALIA VOLUMULUI --------------------- -->
+<section class="view" id="view-anomalie">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker2">pagina 40 · figura 1.5.1.2</p>
+    <h2 data-i18n="sec.anomalie.title">Volumul la topire și efectul presiunii</h2>
+    <p class="sec-lead" data-i18n="sec.anomalie.lead">În general, prin topire volumul corpului crește, iar densitatea scade. Există însă excepții notabile.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <p data-i18n="ano.p1">În general, datorită creșterii distanțelor intermoleculare, volumul corpului crește (fig. 1.5.1.2-a) și corespunzător, densitatea scade. În acest caz se constată experimental că: <b>atunci când topirea are loc la o presiune mai mare, temperatura de topire este mai ridicată</b>.</p>
+      <p data-i18n="ano.p2">Există însă și excepții: gheața, bismutul, aliajele de plumb cu stibiu. Pentru ele, prin topire volumul scade (fig. 1.5.1.2-b) și densitatea crește (ρ_gheață = 950 kg/m³, ρ_apă = 1000 kg/m³); atunci când topirea are loc la o presiune mai mare, temperatura de topire este mai scăzută.</p>
+      <p data-i18n="ano.p3">Din cele de mai sus rezultă că indicarea temperaturii de topire pentru o substanță trebuie însoțită de precizarea presiunii la care se realizează topirea.</p>
+      <div class="hl"><small data-i18n="ano.concl">Concluzie</small><span data-i18n="ano.concl.body">Topirea și solidificarea substanțelor cristaline se realizează la temperatură constantă, dacă presiunea rămâne constantă.</span></div>
+      <p data-i18n="ano.p4">Panta de care depinde temperatura de topire de presiune se obține din relația Clausius–Clapeyron. Pentru gheață, la 0 °C:</p>
+      <div class="fx center" data-fx="\frac{dT}{dp} = \frac{T\,(V_{\mathrm{lichid}} - V_{\mathrm{solid}})}{\lambda_{t}\cdot M} \approx -7{,}5\cdot 10^{-3}\ \mathrm{K/atm}"></div>
+      <p class="small" data-i18n="ano.p5">Adică este nevoie de circa 130 atm pentru a coborî punctul de topire al gheții cu un singur grad — de aceea gheața de sub patine nu se topește prin presiune, ci prin frecare.</p>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="ano.demo.title">Demo · V–t la topire (fig. 1.5.1.2)</h3>
+      <div class="seg small" id="anoJump">
+        <button type="button" data-ano="normal" class="on" data-i18n="ano.demo.normal">Substanță normală (ceară)</button>
+        <button type="button" data-ano="apă" data-i18n="ano.demo.apa">Apă / bismut</button>
+      </div>
+      <label class="slider-row"><span data-i18n="ano.demo.p">Presiunea</span><input type="range" id="anoP" min="1" max="400" step="1" value="1" /><output id="anoPOut">1 atm</output></label>
+      <div class="sim-frame"><canvas id="anomCanvas" width="440" height="300" role="img" aria-label="Grafic volum-timp cu saltul de volum la topire, pentru o substanță normală și pentru apă"></canvas></div>
+      <dl class="readout three">
+        <div class="accent"><dt data-i18n="ano.demo.tm">t de topire</dt><dd id="anomT">0,000 °C</dd></div>
+        <div><dt data-i18n="ano.demo.dv">ΔV/V</dt><dd id="anomDV">+8 %</dd></div>
+        <div><dt data-i18n="ano.demo.shift">Deplasare</dt><dd id="anomShift">0,000 K</dd></div>
+      </dl>
+      <p class="demo-hint" data-i18n="ano.demo.hint">Crește presiunea și privește în ce parte se mută platoul: la ceară în sus, la apă în jos.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ------------------------- TABELELE 1.5.1.1/2 ----------------- -->
+<section class="view" id="view-tabele">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker3">pagina 40</p>
+    <h2 data-i18n="sec.tabele.title">Tabelul 1.5.1.1 și Tabelul 1.5.1.2</h2>
+    <p class="sec-lead" data-i18n="sec.tabele.lead">În tabelul 1.5.1.1 sunt prezentate câteva temperaturi de topire la presiunea atmosferică normală, iar în tabelul 1.5.1.2 valorile căldurii latente specifice de topire pentru câteva substanțe. Apasă pe un rând pentru a-l evidenția în grafic.</p>
+  </header>
+
+  <div class="dual-table">
+    <div class="table-wrap">
+      <table class="data" id="tabTopire">
+        <caption data-i18n="tab.1411">Tabelul 1.5.1.1 · temperatura de topire</caption>
+        <thead><tr><th scope="col" data-i18n="tab.sub">Substanța</th><th scope="col" data-i18n="tab.ttop">t topire (°C)</th><th scope="col" data-i18n="tab.kind">Tip</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table class="data" id="tabLambda">
+        <caption data-i18n="tab.1412">Tabelul 1.5.1.2 · căldura latentă specifică de topire</caption>
+        <thead><tr><th scope="col" data-i18n="tab.sub">Substanța</th><th scope="col">λ_t (kJ/kg)</th><th scope="col" data-i18n="tab.kind">Tip</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <aside class="demo">
+      <h3 data-i18n="tab.demo.title">Grafic comparativ</h3>
+      <div class="seg small" id="barJump">
+        <button type="button" data-bar="t" class="on" data-i18n="tab.demo.t">Temperatura de topire</button>
+        <button type="button" data-bar="lam" data-i18n="tab.demo.lam">Căldura latentă λ_t</button>
+      </div>
+      <div class="sim-frame"><canvas id="barCanvas" width="460" height="300" role="img" aria-label="Grafic cu bare pentru temperaturile de topire și căldurile latente"></canvas></div>
+      <dl class="readout three">
+        <div class="accent"><dt data-i18n="tab.demo.sel">Selecția</dt><dd id="barName">—</dd></div>
+        <div><dt id="barValLabel">t (°C)</dt><dd id="barVal">—</dd></div>
+        <div><dt data-i18n="tab.demo.perkg">Energie pentru 1 kg</dt><dd id="barKg">—</dd></div>
+      </dl>
+    </aside>
+    <div class="prose">
+      <h3 data-i18n="tab.why.title">De ce contează aceste numere</h3>
+      <ul class="obs-list">
+        <li data-i18n="tab.why1">λ_t a gheții este de peste 16 ori mai mare decât căldura necesară pentru a încălzi 1 kg de gheață cu 1 K: de aceea un cub de gheață răcește o băutură atât de eficient.</li>
+        <li data-i18n="tab.why2">λ_t crește odată cu energia de rețea: mercurul (metal slab legat) topește la −39 °C cu 11 kJ/kg, iar fierul la 1530 °C cu 270 kJ/kg.</li>
+        <li data-i18n="tab.why3">Argintul (960 °C) și fierul (1530 °C) apar în tabel pentru a compara scările de temperatură din metalurgia curentă.</li>
+      </ul>
+      <div class="callout"><b data-i18n="tab.ref.tag">Date de referință</b><span data-i18n="tab.ref.body">Valorile din tabelele manualului sunt rotunjite. Abaterile față de tabelele standard (NIST) sunt mai mici de 3 % pentru temperaturi și de circa 10 % pentru λ_t (de exemplu fierul: 270 kJ/kg în manual, 247 kJ/kg în tabelele standard).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------- 1.5.2 VAPORIZAREA ȘI CONDENSAREA ------- -->
+<section class="view" id="view-vaporizare">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker4">pagina 41</p>
+    <h2 data-i18n="sec.vaporizare.title">1.5.2. Vaporizarea și condensarea</h2>
+    <p class="sec-lead" data-i18n="sec.vaporizare.lead">Trecerea din stare lichidă în stare de vapori și invers, cu absorbție sau cedare de căldură.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <div class="def"><span class="def-tag" data-i18n="ui.def3">Definiție</span><span data-i18n="vap.def1">Se numește <b>vaporizare</b> fenomenul de trecere a unei substanțe din stare lichidă în stare de vapori.</span></div>
+      <div class="def"><span class="def-tag" data-i18n="ui.def4">Definiție</span><span data-i18n="vap.def2">Se numește <b>condensare</b> fenomenul de trecere a unei substanțe din stare de vapori în stare lichidă.</span></div>
+
+      <p class="small" data-i18n="vap.exp">Experimental se constată că:</p>
+      <ol class="obs-list">
+        <li data-i18n="vap.obs1">vaporizarea are loc cu absorbție de căldură din exterior, iar condensarea cu cedare de căldură în exterior;</li>
+        <li data-i18n="vap.obs2">în timpul vaporizării temperatura rămâne constantă, la o valoare numită <b>temperatură de vaporizare</b>; vaporii unei substanțe condensează tot la o temperatură constantă, numită <b>temperatură de condensare</b>, egală cu temperatura de vaporizare.</li>
+      </ol>
+
+      <p data-i18n="vap.p1">La temperatura de vaporizare moleculele din lichid au o anumită energie cinetică medie. Unele dintre molecule au însă o energie cinetică suficient de mare pentru a învinge forțele de coeziune și pot ieși din lichid în spațiul liber de deasupra. Dar, deoarece lichidul este părăsit de moleculele cu energie cinetică mare, scade energia cinetică medie a moleculelor din lichid și, în consecință, scade și temperatura.</p>
+      <p data-i18n="vap.p2">Căldura primită din exterior este „cheltuită” în întregime pentru menținerea constantă a temperaturii și deci a energiei cinetice medii a moleculelor de lichid, ceea ce asigură continuitatea procesului de vaporizare. De aceea căldura primită în timpul vaporizării se numește <b>căldură latentă de vaporizare</b>.</p>
+      <p data-i18n="vap.p3">Vaporizarea este un proces reversibil. De aceea, în procesul invers, condensarea, căldura cedată exteriorului — numită <b>căldură latentă de condensare</b> — este egală, în modul, cu căldura latentă de vaporizare.</p>
+
+      <div class="hl hl-gold">
+        <small data-i18n="vap.def.lambda">Căldură latentă specifică de vaporizare (condensare)</small>
+        <div class="fx" data-fx="\lambda_{v} = \frac{Q}{m}\qquad\Longleftrightarrow\qquad Q = \lambda_{v}\cdot m"></div>
+      </div>
+      <p data-i18n="vap.p4">Căldura latentă de vaporizare și temperatura de vaporizare sunt mărimi caracteristice pentru fiecare substanță. Pentru apă, λ_v = 2,26·10⁶ J/kg la 100 °C — cea mai mare valoare dintre lichidele obișnuite, motiv pentru care transpirația răcește eficient și pentru că marea amortizează clima.</p>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="vap.tree.title">Fig. 1.5.2.1 · cum se clasifică vaporizarea</h3>
+      <div class="vtree">
+        <div class="vt-root" data-i18n="vap.tree.root">Vaporizarea</div>
+        <div class="vt-cols">
+          <div class="vt-col">
+            <h4 data-i18n="vap.tree.lim">în volum limitat</h4>
+            <ul>
+              <li data-i18n="vap.tree.vid">în vid — instantanee, până la p_m</li>
+              <li data-i18n="vap.tree.atm">în atmosferă gazoasă — lentă</li>
+            </ul>
+          </div>
+          <div class="vt-col">
+            <h4 data-i18n="vap.tree.nelim">în volum nelimitat</h4>
+            <ul>
+              <li><span data-i18n="vap.tree.sup">la suprafața lichidului</span> — <b data-i18n="vap.tree.evap">evaporare</b></li>
+              <li><span data-i18n="vap.tree.bulk">în tot volumul lichidului</span> — <b data-i18n="vap.tree.fierb">fierbere</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="keyfacts">
+        <div><b data-i18n="vap.kf1.t">Evaporarea</b><span data-i18n="vap.kf1.d">doar la suprafață, la orice temperatură</span></div>
+        <div><b data-i18n="vap.kf2.t">Fierberea</b><span data-i18n="vap.kf2.d">în tot volumul, la o temperatură fixă</span></div>
+        <div><b data-i18n="vap.kf3.t">λ_v &gt; λ_t</b><span data-i18n="vap.kf3.d">apă: 2,26·10⁶ față de 3,34·10⁵ J/kg</span></div>
+      </div>
+      <div class="callout"><b data-i18n="vap.revers.tag">Proces reversibil</b><span data-i18n="vap.revers.body">Căldura absorbită la vaporizare este restituită integral mediului la condensare: pe ea se bazează încălzirea cu abur și, din păcate, arsurile provocate de abur.</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- --------------------- 1.5.2.1 VAPORIZAREA ÎN VID ------------- -->
+<section class="view" id="view-vid">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker5">pagina 42</p>
+    <h2 data-i18n="sec.vid.title">1.5.2.1. Vaporizarea în vid</h2>
+    <p class="sec-lead" data-i18n="sec.vid.lead">Într-un vas cu mercur se introduc mai multe tuburi barometrice. În tubul 2 se introduce, folosind o pipetă curbată, o cantitate mică de eter.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <p data-i18n="vid.p1">Având o densitate mai mică, eterul se ridică la suprafața mercurului din tub. Se constată că eterul se vaporizează (în vid) <b>instantaneu</b> și nivelul mercurului din tubul 2 coboară. În tubul 3 se introduce o cantitate de eter un pic mai mare: nivelul mercurului coboară ceva mai mult. În tubul 4 se introduce o cantitate și mai mare de eter — se constată că nu se mai vaporizează întreaga cantitate, iar nivelul mercurului coboară și mai mult. În tubul 5 se introduce o cantitate și mai mare de eter: rămâne neevaporizată o cantitate mai mare de eter, dar nivelul mercurului rămâne (aproximativ) același ca și în tubul 4.</p>
+      <div class="hl"><small data-i18n="vid.concl.tag">Concluzii</small>
+        <ul class="obs-list">
+          <li data-i18n="vid.concl1">vaporizarea în vid este instantanee;</li>
+          <li data-i18n="vid.concl2">vaporizarea în vid continuă până când presiunea vaporilor atinge o valoare maximă p_m.</li>
+        </ul>
+      </div>
+      <p data-i18n="vid.p2">Când presiunea vaporilor este egală cu p_m, vaporii sunt numiți <b>vapori saturanți</b>. În acest caz vaporii sunt în echilibru cu lichidul din care provin: înălțimea coloanelor de eter din tuburile 4 și 5 nu se modifică în timp. Aceasta înseamnă că, în fiecare secundă, numărul de molecule care trec din lichid în gazul de deasupra este egal cu numărul moleculelor care trec din gaz în lichid.</p>
+      <div class="def"><span class="def-tag" data-i18n="ui.def5">Definiție</span><span data-i18n="vid.def">Se numesc <b>vapori saturanți</b> vaporii aflați în echilibru dinamic cu lichidul din care provin.</span></div>
+      <p data-i18n="vid.p3">La nivel molecular echilibrul lichid–vapori saturanți este deci un <b>echilibru dinamic</b>.</p>
+
+      <p class="small" data-i18n="vid.exp">Experimental se constată că:</p>
+      <ol class="obs-list">
+        <li data-i18n="vid.e1">presiunea vaporilor saturanți nu depinde de masa lichidului și nici de masa vaporilor aflați în contact cu lichidul din care provin;</li>
+        <li data-i18n="vid.e2">la temperatură constantă, presiunea vaporilor saturanți nu depinde de volum (fig. 1.5.2.1.2-a): creșterea volumului conduce la vaporizarea unei cantități suplimentare de lichid, iar scăderea volumului la condensarea unei cantități de vapori, dar nivelul coloanei de mercur nu se schimbă;</li>
+        <li data-i18n="vid.e3">presiunea vaporilor saturanți depinde de temperatură (fig. 1.5.2.1.2-b);</li>
+        <li data-i18n="vid.e4">la temperatura constantă, presiunea vaporilor saturanți depinde numai de natura lichidului din care provin.</li>
+      </ol>
+      <div class="callout"><b data-i18n="vid.why.tag">Observații</b><span data-i18n="vid.why.body">Când temperatura crește, energia cinetică medie a moleculelor din lichid crește și ea, de aceea un număr mai mare de molecule pot părăsi lichidul — presiunea vaporilor saturanți crește. Dependența de natura lichidului se explică prin forțele intermoleculare (forțele de coeziune) și lucrul mecanic efectuat împotriva rezultantei acestor forțe, caracteristice fiecărui lichid.</span></div>
+      <div class="callout"><b data-i18n="vid.dalton.tag">John Dalton (1766–1844)</b><span data-i18n="vid.dalton.body">Vaporizarea în atmosferă gazoasă, spre deosebire de vaporizarea în vid, se realizează lent. Presiunea vaporilor saturanți este însă independentă de existența altor vapori sau gaze în incinta care îi conține — aceasta este observația manualului de la pagina 43 și premisa legii lui Dalton.</span></div>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="vid.demo.title">Demo · tuburile Torricelli cu eter</h3>
+      <label class="slider-row"><span data-i18n="vid.demo.d">Cantitatea de eter injectată</span><input type="range" id="tubD" min="0" max="100" step="1" value="18" /><output id="tubDOut">18 %</output></label>
+      <label class="slider-row"><span data-i18n="vid.demo.t">Temperatura</span><input type="range" id="tubT" min="260" max="320" step="1" value="293" /><output id="tubTOut">20 °C</output></label>
+      <div class="sim-frame"><canvas id="tubCanvas" width="440" height="300" role="img" aria-label="Cinci tuburi barometrice cu mercur și eter, cu niveluri diferite în funcție de cantitatea injectată"></canvas></div>
+      <dl class="readout three">
+        <div class="accent"><dt>p eter</dt><dd id="tubP">0 kPa</dd></div>
+        <div><dt>p_m</dt><dd id="tubPm">58,4 kPa</dd></div>
+        <div><dt data-i18n="vid.demo.reg">Regimul</dt><dd id="tubReg">—</dd></div>
+      </dl>
+      <p class="demo-hint" data-i18n="vid.demo.hint">Treci de doza care umple tubul: presiunea se blochează la p_m și lichidul rămâne neevaporizat.</p>
+
+      <h3 data-i18n="vid.echi.title" style="margin-top:1rem">Demo · echilibrul dinamic</h3>
+      <label class="slider-row"><span data-i18n="vid.echi.t">Temperatura</span><input type="range" id="echiT" min="260" max="380" step="1" value="300" /><output id="echiTOut">300 K</output></label>
+      <label class="slider-row"><span data-i18n="vid.echi.v">Volumul de deasupra</span><input type="range" id="echiV" min="30" max="100" step="1" value="70" /><output id="echiVOut">70 %</output></label>
+      <div class="sim-frame"><canvas id="echiCanvas" width="440" height="260" role="img" aria-label="Lichid cu molecule care evaporizează și vapori care condensează, arătând echilibrul dinamic"></canvas></div>
+      <dl class="readout three">
+        <div><dt data-i18n="vid.echi.escape">Plecări/s</dt><dd id="echiOut">0</dd></div>
+        <div><dt data-i18n="vid.echi.back">Sosiri/s</dt><dd id="echiBack">0</dd></div>
+        <div class="accent"><dt>p / p_m</dt><dd id="echiRatio">0,00</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- --------------------- AE EVAPORAREA -------------------------- -->
+<section class="view" id="view-evap">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker6">pagina 43 · activitate experimentală</p>
+    <h2 data-i18n="sec.evap.title">Evaporarea</h2>
+    <p class="sec-lead" data-i18n="sec.evap.lead">Turnați cantități egale de acetonă în mai multe vase deschise, având ariile bazelor diferite. Observați modul în care are loc vaporizarea.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <p data-i18n="eva.p1">Experimental se constată că vaporizarea (în aer liber) se face cu atât mai rapid cu cât suprafața liberă a lichidului este mai mare. Această constatare arată că vaporizarea (în aer liber) se face la suprafața lichidului. Acesta este fenomenul de <b>evaporare</b>.</p>
+      <p class="small" data-i18n="eva.exp">Experimental se constată că:</p>
+      <ul class="obs-list">
+        <li data-i18n="eva.f1">evaporarea are loc la orice temperatură;</li>
+        <li data-i18n="eva.f2">viteza evaporării crește când crește temperatura;</li>
+        <li data-i18n="eva.f3">în timpul evaporării temperatura lichidului scade.</li>
+      </ul>
+      <p data-i18n="eva.p2">La o temperatură mai mare energia cinetică medie este mai mare. De aceea numărul moleculelor care au energia cinetică suficient de mare pentru a putea traversa stratul superficial al lichidului, realizând lucru mecanic împotriva forțelor intermoleculare, este mai mare, deci viteza de evaporare este mai mare. Dar și la temperaturi scăzute, când energia cinetică medie este mai mică, există molecule (mai puține) care au energia cinetică suficient de mare pentru a putea părăsi lichidul.</p>
+      <p data-i18n="eva.p3">Moleculele care părăsesc lichidul în cursul evaporării au energii cinetice mai mari decât energia cinetică medie. De aceea, în cursul evaporării valoarea energiei cinetice medii scade și, corespunzător, scade și temperatura lichidului.</p>
+      <div class="callout"><b data-i18n="eva.cool.tag">Răcirea prin evaporare</b><span data-i18n="eva.cool.body">Este același mecanism care explică transpirația, udarea pământului după ploaie și formarea ceții. Un termometru cu bulbul învelit în vată umedă indică temperatura „umedă”, întotdeauna mai mică decât temperatura aerului.</span></div>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="eva.demo.title">Demo · molecule care escapă de la suprafață</h3>
+      <label class="slider-row"><span data-i18n="eva.demo.t">Temperatura inițială</span><input type="range" id="evapT" min="270" max="380" step="1" value="310" /><output id="evapTOut">310 K</output></label>
+      <label class="slider-row"><span data-i18n="eva.demo.a">Aria suprafeței libere</span><input type="range" id="evapA" min="10" max="100" step="1" value="50" /><output id="evapAOut">50 %</output></label>
+      <label class="slider-row"><span data-i18n="eva.demo.w">Curentul de aer (vânt)</span><input type="range" id="evapW" min="0" max="100" step="1" value="20" /><output id="evapWOut">20 %</output></label>
+      <div class="sim-frame"><canvas id="evapCanvas" width="440" height="300" role="img" aria-label="Lichid cu molecule evaporându-se de la suprafață și temperatura care scade"></canvas></div>
+      <dl class="readout four">
+        <div><dt>T</dt><dd id="evapTliq">310 K</dd></div>
+        <div class="accent"><dt data-i18n="eva.demo.rate">Viteza</dt><dd id="evapRate">0</dd></div>
+        <div><dt data-i18n="eva.demo.loss">Pierdere masă</dt><dd id="evapLoss">0 g</dd></div>
+        <div><dt data-i18n="eva.demo.cool">Răcire</dt><dd id="evapCool">0 K</dd></div>
+      </dl>
+      <div class="btn-row">
+        <button class="btn small" id="evapRun" type="button" data-i18n="ui.run">Rulează</button>
+        <button class="btn small ghost" id="evapReset" type="button" data-i18n="ui.reset">Reset</button>
+      </div>
+      <p class="demo-hint" data-i18n="eva.demo.hint">Fiecare moleculă care scapă „fură” energie: cu cât pleacă mai multe, cu atât rămânerea este mai lentă — tonul se domolește.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- --------------------- AE FIERBEREA --------------------------- -->
+<section class="view" id="view-fierbere">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker7">pagina 43–44 · activitate experimentală</p>
+    <h2 data-i18n="sec.fierbere.title">Fierberea</h2>
+    <p class="sec-lead" data-i18n="sec.fierbere.lead">Veți face observații asupra unei cantități de apă pe care o veți încălzi până la fierbere. Materiale necesare: vas termorezistent, apă, arzător (spirtieră, reșou), sită azbest, trepied cu tijă și cleme pentru fixarea vasului cu apă și a termometrului.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <p data-i18n="fie.p1">Pe măsură ce temperatura apei crește, veți constata că, pe pereții vasului apar bule care conțin aer și vapori de apă. Ele se măresc din ce în ce mai tare, deoarece pe suprafața lor se produce vaporizarea, practic în toată masa lichidului. La un moment dat, bulele se desprind de perete și urcă spre suprafața lichidului; în drumul lor întâlnesc straturi mai reci de lichid și vaporii condensează, ceea ce contribuie la transferul căldurii în toată masa apei.</p>
+      <p data-i18n="fie.p2">Când temperatura atinge aproximativ 93–94 °C (pentru apa de la robinet), bulele reușesc să atingă suprafața liberă a apei, unde se sparg cu un zgomot specific, liberând vaporii. Practic, abia acum are loc vaporizarea în toată masa lichidului. Totodată veți putea observa condensul care apare pe pereții superiori ai vasului, care sunt mai reci.</p>
+      <div class="callout warn"><b data-i18n="fie.safe.tag">Atenție</b><span data-i18n="fie.safe.body">Pentru a nu vă accidenta, nu atingeți spirtiera, nici vasul cu apă fierbinte!</span></div>
+      <p class="small" data-i18n="fie.exp">Experimental se constată că:</p>
+      <ul class="obs-list">
+        <li data-i18n="fie.f1">la o presiune dată, fiecare lichid are o temperatură de fierbere caracteristică, constantă în timpul fierberii (fig. 1.5.2.4);</li>
+        <li data-i18n="fie.f2">temperatura de fierbere a unui lichid crește când presiunea exterioară crește;</li>
+        <li data-i18n="fie.f3">fierberea unui lichid începe atunci când, prin ridicarea temperaturii, presiunea vaporilor săi saturanți devine egală cu presiunea exterioară exercitată asupra suprafeței libere a lichidului.</li>
+      </ul>
+      <div class="hl hl-gold"><small data-i18n="fie.cond">Condiția de fierbere</small><div class="fx" data-fx="p_{\mathrm{saturat}}(T_{\mathrm{fierbere}}) = p_{\mathrm{externa}}"></div></div>
+      <div class="callout"><b data-i18n="fie.obs.tag">Observație</b><span data-i18n="fie.obs.body">Apa pură fierbe, la presiunea atmosferică normală, la temperatura de 100 °C. La o presiune de 10 atm ea fierbe la 180 °C, pentru ca la o presiune de 4,5 tori să fiarbă la 0 °C.</span></div>
+
+      <div class="example" id="ex-1521">
+        <h3><span class="ex-badge">Ex. 1.5.2.1</span> <span data-i18n="ex1521.title">Picătura de apă într-o incintă vidată</span></h3>
+        <p class="statement" data-i18n="ex1521.text">Într-o incintă vidată se introduce o picătură de apă la 0 °C. Ce fracțiune f din aceasta îngheață? Se cunosc: căldurile latente specifice de solidificare λ_g și de vaporizare λ_v și căldura specifică c.</p>
+        <ol class="steps" data-steps="ex1521"></ol>
+        <div class="err-flag"><b data-i18n="ex1521.err1.tag">Date de prisos</b> <span data-i18n="ex1521.err1.body">Căldura specifică c este trecută la date, dar nu este folosită nicăieri: picătura stă deja la 0 °C, deci întreaga energie schimbată este latentă. Enunțul corect ar cere doar λ_g și λ_v.</span></div>
+        <div class="err-flag"><b data-i18n="ex1521.err2.tag">Răspuns numeric lipsă</b> <span data-i18n="ex1521.err2.body">Subcapitolul nu dă nicăieri valoarea lui λ_v, așa că exercițiul rămâne simbolic. Completând cu λ_v = 2,83·10⁶ J/kg (apă la 0 °C) și λ_g = 3,34·10⁵ J/kg se obține f = 2,83/(2,83 + 0,334) ≈ 0,894: îngheață aproape 9 din 10 părți.</span></div>
+        <div class="answer" id="ex1521answer"></div>
+      </div>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="fie.demo.title">Demo · vasul de fierbere sub presiune variabilă</h3>
+      <label class="slider-row"><span data-i18n="fie.demo.p">Presiunea de deasupra</span><input type="range" id="fieP" min="5" max="1200" step="1" value="760" /><output id="fiePOut">760 tori</output></label>
+      <label class="slider-row"><span data-i18n="fie.demo.q">Puterea arzătorului</span><input type="range" id="fieQ" min="0" max="100" step="1" value="60" /><output id="fieQOut">60 %</output></label>
+      <div class="sim-frame"><canvas id="fierbCanvas" width="440" height="320" role="img" aria-label="Vas cu apă care fierbe, cu bule de abur crescând spre suprafață"></canvas></div>
+      <dl class="readout four">
+        <div><dt>T</dt><dd id="fieT">20 °C</dd></div>
+        <div class="accent"><dt data-i18n="fie.demo.tb">T fierbere</dt><dd id="fieTb">100,0 °C</dd></div>
+        <div><dt data-i18n="fie.demo.state">Starea</dt><dd id="fieState">—</dd></div>
+        <div><dt>p_sat</dt><dd id="fieSat">0 tori</dd></div>
+      </dl>
+      <div class="btn-row">
+        <button class="btn small" id="fieSyringe" type="button" data-i18n="fie.demo.syringe">Seriga: scade presiunea</button>
+        <button class="btn small ghost" id="fieReset" type="button" data-i18n="ui.reset">Reset</button>
+      </div>
+      <p class="demo-hint" data-i18n="fie.demo.hint">Repetă experimentul cu seringa: trage de piston și apa aflată la temperatura camerei reîncepe să fiarbă, pentru că p_sat(T) devine mai mare decât presiunea exterioară.</p>
+
+      <h3 data-i18n="psat.demo.title" style="margin-top:1rem">Demo · p_sat(T) pentru apă</h3>
+      <label class="slider-row"><span data-i18n="psat.demo.t">Temperatura</span><input type="range" id="psatT" min="0" max="200" step="1" value="100" /><output id="psatTOut">100 °C</output></label>
+      <div class="sim-frame"><canvas id="psatCanvas" width="440" height="260" role="img" aria-label="Curba presiunii vaporilor saturanți ai apei în funcție de temperatură"></canvas></div>
+      <dl class="readout three">
+        <div class="accent"><dt>p_sat</dt><dd id="psatP">760 tori</dd></div>
+        <div><dt data-i18n="psat.demo.atm">în atm</dt><dd id="psatAtm">1,00</dd></div>
+        <div><dt data-i18n="psat.demo.ref">Punct de referință</dt><dd id="psatRef">1 atm · 100 °C</dd></div>
+      </dl>
+      <p class="demo-hint" data-i18n="psat.demo.hint">Cele trei valori din manual — 4,5 tori la 0 °C, 760 tori la 100 °C și circa 10 atm la 180 °C — se citesc direct pe curbă.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- --------------------- 1.5.3 SUBLIMAREA, PUNCTUL TRIPLU ------- -->
+<section class="view" id="view-faze">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker8">pagina 45</p>
+    <h2 data-i18n="sec.faze.title">1.5.3. Sublimarea și desublimarea. Punctul triplu</h2>
+    <p class="sec-lead" data-i18n="sec.faze.lead">Temperature de topire T_t, de vaporizare T_v și de sublimare T_s depind toate de presiunea exterioară p. Reprezentând grafic aceste trei dependențe se obține, calitativ, diagrama din figura 1.5.3.1.</p>
+  </header>
+
+  <div class="grid-2">
+    <div class="prose">
+      <div class="def"><span class="def-tag" data-i18n="ui.def6">Definiție</span><span data-i18n="faze.def1">Se numește <b>sublimare</b> fenomenul de trecere a unei substanțe din starea solidă, direct, în stare de vapori.</span></div>
+      <div class="def"><span class="def-tag" data-i18n="ui.def7">Definiție</span><span data-i18n="faze.def2">Se numește <b>desublimare</b> fenomenul de trecere a unei substanțe din starea de vapori, direct, în starea solidă.</span></div>
+      <p class="small" data-i18n="faze.obs.title">Observații:</p>
+      <ol class="obs-list">
+        <li data-i18n="faze.obs1">Zăpada și gheața sublimiază trecând direct în vapori. Așa se explică uscarea rufelor înghețate, iarna.</li>
+        <li data-i18n="faze.obs2">Tot prin fenomenul de sublimare se explică și mirosul unor corpuri solide (săpun, detergent etc.).</li>
+      </ol>
+      <p data-i18n="faze.p1">Punctele de pe curbe reprezintă stări în care substanța coexistă în două stări de agregare (de exemplu solidă – lichidă). Cele trei curbe se întâlnesc într-un punct unic, comun. Acest punct reprezintă o stare unică în care substanța coexistă în toate cele trei stări de agregare. De aceea punctul respectiv este numit <b>punct triplu</b>, iar starea unică pe care o reprezintă este numită <b>stare triplă</b>.</p>
+      <p data-i18n="faze.p2">Această stare, pentru sistemul gheață–apă–vapori de apă, a fost aleasă ca stare de referință pentru definirea temperaturii absolute și i s-a atribuit, în mod convențional, temperatura de 273,16 K.</p>
+      <div class="hl"><small data-i18n="faze.triple.tag">Punctul triplu al apei</small><div class="fx" data-fx="T_{tr} = 273{,}16\ \mathrm{K}\quad(\approx 0{,}01\ ^{\circ}\mathrm{C}),\qquad p_{tr} = 611\ \mathrm{Pa} = 4{,}58\ \mathrm{torr}"></div></div>
+      <p data-i18n="faze.p3">Observă poziția curbii de topire: pentru apă ea este înclinată spre stânga (panta negativă), tocmai din cauza anomalei descrise la figura 1.5.1.2. Pentru majoritatea substanțelor ea este înclinată spre dreapta.</p>
+      <p class="small" data-i18n="faze.p4">Dacă presiunea exterioară este mai mică decât p_tr, lichidul nu poate exista: prin încălzire, solidul trece direct în vapori. Este cazul dioxidului de carbon („gheața carbonică”, sublimiază la −78,5 °C la presiune atmosferică) și, partial, al hainei ude înghețate.</p>
+    </div>
+
+    <aside class="demo">
+      <h3 data-i18n="faze.demo.title">Demo · diagrama de stare (fig. 1.5.3.1)</h3>
+      <label class="slider-row"><span data-i18n="faze.demo.t">Temperatura</span><input type="range" id="fazeT" min="180" max="400" step="1" value="290" /><output id="fazeTOut">290 K</output></label>
+      <label class="slider-row"><span data-i18n="faze.demo.p">Presiunea (scară logaritmică)</span><input type="range" id="fazeP" min="0" max="100" step="1" value="50" /><output id="fazePOut">611 Pa</output></label>
+      <div class="sim-frame"><canvas id="fazeCanvas" width="440" height="340" role="img" aria-label="Diagramă de presiune-temperatură cu cele trei curbe de echilibru și punctul triplu al apei"></canvas></div>
+      <dl class="readout three">
+        <div class="accent"><dt data-i18n="faze.demo.state">Starea</dt><dd id="fazeState">—</dd></div>
+        <div><dt data-i18n="faze.demo.pascal">p</dt><dd id="fazePa">611 Pa</dd></div>
+        <div><dt data-i18n="faze.demo.process">Transformarea</dt><dd id="fazeProc">—</dd></div>
+      </dl>
+      <div class="seg small" id="fazeJump">
+        <button type="button" data-fz="tr" class="on" data-i18n="faze.demo.jump.tr">Punctul triplu</button>
+        <button type="button" data-fz="subl" data-i18n="faze.demo.jump.subl">Sublimare</button>
+        <button type="button" data-fz="cond" data-i18n="faze.demo.jump.cond">Condensare</button>
+        <button type="button" data-fz="top" data-i18n="faze.demo.jump.top">Topire sub presiune</button>
+      </div>
+      <p class="demo-hint" data-i18n="faze.demo.hint">Coboară presiunea sub 611 Pa și crește temperatura: gheața nu se mai topește, ci sublimiază direct.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ---------------------------- QUIZ ---------------------------- -->
+<section class="view" id="view-quiz">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker9">autoevaluare</p>
+    <h2 data-i18n="quiz.title">Probleme de verificare</h2>
+    <p class="sec-lead" data-i18n="quiz.lead">Traisprezece întrebări acoperind tot subcapitolul 1.5. Primești feedback imediat și auzi un semnal la fiecare răspuns.</p>
+  </header>
+  <div class="quiz-shell">
+    <div class="quiz-top">
+      <div class="quiz-score"><span id="quizScore">0</span><small data-i18n="quiz.score">puncte</small></div>
+      <div class="quiz-progress"><i id="quizBar"></i></div>
+      <div class="quiz-count"><span id="quizIdx">1</span> / <span id="quizTot">13</span></div>
+    </div>
+    <div id="quizBody"></div>
+    <div class="btn-row">
+      <button class="btn primary" id="quizCheck" type="button" data-i18n="quiz.check">Verifică răspunsul</button>
+      <button class="btn ghost" id="quizNext" type="button" disabled data-i18n="quiz.next">Întrebarea următoare →</button>
+      <button class="btn ghost" id="quizRestart" type="button" data-i18n="quiz.restart">Reia testul</button>
+    </div>
+    <div class="quiz-result" id="quizResult" hidden></div>
+  </div>
+</section>
+
+<!-- --------------------------- RESURSE -------------------------- -->
+<section class="view" id="view-resurse">
+  <header class="sec-head">
+    <p class="kicker" data-i18n="sec.kicker10">bibliografie și linkuri</p>
+    <h2 data-i18n="res.title">Linkuri și resurse</h2>
+    <p class="sec-lead" data-i18n="res.lead">Aplicația funcționează offline; linkurile de mai jos au nevoie de conexiune.</p>
+  </header>
+  <div class="link-grid" id="linkGrid"></div>
+  <div class="prose">
+    <h3 data-i18n="res.src.title">Sursă</h3>
+    <p data-i18n="res.src.body">Constantin Mantea, Mihaela Garabet — Fizică, manual pentru clasa a X-a, Editura ALL Educational, subcapitolul 1.5 „Transformări de stare de agregare”, paginile 38–45. Conținutul de aici este o resursă didactică originală inspirată de structura și de exigențele manualului, nu o reproducere a acestuia. Valorile care nu apar în subcapitol (λ_v pentru apă, căldura specifică a aburului, eutecticul NaCl–apă, p_tr) sunt completate din tabele standard și semnalate ca atare.</p>
+    <h3 data-i18n="res.prev.title">Continuare</h3>
+    <p data-i18n="res.prev.body">Subcapitolul precedent, 1.4 „Aplicarea principiului I la transformările gazului ideal”, are o aplicație separată în acest portofoliu; 1.6 „Motoare termice” continuă pe pagina 45 a aceluiași manual.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="foot-inner">
+    <div>
+      <b>1.5 · <span data-i18n="foot.title">Transformări de stare de agregare</span></b>
+      <p class="small" data-i18n="foot.sub">Fizică, clasa a X-a · paginile 38–45 · Mantea &amp; Garabet</p>
+    </div>
+    <nav class="foot-nav">
+      <a href="#home" data-nav="home" data-i18n="nav.home">Home</a>
+      <a href="#topire" data-nav="topire" data-i18n="sec.topire.short">Topirea</a>
+      <a href="#fierbere" data-nav="fierbere" data-i18n="sec.fierbere.short">Fierberea</a>
+      <a href="#quiz" data-nav="quiz" data-i18n="nav.quiz">Verificare</a>
+      <a href="#resurse" data-nav="resurse" data-i18n="nav.links">Linkuri</a>
+    </nav>
+    <p class="small muted" data-i18n="foot.license">Proiect didactic · folosiți-l liber la clasă.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" title="Sus" aria-label="Înapoi sus">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/math.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/sims.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-28",
+  "method": "Chrome tablet emulation with touch enabled; Otto and Diesel, every phase at start/midpoint/end",
+  "results": [
+    {
+      "viewport": "768x1024",
+      "language": "ro",
+      "touch": "true",
+      "samples": 36,
+      "issues": [],
+      "katexErrors": 0
+    },
+    {
+      "viewport": "768x1024",
+      "language": "en",
+      "touch": "true",
+      "samples": 36,
+      "issues": [],
+      "katexErrors": 0
+    },
+    {
+      "viewport": "1024x768",
+      "language": "ro",
+      "touch": "true",
+      "samples": 36,
+      "issues": [],
+      "katexErrors": 0
+    },
+    {
+      "viewport": "1024x768",
+      "language": "en",
+      "touch": "true",
+      "samples": 36,
+      "issues": [],
+      "katexErrors": 0
+    }
+  ]
+}

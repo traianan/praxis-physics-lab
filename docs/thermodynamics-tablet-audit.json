@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-28",
+  "method": "Chrome tablet emulation; DPR 2; touch mode enabled; all figure modes and individual slider endpoints; labels, formulas, page overflow",
+  "results": [
+    {
+      "language": "ro",
+      "viewport": "768x1024",
+      "touch": "true",
+      "samples": 82,
+      "issues": [],
+      "total": 0,
+      "katexErrors": 0
+    },
+    {
+      "language": "en",
+      "viewport": "768x1024",
+      "touch": "true",
+      "samples": 82,
+      "issues": [],
+      "total": 0,
+      "katexErrors": 0
+    },
+    {
+      "language": "ro",
+      "viewport": "1024x768",
+      "touch": "true",
+      "samples": 82,
+      "issues": [],
+      "total": 0,
+      "katexErrors": 0
+    },
+    {
+      "language": "en",
+      "viewport": "1024x768",
+      "touch": "true",
+      "samples": 82,
+      "issues": [],
+      "total": 0,
+      "katexErrors": 0
+    }
+  ]
+}

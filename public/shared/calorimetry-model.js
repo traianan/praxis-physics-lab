@@ -1,0 +1,2 @@
+/* Pure calorimetric balances, shared by the interactive figures and validation. */
+(()=>{const oilSpecificHeat=({m1,m2,m3,T1,T3,T,c1=380})=>{const denominator=m3*(T3-T)-m2*(T-T1);return denominator>0&&T>T1&&T<T3?c1*m1*(T-T1)/denominator:null;};const equilibrium=(bodies)=>bodies.reduce((q,b)=>q+b.capacity*b.temperature,0)/bodies.reduce((q,b)=>q+b.capacity,0);const pouringFraction=(before,after)=>(Math.max(0,Math.min(.8,after)-Math.max(.25,before))/.55);window.PraxisCalorimetry={oilSpecificHeat,equilibrium,pouringFraction};})();

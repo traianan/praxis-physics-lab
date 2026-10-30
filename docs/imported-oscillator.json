@@ -1,0 +1,31 @@
+{
+  "id": "oscilator-mecanic",
+  "source": "oscillator-mecanic",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "4db6688f37cd9c9da092fa80c8caf0c3faa3321292f7cf36db3aa2a6f7f0f87f"
+    },
+    {
+      "path": "css/styles.css",
+      "sha256": "569f39a7f9ad71210cdcecbb13fe3a603b37bbe8593c823d8b72ca4e96cf66a3"
+    },
+    {
+      "path": "js/app.js",
+      "sha256": "39f63eafa9fef0d31acb21b009abb2660e7f7c6ee22942ab82458519195da4bd"
+    },
+    {
+      "path": "js/demos.js",
+      "sha256": "f3d31cde7b6ead3717a9548138f61177d4d667fbbcdfdca9dcd22f3b106830c3"
+    }
+  ],
+  "topics": 4,
+  "questions": 18,
+  "simulations": 11,
+  "problems": 6,
+  "languages": [
+    "ro",
+    "en"
+  ],
+  "excluded": "Compunerea oscilațiilor, bătăi și Lissajous: laborator separat, la cererea utilizatorului."
+}

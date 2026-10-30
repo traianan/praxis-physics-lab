@@ -1,0 +1,104 @@
+body[data-praxis-course=miscarea-circulara-uniforma] #praxis-original{max-width:92rem;margin:auto;padding:0 1rem 2rem}
+body[data-praxis-course=miscarea-circulara-uniforma] .praxis-lab-nav .tabs{flex-wrap:wrap;min-width:0;max-width:100%}
+#praxis-original #root{color:var(--praxis-color-ink);font-family:var(--praxis-font-ui)}
+#praxis-original #root>div{min-height:0;background:transparent;overflow:visible}
+#praxis-original #root>div>.relative>div{display:block;max-width:none;padding:0}
+#praxis-original .mcu-main{min-width:0;width:100%}
+#praxis-original [data-mcu-section]{padding:1.25rem;background:var(--praxis-color-surface);border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);margin:0 0 1rem;scroll-margin-top:6rem}
+#praxis-original [data-mcu-section][hidden]{display:none!important}
+#praxis-original .mcu-surface{background:var(--praxis-color-surface)!important;background-image:none!important}
+#praxis-original .mcu-border{border-color:var(--praxis-color-border)!important}
+#praxis-original .mcu-ink-body{color:var(--praxis-color-ink)!important}
+#praxis-original :is(.mcu-primary,.mcu-ink-emerald){color:#17685f!important}
+#praxis-original :is(.mcu-ink-indigo,.mcu-ink-violet){color:#7056a2!important}
+#praxis-original .mcu-ink-cyan{color:#276c8c!important}
+#praxis-original .mcu-ink-amber{color:#8c611d!important}
+#praxis-original .mcu-ink-red{color:#ac453d!important}
+#praxis-original .mcu-tint-cyan{background:#eaf5f8!important}
+#praxis-original :is(.mcu-tint-indigo,.mcu-tint-violet){background:#f0edf8!important}
+#praxis-original .mcu-tint-emerald{background:#e8f3ed!important}
+#praxis-original .mcu-tint-amber{background:#fcf3df!important}
+#praxis-original .mcu-tint-red{background:#fbeeea!important}
+#praxis-original .mcu-main :is(.grid,.flex)>*{min-width:0;max-width:100%}
+#praxis-original .mcu-main .grid{gap:1rem;align-items:start}
+#praxis-original .mcu-main .mono{font-family:var(--praxis-font-ui);overflow-wrap:anywhere;white-space:normal}
+#praxis-original .mcu-main sub{font-size:.72em;line-height:0;vertical-align:baseline;position:relative;top:.3em;bottom:auto}
+#praxis-original .mcu-main :is(p,li,button,span,div){overflow-wrap:anywhere}
+#praxis-original .mcu-main :is(h2,h3){margin-bottom:.75rem}
+#praxis-original .mcu-main .rounded-\[20px\]{padding:1rem}
+#praxis-original .mcu-main [data-mcu-section]>div:first-child{gap:.75rem}
+#praxis-original .mcu-main [data-mcu-section]>div:first-child>div:first-child:has(>h2){flex:1 1 38rem;min-width:0}
+#praxis-original .mcu-main [data-mcu-section]>div:first-child p{max-width:none}
+#praxis-original .mcu-main .mt-6{margin-top:1rem}
+#praxis-original .mcu-main .space-y-10>:not([hidden])~:not([hidden]){margin-top:1rem}
+#praxis-original .mcu-main .tracking-widest{letter-spacing:.025em}
+#praxis-original #sim-mcu>.grid>.space-y-4{container-type:inline-size;container-name:mcu-data}
+@container mcu-data (min-width:32rem){
+ #praxis-original #sim-mcu>.grid>.space-y-4>div:first-child>.space-y-4{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:start}
+ #praxis-original #sim-mcu>.grid>.space-y-4>div:first-child>.space-y-4>*{margin-block:0}
+ #praxis-original #sim-mcu>.grid>.space-y-4>div:nth-child(2)>.grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@container mcu-data (min-width:32rem) and (max-width:42rem){
+ #praxis-original #sim-mcu>.grid>.space-y-4>div:first-child>.space-y-4>div>.flex{display:grid;grid-template-columns:minmax(0,1fr)}
+ #praxis-original #sim-mcu>.grid>.space-y-4>div:first-child>.space-y-4>div>.flex>span:last-child{justify-self:end}
+}
+#praxis-original .mcu-main [class*="overflow-hidden"]:has(>.mcu-canvas){overflow:auto;max-width:100%;background:#f2f6f4!important}
+#praxis-original :is(#sim-mcu,#sim-curba)>.grid>div:has(>.mcu-canvas){width:100%;max-width:42rem;justify-self:center;container-type:inline-size;container-name:vector-plot}
+#praxis-original .mcu-canvas{display:block;width:100%;height:auto;touch-action:pan-x pan-y;background:#f2f6f4;border-radius:10px}
+#praxis-original .mcu-phase-handle{position:absolute;width:68px;height:68px;transform:translate(-50%,-50%);touch-action:none;cursor:grab;background:transparent;z-index:2}
+#praxis-original .mcu-scale-control{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.35rem .75rem;align-items:center;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--praxis-color-border)}
+#praxis-original .mcu-scale-control label{grid-column:1/-1;display:flex;justify-content:space-between;gap:.5rem;font-size:var(--praxis-text-label)!important}
+#praxis-original .mcu-scale-control output{font-weight:600;font-variant-numeric:tabular-nums}
+#praxis-original .mcu-scale-control .praxis-range-stepper{min-width:0}
+#praxis-original .mcu-scale-note{grid-column:1/-1;margin:0!important;font-size:var(--praxis-text-small)!important;color:var(--praxis-color-muted)}
+@container vector-plot (min-width:34rem){
+ #praxis-original .mcu-scale-control{grid-template-columns:auto minmax(0,1fr) auto}
+ #praxis-original .mcu-scale-control label{grid-column:1;gap:.5rem}
+ #praxis-original .mcu-scale-control .mcu-scale-note{grid-column:1/-1}
+}
+#praxis-original .mcu-force-legend{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin-top:.6rem;font-size:var(--praxis-text-label);line-height:1.5}
+#praxis-original .mcu-force-key::before{content:'';display:inline-block;width:1.2rem;margin-right:.35rem;vertical-align:middle;border-top:2px solid var(--force-color)}
+#praxis-original .mcu-force-key.normal{--force-color:var(--praxis-science-green,#43876f)}
+#praxis-original .mcu-force-key.gravity{--force-color:var(--praxis-science-purple,#83689e)}
+#praxis-original .mcu-force-key.friction{--force-color:var(--praxis-science-orange,#b28b3b)}
+#praxis-original .mcu-force-key.resultant{--force-color:var(--praxis-science-blue,#487ca2)}
+#praxis-original .mcu-force-key.required{--force-color:var(--praxis-science-red,#b54d45)}
+#praxis-original .mcu-force-key:is(.resultant,.required)::before{border-top-style:solid}
+#praxis-original .mcu-force-key.required::before{border-top-style:dashed}
+#praxis-original #sim-curba [data-mcu-status]{display:block;width:100%;box-sizing:border-box;min-height:max(var(--praxis-control-height),var(--praxis-panel-height,0px))}
+#praxis-original #definitie{container-type:inline-size;container-name:mcu-definition}
+#praxis-original #definitie>.grid{grid-template-columns:minmax(0,1fr)}
+#praxis-original #definitie>.grid>div:last-child{max-width:20rem;width:100%;justify-self:center}
+#praxis-original #definitie .aspect-square{width:100%;aspect-ratio:auto;min-height:0;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+#praxis-original #definitie svg{display:block;width:12rem;max-width:100%;height:auto}
+#praxis-original #definitie .aspect-square>.absolute{position:static;margin:.4rem .5rem}
+#praxis-original #sim-curba>.grid>.space-y-4{container-type:inline-size;container-name:bank-data}
+@container bank-data (min-width:32rem){
+ #praxis-original #sim-curba>.grid>.space-y-4>div:first-child>.space-y-4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem 1rem}
+ #praxis-original #sim-curba>.grid>.space-y-4>div:first-child>.space-y-4>*{margin-block:0}
+ #praxis-original #sim-curba>.grid>.space-y-4>div:nth-child(2)>.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+ #praxis-original #sim-curba>.grid>.space-y-4>div:nth-child(2)>.grid>*{margin-block:0;min-width:0;flex-wrap:wrap;flex-direction:column;gap:.5rem;align-items:stretch}
+ #praxis-original #sim-curba>.grid>.space-y-4>div:nth-child(2)>.grid>:last-child{grid-column:1/-1}
+}
+@container mcu-definition (min-width:60rem){#praxis-original #definitie>.grid{grid-template-columns:minmax(0,1fr) 20rem}}
+#praxis-original .mcu-quiz-note{min-height:5rem}
+#praxis-original .mcu-main svg{max-width:100%;height:auto}
+#praxis-original .mcu-vector-symbol{position:relative;display:inline-block;min-width:.85em;text-align:center;padding-top:.15em;line-height:1.2}
+#praxis-original .mcu-vector-symbol::before{content:'→';position:absolute;left:0;right:0;top:-.45em;font:normal .85em/1 var(--praxis-font-ui);text-align:center}
+#praxis-original #acceleratie{container-type:inline-size;container-name:mcu-acceleration}
+#praxis-original #acceleratie>.grid{grid-template-columns:minmax(0,1fr)}
+#praxis-original #acceleratie .rounded-\[14px\] .flex{justify-content:flex-start;gap:.5rem 1rem;align-items:baseline;flex-wrap:wrap}
+#praxis-original #acceleratie .rounded-\[14px\] .flex>span:first-child{flex:0 0 5.5rem}
+#praxis-original #acceleratie .rounded-\[14px\] .flex>:last-child{margin-left:0;text-align:left}
+#praxis-original .mcu-accel-geometry{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem;align-items:start}
+#praxis-original .mcu-accel-geometry figure{min-width:0;margin:0;overflow-x:auto}
+#praxis-original .mcu-accel-geometry svg{display:block;width:15rem;min-width:15rem;max-width:none;height:auto;margin:auto}
+#praxis-original .mcu-accel-geometry figcaption{margin-top:.5rem;font:var(--praxis-text-label)/1.5 var(--praxis-font-ui)}
+@container mcu-acceleration (min-width:70rem){#praxis-original #acceleratie>.grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}}
+@media(min-width:1101px){#praxis-original :is(#sim-mcu,#sim-curba)>.grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}}
+@media(max-width:1100px){#praxis-original .mcu-main .grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){body[data-praxis-course=miscarea-circulara-uniforma] #praxis-original{padding-inline:.5rem}#praxis-original [data-mcu-section]{padding:1rem}#praxis-original .mcu-main .grid{grid-template-columns:minmax(0,1fr)}#praxis-original .mcu-main .flex{flex-wrap:wrap}}
+
+/* Give the bank force diagram more room than its parameter column. */
+#praxis-original #sim-curba>.grid>div:has(>.mcu-canvas){max-width:none}
+@media(min-width:1101px){#praxis-original #sim-curba>.grid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}}

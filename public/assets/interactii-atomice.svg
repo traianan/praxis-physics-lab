@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+<title id="title">Interacții atomice — potențial Lennard-Jones</title>
+<rect width="640" height="360" rx="20" fill="#f4f8f5"/>
+<path d="M65 42V240M65 112H584" fill="none" stroke="#8da699" stroke-width="2"/>
+<path d="M172 42C179 136 197 216 236 216C304 216 304 133 567 117" fill="none" stroke="#b54d45" stroke-width="5"/>
+<path d="M236 216V112M236 216V284" fill="none" stroke="#a9bbb2" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="79" y="67" font-family="Georgia,serif" font-size="25" fill="#264e3d">U(r)</text>
+<text x="571" y="98" font-family="Georgia,serif" font-size="24" fill="#264e3d">r</text>
+<text x="247" y="204" font-family="Georgia,serif" font-size="22" fill="#264e3d">−ε</text>
+<circle cx="93" cy="284" r="31" fill="#e0703a"/><circle cx="310" cy="284" r="39" fill="#4f6fb8"/>
+<circle cx="236" cy="216" r="7" fill="#83689e"/>
+<path d="M263 284H208M208 284L220 275M208 284L220 293" fill="none" stroke="#43876f" stroke-width="5" stroke-linecap="round"/>
+<path d="M133 332H269M133 332L145 325M133 332L145 339M269 332L257 325M269 332L257 339" fill="none" stroke="#8da699" stroke-width="2"/>
+<text x="194" y="326" font-family="Georgia,serif" font-size="24" fill="#264e3d">r</text>
+</svg>

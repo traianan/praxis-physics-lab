@@ -1,0 +1,9 @@
+[
+ {"component":"Om","next":"Tm","before":"let _=0,a=()=>{","after":"let _=0,clock=window.PraxisAnimationClock.create(3.6),a=(stamp=performance.now())=>{"},
+ {"component":"Om","next":"Tm","before":"m.current+=0.06","after":"m.current+=clock.step(stamp)"},
+ {"component":"Tm","next":"Lm","before":"let _=0,a=0,L=()=>{a+=0.02;","after":"let _=0,a=0,clock=window.PraxisAnimationClock.create(1.2),L=(stamp=performance.now())=>{a+=clock.step(stamp);"},
+ {"component":"Tm","next":"Lm","before":"}),_=lessonRequestAnimationFrame(L)};return _=lessonRequestAnimationFrame(L)","after":"}),C&&(_=lessonRequestAnimationFrame(L))};return _=lessonRequestAnimationFrame(L)"},
+ {"component":"Mm","next":"Fm","before":"let C=0,P=()=>{","after":"let C=0,clock=window.PraxisAnimationClock.create(60),P=(stamp=performance.now())=>{"},
+ {"component":"Mm","next":"Fm","before":"i.current+=1","after":"i.current+=clock.step(stamp)"},
+ {"component":"Mm","next":"Fm","before":"else C=lessonRequestAnimationFrame(P)","after":"else i.current=0"}
+]

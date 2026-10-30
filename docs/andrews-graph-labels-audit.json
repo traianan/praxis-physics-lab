@@ -1,0 +1,24 @@
+{
+  "scope": "In-region lowercase labels and extended logarithmic volume axis",
+  "states": 482,
+  "languages": [
+    "ro",
+    "en"
+  ],
+  "temperatureReducedRange": [
+    0.86,
+    1.1
+  ],
+  "temperatureStep": 0.001,
+  "volumeReducedMaximum": 20,
+  "volumeMaximumLitres": 2.570813609928008,
+  "overlaps": 0,
+  "regionLabelCurveAudit": {
+    "curveTemperatures": 241,
+    "pointsPerCurve": 1601,
+    "languages": 2,
+    "hits": 0,
+    "marginPx": 2
+  },
+  "method": "Chromium measureText with transformed bounding boxes; inverse Canvas transforms for rotated region-label containment tests."
+}

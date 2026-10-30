@@ -1,0 +1,22 @@
+# Generat de sistem
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Editoare și unelte
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node (doar pentru scripturile de verificare, opționale)
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Loguri și artefacte temporare ale testelor
+*.log
+tmp/
+test-results/
+playwright-report/

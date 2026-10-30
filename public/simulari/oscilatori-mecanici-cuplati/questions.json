@@ -1,0 +1,102 @@
+[
+  {
+    "q": "1. Relația dintre r și b este:",
+    "opts": [
+      "r = b",
+      "r = 2·m·b și b = r/(2m)",
+      "r = b²"
+    ],
+    "ans": 1,
+    "exp": "r [Ns/m] este coeficientul de frecare vâscoasă, b [s⁻¹] este factorul de amortizare."
+  },
+  {
+    "q": "2. Forța excitatoare F₀cosΩt trebuie să fie:",
+    "opts": [
+      "Perpendiculară pe deplasare",
+      "Coliniară cu deplasarea x",
+      "Orizontală mereu"
+    ],
+    "ans": 1,
+    "exp": "Doar componenta coliniară efectuează lucru mecanic."
+  },
+  {
+    "q": "3. Pentru amortizare slabă, rezonanța de amplitudine apare aproximativ când:",
+    "opts": [
+      "Ω≪ω₀",
+      "Ω≈ω₀",
+      "Ω≫ω₀"
+    ],
+    "ans": 1,
+    "exp": "Exact: Ωᵣ=√(ω₀²−2b²), dacă b<ω₀/√2."
+  },
+  {
+    "q": "4. La Ω=ω₀, amplitudinea staționară este:",
+    "opts": [
+      "F₀/k",
+      "F₀/(r·ω₀)=F₀/(2mbω₀)",
+      "0"
+    ],
+    "ans": 1,
+    "exp": "A(ω₀)=F₀/(rω₀); aceasta aproximează maximul numai pentru amortizare slabă."
+  },
+  {
+    "q": "5. Transfer aproape complet, pentru cuplaj slab și unghiuri mici, este posibil când:",
+    "opts": [
+      "T1≠T2",
+      "T1=T2",
+      "m1≠m2"
+    ],
+    "ans": 1,
+    "exp": "Pendule identice și amortizare neglijabilă; energia resortului de cuplaj face parte din bilanț."
+  },
+  {
+    "q": "6. Mod simetric:",
+    "opts": [
+      "ω mare, resort solicitat",
+      "ω=√(g/L), resort neîntins, în fază",
+      "fără oscilație"
+    ],
+    "ans": 1,
+    "exp": "În fază resortul nu se întinde."
+  },
+  {
+    "q": "7. Bătăi = ?",
+    "opts": [
+      "Un singur mod",
+      "Superpoziția modurilor simetric+antisimetric",
+      "Doar frecare"
+    ],
+    "ans": 1,
+    "exp": "Interferența a două frecvențe apropiate."
+  },
+  {
+    "q": "8. Tacoma Narrows:",
+    "opts": [
+      "Prea greu",
+      "Instabilitate aeroelastică de torsiune",
+      "Corodare"
+    ],
+    "ans": 1,
+    "exp": "Flutterul este o oscilație autoexcitată; nu trebuie confundat cu rezonanța forțată simplă."
+  },
+  {
+    "q": "9. Millennium Bridge:",
+    "opts": [
+      "Mașini",
+      "Excitație laterală sincronizată cu mersul pietonilor",
+      "Cutremur"
+    ],
+    "ans": 1,
+    "exp": "Pietoni sincronizați cu balansul lateral."
+  },
+  {
+    "q": "10. c_crit pentru amortizor:",
+    "opts": [
+      "√(mk)",
+      "2√(mk)",
+      "k/m"
+    ],
+    "ans": 1,
+    "exp": "c_crit=2√(mk)."
+  }
+]

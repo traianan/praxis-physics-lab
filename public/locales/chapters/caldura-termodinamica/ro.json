@@ -1,0 +1,83 @@
+{
+  "locale": "ro",
+  "namespace": "chapters/caldura-termodinamica",
+  "title": "Căldură și termodinamică",
+  "messages": {
+    "Căldură și termodinamică": "Căldură și termodinamică",
+    "CĂLDURĂ ȘI TERMODINAMICĂ": "CĂLDURĂ ȘI TERMODINAMICĂ"
+  },
+  "simulations": {
+    "notiuni-termodinamice": {
+      "title": "Noțiuni termodinamice de bază",
+      "subtitle": "Molecule, temperatură, căldură și energie",
+      "description": "13 figuri interactive despre structura substanței, mol, procese termodinamice, transferul căldurii, temperatură și capacitate calorică, cu glosar, test și probleme.",
+      "alt": "Gaz într-un cilindru cu piston, termometru și diagramă presiune–volum",
+      "tags": [
+        "Termodinamică",
+        "Simulări",
+        "Probleme",
+        "Offline"
+      ]
+    },
+    "calorimetrie": {
+      "title": "Calorimetrie",
+      "subtitle": "Bilanț termic și experimente calorimetrice",
+      "description": "Șapte simulări despre coeficienți calorici, echilibru termic, calorimetru, amestecarea apei și identificarea materialelor, cu test și probleme.",
+      "alt": "Calorimetru cu apă, termometru și probă metalică",
+      "tags": [
+        "Calorimetrie",
+        "Experimente",
+        "Test",
+        "Offline"
+      ]
+    },
+    "principiul-i-al-termodinamicii": {
+      "title": "Principiul I al termodinamicii",
+      "subtitle": "Bilanț energetic și legile gazului ideal",
+      "description": "Principiul I, legile gazului ideal, 12 grafice p–V, V–T și p–T sincronizate pentru cele patru transformări, cu simulatoare și calculatoare de exerciții.",
+      "alt": "Piston cu gaz și diagramă presiune–volum pentru o transformare izotermă",
+      "tags": [
+        "Termodinamică",
+        "Gaz ideal",
+        "Calculatoare",
+        "Offline"
+      ]
+    },
+    "interactii-atomice": {
+      "title": "Interacții atomice",
+      "subtitle": "Atracție, respingere și potențial Lennard-Jones",
+      "description": "Șapte perechi de atomi, forțe și energie potențială, parametri personalizabili, explicații și șase întrebări de verificare.",
+      "alt": "Doi atomi cu forțe de atracție și respingere pe curba potențialului Lennard-Jones",
+      "tags": [
+        "Termodinamică",
+        "Atomi",
+        "Forțe",
+        "Offline"
+      ]
+    },
+    "principiul-i-aplicatii": {
+      "title": "Aplicații ale principiului I al termodinamicii",
+      "subtitle": "Călduri molare și transformările gazului ideal",
+      "description": "11 subiecte, nouă demonstrații despre călduri molare, procese izocore, izobare, izoterme, adiabatice și politrope, șase probleme rezolvate și 13 întrebări.",
+      "alt": "Cilindru cu piston și curbe izotermă și adiabatică pe diagrama presiune–volum",
+      "tags": [
+        "Termodinamică",
+        "Transformări",
+        "Test",
+        "Offline"
+      ]
+    },
+    "transformari-stare-agregare": {
+      "title": "Transformări de stare de agregare",
+      "subtitle": "Topire, vaporizare, lichefiere și diagrama de faze",
+      "description": "12 secțiuni, 11 demonstrații despre transformările de stare, lichefierea gazelor, izotermele lui Andrews și punctul critic, două probleme rezolvate și 15 întrebări.",
+      "alt": "Gheață, apă și vapori, cu o curbă de încălzire și punctul triplu",
+      "tags": [
+        "Termodinamică",
+        "Schimbări de fază",
+        "Test",
+        "Offline"
+      ]
+    }
+  }
+}

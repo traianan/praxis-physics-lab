@@ -1,0 +1,62 @@
+/* Layout for the imported Lissajous laboratory; shared Praxis controls and palette. */
+body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original{max-width:90rem;margin:auto;padding:0 clamp(8px,1vw,16px) 2rem;line-height:1.6;container-type:inline-size}
+#praxis-original [data-composition-section][hidden]{display:none!important}
+body[data-praxis-course="compunerea-oscilatiilor"] *{box-sizing:border-box}
+#praxis-original .intro{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin:1rem 0}
+#praxis-original .intro h2{margin:.4rem 0}
+#praxis-original .intro p{margin:0}
+#praxis-original .eyebrow{color:var(--praxis-color-primary);font-size:.85rem;font-weight:650;letter-spacing:.05em}
+#praxis-original .equation,#praxis-original .formula{padding:1rem;border:1px solid var(--praxis-color-border);border-radius:10px;background:var(--praxis-color-primary-soft);font:1.1rem/1.8 var(--praxis-font-formula);overflow-x:auto;max-width:100%}
+#praxis-original .equation{flex-shrink:0}
+body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{display:grid;grid-template-columns:21rem minmax(0,1fr);gap:1rem;align-items:start;padding:0}
+#praxis-original .controls summary{cursor:pointer;min-height:44px;font-weight:650;color:var(--praxis-color-primary);margin-bottom:.5rem}
+:root[data-course-touch=true] #praxis-original :is(.controls summary,.switches label){min-height:52px}
+#praxis-original .panel{background:var(--praxis-color-surface);border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);padding:clamp(12px,1vw,16px);min-width:0}
+#praxis-original .sectiontop,#praxis-original .controlhead,#praxis-original .sound-top{display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap}
+#praxis-original .panel h3{margin:0 0 .6rem}
+#praxis-original .hint,#praxis-original .fine-note,#praxis-original .ticks,#praxis-original footer{font-size:.85rem;color:var(--praxis-color-muted)}
+#praxis-original .hint{margin:.5rem 0 .8rem}
+#praxis-original .controlgroup{padding:.65rem 0;border-bottom:1px solid var(--praxis-color-border)}
+#praxis-original .controlhead output{font-weight:650;font-variant-numeric:tabular-nums}
+#praxis-original .controlhead{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:.5rem}
+#praxis-original .controlhead output{min-width:6ch;text-align:right}
+#praxis-original :is(button,select){min-height:44px;padding:.5rem .7rem;font:inherit;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control);background:var(--praxis-color-surface);color:var(--praxis-color-primary);cursor:pointer;touch-action:manipulation}
+#praxis-original :is(button.primary,button.selected){background:var(--praxis-color-primary);color:white}
+#praxis-original select,#praxis-original input[type=range]{width:100%;max-width:100%}
+#praxis-original input[type=range]{margin:.7rem 0 .3rem;accent-color:var(--praxis-color-primary)}
+#praxis-original .ticks{display:flex;justify-content:space-between}
+#praxis-original .switches{display:grid;gap:.4rem;margin:1rem 0}
+#praxis-original .switches label{display:flex;align-items:center;gap:.5rem;min-height:44px}
+#praxis-original .switches input{width:20px;height:20px;flex-shrink:0;accent-color:var(--praxis-color-primary)}
+#praxis-original .mode-tabs,#praxis-original .actions{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0}
+#praxis-original .mode-tabs button{flex:1}
+#praxis-original .export{width:100%;margin-top:.75rem}
+#praxis-original .fine-control{display:flex;gap:.5rem;align-items:center}
+#praxis-original .fine-control input{min-width:0;flex:1}
+#praxis-original .fine-control button{min-width:44px;font-size:1.4rem}
+#praxis-original .ratio-presets,#praxis-original .sound-panel{padding:.75rem;background:var(--praxis-color-primary-soft);border-radius:10px;margin:.75rem 0}
+#praxis-original .ratio-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
+#praxis-original .ratio-buttons button.active{background:var(--praxis-color-primary);color:white}
+#praxis-original .visuals{min-width:0;display:grid;gap:1rem}
+#praxis-original canvas{display:block;width:100%;height:auto;touch-action:pan-y;border-radius:8px}
+#praxis-original #plot{touch-action:pan-x pan-y}
+#praxis-original :is(.plotwrap,.wavewrap){width:100%;min-width:0;overflow:auto;position:relative;touch-action:pan-x pan-y}
+#praxis-original .amplitude-handle{position:absolute;width:68px;height:68px;transform:translate(-50%,-50%);touch-action:none;cursor:grab}
+#praxis-original .amplitude-handle[hidden]{display:none}
+#praxis-original .secondary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+#praxis-original .legend{display:flex;justify-content:center;gap:.5rem 1rem;flex-wrap:wrap;font-size:.85rem;margin-top:.6rem}
+#praxis-original .legendline{display:inline-block;width:18px;height:3px;vertical-align:middle}
+#praxis-original .legenddot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--praxis-science-red)}
+#praxis-original .metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin-top:1rem;font-variant-numeric:tabular-nums}
+#praxis-original .metrics>div{padding:.6rem;background:var(--praxis-color-primary-soft);border-radius:8px;overflow-wrap:anywhere}
+#praxis-original .metrics span{display:block;font-size:.85rem}
+#praxis-original .live{font-size:.85rem;color:var(--praxis-color-primary)}
+#praxis-original footer{text-align:center;margin:1.5rem 0}
+#praxis-original .theory{max-width:65rem;margin:auto}
+#praxis-original .theory article{margin:1rem 0}
+#praxis-original .theory table{width:100%;border-collapse:collapse;overflow-wrap:anywhere}
+#praxis-original .theory :is(th,td){padding:.6rem;border-bottom:1px solid var(--praxis-color-border);text-align:left;vertical-align:top}
+#praxis-original .backlink{display:inline-block;padding:.75rem 0}
+@media(max-width:1150px){#praxis-original .secondary{grid-template-columns:1fr}body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{grid-template-columns:19rem minmax(0,1fr)}}
+@media(max-width:850px){body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{grid-template-columns:1fr}#praxis-original .intro{flex-direction:column;align-items:stretch}#praxis-original .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container(max-width:65rem){body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{grid-template-columns:1fr}#praxis-original .intro{flex-direction:column;align-items:stretch}}

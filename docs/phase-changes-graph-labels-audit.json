@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-29",
+  "browser": "Chromium",
+  "canvasScenes": 10,
+  "languages": [
+    "ro",
+    "en"
+  ],
+  "count": 134,
+  "findings": [],
+  "scope": "Measured text boxes with conservative line height and canvas-boundary clamping. Sampled initial, intermediate and extreme states; no claim for every continuous parameter value.",
+  "changes": [
+    "Separate rows for units and tick labels",
+    "Remove duplicate internal chart headings",
+    "Move curve legend to HTML",
+    "Keep current values in readable live fields",
+    "Increase spacing between status labels",
+    "Stabilize barometer height caption"
+  ]
+}

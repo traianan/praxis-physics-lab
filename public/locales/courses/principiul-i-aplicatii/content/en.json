@@ -1,0 +1,615 @@
+{
+  "locale": "en",
+  "namespace": "courses/principiul-i-aplicatii/content",
+  "messages": {},
+  "strings": {
+    "a11y.skip": "Skip to content",
+    "brand.sub": "Applications · ideal gas",
+    "nav.home": "Introduction",
+    "nav.group.theory": "Theory",
+    "nav.quiz": "Quiz",
+    "nav.links": "Links",
+    "ui.sound": "Sound",
+    "ui.home": "Home",
+    "ui.animate": "Animate",
+    "ui.run": "Run",
+    "ui.reset": "Reset",
+    "ui.show": "Show",
+    "ui.hide": "Hide",
+    "ui.showAll": "Expand all steps",
+    "ui.hideAll": "Collapse steps",
+    "ui.answer": "Answer",
+    "home.eyebrow": "Physics · grade 10 · Thermodynamics",
+    "home.title1": "Applying the first law",
+    "home.title2": "to the transformations of an ideal gas",
+    "home.lead": "Explore molar heat capacities and polytropic processes through interactive demonstrations, formulas, worked problems and a self-check quiz.",
+    "home.cta.start": "Start the lesson",
+    "home.cta.quiz": "Jump to the quiz",
+    "home.cta.table": "Summary table",
+    "home.fact.processes": "transformations covered",
+    "home.fact.examples": "worked problems",
+    "home.fact.quiz": "check questions",
+    "home.law.label": "The first law of thermodynamics",
+    "home.law.note": "The change in internal energy equals the heat absorbed minus the work done by the gas.",
+    "home.offline": "Fully offline · no external libraries",
+    "home.map.title": "Lesson map",
+    "home.map.1": "Molar heats of the ideal gas — deriving C_V, C_p and Mayer’s relation",
+    "home.map.2": "Experimental versus theoretical values (monatomic and diatomic gas)",
+    "home.map.3": "Isochoric process and a worked problem",
+    "home.map.4": "Isobaric process and a worked problem",
+    "home.map.5": "Isothermal transformation — work and the area under the curve",
+    "home.map.6": "Adiabatic process, adiabatic exponent and worked problems",
+    "home.map.7": "Summary of the four processes and a piston problem",
+    "home.map.8": "Polytropic processes — the pVⁿ = constant family",
+    "sec.calorice.short": "Molar heats",
+    "sec.calorice.title": "Molar heat capacities",
+    "sec.calorice.lead": "The expressions for the molar heats follow easily from the caloric equations of state, using the first law.",
+    "cal.p1": "Consider a monatomic gas undergoing an isochoric change, where ΔV = 0, hence L<sub>if</sub> = 0. By the first law:",
+    "cal.p2": "The definition of the molar heat at constant volume can then be rewritten as:",
+    "cal.p3": "But the caloric equation of state for a monatomic gas gives ΔU = (3/2)·ν·R·ΔT, therefore:",
+    "cal.p4": "From here, using Mayer’s relation, C<sub>p</sub> = C<sub>V</sub> + R, we obtain:",
+    "cal.p5": "In the same way, for a diatomic gas (counting degrees of freedom gives 5 instead of 3):",
+    "cal.p6": "The ratio γ = C<sub>p</sub>/C<sub>V</sub> is called the <i>adiabatic exponent</i>:",
+    "cal.mono": "monatomic gas",
+    "cal.bi": "diatomic gas",
+    "cal.demo.title": "Demo · degrees of freedom → γ",
+    "cal.demo.hint": "Pick the molecule type and watch the molar heats and the adiabatic exponent change.",
+    "cal.demo.mono": "Monatomic",
+    "cal.demo.di": "Diatomic",
+    "cal.demo.poly": "Nonlinear polyatomic",
+    "cal.demo.i": "Degrees of freedom i",
+    "sec.tabel141.short": "Experimental values",
+    "sec.tabel141.title": "Experimental values",
+    "sec.tabel141.lead": "These theoretical values must be compared with the experimental ones to confirm or refute the caloric equations of state.",
+    "tab141.cap": "Theory compared with experiment",
+    "tab141.gas": "The gas",
+    "tab141.cv": "C_V",
+    "tab141.cp": "C_p",
+    "tab141.theory": "Theoretical γ",
+    "tab141.dev": "Deviation",
+    "tab141.chart.title": "Animated chart · theory vs. experiment",
+    "tab141.chart.hint": "Press the button to animate the bars. The small deviations show that the caloric equations derived for the ideal gas also hold, to a good approximation, for real gases.",
+    "tab141.lg.teory": "theory",
+    "tab141.lg.exp": "experimental",
+    "tab141.p1": "Comparing the theoretical with the experimental values we find that the caloric equations of state, derived for the <i>ideal</i> monatomic and diatomic gas respectively, hold to a good approximation for <i>real</i> gases as well. We shall keep applying the first law to the simple transformations of an ideal gas.",
+    "tab141.note": "The rigid model approximates monatomic and diatomic gases when the relevant rotations are active and vibrations are negligible. Experimental values may differ because of temperature and molecular interactions.",
+    "tab141.slider.title": "Try it yourself",
+    "tab141.slider.t": "Temperature",
+    "tab141.slider.hint": "At 300 K a diatomic gas has i = 5 (3 translations + 2 rotations).",
+    "tr.izocor.short": "Isochoric transformation",
+    "tr.izocor.title": "Isochoric transformation · V = constant",
+    "tr.izocor.lead": "In an isochoric change the volume is constant, ΔV = 0, so the gas does no mechanical work.",
+    "izoc.p1": "Using this relation together with the definitions of molar heat and specific heat we can write:",
+    "izoc.p2": "All the heat absorbed by the gas goes into its internal energy; the pressure grows in proportion to the temperature (Charles):",
+    "izoc.kf1.t": "Held fixed",
+    "izoc.kf2.t": "Transferred",
+    "izoc.kf3.t": "Sound",
+    "izoc.kf3.d": "the rate of molecular impacts rises with p",
+    "izoc.demo.title": "Demo · rigid sealed vessel",
+    "izoc.demo.q": "Heat Q",
+    "tr.izobar.short": "Isobaric transformation",
+    "tr.izobar.title": "Isobaric transformation · p = constant",
+    "tr.izobar.lead": "The pressure stays constant, so the gas does mechanical work while expanding.",
+    "izob.f1": "mechanical work",
+    "izob.f2": "through the equation of state",
+    "izob.f3": "heat exchanged",
+    "izob.p1": "Substituting these expressions into the general form of the first law, ΔU = Q<sub>if</sub> − L<sub>if</sub>, and using Mayer’s relation, we obtain:",
+    "izob.p2": "Interpretation: at constant pressure the supplied heat splits between raising the internal energy and the work of pushing the piston.",
+    "izob.gap.tag": "Deriving the internal energy change",
+    "izob.gap.body": "Mayer’s relation, C_p − R = C_V, gives ΔU = νC_pΔT − νRΔT = νC_VΔT.",
+    "izob.demo.title": "Demo · movable piston",
+    "izob.demo.t": "Temperature T",
+    "izob.demo.p": "Pressure p",
+    "tr.izoterm.short": "Isothermal transformation",
+    "tr.izoterm.title": "Isothermal transformation · T = constant",
+    "tr.izoterm.lead": "The temperature is constant, so the internal energy of an ideal gas does not change.",
+    "izo.p1": "By the first law, all the heat exchanged with the outside becomes mechanical work. With the equation of state and p = νRT/V we get:",
+    "izo.p2": "The graph is a hyperbola. The magnitude of work is the area under the curve: L > 0 during expansion and L < 0 during compression. The demonstration uses T = 300 K and minimum volume 10 L.",
+    "izo.kf1": "pV = constant",
+    "izo.kf2": "|L| = area",
+    "izo.kf3": "ΔU = 0",
+    "izo.demo.title": "Demo · area under the hyperbola",
+    "izo.demo.v": "Maximum process volume V_max",
+    "izo.demo.n": "Amount ν",
+    "izo.demo.anim": "Animate expansion",
+    "izo.demo.comp": "Compression",
+    "tr.adiabat.short": "Adiabatic transformation",
+    "tr.adiabat.title": "Adiabatic transformation · Q = 0",
+    "tr.adiabat.lead": "In an adiabatic change, by definition, the gas exchanges no heat with its surroundings.",
+    "ad.f1": "the law of the transformation",
+    "ad.p1": "Using the thermal equation of state, the adiabatic relation can be rewritten as:",
+    "ad.p2": "And the adiabatic work takes three equivalent forms:",
+    "ad.p3": "Then, by the first law (Q = 0), the change in internal energy is ΔU = ν·C_V·(T_f − T_i) = m·c_V·(T_f − T_i).",
+    "ad.obs.title": "Observations",
+    "ad.obs1": "The equation of the adiabatic transformation was obtained in 1823 by Siméon-Denis Poisson.",
+    "ad.obs2": "The adiabatic exponent is greater than one: γ = 5/3 for a monatomic gas and γ = 7/5 for a diatomic one.",
+    "ad.obs3": "Because γ &gt; 1, in an adiabatic process the pressure varies with volume faster than in the isothermal one. That is why the adiabat is steeper than the isotherm and <b>an adiabat and an isotherm intersect at a single point</b>.",
+    "ad.demo.title": "Demo · adiabat and isotherm",
+    "ad.demo.g": "Exponent γ (dimensionless)",
+    "ad.demo.v": "Ratio V_f/V_i (dimensionless)",
+    "ad.demo.pump": "Return to V_i",
+    "ad.demo.hint": "Adiabatic compression raises the temperature — the audio pitch climbs with it.",
+    "sec.sinteza.short": "Summary",
+    "sec.sinteza.title": "Process summary",
+    "sec.sinteza.lead": "Click a row to see the corresponding transformation in the animated chart.",
+    "synth.corner": "Process ↓ / Quantity →",
+    "synth.chart.title": "Chart of the selected process",
+    "synth.caption.hint": "Select a row of the table.",
+    "synth.heat.title": "The whole cycle in one picture",
+    "synth.heat.p": "The heat absorbed by the gas always splits in two: internal energy (which for an ideal gas depends only on temperature) and mechanical work. The splitting ratio is precisely γ.",
+    "sec.politrop.short": "Polytropic processes",
+    "sec.politrop.title": "Polytropic processes",
+    "sec.politrop.lead": "A polytropic process (transformation) is the process of a closed thermodynamic system (ν = constant) in which the molar heat remains constant.",
+    "pol.p1": "The law governing such a process is, where n is the polytropic index, a constant that may take any value in (−∞, ∞):",
+    "pol.p2": "Eliminating the pressure, respectively the volume, with the help of the equation of state gives the equivalent relations:",
+    "pol.p3": "The change in internal energy of a polytropic transformation is computed with:",
+    "pol.p4": "And for the mechanical work (except in the isothermal case) the following relation holds:",
+    "pol.p5": "From relations (4) and (5), using also Robert Mayer’s relation, one can prove that:",
+    "pol.p6": "For suitable values of n, equation (1) reproduces the laws of the simple processes of an ideal gas. A particular case is the linear process in (p, V) coordinates, p = constant · V.",
+    "pol.demo.title": "Demo · the family of polytropes",
+    "pol.demo.n": "Index n",
+    "pol.demo.proc": "The process",
+    "pol.demo.shape": "Slope",
+    "pol.demo.hint": "Drag the cursor below 0 or above γ and watch the curve rotate through every simple process.",
+    "ex141.title": "Isobaric heating of 2 kg of oxygen",
+    "ex141.text": "Heating 2 kg of oxygen isobarically by ΔT = 5 K requires supplying the gas with Q = 9.16 kJ of heat. Find: a) the isobaric specific heat c<sub>p</sub> of oxygen; b) the mechanical work L done by the gas during the isobaric expansion; c) the change ΔU of its internal energy.",
+    "ex142.title": "Heating oxygen in a constant-volume vessel",
+    "ex142.text": "A vessel of constant volume holds m = 1 g of oxygen with isochoric specific heat c<sub>V</sub> = 700 J/(kg·K), at t = 27 °C and pressure p₁ = 100 kPa. Find the heat Q needed to raise its pressure to p₂ = 200 kPa.",
+    "ex143.title": "Derive the two Poisson relations and the adiabatic work",
+    "ex143.text": "Derive the two relations above (T·V<sup>γ−1</sup> = constant and T·p<sup>(1−γ)/γ</sup> = constant). Using the adiabatic equation one can then show the expression for the mechanical work.",
+    "ex144.title": "Mechanical work in an adiabatic expansion",
+    "ex144.text": "Find the mechanical work L done by the ideal gas in an adiabatic transformation from pressure p₁ between volumes V₁ and V₂. The adiabatic coefficient γ is given. Application: p₁ = 1 bar; V₁ = 10 cm³; V₂ = 20 cm³; γ = 1.4.",
+    "ex145.title": "Vertical pump with a piston — integrative problem",
+    "ex145.text": "A vertical pump barrel of cross-section S, fitted with a movable piston of mass M, contains nitrogen of mass m at temperature t₁. The atmospheric pressure is p<sub>a</sub>. The gas undergoes isobaric heating up to T₂, after which the piston is locked and the barrel is connected to a vessel of volume V₂. Find: a) the initial height h of the piston above the barrel base; b) the work L done by the gas during the isobaric heating; c) the final pressure p<sub>f</sub> after the connection is opened.",
+    "ex145.data": "Application: S = 0.01 m²; M = 50 kg; m = 14 g; t₁ = 27 °C; p_a = 1 bar; T₂ = 400 K; V₂ = 3 dm³; p₂ = 4·10⁵ Pa; g = 10 m/s².",
+    "ex1411.title": "The linear process in (p, V) coordinates",
+    "ex1411.text": "For a fixed amount of ideal gas following the linear process p = kV, find the polytropic index n, the molar heat capacity C and the work L between temperatures T_i and T_f.",
+    "quiz.title": "Check questions",
+    "quiz.lead": "Thirteen questions about ideal gas processes, with instant feedback and a sound cue for each answer when sound is enabled.",
+    "quiz.score": "points",
+    "quiz.check": "Check answer",
+    "quiz.next": "Next question →",
+    "quiz.restart": "Restart test",
+    "quiz.need": "Choose or type an answer before checking.",
+    "quiz.correct": "Correct!",
+    "quiz.wrong": "Not quite.",
+    "quiz.numeric": "Numeric answer",
+    "quiz.result": "Test result",
+    "quiz.again": "Restart test",
+    "quiz.great": "Excellent — you have mastered the concepts in this lesson.",
+    "quiz.good": "Good — a few details deserve another pass.",
+    "quiz.low": "Revisit the sections marked red and try again.",
+    "res.title": "Links and resources",
+    "res.lead": "The app runs offline; the links below need a connection.",
+    "dyn.mono": "monatomic",
+    "dyn.di": "diatomic",
+    "dyn.poly": "polyatomic",
+    "dyn.degrees": "degrees of freedom",
+    "dyn.izocor": "Isochoric",
+    "dyn.izobar": "Isobaric",
+    "dyn.izoterm": "Isothermal",
+    "dyn.adiabat": "Adiabatic",
+    "dyn.linear": "Linear (p = ct·V)",
+    "dyn.free": "Free",
+    "dyn.caption.izocor": "Isochoric: the path goes straight up — the area under it is zero, L = 0.",
+    "dyn.caption.izobar": "Isobaric: a horizontal line, and L = p·ΔV is the shaded rectangle.",
+    "dyn.caption.izoterm": "Isothermal: a hyperbola branch; the area under it is L = νRT·ln(V_f/V_i).",
+    "dyn.caption.adiabat": "Adiabatic: same end points, but a steeper curve (γ > 1); the area is the adiabatic work.",
+    "toast.soundOn": "Sound on",
+    "toast.soundOff": "Sound off",
+    "toast.lang": "Interface language is now",
+    "toast.copied": "Formula copied",
+    "units.J": "J",
+    "units.kJ": "kJ",
+    "units.mol": "mol",
+    "cal.rotate": "Choose an axis, then drag the molecule with a mouse or finger to rotate the rigid frame. Drag the origin O to move the whole system. Keyboard: arrows to rotate, Alt + arrows to move, Home to reset.",
+    "cal.axis": "Rotation axis",
+    "cal.resetView": "Reset view",
+    "pol.vertical": "Vertical diagram: V constant; dp/dV is not finite.",
+    "cal.degrees.mono": "<strong>3 translations = 3 degrees of freedom.</strong> The atom can move independently along Ox, Oy and Oz. The monatomic model includes no internal rotations or vibrations.",
+    "cal.degrees.di": "<strong>3 translations + 2 rotations = 5 degrees of freedom.</strong> The bond stays aligned with Ox; the frame rotates only about the perpendicular Oy and Oz axes. Rotation about the bond and vibrations are excluded in this rigid model.",
+    "cal.degrees.poly": "<strong>3 translations + 3 rotations = 6 degrees of freedom.</strong> This example is a rigid nonlinear molecule, with three independent rotational axes. A linear polyatomic molecule has only two relevant rotations. Vibrations are excluded.",
+    "problem.1": "Problem 1",
+    "problem.2": "Problem 2",
+    "problem.3": "Problem 3",
+    "problem.4": "Problem 4",
+    "problem.5": "Problem 5",
+    "problem.6": "Problem 6"
+  },
+  "steps": {
+    "ex142": [
+      {
+        "t": "Write down the data",
+        "f": [
+          "m=1\\ \\mathrm{g}=10^{-3}\\ \\mathrm{kg}",
+          "c_{V}=700\\ \\mathrm{J/(kg\\cdot K)}",
+          "T_{1}=t_{1}+T_{0}=300{,}15\\ \\mathrm{K}",
+          "p_{1}=100\\ \\mathrm{kPa},\\ p_{2}=200\\ \\mathrm{kPa}"
+        ]
+      },
+      {
+        "t": "Constant volume ⇒ L = 0, so all the heat becomes internal energy",
+        "f": [
+          "Q=m\\ c_{V}\\,(T_{2}-T_{1})"
+        ],
+        "n": "This is the heat expression for an isochoric change."
+      },
+      {
+        "t": "The isochoric law gives the final temperature",
+        "f": [
+          "\\frac{p_{1}}{T_{1}}=\\frac{p_{2}}{T_{2}}\\Rightarrow T_{2}=T_{1}\\cdot\\frac{p_{2}}{p_{1}}"
+        ]
+      },
+      {
+        "t": "Substitute and get a one-step formula",
+        "f": [
+          "Q=m\\ c_{V}\\ T_{1}\\left(\\frac{p_{2}}{p_{1}}-1\\right)"
+        ]
+      },
+      {
+        "t": "Numerical evaluation",
+        "f": [
+          "Q=10^{-3}\\cdot 700\\cdot 300{,}15\\cdot\\left(\\frac{200}{100}-1\\right)\\ \\mathrm{J}",
+          "Q=0{,}7\\cdot 300{,}15\\cdot 1\\ \\mathrm{J}=210{,}1\\ \\mathrm{J}"
+        ]
+      }
+    ],
+    "ex141": [
+      {
+        "t": "a) Isobaric specific heat, from the definition",
+        "f": [
+          "c_{p}=\\frac{1}{m}\\cdot\\frac{Q}{\\Delta T}=\\frac{1}{2\\ \\mathrm{kg}}\\cdot\\frac{9160\\ \\mathrm{J}}{5\\ \\mathrm{K}}=916\\ \\mathrm{J/(kg\\cdot K)}"
+        ]
+      },
+      {
+        "t": "b) Mechanical work of the isobaric expansion",
+        "f": [
+          "L=\\nu R\\Delta T=\\frac{m}{\\mu}R\\,(T_{f}-T_{i})",
+          "L=\\frac{2}{32\\cdot 10^{-3}}\\cdot 8{,}314\\cdot 5\\ \\mathrm{J}=2598\\ \\mathrm{J}\\approx 2{,}6\\ \\mathrm{kJ}"
+        ],
+        "n": "For oxygen μ = 32·10⁻³ kg/mol."
+      },
+      {
+        "t": "c) Change of internal energy, from the first law",
+        "f": [
+          "\\Delta U=Q-L=9160\\ \\mathrm{J}-2598\\ \\mathrm{J}=6562\\ \\mathrm{J}\\approx 6{,}56\\ \\mathrm{kJ}"
+        ]
+      },
+      {
+        "t": "Cross-check with C_V",
+        "f": [
+          "\\Delta U=\\nu C_{V}\\Delta T=\\frac{m}{\\mu}\\cdot\\frac{5}{2}R\\cdot 5\\ \\mathrm{J}"
+        ],
+        "n": "The 6.5 kJ result confirms that at constant pressure about 72 % of the heat stays in the gas and 28 % leaves as work."
+      }
+    ],
+    "ex143": [
+      {
+        "t": "Start from the adiabatic law and the equation of state",
+        "f": [
+          "pV^{\\gamma}=\\mathrm{constant}",
+          "pV=\\nu RT"
+        ]
+      },
+      {
+        "t": "Eliminate the pressure: p = νRT/V",
+        "f": [
+          "\\frac{\\nu RT}{V}\\cdot V^{\\gamma}=\\mathrm{constant}\\Rightarrow T\\,V^{\\gamma-1}=\\mathrm{constant}"
+        ]
+      },
+      {
+        "t": "Eliminate the volume: V = νRT/p",
+        "f": [
+          "p\\left(\\frac{\\nu RT}{p}\\right)^{\\gamma}=\\mathrm{constant}\\Rightarrow T\\,p^{\\frac{1-\\gamma}{\\gamma}}=\\mathrm{constant}"
+        ]
+      },
+      {
+        "t": "The work is the area under the curve",
+        "f": [
+          "L=\\int_{V_{i}}^{V_{f}}p\\,dV=K\\int_{V_{i}}^{V_{f}}V^{-\\gamma}dV",
+          "L=\\frac{p_{i}V_{i}-p_{f}V_{f}}{\\gamma-1}=-\\frac{p_{f}V_{f}-p_{i}V_{i}}{\\gamma-1}"
+        ]
+      },
+      {
+        "t": "Switch to temperatures with pV = νRT",
+        "f": [
+          "L=-\\frac{\\nu R\\,(T_{f}-T_{i})}{\\gamma-1}"
+        ]
+      },
+      {
+        "t": "Mayer’s relation in a useful form",
+        "f": [
+          "\\frac{R}{\\gamma-1}=C_{V}\\Rightarrow L=-\\nu C_{V}(T_{f}-T_{i})",
+          "\\Delta U=-L=\\nu C_{V}(T_{f}-T_{i})"
+        ],
+        "n": "The minus sign shows that on expansion (T_f < T_i) the gas spends internal energy to work against the outside."
+      }
+    ],
+    "ex144": [
+      {
+        "t": "The adiabatic work derived above",
+        "f": [
+          "L=-\\frac{p_{f}V_{f}-p_{i}V_{i}}{\\gamma-1}"
+        ]
+      },
+      {
+        "t": "The adiabatic equation gives the final pressure",
+        "f": [
+          "p_{1}V_{1}^{\\gamma}=p_{2}V_{2}^{\\gamma}\\Rightarrow p_{2}=p_{1}\\left(\\frac{V_{1}}{V_{2}}\\right)^{\\gamma}"
+        ]
+      },
+      {
+        "t": "Substitute and factor out p₁V₁",
+        "f": [
+          "L=p_{1}V_{1}\\cdot\\frac{1-\\left(\\frac{V_{1}}{V_{2}}\\right)^{\\gamma-1}}{\\gamma-1}"
+        ]
+      },
+      {
+        "t": "Numerical evaluation",
+        "f": [
+          "p_{1}V_{1}=10^{5}\\cdot 10\\cdot 10^{-6}=1\\ \\mathrm{J}",
+          "2^{0{,}4}=1{,}3195\\Rightarrow \\left(\\tfrac{1}{2}\\right)^{0{,}4}=0{,}7579",
+          "L=1\\cdot\\frac{1-0{,}7579}{0{,}4}=0{,}6\\ \\mathrm{J}"
+        ],
+        "n": "The numerical step uses the equality 2⁰·⁴ = 1.3195."
+      }
+    ],
+    "ex145": [
+      {
+        "t": "State 1 — equation of state for the gas under the piston",
+        "f": [
+          "p_{1}S h=\\frac{m}{\\mu}R\\,(t_{1}+T_{0})\\Rightarrow h=\\frac{m}{\\mu}R\\cdot\\frac{t_{1}+T_{0}}{p_{1}S}"
+        ]
+      },
+      {
+        "t": "Piston equilibrium gives the gas pressure",
+        "f": [
+          "p_{a}S+Mg=p_{1}S\\Rightarrow p_{1}=p_{a}+\\frac{Mg}{S}=1{,}5\\cdot 10^{5}\\ \\mathrm{Pa}"
+        ]
+      },
+      {
+        "t": "a) Initial height of the piston",
+        "f": [
+          "h=\\frac{m}{\\mu}R\\cdot\\frac{t_{1}+T_{0}}{p_{a}S+Mg}=0{,}831\\ \\mathrm{m}"
+        ]
+      },
+      {
+        "t": "b) Work during the isobaric heating 1 → 2",
+        "f": [
+          "L=\\frac{m}{\\mu}R\\left[T_{2}-(t_{1}+T_{0})\\right]=415{,}7\\ \\mathrm{J}"
+        ],
+        "n": "Nitrogen: μ = 28·10⁻³ kg/mol, so m/μ = 0.5 mol."
+      },
+      {
+        "t": "c) After the piston is locked the gas occupies",
+        "f": [
+          "V'_{2}=S h\\cdot\\frac{T_{2}}{t_{1}+T_{0}}=11{,}08\\cdot 10^{-3}\\ \\mathrm{m}^{3}"
+        ]
+      },
+      {
+        "t": "Mixing with the gas in the vessel (common temperature T₂)",
+        "f": [
+          "p_{f}=\\frac{p_{1}V'_{2}+p_{2}V_{2}}{V'_{2}+V_{2}}=\\frac{1{,}5\\cdot 10^{5}\\cdot 11{,}08\\cdot 10^{-3}+4\\cdot 10^{5}\\cdot 3\\cdot 10^{-3}}{14{,}08\\cdot 10^{-3}}",
+          "p_{f}\\approx 2{,}03\\cdot 10^{5}\\ \\mathrm{Pa}"
+        ]
+      }
+    ],
+    "ex1411": [
+      {
+        "t": "For a polytrope, C follows from relations (6) and (4)",
+        "f": [
+          "n=\\frac{C-C_{p}}{C-C_{V}}\\Rightarrow C=\\frac{C_{p}-nC_{V}}{1-n}"
+        ]
+      },
+      {
+        "t": "The linear process p = k·V has index n = −1",
+        "f": [
+          "pV^{-1}=\\mathrm{constant}\\Rightarrow p=kV"
+        ]
+      },
+      {
+        "t": "The molar heat of the linear process",
+        "f": [
+          "C=\\frac{C_{p}+C_{V}}{2}=\\frac{\\gamma+1}{2}\\,C_{V}"
+        ]
+      },
+      {
+        "t": "The work is the area of the trapezoid under the line",
+        "f": [
+          "L=\\frac{p_{i}+p_{f}}{2}\\,(V_{f}-V_{i})=\\frac{\\nu R\\,(T_{f}-T_{i})}{2}"
+        ],
+        "n": "For n = −1 relation (5) gives exactly L = −νRΔT/(−1−1) = νRΔT/2."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "type": "mc",
+      "tag": "1 / 13",
+      "ok": 1,
+      "text": {
+        "q": "In an isochoric transformation of an ideal gas, which quantity is zero?",
+        "opts": [
+          "The change of internal energy ΔU",
+          "The mechanical work L_if",
+          "The exchanged heat Q_if",
+          "The change of pressure"
+        ],
+        "why": "ΔV = 0 ⇒ L_if = 0, so all of Q_if becomes ΔU."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "2 / 13",
+      "unit": "J/(mol·K)",
+      "tol": 0.06,
+      "ok": 12.47,
+      "text": {
+        "q": "What is the molar heat at constant volume C_V of a monatomic gas? (R = 8.314 J/(mol·K))",
+        "why": "C_V = (3/2)·R = 12.471 J/(mol·K)."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "3 / 13",
+      "ok": 0,
+      "text": {
+        "q": "Which is the correct statement of Robert Mayer’s relation?",
+        "opts": [
+          "C_p = C_V + R",
+          "C_V = C_p + R",
+          "C_p · C_V = R",
+          "C_p = γ · C_V"
+        ],
+        "why": "C_p = C_V + R; hence C_p = (5/2)R for a monatomic gas."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "4 / 13",
+      "ok": 1,
+      "text": {
+        "q": "For a diatomic gas, the adiabatic exponent γ equals:",
+        "opts": [
+          "5/3 ≈ 1.667",
+          "7/5 = 1.400",
+          "3/2 = 1.500",
+          "1.394 for any gas"
+        ],
+        "why": "C_V = (5/2)R and C_p = (7/2)R, so γ = 7/5 = 1.400."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "5 / 13",
+      "unit": "J/(kg·K)",
+      "tol": 0.03,
+      "ok": 916,
+      "text": {
+        "q": "Oxygen: m = 2 kg, ΔT = 5 K, Q = 9.16 kJ at constant pressure. What is the isobaric specific heat c_p?",
+        "why": "c_p = Q/(m·ΔT) = 9160/(2·5) = 916 J/(kg·K)."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "6 / 13",
+      "unit": "kJ",
+      "tol": 0.06,
+      "ok": 6.56,
+      "text": {
+        "q": "In the problem above, what is ΔU if L = 2.598 kJ?",
+        "why": "ΔU = Q − L = 9.16 − 2.598 = 6.56 kJ."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "7 / 13",
+      "ok": 2,
+      "text": {
+        "q": "Which expression for the mechanical work belongs to the isothermal change?",
+        "opts": [
+          "L = p·(V_f − V_i)",
+          "L = νR(T_f − T_i)",
+          "L = νRT·ln(V_f/V_i)",
+          "L = −νC_V(T_f − T_i)"
+        ],
+        "why": "At constant T, p = νRT/V and the integral yields the natural logarithm of the volume ratio."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "8 / 13",
+      "unit": "J",
+      "tol": 0.05,
+      "ok": 210,
+      "text": {
+        "q": "Rigid vessel: m = 1 g oxygen, c_V = 700 J/(kg·K), T₁ = 300.15 K, p₁ = 100 kPa → p₂ = 200 kPa. What is the correct heat Q?",
+        "why": "Q = m·c_V·T₁·(p₂/p₁ − 1) = 0.7·300.15·1 ≈ 210 J."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "9 / 13",
+      "ok": 1,
+      "text": {
+        "q": "Why is the adiabat steeper than the isotherm in (p, V) coordinates?",
+        "opts": [
+          "Because the temperature always falls",
+          "Because γ > 1, so pressure varies faster with V",
+          "Because the volume stays constant",
+          "Because Q = ΔU"
+        ],
+        "why": "p ∝ V^(−γ) versus p ∝ V^(−1); since γ > 1 the adiabat drops faster and the two curves meet at a single point."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "10 / 13",
+      "ok": 1,
+      "text": {
+        "q": "Which correspondence is correct for the adiabatic transformation?",
+        "opts": [
+          "Q = νC_pΔT, L = 0",
+          "Q = 0, L = −νC_V(T_f − T_i)",
+          "ΔU = 0, Q = L",
+          "L = νR(T_f − T_i), Q = 0"
+        ],
+        "why": "Q_if = 0, therefore L_if = −ΔU = −νC_V(T_f − T_i)."
+      }
+    },
+    {
+      "type": "num",
+      "tag": "11 / 13",
+      "unit": "J",
+      "tol": 0.12,
+      "ok": 0.6,
+      "text": {
+        "q": "Adiabatic expansion: p₁ = 1 bar, V₁ = 10 cm³ → V₂ = 20 cm³, γ = 1.4. What is the work L?",
+        "why": "L = p₁V₁·[1 − (V₁/V₂)^(γ−1)]/(γ−1) = 1·(1 − 0.7579)/0.4 ≈ 0.6 J."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "12 / 13",
+      "ok": 3,
+      "text": {
+        "q": "In a polytropic process pVⁿ = constant, which simple process corresponds to n → ∞?",
+        "opts": [
+          "Isobaric (p = constant)",
+          "Isothermal (pV = constant)",
+          "Adiabatic (pV^γ = constant)",
+          "Isochoric (V = constant)"
+        ],
+        "why": "n = 0 ⇒ isobaric, n = 1 ⇒ isothermal, n = γ ⇒ adiabatic, n → ∞ ⇒ isochoric."
+      }
+    },
+    {
+      "type": "mc",
+      "tag": "13 / 13",
+      "ok": 2,
+      "text": {
+        "q": "From n = (C − C_p)/(C − C_V), what does n = γ mean for the molar heat C of the process?",
+        "opts": [
+          "C = C_p",
+          "C = C_V",
+          "C = 0",
+          "C = ∞"
+        ],
+        "why": "With C = 0, n = (0 − C_p)/(0 − C_V) = C_p/C_V = γ: the adiabat is the polytrope whose molar heat vanishes."
+      }
+    }
+  ],
+  "answers": {
+    "ex142": "Q ≈ 210.1 J",
+    "ex141": "a) c_p = 916 J/(kg·K);  b) L = 2598 J ≈ 2.6 kJ;  c) ΔU = 6562 J ≈ 6.56 kJ",
+    "ex143": "T·V^(γ−1) = ct,  T·p^((1−γ)/γ) = ct,  L_if = −νC_V(T_f − T_i)",
+    "ex144": "L = p₁V₁·[1 − (V₁/V₂)^(γ−1)]/(γ−1) = 0.6 J",
+    "ex145": "a) h = 0.831 m;  b) L = 415.7 J;  c) p_f ≈ 2.03·10⁵ Pa",
+    "ex1411": "n = −1,  C = (C_p + C_V)/2,  L = νR(T_f − T_i)/2"
+  },
+  "temperatures": [
+    "At %T K we use the rigid diatomic model: 3 translations + 2 rotations, i = 5. Its precise range of validity depends on the gas.",
+    "At %T K vibrations may become important, depending on the gas. There is no universal threshold at 600 K; C_V and γ then vary with temperature.",
+    "At %T K some rotations may be weakly excited, depending on the gas. The thresholds are molecule-specific; the classical i = 5 model may not apply."
+  ]
+}

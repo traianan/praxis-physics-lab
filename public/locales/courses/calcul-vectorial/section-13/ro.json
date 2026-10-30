@@ -1,0 +1,10 @@
+{
+  "locale": "ro",
+  "namespace": "courses/calcul-vectorial/section-13",
+  "messages": {
+    "Verifică ce": "Verifică ce",
+    "ai învățat": "ai învățat",
+    "Reia testul": "Reia testul",
+    "Autoevaluare": "Autoevaluare"
+  }
+}

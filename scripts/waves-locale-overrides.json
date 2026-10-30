@@ -1,0 +1,27 @@
+{
+  "ro": {
+    "Play": "Pornește",
+    "▶ Play": "▶ Pornește",
+    "Reset": "Resetează",
+    "↺ Reset": "↺ Resetează",
+    "↺ Reset trail": "↺ Resetează urmele",
+    "↺ Reset trail & timp": "↺ Resetează urmele și timpul",
+    "✔ Orbite ON": "✔ Orbite active",
+    "Orbite OFF": "Orbite inactive",
+    "✔ Viteză ON": "✔ Viteză afișată",
+    "Viteză OFF": "Viteză ascunsă",
+    "🔊 Sunet ON": "🔊 Sunet activ",
+    "🔈 Sunet OFF (80Hz adânc / foșnet mic)": "🔈 Sunet inactiv (80Hz în apă adâncă / foșnet în apă mică)",
+    "◀ Prev": "◀ Înapoi",
+    "Next ▶": "Înainte ▶",
+    "✔ Izolare ON f0=0.3Hz": "✔ Izolare activă f0=0.3Hz",
+    "✔ Izolare ON f": "✔ Izolare activă f",
+    "🔊 Scârțâit ON": "🔊 Scârțâit activ",
+    "✔ Batimetrie ON": "✔ Batimetrie activă",
+    "Batimetrie OFF": "Batimetrie inactivă",
+    "✔ Viteze ON": "✔ Viteze afișate",
+    "Viteze OFF": "Viteze ascunse",
+    "🔊 Huruit ON (28-80Hz)": "🔊 Huruit activ (28-80Hz)",
+    "🔈 Sunet OFF": "🔈 Sunet inactiv"
+  }
+}

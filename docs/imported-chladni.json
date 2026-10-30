@@ -1,0 +1,16 @@
+{
+  "id": "figuri-chladni",
+  "source": "chladni.html",
+  "sha256": "186e9bd438b3d03fab20f02aea94f97deb53e9373ba276b9a5f1845fde329653",
+  "modes": 19,
+  "poisson": 0.33,
+  "corrections": [
+    "Consistent free-edge eigenvalues",
+    "Coherent complex modal response and point-force coupling",
+    "Frame-independent particle updates",
+    "Full frequency range",
+    "Display-sized DPR bitmap",
+    "Global mute and hidden-page suspension"
+  ],
+  "reference": "https://ntrs.nasa.gov/citations/19700009156"
+}

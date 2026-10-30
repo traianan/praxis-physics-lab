@@ -1,0 +1,2 @@
+import{readFile}from'node:fs/promises';
+export async function adaptVectorPhysics(html,reverse=false){const patches=JSON.parse(await readFile(new URL('./vector-physics-patches.json',import.meta.url),'utf8'));for(const p of reverse?patches.toReversed():patches){const from=reverse?p.after:p.before,to=reverse?p.before:p.after;if(html.split(from).length!==2)throw Error('Vector physics patch mismatch: '+p.id);html=html.replace(from,()=>to);}return html;}

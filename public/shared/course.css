@@ -1,0 +1,50 @@
+/* Adapter for imported educational content; mathematics and semantic plot colours stay intact. */
+.praxis-course-tools{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:0 24px 16px;padding:10px 16px;background:#edf5fb;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);font:14px var(--praxis-font-ui)}.praxis-course-tools label{display:flex;align-items:center;gap:10px}.praxis-course-tools select,.praxis-course-tools button{min-height:44px;padding:8px 12px;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control);background:var(--praxis-color-surface);color:var(--praxis-color-primary);font:600 14px var(--praxis-font-ui)}.praxis-course-tools button[aria-pressed=true]{background:var(--praxis-color-primary-soft);border-color:var(--praxis-color-primary)}
+.praxis-lab-nav .num,#praxis-original .big-num,#praxis-original .sec-head>.num,#praxis-original .toc a>span{display:none!important}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .hero{display:block}body[data-praxis-course=miscarea-rectilinie] #praxis-original .hero p{margin-top:12px}
+:root[data-course-touch=true] #praxis-original button,:root[data-course-touch=true] #praxis-original select,:root[data-course-touch=true] #praxis-original input[type=number],:root[data-course-touch=true] .praxis-course-tools button,:root[data-course-touch=true] .praxis-course-tools select{min-height:52px}
+:root[data-course-touch=true] .praxis-range-stepper button{flex-basis:52px;min-width:52px;min-height:52px}
+:root[data-course-touch=true]{--praxis-slider-thumb:32px}
+:root[data-course-touch=true] .praxis-course-settings button{min-height:52px;min-width:52px}
+
+
+:root[data-course-touch=true] #praxis-original input[type=range]::-webkit-slider-thumb{width:32px;height:32px}
+:root[data-course-touch=true] #praxis-original input[type=range]::-moz-range-thumb{width:32px;height:32px}
+@media(max-width:760px){.praxis-course-tools{margin-inline:16px;gap:10px}.praxis-course-tools label{flex-wrap:wrap}}
+:root{--bg:var(--praxis-color-canvas);--paper:var(--praxis-color-canvas);--paper-2:#edf3ef;--card:var(--praxis-color-surface);--card-2:#f3f7f4;--ink:var(--praxis-color-ink);--ink-2:#425e59;--muted:var(--praxis-color-muted);--line:var(--praxis-color-border);--rule:var(--praxis-color-border);--accent:var(--praxis-color-primary);--accent-soft:var(--praxis-color-primary-soft);--display:var(--praxis-font-ui);--body:var(--praxis-font-ui);--f-display:var(--praxis-font-ui);--f-body:var(--praxis-font-ui);--r:var(--praxis-radius-card);--course-header:74px}
+:root[data-theme=dark]{--praxis-color-ink:#e3eee8;--praxis-color-muted:#a3b9ad;--praxis-color-surface:#1d2b28;--praxis-color-canvas:#14211d;--praxis-color-border:#3d5549;--praxis-color-primary:#98d0bb;--praxis-color-primary-soft:#263e32;--ink:var(--praxis-color-ink);--ink-2:#cadcd1;--bg:var(--praxis-color-canvas);--card:var(--praxis-color-surface);--muted:var(--praxis-color-muted);--line:var(--praxis-color-border);--accent:var(--praxis-color-primary)}
+body{background:var(--praxis-color-canvas);color:var(--praxis-color-ink);font-family:var(--praxis-font-ui);font-size:16px}body::before{display:none}
+.praxis-course-header{position:sticky;top:0;z-index:300;min-height:74px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 20px;background:var(--praxis-color-surface);border-bottom:1px solid var(--praxis-color-border);font:600 15px var(--praxis-font-ui);line-height:1.3}
+.praxis-course-header a{color:var(--praxis-color-primary);text-decoration:none}.praxis-course-brand{margin-right:auto}.praxis-course-header select{font:inherit;max-width:270px;min-width:52px;min-height:44px;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control);background:var(--praxis-color-surface);color:var(--praxis-color-ink);padding:6px}
+.praxis-source-home{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}#praxis-original .brand .praxis-source-home svg{flex-shrink:0}
+.praxis-course-header .praxis-course-sections{min-width:0;flex:1;max-width:290px}.praxis-course-header .button{gap:6px;font-size:14px;padding:8px 12px}.praxis-course-note{font:13px/1.5 var(--praxis-font-ui);padding:7px 20px;background:var(--praxis-color-primary-soft);color:var(--praxis-color-ink);border-bottom:1px solid var(--praxis-color-border)}
+#praxis-original{font-size:calc(16px * var(--course-text-scale,1))}#praxis-original .top{top:var(--course-header);background:var(--praxis-color-surface)}#praxis-original .hero{background:var(--praxis-color-surface);padding-top:55px;min-height:0}#praxis-original .hero .lede{max-width:850px;font-size:1.1em}#praxis-original .hero-meta{margin-top:20px}#praxis-original .toc{top:calc(var(--course-header) + 12px)}#praxis-original .pb-side{top:calc(var(--course-header) + 86px)}
+#praxis-original h1,#praxis-original h2,#praxis-original h3,#praxis-original .brand{font-family:var(--praxis-font-ui)}
+#praxis-original .btn,#praxis-original .icon-btn,#praxis-original .tab,#praxis-original .chip{min-height:44px;min-width:44px;border-radius:var(--praxis-radius-control);font-family:var(--praxis-font-ui);touch-action:manipulation}#praxis-original .btn.primary{background:var(--praxis-color-primary);border-color:var(--praxis-color-primary);color:var(--praxis-color-surface)}#praxis-original .btn:not(.primary){background:var(--praxis-color-surface);border-color:var(--praxis-color-border);color:var(--praxis-color-ink)}
+#praxis-original .card,#praxis-original .fig,#praxis-original .box{border-radius:var(--praxis-radius-card);border-color:var(--praxis-color-border)}#praxis-original .eq,#praxis-original .frac{font-family:var(--praxis-font-formula)}
+.praxis-range-stepper{display:flex;align-items:center;gap:8px;grid-column:1/-1;width:100%;min-width:0}.praxis-range-stepper input[type=range]{flex:1;width:0;min-width:0}.praxis-range-stepper button{flex:0 0 44px;min-height:44px;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control);background:var(--praxis-color-surface);color:var(--praxis-color-primary);font:600 22px var(--praxis-font-ui);touch-action:manipulation}
+#praxis-original canvas{touch-action:none}html{scroll-padding-top:calc(var(--course-header) + 90px)}
+.praxis-course-settings{background:var(--praxis-color-surface);color:var(--praxis-color-ink);width:min(520px,calc(100vw - 24px));border:1px solid var(--praxis-color-border);padding:20px;max-height:calc(100dvh - 24px);overflow:auto}.praxis-course-settings header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.praxis-course-settings h2{font:600 22px var(--praxis-font-ui)}.praxis-course-settings p{font:15px/1.5 var(--praxis-font-ui)}.praxis-course-settings select{min-height:44px;font:18px var(--praxis-font-ui);padding:8px;margin:12px}
+@media(max-width:760px){.praxis-course-brand{display:none}.praxis-course-header{padding:7px 10px;gap:6px}.praxis-course-header .praxis-course-sections{max-width:none}.praxis-course-header .button{padding-inline:8px}.praxis-course-note{font-size:12px;padding-inline:10px}#praxis-original .hero{padding:35px 20px}#praxis-original .toc{position:static}#praxis-original .top{position:static}}
+@media(prefers-reduced-motion:reduce){#praxis-original .rv{opacity:1;transform:none}}
+
+/* Every imported lesson uses the shared heading hierarchy, including nested hero/text rules. */
+#praxis-original h1{font:650 var(--praxis-text-title)/1.25 var(--praxis-font-ui)}
+#praxis-original h2{font:650 var(--praxis-text-heading)/1.3 var(--praxis-font-ui)}
+#praxis-original h3{font:600 var(--praxis-text-subheading)/1.35 var(--praxis-font-ui)}
+#praxis-original h4{font:600 var(--praxis-text-minor-heading)/1.4 var(--praxis-font-ui)}
+#praxis-original :is(h1,h2,h3,h4){letter-spacing:normal;font-variation-settings:normal;color:var(--praxis-color-ink);max-width:100%;min-width:0;overflow-wrap:break-word}
+#praxis-original :is(h1,h2,h3,h4) em{font:inherit;color:inherit;display:inline;padding:0}
+#praxis-original .sec-head{display:block;margin-bottom:var(--praxis-space-5)}
+#praxis-original .sec-head>div{min-width:0;width:100%}
+#praxis-original .sec-head .kicker{font:600 var(--praxis-text-small)/1.5 var(--praxis-font-ui);letter-spacing:normal;text-transform:none}
+#praxis-original .sec{padding-block:var(--praxis-space-6)}
+.praxis-course-settings h2{font:650 var(--praxis-text-heading)/1.3 var(--praxis-font-ui)}
+/* Source resets must not remove the browser's modal centring margins. */
+.praxis-course-settings{position:fixed;inset:0;margin:auto;box-sizing:border-box}
+.praxis-course-settings .praxis-dialog-drag-handle{cursor:grab;touch-action:none;user-select:none}
+.praxis-course-settings.is-dragging .praxis-dialog-drag-handle{cursor:grabbing}
+.praxis-course-settings .praxis-dialog-drag-handle:focus-visible{outline:2px solid var(--praxis-color-focus);outline-offset:4px}
+.praxis-course-settings .praxis-dialog-drag-handle button{cursor:pointer;touch-action:manipulation}
+
+:root[data-course-colors]{--a:var(--praxis-science-red);--b:var(--praxis-science-blue);--c:var(--praxis-science-green);--o:var(--praxis-science-orange);--plum:var(--praxis-science-purple);--teal:var(--praxis-science-teal);--c-x:var(--praxis-science-blue);--c-v:var(--praxis-science-orange);--c-a:var(--praxis-science-green);--c-b:var(--praxis-science-purple)}

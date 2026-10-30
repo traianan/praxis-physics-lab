@@ -1,0 +1,31 @@
+{
+  "locale": "en",
+  "namespace": "courses/unde-mecanice/basics",
+  "messages": {
+    "→ direcția de propagare v": "→ propagation direction v",
+    "Transversală (perpendicular)": "Transverse (perpendicular)",
+    "Punctele oscilează": "Particles oscillate",
+    "pe propagare. Ex: coardă, undă EM.": "to propagation. E.g. string, EM wave.",
+    "Longitudinală (paralel)": "Longitudinal (parallel)",
+    "cu v. Zone roșii = compresie, albastre = dilatare. Ex: sunet în aer.": "to v. Red regions = compression, blue = rarefaction. E.g. sound in air.",
+    "⏸ Pauză": "⏸ Pause",
+    "▶ Play": "▶ Play",
+    "Viteză": "Speed",
+    "De suprafață pe apă = compus: traiectorie eliptică (transversal + longitudinal)": "Water surface wave = combined: elliptical trajectory (transverse + longitudinal)",
+    "Pauză": "Pause",
+    "Play": "Play",
+    "y = A sin(ωt - kx) =": "y = A sin(ωt - kx) =",
+    "Click pe canvas = emite front nou. Fronturile punctate mici sunt surse Huygens secundare.": "Click the canvas to emit a new front. Small dotted fronts are secondary Huygens wavelets.",
+    "Reset": "Reset",
+    "Fronturi plane paralele": "Parallel plane fronts",
+    "A = const, I = const (sursă la ∞)": "A = const, I = const (source at ∞)",
+    "Sferic: A∝1/r={p0}, I∝1/r²={p1}": "Spherical: A∝1/r={p0}, I∝1/r²={p1}",
+    "Sferic: A∝1/r={p0}, I∝1/r": "Spherical: A∝1/r={p0}, I∝1/r",
+    "Sferic: A∝1/r=": "Spherical: A∝1/r=",
+    "Rază = direcția v, front ⊥ rază": "Ray = direction of v, front ⊥ ray",
+    "r față de sursă sferică:": "r from spherical source:",
+    "Plană: sursă la infinit, fronturi plane paralele, I=const. Sferică: fronturi sferice, A~1/r, I~P/4πr². Raza = ⊥ pe front.": "Plane: source at infinity, parallel plane fronts, I=const. Spherical: spherical fronts, A~1/r, I~P/4πr². Ray = ⊥ to front.",
+    "Plană: sursă la infinit, fronturi plane paralele, I=const. Sferică: fronturi sferice, A~1/r, I~P/4πr": "Plane: source at infinity, parallel plane fronts, I=const. Spherical: spherical fronts, A~1/r, I~P/4πr",
+    ". Raza = ⊥ pe front.": ". Ray = ⊥ to front."
+  }
+}

@@ -1,0 +1,366 @@
+{
+  "portrait": {
+    "viewport": "768x1024",
+    "dpr": 2,
+    "touch": "true",
+    "samples": 144,
+    "figures": 7,
+    "topics": 11,
+    "quiz": 12,
+    "problems": 8,
+    "checks": [
+      {
+        "name": "heating",
+        "Q": "3.41 kJ",
+        "dT": "26.7 K"
+      },
+      {
+        "name": "inverse",
+        "Qif": "748 J",
+        "Qfi": "−1247 J"
+      },
+      {
+        "name": "contact",
+        "outputs": {
+          "Q1": "−9.04 kJ",
+          "Q2": "9.04 kJ",
+          "Q3": "—",
+          "prim": "9.04 kJ",
+          "ced": "9.04 kJ",
+          "teq": "19.3 °C"
+        }
+      },
+      {
+        "name": "water-row",
+        "cells": [
+          {
+            "label": "Nr.",
+            "value": "1"
+          },
+          {
+            "label": "m₁ (kg)",
+            "value": "0.150"
+          },
+          {
+            "label": "m₂ (kg)",
+            "value": "0.150"
+          },
+          {
+            "label": "t₁ (°C)",
+            "value": "15"
+          },
+          {
+            "label": "t₂ (°C)",
+            "value": "70"
+          },
+          {
+            "label": "mtotal (kg)",
+            "value": "0.300"
+          },
+          {
+            "label": "tmăs (°C)",
+            "value": "42.5"
+          },
+          {
+            "label": "tcalc (°C)",
+            "value": "42.5"
+          },
+          {
+            "label": "abatere",
+            "value": "0.0"
+          }
+        ]
+      },
+      {
+        "name": "sample-A",
+        "cx": "382 J/(kg·K)"
+      },
+      {
+        "name": "sample-B",
+        "cx": "458 J/(kg·K)"
+      },
+      {
+        "name": "sample-C",
+        "cx": "129 J/(kg·K)"
+      },
+      {
+        "name": "sample-D",
+        "cx": "382 J/(kg·K)"
+      }
+    ],
+    "issues": []
+  },
+  "landscape": {
+    "viewport": "1024x768",
+    "dpr": 2,
+    "touch": "true",
+    "samples": 144,
+    "figures": 7,
+    "topics": 11,
+    "quiz": 12,
+    "problems": 8,
+    "checks": [
+      {
+        "name": "heating",
+        "Q": "3.41 kJ",
+        "dT": "26.7 K"
+      },
+      {
+        "name": "inverse",
+        "Qif": "748 J",
+        "Qfi": "−1247 J"
+      },
+      {
+        "name": "contact",
+        "outputs": {
+          "Q1": "−9.04 kJ",
+          "Q2": "9.04 kJ",
+          "Q3": "—",
+          "prim": "9.04 kJ",
+          "ced": "9.04 kJ",
+          "teq": "19.3 °C"
+        }
+      },
+      {
+        "name": "water-row",
+        "cells": [
+          {
+            "label": "Nr.",
+            "value": "1"
+          },
+          {
+            "label": "m₁ (kg)",
+            "value": "0.150"
+          },
+          {
+            "label": "m₂ (kg)",
+            "value": "0.150"
+          },
+          {
+            "label": "t₁ (°C)",
+            "value": "15"
+          },
+          {
+            "label": "t₂ (°C)",
+            "value": "70"
+          },
+          {
+            "label": "mtotal (kg)",
+            "value": "0.300"
+          },
+          {
+            "label": "tmăs (°C)",
+            "value": "42.5"
+          },
+          {
+            "label": "tcalc (°C)",
+            "value": "42.5"
+          },
+          {
+            "label": "abatere",
+            "value": "0.0"
+          }
+        ]
+      },
+      {
+        "name": "sample-A",
+        "cx": "382 J/(kg·K)"
+      },
+      {
+        "name": "sample-B",
+        "cx": "226 J/(kg·K)"
+      },
+      {
+        "name": "sample-C",
+        "cx": "458 J/(kg·K)"
+      },
+      {
+        "name": "sample-D",
+        "cx": "382 J/(kg·K)"
+      }
+    ],
+    "issues": []
+  },
+  "desktop": {
+    "viewport": "1600x1000",
+    "dpr": 1,
+    "touch": "true",
+    "samples": 144,
+    "figures": 7,
+    "topics": 11,
+    "quiz": 12,
+    "problems": 8,
+    "checks": [
+      {
+        "name": "heating",
+        "Q": "3.41 kJ",
+        "dT": "26.7 K"
+      },
+      {
+        "name": "inverse",
+        "Qif": "748 J",
+        "Qfi": "−1247 J"
+      },
+      {
+        "name": "contact",
+        "outputs": {
+          "Q1": "−9.04 kJ",
+          "Q2": "9.04 kJ",
+          "Q3": "—",
+          "prim": "9.04 kJ",
+          "ced": "9.04 kJ",
+          "teq": "19.3 °C"
+        }
+      },
+      {
+        "name": "water-row",
+        "cells": [
+          {
+            "label": "Nr.",
+            "value": "1"
+          },
+          {
+            "label": "m₁ (kg)",
+            "value": "0.150"
+          },
+          {
+            "label": "m₂ (kg)",
+            "value": "0.150"
+          },
+          {
+            "label": "t₁ (°C)",
+            "value": "15"
+          },
+          {
+            "label": "t₂ (°C)",
+            "value": "70"
+          },
+          {
+            "label": "mtotal (kg)",
+            "value": "0.300"
+          },
+          {
+            "label": "tmăs (°C)",
+            "value": "42.5"
+          },
+          {
+            "label": "tcalc (°C)",
+            "value": "42.5"
+          },
+          {
+            "label": "abatere",
+            "value": "0.0"
+          }
+        ]
+      },
+      {
+        "name": "sample-A",
+        "cx": "129 J/(kg·K)"
+      },
+      {
+        "name": "sample-B",
+        "cx": "458 J/(kg·K)"
+      },
+      {
+        "name": "sample-C",
+        "cx": "226 J/(kg·K)"
+      },
+      {
+        "name": "sample-D",
+        "cx": "902 J/(kg·K)"
+      }
+    ],
+    "issues": []
+  },
+  "offline": {
+    "viewport": "768x1024",
+    "dpr": 2,
+    "touch": "true",
+    "samples": 144,
+    "figures": 7,
+    "topics": 11,
+    "quiz": 12,
+    "problems": 8,
+    "checks": [
+      {
+        "name": "heating",
+        "Q": "3.41 kJ",
+        "dT": "26.7 K"
+      },
+      {
+        "name": "inverse",
+        "Qif": "748 J",
+        "Qfi": "−1247 J"
+      },
+      {
+        "name": "contact",
+        "outputs": {
+          "Q1": "−9.04 kJ",
+          "Q2": "9.04 kJ",
+          "Q3": "—",
+          "prim": "9.04 kJ",
+          "ced": "9.04 kJ",
+          "teq": "19.3 °C"
+        }
+      },
+      {
+        "name": "water-row",
+        "cells": [
+          {
+            "label": "Nr.",
+            "value": "1"
+          },
+          {
+            "label": "m₁ (kg)",
+            "value": "0.150"
+          },
+          {
+            "label": "m₂ (kg)",
+            "value": "0.150"
+          },
+          {
+            "label": "t₁ (°C)",
+            "value": "15"
+          },
+          {
+            "label": "t₂ (°C)",
+            "value": "70"
+          },
+          {
+            "label": "mtotal (kg)",
+            "value": "0.300"
+          },
+          {
+            "label": "tmăs (°C)",
+            "value": "42.5"
+          },
+          {
+            "label": "tcalc (°C)",
+            "value": "42.5"
+          },
+          {
+            "label": "abatere",
+            "value": "0.0"
+          }
+        ]
+      },
+      {
+        "name": "sample-A",
+        "cx": "458 J/(kg·K)"
+      },
+      {
+        "name": "sample-B",
+        "cx": "382 J/(kg·K)"
+      },
+      {
+        "name": "sample-C",
+        "cx": "129 J/(kg·K)"
+      },
+      {
+        "name": "sample-D",
+        "cx": "902 J/(kg·K)"
+      }
+    ],
+    "issues": []
+  }
+}

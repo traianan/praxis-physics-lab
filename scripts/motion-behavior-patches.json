@@ -1,0 +1,83 @@
+[
+  {
+    "file": "sec1-tipuri.js",
+    "before": "tKind = k; tS = 0;",
+    "after": "tKind = k; tS = 0; $('#traj-pause').checked = true;"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "aRun.reset(); aRun.play();",
+    "after": "aRun.reset();"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "show() { if (!tRunning)",
+    "after": "show() { $('#traj-pause').checked = true; aRun.pause(); if (!tRunning)"
+  },
+  {
+    "file": "sec2-mru.js",
+    "before": "mRun.reset(); mRun.play();",
+    "after": "mRun.reset();"
+  },
+  {
+    "file": "sec2-mru.js",
+    "before": "eRun.reset(); eRun.play();",
+    "after": "eRun.reset();"
+  },
+  {
+    "file": "sec3-mruv.js",
+    "before": "run.reset(); run.play();",
+    "after": "run.reset();"
+  },
+  {
+    "file": "core.js",
+    "before": "play() {\r\n      if (this.t",
+    "after": "play() {\r\n      if (this.playing) return;\r\n      if (this.t"
+  },
+  {
+    "file": "core.js",
+    "before": "requestAnimationFrame(this._loop);",
+    "after": "this.frame = requestAnimationFrame(this._loop);",
+    "count": 2
+  },
+  {
+    "file": "core.js",
+    "before": "pause() { this.playing = false;",
+    "after": "pause() { cancelAnimationFrame(this.frame); this.frame = null; this.playing = false;"
+  },
+  {
+    "file": "index.html",
+    "before": "      <div class=\"formula\"><span class=\"eq\"><i>t</i><sub>opr</sub> = −<span class=\"frac\"><span><i>v</i><sub>0</sub></span><span><i>a</i></span></span>,&nbsp; <i>d</i><sub>opr</sub> = <span class=\"frac\"><span><i>v</i><sub>0</sub><sup>2</sup></span><span>2|<i>a</i>|</span></span></span><span class=\"what\">oprirea (mișcare încetinită)</span></div>",
+    "after": "      <div class=\"formula\"><span class=\"eq\"><i>t</i><sub>opr</sub> = −<span class=\"frac\"><span><i>v</i><sub>0</sub></span><span><i>a</i></span></span>,&nbsp; <i>d</i><sub>opr</sub> = −<span class=\"frac\"><span><i>v</i><sub>0</sub><sup>2</sup></span><span>2<i>a</i></span></span></span><span class=\"what\">oprirea (mișcare încetinită)</span></div>\n      <p class=\"small muted\" style=\"grid-column:1/-1\">Formula pentru distanța de oprire este scrisă pentru v₀ > 0 și a < 0. În cazul general, −v₀²/(2a) este deplasarea cu semn până la oprire; distanța parcursă rămâne pozitivă.</p>"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "function trajInfo() {",
+    "after": "function trajInfo(kind = tKind, target = $('#traj-info')) {"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "const d = TRAJ[tKind];",
+    "after": "const d = TRAJ[kind];"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "$('#traj-info').innerHTML = `",
+    "after": "target.innerHTML = `"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "function trajResize() {",
+    "after": "MR.motionTypeInfoVariants = () => Object.keys(TRAJ).map(kind => { const target = document.createElement('div'); trajInfo(kind, target); return target.innerHTML; });\n  function trajResize() {"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "  function aSetup() {\r\n    const d = ACC[aKind];\r\n    $('#acc-info').innerHTML = `",
+    "after": "  function accelerationInfo(kind, target) {\r\n    const d = ACC[kind];\r\n    target.innerHTML = `"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "    const cv = MR.css('--c-v'), ca = MR.css('--c-a');",
+    "after": "  }\r\n  MR.accelerationInfoVariants = () => Object.keys(ACC).map(kind => {\r\n    const target = document.createElement('div');\r\n    accelerationInfo(kind, target); return target.innerHTML;\r\n  });\r\n  function aSetup() {\r\n    const d = ACC[aKind];\r\n    accelerationInfo(aKind, $('#acc-info'));\r\n    const cv = MR.css('--c-v'), ca = MR.css('--c-a');"
+  }
+]

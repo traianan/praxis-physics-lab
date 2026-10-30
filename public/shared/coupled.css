@@ -1,0 +1,30 @@
+body[data-praxis-course="oscilatori-mecanici-cuplati"]{margin:0;font-family:var(--praxis-font-ui);line-height:1.6}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] *,body[data-praxis-course="oscilatori-mecanici-cuplati"] *::before,body[data-praxis-course="oscilatori-mecanici-cuplati"] *::after{box-sizing:border-box}
+body[data-praxis-course="oscilatori-mecanici-cuplati"]{color:var(--praxis-color-ink);background:var(--praxis-color-canvas)}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] #praxis-original{width:100%;max-width:90rem;margin-inline:auto;padding:0 1rem 2rem}
+#praxis-original .hidden{display:none!important}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(.card,.q){padding:1rem;background:var(--praxis-color-surface);border:1px solid var(--praxis-color-border);border-radius:14px;margin-bottom:1rem}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(.grid2,.sim-row){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem;align-items:start}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(.grid2,.sim-row)>*{min-width:0}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(p,li,.muted,.ctrl label,.btn,table,.q label){font-size:1rem!important;color:var(--praxis-color-ink)}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(h2,h3){color:var(--praxis-color-ink)}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .canvas-wrap{overflow:auto;border:1px solid var(--praxis-color-border);border-radius:10px;background:#f8faf9}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .q label{min-width:0;grid-template-columns:auto minmax(0,1fr)}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .q label span{min-width:0;overflow-wrap:anywhere}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] canvas{display:block;width:100%;min-width:520px;height:auto;touch-action:pan-y}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(.controls,.q label){display:grid;gap:.75rem}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .ctrl{display:flex;flex-direction:column;gap:.35rem;margin-top:.6rem}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .ctrl label{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(.btn-row,.lab-nav){display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(button,select,input){min-height:44px;max-width:100%;font:inherit}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(.btn,.lab-nav button,.tab){padding:.5rem .8rem;border:1px solid var(--praxis-color-border);border-radius:9px;background:var(--praxis-color-surface);color:var(--praxis-color-primary);cursor:pointer}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(button.active,.btn.primary){background:var(--praxis-color-primary);color:white}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(.def,.coupled-readout){padding:.8rem;border-radius:9px;background:#edf4fb;margin:.75rem 0;overflow-wrap:anywhere}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .coupled-readout{font-variant-numeric:tabular-nums;white-space:pre-wrap}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .fx{overflow-x:auto;overflow-y:hidden;padding:.7rem 0}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .q label{display:flex;align-items:center;padding:.4rem}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .q.correct{background:#e4f2ea;border-color:#2a7050}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .q.wrong{background:#fff0ed;border-color:#9d453c}
+@media(max-width:1050px){body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(.grid2,.sim-row){grid-template-columns:1fr}}
+
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .tabs{flex-wrap:wrap}

@@ -1,0 +1,20 @@
+{
+  "id": "miscarea-circulara-uniforma",
+  "source": "Mcu-Lectie-Interactiva-Premium.html",
+  "sha256": "9cb2e37ac8aa110fa8a5e4bea7d6485e555fad643d6ea88210ac607ac1056f71",
+  "sections": 10,
+  "tabs": 7,
+  "laboratories": 2,
+  "workedProblems": 2,
+  "questions": 5,
+  "adaptations": [
+    "light scientific palette",
+    "all educational source references removed",
+    "correct radius interpretation",
+    "real and required radial forces separated",
+    "responsive DPR canvas",
+    "subscripts in DOM, SVG and canvas",
+    "RO/EN",
+    "Pointer Events and keyboard phase control"
+  ]
+}

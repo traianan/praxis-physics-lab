@@ -1,0 +1,1 @@
+import {readFile} from 'node:fs/promises';const data=JSON.parse(await readFile('outputs/course-text-source.json','utf8'));const [group,from='0',to='10000']=process.argv.slice(2);for(let i=+from;i<Math.min(+to,data[group].length);i++)console.log(i+' | '+data[group][i]);

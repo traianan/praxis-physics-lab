@@ -1,0 +1,72 @@
+{
+  "locale": "ro",
+  "namespace": "chapters/sunete-si-unde",
+  "title": "Sunete și unde",
+  "messages": {
+    "Sunete și unde": "Sunete și unde",
+    "SUNETE ȘI UNDE": "SUNETE ȘI UNDE"
+  },
+  "simulations": {
+    "unde-mecanice": {
+      "title": "Unde mecanice",
+      "subtitle": "Unde, sunet și experimente",
+      "description": "19 teme cu propagare, interferență, sunet, instrumente muzicale, unde seismice, 7 probleme, teste și jurnal de laborator.",
+      "alt": "Fronturi de undă și oscilații armonice",
+      "tags": [
+        "Unde",
+        "Sunet",
+        "Experimente",
+        "Offline"
+      ],
+      "keywords": "unde mecanice sunet acustica interferenta doppler huygens tsunami seismice sonometru kundt"
+    },
+    "oscilator-mecanic": {
+      "title": "Oscilatorul mecanic",
+      "subtitle": "Fenomene periodice și oscilații armonice",
+      "description": "Patru teme, unsprezece demonstrații, șase probleme rezolvate și verificări: mărimi, amortizare, fază, pendule și energie.",
+      "alt": "Resort și corp oscilant, cu graficul elongației",
+      "tags": [
+        "Oscilații",
+        "Pendule",
+        "Probleme",
+        "Offline"
+      ]
+    },
+    "oscilatori-mecanici-cuplati": {
+      "title": "Oscilatori mecanici cuplați",
+      "subtitle": "Rezonanță, transfer de energie și moduri normale",
+      "description": "Patru experimente interactive despre oscilații forțate, cuplaj slab și strâns, bătăi și amortizare; zece întrebări, exporturi CSV și raport.",
+      "alt": "Două pendule legate printr-un resort, cu transfer de energie",
+      "tags": [
+        "Oscilații",
+        "Rezonanță",
+        "Experimente",
+        "Offline"
+      ]
+    },
+    "compunerea-oscilatiilor": {
+      "title": "Compunerea oscilațiilor",
+      "subtitle": "Oscilații perpendiculare și figuri Lissajous",
+      "description": "Pulsații egale și diferite, 12 situații particulare, nouă rapoarte rapide, contacte, simetrii, opriri la extreme, sunet și export PNG, cu șapte teme teoretice.",
+      "alt": "Figură Lissajous și oscilațiile componente pe două axe perpendiculare",
+      "tags": [
+        "Oscilații",
+        "Lissajous",
+        "Experimente",
+        "Offline"
+      ]
+    },
+    "figuri-chladni": {
+      "title": "Figuri Chladni",
+      "subtitle": "Noduri, rezonanță și vibrația unui disc",
+      "description": "19 familii modale pe un disc metalic, nisip animat, excitator mobil prin touch, frecvență, materiale și geometrie, cu explicații, activități și verificări.",
+      "alt": "Nisip pe diametrele și cercurile nodale ale unui disc metalic",
+      "tags": [
+        "Oscilații",
+        "Rezonanță",
+        "Touch",
+        "Offline"
+      ]
+    }
+  }
+}

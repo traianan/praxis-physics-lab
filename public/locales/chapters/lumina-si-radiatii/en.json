@@ -1,0 +1,29 @@
+{
+  "locale": "en",
+  "namespace": "chapters/lumina-si-radiatii",
+  "title": "Light and radiation",
+  "messages": {
+    "Lumină și radiații": "Light and radiation",
+    "LUMINĂ ȘI RADIAȚII": "LIGHT AND RADIATION",
+    "Oglinzi și lentile": "Mirrors and lenses",
+    "Optică geometrică": "Geometric optics",
+    "Laborator de optică geometrică": "Geometric optics laboratory",
+    "Mută obiectul, urmărește razele și descoperă cum se formează imaginea prin lentile și oglinzi.": "Move the object, follow the rays and discover how lenses and mirrors form images.",
+    "Construcția imaginii printr-o lentilă convergentă, cu obiect, raze și imagine inversată": "Image formation by a converging lens, showing the object, rays and inverted image",
+    "Lentilă și traseul razelor": "Lens and ray paths"
+  },
+  "simulations": {
+    "oglinzi-si-lentile": {
+      "title": "Mirrors and lenses",
+      "subtitle": "Geometric optics laboratory",
+      "description": "Move the object, follow the rays and discover how lenses and mirrors form images.",
+      "tags": [
+        "Geometric optics",
+        "Touch",
+        "Board mode",
+        "Offline"
+      ],
+      "keywords": "lentile oglinzi optica lumina focar curbura reflexie refractie aberatii imagine lenses mirrors optics light focus curvature reflection refraction aberrations image"
+    }
+  }
+}

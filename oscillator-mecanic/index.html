@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1 Oscilatorul mecanic — Teorie și demonstrații interactive</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['$$', '$$']] }, svg: { fontCache: 'global' } };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-icon">〰</span>
+    <div>
+      <strong>Oscilatorul mecanic</strong>
+      <small>Fizică clasa a XI-a · manual, subcapitolul 1.1.1 – 1.1.4</small>
+    </div>
+  </div>
+  <nav id="nav">
+    <a href="#s111" class="active">1.1.1 Periodic</a>
+    <a href="#s112" class="">1.1.2 Mărimi</a>
+    <a href="#s113" class="">1.1.3 Amortizare</a>
+    <a href="#s114" class="">1.1.4 Model armonic</a>
+    <a href="#quiz" class="">Verificări</a>
+    <a href="#corectii" class="">Corecții manual</a>
+  </nav>
+  <button id="btn-sound-global" class="sound-toggle" title="Porneste/opreste toate sunetele">🔊 Sunet: ON</button>
+</header>
+
+<main>
+
+<!-- ============ 1.1.1 ============ -->
+<section id="s111" class="chapter">
+  <h2>1.1.1. Fenomene periodice. Procese oscilatorii în natură și în tehnică</h2>
+
+  <div class="story-card">
+    <p>În secolul al XVI-lea, <strong>Galileo Galilei</strong> cronometra oscilația unui candelabru din Catedrala din Pisa cu ajutorul propriului său puls. El a constatat că mișcarea acestuia este din ce în ce mai puțin amplă, datorită forțelor de rezistență întâmpinate la înaintare.</p>
+  </div>
+
+  <p>În natură apar multe tipuri de oscilații: de la vibrația corzilor vocale la cea din corzile și tuburile instrumentelor muzicale, de la ticăitul ceasurilor clasice la legănatul în balansoar, de la agitația termică care încălzește ceștea cu ceai, la mișcările scoarței terestre în timpul seismelor — avem de-a face cu existența unei <em>surse de oscilație</em>.</p>
+
+  <blockquote class="observ">
+    <strong>Observație.</strong> De câte ori o forță acționează asupra unui corp scoțându-l din poziția de echilibru stabil, acesta va oscila sub acțiunea unei <strong>forțe de revenire</strong> până la restabilirea ei. Când deplasarea față de poziția de echilibru este mică, forța de revenire depinde liniar de deplasare (într-o aproximație destul de bună) și oscilația se numește <strong>armonică</strong>, fiind descrisă cu ajutorul funcțiilor armonice sin și cos.
+  </blockquote>
+
+  <h3>Exemple din manual</h3>
+  <ol class="examples">
+    <li><strong>Bila în recipient semisferic</strong> — lăsată liberă la marginea recipientului, bila efectuează o mișcare oscilatorie în jurul poziției de echilibru stabil (cel mai de jos punct al recipientului). Forța de revenire este componenta tangențială a greutății, \(G_t\) (fig. 1.1.1.1–1.1.1.2 din manual).</li>
+    <li><strong>Diapazonul</strong> — lovit cu un ciocănel de lemn, produce o vibrație care se propagă prin aer „din aproape în aproape", dând naștere undei sonore. Semnalul unui microfon cuplat la o placă de achiziție este proporțional cu amplitudinea oscilației diapazonului (fig. 1.1.1.3–1.1.1.4).</li>
+  </ol>
+
+  <div class="demo-shell" id="demo-fork">
+    <div class="demo-head"><h4>Demonstrație: „vizualizarea" sunetului emis de diapazon (nota LA)</h4><span class="tag tag-demo">interactiv</span></div>
+    <div class="demo-body">
+      <canvas id="cv-fork"></canvas>
+      <div class="demo-controls">
+        <button data-act="strike">🔨 Lovește diapazonul (LA = 440 Hz)</button>
+        <label class="chk"><input type="checkbox" data-act="autopulse" checked> Replay automat (anvelopă amortizată realist)</label>
+        <p class="hint">Așa înregistrează „exploratorul sonic" din manual: undă cu amplitudinea care scade lent în timp. Aceeași idee o vei folosi la 1.1.3.</p>
+      </div>
+    </div>
+  </div>
+
+  <blockquote class="observ warn">
+    <strong>Sistemele reale oscilează amortizat:</strong> amplitudinile scad treptat din cauza forțelor de frecare și a forțelor de rezistență la înaintarea prin mediu. În tehnică (ciocan pneumatic, motoare ale vehiculelor grele, trepidații ale clădirilor), efectele distructive ale trepidațiilor trebuie împiedicate prin <strong>amortizoare</strong>.
+  </blockquote>
+
+  <div class="demo-shell" id="demo-examples">
+    <div class="demo-head"><h4>Activează! Mișcări periodice în jurul nostru</h4><span class="tag tag-demo">animatie</span></div>
+    <div class="demo-body">
+      <canvas id="cv-examples"></canvas>
+      <div class="demo-controls">
+        <p class="hint">Patru procese oscilatorii din manual, în mișcare: balansoar, pendul gravitațional, coardă de chitară (sunet!), membrane timpan (seism). Apasă pe fiecare pentru sunet.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="defbox">
+    <strong>Definiție.</strong> Se numește <em>mișcare periodică</em> a unui punct material acea mișcare care se repetă la intervale de timp egale.
+  </div>
+  <blockquote class="observ">
+    <strong>Observație.</strong> În clasa a IX-a ați studiat o astfel de mișcare periodică: <strong>mișcarea circulară uniformă</strong>.
+  </blockquote>
+
+  <h3>Activitate experimentală (fig. 1.1.1.5)</h3>
+  <p>Realizați dispozitivele din figura 1.1.1.5 (pendul gravitațional, pendul cu arc, pendul lamelar, coloană de apă). Scoateți corpurile din poziția de echilibru și lăsați-le libere. În toate cazurile se constată că:</p>
+  <ul>
+    <li>a) mișcarea este periodică;</li>
+    <li>b) corpul se deplasează mereu pe aceeași traiectorie;</li>
+    <li>c) mișcarea se realizează simetric față de poziția de echilibru;</li>
+    <li>d) mișcarea se efectuează între două poziții limită, numite <strong>puncte de întoarcere</strong>, situate de o parte și de alta a poziției de echilibru.</li>
+  </ul>
+
+  <div class="defbox">
+    <strong>Definiție.</strong> Se numește <em>mișcare oscilatorie</em> acea mișcare periodică a unui sistem fizic care se efectuează pe aceeași traiectorie, de o parte și de alta a poziției sale de echilibru.
+  </div>
+  <blockquote class="observ">
+    <strong>Observație.</strong> Când sistemul parcurge traiectoria completă, și într-o parte și în cealaltă, se spune că a efectuat o <strong>oscilație completă</strong>.
+  </blockquote>
+
+  <div class="demo-shell" id="demo-pendulum">
+    <div class="demo-head"><h4>Demonstrație: oscilație completă, puncte de întoarcere, simetrie</h4><span class="tag tag-demo">interactiv</span></div>
+    <div class="demo-body">
+      <canvas id="cv-pendulum"></canvas>
+      <div class="demo-controls">
+        <label>Lungime fir <input type="range" data-sl="L" min="0.4" max="2.0" step="0.05" value="1.0"><span class="val" data-val="L">1.00 m</span></label>
+        <label>Amplitudine unghiulară <input type="range" data-sl="A" min="5" max="30" step="1" value="18"> <span class="val" data-val="A">18°</span></label>
+        <button data-act="startpause">⏸ Pauză</button>
+        <button data-act="reset">↺ Reset</button>
+        <span class="readout" data-ro="info">N = 0 oscilații complete</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1.1.2 ============ -->
+<section id="s112" class="chapter">
+  <h2>1.1.2. Mărimi caracteristice mișcării oscilatorii</h2>
+
+  <div class="defbox">
+    <strong>Definiție.</strong> Se numește <em>perioadă</em> a mișcării oscilatorii mărimea fizică notată \(T\), definită de relația
+    $$T = \frac{\Delta t}{N}$$
+    unde \(\Delta t\) este timpul în care sistemul efectuează \(N\) oscilații complete, \([T]_{SI} = 1\ \text{s}\).
+  </div>
+  <blockquote class="observ"><strong>Observație.</strong> Pentru \(N = 1\) rezultă \(T = \Delta t\). Deci: <strong>perioada \(T\) este timpul necesar efectuării unei oscilații complete</strong>.</blockquote>
+
+  <div class="defbox">
+    <strong>Definiție.</strong> Se numește <em>frecvență</em> a mișcării oscilatorii mărimea fizică scalară \(\nu\) definită de relația
+    $$\nu = \frac{N}{\Delta t}$$
+  </div>
+  <blockquote class="observ">
+    <strong>Observații.</strong> 1) Luând \(\Delta t = 1\ \text{s}\) rezultă \(\nu = N\): frecvența măsoară <strong>numărul de oscilații efectuate într-o secundă</strong>. 2) Unitatea de măsură este <strong>Hertz (Hz)</strong>: \([\nu]_{SI} = 1\,\text{s}^{-1} = 1\,\text{Hz}\). 3) Din definiții rezultă \(\nu \cdot T = 1\).
+  </blockquote>
+
+  <div class="defbox">
+    <strong>Definiție.</strong> Se numește <em>elongație</em> a mișcării oscilatorii, notată cu \(x\) sau \(y\), deplasarea oscilatorului, la un moment dat, față de poziția sa de echilibru. Observație: \([x]_{SI} = 1\ \text{m}\).
+  </div>
+
+  <div class="defbox">
+    <strong>Definiție.</strong> Se numește <em>amplitudine</em> a mișcării oscilatorii mărimea fizică scalară \(A\), egală cu modulul elongației maxime \(x_{\max}\) pe care o poate avea oscilatorul în cursul oscilației: \(A = |x_{\max}|\). Amplitudinea este pozitivă întotdeauna; ea reprezintă distanța dintre poziția de echilibru și punctul de întoarcere.
+  </div>
+
+  <div class="defbox">
+    <strong>Definiție.</strong> Se numește <em>mișcare oscilatorie neamortizată</em> acea mișcare oscilatorie în care amplitudinea nu se schimbă de la o oscilație la alta. Este un <strong>model ideal</strong>: în practică, datorită frecărilor, sistemul pierde energie și amplitudinea devine din ce în ce mai mică.
+  </div>
+
+  <div class="demo-shell" id="demo-marimi">
+    <div class="demo-head"><h4>Demonstrație: A, T, ν, elongație — cu cronometru de oscilații</h4><span class="tag tag-demo">interactiv</span></div>
+    <div class="demo-body">
+      <canvas id="cv-marimi"></canvas>
+      <div class="demo-controls">
+        <label>Amplitudine A <input type="range" data-sl="A" min="0.2" max="1.5" step="0.05" value="1.0"><span class="val" data-val="A">1.00 m</span></label>
+        <label>Perioadă T <input type="range" data-sl="T" min="0.4" max="3.0" step="0.1" value="1.6"><span class="val" data-val="T">1.60 s</span></label>
+        <label class="chk"><input type="checkbox" data-act="sound"> 🔊 Bip la fiecare oscilație completă</label>
+        <button data-act="startpause">⏸ Pauză</button>
+        <button data-act="reset">↺ Reset</button>
+        <span class="readout" data-ro="info">Δt = 0.0 s · N = 0 · ν = 0.00 Hz</span>
+      </div>
+      <p class="hint">Verifică relația \(\nu = N/\Delta t\) și \(\nu T = 1\): numără oscilațiile într-un interval măsurat. Punctele de întoarcere apar marcate cu □ la \(+A\) și \(-A\).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1.1.3 ============ -->
+<section id="s113" class="chapter">
+  <h2>1.1.3. Oscilații mecanice amortizate</h2>
+
+  <p>În timpul mișcărilor oscilatorii sistemele pierd energie prin interacțiunea cu mediul, ceea ce duce la scăderea amplitudinii, adică la <strong>amortizarea</strong> lor și implicit la stingerea treptată a oscilațiilor.</p>
+
+  <div class="defbox">
+    <strong>Definiție.</strong> Oscilația a cărei amplitudine scade în timp se numește <em>oscilație amortizată</em>.
+  </div>
+
+  <p>În experimentul din manual (fig. 1.1.3.1), un senzor de forță cuplat la placa de achiziție înregistrează forța elastică din resortul unui pendul elastic — semnalul este proporțional cu elongația. Mișcarea a avut loc inițial <strong>în aer</strong> (fig. 1.1.3.2: amortizare abia vizibilă), apoi <strong>în apă</strong> (fig. 1.1.3.3: amortizare rapidă).</p>
+
+  <div class="formula-card">
+    <p>Forța de rezistență la înaintarea prin fluid este, într-o aproximație suficient de bună, direct proporțională cu viteza:</p>
+    $$R = r \cdot v$$
+    <p>unde \(r\) este <strong>coeficientul de rezistență la înaintarea prin fluid</strong>. În aer, \(r\) este suficient de mic pentru a considera forța \(R\) neglijabilă. În apă, amplitudinea scade după legea:</p>
+    $$A(t) = A_0 \cdot e^{-b t}$$
+    <p>unde \(A_0\) este amplitudinea inițială, iar \(b\) — <strong>coeficientul de amortizare</strong>, \([b]_{SI} = 1\,\text{s}^{-1}\).</p>
+  </div>
+
+  <div class="formula-card">
+    <p><strong>Decrementul logaritmic</strong> \(D\) se definește prin relația \(D = b \cdot T'\) (unde \(T'\) este perioada de oscilație în mediu) și se poate calcula practic din numărul \(N_{1/2}\) de oscilații complete după care amplitudinea scade la jumătate:</p>
+    $$D = b \cdot T' = \frac{\ln 2}{N_{1/2}}$$
+    <p><strong>Timpul de viață</strong> \(\tau\) măsoară intervalul de timp necesar pentru ca amplitudinea să scadă de \(e = 2{,}718\) ori: \(\tau = 1/b\).</p>
+    <p>Dacă amortizarea este slabă (\(b \ll \omega_0\), unde \(\omega_0\) este pulsația în aer), atunci \(D \ll 1\) și \(N_{1/2} \gg 1\), deci în timpul de viață se efectuează un număr mare de oscilații.</p>
+  </div>
+
+  <div class="demo-shell" id="demo-amort">
+    <div class="demo-head"><h4>Demonstrație: amortizare înregistrată ca în manual (aer → apă → mediu vâscos)</h4><span class="tag tag-demo">interactiv</span></div>
+    <div class="demo-body">
+      <canvas id="cv-amort"></canvas>
+      <div class="demo-controls">
+        <label>Coeficient amortizare b <input type="range" data-sl="b" min="0.02" max="4.0" step="0.02" value="0.08"><span class="val" data-val="b">0.08 s⁻¹</span></label>
+        <label>Perioadă T′ <input type="range" data-sl="T" min="0.5" max="4.0" step="0.1" value="1.5"><span class="val" data-val="T">1.50 s</span></label>
+        <label>Regim <select data-sl="regim">
+          <option value="aer">aer (b ≈ 0,08)</option>
+          <option value="apa">apă (b ≈ 0,8)</option>
+          <option value="tranzitoriu">tranzitoriu (iaurt diluat)</option>
+          <option value="aperiodic">aperiodic (mediu foarte vâscos)</option>
+        </select></label>
+        <button data-act="startpause">⏸ Pauză</button>
+        <button data-act="reset">↺ Reset</button>
+        <span class="readout" data-ro="info">τ = 12.5 s · D = 0.12 · N½ = 8.7</span>
+      </div>
+      <p class="hint">Regimurile reproduce seriile fig. 1.1.3.5–1.1.3.12 din manual (trecerea de la regimul aperiodic, prin cel tranzitoriu, la oscilația practic neamortizată în aer), după diluarea progresivă a iaurtului. <strong>Întrebare din manual:</strong> ce se întâmplă cu timpul de viață al oscilației atunci când vâscozitatea mediului scade? (<em>Crește — verifică pe grafic.</em>)</p>
+    </div>
+  </div>
+
+  <details class="labbox">
+    <summary>🧪 Lucrare de laborator (manual): Studiul amortizării oscilațiilor mecanice</summary>
+    <p>Materiale: pendul elastic, stativ cu suport, vas transparent cu apă, cronometru. Cronometrați 10–20 oscilații în aer (\(T\)) și în apă (\(T'\)); numărati după câte oscilații complete \(N_{1/2}\) amplitudinea scade la jumătate. Calculați:</p>
+    $$D = \frac{\ln 2}{N_{1/2}}, \qquad b = \frac{D}{T'}, \qquad \tau = \frac{1}{b}, \qquad r = 2 m b$$
+    <p class="hint">Experiment virtual din manual: <code>http://lectureonline.cl.msu.edu/~mmp/applist/damped/d.htm</code> (link istoric, poate fi indisponibil).</p>
+  </details>
+</section>
+
+<!-- ============ 1.1.4 ============ -->
+<section id="s114" class="chapter">
+  <h2>1.1.4. Modelul oscilatorului liniar armonic</h2>
+
+  <p>Cel mai simplu exemplu de mișcare oscilatorie este mișcarea unui punct material de masă \(m\) sub acțiunea unei forțe de revenire elastice (fig. 1.1.4.1: resort relaxat / întins / comprimat).</p>
+
+  <div class="defbox">
+    <strong>Definiție.</strong> Se numește <em>oscilator liniar armonic</em> un punct material care se mișcă rectiliniu sub acțiunea unei forțe de forma \(F = -k \cdot y\) (sau \(F = -k \cdot x\)).
+  </div>
+  <blockquote class="observ"><strong>Observație.</strong> Oscilatorul armonic liniar este un <strong>model teoretic ideal</strong> pentru oscilatoarele reale. Mișcarea sa se numește <em>mișcare oscilatorie armonică</em>.</blockquote>
+
+  <p>Din ecuația principiului al doilea, \(-k y = m a\), rezultă \(a = -\dfrac{k}{m} y\): <strong> accelerația este proporțională cu elongația și de sens opus acesteia</strong> (mișcare cu accelerație variabilă).</p>
+
+  <h3>Legătura cu mișcarea circulară uniformă (fig. 1.1.4.2)</h3>
+  <p>Pentru un punct \(P\) în mișcare circulară uniformă cu viteza unghiulară \(\omega\) pe un cerc de rază \(A\), proiecția \(Q\) pe un diametru execută o mișcare cu accelerația \(a = -\omega^2 y\), sub forța \(F = -m\omega^2 y\). Comparând cu definiția rezultă:</p>
+  $$\omega = \sqrt{\frac{k}{m}} \quad\Rightarrow\quad T = \frac{2\pi}{\omega} = 2\pi\sqrt{\frac{m}{k}}$$
+
+  <div class="demo-shell" id="demo-oscillator">
+    <div class="demo-head"><h4>Demonstrație: oscilator mass-spring, forța de revenire F = −k·y</h4><span class="tag tag-demo">interactiv</span></div>
+    <div class="demo-body">
+      <canvas id="cv-oscillator"></canvas>
+      <div class="demo-controls">
+        <label>k (N/m) <input type="range" data-sl="k" min="2" max="80" step="1" value="20"><span class="val" data-val="k">20</span></label>
+        <label>m (kg) <input type="range" data-sl="m" min="0.2" max="5" step="0.1" value="1.2"><span class="val" data-val="m">1.2</span></label>
+        <label>A (m) <input type="range" data-sl="A" min="0.2" max="1.2" step="0.05" value="0.8"><span class="val" data-val="A">0.80</span></label>
+        <label class="chk"><input type="checkbox" data-act="sound"> 🔊 Tic la întrecerea echilibrului</label>
+        <button data-act="startpause">⏸ Pauză</button>
+        <button data-act="reset">↺ Reset</button>
+        <span class="readout" data-ro="info">ω = 4.08 rad/s · T = 1.54 s</span>
+      </div>
+      <p class="hint">Vectorul roșu este forța de revenire \(-k y\); ea este mereu orientată spre echilibru și maximă la punctele de întoarcere.</p>
+    </div>
+  </div>
+
+  <div class="demo-shell" id="demo-phasor">
+    <div class="demo-head"><h4>Demonstrație: fazorul lui Fresnel — mișcare circulară → oscilație armonică (+ sunet)</h4><span class="tag tag-demo">interactiv</span></div>
+    <div class="demo-body">
+      <canvas id="cv-phasor"></canvas>
+      <div class="demo-controls">
+        <label>Amplitudine A <input type="range" data-sl="A" min="0.3" max="2" step="0.05" value="1.0"><span class="val" data-val="A">1.00 m</span></label>
+        <label>Pulsație ω (rad/s) <input type="range" data-sl="w" min="1" max="20" step="0.5" value="6"><span class="val" data-val="w">6.0</span></label>
+        <label>Fază inițială φ₀ (rad) <input type="range" data-sl="phi" min="0" max="6.28" step="0.01" value="0"><span class="val" data-val="phi">0.00</span></label>
+        <label class="chk"><input type="checkbox" data-act="sound"> 🔊 Ton cu frecvența ν = ω/2π (urechea „audе" pulsația)</label>
+        <button data-act="startpause">⏸ Pauză</button>
+        <span class="readout" data-ro="info">ν = 0.95 Hz · T = 1.05 s</span>
+      </div>
+      <p class="hint">Fazorul \(\vec{OP}\) se rotește uniform; proiecția sa pe Oy este oscilația armonică \(y(t) = A\sin(\omega t + \varphi_0)\). Reprezentarea fazorială a fost introdusă de fizicianul francez <strong>Augustin Fresnel</strong>.</p>
+    </div>
+  </div>
+
+  <h3>Ecuațiile mișcării oscilatorului liniar armonic</h3>
+  <div class="formula-card">
+    <p>Legea de mișcare, legea vitezei și legea accelerației (deduse din proiecția mișcării circulare uniforme, fig. 1.1.4.8–1.1.4.10):</p>
+    $$y(t) = A \sin(\omega t + \varphi_0)$$
+    $$v(t) = A\omega \cos(\omega t + \varphi_0) = A\omega \sin\!\left(\omega t + \varphi_0 + \frac{\pi}{2}\right)$$
+    $$a(t) = -A\omega^2 \sin(\omega t + \varphi_0) = A\omega^2 \sin(\omega t + \varphi_0 + \pi)$$
+    <p>unde \(v_{\max} = A\omega\), \(a_{\max} = A\omega^2\). <strong>Viteza este defazată înainte cu \(\pi/2\) față de elongație, iar accelerația cu \(\pi\).</strong></p>
+    <p>Notații din manual: \(\omega t + \varphi_0\) = <em>faza</em> mișcării [rad]; \(\omega\) = <em>pulsația</em> (viteza de variație a fazei) [rad/s]; \(\varphi_0 = \varphi(t=0)\) = <em>faza inițială</em>.</p>
+  </div>
+
+  <div class="demo-shell" id="demo-yva">
+    <div class="demo-head"><h4>Graficele y(t), v(t), a(t) — defazaje vizibile</h4><span class="tag tag-demo">interactiv</span></div>
+    <div class="demo-body">
+      <canvas id="cv-yva"></canvas>
+      <div class="demo-controls">
+        <label>Fază inițială φ₀ <input type="range" data-sl="phi" min="0" max="6.28" step="0.01" value="0.79"><span class="val" data-val="phi">0.79 rad</span></label>
+        <label class="chk"><input type="checkbox" data-act="y" checked> y(t)</label>
+        <label class="chk"><input type="checkbox" data-act="v" checked> v(t)</label>
+        <label class="chk"><input type="checkbox" data-act="a" checked> a(t)</label>
+        <span class="readout" data-ro="info">A = 1 m · ω = 2 rad/s</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Pendulul gravitațional</h3>
+  <p>Pendulul gravitațional este format dintr-un punct material de masă \(m\) suspendat de un fir inextensibil de masă neglijabilă și lungime \(L\) (fig. 1.1.4.3). Forța de revenire este componenta tangențială a greutății:</p>
+  $$F = G_t = m g \sin\theta$$
+  <p><strong>Forța de revenire nu este proporțională cu \(\theta\), ci cu \(\sin\theta\), deci mișcarea pendulului gravitațional nu este, în general, armonică.</strong> Pentru unghiuri mici (în radiani) \(\sin\theta \approx \theta\): de exemplu pentru \(\theta = 0{,}1\) rad (\(\approx 5{,}73^\circ\)), \(\sin\theta = 0{,}0998\) — diferență de 2%. Pentru unghiuri mai mici de \(6^\circ\) diferența este neglijabilă. Atunci:</p>
+  $$F \approx -m g \theta = -\frac{m g}{L} x = -k x, \qquad k = \frac{m g}{L} \quad\Rightarrow\quad \boxed{T = 2\pi \sqrt{\frac{L}{g}}}$$
+  <blockquote class="observ">
+    <strong>Observații (manual):</strong> 1) Expresia este adevărată pentru mici oscilații. 2) Perioada este <strong>independentă de masă</strong>. 3) Fiind independentă și de amplitudine (izocronism), pendulul poate fi folosit <strong>la măsurarea timpului</strong>. 4) Prin măsurarea precisă a lui \(L\) și \(T\), pendulul determină <strong>accelerația gravitațională locală</strong> \(g = 4\pi^2 L / T^2\).
+  </blockquote>
+
+  <div class="demo-shell" id="demo-simple">
+    <div class="demo-head"><h4>Demonstrație: pendul gravitațional — armonic vs. real (sinθ)</h4><span class="tag tag-demo">interactiv</span></div>
+    <div class="demo-body">
+      <canvas id="cv-simple"></canvas>
+      <div class="demo-controls">
+        <label>Lungime L <input type="range" data-sl="L" min="0.3" max="2.5" step="0.05" value="1.0"><span class="val" data-val="L">1.00 m</span></label>
+        <label>Amplitudine unghiulară θ₀ <input type="range" data-sl="A" min="2" max="60" step="1" value="5"><span class="val" data-val="A">5°</span></label>
+        <label class="chk"><input type="checkbox" data-act="sound"> 🔊 Bip la fiecare oscilație a pendulului real</label>
+        <button data-act="startpause">⏸ Pauză</button>
+        <button data-act="reset">↺ Reset</button>
+        <span class="readout" data-ro="info">T (mic) = 2.01 s · T (real) ≈ …</span>
+      </div>
+      <p class="hint">Pendulul albastru urmează modelul armonic (\(\sin\theta \approx \theta\)), cel portocaliu ecuația reală cu \(\sin\theta\). Crește θ₀ peste ~15° și observă cum se desincronizează: aproximația unghiurilor mici nu mai e valabilă. T real crește ușor, formula \(2\pi\sqrt{L/g}\) subestimează perioada.</p>
+    </div>
+  </div>
+
+  <h3>Energia oscilatorului armonic</h3>
+  <div class="formula-card">
+    <p>Energia mecanică \(E = E_c + E_p = \tfrac{1}{2} m v^2 + \tfrac{1}{2} k y^2\); înlocuind \(y(t)\) și \(v(t)\) și folosind \(k = m\omega^2\), rezultă:</p>
+    $$E = E_c + E_p = \tfrac{1}{2} k A^2 = \tfrac{1}{2} m \omega^2 A^2 = \tfrac{1}{2} m v_{\max}^2 = \text{const}$$
+    $$E_p = E_{p\max}\cos^2(\omega t + \varphi_0), \qquad E_c = E_{c\max}\sin^2(\omega t + \varphi_0)$$
+    <p>Energia totală e constantă, dar are loc un <strong> schimb permanent de energie</strong> între corp (cinetică) și resort (potențială elastică) — un <em>sistem mecanic oscilant</em>. Mișcarea e limitată la segmentul \((-A, +A)\): altfel energia potențială ar depăși energia totală — de aceea spunem că oscilatorul se află într-o <strong>„groapă de energie potențială"</strong>.</p>
+  </div>
+
+  <div class="demo-shell" id="demo-energy">
+    <div class="demo-head"><h4>Demonstrație: Ec ⇄ Ep și groapa de energie potențială</h4><span class="tag tag-demo">interactiv</span></div>
+    <div class="demo-body">
+      <canvas id="cv-energy"></canvas>
+      <div class="demo-controls">
+        <button data-act="startpause">⏸ Pauză</button>
+        <button data-act="reset">↺ Reset</button>
+        <span class="readout" data-ro="info">y = … · Ec = … J · Ep = … J</span>
+      </div>
+      <p class="hint">Bila rulează în paraboloidul \(E_p = \tfrac{1}{2}ky^2\); barele arată Energie cinetică / potențială, iar linia galbenă energia totală constantă. La punctele de întoarcere \(E_c = 0\), prin echilibru \(E_p = 0\).</p>
+    </div>
+  </div>
+
+  <details class="labbox">
+    <summary>🧪 Lucrare de laborator (manual): Studiul experimental al unor oscilatori mecanici simpli</summary>
+    <p><strong>Pendulul gravitațional (bifilar):</strong> cronometrați \(\Delta t\) pentru \(N\) oscilații complete (\(N = 10\text{–}20\)), cu amplitudine unghiulară sub 10–15°; calculați \(\bar{T}\), erorile absolută și relativă, apoi</p>
+    $$g = \frac{4\pi^2 L}{T^2}$$
+    <p>Reluați pentru diferite lungimi \(l\), reprezentați grafic \(T\) în funcție de \(\sqrt{l}\) — panta dreptei este \(p = 2\pi/\sqrt{g}\), de unde \(g = 4\pi^2/p^2\).</p>
+    <p><strong>Pendulul elastic:</strong> măsurați \(T = \Delta t/N\) și calculați constanta elastică prin metoda dinamică:</p>
+    $$k_{\text{exp}} = \frac{4\pi^2 m}{T^2}$$
+    <p>Pentru resorturi identice: serie \(k_s = k/2\), paralel \(k_p = 2k\). Comparați cu valorile teoretice.</p>
+    <p class="hint">Experiment virtual din manual: <code>http://www.walter-fendt.de/ph14ro/pendulum_ro.htm</code> (link istoric).</p>
+  </details>
+
+  <h3>Exerciții rezolvate din manual (1.1.4.1 – 1.1.4.6)</h3>
+
+  <div class="exercise">
+    <p><strong>Ex. 1.1.4.1.</strong> Deduceți legea vitezei oscilatorului liniar armonic utilizând metoda prezentată anterior.</p>
+    <details><summary>Soluție</summary><p>\(v(t) = \lim_{\Delta t \to 0} \dfrac{y(t+\Delta t) - y(t)}{\Delta t} = \dfrac{d}{dt}\left[A\sin(\omega t + \varphi_0)\right] = A\omega\cos(\omega t + \varphi_0)\). Analog, \(a(t) = dv/dt = -A\omega^2 \sin(\omega t + \varphi_0)\).</p></details>
+  </div>
+
+  <div class="exercise">
+    <p><strong>Ex. 1.1.4.2.</strong> Un corp de masă \(m = 0{,}5\) kg, legat de un perete vertical printr-un resort elastic de constantă \(k = 8\) N/m, se poate deplasa fără frecare pe un plan orizontal. La \(t_0 = 0\), corpul se află la distanța \(y_0 = 10\) cm de poziția de echilibru și este lăsat liber. Aflați: a) ecuația mișcării; b) viteza maximă \(v_{\max}\).</p>
+    <details><summary>Soluție</summary>
+      <p>Condițiile inițiale: \(y(0) = y_0,\ v(0) = 0 \Rightarrow A\sin\varphi_0 = y_0,\ A\cos\varphi_0 = 0 \Rightarrow \varphi_0 = \pi/2\), \(A = y_0\). Legea devine \(y(t) = y_0 \cos(\omega t)\), cu \(\omega = \sqrt{k/m} = \sqrt{8/0{,}5} = 4\) rad/s:</p>
+      $$y(t) = 0{,}1 \cdot \cos(4 t)\ \text{[m]} \qquad v_{\max} = A\omega = y_0 \sqrt{\tfrac{k}{m}} = 0{,}1 \times 4 = \boxed{0{,}4\ \text{m/s}}$$
+      <p class="erratum-note">✱ În manualul scanat apare „0,4 cm/s" — eroare de tipar; corect este \(0{,}4\) m/s (vezi și <a href="#corectii">Corecții</a>).</p>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <p><strong>Ex. 1.1.4.3.</strong> Reprezentați grafic ecuația mișcării de la 1.1.4.2. Scrieți ecuația unei mișcări oscilatorii defazate cu \(\pi/3\) în urma oscilației precedente și reprezentați-o grafic.</p>
+    <details><summary>Soluție</summary>
+      <p>\(y_1(t) = 0{,}1\cos(4t)\); oscilația defazată în urmă cu \(\pi/3\): \(y_2(t) = 0{,}1\cos(4t - \pi/3)\). Interesează-te de demonstrația <em>y(t), v(t), a(t)</em> de mai sus — setează φ₀ pentru a vizualiza defazajul.</p>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <p><strong>Ex. 1.1.4.4.</strong> Un corp oscilează vertical fiind suspendat de două resorturi ideale identice (fiecare cu constanta \(k\)), legate mai întâi în serie și apoi în paralel. Aflați raportul \(r\) al lungimilor celor două pendule matematice care oscilează sincron cu corpul în cele două situații.</p>
+    <details><summary>Soluție</summary>
+      <p>Serie: \(k_s = k/2\); paralel: \(k_p = 2k\). Pendulele sincroni au aceeași perioadă cu oscilatorul: \(2\pi\sqrt{L_s/g} = 2\pi\sqrt{m/k_s}\) și \(2\pi\sqrt{L_p/g} = 2\pi\sqrt{m/k_p}\), deci \(L_s = mg/k_s\), \(L_p = mg/k_p\) și</p>
+      $$r = \frac{L_s}{L_p} = \frac{k_p}{k_s} = \frac{2k}{k/2} = \boxed{4}$$
+    </details>
+  </div>
+
+  <div class="exercise">
+    <p><strong>Ex. 1.1.4.5.</strong> Un corp de masă \(m = 200\) g execută oscilații armonice. Valoarea extremă a forței elastice este \(F = 200\) N, iar energia totală \(E = 40\) J. La \(t = 0\) corpul trece prin poziția de echilibru în sens pozitiv. Scrieți ecuația de mișcare.</p>
+    <details><summary>Soluție</summary>
+      <p>\(\varphi_0 = 0 \Rightarrow y(t) = A\sin(\omega t)\). Din \(F = kA\) și \(E = kA^2/2\): \(A = 2E/F = 0{,}4\) m; \(k = F/A = 500\) N/m; \(\omega = \sqrt{k/m} = \sqrt{500/0{,}2} = 50\) rad/s:</p>
+      $$y(t) = 0{,}4 \cdot \sin(50 t)\ \text{[m]}$$
+    </details>
+  </div>
+
+  <div class="exercise">
+    <p><strong>Ex. 1.1.4.6.</strong> Să se afle elongația \(y\) a unui oscilator armonic în momentul în care energia cinetică este egală cu cea potențială. Amplitudinea este \(A = 14{,}14\) cm.</p>
+    <details><summary>Soluție</summary>
+      <p>Din \(E_c = E_p\) și \(E = E_c + E_p = \tfrac{1}{2}kA^2\): \(ky^2/2 = kA^2/4 \Rightarrow y = \pm A/\sqrt{2}\). Numeric: \(y = \pm 14{,}14/\sqrt{2} \approx \boxed{\pm 10\ \text{cm}}\).</p>
+    </details>
+  </div>
+
+  <div class="demo-shell" id="demo-ex42">
+    <div class="demo-head"><h4>Recapitulare animată: exercițiul 1.1.4.2 (m = 0,5 kg, k = 8 N/m, y₀ = 10 cm)</h4><span class="tag tag-demo">animatie</span></div>
+    <div class="demo-body">
+      <canvas id="cv-ex42"></canvas>
+      <div class="demo-controls">
+        <button data-act="strike">▶ Redă mișcarea + sunet la fiecare trecere prin echilibru</button>
+        <span class="readout" data-ro="info">y(t) = 0,1·cos(4t) m · ω = 4 rad/s · v_max = 0,4 m/s</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz" class="chapter">
+  <h2>Probleme de verificare</h2>
+  <p>Suntele: <em>ding</em> pentru răspuns corect, <em>buzz</em> pentru greșit. După fiecare încercare primești explicația.</p>
+  <div id="quiz-root"></div>
+  <div class="quiz-footer">
+    <span class="readout" id="quiz-score">Scor: 0 / 0</span>
+    <button id="quiz-reset">↺ Reîncepe testul</button>
+    <button id="quiz-shuffle">🔀 Amestecă întrebările</button>
+  </div>
+</section>
+
+<!-- ============ CORECTII ============ -->
+<section id="corectii" class="chapter">
+  <h2>Corecții ale erorilor din manual (subcapitolul 1.1.1 – 1.1.4)</h2>
+  <p>Textul a fost reconstruit dintr-un scan OCR; sunt enumerate erorille reale de tipar/ conținut identificate în manual și corecturile aplicate în această aplicație:</p>
+  <table class="errata">
+    <thead><tr><th>Loc</th><th>În manual</th><th>Corectat aici</th></tr></thead>
+    <tbody>
+      <tr><td>p. 9 (1.1.4), text de sub figura 1.1.4.3→1.1.4.4</td><td>„…pentru oscilații de mică <em>aniplitudine</em> (unghiuri θ &lt; 6<em>0</em>)…” — plus „miscarea penduluiui esie…”</td><td>„pentru oscilații de mică <strong>amplitudine</strong> (unghiuri θ &lt; <strong>6°</strong>)… mișcarea pendulului este o mișcare oscilatorie armonică”. Manualul afirmase corect mai devreme pragul de ~6°, litografiat „60”.</td></tr>
+      <tr><td>Ex. 1.1.4.2, soluție</td><td>„v<sub>max</sub> = y₀√(k/m) = 0,4 <em>cm/s</em>” (în scan)</td><td><strong>0,4 m/s</strong>. Cu y₀ = 0,1 m și ω = 4 rad/s, produsul este 0,4 m/s (40 cm/s).</td></tr>
+      <tr><td>1.1.3, propoziția about b ≪ ω₀</td><td>„<em>Dacă amplitudinea este mică</em>, b ≪ ω₀ …”</td><td>Condiția \(b \ll \omega_0\) definește <strong>amortizarea slabă</strong>, nu „amplitudinea mică”. Corectat: „Dacă <strong>amortizarea este slabă</strong> (b ≪ ω₀)…”. De asemenea, în scan pulsația apare „a₀”; corect \(\omega_0\).</td></tr>
+      <tr><td>1.1.4, formula perioadei oscilatorului</td><td>Textul pune \(T = 2\pi\sqrt{m/k}\) (perioada modelului <em>neamortizat</em>) în contextul oscilațiilor <em>amortizate</em> în apă, menționând totuși corect „T′ este perioada de oscilație în apă” la decrement.</td><td>Nuantație: pentru amortizare slabă \(T' \approx T = 2\pi\sqrt{m/k}\); riguros, perioada amortizată este \(T' = \dfrac{2\pi}{\sqrt{\omega_0^2 - b^2/4}}\), deci \(T' > T\). Aplicația folosește notația \(T'\) din manual.</td></tr>
+      <tr><td>1.1.3, definiția decrementului logaritmic</td><td>Manualul definesște \(D = \ln 2 / N_{1/2}\) (scăderea la <em>jumătate</em>). Definiția uzuală în literatura de specialitate este \(D = \ln\frac{A(t)}{A(t+T')} = bT'\).</td><td>Cele două sunt echivalente pentru legea \(A = A_0 e^{-bt}\); aplicația le afișează pe amândouă, explicând corespondența \(bT' N_{1/2} = \ln 2\).</td></tr>
+      <tr><td>Corecturi de OCR/ diacritice (pervasive în scan)</td><td>„forţa”, „miscare”, „utilizat”, „reprezintă” etc. (virgule în loc de ș/ț)</td><td>Textul reapare cu diacritice corecte: forță, mișcare, utilizat, reprezintă.</td></tr>
+      <tr><td>greșeală de exprimare, 1.1.4 energie</td><td>„sislem mecanic <em>oscilani</em>”</td><td>„sistem mecanic <strong>oscilant</strong>”.</td></tr>
+    </tbody>
+  </table>
+  <p class="hint">Notă: Linkurile de „experiment virtual" din manual (msu.edu, walter-fendt.de) sunt istorice și pot fi offline; de aceea aplicația include demonstrațiile proprii.</p>
+</section>
+
+<footer class="page-footer">
+  <p>Conținut organizat după manualul de Fizică clasa a XI-a (mecanică), subcapitolul 1.1 „Oscilatorul mecanic", secțiunile 1.1.1 – 1.1.4. Demonstrațiile sunt proprii (canvas + Web Audio), nu reproduceri ale figurilor din manual.</p>
+</footer>
+
+</main>
+
+<script src="js/app.js"></script>
+<script src="js/demos.js"></script>
+</body>
+</html>

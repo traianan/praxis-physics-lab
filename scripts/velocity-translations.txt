@@ -1,0 +1,235 @@
+0|Velocity and acceleration — Grade 9 physics (offline laboratory)
+1|Velocity and acceleration
+2|Physics — Grade 9 • Rectilinear and planar motion & polynomial laws
+3|1. Theory & formulas
+4|2. Lab: Rectilinear motion
+5|3. Lab: Planar curvilinear motion
+6|4. Special cases: Polynomial functions
+7|Theory — Velocity and acceleration (Grade 9)
+8|Particle kinematics for
+9|rectilinear motion
+10|(along the Ox axis) and
+11|planar curvilinear motion
+12|(in the xOy plane), including
+13|average quantities
+14|, as well as
+15|instantaneous quantities
+16|and the derivation of velocity and acceleration from
+17|polynomial position functions
+18|▶ Open rectilinear lab
+19|🔄 Open planar lab
+20|All topics
+21|1. Position & displacement
+22|2. Velocity (average & instantaneous)
+23|3. Acceleration (average & instantaneous)
+24|4. Planar curvilinear motion
+25|5. Polynomial position functions
+26|Kinematics basics
+27|Position vector and displacement
+28|The position of a particle relative to a Cartesian reference frame
+30|is described by the
+31|position vector
+32|, starting at O and ending at the particle's position M(x, y):
+33|During a time interval
+34|, the particle moves from position M
+35|The displacement vector
+36|is the directed chord from M
+37|In rectilinear motion: Δx = x
+38|The trajectory
+39|is the curve traced by the tip of the position vector during motion.
+40|Distance travelled (Δs)
+41|is the length of the trajectory arc; in general
+42|. Equality holds only for rectilinear motion without reversal.
+43|The position function
+44|describes how the particle's coordinates depend on time:
+45|(rectilinear) or
+46|(planar).
+47|Velocity
+48|Average and instantaneous velocity
+49|1. The average velocity vector (
+50|describes the overall rate of change of position over Δt = t
+51|Orientation
+52|always has the same direction and orientation as the displacement vector
+53|(along the chord M
+54|2. The instantaneous velocity vector (
+55|is the limit of average velocity as the time interval approaches zero (Δt → 0):
+57|In rectilinear motion (Ox axis):
+58|= Δx / Δt, while v(t) = x'(t). The algebraic sign (+ or −) indicates the direction along Ox!
+59|In planar curvilinear motion:
+60|the instantaneous velocity vector
+61|is, at every point,
+62|tangent to the trajectory
+63|and oriented in the direction of motion.
+64|Acceleration
+65|Average and instantaneous acceleration
+66|1. The average acceleration vector (
+67|measures the rate of change of the velocity vector over Δt = t
+68|has the direction and orientation of the change in velocity
+69|2. The instantaneous acceleration vector (
+70|is the limit of average acceleration as Δt → 0:
+71|Criterion for speeding up / slowing down:
+72|If
+73|have the same sign), speed increases ⇒
+74|speeding up
+75|have opposite signs), speed decreases ⇒
+76|slowing down (braking)
+77|In the plane (2D)
+78|Components: Tangential and normal acceleration
+79|In planar curvilinear motion, the velocity vector
+80|can change both its
+81|magnitude
+82|(numerical value) and its
+83|direction
+84|. Therefore, the acceleration vector
+85|is resolved along two perpendicular axes at the current point (Frenet frame):
+86|Tangential acceleration (
+87|is collinear with velocity (tangent to the trajectory) and measures the
+88|change in speed
+89|. If speed along the curve is constant (v = const.), then
+90|Normal / centripetal acceleration (
+91|is perpendicular to the tangent and always points
+92|towards the inside (concave side) of the curve
+93|(towards the centre of curvature C), and measures the
+94|change in velocity direction
+95|R = radius of curvature [m]
+96|The total acceleration vector
+97|points
+98|towards the inside (concave side) of a curved trajectory when its normal component is nonzero
+99|, never towards the outside!
+100|Special cases
+101|Position functions expressed as polynomials
+102|In many Grade 9 physics problems, the position of a particle along an axis is given by a
+103|polynomial function of time
+104|of degree one, two or three:
+105|Position function:
+106|To determine the
+107|instantaneous velocity function v(t)
+108|instantaneous acceleration function a(t)
+109|, calculate the change over a very small interval Δt → 0 (or apply the power rule: from
+110|we obtain
+111|INSTANTANEOUS VELOCITY:
+112|INSTANTANEOUS ACCELERATION:
+113|Special case
+114|Polynomial coefficients
+115|Position x(t)
+116|Velocity v(t)
+117|Acceleration a(t)
+118|1. Rest
+120|2. Uniform rectilinear motion (MRU)
+121|First-degree polynomial
+122|3. Uniformly accelerated rectilinear motion (MRUV)
+123|Second-degree polynomial (a = const.)
+124|(because 2B = 2·(a
+125|4. Motion with linearly varying acceleration
+126|Third-degree polynomial (jerk j = 6A)
+127|A ≠ 0; B, C, D arbitrary
+128|(quadratic function of time)
+129|(varies linearly with time)
+130|💡 Practical method for Grade 9 students (without advanced differentiation):
+131|For a second-degree polynomial,
+132|, compare it directly with the general MRUV equation
+133|. This immediately gives the initial position
+134|, the initial velocity
+135|and half the acceleration
+136|! For example, if
+137|, then
+138|, hence
+139|. The stopping (turning) time is found by setting
+140|🎛️ Simulation controls (rectilinear)
+145|⚡ Quick presets
+146|MRU (v=8 m/s, a=0)
+147|MRUV: Speeding up
+148|Braking + reversal
+149|🎚️ Kinematic parameters (sliders)
+150|Initial position x
+151|Initial velocity v
+152|Acceleration a:
+153|Current time t:
+154|📐 Interval for average quantities [t₁, t₂]
+155|Adjust t
+156|to compare
+157|average velocity v
+158|average acceleration a
+159|with instantaneous values!
+160|Time t
+161|(Interval start):
+162|(Interval end):
+163|👁️ Show vectors
+164|Inst. velocity
+165|Inst. accel.
+166|Average velocity
+167|Displacement
+168|1D motion (Ox axis) & vectors + graphs x(t), v(t), a(t)
+169|Motion type: —
+170|Current time (t)
+171|Inst. position x(t)
+172|Inst. velocity v(t)
+173|Inst. accel. a(t)
+174|Displacement Δx [t₁,t₂]
+175|Average velocity v
+176|Average accel. a
+177|🎛️ Simulation controls (2D plane)
+178|🔄 Planar trajectory type
+179|1. Uniform circular motion (a_t = 0, a = a_n)
+180|2. Nonuniform circular motion (a = a_t + a_n)
+181|3. Projectile motion in a gravitational field (parabola)
+182|4. Elliptical trajectory / planar oscillation (Lissajous)
+183|🎚️ Trajectory parameters
+184|Trajectory radius R:
+185|Angular velocity ω
+187|Angular acceleration ε:
+189|📐 Chord interval M₁M₂ for average vectors [t₁, t₂]
+190|Observe how, as Δt = t₂ − t₁ decreases, the chord
+191|approaches the tangent
+192|(Point M₁):
+193|Interval Δt = t₂ − t₁:
+194|👁️ Vectors in the plane
+195|Position vector
+196|Inst. velocity
+197|Total accel.
+198|Components
+199|Average:
+200|Triangle
+201|2D vector simulation in xOy — Instantaneous and average quantities
+202|tangent to the trajectory |
+203|tangential |
+204|normal (centripetal) |
+205|Position M(x, y)
+206|Inst. speed |
+207|Total accel. |
+208|Tangential accel. a
+209|Normal accel. a
+210|Average velocity |
+211|Average accel. |
+212|🎛️ Polynomial simulation controls
+213|📚 Classic special cases (presets)
+214|Degree I (MRU): x(t) = 5t − 10
+215|Degree II (MRUV): x(t) = 2t² − 8t + 6
+216|Degree II braking: x(t) = −1.5t² + 9t − 5
+217|Degree III (cubic): x(t) = 0.5t³ − 4.5t² + 10t
+218|Degree III with reversals: x(t) = −0.25t³ + 2.25t² − 4t + 4
+219|🎚️ Polynomial coefficients x(t) = A·t³ + B·t² + C·t + D
+220|Coefficient A (for t³) [m/s³]:
+221|Coefficient B (for t²) [m/s²]:
+222|Coefficient C (for t) [m/s]:
+223|Constant term D (x
+224|Time under study t:
+225|1. Position function (polynomial)
+226|General form: x(t) = A·t³ + B·t² + C·t + D [m]
+227|2. Derived velocity: v(t) = x'(t)
+228|Formula: v(t) = 3A·t² + 2B·t + C [m/s]
+229|3. Derived acceleration: a(t) = v'(t)
+230|Formula: a(t) = 6A·t + 2B [m/s²]
+231|Motion axis + synchronised graphs x(t), v(t), a(t)
+232|The yellow points on the velocity graph mark
+233|stopping and reversal times (v = 0)
+234|, where the tangent to x(t) is horizontal!
+235|Current time t
+236|Position x(t)
+237|Velocity v(t)
+238|Acceleration a(t)
+239|Motion type at time t
+240|Slowing down (v·a < 0)
+241|Offline HTML5 educational application —
+242|“Velocity and acceleration”
+243|(Grade 9 physics) • Works fully offline in any modern browser.
