@@ -26,3 +26,13 @@ Nu au fost adăugate servicii de analiză, SDK-uri, publicitate, cookie-uri de u
 ## Verificări
 
 Teste de regresie pentru blocarea stocării înaintea acordului, acceptare, răspunsuri nepersistente, retragere, expirare și stocare indisponibilă. Verificare în Chrome pe mobil: banner și traducere, RO → EN, acceptare/refuz/retragere, navigare și pagini informative. Construirea distribuției și suita proiectului au fost rulate înainte de publicare.
+
+## Termeni și meniu comun — 30 octombrie 2026
+
+Pagina `/termeni/` este disponibilă în RO/EN și este legată din subsol. Acoperă accesul educațional gratuit, utilizarea responsabilă, ipotezele simulărilor, materialele și licențele, datele, disponibilitatea și contactul. Nu introduce taxe, cedări de drepturi sau renunțări la drepturi legale. Referință pentru redactare: https://europa.eu/youreurope/business/selling-in-eu/consumer-contracts-guarantees/consumer-contracts/index_en.htm.
+
+Meniul superior este construit de `public/shared/site-navigation.js` și stilizat exclusiv prin `site-navigation.css`. Biblioteca, paginile informative și laboratoarele păstrează aceeași ordine, tipografie, culori, dimensiuni și poziție pentru Bibliotecă, ghid, starea aplicației, Mod tablă, sunet și limbă. Comenzile native își păstrează nodurile și evenimentele; comenzile specifice lecțiilor sunt sub rândul comun. Interfețele native dedicate Mod tablă păstrează comenzile proprii de ieșire. În paginile fără un mod de prezentare propriu, Mod tablă mărește textul pentru prezentare.
+
+Pe ecrane înguste, meniul ocupă același rând sub siglă și este derulabil orizontal; nu ascunde comenzile de sunet sau limbă. Antetul rămâne sus la derulare. Subsolul cu pagini și setări cookies rămâne vizibil și în ferestrele cu înălțime mică. Dependențele comune sunt incluse și în cache-ul lecției de Calcul vectorial.
+
+Verificări: 174/174 teste trecute; măsurarea în browser a pozițiilor, dimensiunilor și stilurilor în bibliotecă, toate cele patru pagini informative și cele 17 laboratoare; verificări RO/EN, mobil, ghid, Mod tablă și revenire în bibliotecă.

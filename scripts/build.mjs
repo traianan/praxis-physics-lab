@@ -15,8 +15,8 @@ await integratePrivacyPages(path.join(root,'dist'));
 const vectorSW=path.join(root,'dist/simulari/calcul-vectorial/sw.js');
 try{
  const inputs=['simulari/calcul-vectorial/index.html','shared/course.js','shared/vector-tabs.js','shared/vector-tabs.css','shared/course.css','shared/course-localization.js','shared/scientific-colors.js','shared/canvas-typography.js','shared/lab-header.js','shared/sound.js','shared/i18n.js','design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css'];
- inputs.push('shared/privacy.js','shared/site-info.css');
+ inputs.push('shared/privacy.js','shared/site-info.css','shared/site-navigation.js','shared/site-navigation.css');
  const hash=createHash('sha256');for(const file of inputs)hash.update(await readFile(path.join(root,'dist',file)));
- const sw=(await readFile(vectorSW,'utf8')).replace('const PRECACHE = [',"const PRECACHE = [\n  '../../shared/privacy.js','../../shared/site-info.css',");await writeFile(vectorSW,sw.replace(/const VERSION = 'praxis-vectori-[^']+';/,"const VERSION = 'praxis-vectori-"+hash.digest('hex').slice(0,12)+"';"));
+ const sw=(await readFile(vectorSW,'utf8')).replace('const PRECACHE = [',"const PRECACHE = [\n  '../../shared/privacy.js','../../shared/site-info.css','../../shared/site-navigation.js','../../shared/site-navigation.css',");await writeFile(vectorSW,sw.replace(/const VERSION = 'praxis-vectori-[^']+';/,"const VERSION = 'praxis-vectori-"+hash.digest('hex').slice(0,12)+"';"));
 }catch(error){if(error.code!=='ENOENT')throw error;}
 console.log('Construit: dist/ — aceeași versiune pentru server local și Vercel.');

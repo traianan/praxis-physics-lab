@@ -1,7 +1,7 @@
 .site-info-links{display:flex;gap:12px 24px;align-items:center;justify-content:center;flex-wrap:wrap;width:100%;padding:20px 16px;font:14px/1.5 var(--praxis-font-ui,Segoe UI,Arial,sans-serif);color:var(--praxis-color-muted,#526970)}
 .site-info-links a,.site-info-links button,.privacy-actions a{color:var(--praxis-color-primary,#17685f)!important;text-decoration:underline;text-underline-offset:3px}
 .site-info-links button{background:none;border:0;font:inherit;cursor:pointer;min-height:44px;padding:4px 8px}
-.page-footer:has(.site-info-links){flex-wrap:wrap}
+.page-footer:has(.site-info-links){display:flex!important;flex-wrap:wrap}
 .privacy-banner{position:fixed;inset:auto 20px 20px;max-width:1000px;margin:auto;z-index:2147483000;padding:20px 24px;background:#fffefa;color:#1d3339;border:1px solid #d5e0dc;border-radius:12px;box-shadow:0 8px 40px #213d3433;font:16px/1.5 Segoe UI,Arial,sans-serif;max-height:80vh;overflow:auto}
 .privacy-banner[hidden]{display:none!important}.privacy-banner h2{font-size:20px;margin:0 0 8px}.privacy-banner p{margin:0 0 14px;max-width:85ch}.privacy-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
 .privacy-actions button{font:600 16px/1.4 Segoe UI,Arial,sans-serif;min-height:44px;padding:10px 18px;border:1px solid #17685f;border-radius:7px;background:#e4eeea;color:#104f49;cursor:pointer}

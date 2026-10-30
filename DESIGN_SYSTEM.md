@@ -102,3 +102,7 @@ La integrarea lecțiilor ample, folosește taburi și, când sunt necesare, subt
 
 
 Pentru valorile din casete, simbolurile din atomi și etichetele rândurilor, păstrează poziția legată de obiect. `PraxisCanvasTypography.textInBox` centrează cerneala efectivă a glifelor pe orizontală și verticală și rezervă caseta pentru celelalte adnotări. Nu trece aceste texte prin repoziționarea liberă a etichetelor. Într-o enumerare de mărimi din antet, folosește virgule; punctul median se păstrează pentru înmulțirea din formule.
+
+## Meniul superior comun
+
+`public/shared/site-navigation.js` și `site-navigation.css` definesc meniul superior pentru bibliotecă, paginile informative și laboratoarele online. Ordinea, suprafețele, fonturile, înălțimea și pozițiile comenzilor sunt comune. Nu se construiește un antet paralel: componenta reutilizează comenzile native și păstrează comenzile specifice lecției într-un rând de context separat. Variantele dedicate Mod tablă rămân gestionate de controllerele lor existente.
