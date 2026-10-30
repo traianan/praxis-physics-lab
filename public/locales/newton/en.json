@@ -1,0 +1,354 @@
+{
+  "locale": "en",
+  "title": "Newton’s laws of motion",
+  "subtitle": "Forces, inertia and contact interactions",
+  "description": "Nine tabs, six interactive experiments, a mean-force calculator, four worked problems and 14 questions: Newton’s laws, friction and elasticity.",
+  "alt": "A cart accelerated by a force, with force and acceleration vectors pointing in the same direction",
+  "messages": {
+    "Principiile mecanicii newtoniene": "Newton’s laws of motion",
+    "Laborator interactiv de dinamică": "Interactive dynamics laboratory",
+    "Concepte": "Concepts",
+    "Inerție": "Inertia",
+    "Forță și accelerație": "Force and acceleration",
+    "Acțiune–reacțiune": "Action–reaction",
+    "Forțe și repere": "Forces and frames",
+    "Frecare": "Friction",
+    "Elasticitate": "Elasticity",
+    "Probleme": "Problems",
+    "Test": "Quiz",
+    "Descarcă lecția offline": "Download the offline lesson"
+  },
+  "tabs": [
+    [
+      "intro",
+      "Concepts"
+    ],
+    [
+      "inertia",
+      "Inertia"
+    ],
+    [
+      "newton2",
+      "Force and acceleration"
+    ],
+    [
+      "action",
+      "Action–reaction"
+    ],
+    [
+      "forces",
+      "Forces and frames"
+    ],
+    [
+      "friction",
+      "Friction"
+    ],
+    [
+      "hooke",
+      "Elasticity"
+    ],
+    [
+      "problems",
+      "Problems"
+    ],
+    [
+      "quiz",
+      "Quiz"
+    ]
+  ],
+  "sections": {
+    "intro": {
+      "title": "From describing motion to explaining it",
+      "html": "<p class='newton-lead'>Kinematics describes trajectories, velocity and acceleration. Dynamics connects changes in motion to interactions between bodies. A force can change the velocity vector or deform a body.</p><div class='newton-grid'><div class='newton-note'><h3>What is a principle?</h3><p>A fundamental law supported by observations and experiments, used as a starting point for a theory. Newton’s laws were published in 1687 and describe macroscopic bodies very well at speeds much lower than the speed of light. They have a limited domain of applicability.</p></div><div class='newton-note'><h3>Before you begin</h3><p>Review mass, vectors, vector addition and resolution, velocity and acceleration. For each situation: choose the body, draw only the forces acting on it, choose axes and apply Newton’s second law.</p></div></div><h3>Lesson route</h3><p>Explore the three laws, force addition and inertial frames, then friction and elasticity. Change parameters in the experiments; use the problems and quiz to check your interpretation.</p><div class='newton-formula'>Σ F⃗ = m a⃗<br>p⃗ = m v⃗</div><p>The models use g = 9.8 m/s<sup>2</sup>. Drawings are schematic; numerical values use SI units. Colours distinguish quantities and are accompanied by labels.</p>"
+    },
+    "inertia": {
+      "title": "First law · Inertia",
+      "html": "<div class='newton-note'><b>In an inertial frame</b>, a particle remains at rest or moves in a straight line at constant velocity if the resultant force acting on it is zero.</div><div class='newton-formula'>Σ F⃗ = 0 &nbsp; ⇒ &nbsp; a⃗ = 0 &nbsp; ⇒ &nbsp; v⃗ = constant</div><p>Inertia is the property of bodies to maintain their velocity when the resultant force is zero. Mass measures inertia: the same force produces a smaller acceleration in a more massive body. Inertia is not a force.</p><p>Translational equilibrium includes rest and straight-line motion at constant velocity. For extended bodies, complete equilibrium also requires rotational equilibrium. Uniform circular motion is not translational equilibrium: the direction of velocity changes.</p>",
+      "after": "<h3>Observe and explain</h3><p>The rim exerts a force towards the centre. When the rim disappears, the ball leaves along the tangent at the release point, with its velocity at that instant. Resistance is neglected; weight and the vertical normal force balance. A javelin thrown on Earth changes velocity because of gravity and air resistance.</p>"
+    },
+    "newton2": {
+      "title": "Second law · Force and acceleration",
+      "html": "<p>In an inertial frame, for a constant-mass body, acceleration is directly proportional to the resultant force and inversely proportional to mass. It points in the direction of the resultant, which need not be the direction of velocity.</p><div class='newton-formula'>Σ F⃗ = m a⃗ &nbsp; ; &nbsp; a⃗ = Σ F⃗ / m &nbsp; ; &nbsp; 1 N = 1 kg·m/s<sup>2</sup></div><p>Experiment on a frictionless horizontal track. Weight and the normal force balance. The horizontal force is the resultant; when F = 0, a moving body maintains its velocity.</p>",
+      "after": "<h3 data-content-type='formula'>Momentum and mean force</h3><p>Momentum is the vector p⃗ = m v⃗. For a constant-mass particle, Σ F⃗ = dp⃗/dt. Over a finite interval, Δp⃗/Δt is the <b>mean resultant force</b>; it is not generally the instantaneous force.</p><div class='newton-formula'>F⃗<sub>avg</sub> = Δp⃗ / Δt = m Δv⃗ / Δt</div>"
+    },
+    "action": {
+      "title": "Third law · Action and reaction",
+      "html": "<p>If A exerts a force on B, B simultaneously exerts a force of equal magnitude and opposite direction on A. The forces in a pair belong to the same interaction and act on <b>different bodies</b>.</p><div class='newton-formula'>F⃗<sub>A→B</sub> = −F⃗<sub>B→A</sub></div><p>They do not cancel in the force balance of a single body. They are internal forces and cancel in the balance for the combined A+B system. Accelerations can differ in magnitude: |a<sub>1</sub>| / |a<sub>2</sub>| = m<sub>2</sub>/m<sub>1</sub>.</p>",
+      "after": "<div class='newton-note'><h3>Identify the correct pair</h3><p>A body’s weight and the support’s normal force are not an action–reaction pair: both act on the body. The partner of weight is the body’s gravitational pull on Earth. The partner of the normal force is the body’s push on the support.</p></div><p>Interactions act through contact or fields: a hand pushes an object, and Earth attracts a body. In the particle approximation or for spherically symmetric bodies, gravitational attraction is represented along the line joining the centres.</p>"
+    },
+    "forces": {
+      "title": "Force superposition and inertial frames",
+      "html": "<p>Each interaction contributes to the resultant. Forces and their acceleration contributions add as vectors; their magnitudes cannot simply be added in every situation.</p><div class='newton-formula'>R⃗ = F⃗<sub>1</sub> + F⃗<sub>2</sub> &nbsp; ; &nbsp; a⃗ = R⃗ / m<br>R = √(F<sub>1</sub><sup>2</sup> + F<sub>2</sub><sup>2</sup> + 2F<sub>1</sub>F<sub>2</sub> cos α)</div>",
+      "after": "<h3>Galilean transformations</h3><p>Two inertial frames with parallel axes move relative to each other with constant velocity u⃗. If their origins coincide at t = 0 and there is no rotation:</p><div class='newton-formula'>r⃗ = r⃗′ + u⃗t &nbsp; ; &nbsp; t = t′<br>v⃗ = v⃗′ + u⃗ &nbsp; ; &nbsp; a⃗ = a⃗′</div><p>Classical relativity: the laws of mechanics have the same form in all inertial frames. In an accelerating vehicle or a rotating frame, the simple equation Σ F⃗ = m a⃗ for real forces requires frame corrections.</p>"
+    },
+    "friction": {
+      "title": "Contact interactions · Normal force and friction",
+      "html": "<p>A contact force has a normal component N, perpendicular to the surface, and a tangential component: friction. Friction opposes relative sliding or its tendency, not necessarily the body’s velocity relative to the ground.</p><div class='newton-grid'><div class='newton-note'><h3>Static friction</h3><p>It adjusts to the applied load up to f<sub>s,max</sub> = μ<sub>s</sub>N. It can be zero; it is not always at its maximum.</p><div class='newton-formula'>0 ≤ f<sub>s</sub> ≤ μ<sub>s</sub>N</div></div><div class='newton-note'><h3>Kinetic friction</h3><p>In the Coulomb dry-friction model, f<sub>k</sub> ≈ μ<sub>k</sub>N. It depends on the materials and normal force and is approximately independent of apparent contact area and speed over a limited range. The coefficients are dimensionless; usually μ<sub>k</sub> ≤ μ<sub>s</sub>.</p></div></div><p>On an incline with no other forces: N = mg cos α and the downhill component of weight is mg sin α. Sliding from rest begins when tan α &gt; μ<sub>s</sub>. The limiting angle satisfies tan φ = μ<sub>s</sub>.</p>",
+      "after": "<p>The experiment restarts from rest after each change. During sliding: a = g(sin α − μ<sub>k</sub> cos α). Friction points uphill; at α = 0 and rest, it is zero.</p><h3>Applications</h3><p>Friction enables walking, braking, writing and belt drives. Lubricants, bearings and air cushions reduce resistance.</p><div class='newton-note'><h3 data-content-type='experiment'>Measure and compare</h3><p>Use a force meter to pull a body horizontally at constant speed: the reading equals kinetic friction. Calculate μₖ = F/(mg), then repeat with other masses and faces of the same body. Compare with μₛ = tan φ measured at the onset of sliding on an adjustable incline.</p></div>"
+    },
+    "hooke": {
+      "title": "Elasticity · Hooke’s law and mechanical stress",
+      "html": "<p>An elastic body returns to its original shape after unloading, within its elastic range. In the linear range, a spring’s restoring force opposes deformation x measured from its natural length.</p><div class='newton-formula'>F<sub>e,x</sub> = −kx &nbsp; ; &nbsp; |F<sub>e</sub>| = k|x| &nbsp; ; &nbsp; [k] = N/m</div><p><b>Spring extension:</b> x = Δl = l − l<sub>0</sub>, where l is the deformed length and l<sub>0</sub> the natural length. Under tension x &gt; 0; under compression x &lt; 0.</p><div class='newton-formula'>x = Δl = l − l<sub>0</sub><br>Δl = F<sub>d</sub>/k &nbsp; ; &nbsp; Δl<sub>eq</sub> = mg/k</div><p>F<sub>d</sub> is the magnitude of the tensile force balancing the spring force. The formula Δl = F<sub>d</sub>/k applies at equilibrium within the proportional range. For a suspended body at rest, F<sub>d</sub> = mg. In the animation, x is the instantaneous extension from the natural length; displacement from equilibrium is x − Δl<sub>eq</sub>, while mg/k is only the equilibrium extension.</p><p>The force a body applies to a spring and the force the spring applies to the body form an action–reaction pair. On a suspended body in equilibrium, weight and the elastic force balance, but they are not such a pair.</p>",
+      "after": "<h3>Mechanical stress and Young’s modulus</h3><p>For a straight, homogeneous wire of constant cross-sectional area S and initial length l<sub>0</sub>, under axial loading in the linear range:</p><div class='newton-formula'>σ = F<sub>d</sub>/S &nbsp; ; &nbsp; ε = Δl/l<sub>0</sub> &nbsp; ; &nbsp; σ = Eε<br>Δl = F<sub>d</sub>l<sub>0</sub>/(ES)<br>F<sub>d</sub> = (ES/l<sub>0</sub>) Δl &nbsp; ; &nbsp; k<sub>wire</sub> = ES/l<sub>0</sub></div><p>σ is stress (Pa), ε is relative strain (dimensionless), and E is Young’s modulus (Pa). The relation k = ES/l<sub>0</sub> applies to an axially stretched wire; it is not the general formula for a helical spring.</p><p>Indicative values of E: steel ≈ 200 GPa, aluminium ≈ 70 GPa, wood parallel to the grain ≈ 8–15 GPa. Rubber responds strongly to material composition and deformation; a linear model is valid only over a suitable range.</p><div class='newton-materials'><h3>Material stress–strain curves</h3><p>These schematic curves have no numerical scale and do not represent measurements of a particular material. The vertical axis shows engineering stress σ = F<sub>d</sub>/S<sub>0</sub>; the horizontal axis shows engineering strain ε = Δl/l<sub>0</sub>. S<sub>0</sub> is the initial cross-sectional area. Curve shape depends on the material and test conditions.</p><details open><summary>Ductile metal · tensile curve</summary><figure class='newton-material-chart'><svg viewBox='0 0 600 330' role='img' aria-label='Ductile metal · tensile curve'><title>Ductile metal · tensile curve</title><rect x='65' y='30' width='490' height='240' rx='6' fill='#f1f7f3'/><path d='M65 90H555 M65 150H555 M65 210H555 M165 30V270 M265 30V270 M365 30V270 M465 30V270' stroke='#dfebe6' fill='none'/><path d='M65 30V270H565' stroke='#71968b' stroke-width='2' fill='none'/><path d='M60 40L65 30L70 40 M555 265L565 270L555 275' stroke='#71968b' stroke-width='2' fill='none'/><text x='27' y='37'>σ</text><text x='570' y='299'>ε</text><text x='40' y='296'>O</text><path d='M145 170V270 M180 142V270' stroke='#95b3aa' stroke-dasharray='5 5' fill='none'/><path d='M65 270 L145 170 Q164 145 180 142 C205 140 210 146 230 140 C290 120 340 53 405 50 C450 50 500 84 535 105' stroke='#378b87' stroke-width='3.5' fill='none' stroke-linecap='round'/><circle cx='145' cy='170' r='5' fill='#b65647'/><text x='155' y='158'>P</text><circle cx='180' cy='142' r='5' fill='#b65647'/><text x='190' y='130'>L</text><circle cx='405' cy='50' r='5' fill='#b65647'/><text x='415' y='38'>M</text><circle cx='535' cy='105' r='5' fill='#b65647'/><text x='545' y='93'>R</text></svg></figure><ul><li><b>O–P: linear range.</b> σ = Eε; the slope is Young’s modulus E. P is the proportionality limit.</li><li><b>P–L: nonlinear elastic range.</b> Unloading restores the initial shape, but the linear form of Hooke’s law no longer applies. L is the elastic limit.</li><li><b>Beyond L: plastic deformation.</b> Permanent strain remains after unloading; yielding and then strain hardening may occur.</li><li><b>M: maximum engineering stress.</b> Necking follows; engineering stress can decrease because it is calculated using the initial area S<sub>0</sub>.</li><li><b>R: fracture.</b> The shape and extent of the regions vary between metals; a distinct yield plateau is not universal.</li></ul></details><details><summary>Brittle material · fracture with little plastic deformation</summary><figure class='newton-material-chart'><svg viewBox='0 0 600 330' role='img' aria-label='Brittle material · fracture with little plastic deformation'><title>Brittle material · fracture with little plastic deformation</title><rect x='65' y='30' width='490' height='240' rx='6' fill='#f1f7f3'/><path d='M65 90H555 M65 150H555 M65 210H555 M165 30V270 M265 30V270 M365 30V270 M465 30V270' stroke='#dfebe6' fill='none'/><path d='M65 30V270H565' stroke='#71968b' stroke-width='2' fill='none'/><path d='M60 40L65 30L70 40 M555 265L565 270L555 275' stroke='#71968b' stroke-width='2' fill='none'/><text x='27' y='37'>σ</text><text x='570' y='299'>ε</text><text x='40' y='296'>O</text><path d='M65 270 L310 66' stroke='#378b87' stroke-width='3.5' fill='none' stroke-linecap='round'/><circle cx='310' cy='66' r='5' fill='#b65647'/><text x='320' y='54'>R</text></svg></figure><p>A brittle material (for example, glass) can fracture at a small strain, with very little plastic deformation. R marks fracture; a yield plateau is not assumed.</p></details><details><summary>Elastomer · nonlinear elasticity</summary><figure class='newton-material-chart'><svg viewBox='0 0 600 330' role='img' aria-label='Elastomer · nonlinear elasticity'><title>Elastomer · nonlinear elasticity</title><rect x='65' y='30' width='490' height='240' rx='6' fill='#f1f7f3'/><path d='M65 90H555 M65 150H555 M65 210H555 M165 30V270 M265 30V270 M365 30V270 M465 30V270' stroke='#dfebe6' fill='none'/><path d='M65 30V270H565' stroke='#71968b' stroke-width='2' fill='none'/><path d='M60 40L65 30L70 40 M555 265L565 270L555 275' stroke='#71968b' stroke-width='2' fill='none'/><text x='27' y='37'>σ</text><text x='570' y='299'>ε</text><text x='40' y='296'>O</text><path d='M65 270 C160 257 260 247 340 200 C410 155 440 95 470 45' stroke='#378b87' stroke-width='3.5' fill='none' stroke-linecap='round'/></svg></figure><p>An elastomer can undergo large elastic strains with a nonlinear response. The slope varies, so a single E or k does not describe the entire curve. Loading and unloading are idealized without hysteresis; fracture is not animated.</p></details></div><div class='newton-note'><h3 data-content-type='experiment'>Determine the spring constant</h3><p>Fix k. Choose at least five masses and record F = mg and the equilibrium extension Δl. Calculate k = F/Δl for each pair and their mean. The F versus Δl graph has slope k; the Δl versus F graph has slope 1/k. For real measurements, repeat readings and estimate uncertainty. Stay within the spring’s elastic range.</p></div>"
+    },
+    "problems": {
+      "title": "Worked problems",
+      "html": "<p>Draw the forces and choose the body before calculating. Use g = 9.8 m/s<sup>2</sup>.</p>"
+    },
+    "quiz": {
+      "title": "Check your understanding",
+      "html": "<p>Choose one answer per question. An explanation appears immediately. Switching language preserves your answers and score.</p>"
+    }
+  },
+  "ui": {
+    "play": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "release": "Remove the rim",
+    "push": "Push apart",
+    "mass": "Mass",
+    "force": "Resultant force",
+    "leftMass": "Left mass",
+    "rightMass": "Right mass",
+    "angle": "Angle α",
+    "muS": "Static friction μₛ",
+    "muK": "Kinetic friction μₖ",
+    "spring": "Spring constant k",
+    "graph": "Show graph",
+    "steps": "View solution",
+    "score": "Score",
+    "answered": "Answered",
+    "retry": "Restart quiz",
+    "correct": "Correct",
+    "wrong": "Incorrect answer",
+    "time": "Time",
+    "speed": "Speed",
+    "acceleration": "Acceleration",
+    "extension": "Extension",
+    "equilibrium": "In equilibrium",
+    "sliding": "Sliding downhill",
+    "normal": "Normal force",
+    "friction": "Friction",
+    "limit": "Static limit",
+    "meanForce": "Mean force",
+    "deltaV": "Velocity change Δv",
+    "deltaT": "Time interval Δt",
+    "impulse": "Mean-force calculator",
+    "constant": "Constant velocity",
+    "inertiaLab": "Ball on a circular track",
+    "newton2Lab": "Frictionless cart",
+    "actionLab": "Two bodies push apart",
+    "forcesLab": "Parallelogram of forces",
+    "frictionLab": "Body on an incline",
+    "hookeLab": "Vertical spring and force graph",
+    "inertiaCaption": "Adjust playback from 0.1× to 2×. Remove the rim while the ball is moving: it leaves along the tangent. With auto repeat, the circular path and release at the same point restart after exit. Without release, the ball continues around the circle. Reset restores the rim and keeps playback settings.",
+    "newton2Caption": "The track is frictionless. Weight G acts vertically downwards from the body’s centre; normal force N acts vertically upwards at the track contact. The N arrow is offset slightly to the left for visibility. N = G = mg. Playback speed (0.1×–2×) does not change the forces or acceleration. Auto repeat restarts from rest at the end of the track; without repeat, the experiment stops. No collision is modelled.",
+    "actionCaption": "The 80 N forces are equal and opposite and act on different bodies. Contact lasts 0.5 physical seconds, then the forces vanish and the bodies move freely. Playback speed ranges from 0.1× to 2× (default 0.2×), without changing the physical forces or velocities. Auto repeat restarts the experiment from rest after 3.5 physical seconds; without repeat, the animation stops. Reset keeps the masses and playback settings. Velocity arrows use thin shafts, distinct heads and a shared scale for both bodies.",
+    "forcesCaption": "Dashed lines complete the parallelogram. Its diagonal is the vector resultant.",
+    "frictionCaption": "Motion from rest; μₖ is limited to μₛ. Animation speed ranges from 0.1× to 2× without changing physical acceleration. Auto repeat restarts the descent from rest; without repeat, the body stops at the end of the scene. If static friction is sufficient, the body stays at rest. Force vectors share the same scale in each frame.",
+    "hookeCaption": "Start lowers the body by 25% of the equilibrium extension and releases it. The ideal undamped oscillation has period T = 2π√(m/k). G acts downwards from the centre; Fₑ acts upwards at the attachment point. During motion, |Fₑ| = kx varies while G = mg stays constant. The positive x direction is downwards. Without repeat, one period is shown; Reset returns to equilibrium and keeps your settings. The drawing scale adapts.",
+    "region": "Experiment scene",
+    "tangent": "Tangent",
+    "contact": "Contact",
+    "free": "Free motion",
+    "rest": "At rest",
+    "end": "End of track",
+    "velocity": "v",
+    "deformation": "Deformation x (m)",
+    "elasticForce": "Fₑ,ₓ (N)",
+    "framesLab": "Two inertial reference frames",
+    "frameSpeed": "Speed of frame S′ relative to S: u",
+    "particleSpeed": "Particle velocity in S: v",
+    "framesCaption": "The axes of the two frames are parallel. S is fixed in this view; S′ moves uniformly relative to S. Start the animation to follow particle P and origin O′. Adjust playback from 0.1× to 2× without changing the physical velocities u and v. Auto repeat replays the 0–3 s interval; without repeat, the animation stops at 3 s. Pause preserves the current instant; Reset returns to t = 0 and keeps your settings. x = x′ + ut; v = v′ + u; a = a′ = 0.",
+    "animationSpeed": "Animation speed",
+    "autoRepeat": "Auto repeat",
+    "materialSpecimen": "Loaded specimen",
+    "materialMagnified": "Deformation magnified",
+    "materialLevel": "Maximum loading on curve",
+    "materialReady": "Ready",
+    "materialLoading": "Loading",
+    "materialUnloading": "Unloading",
+    "materialDone": "Cycle complete",
+    "materialPermanent": "Permanent deformation",
+    "materialRecovered": "Original shape restored",
+    "materialCycleNote": "The level (%) sets the maximum position on the schematic curve, not real strain in percent. A cycle lasts 8 s at 1× and stops before fracture. Metal unloaded from the plastic range retains permanent strain; elastic unloading retraces the loading curve. Elastomer recovery is idealized without hysteresis. Reset restores the specimen and keeps your settings."
+  },
+  "problems": [
+    [
+      "Same force, different masses",
+      "A body with m<sub>1</sub> = 2 kg has a<sub>1</sub> = 8 m/s<sup>2</sup>. What acceleration does a 5 kg body have under the same resultant?",
+      "F = m<sub>1</sub>a<sub>1</sub> = 16 N; a<sub>2</sub> = F/m<sub>2</sub> = <b>3.2 m/s<sup>2</sup></b>."
+    ],
+    [
+      "Hitting a ball",
+      "A 0.2 kg ball starts from rest and reaches 8 m/s in 0.1 s. Calculate the mean resultant in the direction of motion.",
+      "Δp = mΔv = 1.6 kg·m/s; F<sub>avg</sub> = Δp/Δt = <b>16 N</b>."
+    ],
+    [
+      "Sliding threshold",
+      "A 5 kg body is released on an incline with α = 30°, μ<sub>s</sub> = 0.4 and μ<sub>k</sub> = 0.3. Does it slide? What is its acceleration?",
+      "N = mg cos 30° ≈ 42.44 N; mg sin 30° = 24.5 N; f<sub>s,max</sub> ≈ 16.97 N. It slides because 24.5 &gt; 16.97. f<sub>k</sub> ≈ 12.73 N; a = (24.5 − 12.73)/5 ≈ <b>2.35 m/s<sup>2</sup></b> downhill."
+    ],
+    [
+      "Spring equilibrium",
+      "A vertical spring with k = 50 N/m supports a 1 kg mass. Find its extension and elastic force at equilibrium.",
+      "kΔl = mg ⇒ Δl = 9.8/50 = <b>0.196 m</b>. The elastic force has magnitude <b>9.8 N</b> and points upwards."
+    ]
+  ],
+  "questions": [
+    [
+      "If the resultant force is zero in an inertial frame, a body…",
+      [
+        "stops immediately",
+        "maintains its velocity vector",
+        "must move in a circle",
+        "increases its speed"
+      ],
+      1,
+      "a⃗ = 0: the body remains at rest or moves in a straight line at constant velocity."
+    ],
+    [
+      "Which quantity measures inertia?",
+      [
+        "Weight",
+        "Mass",
+        "Velocity",
+        "Acceleration"
+      ],
+      1,
+      "Mass is a scalar quantity and measures inertia."
+    ],
+    [
+      "A 2 kg body has a = 8 m/s². Under the same force, a 5 kg body has…",
+      [
+        "8 m/s²",
+        "3.2 m/s²",
+        "5 m/s²",
+        "20 m/s²"
+      ],
+      1,
+      "F = 16 N; a = 16/5 = 3.2 m/s²."
+    ],
+    [
+      "Which expression in SI base units equals 1 N?",
+      [
+        "1 kg·m/s",
+        "1 kg·m/s²",
+        "1 kg·m²/s",
+        "1 kg·m²/s²"
+      ],
+      1,
+      "F = ma ⇒ 1 N = 1 kg·m/s²."
+    ],
+    [
+      "A 0.2 kg ball goes from rest to 8 m/s in 0.1 s. The mean resultant is…",
+      [
+        "1.6 N",
+        "16 N",
+        "0.16 N",
+        "160 N"
+      ],
+      1,
+      "Favg = mΔv/Δt = 16 N."
+    ],
+    [
+      "The forces in an action–reaction pair…",
+      [
+        "act on the same body",
+        "have different magnitudes",
+        "are opposite and act on different bodies",
+        "appear one after another"
+      ],
+      2,
+      "They appear simultaneously, have equal magnitudes and act on different bodies."
+    ],
+    [
+      "Two people of 40 kg and 80 kg push each other. Who has the greater acceleration during contact?",
+      [
+        "The 80 kg person",
+        "The 40 kg person",
+        "Their accelerations are equal",
+        "Neither"
+      ],
+      1,
+      "The forces have equal magnitudes. Half the mass gives twice the acceleration magnitude."
+    ],
+    [
+      "In the dry-friction model, kinetic friction has magnitude…",
+      [
+        "μₖN",
+        "μₛN in every situation",
+        "mg in every situation",
+        "k/x"
+      ],
+      0,
+      "fₖ ≈ μₖN. The coefficient is dimensionless."
+    ],
+    [
+      "The angle at which sliding starts from rest satisfies…",
+      [
+        "tan φ = μₛ",
+        "sin φ = μₖ",
+        "φ is always 45°",
+        "cos φ = μₛ"
+      ],
+      0,
+      "At the limit, mg sin φ = μₛ mg cos φ."
+    ],
+    [
+      "At α = 30°, μₛ = 0.4, a 5 kg body released from rest…",
+      [
+        "slides: 24.5 N exceeds the limit of about 16.97 N",
+        "certainly stays at rest",
+        "has N = 0",
+        "always moves at constant speed"
+      ],
+      0,
+      "The downhill weight component exceeds maximum static friction."
+    ],
+    [
+      "The elastic-force component along the deformation axis is…",
+      [
+        "Fₑ,ₓ = kx",
+        "Fₑ,ₓ = −kx",
+        "Fₑ,ₓ = k/x",
+        "Fₑ,ₓ is always mg"
+      ],
+      1,
+      "The minus sign shows that the restoring force opposes deformation."
+    ],
+    [
+      "A spring with k = 50 N/m supports 1 kg. Its equilibrium extension is…",
+      [
+        "0.196 m",
+        "1.96 m",
+        "0.051 m",
+        "49 m"
+      ],
+      0,
+      "Δl = mg/k = 9.8/50 = 0.196 m."
+    ],
+    [
+      "A straight wire has k = ES/l₀. If its initial length doubles while E and S remain constant, k…",
+      [
+        "doubles",
+        "halves",
+        "stays constant",
+        "becomes zero"
+      ],
+      1,
+      "Axial stiffness is inversely proportional to initial length."
+    ],
+    [
+      "In two inertial frames related by Galilean transformations, acceleration…",
+      [
+        "is always zero",
+        "is the same",
+        "increases with relative speed",
+        "always reverses direction"
+      ],
+      1,
+      "The relative velocity of the frames is constant, so a⃗ = a⃗′."
+    ]
+  ]
+}

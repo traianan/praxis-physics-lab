@@ -1,6 +1,8 @@
 # Praxis · Fizică interactivă
 
-**Adăugat la 30 octombrie 2026:** [Mișcarea circulară uniformă](docs/INTEGRARE_MCU.md), în **Mișcare**: șapte taburi, două laboratoare, probleme și test, culori deschise, RO/EN și touch. Biblioteca cuprinde acum **17 laboratoare**.
+**Adăugat la 30 octombrie 2026:** [Principiile mecanicii newtoniene](docs/INTEGRARE_PRINCIPII_NEWTON.md), în **Mișcare**: nouă taburi, șase experimente SVG, calculator de forță medie, patru probleme și 14 întrebări, RO/EN, culori deschise și versiune offline. Biblioteca are **18 laboratoare**.
+
+**Adăugat la 30 octombrie 2026:** [Mișcarea circulară uniformă](docs/INTEGRARE_MCU.md), în **Mișcare**: șapte taburi, două laboratoare, probleme și test, culori deschise, RO/EN și touch. Biblioteca cuprinde acum **18 laboratoare**.
 
 **Adăugat la 30 octombrie 2026:** [Figuri Chladni](docs/INTEGRARE_FIGURI_CHLADNI.md), în **Sunete și unde**: 19 familii modale, excitator mobil prin touch, teorie și activități, RO/EN și arhivă offline.
 
@@ -43,7 +45,7 @@ Alternativ, în acest folder:
 npm run dev
 ```
 
-Serverul local servește catalogul și cele 16 laboratoare incluse. A deschide doar `public/index.html` cu dublu clic nu este metoda recomandată: catalogul utilizează module JavaScript și trebuie servit prin HTTP local. Simularea individuală de optică rămâne și un fișier autonom.
+Serverul local servește catalogul și cele 18 laboratoare incluse. A deschide doar `public/index.html` cu dublu clic nu este metoda recomandată: catalogul utilizează module JavaScript și trebuie servit prin HTTP local. Simularea individuală de optică rămâne și un fișier autonom.
 
 ## Tabletă sau tablă Android, prin rețeaua locală
 

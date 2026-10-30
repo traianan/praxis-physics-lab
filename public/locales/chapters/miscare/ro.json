@@ -74,6 +74,18 @@
         "Touch",
         "Offline"
       ]
+    },
+    "principiile-mecanicii-newtoniene": {
+      "title": "Principiile mecanicii newtoniene",
+      "subtitle": "Forțe, inerție și interacțiuni prin contact",
+      "description": "Nouă taburi, șase experimente interactive, calculator de forță medie, patru probleme rezolvate și 14 întrebări: principii, frecare și elasticitate.",
+      "alt": "Cărucior accelerat de o forță, cu vectorii forță și accelerație în același sens",
+      "tags": [
+        "Dinamică",
+        "Experimente",
+        "Test",
+        "Offline"
+      ]
     }
   }
 }

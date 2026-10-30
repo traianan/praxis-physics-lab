@@ -74,6 +74,18 @@
         "Touch",
         "Offline"
       ]
+    },
+    "principiile-mecanicii-newtoniene": {
+      "title": "Newton’s laws of motion",
+      "subtitle": "Forces, inertia and contact interactions",
+      "description": "Nine tabs, six interactive experiments, a mean-force calculator, four worked problems and 14 questions: Newton’s laws, friction and elasticity.",
+      "alt": "A cart accelerated by a force, with force and acceleration vectors pointing in the same direction",
+      "tags": [
+        "Dynamics",
+        "Experiments",
+        "Quiz",
+        "Offline"
+      ]
     }
   }
 }

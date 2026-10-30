@@ -1,0 +1,354 @@
+{
+  "locale": "ro",
+  "title": "Principiile mecanicii newtoniene",
+  "subtitle": "Forțe, inerție și interacțiuni prin contact",
+  "description": "Nouă taburi, șase experimente interactive, calculator de forță medie, patru probleme rezolvate și 14 întrebări: principii, frecare și elasticitate.",
+  "alt": "Cărucior accelerat de o forță, cu vectorii forță și accelerație în același sens",
+  "messages": {
+    "Principiile mecanicii newtoniene": "Principiile mecanicii newtoniene",
+    "Laborator interactiv de dinamică": "Laborator interactiv de dinamică",
+    "Concepte": "Concepte",
+    "Inerție": "Inerție",
+    "Forță și accelerație": "Forță și accelerație",
+    "Acțiune–reacțiune": "Acțiune–reacțiune",
+    "Forțe și repere": "Forțe și repere",
+    "Frecare": "Frecare",
+    "Elasticitate": "Elasticitate",
+    "Probleme": "Probleme",
+    "Test": "Test",
+    "Descarcă lecția offline": "Descarcă lecția offline"
+  },
+  "tabs": [
+    [
+      "intro",
+      "Concepte"
+    ],
+    [
+      "inertia",
+      "Inerție"
+    ],
+    [
+      "newton2",
+      "Forță și accelerație"
+    ],
+    [
+      "action",
+      "Acțiune–reacțiune"
+    ],
+    [
+      "forces",
+      "Forțe și repere"
+    ],
+    [
+      "friction",
+      "Frecare"
+    ],
+    [
+      "hooke",
+      "Elasticitate"
+    ],
+    [
+      "problems",
+      "Probleme"
+    ],
+    [
+      "quiz",
+      "Test"
+    ]
+  ],
+  "sections": {
+    "intro": {
+      "title": "De la descrierea mișcării la cauzele ei",
+      "html": "<p class='newton-lead'>Cinematica descrie traiectoria, viteza și accelerația. Dinamica leagă schimbarea mișcării de interacțiunile dintre corpuri. O forță poate modifica vectorul viteză sau poate deforma un corp.</p><div class='newton-grid'><div class='newton-note'><h3>Ce este un principiu?</h3><p>O lege fundamentală, susținută de observații și experimente, folosită ca punct de plecare al unei teorii. Principiile lui Newton au fost publicate în 1687 și descriu foarte bine corpurile macroscopice la viteze mult mai mici decât viteza luminii. Nu sunt legi fără limite de aplicabilitate.</p></div><div class='newton-note'><h3>Înainte de a începe</h3><p>Recapitulează masa, vectorii, compunerea și descompunerea lor, viteza și accelerația. Pentru fiecare situație: alege corpul, desenează doar forțele care acționează asupra lui, alege axele și aplică principiul al II-lea.</p></div></div><h3>Traseul lecției</h3><p>Explorează cele trei principii, compunerea forțelor și reperele inerțiale, apoi frecarea și elasticitatea. Experimentele permit modificarea parametrilor; problemele și testul verifică interpretarea rezultatelor.</p><div class='newton-formula'>Σ F⃗ = m a⃗<br>p⃗ = m v⃗</div><p>Modelele folosesc g = 9,8 m/s<sup>2</sup>. Desenele sunt schematice; valorile numerice sunt exprimate în SI. Culorile disting mărimile și sunt însoțite de etichete.</p>"
+    },
+    "inertia": {
+      "title": "Principiul I · Inerția",
+      "html": "<div class='newton-note'><b>Într-un reper inerțial</b>, un punct material rămâne în repaus sau în mișcare rectilinie uniformă dacă rezultanta forțelor care acționează asupra lui este nulă.</div><div class='newton-formula'>Σ F⃗ = 0 &nbsp; ⇒ &nbsp; a⃗ = 0 &nbsp; ⇒ &nbsp; v⃗ = constant</div><p>Inerția este proprietatea corpurilor de a-și păstra viteza în absența unei rezultante nenule. Masa este măsura inerției: aceeași forță produce o accelerație mai mică unui corp cu masă mai mare. Inerția nu este o forță.</p><p>Echilibrul de translație include repausul și mișcarea rectilinie uniformă. Pentru corpuri extinse, echilibrul complet cere și echilibrul de rotație. Mișcarea circulară uniformă nu este echilibru de translație: direcția vitezei se schimbă.</p>",
+      "after": "<h3>Observă și explică</h3><p>Marginea exercită o forță spre centrul cercului. Când marginea dispare, bila pleacă pe tangenta din punctul desprinderii, cu viteza pe care o avea atunci. Neglijăm rezistențele; greutatea și reacțiunea verticală se compensează. O suliță aruncată pe Pământ își schimbă viteza din cauza gravitației și a aerului.</p>"
+    },
+    "newton2": {
+      "title": "Principiul al II-lea · Legea fundamentală a dinamicii",
+      "html": "<p>Într-un reper inerțial, pentru un corp cu masă constantă, accelerația este direct proporțională cu rezultanta forțelor și invers proporțională cu masa. Are direcția și sensul rezultantei, care pot fi diferite de cele ale vitezei.</p><div class='newton-formula'>Σ F⃗ = m a⃗ &nbsp; ; &nbsp; a⃗ = Σ F⃗ / m &nbsp; ; &nbsp; 1 N = 1 kg·m/s<sup>2</sup></div><p>Experimentează pe o pistă orizontală fără frecare. Greutatea și normala se compensează. Forța orizontală este rezultanta; la F = 0 corpul aflat în mișcare își păstrează viteza.</p>",
+      "after": "<h3 data-content-type='formula'>Impulsul și forța medie</h3><p>Impulsul este vectorul p⃗ = m v⃗. Pentru un punct material de masă constantă, Σ F⃗ = dp⃗/dt. Pe un interval finit, Δp⃗/Δt reprezintă <b>rezultanta medie</b>; nu forța instantanee în general.</p><div class='newton-formula'>F⃗<sub>med</sub> = Δp⃗ / Δt = m Δv⃗ / Δt</div>"
+    },
+    "action": {
+      "title": "Principiul al III-lea · Acțiunile reciproce",
+      "html": "<p>Dacă A acționează asupra lui B cu o forță, B acționează simultan asupra lui A cu o forță egală în modul și opusă ca sens. Forțele unei perechi aparțin aceleiași interacțiuni și sunt aplicate <b>unor corpuri diferite</b>.</p><div class='newton-formula'>F⃗<sub>A→B</sub> = −F⃗<sub>B→A</sub></div><p>Nu se anulează în bilanțul forțelor asupra unui singur corp. Sunt forțe interne și se compensează în bilanțul întregului sistem A+B. Accelerațiile pot avea module diferite: |a<sub>1</sub>| / |a<sub>2</sub>| = m<sub>2</sub>/m<sub>1</sub>.</p>",
+      "after": "<div class='newton-note'><h3>Identifică perechea corectă</h3><p>Greutatea unui corp și normala suportului nu sunt acțiune–reacțiune: ambele acționează asupra corpului. Perechea greutății este atracția corpului asupra Pământului. Perechea normalei este apăsarea corpului asupra suportului.</p></div><p>Contactul și câmpurile transmit interacțiuni: mâna împinge un obiect, iar Pământul atrage corpul. În aproximarea punctului material sau pentru corpuri sferic simetrice, atracția gravitațională se reprezintă pe linia centrelor.</p>"
+    },
+    "forces": {
+      "title": "Suprapunerea forțelor și reperele inerțiale",
+      "html": "<p>Fiecare interacțiune contribuie la rezultantă. Forțele și accelerațiile produse se adună vectorial; modulele lor nu se adună pur și simplu în orice situație.</p><div class='newton-formula'>R⃗ = F⃗<sub>1</sub> + F⃗<sub>2</sub> &nbsp; ; &nbsp; a⃗ = R⃗ / m<br>R = √(F<sub>1</sub><sup>2</sup> + F<sub>2</sub><sup>2</sup> + 2F<sub>1</sub>F<sub>2</sub> cos α)</div>",
+      "after": "<h3>Transformările Galilei</h3><p>Două repere inerțiale cu axe paralele se deplasează unul față de celălalt cu viteza constantă u⃗. Pentru origini care coincid la t = 0 și fără rotație:</p><div class='newton-formula'>r⃗ = r⃗′ + u⃗t &nbsp; ; &nbsp; t = t′<br>v⃗ = v⃗′ + u⃗ &nbsp; ; &nbsp; a⃗ = a⃗′</div><p>Principiul relativității clasice: legile mecanicii au aceeași formă în toate reperele inerțiale. Într-un vehicul care accelerează sau într-un reper care se rotește, forma simplă Σ F⃗ = m a⃗ pentru forțele reale nu se aplică fără corecții de reper.</p>"
+    },
+    "friction": {
+      "title": "Interacțiuni prin contact · Apăsare și frecare",
+      "html": "<p>Forța de contact are o componentă normală N, perpendiculară pe suprafață, și una tangențială: frecarea. Frecarea se opune alunecării relative sau tendinței de alunecare, nu obligatoriu vitezei corpului față de sol.</p><div class='newton-grid'><div class='newton-note'><h3>Frecarea statică</h3><p>Se ajustează la solicitare până la limita f<sub>s,max</sub> = μ<sub>s</sub>N. Poate fi zero; nu este mereu egală cu valoarea maximă.</p><div class='newton-formula'>0 ≤ f<sub>s</sub> ≤ μ<sub>s</sub>N</div></div><div class='newton-note'><h3>Frecarea la alunecare</h3><p>În modelul frecării uscate Coulomb, f<sub>k</sub> ≈ μ<sub>k</sub>N. Depinde de materiale și de normală; este aproximativ independentă de aria aparentă și de viteză într-un domeniu limitat. Coeficienții sunt adimensionali; de obicei μ<sub>k</sub> ≤ μ<sub>s</sub>.</p></div></div><p>Pe planul înclinat, fără alte forțe: N = mg cos α, iar componenta greutății la vale este mg sin α. Din repaus, alunecarea începe când tan α &gt; μ<sub>s</sub>. Unghiul limită satisface tan φ = μ<sub>s</sub>.</p>",
+      "after": "<p>Experimentul pornește din repaus după fiecare modificare. În alunecare: a = g(sin α − μ<sub>k</sub> cos α). Frecarea este orientată în susul planului; la α = 0 și repaus, este nulă.</p><h3>Aplicații</h3><p>Frecarea permite mersul, frânarea, scrisul și transmiterea mișcării prin curele. Lubrifianții, rulmenții și pernele de aer reduc rezistențele.</p><div class='newton-note'><h3 data-content-type='experiment'>Măsoară și compară</h3><p>Cu un dinamometru, trage un corp pe o suprafață orizontală cu viteză constantă: forța citită egalează frecarea la alunecare. Calculează μₖ = F/(mg), apoi repetă pentru alte mase și fețe ale aceluiași corp. Compară cu μₛ = tan φ determinat la începutul alunecării pe un plan cu înclinare variabilă.</p></div>"
+    },
+    "hooke": {
+      "title": "Elasticitate · Legea lui Hooke și tensiunea mecanică",
+      "html": "<p>Un corp elastic revine la forma inițială după încetarea solicitării, în limitele domeniului elastic. În domeniul liniar, forța elastică a resortului se opune deformării x măsurate față de lungimea naturală.</p><div class='newton-formula'>F<sub>e,x</sub> = −kx &nbsp; ; &nbsp; |F<sub>e</sub>| = k|x| &nbsp; ; &nbsp; [k] = N/m</div><p><b>Alungirea resortului:</b> x = Δl = l − l<sub>0</sub>, unde l este lungimea deformată, iar l<sub>0</sub> lungimea naturală. La întindere x &gt; 0; la comprimare x &lt; 0.</p><div class='newton-formula'>x = Δl = l − l<sub>0</sub><br>Δl = F<sub>d</sub>/k &nbsp; ; &nbsp; Δl<sub>ech</sub> = mg/k</div><p>F<sub>d</sub> este modulul forței de întindere care echilibrează forța elastică. Formula Δl = F<sub>d</sub>/k se aplică la echilibru, în domeniul de proporționalitate. Pentru corpul suspendat în repaus, F<sub>d</sub> = mg. În animație, x este alungirea instantanee față de lungimea naturală; abaterea de la echilibru este x − Δl<sub>ech</sub>, iar mg/k reprezintă numai alungirea de echilibru.</p><p>Forța aplicată de corp asupra resortului și cea exercitată de resort asupra corpului formează o pereche acțiune–reacțiune. Pe corpul suspendat aflat în echilibru, greutatea și forța elastică se compensează, dar nu formează o astfel de pereche.</p>",
+      "after": "<h3>Tensiunea mecanică și modulul lui Young</h3><p>Pentru un fir drept, omogen, cu secțiune constantă S și lungime inițială l<sub>0</sub>, solicitat axial în domeniul liniar:</p><div class='newton-formula'>σ = F<sub>d</sub>/S &nbsp; ; &nbsp; ε = Δl/l<sub>0</sub> &nbsp; ; &nbsp; σ = Eε<br>Δl = F<sub>d</sub>l<sub>0</sub>/(ES)<br>F<sub>d</sub> = (ES/l<sub>0</sub>) Δl &nbsp; ; &nbsp; k<sub>fir</sub> = ES/l<sub>0</sub></div><p>σ este efortul unitar (Pa), ε este deformația relativă (fără unitate), E este modulul lui Young (Pa). Relația k = ES/l<sub>0</sub> este pentru firul întins axial; nu este formula generală a unui resort elicoidal.</p><p>Valori orientative ale lui E: oțel ≈ 200 GPa, aluminiu ≈ 70 GPa, lemn paralel cu fibra ≈ 8–15 GPa. Cauciucul are un răspuns puternic dependent de material și deformare; modelul liniar se folosește numai într-un domeniu potrivit.</p><div class='newton-materials'><h3>Curba de elasticitate a materialelor</h3><p>Curbele sunt schematice, fără scară numerică; nu reprezintă măsurători ale unui material anume. Axa verticală arată tensiunea nominală σ = F<sub>d</sub>/S<sub>0</sub>, iar axa orizontală deformația relativă ε = Δl/l<sub>0</sub>. S<sub>0</sub> este secțiunea inițială. Forma curbei depinde de material și de condițiile încercării.</p><details open><summary>Metal ductil · curbă de tracțiune</summary><figure class='newton-material-chart'><svg viewBox='0 0 600 330' role='img' aria-label='Metal ductil · curbă de tracțiune'><title>Metal ductil · curbă de tracțiune</title><rect x='65' y='30' width='490' height='240' rx='6' fill='#f1f7f3'/><path d='M65 90H555 M65 150H555 M65 210H555 M165 30V270 M265 30V270 M365 30V270 M465 30V270' stroke='#dfebe6' fill='none'/><path d='M65 30V270H565' stroke='#71968b' stroke-width='2' fill='none'/><path d='M60 40L65 30L70 40 M555 265L565 270L555 275' stroke='#71968b' stroke-width='2' fill='none'/><text x='27' y='37'>σ</text><text x='570' y='299'>ε</text><text x='40' y='296'>O</text><path d='M145 170V270 M180 142V270' stroke='#95b3aa' stroke-dasharray='5 5' fill='none'/><path d='M65 270 L145 170 Q164 145 180 142 C205 140 210 146 230 140 C290 120 340 53 405 50 C450 50 500 84 535 105' stroke='#378b87' stroke-width='3.5' fill='none' stroke-linecap='round'/><circle cx='145' cy='170' r='5' fill='#b65647'/><text x='155' y='158'>P</text><circle cx='180' cy='142' r='5' fill='#b65647'/><text x='190' y='130'>L</text><circle cx='405' cy='50' r='5' fill='#b65647'/><text x='415' y='38'>M</text><circle cx='535' cy='105' r='5' fill='#b65647'/><text x='545' y='93'>R</text></svg></figure><ul><li><b>O–P: domeniul liniar.</b> σ = Eε; panta este modulul lui Young E. P este limita de proporționalitate.</li><li><b>P–L: domeniul elastic neliniar.</b> La descărcare, corpul revine la forma inițială, dar legea liniară a lui Hooke nu se mai aplică. L este limita de elasticitate.</li><li><b>Dincolo de L: deformare plastică.</b> După descărcare rămâne o deformație permanentă; pot apărea curgerea și apoi ecruisarea.</li><li><b>M: tensiunea nominală maximă.</b> Urmează gâtuirea; tensiunea nominală poate scădea deoarece se folosește secțiunea inițială S<sub>0</sub>.</li><li><b>R: ruperea.</b> Forma și întinderea regiunilor diferă între metale; nu toate prezintă un palier de curgere distinct.</li></ul></details><details><summary>Material fragil · rupere aproape fără deformare plastică</summary><figure class='newton-material-chart'><svg viewBox='0 0 600 330' role='img' aria-label='Material fragil · rupere aproape fără deformare plastică'><title>Material fragil · rupere aproape fără deformare plastică</title><rect x='65' y='30' width='490' height='240' rx='6' fill='#f1f7f3'/><path d='M65 90H555 M65 150H555 M65 210H555 M165 30V270 M265 30V270 M365 30V270 M465 30V270' stroke='#dfebe6' fill='none'/><path d='M65 30V270H565' stroke='#71968b' stroke-width='2' fill='none'/><path d='M60 40L65 30L70 40 M555 265L565 270L555 275' stroke='#71968b' stroke-width='2' fill='none'/><text x='27' y='37'>σ</text><text x='570' y='299'>ε</text><text x='40' y='296'>O</text><path d='M65 270 L310 66' stroke='#378b87' stroke-width='3.5' fill='none' stroke-linecap='round'/><circle cx='310' cy='66' r='5' fill='#b65647'/><text x='320' y='54'>R</text></svg></figure><p>Un material fragil (de exemplu, sticla) se poate rupe după o deformare mică, cu deformare plastică foarte redusă. R marchează ruperea; nu se presupune un palier de curgere.</p></details><details><summary>Elastomer · elasticitate neliniară</summary><figure class='newton-material-chart'><svg viewBox='0 0 600 330' role='img' aria-label='Elastomer · elasticitate neliniară'><title>Elastomer · elasticitate neliniară</title><rect x='65' y='30' width='490' height='240' rx='6' fill='#f1f7f3'/><path d='M65 90H555 M65 150H555 M65 210H555 M165 30V270 M265 30V270 M365 30V270 M465 30V270' stroke='#dfebe6' fill='none'/><path d='M65 30V270H565' stroke='#71968b' stroke-width='2' fill='none'/><path d='M60 40L65 30L70 40 M555 265L565 270L555 275' stroke='#71968b' stroke-width='2' fill='none'/><text x='27' y='37'>σ</text><text x='570' y='299'>ε</text><text x='40' y='296'>O</text><path d='M65 270 C160 257 260 247 340 200 C410 155 440 95 470 45' stroke='#378b87' stroke-width='3.5' fill='none' stroke-linecap='round'/></svg></figure><p>Un elastomer poate avea deformații elastice mari și un răspuns neliniar. Panta nu este constantă, deci un singur E sau k nu descrie întreaga curbă. Încărcarea și descărcarea sunt idealizate fără histerezis; ruperea nu este animată.</p></details></div><div class='newton-note'><h3 data-content-type='experiment'>Determină constanta elastică</h3><p>Fixează o valoare a lui k. Alege cel puțin cinci mase și notează F = mg și Δl la echilibru. Calculează k = F/Δl pentru fiecare pereche și media valorilor. Graficul F în funcție de Δl are panta k; graficul Δl în funcție de F are panta 1/k. Pentru măsurători reale, repetă citirile și estimează incertitudinea. Nu depăși domeniul elastic al resortului.</p></div>"
+    },
+    "problems": {
+      "title": "Probleme rezolvate",
+      "html": "<p>Desenează forțele și alege corpul studiat înainte de calcul. Folosește g = 9,8 m/s<sup>2</sup>.</p>"
+    },
+    "quiz": {
+      "title": "Verifică ce ai înțeles",
+      "html": "<p>Alege un singur răspuns la fiecare întrebare. Explicația apare imediat. Schimbarea limbii păstrează răspunsurile și scorul.</p>"
+    }
+  },
+  "ui": {
+    "play": "Pornește",
+    "pause": "Pauză",
+    "reset": "Reinițializează",
+    "release": "Elimină marginea",
+    "push": "Împinge",
+    "mass": "Masă",
+    "force": "Forță rezultantă",
+    "leftMass": "Masa din stânga",
+    "rightMass": "Masa din dreapta",
+    "angle": "Unghi α",
+    "muS": "Frecare statică μₛ",
+    "muK": "Frecare la alunecare μₖ",
+    "spring": "Constanta elastică k",
+    "graph": "Arată graficul",
+    "steps": "Vezi rezolvarea",
+    "score": "Scor",
+    "answered": "Răspunsuri",
+    "retry": "Reia testul",
+    "correct": "Corect",
+    "wrong": "Răspuns incorect",
+    "time": "Timp",
+    "speed": "Viteză",
+    "acceleration": "Accelerație",
+    "extension": "Alungire",
+    "equilibrium": "În echilibru",
+    "sliding": "Alunecă la vale",
+    "normal": "Normală",
+    "friction": "Frecare",
+    "limit": "Limită statică",
+    "meanForce": "Forță medie",
+    "deltaV": "Variația vitezei Δv",
+    "deltaT": "Interval Δt",
+    "impulse": "Calculator de forță medie",
+    "constant": "Viteză constantă",
+    "inertiaLab": "Bila pe o pistă circulară",
+    "newton2Lab": "Cărucior fără frecare",
+    "actionLab": "Două corpuri se resping",
+    "forcesLab": "Paralelogramul forțelor",
+    "frictionLab": "Corp pe plan înclinat",
+    "hookeLab": "Resort vertical și graficul forței",
+    "inertiaCaption": "Reglează redarea între 0,1× și 2×. Elimină marginea în timpul mișcării: bila pleacă pe tangentă. Cu repetare automată, după ieșire se reiau cercul și desprinderea din același punct. Fără desprindere, bila continuă mișcarea circulară. Reset reface marginea și păstrează opțiunile de redare.",
+    "newton2Caption": "Pista nu are frecare. Greutatea G pornește din centrul corpului, vertical în jos; normala N pornește din contactul cu pista, vertical în sus. Săgeata N este decalată puțin spre stânga pentru vizibilitate. N = G = mg. Viteza redării (0,1×–2×) nu schimbă forțele sau accelerația. Repetarea automată reia mișcarea din repaus la capătul pistei; fără repetare, experimentul se oprește. Nu se simulează o ciocnire.",
+    "actionCaption": "Forțele de 80 N sunt egale și opuse, aplicate pe corpuri diferite. Contactul durează 0,5 s fizice, apoi forțele dispar și corpurile se mișcă liber. Viteza redării se reglează între 0,1× și 2× (implicit 0,2×), fără să schimbe forțele sau vitezele fizice. Repetarea automată reia experimentul din repaus după intervalul de 3,5 s fizice; fără repetare, animația se oprește. Reset păstrează masele și opțiunile de redare. Săgețile vitezelor sunt subțiri, cu vârfuri distincte și o scară comună pentru cele două corpuri.",
+    "forcesCaption": "Liniile punctate completează paralelogramul. Diagonala este rezultanta vectorială.",
+    "frictionCaption": "Mișcare din repaus; μₖ este limitat la μₛ. Viteza animației se reglează între 0,1× și 2×, fără să schimbe accelerația fizică. Repetarea automată reia coborârea din repaus; fără repetare, corpul se oprește la capătul scenei. Dacă frecarea statică este suficientă, corpul rămâne în repaus. Vectorii forțelor folosesc aceeași scară în fiecare cadru.",
+    "hookeCaption": "Pornirea coboară corpul cu 25% din alungirea de echilibru și îl eliberează. Oscilația ideală, fără amortizare, are perioada T = 2π√(m/k). G acționează din centru în jos, Fₑ din prindere în sus. În timpul mișcării, |Fₑ| = kx variază, iar G = mg rămâne constantă. Sensul pozitiv al axei x este în jos. Fără repetare se arată o perioadă; Reset revine la echilibru și păstrează reglajele. Scara desenului se adaptează.",
+    "region": "Scena experimentului",
+    "tangent": "Tangentă",
+    "contact": "Contact",
+    "free": "Mișcare liberă",
+    "rest": "Repaus",
+    "end": "Capăt de pistă",
+    "velocity": "v",
+    "deformation": "Deformare x (m)",
+    "elasticForce": "Fₑ,ₓ (N)",
+    "framesLab": "Două sisteme de referință inerțiale",
+    "frameSpeed": "Viteza reperului S′ față de S: u",
+    "particleSpeed": "Viteza corpului în S: v",
+    "framesCaption": "Axele celor două repere sunt paralele. S este fix în această reprezentare; S′ se deplasează uniform față de S. Pornește animația pentru a urmări corpul P și originea O′. Reglează viteza redării între 0,1× și 2×, fără a modifica vitezele fizice u și v. Repetarea automată reia intervalul 0–3 s; fără repetare, animația se oprește la 3 s. Pauză păstrează momentul curent, iar Reinițializează revine la t = 0 și păstrează reglajele. x = x′ + ut; v = v′ + u; a = a′ = 0.",
+    "animationSpeed": "Viteza animației",
+    "autoRepeat": "Repetare automată",
+    "materialSpecimen": "Corp solicitat",
+    "materialMagnified": "Deformare amplificată",
+    "materialLevel": "Încărcare maximă pe curbă",
+    "materialReady": "Pregătit",
+    "materialLoading": "Încărcare",
+    "materialUnloading": "Descărcare",
+    "materialDone": "Ciclu încheiat",
+    "materialPermanent": "Deformație permanentă",
+    "materialRecovered": "Revenire la forma inițială",
+    "materialCycleNote": "Nivelul (%) indică poziția maximă pe curba schematică, nu deformația reală în procente. Ciclul durează 8 s la 1× și se oprește înainte de rupere. Metalul descărcat din domeniul plastic păstrează o deformație; în domeniul elastic se revine pe curba de încărcare. Pentru elastomer se idealizează revenirea fără histerezis. Reset reface proba și păstrează reglajele."
+  },
+  "problems": [
+    [
+      "Aceeași forță, mase diferite",
+      "Un corp cu m<sub>1</sub> = 2 kg are a<sub>1</sub> = 8 m/s<sup>2</sup>. Ce accelerație are un corp de 5 kg sub aceeași rezultantă?",
+      "F = m<sub>1</sub>a<sub>1</sub> = 16 N; a<sub>2</sub> = F/m<sub>2</sub> = <b>3,2 m/s<sup>2</sup></b>."
+    ],
+    [
+      "Lovirea unei mingi",
+      "O minge de 0,2 kg pleacă din repaus și ajunge la 8 m/s în 0,1 s. Calculează rezultanta medie în direcția mișcării.",
+      "Δp = mΔv = 1,6 kg·m/s; F<sub>med</sub> = Δp/Δt = <b>16 N</b>."
+    ],
+    [
+      "Pragul de alunecare",
+      "Un corp de 5 kg este eliberat pe un plan cu α = 30°, μ<sub>s</sub> = 0,4 și μ<sub>k</sub> = 0,3. Alunecă? Cu ce accelerație?",
+      "N = mg cos 30° ≈ 42,44 N; mg sin 30° = 24,5 N; f<sub>s,max</sub> ≈ 16,97 N. Alunecă, deoarece 24,5 &gt; 16,97. f<sub>k</sub> ≈ 12,73 N; a = (24,5 − 12,73)/5 ≈ <b>2,35 m/s<sup>2</sup></b> la vale."
+    ],
+    [
+      "Echilibrul unui resort",
+      "Un resort vertical cu k = 50 N/m susține o masă de 1 kg. Determină alungirea și forța elastică la echilibru.",
+      "kΔl = mg ⇒ Δl = 9,8/50 = <b>0,196 m</b>. Forța elastică are modulul <b>9,8 N</b> și este orientată în sus."
+    ]
+  ],
+  "questions": [
+    [
+      "Dacă rezultanta forțelor este nulă într-un reper inerțial, corpul…",
+      [
+        "se oprește imediat",
+        "își păstrează vectorul viteză",
+        "se mișcă obligatoriu pe cerc",
+        "își mărește viteza"
+      ],
+      1,
+      "a⃗ = 0: corpul rămâne în repaus sau în mișcare rectilinie uniformă."
+    ],
+    [
+      "Ce mărime măsoară inerția?",
+      [
+        "Greutatea",
+        "Masa",
+        "Viteza",
+        "Accelerația"
+      ],
+      1,
+      "Masa este o mărime scalară și măsoară inerția."
+    ],
+    [
+      "Un corp de 2 kg are a = 8 m/s². Sub aceeași forță, un corp de 5 kg are…",
+      [
+        "8 m/s²",
+        "3,2 m/s²",
+        "5 m/s²",
+        "20 m/s²"
+      ],
+      1,
+      "F = 16 N; a = 16/5 = 3,2 m/s²."
+    ],
+    [
+      "Care expresie în unități fundamentale SI este egală cu 1 N?",
+      [
+        "1 kg·m/s",
+        "1 kg·m/s²",
+        "1 kg·m²/s",
+        "1 kg·m²/s²"
+      ],
+      1,
+      "F = ma ⇒ 1 N = 1 kg·m/s²."
+    ],
+    [
+      "O minge de 0,2 kg ajunge de la repaus la 8 m/s în 0,1 s. Rezultanta medie este…",
+      [
+        "1,6 N",
+        "16 N",
+        "0,16 N",
+        "160 N"
+      ],
+      1,
+      "Fmed = mΔv/Δt = 16 N."
+    ],
+    [
+      "Forțele unei perechi acțiune–reacțiune…",
+      [
+        "se aplică aceluiași corp",
+        "au module diferite",
+        "sunt opuse și se aplică unor corpuri diferite",
+        "apar una după alta"
+      ],
+      2,
+      "Apar simultan, au module egale și acționează asupra unor corpuri diferite."
+    ],
+    [
+      "Două persoane de 40 kg și 80 kg se împing reciproc. Cine are accelerația mai mare în timpul contactului?",
+      [
+        "Persoana de 80 kg",
+        "Persoana de 40 kg",
+        "Au accelerații egale",
+        "Niciuna"
+      ],
+      1,
+      "Forțele au module egale. La jumătate din masă, accelerația are modul dublu."
+    ],
+    [
+      "În modelul frecării uscate, forța de frecare la alunecare are modulul…",
+      [
+        "μₖN",
+        "μₛN în orice situație",
+        "mg în orice situație",
+        "k/x"
+      ],
+      0,
+      "fₖ ≈ μₖN. Coeficientul este adimensional."
+    ],
+    [
+      "Unghiul de început al alunecării din repaus satisface…",
+      [
+        "tan φ = μₛ",
+        "sin φ = μₖ",
+        "φ = 45° mereu",
+        "cos φ = μₛ"
+      ],
+      0,
+      "La limită, mg sin φ = μₛ mg cos φ."
+    ],
+    [
+      "La α = 30°, μₛ = 0,4, un corp de 5 kg eliberat din repaus…",
+      [
+        "alunecă: 24,5 N depășește limita de aproximativ 16,97 N",
+        "rămâne sigur în repaus",
+        "are N = 0",
+        "se deplasează uniform în orice condiții"
+      ],
+      0,
+      "Componenta greutății la vale depășește frecarea statică maximă."
+    ],
+    [
+      "Componenta forței elastice pe axa deformării este…",
+      [
+        "Fₑ,ₓ = kx",
+        "Fₑ,ₓ = −kx",
+        "Fₑ,ₓ = k/x",
+        "Fₑ,ₓ = mg mereu"
+      ],
+      1,
+      "Semnul minus arată că forța elastică se opune deformării."
+    ],
+    [
+      "Un resort cu k = 50 N/m susține 1 kg. Alungirea la echilibru este…",
+      [
+        "0,196 m",
+        "1,96 m",
+        "0,051 m",
+        "49 m"
+      ],
+      0,
+      "Δl = mg/k = 9,8/50 = 0,196 m."
+    ],
+    [
+      "Un fir drept are k = ES/l₀. Dacă lungimea inițială se dublează, cu E și S constante, k…",
+      [
+        "se dublează",
+        "se înjumătățește",
+        "rămâne constant",
+        "devine zero"
+      ],
+      1,
+      "Rigiditatea axială este invers proporțională cu lungimea inițială."
+    ],
+    [
+      "În două repere inerțiale legate prin transformări Galilei, accelerația…",
+      [
+        "este întotdeauna zero",
+        "este aceeași",
+        "crește cu viteza relativă",
+        "își inversează mereu sensul"
+      ],
+      1,
+      "Viteza relativă a reperelor este constantă, deci a⃗ = a⃗′."
+    ]
+  ]
+}
