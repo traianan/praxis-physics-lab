@@ -186,3 +186,7 @@ Depozitul proiectului: https://github.com/traianan/praxis-physics-lab
 După clonare, cu Node.js 22 sau mai nou, `npm run build` generează distribuția din `public/`, iar `npm run dev` pornește aplicația local. Nu sunt necesare pachete npm suplimentare.
 
 Conform excluderilor proiectului, `dist/`, `outputs/` și snapshoturile originale din `sources/` rămân locale. Aplicația și construirea distribuției funcționează fără aceste snapshoturi; unele teste de proveniență și comenzile de reimport necesită sursele originale descrise în documentația integrărilor.
+
+## Pagini publice
+
+Aplicația online include [Despre](public/despre/index.html), [Contact](public/contact/index.html) și [Confidențialitate și cookies](public/confidentialitate/index.html), în RO/EN. Textele sunt generate din `scripts/site-pages.mjs`. Preferințele pot fi memorate local doar după acord; răspunsurile și rezultatele nu sunt persistente. Detalii și verificări: [docs/PAGINI_PUBLICE_SI_CONFIDENTIALITATE.md](docs/PAGINI_PUBLICE_SI_CONFIDENTIALITATE.md).
