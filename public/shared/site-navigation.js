@@ -9,7 +9,14 @@
   header.dataset.siteNavigation='';header.classList.add('praxis-site-header');
   const row=document.createElement('div');row.className='praxis-site-row';
   const logo=document.createElement('a');logo.href=new URL('?home=1',base);logo.className='praxis-site-brand';logo.setAttribute('aria-label','Praxis Science Lab');logo.innerHTML=`<img src="${new URL('assets/favicon.svg',base)}" width="37" height="39" alt=""><span>praxis<small>SCIENCE LAB</small></span>`;
-  const menu=document.createElement('nav');menu.className='praxis-site-menu';menu.dataset.noI18n='';
+  const menu=document.createElement('nav');menu.id='praxis-main-menu';menu.className='praxis-site-menu';menu.dataset.noI18n='';
+  const toggle=document.createElement('button');toggle.type='button';toggle.className='site-menu-toggle';toggle.dataset.noI18n='';toggle.setAttribute('aria-controls',menu.id);toggle.setAttribute('aria-expanded','false');
+  const mobile=matchMedia('(max-width:1140px)');let expanded=false;
+  function setOpen(value,restoreFocus=false){expanded=mobile.matches&&value;header.dataset.navigationOpen=String(expanded);toggle.setAttribute('aria-expanded',String(expanded));menu.inert=mobile.matches&&!expanded;toggle.innerHTML=`<span aria-hidden="true">${expanded?'×':'☰'}</span><span>${lang()==='en'?'Menu':'Meniu'}</span>`;toggle.setAttribute('aria-label',lang()==='en'?(expanded?'Close menu':'Open menu'):(expanded?'Închide meniul':'Deschide meniul'));if(restoreFocus)toggle.focus();}
+  toggle.addEventListener('click',()=>setOpen(!expanded));
+  mobile.addEventListener('change',()=>setOpen(false));
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&expanded){event.preventDefault();setOpen(false,true);}});
+  document.addEventListener('click',event=>{if(expanded&&!header.contains(event.target))setOpen(false);});
   const hasLibrary=!!library;library ||= document.createElement('a');if(!hasLibrary)library.href=new URL('?home=1',base);library.classList.add('site-menu-control','site-library-link');
   if(location.pathname===base.pathname||location.pathname===new URL('index.html',base).pathname)library.setAttribute('aria-current','page');
   guide ||= document.createElement('button');guide.type='button';guide.className='site-menu-control site-guide-button';
@@ -24,11 +31,12 @@
   if(fallbackBoard){board.setAttribute('aria-pressed','false');board.addEventListener('click',()=>{const enabled=document.documentElement.dataset.siteBoard!=='true';document.documentElement.dataset.siteBoard=String(enabled);board.setAttribute('aria-pressed',String(enabled));window.dispatchEvent(new Event('resize'));});}
   sound ||= window.PraxisSound.createToggle();sound.classList.add('site-menu-control','site-sound-button');
   language ||= window.PraxisI18n.createSelector();language.classList.add('site-menu-control','site-language');
-  menu.append(library,guide,status,board,sound,language);row.append(logo,menu);
+  menu.append(library,guide,status,board,sound,language);row.append(logo,toggle,menu);
+  menu.addEventListener('click',event=>{if(event.target.closest('.site-library-link,.site-guide-button,.site-board-button'))setOpen(false);});
   const detail=document.createElement('div');detail.className='praxis-site-context';if(context)detail.append(context);const extra=actions.filter(action=>action!==board);if(extra.length){const controls=document.createElement('div');controls.className='praxis-site-extra';controls.append(...extra);detail.append(controls);}
   header.replaceChildren(row);if(detail.childNodes.length)header.append(detail);
   function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;guide.textContent=t.guide;board.textContent=t.board;status.lastElementChild.textContent=['localhost','127.0.0.1','::1'].includes(location.hostname)?t.local:t.online;if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.map(step=>`<li>${step}</li>`).join('')}</ol>`;}
-  render();window.addEventListener('praxis-language-change',render);
+  render();setOpen(false);window.addEventListener('praxis-language-change',()=>{render();setOpen(expanded);});
   new ResizeObserver(()=>document.documentElement.style.setProperty('--praxis-header-height',header.getBoundingClientRect().height+'px')).observe(header);
   return header;
  }
