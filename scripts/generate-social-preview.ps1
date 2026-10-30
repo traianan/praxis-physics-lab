@@ -21,6 +21,8 @@ try {
     $graphics.DrawString('Simulări pentru clasă și studiu individual', $body, $muted, 70, 388)
     $graphics.DrawString('Simulations for classroom and self-study', $body, $muted, 70, 431)
     $graphics.DrawString('RO / EN', $brand, $green, 70, 536)
+    $graphics.FillRectangle($green, 735, 519, 395, 64)
+    $graphics.DrawString('Explorează / Explore', $brand, [Drawing.Brushes]::White, 765, 534)
     $graphics.TranslateTransform(955, 300)
     foreach ($angle in @(0, 60, 120)) {
         $state = $graphics.Save()
