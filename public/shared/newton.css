@@ -39,8 +39,9 @@ body[data-praxis-course="principiile-mecanicii-newtoniene"] *,body[data-praxis-c
 .newton-materials li{margin:.45rem 0}
 .newton-material-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:1rem;align-items:start}
 .newton-material-chart{width:100%;max-width:520px;margin:.5rem auto}
-.newton-material-chart .newton-specimen{max-height:180px}
-.newton-material-chart .newton-specimen text{font-size:14px}
+.newton-material-chart .newton-specimen{height:320px;max-height:none}
+.newton-material-chart .newton-specimen text{font-size:13px}
 .newton-material-controls .newton-caption{grid-column:1/-1;margin:0}
 .newton-material-controls .newton-readout{margin:.25rem 0}
+.newton-material-note{margin:.5rem 0 0;padding-top:.75rem;border-top:1px solid var(--praxis-color-border)}
 @media(max-width:850px){.newton-material-layout{grid-template-columns:1fr}}

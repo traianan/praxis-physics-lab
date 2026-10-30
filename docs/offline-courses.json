@@ -1,10 +1,10 @@
 {
-  "builtAt": "2026-10-30T17:39:17.834Z",
+  "builtAt": "2026-10-30T17:45:48.649Z",
   "courses": [
     {
       "id": "principiile-mecanicii-newtoniene",
       "file": "public/simulari/principiile-mecanicii-newtoniene/principiile-mecanicii-newtoniene.zip",
-      "sha256": "6d206f502e326c464b9ace605d45eb78fd2596a3a73e6cf0b2767dff61d4f600",
+      "sha256": "f33b22351a3db0937f9eb9d749f48e0b412c2314a3980bc5e6bf4624afe42f7f",
       "languages": [
         "ro",
         "en"
