@@ -15,7 +15,7 @@
   const mobile=matchMedia('(max-width:1140px)');let expanded=false;
   function setOpen(value,restoreFocus=false){expanded=mobile.matches&&value;header.dataset.navigationOpen=String(expanded);toggle.setAttribute('aria-expanded',String(expanded));menu.inert=mobile.matches&&!expanded;toggle.innerHTML=`<span aria-hidden="true">${expanded?'×':'☰'}</span><span>${lang()==='en'?'Menu':'Meniu'}</span>`;toggle.setAttribute('aria-label',lang()==='en'?(expanded?'Close menu':'Open menu'):(expanded?'Închide meniul':'Deschide meniul'));if(restoreFocus)toggle.focus();}
   toggle.addEventListener('click',()=>setOpen(!expanded));
-  mobile.addEventListener('change',()=>{placeLanguage();setOpen(false);});
+  mobile.addEventListener('change',()=>{placeQuickControls();setOpen(false);});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&expanded){event.preventDefault();setOpen(false,true);}});
   document.addEventListener('click',event=>{if(expanded&&!header.contains(event.target))setOpen(false);});
   const hasLibrary=!!library;library ||= document.createElement('a');if(!hasLibrary)library.href=new URL('?home=1',base);library.classList.add('site-menu-control','site-library-link');
@@ -33,8 +33,8 @@
   sound ||= window.PraxisSound.createToggle();sound.classList.add('site-menu-control','site-sound-button');
   language ||= window.PraxisI18n.createSelector();language.classList.add('site-menu-control','site-language');
   menu.append(library,guide,status,board,sound,language);row.append(logo,quickLanguage,toggle,menu);
-  function placeLanguage(){(mobile.matches?quickLanguage:menu).append(language);}
-  placeLanguage();
+  function placeQuickControls(){(mobile.matches?quickLanguage:menu).append(sound,language);}
+  placeQuickControls();
   menu.addEventListener('click',event=>{if(event.target.closest('.site-library-link,.site-guide-button,.site-board-button'))setOpen(false);});
   const detail=document.createElement('div');detail.className='praxis-site-context';if(context)detail.append(context);const extra=actions.filter(action=>action!==board);if(extra.length){const controls=document.createElement('div');controls.className='praxis-site-extra';controls.append(...extra);detail.append(controls);}
   header.replaceChildren(row);if(detail.childNodes.length)header.append(detail);
