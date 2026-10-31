@@ -41,6 +41,8 @@ Verificări: lățimea documentului, decuparea textelor vizibile, intersecția c
 
 ## Rezultate de verificare
 
+După publicarea commitului `68a0694` pe `main`, Vercel a confirmat deploymentul reușit. Cele patru laboratoare corectate au fost retestate și pe domeniul de producție, în toate cele trei dimensiuni: **12 configurații, 270 de stări**, fără overflow de document, decupări vizibile raportate, controale suprapuse, texte Canvas în afara desenului sau resurse HTTP eșuate în cazurile parcurse.
+
 Cele patru laboratoare afectate au fost retestate local în toate cele trei dimensiuni: **12 configurații și 270 de stări**, fără overflow de document, decupări vizibile raportate, controale suprapuse sau texte Canvas în afara desenului în cazurile inspectate. Pentru diagramele derulabile, tăierea la marginea ferestrei de vizualizare este intenționată: întregul desen rămâne accesibil prin derulare.
 
 În Viteza și accelerația, regiunea focalizabilă a derulat efectiv cu 40 px la ArrowRight; panningul tactil și zoomul nativ sunt permise, iar textul explicativ este tradus. Dimensiunea Canvas a rămas 920 px în regiunea de 330 px, fără lățirea documentului. În Aplicații, graficul experimental a rămas de 520 px, iar `molCanvas` nu a fost învelit în regiune de derulare.
