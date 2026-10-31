@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motoare termice — Lecție interactivă de fizică · Clasa a X-a</title>
+<meta name="description" content="Lecție interactivă de fizică (clasa a X-a, 1.6): motoare termice, randamentul, motorul Otto și motorul Diesel în patru timpi, mașini frigorifice, ciclul Carnot și randamentul ciclurilor Otto, Diesel și Rankine — cu simulări animate, sunete, test și probleme.">
+<meta name="theme-color" content="#1a1d26">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="./icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Motoare termice">
+<!-- Fonturi și KaTeX locale (funcționează complet offline) -->
+<link rel="stylesheet" href="./vendor/fonts/fonts.css">
+<link rel="stylesheet" href="./vendor/katex/katex.min.css">
+<link rel="stylesheet" href="./css/lectie.css">
+<script defer src="./vendor/katex/katex.min.js"></script>
+<script defer src="./vendor/katex/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" fill="currentColor" stroke="none"/><rect x="14" y="4" width="4" height="16" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-step" viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4" fill="currentColor"/><path d="M19 5v14"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h5v-6h4v6h5V9"/></symbol>
+  <symbol id="i-vol" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 4h7a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h8z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3-1-6 1-9.5z"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M4.9 7l14.2 10M4.9 17 19.1 7"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M12 14l4-6"/><path d="M3.5 18a9 9 0 1 1 17 0"/></symbol>
+</svg>
+
+<!-- Bara fixă: Acasă + Cuprins + sunet -->
+<div class="topbar">
+  <a class="btn sm home-btn" id="homeBtn" href="#top" title="Acasă — începutul lecției"><svg class="i"><use href="#i-home"/></svg><span class="lbl">Acasă</span></a>
+  <button class="btn sm" id="menuBtn" type="button" title="Cuprins și căutare (tasta /)" aria-controls="drawer" aria-expanded="false"><svg class="i"><use href="#i-menu"/></svg><span class="lbl">Cuprins</span></button>
+  <button class="btn sm on" id="soundBtn" type="button" title="Pornește / oprește sunetele"><svg class="i"><use href="#i-vol"/></svg><span class="lbl">Sunet</span></button>
+</div>
+
+<!-- Sertarul Cuprins + căutare (conținutul se generează din pagină) -->
+<div class="drawer-bg" id="drawerBg"></div>
+<aside class="drawer" id="drawer" aria-label="Cuprins și căutare" aria-hidden="true">
+  <div class="drawer-h"><b>Cuprins · căutare</b><button class="btn sm" id="drawerClose" type="button" title="Închide (Esc)"><svg class="i"><use href="#i-x"/></svg>Închide</button></div>
+  <label class="search"><svg class="i"><use href="#i-search"/></svg><input id="drawerQ" type="search" placeholder="Caută: randament, Carnot, Diesel, adiabată…" autocomplete="off" aria-label="Caută în lecție"></label>
+  <div class="quick">
+    <a class="btn sm" href="#top">Acasă</a><a class="btn sm" href="#s3">Motorul Otto</a><a class="btn sm" href="#s6">Ciclul Carnot</a><a class="btn sm" href="#s11">Glosar</a><a class="btn sm" href="#s12">Test</a><a class="btn sm" href="#s13">Probleme</a>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-f"><kbd>/</kbd> deschide · <kbd>↑</kbd><kbd>↓</kbd> alege · <kbd>Enter</kbd> mergi · <kbd>Esc</kbd> închide · <kbd>[</kbd> <kbd>]</kbd> secțiunea anterioară / următoare</div>
+</aside>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <canvas id="heroField" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="eyebrow">Fizică · Clasa a X-a · Capitolul 1 — Elemente de termodinamică</div>
+    <h1><small>1.6</small>Motoare termice<em>căldură în mișcare</em></h1>
+    <p class="lede">Un piston coboară, o scânteie aprinde amestecul, un arbore se rotește. Cât din căldura arderii devine lucru mecanic — și de ce niciodată toată? Pornește motoarele Otto și Diesel, parcurge ciclul Carnot și calculează randamentul fiecărui ciclu.</p>
+    <p class="src">După manualul de Fizică, clasa a X-a — <b>1.6</b> Motoare termice, <b>1.6.1</b> Ciclul Carnot, <b>1.6.2</b> Randamentul motoarelor termice (pag. 45–50), cu exercițiile 1.6.2.1 – 1.6.2.3</p>
+    <div class="hero-cta">
+      <a class="btn primary big" href="#s1"><svg class="i"><use href="#i-down"/></svg>Începe lecția</a>
+      <button class="btn big" type="button" data-open-menu><svg class="i"><use href="#i-menu"/></svg>Cuprins</button>
+      <a class="btn big" href="#s3"><svg class="i"><use href="#i-play"/></svg>Pornește motorul</a>
+      <a class="btn big dl-link" href="./motoare-termice.zip" download><svg class="i"><use href="#i-down"/></svg>Descarcă lecția</a>
+      <button class="btn big" id="installBtn" type="button" hidden><svg class="i"><use href="#i-down"/></svg>Instalează aplicația</button>
+    </div>
+    <div class="hero-meta">
+      <div><b>9</b><span>subcapitole</span></div>
+      <div><b>9</b><span>simulări</span></div>
+      <div><b>12</b><span>întrebări</span></div>
+      <div><b>14</b><span>probleme</span></div>
+    </div>
+  </div>
+  <div class="hero-caption">Fundal: <b>un ciclu termodinamic în diagrama p–V</b>. Aria închisă de curbă este lucrul mecanic al unui ciclu. Fă click ca să schimbi ciclul: Otto → Diesel → Carnot.</div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="Cuprins">
+  <a class="home" href="#top"><svg class="i"><use href="#i-home"/></svg>Acasă</a>
+  <h4>1.6 · Cuprins</h4>
+  <ol>
+    <li><a href="#s1"><span>01</span>Motoare termice</a></li>
+    <li><a href="#s2"><span>02</span>Randamentul</a></li>
+    <li><a href="#s3"><span>03</span>Motorul Otto</a></li>
+    <li><a href="#s4"><span>04</span>Motorul Diesel</a></li>
+    <li><a href="#s5"><span>05</span>Mașini frigorifice</a></li>
+    <li><a href="#s6"><span>06</span>Ciclul Carnot</a></li>
+    <li><a href="#s7"><span>07</span>η al ciclului Otto</a></li>
+    <li><a href="#s8"><span>08</span>η al ciclului Diesel</a></li>
+    <li><a href="#s9"><span>09</span>Ciclul Rankine</a></li>
+    <li><a href="#s10"><span>10</span>Corecturi la manual</a></li>
+    <li><a href="#s11"><span>11</span>Glosar</a></li>
+    <li><a href="#s12"><span>12</span>Test</a></li>
+    <li><a href="#s13"><span>13</span>Probleme</a></li>
+    <li><a href="#s14"><span>14</span>Resurse</a></li>
+  </ol>
+  <div class="foot"><kbd>/</kbd> — cuprins și căutare<br><kbd>[</kbd> <kbd>]</kbd> — secțiunea vecină<br><br><a href="#top">↑ Înapoi sus</a><span class="other-lessons"><br><a href="../calorimetrie/">← 1.2 Calorimetrie</a><br><a href="../notiuni-termodinamice/">← 1.1 Noțiuni termodinamice</a><br><a href="../interactii-atomice/">← Interacții atomice</a></span></div>
+</nav>
+
+<main>
+
+<!-- ================= 1 ================= -->
+<section class="sec" id="s1">
+  <div class="sec-head rv"><div class="num">01</div><div><div class="kicker">1.6 · Motoare termice</div><h2>Din căldură, <em>lucru mecanic</em></h2></div></div>
+  <div class="cols">
+    <div class="text rv">
+      <p class="lead"><b>Motoarele termice</b> sunt dispozitive care efectuează lucru mecanic dacă primesc căldură rezultată din arderea unui combustibil.</p>
+      <p>Experiența arată că un sistem termodinamic care schimbă căldură cu <b>două termostate</b> de temperaturi diferite poate ceda lucru mecanic în exterior — deci poate funcționa ca motor termic.</p>
+      <div class="box def" id="d-biterm"><span class="tag">Definiție</span>
+        <p>Se numește <b>transformare bitermă</b> o transformare în care sistemul termodinamic schimbă căldură cu două termostate având temperaturi diferite.</p>
+      </div>
+      <p>Un motor termic care efectuează un proces ciclic biterm:</p>
+      <ul>
+        <li>primește căldura \(Q_p\) de la un termostat de temperatură \(T_c\), numit <b id="d-sursa-calda">sursa caldă</b>;</li>
+        <li>cedează căldura \(Q_c\;(&lt;0)\) unui termostat de temperatură \(T_r&lt;T_c\), numit <b>sursa rece</b>.</li>
+      </ul>
+      <p>Procesul este ciclic, deci sistemul revine în starea inițială și \(\Delta U=0\). Din principiul I al termodinamicii, lucrul mecanic cedat în exterior este:</p>
+      <div class="box def" id="d-lucru"><span class="tag">Lucrul mecanic într-un ciclu</span>
+        <p>\[L=Q_p+Q_c=Q_p-|Q_c|.\]</p>
+      </div>
+      <p>Figura alăturată (manual: Fig. 1.6.1) arată transferurile de energie: motorul însuși este cercul din mijloc. La <b>mașina frigorifică</b> săgețile se inversează — ea consumă lucru mecanic ca să ducă căldura de la rece la cald.</p>
+      <div class="box exp"><span class="tag">În simulare</span>
+        <p>Fiecare punct colorat este un „pachet” de căldură. Mărește \(|Q_c|\) și urmărește cum scade lucrul mecanic \(L\). Încearcă să faci \(|Q_c|=0\): simularea nu te lasă — vei vedea de ce în secțiunea următoare.</p>
+      </div>
+    </div>
+    <div class="rv d1"><figure class="fig" id="fig1">
+      <div class="fig-h"><b>Fig. 1 — Schema unui motor termic</b><span>manual: Fig. 1.6.1</span></div>
+      <div class="tabs">
+        <button class="btn sm on" data-mode="motor">Motor termic</button>
+        <button class="btn sm" data-mode="frig">Mașină frigorifică</button>
+      </div>
+      <canvas class="tall"></canvas>
+      <div class="sliders">
+        <label class="sl" data-in="motor"><span>Q<sub>p</sub></span><input type="range" min="200" max="1000" step="20" value="600" data-k="Qp"><output>600 J</output></label>
+        <label class="sl" data-in="motor"><span>|Q<sub>c</sub>|</span><input type="range" min="5" max="95" step="1" value="60" data-k="r"><output>60 %</output></label>
+        <label class="sl" data-in="frig"><span>Q<sub>p</sub> (rece)</span><input type="range" min="100" max="800" step="20" value="400" data-k="Qf"><output>400 J</output></label>
+        <label class="sl" data-in="frig"><span>L</span><input type="range" min="40" max="500" step="10" value="150" data-k="Lf"><output>150 J</output></label>
+      </div>
+      <div class="ctrls">
+        <button class="btn sm primary" data-act="run"><svg class="i"><use href="#i-pause"/></svg><span>Pauză</span></button>
+        <button class="btn sm" data-act="cycle"><svg class="i"><use href="#i-step"/></svg>Un ciclu</button>
+      </div>
+      <dl class="ro c3">
+        <div><dt data-o="k1">Q<sub>p</sub></dt><dd data-o="v1">—</dd></div>
+        <div><dt data-o="k2">|Q<sub>c</sub>|</dt><dd data-o="v2">—</dd></div>
+        <div><dt data-o="k3">L</dt><dd data-o="v3">—</dd></div>
+      </dl>
+      <div class="hint" data-o="hint">—</div>
+    </figure></div>
+  </div>
+  <div class="plates rv">
+    <figure class="plate"><img src="./img/abur.jpg" alt="Gravură: mașină cu abur cu cazan, piston și volant" loading="lazy" width="1000" height="750"><figcaption><b>Ardere externă.</b> Mașina cu abur: combustibilul arde sub cazan, iar aburul împinge pistonul. Azi, turbinele cu abur din centrale funcționează după ciclul Rankine (§9).</figcaption></figure>
+    <figure class="plate"><img src="./img/otto.jpg" alt="Gravură: secțiune printr-un cilindru de motor cu piston, bielă, arbore cotit, supape și bujie" loading="lazy" width="1000" height="750"><figcaption><b>Ardere internă.</b> Motorul Otto: amestecul de benzină și aer arde chiar în cilindru, deasupra pistonului (§3).</figcaption></figure>
+  </div>
+  <div class="text rv" style="max-width:860px;margin-top:34px">
+    <p>După locul unde are loc arderea combustibilului, motoarele termice se împart în două categorii:</p>
+    <ul>
+      <li><b id="d-ardere-int">motoare cu ardere internă</b> — combustibilul arde în interiorul cilindrului (motorul Otto, motorul Diesel, motorul cu reacție);</li>
+      <li><b>motoare cu ardere externă</b> — combustibilul arde în afara mașinii și încălzește un fluid de lucru (mașina cu abur, turbina cu abur, motorul Stirling).</li>
+    </ul>
+  </div>
+  <div class="chap rv">
+    <a class="other-lessons" href="../calorimetrie/"><small>1.2 · LECȚIE ANTERIOARĂ</small><b>Calorimetrie</b></a>
+    <div class="later"><small>1.3 – 1.4</small><b>Principiul I · Gazul ideal</b></div>
+    <div class="later"><small>1.5</small><b>Transformări de stare de agregare</b></div>
+    <a href="#s1"><small>1.6 · ACEASTĂ LECȚIE</small><b>Motoare termice</b></a>
+  </div>
+</section>
+
+<!-- ================= 2 ================= -->
+<section class="sec" id="s2">
+  <div class="sec-head rv"><div class="num">02</div><div><div class="kicker">Randamentul termic · principiul al II-lea</div><h2>De ce <em>η &lt; 1</em></h2></div></div>
+  <div class="cols">
+    <div class="text rv">
+      <p class="lead">Eficiența cu care un motor transformă căldura în lucru mecanic se măsoară prin <b>randamentul termic</b>.</p>
+      <div class="box def" id="d-randament"><span class="tag">Definiție</span>
+        <p><b>Randamentul termic</b> al unui motor este raportul dintre lucrul mecanic cedat exteriorului într-un ciclu și căldura primită de la sursa caldă: \[\eta=\frac{L}{Q_p}.\]</p>
+      </div>
+      <p>Randamentul compară „ceea ce se obține” (lucrul mecanic util \(L\)) cu „ceea ce se consumă” (căldura \(Q_p\), obținută de exemplu prin arderea combustibilului). Este o mărime <b>adimensională</b> și se exprimă adesea în procente.</p>
+      <p>Înlocuind \(L=Q_p-|Q_c|\):</p>
+      <div class="box def" id="d-randament2"><span class="tag">Randamentul unui motor biterm</span>
+        <p>\[\eta=1-\frac{|Q_c|}{Q_p}.\]</p>
+      </div>
+      <p>Întotdeauna \(|Q_c|\neq0\). Dacă motorul nu ar ceda deloc căldură sursei reci, transformarea ciclică ar fi <b>monotermă</b>, iar conform <b>principiului al II-lea</b> al termodinamicii un sistem nu poate ceda lucru mecanic într-o transformare ciclică monotermă. Așadar:</p>
+      <div class="box def" id="d-subunitar"><span class="tag">Concluzie</span>
+        <p>Randamentul unui motor termic este întotdeauna <b>subunitar</b>: \(\eta&lt;1\).</p>
+      </div>
+      <div class="box warn"><span class="tag">Observație</span>
+        <p>Randamentul \(\eta\) studiat aici este <b>teoretic</b>. Din cauza pierderilor — frecări, căldură scăpată prin pereții cilindrului, ardere incompletă — un motor real are întotdeauna un randament mai mic decât \(\eta\). Activează în figură <b>„Pierderi reale”</b>.</p>
+      </div>
+    </div>
+    <div class="rv d1"><figure class="fig" id="fig2">
+      <div class="fig-h"><b>Fig. 2 — Bilanțul energetic al unui ciclu</b><span>η = L / Q<sub>p</sub> = 1 − |Q<sub>c</sub>| / Q<sub>p</sub></span></div>
+      <canvas class="tall"></canvas>
+      <div class="sliders">
+        <label class="sl"><span>Q<sub>p</sub></span><input type="range" min="100" max="2000" step="50" value="1000" data-k="Qp"><output>1000 J</output></label>
+        <label class="sl"><span>|Q<sub>c</sub>|</span><input type="range" min="0" max="1000" step="10" value="650" data-k="Qc"><output>650 J</output></label>
+        <label class="sl"><span>frecări</span><input type="range" min="0" max="40" step="1" value="12" data-k="fr"><output>12 %</output></label>
+      </div>
+      <div class="ctrls">
+        <button class="btn sm" data-t="real">Pierderi reale</button>
+        <button class="btn sm" data-act="mono"><svg class="i"><use href="#i-x"/></svg><span>Încearcă |Q<sub>c</sub>| = 0</span></button>
+        <button class="btn sm" data-act="ex"><svg class="i"><use href="#i-gauge"/></svg>Exemplu: motor de autoturism</button>
+      </div>
+      <dl class="ro c3">
+        <div><dt>L = Q<sub>p</sub> − |Q<sub>c</sub>|</dt><dd data-o="L">—</dd></div>
+        <div><dt>η teoretic</dt><dd data-o="eta">—</dd></div>
+        <div><dt>η real</dt><dd data-o="etar">—</dd></div>
+      </dl>
+      <div class="hint" data-o="hint">—</div>
+    </figure></div>
+  </div>
+</section>
+
+<!-- ================= 3 ================= -->
+<section class="sec" id="s3">
+  <div class="sec-head rv"><div class="num">03</div><div><div class="kicker">Motor cu aprindere prin scânteie · Fig. 1.6.2, 1.6.3</div><h2>Motorul Otto <em>în patru timpi</em></h2></div></div>
+  <div class="cols">
+    <div class="text rv">
+      <p class="lead"><b>Motorul Otto</b> este un motor cu aprindere prin scânteie. Combustibilul — un amestec de vapori de benzină și aer — este aprins de o scânteie electrică produsă de o <b>bujie</b>.</p>
+      <p>Pornind de la capătul superior al cursei sale (punctul mort superior), un ciclu cuprinde patru curse ale pistonului:</p>
+      <ol>
+        <li id="d-admisia"><b>Admisia.</b> Pistonul coboară; supapa de admisie (A) este deschisă, cea de evacuare (E) închisă. În cilindru pătrunde amestecul exploziv de benzină și aer.</li>
+        <li id="d-compresia"><b>Compresia.</b> Supapa A se închide, pistonul urcă și comprimă <b>aproximativ adiabatic</b> amestecul.</li>
+        <li id="d-timpul-motor"><b>Timpul motor.</b> Lângă capătul de sus al cursei, scânteia aprinde amestecul, care arde foarte rapid: temperatura și presiunea cresc brusc, practic la volum constant. Gazele arse împing pistonul în jos, destinzându-se aproximativ adiabatic — singurul timp în care se produce lucru mecanic.</li>
+        <li id="d-evacuarea"><b>Evacuarea.</b> Jos, se deschide supapa E: presiunea scade rapid, practic la volum constant, până la presiunea atmosferică. Pistonul urcă și împinge afară gazele arse.</li>
+      </ol>
+      <p>Apoi supapa E se închide, A se deschide și ciclul se repetă. Pentru un ciclu complet, arborele cotit face <b>două rotații</b>.</p>
+      <div class="box def" id="d-ciclu-otto"><span class="tag">Ciclul Otto</span>
+        <p>Ciclul real al motorului Otto este aproximat de un ciclu ideal, numit <b>ciclu Otto</b>, format din <b>două adiabate și două izocore</b>.</p>
+      </div>
+      <div class="box exp"><span class="tag">În simulare</span>
+        <p>În dreapta motorului, punctul roșu parcurge diagrama p–V a ciclului real (Fig. 1.6.3). Admisia și evacuarea se fac pe aceeași dreaptă orizontală, la presiunea atmosferică: lucrurile lor mecanice se anulează. Rămâne aria buclei 1-2-3-4. Comută pe <b>Diesel</b> ca să vezi diferența.</p>
+      </div>
+    </div>
+    <div class="rv d1"><figure class="fig" id="fig3">
+      <div class="fig-h"><b>Fig. 3 — Motorul în patru timpi și diagrama p–V</b><span>manual: Fig. 1.6.2 · 1.6.3 · 1.6.4</span></div>
+      <div class="tabs">
+        <button class="btn sm on" data-mode="otto">Otto (bujie)</button>
+        <button class="btn sm" data-mode="diesel">Diesel (injector)</button>
+      </div>
+      <canvas class="tall"></canvas>
+      <div class="sliders">
+        <label class="sl"><span>turație</span><input type="range" min="2" max="60" step="1" value="12" data-k="rpm"><output>12 rot/min</output></label>
+      </div>
+      <div class="ctrls">
+        <button class="btn sm primary" data-act="run"><svg class="i"><use href="#i-play"/></svg><span>Pornește motorul</span></button>
+        <button class="btn sm" data-act="step"><svg class="i"><use href="#i-step"/></svg>Timpul următor</button>
+        <button class="btn sm" data-t="area">Arată lucrul mecanic (aria)</button>
+      </div>
+      <dl class="ro c3">
+        <div><dt>timpul</dt><dd data-o="st" class="txt">—</dd></div>
+        <div><dt>supape A / E</dt><dd data-o="valv">—</dd></div>
+        <div><dt>unghiul arborelui</dt><dd data-o="ang">—</dd></div>
+      </dl>
+      <div class="hint" data-o="hint">—</div>
+    </figure></div>
+  </div>
+</section>
+
+<!-- ================= 4 ================= -->
+<section class="sec" id="s4">
+  <div class="sec-head rv"><div class="num">04</div><div><div class="kicker">Motor cu aprindere prin compresie · Fig. 1.6.4</div><h2>Motorul Diesel: <em>fără bujie</em></h2></div></div>
+  <div class="cols">
+    <div class="text rv">
+      <p class="lead">Un alt motor în patru timpi este <b>motorul Diesel</b>. Funcționarea lui se înțelege tot cu figura motorului Otto, cu observația că în locul bujiei se află o <b>pompă de injecție</b> cu injector.</p>
+      <ul>
+        <li>În cilindru se aspiră <b>numai aer</b>, la presiunea atmosferică.</li>
+        <li>Aerul este comprimat aproximativ adiabatic până la presiuni de ordinul a <b>40–50 atm</b>, când temperatura lui ajunge la <b>600–800 °C</b>.</li>
+        <li>În acest moment se injectează motorina, la presiune foarte mare, astfel încât să fie <b>pulverizată</b> extrem de fin.</li>
+        <li>Combustibilul se <b>autoaprinde</b> la contactul cu aerul foarte cald. Arderea durează cât timp se injectează, în timp ce pistonul a început să coboare — presiunea rămâne aproximativ constantă.</li>
+      </ul>
+      <div class="box def" id="d-ciclu-diesel"><span class="tag">Ciclul Diesel</span>
+        <p>Ciclul real este aproximat de un ciclu ideal, numit <b>ciclu Diesel</b>, format din <b>două adiabate, o izobară și o izocoră</b>.</p>
+      </div>
+      <div class="box ext"><span class="tag">De ce rapoarte de compresie diferite?</span>
+        <p>Pentru o compresie adiabatică \(T_2=T_1\,\varepsilon^{\gamma-1}\) și \(p_2=p_1\,\varepsilon^{\gamma}\). Motorul Diesel <b>are nevoie</b> de aer foarte fierbinte, deci de un raport de compresie mare (\(\varepsilon\approx14\ldots22\)). Motorul Otto <b>nu are voie</b> să încălzească prea tare amestecul, altfel acesta s-ar aprinde singur înainte de scânteie (<b>detonație</b>, „bătaie” în motor) — de aceea \(\varepsilon\approx8\ldots12\).</p>
+      </div>
+      <figure class="plate solo"><img src="./img/diesel.jpg" alt="Gravură: sală a mașinilor cu un motor Diesel industrial cu mulți cilindri" loading="lazy" width="1000" height="750"><figcaption>Motoarele Diesel mari antrenează nave, locomotive și generatoare electrice. Rudolf Diesel le-a brevetat în 1892.</figcaption></figure>
+    </div>
+    <div class="rv d1"><figure class="fig" id="fig4">
+      <div class="fig-h"><b>Fig. 4 — Compresia adiabatică și autoaprinderea</b><span>T₂ = T₁ε<sup>γ−1</sup> · p₂ = p₁ε<sup>γ</sup></span></div>
+      <div class="tabs">
+        <button class="btn sm on" data-mode="diesel">Aer + motorină (Diesel)</button>
+        <button class="btn sm" data-mode="otto">Benzină + aer (Otto)</button>
+      </div>
+      <canvas class="tall"></canvas>
+      <div class="sliders">
+        <label class="sl"><span>ε</span><input type="range" min="3" max="24" step="0.5" value="18" data-k="eps"><output>18</output></label>
+        <label class="sl"><span>t<sub>1</sub></span><input type="range" min="-20" max="40" step="1" value="20" data-k="t1"><output>20 °C</output></label>
+      </div>
+      <div class="ctrls">
+        <button class="btn sm primary" data-act="go"><svg class="i"><use href="#i-play"/></svg><span>Comprimă</span></button>
+        <button class="btn sm" data-t="loss">Pierderi prin pereți (pornire la rece)</button>
+        <button class="btn sm" data-act="reset"><svg class="i"><use href="#i-reset"/></svg>Resetează</button>
+      </div>
+      <dl class="ro c3">
+        <div><dt>V / V<sub>max</sub></dt><dd data-o="v">—</dd></div>
+        <div><dt>p</dt><dd data-o="p">—</dd></div>
+        <div><dt>t</dt><dd data-o="t">—</dd></div>
+      </dl>
+      <div class="hint" data-o="hint">—</div>
+    </figure></div>
+  </div>
+</section>
+
+<!-- ================= 5 ================= -->
+<section class="sec" id="s5">
+  <div class="sec-head rv"><div class="num">05</div><div><div class="kicker">Motorul termic, pus să meargă invers</div><h2>Mașini <em>frigorifice</em></h2></div></div>
+  <div class="cols">
+    <div class="text rv">
+      <p class="lead"><b>Mașinile frigorifice</b> preiau căldura \(Q_p\) de la o sursă rece și o transferă unei surse calde, consumând un lucru mecanic \(L\), pe care îl transformă tot în căldură.</p>
+      <p>Sursa caldă primește, așadar, căldura \(|Q_c|=Q_p+L\) (schema din dreapta, Fig. 1.6.1).</p>
+      <div class="box def" id="d-pompa"><span class="tag">Pompa de căldură</span>
+        <p>Interesul este încălzirea sursei calde (o casă iarna). Eficacitatea ei este \[\varepsilon=\frac{|Q_c|}{L}.\]</p>
+      </div>
+      <div class="box def" id="d-frigider"><span class="tag">Frigiderul</span>
+        <p>Interesul este să se scoată o cantitate cât mai mare de căldură din incinta frigorifică. Eficacitatea lui este \[\varepsilon=\frac{Q_p}{L}.\]</p>
+      </div>
+      <div class="box fix"><span class="tag">Precizare</span>
+        <p>Eficacitatea (numită și <b>coeficient de performanță</b>) poate fi <b>mai mare decât 1</b> — nu este un randament! O pompă de căldură cu \(\varepsilon=4\) livrează casei 4 J de căldură pentru fiecare joule de energie electrică, pentru că 3 J îi „pompează” din aerul rece de afară. Atenție și la notație: aici \(\varepsilon\) nu are legătură cu raportul de compresie \(\varepsilon\) din §7–9.</p>
+      </div>
+      <div class="box ext"><span class="tag">Extindere · limita Carnot</span>
+        <p>O mașină frigorifică ideală (ciclu Carnot inversat) are \(\varepsilon_{\text{frigider}}=\dfrac{T_r}{T_c-T_r}\) și \(\varepsilon_{\text{pompă}}=\dfrac{T_c}{T_c-T_r}\). Cu cât diferența de temperatură este mai mică, cu atât mașina este mai eficace.</p>
+      </div>
+      <figure class="plate solo"><img src="./img/frigider.jpg" alt="Gravură: frigider în secțiune, cu compresor și serpentine, și o pompă de căldură lângă o casă" loading="lazy" width="1000" height="750"><figcaption>Frigiderul și pompa de căldură aer–aer folosesc aceeași idee: un agent frigorific care se evaporă la rece și condensează la cald.</figcaption></figure>
+    </div>
+    <div class="rv d1"><figure class="fig" id="fig5">
+      <div class="fig-h"><b>Fig. 5 — Frigiderul și pompa de căldură</b><span>|Q<sub>c</sub>| = Q<sub>p</sub> + L</span></div>
+      <div class="tabs">
+        <button class="btn sm on" data-mode="frig">Frigider</button>
+        <button class="btn sm" data-mode="pompa">Pompă de căldură</button>
+      </div>
+      <canvas class="tall"></canvas>
+      <div class="sliders">
+        <label class="sl"><span data-o="lr">t<sub>r</sub></span><input type="range" min="-25" max="15" step="1" value="4" data-k="tr"><output>4 °C</output></label>
+        <label class="sl"><span data-o="lc">t<sub>c</sub></span><input type="range" min="16" max="45" step="1" value="22" data-k="tc"><output>22 °C</output></label>
+        <label class="sl"><span>L</span><input type="range" min="50" max="500" step="10" value="100" data-k="L"><output>100 J</output></label>
+      </div>
+      <div class="ctrls">
+        <button class="btn sm on" data-t="ideal">Mașină ideală (Carnot)</button>
+        <button class="btn sm" data-act="pump"><svg class="i"><use href="#i-bolt"/></svg>Un ciclu al compresorului</button>
+      </div>
+      <dl class="ro c3">
+        <div><dt>Q<sub>p</sub> (de la rece)</dt><dd data-o="Qp">—</dd></div>
+        <div><dt>|Q<sub>c</sub>| (spre cald)</dt><dd data-o="Qc">—</dd></div>
+        <div><dt>eficacitatea ε</dt><dd data-o="e">—</dd></div>
+      </dl>
+      <div class="hint" data-o="hint">—</div>
+    </figure></div>
+  </div>
+</section>
+
+<!-- ================= 6 ================= -->
+<section class="sec" id="s6">
+  <div class="sec-head rv"><div class="num">06</div><div><div class="kicker">1.6.1 · Sadi Carnot, 1824</div><h2>Ciclul <em>Carnot</em></h2></div></div>
+  <div class="cols">
+    <div class="text rv">
+      <p class="lead">Date fiind două termostate la temperaturi diferite, care este cel mai mare randament posibil și în ce condiții se realizează?</p>
+      <p>Răspunsul l-a dat <b>Sadi Carnot</b>, care a imaginat în 1824 un motor termic ideal, de randament maxim. El funcționează după un ciclu numit astăzi <b>ciclul Carnot</b>.</p>
+      <div class="box def" id="d-carnot"><span class="tag">Ciclul Carnot</span>
+        <p>Ciclul Carnot este alcătuit din patru transformări <b>reversibile</b>: <b>două izoterme și două adiabate</b> (Fig. 1.6.1.1): 1→2 izotermă (\(T_c\)), 2→3 adiabată, 3→4 izotermă (\(T_r\)), 4→1 adiabată.</p>
+      </div>
+      <p>Substanța de lucru — \(\nu\) moli de gaz ideal — schimbă căldură numai pe izoterme:</p>
+      <p>\[Q_p=\nu RT_c\ln\frac{V_2}{V_1},\qquad Q_c=\nu RT_r\ln\frac{V_4}{V_3}.\]</p>
+      <p>Randamentul este atunci \[\eta_C=1-\frac{T_r}{T_c}\cdot\frac{\ln\dfrac{V_3}{V_4}}{\ln\dfrac{V_2}{V_1}}.\]</p>
+      <p>Legea transformării adiabatice pentru 2→3 și 4→1: \(T_cV_2^{\gamma-1}=T_rV_3^{\gamma-1}\) și \(T_cV_1^{\gamma-1}=T_rV_4^{\gamma-1}\). Împărțindu-le: \(\dfrac{V_2}{V_1}=\dfrac{V_3}{V_4}\), deci logaritmii se simplifică:</p>
+      <div class="box def" id="d-eta-carnot"><span class="tag">Randamentul ciclului Carnot</span>
+        <p>\[\eta_C=1-\frac{T_r}{T_c}.\]</p>
+      </div>
+      <p>Randamentul ciclului Carnot reversibil <b>nu depinde de natura substanței de lucru</b>, ci numai de temperaturile celor două termostate.</p>
+      <div class="box def" id="d-teorema-carnot"><span class="tag">Teorema lui Carnot</span>
+        <p>Toate motoarele care funcționează pe baza ciclului Carnot <i>reversibil</i> între două temperaturi date au același randament, indiferent de natura substanței de lucru.</p>
+        <p>Mai mult, <b>niciun motor</b> care funcționează între două temperaturi date nu poate avea un randament mai mare decât un motor Carnot care funcționează între aceleași temperaturi.</p>
+      </div>
+      <div class="box warn"><span class="tag">Observație</span>
+        <p>Motorul Carnot este un motor ideal: el nu poate fi realizat practic. Transformările reversibile ar trebui să fie infinit de lente — un astfel de motor ar avea putere zero.</p>
+      </div>
+    </div>
+    <div class="rv d1"><figure class="fig" id="fig6">
+      <div class="fig-h"><b>Fig. 6 — Ciclul Carnot pentru 1 mol de gaz ideal</b><span>manual: Fig. 1.6.1.1</span></div>
+      <div class="tabs">
+        <button class="btn sm on" data-mode="di">gaz biatomic (γ = 1,4)</button>
+        <button class="btn sm" data-mode="mono">gaz monoatomic (γ = 5/3)</button>
+      </div>
+      <canvas class="tall"></canvas>
+      <canvas class="mini"></canvas>
+      <div class="sliders">
+        <label class="sl"><span>T<sub>c</sub></span><input type="range" min="400" max="900" step="10" value="600" data-k="Tc"><output>600 K</output></label>
+        <label class="sl"><span>T<sub>r</sub></span><input type="range" min="250" max="390" step="10" value="300" data-k="Tr"><output>300 K</output></label>
+        <label class="sl"><span>V<sub>2</sub>/V<sub>1</sub></span><input type="range" min="1.3" max="3" step="0.1" value="2" data-k="k"><output>2.0</output></label>
+      </div>
+      <div class="ctrls">
+        <button class="btn sm primary" data-act="run"><svg class="i"><use href="#i-play"/></svg><span>Parcurge ciclul</span></button>
+        <button class="btn sm" data-act="step"><svg class="i"><use href="#i-step"/></svg>Transformarea următoare</button>
+      </div>
+      <dl class="ro c3">
+        <div><dt>Q<sub>p</sub> (1→2)</dt><dd data-o="Qp">—</dd></div>
+        <div><dt>|Q<sub>c</sub>| (3→4)</dt><dd data-o="Qc">—</dd></div>
+        <div><dt>L = Q<sub>p</sub> − |Q<sub>c</sub>|</dt><dd data-o="L">—</dd></div>
+        <div><dt>V<sub>3</sub>/V<sub>4</sub></dt><dd data-o="r34">—</dd></div>
+        <div><dt>η = 1 − |Q<sub>c</sub>|/Q<sub>p</sub></dt><dd data-o="eta">—</dd></div>
+        <div><dt>1 − T<sub>r</sub>/T<sub>c</sub></dt><dd data-o="etaC">—</dd></div>
+      </dl>
+      <div class="hint" data-o="hint">—</div>
+    </figure></div>
+  </div>
+</section>
+
+<!-- ================= 7 ================= -->
+<section class="sec" id="s7">
+  <div class="sec-head rv"><div class="num">07</div><div><div class="kicker">1.6.2 · Randamentul motoarelor termice · a) ciclul Otto</div><h2>Randamentul <em>ciclului Otto</em></h2></div></div>
+  <div class="cols">
+    <div class="text rv">
+      <p>Vom calcula randamentul ciclurilor ideale asociate unor motoare reale și îl vom compara, de fiecare dată, cu randamentul ciclului Carnot. Metoda, generală, este să întocmim un tabel cu legea și căldura fiecărei transformări.</p>
+      <p>Pentru ciclul Otto (Fig. 1.6.2.1), <b>raportul de compresie</b> este \(\varepsilon=V_1/V_2\).</p>
+      <div class="ttable" id="tab-otto"><table class="mini-t">
+        <caption>Tabelul 1.6.2.1 · rândul aprins = transformarea din figură</caption>
+        <thead><tr><th>Transf.</th><th>Legea</th><th>Căldura schimbată</th></tr></thead>
+        <tbody>
+          <tr data-st="0"><td>1 → 2</td><td>\(T_1V_1^{\gamma-1}=T_2V_2^{\gamma-1}\)</td><td>\(Q_{12}=0\)</td></tr>
+          <tr data-st="1"><td>2 → 3</td><td>\(\dfrac{p_2}{T_2}=\dfrac{p_3}{T_3}\)</td><td>\(Q_{23}=\nu C_V(T_3-T_2)&gt;0\)</td></tr>
+          <tr data-st="2"><td>3 → 4</td><td>\(T_3V_2^{\gamma-1}=T_4V_1^{\gamma-1}\)</td><td>\(Q_{34}=0\)</td></tr>
+          <tr data-st="3"><td>4 → 1</td><td>\(\dfrac{p_4}{T_4}=\dfrac{p_1}{T_1}\)</td><td>\(Q_{41}=\nu C_V(T_1-T_4)&lt;0\)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box app" id="d-semn"><span class="tag">Observație · semnul căldurii</span>
+        <p>Pentru a stabili semnul căldurii trebuie știut care temperatură este mai mare. Din \(pV=\nu RT\): <i>în diagrama p–V, temperatura unei stări este cu atât mai mare cu cât punctul reprezentativ este mai îndepărtat de axe</i> (produsul \(pV\) mai mare).</p>
+      </div>
+      <p>Pornind de la \(\eta=1-|Q_c|/Q_p\) și folosind tabelul:</p>
+      <p>\[\eta_O=1-\frac{|Q_{41}|}{Q_{23}}=1-\frac{T_4-T_1}{T_3-T_2}=1-\frac{T_1}{T_2}\cdot\frac{\dfrac{T_4}{T_1}-1}{\dfrac{T_3}{T_2}-1}.\]</p>
+      <p>Ultima expresie s-a obținut dând forțat factor comun temperaturile mai mici. Din ecuațiile adiabatelor rezultă \(\dfrac{T_4}{T_1}=\dfrac{T_3}{T_2}\), deci \(\eta_O=1-\dfrac{T_1}{T_2}\). Dar din adiabata 1→2, \(\dfrac{T_1}{T_2}=\dfrac{1}{\varepsilon^{\gamma-1}}\):</p>
+      <div class="box def" id="d-eta-otto"><span class="tag">Randamentul ciclului Otto</span>
+        <p>\[\eta_O=1-\frac{1}{\varepsilon^{\gamma-1}}.\]</p>
+      </div>
+      <div class="box app" id="ex1621"><span class="tag">Exercițiul 1.6.2.1</span>
+        <p>Folosind ecuațiile transformărilor din tabel, arătați că \(T_1\) și \(T_3\) sunt temperaturile extreme — minimă și, respectiv, maximă — atinse la parcurgerea ciclului Otto.</p>
+        <details class="demo"><summary>Rezolvare și consecință</summary>
+          <p>Pe adiabata 1→2 volumul scade, deci \(T_2=T_1\varepsilon^{\gamma-1}&gt;T_1\). Pe izocora 2→3 se primește căldură: \(T_3&gt;T_2\). Pe adiabata 3→4: \(T_4=T_3/\varepsilon^{\gamma-1}&lt;T_3\), iar \(T_4=T_1\cdot T_3/T_2&gt;T_1\). Deci \(T_1&lt;T_2,T_4&lt;T_3\).</p>
+          <p>Dar \(T_2&lt;T_3\Rightarrow\dfrac{1}{T_2}&gt;\dfrac{1}{T_3}\Rightarrow\dfrac{T_1}{T_2}&gt;\dfrac{T_1}{T_3}\Rightarrow1-\dfrac{T_1}{T_2}&lt;1-\dfrac{T_1}{T_3}\Rightarrow\eta_O&lt;\eta_C.\)</p>
+          <p><b>Randamentul ciclului Otto este mai mic decât randamentul ciclului Carnot care funcționează între temperaturile extreme \(T_1\) și \(T_3\)</b> atinse la parcurgerea ciclului Otto.</p>
+        </details>
+      </div>
+    </div>
+    <div class="rv d1"><figure class="fig" id="fig7">
+      <div class="fig-h"><b>Fig. 7 — Ciclul Otto ideal</b><span>manual: Fig. 1.6.2.1 · η<sub>O</sub> = 1 − 1/ε<sup>γ−1</sup></span></div>
+      <div class="tabs">
+        <button class="btn sm on" data-mode="di">γ = 1,4 (aer)</button>
+        <button class="btn sm" data-mode="mono">γ = 5/3 (gaz monoatomic)</button>
+      </div>
+      <canvas class="tall"></canvas>
+      <canvas class="mini"></canvas>
+      <div class="sliders">
+        <label class="sl"><span>ε</span><input type="range" min="2" max="14" step="0.5" value="8" data-k="eps"><output>8</output></label>
+        <label class="sl"><span>T<sub>3</sub></span><input type="range" min="1000" max="2800" step="50" value="2000" data-k="T3"><output>2000 K</output></label>
+      </div>
+      <div class="ctrls">
+        <button class="btn sm primary" data-act="run"><svg class="i"><use href="#i-play"/></svg><span>Parcurge ciclul</span></button>
+        <button class="btn sm" data-act="step"><svg class="i"><use href="#i-step"/></svg>Transformarea următoare</button>
+        <button class="btn sm" data-t="carnot"><span>Ciclul Carnot între T<sub>1</sub> și T<sub>3</sub></span></button>
+      </div>
+      <dl class="ro c3">
+        <div><dt>T<sub>1</sub> / T<sub>2</sub></dt><dd data-o="T12">—</dd></div>
+        <div><dt>T<sub>3</sub> / T<sub>4</sub></dt><dd data-o="T34">—</dd></div>
+        <div><dt>Q<sub>23</sub> / |Q<sub>41</sub>|</dt><dd data-o="Q">—</dd></div>
+        <div><dt>η<sub>O</sub></dt><dd data-o="eta">—</dd></div>
+        <div><dt>η<sub>C</sub> (T<sub>1</sub>, T<sub>3</sub>)</dt><dd data-o="etaC">—</dd></div>
+        <div><dt>L (1 mol)</dt><dd data-o="L">—</dd></div>
+      </dl>
+      <div class="hint" data-o="hint">—</div>
+    </figure></div>
+  </div>
+</section>
+
+<!-- ================= 8 ================= -->
+<section class="sec" id="s8">
+  <div class="sec-head rv"><div class="num">08</div><div><div class="kicker">1.6.2 · b) ciclul Diesel · exercițiile 1.6.2.2, 1.6.2.3</div><h2>Randamentul <em>ciclului Diesel</em></h2></div></div>
+  <div class="cols">
+    <div class="text rv">
+      <p>Calculăm randamentul \(\eta_D\) al ciclului Diesel (Fig. 1.6.2.2) în funcție de rapoartele de compresie \(\varepsilon=V_1/V_2\) și \(\rho=V_3/V_2\) (raportul de destindere preliminară, la presiune constantă).</p>
+      <div class="ttable" id="tab-diesel"><table class="mini-t">
+        <caption>Tabelul 1.6.2.2 · rândul aprins = transformarea din figură</caption>
+        <thead><tr><th>Transf.</th><th>Legea</th><th>Căldura schimbată</th></tr></thead>
+        <tbody>
+          <tr data-st="0"><td>1 → 2</td><td>\(T_1V_1^{\gamma-1}=T_2V_2^{\gamma-1}\)</td><td>\(Q_{12}=0\)</td></tr>
+          <tr data-st="1"><td>2 → 3</td><td>\(\dfrac{V_2}{T_2}=\dfrac{V_3}{T_3}\)</td><td>\(Q_{23}=\nu C_p(T_3-T_2)&gt;0\)</td></tr>
+          <tr data-st="2"><td>3 → 4</td><td>\(T_3V_3^{\gamma-1}=T_4V_1^{\gamma-1}\)</td><td>\(Q_{34}=0\)</td></tr>
+          <tr data-st="3"><td>4 → 1</td><td>\(\dfrac{p_4}{T_4}=\dfrac{p_1}{T_1}\)</td><td>\(Q_{41}=\nu C_V(T_1-T_4)&lt;0\)</td></tr>
+        </tbody>
+      </table></div>
+      <p>Cu \(C_p=\gamma C_V\):</p>
+      <p>\[\eta_D=1-\frac{|Q_{41}|}{Q_{23}}=1-\frac{T_4-T_1}{\gamma(T_3-T_2)}=1-\frac{T_1}{T_2}\cdot\frac{\dfrac{T_4}{T_1}-1}{\gamma\left(\dfrac{T_3}{T_2}-1\right)}.\]</p>
+      <div class="box app" id="ex1622"><span class="tag">Exercițiul 1.6.2.2</span>
+        <p>Folosind legile transformărilor din tabel, arătați că \(\dfrac{T_1}{T_2}=\dfrac{1}{\varepsilon^{\gamma-1}};\ \dfrac{T_3}{T_2}=\rho;\ \dfrac{T_4}{T_1}=\rho^{\gamma}.\)</p>
+        <details class="demo"><summary>Rezolvare</summary>
+          <p>Primele două rezultă direct din adiabata 1→2 și din izobara 2→3. Pentru a treia, împărțim adiabatele 3→4 și 1→2: \(\dfrac{T_4}{T_1}=\dfrac{T_3}{T_2}\left(\dfrac{V_3}{V_2}\right)^{\gamma-1}=\rho\cdot\rho^{\gamma-1}=\rho^{\gamma}.\)</p>
+        </details>
+      </div>
+      <p>Cu aceste relații se obține expresia finală:</p>
+      <div class="box def" id="d-eta-diesel"><span class="tag">Randamentul ciclului Diesel</span>
+        <p>\[\eta_D=1-\frac{\rho^{\gamma}-1}{\gamma\,\varepsilon^{\gamma-1}(\rho-1)}.\]</p>
+      </div>
+      <div class="box app" id="ex1623"><span class="tag">Exercițiul 1.6.2.3</span>
+        <p>Arătați că \(T_1\) și \(T_3\) sunt temperaturile extreme ale ciclului Diesel. Randamentul ciclului Carnot care funcționează între ele este \[\eta_C=1-\frac{T_1}{T_3}=1-\frac{T_1}{T_2}\cdot\frac{T_2}{T_3}=1-\frac{1}{\varepsilon^{\gamma-1}\rho}.\]</p>
+      </div>
+      <div class="box exp" id="aplicatie-diesel"><span class="tag">Aplicație numerică</span>
+        <p>\(\varepsilon=10,\ \rho=2,\ \gamma=1{,}40\). Atunci \(\eta_D=0{,}534=53{,}4\%\); \(\eta_C=0{,}801=80{,}1\%\;(&gt;\eta_D)\). Apasă în figură <b>„Aplicația numerică”</b>.</p>
+      </div>
+    </div>
+    <div class="rv d1"><figure class="fig" id="fig8">
+      <div class="fig-h"><b>Fig. 8 — Ciclul Diesel ideal</b><span>manual: Fig. 1.6.2.2</span></div>
+      <canvas class="tall"></canvas>
+      <canvas class="mini"></canvas>
+      <div class="sliders">
+        <label class="sl"><span>ε</span><input type="range" min="6" max="24" step="0.5" value="18" data-k="eps"><output>18</output></label>
+        <label class="sl"><span>ρ</span><input type="range" min="1.1" max="4" step="0.1" value="2" data-k="rho"><output>2.0</output></label>
+        <label class="sl"><span>γ</span><input type="range" min="1.2" max="1.67" step="0.01" value="1.4" data-k="g"><output>1.40</output></label>
+      </div>
+      <div class="ctrls">
+        <button class="btn sm primary" data-act="run"><svg class="i"><use href="#i-play"/></svg><span>Parcurge ciclul</span></button>
+        <button class="btn sm" data-act="step"><svg class="i"><use href="#i-step"/></svg>Transformarea următoare</button>
+        <button class="btn sm" data-act="app"><svg class="i"><use href="#i-book"/></svg>Aplicația numerică</button>
+        <button class="btn sm" data-t="otto">Compară cu Otto (același ε)</button>
+      </div>
+      <dl class="ro c3">
+        <div><dt>η<sub>D</sub></dt><dd data-o="eta">—</dd></div>
+        <div><dt>η<sub>C</sub> (T<sub>1</sub>, T<sub>3</sub>)</dt><dd data-o="etaC">—</dd></div>
+        <div><dt>η<sub>O</sub> (același ε)</dt><dd data-o="etaO">—</dd></div>
+      </dl>
+      <div class="hint" data-o="hint">—</div>
+    </figure></div>
+  </div>
+  <div class="text rv" style="max-width:860px;margin-top:40px">
+    <div class="box ext"><span class="tag">De ce, totuși, Diesel e mai economic?</span>
+      <p>La <b>același</b> \(\varepsilon\), \(\eta_D&lt;\eta_O\) (factorul \(\frac{\rho^\gamma-1}{\gamma(\rho-1)}\) este mai mare ca 1). Dar motorul Diesel lucrează cu \(\varepsilon\) aproape dublu: un Diesel cu \(\varepsilon=18,\ \rho=2\) are \(\eta_D\approx63\%\), mai mult decât un Otto cu \(\varepsilon=9\) (\(\eta_O\approx58\%\)). Verifică în figură, cu „Compară cu Otto”.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9 ================= -->
+<section class="sec" id="s9">
+  <div class="sec-head rv"><div class="num">09</div><div><div class="kicker">1.6.2 · c) turbina cu abur · Fig. 1.6.2.3</div><h2>Ciclul <em>Rankine</em></h2></div></div>
+  <div class="cols">
+    <div class="text rv">
+      <p class="lead">Ultimul ciclu studiat este <b>ciclul Rankine</b>, care aproximează ciclul real de funcționare al <b>turbinei cu abur</b>.</p>
+      <p>În modelul din manual (Fig. 1.6.2.3), substanța de lucru este tratată ca un gaz ideal, iar ciclul are patru transformări:</p>
+      <ul>
+        <li>1 → 2: <b>izocoră</b> — creșterea presiunii (pompa de alimentare a cazanului);</li>
+        <li>2 → 3: <b>izobară</b> — vaporizarea și supraîncălzirea în cazan;</li>
+        <li>3 → 4: <b>adiabată</b> — destinderea în turbină;</li>
+        <li>4 → 1: <b>izobară</b> — condensarea, cu cedare de căldură.</li>
+      </ul>
+      <p>Rapoartele de compresie sunt \(\varepsilon=V_4/V_1\) și \(\rho=V_3/V_1\).</p>
+      <div class="ttable" id="tab-rankine"><table class="mini-t">
+        <caption>Tabel (completare) · rândul aprins = transformarea din figură</caption>
+        <thead><tr><th>Transf.</th><th>Legea</th><th>Căldura schimbată</th></tr></thead>
+        <tbody>
+          <tr data-st="0"><td>1 → 2</td><td>\(\dfrac{p_1}{T_1}=\dfrac{p_2}{T_2}\)</td><td>\(Q_{12}=\nu C_V(T_2-T_1)&gt;0\)</td></tr>
+          <tr data-st="1"><td>2 → 3</td><td>\(\dfrac{V_1}{T_2}=\dfrac{V_3}{T_3}\)</td><td>\(Q_{23}=\nu C_p(T_3-T_2)&gt;0\)</td></tr>
+          <tr data-st="2"><td>3 → 4</td><td>\(T_3V_3^{\gamma-1}=T_4V_4^{\gamma-1}\)</td><td>\(Q_{34}=0\)</td></tr>
+          <tr data-st="3"><td>4 → 1</td><td>\(\dfrac{V_4}{T_4}=\dfrac{V_1}{T_1}\)</td><td>\(Q_{41}=\nu C_p(T_1-T_4)&lt;0\)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box ext" id="d-eta-rankine"><span class="tag">Completare · calculul randamentului</span>
+        <p>Pagina 51 a manualului nu este inclusă aici; refacem calculul cu aceeași metodă. Din izobara 4→1: \(T_4=\varepsilon T_1\). Din adiabata 3→4 scrisă cu presiuni, \(p_2V_3^\gamma=p_1V_4^\gamma\Rightarrow p_2/p_1=(\varepsilon/\rho)^\gamma\), deci \(T_2=T_1(\varepsilon/\rho)^\gamma\) și \(T_3=\rho T_2\). Căldura primită este \(Q_{12}+Q_{23}\), cea cedată \(|Q_{41}|\):</p>
+        <p>\[\eta_R=1-\frac{\gamma(\varepsilon-1)}{\left(\frac{\varepsilon}{\rho}\right)^{\gamma}\left[1+\gamma(\rho-1)\right]-1}.\]</p>
+      </div>
+      <div class="box warn"><span class="tag">Atenție</span>
+        <p>Turbina reală lucrează cu apă care <b>își schimbă starea de agregare</b> (vaporizare în cazan, condensare în condensator, §1.5). Modelul cu gaz ideal păstrează forma ciclului și metoda de calcul, dar valorile numerice ale randamentului sunt doar orientative.</p>
+      </div>
+    </div>
+    <div class="rv d1"><figure class="fig" id="fig9">
+      <div class="fig-h"><b>Fig. 9 — Ciclul Rankine (model cu gaz ideal)</b><span>manual: Fig. 1.6.2.3</span></div>
+      <canvas class="tall"></canvas>
+      <canvas class="mini"></canvas>
+      <div class="sliders">
+        <label class="sl"><span>ε</span><input type="range" min="3" max="16" step="0.5" value="8" data-k="eps"><output>8</output></label>
+        <label class="sl"><span>ρ</span><input type="range" min="1.2" max="6" step="0.1" value="3" data-k="rho"><output>3.0</output></label>
+      </div>
+      <div class="ctrls">
+        <button class="btn sm primary" data-act="run"><svg class="i"><use href="#i-play"/></svg><span>Parcurge ciclul</span></button>
+        <button class="btn sm" data-act="step"><svg class="i"><use href="#i-step"/></svg>Transformarea următoare</button>
+      </div>
+      <dl class="ro c3">
+        <div><dt>η<sub>R</sub></dt><dd data-o="eta">—</dd></div>
+        <div><dt>T<sub>3</sub> / T<sub>1</sub></dt><dd data-o="Tr">—</dd></div>
+        <div><dt>η<sub>C</sub> (T<sub>1</sub>, T<sub>3</sub>)</dt><dd data-o="etaC">—</dd></div>
+      </dl>
+      <div class="hint" data-o="hint">—</div>
+    </figure></div>
+  </div>
+</section>
+
+<!-- ================= 10 ================= -->
+<section class="sec" id="s10">
+  <div class="sec-head rv"><div class="num">10</div><div><div class="kicker">Pentru profesor și elev</div><h2>Corecturi <em>la manual</em></h2></div></div>
+  <p class="text rv" style="max-width:820px;margin-bottom:28px">Următoarele formulări din paginile 45–50 ale manualului au fost corectate sau precizate în această lecție. Fiecare rând trimite la secțiunea în care apare explicația.</p>
+  <div class="rv" style="overflow-x:auto">
+  <table class="errata">
+    <thead><tr><th>Pag.</th><th>În manual</th><th>Corect</th></tr></thead>
+    <tbody>
+      <tr><td>46</td><td class="was">„Randamentul este dimensional și se exprimă în procente.”</td><td class="is">Randamentul este <b>adimensional</b> (raport a două energii); se poate exprima în procente. <a href="#s2">→ 02</a></td></tr>
+      <tr><td>47</td><td class="was">Pompa de căldură și frigiderul: eficacitatea notată \(\varepsilon\), fără alte precizări.</td><td class="is">Eficacitatea poate fi <b>mai mare ca 1</b> (nu este un randament) și nu trebuie confundată cu raportul de compresie \(\varepsilon\) din §1.6.2. <a href="#s5">→ 05</a></td></tr>
+      <tr><td>47</td><td class="was">Motorul Diesel: aerul comprimat la „circa 50 atm”, temperatura „de ordinul a 800 °C”.</td><td class="is">Ordin de mărime corect; tipic \(p\approx40\ldots60\ \mathrm{atm}\), \(t\approx600\ldots800\ ^\circ\mathrm C\), după \(\varepsilon\) și pierderile de căldură. <a href="#s4">→ 04</a></td></tr>
+      <tr><td>47</td><td class="was">Ciclul Carnot: căldura \(Q_c=\nu RT_r\ln\frac{V_4}{V_3}\) „cedată sursei reci”.</td><td class="is">Formula dă o valoare <b>negativă</b> (\(V_4&lt;V_3\)); căldura cedată, în modul, este \(|Q_c|=\nu RT_r\ln\frac{V_3}{V_4}\). <a href="#s6">→ 06</a></td></tr>
+      <tr><td>48</td><td class="was">Motorul Carnot „nu poate fi realizat practic” — fără explicație.</td><td class="is">Transformările reversibile trebuie să fie infinit de lente; motorul ar avea <b>putere nulă</b>. <a href="#s6">→ 06</a></td></tr>
+      <tr><td>49–50</td><td class="was">Fig. 1.6.2.2 (ciclul Diesel) apare pe pagina 49, lângă ciclul Otto.</td><td class="is">Figura aparține ciclului <b>Diesel</b> (pag. 50); ciclul Otto este Fig. 1.6.2.1. <a href="#s8">→ 08</a></td></tr>
+      <tr><td>50</td><td class="was">Ciclul Rankine este aproximat cu un gaz ideal.</td><td class="is">Aproximație grosieră: în turbina reală apa își schimbă starea de agregare. Valorile lui \(\eta_R\) din model sunt orientative. <a href="#s9">→ 09</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ================= 11 ================= -->
+<section class="sec" id="s11">
+  <div class="sec-head rv"><div class="num">11</div><div><div class="kicker">De reținut</div><h2>Glosar <em>și formule</em></h2></div></div>
+  <div class="gfilter rv"><input id="gq" type="search" placeholder="Filtrează glosarul…" aria-label="Filtrează glosarul" autocomplete="off"><span class="pill s" id="gcount">—</span></div>
+  <div class="rv" style="overflow-x:auto">
+  <table class="recap" id="glossary">
+    <thead><tr><th>Noțiunea</th><th>Ce înseamnă</th><th>Formulă / exemplu</th></tr></thead>
+    <tbody>
+      <tr><td><a href="#s1">Motor termic</a><small>1.6</small></td><td>dispozitiv care transformă căldura (din arderea unui combustibil) în lucru mecanic</td><td>Otto, Diesel, turbina cu abur</td></tr>
+      <tr><td><a href="#d-biterm">Transformare bitermă</a><small>1.6</small></td><td>schimb de căldură cu două termostate de temperaturi diferite</td><td>\(T_c&gt;T_r\)</td></tr>
+      <tr><td><a href="#d-sursa-calda">Sursa caldă / sursa rece</a><small>1.6</small></td><td>termostatul de la care se primește \(Q_p\) / căruia i se cedează \(Q_c\)</td><td>\(T_c\), \(T_r\)</td></tr>
+      <tr><td><a href="#d-lucru">Lucrul mecanic pe ciclu</a><small>1.6</small></td><td>principiul I pentru un ciclu (\(\Delta U=0\))</td><td>\(L=Q_p-|Q_c|\)</td></tr>
+      <tr><td><a href="#d-randament">Randament termic</a><small>1.6</small></td><td>lucrul util raportat la căldura primită; adimensional, subunitar</td><td>\(\eta=L/Q_p=1-|Q_c|/Q_p\)</td></tr>
+      <tr><td><a href="#d-ardere-int">Ardere internă / externă</a><small>1.6</small></td><td>combustibilul arde în cilindru / în afara mașinii</td><td>Otto, Diesel / mașina cu abur</td></tr>
+      <tr><td><a href="#d-ciclu-otto">Ciclul Otto</a><small>1.6</small></td><td>două adiabate și două izocore</td><td>\(\eta_O=1-1/\varepsilon^{\gamma-1}\)</td></tr>
+      <tr><td><a href="#d-ciclu-diesel">Ciclul Diesel</a><small>1.6</small></td><td>două adiabate, o izobară și o izocoră</td><td>\(\eta_D=1-\dfrac{\rho^\gamma-1}{\gamma\varepsilon^{\gamma-1}(\rho-1)}\)</td></tr>
+      <tr><td><a href="#d-admisia">Cei patru timpi</a><small>1.6</small></td><td>admisia, compresia, timpul motor (aprindere + destindere), evacuarea</td><td>2 rotații ale arborelui / ciclu</td></tr>
+      <tr><td><a href="#s7">Raport de compresie</a><small>1.6.2</small></td><td>raportul dintre volumul maxim și cel minim al cilindrului</td><td>\(\varepsilon=V_1/V_2\)</td></tr>
+      <tr><td><a href="#d-pompa">Pompă de căldură</a><small>1.6</small></td><td>mașină frigorifică folosită pentru încălzire</td><td>\(\varepsilon=|Q_c|/L\)</td></tr>
+      <tr><td><a href="#d-frigider">Frigider</a><small>1.6</small></td><td>mașină frigorifică folosită pentru răcire</td><td>\(\varepsilon=Q_p/L\)</td></tr>
+      <tr><td><a href="#d-carnot">Ciclul Carnot</a><small>1.6.1</small></td><td>două izoterme și două adiabate reversibile</td><td>\(\eta_C=1-T_r/T_c\)</td></tr>
+      <tr><td><a href="#d-teorema-carnot">Teorema lui Carnot</a><small>1.6.1</small></td><td>randamentul Carnot nu depinde de substanța de lucru și este maxim între două temperaturi date</td><td>\(\eta\le\eta_C\)</td></tr>
+      <tr><td><a href="#d-eta-rankine">Ciclul Rankine</a><small>1.6.2</small></td><td>ciclul turbinei cu abur: izocoră, izobară, adiabată, izobară</td><td>\(\varepsilon=V_4/V_1,\ \rho=V_3/V_1\)</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ================= 12 ================= -->
+<section class="sec" id="s12">
+  <div class="sec-head rv"><div class="num">12</div><div><div class="kicker">Autoevaluare</div><h2>Verifică ce <em>ai învățat</em></h2></div></div>
+  <div class="quiz rv" id="quiz"></div>
+  <div class="score rv">
+    <b id="scoreTxt">0 / 12</b>
+    <div class="bar"><i id="scoreBar"></i></div>
+    <button class="btn" id="quizReset"><svg class="i"><use href="#i-reset"/></svg>Reia testul</button>
+  </div>
+</section>
+
+<!-- ================= 13 ================= -->
+<section class="sec" id="s13">
+  <div class="sec-head rv"><div class="num">13</div><div><div class="kicker">Aplicații numerice</div><h2>Probleme <em>de verificare</em></h2></div></div>
+  <p class="text rv" style="max-width:820px;margin-bottom:20px">Scrie rezultatul (se acceptă o abatere de 2%) și apasă <b>Verifică</b>. Randamentele se scriu în procente. Dacă te blochezi, cere un <b>indiciu</b>; rezolvarea completă apare după un răspuns corect sau la cerere.</p>
+  <div class="probs rv" id="probs"></div>
+  <div class="score rv">
+    <b id="probTxt">0 / 14</b>
+    <div class="bar"><i id="probBar"></i></div>
+  </div>
+</section>
+
+<!-- ================= 14 ================= -->
+<section class="sec" id="s14" style="border-bottom:0">
+  <div class="sec-head rv"><div class="num">14</div><div><div class="kicker">Pentru aprofundare</div><h2>Resurse <em>și descărcare</em></h2></div></div>
+  <div class="links rv">
+    <a class="dl-link" href="./motoare-termice.zip" download><small>Descărcare · ZIP</small><strong>Descarcă lecția <svg class="i"><use href="#i-down"/></svg></strong><p>Toată lecția pentru calculator sau stick: dezarhivează și deschide <code>index.html</code> — funcționează fără internet.</p></a>
+    <a href="#top"><small>Navigare</small><strong>Acasă <svg class="i"><use href="#i-home"/></svg></strong><p>Înapoi la începutul lecției.</p></a>
+    <a class="other-lessons" href="../calorimetrie/"><small>Lecție anterioară · 1.2</small><strong>Calorimetrie <svg class="i"><use href="#i-book"/></svg></strong><p>Ecuația calorimetrică și laboratoare virtuale.</p></a>
+    <a class="other-lessons" href="../notiuni-termodinamice/"><small>Lecție anterioară · 1.1</small><strong>Noțiuni termodinamice de bază <svg class="i"><use href="#i-book"/></svg></strong><p>Căldura, energia internă, temperatura și transformările gazului ideal.</p></a>
+    <a href="https://phet.colorado.edu/ro/simulations/gas-properties" target="_blank" rel="noopener"><small>Simulare · PhET Colorado</small><strong>Proprietățile gazelor <svg class="i"><use href="#i-ext"/></svg></strong><p>Comprimă și încălzește un gaz: presiune, volum, temperatură.</p></a>
+    <a href="https://ro.wikipedia.org/wiki/Ciclul_Carnot" target="_blank" rel="noopener"><small>Enciclopedie · Wikipedia</small><strong>Ciclul Carnot <svg class="i"><use href="#i-ext"/></svg></strong><p>Istoric, demonstrații și diagrame T–S.</p></a>
+    <a href="https://ro.wikipedia.org/wiki/Motor_cu_ardere_intern%C4%83" target="_blank" rel="noopener"><small>Enciclopedie · Wikipedia</small><strong>Motorul cu ardere internă <svg class="i"><use href="#i-ext"/></svg></strong><p>Tipuri de motoare, istoric și componente.</p></a>
+    <a href="https://ro.wikipedia.org/wiki/Motor_Diesel" target="_blank" rel="noopener"><small>Enciclopedie · Wikipedia</small><strong>Motorul Diesel <svg class="i"><use href="#i-ext"/></svg></strong><p>Aprinderea prin compresie și aplicațiile ei.</p></a>
+    <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/thermo/heaeng.html" target="_blank" rel="noopener"><small>Referință · HyperPhysics</small><strong>Heat engines <svg class="i"><use href="#i-ext"/></svg></strong><p>Cicluri Carnot, Otto, Diesel și pompe de căldură (în engleză).</p></a>
+  </div>
+</section>
+</main>
+</div>
+
+<footer>Motoare termice — lecție interactivă de fizică, clasa a X-a (1.6) · Simulările sunt calculate în timp real · <a href="#top">↑ Acasă</a> · <a href="#" data-open-menu>Cuprins</a></footer>
+
+<script src="./js/baza.js"></script>
+<script src="./js/figuri-1.js"></script>
+<script src="./js/figuri-2.js"></script>
+<script src="./js/lectie.js"></script>
+</body>
+</html>

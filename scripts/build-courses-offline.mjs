@@ -4,8 +4,12 @@ import {preparePresentation} from './prepare-presentation.mjs';
 await preparePresentation();
 import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';import {zipDirectory} from './zip.mjs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';import vm from 'node:vm';
 const root=fileURLToPath(new URL('../',import.meta.url)),report=[];
-const courses=[['principiile-mecanicii-newtoniene','principiile-mecanicii-newtoniene.zip'],['miscarea-circulara-uniforma','miscarea-circulara-uniforma.zip'],['miscarea-rectilinie','miscarea-rectilinie-offline.zip'],['calcul-vectorial','calcul-vectorial.zip'],['unde-mecanice','unde-mecanice-offline.zip'],['viteza-si-acceleratia','viteza-si-acceleratia-offline.zip'],['miscarea-curbilinie-plana','miscarea-curbilinie-plana-offline.zip'],['notiuni-termodinamice','notiuni-termodinamice.zip'],['calorimetrie','calorimetrie.zip'],['principiul-i-al-termodinamicii','principiul-i-al-termodinamicii.zip'],['interactii-atomice','interactii-atomice.zip'],['principiul-i-aplicatii','principiul-i-aplicatii.zip'],['transformari-stare-agregare','transformari-stare-agregare.zip'],['oscilator-mecanic','oscilator-mecanic.zip'],['oscilatori-mecanici-cuplati','oscilatori-mecanici-cuplati.zip'],['compunerea-oscilatiilor','compunerea-oscilatiilor.zip'],['figuri-chladni','figuri-chladni.zip']];
-for(const [id,zipName]of courses){
+const courses=[['motoare-termice','motoare-termice.zip'],['principiile-mecanicii-newtoniene','principiile-mecanicii-newtoniene.zip'],['miscarea-circulara-uniforma','miscarea-circulara-uniforma.zip'],['miscarea-rectilinie','miscarea-rectilinie-offline.zip'],['calcul-vectorial','calcul-vectorial.zip'],['unde-mecanice','unde-mecanice-offline.zip'],['viteza-si-acceleratia','viteza-si-acceleratia-offline.zip'],['miscarea-curbilinie-plana','miscarea-curbilinie-plana-offline.zip'],['notiuni-termodinamice','notiuni-termodinamice.zip'],['calorimetrie','calorimetrie.zip'],['principiul-i-al-termodinamicii','principiul-i-al-termodinamicii.zip'],['interactii-atomice','interactii-atomice.zip'],['principiul-i-aplicatii','principiul-i-aplicatii.zip'],['transformari-stare-agregare','transformari-stare-agregare.zip'],['oscilator-mecanic','oscilator-mecanic.zip'],['oscilatori-mecanici-cuplati','oscilatori-mecanici-cuplati.zip'],['compunerea-oscilatiilor','compunerea-oscilatiilor.zip'],['figuri-chladni','figuri-chladni.zip']];
+const requested=process.argv.find(arg=>arg.startsWith('--course='))?.slice('--course='.length);
+if(requested&&!courses.some(([id])=>id===requested))throw new Error('Unknown offline course: '+requested);
+const selected=courses.filter(([id])=>!requested||id===requested);
+if(requested){try{report.push(...JSON.parse(await readFile(path.join(root,'docs/offline-courses.json'),'utf8')).courses.filter(course=>course.id!==requested));}catch(error){if(error.code!=='ENOENT')throw error;}}
+for(const [id,zipName]of selected){
  const source=path.join(root,'public/simulari',id),target=path.join(root,'outputs/offline-lessons',id);await mkdir(target,{recursive:true});
  await cp(source,target,{recursive:true,filter:file=>!file.toLowerCase().endsWith('.zip')});
  let html=withLinkPresentation(withFavicon(await readFile(path.join(source,'index.html'),'utf8')));
@@ -28,4 +32,4 @@ for(const [id,zipName]of courses){
  const destination=path.join(source,zipName);await zipDirectory(target,destination);
  report.push({id,file:'public/simulari/'+id+'/'+zipName,sha256:createHash('sha256').update(await readFile(destination)).digest('hex'),languages:['ro','en'],sharedDependencies:'inlined',localResources:true});
 }
-await writeFile(path.join(root,'docs/offline-courses.json'),JSON.stringify({builtAt:new Date().toISOString(),courses:report},null,2)+'\n');console.log(courses.length+' arhive autonome bilingve actualizate, fără cereri de traducere în rețea.');
+await writeFile(path.join(root,'docs/offline-courses.json'),JSON.stringify({builtAt:new Date().toISOString(),courses:report},null,2)+'\n');console.log(selected.length+' arhive autonome bilingve actualizate, fără cereri de traducere în rețea.');

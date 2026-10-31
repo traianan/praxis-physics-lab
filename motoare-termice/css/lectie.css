@@ -1,0 +1,395 @@
+/* Noțiuni termodinamice de bază — stiluri (aceeași identitate vizuală ca lecția „Calcul vectorial”) */
+:root{
+  --paper:#f4efe4; --paper-2:#ebe3d1; --card:#fbf8f1; --ink:#1a1d26; --ink-2:#3a3d47; --muted:#6f6a5f; --rule:#d9cfba;
+  --a:#c8402a; --b:#1f5a8a; --c:#2e7d57; --o:#b07a12; --plum:#7b3f61; --teal:#2a7f86;
+  --display:"Fraunces", Georgia, serif; --body:"Source Serif 4", Georgia, serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.38;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 .14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:rgba(200,64,42,.2)}
+a{color:var(--b);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--a)}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--a);z-index:200;width:0;transition:width .1s linear}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--rule)}
+#heroField{position:absolute;inset:0;width:100%;height:100%}
+.hero-inner{position:relative;z-index:2;max-width:1320px;width:100%;margin:0 auto;padding:80px 48px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;align-items:center}
+.eyebrow::before{content:"";width:42px;height:1px;background:var(--a)}
+.hero h1{font-family:var(--display);font-weight:300;font-size:clamp(64px,11vw,168px);line-height:.88;letter-spacing:-.035em;margin:28px 0 30px;font-variation-settings:"opsz" 144}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--a);display:block;padding-left:.5em}
+.hero .lede{max-width:540px;font-size:21px;color:var(--ink-2);line-height:1.55}
+.hero-cta{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:40px;margin-top:64px;flex-wrap:wrap}
+.hero-meta div{border-top:1px solid var(--ink);padding-top:10px;min-width:120px}
+.hero-meta b{display:block;font-family:var(--display);font-size:38px;font-weight:400;line-height:1}
+.hero-meta span{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.hero-caption{position:absolute;right:48px;bottom:32px;z-index:2;background:rgba(244,239,228,.88);padding:10px 14px;border-left:2px solid var(--a);font-family:var(--mono);font-size:11.5px;color:var(--muted);text-align:right;max-width:300px;line-height:1.5}
+.hero-caption b{color:var(--a)}
+.hero > *{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.hero .eyebrow{animation:rise .9s .1s both}.hero h1{animation:rise 1s .2s both}.hero .lede{animation:rise 1s .35s both}.hero-cta{animation:rise 1s .5s both}.hero-meta{animation:rise 1s .65s both}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ---------- Buttons ---------- */
+.btn{font-family:var(--body);font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1.4px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s,transform .15s,box-shadow .2s;white-space:nowrap}
+.btn:hover{background:var(--ink);color:var(--paper);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.primary:hover{background:var(--a);border-color:var(--a)}
+.btn.big{font-size:17px;padding:13px 24px}
+.btn.on{background:var(--ink);color:var(--paper)}
+.btn.sm{font-size:13.5px;padding:6px 12px}
+.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- Layout ---------- */
+.layout{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:0 56px;padding:0 48px}
+nav.toc{position:sticky;top:0;align-self:start;height:100vh;padding:56px 0 32px;display:flex;flex-direction:column}
+.toc h4{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;font-weight:400}
+.toc ol{list-style:none;border-left:1px solid var(--rule)}
+.toc a{display:flex;gap:12px;padding:6px 0 6px 16px;color:var(--ink-2);text-decoration:none;font-size:15px;line-height:1.3;position:relative;transition:color .2s}
+.toc a span{font-family:var(--mono);font-size:11px;color:var(--muted);padding-top:3px;min-width:18px}
+.toc a::before{content:"";position:absolute;left:-1.5px;top:6px;bottom:6px;width:2px;background:var(--a);transform:scaleY(0);transition:transform .3s}
+.toc a:hover{color:var(--a)}
+.toc a.active{color:var(--ink);font-weight:600}
+.toc a.active::before{transform:scaleY(1)}
+.toc .foot{margin-top:auto;font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.6}
+main{min-width:0}
+
+.sec{padding:110px 0 90px;border-bottom:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:end;margin-bottom:48px}
+.num{font-family:var(--display);font-style:italic;font-weight:300;font-size:104px;line-height:.8;color:var(--a);font-variation-settings:"opsz" 144}
+.sec-head .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sec h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,4vw,54px);line-height:1.02;letter-spacing:-.02em;margin-top:6px;font-variation-settings:"opsz" 96}
+.sec h2 em{font-style:italic;color:var(--b)}
+.cols{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.cols.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.cols.flip .text{order:2}
+.text p{margin-bottom:1.05em}
+.text h3{font-family:var(--display);font-weight:500;font-size:24px;margin:1.6em 0 .5em;letter-spacing:-.01em}
+.text ul,.text ol{margin:0 0 1.1em 1.2em}
+.text li{margin-bottom:.35em}
+.text li::marker{color:var(--a)}
+.lead{font-size:21px;line-height:1.55;color:var(--ink-2)}
+.box{border:1px solid var(--rule);background:var(--card);padding:18px 22px;margin:1.3em 0;position:relative}
+.box .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;position:absolute;top:-9px;left:16px;background:var(--paper);padding:0 8px;color:var(--b)}
+.box.def{border-left:3px solid var(--b)}
+.box.app{border-left:3px solid var(--c)}.box.app .tag{color:var(--c)}
+.box.warn{border-left:3px solid var(--o)}.box.warn .tag{color:var(--o)}
+.box p:last-child{margin-bottom:0}
+.katex{font-size:1.06em;position:relative}
+.katex-display{margin:.8em 0;overflow-x:auto;overflow-y:hidden;padding:4px 0}
+/* coloanele grilei nu se lățesc după formule sau tabele lungi */
+.layout>*,.cols>*,.calc>*{min-width:0}
+.vec{position:relative;display:inline-block;font-style:italic;line-height:1;padding-top:.22em}
+.vec::before{content:"";position:absolute;left:.04em;right:-.08em;top:.06em;border-top:.075em solid currentColor}
+.vec::after{content:"";position:absolute;right:-.09em;top:-.025em;width:.2em;height:.2em;border-top:.075em solid currentColor;border-right:.075em solid currentColor;transform:rotate(45deg)}
+
+/* ---------- Figures ---------- */
+.fig{position:sticky;top:62px;background:var(--card);border:1px solid var(--rule);box-shadow:0 1px 0 rgba(0,0,0,.03),0 24px 50px -30px rgba(40,30,10,.35)}
+.fig-h{display:flex;justify-content:space-between;align-items:baseline;padding:12px 18px;border-bottom:1px solid var(--rule);gap:12px}
+.fig-h b{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.fig-h b .vec,.fig-h b .sym{text-transform:none;letter-spacing:0;font-family:'Source Serif 4',Georgia,serif;font-size:14.5px;font-weight:600;color:var(--ink)}
+.fig-h b .vec{margin:0 .04em}
+.fig-h b .fx{white-space:nowrap;font:inherit;color:inherit;text-align:inherit}
+.fig-h span{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right}
+.fig canvas{display:block;width:100%;height:430px;touch-action:none}
+.fig canvas.h3d{height:470px}
+.fig canvas.mini{height:130px;border-top:1px dashed var(--rule)}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;border-top:1px solid var(--rule)}
+.sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 22px;padding:14px 18px;border-top:1px solid var(--rule)}
+.sliders:not(:has(> :not([hidden]))),.chips:not(:has(> *)){display:none}
+.sl{display:grid;grid-template-columns:auto 1fr 64px;align-items:center;gap:10px;font-size:15px}
+.sl span{font-style:italic;font-weight:600}
+.sl output{font-family:var(--mono);font-size:13px;text-align:right}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:var(--ink);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--card);border:2px solid var(--a);transition:transform .15s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--card);border:2px solid var(--a)}
+.ro{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);background:linear-gradient(var(--paper),var(--card))}
+.ro div{padding:11px 18px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-width:0}
+.ro dt{font-size:13px;color:var(--muted);font-style:italic}
+.ro dd{font-family:var(--mono);font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ro .wide{grid-column:1/-1}
+.ro .w2{grid-column:span 2}
+.ro dd.txt{font-family:var(--body);font-weight:600;white-space:normal;font-size:15.5px}
+.hint{font-family:var(--mono);font-size:11px;color:var(--muted);padding:9px 18px 9px 38px;border-top:1px solid var(--rule);position:relative;line-height:1.55}
+.hint::before{content:"";position:absolute;left:18px;top:12px;width:8px;height:8px;border-radius:50%;border:2px solid var(--a)}
+
+/* ---------- Recap ---------- */
+.recap{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--rule)}
+.recap th{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:left;color:var(--muted);font-weight:400;padding:12px 18px;border-bottom:1px solid var(--ink)}
+.recap td{padding:14px 18px;border-bottom:1px solid var(--rule);vertical-align:middle;font-size:16.5px}
+.recap td:first-child{font-family:var(--display);font-size:19px;font-weight:500}
+.recap td a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}.recap td a:hover{color:var(--a);border-color:var(--a)}
+.recap tr{transition:background .2s}
+.recap tbody tr:hover{background:rgba(31,90,138,.05)}
+.pill{font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.pill.v{color:var(--a)}.pill.s{color:var(--b)}
+
+/* ---------- Quiz ---------- */
+.quiz{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px}
+.q{background:var(--card);border:1px solid var(--rule);padding:22px 22px 18px;display:flex;flex-direction:column}
+.q .qn{font-family:var(--mono);font-size:11px;color:var(--a);letter-spacing:.14em}
+.q h4{font-family:var(--body);font-weight:600;font-size:18px;line-height:1.4;margin:6px 0 14px}
+.q .opts{display:grid;gap:8px}
+.q button{font-family:var(--body);font-size:16px;text-align:left;padding:9px 14px;border:1px solid var(--rule);background:var(--paper);cursor:pointer;color:var(--ink);transition:border-color .2s,background .2s,transform .15s;display:flex;gap:10px;align-items:center}
+.q button:hover:not(:disabled){border-color:var(--ink);transform:translateX(3px)}
+.q button b{font-family:var(--mono);font-size:12px;color:var(--muted);width:16px}
+.q button.ok{border-color:var(--c);background:rgba(46,125,87,.1)}
+.q button.bad{border-color:var(--a);background:rgba(200,64,42,.08)}
+.q button:disabled{cursor:default}
+.q .exp{font-size:15px;color:var(--ink-2);margin-top:12px;padding-top:10px;border-top:1px dashed var(--rule);display:none}
+.q.done .exp{display:block;animation:rise .4s both}
+.score{display:flex;align-items:center;gap:24px;margin-top:34px;flex-wrap:wrap}
+.score .bar{flex:1;min-width:200px;height:6px;background:var(--paper-2);position:relative}
+.score .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.score b{font-family:var(--display);font-size:34px;font-weight:400}
+
+/* ---------- Links ---------- */
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--ink)}
+.links a{display:block;padding:22px 22px 22px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);position:relative;transition:padding .25s}
+.links a:hover{padding-left:12px;color:var(--a)}
+.links a small{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.links a strong{font-family:var(--display);font-weight:500;font-size:22px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.links a p{font-size:15px;color:var(--ink-2);margin-top:4px}
+
+footer{padding:60px 48px;text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
+footer a{color:var(--muted)}
+
+/* ---------- Reveal ---------- */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+@media (max-width:1180px){
+  .layout{grid-template-columns:1fr;padding:0 28px}
+  nav.toc{display:none}
+  .cols,.cols.flip,.calc{grid-template-columns:1fr}
+  .cols.flip .text{order:0}
+  .fig{position:relative;top:0}
+  .hero-inner{padding:80px 28px}
+  .hero-caption{display:none}
+}
+@media (max-width:640px){
+    body{font-size:17px}
+  .sec-head{grid-template-columns:1fr}
+  .num{font-size:72px;margin-bottom:12px}
+  .fig canvas{height:360px}
+  .quiz{grid-template-columns:1fr}
+  .ro{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* glosarul devine o listă de fișe */
+  .recap,.recap tbody{display:block}.recap thead{display:none}
+  .recap tbody tr{display:block;padding:12px 16px;border-bottom:1px solid var(--rule)}
+  .recap td{display:block;padding:2px 0;border:0;font-size:15.5px}
+  .recap td:first-child{font-size:18px;margin-bottom:2px}.recap td:last-child{color:var(--muted)}
+  .mini-t{display:block;max-width:100%;overflow-x:auto}
+}
+.toast{position:fixed;left:50%;bottom:24px;z-index:60;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#1a1d26;color:#f4efe4;font:500 14px/1.4 'JetBrains Mono',monospace;padding:12px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(26,29,38,.25);transition:opacity .4s,transform .4s}
+.btn[hidden],.dl-link[hidden]{display:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* =====================================================================
+   Adăugiri comune lecțiilor interactive
+   ===================================================================== */
+/* Bara fixă: Acasă + sunet */
+.topbar{position:fixed;top:14px;right:18px;z-index:150;display:flex;gap:8px;align-items:center}
+.topbar .btn{background:rgba(251,248,241,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 6px 20px -10px rgba(40,30,10,.45)}
+.topbar .btn:hover{background:var(--ink);color:var(--paper)}
+.topbar .btn.on{background:var(--ink);color:var(--paper)}
+.topbar .btn.on:hover{background:var(--a);border-color:var(--a)}
+.home-btn{opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .3s,transform .3s,background .2s,color .2s}
+.home-btn.show{opacity:1;pointer-events:auto;transform:none}
+.toc .home{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;margin-bottom:26px;padding:8px 12px;border:1.4px solid var(--ink);border-radius:999px;width:max-content;transition:background .2s,color .2s}
+.toc .home:hover{background:var(--ink);color:var(--paper)}
+.toc ol a.sub{padding-left:30px;font-size:14px}
+
+/* Subtitlul manualului */
+.src{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-top:10px}
+.src b{color:var(--a);font-weight:600}
+
+/* Figuri — extensii */
+.fig canvas.tall{height:520px}
+.fig canvas.short{height:300px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:12px 18px;border-bottom:1px solid var(--rule);background:linear-gradient(var(--card),var(--paper))}
+.ctrls .sep{flex:1}
+.sl small{font-family:var(--mono);font-size:11px;color:var(--muted);font-style:normal;font-weight:400}
+.ro.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ro.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.badge{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.badge.ok{color:var(--c)}.badge.bad{color:var(--a)}
+
+/* Casete: corectură a manualului + extindere */
+.box.fix{border-left:3px solid var(--plum);background:linear-gradient(90deg,rgba(123,63,97,.06),var(--card) 40%)}
+.box.fix .tag{color:var(--plum)}
+.box.ext{border-left:3px solid var(--teal)}.box.ext .tag{color:var(--teal)}
+.box.exp{border-left:3px solid var(--o)}.box.exp .tag{color:var(--o)}
+.box ol{margin:.2em 0 .6em 1.2em}
+.demo{font-size:16px;color:var(--ink-2)}
+.demo summary{cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--b);list-style:none;display:flex;gap:8px;align-items:center}
+.demo summary::-webkit-details-marker{display:none}
+.demo summary::before{content:"+";display:inline-grid;place-items:center;width:18px;height:18px;border:1.4px solid currentColor;border-radius:50%;font-size:13px;line-height:1}
+.demo[open] summary::before{content:"−"}
+.demo[open] summary{margin-bottom:8px}
+
+/* Galerie de exemple (secțiunea 1) */
+.ex-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border-top:1px solid var(--ink);margin-top:44px}
+.ex-grid div{padding:18px 18px 18px 0;border-bottom:1px solid var(--rule)}
+.ex-grid small{font-family:var(--mono);font-size:11px;color:var(--a);letter-spacing:.12em}
+.ex-grid b{display:block;font-family:var(--display);font-weight:500;font-size:20px;margin:2px 0 4px}
+.ex-grid p{font-size:15px;color:var(--ink-2)}
+
+/* Probleme cu răspuns numeric */
+.probs{display:grid;gap:22px;margin-top:10px}
+.pb{background:var(--card);border:1px solid var(--rule);padding:22px 24px;display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 18px}
+.pb .pn{font-family:var(--display);font-style:italic;font-weight:300;font-size:46px;line-height:1;color:var(--a)}
+.pb h4{font-family:var(--body);font-weight:600;font-size:18px;line-height:1.45;margin-bottom:6px}
+.pb .lvl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-left:8px;font-weight:400}
+.pb .ans{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+.pb .ans label{font-style:italic}
+.pb .ans input{width:140px;font-family:var(--mono);font-size:15px;padding:7px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px}
+.pb .ans input:focus{outline:2px solid var(--a);outline-offset:-1px;background:#fff}
+.pb .ans .u{font-family:var(--mono);font-size:14px;color:var(--muted)}
+.pb .fb{font-family:var(--mono);font-size:13px;min-height:1.2em}
+.pb .fb.ok{color:var(--c)}.pb .fb.bad{color:var(--a)}
+.pb .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--rule);font-size:16px;color:var(--ink-2)}
+.pb .sol.on{display:block;animation:rise .4s both}
+.pb .hintp{display:none;margin-top:10px;font-size:15px;color:var(--o);font-style:italic}
+.pb .hintp.on{display:block}
+.pb.solved{border-color:var(--c);box-shadow:inset 3px 0 0 var(--c)}
+
+/* Erată */
+.errata{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--rule)}
+.errata th{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:left;color:var(--muted);font-weight:400;padding:12px 16px;border-bottom:1px solid var(--ink)}
+.errata td{padding:14px 16px;border-bottom:1px solid var(--rule);vertical-align:top;font-size:16px;line-height:1.5}
+.errata td:first-child{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.errata td.was{color:var(--ink-2);text-decoration:line-through;text-decoration-color:rgba(200,64,42,.55)}
+.errata td.is{color:var(--ink)}
+.errata td.is b{color:var(--c)}
+
+@media (max-width:640px){
+  .topbar{top:10px;right:10px}
+  .topbar .btn .lbl{display:none}
+  .pb{grid-template-columns:1fr}
+  .pb .pn{font-size:34px}
+  .fig canvas.tall{height:440px}
+  .ro.c3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .errata td:first-child{white-space:normal}
+}
+
+/* Figuri suprapuse în aceeași coloană: fără „sticky” */
+.fig.static{position:relative;top:0}
+.lbl{white-space:nowrap}
+.other-lessons[hidden]{display:none}
+
+/* =====================================================================
+   Adăugiri pentru lecția „Noțiuni termodinamice de bază”
+   ===================================================================== */
+.hero h1{font-size:clamp(54px,8.6vw,138px)}
+.hero h1 small{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:18px;font-style:normal}
+
+/* Sertarul „Cuprins” — accesibil din orice punct, pe orice ecran */
+.drawer-bg{position:fixed;inset:0;z-index:300;background:rgba(26,29,38,.38);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .3s}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:310;width:min(440px,100vw);background:var(--paper);border-left:1px solid var(--rule);box-shadow:none;transform:translateX(102%);visibility:hidden;transition:transform .38s cubic-bezier(.2,.7,.2,1),box-shadow .38s,visibility 0s .38s;display:flex;flex-direction:column}
+body.menu-open .drawer{transform:none;visibility:visible;box-shadow:-30px 0 60px -30px rgba(40,30,10,.5);transition:transform .38s cubic-bezier(.2,.7,.2,1),box-shadow .38s,visibility 0s}
+body.menu-open .drawer-bg{opacity:1;pointer-events:auto}
+body.menu-open{overflow:hidden}
+.drawer-h{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 12px;gap:12px}
+.drawer-h b{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase}
+.drawer .search{margin:0 22px 10px;position:relative}
+.drawer .search input{width:100%;font-family:var(--body);font-size:16px;padding:10px 14px 10px 38px;border:1.4px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.drawer .search input:focus{outline:2px solid var(--a);outline-offset:1px}
+.drawer .search .i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.drawer .quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 22px 12px;border-bottom:1px solid var(--rule)}
+.drawer-body{overflow-y:auto;padding:8px 22px 30px;flex:1;overscroll-behavior:contain}
+.drawer-body h5{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:400;margin:16px 0 6px}
+.drawer-body a{display:flex;gap:12px;align-items:baseline;padding:7px 10px;margin:0 -10px;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.3;font-size:16px}
+.drawer-body a:hover,.drawer-body a.kb{background:var(--card);color:var(--a)}
+.drawer-body a span{font-family:var(--mono);font-size:11px;color:var(--muted);min-width:40px}
+.drawer-body a.cur{font-weight:600}
+.drawer-body a.cur span{color:var(--a)}
+.drawer-body a small{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
+.drawer-body a.sub{padding-left:62px;font-size:14.5px;color:var(--ink-2)}
+.drawer-body mark{background:rgba(176,122,18,.22);color:inherit;padding:0 1px;border-radius:2px}
+.drawer-body .none{color:var(--muted);font-style:italic;padding:12px 0}
+.drawer-f{padding:10px 22px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--muted)}
+kbd{font-family:var(--mono);font-size:11px;border:1px solid var(--rule);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--card);color:var(--ink-2)}
+.flash{animation:flash 1.8s ease-out}
+@keyframes flash{0%,30%{background:rgba(176,122,18,.18);box-shadow:0 0 0 8px rgba(176,122,18,.18)}100%{background:transparent;box-shadow:0 0 0 8px transparent}}
+
+/* Navigare între secțiuni (generată automat) */
+.sec-nav{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:64px;border-top:1px solid var(--rule);padding-top:20px}
+.sec-nav a{display:block;text-decoration:none;color:var(--ink);padding:10px 0;transition:color .2s,transform .2s}
+.sec-nav a:hover{color:var(--a)}
+.sec-nav a.prev:hover{transform:translateX(-4px)}.sec-nav a.next:hover{transform:translateX(4px)}
+.sec-nav a.next{text-align:right;grid-column:2}
+.sec-nav small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sec-nav b{font-family:var(--display);font-weight:500;font-size:20px}
+
+/* Harta capitolului */
+.chap{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-top:1px solid var(--ink);margin:30px 0 10px}
+.chap div,.chap a{padding:14px 14px 14px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink-2);display:block}
+.chap small{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em}
+.chap b{display:block;font-family:var(--display);font-weight:500;font-size:18px;line-height:1.2;margin-top:2px}
+.chap a{color:var(--ink)}.chap a small{color:var(--a)}
+.chap a:hover b{color:var(--a)}
+.chap .later{opacity:.62}
+
+/* Glosar cu filtru */
+.gfilter{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.gfilter input{flex:1;min-width:220px;font-family:var(--body);font-size:16px;padding:9px 14px;border:1.4px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.gfilter input:focus{outline:2px solid var(--a);outline-offset:1px}
+.recap tr[hidden]{display:none}
+.recap td small{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:400}
+
+/* Molecule-chips (calculator de masă molară) */
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:12px 18px;border-top:1px solid var(--rule)}
+.chips .btn{font-family:var(--mono);font-weight:500;font-size:13px;padding:5px 11px;gap:0}
+.chips .btn sub{font-size:.75em}
+
+/* Tabel mic în text */
+.mini-t{border-collapse:collapse;margin:.6em 0 1.2em;font-size:16px;background:var(--card);border:1px solid var(--rule)}
+.mini-t th,.mini-t td{padding:7px 14px;border-bottom:1px solid var(--rule);text-align:left}
+.mini-t th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400}
+
+@media (max-width:640px){
+  .sec-nav{grid-template-columns:1fr}
+  .sec-nav a.next{grid-column:1}
+  .sec{padding:80px 0 64px}
+}
+[data-in][hidden]{display:none!important}
+
+/* ---- 1.2 Calorimetrie: tabele de laborator în figuri ---- */
+.lab-t{overflow-x:auto;padding:0 18px 14px;border-top:1px solid var(--rule)}
+.lab-t .mini-t{width:100%;margin:12px 0 0;font-size:13px}
+.lab-t .mini-t th,.lab-t .mini-t td{padding:5px 8px;white-space:nowrap;text-align:right}
+.lab-t .mini-t tbody:empty::after{content:"Tabelul se completează când apeși „Notează”.";display:block;padding:10px 0;color:var(--muted);font-size:13px;font-style:italic}
+.lab-t .mini-t tbody tr:last-child{background:rgba(196,142,40,.10)}
+.chips .chips-l{font-family:var(--mono);font-size:12px;color:var(--muted);align-self:center;margin-right:4px}
+.mini-t td.was{text-decoration:line-through;text-decoration-color:rgba(200,64,42,.6);color:var(--ink-2)}
+
+/* ---------- Motoare termice: planșe (gravuri) și tabelele ciclurilor ---------- */
+.plates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin:44px 0 8px}
+.plate{margin:0;background:var(--card);border:1px solid var(--rule);padding:12px 12px 0;box-shadow:0 1px 0 var(--rule),0 18px 40px -28px rgba(26,29,38,.45);transition:transform .35s,box-shadow .35s}
+.plate:hover{transform:translateY(-3px) rotate(-.25deg);box-shadow:0 1px 0 var(--rule),0 26px 50px -28px rgba(26,29,38,.55)}
+.plate img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;filter:sepia(.18) contrast(1.02);border:1px solid var(--rule)}
+.plate figcaption{font-size:14.5px;line-height:1.5;color:var(--ink-2);padding:10px 4px 14px;border-top:0}
+.plate figcaption b{color:var(--ink)}
+.plate.solo{margin:6px 0 22px}
+.ttable{margin:.4em 0 1.2em;max-width:100%;overflow-x:auto}
+.ttable .mini-t{width:100%;margin:0}
+.ttable caption{caption-side:top;text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);padding:0 0 6px}
+.ttable tr{transition:background .3s}
+.ttable tbody tr.on{background:rgba(200,64,42,.10);box-shadow:inset 3px 0 0 var(--a)}
+.ttable tbody tr.on td:first-child{font-weight:700;color:var(--a)}
+@media (max-width:760px){.plates{grid-template-columns:1fr;gap:20px}}
+.pset{grid-column:1/-1;margin:26px 0 4px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:14px}
+.pset::after{content:"";flex:1;height:1px;background:var(--rule)}
+.pb ol.steps{margin:0;padding-left:0;list-style:none;counter-reset:st}
+.pb ol.steps li{counter-increment:st;position:relative;padding:7px 0 7px 36px;line-height:1.6}
+.pb ol.steps li+li{border-top:1px dotted var(--rule)}
+.pb ol.steps li::before{content:counter(st);position:absolute;left:0;top:10px;width:22px;height:22px;border-radius:50%;border:1px solid var(--c);color:var(--c);font-family:var(--mono);font-size:11px;display:grid;place-items:center}

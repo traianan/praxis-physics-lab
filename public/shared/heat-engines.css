@@ -1,0 +1,24 @@
+body[data-praxis-course=motoare-termice] .layout{display:block;max-width:110rem;margin:auto;padding:0 1rem}
+body[data-praxis-course=motoare-termice] :is(.toc,.topbar,.float-tools,.progress,.hero-meta){display:none!important}
+body[data-praxis-course=motoare-termice] #praxis-original .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:1.5rem;min-height:0;margin-bottom:1rem;padding:1.5rem;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);overflow:visible}
+body[data-praxis-course=motoare-termice] #praxis-original .hero-inner{position:static;min-width:0;width:100%;max-width:none;margin:0;padding:1rem}
+body[data-praxis-course=motoare-termice] .hero .lede{font-size:1rem}
+body[data-praxis-course=motoare-termice] #praxis-original .engine-intro-diagram{display:block;min-width:0;width:100%;margin:0}
+body[data-praxis-course=motoare-termice] #praxis-original #heroField{display:block;position:static;inset:auto;width:100%;height:clamp(24rem,32vw,34rem)}
+body[data-praxis-course=motoare-termice] #praxis-original .hero-caption{display:block;position:static;width:auto;max-width:none;margin:.75rem 0 0;padding:.75rem;text-align:left;inset:auto}
+body[data-praxis-course=motoare-termice] #praxis-original .hero>.sec-nav{grid-column:1/-1;margin-top:0;width:100%}
+body[data-praxis-course=motoare-termice] #praxis-original #fig6>canvas.tall{height:28rem}
+body[data-praxis-course=motoare-termice] #praxis-original :is(#fig3,#fig7,#fig8)>canvas:not(.mini){height:28rem}
+body[data-praxis-course=motoare-termice] .carnot-key{padding:.5rem 1rem;margin:0;text-align:center;font-size:.875rem;background:var(--praxis-color-surface)}
+body[data-praxis-course=motoare-termice] .compression-intro{padding:.5rem 1rem;margin:0;font-size:var(--praxis-text-label);line-height:1.5;background:var(--praxis-color-surface)}
+body[data-praxis-course=motoare-termice] .engine-content{min-width:0;width:100%}
+body[data-praxis-course=motoare-termice] [hidden]{display:none!important}
+body[data-praxis-course=motoare-termice] .rv{opacity:1;transform:none}
+body[data-praxis-course=motoare-termice] .praxis-lab-nav{display:block;scroll-margin-top:var(--course-header)}
+body[data-praxis-course=motoare-termice] .praxis-course-sections{display:none}
+body[data-praxis-course=motoare-termice] :is(.engine-tabs,.engine-subtabs){display:flex;gap:.25rem;flex-wrap:wrap;width:100%;padding:.25rem;margin:0 0 .75rem;background:var(--praxis-color-primary-soft);border-radius:var(--praxis-radius-card)}
+body[data-praxis-course=motoare-termice] :is(.engine-tabs,.engine-subtabs) .tab{white-space:normal;flex:0 1 auto;font:600 var(--praxis-text-label)/1.4 var(--praxis-font-ui);padding:.5rem .75rem;min-height:var(--praxis-control-height);border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control);background:var(--praxis-color-surface);color:var(--praxis-color-primary)}
+body[data-praxis-course=motoare-termice] .tab[aria-selected=true]{background:var(--praxis-color-primary);color:white}
+body[data-praxis-course=motoare-termice] :is(.engine-content,.sec,.fig,.text,.cols){min-width:0;max-width:100%}
+body[data-praxis-course=motoare-termice] .tbl{overflow-x:auto}
+@media(max-width:900px){body[data-praxis-course=motoare-termice] #praxis-original .hero{grid-template-columns:minmax(0,1fr);padding:1rem}body[data-praxis-course=motoare-termice] #praxis-original .hero-inner{padding:0}body[data-praxis-course=motoare-termice] #praxis-original #heroField{height:19rem}}

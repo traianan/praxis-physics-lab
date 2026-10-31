@@ -1,5 +1,7 @@
 # Praxis · Fizică interactivă
 
+**Adăugat la 31 octombrie 2026:** [Motoare termice](docs/INTEGRARE_MOTOARE_TERMICE.md), în **Căldură și termodinamică**: nouă simulări și animația introductivă, motoare în patru timpi cu cicluri ideale Otto/Diesel, RO/EN, 12 întrebări, 14 probleme și arhivă offline. Biblioteca are **19 laboratoare**.
+
 **Adăugat la 30 octombrie 2026:** [Principiile mecanicii newtoniene](docs/INTEGRARE_PRINCIPII_NEWTON.md), în **Mișcare**: nouă taburi, șase experimente SVG, calculator de forță medie, patru probleme și 14 întrebări, RO/EN, culori deschise și versiune offline. Biblioteca are **18 laboratoare**.
 
 **Adăugat la 30 octombrie 2026:** [Mișcarea circulară uniformă](docs/INTEGRARE_MCU.md), în **Mișcare**: șapte taburi, două laboratoare, probleme și test, culori deschise, RO/EN și touch. Biblioteca cuprinde acum **18 laboratoare**.
@@ -45,7 +47,7 @@ Alternativ, în acest folder:
 npm run dev
 ```
 
-Serverul local servește catalogul și cele 18 laboratoare incluse. A deschide doar `public/index.html` cu dublu clic nu este metoda recomandată: catalogul utilizează module JavaScript și trebuie servit prin HTTP local. Simularea individuală de optică rămâne și un fișier autonom.
+Serverul local servește catalogul și cele 19 laboratoare incluse. A deschide doar `public/index.html` cu dublu clic nu este metoda recomandată: catalogul utilizează module JavaScript și trebuie servit prin HTTP local. Simularea individuală de optică rămâne și un fișier autonom.
 
 ## Tabletă sau tablă Android, prin rețeaua locală
 

@@ -78,6 +78,18 @@
         "Quiz",
         "Offline"
       ]
+    },
+    "motoare-termice": {
+      "title": "Heat engines",
+      "subtitle": "Ideal cycles, efficiency and four-stroke engines",
+      "description": "Nine animated simulations: Otto and Diesel engines, energy transfers, refrigerator, Carnot, Otto, Diesel and a teaching model of Rankine, with 12 questions and 14 problems.",
+      "alt": "Piston engine and ideal Otto and Diesel pressure–volume cycles",
+      "tags": [
+        "Thermodynamics",
+        "Engines",
+        "Ideal cycles",
+        "Offline"
+      ]
     }
   }
 }

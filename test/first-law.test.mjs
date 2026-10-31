@@ -22,7 +22,7 @@ test('equation of state solves each missing variable and rejects unphysical or a
 test('the original first-law lesson is preserved and its six topics are registered under heat',async()=>{
  const manifest=JSON.parse(await read('docs/imported-first-law.json'));const original=await read('sources/principiul-i-al-termodinamicii/original.html');assert.equal(createHash('sha256').update(original).digest('hex'),manifest.sha256);
  const body=(await read('public/simulari/principiul-i-al-termodinamicii/index.html')).split('<body')[1];assert.equal((body.match(/<section /g)||[]).length,6);assert.equal((body.match(/<canvas /g)||[]).length,12);assert.doesNotMatch(body,/manual|Mantea|Garabet|1\.3\.\d|fonts\.googleapis/);
- assert.equal(findSimulations('caldura-termodinamica').length,6);assert.equal(findSimulations('caldura-termodinamica','principiul').length,2);assert.equal(getHomeSimulations().filter(s=>s.chapter==='caldura-termodinamica').length,2);
+ assert.equal(findSimulations('caldura-termodinamica').length,7);assert.equal(findSimulations('caldura-termodinamica','principiul').length,2);assert.equal(getHomeSimulations().filter(s=>s.chapter==='caldura-termodinamica').length,2);
 });
 
 test('all three projections preserve every simple process and the orientations of its constant coordinates',async()=>{

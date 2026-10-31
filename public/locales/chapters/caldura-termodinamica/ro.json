@@ -78,6 +78,18 @@
         "Test",
         "Offline"
       ]
+    },
+    "motoare-termice": {
+      "title": "Motoare termice",
+      "subtitle": "Cicluri ideale, randament și motoare în patru timpi",
+      "description": "Nouă simulări animate: motoare Otto și Diesel, transferuri de energie, frigider, ciclurile Carnot, Otto, Diesel și modelul didactic Rankine, cu 12 întrebări și 14 probleme.",
+      "alt": "Motor cu piston și ciclurile ideale Otto și Diesel pe diagrama presiune–volum",
+      "tags": [
+        "Termodinamică",
+        "Motoare",
+        "Cicluri ideale",
+        "Offline"
+      ]
     }
   }
 }

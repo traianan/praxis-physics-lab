@@ -1,0 +1,207 @@
+{
+  "id": "motoare-termice",
+  "source": "motoare-termice",
+  "files": [
+    {
+      "path": "css/lectie.css",
+      "sha256": "5b191d4989ed16e84593a216881fb31f2c03eee49321f79a5cf0e38a1381edf5"
+    },
+    {
+      "path": "icons/apple-touch-icon.png",
+      "sha256": "d1c9039046f74c4684e93df9171acef737bf1ce8287292eb3cdd1dffc3b90a2c"
+    },
+    {
+      "path": "icons/icon-192.png",
+      "sha256": "1e76dfe731f9324212ce874bc0e1d01d55dbd3aad4d4d7149f9b576835d0bf4d"
+    },
+    {
+      "path": "icons/icon-512.png",
+      "sha256": "47b6c1e857465f1f3d79a89684eeab34a171cf2de7319fffd9f3f1195bd7d5ba"
+    },
+    {
+      "path": "icons/icon-maskable-192.png",
+      "sha256": "f00096f33dc9ad1aac3fe99e73ca1bff55dd640b9151a4305f50b6123ce6ca86"
+    },
+    {
+      "path": "icons/icon-maskable-512.png",
+      "sha256": "51e065bed912de720993eb4872b995d8f6b47bdac86d5441c66a989f9449da8b"
+    },
+    {
+      "path": "icons/icon.svg",
+      "sha256": "36acf1bd403fb40c32fe32ce5aea7a7c4222a9faa0253bd8639934ce1629c90d"
+    },
+    {
+      "path": "img/abur.jpg",
+      "sha256": "2a46f7cfd72f705dd9a6443271e965816d6221b99693052b007ab45e0b1c50aa"
+    },
+    {
+      "path": "img/diesel.jpg",
+      "sha256": "d55fedbee4160201875905c4ab49c74a236a49529050913b9b5234e869d7df73"
+    },
+    {
+      "path": "img/frigider.jpg",
+      "sha256": "fd16538daf809acde422cedb266c67515af7b1ed810127777c99bdd74f27be28"
+    },
+    {
+      "path": "img/otto.jpg",
+      "sha256": "985897308e58e6160202efc99a29926e7ea15e2f062815d9ec2433ace990b1e3"
+    },
+    {
+      "path": "index.html",
+      "sha256": "66f2f27ea67ac4814e03ca5808ff9b916399d4eb11700a83f026a82f4a84a4ce"
+    },
+    {
+      "path": "js/baza.js",
+      "sha256": "54bc25a0ecbd73bc781970ff177e92024919cd7c65fccc1f453869a6cb8743a0"
+    },
+    {
+      "path": "js/figuri-1.js",
+      "sha256": "8c408dc783e004dd08d67f45b4bb34c3d81cfed4697c5978f63c714c19125a03"
+    },
+    {
+      "path": "js/figuri-2.js",
+      "sha256": "90c5b8645571b7532b73cf886264f7e397ff7bd263f989395885fbb0d9e6b2aa"
+    },
+    {
+      "path": "js/lectie.js",
+      "sha256": "55a4aca8bebe88889a90d58eb296718502ef926cdf58775c457c7a2a1016f83c"
+    },
+    {
+      "path": "vendor/fonts/fonts.css",
+      "sha256": "8dc448cd9c89b393f84501bd6dc7285341e506caff042e78029453b0d03e284b"
+    },
+    {
+      "path": "vendor/fonts/Fraunces-italic-latin-ext-6cc8f6.woff2",
+      "sha256": "4983926d3a16544eedcd2233448bd8a43f711e7bf1fabaae8431e78e0b798635"
+    },
+    {
+      "path": "vendor/fonts/Fraunces-italic-latin-feced2.woff2",
+      "sha256": "066710ce7ed235a339d3d6cdcc8b55c0bea5632232662d83aacea25852108271"
+    },
+    {
+      "path": "vendor/fonts/Fraunces-normal-latin-39ce20.woff2",
+      "sha256": "7234ed860a9cc83045413c4faee63c960a8f2d1917adcf728119307d56e0d783"
+    },
+    {
+      "path": "vendor/fonts/Fraunces-normal-latin-ext-796716.woff2",
+      "sha256": "a2930b27d13a228bd9ab6a49269b5f800237892ad560cb9dd7fab01b1620f88e"
+    },
+    {
+      "path": "vendor/fonts/JetBrainsMono-normal-latin-480c06.woff2",
+      "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+    },
+    {
+      "path": "vendor/fonts/JetBrainsMono-normal-latin-ext-ba1653.woff2",
+      "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52"
+    },
+    {
+      "path": "vendor/fonts/SourceSerif4-italic-latin-d27161.woff2",
+      "sha256": "96e6393209728ab93c334ae739af8a040cd2006c82e8614d6465a8084db88f89"
+    },
+    {
+      "path": "vendor/fonts/SourceSerif4-italic-latin-ext-042db4.woff2",
+      "sha256": "2078240cee94e627d0e180d56d74a11b2a1d387bbd61a9b7269f0a43df756896"
+    },
+    {
+      "path": "vendor/fonts/SourceSerif4-normal-latin-3084ac.woff2",
+      "sha256": "f2ea9c12d2fe9bd3a9589b02ad2c0909da88f30938c91adc838c4f4098f9f9e0"
+    },
+    {
+      "path": "vendor/fonts/SourceSerif4-normal-latin-ext-ea2a53.woff2",
+      "sha256": "155f6e701097cc269cf8d5d7ac86795f263f1afbeb47c14d1d747108c9335389"
+    },
+    {
+      "path": "vendor/katex/contrib/auto-render.min.js",
+      "sha256": "7b57d427ac6270677daf8d8380ded2cc73336f9149a167b8e1fe0d6ef66604ae"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_AMS-Regular.woff2",
+      "sha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2",
+      "sha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2",
+      "sha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2",
+      "sha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2",
+      "sha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Main-Bold.woff2",
+      "sha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2",
+      "sha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Main-Italic.woff2",
+      "sha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+      "sha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2",
+      "sha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Math-Italic.woff2",
+      "sha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2",
+      "sha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2",
+      "sha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2",
+      "sha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Script-Regular.woff2",
+      "sha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Size1-Regular.woff2",
+      "sha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Size2-Regular.woff2",
+      "sha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Size3-Regular.woff2",
+      "sha256": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Size4-Regular.woff2",
+      "sha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0"
+    },
+    {
+      "path": "vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2",
+      "sha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b"
+    },
+    {
+      "path": "vendor/katex/katex.min.css",
+      "sha256": "f0dbfcc2940b4d788c805c1a1e117e898d2814b0f1a52bf16640543216e0964d"
+    },
+    {
+      "path": "vendor/katex/katex.min.js",
+      "sha256": "e6bfe5deebd4c7ccd272055bab63bd3ab2c73b907b6e6a22d352740a81381fd4"
+    }
+  ],
+  "adaptations": "Shared Praxis UI, ideal p–V cycle and constant-volume dwells, linear hero pressure axis, corrected Otto comparison overlay, textbook references and source PWA removed. Original sources and animation mechanisms preserved."
+}
