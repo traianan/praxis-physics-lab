@@ -2,6 +2,8 @@
 (() => {
  function prepare(canvas){
   const width=Number(canvas.dataset.logicalWidth),height=Number(canvas.dataset.logicalHeight);
+  // Keep the original annotation size; the surrounding region can pan on narrow screens.
+  const minWidth=width+'px';if(canvas.style.minWidth!==minWidth)canvas.style.minWidth=minWidth;
   const displayedWidth=canvas.getBoundingClientRect().width;
   const context=canvas.getContext('2d');
   if(displayedWidth>0){

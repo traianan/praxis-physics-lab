@@ -259,7 +259,13 @@ function snow(ctx,x,y,r,col){ctx.save();ctx.strokeStyle=col;ctx.lineWidth=1.6;ct
     const b={x:62,y:cy+ch/2+60,w:w-110,h:h-cy-ch/2-104},tmax=900,tmin=-40;
     const {X,Y}=axes(ctx,b,[0,1],[tmin,tmax],{xl:'V / V_max',yl:'t (°C)',xt:[[1/S.p.eps,'1/ε'],[1,'1']],yt:[[0,'0'],[TH[S.mode],String(TH[S.mode])]],gy:100});
     const tc=dsl?COL.c:COL.a;line(ctx,b.x,Y(TH[S.mode]),b.x+b.w,Y(TH[S.mode]),tc,1.4,[6,4]);
-    txt(ctx,dsl?'prag orientativ pentru autoaprinderea sigură a motorinei':'prag orientativ de detonație a benzinei',b.x+b.w-4,Y(TH[S.mode])-11,{align:'right',font:MONO,color:tc});
+    // Translate the whole caption before wrapping; partial lines have no locale key.
+    const captionSource=dsl?'prag orientativ pentru autoaprinderea sigură a motorinei':'prag orientativ de detonație a benzinei';
+    const caption=window.PraxisI18n?.tr(captionSource)??captionSource,captionLines=[];
+    ctx.save();ctx.font=MONO;let captionLine='';
+    for(const word of caption.split(' ')){const next=captionLine?captionLine+' '+word:word;if(captionLine&&ctx.measureText(next).width>b.w-8){captionLines.push(captionLine);captionLine=word}else captionLine=next}
+    captionLines.push(captionLine);ctx.restore();
+    captionLines.forEach((text,i)=>txt(ctx,text,b.x+b.w-4,Y(TH[S.mode])-11-(captionLines.length-1-i)*13,{align:'right',font:MONO,color:tc}));
     ctx.beginPath();for(let q=0;q<=1.0001;q+=.01){const vv=1-q*(1-1/S.p.eps),tv=T1()*Math.pow(1/vv,n()-1)-273.15;q?ctx.lineTo(X(vv),Y(tv)):ctx.moveTo(X(vv),Y(tv))}ctx.strokeStyle='rgba(111,106,95,.45)';ctx.lineWidth=1.4;ctx.setLineDash([3,4]);ctx.stroke();ctx.setLineDash([]);
     ctx.beginPath();hist.forEach((q,i)=>i?ctx.lineTo(X(q[0]),Y(q[1])):ctx.moveTo(X(q[0]),Y(q[1])));ctx.strokeStyle=COL.a;ctx.lineWidth=2.8;ctx.stroke();
     dot(ctx,X(V()),Y(t),5,COL.a);txt(ctx,`T·V${[...f(n()-1,1)].map(ch=>'⁰¹²³⁴⁵⁶⁷⁸⁹'['0123456789'.indexOf(ch)]||'˙').join('')} = const.`,X(.62),Y(tmax*.62),{font:SERIF(15),color:COL.muted});

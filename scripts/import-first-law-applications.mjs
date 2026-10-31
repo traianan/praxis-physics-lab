@@ -27,6 +27,8 @@ for(const [lang,data]of Object.entries(locales)){
  await write('public/locales/courses/'+id+'/content/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/content',messages:{},...locales[lang]},null,2)+'\n');
 }
 const extras={
+ 'Glisează orizontal pentru a explora diagrama.':'Swipe horizontally to explore the diagram.',
+ 'Diagramă':'Diagram',
  'U crește doar cu T':'U increases only with T','biat':'diatomic','Rulează încălzirea izocoră':'Running isochoric heating',
  'Modifică temperatura':'Change temperature','Aplicatii ale principiului I al termodinamicii':'Applications of the first law of thermodynamics',
  'Aplicații ale principiului I al termodinamicii':'Applications of the first law of thermodynamics',

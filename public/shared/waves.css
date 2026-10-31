@@ -28,3 +28,5 @@ body[data-praxis-course=unde-mecanice] .lesson-redesign header>div>div:first-chi
 .praxis-huygens-selector{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
 .praxis-huygens-selector button{flex:1 1 12rem}
 .praxis-huygens-selector button[aria-pressed=true]{background:var(--formula-bg,#e2eee7);border-color:var(--accent,#1d7168);box-shadow:inset 0 0 0 1px var(--accent,#1d7168)}
+/* The seismic stand's fixed 420px figure leaves too little room for paired slider controls on tablets. */
+@media(max-width:1279px){body[data-praxis-course=unde-mecanice] [class~="md:grid-cols-[420px_1fr]"]{grid-template-columns:minmax(0,1fr)}}

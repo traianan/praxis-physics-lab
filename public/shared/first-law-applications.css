@@ -22,6 +22,9 @@ body[data-praxis-course="principiul-i-aplicatii"]::before{display:none}
 #praxis-original .answer{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
 #praxis-original canvas{width:100%;height:auto;aspect-ratio:attr(width) / attr(height)}
 #praxis-original .sim-frame,#praxis-original .mol-viz{overflow:visible}
+body[data-praxis-course="principiul-i-aplicatii"] .application-canvas-pan{width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain}
+body[data-praxis-course="principiul-i-aplicatii"] .application-canvas-pan canvas{max-width:none;touch-action:auto!important}
+body[data-praxis-course="principiul-i-aplicatii"] .application-pan-hint{margin:.5rem 0;line-height:1.5;color:var(--praxis-color-muted)}
 #praxis-original .lead{font-size:1rem}
 /* Mathematical layout belongs to KaTeX; UI grid classes must not move its glyphs. */
 #praxis-original .fx{font-family:var(--praxis-font-formula);line-height:1.6;white-space:nowrap;max-width:100%;color:var(--praxis-color-ink)}

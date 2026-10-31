@@ -5,6 +5,33 @@ import vm from 'node:vm';
 import {simulations} from '../public/catalog.js';
 const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8');
 
+test('compression threshold captions stay inside the plot in English and Romanian at phone and desktop widths',async()=>{
+ const source=await read('public/simulari/motoare-termice/js/figuri-1.js');
+ const drawing=source.slice(source.indexOf('(()=>{const S=new Sim(\'#fig4\''),source.indexOf('/* ---------- Fig. 5'));
+ const translations=JSON.parse(await read('scripts/heat-engines-translations.json'));
+ const labels={diesel:'prag orientativ pentru autoaprinderea sigură a motorinei',otto:'prag orientativ de detonație a benzinei'};
+ for(const language of ['en','ro','default'])for(const mode of ['diesel','otto'])for(const width of [320,340,720]){
+  const translate=text=>language==='en'?(translations[text]??text):text,records=[];
+  let simulation,plot,threshold;
+  const ctx=new Proxy({measureText:text=>({width:translate(text).length*6.6}),createLinearGradient:()=>({addColorStop(){}})}, {get:(object,key)=>object[key]??(()=>{}),set:(object,key,value)=>(object[key]=value,true)});
+  const environment={Sim:function(){simulation=this;this.mode=mode;this.p={eps:18,t1:20};this.t={};this.out=()=>{};},Math,window:language==='default'?{}:{PraxisI18n:{tr:translate}},MONO:'11px monospace',MONOB:'bold 11px monospace',COL:{c:'green',a:'red',r:'black',muted:'gray'},TAU:Math.PI*2,grid(){},dot(){},rrect(){},heat(){return 'red';},f:String,
+   line(ctx,x1,y1,x2,y2,color,lineWidth,dash){if(dash?.[0]===6)threshold={x1,y1,x2,y2,color};},
+   axes(ctx,box,xRange,yRange){plot=box;return {X:x=>box.x+x*box.w,Y:y=>box.y+box.h-(y-yRange[0])/(yRange[1]-yRange[0])*box.h};},
+   txt(ctx,text,x,y,options){records.push({text:translate(text),x,y,...options});},SERIF:()=>''};
+  vm.runInNewContext(drawing,environment);simulation.draw(ctx,width,320);
+  const caption=records.filter(record=>record.color===(mode==='diesel'?'green':'red')&&record.font===environment.MONO);
+  assert.equal(caption.map(record=>record.text).join(' '),translate(labels[mode]),'wrapping preserves the entire translated caption in reading order');
+  for(const record of caption){
+   const textWidth=ctx.measureText(record.text).width;
+   assert.ok(record.x-textWidth>=plot.x+3,`${language}/${mode}/${width}: caption extends left of plot (${record.x-textWidth})`);
+   assert.ok(record.x<=plot.x+plot.w-3,'right edge stays inset');
+   assert.ok(record.y>=plot.y&&record.y<=threshold.y1-11,'caption stays above its physical threshold and below the cylinder');
+  }
+  assert.equal(caption.at(-1).y,threshold.y1-11,'last line retains the threshold offset');
+  assert.equal(threshold.y1,plot.y+plot.h-(mode==='diesel'?490:570)/940*plot.h,'physical temperature threshold is unchanged');
+ }
+});
+
 test('heat-engine section selector includes the introduction without changing other courses',async()=>{
  const source=await read('public/shared/course.js'),start=source.indexOf(' const entries='),end=source.indexOf(' for(const entry of entries)',start);
  for(const id of ['motoare-termice','calorimetrie']){

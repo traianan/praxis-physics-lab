@@ -70,6 +70,13 @@ base=base.replace('Math.min(.05,(now-last)/1000)','Math.max(0,Math.min(.05,(now-
 base+='\ndocument.addEventListener("visibilitychange",()=>{if(!document.hidden)ALL.filter(s=>s.vis).forEach(s=>s.loop());});\n';
 await write('public/simulari/'+id+'/js/baza.js',base);
 let figures=await read(id+'/js/figuri-1.js');
+figures=patch(figures,"    txt(ctx,dsl?'prag orientativ pentru autoaprinderea sigură a motorinei':'prag orientativ de detonație a benzinei',b.x+b.w-4,Y(TH[S.mode])-11,{align:'right',font:MONO,color:tc});",`    // Translate the whole caption before wrapping; partial lines have no locale key.
+    const captionSource=dsl?'prag orientativ pentru autoaprinderea sigură a motorinei':'prag orientativ de detonație a benzinei';
+    const caption=window.PraxisI18n?.tr(captionSource)??captionSource,captionLines=[];
+    ctx.save();ctx.font=MONO;let captionLine='';
+    for(const word of caption.split(' ')){const next=captionLine?captionLine+' '+word:word;if(captionLine&&ctx.measureText(next).width>b.w-8){captionLines.push(captionLine);captionLine=word}else captionLine=next}
+    captionLines.push(captionLine);ctx.restore();
+    captionLines.forEach((text,i)=>txt(ctx,text,b.x+b.w-4,Y(TH[S.mode])-11-(captionLines.length-1-i)*13,{align:'right',font:MONO,color:tc}));`);
 figures=patch(figures,"const CF={otto:{e:8,g:1.4,k:2.9,pm:60},diesel:{e:18,g:1.4,rho:2,pm:66}};",'const MODELS={otto:window.PraxisHeatEnginesModel.create("otto"),diesel:window.PraxisHeatEnginesModel.create("diesel")};const model=()=>MODELS[S.mode];const CF={otto:{e:3},diesel:{e:4}};');
 const pStart=figures.indexOf('  const pres=d=>'),pEnd=figures.indexOf('  const setRun=',pStart);
 if(pStart<0||pEnd<0)throw new Error('Engine pressure anchors');

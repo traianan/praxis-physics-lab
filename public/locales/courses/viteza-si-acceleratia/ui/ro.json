@@ -293,6 +293,7 @@
     "Mișcare în plan: traiectorie și vectori": "Mișcare în plan: traiectorie și vectori",
     "Legi polinomiale: grafice x(t), v(t), a(t)": "Legi polinomiale: grafice x(t), v(t), a(t)",
     "Scade {value}": "Scade {value}",
-    "Crește {value}": "Crește {value}"
+    "Crește {value}": "Crește {value}",
+    "Glisează orizontal pentru a explora diagrama.": "Glisează orizontal pentru a explora diagrama."
   }
 }
