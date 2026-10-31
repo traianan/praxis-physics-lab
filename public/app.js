@@ -24,6 +24,9 @@ function renderChapters(){
 function render(){
  const c=chapters.find(c=>c.id===selected),found=findSimulations(selected,query);
  const home=!selected&&!query.trim(),visible=home?getHomeSimulations():found;
+ document.body.dataset.libraryView=selected?'chapter':query.trim()?'search':'home';
+ $('discovery-entry').hidden=!home;
+ $('discovery-caption').textContent=simulations.find(s=>s.id==='oglinzi-si-lentile').title;
  $('home-latest').hidden=!home;
  $('breadcrumb-title').textContent=c?c.title.toLocaleUpperCase('ro'):'FIZICĂ';
  $('page-title').innerHTML=c?c.title:'Fizica prinde sens.<br><span>Când o explorezi.</span>';
@@ -57,7 +60,6 @@ const mobileGuide=document.createElement('button');mobileGuide.className='icon-b
 for(const id of ['close-guide','guide-start'])$(id).addEventListener('click',()=>guide.close());
 guide.addEventListener('click',e=>{const b=guide.getBoundingClientRect();if(e.target===guide&&(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom))guide.close();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeChapters();if(e.key==='/'&&!guide.open&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){e.preventDefault();$('search').focus();}});
-const local=['localhost','127.0.0.1','::1'].includes(location.hostname);$('runtime').innerHTML=`<i></i> ${local?'Rulează local':'Bibliotecă interactivă'}`;
 board=createBoardController({getContext:()=>({selected,query}),icon,setQuery(value){query=value;$('search').value=value;render();},navigateChapter(id){location.hash=id?'#capitol/'+id:'';readRoute();}});
 document.querySelector('.topbar').append(window.PraxisSound.createToggle());
 document.querySelector('.topbar').append(i18n.createSelector());

@@ -1,6 +1,6 @@
 # Sistemul vizual Praxis · Fizică
 
-Linkurile folosesc culoarea comună verde petrol Praxis, prin `--praxis-color-link`, inclusiv în starea vizitată. Sursa este `public/design-system/links.css`. `scripts/link-presentation.mjs` aplică aceeași regulă tuturor paginilor integrate și exporturilor autonome, fără a modifica sursele originale. Linkurile care arată ca butoane folosesc o suprafață deschisă pentru a păstra contrastul textului. Nu adăuga culori locale pentru linkuri în lecții.
+Linkurile folosesc culoarea comună verde petrol Praxis, prin `--praxis-color-link`, inclusiv în starea vizitată. Sursa este `public/design-system/links.css`. `scripts/link-presentation.mjs` aplică aceeași regulă tuturor paginilor integrate și exporturilor autonome, fără a modifica sursele originale. În lecții, linkurile care arată ca butoane folosesc o suprafață deschisă pentru a păstra contrastul textului. Nu adăuga culori locale pentru linkuri în lecții. Biblioteca poate defini rolurile explicite `--praxis-link-ink` și `--praxis-link-button-background` pentru acțiuni cu text deschis pe petrol, acțiunea mentă și navigarea selectată; valorile implicite din lecții rămân identice.
 
 Acesta este contractul comun pentru biblioteca și toate laboratoarele aplicației. Orice pagină nouă reutilizează componentele de aici. Nu creează o paletă și dimensiuni proprii pentru controalele obișnuite.
 
@@ -9,6 +9,14 @@ Acesta este contractul comun pentru biblioteca și toate laboratoarele aplicați
 Catalogul unic este `public/design-system/content-types.json`, descris în [docs/CATALOG_CONTINUT.md](docs/CATALOG_CONTINUT.md). Folosește cele șapte familii SVG locale pentru explicații, simulări/experimente, grafice, formule, probleme, verificare și resurse. Nu adăuga o pictogramă nouă doar pentru un subiect de fizică. În conținutul nou, marchează titlurile relevante cu `data-content-type="simulation"` (sau tipul din catalog); antetul comun le aplică automat pictograma. Păstrează eticheta textuală și folosește maximum o pictogramă pe titlu. `data-no-content-icon` exclude un titlu. Nu insera pictograme în formule, Canvas, jurnale editabile, fiecare paragraf sau fiecare control.
 
 Paleta interfeței folosește cerneală închisă, teal profund, fundal cald și suprafețe discrete, cu contrast de lectură. `premium.css`, împachetat în componentele comune la build, gestionează finisajul. Paletele științifice Praxis/Vii rămân semantice și se schimbă exclusiv prin registrul comun existent.
+
+## Biblioteca — Laborator de descoperire (31 octombrie 2026)
+
+`public/library.css`, încărcat exclusiv în `body.praxis-library`, definește identitatea expresivă a bibliotecii: introducere petrol `#103f3b`, ivory `#f7f5ee`, mentă `#b9f279` și auriu `#e8b85c`. Textul auriu mic folosește `#f3cb80` pentru contrast inclusiv pe zona cea mai luminoasă a gradientului. Ilustrația decorativă locală este `public/assets/discovery-field.svg`, fără animație continuă. Accesul direct din introducere deschide laboratorul real Oglinzi și lentile, prin mecanismul existent de revenire.
+
+Starea `data-library-view` (`home`, `chapter`, `search`) compactează introducerea în filtre și ascunde accesul direct când acesta ar distrage de la rezultate. Capitolele au suprafețe consecvente, pictograme colorate și selecție petrol. Cardurile experimentelor folosesc titluri închise, descrieri lizibile și acțiuni petrol cu text deschis. Sidebarul rămâne accesibil pe desktop și devine panou peste antet pe mobil. Modul tablă păstrează controllerul și paginarea existente.
+
+Biblioteca nu mai încarcă `compact.css`: regulile sale istorice de catalog suprascriau spațierea noii compoziții. Densitatea și adaptarea bibliotecii sunt gestionate în `library.css`; lecțiile păstrează `compact.css`. Fonturile rămân locale. Verificarea vizuală și funcțională este descrisă în [docs/UI_BIBLIOTECA_2026-10-31.md](docs/UI_BIBLIOTECA_2026-10-31.md).
 
 ## Fișierele care controlează aspectul
 

@@ -2,7 +2,7 @@
 (() => {
  if(window.PraxisNavigation)return;
  const base=new URL('../',document.currentScript.src);
- const text={ro:{library:'Bibliotecă',guide:'Cum folosești laboratorul',online:'Bibliotecă interactivă',local:'Rulează local',board:'Mod tablă',close:'Închide ghidul',title:'Din bibliotecă, în laborator.',steps:['Alege un capitol și deschide un laborator.','Explorează explicațiile și modifică parametrii simulărilor.','Folosește Mod tablă pentru prezentare și comenzile de afișare pentru lizibilitate.','Sunetul pornește inactiv. Îl poți activa sau opri din meniu.','Alege RO sau EN. Memorarea preferințelor depinde de acordul tău.'],navigation:'Navigare principală'},en:{library:'Library',guide:'How to use the laboratory',online:'Interactive library',local:'Running locally',board:'Board mode',close:'Close guide',title:'From the library to the laboratory.',steps:['Choose a chapter and open a laboratory.','Explore explanations and change the simulation parameters.','Use Board mode for presenting and display controls for readability.','Sound starts muted. You can turn it on or off from the menu.','Choose RO or EN. Remembering preferences depends on your consent.'],navigation:'Main navigation'}};
+ const text={ro:{library:'Bibliotecă',guide:'Cum folosești laboratorul',board:'Mod tablă',close:'Închide ghidul',title:'Din bibliotecă, în laborator.',steps:['Alege un capitol și deschide un laborator.','Explorează explicațiile și modifică parametrii simulărilor.','Folosește Mod tablă pentru prezentare și comenzile de afișare pentru lizibilitate.','Sunetul pornește inactiv. Îl poți activa sau opri din meniu.','Alege RO sau EN. Memorarea preferințelor depinde de acordul tău.'],navigation:'Navigare principală'},en:{library:'Library',guide:'How to use the laboratory',board:'Board mode',close:'Close guide',title:'From the library to the laboratory.',steps:['Choose a chapter and open a laboratory.','Explore explanations and change the simulation parameters.','Use Board mode for presenting and display controls for readability.','Sound starts muted. You can turn it on or off from the menu.','Choose RO or EN. Remembering preferences depends on your consent.'],navigation:'Main navigation'}};
  const lang=()=>window.PraxisI18n?.language==='en'?'en':'ro';
  function mount(header,{library,guide,board,sound,language,context,actions=[]}={}){
   if(!header||header.dataset.siteNavigation)return;
@@ -27,18 +27,17 @@
    guide.addEventListener('click',()=>dialog.showModal());
    dialog.addEventListener('click',event=>{if(event.target.closest('[data-guide-close]'))dialog.close();else if(event.target===dialog){const bounds=dialog.getBoundingClientRect();if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)dialog.close();}});
   }
-  const status=document.createElement('span');status.className='site-runtime';status.innerHTML='<i></i><span></span>';
   const fallbackBoard=!board;board ||= document.createElement('button');board.type='button';board.classList.add('site-menu-control','site-board-button');
   if(fallbackBoard){board.setAttribute('aria-pressed','false');board.addEventListener('click',()=>{const enabled=document.documentElement.dataset.siteBoard!=='true';document.documentElement.dataset.siteBoard=String(enabled);board.setAttribute('aria-pressed',String(enabled));window.dispatchEvent(new Event('resize'));});}
   sound ||= window.PraxisSound.createToggle();sound.classList.add('site-menu-control','site-sound-button');
   language ||= window.PraxisI18n.createSelector();language.classList.add('site-menu-control','site-language');
-  menu.append(library,guide,status,board,sound,language);row.append(logo,quickLanguage,toggle,menu);
+  menu.append(library,guide,board,sound,language);row.append(logo,quickLanguage,toggle,menu);
   function placeQuickControls(){(mobile.matches?quickLanguage:menu).append(sound,language);}
   placeQuickControls();
   menu.addEventListener('click',event=>{if(event.target.closest('.site-library-link,.site-guide-button,.site-board-button'))setOpen(false);});
   const detail=document.createElement('div');detail.className='praxis-site-context';if(context)detail.append(context);const extra=actions.filter(action=>action!==board);if(extra.length){const controls=document.createElement('div');controls.className='praxis-site-extra';controls.append(...extra);detail.append(controls);}
   header.replaceChildren(row);if(detail.childNodes.length)header.append(detail);
-  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;guide.textContent=t.guide;board.textContent=t.board;status.lastElementChild.textContent=['localhost','127.0.0.1','::1'].includes(location.hostname)?t.local:t.online;if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.map(step=>`<li>${step}</li>`).join('')}</ol>`;}
+  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;guide.textContent=t.guide;board.textContent=t.board;if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.map(step=>`<li>${step}</li>`).join('')}</ol>`;}
   render();setOpen(false);window.addEventListener('praxis-language-change',()=>{render();setOpen(expanded);});
   new ResizeObserver(()=>document.documentElement.style.setProperty('--praxis-header-height',header.getBoundingClientRect().height+'px')).observe(header);
   return header;

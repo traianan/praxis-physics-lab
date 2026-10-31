@@ -1,0 +1,251 @@
+/* Discovery identity belongs to the library; lesson palettes stay independent. */
+body.praxis-library {
+  --praxis-color-ink: #18332f;
+  --praxis-color-muted: #526963;
+  --praxis-color-canvas: #f7f5ee;
+  --praxis-color-border: #d8ded3;
+  --praxis-radius-card: 16px;
+  --ink: var(--praxis-color-ink);
+  --muted: var(--praxis-color-muted);
+  --line: var(--praxis-color-border);
+  --discovery-petrol: #103f3b;
+  --discovery-mint: #b9f279;
+  --discovery-gold: #e8b85c;
+  background: var(--praxis-color-canvas);
+}
+
+.praxis-library .shell { max-width: 1760px; grid-template-columns: 232px minmax(0, 1fr); }
+.praxis-library main { padding: 24px 36px 32px; }
+.praxis-library .breadcrumb { margin-bottom: 16px; font-size: 10px; letter-spacing: 1.6px; color: #526963; }
+.praxis-library .sidebar { position: sticky; top: 76px; align-self: start; height: calc(100dvh - 76px); max-height: calc(100dvh - 76px); overflow-y: auto; padding: 30px 18px 24px; background: #fffefa; }
+.praxis-library .sidebar { scrollbar-width: thin; scrollbar-color: #b8c8b5 transparent; }
+.praxis-library .skip-link { z-index: 500; }
+.praxis-library .sidebar-heading { color: #526963; font-size: 9px; letter-spacing: 1.4px; }
+.praxis-library .sidebar h2 { font-size: 27px; letter-spacing: -.8px; margin: 16px 10px 22px; }
+.praxis-library .subject-dot { background: #6b983d; width: 8px; height: 8px; }
+.praxis-library .chapter-link { margin: 5px 0; padding: 12px 10px; gap: 11px; min-height: 52px; font-size: 13px; border-radius: 10px; }
+.praxis-library .chapter-link.selected {
+  --praxis-link-ink: #fffefa;
+  --praxis-link-button-background: #103f3b;
+  color: #fffefa; background: #103f3b; border-color: #103f3b;
+  box-shadow: 0 5px 12px #103f3b14;
+}
+.praxis-library .chapter-link.selected .nav-icon { color: var(--discovery-mint); }
+.praxis-library .chapter-link.all { margin-bottom: 14px; gap: 9px; }
+.praxis-library .chapter-link.all > span:nth-child(2) { white-space: nowrap; font-size: 12px; }
+.praxis-library .all-icon { color: inherit; }
+.praxis-library .nav-count { color: #d8f5c0; background: #ffffff1a; font-size: 12px; border-radius: 5px; }
+.praxis-library .chapter-link:not(.selected) .nav-count { color: #265b4f; background: #e5eedb; }
+.praxis-library .nav-icon svg { stroke-width: 1.8; }
+.praxis-library .available-dot { background: #407b5c; }
+.praxis-library .chapter-link.selected .available-dot { background: var(--discovery-mint); }
+.praxis-library .sidebar-note { display: block; margin-top: 26px; padding: 20px 10px 8px; }
+.praxis-library .tiny-orbit { color: #346858; }
+.praxis-library .sidebar-note strong { font-size: 13px; }
+.praxis-library .sidebar-note p { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.praxis-library .sidebar-latest { margin-top: 18px; }
+.praxis-library .sidebar-latest a { font-size: 13px; padding: 10px 6px; }
+.praxis-library .sidebar-latest time, .praxis-library .sidebar-foot, .praxis-library .sidebar-foot span { color: var(--muted); }
+
+.praxis-library .intro {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; align-items: center; gap: 0;
+  min-height: 294px; margin: 0 0 24px; padding: 32px 36px;
+  border: 1px solid #275650; border-radius: 24px;
+  background: radial-gradient(ellipse at 85% 45%, #2a6047 0, transparent 58%), #103f3b;
+  box-shadow: 0 12px 28px -20px #103f3b80;
+}
+.praxis-library .intro-copy { position: relative; z-index: 1; flex: 1; max-width: 670px; }
+.praxis-library .intro .eyebrow { color: #f3cb80; font-size: 10px; letter-spacing: 2.1px; font-weight: 700; display: inline-flex; align-items: center; gap: 9px; }
+.praxis-library .intro .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #e8b85c; }
+.praxis-library .intro h1 { color: #fffefa; font-size: clamp(38px, 3.1vw, 56px); font-weight: 650; letter-spacing: -1.8px; line-height: 1.08; margin: 17px 0 16px; text-wrap: balance; }
+.praxis-library .intro h1 span { color: #b9f279; font-weight: 550; }
+.praxis-library .intro p { color: #d1e2d8; max-width: 455px; font-size: 15px; line-height: 1.65; margin: 0; }
+.praxis-library .intro-art { position: relative; flex: 0 0 38%; align-self: stretch; margin: -24px -36px -24px 0; opacity: 1; pointer-events: none; }
+.praxis-library .intro-art img { position: absolute; width: 126%; max-width: none; height: 126%; top: -13%; left: -13%; object-fit: contain; }
+.praxis-library .discovery-entry { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+.praxis-library .button.primary {
+  --praxis-link-ink: #fffefa;
+  --praxis-link-button-background: #17685f;
+  color: #fffefa; background: #17685f; border: 1px solid #17685f;
+  border-radius: 10px; box-shadow: none; min-height: 46px;
+  transition: background-color 160ms, border-color 160ms, box-shadow 160ms;
+}
+.praxis-library .button.primary:hover { --praxis-link-button-background: #104f49; background: #104f49; border-color: #104f49; box-shadow: 0 4px 12px #103f3b1c; }
+.praxis-library .intro .discovery-start {
+  --praxis-link-ink: #153d2a;
+  --praxis-link-button-background: #b9f279;
+  color: #153d2a; background: #b9f279; border-color: #b9f279;
+  padding: 13px 19px; font-size: 14px; font-weight: 700; border-radius: 10px;
+}
+.praxis-library .intro .discovery-start:hover { --praxis-link-button-background: #cef8a1; background: #cef8a1; border-color: #cef8a1; }
+.praxis-library .discovery-caption { color: #d1e2d8; font-size: 12px; }
+.praxis-library .intro a:focus-visible { outline-color: #fffefa; outline-offset: 5px; }
+.praxis-library[data-library-view="chapter"] .intro, .praxis-library[data-library-view="search"] .intro { min-height: 190px; padding-block: 28px; }
+.praxis-library[data-library-view="chapter"] .intro h1 { font-size: clamp(32px, 3vw, 46px); }
+.praxis-library[data-library-view="search"] .intro h1 { font-size: 36px; }
+
+.praxis-library .catalog-tools { gap: 12px; margin-bottom: 26px; }
+.praxis-library .search-box { height: 52px; width: min(560px, 65%); border-color: #c8d3c5; border-radius: 12px; background: #fffefa; padding-inline: 16px; box-shadow: 0 2px 3px #18332f03; }
+.praxis-library .search-box input { font-size: 15px; min-height: 48px; }
+.praxis-library .search-box input::placeholder { color: #65796d; }
+.praxis-library .search-box svg { stroke: #4d6e60; width: 20px; height: 20px; flex: 0 0 20px; }
+.praxis-library .search-box:focus-within { border-color: #17685f; box-shadow: 0 0 0 3px #17685f20; }
+.praxis-library .search-box kbd { color: #526963; border-color: #c8d3c5; font-size: 13px; padding: 2px 6px; }
+.praxis-library .catalog-count { color: #526963; font-size: 12px; }
+.praxis-library .section-heading { margin-bottom: 14px; }
+.praxis-library .section-heading h2 { font-size: 20px; font-weight: 650; letter-spacing: -.5px; }
+.praxis-library .section-heading > span, .praxis-library .section-heading p { font-size: 12px; color: #526963; }
+.praxis-library .chapter-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.praxis-library .chapter-card { padding: 18px 14px; gap: 12px; min-height: 92px; border-radius: 14px; border-color: #d8ded3; background: #fffefa; box-shadow: 0 2px 3px #18332f03; }
+.praxis-library .chapter-card:hover { border-color: var(--chapter); box-shadow: 0 6px 18px #18332f10; }
+.praxis-library .chapter-art { display: grid; place-items: center; flex: 0 0 40px; height: 44px; border-radius: 10px; background: color-mix(in srgb, var(--chapter) 11%, #fffefa); }
+.praxis-library .chapter-art svg { width: 28px; height: 28px; stroke-width: 1.8; }
+.praxis-library .chapter-card h3 { font-size: 13px; line-height: 1.4; margin-bottom: 6px; font-weight: 650; }
+.praxis-library .chapter-card > div > span { font-size: 11px; color: #526963; white-space: normal; line-height: 1.4; display: block; }
+.praxis-library .chapter-number { color: #65796d; font-size: 9px; right: 9px; top: 7px; }
+
+.praxis-library .simulations-section { margin-top: 32px; scroll-margin-top: 100px; }
+.praxis-library .simulation-chapter-title { display: flex; align-items: center; gap: 12px; font-size: 15px; margin: 12px 0 14px; font-weight: 650; }
+.praxis-library .simulation-chapter-title::after { content: ''; height: 1px; flex: 1; background: #d8ded3; }
+.praxis-library .view-switch { border-radius: 10px; padding: 3px; gap: 3px; background: #fffefa; }
+.praxis-library .view-switch button { width: 44px; height: 44px; border-radius: 7px; color: #526963; }
+.praxis-library .view-switch button[aria-pressed="true"] { color: #fffefa; background: #103f3b; }
+.praxis-library #simulations.simulation-grid, .praxis-library .simulation-chapter-grid { gap: 20px; }
+.praxis-library .simulation-card { border-radius: 17px; border: 1px solid #d0dace; background: #fffefa; box-shadow: 0 4px 12px -8px #18332f25; }
+.praxis-library .simulation-card:hover { border-color: #8aa58a; box-shadow: 0 10px 28px -16px #18332f3b; }
+.praxis-library .simulation-image { background: #eef5f1; border-bottom: 1px solid #d0dace; }
+.praxis-library .simulation-image > img { object-fit: contain; padding: 8px 20px; }
+.praxis-library .simulation-image:focus-visible { outline: 3px solid #17685f; outline-offset: -5px; }
+.praxis-library .image-pill { font-size: 10px; bottom: 12px; left: 14px; padding: 7px 10px; color: #264c3c; background: #fffefaf2; border-color: #c8d7c7; }
+.praxis-library .image-pill i { background: #347f53; }
+.praxis-library .simulation-body { padding: 22px 24px; }
+.praxis-library .card-eyebrow { font-size: 9px; letter-spacing: 1.5px; color: #526963; }
+.praxis-library .card-eyebrow span { color: #526963; }
+.praxis-library .simulation-body h3 { font-size: 27px; font-weight: 650; letter-spacing: -.8px; line-height: 1.2; margin: 12px 0 10px; }
+.praxis-library .simulation-body h3 a { --praxis-link-ink: #18332f; }
+.praxis-library .simulation-body h3 a:hover { --praxis-link-ink: #17685f; }
+.praxis-library .simulation-body p { font-size: 14px; line-height: 1.7; color: #526963; max-width: none; }
+.praxis-library .tags { gap: 6px; margin-top: 16px; }
+.praxis-library .tags span { color: #526349; font-size: 10px; padding: 5px 8px; background: #f0f3e9; border: 1px solid #dfe6d8; border-radius: 5px; }
+.praxis-library .simulation-action { padding: 0 24px 22px; align-items: stretch; }
+.praxis-library .simulation-action .button { font-size: 13px; justify-content: space-between; padding: 12px 16px; }
+.praxis-library .simulation-action > span { font-size: 10px; color: #526963; }
+.praxis-library .home-more { gap: 10px; margin-top: 22px; }
+.praxis-library .home-more .button { white-space: normal; text-align: left; font-size: 12px; border-radius: 10px; background: #fffefa; }
+.praxis-library .empty-state { background: #fffefa; border-color: #97ae96; border-radius: 17px; padding: 36px 24px; }
+.praxis-library .empty-state p { color: #526963; font-size: 14px; }
+.praxis-library .page-footer { display: flex; margin-top: 32px; padding-top: 20px; font-size: 11px; color: #526963; }
+.praxis-library .page-footer > span:first-child { color: #32624e; font-weight: 600; }
+
+@media (min-width: 1200px) {
+  .praxis-library #simulations.simulation-grid:not(.list-view) .simulation-card { grid-template-rows: 210px 1fr auto; }
+  .praxis-library #simulations.simulation-grid:not(.list-view) .simulation-image { height: 210px; }
+  .praxis-library #simulations.simulation-grid:not(.list-view) .simulation-body { padding: 22px 24px; }
+  .praxis-library #simulations.simulation-grid:not(.list-view) .simulation-action { padding: 0 24px 22px; }
+}
+
+/* A shared responsive card composition also makes list view usable on tablets. */
+@media (min-width: 701px) {
+  .praxis-library #simulations.list-view .simulation-card { grid-template-columns: 200px minmax(0, 1fr); grid-template-rows: 1fr auto; }
+  .praxis-library #simulations.list-view .simulation-image { grid-row: 1 / 3; height: 100%; border-bottom: 0; border-right: 1px solid #d0dace; }
+  .praxis-library #simulations.list-view .simulation-image > img { min-height: 0; padding: 12px; }
+  .praxis-library #simulations.list-view .simulation-body { padding: 20px 24px 14px; }
+  .praxis-library #simulations.list-view .simulation-body h3 { font-size: 23px; }
+  .praxis-library #simulations.list-view .simulation-action { grid-column: 2; padding: 0 24px 20px; }
+  .praxis-library #simulations.list-view .simulation-action > span { display: none; }
+}
+
+@media (max-width: 1399px) {
+  .praxis-library .shell { grid-template-columns: 218px minmax(0, 1fr); }
+  .praxis-library main { padding: 24px; }
+  .praxis-library .sidebar { padding-inline: 14px; }
+  .praxis-library .intro { padding: 28px; min-height: 280px; }
+  .praxis-library .intro h1 { font-size: 42px; }
+  .praxis-library .intro-art { flex-basis: 34%; margin-right: -28px; }
+  .praxis-library .chapter-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 851px) and (max-width: 1199px) {
+  .praxis-library .intro-art { flex-basis: 28%; }
+  .praxis-library .intro h1 { font-size: 38px; }
+  .praxis-library .chapter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .praxis-library .simulation-card { grid-template-columns: 180px minmax(0, 1fr); grid-template-rows: 1fr auto; }
+  .praxis-library .simulation-image { grid-row: 1 / 3; border-right: 1px solid #d0dace; border-bottom: 0; }
+  .praxis-library .simulation-image > img { min-height: 0; padding: 10px; }
+  .praxis-library .simulation-body h3 { font-size: 23px; }
+  .praxis-library .simulation-action { grid-column: 2; }
+  .praxis-library .simulation-action > span { display: none; }
+}
+
+@media (max-width: 850px) {
+  .praxis-library .shell { display: block; }
+  .praxis-library main { padding: 22px; }
+  .praxis-library .sidebar { position: fixed; top: 0; z-index: 400; height: 100dvh; padding: 24px 20px; max-height: 100dvh; }
+  .praxis-library #sidebar-shade { z-index: 390; }
+  .praxis-library .intro { min-height: 290px; padding: 30px; }
+  .praxis-library .intro-art { display: block; flex-basis: 32%; margin-right: -30px; }
+  .praxis-library .intro h1 { font-size: 40px; }
+  .praxis-library .chapters-button { display: inline-flex; min-height: 52px; border-radius: 12px; padding-inline: 16px; }
+  .praxis-library .search-box { flex: 1; width: auto; }
+  .praxis-library .chapter-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .praxis-library .home-latest { background: transparent; border: 0; padding: 0; margin: 26px 0 0; }
+  .praxis-library .home-latest h2 { font-size: 17px; letter-spacing: -.3px; }
+  .praxis-library .home-latest ol { gap: 0; }
+  .praxis-library .home-latest li { border-bottom: 1px solid #d8ded3; }
+  .praxis-library .home-latest a { flex-direction: row; justify-content: space-between; align-items: center; gap: 16px; min-height: 52px; padding: 10px 0; font-size: 13px; }
+  .praxis-library .home-latest time { font-size: 11px; color: #526963; flex-shrink: 0; }
+  .praxis-library .simulation-card { grid-template-columns: 200px minmax(0, 1fr); grid-template-rows: 1fr auto; }
+  .praxis-library .simulation-image { grid-row: 1 / 3; border-bottom: 0; border-right: 1px solid #d0dace; }
+  .praxis-library .simulation-image > img { min-height: 0; }
+  .praxis-library .simulation-body h3 { font-size: 23px; }
+  .praxis-library .simulation-action { grid-column: 2; }
+}
+
+@media (max-width: 600px) {
+  .praxis-library main { padding: 18px 16px 24px; }
+  .praxis-library .breadcrumb { font-size: 9px; margin-bottom: 14px; }
+  .praxis-library .intro { padding: 27px 24px; min-height: 320px; border-radius: 20px; }
+  .praxis-library .intro-copy { max-width: none; }
+  .praxis-library .intro .eyebrow { font-size: 9px; letter-spacing: 1.7px; }
+  .praxis-library .intro h1 { font-size: clamp(30px, 7.8vw, 42px); letter-spacing: -1.2px; margin-top: 20px; }
+  .praxis-library .intro p { font-size: 14px; line-height: 1.65; max-width: 330px; }
+  .praxis-library .intro-art { display: none; }
+  .praxis-library .discovery-entry { margin-top: 22px; gap: 10px 14px; }
+  .praxis-library .intro .discovery-start { font-size: 13px; min-height: 48px; }
+  .praxis-library .discovery-caption { font-size: 11px; }
+  .praxis-library[data-library-view="chapter"] .intro, .praxis-library[data-library-view="search"] .intro { min-height: 180px; padding: 25px 22px; }
+  .praxis-library[data-library-view="chapter"] .intro h1, .praxis-library[data-library-view="search"] .intro h1 { font-size: 30px; }
+  .praxis-library .catalog-tools { gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .praxis-library .chapters-button { font-size: 12px; padding-inline: 12px; }
+  .praxis-library .search-box { padding-inline: 11px; }
+  .praxis-library .search-box input { font-size: 16px; }
+  .praxis-library .search-box svg { width: 17px; flex-basis: 17px; }
+  .praxis-library .chapter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .praxis-library .chapter-card { padding: 20px 12px 14px; display: block; min-height: 142px; }
+  .praxis-library .chapter-art { width: 38px; height: 38px; margin-bottom: 12px; }
+  .praxis-library .chapter-art svg { width: 25px; height: 25px; }
+  .praxis-library .chapter-card h3 { font-size: 13px; }
+  .praxis-library .chapter-card > div > span { font-size: 11px; }
+  .praxis-library .section-heading h2 { font-size: 19px; }
+  .praxis-library .section-heading p { font-size: 11px; }
+  .praxis-library .section-heading > span { display: none; }
+  .praxis-library .simulations-section { margin-top: 28px; }
+  .praxis-library .simulation-card, .praxis-library #simulations.list-view .simulation-card { display: flex; flex-direction: column; }
+  .praxis-library .simulation-image, .praxis-library #simulations.list-view .simulation-image { height: 210px; flex: 0 0 210px; border-right: 0; border-bottom: 1px solid #d0dace; }
+  .praxis-library .simulation-image > img, .praxis-library #simulations.list-view .simulation-image > img { height: 100%; min-height: 0; padding: 8px 16px; object-fit: contain; }
+  .praxis-library .simulation-body, .praxis-library #simulations.list-view .simulation-body { padding: 22px 20px 18px; }
+  .praxis-library .simulation-body h3 { font-size: 26px; }
+  .praxis-library .simulation-body p, .praxis-library #simulations.list-view .simulation-body p { font-size: 14px; }
+  .praxis-library .simulation-action, .praxis-library #simulations.list-view .simulation-action { padding: 0 20px 20px; }
+  .praxis-library #simulations.list-view .simulation-image { display: none; }
+  .praxis-library #simulations.list-view .simulation-body h3 { font-size: 22px; }
+  .praxis-library #simulations.list-view .tags { display: none; }
+  .praxis-library .home-more { flex-direction: column; }
+  .praxis-library .home-more .button { justify-content: space-between; }
+  .praxis-library .page-footer { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .praxis-library *, .praxis-library *::before, .praxis-library *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
