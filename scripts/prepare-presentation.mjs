@@ -2,6 +2,8 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {chapters,simulations} from '../public/catalog.js';
 const root=new URL('../',import.meta.url),read=p=>readFile(new URL(p,root),'utf8'),write=(p,s)=>writeFile(new URL(p,root),s);
 export async function preparePresentation(){
+ const laboratory=(await read('public/design-system/laboratory.css')).replace(/\n\/\* praxis:lab-discovery \*\/[\s\S]*?\/\* \/praxis:lab-discovery \*\//g,'');
+ await write('public/design-system/laboratory.css',laboratory.trimEnd()+'\n/* praxis:lab-discovery */\n'+await read('public/design-system/laboratory-premium.css')+'\n/* /praxis:lab-discovery */\n');
  const catalog=JSON.parse(await read('public/design-system/content-types.json'));
  for(const lang of ['ro','en']){const path='public/locales/common/'+lang+'.json',data=JSON.parse(await read(path));for(const [ro,en]of Object.entries({'Reperele lecțiilor':'Lesson guide','Navigare în lecție':'Lesson navigation','Axa de rotație':'Rotation axis'}))data.messages[ro]=lang==='ro'?ro:en;for(const type of catalog.types)data.messages[type.ro]=lang==='ro'?type.ro:type.en;await write(path,JSON.stringify(data,null,2)+'\n');}
  const lessonChapters=Object.fromEntries(simulations.map(sim=>{const chapter=chapters.find(ch=>ch.id===sim.chapter);return [sim.id,{id:chapter.id,title:chapter.title}];}));

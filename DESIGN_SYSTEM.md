@@ -18,6 +18,16 @@ Starea `data-library-view` (`home`, `chapter`, `search`) compactează introducer
 
 Biblioteca nu mai încarcă `compact.css`: regulile sale istorice de catalog suprascriau spațierea noii compoziții. Densitatea și adaptarea bibliotecii sunt gestionate în `library.css`; lecțiile păstrează `compact.css`. Fonturile rămân locale. Verificarea vizuală și funcțională este descrisă în [docs/UI_BIBLIOTECA_2026-10-31.md](docs/UI_BIBLIOTECA_2026-10-31.md).
 
+## Laboratoarele — aceeași direcție premium (31 octombrie 2026)
+
+`public/design-system/laboratory-premium.css` extinde identitatea bibliotecii în laboratoare: introducere petrol compactă cu titlu deschis și accent mentă, navigare selectată petrol cu reper mentă, acțiuni principale contrastante și contururi/umbre discrete. Acestea sunt roluri de interfață; culorile științifice, fundalurile scenelor, legendele, formulele și textul din desene nu sunt selectate de noile reguli. Titlul deschis din `.praxis-lab-intro` este excepția explicită de contrast față de culoarea obișnuită a titlurilor din conținut.
+
+`scripts/prepare-presentation.mjs` include idempotent fișierul în `laboratory.css`, între marcajele `praxis:lab-discovery`. Astfel, toate lecțiile existente și optica autonomă reutilizează aceeași sursă fără cereri externe. Optica se regenerează prin `npm run sync:optics`. Rolurile `--praxis-link-ink` și `--praxis-link-button-background` sunt permise și acțiunilor explicite ale laboratoarelor, pentru contrast; linkurile obișnuite păstrează regula comună.
+
+Regulile de compoziție nouă exclud Mod tablă. În optica normală, documentul poate crește vertical, antetul comun rămâne vizibil, iar scena are minimum 24rem; aceasta nu se comprimă pentru a încăpea sub introducere. Scena fullscreen nativă își reia creșterea flexibilă, separat de Mod tablă. În lectura întunecată se păstrează fundalurile existente. Pe telefon, acțiunea din introducere se așază sub text.
+
+Vezi [docs/UI_LABORATOARE_2026-10-31.md](docs/UI_LABORATOARE_2026-10-31.md) pentru verificarea culorilor, a navigării și a dimensiunilor responsive.
+
 ## Fișierele care controlează aspectul
 
 - `public/design-system/tokens.css`: culori, fonturi, spațiere, raze, dimensiuni tactile și umbre.
