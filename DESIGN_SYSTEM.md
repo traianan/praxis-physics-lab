@@ -8,6 +8,8 @@ Rolurile comune noi sunt `--praxis-color-petrol`, `--praxis-color-mint`, `--prax
 
 Taburile din navigarea principală a laboratorului sunt stilizate și după `[role=tab]`, nu numai după clasa `.tab`. Importurile care folosesc `.nav-btn` sau `.tab-btn` primesc astfel aceeași selecție petrol cu reper mentă. Se păstrează starea ARIA sau clasa `.active` gestionată de lecție; această regulă nu selectează controale din scenele științifice.
 
+Antetul comun păstrează controalele la 14 px și când lecția are text 200%; acesta este un antet cu geometrie comună, iar selectorul RO/EN nu trebuie să taie textul. Modul comun de tablă al lecțiilor mărește rolurile tipografice în rem pe corpul laboratorului, nu numai containerul: corp 18 px și etichete 16 px la 100%, proporțional cu preferința de text. Optica în Mod tablă dedicat rămâne controlată de propriul mecanism 100–300%. Vezi [verificarea modurilor](docs/AFISARE_TABLA_TACTIL_TEXT_2026-11-01.md).
+
 Biblioteca folosește titlu introductiv de maximum 44 px, descrieri de 15 px și text secundar mai lizibil. Capitolele pe telefon au pictograma alături de text; textul are `min-width:0` și titlurile permit ruperea cuvintelor lungi. Navigarea Bibliotecă/Ghid din antet este discretă pe desktop; meniul mobil și țintele tactile de 44/52 px rămân funcționale. Nu se ascund preferințele sau funcții pentru a compacta interfața.
 
 Surse: `tokens.css`, `premium.css`, `laboratory-premium.css`, `library.css`, `shared/site-navigation.css` și ilustrația decorativă `assets/discovery-field.svg`. Copiile din `components.css`, `laboratory.css`, optica autonomă și arhive sunt regenerate prin scripturile existente. Vezi [verificarea aplicării](docs/UI_PRAXIS_RAFINAT_2026-11-01.md).

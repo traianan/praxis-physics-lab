@@ -26,7 +26,7 @@
       return clear.apply(this, arguments);
     };
   }
-  const visible = e => !!e && e.getClientRects().length > 0 && (!e.checkVisibility || e.checkVisibility()) && !e.closest('[hidden],[inert]') && getComputedStyle(e).visibility !== 'hidden';
+  const visible = e => !!e && (!document.querySelector('dialog[open]') || !!e.closest('dialog[open]')) && e.getClientRects().length > 0 && (!e.checkVisibility || e.checkVisibility()) && !e.closest('[hidden],[inert]') && getComputedStyle(e).visibility !== 'hidden';
   const label = e => (e.innerText || e.getAttribute('aria-label') || e.id || e.tagName).replace(/\s+/g, ' ').trim().slice(0, 95);
   const fixed = e => { for (let n = e; n && n !== document.body; n = n.parentElement) if (getComputedStyle(n).position === 'fixed') return true; return false; };
   const tabSelector = 'button,[role=tab],a[data-tab],a.tab[href^="#"]';
@@ -36,11 +36,13 @@
   };
   const signature = g => (g.closest('[role=tabpanel],section[id]')?.id || '') + '|' + (g.id || g.className || g.getAttribute('aria-label') || '') + '|' + [...g.querySelectorAll(tabSelector)].map(b => b.id || label(b)).join('~');
   function scan(state) {
-    const roots = [...document.querySelectorAll('.praxis-site-header,.praxis-lab-intro,.praxis-lab-nav,#praxis-original,.app-shell')];
+    const styleCache = new WeakMap();
+    const getComputedStyle = e => { if (!styleCache.has(e)) styleCache.set(e, window.getComputedStyle(e)); return styleCache.get(e); };
+    const roots = [...document.querySelectorAll('.praxis-site-header,.praxis-lab-intro,.praxis-lab-nav,#praxis-original,.app-shell,dialog[open]')];
     const elements = [...new Set(roots.flatMap(r => [...r.querySelectorAll('h1,h2,h3,h4,button,label,summary,figcaption,.hint,.fig-h,.workspace-note,select,input[type=number]')]))].filter(visible);
     const clipped = [];
     for (const e of elements) {
-      if (/^(SELECT|INPUT)$/.test(e.tagName) || e.closest('.katex,svg,dialog')) continue;
+      if (/^(SELECT|INPUT)$/.test(e.tagName) || e.closest('.katex,svg')) continue;
       const c = getComputedStyle(e);
       if ((e.scrollWidth > e.clientWidth + 4 && /hidden|clip/.test(c.overflowX)) || (e.scrollHeight > e.clientHeight + 4 && /hidden|clip/.test(c.overflowY))) clipped.push({text: label(e), class: String(e.className), reason: 'own overflow'});
       if (!/^(SELECT|INPUT)$/.test(e.tagName)) {
@@ -58,13 +60,14 @@
         }
       }
     }
-    const controls = elements.filter(e => /^(BUTTON|SELECT|INPUT)$/.test(e.tagName) && !fixed(e));
+    const controls = elements.filter(e => /^(BUTTON|SELECT|INPUT)$/.test(e.tagName));
+    const controlBoxes = new Map(controls.map(e => [e, e.getBoundingClientRect()]));
     const overlaps = [];
     for (let i = 0; i < controls.length; i++) for (let j = i + 1; j < controls.length; j++) {
       const a = controls[i], b = controls[j]; if (a.contains(b) || b.contains(a)) continue;
       // A sticky header naturally covers scrolled document content; that is not a peer layout collision.
       if (!!a.closest('.praxis-site-header') !== !!b.closest('.praxis-site-header')) continue;
-      const x = a.getBoundingClientRect(), y = b.getBoundingClientRect();
+      const x = controlBoxes.get(a), y = controlBoxes.get(b);
       if (Math.min(x.right, y.right) - Math.max(x.left, y.left) > 5 && Math.min(x.bottom, y.bottom) - Math.max(x.top, y.top) > 5) overlaps.push({a: label(a), b: label(b), ids: [a.id, b.id]});
       if (overlaps.length >= 15) break;
     }
