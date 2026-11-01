@@ -1,5 +1,8 @@
 /* Load after production-responsive-audit.browser.js in an isolated browser context. */
 (() => {
+ const runtimeErrors=[];
+ window.addEventListener('error',event=>runtimeErrors.push(String(event.message||event.error).slice(0,500)));
+ window.addEventListener('unhandledrejection',event=>runtimeErrors.push(String(event.reason).slice(0,500)));
  const wait = (ms=220) => new Promise(resolve=>setTimeout(resolve,ms));
  const visible = e => !!e && e.getClientRects().length>0 && (!e.checkVisibility||e.checkVisibility());
  const label = e => (e.textContent||e.getAttribute('aria-label')||e.id).trim().replace(/\s+/g,' ').slice(0,90);
@@ -54,6 +57,10 @@
     button.click();const select=dialog.querySelector('select');select.value=String(mode.size);select.dispatchEvent(new Event('change',{bubbles:true}));await wait();dialogs.push(modalState('text settings '+mode.size+'%'));dialog.querySelector('button').click();
    }
    await setBoard(mode.board);
+   if(!optics&&mode.board){
+    const dialog=document.querySelector('.praxis-course-settings'),button=[...document.querySelectorAll('.praxis-site-extra button')].find(b=>b.textContent.trim()===window.PraxisI18n.tr('Text / afișare'));
+    button.click();await wait();dialogs.push(modalState('board text settings '+mode.size+'%'));dialog.querySelector('button').click();
+   }
    if(optics&&mode.board){
     document.getElementById('board-appearance').click();const select=document.getElementById('board-size');select.value=String(mode.size/100);select.dispatchEvent(new Event('change',{bubbles:true}));await wait();dialogs.push(modalState('board appearance '+mode.size+'%'));select.closest('dialog').querySelector('button').click();await wait();
    }
@@ -62,14 +69,23 @@
     const states=[window.PraxisResponsiveAudit.scan('board scene RO')];await window.PraxisI18n.setLanguage('en');states.push(window.PraxisResponsiveAudit.scan('board scene EN'));
     for(const id of ['board-controls','board-appearance','board-more']){
      document.getElementById(id).click();await wait();states.push(modalState(id));
-     if(id==='board-controls')for(const option of [...document.getElementById('board-control-page').options]){const select=document.getElementById('board-control-page');select.value=option.value;select.dispatchEvent(new Event('change',{bubbles:true}));await wait();states.push(modalState('board control '+option.value));}
+     if(id==='board-controls')for(const option of [...document.getElementById('board-control-page').options]){
+      const select=document.getElementById('board-control-page');select.value=option.value;select.dispatchEvent(new Event('change',{bubbles:true}));await wait();states.push(modalState('board control '+option.value));
+      if(option.value==='system'){
+       const tabs=[...document.querySelectorAll('#board-controls-dialog .module-tabs button')];
+       for(const tab of tabs){tab.click();await wait();states.push(modalState('board system '+label(tab)));}
+       // Keep lenses selected so the refractive-index page is exercised as well.
+       tabs[0]?.click();await wait();
+      }
+     }
      document.querySelector('dialog[open]').querySelector('button').click();
     }
     report={states:states.length,results:states,capped:false,resources:[]};
    }else report=await window.PraxisResponsiveAudit.run({maxStates:140});
    await wait();results.push({mode:mode.name,requested:mode,metadata:metadata(),dialogs,...report});
   }
-  return {url:location.href,width:innerWidth,height:innerHeight,optics,results};
+  await setBoard(false);await wait();
+  return {url:location.href,width:innerWidth,height:innerHeight,optics,results,runtimeErrors:[...new Set(runtimeErrors)],exit:{metadata:metadata(),scan:window.PraxisResponsiveAudit.scan('exit board mode')}};
  }
  window.PraxisDisplayAudit={run,metadata,modalState};
 })();

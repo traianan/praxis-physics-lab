@@ -1358,6 +1358,11 @@ body[data-praxis-course=miscarea-rectilinie] #praxis-original .pb-answers>*{min-
 @media(max-width:900px){body[data-praxis-course=miscarea-rectilinie] #praxis-original .pb-layout{grid-template-columns:minmax(0,1fr)}}
 body[data-praxis-course=miscarea-rectilinie] #praxis-original .formula{min-width:0;max-width:100%;flex-wrap:wrap;gap:.5rem 1rem}
 body[data-praxis-course=miscarea-rectilinie] #praxis-original .formula .eq{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+/* Graph captions must reflow with the lesson's text size instead of escaping the card. */
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .plot-card h4{display:block;overflow-wrap:anywhere}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .plot-card h4>.sw{display:block;margin-bottom:.25em}
+body[data-praxis-course=miscarea-rectilinie] #praxis-original .plot-card h4>.note{display:block;margin:.15em 0 0;font-size:.75em;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:600px){body[data-praxis-course=miscarea-rectilinie] #praxis-original :is(.sim-main,.plot-card){padding:8px}}
 @media(max-width:65rem){
  body[data-praxis-laboratory] #praxis-original div:has(>table[data-praxis-responsive]){min-width:0;max-width:100%;overflow:visible!important}
  body[data-praxis-laboratory] #praxis-original table[data-praxis-responsive]{display:block;min-width:0!important;width:100%;max-width:100%;table-layout:fixed}
