@@ -836,12 +836,13 @@ input[type=range] { margin-top:10px; }
 
 </style>
 <style>:root{
- --praxis-color-ink:#1d3339;--praxis-color-muted:#526970;--praxis-color-primary:#17685f;--praxis-color-primary-hover:#104f49;--praxis-color-primary-soft:#e4eeea;
- --praxis-color-surface:#fffefa;--praxis-color-canvas:#f5f5f1;--praxis-color-border:#d5e0dc;--praxis-color-focus:#297f75;--praxis-color-error:#a33d35;
+ --praxis-color-ink:#18332f;--praxis-color-muted:#586d63;--praxis-color-primary:#17685f;--praxis-color-primary-hover:#104f49;--praxis-color-primary-soft:#edf2e9;
+ --praxis-color-surface:#fffefa;--praxis-color-canvas:#f7f5ee;--praxis-color-border:#d8ded3;--praxis-color-focus:#297f75;--praxis-color-error:#a33d35;
+ --praxis-color-petrol:#103f3b;--praxis-color-mint:#c5e8a5;--praxis-color-mint-hover:#d3efba;--praxis-color-gold:#e8b85c;
  --praxis-font-ui:Segoe UI,Arial,sans-serif;--praxis-font-formula:Georgia,Times New Roman,serif;
  --praxis-text-small:13px;--praxis-text-body:16px;--praxis-text-label:14px;--praxis-text-heading:1.5rem;--praxis-text-title:1.875rem;--praxis-text-title-compact:1.625rem;--praxis-text-subheading:1.25rem;--praxis-text-minor-heading:1.125rem;
  --praxis-space-1:4px;--praxis-space-2:8px;--praxis-space-3:12px;--praxis-space-4:16px;--praxis-space-5:24px;--praxis-space-6:32px;
- --praxis-radius-control:7px;--praxis-radius-card:12px;--praxis-radius-dialog:15px;--praxis-target-min:44px;--praxis-slider-thumb:26px;
+ --praxis-radius-control:10px;--praxis-radius-card:14px;--praxis-radius-dialog:16px;--praxis-target-min:44px;--praxis-slider-thumb:26px;
  --praxis-optics-calm-object:#ce963f;--praxis-optics-calm-image:#4f9698;--praxis-optics-vivid-object:#ffad00;--praxis-optics-vivid-image:#005be8;
  --praxis-motion-fast:150ms;--praxis-shadow-dialog:0 25px 100px #213d3426;
 }
@@ -878,13 +879,13 @@ input[type=range]::-moz-range-thumb{width:var(--praxis-slider-thumb);height:var(
 [data-content-icon="formula"]{--content-icon:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.65%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M19%204H6l8%208-8%208h13%22%2F%3E%3C%2Fsvg%3E")}
 [data-content-icon="link"]{--content-icon:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.65%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M10%2013a4%204%200%200%200%206%200l4-4a4%204%200%200%200-6-6l-2%202M14%2011a4%204%200%200%200-6%200l-4%204a4%204%200%200%200%206%206l2-2%22%2F%3E%3C%2Fsvg%3E")}
 /* Quiet hierarchy: warm paper, deep teal, readable slate, and restrained depth. */
-:root{--praxis-surface-raised:#fffefa;--praxis-surface-muted:#eef2ef;--praxis-accent-brass:#ae8545;--praxis-shadow-card:0 2px 4px #173c3205,0 12px 32px -24px #173c3226;--praxis-shadow-hover:0 8px 28px -16px #173c3238}
+:root{--praxis-surface-raised:var(--praxis-color-surface);--praxis-surface-muted:var(--praxis-color-primary-soft);--praxis-accent-brass:#ae8545;--praxis-shadow-card:0 2px 4px #173c3205,0 12px 32px -24px #173c3226;--praxis-shadow-hover:0 8px 28px -16px #173c3238}
 body{background:var(--praxis-color-canvas)}
 .topbar,.praxis-lab-header.topbar{background:var(--praxis-surface-raised);border-bottom-color:var(--praxis-color-border);box-shadow:0 1px 0 #fff8,0 4px 20px #173c3204}
 .chapter-card,.simulation-card,.scene-card,.control-panel,.result-card,body[data-praxis-laboratory] #praxis-original :is(.card,.demo,.fig,.panel,.quiz-shell){box-shadow:var(--praxis-shadow-card)}
 .chapter-card,.simulation-card{background:var(--praxis-surface-raised);transition:border-color 150ms ease,box-shadow 150ms ease}
 .chapter-card:hover,.simulation-card:hover{border-color:var(--praxis-color-primary);box-shadow:var(--praxis-shadow-hover)}
-.button.primary{background:linear-gradient(145deg,#217768,#14584f);border-color:#14584f;box-shadow:0 2px 4px #173c3214}
+.button.primary{background:var(--praxis-color-primary);border-color:var(--praxis-color-primary);box-shadow:none}
 .button.primary:hover{background:var(--praxis-color-primary-hover)}
 .button.secondary,.praxis-language{background:var(--praxis-surface-raised)}
 .praxis-course-tools{background:var(--praxis-surface-muted);border-color:var(--praxis-color-border)}
@@ -973,7 +974,7 @@ body[data-praxis-laboratory] :is(.ro dd,.sl output){font:600 var(--praxis-text-l
 body[data-praxis-laboratory] .praxis-lab-header *{font-family:var(--praxis-font-ui)!important}
 body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;font-size:var(--praxis-text-label)!important}
 /* praxis:lab-discovery */
-/* Discovery chrome only: never select drawing primitives or scientific color tokens. */
+/* Praxis rafinat: presentation only; scientific colours and drawing surfaces stay independent. */
 :root:not([data-board=true]):not([data-theme=dark]) body[data-praxis-laboratory] {
   background: #f7f5ee;
 }
@@ -983,20 +984,20 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   isolation: isolate;
   overflow: hidden;
   width: calc(100% - 48px);
-  margin: 18px 24px 16px;
-  padding: 24px 28px;
-  min-height: 120px;
+  margin: 16px 24px 14px;
+  padding: 18px 24px;
+  min-height: 96px;
   border: 1px solid #275650;
   border-radius: 18px;
-  background: radial-gradient(ellipse at 100% 0, #2a6047, transparent 65%), #103f3b;
+  background: var(--praxis-color-petrol);
   box-shadow: 0 10px 24px -20px #103f3b70;
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro > div {
   position: relative;
   z-index: 1;
   min-width: 0;
-  padding-left: 18px;
-  border-left: 3px solid #b9f279;
+  padding-left: 16px;
+  border-left: 3px solid var(--praxis-color-mint);
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro::after {
   content: '';
@@ -1009,7 +1010,7 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   top: -88px;
   border: 1px solid #e8b85c50;
   border-radius: 50%;
-  box-shadow: 0 0 0 24px #b9f2790b, 0 0 0 48px #b9f27908;
+  box-shadow: 0 0 0 24px #c5e8a50b, 0 0 0 48px #c5e8a508;
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro h1 {
   color: #fffefa !important;
@@ -1022,7 +1023,7 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   line-height: 1.6;
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro .eyebrow { color: #f3cb80 !important; }
-:root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro .title-dot { color: #b9f279; }
+:root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro .title-dot { color: var(--praxis-color-mint); }
 
 /* The optical workbench must grow with its chrome rather than compress its scene. */
 :root:not([data-board=true]):has(body[data-praxis-laboratory] > .app-shell) {
@@ -1068,7 +1069,7 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
 /* Preserve wrapping and the native controllers of every lesson's navigation. */
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-nav {
   background: transparent;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-nav :is(.tabs,.module-tabs) {
   flex-wrap: wrap;
@@ -1077,11 +1078,13 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   gap: 5px;
   border: 1px solid #d4ddd0;
   border-radius: 12px;
-  background: #edf1e7;
+  background: var(--praxis-color-primary-soft);
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-nav :is(.tab,.module-tabs button) {
   --praxis-link-ink: #235d51;
-  --praxis-link-button-background: #fffefa;
+  --praxis-link-button-background: transparent;
+  background: transparent !important;
+  border-color: transparent !important;
   border-radius: 8px !important;
   white-space: normal;
   max-width: 100%;
@@ -1093,7 +1096,7 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   background: #103f3b !important;
   color: #fffefa !important;
   border-color: #103f3b !important;
-  box-shadow: inset 0 -3px #b9f279 !important;
+  box-shadow: inset 0 -3px var(--praxis-color-mint) !important;
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] #praxis-original [role=tablist] :is(button[aria-selected=true],button.active,a.active) {
   --praxis-link-ink: #fffefa;
@@ -1101,14 +1104,14 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   background: #103f3b !important;
   color: #fffefa !important;
   border-color: #103f3b !important;
-  box-shadow: inset 0 -3px #b9f279 !important;
+  box-shadow: inset 0 -3px var(--praxis-color-mint) !important;
 }
 :root:not([data-board=true]):not([data-theme=dark]) body[data-praxis-laboratory] .praxis-course-tools {
-  background: #edf1e7;
-  border: 1px solid #d4ddd0;
+  background: var(--praxis-color-surface);
+  border: 1px solid var(--praxis-color-border);
   border-radius: 12px;
-  padding: 10px 14px;
-  box-shadow: 0 2px 5px #18332f04;
+  padding: 8px 12px;
+  box-shadow: none;
 }
 
 /* Elevate the frame around a scene, keeping its drawing surface untouched. */
@@ -1141,10 +1144,10 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro :is(.button.primary,.btn.primary,button.primary) {
   --praxis-link-ink: #153d2a;
-  --praxis-link-button-background: #b9f279;
-  background: #b9f279 !important;
+  --praxis-link-button-background: var(--praxis-color-mint);
+  background: var(--praxis-color-mint) !important;
   color: #153d2a !important;
-  border-color: #b9f279 !important;
+  border-color: var(--praxis-color-mint) !important;
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-nav :is(a,button,select):focus-visible {
   outline: 3px solid #297f75 !important;
@@ -1154,9 +1157,9 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
 @media (max-width: 800px) {
   :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro {
     width: calc(100% - 32px);
-    margin: 14px 16px;
-    padding: 21px 20px;
-    min-height: 112px;
+    margin: 12px 16px;
+    padding: 18px 20px;
+    min-height: 96px;
     border-radius: 16px;
   }
   :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro > div { padding-left: 14px; }

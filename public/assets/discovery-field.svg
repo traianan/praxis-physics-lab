@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" fill="none">
   <defs>
-    <radialGradient id="halo"><stop stop-color="#B9F279" stop-opacity=".23"/><stop offset="1" stop-color="#B9F279" stop-opacity="0"/></radialGradient>
-    <radialGradient id="sphere" cx=".32" cy=".25" r=".8"><stop stop-color="#F1FFD9"/><stop offset=".38" stop-color="#B9F279"/><stop offset="1" stop-color="#528E57"/></radialGradient>
-    <linearGradient id="wave" x1="66" y1="290" x2="558" y2="100" gradientUnits="userSpaceOnUse"><stop stop-color="#B9F279" stop-opacity=".05"/><stop offset=".45" stop-color="#B9F279"/><stop offset="1" stop-color="#E8B85C"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#C5E8A5" stop-opacity=".23"/><stop offset="1" stop-color="#C5E8A5" stop-opacity="0"/></radialGradient>
+    <radialGradient id="sphere" cx=".32" cy=".25" r=".8"><stop stop-color="#F1FFD9"/><stop offset=".38" stop-color="#C5E8A5"/><stop offset="1" stop-color="#528E57"/></radialGradient>
+    <linearGradient id="wave" x1="66" y1="290" x2="558" y2="100" gradientUnits="userSpaceOnUse"><stop stop-color="#C5E8A5" stop-opacity=".05"/><stop offset=".45" stop-color="#C5E8A5"/><stop offset="1" stop-color="#E8B85C"/></linearGradient>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#C6E4CD" stroke-opacity=".1"/></pattern>
   </defs>
   <path fill="url(#grid)" d="M65 20h480v380H65z"/>
@@ -15,12 +15,12 @@
     <ellipse cx="329" cy="205" rx="204" ry="75" transform="rotate(-31 329 205)"/>
   </g>
   <path d="M48 289c53 0 76-157 132-157s59 147 113 147 72-160 125-160 74 73 137 73" stroke="url(#wave)" stroke-width="3" stroke-linecap="round"/>
-  <path d="M48 310c53 0 76-157 132-157s59 147 113 147 72-160 125-160 74 73 137 73" stroke="#B9F279" stroke-opacity=".17" stroke-width="1.5"/>
+  <path d="M48 310c53 0 76-157 132-157s59 147 113 147 72-160 125-160 74 73 137 73" stroke="#C5E8A5" stroke-opacity=".17" stroke-width="1.5"/>
   <ellipse cx="329" cy="205" rx="204" ry="75" transform="rotate(-31 329 205)" stroke="#D0EDC7" stroke-opacity=".5" stroke-dasharray="84 640" stroke-dashoffset="-280"/>
   <circle cx="329" cy="205" r="29" fill="url(#sphere)"/>
-  <circle cx="329" cy="205" r="38" stroke="#B9F279" stroke-opacity=".3"/>
+  <circle cx="329" cy="205" r="38" stroke="#C5E8A5" stroke-opacity=".3"/>
   <circle cx="466" cy="130" r="8" fill="#E8B85C"/>
-  <circle cx="235" cy="329" r="5" fill="#B9F279"/>
+  <circle cx="235" cy="329" r="5" fill="#C5E8A5"/>
   <circle cx="185" cy="145" r="4" fill="#A7CCC0"/>
   <g stroke="#D0EDC7" stroke-opacity=".6"><path d="M114 94h16m-8-8v16M470 324h16m-8-8v16"/><path d="M84 348h63m-63 0v-62" stroke-opacity=".35"/><path d="m140 344 7 4-7 4m-60-59 4-7 4 7"/></g>
   <g fill="#D0EDC7" fill-opacity=".45"><circle cx="99" cy="348" r="2"/><circle cx="114" cy="348" r="2"/><circle cx="129" cy="348" r="2"/></g>

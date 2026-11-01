@@ -1,11 +1,11 @@
 /* Quiet hierarchy: warm paper, deep teal, readable slate, and restrained depth. */
-:root{--praxis-surface-raised:#fffefa;--praxis-surface-muted:#eef2ef;--praxis-accent-brass:#ae8545;--praxis-shadow-card:0 2px 4px #173c3205,0 12px 32px -24px #173c3226;--praxis-shadow-hover:0 8px 28px -16px #173c3238}
+:root{--praxis-surface-raised:var(--praxis-color-surface);--praxis-surface-muted:var(--praxis-color-primary-soft);--praxis-accent-brass:#ae8545;--praxis-shadow-card:0 2px 4px #173c3205,0 12px 32px -24px #173c3226;--praxis-shadow-hover:0 8px 28px -16px #173c3238}
 body{background:var(--praxis-color-canvas)}
 .topbar,.praxis-lab-header.topbar{background:var(--praxis-surface-raised);border-bottom-color:var(--praxis-color-border);box-shadow:0 1px 0 #fff8,0 4px 20px #173c3204}
 .chapter-card,.simulation-card,.scene-card,.control-panel,.result-card,body[data-praxis-laboratory] #praxis-original :is(.card,.demo,.fig,.panel,.quiz-shell){box-shadow:var(--praxis-shadow-card)}
 .chapter-card,.simulation-card{background:var(--praxis-surface-raised);transition:border-color 150ms ease,box-shadow 150ms ease}
 .chapter-card:hover,.simulation-card:hover{border-color:var(--praxis-color-primary);box-shadow:var(--praxis-shadow-hover)}
-.button.primary{background:linear-gradient(145deg,#217768,#14584f);border-color:#14584f;box-shadow:0 2px 4px #173c3214}
+.button.primary{background:var(--praxis-color-primary);border-color:var(--praxis-color-primary);box-shadow:none}
 .button.primary:hover{background:var(--praxis-color-primary-hover)}
 .button.secondary,.praxis-language{background:var(--praxis-surface-raised)}
 .praxis-course-tools{background:var(--praxis-surface-muted);border-color:var(--praxis-color-border)}

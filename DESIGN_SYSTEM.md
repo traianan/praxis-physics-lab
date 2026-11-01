@@ -1,5 +1,15 @@
 # Sistemul vizual Praxis · Fizică
 
+## Praxis rafinat — varianta A (1 noiembrie 2026)
+
+Direcție aleasă și autorizată de utilizator pentru bibliotecă și toate cele 19 laboratoare: petrol `#103F3B`, ivory `#F7F5EE`, suprafețe `#FFFEFA`, mentă temperată `#C5E8A5`, auriu `#E8B85C`, text `#18332F`, text secundar `#586D63`. Valorile de mai jos din secțiunile datate 31 octombrie descriu prima versiune; paleta curentă este cea din acest paragraf și `tokens.css`.
+
+Rolurile comune noi sunt `--praxis-color-petrol`, `--praxis-color-mint`, `--praxis-color-mint-hover` și `--praxis-color-gold`. Accentul mentă se folosește în introducere și selecție, iar diagramele păstrează registrul științific independent. Raza controalelor este 10 px, a cardurilor comune 14 px; introducerea bibliotecii are 22 px. Introducerile laboratoarelor sunt compacte, cu minimum 96 px, și pot crește cu textul.
+
+Biblioteca folosește titlu introductiv de maximum 44 px, descrieri de 15 px și text secundar mai lizibil. Capitolele pe telefon au pictograma alături de text; textul are `min-width:0` și titlurile permit ruperea cuvintelor lungi. Navigarea Bibliotecă/Ghid din antet este discretă pe desktop; meniul mobil și țintele tactile de 44/52 px rămân funcționale. Nu se ascund preferințele sau funcții pentru a compacta interfața.
+
+Surse: `tokens.css`, `premium.css`, `laboratory-premium.css`, `library.css`, `shared/site-navigation.css` și ilustrația decorativă `assets/discovery-field.svg`. Copiile din `components.css`, `laboratory.css`, optica autonomă și arhive sunt regenerate prin scripturile existente. Vezi [verificarea aplicării](docs/UI_PRAXIS_RAFINAT_2026-11-01.md).
+
 Linkurile folosesc culoarea comună verde petrol Praxis, prin `--praxis-color-link`, inclusiv în starea vizitată. Sursa este `public/design-system/links.css`. `scripts/link-presentation.mjs` aplică aceeași regulă tuturor paginilor integrate și exporturilor autonome, fără a modifica sursele originale. În lecții, linkurile care arată ca butoane folosesc o suprafață deschisă pentru a păstra contrastul textului. Nu adăuga culori locale pentru linkuri în lecții. Biblioteca poate defini rolurile explicite `--praxis-link-ink` și `--praxis-link-button-background` pentru acțiuni cu text deschis pe petrol, acțiunea mentă și navigarea selectată; valorile implicite din lecții rămân identice.
 
 Acesta este contractul comun pentru biblioteca și toate laboratoarele aplicației. Orice pagină nouă reutilizează componentele de aici. Nu creează o paletă și dimensiuni proprii pentru controalele obișnuite.
