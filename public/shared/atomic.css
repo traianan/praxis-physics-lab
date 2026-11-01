@@ -7,7 +7,9 @@ body[data-praxis-course=interactii-atomice] .praxis-lab-nav .tab{min-height:44px
 body[data-praxis-course=interactii-atomice] .praxis-lab-nav .tab.active{background:var(--praxis-color-primary-soft);border-color:var(--praxis-color-primary)}
 body[data-praxis-course=interactii-atomice] #praxis-original{max-width:88rem;padding:0 1rem}
 body[data-praxis-course=interactii-atomice] [hidden]{display:none!important}
-#praxis-original .sim{grid-template-columns:minmax(0,1fr) 20rem;margin:1rem 0;gap:1rem}
+#praxis-original .sim{display:flex;flex-wrap:wrap;margin:1rem 0;gap:1rem}
+#praxis-original .sim>.stage{flex:1 1 28rem}
+#praxis-original .sim>aside{flex:1 1 20rem}
 #praxis-original .sim>*{min-width:0}
 #praxis-original #cv{height:34rem}
 #praxis-original .stage,#praxis-original .panel,#praxis-original .q{border-radius:var(--praxis-radius-card)}

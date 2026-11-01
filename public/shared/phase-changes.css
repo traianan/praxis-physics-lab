@@ -69,3 +69,6 @@ body[data-praxis-course="transformari-stare-agregare"]::before{display:none}
 #praxis-original .liquefaction-history :is(.table-wrap,tbody tr>th){background:transparent}
 #praxis-original .liquefaction-history thead th,#praxis-original .liquefaction-history .critical-value{background:#fff0d8;background:color-mix(in srgb,var(--gold) 18%,var(--praxis-color-surface))}
 #praxis-original .liquefaction-history table.data tbody tr:hover{background:color-mix(in srgb,var(--gold) 6%,var(--praxis-color-surface))}
+
+/* Keep the shortcut in the sticky header, clear of simulation controls. */
+.praxis-site-extra #toTop{position:static;opacity:1;pointer-events:auto;transform:none;flex:none}
