@@ -149,7 +149,7 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   border-radius: 12px;
   background: var(--praxis-color-primary-soft);
 }
-:root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-nav :is(.tab,.module-tabs button) {
+:root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-nav :is(.tab,[role=tab],.module-tabs button) {
   --praxis-link-ink: #235d51;
   --praxis-link-button-background: transparent;
   background: transparent !important;
@@ -159,7 +159,7 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   max-width: 100%;
   transition: background-color 160ms, box-shadow 160ms;
 }
-:root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-nav :is(.tab[aria-selected=true],.tab.active,.module-tabs button[aria-selected=true]) {
+:root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-nav :is(.tab[aria-selected=true],.tab.active,[role=tab][aria-selected=true],[role=tab].active,.module-tabs button[aria-selected=true]) {
   --praxis-link-ink: #fffefa;
   --praxis-link-button-background: #103f3b;
   background: #103f3b !important;
@@ -247,7 +247,7 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  body[data-praxis-laboratory] .praxis-lab-nav :is(.tab,.module-tabs button) { transition: none; }
+  body[data-praxis-laboratory] .praxis-lab-nav :is(.tab,[role=tab],.module-tabs button) { transition: none; }
 }
 
 /* /praxis:lab-discovery */

@@ -6,6 +6,8 @@ Direcție aleasă și autorizată de utilizator pentru bibliotecă și toate cel
 
 Rolurile comune noi sunt `--praxis-color-petrol`, `--praxis-color-mint`, `--praxis-color-mint-hover` și `--praxis-color-gold`. Accentul mentă se folosește în introducere și selecție, iar diagramele păstrează registrul științific independent. Raza controalelor este 10 px, a cardurilor comune 14 px; introducerea bibliotecii are 22 px. Introducerile laboratoarelor sunt compacte, cu minimum 96 px, și pot crește cu textul.
 
+Taburile din navigarea principală a laboratorului sunt stilizate și după `[role=tab]`, nu numai după clasa `.tab`. Importurile care folosesc `.nav-btn` sau `.tab-btn` primesc astfel aceeași selecție petrol cu reper mentă. Se păstrează starea ARIA sau clasa `.active` gestionată de lecție; această regulă nu selectează controale din scenele științifice.
+
 Biblioteca folosește titlu introductiv de maximum 44 px, descrieri de 15 px și text secundar mai lizibil. Capitolele pe telefon au pictograma alături de text; textul are `min-width:0` și titlurile permit ruperea cuvintelor lungi. Navigarea Bibliotecă/Ghid din antet este discretă pe desktop; meniul mobil și țintele tactile de 44/52 px rămân funcționale. Nu se ascund preferințele sau funcții pentru a compacta interfața.
 
 Surse: `tokens.css`, `premium.css`, `laboratory-premium.css`, `library.css`, `shared/site-navigation.css` și ilustrația decorativă `assets/discovery-field.svg`. Copiile din `components.css`, `laboratory.css`, optica autonomă și arhive sunt regenerate prin scripturile existente. Vezi [verificarea aplicării](docs/UI_PRAXIS_RAFINAT_2026-11-01.md).
