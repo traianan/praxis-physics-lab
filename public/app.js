@@ -30,7 +30,7 @@ function render(){
  $('discovery-caption').textContent=simulations.find(s=>s.id==='oglinzi-si-lentile').title;
  $('home-latest').hidden=!home;
  $('breadcrumb-title').textContent=c?c.title.toLocaleUpperCase(i18n.locale):query.trim()?'Rezultatele căutării':'FIZICĂ';
- $('page-title').innerHTML=c?c.title:'Fizica prinde sens.<br><span>Când o explorezi.</span>';
+ $('page-title').innerHTML=c?c.title:'Fizica are sens<br><span>Când o explorezi</span>';
  $('page-description').textContent=c?'Experimentele acestui capitol, adunate într-un singur loc.':'Simulări interactive pentru întrebări, predicții și descoperiri la clasă.';
  $('chapters-section').hidden=!!selected||!!query.trim();
  $('simulations-title').textContent=c?'Simulările capitolului':query.trim()?'Rezultatele căutării':'Începe cu un experiment';
