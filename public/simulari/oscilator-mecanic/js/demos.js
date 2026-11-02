@@ -83,8 +83,9 @@ App.register({
     ctx.strokeStyle = C.accent; ctx.lineWidth = 2;
     ctx.beginPath();
     const amp = h / 2 - 22;
-    for (let i = 0; i <= 900; i++) {
-      const tt = i / 900 * span;
+    const samples=Math.max(900,Math.ceil((w-60)*Math.max(1,Math.abs(ctx.getTransform?.()?.a||1))*2));
+    for (let i = 0; i <= samples; i++) {
+      const tt = i / samples * span;
       const env = t0 >= 0 ? Math.exp(-b * Math.max(0, tt)) : 0;
       // 440 Hz ar fi vizibil doar cu „pachete" de perioade — desenăm 60 osc/ds ca în registratoarele grafice
       const y = amp * env * Math.sin(2 * Math.PI * 14 * tt);

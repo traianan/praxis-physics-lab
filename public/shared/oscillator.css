@@ -26,6 +26,9 @@ body[data-praxis-course="oscilator-mecanic"] #nav a.active{background:var(--prax
 body[data-praxis-course="oscilator-mecanic"] .katex{color:var(--ink)}
 
 body[data-praxis-course="oscilator-mecanic"] .demo-body canvas{max-width:960px;margin-inline:auto}
+/* These three introductory drawings use a 640-unit scene. Keep their natural
+   display scale; the renderer independently allocates a high-density bitmap. */
+body[data-praxis-course="oscilator-mecanic"] #s111 .demo-body canvas{max-width:40rem}
 
 /* Inline mathematics must never acquire native scrollbars. Only long block equations scroll. */
 body[data-praxis-course="oscilator-mecanic"] [data-fx-inline],

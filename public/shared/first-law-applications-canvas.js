@@ -1,6 +1,6 @@
 /* Draw at displayed pixel density while retaining the original scientific coordinates. */
 (() => {
- function prepare(canvas){
+ function prepare(canvas,{minDpr=1}={}){
   if(!canvas.dataset.logicalWidth){canvas.dataset.logicalWidth=canvas.getAttribute('width');canvas.dataset.logicalHeight=canvas.getAttribute('height');}
   const w=Number(canvas.dataset.logicalWidth),h=Number(canvas.dataset.logicalHeight);
   if(canvas.id!=='molCanvas'&&canvas.closest?.('body[data-praxis-course="principiul-i-aplicatii"]')){
@@ -18,7 +18,7 @@
   const displayedWidth=canvas.getBoundingClientRect().width;
   const cssWidth=displayedWidth>0?displayedWidth:w,cssHeight=cssWidth*h/w;
   if(displayedWidth>0){const height=cssHeight+'px';if(canvas.style.height!==height)canvas.style.height=height;}
-  const dpr=window.devicePixelRatio||1;
+  const dpr=Math.max(minDpr,window.devicePixelRatio||1);
   const pixelsWide=Math.max(1,Math.round(cssWidth*dpr)),pixelsHigh=Math.max(1,Math.round(cssHeight*dpr));
   if(canvas.width!==pixelsWide)canvas.width=pixelsWide;
   if(canvas.height!==pixelsHigh)canvas.height=pixelsHigh;

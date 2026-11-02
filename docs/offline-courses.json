@@ -1,10 +1,10 @@
 {
-  "builtAt": "2026-11-02T16:07:16.647Z",
+  "builtAt": "2026-11-02T16:24:51.551Z",
   "courses": [
     {
       "id": "motoare-termice",
       "file": "public/simulari/motoare-termice/motoare-termice.zip",
-      "sha256": "27b917fe9b266cb2b3a25ce507eacbacc0d6e3df5e745f7412777ae933d2c0f5",
+      "sha256": "6fc91cdfe2c4f71840f5bf39b0fe3757bc929b5d7d1ca8d672bc152e0734286e",
       "languages": [
         "ro",
         "en"
@@ -15,7 +15,7 @@
     {
       "id": "principiile-mecanicii-newtoniene",
       "file": "public/simulari/principiile-mecanicii-newtoniene/principiile-mecanicii-newtoniene.zip",
-      "sha256": "c99c6fd3c46a5285284c76a535d9aa4c5173324224dac985b8a83eb86c240d5b",
+      "sha256": "f3321cdb770f7848bed5996598f6ea3a9fe75027a46787f22781a3845ab44546",
       "languages": [
         "ro",
         "en"
@@ -26,7 +26,7 @@
     {
       "id": "miscarea-circulara-uniforma",
       "file": "public/simulari/miscarea-circulara-uniforma/miscarea-circulara-uniforma.zip",
-      "sha256": "aaec82cd285e73fcd1c4449e3f35635c58aa8e4e0ef0d766bc552a6b5b03f368",
+      "sha256": "4be2c7e9cdf1272455d62939b54043f1123f204190061e95fc18a1f4301696e3",
       "languages": [
         "ro",
         "en"
@@ -37,7 +37,7 @@
     {
       "id": "miscarea-rectilinie",
       "file": "public/simulari/miscarea-rectilinie/miscarea-rectilinie-offline.zip",
-      "sha256": "8fa613486fa8f872f68a7ed0ff800592082a44673f264919059f9564d9f4cde4",
+      "sha256": "bfc9ea19a50c2080e11eecd37fc576601a025ca330dee5d63bffd2d6a141464a",
       "languages": [
         "ro",
         "en"
@@ -48,7 +48,7 @@
     {
       "id": "calcul-vectorial",
       "file": "public/simulari/calcul-vectorial/calcul-vectorial.zip",
-      "sha256": "aa7b875b10a40db141bc390c1b7f2db62e2f8591e3c7d38f5a7870a89c8a2cbd",
+      "sha256": "24ef2383bb77d8155c49775934280880f3eea76ef7e7f21c7592baa8b2995da0",
       "languages": [
         "ro",
         "en"
@@ -59,7 +59,7 @@
     {
       "id": "unde-mecanice",
       "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
-      "sha256": "56bcfde556fa4c6a6da331772bb76020e41c7637aa6765de0dd4ee964613868a",
+      "sha256": "23cb26973f278025199cec52fc5569e8c6ea22f4860d01b8bd428b7745ebc6d7",
       "languages": [
         "ro",
         "en"
@@ -70,7 +70,7 @@
     {
       "id": "viteza-si-acceleratia",
       "file": "public/simulari/viteza-si-acceleratia/viteza-si-acceleratia-offline.zip",
-      "sha256": "2b7695e3dbcf6419fc4a7eac2e903c65a5bc071bfb0dd8fc624851c00cc2a95e",
+      "sha256": "5db6bd7f729b5c01621cf13b203d36337594beb6595fdd6f0327005ba4cd820b",
       "languages": [
         "ro",
         "en"
@@ -81,7 +81,7 @@
     {
       "id": "miscarea-curbilinie-plana",
       "file": "public/simulari/miscarea-curbilinie-plana/miscarea-curbilinie-plana-offline.zip",
-      "sha256": "540d4c3e9409e96da12d74ab08de247683e54b33b9c45300ef8a0ce46320721d",
+      "sha256": "96ddeac8189a94a46045c4b1b23cbcce44b59b841c66971be157a4aabb64b16d",
       "languages": [
         "ro",
         "en"
@@ -92,7 +92,7 @@
     {
       "id": "notiuni-termodinamice",
       "file": "public/simulari/notiuni-termodinamice/notiuni-termodinamice.zip",
-      "sha256": "028a87b0dd5d23ac577ec670019e5d16a13f5c1f8928af4fd593998c2b6c31a4",
+      "sha256": "7efee12d1a076fc950c74b782f43d1c18aa62122a49fe77a55285fb0d0c1dfc9",
       "languages": [
         "ro",
         "en"
@@ -103,7 +103,7 @@
     {
       "id": "calorimetrie",
       "file": "public/simulari/calorimetrie/calorimetrie.zip",
-      "sha256": "61dcb8b2cb83f376603d6e7a9adf0dd41ad6f26507bc77dcabe165591ab69e82",
+      "sha256": "4d3c18ea5877fb9565cb07309cba5d0c3c50e540c69a8e7402dc369f56af7e82",
       "languages": [
         "ro",
         "en"
@@ -114,7 +114,7 @@
     {
       "id": "principiul-i-al-termodinamicii",
       "file": "public/simulari/principiul-i-al-termodinamicii/principiul-i-al-termodinamicii.zip",
-      "sha256": "e8b8dc811a4832ccbd8d2bc4610a8182de2a9afc0fd27315a729c0bf93349874",
+      "sha256": "c568eb3da30dc79a4ab0a5cd2393df534fc0237e6e89af23178d240cbc31ddb7",
       "languages": [
         "ro",
         "en"
@@ -125,7 +125,7 @@
     {
       "id": "interactii-atomice",
       "file": "public/simulari/interactii-atomice/interactii-atomice.zip",
-      "sha256": "9ff1b1e6d948006bed34bc1c84decbed7633a161051399943f9b38b86b1ee25e",
+      "sha256": "05593f3e3c2dcb493d43cde72b60d030e86b0cea9ad47ebc9951032bb8da620a",
       "languages": [
         "ro",
         "en"
@@ -136,7 +136,7 @@
     {
       "id": "principiul-i-aplicatii",
       "file": "public/simulari/principiul-i-aplicatii/principiul-i-aplicatii.zip",
-      "sha256": "262af24dd8d2e6899f1528bcc26cca09533a7031ddef128b3449850619a17a7d",
+      "sha256": "8a185c33b5957603dc7ee0d93bb2bfb52d0a40cdfb8295a87804acc294f404a6",
       "languages": [
         "ro",
         "en"
@@ -147,7 +147,7 @@
     {
       "id": "transformari-stare-agregare",
       "file": "public/simulari/transformari-stare-agregare/transformari-stare-agregare.zip",
-      "sha256": "a10076c53e16bd1ccdd427c050acb7e2bcac396c21c69b1302e714bf2820aee0",
+      "sha256": "28d7796da6e2aef21967c3a923ae3607a876c64ba013243bf72c878f865fdd88",
       "languages": [
         "ro",
         "en"
@@ -158,7 +158,7 @@
     {
       "id": "oscilator-mecanic",
       "file": "public/simulari/oscilator-mecanic/oscilator-mecanic.zip",
-      "sha256": "2be98d096bfb5c5401a22d5f10358201d048c9e1cf2e9bbee40e36410ea51fd5",
+      "sha256": "caa5ab72016830d317d53194cb6ad5c55267a46a386f60cac0a3b766a6443e85",
       "languages": [
         "ro",
         "en"
@@ -169,7 +169,7 @@
     {
       "id": "oscilatori-mecanici-cuplati",
       "file": "public/simulari/oscilatori-mecanici-cuplati/oscilatori-mecanici-cuplati.zip",
-      "sha256": "1f17b3bb0acddc489afe98950043ac3f016181707ddef5fd2beeaa284d28d767",
+      "sha256": "34cfca121d8ce72ed57cbbc1fe83e612b0141969edb2b6d5c4ab7f29b0386e0a",
       "languages": [
         "ro",
         "en"
@@ -180,7 +180,7 @@
     {
       "id": "compunerea-oscilatiilor",
       "file": "public/simulari/compunerea-oscilatiilor/compunerea-oscilatiilor.zip",
-      "sha256": "d2c703f1496e881cbb1d001b78e72c9856e2d7cb26aa695893a6b1f03b9a75ab",
+      "sha256": "ac41f1d45607930d0e24e30e604fb7105d4e4fb73df699848352ef8caf9bbde9",
       "languages": [
         "ro",
         "en"
@@ -191,7 +191,7 @@
     {
       "id": "figuri-chladni",
       "file": "public/simulari/figuri-chladni/figuri-chladni.zip",
-      "sha256": "0bc20b44467c3ffa908fee8763d2a36f6a992211463fdddf71585bf748f0080b",
+      "sha256": "395b021bb3d6450dbd729b6810446c564b8a02a47f7096768d6bb5d919c2b56b",
       "languages": [
         "ro",
         "en"

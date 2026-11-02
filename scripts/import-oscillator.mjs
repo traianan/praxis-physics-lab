@@ -49,7 +49,7 @@ let app=clean(await read(source+'/js/app.js'));
 app=app.replace(/const Sound = [\s\S]*?\n\/\* ---------------------------------------------------------------\n \* App/,await read('scripts/adaptations/oscillator-sound.js')+'\n/* ---------------------------------------------------------------\n * App');
 if(!app.includes('function stop(){for(const tone'))throw new Error('Sound adaptation failed');
 app=app.replace(/\/\* Buton global sunet \*\/[\s\S]*?\n\}\)\(\);/,'');
-app=app.replace(/function fitCanvas\(cv\) \{[\s\S]*?\n  \}/,'function fitCanvas(cv){const r=PraxisApplicationsCanvas.prepare(cv);return {ctx:r.g,w:r.w,h:r.h};}').replace('demos.push({ shell, state });','demos.push({shell,state,spec});');
+app=app.replace(/function fitCanvas\(cv\) \{[\s\S]*?\n  \}/,'function fitCanvas(cv){const r=PraxisApplicationsCanvas.prepare(cv,{minDpr:2});return {ctx:r.g,w:r.w,h:r.h};}').replace('demos.push({ shell, state });','demos.push({shell,state,spec});');
 app=app.replace('return { register, fitCanvas, Sound };','return { register, fitCanvas, Sound, demos };');
 app=app.replace('if (state.running) { state.t += dt;',"const active=!document.hidden&&!shell.closest('.chapter').hidden;\n      if (state.running && active) { state.t += dt;");
 app=app.replace('      const { ctx, w, h } = fitCanvas(cv);','      if(!active){requestAnimationFrame(loop);return;}\n      const { ctx, w, h } = fitCanvas(cv);');
@@ -94,6 +94,9 @@ demos=demos.replace('s.init = false; s.pReal = null;','s.init = false; s.pReal =
 demos=demos.replace('const d = struck ? 3 * Math.sin(s.t * 55) : 0;', 'const d = struck ? 3 * Math.sin(s.t * 14) : 0;');
 demos=demos.replace("label(ctx, c.name, cw * i + 8, h - 12, c.color, 12);","const words=PraxisI18n.tr(c.name).split(' ');let row='',line=0;for(const word of words){if(ctx.measureText(row+' '+word).width>cw-16&&row){label(ctx,row,cw*i+8,h-30+line*15,c.color,12);row=word;line++;}else row+=(row?' ':'')+word;}label(ctx,row,cw*i+8,h-30+line*15,c.color,12);");
 demos=demos.replace('Math.floor((e.clientX - r.left) / (r.width / 4))','Math.min(3,Math.floor((e.clientY-r.top)/(r.height/4)))');
+const forkSampling='for (let i = 0; i <= 900; i++) {\n      const tt = i / 900 * span;';
+if(!demos.includes(forkSampling))throw new Error('Tuning-fork sampling adapter target changed');
+demos=demos.replace(forkSampling,'const samples=Math.max(900,Math.ceil((w-60)*Math.max(1,Math.abs(ctx.getTransform?.()?.a||1))*2));\n    for (let i = 0; i <= samples; i++) {\n      const tt = i / samples * span;');
 demos+='\n'+await read('scripts/adaptations/oscillator-audit.js');
 await write('public/simulari/'+id+'/js/demos.js',demos);
 const files=['index.html','css/styles.css','js/app.js','js/demos.js'];await write('docs/imported-oscillator.json',JSON.stringify({id,source,files:await Promise.all(files.map(async path=>({path,sha256:createHash('sha256').update(await readFile(new URL(source+'/'+path,root))).digest('hex')}))),topics:4,questions:18,simulations:(body.match(/<canvas /g)||[]).length,problems:6,languages:['ro','en'],excluded:'Compunerea oscilațiilor, bătăi și Lissajous: laborator separat, la cererea utilizatorului.'},null,2)+'\n');

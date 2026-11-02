@@ -15,7 +15,7 @@ const Sound=(()=>{const tones=new Map();const allowed=()=>window.PraxisSound.ena
 const App = (() => {
   const demos = [];
 
-  function fitCanvas(cv){const r=PraxisApplicationsCanvas.prepare(cv);return {ctx:r.g,w:r.w,h:r.h};}
+  function fitCanvas(cv){const r=PraxisApplicationsCanvas.prepare(cv,{minDpr:2});return {ctx:r.g,w:r.w,h:r.h};}
 
   /* Inregistrează o demonstrație: shell = element.demo-shell
    * spec.render(ctx, w, h, state) desenează un cadru;
