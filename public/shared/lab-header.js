@@ -8,11 +8,11 @@
   const icon=document.createElement('img');icon.src=new URL('assets/favicon.svg',base).href;icon.width=37;icon.height=39;icon.alt='';
   const word=document.createElement('span');word.className='praxis-lab-wordmark';word.textContent='praxis';const small=document.createElement('small');small.textContent='SCIENCE LAB';word.append(small);logo.append(icon,word);
   const path=document.createElement('nav');path.className='praxis-lab-path';path.setAttribute('aria-label','Navigare în lecție');
-  const label=document.createElement('span');label.textContent='Laboratoare interactive';path.append(label);
+  const label=document.createElement(standalone?'span':'a');label.textContent='Bibliotecă';if(!standalone)label.href=home.href;path.append(label);
   const separator=()=>{const span=document.createElement('span');span.className='praxis-breadcrumb-separator';span.textContent='/';span.setAttribute('aria-hidden','true');return span;};
   const id=courseId||document.body.dataset.praxisCourse||location.pathname.match(/\/([^/]+)\/index\.html$/)?.[1];
   const parent=chapter||window.PraxisLessonChapters?.[id];
-  if(parent){const link=document.createElement(standalone||typeof parent==='string'?'span':'a');link.className='praxis-lab-chapter';link.textContent=typeof parent==='string'?parent:parent.title;if(link.tagName==='A')link.href=new URL('#capitol/'+parent.id,base).href;path.append(separator(),link);}
+  if(parent){const link=document.createElement(standalone||typeof parent==='string'?'span':'a');link.className='praxis-lab-chapter';link.textContent=typeof parent==='string'?parent:parent.title;if(link.tagName==='A')link.href=new URL('?chapter=1#capitol/'+parent.id,base).href;path.append(separator(),link);}
   const current=document.createElement('strong');current.textContent=title;current.setAttribute('aria-current','page');path.append(separator(),current);
   const tools=document.createElement('div');tools.className='top-actions praxis-lab-actions';const back=document.createElement('a');back.className='button secondary library-return';back.href=returnHref||base.href;back.textContent='← Bibliotecă';back.setAttribute('aria-label','Înapoi la biblioteca de fizică');tools.append(back,...actions,window.PraxisSound.createToggle({compact:true}),window.PraxisI18n.createSelector());
   header.append(logo,path,tools);if(replace)replace.replaceWith(header);else(before||document.body.firstChild).before(header);

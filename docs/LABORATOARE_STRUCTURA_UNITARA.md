@@ -117,3 +117,13 @@ La 1920 × 1080 și text 100%, scena și comenzile au aceeași poziție vertical
 Scenele sunt alăturate de la 82rem disponibili; sub acest prag sunt stivuite, păstrând dimensiunea minimă pentru lizibilitate și derularea locală. Verificat în browser la 3840 × 2160, 1920 × 1080 cu DPR2, mobil390 cu DPR3 și text200%. Auditul de rezoluție verifică acum toate cele12 canvasuri din cele11 demonstrații. Testele verifică independent fazele, sensul rotației, proiecțiile și sincronizarea inclusiv la pauză; `npm run check`: 215 teste trecute. Build și arhivă offline actualizate. Review independent: corectată micșorarea excesivă pe mobil, fără alte probleme importante.
 
 Corecția modulelor a fost verificată și prin teste pentru cele trei cercuri, lungimile constante ale vectorilor, raportul razelor și proiecțiile fizice. Verificare vizuală la 1920 × 1080, DPR2; 215 teste trecute, build și arhivă offline actualizate, review independent fără probleme importante.
+
+## Navigare contextuală în întreaga aplicație Web
+
+Antetul păstrează în afara meniului pliabil traseul Bibliotecă / Capitol / Laborator, cu linkuri accesibile de minimum44px, inclusiv pe mobil. Pagina bibliotecii are breadcrumb clicabil, paginile informative au traseu spre bibliotecă, iar modul tablă al opticii oferă și linkul către Lumină și radiații. Intrarea canonică în capitol folosește un marker tranzitoriu care curăță filtrele vechi și deschide lista de laboratoare inclusiv în Mod tablă; revenirea contextuală din meniu păstrează căutarea și afișarea anterioare. Markerul este eliminat din URL, iar refreshul nu reactivează căutarea veche.
+
+Audit:19 laboratoare ×2 lățimi (1920/390) ×2 limbi =76 verificări ale antetelor; cele4 pagini informative au fost verificate în RO/EN pe mobil. Un test automat verifică linkurile statice și descărcările din24 pagini; a identificat și corectat linkul de lecție înrudită din Noțiuni termodinamice către Calcul vectorial (înlocuire completă în importer). Testele execută inițializarea reală a bibliotecii și ramura de restaurare a modului tablă. `npm run check`:220 teste trecute. Au fost regenerate optica integrată și cele18 arhive autonome.
+
+## Optică: dimensiunea numerelor din cardurile de rezultate
+
+La solicitarea utilizatorului, fontul valorilor pentru distanța focală, poziția imaginii și mărirea liniară este22px (1.375rem), cu unități de13px. Regula este comună celor3 carduri și păstrează semnele, zecimalele și calculele. Verificat live la1920 și2554px lățime:22px pentru toate valorile și fără overflow. Sincronizare optică, build și4 teste ale importurilor trecute.

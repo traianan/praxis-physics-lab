@@ -35,15 +35,23 @@
   function placeQuickControls(){(mobile.matches?quickLanguage:menu).append(sound,language);}
   placeQuickControls();
   menu.addEventListener('click',event=>{if(event.target.closest('.site-library-link,.site-guide-button,.site-board-button'))setOpen(false);});
-  const detail=document.createElement('div');detail.className='praxis-site-context';if(context)detail.append(context);const extra=actions.filter(action=>action!==board);if(extra.length){const controls=document.createElement('div');controls.className='praxis-site-extra';controls.append(...extra);detail.append(controls);}
-  // Laboratory chrome shares one row on wide screens. Library/chapter headers
-  // retain their existing structure. Reuse the original action nodes/listeners.
-  if(header.classList.contains('praxis-lab-header')){
-   if(context)row.insertBefore(context,quickLanguage);
-   const extra=detail.querySelector('.praxis-site-extra');if(extra)menu.prepend(...extra.children);
+  let infoHeading=null,infoCurrent=null;
+  if(!context&&document.querySelector('.info-content h1')){
+   infoHeading=document.querySelector('.info-content h1');
+   context=document.createElement('nav');context.className='praxis-lab-path';context.setAttribute('aria-label','Navigare în lecție');
+   const home=document.createElement('a');home.href=new URL('?home=1',base);home.textContent='Bibliotecă';
+   const separator=document.createElement('span');separator.className='praxis-breadcrumb-separator';separator.textContent='/';separator.setAttribute('aria-hidden','true');
+   const current=document.createElement('strong');current.textContent=infoHeading.textContent;current.setAttribute('aria-current','page');context.append(home,separator,current);infoCurrent=current;
   }
-  header.replaceChildren(row);if(detail.childNodes.length&&!header.classList.contains('praxis-lab-header'))header.append(detail);
-  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;guide.textContent=t.guide;board.textContent=t.board;if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.map(step=>`<li>${step}</li>`).join('')}</ol>`;}
+  const detail=document.createElement('div');detail.className='praxis-site-context';if(context)detail.append(context);const extra=actions.filter(action=>action!==board);if(extra.length){const controls=document.createElement('div');controls.className='praxis-site-extra';controls.append(...extra);detail.append(controls);}
+  // Keep the complete hierarchy outside the collapsible menu on every screen.
+  // Reuse original action nodes/listeners in the utility row.
+  if(header.classList.contains('praxis-lab-header')){
+   const extra=detail.querySelector('.praxis-site-extra');if(extra)menu.prepend(...extra.children);
+   extra?.remove();
+  }
+  header.replaceChildren(row);if(detail.childNodes.length)header.append(detail);
+  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;guide.textContent=t.guide;board.textContent=t.board;if(infoCurrent)infoCurrent.textContent=infoHeading.textContent;if(context)window.PraxisI18n.apply(context);if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.map(step=>`<li>${step}</li>`).join('')}</ol>`;}
   render();setOpen(false);window.addEventListener('praxis-language-change',()=>{render();setOpen(expanded);});
   new ResizeObserver(()=>document.documentElement.style.setProperty('--praxis-header-height',header.getBoundingClientRect().height+'px')).observe(header);
   return header;

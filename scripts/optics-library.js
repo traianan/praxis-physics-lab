@@ -13,6 +13,7 @@
  window.PraxisLabHeader.mount({title:'Optică geometrică',returnHref:target.href,replace:top,actions});
  document.querySelector('.page-intro')?.classList.add('praxis-lab-intro');document.querySelector('.workspace-top')?.classList.add('praxis-lab-nav');
  const bar=document.querySelector('.board-bar');if(bar){bar.prepend(link(true));const exit=document.querySelector('#board-exit');if(exit)exit.textContent='Mod normal';}
+ if(bar){const chapter=document.createElement('a');chapter.href=new URL('?chapter=1#capitol/lumina-si-radiatii',base).href;chapter.className='button secondary praxis-board-chapter';chapter.textContent='Lumină și radiații';bar.prepend(chapter);}
  if(bar){const mark=document.createElement('a');mark.href=home.href;mark.className='praxis-home-mark';mark.setAttribute('aria-label','Acasă — biblioteca de fizică');mark.title='Acasă — biblioteca de fizică';mark.innerHTML='<img src="../../assets/favicon.svg" width="32" height="32" alt="">';bar.prepend(mark);}
  bar?.append(window.PraxisSound.createToggle({compact:true}));
  document.querySelector('.board-size-row')?.append(window.PraxisI18n.createSelector());

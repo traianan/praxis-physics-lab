@@ -21,7 +21,7 @@ html=html.replace(/<header class="hero"[\s\S]*?<\/header>/,'<span id="top"></spa
  .replace(/(Activitate experimentală|Exercițiul|Exercițiu)\s*1\.1\.[\d.]+/g,'$1')
  .replace(/\s*·?\s*§1\.1\.[\d.]+/g,'')
  .replace(/<a href="https?:[\s\S]*?<\/a>/g,'')
- .replace('href="../index.html"','href="../calcul-vectorial/index.html"')
+ .replaceAll('href="../index.html"','href="../calcul-vectorial/index.html"')
  .replace('href="../unde-mecanice/"','href="../unde-mecanice/index.html"')
  .replace('Denumirea corectă, conform SR ISO 31-9/1995, este','Se mai numește')
  .replace(/este cantitatea de substanță care conține atâtea entități[\s\S]*?Cantitatea de substanță se notează/,String.raw`este cantitatea de substanță care conține exact \(6{,}02214076\cdot10^{23}\) entități elementare (atomi, molecule, ioni…). Cantitatea de substanță se notează`)
