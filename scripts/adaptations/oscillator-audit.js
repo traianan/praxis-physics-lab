@@ -100,22 +100,22 @@
  const yva=spec('demo-yva');
  yva.renderAdditional=(shell,s,fit)=>{const canvas=shell.querySelector('#cv-yva-phasors');if(!canvas)return;const {ctx,w,h}=fit(canvas);ctx.clearRect(0,0,w,h);yva.renderPhasors(ctx,w,h,s);};
  yva.renderPhasors=(g,w,h,s)=>{
-  const phase=2*s.t+ +s.sliders.phi.value,cx=182,cy=164,radius=106;
-  text(g,PraxisI18n.tr('Fazori normalizați'),22,24);text(g,'ω = 2 rad/s   ↺',22,46);
-  g.strokeStyle=C.grid;g.lineWidth=1;g.beginPath();g.arc(cx,cy,radius,0,2*Math.PI);g.stroke();
-  lineSegment(g,cx-radius-18,cy,cx+radius+18,cy,C.axis,1);lineSegment(g,cx,cy-radius-18,cx,cy+radius+18,C.axis,1);
-  text(g,'O',cx-15,cy+16);text(g,'+1',cx+6,cy-radius-7);text(g,'−1',cx+6,cy+radius+16);
+  const phase=2*s.t+ +s.sliders.phi.value,cx=182,cy=164,scale=26.5,outerRadius=4*scale;
+  text(g,PraxisI18n.tr('Fazori: module maxime'),22,24);text(g,'ω = 2 rad/s   ↺',22,46);
+  lineSegment(g,cx-outerRadius-18,cy,cx+outerRadius+18,cy,C.axis,1);lineSegment(g,cx,cy-outerRadius-18,cx,cy+outerRadius+18,C.axis,1);
+  text(g,'O',cx-15,cy+16);
   // Positive mathematical angles require inverted canvas y coordinates.
-  s.phasors=[['y',1,'y/A',C.accent,'m'],['v',2,'v/(Aω)',C.green,'m/s'],['a',4,'a/(Aω²)',C.red,'m/s²']].map(([key,max,title,color,unit],i)=>{
-   const angle=phase+i*Math.PI/2,endX=cx+radius*Math.cos(angle),endY=cy-radius*Math.sin(angle),visible=!!s['show'+key],value=max*Math.sin(angle);
+  s.phasors=[['y',1,C.accent,'m'],['v',2,C.green,'m/s'],['a',4,C.red,'m/s²']].map(([key,max,color,unit],i)=>{
+   const radius=max*scale,angle=phase+i*Math.PI/2,endX=cx+radius*Math.cos(angle),endY=cy-radius*Math.sin(angle),visible=!!s['show'+key],value=max*Math.sin(angle);
    if(visible){
+    g.save();g.strokeStyle=color;g.lineWidth=1;g.setLineDash([3,4]);g.beginPath();g.arc(cx,cy,radius,0,2*Math.PI);g.stroke();g.restore();
     lineSegment(g,cx,cy,endX,endY,color,2.5);
     const dx=Math.cos(angle),dy=-Math.sin(angle);g.fillStyle=color;g.beginPath();g.moveTo(endX,endY);g.lineTo(endX-11*dx+5*dy,endY-11*dy-5*dx);g.lineTo(endX-11*dx-5*dy,endY-11*dy+5*dx);g.closePath();g.fill();
     ball(g,endX,endY,3,color);
    }
-   const row=84+i*66;text(g,title+'  ·  '+['φ','φ + π/2','φ + π'][i],350,row,color);
+   const row=84+i*66;text(g,`${key}_max = ${max} ${unit}  ·  `+['φ','φ + π/2','φ + π'][i],350,row,color);
    text(g,visible?`${key} = ${value.toFixed(2)} ${unit}`:PraxisI18n.tr('Ascuns'),350,row+20,visible?color:C.ink);
-   return {key,x:cx,y:cy,endX,endY,radius,angle,value,visible};
+   return {key,x:cx,y:cy,endX,endY,radius,magnitude:max,angle,value,visible};
   });
   ball(g,cx,cy,3,C.ink);text(g,'φ = ωt + φ₀',350,286);text(g,`t = ${s.t.toFixed(2)} s`,22,308);
  };

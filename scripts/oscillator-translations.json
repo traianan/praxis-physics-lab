@@ -498,9 +498,9 @@
   "Apasă pe un card pentru a opri animația în poziția respectivă. Reia mișcarea cu Redă.": "Select a card to pause the animation at that position. Use Play to resume.",
   "Vectorul viteză": "Velocity vector",
   "Vectorul forță de revenire": "Restoring force vector",
-  "Fazori normalizați": "Normalized phasors",
   "Ascuns": "Hidden",
   "Graficele elongației, vitezei și accelerației": "Displacement, velocity and acceleration graphs",
-  "Fazori normalizați: elongație, viteză și accelerație, cu origine comună": "Normalized displacement, velocity and acceleration phasors with a common origin",
-  "Fazorii sunt normalizați la amplitudinile proprii: y/A, v/(Aω), a/(Aω²). Proiecțiile verticale corespund graficelor. Viteza este înainte cu π/2, accelerația cu π.": "Phasors are normalized to their own amplitudes: y/A, v/(Aω), a/(Aω²). Vertical projections match the graphs. Velocity leads by π/2, acceleration by π."
+  "Fazori: module maxime": "Phasors: maximum magnitudes",
+  "Fazori cu module maxime: elongație, viteză și accelerație pe trei cercuri concentrice": "Maximum-magnitude displacement, velocity and acceleration phasors on three concentric circles",
+  "Modulele fazorilor sunt A = 1 m, Aω = 2 m/s și Aω² = 4 m/s². Vârfurile descriu trei cercuri concentrice cu raze în raport 1:2:4, proporționale cu valorile maxime în SI; mărimile au unități diferite. Proiecțiile verticale corespund graficelor.": "Phasor magnitudes are A = 1 m, Aω = 2 m/s and Aω² = 4 m/s². Their tips trace three concentric circles with radii in the ratio 1:2:4, proportional to the maximum SI values; the quantities have different units. Vertical projections match the graphs."
 }

@@ -3,10 +3,12 @@ const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8'),dir='public/simu
 const close=(a,b,tol=1e-7)=>assert.ok(Math.abs(a-b)<tol*Math.max(1,Math.abs(b)),`${a} != ${b}`);
 test('three common-origin phasors rotate counterclockwise with the graph time and preserve harmonic projections',async()=>{
  const {specs}=await models(),spec=specs.find(s=>s.id==='demo-yva');
- const g=new Proxy({createRadialGradient:()=>({addColorStop(){}})},{get:(o,k)=>k in o?o[k]:()=>{},set:(o,k,v)=>(o[k]=v,true)});
+ const circles=[],g=new Proxy({arc(x,y,r){if(r>10)circles.push({x,y,r});},createRadialGradient:()=>({addColorStop(){}})},{get:(o,k)=>k in o?o[k]:()=>{},set:(o,k,v)=>(o[k]=v,true)});
  for(const phi of [0,.79,Math.PI,6.28])for(const t of [0,.1,1,12]){
   const s={t,sliders:{phi:{value:phi}},showy:true,showv:true,showa:true};
-  spec.renderPhasors(g,640,320,s);const before=s.phasors;
+  circles.length=0;spec.renderPhasors(g,640,320,s);const before=s.phasors;
+  assert.equal(circles.length,3);
+  for(let i=0;i<3;i++){const p=before[i],max=[1,2,4][i];close(p.magnitude,max);close(p.radius/before[0].radius,max);close(Math.hypot(p.endX-p.x,p.endY-p.y),p.radius);close(circles[i].r,p.radius);close(circles[i].x,p.x);close(circles[i].y,p.y);close((p.y-p.endY)/(p.radius/max),p.value);}
   for(let i=0;i<3;i++){const p=before[i];close(p.angle,2*t+phi+i*Math.PI/2);close(p.x,before[0].x);close(p.y,before[0].y);close((p.y-p.endY)/p.radius,Math.sin(p.angle));close(p.value,[Math.sin(2*t+phi),2*Math.cos(2*t+phi),-4*Math.sin(2*t+phi)][i]);}
   s.t+=.001;spec.renderPhasors(g,640,320,s);
   for(let i=0;i<3;i++){const a=before[i],b=s.phasors[i];close((b.angle-a.angle)/.001,2);assert.ok((a.endX-a.x)*(a.y-b.endY)-(a.y-a.endY)*(b.endX-a.x)>0);}
