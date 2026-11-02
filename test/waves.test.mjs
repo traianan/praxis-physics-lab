@@ -3,6 +3,13 @@ import{adaptWaveAnimations}from'../scripts/waves-animation-adapter.mjs';
 import{adaptWavePhysics}from'../scripts/waves-physics-adapter.mjs';
 import{adaptWaveEditorial}from'../scripts/lesson-editorial-adapter.mjs';
 const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8');
+test('wave figures keep large drawings at native display size while small diagrams retain modest enlargement',async()=>{
+ const source=await read('scripts/waves-jsx-adapter.js');
+ const context=vm.createContext({window:{PraxisScientificColors:{},PraxisCourseLocalization:{colors:'praxis'}},Cv:(type,props,key)=>({type,props,key}),LessonCanvas:()=>{}});
+ const jsx=vm.runInContext('(function(type,props,key){'+source+'})',context);
+ assert.equal(jsx('canvas',{width:800,height:350}).props.style['--wave-render-width'],'50rem');
+ assert.equal(jsx('canvas',{width:340,height:140}).props.style['--wave-render-width'],'26.5625rem');
+});
 test('wave import preserves all original content except documented reversible physics and presentation corrections',async()=>{
  const manifest=JSON.parse(await read('docs/unde-mecanice-source.json')),html=await read('public/simulari/unde-mecanice/index.html');const module=[...html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)][0][1];
  const restored=(await adaptWavePhysics(await adaptWaveAnimations(adaptWaveEditorial(module,true),true),true)).replace(/\n\/\* praxis:effect-adapter \*\/[\s\S]*?\/\* \/praxis:effect-adapter \*\/\n/,'').replace('undefined:[...deps,active,...(deps.length?[presentationRevision]:[])]);','undefined:[...deps,active]);').replace(/\n\/\* praxis:input-adapter \*\/[\s\S]*?\/\* \/praxis:input-adapter \*\/\n/,'');assert.equal(createHash('sha256').update(restored).digest('hex'),manifest.moduleSha256);

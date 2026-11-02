@@ -31,5 +31,21 @@
   }
  }
  document.addEventListener('click',event=>{const actions=event.target.closest('[data-instrument-role=actions]');if(actions&&event.target.closest('button:not(:disabled)'))actions.closest('[data-instrument-layout]').dataset.signalReady='true';},true);
- compactInstruments();let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;queueMicrotask(()=>{queued=false;compactInstruments();});}).observe(document.getElementById('root'),{childList:true,subtree:true});
+ function compactStands(){
+  const cards=new Set([...document.querySelectorAll('.lesson-part-content .praxis-wave-figure')].map(figure=>figure.parentElement));
+  for(const card of cards){
+   if(card.closest('[data-instrument-layout]'))continue;
+   const figures=[...card.children].filter(el=>el.matches('.praxis-wave-figure'));
+   if(!figures.length||![...card.children].some(el=>el.querySelector('input,select,button')))continue;
+   card.dataset.waveStand=figures.length>1?'paired':'single';
+   let hasHeading=false;
+   for(const child of card.children){
+    const index=figures.indexOf(child);
+    const heading=!hasHeading&&(child.matches('h3,h4')||child.querySelector(':scope>h3,:scope>h4'));
+    child.dataset.waveRole=index>=0?(index===0?'scene':'analysis'):heading?'heading':child.querySelector('canvas')?'notes':child.querySelector('input,select')?'controls':child.querySelector('button')?'actions':'notes';
+    if(heading)hasHeading=true;
+   }
+  }
+ }
+ compactInstruments();compactStands();let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;queueMicrotask(()=>{queued=false;compactInstruments();compactStands();});}).observe(document.getElementById('root'),{childList:true,subtree:true});
 })();

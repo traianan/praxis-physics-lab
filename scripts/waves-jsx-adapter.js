@@ -5,7 +5,7 @@ if(typeof type==='string'&&props){props={...props};for(const [mouse,pointer]of [
 }
 if(type==='canvas'){
  const {ref:forwardedRef,width=300,height=150,...rest}=props;
- return Cv('figure',{className:'praxis-wave-figure',style:{'--wave-render-width':Math.min(width*1.25,500*width/height)/16+'rem'},children:[Cv(LessonCanvas,{...rest,width,height,forwardedRef}),Cv('figcaption',{'data-wave-caption':'',children:''})]},key);
+ return Cv('figure',{className:'praxis-wave-figure',style:{'--wave-render-width':Math.min(width*(width>=640?1:1.25),500*width/height)/16+'rem'},children:[Cv(LessonCanvas,{...rest,width,height,forwardedRef}),Cv('figcaption',{'data-wave-caption':'',children:''})]},key);
 }
 if(type==='div'&&props?.className==='lesson-recording-help'){
  type='details';const children=N.Children.toArray(props.children);if(children[0])children[0]=Cv('summary',{children:children[0].props.children},children[0].key);props={...props,children,...(children.some(c=>c?.props?.role==='alert')?{open:true}:{})};

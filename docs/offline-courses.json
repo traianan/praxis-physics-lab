@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-02T15:45:34.320Z",
+  "builtAt": "2026-11-02T16:07:16.647Z",
   "courses": [
     {
       "id": "motoare-termice",
@@ -59,7 +59,7 @@
     {
       "id": "unde-mecanice",
       "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
-      "sha256": "aac708836d91533f25ee4cb85033f651ddfa9c286411cfd00462cdfa1c49c2da",
+      "sha256": "56bcfde556fa4c6a6da331772bb76020e41c7637aa6765de0dd4ee964613868a",
       "languages": [
         "ro",
         "en"

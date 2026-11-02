@@ -14,6 +14,25 @@ body[data-praxis-course=unde-mecanice] .lesson-section{border-radius:var(--praxi
 body[data-praxis-course=unde-mecanice] :is(.lesson-topics button,.lesson-parts button){font-size:var(--praxis-text-label)!important;min-height:var(--praxis-control-height)!important}
 body[data-praxis-course=unde-mecanice] :is(.lesson-eyebrow,.lesson-section .lesson-eyebrow){font:600 var(--praxis-text-small)/1.5 var(--praxis-font-ui)!important;letter-spacing:normal;text-transform:none}
 body[data-praxis-course=unde-mecanice] canvas{touch-action:none}
+/* Workspace role bounds must retain the renderer's per-figure size limit.
+   The bitmap remains CSS size × DPR; only the display footprint is bounded. */
+body[data-praxis-course=unde-mecanice][data-praxis-workspace] .praxis-wave-figure{width:100%;max-width:min(100%,var(--wave-render-width))}
+body[data-praxis-course=unde-mecanice] [data-wave-stand]{min-width:0;container:wave-stand / inline-size;display:grid!important;grid-template-columns:minmax(0,50rem) minmax(0,1fr);gap:12px 20px;grid-auto-flow:dense;align-items:start}
+body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role]{grid-column:1/-1;min-width:0}
+body[data-praxis-course=unde-mecanice] .lesson-section [data-wave-stand] h3{font-size:1rem!important;line-height:1.4!important}
+body[data-praxis-course=unde-mecanice] .lesson-section [data-wave-stand] :is(p,li,label,span[class*="text-"],div[class*="text-"]){font-size:var(--praxis-text-label)!important;line-height:1.5!important}
+body[data-praxis-course=unde-mecanice] .lesson-section [data-wave-role=heading]{flex-wrap:wrap}
+body[data-praxis-course=unde-mecanice] .lesson-section [data-wave-role=heading] span{font-size:var(--praxis-text-small)!important}
+body[data-praxis-course=unde-mecanice] [data-wave-role=controls]{grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr))!important;min-width:0;gap:12px}
+body[data-praxis-course=unde-mecanice] [data-wave-role=actions]{align-content:start;align-items:start;margin-top:0!important}
+body[data-praxis-course=unde-mecanice] [data-wave-role=notes].grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))!important}
+@container wave-stand (min-width:70rem){
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role=heading]{grid-column:1/-1;grid-row:1;margin:0!important}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role=scene]{grid-column:1;grid-row:2/span 2;margin:0!important}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role=analysis]{grid-column:1;margin:0!important}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]>:is([data-wave-role=controls],[data-wave-role=actions]){grid-column:2}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role=notes]{grid-column:1/-1}
+}
 .praxis-wave-volume{display:inline-flex;align-items:center;gap:8px;font:600 var(--praxis-text-label) var(--praxis-font-ui)}.praxis-wave-volume input{max-width:130px}.praxis-wave-volume output{min-width:40px}
 body[data-praxis-course=unde-mecanice] .lesson-bottom{padding:16px 24px;max-width:none}
 body[data-praxis-course=unde-mecanice] .praxis-lab-nav:empty{display:none}
