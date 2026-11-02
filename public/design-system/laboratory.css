@@ -251,3 +251,74 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
 }
 
 /* /praxis:lab-discovery */
+
+/* praxis:workspace */
+/* One workspace vocabulary for every laboratory. Library pages are excluded. */
+body[data-praxis-workspace]{--workspace-gap:16px;--workspace-control-width:300px}
+body[data-praxis-workspace] [data-workspace-active=false]{display:none!important}
+body[data-praxis-workspace] [data-workspace-layout]{min-width:0;align-items:start;scroll-margin-top:calc(var(--praxis-header-height,76px) + 16px)}
+body[data-praxis-workspace] [data-workspace-role]{min-width:0;max-width:100%;align-self:start}
+html body[data-praxis-workspace] .praxis-site-row{min-height:64px;padding-block:8px;gap:16px}
+body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path{flex:1;min-width:100px;max-width:360px;gap:6px;font:500 14px/1.4 var(--praxis-font-ui)}
+body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path>span,body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path>.praxis-lab-chapter{display:none}
+body[data-praxis-workspace] .praxis-site-row>.praxis-site-menu{flex:0 1 auto}
+@media(min-width:1141px) and (max-width:1600px){body[data-praxis-workspace] .praxis-site-row{flex-wrap:wrap}body[data-praxis-workspace] .praxis-site-row>.praxis-site-menu{flex:1;flex-wrap:wrap}}
+@media(max-width:1140px){body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path{max-width:none;flex:1}body[data-praxis-workspace] .praxis-site-row>.praxis-site-menu{flex:0 0 100%}}
+@media(max-width:700px){body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path{order:5;flex:0 0 100%}}
+body[data-praxis-workspace] .praxis-lab-intro{width:auto!important;min-height:0!important;margin:8px 24px!important;padding:10px 16px!important;border-radius:12px!important;box-shadow:none!important}
+body[data-praxis-workspace] .praxis-lab-intro::after{display:none}
+body[data-praxis-workspace] .praxis-lab-intro>div{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-left:10px!important}
+body[data-praxis-workspace] .praxis-lab-intro h1{font-size:var(--praxis-text-heading)!important;letter-spacing:normal}
+body[data-praxis-workspace] .praxis-lab-intro p{margin:0!important}
+body[data-praxis-workspace] .praxis-lab-nav{padding-bottom:8px!important}
+body[data-praxis-workspace] .praxis-workspace-disclosure{margin:8px 0;border:1px solid var(--praxis-color-border);border-radius:10px;background:var(--praxis-color-surface);min-width:0;grid-column:1/-1}
+body[data-praxis-workspace] .praxis-workspace-disclosure>summary{min-height:44px;box-sizing:border-box;padding:10px 16px;cursor:pointer;color:var(--praxis-color-primary);font:600 var(--praxis-text-label)/1.5 var(--praxis-font-ui);overflow-wrap:anywhere}
+body[data-praxis-workspace] .praxis-workspace-disclosure>summary:focus-visible,body[data-praxis-workspace] .praxis-workspace-activities button:focus-visible{outline:3px solid var(--praxis-color-primary);outline-offset:2px}
+body[data-praxis-workspace] .praxis-workspace-disclosure>.praxis-course-tools{margin:0;border:0}
+body[data-praxis-workspace] .praxis-workspace-disclosure:has(>.praxis-course-tools){margin:0 0 0 auto;position:relative}
+body[data-praxis-workspace] .praxis-workspace-disclosure:has(>.praxis-course-tools)[open]{flex:0 0 100%}
+body[data-praxis-workspace] .praxis-workspace-disclosure>.text,body[data-praxis-workspace] .praxis-workspace-disclosure>.prose{padding:1rem 1.25rem}
+body[data-praxis-workspace] .praxis-workspace-disclosure>.hero{margin:0!important}
+body[data-praxis-workspace] .praxis-workspace-activities{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:6px;border:1px solid var(--praxis-color-border);border-radius:12px;background:var(--praxis-color-surface);grid-column:1/-1}
+body[data-praxis-workspace] .praxis-workspace-activities button{min-height:44px;padding:8px 12px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--praxis-color-primary);font:600 var(--praxis-text-label)/1.4 var(--praxis-font-ui);white-space:normal;text-align:left}
+body[data-praxis-workspace] .praxis-workspace-activities button[aria-pressed=true]{background:var(--praxis-color-primary);color:var(--praxis-color-surface)}
+body[data-praxis-workspace] [data-workspace-layout=reading]{display:flex!important;flex-direction:column;gap:12px!important}
+body[data-praxis-workspace] [data-workspace-layout=reading]>:not(.praxis-workspace-disclosure){width:100%;order:0}
+body[data-praxis-workspace] [data-workspace-layout=reading]>.praxis-workspace-disclosure{order:1;width:100%;margin:0}
+body[data-praxis-workspace] [data-workspace-layout=reading] .fig{width:100%;max-width:none}
+body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-side .transport{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;border-bottom:1px solid var(--praxis-color-border);padding-bottom:10px}
+body[data-praxis-workspace] [data-workspace-layout=motion] .transport>:is(select,.time){grid-column:1/-1;width:100%}
+body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-side>.praxis-workspace-disclosure{width:100%;margin:0}
+body[data-praxis-workspace] [data-workspace-layout=motion] .transport .time{min-width:0;flex-wrap:wrap}
+body[data-praxis-workspace] [data-workspace-layout=motion] .transport .clock{min-width:0}
+body[data-praxis-workspace] [data-workspace-layout=motion] .transport button{min-height:44px}
+body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main{gap:8px}
+body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main>.grid-2{margin:0!important;width:100%}
+body[data-praxis-workspace] [data-workspace-layout=motion] .log:empty{display:none}
+@media(min-width:1050px){
+ body[data-praxis-workspace] [data-workspace-layout=split]{display:grid!important;grid-template-columns:var(--workspace-control-width) minmax(0,1fr)!important;gap:var(--workspace-gap)!important}
+ body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=controls]{grid-column:1;grid-row:1}
+ body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=scene]{grid-column:2;grid-row:1}
+ body[data-praxis-workspace] [data-workspace-layout=motion]{grid-template-columns:var(--workspace-control-width) minmax(0,1fr)!important}
+ body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-side{padding:12px!important}
+ body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main{padding:12px!important}
+}
+@media(max-width:1049px){
+ body[data-praxis-workspace] [data-workspace-layout=split]{display:flex!important;flex-direction:column;gap:16px!important}
+ body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=controls]{order:-1;width:100%}
+ body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=scene]{width:100%}
+ body[data-praxis-workspace] [data-workspace-layout=motion]{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:700px){
+ body[data-praxis-workspace] .praxis-lab-intro{margin-inline:12px!important}
+ body[data-praxis-workspace] .praxis-lab-intro>div{gap:4px}
+ body[data-praxis-workspace] .praxis-workspace-disclosure:has(>.praxis-course-tools){margin-inline:12px}
+ body[data-praxis-workspace] .praxis-workspace-activities{flex-direction:column}
+}
+@media print{
+ body[data-praxis-workspace] .praxis-workspace-activities{display:none}
+ body[data-praxis-workspace] [data-workspace-active=false]{display:block!important}
+ body[data-praxis-workspace] .praxis-workspace-disclosure>*{display:block!important}
+}
+
+/* /praxis:workspace */

@@ -36,7 +36,13 @@
   placeQuickControls();
   menu.addEventListener('click',event=>{if(event.target.closest('.site-library-link,.site-guide-button,.site-board-button'))setOpen(false);});
   const detail=document.createElement('div');detail.className='praxis-site-context';if(context)detail.append(context);const extra=actions.filter(action=>action!==board);if(extra.length){const controls=document.createElement('div');controls.className='praxis-site-extra';controls.append(...extra);detail.append(controls);}
-  header.replaceChildren(row);if(detail.childNodes.length)header.append(detail);
+  // Laboratory chrome shares one row on wide screens. Library/chapter headers
+  // retain their existing structure. Reuse the original action nodes/listeners.
+  if(header.classList.contains('praxis-lab-header')){
+   if(context)row.insertBefore(context,quickLanguage);
+   const extra=detail.querySelector('.praxis-site-extra');if(extra)menu.prepend(...extra.children);
+  }
+  header.replaceChildren(row);if(detail.childNodes.length&&!header.classList.contains('praxis-lab-header'))header.append(detail);
   function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;guide.textContent=t.guide;board.textContent=t.board;if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.map(step=>`<li>${step}</li>`).join('')}</ol>`;}
   render();setOpen(false);window.addEventListener('praxis-language-change',()=>{render();setOpen(expanded);});
   new ResizeObserver(()=>document.documentElement.style.setProperty('--praxis-header-height',header.getBoundingClientRect().height+'px')).observe(header);
