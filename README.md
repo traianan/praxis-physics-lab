@@ -18,6 +18,7 @@ Integrarea și verificarea conținutului sunt documentate în [docs/INTEGRARE_LE
 
 ## Reguli comune pentru dezvoltare
 
+- [docs/REGULI_LABORATOARE.md](docs/REGULI_LABORATOARE.md): reguli obligatorii pentru adăugarea și modificarea laboratoarelor: structură compactă, claritate, stare, sunet, navigare, RO/EN și verificare. Consultarea ghidului este cerută și de [AGENTS.md](AGENTS.md).
 - [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md): tipurile de componente, culori, text, formule, slidere și atingere; stilurile comune se aplică în bibliotecă și în laborator.
 - [docs/LOCALIZARE.md](docs/LOCALIZARE.md): RO/EN în 98 de fișiere JSON, împărțite pe șapte capitole, interfață comună, optică și secțiunile celor două lecții importate. Selectorul memorează limba, iar laboratorul autonom de optică include ambele limbi.
 - [docs/MONETIZARE.md](docs/MONETIZARE.md): decizia de monetizare numai prin reclame și punctele pregătite, inactive și fără spațiu gol.
