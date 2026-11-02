@@ -45,13 +45,13 @@
 
 **Produces:** `window.PraxisLabWorkspace.mount(root = document): void`, called after lesson chrome is mounted; safe to call repeatedly. Registry embedded as `window.PraxisLabWorkspaceConfig`. Body attribute `data-praxis-workspace` and role attributes `data-workspace-role="controls|scene|graphs|secondary"` form the shared CSS contract. Explicit group IDs retain their existing native identities.
 
-- [ ] Record clean Git baseline and existing test results. Use a separate `codex/` feature branch and follow the worktree preference agreed at handoff; never implement on main.
-- [ ] Write failing behavior tests: repeated mount does not duplicate controls; mounting a library/unknown page changes nothing; mounting preserves existing input node identity and value; secondary disclosure removes closed content from keyboard reach and reopens without state loss.
-- [ ] Run `node --test test/lab-workspace.test.mjs` and observe expected failures before production changes.
-- [ ] Implement the registry/runtime and shared CSS, grouping laboratory preferences and reducing redundant chrome. Keep full library chrome outside laboratory selectors. Announce controls with real labels and translated strings using existing RO/EN catalogs.
-- [ ] Integrate through `prepare-presentation.mjs` and mount hooks without registering duplicate resize/mutation observers. Browser resize must notify existing canvas redraw pathways without resetting models.
-- [ ] Run the new tests and existing presentation/navigation tests. Visually compare Home and one chapter before/after at identical viewport.
-- [ ] Commit this deliverable on the feature branch with a focused message.
+- [x] Record clean Git baseline and existing test results. Use a separate `codex/` feature branch and follow the worktree preference agreed at handoff; never implement on main.
+- [x] Write failing behavior tests: repeated mount does not duplicate controls; mounting a library/unknown page changes nothing; mounting preserves existing input node identity and value; secondary disclosure removes closed content from keyboard reach and reopens without state loss.
+- [x] Run `node --test test/lab-workspace.test.mjs` and observe expected failures before production changes.
+- [x] Implement the registry/runtime and shared CSS, grouping laboratory preferences and reducing redundant chrome. Keep full library chrome outside laboratory selectors. Announce controls with real labels and translated strings using existing RO/EN catalogs.
+- [x] Integrate through `prepare-presentation.mjs` and mount hooks without registering duplicate resize/mutation observers. Browser resize must notify existing canvas redraw pathways without resetting models.
+- [x] Run the new tests and existing presentation/navigation tests. Visually compare Home and one chapter before/after at identical viewport.
+- [x] Commit this deliverable on the feature branch with a focused message.
 
 ### Task 2: MRU reference implementation
 
@@ -59,11 +59,11 @@
 
 **Produces:** Registry group entries for introductory quantities, MRU and two-body motion; common local navigation demonstrating the contract for the other laboratories.
 
-- [ ] Capture baseline geometry and screenshots of controls, track, x(t) and v(t) at 1920 × 1080 and 3840 × 2160. Inspect actual DOM hierarchy before choosing selector entries.
-- [ ] Add a failing interaction test/audit: selecting MRU exposes its group, existing Start operates the same runner, and parameters/time survive switching groups. At text 100%, scene, transport and both graphs must share a visible workspace at these two desktop sizes.
-- [ ] Implement direct access to MRU and arrange parameters/transport alongside scene and paired graphs. Keep introductory quantities and converter reachable as separately identified secondary material. Preserve original scientific elements/listeners; use the original navigation controls where possible.
-- [ ] Verify Start/Pause/Reset, graph scrubbing, positive/negative/zero velocity and existing motion-type explanation stability. Check RO/EN and text 200% without clipping; preserve page scroll when needed.
-- [ ] Run relevant motion and presentation tests; commit the working reference.
+- [x] Capture baseline geometry and screenshots of controls, track, x(t) and v(t) at 1920 × 1080 and 3840 × 2160. Inspect actual DOM hierarchy before choosing selector entries.
+- [x] Add a failing interaction test/audit: selecting MRU exposes its group, existing Start operates the same runner, and parameters/time survive switching groups. At text 100%, scene, transport and both graphs must share a visible workspace at these two desktop sizes.
+- [x] Implement direct access to MRU and arrange parameters/transport alongside scene and paired graphs. Keep introductory quantities and converter reachable as separately identified secondary material. Preserve original scientific elements/listeners; use the original navigation controls where possible.
+- [x] Verify Start/Pause/Reset, graph scrubbing, positive/negative/zero velocity and existing motion-type explanation stability. Check RO/EN and text 200% without clipping; preserve page scroll when needed.
+- [x] Run relevant motion and presentation tests; commit the working reference.
 
 ### Task 3: Apply the same system to every remaining laboratory
 
@@ -71,13 +71,13 @@
 
 **Produces:** Complete 19-ID registry plus documented experimental groups and justified exceptions.
 
-- [ ] Inventory each native screen/tab, its scene/controls/graphs, and renderer ownership. Cover: vector algebra, velocity/acceleration, planar curvilinear motion, circular motion, Newtonian principles, optics, mechanical oscillator, coupled oscillators, oscillation composition, Chladni, mechanical waves, thermodynamic notions, calorimetry, first law, atomic interactions, first-law applications, phase changes and heat engines, in addition to rectilinear motion.
-- [ ] Extend the browser audit to enumerate all explicit registry groups and fail on missing controls, horizontal page overflow, hidden focusable secondary content or duplicated common navigation. Include representative state snapshots before and after resize/language/text changes.
-- [ ] Configure each lesson using shared roles and group navigation. Where source adaptation is necessary, add it through its existing importer/adaptation module and a reproducing behavior test. For React-owned content prefer CSS/native source integration; never move managed children with a generic DOM adapter.
-- [ ] Keep the same chrome and functional ordering everywhere. Adjust graph counts and instrument proportions through configuration/shared responsive modifiers. Do not invent separate toolbars for individual lessons.
-- [ ] Inspect all experimental groups at 1920 × 1080 and 1024 × 768, in both languages and text 100%/200%; inspect representative layout families at 3840 × 2160, 1366 × 768 and 390 × 844. Run an overflow/accessibility sweep across all 19 labs at all specified sizes. Fully inspect any combination flagged by the sweep.
-- [ ] Exercise native board mode and fallback board mode where applicable, keyboard navigation and resize during animation. Record real limits rather than forcing every experiment into one screen by shrinking it.
-- [ ] Run affected lesson tests and shared tests; commit completed registry and adaptations.
+- [x] Inventory each native screen/tab, its scene/controls/graphs, and renderer ownership. Cover: vector algebra, velocity/acceleration, planar curvilinear motion, circular motion, Newtonian principles, optics, mechanical oscillator, coupled oscillators, oscillation composition, Chladni, mechanical waves, thermodynamic notions, calorimetry, first law, atomic interactions, first-law applications, phase changes and heat engines, in addition to rectilinear motion.
+- [x] Extend the browser audit to enumerate all explicit registry groups and fail on missing controls, horizontal page overflow, hidden focusable secondary content or duplicated common navigation. Include representative state snapshots before and after resize/language/text changes.
+- [x] Configure each lesson using shared roles and group navigation. Where source adaptation is necessary, add it through its existing importer/adaptation module and a reproducing behavior test. For React-owned content prefer CSS/native source integration; never move managed children with a generic DOM adapter.
+- [x] Keep the same chrome and functional ordering everywhere. Adjust graph counts and instrument proportions through configuration/shared responsive modifiers. Do not invent separate toolbars for individual lessons.
+- [x] Inspect all experimental groups at 1920 × 1080 and 1024 × 768, in both languages and text 100%/200%; inspect representative layout families at 3840 × 2160, 1366 × 768 and 390 × 844. Run an overflow/accessibility sweep across all 19 labs at all specified sizes. Fully inspect any combination flagged by the sweep.
+- [x] Exercise native board mode and fallback board mode where applicable, keyboard navigation and resize during animation. Record real limits rather than forcing every experiment into one screen by shrinking it.
+- [x] Run affected lesson tests and shared tests; commit completed registry and adaptations.
 
 ### Task 4: Regeneration, distribution and final verification
 
@@ -85,13 +85,13 @@
 
 **Produces:** Reproducible distribution, report with measurements and representative screenshots, reviewed implementation.
 
-- [ ] Add integration checks that each catalog laboratory receives workspace assets through its supported generation path, that generated markers are idempotent, and that library pages receive no workspace behavior.
-- [ ] Verify reimport of affected lessons preserves layout changes; regenerate only relevant generated artifacts. Check optics through `scripts/sync-optics.mjs` and imported courses through their own importers.
-- [ ] Run `npm run build`, `npm run check`, and `npm test` as appropriate without duplicating the full test run if `check` already covers the final identical state. Record any pre-existing failure explicitly.
-- [ ] Generate affected standalone packages via `scripts/build-courses-offline.mjs` and supported optics pipeline; verify no missing shared dependencies and smoke-test standalone MRU and each distinct packaging path. Verify vector service-worker cache inputs include any new external asset; embedding existing bundles is preferred.
-- [ ] Save before/after geometry, representative screenshots and per-laboratory coverage in `docs/LABORATOARE_STRUCTURA_UNITARA.md`. State CSS viewport separately from physical resolution and DPR.
-- [ ] Obtain one independent whole-change review against the approved spec, fix material findings, and rerun checks justified by those changes.
-- [ ] Commit final verified changes and hand back the local result with file links and verification outcomes. Do not merge, push or deploy without authorization.
+- [x] Add integration checks that each catalog laboratory receives workspace assets through its supported generation path, that generated markers are idempotent, and that library pages receive no workspace behavior.
+- [x] Verify reimport of affected lessons preserves layout changes; regenerate only relevant generated artifacts. Check optics through `scripts/sync-optics.mjs` and imported courses through their own importers.
+- [x] Run `npm run build`, `npm run check`, and `npm test` as appropriate without duplicating the full test run if `check` already covers the final identical state. Record any pre-existing failure explicitly.
+- [x] Generate affected standalone packages via `scripts/build-courses-offline.mjs` and supported optics pipeline; verify no missing shared dependencies and smoke-test standalone MRU and each distinct packaging path. Verify vector service-worker cache inputs include any new external asset; embedding existing bundles is preferred.
+- [x] Save before/after geometry, representative screenshots and per-laboratory coverage in `docs/LABORATOARE_STRUCTURA_UNITARA.md`. State CSS viewport separately from physical resolution and DPR.
+- [x] Obtain one independent whole-change review against the approved spec, fix material findings, and rerun checks justified by those changes.
+- [x] Commit final verified changes and hand back the local result with file links and verification outcomes. Do not merge, push or deploy without authorization.
 
 ## Plan self-review
 
@@ -99,4 +99,4 @@ The common runtime and explicit registry satisfy the consistency condition; MRU 
 
 ## Execution handoff
 
-Pending user review of this plan and choice of Native (one implementer plus final independent review) or Subagent-driven execution. Recommended: Native, because changes share the same presentation contract and need continuous visual comparison across laboratories. Worktree preference is also pending; the current checkout is on main and only the design/plan documents have been added.
+User approved the plan and Native execution. Work was performed on the separate branch `codex/laboratoare-unitare` in the existing checkout, with an independent whole-change review. No merge, push or deployment is included. Completion evidence and per-laboratory coverage: `docs/LABORATOARE_STRUCTURA_UNITARA.md`.

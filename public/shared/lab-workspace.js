@@ -26,6 +26,7 @@
    button.textContent=heading?.textContent.trim()||String(index+1);button.dataset.sound='none';
    const select=()=>{
     selected=index;items.forEach((el,i)=>{el.dataset.workspaceActive=String(i===index);buttons[i].setAttribute('aria-pressed',String(i===index));});
+    window.dispatchEvent(new CustomEvent('praxis-workspace-activity-change',{detail:{scope:scope.id}}));
     window.dispatchEvent(new Event('resize'));
    };
    button.addEventListener('click',select);nav.append(button);return button;
@@ -49,7 +50,9 @@
      const controls=[...figure.children].filter(el=>el.matches('.sliders,.ctrls,.ro,.chips,.hint'));
      if(!controls.length)continue;
      const panel=document.createElement('div');panel.className='praxis-workspace-figure-controls';panel.dataset.workspaceRole='controls';
-     panel.append(...controls);figure.append(panel);figure.dataset.workspaceFigure='';
+     const heading=document.createElement('div');heading.className='praxis-workspace-figure-heading';
+     heading.append(...[...figure.children].filter(el=>el.matches('.fig-h,.tabs,.compression-intro')));
+     figure.prepend(heading);panel.append(...controls);figure.append(panel);figure.dataset.workspaceFigure='';
     }
     if(entry.layout==='motion'){
      const controls=workspace.querySelector('.sim-side'),transport=workspace.querySelector('.transport');
@@ -88,6 +91,18 @@
  window.PraxisLabWorkspace={mount};
  function start(){
   mount();
+  // Native lesson links may load a preset in another activity. Reveal the
+  // destination before its existing handler scrolls to it; preserve that handler.
+  document.addEventListener('click',event=>{
+   const config=window.PraxisLabWorkspaceConfig?.[document.body.dataset.praxisWorkspace];
+   for(const link of config?.reveals||[]){
+    if(!event.target.closest?.(link.trigger))continue;
+    const item=document.querySelector(link.target)?.closest('[data-workspace-activity]');
+    const nav=item?.parentElement.querySelector(':scope>.praxis-workspace-activities');
+    const button=nav?.children[Number(item?.dataset.workspaceActivity)];
+    button?.click();button?.focus({preventScroll:true});
+   }
+  },true);
   // React and imported bridges can mount after DOMContentLoaded. Observe additions
   // only; numerical animation text and our attributes never retrigger this scan.
   let frame=null;

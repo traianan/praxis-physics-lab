@@ -299,7 +299,8 @@ body[data-praxis-workspace] [data-workspace-layout=motion] .log:empty{display:no
  body[data-praxis-workspace] [data-workspace-figure]{display:grid!important;grid-template-columns:var(--workspace-control-width) minmax(0,1fr);align-items:start}
  body[data-praxis-workspace] [data-workspace-figure]>:not(canvas):not(.praxis-workspace-figure-controls){grid-column:1/-1}
  body[data-praxis-workspace] [data-workspace-figure]>canvas{grid-column:2;width:100%;min-width:0}
- body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-controls{grid-column:1;grid-row:3/span 2;min-width:0}
+ body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-heading{grid-row:1}
+ body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-controls{grid-column:1;grid-row:2/span 2;min-width:0}
  body[data-praxis-workspace] .praxis-workspace-figure-controls .sliders{display:flex;flex-direction:column}
  body[data-praxis-workspace] .praxis-workspace-figure-controls .ctrls{display:flex;flex-wrap:wrap}
  body[data-praxis-workspace] .praxis-workspace-figure-controls .ro{grid-template-columns:repeat(2,minmax(0,1fr))!important}
@@ -311,6 +312,9 @@ body[data-praxis-workspace] [data-workspace-layout=motion] .log:empty{display:no
  body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main{padding:12px!important}
 }
 @media(max-width:1049px){
+ body[data-praxis-workspace] [data-workspace-figure]{display:flex!important;flex-direction:column}
+ body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-heading{order:-2;width:100%}
+ body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-controls{order:-1;width:100%}
  body[data-praxis-workspace] [data-workspace-layout=split]{display:flex!important;flex-direction:column;gap:16px!important}
  body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=controls]{order:-1;width:100%}
  body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=scene]{width:100%}

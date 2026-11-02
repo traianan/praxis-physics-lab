@@ -68,7 +68,7 @@ const App = (() => {
 
   function tick(ts){
     for(const {shell,state,spec} of demos){
-      if(document.hidden||shell.closest('.chapter').hidden){state.last=0;continue;}
+      if(document.hidden||shell.closest('.chapter').hidden||!shell.getClientRects().length){state.last=0;continue;}
       const rect=shell.getBoundingClientRect();if(rect.bottom<0||rect.top>innerHeight){state.last=0;continue;}
       const dt=state.last?Math.min((ts-state.last)/1000,.05):0;state.last=ts;
       const step=dt*(+state.sliders.speed?.value||1);if(state.running){state.t+=step;spec.frame?.(state,step);}

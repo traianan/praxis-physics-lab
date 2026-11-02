@@ -34,3 +34,14 @@ test('laboratory runtime is bundled for offline imports but absent from library 
  assert.equal(generated.split('/* praxis:workspace */').length,2);
  assert.ok(generated.includes('body[data-praxis-workspace]'));
 });
+
+test('hidden oscillator activities preserve time and never render or emit frame sounds',async()=>{
+ const source=await read('public/simulari/oscilator-mecanic/js/app.js');
+ const tick=source.match(/function tick\(ts\)\{[\s\S]*?requestAnimationFrame\(tick\);\s*\}/)?.[0];
+ assert.ok(tick,'exercise the actual imported animation scheduler');
+ const state={t:3,last:1000,running:true,sliders:{}};
+ const shell={closest:()=>({hidden:false}),querySelector:()=>({}),getClientRects:()=>[],getBoundingClientRect:()=>({top:0,bottom:0})};
+ let frames=0,scheduled=0;
+ vm.runInNewContext(tick+';tick(2000)',{demos:[{shell,state,spec:{frame(){frames++;},render(){frames++;}}}],document:{hidden:false},innerHeight:1080,requestAnimationFrame(){scheduled++;},fitCanvas(){return {ctx:{clearRect(){}},w:640,h:320};}});
+ assert.equal(state.t,3);assert.equal(state.last,0);assert.equal(frames,0);assert.equal(scheduled,1);
+});

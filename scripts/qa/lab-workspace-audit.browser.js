@@ -26,6 +26,12 @@ async () => {
   if(innerWidth>=1920&&innerHeight>=1080&&parseFloat(getComputedStyle(document.documentElement).fontSize)===16){
    for(const [name,r]of Object.entries(report.mru))assert(r.y>=0&&r.bottom<=innerHeight,name+' must share the viewport with Start');
   }
+  document.querySelector('[data-tab=mruv]').click();
+  document.querySelector('#mruv>.praxis-workspace-activities').children[2].click();
+  document.querySelector('#uv-cases [data-case]').click();
+  assert(document.querySelector('#uv-ctl').getClientRects().length>0,'MRUV case buttons must reveal their destination simulator');
+  report.mruvCaseNavigation=true;
+  document.querySelector('[data-tab=mru]').click();nav.children[2].click();window.scrollTo({top:0,behavior:'instant'});
  }
  return report;
 }
