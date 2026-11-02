@@ -103,3 +103,9 @@ Aceeași scară de 40rem este aplicată acum tuturor celor 11 demonstrații, inc
 Graficele oscilației și fazorului, cele trei curbe y/v/a, curba amortizată și anvelopa ei, precum și parabola energiei folosesc numere de eșantioane calculate din transformarea reală de desen. Domeniile, ecuațiile, capetele intervalelor și separarea panourilor rămân aceleași. Un test de regresie pentru densitate a fost observat eșuând cu eșantionarea fixă și trecând cu noua implementare; testul existent pentru limitele celor trei grafice verifică în continuare toate punctele, permițând mai multe eșantioane.
 
 Verificat în browser: toate cele 11 demonstrații la DPR 1 și 2; cele opt extinse în 96 de combinații (1920/1024/390 px, RO/EN, text 100%/200%), fără overflow al paginii și fără schimbarea inputurilor sau checkboxurilor. `npm run check`: 213 teste trecute; build reușit; arhiva autonomă a Oscilatorului regenerată. Auditul `scripts/qa/oscillator-resolution.browser.js` parcurge acum toate cele patru teme. Review independent fără probleme materiale.
+
+## Amortizare: animație la stânga, parametri verticali la dreapta
+
+La cererea utilizatorului, standul `#demo-amort` folosește două coloane când containerul dispune de minimum 62rem: scena de 40rem în stânga, comenzile în dreapta. Coeficientul b și perioada T₀ sunt așezate unul sub altul, urmate de regim, Pauză/Reset și valori calculate. Explicația scurtă rămâne sub instrument. Pe ecrane înguste sau la text mărit se revine la organizarea verticală. Schimbarea este exclusiv CSS și nu mută nodurile ori resetează modelul.
+
+La 1920 × 1080 și text 100%, scena și comenzile au aceeași poziție verticală; coloana de control începe la 24px după marginea scenei. Verificate 20 de combinații (3840/1920/1366/1024/390 px, RO/EN, text 100%/200%), cu slidere stivuite și parametri păstrați, fără overflow al paginii. Build și pachet offline actualizate; 213 teste trecute.

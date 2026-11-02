@@ -29,6 +29,21 @@ body[data-praxis-course="oscilator-mecanic"] .katex{color:var(--ink)}
    scale in all four chapters; bitmap density is allocated independently. */
 body[data-praxis-course="oscilator-mecanic"] .demo-body canvas{max-width:40rem;margin-inline:auto}
 
+/* Damping workbench: keep the graph beside a vertical parameter column. */
+body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-body{container:amort-workspace / inline-size;display:grid;grid-template-columns:minmax(0,40rem) minmax(0,1fr);gap:1rem 1.5rem;align-items:start}
+body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-body>*{grid-column:1/-1;min-width:0}
+body[data-praxis-course="oscilator-mecanic"] #demo-amort canvas{margin-inline:0}
+body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:0;align-items:start}
+body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-controls>label{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem;grid-column:1/-1;width:100%;min-width:0}
+body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-controls :is(.praxis-range-stepper,select){grid-column:1/-1;grid-row:2;width:100%;min-width:0}
+body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-controls .val{grid-column:2;grid-row:1;min-width:0}
+body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-controls input[type=range]{width:100%;min-width:0}
+body[data-praxis-course="oscilator-mecanic"] #demo-amort .readout{grid-column:1/-1;width:100%;margin:0;white-space:normal}
+@container amort-workspace (min-width:62rem){
+ body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-body>canvas{grid-column:1;grid-row:1}
+ body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-body>.demo-controls{grid-column:2;grid-row:1}
+}
+
 /* Inline mathematics must never acquire native scrollbars. Only long block equations scroll. */
 body[data-praxis-course="oscilator-mecanic"] [data-fx-inline],
 body[data-praxis-course="oscilator-mecanic"] [data-fx-inline].fx{display:inline;overflow:visible;max-width:none;vertical-align:baseline;line-height:inherit}
