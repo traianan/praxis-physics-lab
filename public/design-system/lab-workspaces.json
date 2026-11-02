@@ -1,7 +1,7 @@
 {
- "oglinzi-si-lentile":{"workspaces":[{"selector":".workspace","controls":".controls-card","scene":".experiment-column","layout":"native"}]},
+ "oglinzi-si-lentile":{"workspaces":[{"selector":".workspace","scene":".experiment-column","layout":"native"}]},
  "miscarea-rectilinie":{"workspaces":[{"selector":".card.sim","controls":".sim-side","scene":".sim-main","graphs":".sim-main>.grid-2","layout":"motion"},{"selector":".type-card","scene":".stage","layout":"native"}],"activities":[{"scope":"#mru","items":":scope>.block","default":2},{"scope":"#mruv","items":":scope>.block","default":1},{"scope":"#tipuri","items":":scope>.block","default":0}],"reading":".panel>.hero"},
- "unde-mecanice":{"react":true,"workspaces":[{"selector":"[data-instrument-layout]","scene":"[data-instrument-role=visual]","controls":"[data-instrument-role=controls]","graphs":"[data-instrument-role=analysis]","layout":"native"},{"selector":".lesson-part-content","scene":".praxis-wave-figure","layout":"native"}]},
+ "unde-mecanice":{"react":true,"workspaces":[{"selector":"[data-instrument-layout]","scene":"[data-instrument-role=visual]","controls":"[data-instrument-role=controls]","layout":"native"},{"selector":".lesson-part-content:has(.praxis-wave-figure)","scene":".praxis-wave-figure","layout":"native"}]},
  "calcul-vectorial":{"workspaces":[{"selector":".cols:has(.fig)","scene":".fig","layout":"reading"}],"reading":".cols>.text"},
  "viteza-si-acceleratia":{"workspaces":[{"selector":".lab-layout","scene":".canvas-workspace","controls":".control-panel","layout":"split"}]},
  "miscarea-curbilinie-plana":{"workspaces":[{"selector":".lab","scene":".curvilinear-visual","controls":".controls","layout":"split"}]},

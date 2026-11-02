@@ -296,6 +296,13 @@ body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main{gap:8px}
 body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main>.grid-2{margin:0!important;width:100%}
 body[data-praxis-workspace] [data-workspace-layout=motion] .log:empty{display:none}
 @media(min-width:1050px){
+ body[data-praxis-workspace] [data-workspace-figure]{display:grid!important;grid-template-columns:var(--workspace-control-width) minmax(0,1fr);align-items:start}
+ body[data-praxis-workspace] [data-workspace-figure]>:not(canvas):not(.praxis-workspace-figure-controls){grid-column:1/-1}
+ body[data-praxis-workspace] [data-workspace-figure]>canvas{grid-column:2;width:100%;min-width:0}
+ body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-controls{grid-column:1;grid-row:3/span 2;min-width:0}
+ body[data-praxis-workspace] .praxis-workspace-figure-controls .sliders{display:flex;flex-direction:column}
+ body[data-praxis-workspace] .praxis-workspace-figure-controls .ctrls{display:flex;flex-wrap:wrap}
+ body[data-praxis-workspace] .praxis-workspace-figure-controls .ro{grid-template-columns:repeat(2,minmax(0,1fr))!important}
  body[data-praxis-workspace] [data-workspace-layout=split]{display:grid!important;grid-template-columns:var(--workspace-control-width) minmax(0,1fr)!important;gap:var(--workspace-gap)!important}
  body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=controls]{grid-column:1;grid-row:1}
  body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=scene]{grid-column:2;grid-row:1}

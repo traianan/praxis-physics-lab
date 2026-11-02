@@ -3,7 +3,7 @@
  'use strict';
  if(window.PraxisLabWorkspace)return;
  const mounted=new WeakSet(),grouped=new WeakSet(),noted=new WeakSet(),labels=new Map();
- const words={ro:{preferences:'Preferințe laborator',reading:'Explicații și formule',introduction:'Introducere',activities:'Activități'},en:{preferences:'Laboratory preferences',reading:'Explanations and formulas',introduction:'Introduction',activities:'Activities'}};
+ const words={ro:{preferences:'Preferințe laborator',cases:'Cazuri de mișcare',options:'Afișare și sunete',reading:'Explicații și formule',introduction:'Introducere',activities:'Activități'},en:{preferences:'Laboratory preferences',cases:'Motion cases',options:'Display and sounds',reading:'Explanations and formulas',introduction:'Introduction',activities:'Activities'}};
  const language=()=>window.PraxisI18n?.language==='en'?'en':'ro';
  function caption(el,key){labels.set(el,key);el.textContent=words[language()][key];}
  function disclosure(element,key){
@@ -44,6 +44,13 @@
    for(const workspace of root.querySelectorAll(entry.selector)){
     if(mounted.has(workspace))continue;mounted.add(workspace);workspace.dataset.workspaceLayout=entry.layout;
     for(const role of ['controls','scene','graphs'])if(entry[role])for(const el of workspace.querySelectorAll(entry[role]))el.dataset.workspaceRole=role;
+    if(entry.layout==='reading')for(const figure of workspace.querySelectorAll('.fig')){
+     if(!figure.querySelector(':scope>canvas'))continue;
+     const controls=[...figure.children].filter(el=>el.matches('.sliders,.ctrls,.ro,.chips,.hint'));
+     if(!controls.length)continue;
+     const panel=document.createElement('div');panel.className='praxis-workspace-figure-controls';panel.dataset.workspaceRole='controls';
+     panel.append(...controls);figure.append(panel);figure.dataset.workspaceFigure='';
+    }
     if(entry.layout==='motion'){
      const controls=workspace.querySelector('.sim-side'),transport=workspace.querySelector('.transport');
      if(controls&&transport)controls.prepend(transport);
@@ -54,7 +61,7 @@
      if(theory.length){const details=disclosure(theory[0],'reading');details.append(...theory);block.append(details);}
      for(const el of controls?.querySelectorAll('.chips,.checks')||[]){
       const title=el.previousElementSibling?.matches('.group-title')?el.previousElementSibling:null;
-      const details=disclosure(el,'preferences');if(title)details.insertBefore(title,el);
+      const details=disclosure(el,el.matches('.chips')?'cases':'options');if(title)details.insertBefore(title,el);
      }
     }
    }

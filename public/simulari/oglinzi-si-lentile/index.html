@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ro">
-<head><link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMyMTZlNjEiLz48dGV4dCB4PSIxNSIgeT0iNDYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI1NCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5wPC90ZXh0PjxjaXJjbGUgY3g9IjUyIiBjeT0iNDciIHI9IjUiIGZpbGw9IiNkNWFjNjciLz48L3N2Zz4K"><script>try{const c=JSON.parse(sessionStorage.getItem('praxis-library-return')||'null');if(c?.board?.enabled&&[1,1.25,1.5,1.75,2,2.5,3].includes(c.board.desired))localStorage.setItem('praxis-optica-board-scale',String(c.board.desired));}catch{}/* JSON namespaces shared by all Praxis pages. */
+<head><script>try{const c=JSON.parse(sessionStorage.getItem('praxis-library-return')||'null');if(c?.board?.enabled&&[1,1.25,1.5,1.75,2,2.5,3].includes(c.board.desired))localStorage.setItem('praxis-optica-board-scale',String(c.board.desired));}catch{}/* JSON namespaces shared by all Praxis pages. */
 (() => {
  if(window.PraxisI18n)return;
  const supported=['ro','en'],cache=new Map(),sourceNodes=new WeakMap(),sourceAttrs=new WeakMap();
@@ -342,6 +342,109 @@ window.PraxisContentCatalog={"version":"1.0.0","policy":"Use one small decorativ
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else queueMicrotask(mount);
 })();
 
+window.PraxisLabWorkspaceConfig={"oglinzi-si-lentile":{"workspaces":[{"selector":".workspace","scene":".experiment-column","layout":"native"}]},"miscarea-rectilinie":{"workspaces":[{"selector":".card.sim","controls":".sim-side","scene":".sim-main","graphs":".sim-main>.grid-2","layout":"motion"},{"selector":".type-card","scene":".stage","layout":"native"}],"activities":[{"scope":"#mru","items":":scope>.block","default":2},{"scope":"#mruv","items":":scope>.block","default":1},{"scope":"#tipuri","items":":scope>.block","default":0}],"reading":".panel>.hero"},"unde-mecanice":{"react":true,"workspaces":[{"selector":"[data-instrument-layout]","scene":"[data-instrument-role=visual]","controls":"[data-instrument-role=controls]","layout":"native"},{"selector":".lesson-part-content:has(.praxis-wave-figure)","scene":".praxis-wave-figure","layout":"native"}]},"calcul-vectorial":{"workspaces":[{"selector":".cols:has(.fig)","scene":".fig","layout":"reading"}],"reading":".cols>.text"},"viteza-si-acceleratia":{"workspaces":[{"selector":".lab-layout","scene":".canvas-workspace","controls":".control-panel","layout":"split"}]},"miscarea-curbilinie-plana":{"workspaces":[{"selector":".lab","scene":".curvilinear-visual","controls":".controls","layout":"split"}]},"notiuni-termodinamice":{"workspaces":[{"selector":".cols:has(.fig)","scene":".fig","layout":"reading"}],"reading":".cols>.text"},"calorimetrie":{"workspaces":[{"selector":".cols:has(.fig)","scene":".fig","layout":"reading"}],"reading":".cols>.text"},"principiul-i-al-termodinamicii":{"workspaces":[{"selector":".section .card:has(.transform-graphs)","scene":".transform-graphs","layout":"native"}],"secondaryGroups":[{"scope":".section","items":":scope>.card:first-child"}]},"interactii-atomice":{"workspaces":[{"selector":"#sim>.sim","scene":":scope>.stage","controls":":scope>aside","layout":"split"}]},"principiul-i-aplicatii":{"workspaces":[{"selector":".grid-2:has(>.demo)","scene":":scope>.demo","layout":"reading"}],"reading":".grid-2:has(>.demo)>.prose"},"transformari-stare-agregare":{"workspaces":[{"selector":".grid-2:has(>.demo)","scene":":scope>.demo","layout":"reading"}],"reading":".grid-2:has(>.demo)>.prose"},"oscilator-mecanic":{"workspaces":[{"selector":".demo-shell","scene":".demo-body","controls":".demo-controls","layout":"native"}],"activities":[{"scope":"#s111","items":":scope>.demo-shell","default":0},{"scope":"#s112","items":":scope>.demo-shell","default":0},{"scope":"#s113","items":":scope>.demo-shell","default":0},{"scope":"#s114","items":":scope>.demo-shell","default":0}],"secondaryGroups":[{"scope":".chapter:has(.demo-shell)","items":":scope>.story-card,:scope>p,:scope>blockquote,:scope>ol,:scope>ul,:scope>.defbox,:scope>h3"}]},"oscilatori-mecanici-cuplati":{"workspaces":[{"selector":".lab-panel","scene":".sim-row","controls":".controls","layout":"native"}]},"compunerea-oscilatiilor":{"workspaces":[{"selector":"[data-composition-section=laborator]>.layout","scene":".visuals","controls":".controls","layout":"split"}]},"figuri-chladni":{"workspaces":[{"selector":"[data-chladni-section=laborator]>.grid","scene":":scope>section","controls":":scope>aside","layout":"native"}]},"miscarea-circulara-uniforma":{"react":true,"workspaces":[{"selector":"#sim-mcu,#sim-curba","scene":"canvas.mcu-canvas","layout":"native"}]},"principiile-mecanicii-newtoniene":{"workspaces":[{"selector":".newton-demo","scene":".newton-stage","controls":".newton-controls","layout":"split"}]},"motoare-termice":{"workspaces":[{"selector":".cols:has(.fig)","scene":".fig","layout":"reading"}],"reading":".cols>.text"}};
+/* Shared presentation only. Keep scientific nodes, listeners and state alive. */
+(() => {
+ 'use strict';
+ if(window.PraxisLabWorkspace)return;
+ const mounted=new WeakSet(),grouped=new WeakSet(),noted=new WeakSet(),labels=new Map();
+ const words={ro:{preferences:'Preferințe laborator',cases:'Cazuri de mișcare',options:'Afișare și sunete',reading:'Explicații și formule',introduction:'Introducere',activities:'Activități'},en:{preferences:'Laboratory preferences',cases:'Motion cases',options:'Display and sounds',reading:'Explanations and formulas',introduction:'Introduction',activities:'Activities'}};
+ const language=()=>window.PraxisI18n?.language==='en'?'en':'ro';
+ function caption(el,key){labels.set(el,key);el.textContent=words[language()][key];}
+ function disclosure(element,key){
+  if(element.closest('.praxis-workspace-disclosure'))return element.closest('.praxis-workspace-disclosure');
+  const details=document.createElement('details'),summary=document.createElement('summary');
+  details.className='praxis-workspace-disclosure';caption(summary,key);details.append(summary);
+  element.before(details);details.append(element);
+  details.addEventListener('toggle',()=>{if(details.open)window.dispatchEvent(new Event('resize'));});
+  return details;
+ }
+ function activities(scope,config){
+  if(grouped.has(scope))return;
+  const items=[...scope.querySelectorAll(config.items)];if(items.length<2)return;
+  grouped.add(scope);
+  const nav=document.createElement('nav');nav.className='praxis-workspace-activities';nav.setAttribute('aria-label',words[language()].activities);
+  let selected=Math.min(config.default,items.length-1);
+  const buttons=items.map((item,index)=>{
+   item.dataset.workspaceActivity=String(index);
+   const heading=item.querySelector('h2,h3,h4');const button=document.createElement('button');button.type='button';
+   button.textContent=heading?.textContent.trim()||String(index+1);button.dataset.sound='none';
+   const select=()=>{
+    selected=index;items.forEach((el,i)=>{el.dataset.workspaceActive=String(i===index);buttons[i].setAttribute('aria-pressed',String(i===index));});
+    window.dispatchEvent(new Event('resize'));
+   };
+   button.addEventListener('click',select);nav.append(button);return button;
+  });
+  items.forEach((item,index)=>{item.dataset.workspaceActive=String(index===selected);buttons[index].setAttribute('aria-pressed',String(index===selected));});
+  items[0].before(nav);
+  // Translate with the lesson's own renderer, rather than retain stale copies.
+  window.addEventListener('praxis-language-change',()=>{nav.setAttribute('aria-label',words[language()].activities);items.forEach((item,i)=>{const heading=item.querySelector('h2,h3,h4');if(heading)buttons[i].textContent=heading.textContent.trim();});});
+ }
+ function mount(root=document){
+  const body=document.body;if(!body?.dataset.praxisLaboratory)return;
+  const id=body.dataset.praxisCourse||location.pathname.match(/\/([^/]+)\/(?:index\.html)?$/)?.[1];
+  const config=window.PraxisLabWorkspaceConfig?.[id];if(!config)return;
+  body.dataset.praxisWorkspace=id;
+  for(const entry of config.workspaces){
+   for(const workspace of root.querySelectorAll(entry.selector)){
+    if(mounted.has(workspace))continue;mounted.add(workspace);workspace.dataset.workspaceLayout=entry.layout;
+    for(const role of ['controls','scene','graphs'])if(entry[role])for(const el of workspace.querySelectorAll(entry[role]))el.dataset.workspaceRole=role;
+    if(entry.layout==='reading')for(const figure of workspace.querySelectorAll('.fig')){
+     if(!figure.querySelector(':scope>canvas'))continue;
+     const controls=[...figure.children].filter(el=>el.matches('.sliders,.ctrls,.ro,.chips,.hint'));
+     if(!controls.length)continue;
+     const panel=document.createElement('div');panel.className='praxis-workspace-figure-controls';panel.dataset.workspaceRole='controls';
+     panel.append(...controls);figure.append(panel);figure.dataset.workspaceFigure='';
+    }
+    if(entry.layout==='motion'){
+     const controls=workspace.querySelector('.sim-side'),transport=workspace.querySelector('.transport');
+     if(controls&&transport)controls.prepend(transport);
+     // Scientific derivations follow the working instrument; keep operating hints
+     // beside it. Only this explicit, non-React lesson adapter moves these nodes.
+     const block=workspace.parentElement;
+     const theory=[...block.children].filter(el=>el.matches('.def,.grid-3'));
+     if(theory.length){const details=disclosure(theory[0],'reading');details.append(...theory);block.append(details);}
+     for(const el of controls?.querySelectorAll('.chips,.checks')||[]){
+      const title=el.previousElementSibling?.matches('.group-title')?el.previousElementSibling:null;
+      const details=disclosure(el,el.matches('.chips')?'cases':'options');if(title)details.insertBefore(title,el);
+     }
+    }
+   }
+  }
+  if(!config.react){
+   for(const entry of config.activities||[])for(const scope of root.querySelectorAll(entry.scope))activities(scope,entry);
+   for(const entry of config.secondaryGroups||[])for(const scope of root.querySelectorAll(entry.scope)){
+    if(noted.has(scope))continue;noted.add(scope);
+    const notes=[...scope.querySelectorAll(entry.items)].filter(el=>!el.querySelector('input,button,select,textarea,canvas,svg'));
+    if(notes.length){const details=disclosure(notes[0],'reading');details.append(...notes);scope.append(details);}
+   }
+   if(config.reading)for(const el of root.querySelectorAll(config.reading)){
+    if(!el.querySelector('input,button,select,textarea,canvas')){
+     const details=disclosure(el,el.classList.contains('hero')?'introduction':'reading');
+     if(el.classList.contains('hero')&&details.nextElementSibling)details.parentElement.append(details);
+    }
+   }
+  }
+  for(const tools of document.querySelectorAll('.praxis-course-tools')){
+   const details=disclosure(tools,'preferences'),nav=document.querySelector('.praxis-lab-nav');
+   if(nav&&details.parentElement!==nav)nav.append(details);
+  }
+ }
+ window.PraxisLabWorkspace={mount};
+ function start(){
+  mount();
+  // React and imported bridges can mount after DOMContentLoaded. Observe additions
+  // only; numerical animation text and our attributes never retrigger this scan.
+  let frame=null;
+  const observer=new MutationObserver(records=>{
+   if(!records.some(record=>[...record.addedNodes].some(node=>node.nodeType===1&&!node.closest?.('[data-praxis-panel-probe]'))))return;
+   if(frame===null)frame=requestAnimationFrame(()=>{frame=null;mount();});
+  });observer.observe(document.body,{childList:true,subtree:true});
+  window.addEventListener('praxis-language-change',()=>{for(const [el,key]of labels){if(el.isConnected)caption(el,key);else labels.delete(el);}});
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+
 /* /praxis:content-types */
 </script>
   <meta charset="UTF-8">
@@ -349,7 +452,7 @@ window.PraxisContentCatalog={"version":"1.0.0","policy":"Use one small decorativ
   <meta name="theme-color" content="#146b62">
   <meta name="description" content="Explorează lentilele și oglinzile într-un laborator interactiv în română. Construiește raze, măsoară imagini și înțelege optica geometrică.">
   <title>Optică geometrică · Praxis Science Lab</title>
-  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiMxNDZiNjIiLz48cGF0aCBkPSJNMjQgNDdWMjJoOWExMCAxMCAwIDEgMS05IDE1TTI0IDI5djgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSI0NSIgY3k9IjQ2IiByPSI0IiBmaWxsPSIjYzlmMDgwIi8+PC9zdmc+Cg==">
   <style>
 
 :root{font-family:'DM Sans',sans-serif;color:#23343b;background:#f6f8fa;font-synthesis:none;--ink:#20343a;--muted:#7a898e;--teal:#176b60;--border:#e4e9eb;--accent:#d9edb5;--object:#d08b2d;--image:#398d94}
@@ -1183,6 +1286,84 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
 
 /* /praxis:lab-discovery */
 
+/* praxis:workspace */
+/* One workspace vocabulary for every laboratory. Library pages are excluded. */
+body[data-praxis-workspace]{--workspace-gap:16px;--workspace-control-width:300px}
+body[data-praxis-workspace] [data-workspace-active=false]{display:none!important}
+body[data-praxis-workspace] [data-workspace-layout]{min-width:0;align-items:start;scroll-margin-top:calc(var(--praxis-header-height,76px) + 16px)}
+body[data-praxis-workspace] [data-workspace-role]{min-width:0;max-width:100%;align-self:start}
+html body[data-praxis-workspace] .praxis-site-row{min-height:64px;padding-block:8px;gap:16px}
+body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path{flex:1;min-width:100px;max-width:360px;gap:6px;font:500 14px/1.4 var(--praxis-font-ui)}
+body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path>span,body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path>.praxis-lab-chapter{display:none}
+body[data-praxis-workspace] .praxis-site-row>.praxis-site-menu{flex:0 1 auto}
+@media(min-width:1141px) and (max-width:1600px){body[data-praxis-workspace] .praxis-site-row{flex-wrap:wrap}body[data-praxis-workspace] .praxis-site-row>.praxis-site-menu{flex:1;flex-wrap:wrap}}
+@media(max-width:1140px){body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path{max-width:none;flex:1}body[data-praxis-workspace] .praxis-site-row>.praxis-site-menu{flex:0 0 100%}}
+@media(max-width:700px){body[data-praxis-workspace] .praxis-site-row>.praxis-lab-path{order:5;flex:0 0 100%}}
+body[data-praxis-workspace] .praxis-lab-intro{width:auto!important;min-height:0!important;margin:8px 24px!important;padding:10px 16px!important;border-radius:12px!important;box-shadow:none!important}
+body[data-praxis-workspace] .praxis-lab-intro::after{display:none}
+body[data-praxis-workspace] .praxis-lab-intro>div{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-left:10px!important}
+body[data-praxis-workspace] .praxis-lab-intro h1{font-size:var(--praxis-text-heading)!important;letter-spacing:normal}
+body[data-praxis-workspace] .praxis-lab-intro p{margin:0!important}
+body[data-praxis-workspace] .praxis-lab-nav{padding-bottom:8px!important}
+body[data-praxis-workspace] .praxis-workspace-disclosure{margin:8px 0;border:1px solid var(--praxis-color-border);border-radius:10px;background:var(--praxis-color-surface);min-width:0;grid-column:1/-1}
+body[data-praxis-workspace] .praxis-workspace-disclosure>summary{min-height:44px;box-sizing:border-box;padding:10px 16px;cursor:pointer;color:var(--praxis-color-primary);font:600 var(--praxis-text-label)/1.5 var(--praxis-font-ui);overflow-wrap:anywhere}
+body[data-praxis-workspace] .praxis-workspace-disclosure>summary:focus-visible,body[data-praxis-workspace] .praxis-workspace-activities button:focus-visible{outline:3px solid var(--praxis-color-primary);outline-offset:2px}
+body[data-praxis-workspace] .praxis-workspace-disclosure>.praxis-course-tools{margin:0;border:0}
+body[data-praxis-workspace] .praxis-workspace-disclosure:has(>.praxis-course-tools){margin:0 0 0 auto;position:relative}
+body[data-praxis-workspace] .praxis-workspace-disclosure:has(>.praxis-course-tools)[open]{flex:0 0 100%}
+body[data-praxis-workspace] .praxis-workspace-disclosure>.text,body[data-praxis-workspace] .praxis-workspace-disclosure>.prose{padding:1rem 1.25rem}
+body[data-praxis-workspace] .praxis-workspace-disclosure>.hero{margin:0!important}
+body[data-praxis-workspace] .praxis-workspace-activities{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:6px;border:1px solid var(--praxis-color-border);border-radius:12px;background:var(--praxis-color-surface);grid-column:1/-1}
+body[data-praxis-workspace] .praxis-workspace-activities button{min-height:44px;padding:8px 12px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--praxis-color-primary);font:600 var(--praxis-text-label)/1.4 var(--praxis-font-ui);white-space:normal;text-align:left}
+body[data-praxis-workspace] .praxis-workspace-activities button[aria-pressed=true]{background:var(--praxis-color-primary);color:var(--praxis-color-surface)}
+body[data-praxis-workspace] [data-workspace-layout=reading]{display:flex!important;flex-direction:column;gap:12px!important}
+body[data-praxis-workspace] [data-workspace-layout=reading]>:not(.praxis-workspace-disclosure){width:100%;order:0}
+body[data-praxis-workspace] [data-workspace-layout=reading]>.praxis-workspace-disclosure{order:1;width:100%;margin:0}
+body[data-praxis-workspace] [data-workspace-layout=reading] .fig{width:100%;max-width:none}
+body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-side .transport{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;border-bottom:1px solid var(--praxis-color-border);padding-bottom:10px}
+body[data-praxis-workspace] [data-workspace-layout=motion] .transport>:is(select,.time){grid-column:1/-1;width:100%}
+body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-side>.praxis-workspace-disclosure{width:100%;margin:0}
+body[data-praxis-workspace] [data-workspace-layout=motion] .transport .time{min-width:0;flex-wrap:wrap}
+body[data-praxis-workspace] [data-workspace-layout=motion] .transport .clock{min-width:0}
+body[data-praxis-workspace] [data-workspace-layout=motion] .transport button{min-height:44px}
+body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main{gap:8px}
+body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main>.grid-2{margin:0!important;width:100%}
+body[data-praxis-workspace] [data-workspace-layout=motion] .log:empty{display:none}
+@media(min-width:1050px){
+ body[data-praxis-workspace] [data-workspace-figure]{display:grid!important;grid-template-columns:var(--workspace-control-width) minmax(0,1fr);align-items:start}
+ body[data-praxis-workspace] [data-workspace-figure]>:not(canvas):not(.praxis-workspace-figure-controls){grid-column:1/-1}
+ body[data-praxis-workspace] [data-workspace-figure]>canvas{grid-column:2;width:100%;min-width:0}
+ body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-controls{grid-column:1;grid-row:3/span 2;min-width:0}
+ body[data-praxis-workspace] .praxis-workspace-figure-controls .sliders{display:flex;flex-direction:column}
+ body[data-praxis-workspace] .praxis-workspace-figure-controls .ctrls{display:flex;flex-wrap:wrap}
+ body[data-praxis-workspace] .praxis-workspace-figure-controls .ro{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body[data-praxis-workspace] [data-workspace-layout=split]{display:grid!important;grid-template-columns:var(--workspace-control-width) minmax(0,1fr)!important;gap:var(--workspace-gap)!important}
+ body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=controls]{grid-column:1;grid-row:1}
+ body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=scene]{grid-column:2;grid-row:1}
+ body[data-praxis-workspace] [data-workspace-layout=motion]{grid-template-columns:var(--workspace-control-width) minmax(0,1fr)!important}
+ body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-side{padding:12px!important}
+ body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main{padding:12px!important}
+}
+@media(max-width:1049px){
+ body[data-praxis-workspace] [data-workspace-layout=split]{display:flex!important;flex-direction:column;gap:16px!important}
+ body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=controls]{order:-1;width:100%}
+ body[data-praxis-workspace] [data-workspace-layout=split]>[data-workspace-role=scene]{width:100%}
+ body[data-praxis-workspace] [data-workspace-layout=motion]{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:700px){
+ body[data-praxis-workspace] .praxis-lab-intro{margin-inline:12px!important}
+ body[data-praxis-workspace] .praxis-lab-intro>div{gap:4px}
+ body[data-praxis-workspace] .praxis-workspace-disclosure:has(>.praxis-course-tools){margin-inline:12px}
+ body[data-praxis-workspace] .praxis-workspace-activities{flex-direction:column}
+}
+@media print{
+ body[data-praxis-workspace] .praxis-workspace-activities{display:none}
+ body[data-praxis-workspace] [data-workspace-active=false]{display:block!important}
+ body[data-praxis-workspace] .praxis-workspace-disclosure>*{display:block!important}
+}
+
+/* /praxis:workspace */
+
 /* Shared density rules: preserve reading size and touch targets, reduce empty layout. */
 .praxis-lab-header.topbar{height:auto;min-height:68px;padding-block:8px}
 .praxis-lab-intro,.praxis-lab-nav{padding-top:10px;padding-bottom:10px}.praxis-lab-intro p{margin-top:4px}.praxis-lab-nav{padding-top:0}
@@ -1374,12 +1555,7 @@ body[data-praxis-course=miscarea-rectilinie] #praxis-original .plot-card h4>.not
 }
 
 [data-color-scheme="vivid"] .object-color{background:var(--praxis-science-orange)}
-[data-color-scheme="vivid"] .image-color{background:var(--praxis-science-blue)}</style><style id="praxis-link-colors">/* One link colour across the library, imported lessons and standalone exports. */
-:root{--praxis-color-link:var(--praxis-color-primary,#17685f)}
-html body a[href],html body a[href]:visited,html body a[href]:hover,html body a[href]:active{color:var(--praxis-link-ink,var(--praxis-color-link))!important}
-/* Link controls use a light surface so their common text colour stays readable. */
-html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected=true],.active,.backlink){background:var(--praxis-link-button-background,var(--praxis-color-primary-soft,#e4eeea))!important}
-</style></head>
+[data-color-scheme="vivid"] .image-color{background:var(--praxis-science-blue)}</style></head>
 <body data-praxis-laboratory="true">
   <a class="skip-link" href="#laborator">Sari la laborator</a>
   <header class="topbar">
