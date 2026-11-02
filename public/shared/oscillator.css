@@ -30,6 +30,13 @@ body[data-praxis-course="oscilator-mecanic"] .katex{color:var(--ink)}
 body[data-praxis-course="oscilator-mecanic"] .demo-body canvas{max-width:40rem;margin-inline:auto}
 
 /* Damping workbench: keep the graph beside a vertical parameter column. */
+body[data-praxis-course="oscilator-mecanic"] .yva-scenes{container:yva-scenes / inline-size;display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;align-items:center}
+body[data-praxis-course="oscilator-mecanic"] .yva-scenes canvas{width:100%}
+@container yva-scenes (min-width:82rem){
+ body[data-praxis-course="oscilator-mecanic"] .yva-scenes canvas{grid-row:1}
+ body[data-praxis-course="oscilator-mecanic"] #cv-yva{grid-column:1;width:calc(50cqw - .5rem)}
+ body[data-praxis-course="oscilator-mecanic"] #cv-yva-phasors{grid-column:2;width:calc(50cqw - .5rem)}
+}
 body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-body{container:amort-workspace / inline-size;display:grid;grid-template-columns:minmax(0,40rem) minmax(0,1fr);gap:1rem 1.5rem;align-items:start}
 body[data-praxis-course="oscilator-mecanic"] #demo-amort .demo-body>*{grid-column:1/-1;min-width:0}
 body[data-praxis-course="oscilator-mecanic"] #demo-amort canvas{margin-inline:0}

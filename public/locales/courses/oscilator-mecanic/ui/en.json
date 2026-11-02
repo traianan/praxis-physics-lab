@@ -500,6 +500,11 @@
     "Examinează B": "Inspect B",
     "Apasă pe un card pentru a opri animația în poziția respectivă. Reia mișcarea cu Redă.": "Select a card to pause the animation at that position. Use Play to resume.",
     "Vectorul viteză": "Velocity vector",
-    "Vectorul forță de revenire": "Restoring force vector"
+    "Vectorul forță de revenire": "Restoring force vector",
+    "Fazori normalizați": "Normalized phasors",
+    "Ascuns": "Hidden",
+    "Graficele elongației, vitezei și accelerației": "Displacement, velocity and acceleration graphs",
+    "Fazori normalizați: elongație, viteză și accelerație, cu origine comună": "Normalized displacement, velocity and acceleration phasors with a common origin",
+    "Fazorii sunt normalizați la amplitudinile proprii: y/A, v/(Aω), a/(Aω²). Proiecțiile verticale corespund graficelor. Viteza este înainte cu π/2, accelerația cu π.": "Phasors are normalized to their own amplitudes: y/A, v/(Aω), a/(Aω²). Vertical projections match the graphs. Velocity leads by π/2, acceleration by π."
   }
 }

@@ -1,8 +1,21 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {createHash} from 'node:crypto';import vm from 'node:vm';import {findSimulations} from '../public/catalog.js';
 const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8'),dir='public/simulari/oscilator-mecanic/';
 const close=(a,b,tol=1e-7)=>assert.ok(Math.abs(a-b)<tol*Math.max(1,Math.abs(b)),`${a} != ${b}`);
+test('three common-origin phasors rotate counterclockwise with the graph time and preserve harmonic projections',async()=>{
+ const {specs}=await models(),spec=specs.find(s=>s.id==='demo-yva');
+ const g=new Proxy({createRadialGradient:()=>({addColorStop(){}})},{get:(o,k)=>k in o?o[k]:()=>{},set:(o,k,v)=>(o[k]=v,true)});
+ for(const phi of [0,.79,Math.PI,6.28])for(const t of [0,.1,1,12]){
+  const s={t,sliders:{phi:{value:phi}},showy:true,showv:true,showa:true};
+  spec.renderPhasors(g,640,320,s);const before=s.phasors;
+  for(let i=0;i<3;i++){const p=before[i];close(p.angle,2*t+phi+i*Math.PI/2);close(p.x,before[0].x);close(p.y,before[0].y);close((p.y-p.endY)/p.radius,Math.sin(p.angle));close(p.value,[Math.sin(2*t+phi),2*Math.cos(2*t+phi),-4*Math.sin(2*t+phi)][i]);}
+  s.t+=.001;spec.renderPhasors(g,640,320,s);
+  for(let i=0;i<3;i++){const a=before[i],b=s.phasors[i];close((b.angle-a.angle)/.001,2);assert.ok((a.endX-a.x)*(a.y-b.endY)-(a.y-a.endY)*(b.endX-a.x)>0);}
+  s.showv=false;spec.renderPhasors(g,640,320,s);assert.equal(s.phasors[1].visible,false);
+ }
+ const html=await read(dir+'index.html');assert.match(html,/id="cv-yva-phasors"/);
+});
 async function models(){const window={},specs=[];const env={window,App:{register:s=>specs.push(s),get demos(){return specs.map(spec=>({shell:{id:spec.id},spec}));}},Sound:{tick(){},beep(){},setTone(){}},document:{},PraxisI18n:{tr:s=>s},console};vm.runInNewContext(await read('public/shared/oscillator-model.js'),env);env.PraxisOscillatorModel=window.PraxisOscillatorModel;vm.runInNewContext(await read(dir+'js/demos.js'),env);return{m:window.PraxisOscillatorModel,specs,views:window.PraxisOscillatorViews};}
-test('oscillator import preserves source files and all four requested topics, eleven demos and six problems',async()=>{const report=JSON.parse(await read('docs/imported-oscillator.json'));for(const f of report.files)assert.equal(createHash('sha256').update(await readFile(new URL('../'+report.source+'/'+f.path,import.meta.url))).digest('hex'),f.sha256);const html=await read(dir+'index.html');assert.equal((html.match(/<canvas /g)||[]).length,11);assert.equal((html.match(/class="exercise"/g)||[]).length,6);for(const id of ['s111','s112','s113','s114','quiz'])assert.match(html,new RegExp('id="'+id+'"'));assert.doesNotMatch(html.replace(/<script[\s\S]*?<\/script>/g,''),/manual|subcapitol|corectii|cdn\.jsdelivr/i);assert.equal(findSimulations('sunete-si-unde','oscilator')[0].id,'oscilator-mecanic');});
+test('oscillator import preserves source files and all four requested topics, eleven demos and six problems',async()=>{const report=JSON.parse(await read('docs/imported-oscillator.json'));for(const f of report.files)assert.equal(createHash('sha256').update(await readFile(new URL('../'+report.source+'/'+f.path,import.meta.url))).digest('hex'),f.sha256);const html=await read(dir+'index.html');assert.equal((html.match(/<canvas /g)||[]).length,12);assert.equal((html.match(/class="exercise"/g)||[]).length,6);for(const id of ['s111','s112','s113','s114','quiz'])assert.match(html,new RegExp('id="'+id+'"'));assert.doesNotMatch(html.replace(/<script[\s\S]*?<\/script>/g,''),/manual|subcapitol|corectii|cdn\.jsdelivr/i);assert.equal(findSimulations('sunete-si-unde','oscilator')[0].id,'oscilator-mecanic');});
 test('harmonic laws agree with independent derivatives and conserve mechanical energy',async()=>{const {m}=await models();for(const mass of [.2,.5,2])for(const k of [8,20,500])for(const A of [.1,.4,1])for(const t of [0,.1,1,3]){const w=Math.sqrt(k/mass),s=m.harmonic(t,A,w,.7),h=1e-5;close((m.harmonic(t+h,A,w,.7).x-m.harmonic(t-h,A,w,.7).x)/(2*h),s.v,1e-5);close(s.a,-k/mass*s.x);close(.5*mass*s.v*s.v+.5*k*s.x*s.x,.5*k*A*A);}});
 
 test('tuning-fork curve samples grow with actual drawing density rather than a fixed coarse polyline',async()=>{

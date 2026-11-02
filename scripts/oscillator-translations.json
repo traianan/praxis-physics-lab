@@ -1,4 +1,6 @@
 {
+  "2": "2",
+  "4": "4",
   "Oscilatorul mecanic — Praxis": "Mechanical oscillator — Praxis",
   "Fenomene periodice": "Periodic phenomena",
   "Mărimi caracteristice": "Characteristic quantities",
@@ -393,9 +395,7 @@
   "y = 0": "y = 0",
   "Două resorturi identice (k) în serie vs. paralel cu același corp: raportul perioadelor T_serie / T_paralel este:": "For the same mass on two identical springs in series or parallel, the ratio T_series / T_parallel is:",
   "k_s = k/2, k_p = 2k; T ∝ 1/√k ⇒ T_s/T_p = √(k_p/k_s) = √4 = 2. ": "k_series = k/2, k_parallel = 2k and T ∝ 1/√k. Hence T_series/T_parallel = 2.",
-  "2": "2",
   "1/2": "1/2",
-  "4": "4",
   "√2": "√2",
   "Energia oscilatorului armonic liniar este:": "The mechanical energy of an ideal linear harmonic oscillator is:",
   "E = Ec + Ep = ½kA² = ½mω²A² = ½mv_max² = const; Ep = ½ky² e maximă la întoarcere, Ec maximă prin echilibru.": "E = Ec + Ep = ½kA² = ½mω²A² = ½mv_max². Potential energy is largest at turning points; kinetic energy is largest at equilibrium.",
@@ -497,5 +497,10 @@
   "Examinează B": "Inspect B",
   "Apasă pe un card pentru a opri animația în poziția respectivă. Reia mișcarea cu Redă.": "Select a card to pause the animation at that position. Use Play to resume.",
   "Vectorul viteză": "Velocity vector",
-  "Vectorul forță de revenire": "Restoring force vector"
+  "Vectorul forță de revenire": "Restoring force vector",
+  "Fazori normalizați": "Normalized phasors",
+  "Ascuns": "Hidden",
+  "Graficele elongației, vitezei și accelerației": "Displacement, velocity and acceleration graphs",
+  "Fazori normalizați: elongație, viteză și accelerație, cu origine comună": "Normalized displacement, velocity and acceleration phasors with a common origin",
+  "Fazorii sunt normalizați la amplitudinile proprii: y/A, v/(Aω), a/(Aω²). Proiecțiile verticale corespund graficelor. Viteza este înainte cu π/2, accelerația cu π.": "Phasors are normalized to their own amplitudes: y/A, v/(Aω), a/(Aω²). Vertical projections match the graphs. Velocity leads by π/2, acceleration by π."
 }

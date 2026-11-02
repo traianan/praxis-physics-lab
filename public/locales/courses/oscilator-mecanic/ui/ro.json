@@ -500,6 +500,11 @@
     "Examinează B": "Examinează B",
     "Apasă pe un card pentru a opri animația în poziția respectivă. Reia mișcarea cu Redă.": "Apasă pe un card pentru a opri animația în poziția respectivă. Reia mișcarea cu Redă.",
     "Vectorul viteză": "Vectorul viteză",
-    "Vectorul forță de revenire": "Vectorul forță de revenire"
+    "Vectorul forță de revenire": "Vectorul forță de revenire",
+    "Fazori normalizați": "Fazori normalizați",
+    "Ascuns": "Ascuns",
+    "Graficele elongației, vitezei și accelerației": "Graficele elongației, vitezei și accelerației",
+    "Fazori normalizați: elongație, viteză și accelerație, cu origine comună": "Fazori normalizați: elongație, viteză și accelerație, cu origine comună",
+    "Fazorii sunt normalizați la amplitudinile proprii: y/A, v/(Aω), a/(Aω²). Proiecțiile verticale corespund graficelor. Viteza este înainte cu π/2, accelerația cu π.": "Fazorii sunt normalizați la amplitudinile proprii: y/A, v/(Aω), a/(Aω²). Proiecțiile verticale corespund graficelor. Viteza este înainte cu π/2, accelerația cu π."
   }
 }

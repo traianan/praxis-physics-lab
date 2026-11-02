@@ -22,6 +22,7 @@ body=body.replace(/(<p><strong>Ex\.\s*)(<\/strong>)/g,(_,a,b)=>a+b);
 let ex=0;body=body.replace(/<strong>Ex\.\s*<\/strong>/g,()=>'<strong>Problema '+(++ex)+'.</strong>');
 body=body.replace('Reprezentați grafic ecuația mișcării de la .','Reprezentați grafic mișcarea y₁(t) = 0,1 cos(4t) m.').replace('la Ex. ,','în problema cu două resorturi,');
 body=body.replace(/<canvas id="([^"]+)"><\/canvas>/g,'<canvas id="$1" width="640" height="320"></canvas>');
+body=body.replace('<canvas id="cv-yva" width="640" height="320"></canvas>','<div class="yva-scenes"><canvas id="cv-yva" width="640" height="320" role="img" aria-label="Graficele elongației, vitezei și accelerației"></canvas><canvas id="cv-yva-phasors" width="640" height="320" role="img" aria-label="Fazori normalizați: elongație, viteză și accelerație, cu origine comună"></canvas></div><p class="hint">Fazorii sunt normalizați la amplitudinile proprii: y/A, v/(Aω), a/(Aω²). Proiecțiile verticale corespund graficelor. Viteza este înainte cu π/2, accelerația cu π.</p>');
 body=body.replace(/(<div class="demo-shell" id="demo-(?:oscillator|phasor)">[\s\S]*?<div class="demo-controls">)/g,'$1<label>Viteza redării <select data-sl="speed"><option value="0.25">0,25×</option><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>');
 const attr=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
 body=body.replace(/\$\$([\s\S]*?)\$\$/g,(_,fx)=>'<div class="fx" data-fx="'+attr(fx.trim())+'"></div>').replace(/\\\(([\s\S]*?)\\\)/g,(_,fx)=>'<span data-fx-inline="'+attr(fx)+'"></span>');
@@ -65,6 +66,7 @@ app=app.replace('  return { register, fitCanvas, Sound, demos };', `  function t
       const dt=state.last?Math.min((ts-state.last)/1000,.05):0;state.last=ts;
       const step=dt*(+state.sliders.speed?.value||1);if(state.running){state.t+=step;spec.frame?.(state,step);}
       const {ctx,w,h}=fitCanvas(shell.querySelector('canvas'));ctx.clearRect(0,0,w,h);spec.render(ctx,w,h,state);
+      spec.renderAdditional?.(shell,state,fitCanvas);
     }
     requestAnimationFrame(tick);
   }

@@ -73,6 +73,7 @@ const App = (() => {
       const dt=state.last?Math.min((ts-state.last)/1000,.05):0;state.last=ts;
       const step=dt*(+state.sliders.speed?.value||1);if(state.running){state.t+=step;spec.frame?.(state,step);}
       const {ctx,w,h}=fitCanvas(shell.querySelector('canvas'));ctx.clearRect(0,0,w,h);spec.render(ctx,w,h,state);
+      spec.renderAdditional?.(shell,state,fitCanvas);
     }
     requestAnimationFrame(tick);
   }

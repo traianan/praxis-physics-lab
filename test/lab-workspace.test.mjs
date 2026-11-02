@@ -45,3 +45,12 @@ test('hidden oscillator activities preserve time and never render or emit frame 
  vm.runInNewContext(tick+';tick(2000)',{demos:[{shell,state,spec:{frame(){frames++;},render(){frames++;}}}],document:{hidden:false},innerHeight:1080,requestAnimationFrame(){scheduled++;},fitCanvas(){return {ctx:{clearRect(){}},w:640,h:320};}});
  assert.equal(state.t,3);assert.equal(state.last,0);assert.equal(frames,0);assert.equal(scheduled,1);
 });
+
+test('graph and extra phasor canvas share one clock, including paused phase edits',async()=>{
+ const source=await read('public/simulari/oscilator-mecanic/js/app.js'),tick=source.match(/function tick\(ts\)\{[\s\S]*?requestAnimationFrame\(tick\);\s*\}/)[0];
+ const state={t:3,last:1000,running:true,sliders:{phi:{value:0}}},seen=[];
+ const shell={closest:()=>({hidden:false}),querySelector:()=>({}),getClientRects:()=>[{}],getBoundingClientRect:()=>({top:0,bottom:320})};
+ const env={demos:[{shell,state,spec:{render(g,w,h,s){seen.push(['graph',s.t,+s.sliders.phi.value]);},renderAdditional(shell,s){seen.push(['phasors',s.t,+s.sliders.phi.value]);}}}],document:{hidden:false},innerHeight:1080,requestAnimationFrame(){},fitCanvas(){return {ctx:{clearRect(){}},w:640,h:320};}};
+ vm.runInNewContext(tick+';tick(1016)',env);assert.deepEqual(seen,[['graph',3.016,0],['phasors',3.016,0]]);
+ seen.length=0;state.running=false;state.sliders.phi.value=1.2;vm.runInNewContext(tick+';tick(1032)',env);assert.deepEqual(seen,[['graph',3.016,1.2],['phasors',3.016,1.2]]);
+});
