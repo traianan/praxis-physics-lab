@@ -113,7 +113,7 @@
     const dx=Math.cos(angle),dy=-Math.sin(angle);g.fillStyle=color;g.beginPath();g.moveTo(endX,endY);g.lineTo(endX-11*dx+5*dy,endY-11*dy-5*dx);g.lineTo(endX-11*dx-5*dy,endY-11*dy+5*dx);g.closePath();g.fill();
     ball(g,endX,endY,3,color);
    }
-   const row=84+i*66;text(g,`${key}_max = ${max} ${unit}  ·  `+['φ','φ + π/2','φ + π'][i],350,row,color);
+   const row=84+i*66;text(g,`${key}_max = ${max} ${unit}     |     `+['φ','φ + π/2','φ + π'][i],350,row,color);
    text(g,visible?`${key} = ${value.toFixed(2)} ${unit}`:PraxisI18n.tr('Ascuns'),350,row+20,visible?color:C.ink);
    return {key,x:cx,y:cy,endX,endY,radius,magnitude:max,angle,value,visible};
   });
