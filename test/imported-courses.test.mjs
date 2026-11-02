@@ -6,10 +6,11 @@ import{adaptMotionPhysics}from'../scripts/motion-physics-adapter.mjs';
 const root=new URL('../',import.meta.url),manifest=JSON.parse(await readFile(new URL('docs/imported-courses.json',root),'utf8'));
 const sha=buffer=>createHash('sha256').update(buffer).digest('hex');
 // The shared favicon and link colours are presentation adaptations; all other bytes remain checked.
-const withoutIcons=html=>html.replace(/<link\b[^>]*>/gi,tag=>/\brel=["'](?:icon|shortcut icon|apple-touch-icon|apple-touch-icon-precomposed|mask-icon)["']/i.test(tag)?'':tag).replace(/<style id="praxis-link-colors">[\s\S]*?<\/style>/g,'');
+const withoutIcons=html=>html.replaceAll('\r\n','\n').replace(/<link\b[^>]*>/gi,tag=>/\brel=["'](?:icon|shortcut icon|apple-touch-icon|apple-touch-icon-precomposed|mask-icon)["']/i.test(tag)?'':tag).replace(/<style id="praxis-link-colors">[\s\S]*?<\/style>/g,'');
 test('imports preserve every original asset, lesson paragraph and simulation script',async()=>{
  for(const course of manifest.courses)for(const file of course.files){let content=await readFile(new URL('public/simulari/'+course.id+'/'+file.path,root));
   if(course.id==='miscarea-rectilinie'&&file.path.endsWith('.js'))content=Buffer.from(await adaptMotionPhysics(content.toString('utf8'),file.path,true));
+  if(file.path==='index.html'&&course.id==='miscarea-rectilinie')content=Buffer.from(content.toString('utf8').replaceAll('\r\n','\n'));
   if(file.path==='index.html')content=Buffer.from(content.toString('utf8').replace(/<!-- praxis:head -->[\s\S]*?<!-- \/praxis:head -->/,'').replace('<body data-praxis-laboratory="true" data-praxis-course="'+course.id+'"><div id="praxis-original" lang="ro">','<body>').replace(/<\/div><!-- praxis:bridge -->[\s\S]*?<!-- \/praxis:bridge -->/,''));
   if(course.id==='miscarea-rectilinie'&&file.path==='js/app.js')content=Buffer.from(content.toString('utf8').replace('MR.sound.on = window.PraxisSound.enabled;',"MR.sound.on = localStorage.getItem('mr-sound') !== 'off';").replace('MR.sound.on = window.PraxisSound.setEnabled(!window.PraxisSound.enabled);','MR.sound.on = !MR.sound.on;'));
   if(course.id==='miscarea-rectilinie'&&file.path==='js/core.js')content=Buffer.from(content.toString('utf8').replace('if (!S.on || !window.PraxisSound.enabled) return;','if (!S.on) return;'));
