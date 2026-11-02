@@ -67,3 +67,9 @@ La text 200% și pe telefon, derularea poate rămâne necesară. Instrumentele c
 La deschiderea Calculului vectorial prin `file://`, Chromium raportează blocarea manifestului PWA de politica CORS pentru originea `null`. Referința la manifest exista anterior; lecția, cele 10 grupuri de lucru și resursele comune încorporate funcționează. Instalarea ca PWA se face prin servirea HTTP, nu prin deschiderea fișierului local.
 
 Rapoartele detaliate ale matricei sunt în `outputs/workspace-layout/deep-a.json`, `deep-b.json` și `deep-c.json`; logurile de build, import, pachete și verificări sunt în același folder local, exclus din Git. Capturile reprezentative sunt salvate în acest folder. Nu s-a făcut push, merge sau deploy.
+
+## Ajustare ulterioară: două figuri termodinamice pe același rând
+
+La cererea utilizatorului, în secțiunea „Difuzie și mișcare browniană”, figurile 2 și 3 („Grade de libertate”) se așază alături când fiecare dispune de minimum 43rem. Pragul depinde de mărimea textului: pe ecrane înguste și la text mărit se revine automat la un singur rând de figuri pe verticală. Se folosește CSS în `public/shared/thermodynamics.css`, fără mutarea nodurilor și fără schimbarea modelelor sau parametrilor.
+
+La 1920 × 1080, RO/EN și text 100%, înălțimea grupului scade de la 1166,3 la 564,8 CSS px, economisind aproximativ 601 px (52%). Cele două figuri au aceeași poziție verticală. Au fost verificate 20 de combinații (cele cinci dimensiuni de ecran, două limbi și două mărimi de text), fără overflow și cu păstrarea parametrului modificat. Cele trei tipuri de molecule rămân funcționale. Build-ul și arhiva autonomă a acestui laborator au fost actualizate.

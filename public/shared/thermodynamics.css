@@ -8,6 +8,10 @@ body[data-praxis-course=notiuni-termodinamice] #praxis-original .cols{gap:1rem}
 body[data-praxis-course=notiuni-termodinamice] #praxis-original .fig{position:static;box-shadow:none;margin:0}
 body[data-praxis-course=notiuni-termodinamice] #praxis-original .fig canvas{height:25rem}
 body[data-praxis-course=notiuni-termodinamice] #praxis-original .fig canvas.mini{height:10rem!important}
+/* Related demonstrations share a row when each can retain a readable instrument.
+   rem-based minimums also restore stacking when the lesson text is enlarged. */
+body[data-praxis-workspace=notiuni-termodinamice] #s2 [data-workspace-layout=reading]>.rv:has(>#fig2):has(>#fig3){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,43rem),1fr));gap:1rem;align-items:start;min-width:0}
+body[data-praxis-workspace=notiuni-termodinamice] #s2 :is(#fig2,#fig3){min-width:0;margin:0!important}
 body[data-praxis-course=notiuni-termodinamice] #praxis-original :is(.text p,.text ul,.text ol){margin-bottom:.75rem}
 body[data-praxis-course=notiuni-termodinamice] #praxis-original .sliders{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:.75rem;padding:.75rem 1rem}
 body[data-praxis-course=notiuni-termodinamice] #praxis-original .sl{grid-template-columns:minmax(0,1fr) auto;gap:0 .5rem;min-width:0}

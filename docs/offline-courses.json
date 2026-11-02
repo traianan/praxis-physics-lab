@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-02T15:27:19.430Z",
+  "builtAt": "2026-11-02T15:45:34.320Z",
   "courses": [
     {
       "id": "motoare-termice",
@@ -92,7 +92,7 @@
     {
       "id": "notiuni-termodinamice",
       "file": "public/simulari/notiuni-termodinamice/notiuni-termodinamice.zip",
-      "sha256": "1c67b3bc446e1e4f2966254d6788474b3ca3341200a6f43f19e53ed828c95995",
+      "sha256": "028a87b0dd5d23ac577ec670019e5d16a13f5c1f8928af4fd593998c2b6c31a4",
       "languages": [
         "ro",
         "en"
