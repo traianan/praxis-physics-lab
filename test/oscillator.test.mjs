@@ -11,6 +11,14 @@ test('tuning-fork curve samples grow with actual drawing density rather than a f
  specs.find(s=>s.id==='demo-fork').render(g,640,320,{t:1,strikeT:0});
  assert.ok(Math.max(...paths)>=3481,'waveform must sample at least twice per actual pixel');
 });
+
+test('characteristic-quantity curves use the same density-aware sampling as the introductory signal',async()=>{
+ const {specs}=await models(),paths=[];let points=0;
+ const gradient={addColorStop(){}};
+ const g=new Proxy({getTransform:()=>({a:2}),measureText:()=>({width:12}),createRadialGradient:()=>gradient,beginPath(){points=0;},moveTo(){points++;},lineTo(){points++;},stroke(){paths.push(points);}},{get:(o,k)=>k in o?o[k]:()=>{},set:(o,k,v)=>(o[k]=v,true)});
+ specs.find(s=>s.id==='demo-yva').render(g,640,320,{t:2,sliders:{phi:{value:0}},showy:true,showv:true,showa:true,ro:{dataset:{},textContent:''}});
+ assert.ok(Math.max(...paths)>=2193,'each quantity curve must sample twice per drawing pixel');
+});
 test('analytic damping satisfies the differential equation and initial conditions in all three regimes',async()=>{const {m}=await models();for(const w of [1.5,4,12.5])for(const b of [.02,.8,w,1.4*w,20]){const s=m.damped(0,w,b,1,.25);close(s.x,1);close(s.v,.25);for(const t of [.1,1,3,10]){const h=1e-5,s=m.damped(t,w,b,1,.25),lo=m.damped(t-h,w,b,1,.25),hi=m.damped(t+h,w,b,1,.25);close((hi.x-lo.x)/(2*h),s.v,1e-5);close((hi.v-lo.v)/(2*h),-2*b*s.v-w*w*s.x,1e-5);assert.ok(Number.isFinite(s.x)&&Number.isFinite(s.v));}}});
 test('complete-cycle counter waits a full period; nonlinear pendulum actually advances and conserves energy',async()=>{const {specs}=await models(),p=specs.find(s=>s.id==='demo-pendulum'),T=2*Math.PI/Math.sqrt(9.81),s={sliders:{L:{value:1},A:{value:5}},t:.75*T,N:0,lastSign:-1};p.frame(s,0);assert.equal(s.N,0);s.t=T;p.frame(s,0);assert.equal(s.N,1);const real=specs.find(s=>s.id==='demo-simple'),state={sliders:{L:{value:1},A:{value:30}},t:0,running:false,checks:{},lastBeep:0};real.frame(state,0);const initial=9.81*(1-Math.cos(Math.PI/6));for(let i=0;i<3000;i++){state.t+=.002;real.frame(state,.002);}const energy=.5*state.w2**2+9.81*(1-Math.cos(state.th2));assert.ok(Math.abs(energy/initial-1)<.002);assert.ok(Math.abs(state.th2-Math.PI/6)>.01);const js=await read(dir+'js/demos.js');assert.doesNotMatch(js,/s\.thHarmonic|s\.thReal/);});
 test('every imported formula parses locally and the bilingual quiz retains eighteen independent keys',async()=>{const env={};vm.runInNewContext(await read(dir+'vendor/katex/katex.min.js'),env);const html=await read(dir+'index.html'),fx=[...html.matchAll(/data-fx(?:-inline)?="([^"]+)"/g)].map(m=>m[1].replaceAll('&amp;','&').replaceAll('&quot;','"').replaceAll('&lt;','<'));assert.ok(fx.length>80);for(const f of fx)assert.match(env.katex.renderToString(f,{throwOnError:true,trust:false}),/katex/);const code=await read(dir+'js/app.js'),q=vm.runInNewContext(code.match(/const QUIZ = ([\s\S]*?\n]);/)[1]);assert.equal(q.length,18);const en=JSON.parse(await read('scripts/oscillator-translations.json'));for(const item of q){assert.ok(item.opts[item.a]);assert.ok(en[item.q]);assert.ok(en[item.expl]);for(const opt of item.opts)assert.ok(en[opt]||!/[a-zăîâșț]/i.test(opt));}assert.equal(q[3].opts.filter(x=>/distanța|Jumătate/.test(x)).length,1);assert.match(q[11].expl,/0,04/);});
@@ -25,7 +33,7 @@ test('rebuilt views remain disjoint at maximum amplitude and are independent of 
 
 test('displacement velocity acceleration curves stay inside three independent panels for every phase',async()=>{
  const {specs}=await models(),spec=specs.find(x=>x.id==='demo-yva');
- for(const phi of [0,.5,Math.PI/2,Math.PI,2*Math.PI]){let path=[],curves=[];const gradient={addColorStop(){}},g=new Proxy({beginPath(){path=[]},moveTo(x,y){path.push([x,y])},lineTo(x,y){path.push([x,y])},stroke(){if(path.length===361)curves.push(path.slice())},createRadialGradient:()=>gradient,measureText:()=>({width:12})},{get:(o,k)=>k in o?o[k]:()=>{},set:(o,k,v)=>(o[k]=v,true)});
+ for(const phi of [0,.5,Math.PI/2,Math.PI,2*Math.PI]){let path=[],curves=[];const gradient={addColorStop(){}},g=new Proxy({beginPath(){path=[]},moveTo(x,y){path.push([x,y])},lineTo(x,y){path.push([x,y])},stroke(){if(path.length>=361)curves.push(path.slice())},createRadialGradient:()=>gradient,measureText:()=>({width:12})},{get:(o,k)=>k in o?o[k]:()=>{},set:(o,k,v)=>(o[k]=v,true)});
  const state={t:5,sliders:{phi:{value:phi}},showy:true,showv:true,showa:true,ro:{dataset:{},textContent:''}};spec.render(g,640,320,state);assert.equal(curves.length,3);
  for(let i=0;i<3;i++){const b=state.plotBands[i];if(i)assert.ok(state.plotBands[i-1].bottom<b.top);for(const [x,y] of curves[i])assert.ok(x>=62&&x<=610&&y>=b.top-1e-8&&y<=b.bottom+1e-8);}
  }

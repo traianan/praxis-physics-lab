@@ -92,7 +92,8 @@
  function curve(g,{left=62,right=610,top,bottom,mid,max,start,span,fn,color,end=start+span}){
   const X=t=>left+(t-start)/span*(right-left),Y=v=>mid-v/max*(bottom-top)/2;
   hLine(g,left,right,mid,C.axis);g.save();g.beginPath();g.rect(left,top,right-left,bottom-top);g.clip();g.strokeStyle=color;g.lineWidth=2;g.beginPath();
-  for(let i=0;i<=360;i++){const t=start+(end-start)*i/360;i?g.lineTo(X(t),Y(fn(t))):g.moveTo(X(t),Y(fn(t)));}g.stroke();g.restore();
+  const samples=Math.max(360,Math.ceil((right-left)*Math.max(1,Math.abs(g.getTransform?.()?.a||1))*2));
+  for(let i=0;i<=samples;i++){const t=start+(end-start)*i/samples;i?g.lineTo(X(t),Y(fn(t))):g.moveTo(X(t),Y(fn(t)));}g.stroke();g.restore();
   ball(g,X(end),Y(fn(end)),3.5,color);
   return {X,Y};
  }
@@ -126,7 +127,8 @@
   text(g,'Ep = ½ky² (J)',32,24,C.violet);text(g,'E = 10 J',32,45,C.amber);
   const X=y=>164+y*90,Y=e=>244-e*15;
   hLine(g,38,290,244,C.axis);text(g,'y (m)',290,281,C.ink,'right');
-  g.save();g.beginPath();g.rect(36,62,256,184);g.clip();g.strokeStyle=C.violet;g.lineWidth=2;g.beginPath();for(let i=0;i<=180;i++){const x=-1.4+i*2.8/180;i?g.lineTo(X(x),Y(10*x*x)):g.moveTo(X(x),Y(10*x*x));}g.stroke();g.restore();
+  const samples=Math.max(180,Math.ceil(256*Math.max(1,Math.abs(g.getTransform?.()?.a||1))*2));
+  g.save();g.beginPath();g.rect(36,62,256,184);g.clip();g.strokeStyle=C.violet;g.lineWidth=2;g.beginPath();for(let i=0;i<=samples;i++){const x=-1.4+i*2.8/samples;i?g.lineTo(X(x),Y(10*x*x)):g.moveTo(X(x),Y(10*x*x));}g.stroke();g.restore();
   hLine(g,44,284,Y(10),C.amber,[5,4]);ball(g,X(y),Y(Ep),7,C.accent);
   for(const v of [-1,0,1])text(g,String(v),X(v),264,C.ink,'center');
   for(const [i,name,value,color] of [[0,'Ep',Ep,C.pink],[1,'Ec',Ec,C.green],[2,'E',10,C.amber]]){const x=350+i*90;g.strokeStyle=C.grid;g.strokeRect(x,70,52,174);g.fillStyle=color;g.fillRect(x,244-value*17.4,52,value*17.4);text(g,name,x+26,266,color,'center');text(g,value.toFixed(1)+' J',x+26,49,C.ink,'center');}

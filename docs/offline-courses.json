@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-02T16:24:51.551Z",
+  "builtAt": "2026-11-02T16:44:24.411Z",
   "courses": [
     {
       "id": "motoare-termice",
@@ -158,7 +158,7 @@
     {
       "id": "oscilator-mecanic",
       "file": "public/simulari/oscilator-mecanic/oscilator-mecanic.zip",
-      "sha256": "caa5ab72016830d317d53194cb6ad5c55267a46a386f60cac0a3b766a6443e85",
+      "sha256": "3f2587e273519b59ff35316cab6532f31c6428244b8e04e691c71177c5cd77dd",
       "languages": [
         "ro",
         "en"

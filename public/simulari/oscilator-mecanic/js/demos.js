@@ -338,8 +338,9 @@ App.register({
   for(const y of [-1,0,1]){line(left,Y(y),right,Y(y));label(ctx,String(y),left-10,Y(y)+4,C.ink,12,'right');}
   for(let i=0;i<=4;i++){const t=start+i*span/4;line(X(t),top,X(t),bottom);label(ctx,t.toFixed(1),X(t),bottom+19,C.ink,12,'center');}
   line(left,top,left,bottom,C.axis);line(left,Y(0),right,Y(0),C.axis);label(ctx,'x / A₀',left,20,C.ink,12);label(ctx,'t (s)',right,bottom+38,C.ink,12,'right');
-  if(under){ctx.setLineDash([5,4]);ctx.strokeStyle=C.amber;for(const sign of [-1,1]){ctx.beginPath();for(let i=0;i<=180;i++){const t=start+i*span/180,x=sign*Math.exp(-b*t);i?ctx.lineTo(X(t),Y(x)):ctx.moveTo(X(t),Y(x));}ctx.stroke();}ctx.setLineDash([]);}
-  ctx.strokeStyle=C.accent;ctx.lineWidth=2.5;ctx.beginPath();for(let i=0;i<=180;i++){const t=start+(s.t-start)*i/180;const p=value(t);i?ctx.lineTo(X(t),Y(p.x)):ctx.moveTo(X(t),Y(p.x));}ctx.stroke();const p=value(s.t);s.x=p.x;s.v=p.v;ball(ctx,X(s.t),Y(p.x),5,C.accent);
+  const samples=Math.max(180,Math.ceil((right-left)*Math.max(1,Math.abs(ctx.getTransform?.()?.a||1))*2));
+  if(under){ctx.setLineDash([5,4]);ctx.strokeStyle=C.amber;for(const sign of [-1,1]){ctx.beginPath();for(let i=0;i<=samples;i++){const t=start+i*span/samples,x=sign*Math.exp(-b*t);i?ctx.lineTo(X(t),Y(x)):ctx.moveTo(X(t),Y(x));}ctx.stroke();}ctx.setLineDash([]);}
+  ctx.strokeStyle=C.accent;ctx.lineWidth=2.5;ctx.beginPath();for(let i=0;i<=samples;i++){const t=start+(s.t-start)*i/samples;const p=value(t);i?ctx.lineTo(X(t),Y(p.x)):ctx.moveTo(X(t),Y(p.x));}ctx.stroke();const p=value(s.t);s.x=p.x;s.v=p.v;ball(ctx,X(s.t),Y(p.x),5,C.accent);
   const regime=critical?'critic amortizat':under?'oscilatoriu amortizat':'aperiodic (fără oscilații)';s.regime=regime;
   if(s.ro)s.ro.textContent=under?`T₀ = ${T0.toFixed(2)} s · T′ = ${period.toFixed(2)} s · τ = ${(1/b).toFixed(2)} s · D = ${(b*period).toFixed(3)} · N½ = ${(Math.log(2)/(b*period)).toFixed(2)} · regim: ${regime}`:`b = ${b.toFixed(2)} s⁻¹ · regim: ${regime} · T′, D și N½ nu sunt definite`;
  }
@@ -617,7 +618,8 @@ App.register({
   for(let i=0;i<=2;i++){const t=start+i*span/2;line(g,X(t),top,X(t),bottom,C.grid);label(g,t.toFixed(2),X(t),253,C.ink,12,i===0?'left':i===2?'right':'center');}
   line(g,left,mid,right,mid,C.axis);line(g,left,top,left,bottom,C.axis);
   const from=Math.max(start,s.segmentStart||0),to=s.t,fun=p=>kind==='cos'?Math.cos(p):Math.sin(p);g.save();g.beginPath();g.rect(left-1,top-1,right-left+2,bottom-top+2);g.clip();g.strokeStyle=C.accent;g.lineWidth=2.2;g.beginPath();
-  for(let i=0;i<=240;i++){const t=from+(to-from)*i/240,y=A*fun(phase+w*(t-s.t));i?g.lineTo(X(t),Y(y)):g.moveTo(X(t),Y(y));}g.stroke();g.restore();
+  const samples=Math.max(240,Math.ceil((right-left)*Math.max(1,Math.abs(g.getTransform?.()?.a||1))*2));
+  for(let i=0;i<=samples;i++){const t=from+(to-from)*i/samples,y=A*fun(phase+w*(t-s.t));i?g.lineTo(X(t),Y(y)):g.moveTo(X(t),Y(y));}g.stroke();g.restore();
   const y=A*fun(phase);ball(g,X(s.t),Y(y),4.5,C.green);return {x:X(s.t),y:Y(y),value:y};
  }
  function prepare(shell,s){s.phase=0;s.segmentStart=0;s.lastCross=0;if(s.ro)s.ro.dataset.noI18n='';}
@@ -739,7 +741,8 @@ App.register({
  function curve(g,{left=62,right=610,top,bottom,mid,max,start,span,fn,color,end=start+span}){
   const X=t=>left+(t-start)/span*(right-left),Y=v=>mid-v/max*(bottom-top)/2;
   hLine(g,left,right,mid,C.axis);g.save();g.beginPath();g.rect(left,top,right-left,bottom-top);g.clip();g.strokeStyle=color;g.lineWidth=2;g.beginPath();
-  for(let i=0;i<=360;i++){const t=start+(end-start)*i/360;i?g.lineTo(X(t),Y(fn(t))):g.moveTo(X(t),Y(fn(t)));}g.stroke();g.restore();
+  const samples=Math.max(360,Math.ceil((right-left)*Math.max(1,Math.abs(g.getTransform?.()?.a||1))*2));
+  for(let i=0;i<=samples;i++){const t=start+(end-start)*i/samples;i?g.lineTo(X(t),Y(fn(t))):g.moveTo(X(t),Y(fn(t)));}g.stroke();g.restore();
   ball(g,X(end),Y(fn(end)),3.5,color);
   return {X,Y};
  }
@@ -773,7 +776,8 @@ App.register({
   text(g,'Ep = ½ky² (J)',32,24,C.violet);text(g,'E = 10 J',32,45,C.amber);
   const X=y=>164+y*90,Y=e=>244-e*15;
   hLine(g,38,290,244,C.axis);text(g,'y (m)',290,281,C.ink,'right');
-  g.save();g.beginPath();g.rect(36,62,256,184);g.clip();g.strokeStyle=C.violet;g.lineWidth=2;g.beginPath();for(let i=0;i<=180;i++){const x=-1.4+i*2.8/180;i?g.lineTo(X(x),Y(10*x*x)):g.moveTo(X(x),Y(10*x*x));}g.stroke();g.restore();
+  const samples=Math.max(180,Math.ceil(256*Math.max(1,Math.abs(g.getTransform?.()?.a||1))*2));
+  g.save();g.beginPath();g.rect(36,62,256,184);g.clip();g.strokeStyle=C.violet;g.lineWidth=2;g.beginPath();for(let i=0;i<=samples;i++){const x=-1.4+i*2.8/samples;i?g.lineTo(X(x),Y(10*x*x)):g.moveTo(X(x),Y(10*x*x));}g.stroke();g.restore();
   hLine(g,44,284,Y(10),C.amber,[5,4]);ball(g,X(y),Y(Ep),7,C.accent);
   for(const v of [-1,0,1])text(g,String(v),X(v),264,C.ink,'center');
   for(const [i,name,value,color] of [[0,'Ep',Ep,C.pink],[1,'Ec',Ec,C.green],[2,'E',10,C.amber]]){const x=350+i*90;g.strokeStyle=C.grid;g.strokeRect(x,70,52,174);g.fillStyle=color;g.fillRect(x,244-value*17.4,52,value*17.4);text(g,name,x+26,266,color,'center');text(g,value.toFixed(1)+' J',x+26,49,C.ink,'center');}

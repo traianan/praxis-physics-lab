@@ -12,8 +12,9 @@ App.register({
   for(const y of [-1,0,1]){line(left,Y(y),right,Y(y));label(ctx,String(y),left-10,Y(y)+4,C.ink,12,'right');}
   for(let i=0;i<=4;i++){const t=start+i*span/4;line(X(t),top,X(t),bottom);label(ctx,t.toFixed(1),X(t),bottom+19,C.ink,12,'center');}
   line(left,top,left,bottom,C.axis);line(left,Y(0),right,Y(0),C.axis);label(ctx,'x / A₀',left,20,C.ink,12);label(ctx,'t (s)',right,bottom+38,C.ink,12,'right');
-  if(under){ctx.setLineDash([5,4]);ctx.strokeStyle=C.amber;for(const sign of [-1,1]){ctx.beginPath();for(let i=0;i<=180;i++){const t=start+i*span/180,x=sign*Math.exp(-b*t);i?ctx.lineTo(X(t),Y(x)):ctx.moveTo(X(t),Y(x));}ctx.stroke();}ctx.setLineDash([]);}
-  ctx.strokeStyle=C.accent;ctx.lineWidth=2.5;ctx.beginPath();for(let i=0;i<=180;i++){const t=start+(s.t-start)*i/180;const p=value(t);i?ctx.lineTo(X(t),Y(p.x)):ctx.moveTo(X(t),Y(p.x));}ctx.stroke();const p=value(s.t);s.x=p.x;s.v=p.v;ball(ctx,X(s.t),Y(p.x),5,C.accent);
+  const samples=Math.max(180,Math.ceil((right-left)*Math.max(1,Math.abs(ctx.getTransform?.()?.a||1))*2));
+  if(under){ctx.setLineDash([5,4]);ctx.strokeStyle=C.amber;for(const sign of [-1,1]){ctx.beginPath();for(let i=0;i<=samples;i++){const t=start+i*span/samples,x=sign*Math.exp(-b*t);i?ctx.lineTo(X(t),Y(x)):ctx.moveTo(X(t),Y(x));}ctx.stroke();}ctx.setLineDash([]);}
+  ctx.strokeStyle=C.accent;ctx.lineWidth=2.5;ctx.beginPath();for(let i=0;i<=samples;i++){const t=start+(s.t-start)*i/samples;const p=value(t);i?ctx.lineTo(X(t),Y(p.x)):ctx.moveTo(X(t),Y(p.x));}ctx.stroke();const p=value(s.t);s.x=p.x;s.v=p.v;ball(ctx,X(s.t),Y(p.x),5,C.accent);
   const regime=critical?'critic amortizat':under?'oscilatoriu amortizat':'aperiodic (fără oscilații)';s.regime=regime;
   if(s.ro)s.ro.textContent=under?`T₀ = ${T0.toFixed(2)} s · T′ = ${period.toFixed(2)} s · τ = ${(1/b).toFixed(2)} s · D = ${(b*period).toFixed(3)} · N½ = ${(Math.log(2)/(b*period)).toFixed(2)} · regim: ${regime}`:`b = ${b.toFixed(2)} s⁻¹ · regim: ${regime} · T′, D și N½ nu sunt definite`;
  }

@@ -13,7 +13,8 @@
   for(let i=0;i<=2;i++){const t=start+i*span/2;line(g,X(t),top,X(t),bottom,C.grid);label(g,t.toFixed(2),X(t),253,C.ink,12,i===0?'left':i===2?'right':'center');}
   line(g,left,mid,right,mid,C.axis);line(g,left,top,left,bottom,C.axis);
   const from=Math.max(start,s.segmentStart||0),to=s.t,fun=p=>kind==='cos'?Math.cos(p):Math.sin(p);g.save();g.beginPath();g.rect(left-1,top-1,right-left+2,bottom-top+2);g.clip();g.strokeStyle=C.accent;g.lineWidth=2.2;g.beginPath();
-  for(let i=0;i<=240;i++){const t=from+(to-from)*i/240,y=A*fun(phase+w*(t-s.t));i?g.lineTo(X(t),Y(y)):g.moveTo(X(t),Y(y));}g.stroke();g.restore();
+  const samples=Math.max(240,Math.ceil((right-left)*Math.max(1,Math.abs(g.getTransform?.()?.a||1))*2));
+  for(let i=0;i<=samples;i++){const t=from+(to-from)*i/samples,y=A*fun(phase+w*(t-s.t));i?g.lineTo(X(t),Y(y)):g.moveTo(X(t),Y(y));}g.stroke();g.restore();
   const y=A*fun(phase);ball(g,X(s.t),Y(y),4.5,C.green);return {x:X(s.t),y:Y(y),value:y};
  }
  function prepare(shell,s){s.phase=0;s.segmentStart=0;s.lastCross=0;if(s.ro)s.ro.dataset.noI18n='';}
