@@ -11,6 +11,7 @@ Extinderea include cele 19 laboratoare din bibliotecă. Politica comună este î
 - Schemele SVG și formulele vectoriale își păstrează reprezentarea vectorială. Fotografiile finite din Motoare termice sunt dimensionate după rezoluția lor reală și își păstrează proporțiile.
 - În Unde mecanice, schimbarea rezoluției reexecută comenzile desenului curent, fără repornirea efectelor sau a ceasului simulării. Datele raster ale modelului de interferență își păstrează grila logică. Jurnalul comenzilor este limitat; pentru un desen excepțional de peste 100.000 de comenzi există o rezervă bitmap.
 - În Viteza și accelerația, marcajele vectoriale existente din legendă sunt păstrate de formatarea comună: șase simboluri cu săgeată, cu indicii atașați bazei corecte.
+- Verificarea în profilul online existent a identificat un antet vechi păstrat de service worker-ul lecției Calcul vectorial. Codul modificabil se revalidează din rețea, rezerva offline folosește exclusiv cache-ul versiunii curente, iar înregistrarea verifică explicit actualizările. Cache-urile celorlalte aplicații nu sunt șterse sau folosite ca rezervă. Am păstrat starea lecției, fără reîncărcare forțată.
 
 ## Verificare repetabilă
 

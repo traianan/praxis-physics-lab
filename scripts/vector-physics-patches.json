@@ -166,5 +166,10 @@
     "id": "resolution-hero-dpr-resize",
     "before": "new ResizeObserver(resize).observe(c);",
     "after": "new ResizeObserver(resize).observe(c);globalThis.window?.addEventListener('resize',resize);"
+  },
+  {
+    "id": "service-worker-fresh-registration",
+    "before": "navigator.serviceWorker.register('./sw.js').then(reg=>{",
+    "after": "navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(reg=>{\n      reg.update().catch(()=>{});"
   }
 ]

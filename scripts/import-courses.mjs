@@ -7,6 +7,7 @@ import{adaptMotionBehavior}from './motion-behavior-adapter.mjs';
 import{adaptVectorPhysics}from './vector-physics-adapter.mjs';
 import{adaptMotionPhysics}from './motion-physics-adapter.mjs';
 import{adaptVectorNavigation}from './vector-navigation-adapter.mjs';
+import{adaptVectorServiceWorker}from './vector-service-worker-adapter.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const courses=[{id:'miscarea-rectilinie',repo:'miscarea-rectilinie',title:'Mișcarea rectilinie'},{id:'calcul-vectorial',repo:'vectori',title:'Calcul vectorial'}];
 const baseNamespaces=['common','chapters/miscare','courses/shared'];let ns=[],embedded={};
@@ -37,7 +38,7 @@ for(const course of courses){
   if(file==='sec4-test.js')code=code.replace("$('#pt-quit').addEventListener('click', () => {","$('#pt-quit').addEventListener('click', async () => {").replace("if (window.confirm('Renunți la test? Răspunsurile date până acum se pierd.'))","if (await window.PraxisCourseLocalization.confirm('Renunți la test? Răspunsurile date până acum se pierd.'))");
   await writeFile(filename,code,'utf8');
  }
- if(course.id==='calcul-vectorial'){const file=path.join(target,'sw.js'),sw=await readFile(file,'utf8');await writeFile(file,sw.replace('const PRECACHE = [',"const PRECACHE = [\n  '../../shared/vector-tabs.js','../../shared/vector-tabs.css','../../shared/scientific-colors.js','../../shared/course-localization.js','../../shared/canvas-typography.js',"),'utf8');}
+ if(course.id==='calcul-vectorial'){const file=path.join(target,'sw.js'),sw=await readFile(file,'utf8');await writeFile(file,adaptVectorServiceWorker(sw.replace('const PRECACHE = [',"const PRECACHE = [\n  '../../shared/vector-tabs.js','../../shared/vector-tabs.css','../../shared/scientific-colors.js','../../shared/course-localization.js','../../shared/canvas-typography.js',")),'utf8');}
  if(course.id==='miscarea-rectilinie')for(const name of ['core.js','sec1-tipuri.js','sec2-mru.js','sec3-mruv.js']){const file=path.join(target,'js',name);await writeFile(file,await adaptMotionBehavior(await readFile(file,'utf8'),name),'utf8');}
  if(course.id==='miscarea-rectilinie')for(const name of ['core.js','sec1-tipuri.js','sec2-mru.js','sec3-mruv.js','plot.js','track.js','sec4-probleme.js']){const file=path.join(target,'js',name);await writeFile(file,await adaptMotionPhysics(await readFile(file,'utf8'),'js/'+name),'utf8');}
  manifest.push({...course,url:'https://github.com/traianan/'+course.repo,commit:execFileSync('git',['rev-parse','HEAD'],{cwd:path.join(root,'sources',course.repo),encoding:'utf8'}).trim(),files:await hashes(source),adaptedFiles:course.id==='calcul-vectorial'?['index.html','sw.js']:['index.html','js/app.js','js/core.js','js/track.js','js/plot.js','js/sec1-tipuri.js','js/sec2-mru.js','js/sec3-mruv.js','js/sec4-probleme.js','js/sec4-test.js']});

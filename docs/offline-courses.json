@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-03T17:17:50.610Z",
+  "builtAt": "2026-11-03T17:29:50.809Z",
   "courses": [
     {
       "id": "motoare-termice",
@@ -27,28 +27,6 @@
       "id": "miscarea-circulara-uniforma",
       "file": "public/simulari/miscarea-circulara-uniforma/miscarea-circulara-uniforma.zip",
       "sha256": "f21c6d6a13df072c7ea056eeec2a94b8d68216e9d3c6d94c273dce4bd6ec7ab6",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
-      "id": "miscarea-rectilinie",
-      "file": "public/simulari/miscarea-rectilinie/miscarea-rectilinie-offline.zip",
-      "sha256": "aaf8cafbd3a0102459329d83db18a1dd76cfc06630614cd0fc1d593cde26aae2",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
-      "id": "calcul-vectorial",
-      "file": "public/simulari/calcul-vectorial/calcul-vectorial.zip",
-      "sha256": "395de0dfb35d8984b172143ba35bc028e68f59501cb69be92125560618d64057",
       "languages": [
         "ro",
         "en"
@@ -192,6 +170,28 @@
       "id": "figuri-chladni",
       "file": "public/simulari/figuri-chladni/figuri-chladni.zip",
       "sha256": "2bcb4d69c4c85c4e7d22bd810626664c75f4700596c00363fef84d2669b8f094",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "calcul-vectorial",
+      "file": "public/simulari/calcul-vectorial/calcul-vectorial.zip",
+      "sha256": "4eb511fd06ee62737e3870947f57a275d5772d2eee7bc13ab5e385d98a75d075",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "miscarea-rectilinie",
+      "file": "public/simulari/miscarea-rectilinie/miscarea-rectilinie-offline.zip",
+      "sha256": "aaf8cafbd3a0102459329d83db18a1dd76cfc06630614cd0fc1d593cde26aae2",
       "languages": [
         "ro",
         "en"

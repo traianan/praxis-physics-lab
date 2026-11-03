@@ -1,7 +1,7 @@
 {
   "checkedAt": "2026-11-03T17:19:56.627Z",
   "laboratories": 19,
-  "tests": 335,
+  "tests": 339,
   "tabStates": 604,
   "displayStates": 114,
   "failures": 0,
@@ -11914,5 +11914,12 @@
         "text": "\n                  ■ v tangent to the trajectory | \n                  ■ at tangential | \n                  ■ an normal (centripetal) | \n                  ■ a = at + an\n                "
       }
     }
-  ]
+  ],
+  "cacheValidation": {
+    "workerTests": 4,
+    "scope": "current vector lesson cache only",
+    "mutableResources": "network first with offline fallback",
+    "registration": "explicit update without forced page reload",
+    "version": "worker content and canonical text included"
+  }
 }

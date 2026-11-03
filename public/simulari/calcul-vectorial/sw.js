@@ -1,6 +1,6 @@
 /* Service worker — Calcul vectorial (lecție offline)
    Schimbă VERSION la fiecare publicare pentru a reîmprospăta cache-ul. */
-const VERSION = 'praxis-vectori-v1';
+const VERSION = 'praxis-vectori-v2';
 const PRECACHE = [
   '../../shared/vector-tabs.js','../../shared/vector-tabs.css','../../shared/scientific-colors.js','../../shared/course-localization.js','../../shared/canvas-typography.js',
   '../../shared/i18n.js','../../shared/sound.js','../../shared/course.js','../../shared/course.css','../../shared/lab-header.js','../../design-system/lab-layout.css','../../design-system/tokens.css','../../design-system/components.css','../../design-system/laboratory.css','../../design-system/compact.css',
@@ -61,25 +61,25 @@ self.addEventListener('activate', e => {
   );
 });
 
-self.addEventListener('fetch', e => {
-  const req = e.request;
-  if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
-
-  // Pagina: întâi rețeaua (conținut proaspăt), apoi cache-ul când ești offline
-  if (req.mode === 'navigate') {
-    e.respondWith(
-      fetch(req)
-        .then(res => { if (res.ok) { const copy = res.clone(); caches.open(VERSION).then(c => c.put('./index.html', copy)); } return res; })
-        .catch(() => caches.match('./index.html'))
-    );
-    return;
+// Mutable lesson code must bypass stale HTTP responses and unrelated app caches.
+self.addEventListener('fetch', event => {
+ const request=event.request,url=new URL(request.url);
+ if(request.method!=='GET'||url.origin!==location.origin)return;
+ const immutable=['./vendor/','./icons/'].some(path=>url.pathname.startsWith(new URL(path,location.href).pathname))||/\.(?:woff2?|ttf|otf)$/.test(url.pathname);
+ event.respondWith((async()=>{
+  const cache=await caches.open(VERSION);
+  if(immutable){const hit=await cache.match(request);if(hit)return hit;}
+  let response;
+  try{response=await fetch(request,immutable?undefined:{cache:'no-cache'});}
+  catch(error){
+   const hit=await cache.match(request);if(hit)return hit;
+   if(request.mode==='navigate'){
+    const page=await cache.match(new URL('./index.html',location.href).href);
+    if(page)return page;
+   }
+   throw error;
   }
-
-  // Resurse statice (fonturi, KaTeX, icoane): întâi cache-ul
-  e.respondWith(
-    caches.match(req, { ignoreSearch: true }).then(hit => hit || fetch(req).then(res => {
-      if (res.ok) { const copy = res.clone(); caches.open(VERSION).then(c => c.put(req, copy)); }
-      return res;
-    }))
-  );
+  if(response.ok){try{await cache.put(request,response.clone());}catch{/* A cache quota failure must not discard a fresh online response. */}}
+  return response;
+ })());
 });
