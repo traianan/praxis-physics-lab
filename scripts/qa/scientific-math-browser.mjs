@@ -51,6 +51,18 @@ try{
   const result=await evaluate(`()=>({id:${JSON.stringify(id)},url:location.href,ready:document.readyState,title:document.title,api:!!window.PraxisMath,math:document.querySelectorAll('.science-math').length,errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,tabs:[...document.querySelectorAll('#praxis-original [role=tab],#praxis-original button[data-tab],#praxis-original .tabs a')].map(e=>({text:e.textContent.trim(),id:e.id,tab:e.dataset.tab,href:e.getAttribute('href')}))})`);
   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
   results.push(result);console.log(JSON.stringify(result));
+  if(process.argv.includes('--diffraction')&&id==='unde-mecanice'){
+   result.diffraction=await evaluate(await readFile('scripts/qa/diffraction.browser.js','utf8'));console.log(JSON.stringify({diffraction:result.diffraction}));
+   for(const ratio of [.3,1]){await evaluate('()=>{const e=document.querySelector("[data-diffraction-width]");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set.call(e,"'+ratio+'");e.dispatchEvent(new Event("input",{bubbles:true}));}');await delay(120);const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,'diffraction-'+ratio+'.png'),Buffer.from(shot.data,'base64'));}
+   for(const [width,height,dpr,size,language]of [[1366,768,1,100,'ro'],[1920,1080,2,100,'en'],[3840,2160,1,100,'ro'],[1024,768,1.25,100,'en'],[390,844,3,100,'ro'],[1366,768,1,200,'ro']]){
+    await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:dpr,mobile:false});
+    await evaluate('async()=>{await PraxisI18n.setLanguage('+JSON.stringify(language)+');const s=document.querySelector(".praxis-course-settings select");s.value='+JSON.stringify(String(size))+';s.dispatchEvent(new Event("change",{bubbles:true}));}');await delay(100);
+    const layout=await evaluate('()=>{const r=document.querySelector(".diffraction-boundary");return {overflow:document.documentElement.scrollWidth>innerWidth+2,bottom:r.getBoundingClientRect().bottom,controls:[...r.querySelectorAll("button,input")].filter(e=>e.checkVisibility()).map(e=>e.getBoundingClientRect().height),errors:r.querySelectorAll(".wave-math-error,.katex-error").length};}');
+    console.log(JSON.stringify({diffractionDisplay:{width,height,dpr,size,language,...layout}}));if(layout.overflow||layout.errors||layout.controls.some(h=>h<43))throw Error('Diffraction layout failed');
+    if(width===1366&&size===100){const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,'diffraction.png'),Buffer.from(shot.data,'base64'));}
+   }
+   await evaluate('()=>{const s=document.querySelector(".praxis-course-settings select");s.value="100";s.dispatchEvent(new Event("change",{bubbles:true}));}');
+  }
   if(process.argv.includes('--huygens')&&id==='unde-mecanice'){
    result.huygens=await evaluate(await readFile('scripts/qa/huygens.browser.js','utf8'));
    result.huygensLayout=await evaluate(`()=>[...document.querySelector('[data-huygens-kind=refraction] .huygens-controls').children].map(e=>{const s=getComputedStyle(e),b=e.getBoundingClientRect();return {tag:e.tagName,class:e.className,height:b.height,flex:s.flex,minHeight:s.minHeight,margin:s.margin,display:s.display,inline:e.getAttribute('style')};})`);

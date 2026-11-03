@@ -1,0 +1,180 @@
+{
+  "tests": 356,
+  "controls": {
+    "cases": [
+      {
+        "ratio": 0.3,
+        "pathLength": 18918,
+        "wavelets": 9,
+        "rays": 2
+      },
+      {
+        "ratio": 1,
+        "pathLength": 18548,
+        "wavelets": 9,
+        "rays": 2
+      },
+      {
+        "ratio": 6,
+        "pathLength": 16744,
+        "wavelets": 9,
+        "rays": 2
+      }
+    ],
+    "playPause": true,
+    "language": true,
+    "hidden": true,
+    "reset": true
+  },
+  "display": [
+    {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "size": 100,
+      "language": "ro",
+      "overflow": false,
+      "bottom": 778.53125,
+      "controls": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "errors": 0
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 2,
+      "size": 100,
+      "language": "en",
+      "overflow": false,
+      "bottom": 778.53125,
+      "controls": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "errors": 0
+    },
+    {
+      "width": 3840,
+      "height": 2160,
+      "dpr": 1,
+      "size": 100,
+      "language": "ro",
+      "overflow": false,
+      "bottom": 778.53125,
+      "controls": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "errors": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "dpr": 1.25,
+      "size": 100,
+      "language": "en",
+      "overflow": false,
+      "bottom": 786.53125,
+      "controls": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "errors": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 3,
+      "size": 100,
+      "language": "ro",
+      "overflow": false,
+      "bottom": 1479.421875,
+      "controls": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "errors": 0
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "size": 200,
+      "language": "ro",
+      "overflow": false,
+      "bottom": 1791.046875,
+      "controls": [
+        57.1875,
+        57.1875,
+        57.1875,
+        44,
+        57.1875,
+        119.6875,
+        119.6875,
+        119.6875,
+        57.1875,
+        44,
+        57.1875,
+        103.1875
+      ],
+      "errors": 0
+    }
+  ],
+  "allActivities": {
+    "ro": 51,
+    "en": 51,
+    "failures": []
+  }
+}

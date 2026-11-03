@@ -32,6 +32,8 @@ body[data-praxis-course=unde-mecanice] #reflexie>.lesson-parts{display:none}
 #reflexie>.wave-part-choice>span{font-weight:600;color:var(--muted)}
 #reflexie>.wave-part-choice select{min-height:44px;min-width:0;max-width:100%;font:inherit;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:var(--praxis-radius-control);padding:6px 10px}
 #reflexie>.lesson-part-content:has(>.huygens-boundary)>h4{display:none}
+.diffraction-presets{display:flex;gap:6px;flex-wrap:wrap}.diffraction-presets button{flex:1;min-height:44px}
+.diffraction-boundary .huygens-step-text{min-height:0}
 @media(max-width:760px){#reflexie>.wave-part-choice{flex-wrap:wrap}#reflexie>.wave-part-choice select{flex:1 1 100%}}
 @container (max-width:48rem){.huygens-grid{grid-template-columns:minmax(0,1fr)}.huygens-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.huygens-transport,.huygens-step-text,.huygens-law{grid-column:1/-1}.huygens-figure{width:100%;max-width:640px;margin-inline:auto}}
 @container (max-width:28rem){.huygens-controls{grid-template-columns:minmax(0,1fr)}}
