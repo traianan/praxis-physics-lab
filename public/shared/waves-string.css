@@ -17,6 +17,7 @@ html.dark .wave-string{--string-incident:#93c5fd;--string-reflected:#fcd34d;--st
 .string-diagram text{fill:currentColor;}
 .string-axis{stroke:var(--muted,#64748b);stroke-width:1;}
 .string-support{fill:var(--muted,#64748b);}
+.string-driver{fill:var(--string-incident);stroke:var(--text,#1e293b);stroke-width:1.5;}
 .string-support-hatch{stroke:var(--muted,#64748b);stroke-width:1.5;}
 .string-rail{stroke:var(--muted,#64748b);stroke-width:5;}
 .string-free-ring{stroke:var(--text,#1e293b);stroke-width:2;fill:var(--card,#fff);}

@@ -46,6 +46,10 @@ try{
   const result=await evaluate(`()=>({id:${JSON.stringify(id)},url:location.href,ready:document.readyState,title:document.title,api:!!window.PraxisMath,math:document.querySelectorAll('.science-math').length,errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,tabs:[...document.querySelectorAll('#praxis-original [role=tab],#praxis-original button[data-tab],#praxis-original .tabs a')].map(e=>({text:e.textContent.trim(),id:e.id,tab:e.dataset.tab,href:e.getAttribute('href')}))})`);
   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
   results.push(result);console.log(JSON.stringify(result));
+  if(process.argv.includes('--string-launch')&&id==='unde-mecanice'){
+   result.launch=await evaluate(await readFile('scripts/qa/waves-string-launch.browser.js','utf8'));
+   console.log(JSON.stringify({launch:result.launch}));
+  }
   if(indexAudit){
    result.indices=[];
    for(const language of ['ro','en']){

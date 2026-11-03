@@ -527,6 +527,9 @@
     "Saltul de fază la reflexie și drumul echivalent": "Saltul de fază la reflexie și drumul echivalent",
     "Capăt fix: inversare": "Capăt fix: inversare",
     "Capăt liber: fără inversare": "Capăt liber: fără inversare",
-    "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.": "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls."
+    "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.": "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.",
+    "Sursă la x = 0": "Sursă la x = 0",
+    "La pornire, sursa din x = 0 emite un singur impuls, apoi revine în repaus și fixează capătul stâng. Resetarea aduce întreaga coardă în repaus.": "La pornire, sursa din x = 0 emite un singur impuls, apoi revine în repaus și fixează capătul stâng. Resetarea aduce întreaga coardă în repaus.",
+    "s(t) este deplasarea prescrisă a sursei numai în timpul emisiei; înainte și după emisie este zero. Un capăt permanent fix nu poate genera singur impulsul.": "s(t) este deplasarea prescrisă a sursei numai în timpul emisiei; înainte și după emisie este zero. Un capăt permanent fix nu poate genera singur impulsul."
   }
 }

@@ -10,7 +10,7 @@ async()=>{
  check('reflection mounts one SVG and no canvas',root()?.dataset.stringKind==='reflection'&&root().querySelectorAll('svg').length===1&&!root().querySelector('canvas'));
  const ranges=()=>root().querySelectorAll('input[type=range]');
  for(const right of ['fixed','free']){
-  change(root().querySelector('select'),right);await settle();change(ranges()[3],.75);await settle();
+  change(root().querySelector('select'),right);await settle();change(ranges()[3],1.06);await settle();
   const endpoint=root().querySelector('[data-string-curve=sum]').getAttribute('points').split(' ').at(-1).split(',').map(Number);
   check('pulse '+right+' endpoint at first arrival',Math.abs(endpoint[1]-(right==='fixed'?130:78))<1e-8,endpoint);
   check('parameter/time changes pause',root().dataset.stringRunning==='false');

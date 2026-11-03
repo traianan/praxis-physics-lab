@@ -14,12 +14,13 @@ test('speed, crossing time, spectra, and parameter bounds use SI units',()=>{
  assert.throws(()=>api.parameters({mu:0}));assert.throws(()=>api.parameters({n:1.5}));
  assert.throws(()=>api.parameters({right:'unknown'}));
 });
-test('method of images obeys the fixed left and selected right boundary for all pulse phases',()=>{
+test('causal launch drives the left endpoint once, then clamps it, while the right boundary remains exact',()=>{
  for(const right of ['fixed','free']){
   const p=api.parameters({right}),v=api.speed(p),h=p.L*1e-5;
   for(let j=0;j<=240;j++){
    const time=j/60*p.L/v;
-   close(api.pulse(p,0,time).sum,0);
+   const travel=v*time,width=.12*p.L,source=travel>0&&travel<width?p.A*Math.sin(Math.PI*travel/width)**2:0;
+   close(api.pulse(p,0,time).sum,source);
    if(right==='fixed')close(api.pulse(p,p.L,time).sum,0);
    else{
     const left=api.pulse(p,p.L-h,time).sum,rightValue=api.pulse(p,p.L+h,time).sum;
@@ -30,20 +31,41 @@ test('method of images obeys the fixed left and selected right boundary for all 
 });
 test('first reflected pulse inverts at a fixed end and adds to double amplitude at a free end',()=>{
  for(const right of ['fixed','free']){
-  const p=api.parameters({right}),v=api.speed(p),hit=.75*p.L/v;
+  const p=api.parameters({right}),v=api.speed(p),hit=1.06*p.L/v;
   const atEnd=api.pulse(p,p.L,hit);close(atEnd.incident,p.A);
   close(atEnd.reflected,right==='fixed'?-p.A:p.A);close(atEnd.sum,right==='fixed'?0:2*p.A);
-  const returned=api.pulse(p,.8*p.L,.95*p.L/v);
+  const returned=api.pulse(p,.8*p.L,1.26*p.L/v);
   close(returned.incident,0);close(returned.reflected,right==='fixed'?-p.A:p.A);
  }
 });
-test('pulse starts with one compact right-moving bump and every decomposition sums exactly',()=>{
+test('reset is flat and the pulse is generated at the left endpoint before travelling right',()=>{
  const p=api.parameters(),v=api.speed(p);
- close(api.pulse(p,p.L/4,0).sum,p.A);
- close(api.pulse(p,.31*p.L,0).sum,0);
- close(api.pulse(p,.19*p.L,0).sum,0);
+ for(let j=0;j<=400;j++)close(api.pulse(p,j*p.L/400,0).sum,0);
+ close(api.pulse(p,0,.06*p.L/v).sum,p.A);
+ close(api.pulse(p,.01*p.L,.07*p.L/v).sum,p.A);
+ close(api.pulse(p,p.L/4,.31*p.L/v).sum,p.A);
+ close(api.pulse(p,.2*p.L,.1*p.L/v).sum,0);
+ const model=api.create({},'reflection');model.advanceWall(1);model.reset();
+ close(model.time,0);for(let j=0;j<=200;j++)close(api.pulse(model.params,j*p.L/200,model.time).sum,0);
  for(let i=0;i<81;i++)for(let j=0;j<41;j++){
   const result=api.pulse(p,p.L*i/80,p.L/v*j/10);close(result.sum,result.incident+result.reflected);
+ }
+});
+
+test('after emission the pulse conserves its injected energy through both endpoint reflections',()=>{
+ for(const right of ['fixed','free']){
+  const p=api.parameters({right}),v=api.speed(p),N=1200,dx=p.L/N,dt=dx/v;
+  const expected=p.tension*p.A*p.A*Math.PI*Math.PI/(2*.12*p.L);
+  for(const crossing of [.2,.7,1.06,1.5,2.06,2.7,3.06,3.7]){
+   const t=crossing*p.L/v;let energy=0;
+   for(let i=0;i<=N;i++){
+    const x=i*dx;
+    const slope=(api.pulse(p,x+dx,t).sum-api.pulse(p,x-dx,t).sum)/(2*dx);
+    const velocity=(api.pulse(p,x,t+dt).sum-api.pulse(p,x,t-dt).sum)/(2*dt);
+    energy+=((i===0||i===N)?0.5:1)*(.5*p.mu*velocity**2+.5*p.tension*slope**2)*dx;
+   }
+   assert.ok(Math.abs(energy/expected-1)<.003,right+' energy at crossing '+crossing);
+  }
  }
 });
 test('standing waves have exact sums, correct nodes, and a free-end antinode',()=>{
@@ -67,8 +89,8 @@ test('standing waves have exact sums, correct nodes, and a free-end antinode',()
 });
 test('both pulse and highest mode stay within the small-slope string approximation',()=>{
  const p=api.parameters({n:6}),h=p.L*1e-6;
- let maximum=0;for(let j=1;j<1000;j++)maximum=Math.max(maximum,Math.abs((api.pulse(p,j*p.L/1000+h,0).sum-api.pulse(p,j*p.L/1000-h,0).sum)/(2*h)));
- assert.ok(maximum<.06);assert.ok(2*p.A*2*Math.PI/api.mode(p).wavelength<.08);
+ let maximum=0;for(const crossing of [.06,.5,1.06,2.06])for(let j=1;j<1000;j++)maximum=Math.max(maximum,Math.abs((api.pulse(p,j*p.L/1000+h,crossing*p.L/api.speed(p)).sum-api.pulse(p,j*p.L/1000-h,crossing*p.L/api.speed(p)).sum)/(2*h)));
+ assert.ok(maximum>0&&maximum<.11);assert.ok(2*p.A*2*Math.PI/api.mode(p).wavelength<.08);
 });
 test('analytic clock is independent of frame partition and restarts only on explicit reset',()=>{
  for(const kind of ['reflection','standing'])for(const right of ['fixed','free']){
@@ -130,7 +152,7 @@ test('React void controls receive no children property',()=>{
  for(const kind of ['reflection','standing'])for(const input of nodes(render(kind).tree).filter(n=>n.type==='input'))assert.equal(Object.hasOwn(input.props,'children'),false);
 });
 test('actual SVG pulse sum reaches the frictionless ring, with zero displacement at the left wall',()=>{
- const {tree}=render('reflection',{params:{right:'free'},crossings:.75});
+ const {tree}=render('reflection',{params:{right:'free'},crossings:1.06});
  const children=nodes(tree),curve=children.find(n=>n.props?.['data-string-curve']==='sum');
  const points=curve.props.points.split(' ').map(pair=>pair.split(',').map(Number));
  close(points[0][0],58);close(points[0][1],130);close(points.at(-1)[0],602);close(points.at(-1)[1],78);

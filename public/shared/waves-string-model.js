@@ -1,6 +1,6 @@
 /* Ideal taut string, small transverse displacement, uniform tension and line density.
    SI units. Analytic travelling waves: no numerical integration or frame-dependent step.
-   A is one travelling-wave amplitude; the compact pulse has total support 0.12 L. */
+   A is one travelling-wave amplitude; a boundary source emits one pulse of width 0.12 L. */
 (()=>{
  const defaults=Object.freeze({L:2,tension:80,mu:.02,n:1,right:'fixed'});
  function parameters(options={}){
@@ -17,14 +17,22 @@
   const antinodes=p.right==='fixed'?Array.from({length:p.n},(_,j)=>(j+.5)*p.L/p.n):Array.from({length:p.n},(_,j)=>(2*j+1)*p.L/count);
   return{wavelength,frequency:speed(p)/wavelength,nodes,antinodes};
  }
- function image(p,s){
-  const period=2*p.L,cycle=Math.floor(s/period),local=s-cycle*period,distance=local-p.L/4,halfWidth=.06*p.L;
-  if(Math.abs(distance)>=halfWidth)return 0;
-  const sign=p.right==='free'&&cycle%2!==0?-1:1;
-  return sign*p.A*.5*(1+Math.cos(Math.PI*distance/halfWidth));
+ function emitted(p,distance){
+  const width=.12*p.L;
+  if(distance<=0||distance>=width)return 0;
+  return p.A*Math.sin(Math.PI*distance/width)**2;
  }
  function pulse(p,x,time){
-  const travel=speed(p)*time,incident=image(p,x-travel),reflected=-image(p,-x-travel);
+  const travel=speed(p)*time,R=p.right==='fixed'?-1:1;
+  let incident=0,reflected=0;
+  // Retarded boundary-source images. At x=0 all returning pairs cancel,
+  // leaving only emitted(vt); after launch this is exactly a fixed endpoint.
+  const count=Math.max(0,Math.floor((travel+Math.abs(x))/(2*p.L))+1);
+  for(let cycle=0;cycle<=count;cycle++){
+   const sign=(-R)**cycle;
+   incident+=sign*emitted(p,travel-x-2*cycle*p.L);
+   reflected+=R*sign*emitted(p,travel+x-2*(cycle+1)*p.L);
+  }
   return{incident,reflected,sum:incident+reflected};
  }
  function standing(p,x,time){

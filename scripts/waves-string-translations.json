@@ -36,5 +36,8 @@
   "Saltul de fază la reflexie și drumul echivalent": "Reflection phase shift and equivalent path",
   "Capăt fix: inversare": "Fixed end: inversion",
   "Capăt liber: fără inversare": "Free end: no inversion",
-  "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.": "For a harmonic component: Δs is the phase-equivalent path, not an extra distance travelled by the pulse."
+  "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.": "For a harmonic component: Δs is the phase-equivalent path, not an extra distance travelled by the pulse.",
+  "Sursă la x = 0": "Source at x = 0",
+  "La pornire, sursa din x = 0 emite un singur impuls, apoi revine în repaus și fixează capătul stâng. Resetarea aduce întreaga coardă în repaus.": "On start, the source at x = 0 emits one pulse, then returns to rest and clamps the left end. Reset brings the entire string to rest.",
+  "s(t) este deplasarea prescrisă a sursei numai în timpul emisiei; înainte și după emisie este zero. Un capăt permanent fix nu poate genera singur impulsul.": "s(t) is the prescribed source displacement only during emission; it is zero before and after emission. A permanently fixed endpoint cannot generate the pulse by itself."
 }

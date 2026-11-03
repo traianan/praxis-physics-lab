@@ -44,8 +44,14 @@ function LessonStringWaves({kind}){
    label(X(p.L/2)+20,246,tr('mijlocul corzii'),{fontSize:16})
   ]),label(end,246,'L',{textAnchor:'middle'}),label(end+17,axis+22,'x'),
   line(X(p.L/2),axis-4,X(p.L/2),axis+4,{className:'string-axis'}),
-  el('rect',{x:start-12,y:axis-60,width:12,height:120,className:'string-support'}),
-  ...Array.from({length:7},(_,i)=>line(start-22,axis-57+i*18,start-12,axis-65+i*18,{className:'string-support-hatch'}))
+  ...(standing?[
+   el('rect',{x:start-12,y:axis-60,width:12,height:120,className:'string-support'}),
+   ...Array.from({length:7},(_,i)=>line(start-22,axis-57+i*18,start-12,axis-65+i*18,{className:'string-support-hatch'}))
+  ]:[
+   line(start-10,axis-65,start-10,axis+65,{className:'string-rail'}),
+   el('rect',{x:start-10,y:Y(sample(0).sum)-9,width:20,height:18,rx:3,className:'string-driver','data-string-source':true}),
+   label(start+17,axis-79,tr('Sursă la x = 0'),{fontSize:16})
+  ])
  ];
  if(fixed){
   svg.push(el('rect',{x:end,y:axis-60,width:12,height:120,className:'string-support'}),...Array.from({length:7},(_,i)=>line(end+12,axis-57+i*18,end+22,axis-65+i*18,{className:'string-support-hatch'})));
@@ -57,7 +63,7 @@ function LessonStringWaves({kind}){
   for(const [i,x]of info.nodes.entries())svg.push(el('circle',{cx:X(x),cy:axis,r:4.5,className:'string-node','data-string-node':x}),label(X(x),x>0&&x<p.L?205:217,'N'+'₀₁₂₃₄₅₆'[i],{textAnchor:'middle',className:'string-node-label'}));
   for(const [i,x]of info.antinodes.entries())svg.push(el('path',{d:`M ${X(x)} ${axis-6} l 6 6 l -6 6 l -6 -6 Z`,className:'string-antinode','data-string-antinode':x}),label(X(x),45,'V'+'₀₁₂₃₄₅₆'[i+1],{textAnchor:'middle',className:'string-antinode-label'}));
  }
- svg.push(el('circle',{cx:start,cy:axis,r:4.5,className:'string-fixed-point'}),fixed&&el('circle',{cx:end,cy:axis,r:4.5,className:'string-fixed-point'}));
+ svg.push(el('circle',{cx:start,cy:standing?axis:Y(sample(0).sum),r:4.5,className:'string-fixed-point'}),fixed&&el('circle',{cx:end,cy:axis,r:4.5,className:'string-fixed-point'}));
  const range=(name,key,min,max,step,unit,digits=2)=>el('label',{className:'string-range'},[
   el('span',{},[tr(name),' ',el('output',{},[show(p[key],digits)+' '+unit])]),
   el('input',{type:'range',value:p[key],min,max,step,'aria-label':tr(name),onChange:event=>reset({[key]:Number(event.target.value)})})
@@ -81,7 +87,8 @@ function LessonStringWaves({kind}){
   math(fixed?'λₙ = 2L/n ; νₙ = n·v_f/(2L)':'λₙ = 4L/(2n − 1) ; νₙ = (2n − 1)·v_f/(4L)')
  ]:[
   math(fixed?'R = −1 ; y_inc(L,t) + y_ref(L,t) = 0':'R = +1 ; y(L,t) = 2y_inc(L,t)'),
-  math(fixed?'y(0,t) = 0 ; y(L,t) = 0':'y(0,t) = 0 ; ∂y/∂x (L,t) = 0')
+  math('y(0,t) = s(t)'),
+  math(fixed?'y(L,t) = 0':'∂y/∂x (L,t) = 0')
  ];
  return el('div',{className:'wave-string','data-no-i18n':'','data-string-kind':kind,'data-string-running':running,'data-string-time':model.time,'data-string-revision':revision},[
   el('div',{className:'string-layout'},[
@@ -103,6 +110,7 @@ function LessonStringWaves({kind}){
     ])
    ])
   ]),
+  !standing&&el('p',{className:'string-note'},[tr('La pornire, sursa din x = 0 emite un singur impuls, apoi revine în repaus și fixează capătul stâng. Resetarea aduce întreaga coardă în repaus.')]),
   el('div',{className:'string-reflection-phase','aria-label':tr('Saltul de fază la reflexie și drumul echivalent')},[
    ...['fixed','free'].map(right=>el('div',{'data-string-reflection-case':right,'data-selected':String(p.right===right)},[
     el('strong',{},[tr(right==='fixed'?'Capăt fix: inversare':'Capăt liber: fără inversare')]),
@@ -117,6 +125,7 @@ function LessonStringWaves({kind}){
    el('div',{className:'string-equations'},equations),
    math('A = '+p.A.toFixed(4)+' m ; 2A = '+(2*p.A).toFixed(4)+' m'),
    el('p',{className:'string-note'},[tr(standing?'A este amplitudinea fiecărei unde progresive; ventrele rezultantei au amplitudinea 2A. Unda staționară armonică este deja stabilită.':'La prima întâlnire cu capătul drept, componenta spre dreapta este incidentă, iar cea spre stânga este reflectată. După alte reflexii, culorile păstrează sensul de propagare. Impulsul reflectat nu este o undă staționară.')]),
+   !standing&&el('p',{className:'string-note'},[tr('s(t) este deplasarea prescrisă a sursei numai în timpul emisiei; înainte și după emisie este zero. Un capăt permanent fix nu poate genera singur impulsul.')]),
    standing&&math('A_st(x) = 2A|sin(2πx/λ)|'),
    el('p',{className:'string-note'},[tr('Schimbarea parametrilor reîncepe experimentul pe pauză. Model: coardă ideală, omogenă, perfect elastică, oscilații transversale mici și fără pierderi.'),' ',tr('Elongațiile sunt amplificate vizual; axele nu au aceeași scară.')]),
    !fixed&&el('p',{className:'string-note'},[tr('Capătul liber alunecă vertical pe un ghid fără frecare; forța transversală este nulă. La prima reflexie, deplasarea capătului poate ajunge la 2A.')])
