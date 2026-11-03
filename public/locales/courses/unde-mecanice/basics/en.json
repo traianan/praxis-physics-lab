@@ -538,6 +538,7 @@
     "A este sursa. B este capătul îndepărtat; frontul nu a ajuns încă la B. Săgeata verticală indică oscilația sursei, iar săgeata orizontală propagarea.": "A is the source. B is the far end; the wavefront has not reached B. The vertical arrow indicates source oscillation and the horizontal arrow propagation.",
     "Într-o perioadă, sursa revine la aceeași fază, iar frontul avansează cu o lungime de undă.": "In one period, the source returns to the same phase and the wavefront advances by one wavelength.",
     "Cadrul final arată continuarea la 5T/4. Este reprezentată unda incidentă, înainte de a ajunge la capătul B; reflexia se studiază separat.": "The final frame continues to 5T/4. The incident wave is shown before reaching end B; reflection is studied separately.",
-    "Ultimul cadru continuă evoluția după prima perioadă. Este reprezentată unda incidentă, înainte de a ajunge la capătul B; reflexia se studiază separat.": "The final frame continues the evolution after the first period. The incident wave is shown before reaching end B; reflection is studied separately."
+    "Ultimul cadru continuă evoluția după prima perioadă. Este reprezentată unda incidentă, înainte de a ajunge la capătul B; reflexia se studiază separat.": "The final frame continues the evolution after the first period. The incident wave is shown before reaching end B; reflection is studied separately.",
+    "Centre fixe pe orizontale (model liniar). ×n: mărire locală a orbitelor mici, aceeași pe ambele axe, cel mult ×8.": "Fixed centres on horizontal levels (linear model). ×n: local magnification of small orbits, equal on both axes, up to ×8."
   }
 }

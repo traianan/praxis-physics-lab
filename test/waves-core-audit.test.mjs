@@ -56,8 +56,41 @@ test('water uses selected amplitude in tsunami mode and physical orbit ratios in
  assert.ok(!water.includes('(J/(D||1))'));
  assert.ok(!water.includes('viteză între cele două formule'));
 });
+
+test('small submerged orbits gain bounded uniform magnification, preserving their physical shape',()=>{
+ const orbit=model('waveCoreWaterOrbit','Em'),scale=model('waveCoreWaterSceneScale','Em');
+ for(const h of [.5,12,50])for(const lambda of [2,24,100])for(const z of [.22,.48,.74,.94]){
+  const {a,b}=orbit(.8,2*Math.PI/lambda,h,-z*h),base=14,s=scale(a,base);
+  assert.ok(s>=base&&s<=8*base);assert.ok(Number.isFinite(s));
+  if(a>1e-200)assert.ok(Math.abs((b*s)/(a*s)-b/a)<1e-12);
+ }
+ const a=orbit(.8,2*Math.PI/24,12,-.94*12).a;
+ assert.ok(a*scale(a,14)>7,'near-bed orbit is visible beyond the particle marker');
+ assert.ok(extractCoreFunction(output(),'Em').includes('localOrbitScale=R===0?mainOrbitScale:'),'surface particle keeps the wave surface scale');
+});
+
+test('all five fixed horizontal levels and contrasted orbit centres are drawn without phase dependence',()=>{
+ const levels=model('waveCoreWaterLevels','Em'),draw=model('waveCoreWaterDrawOrbit','Em'),segments=[],ellipses=[];
+ const ctx=new Proxy({moveTo:(...a)=>segments.push(a),lineTo:(...a)=>segments.push(a),ellipse:(...a)=>ellipses.push(a)},{get:(o,k)=>o[k]??(()=>{})});
+ levels(ctx,800,68,232,[0,.22,.48,.74,.94],false);
+ assert.equal(segments.length,10);for(let i=0;i<5;i++){assert.equal(segments[2*i][1],68+[0,.22,.48,.74,.94][i]*232);assert.equal(segments[2*i][1],segments[2*i+1][1]);}
+ draw(ctx,400,180,9,2,false);assert.deepEqual(Array.from(ellipses[0]).slice(0,4),[400,180,9,2]);
+ assert.equal(ctx.lineWidth,1.3);assert.equal(segments.length,14,'centre cross uses fixed equilibrium coordinates');
+});
 test('all adapted demonstration functions compile as JavaScript',()=>{
  for(const name of ['hm','vm','Em'])new vm.Script('('+extractCoreFunction(output(),name)+')');
+});
+
+test('water owns one animation ticket and cancels it completely on pause or option changes',()=>{
+ const source=extractCoreFunction(output(),'Em'),effects=[],pending=new Map();let id=0,state=0,ref=0;
+ const ctx=new Proxy({createLinearGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]??(()=>{})});
+ const canvas={width:800,height:350,getContext:()=>ctx};
+ const values=[12,24,.8,9.81,true,true,false,false,false];
+ const N={useRef:initial=>({current:ref++<2?canvas:initial}),useState:initial=>[values[state++]??initial,()=>{}]};
+ vm.runInNewContext('('+source+')()',{N,wn:()=>false,lessonUseEffect:fn=>effects.push(fn),lessonRequestAnimationFrame:fn=>{pending.set(++id,fn);return id;},lessonCancelAnimationFrame:id=>pending.delete(id),t(){},f(){},Math,isFinite});
+ const cleanup=effects[1]();assert.equal(pending.size,1,'no duplicate initial animation loop');
+ const [ticket,callback]=[...pending][0];pending.delete(ticket);callback(16);assert.equal(pending.size,1);
+ cleanup();assert.equal(pending.size,0,'no stale closure can repaint old orbit visibility');
 });
 test('actual water component draws finite-depth ellipses with the physical aspect ratio',()=>{
  const source=extractCoreFunction(output(),'Em');

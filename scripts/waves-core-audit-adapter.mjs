@@ -2,6 +2,7 @@
 // Water model: MIT Akylas/Mei, Chapter 3, Progressive waves over constant depth.
 // https://web.mit.edu/fluids-modules/waves/www/material/chap-3.pdf
 export const coreAuditTranslations={
+ 'Centre fixe pe orizontale (model liniar). ×n: mărire locală a orbitelor mici, aceeași pe ambele axe, cel mult ×8.':'Fixed centres on horizontal levels (linear model). ×n: local magnification of small orbits, equal on both axes, up to ×8.',
  'Fără bătăi: frecvențe egale':'No beats: equal frequencies',
  'Intensitate medie relativă: surse de aceeași amplitudine locală, fără atenuare geometrică. Surse în fază: Δr = nλ → maxim (galben); Δr = (2n+1)λ/2 → minim (albastru). Surse incoerente: intensitățile medii se adună, fără franje stabile.':'Relative mean intensity: equal local amplitudes, no geometric attenuation. In-phase sources: Δr = nλ gives a maximum (yellow); Δr = (2n+1)λ/2 gives a minimum (blue). Incoherent sources: mean intensities add, without stable fringes.',
  'Orbite liniare: aceeași scară pe cele două axe ale fiecărei elipse; scara poate diferi între elipse.':'Linear orbits: the same scale on both axes of each ellipse; scale may differ between ellipses.',
@@ -38,6 +39,19 @@ function waveCoreWaterOrbit(amplitude,k,h,z){
  return{a:factor*(1+Math.exp(-2*depth)),b:factor*(-Math.expm1(-2*depth))};
 }
 function waveCoreWaterScale(a,b,width,height){const scale=Math.min(22,width/(a||1),height/(b||1));return{x:a*scale,y:b*scale};}
+function waveCoreWaterSceneScale(a,base){return base*(a>0?Math.min(8,Math.max(1,9/(a*base))):1);}
+function waveCoreWaterLevels(ctx,width,top,depth,levels,dark){
+ ctx.save();ctx.strokeStyle=dark?'#c3dfec':'#31596e';ctx.lineWidth=1.2;ctx.setLineDash([7,5]);
+ for(const level of levels){const y=top+level*depth;ctx.beginPath();ctx.moveTo(8,y);ctx.lineTo(width-8,y);ctx.stroke();}
+ ctx.restore();
+}
+function waveCoreWaterDrawOrbit(ctx,x,y,a,b,dark){
+ ctx.save();ctx.setLineDash([]);ctx.beginPath();ctx.ellipse(x,y,a,b,0,0,Math.PI*2);
+ ctx.strokeStyle=dark?'#0b263b':'#e8f7ff';ctx.lineWidth=4.4;ctx.stroke();
+ ctx.strokeStyle=dark?'#e3f6ff':'#153d56';ctx.lineWidth=2.2;ctx.stroke();
+ ctx.strokeStyle=dark?'#ffffff':'#173c50';ctx.lineWidth=1.3;ctx.beginPath();
+ ctx.moveTo(x-3,y);ctx.lineTo(x+3,y);ctx.moveTo(x,y-3);ctx.lineTo(x,y+3);ctx.stroke();ctx.restore();
+}
 
 export function adaptWaveCoreAudit(html,reverse=false){
  if(reverse)return html.replace(/\/\*praxis-core-audit:([A-Za-z0-9+/=]+)\*\/[\s\S]*?\/\*\/praxis-core-audit\*\//g,(_,source)=>Buffer.from(source,'base64').toString('utf8'));
@@ -61,13 +75,17 @@ export function adaptWaveCoreAudit(html,reverse=false){
   return source;
  });
  adapt('Em',source=>{
-  source=replaceOne(source,'function Em(){','function Em(){'+waveCoreWaterOrbit.toString()+waveCoreWaterScale.toString());
+  source=replaceOne(source,'function Em(){','function Em(){'+waveCoreWaterOrbit.toString()+waveCoreWaterScale.toString()+waveCoreWaterSceneScale.toString()+waveCoreWaterLevels.toString()+waveCoreWaterDrawOrbit.toString());
   source=replaceOne(source,'X=v?1.2:i','X=i');
+  // x() already schedules its successor; a second ticket leaks a stale drawing loop.
+  source=replaceOne(source,'if(x(),C)nn=lessonRequestAnimationFrame(x),O.current=nn;','x();');
   source=replaceOne(source,'ln=W==="adâncă"?tn:W==="mică"?Nn:s','ln=s');
   source=replaceOne(source,'Un=Math.min(38,Math.max(3,X*an))','surfaceOrbit=waveCoreWaterOrbit(X,w,M,0),mainOrbitScale=Math.min(14,42/surfaceOrbit.a,38/surfaceOrbit.b),Un=X*mainOrbitScale');
   const start=source.indexOf('if(H>12){let Qn='),end=source.indexOf(',Y=zn*k-_n*D',start);
   if(start<0||end<0)throw Error('Water main orbit changed');
-  source=source.slice(0,start)+'({a:En,b:Ln}=waveCoreWaterOrbit(X,w,M,On));let Gn=En*mainOrbitScale,en=Ln*mainOrbitScale'+source.slice(end);
+  source=source.slice(0,start)+'({a:En,b:Ln}=waveCoreWaterOrbit(X,w,M,On));let localOrbitScale=R===0?mainOrbitScale:waveCoreWaterSceneScale(En,mainOrbitScale),Gn=En*localOrbitScale,en=Ln*localOrbitScale'+source.slice(end);
+  source=replaceOne(source,'if(F.forEach((k,on)=>','if(T)waveCoreWaterLevels(q,G,B,A,V,_);if(F.forEach((k,on)=>');
+  source=replaceOne(source,'if(yn.push({x:pn,y:S,Ah:Gn,Av:en,frac:Fn,col:on}),T)q.strokeStyle=`rgba(148,163,184,${0.18+(1-Fn)*0.2})`,q.lineWidth=1,q.setLineDash([4,3]),q.beginPath(),q.ellipse(k,In,Gn,en,0,0,Math.PI*2),q.stroke(),q.setLineDash([]);','if(yn.push({x:pn,y:S,Ah:Gn,Av:en,frac:Fn,col:on}),T){waveCoreWaterDrawOrbit(q,k,In,Gn,en,_);if(on===2&&localOrbitScale/mainOrbitScale>1.05){q.save();q.fillStyle=_?"#ffffff":"#173c50";q.font="12px system-ui";q.textAlign="right";q.fillText("×"+(localOrbitScale/mainOrbitScale).toFixed(1),G-10,In-6);q.restore();}}');
   const second=source.indexOf('if(H>12){let V='),secondEnd=source.indexOf(',c=B+Z*Q',second);
   if(second<0||secondEnd<0)throw Error('Water comparison orbit changed');
   source=source.slice(0,second)+'({a:zn,b:an}=waveCoreWaterOrbit(X,w,M,vn));let orbitScale=waveCoreWaterScale(zn,an,70,48),D=orbitScale.x,J=orbitScale.y'+source.slice(secondEnd);

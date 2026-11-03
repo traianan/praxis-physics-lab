@@ -51,6 +51,11 @@ try{
   const result=await evaluate(`()=>({id:${JSON.stringify(id)},url:location.href,ready:document.readyState,title:document.title,api:!!window.PraxisMath,math:document.querySelectorAll('.science-math').length,errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,tabs:[...document.querySelectorAll('#praxis-original [role=tab],#praxis-original button[data-tab],#praxis-original .tabs a')].map(e=>({text:e.textContent.trim(),id:e.id,tab:e.dataset.tab,href:e.getAttribute('href')}))})`);
   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
   results.push(result);console.log(JSON.stringify(result));
+  if(process.argv.includes('--water-orbits')&&id==='unde-mecanice'){
+   result.waterOrbits=await evaluate(await readFile('scripts/qa/water-orbits.browser.js','utf8'));
+   const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,'water-orbits.png'),Buffer.from(shot.data,'base64'));
+   console.log(JSON.stringify({waterOrbits:result.waterOrbits}));
+  }
   if(process.argv.includes('--worker-cache')&&id==='calcul-vectorial'){
    result.workerCache=await evaluate(`async()=>{const registration=await navigator.serviceWorker.getRegistration();let updateError=null;try{await registration?.update();await new Promise(r=>setTimeout(r,2000));}catch(e){updateError=String(e);}const keys=await caches.keys(),entries=[];for(const key of keys){const cache=await caches.open(key),header=await cache.match(new URL('../../shared/lab-header.js',location.href));entries.push({key,hasHeader:!!header,hasResolution:header?(await header.text()).includes('window.PraxisCanvasResolution={ratio,forCanvas}'):null});}return {updateError,controlled:!!navigator.serviceWorker.controller,active:registration?.active?.state,waiting:registration?.waiting?.state,installing:registration?.installing?.state,entries};}`);
    console.log(JSON.stringify({workerCache:result.workerCache}));
