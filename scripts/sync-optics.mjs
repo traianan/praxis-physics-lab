@@ -1,6 +1,7 @@
 import {readFile,mkdir,writeFile} from 'node:fs/promises';import {fileURLToPath} from 'node:url';import path from 'node:path';
 import {localizeOpticsSource} from './localize-optics.mjs';
 import {preparePresentation} from './prepare-presentation.mjs';
+import {withFavicon} from './favicon.mjs';
 await preparePresentation();
 const root=fileURLToPath(new URL('../',import.meta.url));
 const {buildOffline}=await import(new URL('../../Optica-Lab/scripts/build-offline.mjs',import.meta.url));
@@ -22,7 +23,8 @@ const palettePattern=/function scenePalette\(markup\) \{[\s\S]*?\n\}\s*(?=functi
 if(!palettePattern.test(source))throw new Error('Optics palette adapter target changed');
 source=source.replace(palettePattern,'function scenePalette(markup) { return window.PraxisScientificColors.optics(markup,colorScheme); }\n\n');
 const html=source.replace('<body', '<body data-praxis-laboratory="true"').replace('<head>',()=>'<head><script>'+prelude+i18n+bundle+science+sound+labHeader+'</script>').replace('</head>',()=>'<style>'+theme+'\n[data-color-scheme="vivid"] .object-color{background:var(--praxis-science-orange)}\n[data-color-scheme="vivid"] .image-color{background:var(--praxis-science-blue)}</style></head>').replace('</body>',()=>'<script>'+adapter+'</script></body>');
-await writeFile(path.join(destination,'index.html'),html,'utf8');
+const normalized=withFavicon(html).replace(/^[ \t]+(?=\r?$)/gm,'');
+await writeFile(path.join(destination,'index.html'),normalized,'utf8');
 await mkdir(path.join(root,'docs'),{recursive:true});
-await writeFile(path.join(root,'docs/optica-snapshot.json'),JSON.stringify({source:'Optica-Lab',synchronizedAt:new Date().toISOString(),bytes:Buffer.byteLength(html),upstreamBytes:offline.bytes,entry:'public/simulari/oglinzi-si-lentile/index.html',note:'Copie de distribuție; motorul și interfața se editează în proiectul Optica-Lab.'},null,2)+'\n');
+await writeFile(path.join(root,'docs/optica-snapshot.json'),JSON.stringify({source:'Optica-Lab',synchronizedAt:new Date().toISOString(),bytes:Buffer.byteLength(normalized),upstreamBytes:offline.bytes,entry:'public/simulari/oglinzi-si-lentile/index.html',note:'Copie de distribuție; motorul și interfața se editează în proiectul Optica-Lab.'},null,2)+'\n');
 console.log('Optica sincronizată din proiectul Optica-Lab. Nicio conexiune la internet.');

@@ -1,6 +1,8 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';import {createHash} from 'node:crypto';import {withFavicon} from './favicon.mjs';
 const root=new URL('../',import.meta.url),id='figuri-chladni',title='Figuri Chladni',read=p=>readFile(new URL(p,root),'utf8'),write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
 const raw=await read('chladni.html');let body=raw.match(/<main>([\s\S]*?)<\/main>/)[1];
+const mathAttr=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
+body=body.replace(/<code>(f\(n,s\) = [^<]+|D = [^<]+)<\/code>/g,(_,source)=>'<code data-science-math="plain" data-science-source="'+mathAttr(source)+'">'+source+'</code>');
 body=body.replace(/<h1>[\s\S]*?<\/h1>/,'').replace('id="cv" width=','id="cv" tabindex="0" aria-describedby="driveHint" width=').replace('min="50" max="4200"','min="1" max="4200"');
 const frequency=body.match(/<div>\s*<label for="fr">[\s\S]*?<\/div>/)[0];body=body.replace(frequency,'');
 const actions=body.match(/<div class="row">\s*<button id="sweep"[\s\S]*?<\/div>/)[0];body=body.replace(actions,'');
@@ -10,7 +12,7 @@ body=body.replace('<div class="stage">','<label class="nodal-toggle"><input id="
 body=body.replace('<h2>Frecvențe de rezonanță</h2>','<label for="modePick">Alege o rezonanță</label><select id="modePick"></select><p class="hint">Modurile neexcitate în punctul ales sunt dezactivate.</p><details><summary>Toate frecvențele de rezonanță</summary>').replace('<div class="row chips" id="chips"></div>','<div class="row chips" id="chips"></div></details>');
 body=body.replace('<aside class="panel">','<aside class="panel"><div><label for="vol">Volum audio <output id="volO"></output></label><input id="vol" type="range" min="0" max="50" step="1" value="12"><p id="audioInfo" class="hint"></p></div>');
 body=body.replace('<h2>Formula frecvențelor','<h2 data-content-type="formula">Formula frecvențelor').replace('</aside>','<p><a href="figuri-chladni.zip">Descarcă lecția offline</a></p></aside>');
-const content=await read('scripts/adaptations/chladni-content.html'),ns=['common','chapters/sunete-si-unde','courses/shared','chladni'],embedded={ro:{},en:{}};
+const content=(await read('scripts/adaptations/chladni-content.html')).replace(/<div class="formula">([\s\S]*?)<\/div>/g,(_,lines)=>'<div class="formula">'+lines.split(/<br\s*\/?>/i).map(source=>'<span data-science-math="plain" data-science-source="'+mathAttr(source)+'">'+source+'</span>').join('<br>')+'</div>'),ns=['common','chapters/sunete-si-unde','courses/shared','chladni'],embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 const css=['design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css','shared/chladni.css'],js=['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','first-law-applications-canvas.js','chladni-model.js'];
 const head=css.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded}).replaceAll('</script','<\\/script')+');</script>'+js.map(p=>'<script src="../../shared/'+p+'"></script>').join('');

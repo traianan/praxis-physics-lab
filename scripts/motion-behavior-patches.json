@@ -79,5 +79,25 @@
     "file": "sec1-tipuri.js",
     "before": "    const cv = MR.css('--c-v'), ca = MR.css('--c-a');",
     "after": "  }\r\n  MR.accelerationInfoVariants = () => Object.keys(ACC).map(kind => {\r\n    const target = document.createElement('div');\r\n    accelerationInfo(kind, target); return target.innerHTML;\r\n  });\r\n  function aSetup() {\r\n    const d = ACC[aKind];\r\n    accelerationInfo(aKind, $('#acc-info'));\r\n    const cv = MR.css('--c-v'), ca = MR.css('--c-a');"
+  },
+  {
+    "file": "index.html",
+    "before": "<label class=\"check\"><input type=\"checkbox\" id=\"traj-pause\"> Pauză</label>",
+    "after": "<button type=\"button\" class=\"btn primary\" id=\"traj-play\" aria-pressed=\"false\" data-no-i18n>Start</button>\n          <label class=\"check\" hidden><input type=\"checkbox\" id=\"traj-pause\"> Pauză</label>"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "  trajInfo();\r\n  MR.onRedraw(trajDraw);",
+    "after": "  const trajectoryPlay = $('#traj-play');\r\n  function syncTrajectoryPlay() {\r\n    const playing = !$('#traj-pause').checked;\r\n    trajectoryPlay.textContent = window.PraxisI18n.tr(playing ? 'Pauză' : 'Start');\r\n    trajectoryPlay.setAttribute('aria-pressed', String(playing));\r\n  }\r\n  trajectoryPlay.addEventListener('click', () => {\r\n    $('#traj-pause').checked = !$('#traj-pause').checked;\r\n    S.click(); syncTrajectoryPlay();\r\n  });\r\n  $('#traj-chips').addEventListener('click', syncTrajectoryPlay);\r\n  $('#traj-pause').addEventListener('change', syncTrajectoryPlay);\r\n  window.addEventListener('praxis-language-change', syncTrajectoryPlay);\r\n  window.addEventListener('praxis-workspace-activity-change', () => {\r\n    if (tc.closest('[data-workspace-active=\"false\"]')) {\r\n      $('#traj-pause').checked = true; syncTrajectoryPlay();\r\n    }\r\n  });\r\n  trajInfo(); syncTrajectoryPlay();\r\n  MR.onRedraw(trajDraw);"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "show() { $('#traj-pause').checked = true; aRun.pause(); if (!tRunning)",
+    "after": "show() { $('#traj-pause').checked = true; syncTrajectoryPlay(); aRun.pause(); if (!tRunning)"
+  },
+  {
+    "file": "sec1-tipuri.js",
+    "before": "hide() { tRunning = false; aRun.pause(); }",
+    "after": "hide() { tRunning = false; $('#traj-pause').checked = true; syncTrajectoryPlay(); aRun.pause(); }"
   }
 ]

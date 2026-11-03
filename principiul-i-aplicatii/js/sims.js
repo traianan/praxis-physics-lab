@@ -524,7 +524,7 @@
   /* ==================== 9. FAMILIA POLITROPES (pVⁿ = ct) ================= */
   var Politrop = {
     cv: null, n: 1, ghost: [],
-    init: function () { this.cv = document.getElementById('polCanvas'); },
+    init: function () { this.cv = document.getElementById('polCanvas'); this.formula = document.getElementById('polCurveFormula'); },
     set: function (n) { this.n = n; },
     curve: function (n, Vi, pi, v) {
       if (n >= 3) return v < Vi ? pi * 8 : pi * 0.02;             /* izocoră aproximată */
@@ -574,7 +574,8 @@
 
       /* etichete pe margine */
       txt(g, 'n = ' + (n >= 3 ? '→ ∞' : fmt(n, 2)), x0 + aw - 4, y0 - ah + 12, { align: 'right', color: COL.red, bold: true, size: 13 });
-      txt(g, 'pV' + (n >= 3 ? 'ⁿ=ct' : supers(n)) + ' = constant', x0 + 6, y0 - ah + 12, { color: COL.bright });
+      var source = n >= 3 ? 'V=\\mathrm{const.}' : 'pV^{' + fmt(n, 2) + '}=\\mathrm{const.}';
+      if(this.formula&&this.formula._source!==source){this.formula._source=source;if(global.PraxisMath)global.PraxisMath.set(this.formula,source,{syntax:'tex'});else this.formula.textContent=n>=3?'V = const.':'pV^('+fmt(n,2)+') = const.';}
       /* legendă compactă jos */
       var lx = x0 + 4;
       refs.forEach(function (r) {
@@ -584,10 +585,6 @@
       });
     }
   };
-  function supers(n) {
-    var map = { '-': '⁻', '.': '·', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
-    return String(n.toFixed(2)).split('').map(function (c) { return map[c] || c; }).join('');
-  }
 
   /* =============== 10. GRAFUL TABEL 1.4.1 · teorie vs experiment ========== */
   var Chart141 = {

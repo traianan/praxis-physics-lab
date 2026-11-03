@@ -1,0 +1,251 @@
+{
+  "date": "2026-11-03",
+  "scope": "Local Chrome headless; independent profile; 19 laboratories",
+  "command": "node scripts/qa/scientific-math-browser.mjs --matrix",
+  "sections": 119,
+  "presentationStates": 114,
+  "nativeInputProbes": 8,
+  "courses": [
+    {
+      "id": "calcul-vectorial",
+      "sections": 0,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "calorimetrie",
+      "sections": 11,
+      "states": 6,
+      "range": {
+        "id": "",
+        "old": "2",
+        "changed": "2.1"
+      },
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "compunerea-oscilatiilor",
+      "sections": 2,
+      "states": 6,
+      "range": {
+        "id": "ax",
+        "old": "3",
+        "changed": "3.1"
+      },
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "figuri-chladni",
+      "sections": 2,
+      "states": 6,
+      "range": {
+        "id": "fr",
+        "old": "1",
+        "changed": "2"
+      },
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "interactii-atomice",
+      "sections": 4,
+      "states": 6,
+      "range": {
+        "id": "distance",
+        "old": "405",
+        "changed": "406"
+      },
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "miscarea-circulara-uniforma",
+      "sections": 7,
+      "states": 6,
+      "range": {
+        "id": "mcu-vector-scale",
+        "old": "75",
+        "changed": "80"
+      },
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "miscarea-curbilinie-plana",
+      "sections": 3,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "miscarea-rectilinie",
+      "sections": 4,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "motoare-termice",
+      "sections": 14,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "notiuni-termodinamice",
+      "sections": 16,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "oglinzi-si-lentile",
+      "sections": 0,
+      "states": 6,
+      "range": {
+        "id": "distance",
+        "old": "-150",
+        "changed": "-149"
+      },
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "oscilator-mecanic",
+      "sections": 5,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "oscilatori-mecanici-cuplati",
+      "sections": 3,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "principiile-mecanicii-newtoniene",
+      "sections": 9,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "principiul-i-al-termodinamicii",
+      "sections": 6,
+      "states": 6,
+      "range": {
+        "id": "qSlider",
+        "old": "500",
+        "changed": "501"
+      },
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "principiul-i-aplicatii",
+      "sections": 11,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "transformari-stare-agregare",
+      "sections": 12,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "unde-mecanice",
+      "sections": 6,
+      "states": 6,
+      "range": {
+        "id": "",
+        "old": "35",
+        "changed": "36"
+      },
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    },
+    {
+      "id": "viteza-si-acceleratia",
+      "sections": 4,
+      "states": 6,
+      "range": null,
+      "mathErrors": [],
+      "canvasInvalidLabels": [],
+      "horizontalOverflow": false,
+      "mutationLoops": [],
+      "exceptions": []
+    }
+  ]
+}

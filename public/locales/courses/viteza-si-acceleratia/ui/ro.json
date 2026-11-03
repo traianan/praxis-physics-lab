@@ -95,11 +95,11 @@
     "spre interiorul (concavitatea) curbei": "spre interiorul (concavitatea) curbei",
     "(spre centrul de curbură C), și măsoară": "(spre centrul de curbură C), și măsoară",
     "variația direcției vitezei": "variația direcției vitezei",
-    "R = raza de curbură [m]": "R = raza de curbură [m]",
+    "R = raza locală de curbură [m]. Numai pentru mișcarea circulară: aₙ = ω²R, cu ω = v/R.": "R = raza locală de curbură [m]. Numai pentru mișcarea circulară: aₙ = ω²R, cu ω = v/R.",
     "Vectorul accelerație totală": "Vectorul accelerație totală",
-    "este orientat": "este orientat",
-    "întotdeauna spre interiorul (concavitatea) traiectoriei curbilinii": "întotdeauna spre interiorul (concavitatea) traiectoriei curbilinii",
-    ", niciodată spre exterior!": ", niciodată spre exterior!",
+    "are o componentă orientată": "are o componentă orientată",
+    "spre interiorul (concavitatea) traiectoriei când componenta normală este nenulă": "spre interiorul (concavitatea) traiectoriei când componenta normală este nenulă",
+    "; la viteză nulă, descompunerea după tangentă și normală nu este definită.": "; la viteză nulă, descompunerea după tangentă și normală nu este definită.",
     "Situații Particulare": "Situații Particulare",
     "Legi de Mișcare Exprimabile prin Funcții Polinomiale": "Legi de Mișcare Exprimabile prin Funcții Polinomiale",
     "În numeroase probleme de fizică (clasa a IX-a), legea de mișcare a unui punct material pe o axă este dată sub forma unei": "În numeroase probleme de fizică (clasa a IX-a), legea de mișcare a unui punct material pe o axă este dată sub forma unei",
@@ -175,7 +175,7 @@
     "🎛️ Comenzi Simulare (În Plan 2D)": "🎛️ Comenzi Simulare (În Plan 2D)",
     "🔄 Tipul Traiectoriei Curbilinii Plane": "🔄 Tipul Traiectoriei Curbilinii Plane",
     "1. Mișcare Circulară Uniformă (aₜ = 0, a = aₙ)": "1. Mișcare Circulară Uniformă (aₜ = 0, a = aₙ)",
-    "2. Mișcare Circulară Neuniformă (a = aₜ + aₙ)": "2. Mișcare Circulară Neuniformă (a = aₜ + aₙ)",
+    "2. Mișcare Circulară Neuniformă (a² = aₜ² + aₙ²)": "2. Mișcare Circulară Neuniformă (a² = aₜ² + aₙ²)",
     "3. Aruncarea Oblică în Câmp Gravitațional (Parabolă)": "3. Aruncarea Oblică în Câmp Gravitațional (Parabolă)",
     "4. Traiectorie Eliptică / Oscilație Plană (Lissajous)": "4. Traiectorie Eliptică / Oscilație Plană (Lissajous)",
     "🎚️ Slidere Parametri Traiectorie": "🎚️ Slidere Parametri Traiectorie",
@@ -237,6 +237,7 @@
     "Aplicație educațională HTML5 Offline —": "Aplicație educațională HTML5 Offline —",
     "„Viteza și Accelerația”": "„Viteza și Accelerația”",
     "(Fizică Clasa a IX-a) • Funcționează complet offline în orice browser modern.": "(Fizică Clasa a IX-a) • Funcționează complet offline în orice browser modern.",
+    "Nedefinit la v = 0": "Nedefinit la v = 0",
     "▶ Play": "▶ Pornește",
     "⏸ Pause": "⏸ Pauză",
     "↺ Reset": "↺ Resetează",
@@ -293,7 +294,6 @@
     "Mișcare în plan: traiectorie și vectori": "Mișcare în plan: traiectorie și vectori",
     "Legi polinomiale: grafice x(t), v(t), a(t)": "Legi polinomiale: grafice x(t), v(t), a(t)",
     "Scade {value}": "Scade {value}",
-    "Crește {value}": "Crește {value}",
-    "Glisează orizontal pentru a explora diagrama.": "Glisează orizontal pentru a explora diagrama."
+    "Crește {value}": "Crește {value}"
   }
 }

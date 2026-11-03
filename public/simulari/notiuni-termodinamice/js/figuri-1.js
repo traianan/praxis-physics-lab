@@ -280,9 +280,9 @@ function playLabel(S,act,on){S.label(act,on?'Pauză':'Pornește',on?'#i-pause':'
       dots.forEach(d=>dot(ctx,b.x+6+d.x*(b.w-12),b.y+6+d.y*(b.h-12),4.5,d.k?COL.a:COL.b));
       txt(ctx,'● N₂ (μ₁ = 28 g/mol)',b.x,b.y+b.h+18,{font:MONO,color:COL.b,align:'left'});txt(ctx,'● O₂ (μ₂ = 32 g/mol)',b.x,b.y+b.h+36,{font:MONO,color:COL.a,align:'left'});
       txt(ctx,'1 punct = 0,5·10²³ molecule',b.x,b.y+b.h+54,{font:MONO,color:COL.muted,align:'left'});
-      const X0=b.x+b.w+30;txt(ctx,'μ = (N₁μ₁ + N₂μ₂) / (N₁ + N₂)',X0,b.y+20,{align:'left',font:big});
-      txt(ctx,`= (${N1}·28 + ${N2}·32) / ${N1+N2}`,X0,b.y+54,{align:'left',font:big,color:COL.muted});
-      txt(ctx,`= ${f(mu,2)} g/mol`,X0,b.y+88,{align:'left',font:'italic 600 22px "Source Serif 4", Georgia, serif',color:COL.a});
+      const X0=b.x+b.w+30;
+      const formula=S.outs.mixFormula,source=`\\mu=\\frac{${N1}\\cdot28+${N2}\\cdot32}{${N1+N2}}=${f(mu,2)}\\ \\mathrm{g/mol}`;
+      if(formula&&formula._source!==source){formula._source=source;if(window.PraxisMath)window.PraxisMath.set(formula,source,{syntax:'tex'});else formula.textContent=`μ = (${N1}·28 + ${N2}·32) / ${N1+N2} = ${f(mu,2)} g/mol`;}
       // scara 28…32 g/mol
       const sx0=X0,sx1=w-30,sy=b.y+b.h-10,X=v=>lerp(sx0,sx1,(v-28)/4);line(ctx,sx0,sy,sx1,sy,COL.r,2);
       [28,29,30,31,32].forEach(v=>{line(ctx,X(v),sy-5,X(v),sy+5,COL.r,1.5);txt(ctx,String(v),X(v),sy+16,{font:MONO,color:COL.muted})});

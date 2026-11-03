@@ -171,6 +171,9 @@
     "Filtrează glosar (ex: fază, nod...)": "Filter glossary (e.g. phase, node...)",
     "→ vezi secțiunea": "→ view section",
     "🗺️ Hartă formule – toate cheie grupate": "🗺️ Formula map – grouped key formulas",
-    "Vezi demo": "View demo"
+    "Vezi demo": "View demo",
+    "Utilizarea ecuației undei plane y=A sin(ω(t − x/v_f))": "Use the plane-wave equation y=A sin(ω(t − x/v_f))",
+    "y = A sin(ω(t − x/v_f))": "y = A sin(ω(t − x/v_f))",
+    "y = A sin(ω(t + x/v_f))": "y = A sin(ω(t + x/v_f))"
   }
 }

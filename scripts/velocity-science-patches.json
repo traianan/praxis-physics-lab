@@ -1,0 +1,42 @@
+[
+  {
+    "file": "index.html",
+    "before": "<span>a<sub>n</sub> = <span class=\"frac\"><span>v²</span><span>R</span></span> = &omega;² · R</span>",
+    "after": "<span>a<sub>n</sub> = <span class=\"frac\"><span>v²</span><span>R</span></span></span>"
+  },
+  {
+    "file": "index.html",
+    "before": "R = raza de curbură [m]",
+    "after": "R = raza locală de curbură [m]. Numai pentru mișcarea circulară: aₙ = ω²R, cu ω = v/R."
+  },
+  {
+    "file": "index.html",
+    "before": "este orientat <strong>întotdeauna spre interiorul (concavitatea) traiectoriei curbilinii</strong>, niciodată spre exterior!",
+    "after": "are o componentă orientată <strong>spre interiorul (concavitatea) traiectoriei când componenta normală este nenulă</strong>; la viteză nulă, descompunerea după tangentă și normală nu este definită."
+  },
+  {
+    "file": "index.html",
+    "before": "2. Mișcare Circulară Neuniformă (a = a_t + a_n)",
+    "after": "2. Mișcare Circulară Neuniformă (a² = aₜ² + aₙ²)"
+  },
+  {
+    "file": "app.js",
+    "before": "    const aMag = Math.hypot(ax, ay);",
+    "after": "    const aMag = Math.hypot(ax, ay);\n    // At rest the velocity does not define a Frenet tangent. Keep the physical\n    // position/velocity/acceleration, but do not invent normal components.\n    if (vMag <= 1e-5) return { x, y, vx, vy, ax, ay, vMag, aMag, frenetDefined: false,\n      atScalar: null, atx: null, aty: null, anScalar: null, anx: null, any: null };"
+  },
+  {
+    "file": "app.js",
+    "before": "return { x, y, vx, vy, ax, ay, vMag, aMag, atScalar, atx, aty, anScalar, anx, any };",
+    "after": "return { x, y, vx, vy, ax, ay, vMag, aMag, frenetDefined: true, atScalar, atx, aty, anScalar, anx, any };"
+  },
+  {
+    "file": "app.js",
+    "before": "    document.getElementById('curv-out-at').textContent = s.atScalar.toFixed(1) + ' m/s²';\n    document.getElementById('curv-out-an').textContent = s.anScalar.toFixed(1) + ' m/s²';",
+    "after": "    const undefinedFrenet = window.PraxisI18n?.tr('Nedefinit la v = 0') || 'Nedefinit la v = 0';\n    document.getElementById('curv-out-at').textContent = s.frenetDefined ? s.atScalar.toFixed(1) + ' m/s²' : undefinedFrenet;\n    document.getElementById('curv-out-an').textContent = s.frenetDefined ? s.anScalar.toFixed(1) + ' m/s²' : undefinedFrenet;"
+  },
+  {
+    "file": "app.js",
+    "before": "    if (showAtAn) {",
+    "after": "    if (showAtAn && cur.frenetDefined) {"
+  }
+]

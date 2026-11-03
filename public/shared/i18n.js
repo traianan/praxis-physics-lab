@@ -69,5 +69,5 @@
   finally{for(const select of document.querySelectorAll('[data-language-select]'))select.disabled=false;}
  }
  function createSelector(){const select=document.createElement('select');select.className='praxis-language';select.dataset.languageSelect='';select.setAttribute('aria-label','Limba interfeței');for(const lang of supported)select.add(new Option(lang.toUpperCase(),lang));select.value=language;select.addEventListener('change',()=>{setLanguage(select.value).catch(()=>{select.value=language;window.dispatchEvent(new CustomEvent('praxis-language-error'));});});return select;}
- window.PraxisI18n={init,initEmbedded,tr,translate:tr,apply,setLanguage,createSelector,enableCourseMode(){courseMode=true;compose();},get language(){return language;},get locale(){return language==='en'?'en-GB':'ro-RO';},getNamespace(ns){return cache.get(language+':'+ns);}};
+ window.PraxisI18n={init,initEmbedded,tr,translate:tr,apply,setLanguage,createSelector,sourceText(node){const entry=sourceNodes.get(node);return entry&&entry.last===node.data?entry.source:node.data;},enableCourseMode(){courseMode=true;compose();},get language(){return language;},get locale(){return language==='en'?'en-GB':'ro-RO';},getNamespace(ns){return cache.get(language+':'+ns);}};
 })();

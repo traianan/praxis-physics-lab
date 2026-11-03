@@ -2,6 +2,7 @@
   "locale": "en",
   "namespace": "common",
   "messages": {
+    "comun": "common",
     "Fizică interactivă": "Interactive physics",
     "Fizică interactivă · Praxis Science Lab": "Interactive Physics · Praxis Science Lab",
     "Praxis, toate capitolele": "Praxis, all chapters",

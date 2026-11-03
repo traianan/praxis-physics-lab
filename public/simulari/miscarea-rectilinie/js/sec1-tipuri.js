@@ -125,7 +125,25 @@
   }
   MR.chipGroup($('#traj-chips'), (k) => { tKind = k; tS = 0; $('#traj-pause').checked = true; S.click(); trajInfo(); trajDraw(); });
   ['#traj-vec', '#traj-trail'].forEach((s) => $(s).addEventListener('change', trajDraw));
-  trajInfo();
+  const trajectoryPlay = $('#traj-play');
+  function syncTrajectoryPlay() {
+    const playing = !$('#traj-pause').checked;
+    trajectoryPlay.textContent = window.PraxisI18n.tr(playing ? 'Pauză' : 'Start');
+    trajectoryPlay.setAttribute('aria-pressed', String(playing));
+  }
+  trajectoryPlay.addEventListener('click', () => {
+    $('#traj-pause').checked = !$('#traj-pause').checked;
+    S.click(); syncTrajectoryPlay();
+  });
+  $('#traj-chips').addEventListener('click', syncTrajectoryPlay);
+  $('#traj-pause').addEventListener('change', syncTrajectoryPlay);
+  window.addEventListener('praxis-language-change', syncTrajectoryPlay);
+  window.addEventListener('praxis-workspace-activity-change', () => {
+    if (tc.closest('[data-workspace-active="false"]')) {
+      $('#traj-pause').checked = true; syncTrajectoryPlay();
+    }
+  });
+  trajInfo(); syncTrajectoryPlay();
   MR.onRedraw(trajDraw);
 
   /* ================= B. După accelerație ================= */
@@ -275,7 +293,7 @@
 
   MR.sections = MR.sections || {};
   MR.sections.tipuri = {
-    show() { $('#traj-pause').checked = true; aRun.pause(); if (!tRunning) { tRunning = true; tLast = performance.now(); requestAnimationFrame(trajLoop); } },
-    hide() { tRunning = false; aRun.pause(); },
+    show() { $('#traj-pause').checked = true; syncTrajectoryPlay(); aRun.pause(); if (!tRunning) { tRunning = true; tLast = performance.now(); requestAnimationFrame(trajLoop); } },
+    hide() { tRunning = false; $('#traj-pause').checked = true; syncTrajectoryPlay(); aRun.pause(); },
   };
 })();

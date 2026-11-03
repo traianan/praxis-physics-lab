@@ -1,10 +1,11 @@
+import {thermoReadability} from './adaptations/thermodynamics-readability.mjs';
 import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 const root=new URL('../',import.meta.url),id='calorimetrie';
 const read=p=>readFile(new URL(p,root),'utf8');
 const source=new URL('sources/'+id+'/site/',root),target=new URL('public/simulari/'+id+'/',root);
 await mkdir(target,{recursive:true});await cp(source,target,{recursive:true});
-let html=await read('sources/'+id+'/site/index.html');
+let html=thermoReadability('calorimetry','index.html',await read('sources/'+id+'/site/index.html'));
 html=html.replace(/<header class="hero"[\s\S]*?<\/header>/,'<span id="top"></span>')
  .replace(/<link rel="manifest"[^>]*>/,'').replace(/<footer>[\s\S]*?<\/footer>/,'')
  .replace(/<section class="sec" id="s8">[\s\S]*?<\/section>/,'').replace(/<li><a href="#s8">[\s\S]*?<\/li>/,'')
@@ -29,7 +30,7 @@ const styles=['design-system/tokens.css','design-system/components.css','shared/
 const head=styles.map(path=>'<link rel="stylesheet" href="../../'+path+'">').join('')+'<script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded})+');</script>'+['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','velocity-labels.js','calorimetry-model.js'].map(name=>'<script src="../../shared/'+name+'"></script>').join('');
 html=html.replace('</head>',()=>head+'</head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">').replace('</body>','</div><script src="../../shared/course.js" data-course="'+id+'" data-title="Calorimetrie" defer></script><script src="../../shared/calorimetry.js" defer></script></body>');
 await writeFile(new URL('index.html',target),html);
-let base=await read('sources/'+id+'/site/js/baza.js');
+let base=thermoReadability('calorimetry','js/baza.js',await read('sources/'+id+'/site/js/baza.js'));
 base=base.replace("const out=inp.parentElement.querySelector('output');","const out=inp.closest('label').querySelector('output');").replace("const S={on:localStorage.getItem('cal-sound')!=='0'};","const S={on:window.PraxisSound.enabled};")
  .replace('if(!S.on)return null;','if(!S.on||!window.PraxisSound.enabled||document.hidden)return null;')
  .replace("S.set=on=>{S.on=on;localStorage.setItem('cal-sound',on?'1':'0');",'S.set=on=>{S.on=on;')
@@ -45,7 +46,7 @@ base+=`\nfunction fixedTxt(ctx,s,x,y,o={}){ctx.save();ctx.font=o.font||MONO;cons
 base+='\ndocument.addEventListener("visibilitychange",()=>{if(!document.hidden)ALL.filter(s=>s.vis).forEach(s=>s.loop());});\n';
 await writeFile(new URL('js/baza.js',target),base);
 for(const file of ['figuri-1.js','figuri-2.js']){
- let code=await read('sources/'+id+'/site/js/'+file);
+ let code=thermoReadability('calorimetry','js/'+file,await read('sources/'+id+'/site/js/'+file));
  code=code.replaceAll(' — răspunsul din manual.','.').replaceAll('1900 — răspunsul din manual','1900 J/(kg·K)')
  .replaceAll('în enunțul manualului masa uleiului cald trebuia să fie 0,8 kg.','bilanțul termic este satisfăcut.')
  .replaceAll('manualul cere 4–5 serii.','efectuează 4–5 serii.').replaceAll('(cu valorile corectate)','')

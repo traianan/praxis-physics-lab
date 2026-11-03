@@ -444,6 +444,17 @@
     "Ciclu demonstrativ: {p0}": "Ciclu demonstrativ: {p0}",
     "Propagarea este continuă: la fiecare secundă, noul front devine automat frontul la t₀ al etapei următoare. Scara rămâne fixă; demonstrația se reia când următoarea etapă ar ieși din desen. Sliderul Δt (0–1 s) și butoanele −/+ pun pe pauză și permit examinarea etapei curente pas cu pas.": "Propagarea este continuă: la fiecare secundă, noul front devine automat frontul la t₀ al etapei următoare. Scara rămâne fixă; demonstrația se reia când următoarea etapă ar ieși din desen. Sliderul Δt (0–1 s) și butoanele −/+ pun pe pauză și permit examinarea etapei curente pas cu pas.",
     "Propagarea este continuă: la fiecare secundă, noul front devine automat frontul la t": "Propagarea este continuă: la fiecare secundă, noul front devine automat frontul la t",
-    "al etapei următoare. Scara rămâne fixă; demonstrația se reia când următoarea etapă ar ieși din desen. Sliderul Δt (0–1 s) și butoanele −/+ pun pe pauză și permit examinarea etapei curente pas cu pas.": "al etapei următoare. Scara rămâne fixă; demonstrația se reia când următoarea etapă ar ieși din desen. Sliderul Δt (0–1 s) și butoanele −/+ pun pe pauză și permit examinarea etapei curente pas cu pas."
+    "al etapei următoare. Scara rămâne fixă; demonstrația se reia când următoarea etapă ar ieși din desen. Sliderul Δt (0–1 s) și butoanele −/+ pun pe pauză și permit examinarea etapei curente pas cu pas.": "al etapei următoare. Scara rămâne fixă; demonstrația se reia când următoarea etapă ar ieși din desen. Sliderul Δt (0–1 s) și butoanele −/+ pun pe pauză și permit examinarea etapei curente pas cu pas.",
+    "y=A sin(ω(t − x/v_f)) întârziere x/v. La t fix: profil spațial, la x fix: oscilație.": "y=A sin(ω(t − x/v_f)) întârziere x/v. La t fix: profil spațial, la x fix: oscilație.",
+    "Semnul minus în (ω(t − x/v_f)) înseamnă?": "Semnul minus în (ω(t − x/v_f)) înseamnă?",
+    "Incidentă+reflectată → y=2A sin(2πx/λ) cos(ωt). Noduri sin(2πx/λ)=0, ventre max.": "Incidentă+reflectată → y=2A sin(2πx/λ) cos(ωt). Noduri sin(2πx/λ)=0, ventre max.",
+    "Argumentul sinusului ω(t − x/v_f), determină starea de oscilație.": "Argumentul sinusului ω(t − x/v_f), determină starea de oscilație.",
+    "Punct cu deplasare mereu 0 la unda staționară, sin(2πx/λ)=0.": "Punct cu deplasare mereu 0 la unda staționară, sin(2πx/λ)=0.",
+    "3. Ecuația undei plane spre +x este y=A sin(ω(t − x/v_f)). Semnul minus arată:": "3. Ecuația undei plane spre +x este y=A sin(ω(t − x/v_f)). Semnul minus arată:",
+    "Condiția y=0 la 0 și L → sin(2πL/λ)=0 → L=nλ/2, noduri la 0, λ/2, λ...": "Condiția y=0 la 0 și L → sin(2πL/λ)=0 → L=nλ/2, noduri la 0, λ/2, λ...",
+    "y₁ = A sin(ω(t + x/v_f)), y₂ = -A sin(ω(t − x/v_f)) ⇒ y = y₁+y₂ = 2A sin(2πx/λ) cos(ωt) (folosind sin a − sin b = 2 cos((a+b)/2) sin((a−b)/2)). Factorul sin(2πx/λ) = amplitudine dependentă de poziție.": "y₁ = A sin(ω(t + x/v_f)), y₂ = -A sin(ω(t − x/v_f)) ⇒ y = y₁+y₂ = 2A sin(2πx/λ) cos(ωt) (folosind sin a − sin b = 2 cos((a+b)/2) sin((a−b)/2)). Factorul sin(2πx/λ) = amplitudine dependentă de poziție.",
+    "= A sin(ω(t + x/v_f)), y": "= A sin(ω(t + x/v_f)), y",
+    "= -A sin(ω(t − x/v_f)) ⇒ y = y": "= -A sin(ω(t − x/v_f)) ⇒ y = y",
+    "= 2A sin(2πx/λ) cos(ωt) (folosind sin a − sin b = 2 cos((a+b)/2) sin((a−b)/2)). Factorul sin(2πx/λ) = amplitudine dependentă de poziție.": "= 2A sin(2πx/λ) cos(ωt) (folosind sin a − sin b = 2 cos((a+b)/2) sin((a−b)/2)). Factorul sin(2πx/λ) = amplitudine dependentă de poziție."
   }
 }

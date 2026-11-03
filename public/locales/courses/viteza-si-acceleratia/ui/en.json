@@ -95,11 +95,11 @@
     "spre interiorul (concavitatea) curbei": "towards the inside (concave side) of the curve",
     "(spre centrul de curbură C), și măsoară": "(towards the centre of curvature C), and measures the",
     "variația direcției vitezei": "change in velocity direction",
-    "R = raza de curbură [m]": "R = radius of curvature [m]",
+    "R = raza locală de curbură [m]. Numai pentru mișcarea circulară: aₙ = ω²R, cu ω = v/R.": "R = local radius of curvature [m]. Only for circular motion: aₙ = ω²R, with ω = v/R.",
     "Vectorul accelerație totală": "The total acceleration vector",
-    "este orientat": "points",
-    "întotdeauna spre interiorul (concavitatea) traiectoriei curbilinii": "towards the inside (concave side) of a curved trajectory when its normal component is nonzero",
-    ", niciodată spre exterior!": ", never towards the outside!",
+    "are o componentă orientată": "has a component pointing",
+    "spre interiorul (concavitatea) traiectoriei când componenta normală este nenulă": "towards the inside (concave side) of a curved trajectory when its normal component is nonzero",
+    "; la viteză nulă, descompunerea după tangentă și normală nu este definită.": "; at zero velocity, the tangential and normal decomposition is undefined.",
     "Situații Particulare": "Special cases",
     "Legi de Mișcare Exprimabile prin Funcții Polinomiale": "Position functions expressed as polynomials",
     "În numeroase probleme de fizică (clasa a IX-a), legea de mișcare a unui punct material pe o axă este dată sub forma unei": "In many Grade 9 physics problems, the position of a particle along an axis is given by a",
@@ -175,7 +175,7 @@
     "🎛️ Comenzi Simulare (În Plan 2D)": "🎛️ Simulation controls (2D plane)",
     "🔄 Tipul Traiectoriei Curbilinii Plane": "🔄 Planar trajectory type",
     "1. Mișcare Circulară Uniformă (aₜ = 0, a = aₙ)": "1. Uniform circular motion (aₜ = 0, a = aₙ)",
-    "2. Mișcare Circulară Neuniformă (a = aₜ + aₙ)": "2. Nonuniform circular motion (a = aₜ + aₙ)",
+    "2. Mișcare Circulară Neuniformă (a² = aₜ² + aₙ²)": "2. Nonuniform circular motion (a² = aₜ² + aₙ²)",
     "3. Aruncarea Oblică în Câmp Gravitațional (Parabolă)": "3. Projectile motion in a gravitational field (parabola)",
     "4. Traiectorie Eliptică / Oscilație Plană (Lissajous)": "4. Elliptical trajectory / planar oscillation (Lissajous)",
     "🎚️ Slidere Parametri Traiectorie": "🎚️ Trajectory parameters",
@@ -237,6 +237,7 @@
     "Aplicație educațională HTML5 Offline —": "Offline HTML5 educational application —",
     "„Viteza și Accelerația”": "“Velocity and acceleration”",
     "(Fizică Clasa a IX-a) • Funcționează complet offline în orice browser modern.": "(Grade 9 physics) • Works fully offline in any modern browser.",
+    "Nedefinit la v = 0": "Undefined at v = 0",
     "▶ Play": "▶ Play",
     "⏸ Pause": "⏸ Pause",
     "↺ Reset": "↺ Reset",
@@ -293,7 +294,6 @@
     "Mișcare în plan: traiectorie și vectori": "Planar motion: trajectory and vectors",
     "Legi polinomiale: grafice x(t), v(t), a(t)": "Polynomial laws: graphs x(t), v(t), a(t)",
     "Scade {value}": "Decrease {value}",
-    "Crește {value}": "Increase {value}",
-    "Glisează orizontal pentru a explora diagrama.": "Swipe horizontally to explore the diagram."
+    "Crește {value}": "Increase {value}"
   }
 }

@@ -1,0 +1,228 @@
+/* One active teaching page: use width before requiring vertical scrolling.
+   Loaded after compact.css; text size and scientific canvas bounds are retained. */
+body[data-praxis-course=unde-mecanice][data-praxis-laboratory] .praxis-lab-intro{padding:4px 12px!important;margin-block:4px!important;min-height:44px;gap:12px;flex-wrap:wrap}
+body[data-praxis-course=unde-mecanice] .praxis-lab-intro>div:first-child{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 18px}
+body[data-praxis-course=unde-mecanice] .praxis-lab-intro :is(h1,p){margin:0}
+body[data-praxis-course=unde-mecanice] .praxis-lab-intro>.praxis-lab-nav{margin:0 0 0 auto;padding:0!important;width:auto;min-height:44px}
+body[data-praxis-course=unde-mecanice] .lesson-navigation{padding-block:4px}
+body[data-praxis-course=unde-mecanice] :is(.lesson-hero,.lesson-group-note){display:none}
+body[data-praxis-course=unde-mecanice] .lesson-tabs{padding-bottom:4px}
+body[data-praxis-course=unde-mecanice] .lesson-topics-panel{padding-top:4px}
+.wave-group-choice{display:none}
+body[data-praxis-course=unde-mecanice] .lesson-skip{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0}
+body[data-praxis-course=unde-mecanice] .lesson-skip:focus{position:static;width:auto;height:auto;clip-path:none}
+body[data-praxis-course=unde-mecanice] .lesson-section{padding:8px 12px}
+body[data-praxis-course=unde-mecanice] .lesson-section>.lesson-eyebrow{display:none}
+body[data-praxis-course=unde-mecanice] .lesson-section h2{margin:0 0 6px}
+body[data-praxis-course=unde-mecanice] .lesson-parts{padding-bottom:6px;margin-bottom:8px;gap:6px}
+body[data-praxis-course=unde-mecanice] .lesson-part-content>.wave-textbook-page{margin:0}
+.wave-textbook-page{display:grid;grid-template-columns:minmax(0,1fr);align-items:start;gap:12px 20px;container:wave-textbook / inline-size}
+.wave-textbook-page>*{min-width:0}
+.lesson-part-content:has(>.wave-textbook-page){container:wave-page / inline-size}
+.wave-textbook-notes>p{max-width:none;margin:0 0 8px}
+.wave-textbook-formulas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr));gap:8px}
+body[data-praxis-course=unde-mecanice] .wave-textbook-formulas>[style]{padding:8px 12px!important;margin:0}
+.wave-textbook-experiment>*{margin:0!important}
+/* Only this laboratory uses the new native MathML presentation. */
+body[data-praxis-course=unde-mecanice] #praxis-original :is(math,math *){font-family:math!important}
+body[data-praxis-course=unde-mecanice] #praxis-original math{font-size:1em;line-height:normal;overflow-wrap:normal;white-space:normal}
+.wave-math-lines{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem 1.25rem;max-width:100%;min-width:0}
+.wave-math-item{display:inline-flex;align-items:center;min-height:2em;max-width:100%;padding-block:.1em;overflow-x:auto;overflow-y:hidden}
+.wave-math-prose{line-height:1.6;white-space:normal}
+.wave-formula-box{background:var(--formula-bg);border:1px solid var(--accent);border-radius:var(--praxis-radius-control);padding:10px 14px;margin-block:10px;min-width:0;max-width:100%;overflow-x:auto}
+.wave-textbook-formulas>.wave-formula-box{margin:0;padding:8px 12px}
+.wave-formula-label{font-weight:600;margin-bottom:6px}
+.wave-formula-row{line-height:1.6}
+body[data-praxis-course=unde-mecanice] #praxis-original .wave-script{display:inline;white-space:nowrap}
+body[data-praxis-course=unde-mecanice] #praxis-original .wave-script :is(sub,sup){position:static!important;line-height:0!important;font-size:.75em!important;bottom:auto!important;top:auto!important}
+body[data-praxis-course=unde-mecanice] #praxis-original .wave-script sub{vertical-align:sub!important}
+body[data-praxis-course=unde-mecanice] #praxis-original .wave-script sup{vertical-align:super!important}
+.wave-water-readout{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;background:var(--formula-bg);border-radius:var(--praxis-radius-control);padding:8px 12px}
+.wave-water-speed-values{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 12px;grid-column:1/-1}
+.wave-water-breaking{grid-column:1/-1;font-weight:600;color:var(--praxis-science-red)}
+.wave-water-results>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}
+.wave-water-results .wave-math-lines{gap:.5rem 1rem}
+.wave-water-reading>div:has(>h3)>h3{display:none}
+.wave-water-reading>div:has(>h3)>span{padding:8px 12px!important;margin:0!important}
+.wave-water-representation-note>summary{min-height:44px;cursor:pointer;padding:8px 0;font-weight:600;color:var(--accent)}
+@container wave-water (min-width:58rem){
+ .wave-water-activity[data-water-view="0"] .wave-water-readout{grid-column:2;grid-row:1}
+ .wave-water-activity[data-water-view="0"] .wave-water-controls{grid-row:2}
+ .wave-water-activity[data-water-view="0"] .wave-water-body>.wave-water-actions{grid-row:3}
+ .wave-water-activity[data-water-view="0"] .wave-water-scene{grid-row:1/span 3}
+}
+@media(max-width:760px){.wave-water-results>div{grid-template-columns:minmax(0,1fr)}}
+/* Every range keeps a usable track; explanatory siblings wrap below controls. */
+body[data-praxis-course=unde-mecanice] #praxis-original label:has(>.praxis-range-stepper){display:flex!important;flex-direction:column;align-items:stretch!important;gap:4px;flex:1 1 14rem;min-width:0;max-width:100%;width:100%;white-space:normal}
+body[data-praxis-course=unde-mecanice] #praxis-original label>.praxis-range-stepper{display:flex;flex:0 0 auto;width:100%;min-width:0;gap:8px}
+body[data-praxis-course=unde-mecanice] #praxis-original .praxis-range-stepper>button{flex:0 0 44px}
+body[data-praxis-course=unde-mecanice] #praxis-original .praxis-range-stepper>input{flex:1 1 0%;width:100%;min-width:0}
+body[data-praxis-course=unde-mecanice] [data-wave-role=controls]{display:grid!important;align-items:start!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr))!important}
+body[data-praxis-course=unde-mecanice] [data-wave-role=controls]>span:has(.wave-math-lines){grid-column:1/-1}
+body[data-praxis-course=unde-mecanice] #clasificare-content-0 [class~="md:col-span-2"]{padding:8px!important;gap:8px 12px!important}
+#clasificare-content-0 [class~="md:col-span-2"]>span{flex:1 1 14rem;min-width:0}
+/* A simulation's own card is a separate layout container. No empty heading row. */
+body[data-praxis-course=unde-mecanice] [data-wave-stand]{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:8px 12px;align-content:start}
+body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role]{grid-column:1/-1;grid-row:auto;margin:0!important}
+body[data-praxis-course=unde-mecanice] [data-wave-role=controls]{grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr))!important;gap:8px!important}
+body[data-praxis-course=unde-mecanice] .wave-textbook-experiment [data-wave-role=controls]>[style*="var(--formula-bg)"]{grid-column:1/-1;padding:6px 10px!important;margin:0;line-height:1.4!important}
+body[data-praxis-course=unde-mecanice] .wave-textbook-experiment [data-wave-role=controls]>[style*="var(--formula-bg)"] br{display:none}
+body[data-praxis-course=unde-mecanice] .wave-textbook-experiment [data-wave-role=controls]>[style*="var(--formula-bg)"]:has(>div){display:flex;flex-wrap:wrap;gap:4px 16px}
+.wave-huygens-explanation{flex-basis:100%}
+.wave-huygens-explanation summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--accent)}
+.wave-huygens-explanation[open]>span{display:block;margin-bottom:8px}
+.wave-textbook-page[data-textbook-water]{display:block}
+.wave-textbook-page[data-textbook-water]:not(:has(.wave-water-activity[data-water-view="2"]))>.wave-textbook-notes{display:none}
+.wave-textbook-page[data-textbook-water]>.wave-textbook-notes{display:none}
+.wave-water-reading .wave-math-lines{gap:.25rem .75rem}
+#marimi .wave-textbook-experiment>.rounded-xl{padding:8px!important}
+.wave-water-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.wave-water-activity{container:wave-water / inline-size}
+.wave-water-tabs button{border:1px solid var(--border);border-radius:var(--praxis-radius-control);padding:6px 12px;color:var(--text);background:var(--card)}
+.wave-water-tabs button[aria-selected=true]{background:var(--formula-bg);border-color:var(--accent);color:var(--accent)}
+.wave-water-body{display:grid;grid-template-columns:minmax(0,1fr);gap:8px 16px;align-items:start}
+.wave-water-body>*{min-width:0}
+body[data-praxis-course=unde-mecanice] .wave-water-body [hidden]{display:none!important}
+body[data-praxis-course=unde-mecanice] .wave-water-controls>.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+.wave-water-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:start}
+.wave-water-results>div{margin:0!important}
+body[data-praxis-course=unde-mecanice] .wave-water-results>div{padding:8px!important;row-gap:4px}
+body[data-praxis-course=unde-mecanice] .wave-water-reading>.border{margin-block:8px;padding:8px 12px!important}
+@container wave-water (min-width:58rem){
+ .wave-water-body{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+ .wave-water-scene{grid-column:1;grid-row:1/span 2}
+ .wave-water-controls{grid-column:2;grid-row:1}
+ .wave-water-body>.wave-water-actions{grid-column:2;grid-row:2}
+ .wave-water-results{grid-column:1/-1;grid-row:3}
+ .wave-water-activity[data-water-view="1"] .wave-water-scene{grid-row:1}
+ .wave-water-activity[data-water-view="1"] .wave-water-results{grid-column:1;grid-row:2}
+ .wave-water-reading{grid-column:1/-1}
+}
+body[data-praxis-course=unde-mecanice] .lesson-redesign div:has(>aside){padding-bottom:0!important}
+body[data-praxis-course=unde-mecanice] .lesson-bottom{padding-block:0}
+@container wave-stand (min-width:48rem){
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]{grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr)}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role=scene]{grid-column:1;grid-row:1}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role=controls]{grid-column:2;grid-row:1;grid-template-columns:minmax(0,1fr)!important}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role=analysis]{grid-column:1;grid-row:2}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]>[data-wave-role=actions]{grid-column:2;grid-row:2}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]:has(>[data-wave-role=heading])>[data-wave-role=heading]{grid-column:1/-1;grid-row:1}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]:has(>[data-wave-role=heading])>[data-wave-role=scene]{grid-row:2}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]:has(>[data-wave-role=heading])>[data-wave-role=controls]{grid-row:2}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]:has(>[data-wave-role=heading])>[data-wave-role=analysis]{grid-row:3}
+ body[data-praxis-course=unde-mecanice] [data-wave-stand]:has(>[data-wave-role=heading])>[data-wave-role=actions]{grid-row:3}
+}
+@media(min-width:960px){
+ body[data-praxis-course=unde-mecanice] .lesson-navigation{display:flex;align-items:start;flex-wrap:wrap;gap:4px 12px}
+ body[data-praxis-course=unde-mecanice] .lesson-tabs{padding:0;border:0;gap:4px}
+ body[data-praxis-course=unde-mecanice] .lesson-tabs button{padding-inline:8px}
+ body[data-praxis-course=unde-mecanice] .lesson-topics-panel{display:contents}
+ body[data-praxis-course=unde-mecanice] .lesson-topics{gap:4px}
+ body[data-praxis-course=unde-mecanice] .lesson-topics button{padding-inline:8px}
+ body[data-praxis-course=unde-mecanice] .lesson-section:has(.lesson-parts){display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px}
+ body[data-praxis-course=unde-mecanice] .lesson-section:has(.lesson-parts)>h2{grid-column:1;grid-row:1;margin:0;align-self:center}
+ body[data-praxis-course=unde-mecanice] .lesson-section>.lesson-parts{grid-column:2;grid-row:1;margin:0;padding:0;border:0}
+ body[data-praxis-course=unde-mecanice] .lesson-section>.lesson-part-content{grid-column:1/-1}
+}
+@container wave-page (min-width:58rem){
+ .wave-textbook-formulas:has(>:nth-child(3)){grid-template-columns:repeat(2,minmax(0,1fr))}
+ .wave-textbook-page:not(.wave-textbook-reading){grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+ #huygens .wave-textbook-experiment,#huygens [data-wave-stand]{display:contents!important}
+ #huygens .praxis-wave-controls>label{flex-basis:11rem}
+ #huygens .wave-textbook-notes{grid-column:1;grid-row:1}
+ body[data-praxis-course=unde-mecanice] #huygens [data-wave-role=scene]{grid-column:2;grid-row:1/span 3;align-self:start}
+ body[data-praxis-course=unde-mecanice] #huygens .praxis-huygens-selector{grid-column:1;grid-row:2;margin:0;gap:6px}
+ body[data-praxis-course=unde-mecanice] #huygens .praxis-wave-controls{grid-column:1;grid-row:3;margin:0}
+}
+@media(max-width:760px){
+ body[data-praxis-course=unde-mecanice] .praxis-lab-intro>.praxis-lab-nav{margin-left:0}
+ .wave-textbook-formulas{grid-template-columns:minmax(0,1fr)}
+ body[data-praxis-course=unde-mecanice] .wave-water-controls>.grid{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:1499px){
+ body[data-praxis-course=unde-mecanice] .lesson-tabs{display:none}
+ body[data-praxis-course=unde-mecanice] .lesson-navigation{display:flex;align-items:start;flex-wrap:wrap;gap:4px 12px}
+ body[data-praxis-course=unde-mecanice] .lesson-topics-panel{display:contents}
+ .wave-group-choice{display:flex;margin:0;max-width:100%}
+ .wave-group-choice select{min-height:44px;max-width:100%;border:1px solid var(--accent);border-radius:var(--praxis-radius-control);padding:6px 12px;background:var(--formula-bg);color:var(--text);font:600 var(--praxis-text-label) var(--praxis-font-ui)}
+}
+@media print{
+ body[data-praxis-course=unde-mecanice] :is(.wave-textbook-page,.lesson-section:has(.lesson-parts)){display:block}
+ body[data-praxis-course=unde-mecanice] .lesson-part-content[hidden]{display:block!important}
+ body[data-praxis-course=unde-mecanice] .wave-textbook-page[data-textbook-water]>.wave-textbook-notes,body[data-praxis-course=unde-mecanice] .wave-water-body [hidden]{display:block!important}
+ .wave-water-tabs,.wave-group-choice{display:none}
+}
+
+/* Section is a selector; topics and activities are two visibly named tab lists. */
+body[data-praxis-course=unde-mecanice] .lesson-tabs{display:none}
+body[data-praxis-course=unde-mecanice] .lesson-navigation{display:flex;align-items:start;flex-wrap:wrap;gap:4px 20px}
+body[data-praxis-course=unde-mecanice] .lesson-topics-panel{display:contents}
+body[data-praxis-course=unde-mecanice] .wave-group-choice{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0;max-width:100%}
+.wave-group-choice>span,.wave-navigation-label{font-weight:600;color:var(--muted);align-self:center;white-space:nowrap}
+.wave-group-choice select{min-height:44px;max-width:100%;border:1px solid var(--border);border-radius:var(--praxis-radius-control);padding:6px 12px;background:var(--card);color:var(--text);font:600 var(--praxis-text-label) var(--praxis-font-ui)}
+body[data-praxis-course=unde-mecanice] .lesson-parts button[aria-selected=true]{background:var(--formula-bg)!important;color:var(--accent)!important;border-color:var(--accent)!important;box-shadow:inset 0 -3px var(--accent)!important}
+@media print{body[data-praxis-course=unde-mecanice] .wave-group-choice{display:none}}
+
+.wave-range-label-title{display:flex;align-items:center;flex-wrap:wrap;gap:0 4px;min-width:0}
+.wave-range-label-title .wave-math-lines{display:inline-flex}
+body[data-praxis-course=unde-mecanice] .praxis-wave-controls>.wave-huygens-explanation{grid-column:1/-1}
+body[data-praxis-course=unde-mecanice] .lesson-parts button{padding-inline:8px}
+:root body[data-praxis-course=unde-mecanice][data-praxis-laboratory] #praxis-original section.lesson-section .lesson-parts[role=tablist] button[aria-selected=true]{background:var(--formula-bg)!important;color:var(--accent)!important;border-color:var(--accent)!important;box-shadow:inset 0 -3px var(--accent)!important}
+
+body[data-praxis-course=unde-mecanice] .lesson-navigation{padding-block:3px}
+
+/* Tsunami is one owned simulation, never a collection of auto-docked canvases. */
+.wave-tsunami{container:tsunami / inline-size;min-width:0}
+.wave-tsunami .tsunami-intro{margin:0 0 8px;max-width:none}
+.tsunami-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:10px 20px;align-items:start}
+.tsunami-layout>*{min-width:0}
+.wave-tsunami .tsunami-map{margin:0;width:100%;max-width:min(50rem,max(26rem,calc((100dvh - 465px)*1.6667)))}
+.wave-tsunami .tsunami-map canvas{display:block;width:100%;height:auto;aspect-ratio:5/3;border:1px solid var(--border);border-radius:12px;touch-action:pan-y}
+.wave-tsunami .tsunami-map canvas:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.tsunami-canvas-shell{position:relative}
+.tsunami-map-station,.tsunami-map-source{position:absolute;transform:translate(-50%,-50%);pointer-events:none;font:.875rem var(--praxis-font-ui);font-weight:700;line-height:1;color:#163f3b}
+.tsunami-map-source{font-size:.75rem;color:#111}
+.tsunami-legend{display:flex;flex-wrap:wrap;gap:4px 16px;padding-block:6px;font-size:var(--praxis-text-label);line-height:1.4}
+.tsunami-legend>span::before{content:'';display:inline-block;width:.65em;height:.65em;background:#0f3a5a;margin-right:6px;border:1px solid currentColor}
+.tsunami-legend>.tsunami-positive::before{background:var(--tsunami-positive,#e3642e)}
+.tsunami-legend>.tsunami-negative::before{background:var(--tsunami-negative,#46d2e2)}
+.tsunami-legend>.tsunami-land::before{background:#efe4b1}
+.tsunami-legend>.tsunami-depth::before{background:linear-gradient(90deg,#4ba1be,#0f3a5a)}
+.tsunami-probe{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-height:44px;line-height:1.4}
+.tsunami-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}
+.tsunami-controls>label:first-child,.tsunami-actions,.tsunami-readout,.tsunami-stations,.tsunami-threshold,.tsunami-instruction,.tsunami-message{grid-column:1/-1}
+.tsunami-controls>label{display:flex;flex-direction:column;gap:4px;min-width:0}
+.tsunami-controls select{width:100%;min-height:44px;border:1px solid var(--border);border-radius:var(--praxis-radius-control);background:var(--card);color:var(--text);font:inherit;padding:6px 10px}
+.tsunami-actions{display:flex;flex-wrap:wrap;gap:8px}
+.wave-tsunami button{min-height:44px;padding:6px 10px;border:1px solid var(--border);border-radius:var(--praxis-radius-control);color:var(--accent);background:var(--card);font:inherit;cursor:pointer}
+.wave-tsunami button[aria-pressed=true]{border-color:var(--accent)}
+.tsunami-readout{display:flex;align-items:center;flex-wrap:wrap;gap:4px 16px;background:var(--formula-bg);border-radius:var(--praxis-radius-control);padding:6px 10px;line-height:1.4}
+.wave-tsunami .tsunami-stations{display:table!important;width:100%;max-width:50rem;border-collapse:collapse;table-layout:auto;font-size:.875em;line-height:1.4}
+.tsunami-stations caption{text-align:left;font-weight:600;margin-bottom:4px}
+.tsunami-station-scroll{max-width:100%;overflow-x:auto}
+.tsunami-stations :is(th,td){padding:3px 6px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap}
+.tsunami-stations :is(th,td):first-child{text-align:left}
+.wave-tsunami :is(.tsunami-threshold,.tsunami-instruction,.tsunami-message){margin:0;max-width:none;line-height:1.4;font-size:var(--praxis-text-label)}
+.tsunami-message{font-weight:600;color:var(--accent)}
+.tsunami-explanation{margin-top:6px}
+.tsunami-explanation summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--accent);font-weight:600}
+.tsunami-explanation>p{margin-block:8px;max-width:90ch}
+.lesson-part-content:has(>.wave-tsunami)>h4{display:none}
+.lesson-part-content:has(>.wave-tsunami)>.wave-tsunami{margin:0!important}
+.wave-tsunami .tsunami-probe{grid-column:1/-1}
+.lesson-part-content>div:has(>.wave-guitar-notes)>div:first-child>h3{margin:0}
+.lesson-part-content>div:has(>.wave-guitar-notes)>div:first-child>span{margin:0!important;padding:4px 10px!important}
+.wave-guitar-notes summary{min-height:44px;display:flex;align-items:center;cursor:pointer}
+.wave-guitar-notes summary::before{content:'▸';margin-right:.4em}
+.wave-guitar-notes details[open]>summary::before{content:'▾'}
+#rezonanta-cladiri .lesson-part-content{container-type:inline-size}
+@container (min-width:60rem){#rezonanta-cladiri [class*="md:grid-cols-[420px_1fr]"]{grid-template-columns:minmax(0,26.25rem) minmax(0,1fr)!important}}
+@container (max-width:59.999rem){#rezonanta-cladiri [class*="md:grid-cols-[420px_1fr]"]{grid-template-columns:minmax(0,1fr)!important}}
+.tsunami-gauge-readout{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:4px 20px;min-height:32px}
+.tsunami-gauge-readout::before{content:'η';font-family:math}
+.tsunami-controls>label:first-child{flex-direction:row;align-items:center;gap:12px}
+.tsunami-controls>label:first-child>span{white-space:nowrap}
+.tsunami-controls>label:first-child>select{flex:1;min-width:0}
+@container tsunami (min-width:58rem){.tsunami-layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+@container tsunami (max-width:34rem){.tsunami-controls{grid-template-columns:minmax(0,1fr)}.tsunami-controls>label:first-child{flex-direction:column;align-items:stretch}.tsunami-stations{font-size:.875em}.tsunami-stations :is(th,td){padding-inline:3px}}
+@media print{.tsunami-actions,.tsunami-controls>label{display:none}.tsunami-explanation{display:block}}

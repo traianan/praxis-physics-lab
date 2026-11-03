@@ -685,6 +685,10 @@ const curvLab = {
   decomposeFrenet(x, y, vx, vy, ax, ay) {
     const vMag = Math.hypot(vx, vy);
     const aMag = Math.hypot(ax, ay);
+    // At rest the velocity does not define a Frenet tangent. Keep the physical
+    // position/velocity/acceleration, but do not invent normal components.
+    if (vMag <= 1e-5) return { x, y, vx, vy, ax, ay, vMag, aMag, frenetDefined: false,
+      atScalar: null, atx: null, aty: null, anScalar: null, anx: null, any: null };
     let ux = 1, uy = 0;
     if (vMag > 1e-5) {
       ux = vx / vMag;
@@ -698,7 +702,7 @@ const curvLab = {
     const anx = ax - atx;
     const any = ay - aty;
     const anScalar = Math.hypot(anx, any);
-    return { x, y, vx, vy, ax, ay, vMag, aMag, atScalar, atx, aty, anScalar, anx, any };
+    return { x, y, vx, vy, ax, ay, vMag, aMag, frenetDefined: true, atScalar, atx, aty, anScalar, anx, any };
   },
 
   updateParams() {
@@ -793,8 +797,9 @@ const curvLab = {
     document.getElementById('curv-out-pos').textContent = `(${s.x.toFixed(0)}, ${s.y.toFixed(0)}) m`;
     document.getElementById('curv-out-v').textContent = s.vMag.toFixed(1) + ' m/s';
     document.getElementById('curv-out-a').textContent = s.aMag.toFixed(1) + ' m/s²';
-    document.getElementById('curv-out-at').textContent = s.atScalar.toFixed(1) + ' m/s²';
-    document.getElementById('curv-out-an').textContent = s.anScalar.toFixed(1) + ' m/s²';
+    const undefinedFrenet = window.PraxisI18n?.tr('Nedefinit la v = 0') || 'Nedefinit la v = 0';
+    document.getElementById('curv-out-at').textContent = s.frenetDefined ? s.atScalar.toFixed(1) + ' m/s²' : undefinedFrenet;
+    document.getElementById('curv-out-an').textContent = s.frenetDefined ? s.anScalar.toFixed(1) + ' m/s²' : undefinedFrenet;
     document.getElementById('curv-out-vm').textContent = vmMag.toFixed(1) + ' m/s';
     document.getElementById('curv-out-am').textContent = amMag.toFixed(1) + ' m/s²';
   },
@@ -887,7 +892,7 @@ const curvLab = {
     const aScale = this.mode === 'projectile' ? 3.2 : 0.42;
 
     // Acceleration components at and an + parallelogram
-    if (showAtAn) {
+    if (showAtAn && cur.frenetDefined) {
       const atEndX = mx + cur.atx * aScale;
       const atEndY = my - cur.aty * aScale;
       const anEndX = mx + cur.anx * aScale;

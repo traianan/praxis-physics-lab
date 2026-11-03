@@ -104,7 +104,7 @@ class Sim{
   }
   // elementele cu data-in="modA modB" sunt vizibile numai în modurile (tab-urile) enumerate
   showIn(){$$('[data-in]',this.fig).forEach(el=>el.hidden=!el.dataset.in.split(' ').includes(this.mode))}
-  out(k,v){const el=this.outs[k];if(el&&el._v!==v){el._v=v;el.innerHTML=v}}
+  out(k,v){const el=this.outs[k];if(el&&el._v!==v){el._v=v;el.innerHTML=v;window.PraxisMath?.enhance(el)}}
   btn(act){return $(`[data-act="${act}"]`,this.fig)}
   label(act,html,icon){const b=this.btn(act);if(!b)return;let s=b.querySelector('span');if(!s){[...b.childNodes].forEach(n=>n.nodeType===3&&n.remove());s=document.createElement('span');b.append(s)}s.textContent=html;if(icon){const u=b.querySelector('use');u&&u.setAttribute('href',icon)}}
   resize(){const d=Math.min(2,devicePixelRatio||1);this.cv.forEach(c=>{const r=c.getBoundingClientRect();c.width=Math.round(r.width*d);c.height=Math.round(r.height*d);c.getContext('2d').setTransform(d,0,0,d,0,0);c._w=r.width;c._h=r.height});

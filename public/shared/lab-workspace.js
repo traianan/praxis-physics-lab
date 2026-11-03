@@ -56,7 +56,9 @@
     }
     if(entry.layout==='motion'){
      const controls=workspace.querySelector('.sim-side'),transport=workspace.querySelector('.transport');
-     if(controls&&transport)controls.prepend(transport);
+     // acc-info is replaced by the native lesson on each motion selection.
+     // Its transport must remain in the stable scene, outside that readout.
+     if(controls&&transport&&controls.id!=='acc-info')controls.prepend(transport);
      // Scientific derivations follow the working instrument; keep operating hints
      // beside it. Only this explicit, non-React lesson adapter moves these nodes.
      const block=workspace.parentElement;

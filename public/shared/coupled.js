@@ -23,7 +23,7 @@
   series.forEach((s,i)=>{text(g,s.name||'',L+i*160,44,s.color||colors.blue);g.save();g.beginPath();g.rect(L,T,R-L,B-T);g.clip();g.strokeStyle=s.color||colors.blue;g.lineWidth=2;g.beginPath();s.data.forEach(([t,y],j)=>j?g.lineTo(X(t),Y(y)):g.moveTo(X(t),Y(y)));g.stroke();g.restore();});
   if(cursor){ball(g,X(cursor[0]),Y(cursor[1]),colors.red,4);}
  }
- function info(n,s){const e=$('f'+n+'out');e.dataset.noI18n='';if(e.textContent!==s)e.textContent=s;}
+ function info(n,s){const e=$('f'+n+'out');e.dataset.noI18n='';if(e.dataset.coupledSource===s)return;e.dataset.coupledSource=s;if(!window.PraxisMath){e.textContent=s;return;}e.replaceChildren();for(const [i,source]of s.split('\n').entries()){if(i)e.append(document.createElement('br'));const leaf=document.createElement('span');PraxisMath.set(leaf,source,{syntax:'plain'});e.append(leaf);}}
  function draw(n){const s=labs[n],p=params(n),c=palette();if(!s.y.length)return;const {g,w,h}=prepare('c'+n+'main');
   if(n===1||n===4){const x=s.y[0],range=n===1?Math.max(s.range,...s.hist.map(r=>Math.abs(r.y[0])*1.15)):1,scale=72/range,bottom=205+x*scale;
    line(g,120,65,390,65,c.blue,6);spring(g,255,70,255,bottom-18,c.blue);g.fillStyle=c.blue;g.fillRect(230,bottom-18,50,36);text(g,'m',255,bottom+5,'white','center');

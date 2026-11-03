@@ -1,0 +1,4928 @@
+{
+  "entries": [
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Simulare",
+      "source": "h/λ = 0.500",
+      "tex": [
+        "\\displaystyle \\frac{h}{\\lambda} = 0.500"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Simulare",
+      "source": "v_general = 6.11 m/s",
+      "tex": [
+        "\\displaystyle v_{\\text{general}} = 6.11 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Simulare",
+      "source": "v_adâncă = 6.12 m/s",
+      "tex": [
+        "\\displaystyle v_{\\text{adâncă}} = 6.12 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Simulare",
+      "source": "v_mică = 10.85 m/s",
+      "tex": [
+        "\\displaystyle v_{\\text{mică}} = 10.85 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Mărimi și orbită",
+      "source": "h/λ = 0.5000 → regim intermediară ",
+      "tex": [
+        "\\displaystyle \\frac{h}{\\lambda} = 0.5000 \\to \\text{regim } \\text{intermediară }"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Mărimi și orbită",
+      "source": "v_adâncă = √(gλ/2π) = 6.12 m/s (22.0 km/h)",
+      "tex": [
+        "\\displaystyle v_{\\text{adâncă}} = \\sqrt{\\frac{g \\lambda}{2 \\pi}} = 6.12 \\,\\frac{\\mathrm{m}}{\\mathrm{s}} \\left(22.0 \\,\\frac{\\mathrm{km}}{\\mathrm{h}}\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Mărimi și orbită",
+      "source": "v_mică = √(g·h) = 10.85 m/s (39.1 km/h)",
+      "tex": [
+        "\\displaystyle v_{\\text{mică}} = \\sqrt{g \\cdot h} = 10.85 \\,\\frac{\\mathrm{m}}{\\mathrm{s}} \\left(39.1 \\,\\frac{\\mathrm{km}}{\\mathrm{h}}\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Mărimi și orbită",
+      "source": "v_general = √(g/k·tanh(kh)) = 6.11 m/s — dispersivă",
+      "tex": [
+        "\\displaystyle v_{\\text{general}} = \\sqrt{\\frac{g}{k} \\cdot \\tanh\\left(k h\\right)} = 6.11 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Mărimi și orbită",
+      "source": "k = 2π/λ = 0.2618 m^{−1}, kh = 3.142",
+      "tex": [
+        "\\displaystyle k = \\frac{2 \\pi}{\\lambda} = 0.2618 \\,\\mathrm{m}^{- 1}",
+        "\\displaystyle k h = 3.142"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Mărimi și orbită",
+      "source": "H/h = 2A/h = 0.133 (sub pragul indicativ) ",
+      "tex": [
+        "\\displaystyle \\frac{H}{h} = \\frac{2 A}{h} = 0.133"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Explicații",
+      "source": "Apă adâncă h>λ/2 circular, mică h<λ/20 eliptic turtit, v=√(g/k·tanh kh)",
+      "tex": [
+        "\\displaystyle h > \\frac{\\lambda}{2} \\text{circular }",
+        "\\displaystyle h < \\frac{\\lambda}{20} \\text{eliptic } \\text{turtit }",
+        "\\displaystyle v = \\sqrt{\\frac{g}{k} \\cdot \\tanh k h}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Explicații",
+      "source": "De ce circular → eliptic? ; Unda de suprafață combină mișcare transversală (ridicare) + longitudinală (înainte-înapoi) defazate 90° → traiectorie circulară în apă adâncă: r(z)=A·e^{kz}, k=2π/λ. ; Fundul impermeabil blochează componenta verticală: w=0 la z=-h → orbita se turtește: a= A·cosh(k(z+h))/sinh(kh), b= A·sinh(k(z+h))/sinh(kh). La fund b→0, rămâne doar oscilație orizontală. ; Apă mică: kh<<1 → tanh(kh)≈kh → v≈√(gh) independent de λ! Unde non-dispersive → tsunami păstrează forma.",
+      "tex": [
+        "\\displaystyle r \\left(z\\right) = A \\cdot e^{k z}",
+        "\\displaystyle k = \\frac{2 \\pi}{\\lambda}",
+        "\\displaystyle w = 0",
+        "\\displaystyle z = - h \\to \\text{orbita }",
+        "\\displaystyle a = \\frac{A \\cdot \\cosh\\left(k \\left(z + h\\right)\\right)}{\\sinh\\left(k h\\right)}",
+        "\\displaystyle b = \\frac{A \\cdot \\sinh\\left(k \\left(z + h\\right)\\right)}{\\sinh\\left(k h\\right)}",
+        "\\displaystyle k h \\ll 1 \\to \\tanh\\left(k h\\right) \\approx k h \\to",
+        "\\displaystyle v \\approx \\sqrt{g h} \\text{independent } \\text{de } \\lambda ! \\text{Unde } \\text{non } - \\text{dispersive } \\to \\text{tsunami } \\text{păstrează } \\text{forma } ."
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Explicații",
+      "source": "15 particule: 3 coloane ×5 adâncimi. Culori: suprafață roșu, 22% portocaliu, 48% albastru, 74% cyan, 94% verde aproape de fund. Trail 15 puncte. Indicator schematic de spargere când H/h>0.78 → spumă albă + sunet 400→90Hz. Sunet: apă adâncă = bolborosit 78Hz lowpass, apă mică = zgomot bandpass 900Hz + pocnet spargere.",
+      "tex": [
+        "\\displaystyle \\frac{H}{h} > 0.78 \\to \\text{spumă } \\text{albă } + \\text{sunet } 400 \\to 90 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Vectorul de oscilație",
+      "source": "y(x,t) = A sin 2π(t/T − x/λ) ; t = T/2",
+      "tex": [
+        "\\displaystyle y \\left(x , t\\right) = A \\sin 2 \\pi \\left(\\frac{t}{T} - \\frac{x}{\\lambda}\\right)",
+        "\\displaystyle t = \\frac{T}{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Lungimea de undă",
+      "source": "ν = 1/T ; ω = 2π/T ; λ = v_f·T ; v_f = λ/T = λ·ν",
+      "tex": [
+        "\\displaystyle \\nu = \\frac{1}{T}",
+        "\\displaystyle \\omega = \\frac{2 \\pi}{T}",
+        "\\displaystyle \\lambda = v_{f} \\cdot T",
+        "\\displaystyle v_{f} = \\frac{\\lambda}{T} = \\lambda \\cdot \\nu"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Simulare și mărimi",
+      "source": "Compară amplitudinea A, lungimea de undă λ și perioada T. Viteza de fază rezultă din v_f = λ/T; viteza de oscilație a unei particule este o mărime diferită.",
+      "tex": [
+        "\\displaystyle v_{f} = \\frac{\\lambda}{T}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Simulare și mărimi",
+      "source": "v = λ / T = 1.50 m/s",
+      "tex": [
+        "\\displaystyle v = \\lambda /",
+        "\\displaystyle T = 1.50 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Simulare și mărimi",
+      "source": "ν = 1/T = 0.83 Hz",
+      "tex": [
+        "\\displaystyle \\nu = \\frac{1}{T} = 0.83 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Simulare și mărimi",
+      "source": "ω = 2πν = 5.24 rad/s",
+      "tex": [
+        "\\displaystyle \\omega = 2 \\pi \\nu = 5.24 \\,\\frac{\\mathrm{rad}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Simulare și mărimi",
+      "source": "λ = 1.80 m",
+      "tex": [
+        "\\displaystyle \\lambda = 1.80 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Suprafață, rază și front",
+      "source": "r₀ = 0.20 m",
+      "tex": [
+        "\\displaystyle r_{0} = 0.20 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Suprafață, rază și front",
+      "source": "A/A₀ = 0.133",
+      "tex": [
+        "\\displaystyle \\frac{A}{A_{0}} = 0.133"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Suprafață, rază și front",
+      "source": "I/I₀ = 0.0178",
+      "tex": [
+        "\\displaystyle \\frac{I}{I_{0}} = 0.0178"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Suprafață, rază și front",
+      "source": "Plană: A = const ; I = const. Sferică: A ∝ 1/r ; I = P/(4πr²). Sursă izotropă, fără absorbție. P: puterea sursei; r: distanța.",
+      "tex": [
+        "\\displaystyle A = \\text{const }",
+        "\\displaystyle I = \\text{const }",
+        "\\displaystyle A \\propto \\frac{1}{r}",
+        "\\displaystyle I = \\frac{P}{4 \\pi r^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Viteză și mediu",
+      "source": "Undă transversală în coardă: v_f = √(T_m/μ) ; μ = m/L",
+      "tex": [
+        "\\displaystyle v_{f} = \\sqrt{\\frac{T_{m}}{\\mu}}",
+        "\\displaystyle \\mu = \\frac{m}{L}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Viteză și mediu",
+      "source": "Undă longitudinală într-o bară elastică subțire: v_l = √(E/ρ)",
+      "tex": [
+        "\\displaystyle v_{l} = \\sqrt{\\frac{E}{\\rho}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Ideile de bază",
+      "source": "y(t) = A·sin ωt ; τ = x/v_f",
+      "tex": [
+        "\\displaystyle y \\left(t\\right) = A \\cdot \\sin \\omega t",
+        "\\displaystyle \\tau = \\frac{x}{v_{f}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Ideile de bază",
+      "source": "y(x,t) = A·sin ω(t − τ) = A·sin ω(t − x/v_f)",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Ideile de bază",
+      "source": "ω = 2π/T ; λ = v_f·T",
+      "tex": [
+        "\\displaystyle \\omega = \\frac{2 \\pi}{T}",
+        "\\displaystyle \\lambda = v_{f} \\cdot T"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Ideile de bază",
+      "source": "y(x,t) = A·sin 2π(t/T − x/λ)",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Ideile de bază",
+      "source": "y = A·sin 2π(t/T − x/λ) = -0.951 | v = 1.33 m/s, ω=4.19, λ=2.00 m",
+      "tex": [
+        "\\displaystyle y = A \\cdot \\sin 2 \\pi \\left(\\frac{t}{T} - \\frac{x}{\\lambda}\\right) = - 0.951",
+        "\\displaystyle v = 1.33 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle \\omega = 4.19",
+        "\\displaystyle \\lambda = 2.00 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Dubla periodicitate",
+      "source": "y(x,t + T) = y(x,t) ; y(x + λ,t) = y(x,t)",
+      "tex": [
+        "\\displaystyle y \\left(x , t + T\\right) = y \\left(x , t\\right)",
+        "\\displaystyle y \\left(x + \\lambda , t\\right) = y \\left(x , t\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Fază și diferență de fază",
+      "source": "φ(x,t) = 2π(t/T − x/λ) ; |Δφ| = 2π·|x₂ − x₁|/λ",
+      "tex": [
+        "\\displaystyle \\varphi \\left(x , t\\right) = 2 \\pi \\left(\\frac{t}{T} - \\frac{x}{\\lambda}\\right)",
+        "\\displaystyle \\left|\\Delta \\varphi\\right| = \\frac{2 \\pi \\cdot \\left|x_{2} - x_{1}\\right|}{\\lambda}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Fază și diferență de fază",
+      "source": "v_f = λ/T = 2.00 m/s; |Δφ| = 4.084 rad = 234°",
+      "tex": [
+        "\\displaystyle v_{f} = \\frac{\\lambda}{T} = 2.00 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "huygens",
+      "source": "Principiul Huygens explică reflexia, refracția, difracția și propagarea rectilinie ca limită când λ → 0.",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "huygens",
+      "source": "La t₀, toate punctele frontului sferic emit simultan unde sferice elementare. Centrele portocalii rămân fixe pe sfera de rază R₀; toate cercurile albastre au raza r = v·Δt. Înfășurătoarea exterioară verde are raza R₀ + v·Δt. Desenul reprezintă o secțiune prin sfere.",
+      "tex": [
+        "\\displaystyle L a t_{0}",
+        "\\displaystyle r = v \\cdot \\Delta t"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Ideile de bază",
+      "source": "Refracția: trecerea în mediu 2 cu v₂≠v₁. Frecvența se păstrează, λ₂ = v₂/ν.",
+      "tex": [
+        "\\displaystyle \\lambda_{2} = \\frac{v_{2}}{\\nu} ."
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Ideile de bază",
+      "source": "sin i / sin r = v₁ / v₂  sau  sin r = (v₂/v₁)· sin i. Dacă v₂ < v₁, r < i (se apropie de normală).",
+      "tex": [
+        "\\displaystyle \\frac{\\sin i}{\\sin r} = \\frac{v_{1}}{v_{2}}",
+        "\\displaystyle r = \\left(\\frac{v_{2}}{v_{1}}\\right) \\cdot \\sin i",
+        "\\displaystyle v_{2} < v_{1}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Ideile de bază",
+      "source": "Legea reflexiei: i = r. Legea refracției: sin r = (v₂/v₁) sin i. Dacă v₂<v₁, unda se apropie de normală.",
+      "tex": [
+        "\\displaystyle i = r",
+        "\\displaystyle \\sin r = \\left(\\frac{v_{2}}{v_{1}}\\right) \\sin i",
+        "\\displaystyle v_{2} < v_{1}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Capăt FIX vs LIBER – coeficient reflexie",
+      "source": "Fix: y_ref=-y_inc, Δφ=π, R=-1. Liber: y_ref=+y_inc, Δφ=0, R=+1. Pentru deplasare transversală pe coardă: R=(Z₁-Z₂)/(Z₁+Z₂). Pentru presiune acustică la incidență normală: R_p=(Z₂-Z₁)/(Z₂+Z₁). Coardă: Z=T_m/v=√(T_m·μ). Fluid: Z=ρv.",
+      "tex": [
+        "\\displaystyle y_{\\text{ref}} = - y_{\\text{inc}}",
+        "\\displaystyle \\Delta \\varphi = \\pi",
+        "\\displaystyle R = - 1",
+        "\\displaystyle y_{\\text{ref}} = + y_{\\text{inc}}",
+        "\\displaystyle \\Delta \\varphi = 0",
+        "\\displaystyle R = + 1",
+        "\\displaystyle R = \\frac{Z_{1} - Z_{2}}{Z_{1} + Z_{2}}",
+        "\\displaystyle R_{p} = \\frac{Z_{2} - Z_{1}}{Z_{2} + Z_{1}}",
+        "\\displaystyle Z = \\frac{T_{m}}{v} = \\sqrt{T_{m} \\cdot \\mu}",
+        "\\displaystyle Z = \\rho v ."
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Refracție avansată – indice acustic + reflexie totală",
+      "source": "Snell: sin r / sin i = v₂/v₁ = 0.647, n_ac = v₀/v (v₀=340), n₁=1.00, n₂=1.55, sin r = 0.371  → r=21.8°, i_crit = arcsin(v₁/v₂) = —",
+      "tex": [
+        "\\displaystyle \\frac{\\sin r}{\\sin i} = \\frac{v_{2}}{v_{1}} = 0.647",
+        "\\displaystyle n_{\\text{ac}} = \\frac{v_{0}}{v} \\left(v_{0} = 340\\right)",
+        "\\displaystyle n_{1} = 1.00",
+        "\\displaystyle n_{2} = 1.55",
+        "\\displaystyle \\sin r = 0.371 \\to",
+        "\\displaystyle r = 21.8 {}^{\\circ}",
+        "\\displaystyle i_{\\text{crit}} = \\arcsin\\left(\\frac{v_{1}}{v_{2}}\\right) = —"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Difracție Fraunhofer",
+      "source": "Difracție Fraunhofer – I(θ)=I₀·(sinβ/β)²",
+      "tex": [
+        "\\displaystyle – I \\left(\\theta\\right) = I_{0} \\cdot \\left(\\frac{\\sin \\beta}{\\beta}\\right)^{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Difracție Fraunhofer",
+      "source": "I(θ) = I₀·(sin β/β)² ; β = (πa/λ)·sin θ",
+      "tex": [
+        "\\displaystyle I \\left(\\theta\\right) = I_{0} \\cdot \\left(\\frac{\\sin \\beta}{\\beta}\\right)^{2}",
+        "\\displaystyle \\beta = \\left(\\frac{\\pi a}{\\lambda}\\right) \\cdot \\sin \\theta"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Difracție Fraunhofer",
+      "source": "a≈λ → lob central larg. a≫λ → lob îngust, geometric. Fraunhofer departe.",
+      "tex": [
+        "\\displaystyle a \\approx \\lambda \\to \\text{lob } \\text{central } \\text{larg }"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "interferenta",
+      "part": "Ideile de bază",
+      "source": "A = √(A₁² + A₂² + 2A₁A₂ cos Δφ) ; A_max = A₁ + A₂ ; A_min = |A₁ − A₂|",
+      "tex": [
+        "\\displaystyle A = \\sqrt{A_{1}^{2} + A_{2}^{2} + 2 A_{1} A_{2} \\cos \\Delta \\varphi}",
+        "\\displaystyle A_{\\text{max}} = A_{1} + A_{2}",
+        "\\displaystyle A_{\\text{min}} = \\left|A_{1} - A_{2}\\right|"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "interferenta",
+      "part": "Ideile de bază",
+      "source": "y₁ = A sin(ωt - 2πr₁/λ), y₂ = A sin(ωt - 2πr₂/λ) ⇒ A_rez = 2A |cos(πΔr/λ)|. Constructiv: Δr = n·λ (faze egale). Distructiv: Δr = (2n+1)·λ/2 (opoziție).",
+      "tex": [
+        "\\displaystyle y_{1} = A \\sin\\left(\\omega t - \\frac{2 \\pi r_{1}}{\\lambda}\\right)",
+        "\\displaystyle y_{2} = A \\sin\\left(\\omega t - \\frac{2 \\pi r_{2}}{\\lambda}\\right)",
+        "\\displaystyle A_{\\text{rez}} = 2 A \\left|\\cos\\left(\\frac{\\pi \\Delta r}{\\lambda}\\right)\\right|",
+        "\\displaystyle \\Delta r = n \\cdot \\lambda",
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\cdot \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "interferenta",
+      "part": "Ideile de bază",
+      "source": "Intensitate medie relativă: surse de aceeași amplitudine locală, fără atenuare geometrică. Surse în fază: Δr = nλ → maxim (galben); Δr = (2n+1)λ/2 → minim (albastru). Surse incoerente: intensitățile medii se adună, fără franje stabile.",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\lambda \\to \\text{maxim }",
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2} \\to \\text{minim }"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "interferenta",
+      "part": "Extensie: bătăile",
+      "source": "f_b = |f₁ − f₂| = 5.0 Hz",
+      "tex": [
+        "\\displaystyle f_{b} = \\left|f_{1} - f_{2}\\right| = 5.0 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "interferenta",
+      "part": "Extensie: bătăile",
+      "source": "T_b = 1/f_b = 0.200 s",
+      "tex": [
+        "\\displaystyle T_{b} = \\frac{1}{f_{b}} = 0.200 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "interferenta",
+      "part": "Extensie: bătăile",
+      "source": "y = 2A cos((ω₁-ω₂)t/2) · sin((ω₁+ω₂)t/2)",
+      "tex": [
+        "\\displaystyle y = 2 A \\cos\\left(\\frac{\\left(\\omega_{1} - \\omega_{2}\\right) t}{2}\\right) \\cdot \\sin\\left(\\frac{\\left(\\omega_{1} + \\omega_{2}\\right) t}{2}\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "interferenta",
+      "part": "Extensie: bătăile",
+      "source": "Frecvența bătăilor f_b = |ν₁-ν₂| este frecvența la care auzim maximele de intensitate. Aplicație: acordarea instrumentelor.",
+      "tex": [
+        "\\displaystyle f_{b} = \\left|\\nu_{1} - \\nu_{2}\\right|"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Reflexia la capăt fix sau liber",
+      "source": "v_f = √(T_m/μ) = 63.25 m/s",
+      "tex": [
+        "\\displaystyle v_{f} = \\sqrt{\\frac{T_{m}}{\\mu}} = 63.25 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Reflexia la capăt fix sau liber",
+      "source": "t = 0.0000 s",
+      "tex": [
+        "\\displaystyle t = 0.0000 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Reflexia la capăt fix sau liber",
+      "source": "R = −1 ; y_inc(L,t) + y_ref(L,t) = 0",
+      "tex": [
+        "\\displaystyle R = - 1",
+        "\\displaystyle y_{\\text{inc}} \\left(L , t\\right) + y_{\\text{ref}} \\left(L , t\\right) = 0"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Reflexia la capăt fix sau liber",
+      "source": "y(0,t) = 0 ; y(L,t) = 0",
+      "tex": [
+        "\\displaystyle y \\left(0 , t\\right) = 0",
+        "\\displaystyle y \\left(L , t\\right) = 0"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Reflexia la capăt fix sau liber",
+      "source": "A = 0.0040 m ; 2A = 0.0080 m",
+      "tex": [
+        "\\displaystyle A = 0.0040 \\,\\mathrm{m}",
+        "\\displaystyle 2 A = 0.0080 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Unde staționare și moduri proprii",
+      "source": "λₙ = 4.000 m ; νₙ = 15.81 Hz ; T = 0.0632 s",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = 4.000 \\,\\mathrm{m}",
+        "\\displaystyle \\nu_{n} = 15.81 \\,\\mathrm{Hz}",
+        "\\displaystyle T = 0.0632 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Unde staționare și moduri proprii",
+      "source": "y₁ = A sin 2π(x/λ − t/T) ; y₂ = A sin 2π(x/λ + t/T)",
+      "tex": [
+        "\\displaystyle y_{1} = A \\sin 2 \\pi \\left(\\frac{x}{\\lambda} - \\frac{t}{T}\\right)",
+        "\\displaystyle y_{2} = A \\sin 2 \\pi \\left(\\frac{x}{\\lambda} + \\frac{t}{T}\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Unde staționare și moduri proprii",
+      "source": "y = y₁ + y₂ = 2A sin(2πx/λ) cos(2πt/T)",
+      "tex": [
+        "\\displaystyle y = y_{1} +",
+        "\\displaystyle y_{2} = 2 A \\sin\\left(\\frac{2 \\pi x}{\\lambda}\\right) \\cos\\left(\\frac{2 \\pi t}{T}\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Unde staționare și moduri proprii",
+      "source": "λₙ = 2L/n ; νₙ = n·v_f/(2L)",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = \\frac{2 L}{n}",
+        "\\displaystyle \\nu_{n} = \\frac{n \\cdot v_{f}}{2 L}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Unde staționare și moduri proprii",
+      "source": "A_st(x) = 2A|sin(2πx/λ)|",
+      "tex": [
+        "\\displaystyle A_{\\text{st}} \\left(x\\right) = 2 A \\left|\\sin\\left(\\frac{2 \\pi x}{\\lambda}\\right)\\right|"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "instrumente",
+      "source": "Deschis: L = n·λ/2, νₙ = n·v/(2L) = 566.7 Hz",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\cdot \\lambda}{2}",
+        "\\displaystyle \\nu_{n} = \\frac{n \\cdot v}{2 L} = 566.7 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "instrumente",
+      "source": "Închis: L = (2n-1)·λ/4, νₙ = (2n-1)·v/(4L) = 425.0 Hz — ν actual: 566.7 Hz",
+      "tex": [
+        "\\displaystyle L = \\frac{\\left(2 n - 1\\right) \\cdot \\lambda}{4}",
+        "\\displaystyle \\nu_{n} = \\frac{\\left(2 n - 1\\right) \\cdot v}{4 L} = 425.0 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "instrumente",
+      "source": "Tub cilindric deschis (flaut, orgă deschisă): ventre de deplasare la ambele capete (aer liber să vibreze), noduri de presiune. L=n·λ/2, νₙ=n·v/2L – toate armonicele.",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\cdot \\lambda}{2}",
+        "\\displaystyle \\nu_{n} = \\frac{n \\cdot v}{2 L}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "instrumente",
+      "source": "Tub cilindric închis (clarinet, tub închis): nod de deplasare la capăt închis (aer blocat), ventru la deschis. L=(2n-1)·λ/4, νₙ=(2n-1)·v/4L – doar armonice impare.",
+      "tex": [
+        "\\displaystyle L = \\frac{\\left(2 n - 1\\right) \\cdot \\lambda}{4}",
+        "\\displaystyle \\nu_{n} = \\frac{\\left(2 n - 1\\right) \\cdot v}{4 L}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": " J/m³",
+      "tex": [
+        "\\displaystyle \\frac{J}{m^{3}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": "I = ⟨w⟩·v = 2π² A² ν² ρ v = 7344.00 W/m^{2}",
+      "tex": [
+        "\\displaystyle I = \\langle w \\rangle \\cdot v = 2 \\pi^{2} A^{2} \\nu^{2} \\rho",
+        "\\displaystyle v = 7344.00 \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": "I sferic la r=1.0m: I(r)=I_ref·R_ref²/r², R_ref=0.5 m, I_ref=I plană = 1836.000 W/m^{2}",
+      "tex": [
+        "\\displaystyle r = 1.0 \\,\\mathrm{m} :",
+        "\\displaystyle I \\left(r\\right) = \\frac{I_{\\text{ref}} \\cdot R_{\\text{ref}}^{2}}{r^{2}}",
+        "\\displaystyle R_{\\text{ref}} = 0.5 \\,\\mathrm{m}",
+        "\\displaystyle I_{\\text{ref}} = I \\text{plană } = 1836.000 \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": "A ∝ 1/r, I ∝ 1/r² → dublare r ⇒ -6 dB",
+      "tex": [
+        "\\displaystyle A \\propto \\frac{1}{r}",
+        "\\displaystyle I \\propto \\frac{1}{r^{2}} \\to \\text{dublare } r"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": "Tabel ρ tipic: Aer 1.2 kg/m³ v=343, Apă 1000 kg/m³ v=1480, Oțel 7850 kg/m³ v≈5100 (long.) ; Coardă: μ=0.005 kg/m liniară, v=√(T/μ) ; w colorat = energie instantanee.",
+      "tex": [
+        "\\displaystyle 1.2 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}^{3} v} = 343",
+        "\\displaystyle 1000 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}^{3} v} = 1480",
+        "\\displaystyle 7850 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}^{3} v} \\approx 5100",
+        "\\displaystyle \\mu = 0.005 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}} \\text{liniară }",
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": "I = E/(Δt·S) = Putere/Suprafață. Pentru undă plană armonică progresivă: I = 2π²A²ν²ρv. Nivel acustic: L = 10·log₁₀(I/I₀) dB, I₀=10⁻¹² W/m².",
+      "tex": [
+        "\\displaystyle I = \\frac{E}{\\Delta t \\cdot S} = \\text{Putere } / \\text{Suprafață }",
+        "\\displaystyle I = 2 \\pi^{2} A^{2} \\nu^{2} \\rho v",
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right) \\,\\mathrm{dB}",
+        "\\displaystyle I_{0} = 10^{- 12} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}} ."
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": "I = E/(Δt·S) = 2π²A²ν²ρv (undă plană progresivă)",
+      "tex": [
+        "\\displaystyle I = \\frac{E}{\\Delta t \\cdot S} = 2 \\pi^{2} A^{2} \\nu^{2} \\rho v"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": "P = 1 mW·s², s = A/A₀ este un reglaj relativ; I = P/(4πr²) = 19.89 µW/m²",
+      "tex": [
+        "\\displaystyle P = 1 \\,\\mathrm{mW} \\cdot s^{2}",
+        "\\displaystyle s = \\frac{A}{A_{0}}",
+        "\\displaystyle I = \\frac{P}{4 \\pi r^{2}} = 19.89 \\,\\frac{\\mathrm{µW}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": "Nivel: L = 10·log₁₀(I/I₀) = 73.0 dB",
+      "tex": [
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right) = 73.0 \\,\\mathrm{dB}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "source": "I₀=10⁻¹² W/m² (prag auditiv)",
+      "tex": [
+        "\\displaystyle I_{0} = 10^{- 12} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "doppler",
+      "source": "f' = f·(v ± vₒ)/(v ∓ v_s) ; semnul (+) la numărător dacă observatorul se apropie de sursă, (-) la numitor dacă sursa se apropie de observator. v = viteza undei în mediu.",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{f \\cdot \\left(v \\pm v_{o}\\right)}{v \\mp v_{s}}",
+        "\\displaystyle v = \\text{viteza } \\text{undei }"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "doppler",
+      "source": "Formula generală: f' = f·(v ± vo)/(v ∓ vs) ; vo observator spre sursă (+), vs sursă spre observator → numitor v-vs.",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{f \\cdot \\left(v \\pm v_{o}\\right)}{v \\mp v_{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "laborator",
+      "part": "Castron tibetan",
+      "source": "fₙ = f₀·[1,1.59,2.135…] – sinteză ilustrativă",
+      "tex": [
+        "\\displaystyle f_{n} = f_{0} \\cdot \\left[1 , 1.59 , 2.135 \\ldots\\right]"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "laborator",
+      "part": "Xilofon",
+      "source": "fₙ=f₁·[1,2.758,5.406,8.936]",
+      "tex": [
+        "\\displaystyle f_{n} = f_{1} \\cdot \\left[1 , 2.758 , 5.406 , 8.936\\right]"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Tsunami: propagare și măsurare",
+      "source": "v_f = √(gh) = 198.1 m/s",
+      "tex": [
+        "\\displaystyle v_{f} = \\sqrt{g h} = 198.1 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Tsunami: propagare și măsurare",
+      "source": "v_f = √(gh) ; h = 4000 m ⇒ v_f = 198.1 m/s",
+      "tex": [
+        "\\displaystyle v_{f} = \\sqrt{g h}",
+        "\\displaystyle h = 4000 \\,\\mathrm{m}",
+        "\\displaystyle v_{f} = 198.1 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Extensie: rezonanța clădirilor",
+      "source": "Stand nou – extensie a standului seismic P/S/Love/Rayleigh (după tsunami Pacific). Clădirea ca oscilator forțat m·x''+c·x'+k·x = -m·a_g(t), f₀≈10/N Hz, rezonanță când f_sol≈f₀, Q=1/2ζ, izolare seismică f₀→0.3Hz.",
+      "tex": [
+        "\\displaystyle m \\cdot x^{\\prime \\prime} + c \\cdot x^{\\prime} + k \\cdot x = - m \\cdot a_{g} \\left(t\\right)",
+        "\\displaystyle f_{0} \\approx \\frac{10}{N} \\,\\mathrm{Hz}",
+        "\\displaystyle f_{\\text{sol}} \\approx f_{0}",
+        "\\displaystyle Q = \\frac{1}{2 \\zeta}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Extensie: rezonanța clădirilor",
+      "source": "m·x''+c·x'+k·x = -m·a_g  f₀≈10/N  Q=1/2ζ",
+      "tex": [
+        "\\displaystyle m \\cdot x^{\\prime \\prime} + c \\cdot x^{\\prime} + k \\cdot x = - m \\cdot a_{g}",
+        "\\displaystyle f_{0} \\approx \\frac{10}{N}",
+        "\\displaystyle Q = \\frac{1}{2 \\zeta}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Extensie: rezonanța clădirilor",
+      "source": "f0=1.25Hz r=0.72",
+      "tex": [
+        "\\displaystyle f_{0} = 1.25 \\,\\mathrm{Hz}",
+        "\\displaystyle r = 0.72"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Extensie: rezonanța clădirilor",
+      "source": "Ecuație: m·x'' + c·x' + k·x = -m·a_g(t), a_g = 1.6·0.22g·sin(2π·0.90·t)",
+      "tex": [
+        "\\displaystyle m \\cdot x^{\\prime \\prime} + c \\cdot x^{\\prime} + k \\cdot x = - m \\cdot a_{g} \\left(t\\right)",
+        "\\displaystyle a_{g} = 1.6 \\cdot 0.22 g \\cdot \\sin\\left(2 \\pi \\cdot 0.90 \\cdot t\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Extensie: rezonanța clădirilor",
+      "source": "f0 = (1/2π)√(k/m) = 1.25 Hz (empiric 1.25 Hz ×√(k_rel)), T0=0.80s, Q=1/(2ζ)=10.0, k=5922 kN/m, c=75398 Ns/m",
+      "tex": [
+        "\\displaystyle T_{0} = 0.80 \\,\\mathrm{s}",
+        "\\displaystyle Q = \\frac{1}{2 \\zeta} = 10.0",
+        "\\displaystyle k = 5922 \\,\\frac{\\mathrm{kN}}{\\mathrm{m}}",
+        "\\displaystyle c = 75398 \\,\\frac{\\mathrm{Ns}}{\\mathrm{m}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Extensie: rezonanța clădirilor",
+      "source": "Amplificare teoretică |H(r)| = 1/√((1-r²)²+(2ζr)²) = 2.05×, x_acoperiș≈0.115 m, r=0.72",
+      "tex": [
+        "\\displaystyle x_{\\text{acoperiș}} \\approx 0.115 \\,\\mathrm{m}",
+        "\\displaystyle r = 0.72"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Prezentare și protocol",
+      "source": "Protocol general laborator avansat: 1) Sonometru: verifică liniaritatea f² în funcție de T; panta p = 1/(4μL²). 2) Kundt: caută rezonanța, măsoară d=λ/2 și folosește v=2df. 3) Osciloscop: estimează 440 Hz prin autocorelare. 4) Seismic: declanșează evenimentul schematic, măsoară Δt și estimează distanța hipocentrală dₕ=Δt·vP·vS/(vP−vS), în modelul cu viteze constante. Observă că undele S nu se propagă prin lichid; triangulează epicentrul cu trei stații și adâncime focală cunoscută.",
+      "tex": [
+        "\\displaystyle p = \\frac{1}{4 \\mu L^{2}}",
+        "\\displaystyle d = \\frac{\\lambda}{2}",
+        "\\displaystyle v = 2 d f",
+        "\\displaystyle d_{h} = \\frac{\\Delta t \\cdot v_{P} \\cdot v_{S}}{v_{P} - v_{S}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Sonometru",
+      "source": "f₁=v/(2L), v=√(T/μ), f² ∝ T",
+      "tex": [
+        "\\displaystyle f_{1} = \\frac{v}{2 L}",
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}",
+        "\\displaystyle f^{2} \\propto T"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Sonometru",
+      "source": "v = √(T/μ) = 126.49 m/s",
+      "tex": [
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}} = 126.49 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Sonometru",
+      "source": "f₁ = v/(2L) = 105.41 Hz",
+      "tex": [
+        "\\displaystyle f_{1} = \\frac{v}{2 L} = 105.41 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Sonometru",
+      "source": "λ₁ = 2L = 1.20 m",
+      "tex": [
+        "\\displaystyle \\lambda_{1} = 2 L = 1.20 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Sonometru",
+      "source": "μ = m/L (masă liniară)",
+      "tex": [
+        "\\displaystyle \\mu = \\frac{m}{L}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Sonometru",
+      "source": "Tensiunea din greutăți: T = m·g",
+      "tex": [
+        "\\displaystyle T = m \\cdot g"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Sonometru",
+      "source": "v [m/s]",
+      "tex": [
+        "\\displaystyle v \\left[\\frac{m}{s}\\right]"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Tubul Kundt",
+      "source": "L≈n·λ/2, λ=v/f, v=343 m/s",
+      "tex": [
+        "\\displaystyle L \\approx \\frac{n \\cdot \\lambda}{2}",
+        "\\displaystyle \\lambda = \\frac{v}{f}",
+        "\\displaystyle v = 343 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Tubul Kundt",
+      "source": "λ = v/f = 0.780 m",
+      "tex": [
+        "\\displaystyle \\lambda = \\frac{v}{f} = 0.780 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Tubul Kundt",
+      "source": "λ/2",
+      "tex": [
+        "\\displaystyle \\frac{\\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Tubul Kundt",
+      "source": "v_măsurat = 2·0.390·440 = 343.2 m/s — eroare 0.1% vs 343 m/s",
+      "tex": [
+        "\\displaystyle v_{\\text{măsurat}} = 2 \\cdot 0.390 \\cdot 440 = 343.2 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Tubul Kundt",
+      "source": "Condiție rezonanță: L = n·λ/2, λ = v/f",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\cdot \\lambda}{2}",
+        "\\displaystyle \\lambda = \\frac{v}{f}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Tubul Kundt",
+      "source": "n_ideal = 2L/λ = 2.181 → n = 2 (rotunjit)",
+      "tex": [
+        "\\displaystyle n_{\\text{ideal}} = \\frac{2 L}{\\lambda} = 2.181 \\to",
+        "\\displaystyle n = 2"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Osciloscop",
+      "source": "Autocorelare: N₀ este decalajul în eșantioane; T₀ = N₀/f_s ; f = f_s/N₀. f_s este frecvența de eșantionare. MIDI = 69+12·log₂(f/440).",
+      "tex": [
+        "\\displaystyle T_{0} = \\frac{N_{0}}{f_{s}}",
+        "\\displaystyle f = \\frac{f_{s}}{N_{0}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "Secțiune și seismograme schematice: viteze constante, fără trasee reale prin Pământul stratificat. Din Δt se obține distanța hipocentrală; pentru cercurile de epicentru folosim Δ = √(dₕ²−h²), la adâncime cunoscută. Polarizările depind de direcția sursă–stație.",
+      "tex": [
+        "\\displaystyle \\Delta = \\sqrt{d_{h}^{2} - h^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "μ = ρ·vS² = 33.08 (GPa)",
+      "tex": [
+        "\\displaystyle \\mu = \\rho \\cdot v_{S}^{2} = 33.08 \\left(\\text{GPa }\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "vP/vS = 1.71 (tipic ~1.7)",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "Hipocentrală d_h = √(Δ²+h²) = 241.9 km",
+      "tex": [
+        "\\displaystyle d_{h} = \\sqrt{\\Delta^{2} + h^{2}} = 241.9 \\,\\mathrm{km}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "tP = d_h / vP = 40.3 s, tS = d_h / vS = 69.1 s, Δt = 28.8 s",
+      "tex": [
+        "\\displaystyle t P = d_{h} /",
+        "\\displaystyle v_{P} = 40.3 \\,\\mathrm{s}",
+        "\\displaystyle t S = d_{h} /",
+        "\\displaystyle v_{S} = 69.1 \\,\\mathrm{s}",
+        "\\displaystyle \\Delta t = 28.8 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "t_surface ≈ Δ/3.2 + h/6 = 80.0 s (întârziere schematică de generare; nu traseu seismic real)",
+      "tex": [
+        "\\displaystyle t_{\\text{surface}} \\approx \\frac{\\Delta}{3.2} + \\frac{h}{6} = 80.0 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "d_est = Δt·vP·vS/(vP-vS) = 241.9 km vs real 241.9 km eroare 0.0%",
+      "tex": [
+        "\\displaystyle d_{\\text{est}} = \\frac{\\Delta t \\cdot v_{P} \\cdot v_{S}}{v_{P} - v_{S}} = 241.9 \\,\\mathrm{km} \\text{vs } \\text{real } 241.9 \\,\\mathrm{km} \\text{eroare } 0.0 \\%"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "rP = 0 km, rS = 0 km (animație)",
+      "tex": [
+        "\\displaystyle r P = 0 \\,\\mathrm{km}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "Formula distanță hipocentrală: dₕ = Δt·vP·vS/(vP−vS), viteze constante",
+      "tex": [
+        "\\displaystyle d_{h} = \\frac{\\Delta t \\cdot v_{P} \\cdot v_{S}}{v_{P} - v_{S}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "vR≈0.9194 vS | vS strat < vL < vS substrat",
+      "tex": [
+        "\\displaystyle v_{R} \\approx 0.9194 v_{S}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "Love: modul fundamental SH al unui strat cu suprafață liberă. vL se calculează din tan(aH)=μ₂b/(μ₁a), cu a=ω√(1/vS₁²−1/vL²), b=ω√(1/vL²−1/vS₂²), densități egale. Deplasarea este perpendiculară pe propagare și orizontală.",
+      "tex": [
+        "\\displaystyle a = \\omega \\sqrt{\\frac{1}{v_{S , 1}^{2}} - \\frac{1}{v_{L}^{2}}}",
+        "\\displaystyle b = \\omega \\sqrt{\\frac{1}{v_{L}^{2}} - \\frac{1}{v_{S , 2}^{2}}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "y=A·cos(az)·sin(kx−ωt) în strat; continuare evanescentă în substrat",
+      "tex": [
+        "\\displaystyle y = A \\cdot \\cos\\left(a z\\right) \\cdot \\sin\\left(k x - \\omega t\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "tan(aH)=μ₂b/(μ₁a); μ₂/μ₁=(4.5/3.5)²",
+      "tex": [
+        "\\displaystyle \\tan\\left(a H\\right) = \\frac{\\mu_{2} b}{\\mu_{1} a}",
+        "\\displaystyle \\frac{\\mu_{2}}{\\mu_{1}} = \\left(\\frac{4.5}{3.5}\\right)^{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "λ=19.6km vL=3.53km/s δ≈5.0km",
+      "tex": [
+        "\\displaystyle \\lambda = 19.6 \\,\\mathrm{km}",
+        "\\displaystyle v_{L} = 3.53 \\,\\frac{\\mathrm{km}}{\\mathrm{s}}",
+        "\\displaystyle \\delta \\approx 5.0 \\,\\mathrm{km}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "θ=kx−ωt; p=√(1−vR²/vP²), q=√(1−vR²/vS²), z≥0 în jos",
+      "tex": [
+        "\\displaystyle \\theta = k x - \\omega t",
+        "\\displaystyle p = \\sqrt{1 - \\frac{v_{R}^{2}}{v_{P}^{2}}}",
+        "\\displaystyle q = \\sqrt{1 - \\frac{v_{R}^{2}}{v_{S}^{2}}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "vR≈0.9194·vS=3.22km/s; k=2π/λ",
+      "tex": [
+        "\\displaystyle v_{R} \\approx 0.9194 \\cdot v_{S} = 3.22 \\,\\frac{\\mathrm{km}}{\\mathrm{s}}",
+        "\\displaystyle k = \\frac{2 \\pi}{\\lambda}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "source": "λ=26.8km Profil = combinație de exp(−pkz) și exp(−qkz)",
+      "tex": [
+        "\\displaystyle \\lambda = 26.8 \\,\\mathrm{km} \\text{Profil } = \\text{combinație } \\text{de } \\exp\\left(- \\text{pkz }\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ghid-profesor",
+      "source": "Utilizarea ecuației undei plane y=A sin(ω(t − x/v_f))",
+      "tex": [
+        "\\displaystyle y = A \\sin\\left(\\omega \\left(t - \\frac{x}{v_{f}}\\right)\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ghid-profesor",
+      "source": "0-10 min Teorie fulger: clasificare, mărimi, ecuație, Huygens (demo canvas proiectat) ; 10-70 min Lab rotativ 4 grupe ×15 min: ;   G1 Sonometru – legea f²∝T ;   G2 Kundt – v=2d·f ;   G3 Osciloscop live – măsoară 440Hz ;   G4 Analiză timbru – chitară/tobă/xilofon (sintetizat offline, compară spectre) ; 70-90 min Teste grilă: 2 teste ×10 întrebări, barem mai jos ; 90-100 min Concluzii: jurnal, erori frecvente, temă",
+      "tex": [
+        "\\displaystyle – v = 2 d \\cdot f"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ghid-profesor",
+      "source": "• Confundă λ cu amplitudinea ; • Crede că v∝ν (v depinde de mediu!) ; • Inversează N_d/V_d cu N_p/V_p la tuburi ; • La bătăi folosește f_b=f₁+f₂ în loc de |f₁-f₂| ; • La decibeli adună liniar (logaritmic!) ; • La sonometru uită √ și pune f∝T liniar",
+      "tex": [
+        "\\displaystyle c ă v \\propto \\nu",
+        "\\displaystyle f_{b} = f_{1} + f_{2}",
+        "\\displaystyle f \\propto T \\text{liniar }"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ghid-profesor",
+      "source": "Ipoteză: f²∝T, panta=1/(4μL²)",
+      "tex": [
+        "\\displaystyle f^{2} \\propto T"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ghid-profesor",
+      "source": "Tabel date: T[N] | f₁[Hz] | f₁² | v=√(T/μ)",
+      "tex": [
+        "\\displaystyle f_{1} \\left[H z\\right]",
+        "\\displaystyle f_{1}^{2}",
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "ghid-profesor",
+      "source": "Ipoteză: L=nλ/2, pulbere în noduri, d=λ/2, v=2d·f",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\lambda}{2}",
+        "\\displaystyle d = \\frac{\\lambda}{2}",
+        "\\displaystyle v = 2 d \\cdot f"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "Distanța parcursă în T, λ=vT=v/ν. Perioada spațială.",
+      "tex": [
+        "\\displaystyle \\lambda = v T = \\frac{v}{\\nu}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "Timp pentru o oscilație completă, T=1/ν.",
+      "tex": [
+        "\\displaystyle T = \\frac{1}{\\nu} ."
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "Număr oscilații pe secundă, ν=1/T, impusă de sursă.",
+      "tex": [
+        "\\displaystyle \\nu = \\frac{1}{T}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "ω=2πν=2π/T, pulsația oscilației (rad/s).",
+      "tex": [
+        "\\displaystyle \\omega = 2 \\pi \\nu = \\frac{2 \\pi}{T}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "y(x + λ,t) = y(x,t); perioada spațială este λ.",
+      "tex": [
+        "\\displaystyle y \\left(x + \\lambda , t\\right) = y \\left(x , t\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "v=λν=λ/T, depinde de mediu: coardă: √(T_m/μ); gaz ideal: √(γR T_abs/M). T_m: tensiune; T_abs: temperatură absolută.",
+      "tex": [
+        "\\displaystyle v = \\lambda \\nu = \\frac{\\lambda}{T}",
+        "\\displaystyle \\sqrt{\\frac{T_{m}}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "Δr=nλ, amplitudine 2A, intensitate 4I.",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\lambda"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "Δr=(2n+1)λ/2, amplitudine 0.",
+      "tex": [
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "Modulație lentă când ν₁≈ν₂, f_b=|ν₁-ν₂|, anvelopă cos((ω₁-ω₂)t/2).",
+      "tex": [
+        "\\displaystyle \\nu_{1} \\approx \\nu_{2}",
+        "\\displaystyle f_{b} = \\left|\\nu_{1} - \\nu_{2}\\right|"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "L=10·log₁₀(I/I₀), I₀=10⁻¹² W/m², scară logaritmică.",
+      "tex": [
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right)",
+        "\\displaystyle I_{0} = 10^{- 12} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "f'=f(v±vo)/(v∓vs), frecvență percepută schimbată de mișcare.",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{f \\left(v \\pm v_{o}\\right)}{v \\mp v_{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "λ = v·T = v/ν",
+      "tex": [
+        "\\displaystyle \\lambda = v \\cdot T = \\frac{v}{\\nu}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "v_f = λ/T",
+      "tex": [
+        "\\displaystyle v_{f} = \\frac{\\lambda}{T}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "ω = 2π/T, ν = 1/T",
+      "tex": [
+        "\\displaystyle \\omega = \\frac{2 \\pi}{T}",
+        "\\displaystyle \\nu = \\frac{1}{T}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "y = A sin(ω(t − x/v_f))",
+      "tex": [
+        "\\displaystyle y = A \\sin\\left(\\omega \\left(t - \\frac{x}{v_{f}}\\right)\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "y = A sin(ω(t + x/v_f))",
+      "tex": [
+        "\\displaystyle y = A \\sin\\left(\\omega \\left(t + \\frac{x}{v_{f}}\\right)\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "sin i / sin r = v₁/v₂",
+      "tex": [
+        "\\displaystyle \\frac{\\sin i}{\\sin r} = \\frac{v_{1}}{v_{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "i = r (reflexie)",
+      "tex": [
+        "\\displaystyle i = r"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "Δr = nλ constr",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\lambda \\text{constr }"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "Δr = (2n+1)λ/2 distr",
+      "tex": [
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2} \\text{distr }"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "f_b = |f₁-f₂|",
+      "tex": [
+        "\\displaystyle f_{b} = \\left|f_{1} - f_{2}\\right|"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "L = nλ/2 coardă/des deschis",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\lambda}{2} \\text{coardă } / \\text{des } \\text{deschis }"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "L = (2n-1)λ/4 închis",
+      "tex": [
+        "\\displaystyle L = \\frac{\\left(2 n - 1\\right) \\lambda}{4} \\text{închis }"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "νₙ = n·v/(2L)",
+      "tex": [
+        "\\displaystyle \\nu_{n} = \\frac{n \\cdot v}{2 L}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "v = √(T/μ)",
+      "tex": [
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "I = 2π²A²ν²ρv",
+      "tex": [
+        "\\displaystyle I = 2 \\pi^{2} A^{2} \\nu^{2} \\rho v"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "L = 10·log₁₀(I/I₀) dB",
+      "tex": [
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right) \\,\\mathrm{dB}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "v Kundt = 2d·f",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "f' = f(v±vo)/(v∓vs)",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{f \\left(v \\pm v_{o}\\right)}{v \\mp v_{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "f_nm = f₀·[1,1.593,2.136...] tobă",
+      "tex": [
+        "\\displaystyle f_{n m} = f_{0} \\cdot \\left[1 , 1.593 , 2.136 . . .\\right]"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "fₙ = f₁·[1,2.758,5.406...] xilofon",
+      "tex": [
+        "\\displaystyle f_{n} = f_{1} \\cdot \\left[1 , 2.758 , 5.406 . . .\\right]"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "source": "fₙ = f₀·[1,1.59,2.135...] castron (rapoarte ilustrative)",
+      "tex": [
+        "\\displaystyle f_{n} = f_{0} \\cdot \\left[1 , 1.59 , 2.135 . . .\\right]"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "O undă se propagă cu v=340 m/s și perioada T=2.5 ms. Calculează λ = v·T. (în metri)",
+      "tex": [
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle T = 2.5 \\,\\mathrm{ms}",
+        "\\displaystyle \\lambda = v \\cdot T"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "1. λ = v·T",
+      "tex": [
+        "\\displaystyle \\lambda = v \\cdot T"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "2. T=2.5ms=0.0025 s",
+      "tex": [
+        "\\displaystyle T = 2.5 \\,\\mathrm{ms} = 0.0025 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "3. λ=340*0.0025=0.85 m",
+      "tex": [
+        "\\displaystyle \\lambda = 340 \\cdot 0.0025 = 0.85 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Valoare așteptată: 0.85 m",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Coardă L=0.6 m, μ=0.01 kg/m, tensiune T=90 N, mod fundamental n=1. Calculează ν₁ = (1/2L)·√(T/μ). (Hz)",
+      "tex": [
+        "\\displaystyle L = 0.6 \\,\\mathrm{m}",
+        "\\displaystyle \\mu = 0.01 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}}",
+        "\\displaystyle T = 90 \\,\\mathrm{N}",
+        "\\displaystyle n = 1",
+        "\\displaystyle \\nu_{1} = \\left(\\frac{1}{2 L}\\right) \\cdot \\sqrt{\\frac{T}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Hint: v=√(T/μ)",
+      "tex": [
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "1. v=√(T/μ)=√(90/0.01)=√9000=94.87 m/s",
+      "tex": [
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}} = \\sqrt{\\frac{90}{0.01}} = \\sqrt{9000} = 94.87 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "2. ν₁ = v/(2L) ≈ 94.87/1.2 ≈ 79.06 Hz",
+      "tex": [
+        "\\displaystyle \\nu_{1} = \\frac{v}{2 L} \\approx \\frac{94.87}{1.2} \\approx 79.06 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Valoare așteptată: 79.05694150420949 Hz",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Tub cilindric deschis la ambele capete L=0.34 m, v=340 m/s. Frecvența fundamentală ν₁ = v/2L. (Hz)",
+      "tex": [
+        "\\displaystyle L = 0.34 \\,\\mathrm{m}",
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle \\nu_{1} = \\frac{v}{2 L}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "1. Tub deschis: L=nλ/2",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "2. ν₁=v/2L=340/0.68=500 Hz",
+      "tex": [
+        "\\displaystyle \\nu_{1} = \\frac{v}{2 L} = \\frac{340}{0.68} = 500 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Valoare așteptată: 500 Hz",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Tub închis la un capăt L=0.5 m, v=340 m/s, al doilea mod audibil (n=2 în formula (2n-1)). Calculează ν₂ = 3v/4L.",
+      "tex": [
+        "\\displaystyle L = 0.5 \\,\\mathrm{m}",
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle \\left(n = 2 \\text{în } \\text{formula } \\left(2 n - 1\\right)\\right)",
+        "\\displaystyle \\nu_{2} = \\frac{3 v}{4 L} ."
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "1. L=(2n-1)λ/4",
+      "tex": [
+        "\\displaystyle L = \\frac{\\left(2 n - 1\\right) \\lambda}{4}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "2. νₙ=(2n-1)v/4L",
+      "tex": [
+        "\\displaystyle \\nu_{n} = \\frac{\\left(2 n - 1\\right) v}{4 L}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "3. n = 2 ⇒ (2·2−1) = 3",
+      "tex": [
+        "\\displaystyle n = 2",
+        "\\displaystyle \\left(2 \\cdot 2 - 1\\right) = 3"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "4. ν₂=3*340/2=1020/2=510 Hz",
+      "tex": [
+        "\\displaystyle \\nu_{2} = \\frac{3 \\cdot 340}{2} = \\frac{1020}{2} = 510 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Valoare așteptată: 510 Hz",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "I=10⁻⁶ W/m². Calculează nivelul L=10·log₁₀(I/I₀) cu I₀=10⁻¹² W/m². (dB)",
+      "tex": [
+        "\\displaystyle I = 10^{- 6} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}",
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right)",
+        "\\displaystyle I_{0} = 10^{- 12} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "1. I/I₀=10⁻⁶/10⁻¹²=10⁶",
+      "tex": [
+        "\\displaystyle \\frac{I}{I_{0}} = \\frac{10^{- 6}}{10^{- 12}} = 10^{6}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "2. log₁₀(I/I₀) = log₁₀(10⁶) = 6",
+      "tex": [
+        "\\displaystyle \\log_{10}\\left(\\frac{I}{I_{0}}\\right) = \\log_{10}\\left(10^{6}\\right) = 6"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "3. L=60 dB – conversație normală",
+      "tex": [
+        "\\displaystyle L = 60 \\,\\mathrm{dB}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Valoare așteptată: 60 dB",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Sursă f=1000 Hz, vs=34 m/s (0.1v), v=340 m/s se apropie de observator fix. f' = f·v/(v-vs). (Hz)",
+      "tex": [
+        "\\displaystyle f = 1000 \\,\\mathrm{Hz}",
+        "\\displaystyle v s = 34 \\,\\frac{\\mathrm{m}}{\\mathrm{s}} \\left(0.1 v\\right)",
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle f^{\\prime} = \\frac{f \\cdot v}{v - v_{s}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "1. f'=1000*340/(340-34)=1000*340/306≈1111.1 Hz",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{1000 \\cdot 340}{340 - 34} = \\frac{1000 \\cdot 340}{306} \\approx 1111.1 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Valoare așteptată: 1111.11 Hz",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Două surse coerente în fază, Δr=0.75 m, λ=0.5 m. Calculează m = Δr/λ.",
+      "tex": [
+        "\\displaystyle \\Delta r = 0.75 \\,\\mathrm{m}",
+        "\\displaystyle \\lambda = 0.5 \\,\\mathrm{m}",
+        "\\displaystyle m = \\frac{\\Delta r}{\\lambda} ."
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "1. Constructivă: Δr = nλ ; Distructivă: Δr = (2n+1)λ/2 ; n = 0,1,2,…",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\lambda",
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2}",
+        "\\displaystyle n = 0{,}1 , 2"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "2. m = Δr/λ = 0.75/0.5 = 1.5 ; m = (2·1+1)/2 ; interferență distructivă",
+      "tex": [
+        "\\displaystyle m = \\frac{\\Delta r}{\\lambda} = \\frac{0.75}{0.5} = 1.5",
+        "\\displaystyle m = \\frac{2 \\cdot 1 + 1}{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "source": "Valoare așteptată: 1.5 ",
+      "tex": []
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "2. v=340 m/s, T=2 ms. λ = ?",
+      "tex": [
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle T = 2 \\,\\mathrm{ms}",
+        "\\displaystyle \\lambda = ?"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "3. Ecuația undei plane spre +x este y=A sin(ω(t − x/v_f)). Semnul minus arată:",
+      "tex": [
+        "\\displaystyle y = A \\sin\\left(\\omega \\left(t - \\frac{x}{v_{f}}\\right)\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "D. v=λν",
+      "tex": [
+        "\\displaystyle v = \\lambda \\nu"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "B. a ≈ λ (comparabilă)",
+      "tex": [
+        "\\displaystyle a \\approx \\lambda"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "C. a = 0",
+      "tex": [
+        "\\displaystyle a = 0"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "D. v₂=v₁",
+      "tex": [
+        "\\displaystyle v_{2} = v_{1}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "A. sin i / sin r = v₁/v₂",
+      "tex": [
+        "\\displaystyle \\frac{\\sin i}{\\sin r} = \\frac{v_{1}}{v_{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "B. sin i = sin r",
+      "tex": [
+        "\\displaystyle \\sin i = \\sin r"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "C. v₁=v₂",
+      "tex": [
+        "\\displaystyle v_{1} = v_{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "D. i+r=90°",
+      "tex": [
+        "\\displaystyle i + r = 90 {}^{\\circ}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "A. Δr = n·λ",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\cdot \\lambda"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "B. Δr = (2n+1)λ/2",
+      "tex": [
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "C. Δr = λ/4",
+      "tex": [
+        "\\displaystyle \\Delta r = \\frac{\\lambda}{4}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "λ/T",
+      "tex": [
+        "\\displaystyle \\frac{\\lambda}{T}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "source": "T/λ",
+      "tex": [
+        "\\displaystyle \\frac{T}{\\lambda}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "A. La capete și la x=nλ/2",
+      "tex": [
+        "\\displaystyle x = \\frac{n \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "A. I=10⁻⁶ W/m² (I/I₀=10⁶)",
+      "tex": [
+        "\\displaystyle I = 10^{- 6} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}} \\left(\\frac{I}{I_{0}} = 10^{6}\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "B. I=60 W/m²",
+      "tex": [
+        "\\displaystyle I = 60 \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "C. A=60 mm",
+      "tex": [
+        "\\displaystyle A = 60 \\,\\mathrm{mm}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "D. ν=60 Hz",
+      "tex": [
+        "\\displaystyle \\nu = 60 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "A. f_b=883 Hz",
+      "tex": [
+        "\\displaystyle f_{b} = 883 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "B. f_b=3 Hz",
+      "tex": [
+        "\\displaystyle f_{b} = 3 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "C. f_b=0",
+      "tex": [
+        "\\displaystyle f_{b} = 0"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "D. f_b=440 Hz",
+      "tex": [
+        "\\displaystyle f_{b} = 440 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "A. ∝1/r",
+      "tex": [
+        "\\displaystyle \\propto \\frac{1}{r}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "B. ∝1/r²",
+      "tex": [
+        "\\displaystyle \\propto \\frac{1}{r^{2}}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "source": "C. ∝r²",
+      "tex": [
+        "\\displaystyle \\propto r^{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Simulation",
+      "source": "h/λ = 0.500",
+      "tex": [
+        "\\displaystyle \\frac{h}{\\lambda} = 0.500"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Simulation",
+      "source": "v_general = 6.11 m/s",
+      "tex": [
+        "\\displaystyle v_{\\text{general}} = 6.11 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Simulation",
+      "source": "v_adâncă = 6.12 m/s",
+      "tex": [
+        "\\displaystyle v_{\\text{deep}} = 6.12 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Simulation",
+      "source": "v_mică = 10.85 m/s",
+      "tex": [
+        "\\displaystyle v_{\\text{shallow}} = 10.85 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Quantities and orbit",
+      "source": "h/λ = 0.5000 → regim intermediară ",
+      "tex": [
+        "\\displaystyle \\frac{h}{\\lambda} = 0.5000 \\to \\text{regime } \\text{intermediate }"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Quantities and orbit",
+      "source": "v_adâncă = √(gλ/2π) = 6.12 m/s (22.0 km/h)",
+      "tex": [
+        "\\displaystyle v_{\\text{deep}} = \\sqrt{\\frac{g \\lambda}{2 \\pi}} = 6.12 \\,\\frac{\\mathrm{m}}{\\mathrm{s}} \\left(22.0 \\,\\frac{\\mathrm{km}}{\\mathrm{h}}\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Quantities and orbit",
+      "source": "v_mică = √(g·h) = 10.85 m/s (39.1 km/h)",
+      "tex": [
+        "\\displaystyle v_{\\text{shallow}} = \\sqrt{g \\cdot h} = 10.85 \\,\\frac{\\mathrm{m}}{\\mathrm{s}} \\left(39.1 \\,\\frac{\\mathrm{km}}{\\mathrm{h}}\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Quantities and orbit",
+      "source": "v_general = √(g/k·tanh(kh)) = 6.11 m/s — dispersivă",
+      "tex": [
+        "\\displaystyle v_{\\text{general}} = \\sqrt{\\frac{g}{k} \\cdot \\tanh\\left(k h\\right)} = 6.11 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Quantities and orbit",
+      "source": "k = 2π/λ = 0.2618 m^{−1}, kh = 3.142",
+      "tex": [
+        "\\displaystyle k = \\frac{2 \\pi}{\\lambda} = 0.2618 \\,\\mathrm{m}^{- 1}",
+        "\\displaystyle k h = 3.142"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Quantities and orbit",
+      "source": "H/h = 2A/h = 0.133 (sub pragul indicativ) ",
+      "tex": [
+        "\\displaystyle \\frac{H}{h} = \\frac{2 A}{h} = 0.133"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Explanations",
+      "source": "Apă adâncă h>λ/2 circular, mică h<λ/20 eliptic turtit, v=√(g/k·tanh kh)",
+      "tex": [
+        "\\displaystyle h > \\frac{\\lambda}{2} \\text{circular }",
+        "\\displaystyle h < \\frac{\\lambda}{20} \\text{flattened } \\text{ellipse }",
+        "\\displaystyle v = \\sqrt{\\frac{g}{k} \\cdot \\tanh k h}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Explanations",
+      "source": "De ce circular → eliptic? ; Unda de suprafață combină mișcare transversală (ridicare) + longitudinală (înainte-înapoi) defazate 90° → traiectorie circulară în apă adâncă: r(z)=A·e^{kz}, k=2π/λ. ; Fundul impermeabil blochează componenta verticală: w=0 la z=-h → orbita se turtește: a= A·cosh(k(z+h))/sinh(kh), b= A·sinh(k(z+h))/sinh(kh). La fund b→0, rămâne doar oscilație orizontală. ; Apă mică: kh<<1 → tanh(kh)≈kh → v≈√(gh) independent de λ! Unde non-dispersive → tsunami păstrează forma.",
+      "tex": [
+        "\\displaystyle r \\left(z\\right) = A \\cdot e^{k z}",
+        "\\displaystyle k = \\frac{2 \\pi}{\\lambda}",
+        "\\displaystyle w = 0",
+        "\\displaystyle z = - h \\to \\text{the } \\text{orbit } \\text{flattens } :",
+        "\\displaystyle a = \\frac{A \\cdot \\cosh\\left(k \\left(z + h\\right)\\right)}{\\sinh\\left(k h\\right)}",
+        "\\displaystyle b = \\frac{A \\cdot \\sinh\\left(k \\left(z + h\\right)\\right)}{\\sinh\\left(k h\\right)}",
+        "\\displaystyle k h \\ll 1 \\to \\tanh\\left(k h\\right) \\approx k h \\to",
+        "\\displaystyle v \\approx \\sqrt{g h}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Explanations",
+      "source": "15 particule: 3 coloane ×5 adâncimi. Culori: suprafață roșu, 22% portocaliu, 48% albastru, 74% cyan, 94% verde aproape de fund. Trail 15 puncte. Indicator schematic de spargere când H/h>0.78 → spumă albă + sunet 400→90Hz. Sunet: apă adâncă = bolborosit 78Hz lowpass, apă mică = zgomot bandpass 900Hz + pocnet spargere.",
+      "tex": [
+        "\\displaystyle \\frac{H}{h} > 0.78 \\to \\text{white } \\text{foam } + 400 \\to 90 \\,\\mathrm{Hz} \\text{sound }"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Oscillation vector",
+      "source": "y(x,t) = A sin 2π(t/T − x/λ) ; t = T/2",
+      "tex": [
+        "\\displaystyle y \\left(x , t\\right) = A \\sin 2 \\pi \\left(\\frac{t}{T} - \\frac{x}{\\lambda}\\right)",
+        "\\displaystyle t = \\frac{T}{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Wavelength",
+      "source": "ν = 1/T ; ω = 2π/T ; λ = v_f·T ; v_f = λ/T = λ·ν",
+      "tex": [
+        "\\displaystyle \\nu = \\frac{1}{T}",
+        "\\displaystyle \\omega = \\frac{2 \\pi}{T}",
+        "\\displaystyle \\lambda = v_{f} \\cdot T",
+        "\\displaystyle v_{f} = \\frac{\\lambda}{T} = \\lambda \\cdot \\nu"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Simulation and quantities",
+      "source": "Compară amplitudinea A, lungimea de undă λ și perioada T. Viteza de fază rezultă din v_f = λ/T; viteza de oscilație a unei particule este o mărime diferită.",
+      "tex": [
+        "\\displaystyle v_{f} = \\frac{\\lambda}{T}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Simulation and quantities",
+      "source": "v = λ / T = 1.50 m/s",
+      "tex": [
+        "\\displaystyle v = \\lambda /",
+        "\\displaystyle T = 1.50 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Simulation and quantities",
+      "source": "ν = 1/T = 0.83 Hz",
+      "tex": [
+        "\\displaystyle \\nu = \\frac{1}{T} = 0.83 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Simulation and quantities",
+      "source": "ω = 2πν = 5.24 rad/s",
+      "tex": [
+        "\\displaystyle \\omega = 2 \\pi \\nu = 5.24 \\,\\frac{\\mathrm{rad}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Simulation and quantities",
+      "source": "λ = 1.80 m",
+      "tex": [
+        "\\displaystyle \\lambda = 1.80 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Surface, ray and wavefront",
+      "source": "r₀ = 0.20 m",
+      "tex": [
+        "\\displaystyle r_{0} = 0.20 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Surface, ray and wavefront",
+      "source": "A/A₀ = 0.133",
+      "tex": [
+        "\\displaystyle \\frac{A}{A_{0}} = 0.133"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Surface, ray and wavefront",
+      "source": "I/I₀ = 0.0178",
+      "tex": [
+        "\\displaystyle \\frac{I}{I_{0}} = 0.0178"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Surface, ray and wavefront",
+      "source": "Plană: A = const ; I = const. Sferică: A ∝ 1/r ; I = P/(4πr²). Sursă izotropă, fără absorbție. P: puterea sursei; r: distanța.",
+      "tex": [
+        "\\displaystyle A = \\text{const }",
+        "\\displaystyle I = \\text{const }",
+        "\\displaystyle A \\propto \\frac{1}{r}",
+        "\\displaystyle I = \\frac{P}{4 \\pi r^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Speed and medium",
+      "source": "Undă transversală în coardă: v_f = √(T_m/μ) ; μ = m/L",
+      "tex": [
+        "\\displaystyle v_{f} = \\sqrt{\\frac{T_{m}}{\\mu}}",
+        "\\displaystyle \\mu = \\frac{m}{L}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Speed and medium",
+      "source": "Undă longitudinală într-o bară elastică subțire: v_l = √(E/ρ)",
+      "tex": [
+        "\\displaystyle v_{l} = \\sqrt{\\frac{E}{\\rho}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Key ideas",
+      "source": "y(t) = A·sin ωt ; τ = x/v_f",
+      "tex": [
+        "\\displaystyle y \\left(t\\right) = A \\cdot \\sin \\omega t",
+        "\\displaystyle \\tau = \\frac{x}{v_{f}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Key ideas",
+      "source": "y(x,t) = A·sin ω(t − τ) = A·sin ω(t − x/v_f)",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Key ideas",
+      "source": "ω = 2π/T ; λ = v_f·T",
+      "tex": [
+        "\\displaystyle \\omega = \\frac{2 \\pi}{T}",
+        "\\displaystyle \\lambda = v_{f} \\cdot T"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Key ideas",
+      "source": "y(x,t) = A·sin 2π(t/T − x/λ)",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Key ideas",
+      "source": "y = A·sin 2π(t/T − x/λ) = -0.951 | v = 1.33 m/s, ω=4.19, λ=2.00 m",
+      "tex": [
+        "\\displaystyle y = A \\cdot \\sin 2 \\pi \\left(\\frac{t}{T} - \\frac{x}{\\lambda}\\right) = - 0.951",
+        "\\displaystyle v = 1.33 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle \\omega = 4.19",
+        "\\displaystyle \\lambda = 2.00 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Double periodicity",
+      "source": "y(x,t + T) = y(x,t) ; y(x + λ,t) = y(x,t)",
+      "tex": [
+        "\\displaystyle y \\left(x , t + T\\right) = y \\left(x , t\\right)",
+        "\\displaystyle y \\left(x + \\lambda , t\\right) = y \\left(x , t\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Phase and phase difference",
+      "source": "φ(x,t) = 2π(t/T − x/λ) ; |Δφ| = 2π·|x₂ − x₁|/λ",
+      "tex": [
+        "\\displaystyle \\varphi \\left(x , t\\right) = 2 \\pi \\left(\\frac{t}{T} - \\frac{x}{\\lambda}\\right)",
+        "\\displaystyle \\left|\\Delta \\varphi\\right| = \\frac{2 \\pi \\cdot \\left|x_{2} - x_{1}\\right|}{\\lambda}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Phase and phase difference",
+      "source": "v_f = λ/T = 2.00 m/s; |Δφ| = 4.084 rad = 234°",
+      "tex": [
+        "\\displaystyle v_{f} = \\frac{\\lambda}{T} = 2.00 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "huygens",
+      "source": "Principiul Huygens explică reflexia, refracția, difracția și propagarea rectilinie ca limită când λ → 0.",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "huygens",
+      "source": "La t₀, toate punctele frontului sferic emit simultan unde sferice elementare. Centrele portocalii rămân fixe pe sfera de rază R₀; toate cercurile albastre au raza r = v·Δt. Înfășurătoarea exterioară verde are raza R₀ + v·Δt. Desenul reprezintă o secțiune prin sfere.",
+      "tex": [
+        "\\displaystyle A t t_{0}",
+        "\\displaystyle r = v \\cdot \\Delta t"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Key ideas",
+      "source": "Refracția: trecerea în mediu 2 cu v₂≠v₁. Frecvența se păstrează, λ₂ = v₂/ν.",
+      "tex": [
+        "\\displaystyle \\lambda_{2} = \\frac{v_{2}}{\\nu} ."
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Key ideas",
+      "source": "sin i / sin r = v₁ / v₂  sau  sin r = (v₂/v₁)· sin i. Dacă v₂ < v₁, r < i (se apropie de normală).",
+      "tex": [
+        "\\displaystyle \\frac{\\sin i}{\\sin r} = \\frac{v_{1}}{v_{2}}",
+        "\\displaystyle r = \\left(\\frac{v_{2}}{v_{1}}\\right) \\cdot \\sin i",
+        "\\displaystyle I f v_{2} < v_{1}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Key ideas",
+      "source": "Legea reflexiei: i = r. Legea refracției: sin r = (v₂/v₁) sin i. Dacă v₂<v₁, unda se apropie de normală.",
+      "tex": [
+        "\\displaystyle i = r",
+        "\\displaystyle \\sin r = \\left(\\frac{v_{2}}{v_{1}}\\right) \\sin i",
+        "\\displaystyle I f v_{2} < v_{1}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "FIXED vs FREE end – reflection coefficient",
+      "source": "Fix: y_ref=-y_inc, Δφ=π, R=-1. Liber: y_ref=+y_inc, Δφ=0, R=+1. Pentru deplasare transversală pe coardă: R=(Z₁-Z₂)/(Z₁+Z₂). Pentru presiune acustică la incidență normală: R_p=(Z₂-Z₁)/(Z₂+Z₁). Coardă: Z=T_m/v=√(T_m·μ). Fluid: Z=ρv.",
+      "tex": [
+        "\\displaystyle y_{\\text{ref}} = - y_{\\text{inc}}",
+        "\\displaystyle \\Delta \\varphi = \\pi",
+        "\\displaystyle R = - 1",
+        "\\displaystyle y_{\\text{ref}} = + y_{\\text{inc}}",
+        "\\displaystyle \\Delta \\varphi = 0",
+        "\\displaystyle R = + 1",
+        "\\displaystyle R = \\frac{Z_{1} - Z_{2}}{Z_{1} + Z_{2}}",
+        "\\displaystyle R_{p} = \\frac{Z_{2} - Z_{1}}{Z_{2} + Z_{1}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Advanced refraction – acoustic index + total internal reflection",
+      "source": "Snell: sin r / sin i = v₂/v₁ = 0.647, n_ac = v₀/v (v₀=340), n₁=1.00, n₂=1.55, sin r = 0.371  → r=21.8°, i_crit = arcsin(v₁/v₂) = —",
+      "tex": [
+        "\\displaystyle \\frac{\\sin r}{\\sin i} = \\frac{v_{2}}{v_{1}} = 0.647",
+        "\\displaystyle n_{\\text{ac}} = \\frac{v_{0}}{v} \\left(v_{0} = 340\\right)",
+        "\\displaystyle n_{1} = 1.00",
+        "\\displaystyle n_{2} = 1.55",
+        "\\displaystyle \\sin r = 0.371 \\to",
+        "\\displaystyle r = 21.8 {}^{\\circ}",
+        "\\displaystyle i_{\\text{crit}} = \\arcsin\\left(\\frac{v_{1}}{v_{2}}\\right) = —"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Fraunhofer diffraction",
+      "source": "Difracție Fraunhofer – I(θ)=I₀·(sinβ/β)²",
+      "tex": [
+        "\\displaystyle – I \\left(\\theta\\right) = I_{0} \\cdot \\left(\\frac{\\sin \\beta}{\\beta}\\right)^{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Fraunhofer diffraction",
+      "source": "I(θ) = I₀·(sin β/β)² ; β = (πa/λ)·sin θ",
+      "tex": [
+        "\\displaystyle I \\left(\\theta\\right) = I_{0} \\cdot \\left(\\frac{\\sin \\beta}{\\beta}\\right)^{2}",
+        "\\displaystyle \\beta = \\left(\\frac{\\pi a}{\\lambda}\\right) \\cdot \\sin \\theta"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Fraunhofer diffraction",
+      "source": "a≈λ → lob central larg. a≫λ → lob îngust, geometric. Fraunhofer departe.",
+      "tex": [
+        "\\displaystyle a \\approx \\lambda \\to \\text{broad } \\text{central } \\text{lobe }"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "interferenta",
+      "part": "Key ideas",
+      "source": "A = √(A₁² + A₂² + 2A₁A₂ cos Δφ) ; A_max = A₁ + A₂ ; A_min = |A₁ − A₂|",
+      "tex": [
+        "\\displaystyle A = \\sqrt{A_{1}^{2} + A_{2}^{2} + 2 A_{1} A_{2} \\cos \\Delta \\varphi}",
+        "\\displaystyle A_{\\text{max}} = A_{1} + A_{2}",
+        "\\displaystyle A_{\\text{min}} = \\left|A_{1} - A_{2}\\right|"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "interferenta",
+      "part": "Key ideas",
+      "source": "y₁ = A sin(ωt - 2πr₁/λ), y₂ = A sin(ωt - 2πr₂/λ) ⇒ A_rez = 2A |cos(πΔr/λ)|. Constructiv: Δr = n·λ (faze egale). Distructiv: Δr = (2n+1)·λ/2 (opoziție).",
+      "tex": [
+        "\\displaystyle y_{1} = A \\sin\\left(\\omega t - \\frac{2 \\pi r_{1}}{\\lambda}\\right)",
+        "\\displaystyle y_{2} = A \\sin\\left(\\omega t - \\frac{2 \\pi r_{2}}{\\lambda}\\right)",
+        "\\displaystyle A_{\\text{rez}} = 2 A \\left|\\cos\\left(\\frac{\\pi \\Delta r}{\\lambda}\\right)\\right|",
+        "\\displaystyle \\Delta r = n \\cdot \\lambda",
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\cdot \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "interferenta",
+      "part": "Key ideas",
+      "source": "Intensitate medie relativă: surse de aceeași amplitudine locală, fără atenuare geometrică. Surse în fază: Δr = nλ → maxim (galben); Δr = (2n+1)λ/2 → minim (albastru). Surse incoerente: intensitățile medii se adună, fără franje stabile.",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\lambda \\text{gives } a \\text{maximum }",
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2} \\text{gives } a \\text{minimum }"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "interferenta",
+      "part": "Extension: beats",
+      "source": "f_b = |f₁ − f₂| = 5.0 Hz",
+      "tex": [
+        "\\displaystyle f_{b} = \\left|f_{1} - f_{2}\\right| = 5.0 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "interferenta",
+      "part": "Extension: beats",
+      "source": "T_b = 1/f_b = 0.200 s",
+      "tex": [
+        "\\displaystyle T_{b} = \\frac{1}{f_{b}} = 0.200 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "interferenta",
+      "part": "Extension: beats",
+      "source": "y = 2A cos((ω₁-ω₂)t/2) · sin((ω₁+ω₂)t/2)",
+      "tex": [
+        "\\displaystyle y = 2 A \\cos\\left(\\frac{\\left(\\omega_{1} - \\omega_{2}\\right) t}{2}\\right) \\cdot \\sin\\left(\\frac{\\left(\\omega_{1} + \\omega_{2}\\right) t}{2}\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "interferenta",
+      "part": "Extension: beats",
+      "source": "Frecvența bătăilor f_b = |ν₁-ν₂| este frecvența la care auzim maximele de intensitate. Aplicație: acordarea instrumentelor.",
+      "tex": [
+        "\\displaystyle f_{b} = \\left|\\nu_{1} - \\nu_{2}\\right|"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Reflection at a fixed or free end",
+      "source": "v_f = √(T_m/μ) = 63.25 m/s",
+      "tex": [
+        "\\displaystyle v_{f} = \\sqrt{\\frac{T_{m}}{\\mu}} = 63.25 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Reflection at a fixed or free end",
+      "source": "t = 0.0000 s",
+      "tex": [
+        "\\displaystyle t = 0.0000 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Reflection at a fixed or free end",
+      "source": "R = −1 ; y_inc(L,t) + y_ref(L,t) = 0",
+      "tex": [
+        "\\displaystyle R = - 1",
+        "\\displaystyle y_{\\text{inc}} \\left(L , t\\right) + y_{\\text{ref}} \\left(L , t\\right) = 0"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Reflection at a fixed or free end",
+      "source": "y(0,t) = 0 ; y(L,t) = 0",
+      "tex": [
+        "\\displaystyle y \\left(0 , t\\right) = 0",
+        "\\displaystyle y \\left(L , t\\right) = 0"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Reflection at a fixed or free end",
+      "source": "A = 0.0040 m ; 2A = 0.0080 m",
+      "tex": [
+        "\\displaystyle A = 0.0040 \\,\\mathrm{m}",
+        "\\displaystyle 2 A = 0.0080 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Standing waves and normal modes",
+      "source": "λₙ = 4.000 m ; νₙ = 15.81 Hz ; T = 0.0632 s",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = 4.000 \\,\\mathrm{m}",
+        "\\displaystyle \\nu_{n} = 15.81 \\,\\mathrm{Hz}",
+        "\\displaystyle T = 0.0632 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Standing waves and normal modes",
+      "source": "y₁ = A sin 2π(x/λ − t/T) ; y₂ = A sin 2π(x/λ + t/T)",
+      "tex": [
+        "\\displaystyle y_{1} = A \\sin 2 \\pi \\left(\\frac{x}{\\lambda} - \\frac{t}{T}\\right)",
+        "\\displaystyle y_{2} = A \\sin 2 \\pi \\left(\\frac{x}{\\lambda} + \\frac{t}{T}\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Standing waves and normal modes",
+      "source": "y = y₁ + y₂ = 2A sin(2πx/λ) cos(2πt/T)",
+      "tex": [
+        "\\displaystyle y = y_{1} +",
+        "\\displaystyle y_{2} = 2 A \\sin\\left(\\frac{2 \\pi x}{\\lambda}\\right) \\cos\\left(\\frac{2 \\pi t}{T}\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Standing waves and normal modes",
+      "source": "λₙ = 2L/n ; νₙ = n·v_f/(2L)",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = \\frac{2 L}{n}",
+        "\\displaystyle \\nu_{n} = \\frac{n \\cdot v_{f}}{2 L}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Standing waves and normal modes",
+      "source": "A_st(x) = 2A|sin(2πx/λ)|",
+      "tex": [
+        "\\displaystyle A_{\\text{st}} \\left(x\\right) = 2 A \\left|\\sin\\left(\\frac{2 \\pi x}{\\lambda}\\right)\\right|"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "instrumente",
+      "source": "Deschis: L = n·λ/2, νₙ = n·v/(2L) = 566.7 Hz",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\cdot \\lambda}{2}",
+        "\\displaystyle \\nu_{n} = \\frac{n \\cdot v}{2 L} = 566.7 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "instrumente",
+      "source": "Închis: L = (2n-1)·λ/4, νₙ = (2n-1)·v/(4L) = 425.0 Hz — ν actual: 566.7 Hz",
+      "tex": [
+        "\\displaystyle L = \\frac{\\left(2 n - 1\\right) \\cdot \\lambda}{4}",
+        "\\displaystyle \\nu_{n} = \\frac{\\left(2 n - 1\\right) \\cdot v}{4 L} = 425.0 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "instrumente",
+      "source": "Tub cilindric deschis (flaut, orgă deschisă): ventre de deplasare la ambele capete (aer liber să vibreze), noduri de presiune. L=n·λ/2, νₙ=n·v/2L – toate armonicele.",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\cdot \\lambda}{2}",
+        "\\displaystyle \\nu_{n} = \\frac{n \\cdot v}{2 L}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "instrumente",
+      "source": "Tub cilindric închis (clarinet, tub închis): nod de deplasare la capăt închis (aer blocat), ventru la deschis. L=(2n-1)·λ/4, νₙ=(2n-1)·v/4L – doar armonice impare.",
+      "tex": [
+        "\\displaystyle L = \\frac{\\left(2 n - 1\\right) \\cdot \\lambda}{4}",
+        "\\displaystyle \\nu_{n} = \\frac{\\left(2 n - 1\\right) \\cdot v}{4 L}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": " J/m³",
+      "tex": [
+        "\\displaystyle \\frac{J}{m^{3}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": "I = ⟨w⟩·v = 2π² A² ν² ρ v = 7344.00 W/m^{2}",
+      "tex": [
+        "\\displaystyle I = \\langle w \\rangle \\cdot v = 2 \\pi^{2} A^{2} \\nu^{2} \\rho",
+        "\\displaystyle v = 7344.00 \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": "I sferic la r=1.0m: I(r)=I_ref·R_ref²/r², R_ref=0.5 m, I_ref=I plană = 1836.000 W/m^{2}",
+      "tex": [
+        "\\displaystyle r = 1.0 \\,\\mathrm{m} :",
+        "\\displaystyle I \\left(r\\right) = \\frac{I_{\\text{ref}} \\cdot R_{\\text{ref}}^{2}}{r^{2}}",
+        "\\displaystyle R_{\\text{ref}} = 0.5 \\,\\mathrm{m}",
+        "\\displaystyle I_{\\text{ref}} = \\text{plane }",
+        "\\displaystyle I = 1836.000 \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": "A ∝ 1/r, I ∝ 1/r² → dublare r ⇒ -6 dB",
+      "tex": [
+        "\\displaystyle A \\propto \\frac{1}{r}",
+        "\\displaystyle I \\propto \\frac{1}{r^{2}} \\to \\text{doubling } r"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": "Tabel ρ tipic: Aer 1.2 kg/m³ v=343, Apă 1000 kg/m³ v=1480, Oțel 7850 kg/m³ v≈5100 (long.) ; Coardă: μ=0.005 kg/m liniară, v=√(T/μ) ; w colorat = energie instantanee.",
+      "tex": [
+        "\\displaystyle 1.2 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}^{3} v} = 343",
+        "\\displaystyle 1000 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}^{3} v} = 1480",
+        "\\displaystyle 7850 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}^{3} v} \\approx 5100",
+        "\\displaystyle \\mu = 0.005 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}} \\text{linear } \\text{density }",
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}",
+        "\\displaystyle w = \\text{instantaneous } \\text{energy } ."
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": "I = E/(Δt·S) = Putere/Suprafață. Pentru undă plană armonică progresivă: I = 2π²A²ν²ρv. Nivel acustic: L = 10·log₁₀(I/I₀) dB, I₀=10⁻¹² W/m².",
+      "tex": [
+        "\\displaystyle I = \\frac{E}{\\Delta t \\cdot S} = \\text{Power } / \\text{Area }",
+        "\\displaystyle I = 2 \\pi^{2} A^{2} \\nu^{2} \\rho v",
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right) \\,\\mathrm{dB}",
+        "\\displaystyle I_{0} = 10^{- 12} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}} ."
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": "I = E/(Δt·S) = 2π²A²ν²ρv (undă plană progresivă)",
+      "tex": [
+        "\\displaystyle I = \\frac{E}{\\Delta t \\cdot S} = 2 \\pi^{2} A^{2} \\nu^{2} \\rho v"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": "P = 1 mW·s², s = A/A₀ este un reglaj relativ; I = P/(4πr²) = 19.89 µW/m²",
+      "tex": [
+        "\\displaystyle P = 1 \\,\\mathrm{mW} \\cdot s^{2}",
+        "\\displaystyle s = \\frac{A}{A_{0}}",
+        "\\displaystyle I = \\frac{P}{4 \\pi r^{2}} = 19.89 \\,\\frac{\\mathrm{µW}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": "Nivel: L = 10·log₁₀(I/I₀) = 73.0 dB",
+      "tex": [
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right) = 73.0 \\,\\mathrm{dB}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "source": "I₀=10⁻¹² W/m² (prag auditiv)",
+      "tex": [
+        "\\displaystyle I_{0} = 10^{- 12} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "doppler",
+      "source": "f' = f·(v ± vₒ)/(v ∓ v_s) ; semnul (+) la numărător dacă observatorul se apropie de sursă, (-) la numitor dacă sursa se apropie de observator. v = viteza undei în mediu.",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{f \\cdot \\left(v \\pm v_{o}\\right)}{v \\mp v_{s}}",
+        "\\displaystyle v = \\text{wave } \\text{speed }"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "doppler",
+      "source": "Formula generală: f' = f·(v ± vo)/(v ∓ vs) ; vo observator spre sursă (+), vs sursă spre observator → numitor v-vs.",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{f \\cdot \\left(v \\pm v_{o}\\right)}{v \\mp v_{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "laborator",
+      "part": "Tibetan bowl",
+      "source": "fₙ = f₀·[1,1.59,2.135…] – sinteză ilustrativă",
+      "tex": [
+        "\\displaystyle f_{n} = f_{0} \\cdot \\left[1 , 1.59 , 2.135 \\ldots\\right]"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "laborator",
+      "part": "Xylophone",
+      "source": "fₙ=f₁·[1,2.758,5.406,8.936]",
+      "tex": [
+        "\\displaystyle f_{n} = f_{1} \\cdot \\left[1 , 2.758 , 5.406 , 8.936\\right]"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Tsunami: propagation and measurement",
+      "source": "v_f = √(gh) = 198.1 m/s",
+      "tex": [
+        "\\displaystyle v_{f} = \\sqrt{g h} = 198.1 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Tsunami: propagation and measurement",
+      "source": "v_f = √(gh) ; h = 4000 m ⇒ v_f = 198.1 m/s",
+      "tex": [
+        "\\displaystyle v_{f} = \\sqrt{g h}",
+        "\\displaystyle h = 4000 \\,\\mathrm{m}",
+        "\\displaystyle v_{f} = 198.1 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Extension: building resonance",
+      "source": "Stand nou – extensie a standului seismic P/S/Love/Rayleigh (după tsunami Pacific). Clădirea ca oscilator forțat m·x''+c·x'+k·x = -m·a_g(t), f₀≈10/N Hz, rezonanță când f_sol≈f₀, Q=1/2ζ, izolare seismică f₀→0.3Hz.",
+      "tex": [
+        "\\displaystyle m \\cdot x^{\\prime \\prime} + c \\cdot x^{\\prime} + k \\cdot x = - m \\cdot a_{g} \\left(t\\right)",
+        "\\displaystyle f_{0} \\approx \\frac{10}{N} \\,\\mathrm{Hz}",
+        "\\displaystyle f_{\\text{soil}} \\approx f_{0}",
+        "\\displaystyle Q = \\frac{1}{2 \\zeta}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Extension: building resonance",
+      "source": "m·x''+c·x'+k·x = -m·a_g  f₀≈10/N  Q=1/2ζ",
+      "tex": [
+        "\\displaystyle m \\cdot x^{\\prime \\prime} + c \\cdot x^{\\prime} + k \\cdot x = - m \\cdot a_{g}",
+        "\\displaystyle f_{0} \\approx \\frac{10}{N}",
+        "\\displaystyle Q = \\frac{1}{2 \\zeta}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Extension: building resonance",
+      "source": "f0=1.25Hz r=0.72",
+      "tex": [
+        "\\displaystyle f_{0} = 1.25 \\,\\mathrm{Hz}",
+        "\\displaystyle r = 0.72"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Extension: building resonance",
+      "source": "Ecuație: m·x'' + c·x' + k·x = -m·a_g(t), a_g = 1.6·0.22g·sin(2π·0.90·t)",
+      "tex": [
+        "\\displaystyle m \\cdot x^{\\prime \\prime} + c \\cdot x^{\\prime} + k \\cdot x = - m \\cdot a_{g} \\left(t\\right)",
+        "\\displaystyle a_{g} = 1.6 \\cdot 0.22 g \\cdot \\sin\\left(2 \\pi \\cdot 0.90 \\cdot t\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Extension: building resonance",
+      "source": "f0 = (1/2π)√(k/m) = 1.25 Hz (empiric 1.25 Hz ×√(k_rel)), T0=0.80s, Q=1/(2ζ)=10.0, k=5922 kN/m, c=75398 Ns/m",
+      "tex": [
+        "\\displaystyle T_{0} = 0.80 \\,\\mathrm{s}",
+        "\\displaystyle Q = \\frac{1}{2 \\zeta} = 10.0",
+        "\\displaystyle k = 5922 \\,\\frac{\\mathrm{kN}}{\\mathrm{m}}",
+        "\\displaystyle c = 75398 \\,\\frac{\\mathrm{Ns}}{\\mathrm{m}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Extension: building resonance",
+      "source": "Amplificare teoretică |H(r)| = 1/√((1-r²)²+(2ζr)²) = 2.05×, x_acoperiș≈0.115 m, r=0.72",
+      "tex": [
+        "\\displaystyle x_{\\text{roof}} \\approx 0.115 \\,\\mathrm{m}",
+        "\\displaystyle r = 0.72"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Overview and protocol",
+      "source": "Protocol general laborator avansat: 1) Sonometru: verifică liniaritatea f² în funcție de T; panta p = 1/(4μL²). 2) Kundt: caută rezonanța, măsoară d=λ/2 și folosește v=2df. 3) Osciloscop: estimează 440 Hz prin autocorelare. 4) Seismic: declanșează evenimentul schematic, măsoară Δt și estimează distanța hipocentrală dₕ=Δt·vP·vS/(vP−vS), în modelul cu viteze constante. Observă că undele S nu se propagă prin lichid; triangulează epicentrul cu trei stații și adâncime focală cunoscută.",
+      "tex": [
+        "\\displaystyle p = \\frac{1}{4 \\mu L^{2}}",
+        "\\displaystyle d = \\frac{\\lambda}{2}",
+        "\\displaystyle v = 2 d f",
+        "\\displaystyle d_{h} = \\frac{\\Delta t \\cdot v_{P} \\cdot v_{S}}{v_{P} - v_{S}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Sonometer",
+      "source": "f₁=v/(2L), v=√(T/μ), f² ∝ T",
+      "tex": [
+        "\\displaystyle f_{1} = \\frac{v}{2 L}",
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}",
+        "\\displaystyle f^{2} \\propto T"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Sonometer",
+      "source": "v = √(T/μ) = 126.49 m/s",
+      "tex": [
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}} = 126.49 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Sonometer",
+      "source": "f₁ = v/(2L) = 105.41 Hz",
+      "tex": [
+        "\\displaystyle f_{1} = \\frac{v}{2 L} = 105.41 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Sonometer",
+      "source": "λ₁ = 2L = 1.20 m",
+      "tex": [
+        "\\displaystyle \\lambda_{1} = 2 L = 1.20 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Sonometer",
+      "source": "μ = m/L (masă liniară)",
+      "tex": [
+        "\\displaystyle \\mu = \\frac{m}{L}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Sonometer",
+      "source": "Tensiunea din greutăți: T = m·g",
+      "tex": [
+        "\\displaystyle T = m \\cdot g"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Sonometer",
+      "source": "v [m/s]",
+      "tex": [
+        "\\displaystyle v \\left[\\frac{m}{s}\\right]"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Kundt tube",
+      "source": "L≈n·λ/2, λ=v/f, v=343 m/s",
+      "tex": [
+        "\\displaystyle L \\approx \\frac{n \\cdot \\lambda}{2}",
+        "\\displaystyle \\lambda = \\frac{v}{f}",
+        "\\displaystyle v = 343 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Kundt tube",
+      "source": "λ = v/f = 0.780 m",
+      "tex": [
+        "\\displaystyle \\lambda = \\frac{v}{f} = 0.780 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Kundt tube",
+      "source": "λ/2",
+      "tex": [
+        "\\displaystyle \\frac{\\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Kundt tube",
+      "source": "v_măsurat = 2·0.390·440 = 343.2 m/s — eroare 0.1% vs 343 m/s",
+      "tex": [
+        "\\displaystyle v_{\\text{measured}} = 2 \\cdot 0.390 \\cdot 440 = 343.2 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Kundt tube",
+      "source": "Condiție rezonanță: L = n·λ/2, λ = v/f",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\cdot \\lambda}{2}",
+        "\\displaystyle \\lambda = \\frac{v}{f}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Kundt tube",
+      "source": "n_ideal = 2L/λ = 2.181 → n = 2 (rotunjit)",
+      "tex": [
+        "\\displaystyle n_{\\text{ideal}} = \\frac{2 L}{\\lambda} = 2.181 \\to",
+        "\\displaystyle n = 2"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Oscilloscope",
+      "source": "Autocorelare: N₀ este decalajul în eșantioane; T₀ = N₀/f_s ; f = f_s/N₀. f_s este frecvența de eșantionare. MIDI = 69+12·log₂(f/440).",
+      "tex": [
+        "\\displaystyle T_{0} = \\frac{N_{0}}{f_{s}}",
+        "\\displaystyle f = \\frac{f_{s}}{N_{0}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "Secțiune și seismograme schematice: viteze constante, fără trasee reale prin Pământul stratificat. Din Δt se obține distanța hipocentrală; pentru cercurile de epicentru folosim Δ = √(dₕ²−h²), la adâncime cunoscută. Polarizările depind de direcția sursă–stație.",
+      "tex": [
+        "\\displaystyle \\Delta = \\sqrt{d_{h}^{2} - h^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "μ = ρ·vS² = 33.08 (GPa)",
+      "tex": [
+        "\\displaystyle \\mu = \\rho \\cdot v_{S}^{2} = 33.08 \\left(\\text{GPa }\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "vP/vS = 1.71 (tipic ~1.7)",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "Hipocentrală d_h = √(Δ²+h²) = 241.9 km",
+      "tex": [
+        "\\displaystyle d_{h} = \\sqrt{\\Delta^{2} + h^{2}} = 241.9 \\,\\mathrm{km}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "tP = d_h / vP = 40.3 s, tS = d_h / vS = 69.1 s, Δt = 28.8 s",
+      "tex": [
+        "\\displaystyle t P = d_{h} /",
+        "\\displaystyle v_{P} = 40.3 \\,\\mathrm{s}",
+        "\\displaystyle t S = d_{h} /",
+        "\\displaystyle v_{S} = 69.1 \\,\\mathrm{s}",
+        "\\displaystyle \\Delta t = 28.8 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "t_surface ≈ Δ/3.2 + h/6 = 80.0 s (întârziere schematică de generare; nu traseu seismic real)",
+      "tex": [
+        "\\displaystyle t_{\\text{surface}} \\approx \\frac{\\Delta}{3.2} + \\frac{h}{6} = 80.0 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "d_est = Δt·vP·vS/(vP-vS) = 241.9 km vs real 241.9 km eroare 0.0%",
+      "tex": [
+        "\\displaystyle d_{\\text{est}} = \\frac{\\Delta t \\cdot v_{P} \\cdot v_{S}}{v_{P} - v_{S}} = 241.9 \\,\\mathrm{km} \\text{vs } \\text{real } 241.9 \\,\\mathrm{km} \\text{eroare } 0.0 \\%"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "rP = 0 km, rS = 0 km (animație)",
+      "tex": [
+        "\\displaystyle r P = 0 \\,\\mathrm{km}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "Formula distanță hipocentrală: dₕ = Δt·vP·vS/(vP−vS), viteze constante",
+      "tex": [
+        "\\displaystyle d_{h} = \\frac{\\Delta t \\cdot v_{P} \\cdot v_{S}}{v_{P} - v_{S}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "vR≈0.9194 vS | vS strat < vL < vS substrat",
+      "tex": [
+        "\\displaystyle v_{R} \\approx 0.9194 v_{S}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "Love: modul fundamental SH al unui strat cu suprafață liberă. vL se calculează din tan(aH)=μ₂b/(μ₁a), cu a=ω√(1/vS₁²−1/vL²), b=ω√(1/vL²−1/vS₂²), densități egale. Deplasarea este perpendiculară pe propagare și orizontală.",
+      "tex": [
+        "\\displaystyle a = \\omega \\sqrt{\\frac{1}{v_{S , 1}^{2}} - \\frac{1}{v_{L}^{2}}}",
+        "\\displaystyle b = \\omega \\sqrt{\\frac{1}{v_{L}^{2}} - \\frac{1}{v_{S , 2}^{2}}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "y=A·cos(az)·sin(kx−ωt) în strat; continuare evanescentă în substrat",
+      "tex": [
+        "\\displaystyle y = A \\cdot \\cos\\left(a z\\right) \\cdot \\sin\\left(k x - \\omega t\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "tan(aH)=μ₂b/(μ₁a); μ₂/μ₁=(4.5/3.5)²",
+      "tex": [
+        "\\displaystyle \\tan\\left(a H\\right) = \\frac{\\mu_{2} b}{\\mu_{1} a}",
+        "\\displaystyle \\frac{\\mu_{2}}{\\mu_{1}} = \\left(\\frac{4.5}{3.5}\\right)^{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "λ=19.6km vL=3.53km/s δ≈5.0km",
+      "tex": [
+        "\\displaystyle \\lambda = 19.6 \\,\\mathrm{km}",
+        "\\displaystyle v_{L} = 3.53 \\,\\frac{\\mathrm{km}}{\\mathrm{s}}",
+        "\\displaystyle \\delta \\approx 5.0 \\,\\mathrm{km}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "θ=kx−ωt; p=√(1−vR²/vP²), q=√(1−vR²/vS²), z≥0 în jos",
+      "tex": [
+        "\\displaystyle \\theta = k x - \\omega t",
+        "\\displaystyle p = \\sqrt{1 - \\frac{v_{R}^{2}}{v_{P}^{2}}}",
+        "\\displaystyle q = \\sqrt{1 - \\frac{v_{R}^{2}}{v_{S}^{2}}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "vR≈0.9194·vS=3.22km/s; k=2π/λ",
+      "tex": [
+        "\\displaystyle v_{R} \\approx 0.9194 \\cdot v_{S} = 3.22 \\,\\frac{\\mathrm{km}}{\\mathrm{s}}",
+        "\\displaystyle k = \\frac{2 \\pi}{\\lambda}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "source": "λ=26.8km Profil = combinație de exp(−pkz) și exp(−qkz)",
+      "tex": [
+        "\\displaystyle \\lambda = 26.8 \\,\\mathrm{km} \\text{Profile } = a \\text{combination } \\text{of } \\exp\\left(- \\text{pkz }\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ghid-profesor",
+      "source": "Utilizarea ecuației undei plane y=A sin(ω(t − x/v_f))",
+      "tex": [
+        "\\displaystyle y = A \\sin\\left(\\omega \\left(t - \\frac{x}{v_{f}}\\right)\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ghid-profesor",
+      "source": "0-10 min Teorie fulger: clasificare, mărimi, ecuație, Huygens (demo canvas proiectat) ; 10-70 min Lab rotativ 4 grupe ×15 min: ;   G1 Sonometru – legea f²∝T ;   G2 Kundt – v=2d·f ;   G3 Osciloscop live – măsoară 440Hz ;   G4 Analiză timbru – chitară/tobă/xilofon (sintetizat offline, compară spectre) ; 70-90 min Teste grilă: 2 teste ×10 întrebări, barem mai jos ; 90-100 min Concluzii: jurnal, erori frecvente, temă",
+      "tex": [
+        "\\displaystyle – v = 2 d \\cdot f"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ghid-profesor",
+      "source": "• Confundă λ cu amplitudinea ; • Crede că v∝ν (v depinde de mediu!) ; • Inversează N_d/V_d cu N_p/V_p la tuburi ; • La bătăi folosește f_b=f₁+f₂ în loc de |f₁-f₂| ; • La decibeli adună liniar (logaritmic!) ; • La sonometru uită √ și pune f∝T liniar",
+      "tex": [
+        "\\displaystyle v \\propto \\nu",
+        "\\displaystyle f_{b} = f_{1} + f_{2} \\text{instead } \\text{of } \\left|f_{1} - f_{2}\\right|",
+        "\\displaystyle f \\propto T"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ghid-profesor",
+      "source": "Ipoteză: f²∝T, panta=1/(4μL²)",
+      "tex": [
+        "\\displaystyle f^{2} \\propto T"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ghid-profesor",
+      "source": "Tabel date: T[N] | f₁[Hz] | f₁² | v=√(T/μ)",
+      "tex": [
+        "\\displaystyle f_{1} \\left[H z\\right]",
+        "\\displaystyle f_{1}^{2}",
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "ghid-profesor",
+      "source": "Ipoteză: L=nλ/2, pulbere în noduri, d=λ/2, v=2d·f",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\lambda}{2}",
+        "\\displaystyle d = \\frac{\\lambda}{2}",
+        "\\displaystyle v = 2 d \\cdot f"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "Distanța parcursă în T, λ=vT=v/ν. Perioada spațială.",
+      "tex": [
+        "\\displaystyle \\lambda = v T = \\frac{v}{\\nu}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "Timp pentru o oscilație completă, T=1/ν.",
+      "tex": [
+        "\\displaystyle T = \\frac{1}{\\nu} ."
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "Număr oscilații pe secundă, ν=1/T, impusă de sursă.",
+      "tex": [
+        "\\displaystyle \\nu = \\frac{1}{T}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "ω=2πν=2π/T, pulsația oscilației (rad/s).",
+      "tex": [
+        "\\displaystyle \\omega = 2 \\pi \\nu = \\frac{2 \\pi}{T}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "y(x + λ,t) = y(x,t); perioada spațială este λ.",
+      "tex": [
+        "\\displaystyle y \\left(x + \\lambda , t\\right) = y \\left(x , t\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "v=λν=λ/T, depinde de mediu: coardă: √(T_m/μ); gaz ideal: √(γR T_abs/M). T_m: tensiune; T_abs: temperatură absolută.",
+      "tex": [
+        "\\displaystyle v = \\lambda \\nu = \\frac{\\lambda}{T}",
+        "\\displaystyle \\sqrt{\\frac{T_{m}}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "Δr=nλ, amplitudine 2A, intensitate 4I.",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\lambda"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "Δr=(2n+1)λ/2, amplitudine 0.",
+      "tex": [
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "Modulație lentă când ν₁≈ν₂, f_b=|ν₁-ν₂|, anvelopă cos((ω₁-ω₂)t/2).",
+      "tex": [
+        "\\displaystyle \\nu_{1} \\approx \\nu_{2}",
+        "\\displaystyle f_{b} = \\left|\\nu_{1} - \\nu_{2}\\right|"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "L=10·log₁₀(I/I₀), I₀=10⁻¹² W/m², scară logaritmică.",
+      "tex": [
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right)",
+        "\\displaystyle I_{0} = 10^{- 12} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "f'=f(v±vo)/(v∓vs), frecvență percepută schimbată de mișcare.",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{f \\left(v \\pm v_{o}\\right)}{v \\mp v_{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "λ = v·T = v/ν",
+      "tex": [
+        "\\displaystyle \\lambda = v \\cdot T = \\frac{v}{\\nu}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "v_f = λ/T",
+      "tex": [
+        "\\displaystyle v_{f} = \\frac{\\lambda}{T}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "ω = 2π/T, ν = 1/T",
+      "tex": [
+        "\\displaystyle \\omega = \\frac{2 \\pi}{T}",
+        "\\displaystyle \\nu = \\frac{1}{T}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "y = A sin(ω(t − x/v_f))",
+      "tex": [
+        "\\displaystyle y = A \\sin\\left(\\omega \\left(t - \\frac{x}{v_{f}}\\right)\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "y = A sin(ω(t + x/v_f))",
+      "tex": [
+        "\\displaystyle y = A \\sin\\left(\\omega \\left(t + \\frac{x}{v_{f}}\\right)\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "sin i / sin r = v₁/v₂",
+      "tex": [
+        "\\displaystyle \\frac{\\sin i}{\\sin r} = \\frac{v_{1}}{v_{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "i = r (reflexie)",
+      "tex": [
+        "\\displaystyle i = r"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "Δr = nλ constr",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\lambda \\text{constructive }"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "Δr = (2n+1)λ/2 distr",
+      "tex": [
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2} \\text{destructive }"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "f_b = |f₁-f₂|",
+      "tex": [
+        "\\displaystyle f_{b} = \\left|f_{1} - f_{2}\\right|"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "L = nλ/2 coardă/des deschis",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\lambda}{2} \\text{string } / \\text{open } – \\text{open } \\text{pipe }"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "L = (2n-1)λ/4 închis",
+      "tex": [
+        "\\displaystyle L = \\frac{\\left(2 n - 1\\right) \\lambda}{4} \\text{closed }"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "νₙ = n·v/(2L)",
+      "tex": [
+        "\\displaystyle \\nu_{n} = \\frac{n \\cdot v}{2 L}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "v = √(T/μ)",
+      "tex": [
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "I = 2π²A²ν²ρv",
+      "tex": [
+        "\\displaystyle I = 2 \\pi^{2} A^{2} \\nu^{2} \\rho v"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "L = 10·log₁₀(I/I₀) dB",
+      "tex": [
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right) \\,\\mathrm{dB}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "v Kundt = 2d·f",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "f' = f(v±vo)/(v∓vs)",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{f \\left(v \\pm v_{o}\\right)}{v \\mp v_{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "f_nm = f₀·[1,1.593,2.136...] tobă",
+      "tex": [
+        "\\displaystyle f_{n m} = f_{0} \\cdot \\left[1 , 1.593 , 2.136 . . .\\right]"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "fₙ = f₁·[1,2.758,5.406...] xilofon",
+      "tex": [
+        "\\displaystyle f_{n} = f_{1} \\cdot \\left[1 , 2.758 , 5.406 . . .\\right]"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "source": "fₙ = f₀·[1,1.59,2.135...] castron (rapoarte ilustrative)",
+      "tex": [
+        "\\displaystyle f_{n} = f_{0} \\cdot \\left[1 , 1.59 , 2.135 . . .\\right]"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "O undă se propagă cu v=340 m/s și perioada T=2.5 ms. Calculează λ = v·T. (în metri)",
+      "tex": [
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle T = 2.5 \\,\\mathrm{ms}",
+        "\\displaystyle \\lambda = v \\cdot T"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "1. λ = v·T",
+      "tex": [
+        "\\displaystyle \\lambda = v \\cdot T"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "2. T=2.5ms=0.0025 s",
+      "tex": [
+        "\\displaystyle T = 2.5 \\,\\mathrm{ms} = 0.0025 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "3. λ=340*0.0025=0.85 m",
+      "tex": [
+        "\\displaystyle \\lambda = 340 \\cdot 0.0025 = 0.85 \\,\\mathrm{m}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Valoare așteptată: 0.85 m",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Coardă L=0.6 m, μ=0.01 kg/m, tensiune T=90 N, mod fundamental n=1. Calculează ν₁ = (1/2L)·√(T/μ). (Hz)",
+      "tex": [
+        "\\displaystyle L = 0.6 \\,\\mathrm{m}",
+        "\\displaystyle \\mu = 0.01 \\,\\frac{\\mathrm{kg}}{\\mathrm{m}}",
+        "\\displaystyle T = 90 \\,\\mathrm{N}",
+        "\\displaystyle n = 1",
+        "\\displaystyle \\nu_{1} = \\left(\\frac{1}{2 L}\\right) \\cdot \\sqrt{\\frac{T}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Hint: v=√(T/μ)",
+      "tex": [
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "1. v=√(T/μ)=√(90/0.01)=√9000=94.87 m/s",
+      "tex": [
+        "\\displaystyle v = \\sqrt{\\frac{T}{\\mu}} = \\sqrt{\\frac{90}{0.01}} = \\sqrt{9000} = 94.87 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "2. ν₁ = v/(2L) ≈ 94.87/1.2 ≈ 79.06 Hz",
+      "tex": [
+        "\\displaystyle \\nu_{1} = \\frac{v}{2 L} \\approx \\frac{94.87}{1.2} \\approx 79.06 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Valoare așteptată: 79.05694150420949 Hz",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Tub cilindric deschis la ambele capete L=0.34 m, v=340 m/s. Frecvența fundamentală ν₁ = v/2L. (Hz)",
+      "tex": [
+        "\\displaystyle L = 0.34 \\,\\mathrm{m}",
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle \\nu_{1} = \\frac{v}{2 L}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "1. Tub deschis: L=nλ/2",
+      "tex": [
+        "\\displaystyle L = \\frac{n \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "2. ν₁=v/2L=340/0.68=500 Hz",
+      "tex": [
+        "\\displaystyle \\nu_{1} = \\frac{v}{2 L} = \\frac{340}{0.68} = 500 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Valoare așteptată: 500 Hz",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Tub închis la un capăt L=0.5 m, v=340 m/s, al doilea mod audibil (n=2 în formula (2n-1)). Calculează ν₂ = 3v/4L.",
+      "tex": [
+        "\\displaystyle L = 0.5 \\,\\mathrm{m}",
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle \\left(n = 2 \\text{in } \\text{the } \\left(2 n - 1\\right) \\text{formula }\\right)",
+        "\\displaystyle \\nu_{2} = \\frac{3 v}{4 L} ."
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "1. L=(2n-1)λ/4",
+      "tex": [
+        "\\displaystyle L = \\frac{\\left(2 n - 1\\right) \\lambda}{4}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "2. νₙ=(2n-1)v/4L",
+      "tex": [
+        "\\displaystyle \\nu_{n} = \\frac{\\left(2 n - 1\\right) v}{4 L}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "3. n = 2 ⇒ (2·2−1) = 3",
+      "tex": [
+        "\\displaystyle n = 2",
+        "\\displaystyle \\left(2 \\cdot 2 - 1\\right) = 3"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "4. ν₂=3*340/2=1020/2=510 Hz",
+      "tex": [
+        "\\displaystyle \\nu_{2} = \\frac{3 \\cdot 340}{2} = \\frac{1020}{2} = 510 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Valoare așteptată: 510 Hz",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "I=10⁻⁶ W/m². Calculează nivelul L=10·log₁₀(I/I₀) cu I₀=10⁻¹² W/m². (dB)",
+      "tex": [
+        "\\displaystyle I = 10^{- 6} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}",
+        "\\displaystyle L = 10 \\cdot \\log_{10}\\left(\\frac{I}{I_{0}}\\right)",
+        "\\displaystyle I_{0} = 10^{- 12} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "1. I/I₀=10⁻⁶/10⁻¹²=10⁶",
+      "tex": [
+        "\\displaystyle \\frac{I}{I_{0}} = \\frac{10^{- 6}}{10^{- 12}} = 10^{6}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "2. log₁₀(I/I₀) = log₁₀(10⁶) = 6",
+      "tex": [
+        "\\displaystyle \\log_{10}\\left(\\frac{I}{I_{0}}\\right) = \\log_{10}\\left(10^{6}\\right) = 6"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "3. L=60 dB – conversație normală",
+      "tex": [
+        "\\displaystyle L = 60 \\,\\mathrm{dB}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Valoare așteptată: 60 dB",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Sursă f=1000 Hz, vs=34 m/s (0.1v), v=340 m/s se apropie de observator fix. f' = f·v/(v-vs). (Hz)",
+      "tex": [
+        "\\displaystyle f = 1000 \\,\\mathrm{Hz}",
+        "\\displaystyle v s = 34 \\,\\frac{\\mathrm{m}}{\\mathrm{s}} \\left(0.1 v\\right)",
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle f^{\\prime} = \\frac{f \\cdot v}{v - v_{s}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "1. f'=1000*340/(340-34)=1000*340/306≈1111.1 Hz",
+      "tex": [
+        "\\displaystyle f^{\\prime} = \\frac{1000 \\cdot 340}{340 - 34} = \\frac{1000 \\cdot 340}{306} \\approx 1111.1 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Valoare așteptată: 1111.11 Hz",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Două surse coerente în fază, Δr=0.75 m, λ=0.5 m. Calculează m = Δr/λ.",
+      "tex": [
+        "\\displaystyle \\Delta r = 0.75 \\,\\mathrm{m}",
+        "\\displaystyle \\lambda = 0.5 \\,\\mathrm{m}",
+        "\\displaystyle m = \\frac{\\Delta r}{\\lambda} ."
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "1. Constructivă: Δr = nλ ; Distructivă: Δr = (2n+1)λ/2 ; n = 0,1,2,…",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\lambda",
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2}",
+        "\\displaystyle n = 0{,}1 , 2"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "2. m = Δr/λ = 0.75/0.5 = 1.5 ; m = (2·1+1)/2 ; interferență distructivă",
+      "tex": [
+        "\\displaystyle m = \\frac{\\Delta r}{\\lambda} = \\frac{0.75}{0.5} = 1.5",
+        "\\displaystyle m = \\frac{2 \\cdot 1 + 1}{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "source": "Valoare așteptată: 1.5 ",
+      "tex": []
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "2. v=340 m/s, T=2 ms. λ = ?",
+      "tex": [
+        "\\displaystyle v = 340 \\,\\frac{\\mathrm{m}}{\\mathrm{s}}",
+        "\\displaystyle T = 2 \\,\\mathrm{ms}",
+        "\\displaystyle \\lambda = ?"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "3. Ecuația undei plane spre +x este y=A sin(ω(t − x/v_f)). Semnul minus arată:",
+      "tex": [
+        "\\displaystyle y = A \\sin\\left(\\omega \\left(t - \\frac{x}{v_{f}}\\right)\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "D. v=λν",
+      "tex": [
+        "\\displaystyle v = \\lambda \\nu"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "B. a ≈ λ (comparabilă)",
+      "tex": [
+        "\\displaystyle a \\approx \\lambda"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "C. a = 0",
+      "tex": [
+        "\\displaystyle a = 0"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "D. v₂=v₁",
+      "tex": [
+        "\\displaystyle v_{2} = v_{1}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "A. sin i / sin r = v₁/v₂",
+      "tex": [
+        "\\displaystyle \\frac{\\sin i}{\\sin r} = \\frac{v_{1}}{v_{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "B. sin i = sin r",
+      "tex": [
+        "\\displaystyle \\sin i = \\sin r"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "C. v₁=v₂",
+      "tex": [
+        "\\displaystyle v_{1} = v_{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "D. i+r=90°",
+      "tex": [
+        "\\displaystyle i + r = 90 {}^{\\circ}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "A. Δr = n·λ",
+      "tex": [
+        "\\displaystyle \\Delta r = n \\cdot \\lambda"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "B. Δr = (2n+1)λ/2",
+      "tex": [
+        "\\displaystyle \\Delta r = \\frac{\\left(2 n + 1\\right) \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "C. Δr = λ/4",
+      "tex": [
+        "\\displaystyle \\Delta r = \\frac{\\lambda}{4}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "λ/T",
+      "tex": [
+        "\\displaystyle \\frac{\\lambda}{T}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "source": "T/λ",
+      "tex": [
+        "\\displaystyle \\frac{T}{\\lambda}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "A. La capete și la x=nλ/2",
+      "tex": [
+        "\\displaystyle x = \\frac{n \\lambda}{2}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "A. I=10⁻⁶ W/m² (I/I₀=10⁶)",
+      "tex": [
+        "\\displaystyle I = 10^{- 6} \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}} \\left(\\frac{I}{I_{0}} = 10^{6}\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "B. I=60 W/m²",
+      "tex": [
+        "\\displaystyle I = 60 \\,\\frac{\\mathrm{W}}{\\mathrm{m}^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "C. A=60 mm",
+      "tex": [
+        "\\displaystyle A = 60 \\,\\mathrm{mm}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "D. ν=60 Hz",
+      "tex": [
+        "\\displaystyle \\nu = 60 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "A. f_b=883 Hz",
+      "tex": [
+        "\\displaystyle f_{b} = 883 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "B. f_b=3 Hz",
+      "tex": [
+        "\\displaystyle f_{b} = 3 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "C. f_b=0",
+      "tex": [
+        "\\displaystyle f_{b} = 0"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "D. f_b=440 Hz",
+      "tex": [
+        "\\displaystyle f_{b} = 440 \\,\\mathrm{Hz}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "A. ∝1/r",
+      "tex": [
+        "\\displaystyle \\propto \\frac{1}{r}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "B. ∝1/r²",
+      "tex": [
+        "\\displaystyle \\propto \\frac{1}{r^{2}}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "source": "C. ∝r²",
+      "tex": [
+        "\\displaystyle \\propto r^{2}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 0,
+      "boundary": "free",
+      "mode": 1,
+      "source": "R = +1 ; y(L,t) = 2y_inc(L,t)",
+      "tex": [
+        "\\displaystyle R = + 1",
+        "\\displaystyle y \\left(L , t\\right) = 2 y_{\\text{inc}} \\left(L , t\\right)"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 0,
+      "boundary": "free",
+      "mode": 1,
+      "source": "y(0,t) = 0 ; ∂y/∂x (L,t) = 0",
+      "tex": [
+        "\\displaystyle y \\left(0 , t\\right) = 0",
+        "\\displaystyle \\frac{\\partial y}{\\partial x} \\left(L , t\\right) = 0"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "fixed",
+      "mode": 6,
+      "source": "λₙ = 0.667 m ; νₙ = 94.87 Hz ; T = 0.0105 s",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = 0.667 \\,\\mathrm{m}",
+        "\\displaystyle \\nu_{n} = 94.87 \\,\\mathrm{Hz}",
+        "\\displaystyle T = 0.0105 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 1,
+      "source": "λₙ = 8.000 m ; νₙ = 7.91 Hz ; T = 0.1265 s",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = 8.000 \\,\\mathrm{m}",
+        "\\displaystyle \\nu_{n} = 7.91 \\,\\mathrm{Hz}",
+        "\\displaystyle T = 0.1265 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 1,
+      "source": "λₙ = 4L/(2n − 1) ; νₙ = (2n − 1)·v_f/(4L)",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = \\frac{4 L}{2 n - 1}",
+        "\\displaystyle \\nu_{n} = \\frac{\\left(2 n - 1\\right) \\cdot v_{f}}{4 L}"
+      ]
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 6,
+      "source": "λₙ = 0.727 m ; νₙ = 86.96 Hz ; T = 0.0115 s",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = 0.727 \\,\\mathrm{m}",
+        "\\displaystyle \\nu_{n} = 86.96 \\,\\mathrm{Hz}",
+        "\\displaystyle T = 0.0115 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 0,
+      "boundary": "free",
+      "mode": 1,
+      "source": "R = +1 ; y(L,t) = 2y_inc(L,t)",
+      "tex": [
+        "\\displaystyle R = + 1",
+        "\\displaystyle y \\left(L , t\\right) = 2 y_{\\text{inc}} \\left(L , t\\right)"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 0,
+      "boundary": "free",
+      "mode": 1,
+      "source": "y(0,t) = 0 ; ∂y/∂x (L,t) = 0",
+      "tex": [
+        "\\displaystyle y \\left(0 , t\\right) = 0",
+        "\\displaystyle \\frac{\\partial y}{\\partial x} \\left(L , t\\right) = 0"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "fixed",
+      "mode": 6,
+      "source": "λₙ = 0.667 m ; νₙ = 94.87 Hz ; T = 0.0105 s",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = 0.667 \\,\\mathrm{m}",
+        "\\displaystyle \\nu_{n} = 94.87 \\,\\mathrm{Hz}",
+        "\\displaystyle T = 0.0105 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 1,
+      "source": "λₙ = 8.000 m ; νₙ = 7.91 Hz ; T = 0.1265 s",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = 8.000 \\,\\mathrm{m}",
+        "\\displaystyle \\nu_{n} = 7.91 \\,\\mathrm{Hz}",
+        "\\displaystyle T = 0.1265 \\,\\mathrm{s}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 1,
+      "source": "λₙ = 4L/(2n − 1) ; νₙ = (2n − 1)·v_f/(4L)",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = \\frac{4 L}{2 n - 1}",
+        "\\displaystyle \\nu_{n} = \\frac{\\left(2 n - 1\\right) \\cdot v_{f}}{4 L}"
+      ]
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 6,
+      "source": "λₙ = 0.727 m ; νₙ = 86.96 Hz ; T = 0.0115 s",
+      "tex": [
+        "\\displaystyle \\lambda_{n} = 0.727 \\,\\mathrm{m}",
+        "\\displaystyle \\nu_{n} = 86.96 \\,\\mathrm{Hz}",
+        "\\displaystyle T = 0.0115 \\,\\mathrm{s}"
+      ]
+    }
+  ],
+  "canvas": [
+    {
+      "source": "Fund: h=12.0m ",
+      "translated": "Fund: h=12.0m "
+    },
+    {
+      "source": "→ v fază 6.11 m/s ",
+      "translated": "→ v fază 6.11 m/s "
+    },
+    {
+      "source": "z=0.0m",
+      "translated": "z=0.0m"
+    },
+    {
+      "source": "a=0.80m b=0.80m",
+      "translated": "a=0.80m b=0.80m"
+    },
+    {
+      "source": "b/a=1.00",
+      "translated": "b/a=1.00"
+    },
+    {
+      "source": "λ=1.80 m",
+      "translated": "λ=1.80 m"
+    },
+    {
+      "source": "A=18",
+      "translated": "A=18"
+    },
+    {
+      "source": "Rază = direcția v, front ⊥ rază",
+      "translated": "Rază = direcția v, front ⊥ rază"
+    },
+    {
+      "source": "P(x=1.20m, y=-0.95m)",
+      "translated": "P(x=1.20m, y=-0.95m)"
+    },
+    {
+      "source": "Front la t₀ · surse active simultan",
+      "translated": "Front la t₀ · surse active simultan"
+    },
+    {
+      "source": "Front la t₀ + Δt · înfășurătoare înainte",
+      "translated": "Front la t₀ + Δt · înfășurătoare înainte"
+    },
+    {
+      "source": "t₀ = 0.00 s · Δt = 0.00 s",
+      "translated": "t₀ = 0.00 s · Δt = 0.00 s"
+    },
+    {
+      "source": "r = v·Δt",
+      "translated": "r = v·Δt"
+    },
+    {
+      "source": "Mediul 2 (v2) — v2/v1=0.66",
+      "translated": "Mediul 2 (v2) — v2/v1=0.66"
+    },
+    {
+      "source": "i=35°",
+      "translated": "i=35°"
+    },
+    {
+      "source": "r_ref = 35°",
+      "translated": "r_ref = 35°"
+    },
+    {
+      "source": "r_refr=22.2°",
+      "translated": "r_refr=22.2°"
+    },
+    {
+      "source": "Fix: R=-1 Δφ=π inversare",
+      "translated": "Fix: R=-1 Δφ=π inversare"
+    },
+    {
+      "source": "Liber: R=+1 Δφ=0 fără inversare",
+      "translated": "Liber: R=+1 Δφ=0 fără inversare"
+    },
+    {
+      "source": "r=21.8°",
+      "translated": "r=21.8°"
+    },
+    {
+      "source": "fanta a = 1.00 λ",
+      "translated": "fanta a = 1.00 λ"
+    },
+    {
+      "source": "w = ρ ω² A² cos²(φ) · culoare = energie instantanee",
+      "translated": "w = ρ ω² A² cos²(φ) · culoare = energie instantanee"
+    },
+    {
+      "source": "Sursă vs=102 m/s",
+      "translated": "Sursă vs=102 m/s"
+    },
+    {
+      "source": "f' = f·v/(v ∓ vs)",
+      "translated": "f' = f·v/(v ∓ vs)"
+    },
+    {
+      "source": "f_apropiere = 628.6 Hz",
+      "translated": "f_apropiere = 628.6 Hz"
+    },
+    {
+      "source": "f_depărtare = 338.5 Hz",
+      "translated": "f_depărtare = 338.5 Hz"
+    },
+    {
+      "source": "f0=1.25Hz",
+      "translated": "f0=1.25Hz"
+    },
+    {
+      "source": "Q=10.0",
+      "translated": "Q=10.0"
+    },
+    {
+      "source": "f=0.90",
+      "translated": "f=0.90"
+    },
+    {
+      "source": "a_g=0.00 m/s²",
+      "translated": "a_g=0.00 m/s²"
+    },
+    {
+      "source": "x_acoperiș=0.000 m  Q=10.0",
+      "translated": "x_acoperiș=0.000 m  Q=10.0"
+    },
+    {
+      "source": "f0=1.25Hz  f_exc=0.90Hz",
+      "translated": "f0=1.25Hz  f_exc=0.90Hz"
+    },
+    {
+      "source": "r=f/f0=0.72  Mag=2.05x",
+      "translated": "r=f/f0=0.72  Mag=2.05x"
+    },
+    {
+      "source": "ζ=5.0%  k=5922kN/m",
+      "translated": "ζ=5.0%  k=5922kN/m"
+    },
+    {
+      "source": "H=24.0m  N=8  Intermediar",
+      "translated": "H=24.0m  N=8  Intermediar"
+    },
+    {
+      "source": "x=0.000m  🟢 Răspuns mic",
+      "translated": "x=0.000m  🟢 Răspuns mic"
+    },
+    {
+      "source": "L=0.60m",
+      "translated": "L=0.60m"
+    },
+    {
+      "source": "T=80 N",
+      "translated": "T=80 N"
+    },
+    {
+      "source": "f² [Hz²]",
+      "translated": "f² [Hz²]"
+    },
+    {
+      "source": "n≈2  detunare 0.181 – ajustează L sau f până la rezonanță <0.12",
+      "translated": "n≈2  detunare 0.181 – ajustează L sau f până la rezonanță <0.12"
+    },
+    {
+      "source": "Z – vertical (proiecții P/S/R)",
+      "translated": "Z – vertical (proiecții P/S/R)"
+    },
+    {
+      "source": "L/R suprafață 80.0s",
+      "translated": "L/R suprafață 80.0s"
+    },
+    {
+      "source": "A Δt=0.0s d≈0km",
+      "translated": "A Δt=0.0s d≈0km"
+    },
+    {
+      "source": "B Δt=0.0s d≈0km",
+      "translated": "B Δt=0.0s d≈0km"
+    },
+    {
+      "source": "C Δt=0.0s d≈0km",
+      "translated": "C Δt=0.0s d≈0km"
+    },
+    {
+      "source": "Crustă H=35km  vS crustă 3.5km/s / mantă 4.5km/s",
+      "translated": "Crustă H=35km  vS crustă 3.5km/s / mantă 4.5km/s"
+    },
+    {
+      "source": "z≈7km A/A₀=0.96",
+      "translated": "z≈7km A/A₀=0.96"
+    }
+  ],
+  "views": [
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Propagare și clasificare",
+      "number": 0
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Simulare",
+      "number": 4
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Mărimi și orbită",
+      "number": 6
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Explicații",
+      "number": 3
+    },
+    {
+      "lang": "ro",
+      "id": "clasificare",
+      "part": "Unde pe apă",
+      "view": "Aplicații",
+      "number": 0
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Vectorul de oscilație",
+      "number": 1
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Puncte de egală fază",
+      "number": 1
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Lungimea de undă",
+      "number": 2
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Simulare și mărimi",
+      "number": 5
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Suprafață, rază și front",
+      "number": 4
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Viteză și mediu",
+      "number": 2
+    },
+    {
+      "lang": "ro",
+      "id": "marimi",
+      "part": "Model cu piese domino",
+      "number": 0
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Ideile de bază",
+      "number": 5
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Dubla periodicitate",
+      "number": 1
+    },
+    {
+      "lang": "ro",
+      "id": "ecuatia",
+      "part": "Fază și diferență de fază",
+      "number": 2
+    },
+    {
+      "lang": "ro",
+      "id": "huygens",
+      "number": 2
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Ideile de bază",
+      "number": 3
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Capăt FIX vs LIBER – coeficient reflexie",
+      "number": 1
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Refracție avansată – indice acustic + reflexie totală",
+      "number": 1
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Extensie: difracția",
+      "number": 0
+    },
+    {
+      "lang": "ro",
+      "id": "reflexie",
+      "part": "Difracție Fraunhofer",
+      "number": 3
+    },
+    {
+      "lang": "ro",
+      "id": "interferenta",
+      "part": "Ideile de bază",
+      "number": 3
+    },
+    {
+      "lang": "ro",
+      "id": "interferenta",
+      "part": "Extensie: bătăile",
+      "number": 4
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Reflexia la capăt fix sau liber",
+      "number": 5
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": "Unde staționare și moduri proprii",
+      "number": 8
+    },
+    {
+      "lang": "ro",
+      "id": "instrumente",
+      "number": 4
+    },
+    {
+      "lang": "ro",
+      "id": "acustica",
+      "number": 10
+    },
+    {
+      "lang": "ro",
+      "id": "doppler",
+      "number": 2
+    },
+    {
+      "lang": "ro",
+      "id": "laborator",
+      "part": "Prezentare și protocol",
+      "number": 0
+    },
+    {
+      "lang": "ro",
+      "id": "laborator",
+      "part": "Chitară",
+      "number": 0
+    },
+    {
+      "lang": "ro",
+      "id": "laborator",
+      "part": "Castron tibetan",
+      "number": 1
+    },
+    {
+      "lang": "ro",
+      "id": "laborator",
+      "part": "Tobă",
+      "number": 0
+    },
+    {
+      "lang": "ro",
+      "id": "laborator",
+      "part": "Xilofon",
+      "number": 1
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Ideile de bază",
+      "number": 0
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Tsunami: propagare și măsurare",
+      "number": 2
+    },
+    {
+      "lang": "ro",
+      "id": "rezonanta-cladiri",
+      "part": "Extensie: rezonanța clădirilor",
+      "number": 6
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Prezentare și protocol",
+      "number": 1
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Sonometru",
+      "number": 7
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Tubul Kundt",
+      "number": 6
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Osciloscop",
+      "number": 1
+    },
+    {
+      "lang": "ro",
+      "id": "lab-avansat",
+      "part": "Unde seismice",
+      "number": 17
+    },
+    {
+      "lang": "ro",
+      "id": "jurnal",
+      "number": 0
+    },
+    {
+      "lang": "ro",
+      "id": "ghid-profesor",
+      "number": 6
+    },
+    {
+      "lang": "ro",
+      "id": "glosar",
+      "number": 32
+    },
+    {
+      "lang": "ro",
+      "id": "probleme",
+      "number": 32
+    },
+    {
+      "lang": "ro",
+      "id": "test1",
+      "number": 15
+    },
+    {
+      "lang": "ro",
+      "id": "test2",
+      "number": 12
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Propagation and classification",
+      "number": 0
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Simulation",
+      "number": 4
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Quantities and orbit",
+      "number": 6
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Explanations",
+      "number": 3
+    },
+    {
+      "lang": "en",
+      "id": "clasificare",
+      "part": "Water waves",
+      "view": "Applications",
+      "number": 0
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Oscillation vector",
+      "number": 1
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Equal-phase points",
+      "number": 1
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Wavelength",
+      "number": 2
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Simulation and quantities",
+      "number": 5
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Surface, ray and wavefront",
+      "number": 4
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Speed and medium",
+      "number": 2
+    },
+    {
+      "lang": "en",
+      "id": "marimi",
+      "part": "Domino model",
+      "number": 0
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Key ideas",
+      "number": 5
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Double periodicity",
+      "number": 1
+    },
+    {
+      "lang": "en",
+      "id": "ecuatia",
+      "part": "Phase and phase difference",
+      "number": 2
+    },
+    {
+      "lang": "en",
+      "id": "huygens",
+      "number": 2
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Key ideas",
+      "number": 3
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "FIXED vs FREE end – reflection coefficient",
+      "number": 1
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Advanced refraction – acoustic index + total internal reflection",
+      "number": 1
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Extension: diffraction",
+      "number": 0
+    },
+    {
+      "lang": "en",
+      "id": "reflexie",
+      "part": "Fraunhofer diffraction",
+      "number": 3
+    },
+    {
+      "lang": "en",
+      "id": "interferenta",
+      "part": "Key ideas",
+      "number": 3
+    },
+    {
+      "lang": "en",
+      "id": "interferenta",
+      "part": "Extension: beats",
+      "number": 4
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Reflection at a fixed or free end",
+      "number": 5
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": "Standing waves and normal modes",
+      "number": 8
+    },
+    {
+      "lang": "en",
+      "id": "instrumente",
+      "number": 4
+    },
+    {
+      "lang": "en",
+      "id": "acustica",
+      "number": 10
+    },
+    {
+      "lang": "en",
+      "id": "doppler",
+      "number": 2
+    },
+    {
+      "lang": "en",
+      "id": "laborator",
+      "part": "Overview and protocol",
+      "number": 0
+    },
+    {
+      "lang": "en",
+      "id": "laborator",
+      "part": "Guitar",
+      "number": 0
+    },
+    {
+      "lang": "en",
+      "id": "laborator",
+      "part": "Tibetan bowl",
+      "number": 1
+    },
+    {
+      "lang": "en",
+      "id": "laborator",
+      "part": "Drum",
+      "number": 0
+    },
+    {
+      "lang": "en",
+      "id": "laborator",
+      "part": "Xylophone",
+      "number": 1
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Key ideas",
+      "number": 0
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Tsunami: propagation and measurement",
+      "number": 2
+    },
+    {
+      "lang": "en",
+      "id": "rezonanta-cladiri",
+      "part": "Extension: building resonance",
+      "number": 6
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Overview and protocol",
+      "number": 1
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Sonometer",
+      "number": 7
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Kundt tube",
+      "number": 6
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Oscilloscope",
+      "number": 1
+    },
+    {
+      "lang": "en",
+      "id": "lab-avansat",
+      "part": "Seismic waves",
+      "number": 17
+    },
+    {
+      "lang": "en",
+      "id": "jurnal",
+      "number": 0
+    },
+    {
+      "lang": "en",
+      "id": "ghid-profesor",
+      "number": 6
+    },
+    {
+      "lang": "en",
+      "id": "glosar",
+      "number": 32
+    },
+    {
+      "lang": "en",
+      "id": "probleme",
+      "number": 32
+    },
+    {
+      "lang": "en",
+      "id": "test1",
+      "number": 15
+    },
+    {
+      "lang": "en",
+      "id": "test2",
+      "number": 12
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 0,
+      "boundary": "fixed",
+      "mode": 1,
+      "number": 5
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 0,
+      "boundary": "free",
+      "mode": 1,
+      "number": 5
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "fixed",
+      "mode": 1,
+      "number": 8
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "fixed",
+      "mode": 6,
+      "number": 8
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 1,
+      "number": 8
+    },
+    {
+      "lang": "ro",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 6,
+      "number": 8
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 0,
+      "boundary": "fixed",
+      "mode": 1,
+      "number": 5
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 0,
+      "boundary": "free",
+      "mode": 1,
+      "number": 5
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "fixed",
+      "mode": 1,
+      "number": 8
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "fixed",
+      "mode": 6,
+      "number": 8
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 1,
+      "number": 8
+    },
+    {
+      "lang": "en",
+      "id": "stationare",
+      "part": 1,
+      "boundary": "free",
+      "mode": 6,
+      "number": 8
+    }
+  ]
+}

@@ -66,3 +66,15 @@ test('rapid pause/resume leaves one animation and switching tabs pauses hidden l
  labs[0].play();context.switchTab('curbiliniu');assert.equal(labs[0].running,false);assert.equal(pending.size,0);
  labs[1].play();context.switchTab('teorie');assert.equal(labs[1].running,false);assert.equal(pending.size,0);
 });
+
+test('Frenet components are undefined at reversal, while physical acceleration remains continuous',async()=>{
+ const {labs:[,curv]}=await model();
+ Object.assign(curv,{mode:'circular_variat',p1:100,p2:.6,p3:-.3});
+ const stopped=curv.stateAt(2),before=curv.stateAt(2-1e-3),after=curv.stateAt(2+1e-3);
+ assert.equal(stopped.frenetDefined,false);assert.equal(stopped.atScalar,null);assert.equal(stopped.anScalar,null);
+ close(stopped.vMag,0);close(stopped.aMag,30);
+ assert.equal(before.frenetDefined,true);assert.equal(after.frenetDefined,true);
+ assert.ok(before.atScalar<0);assert.ok(after.atScalar>0);
+ for(const s of [before,after]){close(s.atx+s.anx,s.ax);close(s.aty+s.any,s.ay);}
+ close(stopped.x,100*Math.cos(.6));close(stopped.y,100*Math.sin(.6));
+});

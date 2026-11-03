@@ -121,12 +121,11 @@ function body(ctx,x,y,w,h,mat,s){if(mat.liq){ctx.fillStyle=heat(s,.55);ctx.fillR
     const b={x:narrow?vx+vw+44:w*.48,y:46,w:(narrow?w-vx-vw-70:w*.46),h:h*.4};
     const Tmin=240,Tmax=440,{X,Y}=axes(ctx,b,[Tmin,Tmax],[0,1.5*R*Tmax/1000],{xl:'T (K)',yl:'U (kJ)',xt:[[S.p.Ti,'Tᵢ'],[Tf(),'T_f']]});
     ctx.strokeStyle=COL.b;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X(Tmin),Y(Cv*Tmin/1000));ctx.lineTo(X(Tmax),Y(Cv*Tmax/1000));ctx.stroke();
-    txt(ctx,'U = (3/2)·νRT',X(Tmax)-4,Y(Cv*Tmax/1000)+16,{align:'right',font:SERIF(13),color:COL.b});
     [[S.p.Ti,'i'],[Tf(),'f']].forEach(([t,l])=>{dot(ctx,X(t),Y(Cv*t/1000),4,'#fff',COL.r);txt(ctx,l,X(t)-10,Y(Cv*t/1000)-10)});
     dot(ctx,X(T),Y(Cv*T/1000),6,COL.a);
     // barele căldurilor
     const bb={x:b.x,y:b.y+b.h+56,w:b.w,h:h-b.y-b.h-80},Qm=Cp*100*1.05,bw=Math.min(54,bb.w/5);
-    const bars=[[Qif,'Q_if',COL.a,'primită'],[Math.abs(Qfi),'|Q_fi|',COL.b,'cedată'],[Cv*S.p.dT*(done.h||ph!=='i'||done.c?1:0),'ΔU',COL.c,'']];
+    const bars=[[Qif,'Q_if',COL.a,'primită'],[Math.abs(Qfi),'|Q_fi|',COL.b,'cedată'],[Cv*(T-S.p.Ti),'ΔU',COL.c,'']];
     if(isoBar())bars.push([Math.abs(Lfi),'|L_fi|',COL.o,'']);
     line(ctx,bb.x,bb.y+bb.h,bb.x+bb.w,bb.y+bb.h,COL.r,1.4);
     bars.forEach(([v,l,c],i)=>{const x=bb.x+12+i*(bw+14),hh=bb.h*v/Qm;ctx.fillStyle=c;ctx.globalAlpha=.85;ctx.fillRect(x,bb.y+bb.h-hh,bw,hh);ctx.globalAlpha=1;

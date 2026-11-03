@@ -1,0 +1,60 @@
+.wave-foundation{
+ --foundation-blue:var(--praxis-science-blue,#487ca2);
+ --foundation-amber:var(--praxis-science-orange,#b28b3b);
+ margin:0;
+ min-width:0;
+ color:var(--text,#1e293b);
+}
+html.dark .wave-foundation{
+ --foundation-blue:#93c5fd;
+ --foundation-amber:#fcd34d;
+}
+.wave-foundation-snapshot{
+ padding:.35rem .5rem;
+ font-size:1rem;
+ line-height:1.5;
+ overflow-wrap:anywhere;
+}
+.wave-foundation-scroll{
+ max-width:100%;
+ overflow-x:auto;
+ overscroll-behavior-x:contain;
+ border-radius:.6rem;
+ background:var(--card,#fff);
+}
+.wave-foundation-scroll:focus-visible{outline:3px solid var(--foundation-blue);outline-offset:2px;}
+.wave-foundation-svg{
+ display:block;
+ width:40.625rem;
+ min-width:40.625rem;
+ height:auto;
+ font-family:inherit;
+ font-size:18px;
+}
+.wave-foundation-svg text{fill:currentColor;stroke:none;}
+.wave-foundation-svg .foundation-small{font-size:16px;}
+.foundation-axis{stroke:currentColor;stroke-width:1.4;fill:none;}
+.foundation-profile{stroke:var(--foundation-blue);stroke-width:2.5;fill:none;}
+.foundation-propagation,.foundation-dimension{stroke:currentColor;stroke-width:1.5;fill:none;}
+.foundation-guide{stroke:var(--muted,#64748b);stroke-width:1;stroke-dasharray:4 4;fill:none;}
+.foundation-equal-height{stroke:var(--muted,#64748b);stroke-width:1;stroke-dasharray:2 5;}
+.foundation-displacement{stroke:var(--foundation-blue);stroke-width:3;fill:none;}
+.foundation-particle{stroke:var(--card,#fff);stroke-width:1.2;}
+.wave-foundation-svg .foundation-blue{fill:var(--foundation-blue);}
+.wave-foundation-svg .foundation-amber{fill:var(--foundation-amber);}
+.foundation-equilibrium{stroke:currentColor;stroke-width:1.5;fill:var(--card,#fff);}
+.wave-foundation-caption{font-size:1rem;line-height:1.55;}
+.wave-foundation-caption p{margin:.5rem 0 0;}
+.wave-foundation-caption summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--accent);font-weight:600}
+.wave-part-choice{display:none}
+@media(max-width:1599px){
+ body[data-praxis-course=unde-mecanice] #marimi>.lesson-parts{display:none}
+ #marimi>.wave-part-choice{display:flex;grid-column:2;grid-row:1;align-items:center;gap:8px;margin:0;min-width:0}
+ .wave-part-choice>span{font-weight:600;color:var(--muted)}
+ .wave-part-choice select{min-height:44px;min-width:0;max-width:100%;font:inherit;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:var(--praxis-radius-control);padding:6px 10px}
+}
+@media(max-width:760px){#marimi>.wave-part-choice{flex-wrap:wrap}.wave-part-choice select{flex:1 1 100%}}
+@media(prefers-contrast:more){
+ .foundation-guide,.foundation-equal-height{stroke:currentColor;stroke-width:1.5;}
+ .foundation-profile{stroke-width:3;}
+}

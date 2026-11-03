@@ -11,6 +11,8 @@ const target=new URL('public/simulari/'+id+'/',root);await mkdir(new URL('js/',t
 let css=original.match(/<style>([\s\S]*?)<\/style>/)[1];
 css=css.replace(/\.topbar[^{}]*\{[^{}]*\}/g,'').replaceAll('"Fraunces",Georgia,serif','var(--praxis-font-ui)').replaceAll('"Source Serif 4",Georgia,serif','var(--praxis-font-ui)').replaceAll('"JetBrains Mono",ui-monospace,monospace','ui-monospace,monospace');
 let body=original.match(/<main class="wrap">([\s\S]*?)<\/main>/)[1];
+const mathAttr=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
+body=body.replace(/<div class="f">([\s\S]*?)<\/div>/g,(_,content)=>{const source=content.replace(/<sup>([^<]+)<\/sup>/g,'^($1)').replaceAll('&nbsp;',' ');return '<div class="f" data-science-math="plain" data-science-source="'+mathAttr(source)+'">'+content+'</div>';});
 body=body.replace('<div class="sim" id="sim">','<section id="sim" role="tabpanel"><p class="lede">'+original.match(/<p class="lede">(.*?)<\/p>/)[1]+'</p><div class="sim">')
  .replace('<section id="teorie">','</section><section id="teorie" role="tabpanel" hidden>')
  .replace('<section id="test">','<section id="test" role="tabpanel" hidden>')

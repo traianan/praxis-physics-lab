@@ -52,4 +52,16 @@ body[data-praxis-laboratory] #praxis-original :is(.model-note,.demo-hint,.sec-le
 .praxis-content-key [data-content-icon]::before{margin-inline-end:0;color:var(--praxis-color-primary)}
 @media(prefers-reduced-motion:reduce){.chapter-card,.simulation-card{transition:none}}
 
+/* Structural mathematics retains the surrounding reading size. */
+.science-math{min-width:0;max-width:100%;line-height:1.65}
+.science-math .wave-math-item{display:inline-flex;align-items:center;max-width:100%;padding:.15em .15em;vertical-align:middle;overflow-x:auto;overflow-y:hidden}
+.science-math .wave-math-prose{white-space:normal;line-height:1.65}
+.science-math>.wave-math-item,.science-math>.wave-math-prose{margin-inline-end:.8em}
+.science-math .wave-math-item:last-child,.science-math .wave-math-prose:last-child{margin-inline-end:0}
+.science-math math{font-size:1em}
+.science-script{display:inline-block;vertical-align:baseline;white-space:nowrap}
+.science-script math{font-size:1em}
+.science-math-error{border-bottom:2px solid var(--danger,#b54d45)}
+[data-science-math=tex]{overflow-x:auto;overflow-y:hidden;padding-block:.2em}
+
 /* /praxis:presentation */

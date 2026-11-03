@@ -15,13 +15,19 @@ class Text(HTMLParser):
         value = re.sub(r'\s+', ' ', value).strip()
         if not self.skip and re.search(r'[A-Za-zăâîșț]{3}', value): self.values.append(value)
 parser = Text()
-parser.feed((ROOT/'sources/viteza-si-acceleratia/index.html').read_text(encoding='utf-8'))
+source = (ROOT/'sources/viteza-si-acceleratia/index.html').read_text(encoding='utf-8')
+for patch in json.loads((ROOT/'scripts/velocity-science-patches.json').read_text(encoding='utf-8')):
+    if patch['file'] == 'index.html':
+        if source.count(patch['before']) != 1: raise ValueError('Velocity science patch target changed')
+        source = source.replace(patch['before'], patch['after'])
+parser.feed(source)
 values = list(dict.fromkeys(parser.values))
 messages = {}
 for line in (ROOT/'scripts/velocity-translations.txt').read_text(encoding='utf-8').splitlines():
     index, translated = line.split('|', 1)
     messages[values[int(index)]] = translated
 messages.update({
+    'Nedefinit la v = 0': 'Undefined at v = 0',
     '▶ Play': '▶ Play', '⏸ Pause': '⏸ Pause', '↺ Reset': '↺ Reset',
     ' și ': ' and ', '(în 1D:': '(in 1D:', ') în M': ') to M', 'la M': 'to M',
     'Viteza și accelerația': 'Velocity and acceleration',

@@ -1,4 +1,11 @@
 /* JSX presentation adapter, evaluated in the preserved React bundle's scope. */
+function McuMathText({value}){
+ const math=window.PraxisMath;
+ const language=I.useSyncExternalStore(math.subscribe,math.language,math.language);
+ const translated=window.PraxisI18n.tr(value);
+ const html=I.useMemo(()=>math.render(translated),[translated,language]);
+ return Rc('span',{className:'science-math','data-no-i18n':true,dangerouslySetInnerHTML:{__html:html}});
+}
 function mcuJsx(type,props,key){
  props={...props};
  if(type==='svg'&&props['data-mcu-diagram']==='acceleration')return Rc(McuAccelerationFigure,{},key);
@@ -8,12 +15,21 @@ function mcuJsx(type,props,key){
  if(['header','aside','footer','style'].includes(type))return null;
  if(props.className?.includes('pointer-events-none fixed')||props.className?.includes('fixed top-0 left-0 right-0'))return null;
  const tr=s=>window.PraxisI18n.tr(s);
+ const math=window.PraxisMath,svgText=type==='text'||type==='tspan';
+ const readingHost=typeof type==='string'&&/^(?:div|span|p|li|h[1-6]|td|th|output)$/.test(type);
+ if(math&&readingHost&&math.inline(props.children)){
+  const flattened=math.flatten(props.children),translated=tr(flattened);
+  if(!flattened.includes('\u20d7')&&(math.formula(translated)||math.bare(translated)))props.children=Rc(McuMathText,{value:flattened},'math');
+ }
  function formatted(value,svg=false){
   if(typeof value!=='string')return value;
   value=tr(value);
   value=value.replace('R = const • |v| = const','R = const, |v| = const').replace(/\s*•\s*/g,' — ');
   value=value.replace(/(R\s*=\s*[\d.,]+\s*m)\s*[—–-]\s*(μ\s*=)/g,'$1, $2');
   if(window.PraxisI18n.language==='en')value=value.replace(/\btg(?=θ)/g,'tan');
+  // React owns this subtree: rendering HTML here avoids replacing its text nodes
+  // from a document observer when the language or a numeric value changes.
+  if(!svg&&readingHost&&math&&!value.includes('\u20d7')&&(math.formula(value)||math.bare(value)))return Rc(McuMathText,{value},'math-'+value);
   const vectorEquation=value.includes('\u20d7'),parts=[],pattern=/\b(a|F|v|n|T|ω)_(fmax|cp|cf|min|max|f|i|[012])\b|([A-Za-z])\u20d7/g;let match,last=0;
   while(match=pattern.exec(value)){parts.push(value.slice(last,match.index));if(match[3])parts.push(Rc('span',{className:'mcu-vector-symbol',children:match[3]},'vector-'+match.index));else parts.push(Rc(svg?'tspan':'span',{children:[vectorEquation?Rc('span',{className:'mcu-vector-symbol',children:match[1]},'base'):match[1],Rc(svg?'tspan':'sub',svg?{baselineShift:'sub',fontSize:'70%',children:match[2]}:{children:match[2]},'index')]},'mcu-sub-'+match.index));last=pattern.lastIndex;}
   if(!last)return value;parts.push(value.slice(last));return parts;

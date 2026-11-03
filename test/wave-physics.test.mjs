@@ -55,7 +55,7 @@ test('Huygens advances identically at 30, 60 and 120 Hz',async()=>{
 test('generated guitar audio is finite, audible and tuned near 110Hz at 44.1 and 48kHz',()=>{
  for(const sampleRate of [44100,48000]){
   let samples;const parameter={value:0},node=()=>({connect(){},start(){},stop(){},frequency:{...parameter},Q:{...parameter},gain:{...parameter}}),context={sampleRate,state:'running',destination:{},createBuffer:(n,length)=>{samples=new Float32Array(length);return{getChannelData:()=>samples};},createBufferSource:node,createBiquadFilter:node,createGain:node};
-  const sandbox={window:{PraxisWavesAudio:{instrumentOutput:(ctx,id,source)=>source}},N:hooks(),wn:()=>false,de:()=>context,lessonUseEffect(){},t:jsx,f:jsx,gn(){},am:[{freq:110,label:'A2'}],Float32Array};
+  const sandbox={window:{PraxisWavesAudio:{instrumentOutput:(ctx,id,source)=>source}},N:hooks(),wn:()=>false,de:()=>context,lessonUseEffect(){},LessonRecordingHelp:'recording-help',LessonGuitarHelp:'guitar-help',t:jsx,f:jsx,gn(){},am:[{freq:110,label:'A2'}],Float32Array};
   const tree=vm.runInNewContext(fn('Om')+';Om()',sandbox);const button=allNodes(tree).find(n=>n.type==='button'&&String(n.props.children).includes('Ciupeste'));button.props.onClick();
   assert.ok(samples.every(Number.isFinite));assert.ok(samples.some(x=>Math.abs(x)>.05));assert.ok(samples.slice(-sampleRate/4).reduce((a,x)=>a+x*x,0)<samples.slice(0,sampleRate/4).reduce((a,x)=>a+x*x,0));
   let bestLag=0,best=-Infinity;for(let lag=Math.floor(sampleRate/115);lag<sampleRate/105;lag++){let sum=0;for(let i=sampleRate/2|0;i<sampleRate;i++)sum+=samples[i]*samples[i-lag];if(sum>best){best=sum;bestLag=lag;}}

@@ -1,5 +1,6 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {chapters,simulations} from '../public/catalog.js';
+import {scientificMathRuntime} from './scientific-math-runtime.mjs';
 const root=new URL('../',import.meta.url),read=p=>readFile(new URL(p,root),'utf8'),write=(p,s)=>writeFile(new URL(p,root),s);
 export async function preparePresentation(){
  const laboratory=(await read('public/design-system/laboratory.css')).replace(/\n\/\* praxis:lab-discovery \*\/[\s\S]*?\/\* \/praxis:lab-discovery \*\//g,'').replace(/\n\/\* praxis:workspace \*\/[\s\S]*?\/\* \/praxis:workspace \*\//g,'');
@@ -7,14 +8,14 @@ export async function preparePresentation(){
  const catalog=JSON.parse(await read('public/design-system/content-types.json'));
  for(const lang of ['ro','en']){const path='public/locales/common/'+lang+'.json',data=JSON.parse(await read(path));for(const [ro,en]of Object.entries({'Reperele lecțiilor':'Lesson guide','Navigare în lecție':'Lesson navigation','Axa de rotație':'Rotation axis'}))data.messages[ro]=lang==='ro'?ro:en;for(const type of catalog.types)data.messages[type.ro]=lang==='ro'?type.ro:type.en;await write(path,JSON.stringify(data,null,2)+'\n');}
  const lessonChapters=Object.fromEntries(simulations.map(sim=>{const chapter=chapters.find(ch=>ch.id===sim.chapter);return [sim.id,{id:chapter.id,title:chapter.title}];}));
- const runtime='window.PraxisLessonChapters='+JSON.stringify(lessonChapters)+';\nwindow.PraxisContentCatalog='+JSON.stringify(catalog)+';\n'+await read('public/shared/content-types.js')+'\n'+await read('public/shared/scientific-readouts.js')+'\n'+await read('public/shared/panel-layout.js');
+ const runtime='window.PraxisLessonChapters='+JSON.stringify(lessonChapters)+';\nwindow.PraxisContentCatalog='+JSON.stringify(catalog)+';\n'+await read('public/shared/content-types.js')+'\n'+await read('public/shared/scientific-readouts.js')+'\n'+await read('public/shared/panel-layout.js')+'\n'+await scientificMathRuntime();
  await write('public/shared/content-types.bundle.js',runtime);
  const iconCSS=Object.entries(catalog.icons).map(([id,path])=>{
   const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="'+path+'"/></svg>';
   return '[data-content-icon="'+id+'"]{--content-icon:url("data:image/svg+xml,'+encodeURIComponent(svg)+'")}';
  }).join('\n');
  const css=(await read('public/design-system/components.css')).replace(/\n\/\* praxis:presentation \*\/[\s\S]*?\/\* \/praxis:presentation \*\//g,'');
- await write('public/design-system/components.css',css.trimEnd()+'\n/* praxis:presentation */\n'+iconCSS+'\n'+await read('public/design-system/premium.css')+'\n/* /praxis:presentation */\n');
+ await write('public/design-system/components.css',css.trimEnd()+'\n/* praxis:presentation */\n'+iconCSS+'\n'+await read('public/design-system/premium.css')+'\n'+await read('public/shared/scientific-math.css')+'\n/* /praxis:presentation */\n');
  const header=(await read('public/shared/lab-header.js')).replace(/\n\/\* praxis:content-types \*\/[\s\S]*?\/\* \/praxis:content-types \*\//g,'');
  const workspace='window.PraxisLabWorkspaceConfig='+JSON.stringify(JSON.parse(await read('public/design-system/lab-workspaces.json')))+';\n'+await read('public/shared/lab-workspace.js');
  await write('public/shared/lab-header.js',header.trimEnd()+'\n/* praxis:content-types */\n'+runtime+'\n'+workspace+'\n/* /praxis:content-types */\n');

@@ -15,6 +15,8 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 
 ## 2. Experimentul trebuie să fie accesibil imediat
 
+- Conținutul activ trebuie să încapă într-un singur ecran pe desktop și tablă; derularea se acceptă doar când reorganizarea pe lățime, subtemele sau explicațiile secundare pliabile nu pot păstra conținutul lizibil și funcțional. Verifică efectiv încadrarea, nu doar lipsa depășirii orizontale. Nu rezolva prin text mic, tăiere sau ascunderea comenzilor.
+
 - Prioritizează comenzile de pornire/pauză/resetare, scena și graficele folosite împreună. Pe desktop și tablă, urmărește să fie vizibile simultan în zona de lucru, fără derulare repetată între ele.
 - Folosește spațiul orizontal disponibil înainte de a adăuga conținut pe verticală. Așază alături scenele, graficele sau figurile care se compară și încap lizibil.
 - Pentru standurile cu o singură scenă și mai mulți parametri, preferă scena în stânga și comenzile în dreapta, cu sliderele unul sub altul. Respectă configurația existentă a instrumentelor care au altă organizare justificată.
@@ -32,6 +34,9 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 - Păstrează valorile numerice proporționale cu etichetele lor. În optică s-au ales 22 px pentru valorile celor trei carduri și 13 px pentru unități; acestea sunt un reper pentru acele carduri, nu o dimensiune obligatorie pentru orice rezultat.
 - Evită separatorul punct între mărimi sau între o valoare și faza ei, când poate fi confundat cu înmulțirea. Folosește spațiere suficientă, o bară verticală sau rânduri distincte.
 - Nu introduce bare de derulare în formulele scurte afișate în text. Formulele bloc prea lungi și scenele care necesită o lățime minimă pot avea derulare locală, fără să lărgească pagina întreagă.
+- Pentru formule noi, reutilizează `PraxisMath` din antetul comun: notație simplă sau TeX, fracții suprapuse și indici structurali. Păstrează sistemele KaTeX, fracțiile CSS și indicii existenți când sunt corecți.
+- În DOM nativ folosește gazde explicite `data-science-math` / `data-science-source` sau `PraxisMath.set`. În React, randarea matematică aparține componentei; nu rescrie subarborele React cu un observator de document. Marchează proprietatea React prin `data-science-owner="react"` când nu există un adaptor dedicat.
+- Formatarea păstrează sursa pentru RO/EN și valorile numerice la actualizare. Nu transforma jurnalele editabile, codul, numele de fișiere sau datele de export în formule prin înlocuiri generale.
 - La text 200%, derularea suplimentară este acceptabilă; textul tăiat, comenzile inaccesibile și pierderea funcțiilor nu sunt.
 
 ## 4. Claritatea desenelor și animațiilor
@@ -48,6 +53,7 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 
 - Montarea structurii trebuie să fie repetabilă fără a pierde noduri, handlere, valori sau selecții. Nu înlocui nodurile gestionate de React pentru o simplă reorganizare vizuală.
 - Schimbarea limbii, culorilor, dimensiunii textului sau layoutului păstrează parametrii și timpul experimentului. Resetarea se face la comanda explicită a utilizatorului sau când modelul o cere în mod explicat.
+- Nu muta butoane sau comenzi în noduri pe care codul nativ le rescrie prin `innerHTML` pentru explicații ori rezultate. După fiecare schimbare de variantă, verifică funcționarea efectivă a Start/Pauză/Reset, nu doar prezența lor la încărcare.
 - Vederile aceluiași fenomen folosesc același timp și aceeași stare. Nu porni un ceas separat pentru un fazor sau un grafic care trebuie să fie sincronizat cu animația existentă.
 - Activitățile ascunse sau documentele inactive nu trebuie să avanseze experimentul ori să emită sunete. Evită buclele de animație duplicate la reluare; respectă mecanismul existent de suspendare a randării în afara ecranului.
 - Folosește `PraxisSound`. Sunetul pornește inactiv într-o sesiune nouă și rămâne în starea aleasă la trecerea între bibliotecă și laboratoare în aceeași filă.

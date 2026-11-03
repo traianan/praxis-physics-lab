@@ -6,6 +6,12 @@
   "moduleSha256": "70710c4ea280fa2fe404feed941dd0279b876f166fd9e011851372022f2c6204",
   "topics": 19,
   "screens": 37,
+  "audit": {
+    "date": "2026-11-03",
+    "activitiesPerLanguage": 47,
+    "formulaReport": "VERIFICARE_FORMULE_UNDE_2026-11-03.md",
+    "formulaInventory": "FORMULE_UNDE_INVENTAR_2026-11-03.json"
+  },
   "adaptations": [
     "shared shell and styles",
     "embedded RO/EN dictionaries",
@@ -13,6 +19,10 @@
     "global audio mute and master volume",
     "reversible physical corrections documented in VERIFICARE_FIZICA_UNDE.md",
     "fixed earlier-front Huygens construction",
-    "checked numerical problems and quiz keys"
+    "checked numerical problems and quiz keys",
+    "reversible F1 textbook alignment (printed pp. 29–55), see MANUAL_UNDE_2026-11-03.md",
+    "linear conservative shallow-water tsunami model on a labelled schematic basin, see VERIFICARE_TSUNAMI_2026-11-03.md",
+    "complete formula audit and illustrated wave foundations, see VERIFICARE_FORMULE_UNDE_2026-11-03.md",
+    "analytic string reflection and fixed-fixed / fixed-free normal modes"
   ]
 }

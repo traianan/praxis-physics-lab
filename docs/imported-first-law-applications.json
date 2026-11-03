@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "index.html",
-      "sha256": "c959e0bd563b18b00972fcf18c1441e4ea03fa3c2161dfed32d91becb9724dfc"
+      "sha256": "d26f71f5fd16dd7cf7ef6230bee6a4a0a0cd26c0a06a67285c3d098d5ae6d4c8"
     },
     {
       "path": "css/styles.css",
@@ -24,7 +24,7 @@
     },
     {
       "path": "js/sims.js",
-      "sha256": "33f20ef8a9680273c8e8178450466eeb98bf9f9449800d73c72d5e2664ad4b7c"
+      "sha256": "59ba3ee67371f63a876860287cca4c12ab60fe2cd473b2f0052d85972a36ce17"
     },
     {
       "path": "js/quiz.js",

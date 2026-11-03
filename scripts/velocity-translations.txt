@@ -91,11 +91,11 @@
 92|towards the inside (concave side) of the curve
 93|(towards the centre of curvature C), and measures the
 94|change in velocity direction
-95|R = radius of curvature [m]
+95|R = local radius of curvature [m]. Only for circular motion: aₙ = ω²R, with ω = v/R.
 96|The total acceleration vector
-97|points
+97|has a component pointing
 98|towards the inside (concave side) of a curved trajectory when its normal component is nonzero
-99|, never towards the outside!
+99|; at zero velocity, the tangential and normal decomposition is undefined.
 100|Special cases
 101|Position functions expressed as polynomials
 102|In many Grade 9 physics problems, the position of a particle along an axis is given by a
@@ -171,7 +171,7 @@
 177|🎛️ Simulation controls (2D plane)
 178|🔄 Planar trajectory type
 179|1. Uniform circular motion (a_t = 0, a = a_n)
-180|2. Nonuniform circular motion (a = a_t + a_n)
+180|2. Nonuniform circular motion (a² = aₜ² + aₙ²)
 181|3. Projectile motion in a gravitational field (parabola)
 182|4. Elliptical trajectory / planar oscillation (Lissajous)
 183|🎚️ Trajectory parameters

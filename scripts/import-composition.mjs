@@ -15,8 +15,15 @@ lab=lab.replace(/(<canvas id="[xy]Wave"[^>]*><\/canvas>)/g,'<div class="wavewrap
 const actions=lab.match(/<div class="actions">[\s\S]*?<\/div>/)[0];lab=lab.replace(actions,'').replace('<div class="plotwrap">',actions+'<div class="plotwrap">');
 let theory=main(await read(source+'teorie.html')).replace(/<h3>(\d+)\. /g,'<h3>').replaceAll('într o','într-o').replaceAll('Într o','Într-o').replace('Punctul roz','Punctul roșu').replace('href="index.html"','href="#laborator"');
 theory=theory.replace('<article class="panel">',await read('scripts/adaptations/composition-history.html')+'<article class="panel">');
+// Mark only authored formula leaves; prose, controls and links retain their DOM.
+const mathAttr=s=>s.replace(/\bTcomun\b/g,'T_comun').replaceAll('Aₓ','A_x').replaceAll('Aᵧ','A_y').replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
+theory=theory.replace(/<div class="formula">([\s\S]*?)<\/div>/g,(_,lines)=>'<div class="formula">'+lines.split(/<br\s*\/?>/i).map(line=>'<span data-science-math="plain" data-science-source="'+mathAttr(line)+'">'+line+'</span>').join('<br>')+'</div>');
 let app=(await read(source+'app.js')).replaceAll('\r\n','\n');
 function patch(before,after){if(!app.includes(before))throw Error('Source changed: '+before.slice(0,75));app=app.replace(before,after);}
+patch('perioada T = 2π/ω = <strong>', 'perioada <span data-composition-math="period">T = 2π/ω</span> = <strong>');
+patch('<strong>ωᵧ/ωₓ = ${r.p}/${r.q}</strong>', '<strong data-composition-math="ratio">ωᵧ/ωₓ = ${r.p}/${r.q}</strong>');
+patch("$('analysis').innerHTML=html;", "$('analysis').innerHTML=html;if(window.PraxisMath&&$('analysis').querySelectorAll)for(const leaf of $('analysis').querySelectorAll('[data-composition-math]'))PraxisMath.set(leaf,leaf.textContent,{syntax:'plain'});");
+patch("ctx.fillText(`T comun = ${T.toFixed(3)} s${T>120?' • interval afișat limitat':''}`,24,22);", "ctx.fillText(`T_${window.PraxisI18n.tr('comun')} = ${T.toFixed(3)} s${T>120?' '+window.PraxisI18n.tr('• interval afișat limitat'):''}`,24,22);");
 patch("const $=id=>document.getElementById(id), TWO=2*Math.PI;",`const $=id=>document.getElementById(id), TWO=2*Math.PI;
 let section='laborator',dirty=true;
 const tr=s=>PraxisI18n.tr(s);

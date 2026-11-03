@@ -1,10 +1,11 @@
+import {thermoReadability} from './adaptations/thermodynamics-readability.mjs';
 import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 const root=new URL('../',import.meta.url),id='notiuni-termodinamice';
 const read=p=>readFile(new URL(p,root),'utf8');
 const source=new URL('sources/'+id+'/site/',root),target=new URL('public/simulari/'+id+'/',root);
 await mkdir(target,{recursive:true});await cp(source,target,{recursive:true});
-let html=await read('sources/'+id+'/site/index.html');
+let html=thermoReadability('notions','index.html',await read('sources/'+id+'/site/index.html'));
 html=html.replace(/<header class="hero"[\s\S]*?<\/header>/,'<span id="top"></span>')
  .replace('Capitolul 1 · Elemente de termodinamică','Elemente de termodinamică').replace('>Capitolul 1<','>Prezentare<').replace('Privire înainte — 1.2 Calorimetrie','Privire înainte — Calorimetrie')
  .replace(/<link rel="manifest"[^>]*>/,'')
@@ -53,7 +54,7 @@ const styles=['design-system/tokens.css','design-system/components.css','shared/
 const head=styles.map(path=>'<link rel="stylesheet" href="../../'+path+'">').join('')+'<script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded})+');</script>'+['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','velocity-labels.js','ideal-engine-cycles.js'].map(name=>'<script src="../../shared/'+name+'"></script>').join('');
 html=html.replace('</head>',()=>head+'</head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">').replace('</body>','</div><script src="../../shared/course.js" data-course="'+id+'" data-title="Noțiuni termodinamice de bază" defer></script><script src="../../shared/thermodynamics.js" defer></script></body>');
 await writeFile(new URL('index.html',target),html);
-let base=await read('sources/'+id+'/site/js/baza.js');
+let base=thermoReadability('notions','js/baza.js',await read('sources/'+id+'/site/js/baza.js'));
 base=base.replace("const out=inp.parentElement.querySelector('output');","const out=inp.closest('label').querySelector('output');").replace("const S={on:localStorage.getItem('nt-sound')!=='0'};","const S={on:window.PraxisSound.enabled};")
  .replace('if(!S.on)return null;','if(!S.on||!window.PraxisSound.enabled||document.hidden)return null;')
  .replace("S.set=on=>{S.on=on;localStorage.setItem('nt-sound',on?'1':'0');",'S.set=on=>{S.on=on;')
@@ -67,7 +68,7 @@ base=base.replace('ctx.strokeText(s,px,py);ctx.fillText(s,px,py);','window.Praxi
 base+='\ndocument.addEventListener("visibilitychange",()=>{if(!document.hidden)ALL.filter(s=>s.vis).forEach(s=>s.loop());});\n';
 await writeFile(new URL('js/baza.js',target),base);
 for(const file of ['figuri-1.js','figuri-2.js']){
- let code=await read('sources/'+id+'/site/js/'+file);
+ let code=thermoReadability('notions','js/'+file,await read('sources/'+id+'/site/js/'+file));
  if(file==='figuri-1.js'){
   const start=code.indexOf('/* ---------- Fig. 0'),end=code.indexOf('/* ---------- Fig. 1',start);
   if(start<0||end<0)throw new Error('Engine source block not found');

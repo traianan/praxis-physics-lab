@@ -3,6 +3,14 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 const root=new URL('../',import.meta.url),id='viteza-si-acceleratia';
 const read=p=>readFile(new URL(p,root),'utf8');
+const sciencePatches=JSON.parse(await read('scripts/velocity-science-patches.json'));
+function adaptScience(code,file){
+ for(const patch of sciencePatches.filter(p=>p.file===file)){
+  if(code.split(patch.before).length!==2)throw new Error('Velocity science patch target changed: '+file+' '+patch.before.slice(0,60));
+  code=code.replace(patch.before,()=>patch.after);
+ }
+ return code;
+}
 // These indices have real Unicode subscript glyphs, supported by both DOM and Canvas.
 const indices={m:'ₘ',n:'ₙ',t:'ₜ'};
 const subscripts=text=>text.replace(/\b([va])_([mnt])\b/g,(_,symbol,index)=>symbol+indices[index]);
@@ -11,7 +19,7 @@ await mkdir(target,{recursive:true});
 const namespaces=['common','chapters/miscare','courses/shared','courses/'+id+'/ui'];
 const embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const ns of namespaces)embedded[lang][ns]=JSON.parse(await read('public/locales/'+ns+'/'+lang+'.json'));
-let html=subscripts(await read('sources/'+id+'/index.html'));
+let html=subscripts(adaptScience(await read('sources/'+id+'/index.html'),'index.html'));
 // The common course bridge owns the only header, settings and section navigation.
 html=html.replace(/<div class="brand-group">[\s\S]*?<nav class="main-nav"/,'<nav class="tabs"')
  .replace(/(<button class="nav-btn[^>]*)( onclick="switchMainTab\('([^']+)'\)")/g,'$1 data-tab="$3"$2')
@@ -31,7 +39,7 @@ html=html.replace('</head>',()=>head+'</head>').replace('<body>','<body data-pra
  .replace('</body>','</div><script src="../../shared/course.js" data-course="'+id+'" data-title="Viteza și accelerația" defer></script><script src="../../shared/velocity.js" defer></script></body>');
 await writeFile(new URL('index.html',target),html);
 await writeFile(new URL('style.css',target),await read('sources/'+id+'/style.css'));
-let js=await read('sources/'+id+'/app.js');
+let js=adaptScience(await read('sources/'+id+'/app.js'),'app.js');
 // Queue every annotation until geometry is complete; remove the source's early label masks.
 js=js.replace(/    ctx.fillStyle = '#070b18';\n    const tw = ctx.measureText\(label\).width;\n    ctx.fillRect\(lx - 3, ly - 11, tw \+ 6, 15\);\n/,'')
  .replace('ctx.fillText(label, lx, ly);','ctx.fillText(label, lx, ly, {anchor:[x2,y2]});')

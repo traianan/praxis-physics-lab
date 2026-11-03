@@ -25,6 +25,21 @@ test('workspace mounting is inert outside known laboratory pages',async()=>{
  assert.deepEqual(document.body.dataset,{praxisLaboratory:'true',praxisCourse:'unknown'});
 });
 
+test('acceleration controls survive native replacement of the motion explanation',async()=>{
+ const control={id:'acc-info',dataset:{},children:[],querySelectorAll:()=>[],prepend(node){node.parentElement.children.splice(node.parentElement.children.indexOf(node),1);node.parentElement=this;this.children.unshift(node);},set innerHTML(value){for(const child of this.children)child.parentElement=null;this.children=[];this.html=value;}};
+ const scene={dataset:{},children:[]},transport={parentElement:scene,onClick:()=>42};scene.children.push(transport);
+ const workspace={dataset:{},parentElement:{children:[]},querySelector:s=>s==='.sim-side'?control:s==='.transport'?transport:null,querySelectorAll:s=>s==='.sim-side'?[control]:s==='.sim-main'?[scene]:[]};
+ const document={body:{dataset:{praxisLaboratory:'true',praxisCourse:'motion'}},readyState:'loading',addEventListener(){},querySelectorAll:()=>[]};
+ const window={PraxisLabWorkspaceConfig:{motion:{workspaces:[{selector:'.card.sim',layout:'motion',controls:'.sim-side',scene:'.sim-main'}]}},addEventListener(){}};
+ vm.runInNewContext(await read('public/shared/lab-workspace.js'),{window,document});
+ window.PraxisLabWorkspace.mount({querySelectorAll:()=>[workspace]});
+ for(const name of ['uniformă','accelerată','încetinită','variată']){
+  control.innerHTML='<h4>'+name+'</h4>';
+  assert.equal(transport.parentElement,scene,'native explanation replacement must not delete the operating controls');
+  assert.equal(scene.children[0],transport);assert.equal(transport.onClick(),42);
+ }
+});
+
 test('laboratory runtime is bundled for offline imports but absent from library runtime',async()=>{
  const header=await read('public/shared/lab-header.js');
  assert.ok(header.includes('window.PraxisLabWorkspaceConfig='));
