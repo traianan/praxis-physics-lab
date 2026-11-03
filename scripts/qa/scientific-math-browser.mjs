@@ -46,6 +46,43 @@ try{
   const result=await evaluate(`()=>({id:${JSON.stringify(id)},url:location.href,ready:document.readyState,title:document.title,api:!!window.PraxisMath,math:document.querySelectorAll('.science-math').length,errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,tabs:[...document.querySelectorAll('#praxis-original [role=tab],#praxis-original button[data-tab],#praxis-original .tabs a')].map(e=>({text:e.textContent.trim(),id:e.id,tab:e.dataset.tab,href:e.getAttribute('href')}))})`);
   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
   results.push(result);console.log(JSON.stringify(result));
+  if(process.argv.includes('--velocity-resolution')&&id==='viteza-si-acceleratia'){
+   result.resolution=[];
+   for(const [width,height,dpr,size,language] of [[1366,768,1,100,'ro'],[1920,1080,2,100,'en'],[3840,2160,1,100,'ro'],[1024,768,1.25,100,'en'],[390,844,3,100,'ro'],[1366,768,1,200,'ro']]){
+    await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:dpr,mobile:false});
+    await evaluate(`async()=>{await PraxisI18n.setLanguage(${JSON.stringify(language)});const s=document.querySelector('.praxis-course-settings select');s.value=${JSON.stringify(String(size))};s.dispatchEvent(new Event('change',{bubbles:true}));}`);await delay(100);
+    for(const tab of ['teorie','rectiliniu','curbiliniu','polinom']){
+     await evaluate(`()=>document.getElementById('btn-tab-${tab}').click()`);await delay(100);
+     const sample=await evaluate(`async()=>{
+      const tab=${JSON.stringify(tab)},visible=document.querySelector('#tab-'+tab),canvas=visible.querySelector('canvas');
+      if(!canvas)return {tab,vectorImages:visible.querySelectorAll('svg,math').length,rasterImages:visible.querySelectorAll('img').length};
+      const prefix={rectiliniu:'rect',curbiliniu:'curv',polinom:'poly'}[tab],lab={rectiliniu:rectLab,curbiliniu:curvLab,polinom:polyLab}[tab];
+      const slider=visible.querySelector('#'+prefix+'-slider-t');slider.value='1.25';slider.dispatchEvent(new Event('input',{bubbles:true}));
+      const t=lab.t;window.dispatchEvent(new Event('resize'));await new Promise(r=>setTimeout(r,50));
+      const rect=canvas.getBoundingClientRect(),native=devicePixelRatio||1,h=rect.width*Number(canvas.dataset.logicalHeight)/Number(canvas.dataset.logicalWidth);
+      const expected=Math.min(Math.max(2,native*1.5),Math.max(native,Math.sqrt(8000000/(rect.width*h))),8192/rect.width,8192/h);
+      return {tab,id:canvas.id,cssWidth:rect.width,cssHeight:rect.height,pixelWidth:canvas.width,pixelHeight:canvas.height,densityX:canvas.width/rect.width,densityY:canvas.height/rect.height,expected,sharp:canvas.width/rect.width>=expected-.01&&canvas.height/rect.height>=expected-.01,aspect:Math.abs(rect.height/rect.width-Number(canvas.dataset.logicalHeight)/Number(canvas.dataset.logicalWidth))<.005,timePreserved:lab.t===t,overflow:document.documentElement.scrollWidth>innerWidth+2};
+     }`);Object.assign(sample,{width,height,dpr,size,language});result.resolution.push(sample);
+     if(width===1366&&size===100&&tab!=='teorie'){const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,'velocity-resolution-'+tab+'.png'),Buffer.from(shot.data,'base64'));}
+    }
+   }
+   // DPR-only changes must redraw even if every CSS dimension remains constant.
+   await send('Emulation.setDeviceMetricsOverride',{width:1366,height:768,deviceScaleFactor:1,mobile:false});
+   await evaluate(`()=>{const s=document.querySelector('.praxis-course-settings select');s.value='100';s.dispatchEvent(new Event('change',{bubbles:true}));document.getElementById('btn-tab-rectiliniu').click();}`);await delay(100);
+   const before=await evaluate(`()=>({width:document.getElementById('rect-canvas').width,t:rectLab.t})`);
+   await send('Emulation.setDeviceMetricsOverride',{width:1366,height:768,deviceScaleFactor:2,mobile:false});await delay(450);
+   result.dprOnly=await evaluate(`()=>({before:${JSON.stringify(before)},width:document.getElementById('rect-canvas').width,t:rectLab.t})`);
+   result.playback=[];
+   for(const tab of ['rectiliniu','curbiliniu','polinom']){
+    const p=await evaluate(`async()=>{
+     const wait=ms=>new Promise(r=>setTimeout(r,ms));document.getElementById('btn-tab-${tab}').click();await wait(70);const root=document.getElementById('tab-${tab}'),lab={rectiliniu:rectLab,curbiliniu:curvLab,polinom:polyLab}[${JSON.stringify(tab)}];
+     root.querySelector('.btn-reset').click();const start=lab.t;root.querySelector('.btn-play').click();await wait(220);root.querySelector('.btn-pause').click();const stopped=lab.t;await wait(100);const held=lab.t===stopped;root.querySelector('.btn-reset').click();return {tab:${JSON.stringify(tab)},advanced:stopped>start,held,reset:lab.t===0};
+    }`);result.playback.push(p);
+   }
+   console.log(JSON.stringify({resolution:result.resolution,dprOnly:result.dprOnly,playback:result.playback}));
+   await writeFile(path.join(root,'velocity-resolution.json'),JSON.stringify({resolution:result.resolution,dprOnly:result.dprOnly,playback:result.playback},null,2));
+   if(result.resolution.some(r=>r.id&&(!r.sharp||!r.aspect||!r.timePreserved||r.overflow))||result.dprOnly.width<=before.width||result.dprOnly.t!==before.t||result.playback.some(p=>!p.advanced||!p.held||!p.reset))throw Error('Velocity resolution audit failed');
+  }
   if(process.argv.includes('--propagation')&&id==='unde-mecanice'){
    result.propagation=await evaluate(`async()=>{
     const wait=ms=>new Promise(r=>setTimeout(r,ms));location.hash='marimi-content-3';await wait(150);

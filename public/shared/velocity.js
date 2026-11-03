@@ -30,6 +30,23 @@
  const resize=new ResizeObserver(entries=>{for(const entry of entries){const index=canvases.indexOf(entry.target);if(index>=0&&entry.contentRect.width>0)labs[index].draw();}updatePanHints();});
  canvases.forEach(canvas=>resize.observe(canvas));
  window.addEventListener('resize',()=>{labs.forEach(lab=>lab.draw());updatePanHints();});
+ // Moving the browser between monitors can change DPR without changing CSS size.
+ let densityQuery,densityTimer,lastDensity=window.devicePixelRatio||1;
+ function redrawDensity(){if(document.hidden)return;lastDensity=window.devicePixelRatio||1;labs.forEach(lab=>lab.draw());updatePanHints();watchDensity();}
+ function watchDensity(){
+  densityQuery?.removeEventListener('change',redrawDensity);
+  densityQuery=window.matchMedia?.('(resolution: '+(window.devicePixelRatio||1)+'dppx)');
+  densityQuery?.addEventListener('change',redrawDensity,{once:true});
+ }
+ watchDensity();
+ // Some scaling changes do not dispatch a media-query or viewport event.
+ // This visible-page fallback only redraws when DPR actually changes.
+ function checkDensity(){if(!document.hidden&&(window.devicePixelRatio||1)!==lastDensity)redrawDensity();}
+ function startDensityWatch(){if(document.hidden)return;if(densityTimer===undefined)densityTimer=window.setInterval(checkDensity,250);checkDensity();}
+ function stopDensityWatch(){if(densityTimer!==undefined)window.clearInterval(densityTimer);densityTimer=undefined;}
+ document.addEventListener('visibilitychange',()=>document.hidden?stopDensityWatch():startDensityWatch());
+ window.addEventListener('pagehide',stopDensityWatch);window.addEventListener('pageshow',startDensityWatch);startDensityWatch();
+ window.visualViewport?.addEventListener('resize',()=>{labs.forEach(lab=>lab.draw());updatePanHints();});
  for(const slider of document.querySelectorAll('#praxis-original input[type=range]')){
   const label=slider.closest('.slider-item')?.querySelector('.slider-header');
   if(label){label.id=slider.id+'-label';slider.setAttribute('aria-labelledby',label.id);const stepper=slider.closest('.praxis-range-stepper');stepper?.querySelectorAll('button').forEach((button,index)=>{button.setAttribute('aria-label',index?'Crește':'Scade');button.setAttribute('aria-describedby',label.id);});}

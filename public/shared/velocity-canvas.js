@@ -1,4 +1,4 @@
-/* Keep the source's mathematical coordinates while matching the displayed pixel density. */
+/* Keep scientific coordinates; supersample all three animated drawing surfaces. */
 (() => {
  function prepare(canvas){
   const width=Number(canvas.dataset.logicalWidth),height=Number(canvas.dataset.logicalHeight);
@@ -9,7 +9,12 @@
   if(displayedWidth>0){
    const displayedHeight=displayedWidth*height/width;
    const cssHeight=displayedHeight+'px';if(canvas.style.height!==cssHeight)canvas.style.height=cssHeight;
-   const ratio=window.devicePixelRatio||1;
+   const nativeRatio=Math.max(.5,window.devicePixelRatio||1);
+   // Reserve extra samples for thin curves, subscripts and screen scaling.
+   // Bound supersampling to 8 MP, while retaining native density when it already
+   // needs more pixels. A side-length guard avoids unsupported bitmap sizes.
+   const memoryRatio=Math.sqrt(8000000/(displayedWidth*displayedHeight));
+   const ratio=Math.min(Math.max(2,nativeRatio*1.5),Math.max(nativeRatio,memoryRatio),8192/displayedWidth,8192/displayedHeight);
    const pixelWidth=Math.max(1,Math.round(displayedWidth*ratio));
    const pixelHeight=Math.max(1,Math.round(displayedHeight*ratio));
    if(canvas.width!==pixelWidth)canvas.width=pixelWidth;

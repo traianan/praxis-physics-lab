@@ -29,17 +29,43 @@ test('captions outside a filled piston keep the canvas bounds while plot labels 
  const [top,bottom,inside]=labels.inspect(ctx);
  assert.equal(top.bounds.y,8);assert.equal(bottom.bounds.h,184);assert.equal(inside.bounds.y,77);assert.equal(inside.bounds.h,56);
 });
-test('canvas backing pixels follow displayed size and DPR without changing scientific coordinates',async()=>{
+test('all velocity canvases supersample displayed pixels without changing scientific coordinates',async()=>{
  let displayed=1200,transform;
  const context={setTransform(...args){transform=args;}};
  const canvas={dataset:{logicalWidth:'920',logicalHeight:'520'},style:{},width:920,height:520,getBoundingClientRect:()=>({width:displayed}),getContext:()=>context};
  const window={devicePixelRatio:2};vm.runInNewContext(await read('public/shared/velocity-canvas.js'),{window});
  const logical=window.PraxisVelocityCanvas.prepare(canvas);
  assert.equal(logical.width,920);assert.equal(logical.height,520);
- assert.equal(canvas.width,2400);assert.equal(canvas.height,1357);close(transform[0],2400/920);
+ assert.equal(canvas.width,3600);assert.equal(canvas.height,2035);close(transform[0],3600/920);
  displayed=360;window.devicePixelRatio=3;window.PraxisVelocityCanvas.prepare(canvas);
- assert.equal(canvas.width,1080);assert.equal(canvas.height,610);close(transform[3],610/520);
- displayed=0;window.PraxisVelocityCanvas.prepare(canvas);assert.equal(canvas.width,1080);
+ assert.equal(canvas.width,1620);assert.equal(canvas.height,916);close(transform[3],916/520);
+ displayed=0;window.PraxisVelocityCanvas.prepare(canvas);assert.equal(canvas.width,1620);
+});
+
+test('standard screens use at least 2x sampling, while oversized buffers are bounded',async()=>{
+ let displayed=920,writes=0;
+ const ctx={setTransform(){}};let w=920,h=500;
+ const canvas={dataset:{logicalWidth:'920',logicalHeight:'500'},style:{},get width(){return w},set width(v){w=v;writes++},get height(){return h},set height(v){h=v;writes++},getBoundingClientRect:()=>({width:displayed}),getContext:()=>ctx};
+ const window={devicePixelRatio:1};vm.runInNewContext(await read('public/shared/velocity-canvas.js'),{window});
+ window.PraxisVelocityCanvas.prepare(canvas);assert.equal(w,1840);assert.equal(h,1000);
+ const allocated=writes;window.PraxisVelocityCanvas.prepare(canvas);assert.equal(writes,allocated,'animation frames reuse the bitmap');
+ displayed=1600;window.devicePixelRatio=2;window.PraxisVelocityCanvas.prepare(canvas);
+ assert.ok(w>=3200&&w<4800);assert.ok(w*h<=8000000+10000);
+ window.devicePixelRatio=4;window.PraxisVelocityCanvas.prepare(canvas);assert.ok(w>=6400,'native pixel density is retained');
+});
+
+test('paused diagrams redraw for a DPR-only change and density watchers survive BFCache without duplicates',async()=>{
+ const source=await read('public/shared/velocity.js'),start=source.indexOf(' let densityQuery'),end=source.indexOf(' window.visualViewport',start);
+ const intervals=new Map(),events=new Map(),documentEvents=new Map();let serial=0,draws=0;
+ const document={hidden:false,addEventListener:(name,fn)=>documentEvents.set(name,fn)};
+ const window={devicePixelRatio:1,matchMedia:()=>({addEventListener(){},removeEventListener(){}}),addEventListener:(name,fn)=>events.set(name,fn),setInterval:fn=>{intervals.set(++serial,fn);return serial;},clearInterval:id=>intervals.delete(id)};
+ vm.runInNewContext(source.slice(start,end),{window,document,labs:[{draw(){draws++}},{draw(){draws++}},{draw(){draws++}}],updatePanHints(){}});
+ assert.equal(intervals.size,1);events.get('pageshow')();assert.equal(intervals.size,1);
+ window.devicePixelRatio=2;[...intervals.values()][0]();assert.equal(draws,3);
+ [...intervals.values()][0]();assert.equal(draws,3,'unchanged density never redraws the paused scene');
+ document.hidden=true;documentEvents.get('visibilitychange')();assert.equal(intervals.size,0);
+ window.devicePixelRatio=1.25;document.hidden=false;documentEvents.get('visibilitychange')();assert.equal(intervals.size,1);assert.equal(draws,6);
+ events.get('pagehide')();assert.equal(intervals.size,0);events.get('pageshow')();events.get('pageshow')();assert.equal(intervals.size,1);
 });
 test('velocity laboratory is discoverable in Motion with all local resources',async()=>{
  const sim=findSimulations('miscare','viteza polinomiale').find(s=>s.id==='viteza-si-acceleratia');assert.ok(sim);

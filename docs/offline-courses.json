@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-03T16:11:14.205Z",
+  "builtAt": "2026-11-03T16:40:41.616Z",
   "courses": [
     {
       "id": "motoare-termice",
@@ -49,17 +49,6 @@
       "id": "calcul-vectorial",
       "file": "public/simulari/calcul-vectorial/calcul-vectorial.zip",
       "sha256": "fb4e165eed9f2e69a4466e15db610f51c5d3f8be9b00d46601c95409bb921671",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
-      "id": "viteza-si-acceleratia",
-      "file": "public/simulari/viteza-si-acceleratia/viteza-si-acceleratia-offline.zip",
-      "sha256": "b261d14e0525f48df3e5c776eb523c1ef72c7cc85295d09a42323fccbab56125",
       "languages": [
         "ro",
         "en"
@@ -192,6 +181,17 @@
       "id": "unde-mecanice",
       "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
       "sha256": "c3c4956cb3f9f8c3f37565125b1b97dba5704874f8ae08ce30c5d066670e5a82",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "viteza-si-acceleratia",
+      "file": "public/simulari/viteza-si-acceleratia/viteza-si-acceleratia-offline.zip",
+      "sha256": "7e898d66761607131f34ecd564903dd73775755e4d196b057a929d22f9aee7b0",
       "languages": [
         "ro",
         "en"
