@@ -51,6 +51,28 @@ try{
   const result=await evaluate(`()=>({id:${JSON.stringify(id)},url:location.href,ready:document.readyState,title:document.title,api:!!window.PraxisMath,math:document.querySelectorAll('.science-math').length,errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,tabs:[...document.querySelectorAll('#praxis-original [role=tab],#praxis-original button[data-tab],#praxis-original .tabs a')].map(e=>({text:e.textContent.trim(),id:e.id,tab:e.dataset.tab,href:e.getAttribute('href')}))})`);
   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
   results.push(result);console.log(JSON.stringify(result));
+  if(process.argv.includes('--huygens')&&id==='unde-mecanice'){
+   result.huygens=await evaluate(await readFile('scripts/qa/huygens.browser.js','utf8'));
+   result.huygensLayout=await evaluate(`()=>[...document.querySelector('[data-huygens-kind=refraction] .huygens-controls').children].map(e=>{const s=getComputedStyle(e),b=e.getBoundingClientRect();return {tag:e.tagName,class:e.className,height:b.height,flex:s.flex,minHeight:s.minHeight,margin:s.margin,display:s.display,inline:e.getAttribute('style')};})`);
+   console.log(JSON.stringify({huygensLayout:result.huygensLayout}));
+   const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,'huygens-refraction.png'),Buffer.from(shot.data,'base64'));
+   console.log(JSON.stringify({huygens:result.huygens}));
+   result.huygensDisplay=[];
+   for(const [width,height,dpr,size,language]of [[1366,768,1,100,'ro'],[1366,768,1,100,'en'],[1920,1080,2,100,'en'],[3840,2160,1,100,'ro'],[1024,768,1.25,100,'en'],[390,844,3,100,'ro'],[1366,768,1,200,'ro']]){
+    await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:dpr,mobile:false});
+    await evaluate(`async()=>{await PraxisI18n.setLanguage(${JSON.stringify(language)});const s=document.querySelector('.praxis-course-settings select');s.value=${JSON.stringify(String(size))};s.dispatchEvent(new Event('change',{bubbles:true}));}`);await delay(100);
+    for(const kind of ['reflection','refraction']){
+     const display=await evaluate(`async()=>{const r=document.querySelector('[data-huygens-kind=${kind}]');window.dispatchEvent(new CustomEvent('lesson:navigate',{detail:r.closest('.lesson-part-content').id}));await new Promise(q=>setTimeout(q,80));window.scrollTo(0,0);const b=r.getBoundingClientRect();return {kind:${JSON.stringify(kind)},bounds:{top:b.top,bottom:b.bottom,height:b.height},overflow:document.documentElement.scrollWidth>innerWidth+2,errors:r.querySelectorAll('.wave-math-error').length,controls:[...r.querySelectorAll('button,select,input')].filter(e=>e.checkVisibility()).map(e=>{const b=e.getBoundingClientRect();return {width:b.width,height:b.height};})};}`);
+     Object.assign(display,{width,height,dpr,size,language});result.huygensDisplay.push(display);
+     if(display.overflow||display.errors||display.controls.some(c=>c.width<43||c.height<43))throw Error('Huygens display: '+JSON.stringify(display));
+     if(width>=1366&&size===100&&display.bounds.bottom>height+1)throw Error('Huygens lesson does not fit the desktop screen: '+JSON.stringify(display));
+     if(width===1366&&size===100){const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,'huygens-'+kind+'.png'),Buffer.from(shot.data,'base64'));}
+    }
+   }
+   await send('Emulation.setDeviceMetricsOverride',{width:1366,height:768,deviceScaleFactor:1,mobile:false});
+   await evaluate(`()=>{const s=document.querySelector('.praxis-course-settings select');s.value='100';s.dispatchEvent(new Event('change',{bubbles:true}));}`);await delay(100);
+   await writeFile(path.join(root,'huygens.json'),JSON.stringify({controls:result.huygens,display:result.huygensDisplay},null,2));
+  }
   if(process.argv.includes('--water-orbits')&&id==='unde-mecanice'){
    result.waterOrbits=await evaluate(await readFile('scripts/qa/water-orbits.browser.js','utf8'));
    const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,'water-orbits.png'),Buffer.from(shot.data,'base64'));

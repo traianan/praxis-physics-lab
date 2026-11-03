@@ -1,0 +1,880 @@
+{
+  "checkedAt": "2026-11-03T18:39:04.995Z",
+  "tests": 352,
+  "controls": [
+    {
+      "kind": "reflection",
+      "first": 0,
+      "time": 0.024995296131775258,
+      "held": true,
+      "english": true,
+      "languageHeld": true,
+      "growing": 4,
+      "earlyFront": false,
+      "built": 9,
+      "tangencies": 8,
+      "incidentRays": 2,
+      "outgoingRays": 2,
+      "perpendicular": true,
+      "bounded": true,
+      "moved": true,
+      "replay": true,
+      "hiddenHeld": true,
+      "reset": true,
+      "bending": true,
+      "errors": 0,
+      "fractions": 0
+    },
+    {
+      "kind": "refraction",
+      "first": 0,
+      "time": 0.02765848791329873,
+      "held": true,
+      "english": true,
+      "languageHeld": true,
+      "growing": 4,
+      "earlyFront": false,
+      "built": 9,
+      "tangencies": 8,
+      "incidentRays": 2,
+      "outgoingRays": 2,
+      "perpendicular": true,
+      "bounded": true,
+      "moved": true,
+      "replay": true,
+      "hiddenHeld": true,
+      "reset": true,
+      "bending": true,
+      "errors": 0,
+      "fractions": 2
+    }
+  ],
+  "display": [
+    {
+      "kind": "reflection",
+      "bounds": {
+        "top": 295,
+        "bottom": 755.9375,
+        "height": 460.9375
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 260.171875,
+          "height": 44
+        },
+        {
+          "width": 260.1875,
+          "height": 44
+        },
+        {
+          "width": 528.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "size": 100,
+      "language": "ro"
+    },
+    {
+      "kind": "refraction",
+      "bounds": {
+        "top": 295,
+        "bottom": 767.703125,
+        "height": 472.703125
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 260.171875,
+          "height": 44
+        },
+        {
+          "width": 260.1875,
+          "height": 44
+        },
+        {
+          "width": 528.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 156.171875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 156.1875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "size": 100,
+      "language": "ro"
+    },
+    {
+      "kind": "reflection",
+      "bounds": {
+        "top": 276,
+        "bottom": 736.9375,
+        "height": 460.9375
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 260.171875,
+          "height": 44
+        },
+        {
+          "width": 260.1875,
+          "height": 44
+        },
+        {
+          "width": 528.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "size": 100,
+      "language": "en"
+    },
+    {
+      "kind": "refraction",
+      "bounds": {
+        "top": 295,
+        "bottom": 767.703125,
+        "height": 472.703125
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 260.171875,
+          "height": 44
+        },
+        {
+          "width": 260.1875,
+          "height": 44
+        },
+        {
+          "width": 528.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 156.171875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 156.1875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "size": 100,
+      "language": "en"
+    },
+    {
+      "kind": "reflection",
+      "bounds": {
+        "top": 295,
+        "bottom": 755.9375,
+        "height": 460.9375
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 260.171875,
+          "height": 44
+        },
+        {
+          "width": 260.1875,
+          "height": 44
+        },
+        {
+          "width": 528.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 1920,
+      "height": 1080,
+      "dpr": 2,
+      "size": 100,
+      "language": "en"
+    },
+    {
+      "kind": "refraction",
+      "bounds": {
+        "top": 295,
+        "bottom": 767.703125,
+        "height": 472.703125
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 260.171875,
+          "height": 44
+        },
+        {
+          "width": 260.1875,
+          "height": 44
+        },
+        {
+          "width": 528.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 156.171875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 156.1875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 1920,
+      "height": 1080,
+      "dpr": 2,
+      "size": 100,
+      "language": "en"
+    },
+    {
+      "kind": "reflection",
+      "bounds": {
+        "top": 295,
+        "bottom": 755.9375,
+        "height": 460.9375
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 260.171875,
+          "height": 44
+        },
+        {
+          "width": 260.1875,
+          "height": 44
+        },
+        {
+          "width": 528.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 3840,
+      "height": 2160,
+      "dpr": 1,
+      "size": 100,
+      "language": "ro"
+    },
+    {
+      "kind": "refraction",
+      "bounds": {
+        "top": 295,
+        "bottom": 767.703125,
+        "height": 472.703125
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 260.171875,
+          "height": 44
+        },
+        {
+          "width": 260.1875,
+          "height": 44
+        },
+        {
+          "width": 528.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 424.359375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 156.171875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 156.1875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 3840,
+      "height": 2160,
+      "dpr": 1,
+      "size": 100,
+      "language": "ro"
+    },
+    {
+      "kind": "reflection",
+      "bounds": {
+        "top": 292,
+        "bottom": 780.53125,
+        "height": 488.53125
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 209.71875,
+          "height": 44
+        },
+        {
+          "width": 209.71875,
+          "height": 44
+        },
+        {
+          "width": 427.4375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 323.4375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 323.4375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 1024,
+      "height": 768,
+      "dpr": 1.25,
+      "size": 100,
+      "language": "en"
+    },
+    {
+      "kind": "refraction",
+      "bounds": {
+        "top": 286,
+        "bottom": 794.125,
+        "height": 508.125
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 209.71875,
+          "height": 44
+        },
+        {
+          "width": 209.71875,
+          "height": 44
+        },
+        {
+          "width": 427.4375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 323.4375,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 105.71875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 105.71875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 1024,
+      "height": 768,
+      "dpr": 1.25,
+      "size": 100,
+      "language": "en"
+    },
+    {
+      "kind": "reflection",
+      "bounds": {
+        "top": 542.78125,
+        "bottom": 1539.671875,
+        "height": 996.890625
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 154.5,
+          "height": 44
+        },
+        {
+          "width": 154.5,
+          "height": 44
+        },
+        {
+          "width": 317,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 213,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 213,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 390,
+      "height": 844,
+      "dpr": 3,
+      "size": 100,
+      "language": "ro"
+    },
+    {
+      "kind": "refraction",
+      "bounds": {
+        "top": 540.78125,
+        "bottom": 1678.53125,
+        "height": 1137.75
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 154.5,
+          "height": 44
+        },
+        {
+          "width": 154.5,
+          "height": 44
+        },
+        {
+          "width": 317,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 213,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 213,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 213,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "width": 390,
+      "height": 844,
+      "dpr": 3,
+      "size": 100,
+      "language": "ro"
+    },
+    {
+      "kind": "reflection",
+      "bounds": {
+        "top": 453.1875,
+        "bottom": 1896.359375,
+        "height": 1443.171875
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 634.5,
+          "height": 57.1875
+        },
+        {
+          "width": 634.5,
+          "height": 57.1875
+        },
+        {
+          "width": 633.5,
+          "height": 57
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        },
+        {
+          "width": 529.5,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        },
+        {
+          "width": 1173,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        }
+      ],
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "size": 200,
+      "language": "ro"
+    },
+    {
+      "kind": "refraction",
+      "bounds": {
+        "top": 451.1875,
+        "bottom": 1969.8125,
+        "height": 1518.625
+      },
+      "overflow": false,
+      "errors": 0,
+      "controls": [
+        {
+          "width": 634.5,
+          "height": 57.1875
+        },
+        {
+          "width": 634.5,
+          "height": 57.1875
+        },
+        {
+          "width": 633.5,
+          "height": 57
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        },
+        {
+          "width": 529.5,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        },
+        {
+          "width": 530.5,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        },
+        {
+          "width": 530.5,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 57.1875
+        }
+      ],
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "size": 200,
+      "language": "ro"
+    }
+  ]
+}

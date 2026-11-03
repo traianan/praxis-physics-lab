@@ -6,6 +6,7 @@ const mathProse=readFileSync(new URL('./waves-math-prose.js',import.meta.url),'u
 const tsunamiComponent=readFileSync(new URL('./waves-tsunami-component.js',import.meta.url),'utf8');
 const foundationComponent=readFileSync(new URL('./waves-foundations-component.js',import.meta.url),'utf8');
 const stringComponent=readFileSync(new URL('./waves-string-component.js',import.meta.url),'utf8');
+const huygensComponent=readFileSync(new URL('./waves-huygens-component.js',import.meta.url),'utf8');
 export const textbookTranslations = {
  'Unde staționare într-o coardă elastică':'Standing waves on an elastic string',
  'Reflexia la capăt fix sau liber':'Reflection at a fixed or free end',
@@ -25,6 +26,7 @@ export const textbookTranslations = {
  'Undă longitudinală într-o bară elastică subțire: v_l = √(E/ρ)':'Longitudinal wave in a slender elastic rod: v_l = √(E/ρ)'
 };
 const text = (ro, en) => { if(en!==undefined)textbookTranslations[ro]=en;else if(!Object.hasOwn(textbookTranslations,ro))textbookTranslations[ro]=ro;return JSON.stringify(ro); };
+Object.assign(textbookTranslations,JSON.parse(readFileSync(new URL('./waves-huygens-translations.json',import.meta.url),'utf8')));
 const p = (ro,en) => `t("p",{children:${text(ro,en)}})`;
 const h = (ro,en) => `t("h4",{className:"mt-6 font-bold",children:${text(ro,en)}})`;
 const formula = ro => {
@@ -123,6 +125,8 @@ export function adaptWaveTextbook(html, reverse=false) {
   if(start<0||end<0)throw Error('Missing textbook section '+id);
   replace(html.slice(start,end),after);
  }
+ replace('t(dm,{}),t("h4",{className:"font-bold mt-6",children:"Capăt FIX vs LIBER – coeficient reflexie"})','t(dm,{}),'+h('Reflexia prin principiul lui Huygens','Reflection using Huygens’s principle')+',t(LessonHuygensBoundary,{kind:"reflection"}),'+h('Refracția prin principiul lui Huygens','Refraction using Huygens’s principle')+',t(LessonHuygensBoundary,{kind:"refraction"}),t("h4",{className:"font-bold mt-6",children:"Capăt FIX vs LIBER – coeficient reflexie"})');
+ replace("if(term.term==='Difracție')return 'reflexie-content-3';","if(term.term==='Difracție')return 'reflexie-content-5';");
  const proseStart=html.indexOf('function lessonMath(value){'),proseEnd=html.indexOf('function lessonJsx(',proseStart);
  replace(html.slice(proseStart,proseEnd),mathProse+'\n');
  const waterStart=html.indexOf('function Em(){'),waterEnd=html.indexOf('function ',waterStart+12),waterOriginal=html.slice(waterStart,waterEnd);
@@ -159,7 +163,7 @@ export function adaptWaveTextbook(html, reverse=false) {
   ['`vf = ω/k = v = ${2 .toFixed(2)} m/s, Δφ=kΔx=${U.toFixed(2)} rad=${(U*180/Math.PI).toFixed(0)}°`','`v_f = λ/T = ${2 .toFixed(2)} m/s; |Δφ| = 2π|Δx|/λ = ${Math.abs(U).toFixed(2)} rad = ${(Math.abs(U)*180/Math.PI).toFixed(0)}°`'],
   ['"φ(x,t)=ωt-kx, v_f = ω/k = "','"v_f = λ/T = "'],
   ['" m/s, Δφ = k·(x₂-x₁) = ",U.toFixed(3)','" m/s; |Δφ| = ",Math.abs(U).toFixed(3)'],
-  ['function ie({id,title,children}){',mathComponents+foundationComponent+stringComponent+`function LessonTextbookLayout({items}){
+  ['function ie({id,title,children}){',mathComponents+foundationComponent+stringComponent+huygensComponent+`function LessonTextbookLayout({items}){
  const demos=[um,Em,om,_m,tm,Um,im,LessonWaveFoundations,LessonWavePropagation],notes=[],formulas=[],experiments=[];
  for(const item of items){if(item?.type==='h4')continue;if(demos.includes(item?.type))experiments.push(item);else if(item?.type===Me||item?.type===LessonFormulaBox)formulas.push(item);else notes.push(item);}
  return f('div',{className:'wave-textbook-page'+(experiments.length?'':' wave-textbook-reading'),'data-textbook-water':experiments.some(item=>item.type===Em)?'':undefined,children:[

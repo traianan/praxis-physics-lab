@@ -1,0 +1,38 @@
+.huygens-boundary{container-type:inline-size}
+.huygens-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(17rem,1fr);gap:16px;align-items:start;max-width:72rem;margin-inline:auto}
+.huygens-figure{margin:0;min-width:0;max-width:36rem}
+.huygens-pan{overflow:auto;max-width:100%;border-radius:12px}
+.huygens-figure svg{display:block;width:100%;min-width:36rem;height:auto;border:1px solid var(--border,#d4ded4);border-radius:12px}
+.huygens-figure svg text{font:16px system-ui,sans-serif}
+.huygens-figure svg text:not([fill]){fill:#253f4b}
+.huygens-figure svg .huygens-angle{font:italic 19px Georgia,serif}
+.huygens-figure svg .huygens-caption{font-size:12px}
+.huygens-figure figcaption{font-size:.875rem;line-height:1.4;margin-top:6px}
+.huygens-definition{display:block;margin-bottom:3px}
+.huygens-pan-hint{display:none;margin-top:3px;color:var(--muted,#526970)}
+.huygens-controls{display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:7px;min-width:0;margin-top:0}
+.huygens-controls label{display:flex;flex-direction:column;flex:0 0 auto;min-width:0;max-width:none;font-size:.875rem;line-height:1.4;gap:2px}
+body[data-praxis-course=unde-mecanice] #praxis-original .huygens-controls label:has(>.praxis-range-stepper){flex:0 0 auto;width:100%;max-width:none}
+.huygens-parameters{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:8px;grid-column:1/-1}
+.huygens-parameters label>.praxis-range-stepper{margin-top:auto}
+.huygens-controls select{width:100%;min-height:44px}
+.huygens-transport{display:flex;gap:8px}
+.huygens-transport button{min-height:44px;flex:1}
+.huygens-controls input[type=range]{min-height:44px;width:100%;min-width:0}
+.huygens-step-text{font-size:.94rem;line-height:1.45;margin:2px 0;min-height:4.3em}
+.huygens-law{display:flex;flex-wrap:wrap;gap:5px 14px;align-items:center;padding:8px 10px;background:var(--formula-bg,#ebf2e8);border-radius:8px;font-size:.9rem}
+.huygens-law>span:last-child:not(:first-child){line-height:1.4}
+.huygens-proof{margin-top:8px;font-size:.94rem;line-height:1.5}
+.huygens-proof summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
+.huygens-proof summary::before{content:'▸';margin-right:.45em}
+.huygens-proof[open] summary::before{content:'▾'}
+.huygens-proof p{margin:.5em 0}
+body[data-praxis-course=unde-mecanice] #reflexie>.lesson-parts{display:none}
+#reflexie>.wave-part-choice{display:flex;grid-column:2;grid-row:1;align-items:center;gap:8px;margin:0;min-width:0}
+#reflexie>.wave-part-choice>span{font-weight:600;color:var(--muted)}
+#reflexie>.wave-part-choice select{min-height:44px;min-width:0;max-width:100%;font:inherit;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:var(--praxis-radius-control);padding:6px 10px}
+#reflexie>.lesson-part-content:has(>.huygens-boundary)>h4{display:none}
+@media(max-width:760px){#reflexie>.wave-part-choice{flex-wrap:wrap}#reflexie>.wave-part-choice select{flex:1 1 100%}}
+@container (max-width:48rem){.huygens-grid{grid-template-columns:minmax(0,1fr)}.huygens-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.huygens-transport,.huygens-step-text,.huygens-law{grid-column:1/-1}.huygens-figure{width:100%;max-width:640px;margin-inline:auto}}
+@container (max-width:28rem){.huygens-controls{grid-template-columns:minmax(0,1fr)}}
+@container (max-width:36rem){.huygens-pan-hint{display:block}}
