@@ -96,6 +96,24 @@ function render(kind,{params={},english=false,running=false,active=true,hidden=f
 function nodes(tree){if(Array.isArray(tree))return tree.flatMap(nodes);if(!tree||typeof tree!=='object')return[];return[tree,...nodes(tree.props?.children)];}
 function words(tree){if(Array.isArray(tree))return tree.map(words).join(' ');if(tree&&typeof tree==='object')return words(tree.props.children);return tree==null?'':String(tree);}
 
+test('reflection phase and equivalent path are visible for both ends and are distinct from the spatial midpoint',()=>{
+ for(const kind of ['reflection','standing'])for(const right of ['fixed','free']){
+  const children=nodes(render(kind,{params:{right}}).tree);
+  const fixed=children.find(n=>n.props?.['data-string-reflection-case']==='fixed');
+  const free=children.find(n=>n.props?.['data-string-reflection-case']==='free');
+  assert.ok(fixed&&free,'both endpoint cases must be in the primary view');
+  assert.match(words(fixed),/Δφ = π rad/);assert.match(words(fixed),/Δs = λ\/2/);
+  assert.match(words(free),/Δφ = 0 rad/);assert.match(words(free),/Δs = 0λ/);
+  assert.equal(fixed.props['data-selected'],String(right==='fixed'));
+  assert.equal(free.props['data-selected'],String(right==='free'));
+  const midpoint=children.find(n=>n.props?.['data-string-coordinate']==='midpoint');
+  assert.match(midpoint.props['aria-label'],/x = L\/2: mijlocul corzii/);
+  assert.match(words(midpoint),/mijlocul corzii/);
+  const disclosureNodes=children.filter(n=>n.type==='details').flatMap(nodes);
+  assert.ok(!disclosureNodes.includes(fixed)&&!disclosureNodes.includes(free));
+ }
+});
+
 test('React void controls receive no children property',()=>{
  for(const kind of ['reflection','standing'])for(const input of nodes(render(kind).tree).filter(n=>n.type==='input'))assert.equal(Object.hasOwn(input.props,'children'),false);
 });

@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-03T14:57:21.946Z",
+  "builtAt": "2026-11-03T15:30:41.356Z",
   "courses": [
     {
       "id": "motoare-termice",
@@ -49,17 +49,6 @@
       "id": "calcul-vectorial",
       "file": "public/simulari/calcul-vectorial/calcul-vectorial.zip",
       "sha256": "6cbfe0734d294569ea2b248b45c8b39ae548d9812a309d1413695cd065461af5",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
-      "id": "unde-mecanice",
-      "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
-      "sha256": "c60391ff8df7635803f71e12f334b372546b5dd1b4fcec3dd0c1532ae5363acf",
       "languages": [
         "ro",
         "en"
@@ -192,6 +181,17 @@
       "id": "figuri-chladni",
       "file": "public/simulari/figuri-chladni/figuri-chladni.zip",
       "sha256": "8d37f9270b3867572575c71d45a824c9f5d63b39bc05d2c17d2db38cbcbba735",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "unde-mecanice",
+      "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
+      "sha256": "bd5020b0f31ae2fd04a8d7a4330ef268d7a6e9d739ee36d72f8d71822668e620",
       "languages": [
         "ro",
         "en"

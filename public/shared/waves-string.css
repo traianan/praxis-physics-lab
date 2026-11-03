@@ -35,6 +35,10 @@ html.dark .wave-string{--string-incident:#93c5fd;--string-reflected:#fcd34d;--st
 .string-readout{display:flex;flex-wrap:wrap;gap:.25rem .8rem;font-size:1rem;line-height:1.5;}
 .string-equations{display:flex;flex-direction:column;gap:.25rem;font-size:1rem;line-height:1.5;margin-top:.4rem;}
 .string-note{font-size:1rem;line-height:1.45;margin:.1rem 0 0;}
+.string-reflection-phase{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin:.25rem 0;font-size:1rem;line-height:1.45}
+.string-reflection-phase>[data-string-reflection-case]{display:flex;flex-wrap:wrap;align-items:center;gap:.2rem .6rem;padding:.25rem .5rem;border:1px solid var(--border,#cbd5e1);border-radius:.4rem;min-width:0}
+.string-reflection-phase>[data-selected=true]{border-color:var(--string-sum);background:var(--formula-bg,#edf3e9)}
+.string-reflection-phase>.string-note{flex-basis:100%}
 .wave-string{margin:0!important;}
 .string-explanation>summary{min-height:44px;box-sizing:border-box;padding:.5rem 0;font-size:1rem;line-height:1.4;cursor:pointer;}
 .string-controls :focus-visible,.string-actions :focus-visible,.string-diagram-scroll:focus-visible{outline:3px solid var(--string-sum);outline-offset:2px;}

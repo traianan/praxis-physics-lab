@@ -521,6 +521,12 @@
     "Protocol general laborator avansat: 1) Sonometru: verifică liniaritatea f": "Protocol general laborator avansat: 1) Sonometru: verifică liniaritatea f",
     "în funcție de T; panta p = 1/(4μL": "în funcție de T; panta p = 1/(4μL",
     "). 2) Kundt: caută rezonanța, măsoară d=λ/2 și folosește v=2df. 3) Osciloscop: estimează 440 Hz prin autocorelare. 4) Seismic: declanșează evenimentul schematic, măsoară Δt și estimează distanța hipocentrală dₕ=Δt·vP·vS/(vP−vS), în modelul cu viteze constante. Observă că undele S nu se propagă prin lichid; triangulează epicentrul cu trei stații și adâncime focală cunoscută.": "). 2) Kundt: caută rezonanța, măsoară d=λ/2 și folosește v=2df. 3) Osciloscop: estimează 440 Hz prin autocorelare. 4) Seismic: declanșează evenimentul schematic, măsoară Δt și estimează distanța hipocentrală dₕ=Δt·vP·vS/(vP−vS), în modelul cu viteze constante. Observă că undele S nu se propagă prin lichid; triangulează epicentrul cu trei stații și adâncime focală cunoscută.",
-    "P reproduce oscilația sursei la timpul t − τ. Simularea arată regimul armonic deja stabilit. Dacă sursa pornește la t = 0, P rămâne în repaus până la sosirea undei, la t = τ.": "P reproduce oscilația sursei la timpul t − τ. Simularea arată regimul armonic deja stabilit. Dacă sursa pornește la t = 0, P rămâne în repaus până la sosirea undei, la t = τ."
+    "P reproduce oscilația sursei la timpul t − τ. Simularea arată regimul armonic deja stabilit. Dacă sursa pornește la t = 0, P rămâne în repaus până la sosirea undei, la t = τ.": "P reproduce oscilația sursei la timpul t − τ. Simularea arată regimul armonic deja stabilit. Dacă sursa pornește la t = 0, P rămâne în repaus până la sosirea undei, la t = τ.",
+    "x = L/2: mijlocul corzii": "x = L/2: mijlocul corzii",
+    "mijlocul corzii": "mijlocul corzii",
+    "Saltul de fază la reflexie și drumul echivalent": "Saltul de fază la reflexie și drumul echivalent",
+    "Capăt fix: inversare": "Capăt fix: inversare",
+    "Capăt liber: fără inversare": "Capăt liber: fără inversare",
+    "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.": "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls."
   }
 }

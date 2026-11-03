@@ -521,6 +521,12 @@
     "Protocol general laborator avansat: 1) Sonometru: verifică liniaritatea f": "General advanced-laboratory protocol: 1) Sonometer: check f",
     "în funcție de T; panta p = 1/(4μL": "versus T linearity; slope p = 1/(4μL",
     "). 2) Kundt: caută rezonanța, măsoară d=λ/2 și folosește v=2df. 3) Osciloscop: estimează 440 Hz prin autocorelare. 4) Seismic: declanșează evenimentul schematic, măsoară Δt și estimează distanța hipocentrală dₕ=Δt·vP·vS/(vP−vS), în modelul cu viteze constante. Observă că undele S nu se propagă prin lichid; triangulează epicentrul cu trei stații și adâncime focală cunoscută.": "). 2) Kundt: find resonance, measure d=λ/2 and use v=2df. 3) Oscilloscope: estimate 440 Hz by autocorrelation. 4) Seismic: trigger the schematic event, measure Δt and estimate hypocentral distance dₕ=Δt·vP·vS/(vP−vS) in the constant-speed model. Observe that S waves do not propagate through liquid; triangulate the epicentre with three stations and known focal depth.",
-    "P reproduce oscilația sursei la timpul t − τ. Simularea arată regimul armonic deja stabilit. Dacă sursa pornește la t = 0, P rămâne în repaus până la sosirea undei, la t = τ.": "P reproduces the source oscillation at time t − τ. The simulation shows an established harmonic wave. If the source starts at t = 0, P remains at rest until the wave arrives at t = τ."
+    "P reproduce oscilația sursei la timpul t − τ. Simularea arată regimul armonic deja stabilit. Dacă sursa pornește la t = 0, P rămâne în repaus până la sosirea undei, la t = τ.": "P reproduces the source oscillation at time t − τ. The simulation shows an established harmonic wave. If the source starts at t = 0, P remains at rest until the wave arrives at t = τ.",
+    "x = L/2: mijlocul corzii": "x = L/2: midpoint of the string",
+    "mijlocul corzii": "midpoint of the string",
+    "Saltul de fază la reflexie și drumul echivalent": "Reflection phase shift and equivalent path",
+    "Capăt fix: inversare": "Fixed end: inversion",
+    "Capăt liber: fără inversare": "Free end: no inversion",
+    "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.": "For a harmonic component: Δs is the phase-equivalent path, not an extra distance travelled by the pulse."
   }
 }

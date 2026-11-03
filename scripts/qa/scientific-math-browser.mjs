@@ -6,7 +6,8 @@ import {createServer} from '../serve.mjs';
 const root=path.resolve('D:/ProiecteAI/tmp/global-math'),port=9331;
 await mkdir(root,{recursive:true});
 const server=createServer();await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
-const base='http://127.0.0.1:'+server.address().port;
+const requestedBase=process.argv.find(a=>a.startsWith('--base='))?.slice(7);
+const base=requestedBase?new URL(requestedBase).href.replace(/\/$/,''):'http://127.0.0.1:'+server.address().port;
 const chrome=spawn('C:/Program Files/Google/Chrome/Application/chrome.exe',[
  '--headless=new','--disable-gpu','--no-first-run','--no-default-browser-check','--disable-background-networking',
  '--user-data-dir='+path.join(root,'profile'), '--remote-debugging-port='+port,'about:blank'
@@ -43,6 +44,21 @@ try{
   const result=await evaluate(`()=>({id:${JSON.stringify(id)},url:location.href,ready:document.readyState,title:document.title,api:!!window.PraxisMath,math:document.querySelectorAll('.science-math').length,errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,tabs:[...document.querySelectorAll('#praxis-original [role=tab],#praxis-original button[data-tab],#praxis-original .tabs a')].map(e=>({text:e.textContent.trim(),id:e.id,tab:e.dataset.tab,href:e.getAttribute('href')}))})`);
   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
   results.push(result);console.log(JSON.stringify(result));
+  if(process.argv.includes('--string-phase')&&id==='unde-mecanice'){
+   result.phase=await evaluate(`async()=>{
+    const sleep=ms=>new Promise(r=>setTimeout(r,ms));location.hash='stationare-content-0';await sleep(150);
+    const root=()=>[...document.querySelectorAll('[data-string-kind=reflection]')].find(e=>e.checkVisibility());const probes=[];
+    for(const right of ['fixed','free']){
+     const select=root().querySelector('select');Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,right);select.dispatchEvent(new Event('change',{bubbles:true}));await sleep(80);
+     const cases=[...root().querySelectorAll('[data-string-reflection-case]')];const fixed=cases.find(e=>e.dataset.stringReflectionCase==='fixed'),free=cases.find(e=>e.dataset.stringReflectionCase==='free');
+     const box=root().querySelector('.string-reflection-phase').getBoundingClientRect();
+     probes.push({right,bothVisible:cases.length===2&&cases.every(e=>e.checkVisibility()&&!e.closest('details')),selected:root().querySelector('[data-string-reflection-case][data-selected=true]')?.dataset.stringReflectionCase===right,fixedPhase:fixed.textContent.includes('π')&&!!fixed.querySelector('mfrac'),freePhase:free.textContent.includes('0λ'),midpoint:root().querySelector('[data-string-coordinate=midpoint]')?.textContent.includes('mijlocul corzii'),panel:{top:box.top,bottom:box.bottom,height:box.height},errors:document.querySelectorAll('.wave-math-error').length});
+    }
+    const before=root().dataset.stringTime;await PraxisI18n.setLanguage('en');await sleep(80);const translated=root().querySelector('.string-reflection-phase').textContent.includes('Fixed end: inversion')&&root().querySelector('[data-string-coordinate=midpoint]').textContent.includes('midpoint of the string');await PraxisI18n.setLanguage('ro');return {probes,translated,timePreserved:root().dataset.stringTime===before};
+   }`);
+   console.log(JSON.stringify({phase:result.phase}));
+   if(!result.phase.translated||!result.phase.timePreserved||result.phase.probes.some(p=>!p.bothVisible||!p.selected||!p.fixedPhase||!p.freePhase||!p.midpoint||p.errors))throw Error('String phase audit failed');
+  }
   if(motionControls&&id==='miscarea-rectilinie'){
    result.controls=[];
    for(const kind of ['unif','acc','inc','var']){

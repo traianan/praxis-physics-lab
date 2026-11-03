@@ -38,7 +38,11 @@ function LessonStringWaves({kind}){
   el('desc',{id:id+'-desc'},[tr(standing?'Capătul stâng este fix. Nodurile au elongație permanent nulă, iar ventrele au amplitudinea 2A.':'Sunt afișate cele două componente de propagare și suma lor. La capăt fix impulsul se inversează; la capăt liber se reflectă fără inversare.')]),
   line(start-25,axis-75,start-25,axis+75,{className:'string-axis'}),line(start-25,axis,end+12,axis,{className:'string-axis'}),
   label(start-40,axis-79,'y'),label(start-45,Y(2*p.A)+6,'2A'),label(start-49,Y(-2*p.A)+6,'−2A'),
-  label(start,246,'0',{textAnchor:'middle'}),label(X(p.L/2),232,'L',{textAnchor:'middle'}),line(X(p.L/2)-8,237,X(p.L/2)+8,237,{className:'string-axis'}),label(X(p.L/2),256,'2',{textAnchor:'middle'}),label(end,246,'L',{textAnchor:'middle'}),label(end+17,axis+22,'x'),
+  label(start,246,'0',{textAnchor:'middle'}),
+  el('g',{'data-string-coordinate':'midpoint','aria-label':tr('x = L/2: mijlocul corzii')},[
+   label(X(p.L/2)-30,246,'x =',{textAnchor:'end'}),label(X(p.L/2),232,'L',{textAnchor:'middle'}),line(X(p.L/2)-8,237,X(p.L/2)+8,237,{className:'string-axis'}),label(X(p.L/2),256,'2',{textAnchor:'middle'}),
+   label(X(p.L/2)+20,246,tr('mijlocul corzii'),{fontSize:16})
+  ]),label(end,246,'L',{textAnchor:'middle'}),label(end+17,axis+22,'x'),
   line(X(p.L/2),axis-4,X(p.L/2),axis+4,{className:'string-axis'}),
   el('rect',{x:start-12,y:axis-60,width:12,height:120,className:'string-support'}),
   ...Array.from({length:7},(_,i)=>line(start-22,axis-57+i*18,start-12,axis-65+i*18,{className:'string-support-hatch'}))
@@ -98,6 +102,13 @@ function LessonStringWaves({kind}){
      standing&&math('λₙ = '+info.wavelength.toFixed(3)+' m ; νₙ = '+info.frequency.toFixed(2)+' Hz ; T = '+(1/info.frequency).toFixed(4)+' s'),
     ])
    ])
+  ]),
+  el('div',{className:'string-reflection-phase','aria-label':tr('Saltul de fază la reflexie și drumul echivalent')},[
+   ...['fixed','free'].map(right=>el('div',{'data-string-reflection-case':right,'data-selected':String(p.right===right)},[
+    el('strong',{},[tr(right==='fixed'?'Capăt fix: inversare':'Capăt liber: fără inversare')]),
+    math(right==='fixed'?'R = −1 ; Δφ = π rad ; Δs = λ/2':'R = +1 ; Δφ = 0 rad ; Δs = 0λ')
+   ])),
+   el('p',{className:'string-note'},[tr('Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.')])
   ]),
   el('p',{className:'string-note'},[tr('Capăt fix: nod și reflexie cu inversare. Capăt liber: ventru în modul staționar și reflexie fără inversare.')]),
   el('p',{className:'string-note'},[tr(standing?'Animație încetinită: fundamentala se vede la 0,2 Hz. Citirile indică frecvența și timpul fizic.':'Animație încetinită: o traversare L/v_f durează 1,5 s pe ecran. Sliderul acoperă patru traversări; timpul afișat este timpul fizic.')]),
