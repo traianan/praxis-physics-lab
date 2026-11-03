@@ -61,6 +61,10 @@ body[data-praxis-laboratory] #praxis-original :is(.model-note,.demo-hint,.sec-le
 .science-math math{font-size:1em}
 .science-script{display:inline-block;vertical-align:baseline;white-space:nowrap}
 .science-script math{font-size:1em}
+.science-math .wave-script{display:inline;white-space:nowrap}
+.science-math .wave-script :is(sub,sup){position:static!important;line-height:0!important;font-size:.75em!important;bottom:auto!important;top:auto!important}
+.science-math .wave-script sub{vertical-align:sub!important}
+.science-math .wave-script sup{vertical-align:super!important}
 .science-math-error{border-bottom:2px solid var(--danger,#b54d45)}
 [data-science-math=tex]{overflow-x:auto;overflow-y:hidden;padding-block:.2em}
 

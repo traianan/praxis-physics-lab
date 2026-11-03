@@ -1,6 +1,6 @@
 // Local Chrome, private profile, built-in CDP client. No additional packages.
 import {spawn} from 'node:child_process';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {createServer} from '../serve.mjs';
 const root=path.resolve('D:/ProiecteAI/tmp/global-math'),port=9331;
@@ -25,7 +25,8 @@ try{
  await send('Page.addScriptToEvaluateOnNewDocument',{source:`
  window.__mutationAudit=[];const NativeObserver=MutationObserver;
  window.__canvasAudit=[];const nativeFillText=CanvasRenderingContext2D.prototype.fillText;
- CanvasRenderingContext2D.prototype.fillText=function(text,...args){if(/\\bNaN\\b|undefined/.test(String(text))&&!window.__canvasAudit.includes(String(text))&&window.__canvasAudit.length<20)window.__canvasAudit.push(String(text));return nativeFillText.call(this,text,...args);};
+ window.__canvasIndices=[];
+ CanvasRenderingContext2D.prototype.fillText=function(text,...args){if(/\\bNaN\\b|undefined/.test(String(text))&&!window.__canvasAudit.includes(String(text))&&window.__canvasAudit.length<20)window.__canvasAudit.push(String(text));if(/(?<![\\p{L}\\p{N}_])[A-Za-zΑ-ω]_(?:\\{[^}]+\\}|[\\p{L}\\p{N}]+)/u.test(String(text))&&!window.__canvasIndices.includes(String(text))&&window.__canvasIndices.length<50)window.__canvasIndices.push(String(text));return nativeFillText.call(this,text,...args);};
  window.MutationObserver=class extends NativeObserver{constructor(fn){const stack=new Error().stack;let count=0,start=performance.now();super((records,observer)=>{const now=performance.now();if(now-start>100){count=0;start=now;}if(++count>600){window.__mutationAudit.push({stack,targets:records.slice(0,4).map(r=>({tag:r.target.nodeName,cls:r.target.className}))});observer.disconnect();return;}fn(records,observer);});}};
  try{localStorage.setItem('praxis-privacy-choice-v1',JSON.stringify({version:1,value:'necessary',time:Date.now()}));localStorage.setItem('praxis-language','ro');localStorage.setItem('praxis-course-text-size','100');}catch{}
  `});
@@ -33,7 +34,8 @@ try{
  const ids=['calcul-vectorial','calorimetrie','compunerea-oscilatiilor','figuri-chladni','interactii-atomice','miscarea-circulara-uniforma','miscarea-curbilinie-plana','miscarea-rectilinie','motoare-termice','notiuni-termodinamice','oglinzi-si-lentile','oscilator-mecanic','oscilatori-mecanici-cuplati','principiile-mecanicii-newtoniene','principiul-i-al-termodinamicii','principiul-i-aplicatii','transformari-stare-agregare','unde-mecanice','viteza-si-acceleratia'];
  const only=process.argv.find(a=>a.startsWith('--course='))?.split('=')[1];
  const motionControls=process.argv.includes('--motion-controls');
- const thorough=process.argv.includes('--matrix');
+ const indexAudit=process.argv.includes('--indices'),thorough=process.argv.includes('--matrix');
+ const indexProbe=indexAudit?await readFile('scripts/qa/visible-indices.browser.js','utf8'):null;
  const inspect=`()=>({errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),canvas:window.__canvasAudit,overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,math:document.querySelectorAll('math,.fraction,.frac').length})`;
  const results=[];
  for(const id of ids.filter(id=>!only||id===only)){
@@ -44,6 +46,28 @@ try{
   const result=await evaluate(`()=>({id:${JSON.stringify(id)},url:location.href,ready:document.readyState,title:document.title,api:!!window.PraxisMath,math:document.querySelectorAll('.science-math').length,errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,tabs:[...document.querySelectorAll('#praxis-original [role=tab],#praxis-original button[data-tab],#praxis-original .tabs a')].map(e=>({text:e.textContent.trim(),id:e.id,tab:e.dataset.tab,href:e.getAttribute('href')}))})`);
   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
   results.push(result);console.log(JSON.stringify(result));
+  if(indexAudit){
+   result.indices=[];
+   for(const language of ['ro','en']){
+    await evaluate(`async()=>await PraxisI18n.setLanguage(${JSON.stringify(language)})`);await delay(80);
+    const sections=await evaluate(`()=>[...document.querySelectorAll('.praxis-course-sections option')].map(e=>e.value)`);
+    for(const section of sections.length?sections:['initial']){
+     if(section!=='initial')await evaluate(`()=>{const s=document.querySelector('.praxis-course-sections');s.value=${JSON.stringify(section)};s.dispatchEvent(new Event('change',{bubbles:true}));}`);await delay(70);
+     await evaluate(`()=>document.querySelectorAll('#praxis-original details').forEach(e=>e.open=true)`);await delay(40);
+     result.indices.push({language,section,findings:await evaluate(indexProbe)});
+     const activities=await evaluate(`()=>[...document.querySelectorAll('.praxis-workspace-activities button')].map((e,i)=>({i,visible:e.checkVisibility()})).filter(e=>e.visible).map(e=>e.i)`);
+     for(const activity of activities){await evaluate(`()=>document.querySelectorAll('.praxis-workspace-activities button')[${activity}].click()`);await delay(50);result.indices.push({language,section,activity,findings:await evaluate(indexProbe)});}
+    }
+    if(id==='unde-mecanice'){
+     const hashes=['clasificare-content-0','clasificare-content-1','marimi-content-0','marimi-content-1','marimi-content-2','marimi-content-3','marimi-content-4','marimi-content-5','marimi-content-6','ecuatia-content-0','ecuatia-content-1','ecuatia-content-2','reflexie-content-0','reflexie-content-1','reflexie-content-2','reflexie-content-3','reflexie-content-4','stationare-content-0','stationare-content-1','laborator-content-1','rezonanta-cladiri-content-1'];
+     for(const hash of hashes){await evaluate(`()=>location.hash=${JSON.stringify(hash)}`);await delay(70);result.indices.push({language,section:hash,findings:await evaluate(indexProbe)});}
+    }
+   }
+   result.canvasIndices=await evaluate('()=>window.__canvasIndices');
+   result.indexRuntime=await evaluate(inspect);
+   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
+   console.log(JSON.stringify({id,indices:result.indices,canvasIndices:result.canvasIndices}));
+  }
   if(process.argv.includes('--string-phase')&&id==='unde-mecanice'){
    result.phase=await evaluate(`async()=>{
     const sleep=ms=>new Promise(r=>setTimeout(r,ms));location.hash='stationare-content-0';await sleep(150);
@@ -54,10 +78,12 @@ try{
      const box=root().querySelector('.string-reflection-phase').getBoundingClientRect();
      probes.push({right,bothVisible:cases.length===2&&cases.every(e=>e.checkVisibility()&&!e.closest('details')),selected:root().querySelector('[data-string-reflection-case][data-selected=true]')?.dataset.stringReflectionCase===right,fixedPhase:fixed.textContent.includes('π')&&!!fixed.querySelector('mfrac'),freePhase:free.textContent.includes('0λ'),midpoint:root().querySelector('[data-string-coordinate=midpoint]')?.textContent.includes('mijlocul corzii'),panel:{top:box.top,bottom:box.bottom,height:box.height},errors:document.querySelectorAll('.wave-math-error').length});
     }
-    const before=root().dataset.stringTime;await PraxisI18n.setLanguage('en');await sleep(80);const translated=root().querySelector('.string-reflection-phase').textContent.includes('Fixed end: inversion')&&root().querySelector('[data-string-coordinate=midpoint]').textContent.includes('midpoint of the string');await PraxisI18n.setLanguage('ro');return {probes,translated,timePreserved:root().dataset.stringTime===before};
+    const script=[...root().querySelectorAll('.string-note .wave-script')].find(e=>e.firstChild?.textContent==='v'&&e.querySelector('sub')?.textContent==='f');let noteIndex=false;
+    if(script){const range=document.createRange();range.selectNodeContents(script.firstChild);const base=range.getBoundingClientRect(),sub=script.querySelector('sub').getBoundingClientRect();noteIndex=sub.top>base.top&&sub.height<base.height&&sub.left>=base.right-1;}
+    const before=root().dataset.stringTime;await PraxisI18n.setLanguage('en');await sleep(80);const translated=root().querySelector('.string-reflection-phase').textContent.includes('Fixed end: inversion')&&root().querySelector('[data-string-coordinate=midpoint]').textContent.includes('midpoint of the string');await PraxisI18n.setLanguage('ro');return {probes,translated,noteIndex,timePreserved:root().dataset.stringTime===before};
    }`);
    console.log(JSON.stringify({phase:result.phase}));
-   if(!result.phase.translated||!result.phase.timePreserved||result.phase.probes.some(p=>!p.bothVisible||!p.selected||!p.fixedPhase||!p.freePhase||!p.midpoint||p.errors))throw Error('String phase audit failed');
+   if(!result.phase.translated||!result.phase.noteIndex||!result.phase.timePreserved||result.phase.probes.some(p=>!p.bothVisible||!p.selected||!p.fixedPhase||!p.freePhase||!p.midpoint||p.errors))throw Error('String phase audit failed');
   }
   if(motionControls&&id==='miscarea-rectilinie'){
    result.controls=[];
@@ -118,10 +144,10 @@ try{
   }
   if(only){const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,id+'.png'),Buffer.from(shot.data,'base64'));}
  }
- await writeFile(path.join(root,(thorough?'browser-matrix':'browser-baseline')+(only?'-'+only:'')+'.json'),JSON.stringify(results,null,2));
+ await writeFile(path.join(root,(indexAudit?'browser-indices':thorough?'browser-matrix':'browser-baseline')+(only?'-'+only:'')+'.json'),JSON.stringify(results,null,2));
  const failures=results.flatMap(r=>{
-  const views=[r,...(r.views||[]),r.afterInput,...(r.matrix||[])].filter(Boolean);
-  return [...views.filter(v=>v.errors.length||v.canvas?.length||v.overflow||v.mutations.length).map(v=>({id:r.id,view:v})),...r.exceptions.map(exception=>({id:r.id,exception}))];
+  const views=[r,...(r.views||[]),r.afterInput,r.indexRuntime,...(r.matrix||[])].filter(Boolean);
+  return [...views.filter(v=>v.errors.length||v.canvas?.length||v.overflow||v.mutations.length).map(v=>({id:r.id,view:v})),...r.exceptions.map(exception=>({id:r.id,exception})),...(r.indices||[]).filter(v=>v.findings.length).map(v=>({id:r.id,indices:v})),...(r.canvasIndices||[]).map(text=>({id:r.id,canvasIndex:text}))];
  });
  if(failures.length)throw Error('Browser audit failed: '+JSON.stringify(failures));
 }catch(error){console.error(error.stack);process.exitCode=1;}

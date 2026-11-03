@@ -111,7 +111,7 @@ function LessonStringWaves({kind}){
    el('p',{className:'string-note'},[tr('Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.')])
   ]),
   el('p',{className:'string-note'},[tr('Capăt fix: nod și reflexie cu inversare. Capăt liber: ventru în modul staționar și reflexie fără inversare.')]),
-  el('p',{className:'string-note'},[tr(standing?'Animație încetinită: fundamentala se vede la 0,2 Hz. Citirile indică frecvența și timpul fizic.':'Animație încetinită: o traversare L/v_f durează 1,5 s pe ecran. Sliderul acoperă patru traversări; timpul afișat este timpul fizic.')]),
+  el('p',{className:'string-note'},[lessonMath(tr(standing?'Animație încetinită: fundamentala se vede la 0,2 Hz. Citirile indică frecvența și timpul fizic.':'Animație încetinită: o traversare L/v_f durează 1,5 s pe ecran. Sliderul acoperă patru traversări; timpul afișat este timpul fizic.'))]),
   el('details',{className:'string-explanation'},[
    el('summary',{},[tr('Model, amplitudini și condiții la capete')]),
    el('div',{className:'string-equations'},equations),

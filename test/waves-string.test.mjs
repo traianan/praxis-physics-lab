@@ -85,16 +85,28 @@ function render(kind,{params={},english=false,running=false,active=true,hidden=f
  const effects=[],callbacks=new Map(),writes=[],usedTranslations=[];let serial=0,state=0,model;
  const document={hidden,addEventListener(){},removeEventListener(){}};
  const globals={
-  window:{PraxisStringWaves:{...api,create:(options,k)=>{model=api.create(params,k);if(crossings)model.seekCrossings(crossings);return model;}},PraxisWaveMath:{subscribe(){},language:()=>english?'en':'ro'},PraxisI18n:{tr:value=>{usedTranslations.push(value);return english?(translations[value]??value):value;}}},
+  window:{PraxisStringWaves:{...api,create:(options,k)=>{model=api.create(params,k);if(crossings)model.seekCrossings(crossings);return model;}},PraxisWaveMath:{subscribe(){},bare:()=>false,language:()=>english?'en':'ro'},PraxisI18n:{tr:value=>{usedTranslations.push(value);return english?(translations[value]??value):value;}}},
   N:{useContext:()=>({active,owner:{active}}),useRef:initial=>({current:initial}),useState:initial=>[state++===0?running:initial,value=>writes.push(value)],useSyncExternalStore:(subscribe,language)=>language(),useEffect:fn=>effects.push(fn)},
   Cv:(type,props)=>({type,props}),LessonActivityContext:{},LessonMathText:'math',document,performance:{now:()=>0},
   requestAnimationFrame:fn=>{callbacks.set(++serial,fn);return serial;},cancelAnimationFrame:id=>callbacks.delete(id),Math
  };
- const tree=vm.runInNewContext(component+';LessonStringWaves({kind:'+JSON.stringify(kind)+'})',globals);
+ const prose=fs.readFileSync(new URL('../scripts/waves-math-prose.js',import.meta.url),'utf8');
+ const tree=vm.runInNewContext(prose+'\n'+component+';LessonStringWaves({kind:'+JSON.stringify(kind)+'})',globals);
  return{tree,model,effects,callbacks,writes,document,usedTranslations};
 }
 function nodes(tree){if(Array.isArray(tree))return tree.flatMap(nodes);if(!tree||typeof tree!=='object')return[];return[tree,...nodes(tree.props?.children)];}
 function words(tree){if(Array.isArray(tree))return tree.map(words).join(' ');if(tree&&typeof tree==='object')return words(tree.props.children);return tree==null?'':String(tree);}
+
+test('slowed-animation prose renders the phase-speed subscript while preserving sentence punctuation',()=>{
+ for(const english of [false,true]){
+  const tree=render('reflection',{english}).tree;
+  const note=nodes(tree).find(n=>n.type==='p'&&words(n).includes(english?'one L/':'o traversare L/'));
+  assert.ok(note);const script=nodes(note).find(n=>n.props?.className==='wave-script');
+  assert.equal(words(script),'v f ');assert.ok(nodes(script).some(n=>n.type==='sub'&&words(n)==='f'));
+  assert.match(words(note),english?/on screen\. The slider/:/pe ecran\. Sliderul/);
+  assert.match(words(note),/; /);
+ }
+});
 
 test('reflection phase and equivalent path are visible for both ends and are distinct from the spatial midpoint',()=>{
  for(const kind of ['reflection','standing'])for(const right of ['fixed','free']){

@@ -1,0 +1,131 @@
+{
+  "date": "2026-11-03",
+  "laboratories": 19,
+  "states": 316,
+  "initialAffectedLaboratories": [
+    "calorimetrie",
+    "miscarea-circulara-uniforma",
+    "miscarea-curbilinie-plana",
+    "miscarea-rectilinie",
+    "motoare-termice",
+    "principiul-i-aplicatii",
+    "unde-mecanice",
+    "viteza-si-acceleratia"
+  ],
+  "courses": [
+    {
+      "id": "calcul-vectorial",
+      "states": 2,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "calorimetrie",
+      "states": 22,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "compunerea-oscilatiilor",
+      "states": 4,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "figuri-chladni",
+      "states": 4,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "interactii-atomice",
+      "states": 8,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "miscarea-circulara-uniforma",
+      "states": 14,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "miscarea-curbilinie-plana",
+      "states": 6,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "miscarea-rectilinie",
+      "states": 32,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "motoare-termice",
+      "states": 28,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "notiuni-termodinamice",
+      "states": 32,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "oglinzi-si-lentile",
+      "states": 2,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "oscilator-mecanic",
+      "states": 28,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "oscilatori-mecanici-cuplati",
+      "states": 6,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "principiile-mecanicii-newtoniene",
+      "states": 18,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "principiul-i-al-termodinamicii",
+      "states": 12,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "principiul-i-aplicatii",
+      "states": 22,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "transformari-stare-agregare",
+      "states": 24,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "unde-mecanice",
+      "states": 44,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    },
+    {
+      "id": "viteza-si-acceleratia",
+      "states": 8,
+      "remainingVisibleIndices": [],
+      "remainingCanvasIndices": []
+    }
+  ]
+}

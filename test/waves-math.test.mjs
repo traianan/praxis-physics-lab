@@ -22,6 +22,21 @@ async function math(){
  return context.window.PraxisWaveMath;
 }
 
+test('prose and equation suffixes retain structural indices without parsing entire sentences as equations',async()=>{
+ const m=await math();
+ for(const source of ['O traversare L/v_f durează 1,5 s.','Heat from Tᵢ to T_f in a closed vessel.','v = 2 m/s cu T_f și v_{f}.']){
+  const html=m.render(source);assert.doesNotMatch(html,/wave-math-error/);
+  assert.match(html,/<sub>f<\/sub>/);assert.doesNotMatch(html,/v_f|T_f|v_\{f\}/);
+ }
+ const escaped=m.render('Valorile T_f <script> nu sunt cod.');
+ assert.doesNotMatch(escaped,/<script>/);assert.match(escaped,/&lt;/);assert.match(escaped,/&gt;/);
+ assert.doesNotMatch(m.render('Fișierul raport_final.csv'),/<sub>/);
+ for(const source of ['Componentele a_{t} și a_{n} sunt perpendiculare.','Forțele G și F_f sunt reale; F_cp este rezultanta.','Lucrul dintre T_{i} și T_{f}.','Pozițiile M_{1}(r_{1}) și M_{2}(r_{2}).','Intervalul dintre v_min și v_max.','Căldura specifică c_{p} a gazului.']){
+  const html=m.render(source).replace(/<annotation\b[^>]*>[\s\S]*?<\/annotation>/g,'');
+  assert.match(html,/<sub>|<msub>/,source);assert.doesNotMatch(html,/[A-Za-z]_(?:\{|[a-z])/);
+ }
+});
+
 test('short equations do not absorb following explanatory prose into MathML',async()=>{
  const m=await math();
  for(const phrase of ['este frecvența maximelor','is the frequency of maxima','cu','with']){

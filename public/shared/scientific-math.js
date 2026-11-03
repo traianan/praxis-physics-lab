@@ -46,6 +46,9 @@
   if(el.closest(excluded+', [data-praxis-panel-probe],[inert]')||el.matches('[data-no-science-math]'))return false;
   if(el.closest('.journal,.lab-journal,.log-table,[data-journal]')||el.closest('table')?.querySelector('[contenteditable],input,textarea'))return false;
   if(el.querySelector(excluded+', [id],.mcu-vector-symbol'))return false;
+  // A native formula can have its equation and explanatory caption in siblings.
+  // Keep that structure; the .eq child is enhanced independently.
+  if(el.querySelector('.eq')&&el.querySelector('.what'))return false;
   if(el.closest('#root,[data-reactroot],[data-science-owner=react],#praxis-original [data-no-i18n]'))return false;
   return true;
  }

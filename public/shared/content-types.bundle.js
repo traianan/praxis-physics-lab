@@ -191,6 +191,17 @@ window.PraxisEnsureMathEngine=function(){if(!window.katex){!function(e,t){"objec
  const escape=s=>String(s).replace(/[\\{}%&#$]/g,c=>'\\'+c);
  const connectors=new Set(['la','cu','în','și','de','pe','un','se','vs','or','if','at','in','on','by','of','is','to','an','as']);
  const htmlEscape=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+ function htmlProse(source){
+  const text=String(source),pattern=/(?<![\p{L}\p{N}_])([A-Za-zΑ-ω])(?:_\{([^}]+)\}|_([\p{L}\p{N}]+)|([₀-₉ₙₒₐₑₕᵢⱼₖₗₘₚᵣₛₜᵤᵥₓᵧ]+))([⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]*)|(?<![\p{L}\p{N}_])([A-Za-zΑ-ω])([⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)/gu;
+  let result='',last=0;
+  for(const match of text.matchAll(pattern)){
+   result+=htmlEscape(text.slice(last,match.index));
+   const base=match[1]||match[6],sub=match[2]||match[3]||(match[4]?[...match[4]].map(c=>lower[c]).join(''):''),sup=[...(match[5]||match[7]||'')].map(c=>upper[c]).join('');
+   result+='<span class="wave-script">'+htmlEscape(base)+(sub?'<sub>'+htmlEscape(window.PraxisI18n?.tr(sub)??sub)+'</sub>':'')+(sup?'<sup>'+htmlEscape(sup)+'</sup>':'')+'</span>';
+   last=match.index+match[0].length;
+  }
+  return result+htmlEscape(text.slice(last));
+ }
  function normalize(s){return String(s).replaceAll('<<','≪').replaceAll('>>','≫').replace(/\b([A-Za-z])([0-9]+)\b/g,'$1_{$2}').replace(/\bv([RSLP])\b/g,'v_{$1}').replace(/(?<=[±∓+−\-(=])\s*v([os])\b/g,'v_{$1}').replace(/[₀₁₂₃₄₅₆₇₈₉ₙₒₐₑₕᵢⱼₖₗₘₚᵣₛₜᵤᵥₓᵧ]+/g,v=>'_{'+[...v].map(c=>lower[c]).join('')+'}').replace(/_\{([^{}]+)\}_\{([^{}]+)\}/g,'_{$1,$2}').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g,v=> '^{'+[...v].map(c=>upper[c]).join('')+'}');}
  function join(nodes){return nodes.map((n,i)=>(i?(n.unit?' \\,':nodes[i-1].kind==='function'&&n.kind==='group'?'':' '):'')+n.tex).join('');}
  function bare(nodes){return nodes.length===1&&nodes[0].kind==='group'&&!nodes[0].preserve?nodes[0].inside:join(nodes);}
@@ -292,8 +303,8 @@ window.PraxisEnsureMathEngine=function(){if(!window.katex){!function(e,t){"objec
  function render(source){
   return statements(source.replace(/\s+(xilofon|xylophone|tobă|drum)$/iu,'; $1')).map(raw=>{
    const part=window.PraxisI18n?.tr(raw)??raw;
-   if(!/[=≈∝/√_^₀-₉⁰-⁹]/u.test(part)||/\p{Extended_Pictographic}/u.test(part))return '<span class="wave-math-prose">'+htmlEscape(part)+'</span>';
-   if(!assignment(part)&&/[A-Za-zÀ-žȘșȚț]{3,}/u.test(part.replace(/tanh|sinh|cosh|sin|cos|tan|exp|log|ln/g,'')))return '<span class="wave-math-prose">'+htmlEscape(part)+'</span>';
+   if(!/[=≈∝/√_^₀-₉⁰-⁹]/u.test(part)||/\p{Extended_Pictographic}/u.test(part))return '<span class="wave-math-prose">'+htmlProse(part)+'</span>';
+   if(!assignment(part)&&/[A-Za-zÀ-žȘșȚț]{3,}/u.test(part.replace(/tanh|sinh|cosh|sin|cos|tan|exp|log|ln/g,'')))return '<span class="wave-math-prose">'+htmlProse(part)+'</span>';
    const start=expressionStart(part),prefix=start?part.slice(0,start):'';
    let expression=part.slice(start),suffix='';
    // Prose following a short equation must wrap as ordinary text, not become
@@ -306,7 +317,7 @@ window.PraxisEnsureMathEngine=function(){if(!window.katex){!function(e,t){"objec
    }
    const annotation=expression.match(/\s+(?:(?:castron|bowl|xilofon|xylophone|tobă|drum)\b(?:\s+\([^)]*\))?|\([^()]*[A-Za-zÀ-žȘșȚț]{4,}[^()]*\))\.?$/iu);
    if(annotation&&!/\b(?:sin|cos|tanh|sinh|cosh|exp|log)\b/.test(annotation[0])){suffix=annotation[0]+suffix;expression=expression.slice(0,annotation.index);}
-   try{return (prefix?'<span class="wave-math-prose">'+htmlEscape(prefix)+'</span>':'')+'<span class="wave-math-item">'+window.katex.renderToString('\\displaystyle '+toTex(expression),{throwOnError:true,strict:'ignore',trust:false,output:'mathml'})+'</span>'+(suffix?'<span class="wave-math-prose">'+htmlEscape(suffix.trim())+'</span>':'');}
+   try{return (prefix?'<span class="wave-math-prose">'+htmlProse(prefix)+'</span>':'')+'<span class="wave-math-item">'+window.katex.renderToString('\\displaystyle '+toTex(expression),{throwOnError:true,strict:'ignore',trust:false,output:'mathml'})+'</span>'+(suffix?'<span class="wave-math-prose">'+htmlProse(suffix.trim())+'</span>':'');}
    catch(error){return '<span class="wave-math-error" role="alert" title="'+htmlEscape(error.message).replaceAll('"','&quot;')+'">'+htmlEscape(part)+'</span>';}
   }).join('');
  }
@@ -390,6 +401,9 @@ window.PraxisEnsureMathEngine=function(){if(!window.katex){!function(e,t){"objec
   if(el.closest(excluded+', [data-praxis-panel-probe],[inert]')||el.matches('[data-no-science-math]'))return false;
   if(el.closest('.journal,.lab-journal,.log-table,[data-journal]')||el.closest('table')?.querySelector('[contenteditable],input,textarea'))return false;
   if(el.querySelector(excluded+', [id],.mcu-vector-symbol'))return false;
+  // A native formula can have its equation and explanatory caption in siblings.
+  // Keep that structure; the .eq child is enhanced independently.
+  if(el.querySelector('.eq')&&el.querySelector('.what'))return false;
   if(el.closest('#root,[data-reactroot],[data-science-owner=react],#praxis-original [data-no-i18n]'))return false;
   return true;
  }
