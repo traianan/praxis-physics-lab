@@ -530,6 +530,14 @@
     "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.": "Pentru o componentă armonică: Δs este drumul echivalent de fază, nu un drum suplimentar parcurs de impuls.",
     "Sursă la x = 0": "Sursă la x = 0",
     "La pornire, sursa din x = 0 emite un singur impuls, apoi revine în repaus și fixează capătul stâng. Resetarea aduce întreaga coardă în repaus.": "La pornire, sursa din x = 0 emite un singur impuls, apoi revine în repaus și fixează capătul stâng. Resetarea aduce întreaga coardă în repaus.",
-    "s(t) este deplasarea prescrisă a sursei numai în timpul emisiei; înainte și după emisie este zero. Un capăt permanent fix nu poate genera singur impulsul.": "s(t) este deplasarea prescrisă a sursei numai în timpul emisiei; înainte și după emisie este zero. Un capăt permanent fix nu poate genera singur impulsul."
+    "s(t) este deplasarea prescrisă a sursei numai în timpul emisiei; înainte și după emisie este zero. Un capăt permanent fix nu poate genera singur impulsul.": "s(t) este deplasarea prescrisă a sursei numai în timpul emisiei; înainte și după emisie este zero. Un capăt permanent fix nu poate genera singur impulsul.",
+    "Propagarea într-o perioadă": "Propagarea într-o perioadă",
+    "Propagarea perturbației": "Propagarea perturbației",
+    "A oscilează vertical; perturbația se propagă spre B. Înaintea frontului, coarda rămâne în repaus.": "A oscilează vertical; perturbația se propagă spre B. Înaintea frontului, coarda rămâne în repaus.",
+    "Etapă a propagării; derulare orizontală pe ecrane înguste": "Etapă a propagării; derulare orizontală pe ecrane înguste",
+    "A este sursa. B este capătul îndepărtat; frontul nu a ajuns încă la B. Săgeata verticală indică oscilația sursei, iar săgeata orizontală propagarea.": "A este sursa. B este capătul îndepărtat; frontul nu a ajuns încă la B. Săgeata verticală indică oscilația sursei, iar săgeata orizontală propagarea.",
+    "Într-o perioadă, sursa revine la aceeași fază, iar frontul avansează cu o lungime de undă.": "Într-o perioadă, sursa revine la aceeași fază, iar frontul avansează cu o lungime de undă.",
+    "Cadrul final arată continuarea la 5T/4. Este reprezentată unda incidentă, înainte de a ajunge la capătul B; reflexia se studiază separat.": "Cadrul final arată continuarea la 5T/4. Este reprezentată unda incidentă, înainte de a ajunge la capătul B; reflexia se studiază separat.",
+    "Ultimul cadru continuă evoluția după prima perioadă. Este reprezentată unda incidentă, înainte de a ajunge la capătul B; reflexia se studiază separat.": "Ultimul cadru continuă evoluția după prima perioadă. Este reprezentată unda incidentă, înainte de a ajunge la capătul B; reflexia se studiază separat."
   }
 }

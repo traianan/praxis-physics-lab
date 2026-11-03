@@ -47,6 +47,29 @@ html.dark .wave-foundation{
 .wave-foundation-caption p{margin:.5rem 0 0;}
 .wave-foundation-caption summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--accent);font-weight:600}
 .wave-part-choice{display:none}
+.wave-propagation-sequence{container:propagation-sequence / inline-size;margin:0;min-width:0;font-size:1rem;line-height:1.45}
+.wave-propagation-intro{margin:0 0 .5rem}
+.wave-propagation-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:.5rem}
+.wave-propagation-step{margin:0;padding:.35rem .45rem;border:1px solid var(--border,#cbd5e1);border-radius:.5rem;min-width:0;background:var(--card,#fff)}
+.wave-propagation-step[data-one-period]{border-color:var(--accent,#146b62);background:var(--formula-bg,#edf3e9)}
+.wave-propagation-step>figcaption{display:flex;align-items:center;gap:.5rem;min-height:2.1rem}
+.wave-propagation-step .wave-math-item{min-height:1.8em}
+.wave-propagation-scroll{max-width:100%;overflow-x:auto}
+.wave-propagation-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wave-propagation-svg{display:block;width:100%;min-width:22rem;height:auto;font:20px var(--praxis-font-ui,system-ui);color:var(--text,#1e293b)}
+.wave-propagation-svg text{fill:currentColor}
+.propagation-axis,.propagation-hatch{stroke:currentColor;stroke-width:1.2;fill:none}
+.propagation-support{fill:var(--muted,#64748b)}
+.propagation-profile{stroke:var(--praxis-science-blue,#487ca2);stroke-width:2.8;fill:none}
+.propagation-source{fill:var(--praxis-science-orange,#b28b3b)}
+.propagation-direction,.propagation-source-motion,.propagation-wavelength{stroke:var(--praxis-science-blue,#487ca2);stroke-width:1.6;fill:none}
+.propagation-front{stroke:var(--praxis-science-orange,#b28b3b);stroke-width:1.8}
+.wave-propagation-conclusion{display:flex;align-items:center;flex-wrap:wrap;gap:.25rem .6rem;margin-top:.35rem}
+.wave-propagation-note{font-size:1rem;line-height:1.4;margin:.3rem 0 0}
+.wave-textbook-page:has(.wave-propagation-sequence)>.wave-textbook-notes:empty{display:none}
+.wave-textbook-page:has(.wave-propagation-sequence){display:block}
+@container propagation-sequence (min-width:46rem){.wave-propagation-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container propagation-sequence (min-width:72rem){.wave-propagation-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:1599px){
  body[data-praxis-course=unde-mecanice] #marimi>.lesson-parts{display:none}
  #marimi>.wave-part-choice{display:flex;grid-column:2;grid-row:1;align-items:center;gap:8px;margin:0;min-width:0}

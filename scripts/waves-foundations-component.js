@@ -68,3 +68,49 @@ function LessonWaveFoundations({kind}){
   el('figcaption',{className:'wave-foundation-caption'},[el('details',{},[el('summary',{},[tr('Observații despre figură')]),...notes.map(note=>el('p',{},[tr(note)]))])])
  ]);
 }
+
+// Six causal snapshots, redrawn from the user-supplied textbook figure.
+function LessonWavePropagation(){
+ const math=window.PraxisWaveMath;N.useSyncExternalStore(math.subscribe,math.language);
+ const tr=s=>window.PraxisI18n.tr(s),el=(tag,props={},children=[])=>Cv(tag,{...props,children});
+ const times=[0,.25,.5,.75,1,1.25],labels=['0','T/4','T/2','3T/4','T','5T/4'];
+ const left=45,right=365,axis=70,amplitude=24,X=u=>left+(right-left)*u/2;
+ const line=(x1,y1,x2,y2,props={})=>el('line',{x1,y1,x2,y2,...props});
+ const text=(x,y,value,props={})=>el('text',{x,y,...props},[value]);
+ return el('figure',{className:'wave-propagation-sequence','data-no-i18n':'','data-wave-propagation':''},[
+  el('figcaption',{className:'wave-propagation-intro'},[tr('A oscilează vertical; perturbația se propagă spre B. Înaintea frontului, coarda rămâne în repaus.')]),
+  el('div',{className:'wave-propagation-grid'},times.map((time,index)=>{
+   const prefix='propagation-step-'+index,front=X(time),sourceY=axis-amplitude*Math.sin(2*Math.PI*time);
+   const points=Array.from({length:401},(_,i)=>{
+    const u=2*i/400,y=u<=time?Math.sin(2*Math.PI*(time-u)):0;
+    return X(u)+','+(axis-amplitude*y);
+   }).join(' ');
+   return el('figure',{className:'wave-propagation-step','data-time-periods':time,'data-one-period':time===1?'':undefined},[
+    el('figcaption',{},['('+String.fromCharCode(97+index)+') ',Cv(LessonMathText,{children:'t = '+labels[index]})]),
+    el('div',{className:'wave-propagation-scroll',tabIndex:0,role:'region','aria-label':tr('Etapă a propagării; derulare orizontală pe ecrane înguste')},[
+     el('svg',{viewBox:'0 0 420 140',role:'img','aria-labelledby':prefix+'-title '+prefix+'-desc',className:'wave-propagation-svg',xmlns:'http://www.w3.org/2000/svg'},[
+      el('title',{id:prefix+'-title'},[tr('Propagarea perturbației'),' — t = '+labels[index]]),
+      el('desc',{id:prefix+'-desc'},[tr('A este sursa. B este capătul îndepărtat; frontul nu a ajuns încă la B. Săgeata verticală indică oscilația sursei, iar săgeata orizontală propagarea.')]),
+      el('defs',{},[el('marker',{id:prefix+'-arrow',viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'},[el('path',{d:'M 0 0 L 10 5 L 0 10 Z',fill:'context-stroke'})])]),
+      line(left,axis+35,left,12,{className:'propagation-axis',markerEnd:'url(#'+prefix+'-arrow)'}),
+      line(left,axis,395,axis,{className:'propagation-axis',markerEnd:'url(#'+prefix+'-arrow)'}),
+      text(left-15,axis+17,'O'),text(left-14,17,'y'),text(398,axis+17,'x'),
+      el('rect',{x:right,y:axis-42,width:7,height:84,className:'propagation-support'}),
+      ...Array.from({length:6},(_,j)=>line(right+7,axis-38+j*15,right+17,axis-46+j*15,{className:'propagation-hatch'})),
+      text(right-16,axis-9,'B'),
+      line(left-23,axis-30,left-23,axis+30,{className:'propagation-source-motion',markerStart:'url(#'+prefix+'-arrow)',markerEnd:'url(#'+prefix+'-arrow)'}),
+      el('polyline',{points,className:'propagation-profile','data-propagation-profile':'','data-front-lambda':time}),
+      el('circle',{cx:left,cy:sourceY,r:3.5,className:'propagation-source','data-source-y-amplitude':Math.sin(2*Math.PI*time)}),text(left+9,sourceY+(Math.cos(2*Math.PI*time)<-.5?20:-5),'A'),
+      time>0&&line(front+9,axis-35,front+55,axis-35,{className:'propagation-direction',markerEnd:'url(#'+prefix+'-arrow)'}),
+      time>0&&el('text',{x:front+23,y:axis-42},['v',el('tspan',{baselineShift:'sub',fontSize:'75%'},['f'])]),
+      time>0&&line(front,axis-5,front,axis+5,{className:'propagation-front','data-wavefront':''}),
+      time===1&&line(left,123,front,123,{className:'propagation-wavelength',markerStart:'url(#'+prefix+'-arrow)',markerEnd:'url(#'+prefix+'-arrow)','data-period-distance':''}),
+      time===1&&text((left+front)/2,117,'λ',{textAnchor:'middle'})
+     ])
+    ])
+   ]);
+  })),
+  el('div',{className:'wave-propagation-conclusion'},[Cv(LessonMathText,{children:'λ = v_f·T'}),' — ',tr('Într-o perioadă, sursa revine la aceeași fază, iar frontul avansează cu o lungime de undă.')]),
+  el('p',{className:'wave-propagation-note'},[tr('Ultimul cadru continuă evoluția după prima perioadă. Este reprezentată unda incidentă, înainte de a ajunge la capătul B; reflexia se studiază separat.')])
+ ]);
+}

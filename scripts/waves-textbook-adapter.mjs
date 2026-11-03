@@ -72,6 +72,8 @@ const chapters = {
   p('Lungimea de undă λ este distanța, pe direcția de propagare, dintre două puncte vecine de fază egală, de exemplu două creste sau două depresiuni succesive. A este amplitudinea, T perioada, ν frecvența, iar ω pulsația.','Wavelength λ is the distance along propagation between neighbouring points of equal phase, for example successive crests or troughs. A is amplitude, T period, ν frequency and ω angular frequency.'),
   't(LessonWaveFoundations,{kind:"wavelength"})',
   formula('ν = 1/T ; ω = 2π/T ; λ = v_f·T ; v_f = λ/T = λ·ν'),
+  h('Propagarea într-o perioadă','Propagation over one period'),
+  't(LessonWavePropagation,{})',
   h('Simulare și mărimi','Simulation and quantities'),
   p('Compară amplitudinea A, lungimea de undă λ și perioada T. Viteza de fază rezultă din v_f = λ/T; viteza de oscilație a unei particule este o mărime diferită.','Compare amplitude A, wavelength λ and period T. Phase speed is v_f = λ/T; particle velocity is a different quantity.'),
   't(om,{})',
@@ -158,7 +160,7 @@ export function adaptWaveTextbook(html, reverse=false) {
   ['"φ(x,t)=ωt-kx, v_f = ω/k = "','"v_f = λ/T = "'],
   ['" m/s, Δφ = k·(x₂-x₁) = ",U.toFixed(3)','" m/s; |Δφ| = ",Math.abs(U).toFixed(3)'],
   ['function ie({id,title,children}){',mathComponents+foundationComponent+stringComponent+`function LessonTextbookLayout({items}){
- const demos=[um,Em,om,_m,tm,Um,im,LessonWaveFoundations],notes=[],formulas=[],experiments=[];
+ const demos=[um,Em,om,_m,tm,Um,im,LessonWaveFoundations,LessonWavePropagation],notes=[],formulas=[],experiments=[];
  for(const item of items){if(item?.type==='h4')continue;if(demos.includes(item?.type))experiments.push(item);else if(item?.type===Me||item?.type===LessonFormulaBox)formulas.push(item);else notes.push(item);}
  return f('div',{className:'wave-textbook-page'+(experiments.length?'':' wave-textbook-reading'),'data-textbook-water':experiments.some(item=>item.type===Em)?'':undefined,children:[
   f('div',{className:'wave-textbook-notes',children:[...notes,formulas.length>0&&f('div',{className:'wave-textbook-formulas',children:formulas})]}),
@@ -196,7 +198,7 @@ function LessonWaterActivity({elementProps}){
 }
 function ie({id,title,children}){`],
   ["groups.length>1&&t('div',{className:'lesson-parts'", "groups.length>5&&t('label',{className:'wave-part-choice',children:[t('span',{children:'Activitate'}),t('select',{'aria-label':'Activitate',value:String(part),onChange:event=>{const i=Number(event.target.value);setPart(i);ctx?.go({topic:id,part:i},false)},children:groups.map((g,i)=>t('option',{value:String(i),children:g.label},i))})]}),groups.length>1&&t('div',{className:'lesson-parts'"],
-  ["const short=lessonTopics.find", "if(id==='stationare'){groups[0].label='Reflexia la capăt fix sau liber';groups[1].label='Unde staționare și moduri proprii'}if(id==='marimi'){const names=['Vectorul de oscilație','Puncte de egală fază','Lungimea de undă','Simulare și mărimi','Suprafață, rază și front','Viteză și mediu','Model cu piese domino'];groups.forEach((g,i)=>g.label=names[i]||g.label)}const short=id==='stationare'?'Unde staționare într-o coardă elastică':lessonTopics.find"],
+  ["const short=lessonTopics.find", "if(id==='stationare'){groups[0].label='Reflexia la capăt fix sau liber';groups[1].label='Unde staționare și moduri proprii'}if(id==='marimi'){const names=['Vectorul de oscilație','Puncte de egală fază','Lungimea de undă','Propagarea într-o perioadă','Simulare și mărimi','Suprafață, rază și front','Viteză și mediu','Model cu piese domino'];groups.forEach((g,i)=>g.label=names[i]||g.label)}const short=id==='stationare'?'Unde staționare într-o coardă elastică':lessonTopics.find"],
   ["className:'lesson-part-content',children:g.items", "className:'lesson-part-content',children:['clasificare','marimi','ecuatia','huygens'].includes(id)?t(LessonTextbookLayout,{items:g.items}):g.items"],
   ["return f('div',{className:'lesson-navigation',children:[", "return f('div',{className:'lesson-navigation',children:[t('label',{className:'wave-group-choice',children:[t('span',{children:'Secțiune'}),t('select',{'aria-label':'Secțiunea laboratorului',value:String(gi),onChange:event=>ctx.go(lessonGroups[Number(event.target.value)].topics[0][0],false),children:lessonGroups.map((g,i)=>t('option',{value:String(i),children:g.name},i))})]}),"],
   ['"10. Numărul de undă k=",options:["2π/λ","λ/2π","v/T","A·ω"],correct:0,expl:"k=2π/λ (m⁻¹), analog spațial cu ω=2πν. v=ω/k."',`"10. Viteza de fază este:",options:["λ/T","T/λ","λ·T","A·ω"],correct:0,expl:"v_f = λ/T = λ·ν; într-o perioadă faza înaintează cu o lungime de undă."`],

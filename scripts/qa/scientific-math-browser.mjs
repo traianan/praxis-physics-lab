@@ -46,6 +46,19 @@ try{
   const result=await evaluate(`()=>({id:${JSON.stringify(id)},url:location.href,ready:document.readyState,title:document.title,api:!!window.PraxisMath,math:document.querySelectorAll('.science-math').length,errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,tabs:[...document.querySelectorAll('#praxis-original [role=tab],#praxis-original button[data-tab],#praxis-original .tabs a')].map(e=>({text:e.textContent.trim(),id:e.id,tab:e.dataset.tab,href:e.getAttribute('href')}))})`);
   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
   results.push(result);console.log(JSON.stringify(result));
+  if(process.argv.includes('--propagation')&&id==='unde-mecanice'){
+   result.propagation=await evaluate(`async()=>{
+    const wait=ms=>new Promise(r=>setTimeout(r,ms));location.hash='marimi-content-3';await wait(150);
+    const root=document.querySelector('.wave-propagation-sequence');if(!root?.checkVisibility())throw Error('Propagation figure is not visible');
+    const stages=[...root.querySelectorAll('[data-time-periods]')],order=stages.map(e=>Number(e.dataset.timePeriods));
+    const source=stages.map(e=>Number(e.querySelector('[data-source-y-amplitude]').dataset.sourceYAmplitude));
+    const rect=root.getBoundingClientRect(),svg=stages[0].querySelector('svg');
+    await PraxisI18n.setLanguage('en');await wait(70);const english=root.textContent.includes('one wavelength');await PraxisI18n.setLanguage('ro');
+    return {order,source,cards:stages.length,svg:root.querySelectorAll('svg').length,columns:getComputedStyle(root.querySelector('.wave-propagation-grid')).gridTemplateColumns.split(' ').length,english,periodDistance:!!root.querySelector('[data-period-distance]'),fractions:root.querySelectorAll('mfrac').length,overflow:document.documentElement.scrollWidth>innerWidth+2,bounds:{top:rect.top,bottom:rect.bottom,height:rect.height},svgWidth:svg.getBoundingClientRect().width,errors:document.querySelectorAll('.wave-math-error').length};
+   }`);
+   console.log(JSON.stringify({propagation:result.propagation}));
+   if(result.propagation.cards!==6||result.propagation.svg!==6||result.propagation.columns<3||result.propagation.bounds.height>600||!result.propagation.english||!result.propagation.periodDistance||result.propagation.fractions<4||result.propagation.overflow||result.propagation.errors)throw Error('Propagation figure audit failed');
+  }
   if(process.argv.includes('--string-launch')&&id==='unde-mecanice'){
    result.launch=await evaluate(await readFile('scripts/qa/waves-string-launch.browser.js','utf8'));
    console.log(JSON.stringify({launch:result.launch}));
@@ -63,7 +76,7 @@ try{
      for(const activity of activities){await evaluate(`()=>document.querySelectorAll('.praxis-workspace-activities button')[${activity}].click()`);await delay(50);result.indices.push({language,section,activity,findings:await evaluate(indexProbe)});}
     }
     if(id==='unde-mecanice'){
-     const hashes=['clasificare-content-0','clasificare-content-1','marimi-content-0','marimi-content-1','marimi-content-2','marimi-content-3','marimi-content-4','marimi-content-5','marimi-content-6','ecuatia-content-0','ecuatia-content-1','ecuatia-content-2','reflexie-content-0','reflexie-content-1','reflexie-content-2','reflexie-content-3','reflexie-content-4','stationare-content-0','stationare-content-1','laborator-content-1','rezonanta-cladiri-content-1'];
+     const hashes=['clasificare-content-0','clasificare-content-1','marimi-content-0','marimi-content-1','marimi-content-2','marimi-content-3','marimi-content-4','marimi-content-5','marimi-content-6','marimi-content-7','ecuatia-content-0','ecuatia-content-1','ecuatia-content-2','reflexie-content-0','reflexie-content-1','reflexie-content-2','reflexie-content-3','reflexie-content-4','stationare-content-0','stationare-content-1','laborator-content-1','rezonanta-cladiri-content-1'];
      for(const hash of hashes){await evaluate(`()=>location.hash=${JSON.stringify(hash)}`);await delay(70);result.indices.push({language,section:hash,findings:await evaluate(indexProbe)});}
     }
    }
@@ -130,6 +143,7 @@ try{
    const selected=sections.includes(preferred)?preferred:sections[0];
    if(selected)await evaluate(`()=>{const s=document.querySelector('.praxis-course-sections');s.value=${JSON.stringify(selected)};s.dispatchEvent(new Event('change',{bubbles:true}));window.scrollTo(0,0);}`);
    if(id==='unde-mecanice')await evaluate(`()=>document.getElementById('group-0')?.click()`);
+   if(process.argv.includes('--propagation')&&id==='unde-mecanice')await evaluate(`()=>location.hash='marimi-content-3'`);
    await delay(100);
    const rangeCheck=await evaluate(`()=>{const r=[...document.querySelectorAll('input[type=range]')].find(e=>e.getBoundingClientRect().width>0&&!e.disabled);if(!r)return null;const old=r.value,min=Number(r.min||0),max=Number(r.max||100),step=Number(r.step)||1;r.value=Number(old)+step<=max?Number(old)+step:Math.max(min,Number(old)-step);r.dispatchEvent(new Event('input',{bubbles:true}));r.dispatchEvent(new Event('change',{bubbles:true}));return {id:r.id,old,changed:r.value};}`);
    result.rangeCheck=rangeCheck;await delay(100);result.afterInput=await evaluate(inspect);
