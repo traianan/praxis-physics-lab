@@ -58,7 +58,7 @@ try{
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:dpr,mobile:false});
     await evaluate('async()=>{await PraxisI18n.setLanguage('+JSON.stringify(language)+');const s=document.querySelector(".praxis-course-settings select");s.value='+JSON.stringify(String(size))+';s.dispatchEvent(new Event("change",{bubbles:true}));}');await delay(100);
     const layout=await evaluate('()=>{const r=document.querySelector(".diffraction-boundary");return {overflow:document.documentElement.scrollWidth>innerWidth+2,bottom:r.getBoundingClientRect().bottom,controls:[...r.querySelectorAll("button,input")].filter(e=>e.checkVisibility()).map(e=>e.getBoundingClientRect().height),errors:r.querySelectorAll(".wave-math-error,.katex-error").length};}');
-    console.log(JSON.stringify({diffractionDisplay:{width,height,dpr,size,language,...layout}}));if(layout.overflow||layout.errors||layout.controls.some(h=>h<43))throw Error('Diffraction layout failed');
+    console.log(JSON.stringify({diffractionDisplay:{width,height,dpr,size,language,...layout}}));if((width===1366&&size===100&&layout.bottom>height)||layout.overflow||layout.errors||layout.controls.some(h=>h<43))throw Error('Diffraction layout failed');
     if(width===1366&&size===100){const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,'diffraction.png'),Buffer.from(shot.data,'base64'));}
    }
    await evaluate('()=>{const s=document.querySelector(".praxis-course-settings select");s.value="100";s.dispatchEvent(new Event("change",{bubbles:true}));}');

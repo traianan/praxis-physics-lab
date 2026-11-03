@@ -619,6 +619,7 @@
     "Pentru a = λ, primul minim este la 90°, la limita semiplanului.": "For a = λ, the first minimum is at 90°, at the edge of the half-plane.",
     "Fantă mai lată: primul minim se apropie de axă, iar maximul central se îngustează.": "Wider slit: the first minimum moves towards the axis and the central maximum narrows.",
     "Model scalar bidimensional: fantă uniform iluminată, mediu omogen, surse coerente și suprapunere liniară. Semicercurile punctate arată prima emisie; sursele continuă să oscileze. Scara spațială este în λ, timpul în T; amplitudinea nu este reprezentată la scară absolută. Reflexia pe ecran și detaliile de la margini nu sunt calculate.": "Two-dimensional scalar model: uniformly illuminated slit, homogeneous medium, coherent sources and linear superposition. Dashed semicircles show the first emission; sources keep oscillating. Spatial units are λ and time units are T; amplitude is not shown on an absolute scale. Screen reflection and edge details are not calculated.",
-    "Difracția: răspândirea undei dincolo de marginile unei fante.": "Diffraction: the wave spreads beyond the edges of a slit."
+    "Difracția: răspândirea undei dincolo de marginile unei fante.": "Diffraction: the wave spreads beyond the edges of a slit.",
+    "Ocru: unde secundare (prima emisie). Verde: fronturi rezultante.": "Ochre: secondary wavelets (first emission). Green: resultant wavefronts."
   }
 }

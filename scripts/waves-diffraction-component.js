@@ -38,7 +38,7 @@ function LessonHuygensDiffraction(){
   el('div',{className:'huygens-grid'},[
    el('figure',{className:'huygens-figure'},[
     el('div',{className:'huygens-pan',tabIndex:0,role:'region','aria-label':tr('Diagramă de difracție')},el('svg',{viewBox:'0 0 640 400',role:'img','aria-label':tr('Difracția printr-o fantă folosind principiul lui Huygens')},svg)),
-    el('figcaption',{},tr('Ocru punctat: undele secundare ale primei emisii. Verde: fronturi de egală fază ale undei rezultante; zonele aproape anulate sunt omise.'))
+    el('figcaption',{},tr('Ocru: unde secundare (prima emisie). Verde: fronturi rezultante.'))
    ]),
    el('div',{className:'huygens-controls'},[
     el('div',{className:'huygens-transport'},[el('button',{'data-diffraction-play':'',onClick:()=>{if(!running&&progress>=1){playhead.current=0;setProgress(0);}setRunning(v=>!v);}},tr(running?'Pauză':'Pornește')),el('button',{'data-diffraction-reset':'',onClick:()=>seek(0)},tr('Resetează'))]),
