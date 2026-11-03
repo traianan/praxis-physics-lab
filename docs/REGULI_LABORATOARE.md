@@ -46,7 +46,7 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 - Păstrează limitele naturale de afișare ale scenelor. O regulă generică precum `max-width:100%` nu trebuie să anuleze limita de dimensiune calculată de renderer.
 - Adaptează eșantionarea curbelor la densitatea efectivă de desen și la variația funcției. Un buffer mai mare nu corectează o curbă construită din prea puține puncte.
 - Verifică toate Canvasurile unei demonstrații, nu doar primul. Verifică toate taburile și activitățile, inclusiv după activare, schimbarea dimensiunii și mărirea textului.
-- Pentru Oscilator există o alegere explicită de densitate minimă 2 și scene de 640 de unități logice. Reutilizează mecanismul când este potrivit; nu impune aceleași valori tuturor laboratoarelor fără verificare.
+- Din 3 noiembrie, toate laboratoarele folosesc politica comună `PraxisCanvasResolution` pentru suprafețele Canvas de afișare: minimum 2 mostre/pixel CSS, țintă 1,5 × DPR, cu limite de memorie și dimensiune. Păstrează dimensiunile logice specifice fiecărui laborator. Nu aplica această politică grilelor numerice sau bitmapurilor intermediare ale modelului. Detalii și verificări: `REZOLUTIE_TOATE_LABORATOARELE_2026-11-03.md`.
 - Pe mobil păstrează o dimensiune minimă lizibilă sau construiește o scenă adaptată. Nu micșora automat întreaga scenă de 640 de unități într-un card de aproximativ 300 px dacă etichetele devin ilizibile.
 
 ## 5. Starea, timpul și sunetul

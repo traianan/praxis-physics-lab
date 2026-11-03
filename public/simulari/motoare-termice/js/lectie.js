@@ -98,8 +98,8 @@
   ctx.save();ctx.font='600 11px "JetBrains Mono", monospace';ctx.textAlign='right';ctx.fillStyle='#6f6a5f';ctx.fillText(names[k],w-28,18);ctx.restore();
  }
  function loop(){if(raf||reduce||document.hidden)return;last=performance.now();const step=now=>{raf=null;if(!vis||document.hidden)return;const dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;frame(dt);raf=requestAnimationFrame(step);};raf=requestAnimationFrame(step);}
- function resize(){const r=c.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);w=r.width;h=r.height;c.width=w*d;c.height=h*d;ctx.setTransform(d,0,0,d,0,0);frame(0);}
- new ResizeObserver(resize).observe(c);new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis)loop();}).observe(hero);
+ function resize(){const r=c.getBoundingClientRect(),d=window.PraxisCanvasResolution?.forCanvas(c)??Math.min(2,devicePixelRatio||1);w=r.width;h=r.height;c.width=w*d;c.height=h*d;ctx.setTransform(d,0,0,d,0,0);frame(0);}
+ new ResizeObserver(resize).observe(c);window.addEventListener('resize',resize);new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis)loop();}).observe(hero);
  hero.addEventListener('pointerdown',event=>{if(event.target.closest('a,button'))return;k=(k+1)%3;u=0;SND.whoosh();frame(0);});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&vis)loop();});loop();
 })();

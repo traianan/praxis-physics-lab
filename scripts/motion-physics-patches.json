@@ -192,5 +192,40 @@
     "file": "js/track.js",
     "before": "      const lx = x2 + dir * 10;",
     "after": "      const lx = MR.clamp(x2 + dir * 10, 10, ctx.canvas.width / (ctx.getTransform().a || 1) - 10);"
+  },
+  {
+    "file": "js/track.js",
+    "before": "const dpr = window.devicePixelRatio || 1;",
+    "after": "const dpr = window.PraxisCanvasResolution?.forCanvas(this.c) ?? (window.devicePixelRatio || 1);"
+  },
+  {
+    "file": "js/track.js",
+    "before": "new ResizeObserver(() => this.resize()).observe(canvas);",
+    "after": "new ResizeObserver(() => this.resize()).observe(canvas);\n      window.addEventListener('resize', () => this.resize());"
+  },
+  {
+    "file": "js/plot.js",
+    "before": "const dpr = window.devicePixelRatio || 1;",
+    "after": "const dpr = window.PraxisCanvasResolution?.forCanvas(this.c) ?? (window.devicePixelRatio || 1);"
+  },
+  {
+    "file": "js/plot.js",
+    "before": "new ResizeObserver(() => this.resize()).observe(canvas);",
+    "after": "new ResizeObserver(() => this.resize()).observe(canvas);\n      window.addEventListener('resize', () => this.resize());"
+  },
+  {
+    "file": "js/sec1-tipuri.js",
+    "before": "const r = tc.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;",
+    "after": "const r = tc.getBoundingClientRect(), dpr = window.PraxisCanvasResolution?.forCanvas(tc) ?? (window.devicePixelRatio || 1);"
+  },
+  {
+    "file": "js/sec1-tipuri.js",
+    "before": "new ResizeObserver(trajResize).observe(tc);",
+    "after": "new ResizeObserver(trajResize).observe(tc);\n  window.addEventListener('resize', trajResize);"
+  },
+  {
+    "file": "js/plot.js",
+    "before": "for (let i = 0; i <= 300; i++) {\r\n          const t = a + ((b - a) * i) / 300, y = se.fn(t);",
+    "after": "const samples = Math.max(300, Math.min(8192, Math.ceil(this.c.width / 2)));\r\n        for (let i = 0; i <= samples; i++) {\r\n          const t = a + ((b - a) * i) / samples, y = se.fn(t);"
   }
 ]

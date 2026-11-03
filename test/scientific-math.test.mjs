@@ -54,3 +54,21 @@ test('native enhancement leaves raw TeX source and its text node for the existin
   assert.equal(host.dataset.scienceMath,undefined);assert.equal(host.dataset.scienceSource,undefined);
  }
 });
+
+test('native vector markers and the formula DOM surrounding them retain their original nodes',async()=>{
+ const math=(await setup()).PraxisMath;
+ for(const isMarker of [false,true]){
+  const marker={nodeType:1,tagName:'SPAN',className:'vec',classList:{contains:name=>name==='vec'},childNodes:[{nodeType:3,data:'a'}]};
+  const childNodes=isMarker?marker.childNodes:[marker,{nodeType:3,data:' = F/m'}];
+  let writes=0,html=isMarker?'a':'<span class="vec">a</span> = F/m';
+  const host={nodeType:1,tagName:isMarker?'SPAN':'P',isConnected:true,dataset:{},children:isMarker?[]:[marker],childNodes,
+   classList:{contains:()=>false,add(){}},closest:()=>null,setAttribute(){},
+   matches:selector=>selector==='[data-science-math]'||selector==='[data-no-science-math]'?false:selector==='.vec'?isMarker:true,
+   querySelector:selector=>selector.includes('.vec')&&!isMarker?marker:null,querySelectorAll:()=>[],
+   get innerHTML(){return html;},set innerHTML(value){writes++;html=value;}};
+  const original=host.innerHTML;math.enhance(host);
+  assert.equal(writes,0);assert.equal(host.innerHTML,original);assert.equal(host.childNodes,childNodes);
+  assert.equal(host.dataset.scienceMath,undefined);assert.equal(host.dataset.scienceSource,undefined);
+  if(!isMarker)assert.equal(host.childNodes[0],marker);
+ }
+});

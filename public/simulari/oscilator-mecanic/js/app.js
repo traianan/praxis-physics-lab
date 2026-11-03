@@ -78,7 +78,14 @@ const App = (() => {
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
-  return {register,fitCanvas,Sound,demos};
+  function redraw(){
+    for(const {shell,state,spec} of demos){
+      if(document.hidden||shell.closest('.chapter').hidden||!shell.getClientRects().length)continue;
+      const {ctx,w,h}=fitCanvas(shell.querySelector('canvas'));ctx.clearRect(0,0,w,h);spec.render(ctx,w,h,state);
+      spec.renderAdditional?.(shell,state,fitCanvas);
+    }
+  }
+  return {register,fitCanvas,Sound,demos,redraw};
 })();
 
 /* ---------------------------------------------------------------

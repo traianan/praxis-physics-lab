@@ -60,13 +60,14 @@
   }
   MR.motionTypeInfoVariants = () => Object.keys(TRAJ).map(kind => { const target = document.createElement('div'); trajInfo(kind, target); return target.innerHTML; });
   function trajResize() {
-    const r = tc.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    const r = tc.getBoundingClientRect(), dpr = window.PraxisCanvasResolution?.forCanvas(tc) ?? (window.devicePixelRatio || 1);
     tW = r.width; tH = r.height;
     tc.width = Math.round(tW * dpr); tc.height = Math.round(tH * dpr);
     tctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     trajDraw();
   }
   new ResizeObserver(trajResize).observe(tc);
+  window.addEventListener('resize', trajResize);
 
   function trajDraw() {
     if (!tW) return;

@@ -26,13 +26,14 @@
       this.o = Object.assign({ min: -100, max: 100, lanes: 1, unit: 'm', name: 'x' }, o);
       this.scene = { bodies: [] };
       new ResizeObserver(() => this.resize()).observe(canvas);
+      window.addEventListener('resize', () => this.resize());
       MR.onRedraw(() => this.render());
     }
     setRange(min, max) { this.o.min = min; this.o.max = max; this.render(); }
     resize() {
       const r = this.c.getBoundingClientRect();
       if (!r.width) return;
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = window.PraxisCanvasResolution?.forCanvas(this.c) ?? (window.devicePixelRatio || 1);
       this.w = r.width; this.h = r.height;
       this.c.width = Math.round(r.width * dpr); this.c.height = Math.round(r.height * dpr);
       this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

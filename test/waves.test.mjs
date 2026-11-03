@@ -6,6 +6,7 @@ import{adaptWaveCoreAudit}from'../scripts/waves-core-audit-adapter.mjs';
 import{adaptWaveAcousticsAudit}from'../scripts/waves-acoustics-audit-adapter.mjs';
 import{adaptWaveFormulaContent}from'../scripts/waves-formula-content-adapter.mjs';
 import{adaptWaveCanvasFormulas}from'../scripts/waves-canvas-formula-adapter.mjs';
+import{restoreWaveResolution}from'../scripts/waves-resolution-adapter.mjs';
 import{adaptWaveEditorial}from'../scripts/lesson-editorial-adapter.mjs';
 const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8');
 test('wave figures keep large drawings at native display size while small diagrams retain modest enlargement',async()=>{
@@ -17,7 +18,7 @@ test('wave figures keep large drawings at native display size while small diagra
 });
 test('wave import preserves all original content except documented reversible physics and presentation corrections',async()=>{
  const manifest=JSON.parse(await read('docs/unde-mecanice-source.json')),html=(await read('public/simulari/unde-mecanice/index.html')).replaceAll('\r\n','\n');const module=[...html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)][0][1];
- const audited=adaptWaveCoreAudit(adaptWaveAcousticsAudit(adaptWaveFormulaContent(adaptWaveCanvasFormulas(await adaptWaveAnimations(adaptWaveEditorial(module,true),true),true),true),true),true);
+ const audited=adaptWaveCoreAudit(adaptWaveAcousticsAudit(adaptWaveFormulaContent(adaptWaveCanvasFormulas(restoreWaveResolution(await adaptWaveAnimations(adaptWaveEditorial(module,true),true)),true),true),true),true);
  const restored=(await adaptWavePhysics(adaptWaveTextbook(audited,true),true)).replace(/\n\/\* praxis:effect-adapter \*\/[\s\S]*?\/\* \/praxis:effect-adapter \*\/\n/,'').replace('undefined:[...deps,active,...(deps.length?[presentationRevision]:[])]);','undefined:[...deps,active]);').replace(/\n\/\* praxis:input-adapter \*\/[\s\S]*?\/\* \/praxis:input-adapter \*\/\n/,'');assert.ok([restored,restored.replaceAll('\n','\r\n')].some(text=>createHash('sha256').update(text).digest('hex')===manifest.moduleSha256),'restored module must match source content with LF or CRLF line endings');
  assert.equal(manifest.topics,19);assert.equal(manifest.screens,37);assert.match(module,/lessonFrameRunnable/);assert.match(module,/lessonUseEffect/);assert.match(module,/setPointerCapture/);assert.match(html,/shared\/waves-audio\.js/);assert.match(html,/shared\/course\.js/);
  assert.match(html,/shared\/waves-tsunami-model\.js/);assert.match(html,/shared\/waves-tsunami-view\.js/);

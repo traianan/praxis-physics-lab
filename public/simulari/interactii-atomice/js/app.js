@@ -97,8 +97,11 @@ function advance(T) {
 const cv = $('#cv'), ctx = cv.getContext('2d');
 let W = 0, H = 0, L = {};
 function resize() {
-  const dpr = Math.min(devicePixelRatio || 1, 2), b = cv.getBoundingClientRect();
-  W = b.width; H = b.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const b = cv.getBoundingClientRect();
+  W = b.width; H = b.height;
+  const dpr = window.PraxisCanvasResolution?.forCanvas(cv) ?? (devicePixelRatio || 1);
+  cv.width = Math.max(1, Math.round(W * dpr)); cv.height = Math.max(1, Math.round(H * dpr));
+  ctx.setTransform(cv.width / Math.max(1, W), 0, 0, cv.height / Math.max(1, H), 0, 0);
   const s = Math.min(.6, (W - 60) / 1000);       // px / pm
   const x0 = 26 + .3 * 500 * s;
   const gTop = 54, gBot = H * .6;
@@ -159,7 +162,7 @@ function draw() {
   ctx.save(); ctx.beginPath(); ctx.rect(x0, gTop - 14, xR - x0, gBot - gTop + 14); ctx.clip();
   ctx.strokeStyle = COL.curve; ctx.lineWidth = 2.6; ctx.beginPath();
   let first = true;
-  for (let px = X(.8 * st.sigma); px <= xR; px += 1.5) {
+  for (let px = X(.8 * st.sigma), step = 1 / Math.max(1, Math.abs(ctx.getTransform().a)); px <= xR; px += step) {
     const r = (px - x0) / s, y = Math.max(YU(U(r)), gTop - 30);
     first ? ctx.moveTo(px, y) : ctx.lineTo(px, y); first = false;
   }

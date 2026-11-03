@@ -1,4 +1,5 @@
 import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
+import {thermoReadability} from './adaptations/thermodynamics-readability.mjs';
 import {createHash} from 'node:crypto';
 import {withFavicon} from './favicon.mjs';
 const root=new URL('../',import.meta.url),id='motoare-termice';
@@ -36,6 +37,8 @@ html=html.replace('<header class="hero" id="top">','<section class="hero sec" id
 html=html.replace('<h1>Motoare termice<em>căldură în mișcare</em></h1>','<h2>Motoare termice</h2>');
 html=html.replace('  <canvas id="heroField" aria-hidden="true"></canvas>','');
 html=html.replace(/<div class="hero-caption">([\s\S]*?)<\/div>/,'<figure class="engine-intro-diagram"><canvas id="heroField" role="img" aria-label="Diagramă termodinamică animată"></canvas><figcaption class="hero-caption">Cicluri ideale — reprezentare schematică, fără scară numerică. Fă clic pe diagramă pentru a schimba ciclul: Otto → Diesel → Carnot.</figcaption></figure>');
+// Four small local plates must also be ready when their initially closed details open.
+html=html.replaceAll('loading="lazy"','loading="eager"');
 html=html.replace(/(<figure class="fig" id="fig6">[\s\S]*?<\/figure>)/,block=>block.replace('<button class="btn sm on" data-mode="di">','<button class="btn sm" data-mode="di">').replace('<button class="btn sm" data-mode="mono">','<button class="btn sm on" data-mode="mono">').replace('value="2" data-k="k"','value="3" data-k="k"').replace('<output>2.0</output>','<output>3.0</output>'));
 html=html.replace(/(<figure class="fig" id="fig6">[\s\S]*?<canvas class="tall"><\/canvas>)/,'$1<p class="carnot-key">T₁ = T<sub>c</sub> &nbsp;·&nbsp; T₂ = T<sub>r</sub> &nbsp;·&nbsp; Q₁ = Q<sub>p</sub> &nbsp;·&nbsp; Q₂ = |Q<sub>c</sub>|</p>');
 html=html.replace(/(<figure class="fig" id="fig6">[\s\S]*?)(<canvas class="tall">)/,'$1<div class="ctrls"><button type="button" class="btn sm" data-t="scale">Grafic p–V calculat</button><span class="carnot-schematic-note">Schemă de principiu, fără scară numerică.</span></div>$2');
@@ -59,14 +62,13 @@ const styles=['design-system/tokens.css','design-system/components.css','shared/
 const head=styles.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded}).replaceAll('<','\\u003c')+');</script>'+['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','velocity-labels.js','ideal-engine-cycles.js','ideal-cycle-diagram.js','heat-engines-model.js','carnot-diagram.js'].map(p=>'<script src="../../shared/'+p+'"></script>').join('');
 html=html.replace('</head>',()=>head+'</head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">').replace('</body>','</div><script src="../../shared/course.js" data-course="'+id+'" data-title="Motoare termice"></script><script src="../../shared/heat-engines.js"></script></body>');
 await write('public/simulari/'+id+'/index.html',withFavicon(html).replace(/[ \t]+$/gm,''));
-let base=await read(id+'/js/baza.js');
+let base=thermoReadability('engines','js/baza.js',await read(id+'/js/baza.js'));
 base=patch(base,"inp.parentElement.querySelector('output')","inp.closest('label').querySelector('output')");
 base=patch(base,"const S={on:localStorage.getItem('mt-sound')!=='0'};",'const S={on:window.PraxisSound.enabled};');
 base=patch(base,'if(!S.on)return null;','if(!S.on||!window.PraxisSound.enabled||document.hidden)return null;');
 base=patch(base,"localStorage.setItem('mt-sound',on?'1':'0');",'');
 base=patch(base,'return S;','window.addEventListener("praxis-sound-change",()=>S.set(window.PraxisSound.enabled));document.addEventListener("visibilitychange",()=>{if(document.hidden&&ac)ac.suspend();});return S;');
 base=base.replace('if(this.raf)return;','if(this.raf||document.hidden)return;').replace('if(!this.vis)return;','if(!this.vis||document.hidden)return;');
-base=base.replace('Math.min(.05,(now-last)/1000)','Math.max(0,Math.min(.05,(now-last)/1000))');
 base+='\ndocument.addEventListener("visibilitychange",()=>{if(!document.hidden)ALL.filter(s=>s.vis).forEach(s=>s.loop());});\n';
 await write('public/simulari/'+id+'/js/baza.js',base);
 let figures=await read(id+'/js/figuri-1.js');

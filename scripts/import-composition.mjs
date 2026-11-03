@@ -40,6 +40,9 @@ function prepare(canvas){
 // Preserve original geometry; render in logical coordinates at displayed CSS size × DPR.
 patch("const c=$('plot'),ctx=c.getContext('2d'),w=c.width,h=c.height;","const c=$('plot'),{g:ctx,w,h}=prepare(c);");
 patch("const c=$(id),ctx=c.getContext('2d'),w=c.width,h=c.height;","const c=$(id),{g:ctx,w,h}=prepare(c);");
+// Analytical paths can be resampled without changing the stored trail or its clock.
+patch('const N=Math.max(1000,Math.min(5000,Math.round(duration*80)));','const density=Math.max(1,Math.abs(ctx.getTransform().a)),N=Math.max(1000,Math.ceil(w*density*2),Math.ceil(duration*Math.max(params.wx,params.wy)*64));');
+patch('for(let i=0;i<=w;i+=2){const t=center+(i/w)*span;', 'const N=Math.max(Math.ceil(w*Math.max(1,Math.abs(ctx.getTransform().a))),Math.ceil(span*omega*64));for(let sample=0;sample<=N;sample++){const i=w*sample/N,t=center+(i/w)*span;');
 patch("if($('showSymmetry').checked)",`if($('showBox').checked){ctx.save();ctx.strokeStyle=PraxisScientificColors.palette(PraxisCourseLocalization.colors).purple;ctx.fillStyle='#0a1b2e';ctx.lineWidth=2;for(const sx of [-1,1])for(const sy of [-1,1]){const x=mx+sx*params.ax*s,y=my+sy*params.ay*s;ctx.fillRect(x-7,y-7,14,14);ctx.strokeRect(x-7,y-7,14,14);}ctx.restore();}
 if($('showSymmetry').checked)`);
 // Semantic scientific colours come from the common registry, including the legends.

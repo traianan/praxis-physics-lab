@@ -47,5 +47,16 @@ const changes={
 };
 export function thermoReadability(course,file,source){
  for(const [before,after] of changes[course]?.[file]||[]){if(!source.includes(before))throw new Error(`Thermodynamics readability anchor missing: ${course}/${file}`);source=source.replace(before,after);}
+ if(file==='js/baza.js'){
+  const before='resize(){const d=Math.min(2,devicePixelRatio||1);this.cv.forEach(c=>{const r=c.getBoundingClientRect();';
+  if(!source.includes(before))throw new Error(`Thermodynamics canvas resize anchor missing: ${course}`);
+  source=source.replace(before,'resize(){const primary=this.c.getBoundingClientRect();if(primary.width<=0||primary.height<=0)return;const previousWidth=this.w,previousHeight=this.h;this.cv.forEach(c=>{const r=c.getBoundingClientRect(),d=window.PraxisCanvasResolution?.forCanvas(c)??Math.min(2,devicePixelRatio||1);');
+  source=source.replace('this.onResize&&this.onResize();this.render()','if(previousWidth!==this.w||previousHeight!==this.h)this.onResize&&this.onResize();this.render()');
+  source=source.replace('new ResizeObserver(()=>this.resize()).observe(this.c);','new ResizeObserver(()=>this.resize()).observe(this.c);window.addEventListener("resize",()=>this.resize());');
+  // The first RAF timestamp can precede performance.now() at scheduling. Negative
+  // dt poisons stochastic particle displacements through Math.sqrt(dt).
+  source=source.replace('Math.min(.05,(now-last)/1000)','Math.max(0,Math.min(.05,(now-last)/1000))');
+  source=source.replace('if(this.step)this.step(dt);','if(this.step&&dt>0)this.step(dt);');
+ }
  return source;
 }

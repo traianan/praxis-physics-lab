@@ -35,6 +35,11 @@ function arrow(`);
 js=js.replaceAll('ctx.fillText(','window.PraxisVelocityLabels.label(ctx,');
 js=js.replace('if(updateHash&&location.hash',"window.dispatchEvent(new CustomEvent('praxis-curvilinear-tab-change',{detail:{id}}));\n if(updateHash&&location.hash");
 js=js.replace(' const step=()=>{if(!TH.play)return;TH.t=Math.min(3.4,TH.t+1/60);drawTheory();'," const clock=window.PraxisAnimationClock.create(1,.05);const step=stamp=>{if(!TH.play)return;TH.t=Math.min(3.4,TH.t+clock.step(stamp));drawTheory();");
+js=js.replace('const dpr=devicePixelRatio||1,w=cv.clientWidth,hgt=cv.clientHeight;','const dpr=window.PraxisCanvasResolution?.forCanvas(cv)??(devicePixelRatio||1),w=cv.clientWidth,hgt=cv.clientHeight;');
+// Curve tessellation follows the backing density while retaining the physical path.
+js=js.replace('for(let i=0;i<=200;i++){const q=arc(-1+2*i/200);','const samples=Math.max(200,Math.min(4096,Math.ceil(cv.width/2)));for(let i=0;i<=samples;i++){const q=arc(-1+2*i/samples);')
+ .replace('for(let i=0;i<=240;i++){const p=geom(TMAX*i/240);','const samples=Math.max(240,Math.min(4096,Math.ceil(cv.width/2)));for(let i=0;i<=samples;i++){const p=geom(TMAX*i/samples);')
+ .replace('for(let i=0;i<=200;i++){const q=point(2*Math.PI*i/200);','const samples=Math.max(200,Math.min(4096,Math.ceil(cv.width/2)));for(let i=0;i<=samples;i++){const q=point(2*Math.PI*i/samples);');
 js=colors(js).replaceAll('ctx.shadowBlur=16','ctx.shadowBlur=0');
 let html=source.replace(/<style>[\s\S]*?<\/style>/,'<link rel="stylesheet" href="source.css">').replace(/<script>[\s\S]*?<\/script>/,'<script src="app.js"></script>')
  .replace(/<header id="top">[\s\S]*?<\/header>/,'')

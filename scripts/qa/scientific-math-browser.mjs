@@ -15,7 +15,7 @@ const chrome=spawn('C:/Program Files/Google/Chrome/Application/chrome.exe',[
 let stderr='';chrome.stderr.on('data',v=>stderr+=v);chrome.on('error',error=>stderr+=error.message);
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
 let socket,serial=0;const pending=new Map(),events=[];
-function send(method,params={}){return new Promise((resolve,reject)=>{const id=++serial,timer=setTimeout(()=>{pending.delete(id);reject(Error(method+' timed out'));},15000);pending.set(id,{resolve:v=>{clearTimeout(timer);resolve(v)},reject:e=>{clearTimeout(timer);reject(e)}});socket.send(JSON.stringify({id,method,params}));});}
+function send(method,params={}){return new Promise((resolve,reject)=>{const id=++serial,timer=setTimeout(()=>{pending.delete(id);reject(Error(method+' timed out'));},process.argv.includes('--all-resolution')?120000:15000);pending.set(id,{resolve:v=>{clearTimeout(timer);resolve(v)},reject:e=>{clearTimeout(timer);reject(e)}});socket.send(JSON.stringify({id,method,params}));});}
 try{
  let tabs;for(let i=0;i<80;i++){try{tabs=await fetch('http://127.0.0.1:'+port+'/json/list').then(r=>r.json());if(tabs.length)break;}catch{}await delay(100);}
  if(!tabs?.length)throw Error('Chrome did not expose its local endpoint: '+stderr.slice(-2000));
@@ -30,15 +30,20 @@ try{
  window.MutationObserver=class extends NativeObserver{constructor(fn){const stack=new Error().stack;let count=0,start=performance.now();super((records,observer)=>{const now=performance.now();if(now-start>100){count=0;start=now;}if(++count>600){window.__mutationAudit.push({stack,targets:records.slice(0,4).map(r=>({tag:r.target.nodeName,cls:r.target.className}))});observer.disconnect();return;}fn(records,observer);});}};
  try{localStorage.setItem('praxis-privacy-choice-v1',JSON.stringify({version:1,value:'necessary',time:Date.now()}));localStorage.setItem('praxis-language','ro');localStorage.setItem('praxis-course-text-size','100');}catch{}
  `});
- const evaluate=async source=>{const r=await send('Runtime.evaluate',{expression:'('+source+')()',returnByValue:true,awaitPromise:true,timeout:10000});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
+ const evaluate=async source=>{const r=await send('Runtime.evaluate',{expression:'('+source+')()',returnByValue:true,awaitPromise:true,timeout:process.argv.includes('--all-resolution')?110000:10000});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
  const ids=['calcul-vectorial','calorimetrie','compunerea-oscilatiilor','figuri-chladni','interactii-atomice','miscarea-circulara-uniforma','miscarea-curbilinie-plana','miscarea-rectilinie','motoare-termice','notiuni-termodinamice','oglinzi-si-lentile','oscilator-mecanic','oscilatori-mecanici-cuplati','principiile-mecanicii-newtoniene','principiul-i-al-termodinamicii','principiul-i-aplicatii','transformari-stare-agregare','unde-mecanice','viteza-si-acceleratia'];
  const only=process.argv.find(a=>a.startsWith('--course='))?.split('=')[1];
+ const subset=process.argv.find(a=>a.startsWith('--courses='))?.slice(10).split(',');
+ if(subset?.some(id=>!ids.includes(id)))throw Error('Unknown course subset');
+ const reportSuffix=only?'-'+only:subset?'-subset':'';
+ const from=process.argv.find(a=>a.startsWith('--from='))?.slice(7);
+ if(from&&!ids.includes(from))throw Error('Unknown resume course: '+from);
  const motionControls=process.argv.includes('--motion-controls');
  const indexAudit=process.argv.includes('--indices'),thorough=process.argv.includes('--matrix');
  const indexProbe=indexAudit?await readFile('scripts/qa/visible-indices.browser.js','utf8'):null;
  const inspect=`()=>({errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),canvas:window.__canvasAudit,overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,math:document.querySelectorAll('math,.fraction,.frac').length})`;
- const results=[];
- for(const id of ids.filter(id=>!only||id===only)){
+ const results=from?JSON.parse(await readFile(path.join(root,'all-resolution.json'),'utf8')).filter(r=>ids.indexOf(r.id)<ids.indexOf(from)):[];
+ for(const id of ids.filter(id=>(!only||id===only)&&(!subset||subset.includes(id))&&(!from||ids.indexOf(id)>=ids.indexOf(from)))){
   events.length=0;await send('Emulation.setDeviceMetricsOverride',{width:1366,height:768,deviceScaleFactor:1,mobile:false});
   const nav=await send('Page.navigate',{url:base+'/simulari/'+id+'/'});if(nav.errorText)throw Error(id+': '+nav.errorText);
   let loaded=false;for(let attempt=0;attempt<60;attempt++){await delay(150);loaded=await evaluate('()=>document.readyState==="complete"&&!!window.PraxisMath&&document.title.length>0');if(loaded)break;}
@@ -46,6 +51,27 @@ try{
   const result=await evaluate(`()=>({id:${JSON.stringify(id)},url:location.href,ready:document.readyState,title:document.title,api:!!window.PraxisMath,math:document.querySelectorAll('.science-math').length,errors:[...document.querySelectorAll('.science-math-error,.wave-math-error,.katex-error')].map(e=>({text:e.textContent,title:e.title})),overflow:document.documentElement.scrollWidth>innerWidth+2,mutations:window.__mutationAudit,tabs:[...document.querySelectorAll('#praxis-original [role=tab],#praxis-original button[data-tab],#praxis-original .tabs a')].map(e=>({text:e.textContent.trim(),id:e.id,tab:e.dataset.tab,href:e.getAttribute('href')}))})`);
   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
   results.push(result);console.log(JSON.stringify(result));
+  if(process.argv.includes('--all-resolution')){
+   await evaluate('()=>{'+await readFile('scripts/qa/canvas-resolution.browser.js','utf8')+'}');
+   if(id==='unde-mecanice')await evaluate('()=>{'+await readFile('scripts/qa/waves-resolution.browser.js','utf8')+'}');
+   result.resolutionAudit=[];
+   for(const [width,height,dpr,size,language]of [[1366,768,1,100,'ro'],[1920,1080,2,100,'en']]){
+    await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:dpr,mobile:false});
+    await delay(350);
+    const audit=await evaluate(`()=>${id==='unde-mecanice'?'PraxisWaveResolutionAudit':'PraxisResolutionAudit'}.run({language:${JSON.stringify(language)}})`);
+    Object.assign(audit,{width,height,dpr,size});result.resolutionAudit.push(audit);
+    const unobserved=audit.canvasInventory.filter(c=>!c.observed);
+    if(!audit.complete||!audit.policyAvailable||unobserved.length) audit.failures.push({type:'coverage',reason:'Incomplete navigation or missing density policy',pending:audit.pending,errors:audit.errors,unobserved});
+    console.log(JSON.stringify({id,language,dpr,states:audit.states,complete:audit.complete,failures:audit.failures}));
+   }
+   if(id==='viteza-si-acceleratia'){
+    await evaluate(`()=>document.getElementById('btn-tab-curbiliniu').click()`);await delay(100);
+    result.vectorLegend=await evaluate(`()=>{const p=document.querySelector('#curv-desc-text');return {vectors:p.querySelectorAll('.vec').length,arrows:[...p.querySelectorAll('.vec')].map(v=>getComputedStyle(v,'::before').content),text:p.textContent};}`);
+    if(result.vectorLegend.vectors!==6||result.vectorLegend.arrows.some(a=>!a.includes('→')))throw Error('Missing vector arrows: '+JSON.stringify(result.vectorLegend));
+   }
+   result.exceptions=events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);
+   await writeFile(path.join(root,'all-resolution'+reportSuffix+'.json'),JSON.stringify(results,null,2));
+  }
   if(process.argv.includes('--velocity-resolution')&&id==='viteza-si-acceleratia'){
    result.resolution=[];
    for(const [width,height,dpr,size,language] of [[1366,768,1,100,'ro'],[1920,1080,2,100,'en'],[3840,2160,1,100,'ro'],[1024,768,1.25,100,'en'],[390,844,3,100,'ro'],[1366,768,1,200,'ro']]){
@@ -140,6 +166,8 @@ try{
    if(!result.phase.translated||!result.phase.noteIndex||!result.phase.timePreserved||result.phase.probes.some(p=>!p.bothVisible||!p.selected||!p.fixedPhase||!p.freePhase||!p.midpoint||p.errors))throw Error('String phase audit failed');
   }
   if(motionControls&&id==='miscarea-rectilinie'){
+   await send('Emulation.setDeviceMetricsOverride',{width:1366,height:768,deviceScaleFactor:1,mobile:false});
+   await evaluate(`async()=>{await PraxisI18n.setLanguage('ro');document.querySelector('[role=tab][data-tab=tipuri]').click();window.scrollTo(0,0);}`);await delay(150);
    result.controls=[];
    for(const kind of ['unif','acc','inc','var']){
     const probe=await evaluate(`async()=>{
@@ -180,16 +208,22 @@ try{
    const selected=sections.includes(preferred)?preferred:sections[0];
    if(selected)await evaluate(`()=>{const s=document.querySelector('.praxis-course-sections');s.value=${JSON.stringify(selected)};s.dispatchEvent(new Event('change',{bubbles:true}));window.scrollTo(0,0);}`);
    if(id==='unde-mecanice')await evaluate(`()=>document.getElementById('group-0')?.click()`);
+   if(process.argv.includes('--all-resolution')){
+    if(id==='unde-mecanice')await evaluate(`()=>window.dispatchEvent(new CustomEvent('lesson:navigate',{detail:'ecuatia-content-0'}))`);
+    else {result.representative=await evaluate(`()=>PraxisResolutionAudit.focusRepresentative()`);if(result.representative.missingCanvases?.length)throw Error('Representative figure inaccessible: '+JSON.stringify(result.representative));}
+   }
    if(process.argv.includes('--propagation')&&id==='unde-mecanice')await evaluate(`()=>location.hash='marimi-content-3'`);
    await delay(100);
    const rangeCheck=await evaluate(`()=>{const r=[...document.querySelectorAll('input[type=range]')].find(e=>e.getBoundingClientRect().width>0&&!e.disabled);if(!r)return null;const old=r.value,min=Number(r.min||0),max=Number(r.max||100),step=Number(r.step)||1;r.value=Number(old)+step<=max?Number(old)+step:Math.max(min,Number(old)-step);r.dispatchEvent(new Event('input',{bubbles:true}));r.dispatchEvent(new Event('change',{bubbles:true}));return {id:r.id,old,changed:r.value};}`);
    result.rangeCheck=rangeCheck;await delay(100);result.afterInput=await evaluate(inspect);
-   const states=[[1366,768,1,100,'en'],[1920,1080,2,100,'ro'],[1024,768,1,100,'ro'],[390,844,1,100,'en'],[1366,768,1,200,'ro'],[3840,2160,1,100,'ro']];
+   const states=[[1366,768,1,100,'en'],[1920,1080,2,100,'ro'],[1024,768,1,100,'ro'],[390,844,3,100,'en'],[1366,768,1,200,'ro'],[3840,2160,1,100,'ro']];
    result.matrix=[];
    for(const [width,height,dpr,size,language] of states){
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:dpr,mobile:false});
     await evaluate(`async()=>{await window.PraxisI18n?.setLanguage(${JSON.stringify(language)});const s=document.querySelector('.praxis-course-settings select');if(s){s.value=${JSON.stringify(String(size))};s.dispatchEvent(new Event('change',{bubbles:true}));}else{document.documentElement.style.fontSize=${JSON.stringify(16*size/100+'px')};window.dispatchEvent(new Event('resize'));}}`);await delay(120);
-    const view=await evaluate(inspect);Object.assign(view,{width,height,dpr,size,language});result.matrix.push(view);
+    const view=await evaluate(inspect);Object.assign(view,{width,height,dpr,size,language});
+    if(process.argv.includes('--all-resolution'))view.sampling=await evaluate(`()=>PraxisResolutionAudit.scan(['display matrix'])`);
+    result.matrix.push(view);
     if(only||(['miscarea-circulara-uniforma','compunerea-oscilatiilor','calorimetrie','oglinzi-si-lentile'].includes(id)&&width===1366&&size===100)){
      const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,`${id}-${width}-${size}-${language}.png`),Buffer.from(shot.data,'base64'));
     }
@@ -199,10 +233,10 @@ try{
   }
   if(only){const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile(path.join(root,id+'.png'),Buffer.from(shot.data,'base64'));}
  }
- await writeFile(path.join(root,(indexAudit?'browser-indices':thorough?'browser-matrix':'browser-baseline')+(only?'-'+only:'')+'.json'),JSON.stringify(results,null,2));
+ await writeFile(path.join(root,(indexAudit?'browser-indices':thorough?'browser-matrix':'browser-baseline')+reportSuffix+'.json'),JSON.stringify(results,null,2));
  const failures=results.flatMap(r=>{
   const views=[r,...(r.views||[]),r.afterInput,r.indexRuntime,...(r.matrix||[])].filter(Boolean);
-  return [...views.filter(v=>v.errors.length||v.canvas?.length||v.overflow||v.mutations.length).map(v=>({id:r.id,view:v})),...r.exceptions.map(exception=>({id:r.id,exception})),...(r.indices||[]).filter(v=>v.findings.length).map(v=>({id:r.id,indices:v})),...(r.canvasIndices||[]).map(text=>({id:r.id,canvasIndex:text}))];
+  return [...views.filter(v=>v.errors.length||v.canvas?.length||v.overflow||v.mutations.length).map(v=>({id:r.id,view:v})),...r.exceptions.map(exception=>({id:r.id,exception})),...(r.indices||[]).filter(v=>v.findings.length).map(v=>({id:r.id,indices:v})),...(r.canvasIndices||[]).map(text=>({id:r.id,canvasIndex:text})),...(r.resolutionAudit||[]).flatMap(a=>a.failures.map(f=>({id:r.id,language:a.language,resolution:f}))),...(r.matrix||[]).flatMap(v=>(v.sampling?.canvases||[]).filter(c=>c.invalid||c.sharp===false).map(c=>({id:r.id,matrix:[v.width,v.size,v.language],canvas:c})))];
  });
  if(failures.length)throw Error('Browser audit failed: '+JSON.stringify(failures));
 }catch(error){console.error(error.stack);process.exitCode=1;}

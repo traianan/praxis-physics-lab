@@ -45,7 +45,7 @@
  function candidate(el){
   if(el.closest(excluded+', [data-praxis-panel-probe],[inert]')||el.matches('[data-no-science-math]'))return false;
   if(el.closest('.journal,.lab-journal,.log-table,[data-journal]')||el.closest('table')?.querySelector('[contenteditable],input,textarea'))return false;
-  if(el.querySelector(excluded+', [id],.mcu-vector-symbol'))return false;
+  if(el.matches('.vec')||el.querySelector(excluded+', [id],.mcu-vector-symbol,.vec'))return false;
   // A native formula can have its equation and explanatory caption in siblings.
   // Keep that structure; the .eq child is enhanced independently.
   if(el.querySelector('.eq')&&el.querySelector('.what'))return false;

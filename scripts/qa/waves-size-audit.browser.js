@@ -11,8 +11,9 @@ async () => {
   const canvas=figure.querySelector('canvas'),box=canvas.getBoundingClientRect();
   const maximum=parseFloat(getComputedStyle(figure).getPropertyValue('--wave-render-width'))*rootSize;
   if(box.width>maximum+1)throw new Error('The workspace overrides the scientific figure size limit');
-  if(Math.abs(canvas.width-box.width*devicePixelRatio)>1||Math.abs(canvas.height-box.height*devicePixelRatio)>1)throw new Error('An active figure is not rendered at CSS size times DPR');
-  return {css:[box.width,box.height],buffer:[canvas.width,canvas.height],maximum};
+  const density=window.PraxisCanvasResolution.forCanvas(canvas);
+  if(Math.abs(canvas.width-box.width*density)>1||Math.abs(canvas.height-box.height*density)>1)throw new Error('An active figure does not follow the bounded shared resolution policy');
+  return {css:[box.width,box.height],buffer:[canvas.width,canvas.height],density,maximum};
  });
  return {viewport:[innerWidth,innerHeight],dpr:devicePixelRatio,headingSize:getComputedStyle(card.querySelector('h3')).fontSize,figures,overflow:document.documentElement.scrollWidth>innerWidth+1};
 }

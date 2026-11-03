@@ -20,7 +20,7 @@
    if(!c?.isConnected||!c.parentElement.getBoundingClientRect().width)return null;
    const zoom=parseFloat(getComputedStyle(document.documentElement).fontSize)/16;
    const parentStyle=getComputedStyle(c.parentElement),available=Math.max(0,c.parentElement.clientWidth-parseFloat(parentStyle.paddingLeft)-parseFloat(parentStyle.paddingRight));c.style.width=Math.max(320*zoom,available)+'px';c.style.height=Math.max((kind==='circle'?340:620)*zoom,Math.min(520*zoom,available*(kind==='circle'?.76:.6)))+'px';
-   const rect=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1,w=Math.round(rect.width*dpr),h=Math.round(rect.height*dpr);if(c.width!==w)c.width=w;if(c.height!==h)c.height=h;
+   const rect=c.getBoundingClientRect(),dpr=window.PraxisCanvasResolution?.forCanvas(c)??(window.devicePixelRatio||1),w=Math.round(rect.width*dpr),h=Math.round(rect.height*dpr);if(c.width!==w)c.width=w;if(c.height!==h)c.height=h;
    const g=c.getContext('2d');g.setTransform(dpr*zoom,0,0,dpr*zoom,0,0);g.praxisWidth=rect.width/zoom;g.praxisHeight=rect.height/zoom;g.praxisLabelBoxes=[];return{g,w:rect.width/zoom,h:rect.height/zoom,zoom};
   }
   function label(g,text,x,y,color,align='left'){

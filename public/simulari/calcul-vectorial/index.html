@@ -855,6 +855,7 @@ class Plane{
     this.o=Object.assign({unit:42,origin:[.5,.5],grid:true,axes:true,snap:.25,names:['x','y']},o);
     this.draw=o.draw||(()=>{});this.handles=[];this.drag=null;this.hover=null;
     new ResizeObserver(()=>this.resize()).observe(canvas);
+    globalThis.window?.addEventListener('resize',()=>this.resize());
     canvas.addEventListener('pointerdown',e=>this.down(e));
     canvas.addEventListener('pointermove',e=>this.move(e));
     canvas.addEventListener('pointerup',()=>this.up());
@@ -862,7 +863,7 @@ class Plane{
     canvas.addEventListener('pointerleave',()=>{if(!this.drag&&this.hover){this.hover=null;this.render()}});
     ALL.push(this);
   }
-  resize(){const r=this.c.getBoundingClientRect();if(!r.width)return;const d=Math.min(2,devicePixelRatio||1);this.w=r.width;this.h=r.height;this.c.width=Math.round(r.width*d);this.c.height=Math.round(r.height*d);this.ctx.setTransform(d,0,0,d,0,0);
+  resize(){const r=this.c.getBoundingClientRect();if(!r.width)return;const d=globalThis.window?.PraxisCanvasResolution?.forCanvas(this.c)??Math.min(2,devicePixelRatio||1);this.w=r.width;this.h=r.height;this.c.width=Math.round(r.width*d);this.c.height=Math.round(r.height*d);this.ctx.setTransform(d,0,0,d,0,0);
     this.u=this.o.unit*clamp(this.w/640,.62,1.15);this.ox=this.w*this.o.origin[0];this.oy=this.h*this.o.origin[1];this.render()}
   P(x,y){return [this.ox+x*this.u,this.oy-y*this.u]}
   W(px,py){return [(px-this.ox)/this.u,(this.oy-py)/this.u]}
@@ -925,6 +926,7 @@ class View3D{
     this.c=canvas;this.ctx=canvas.getContext('2d');this.draw=draw;this.o=o;
     this.yaw0=o.yaw??-2.25;this.pitch0=o.pitch??.38;this.yaw=this.yaw0;this.pitch=this.pitch0;this.zoom=o.zoom||1;this.auto=!!o.auto;this.vis=false;this.dragging=null;
     new ResizeObserver(()=>this.resize()).observe(canvas);
+    globalThis.window?.addEventListener('resize',()=>this.resize());
     new IntersectionObserver(es=>{this.vis=es[0].isIntersecting;this.loop()}).observe(canvas);
     canvas.style.cursor='grab';
     canvas.addEventListener('pointerdown',e=>{this.dragging=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId);canvas.style.cursor='grabbing'});
@@ -934,7 +936,7 @@ class View3D{
   }
   setAuto(v){this.auto=v;this.loop()}
   loop(){if(this.raf||!this.auto||!this.vis)return;const step=()=>{this.raf=null;if(!this.auto||!this.vis)return;if(!this.dragging)this.yaw+=.0045;this.render();this.raf=requestAnimationFrame(step)};this.raf=requestAnimationFrame(step)}
-  resize(){const r=this.c.getBoundingClientRect();if(!r.width)return;const d=Math.min(2,devicePixelRatio||1);this.w=r.width;this.h=r.height;this.c.width=Math.round(r.width*d);this.c.height=Math.round(r.height*d);this.ctx.setTransform(d,0,0,d,0,0);
+  resize(){const r=this.c.getBoundingClientRect();if(!r.width)return;const d=globalThis.window?.PraxisCanvasResolution?.forCanvas(this.c)??Math.min(2,devicePixelRatio||1);this.w=r.width;this.h=r.height;this.c.width=Math.round(r.width*d);this.c.height=Math.round(r.height*d);this.ctx.setTransform(d,0,0,d,0,0);
     this.s=Math.min(this.w,this.h*1.15)/10.5*this.zoom;this.cx=this.w/2;this.cy=this.h*(this.o.cy||.6);this.render()}
   P(p){const [x,y,z]=p,cy=Math.cos(this.yaw),sy=Math.sin(this.yaw),x1=x*cy-y*sy,y1=x*sy+y*cy,cp=Math.cos(this.pitch),sp=Math.sin(this.pitch),d=y1*cp-z*sp,z2=y1*sp+z*cp,k=16/(16+d);
     return [this.cx+x1*this.s*k,this.cy-z2*this.s*k,d,k]}
@@ -1209,13 +1211,13 @@ function setSlider(root,key,val,label){const i=root.querySelector(`[data-s="${ke
   }
   // mini-grafic: a·b în funcție de θ
   const mc=mini.getContext('2d');let mw=0,mh=0;
-  new ResizeObserver(()=>{const r=mini.getBoundingClientRect();const d=Math.min(2,devicePixelRatio||1);mw=r.width;mh=r.height;mini.width=mw*d;mini.height=mh*d;mc.setTransform(d,0,0,d,0,0);drawMini()}).observe(mini);
+  const resizeMini=()=>{const r=mini.getBoundingClientRect();if(!r.width)return;const d=globalThis.window?.PraxisCanvasResolution?.forCanvas(mini)??Math.min(2,devicePixelRatio||1);mw=r.width;mh=r.height;mini.width=mw*d;mini.height=mh*d;mc.setTransform(d,0,0,d,0,0);drawMini()};new ResizeObserver(resizeMini).observe(mini);globalThis.window?.addEventListener('resize',resizeMini);
   function drawMini(){if(!mw)return;const {a,b}=st,A=norm(a),B=norm(b),th=Math.acos(clamp(dot(a,b)/(A*B||1),-1,1)),L=44,R=mw-20,T=16,Bm=mh-22,mid=(T+Bm)/2,amp=A&&B?(Bm-T)/2:0;
     mc.clearRect(0,0,mw,mh);mc.strokeStyle='rgba(26,29,38,.4)';mc.lineWidth=1;mc.beginPath();mc.moveTo(L,mid+.5);mc.lineTo(R,mid+.5);mc.moveTo(L+.5,T);mc.lineTo(L+.5,Bm);mc.stroke();
     mc.font='500 10px "JetBrains Mono", monospace';mc.fillStyle=COL.muted;mc.textAlign='center';mc.textBaseline='top';
     [0,45,90,135,180].forEach(g=>{const x=L+(R-L)*g/180;mc.fillText(g+'°',x,Bm+5);mc.fillRect(x-.5,mid-3,1,6)});
     mc.textAlign='right';mc.textBaseline='middle';mc.fillText(f(A*B),L-6,T+2);mc.fillText('0',L-6,mid);mc.fillText(f(-A*B),L-6,Bm-2);
-    mc.save();mc.beginPath();for(let i=0;i<=120;i++){const t=Math.PI*i/120,x=L+(R-L)*i/120,y=mid-Math.cos(t)*amp;i?mc.lineTo(x,y):mc.moveTo(x,y)}mc.strokeStyle=COL.b;mc.lineWidth=2;mc.stroke();mc.restore();
+    mc.save();mc.beginPath();const samples=Math.max(120,Math.min(4096,Math.ceil(mini.width/2)));for(let i=0;i<=samples;i++){const t=Math.PI*i/samples,x=L+(R-L)*i/samples,y=mid-Math.cos(t)*amp;i?mc.lineTo(x,y):mc.moveTo(x,y)}mc.strokeStyle=COL.b;mc.lineWidth=2;mc.stroke();mc.restore();
     if(!A||!B)return;
     const x=L+(R-L)*th/Math.PI,y=mid-Math.cos(th)*amp;mc.setLineDash([3,3]);mc.strokeStyle=COL.plum;mc.beginPath();mc.moveTo(x,mid);mc.lineTo(x,y);mc.stroke();mc.setLineDash([]);
     mc.beginPath();mc.arc(x,y,5.5,0,7);mc.fillStyle=Math.cos(th)>.01?COL.c:Math.cos(th)<-.01?COL.a:COL.o;mc.fill();mc.strokeStyle='#fff';mc.lineWidth=2;mc.stroke();
@@ -1353,8 +1355,8 @@ function setSlider(root,key,val,label){const i=root.querySelector(`[data-s="${ke
    ===================================================================== */
 (()=>{const c=$('#heroField'),ctx=c.getContext('2d'),hero=$('.hero');let w=0,h=0,vis=true,mouse=null,raf=null;const t0=performance.now();
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function resize(){const r=c.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);w=r.width;h=r.height;c.width=w*d;c.height=h*d;ctx.setTransform(d,0,0,d,0,0);frame(performance.now(),true)}
-  new ResizeObserver(resize).observe(c);
+  function resize(){const r=c.getBoundingClientRect(),d=globalThis.window?.PraxisCanvasResolution?.forCanvas(c)??Math.min(2,devicePixelRatio||1);w=r.width;h=r.height;c.width=w*d;c.height=h*d;ctx.setTransform(d,0,0,d,0,0);frame(performance.now(),true)}
+  new ResizeObserver(resize).observe(c);globalThis.window?.addEventListener('resize',resize);
   new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis)loop()}).observe(hero);
   hero.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();mouse=[e.clientX-r.left,e.clientY-r.top]});
   hero.addEventListener('pointerleave',()=>mouse=null);

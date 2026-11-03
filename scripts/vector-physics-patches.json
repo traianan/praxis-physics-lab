@@ -129,5 +129,42 @@
     "before": "ctx.strokeText(t.s,x+t.w+1,py+size*.3);ctx.fillText(t.s,x+t.w+1,py+size*.3)",
     "after": "ctx.strokeText(t.s,x+t.w+4,py+size*.3);ctx.fillText(t.s,x+t.w+4,py+size*.3)",
     "id": "tablet-vector-25"
+  },
+  {
+    "id": "resolution-plane-and-view",
+    "count": 2,
+    "before": "const d=Math.min(2,devicePixelRatio||1);this.w=r.width;",
+    "after": "const d=globalThis.window?.PraxisCanvasResolution?.forCanvas(this.c)??Math.min(2,devicePixelRatio||1);this.w=r.width;"
+  },
+  {
+    "id": "resolution-mini",
+    "before": "const d=Math.min(2,devicePixelRatio||1);mw=r.width;",
+    "after": "const d=globalThis.window?.PraxisCanvasResolution?.forCanvas(mini)??Math.min(2,devicePixelRatio||1);mw=r.width;"
+  },
+  {
+    "id": "resolution-hero",
+    "before": "const r=c.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);w=r.width;",
+    "after": "const r=c.getBoundingClientRect(),d=globalThis.window?.PraxisCanvasResolution?.forCanvas(c)??Math.min(2,devicePixelRatio||1);w=r.width;"
+  },
+  {
+    "id": "resolution-resize-classes",
+    "count": 2,
+    "before": "new ResizeObserver(()=>this.resize()).observe(canvas);",
+    "after": "new ResizeObserver(()=>this.resize()).observe(canvas);\n    globalThis.window?.addEventListener('resize',()=>this.resize());"
+  },
+  {
+    "id": "resolution-resize-mini",
+    "before": "new ResizeObserver(()=>{const r=mini.getBoundingClientRect();const d=globalThis.window?.PraxisCanvasResolution?.forCanvas(mini)??Math.min(2,devicePixelRatio||1);mw=r.width;mh=r.height;mini.width=mw*d;mini.height=mh*d;mc.setTransform(d,0,0,d,0,0);drawMini()}).observe(mini);",
+    "after": "const resizeMini=()=>{const r=mini.getBoundingClientRect();if(!r.width)return;const d=globalThis.window?.PraxisCanvasResolution?.forCanvas(mini)??Math.min(2,devicePixelRatio||1);mw=r.width;mh=r.height;mini.width=mw*d;mini.height=mh*d;mc.setTransform(d,0,0,d,0,0);drawMini()};new ResizeObserver(resizeMini).observe(mini);globalThis.window?.addEventListener('resize',resizeMini);"
+  },
+  {
+    "id": "resolution-mini-sampling",
+    "before": "for(let i=0;i<=120;i++){const t=Math.PI*i/120,x=L+(R-L)*i/120,",
+    "after": "const samples=Math.max(120,Math.min(4096,Math.ceil(mini.width/2)));for(let i=0;i<=samples;i++){const t=Math.PI*i/samples,x=L+(R-L)*i/samples,"
+  },
+  {
+    "id": "resolution-hero-dpr-resize",
+    "before": "new ResizeObserver(resize).observe(c);",
+    "after": "new ResizeObserver(resize).observe(c);globalThis.window?.addEventListener('resize',resize);"
   }
 ]

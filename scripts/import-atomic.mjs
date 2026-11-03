@@ -35,6 +35,18 @@ const styles=['design-system/tokens.css','simulari/'+id+'/original.css','design-
 const head=styles.map(s=>'<link rel="stylesheet" href="../../'+s+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded})+');</script>'+['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js'].map(s=>'<script src="../../shared/'+s+'"></script>').join('');
 const html=withFavicon('<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Interacții atomice — Praxis</title>'+head+'</head><body data-praxis-laboratory="true" data-praxis-course="'+id+'"><main id="praxis-original" class="wrap" lang="ro">'+nav+body+'</main><script src="./js/app.js"></script><script src="../../shared/course.js" data-course="'+id+'" data-title="Interacții atomice" defer></script></body></html>');
 let js=source.replace(/let actx = null,[\s\S]*?\/\* ---------- stare/,'function beep(f, d = .06, type = \'sine\', vol = .08) {\n  if (document.hidden) return;\n  const stop = window.PraxisSound.startTone({frequency:f,type,gain:vol});\n  setTimeout(stop,d*1000);\n}\n\n/* ---------- stare');
+// The scene and pointer handlers use CSS coordinates; only its bitmap follows density.
+const resizeSource=`  const dpr = Math.min(devicePixelRatio || 1, 2), b = cv.getBoundingClientRect();
+  W = b.width; H = b.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);`;
+if(!js.includes(resizeSource))throw new Error('Atomic canvas resize adapter target changed');
+js=js.replace(resizeSource,`  const b = cv.getBoundingClientRect();
+  W = b.width; H = b.height;
+  const dpr = window.PraxisCanvasResolution?.forCanvas(cv) ?? (devicePixelRatio || 1);
+  cv.width = Math.max(1, Math.round(W * dpr)); cv.height = Math.max(1, Math.round(H * dpr));
+  ctx.setTransform(cv.width / Math.max(1, W), 0, 0, cv.height / Math.max(1, H), 0, 0);`);
+const curveSource='for (let px = X(.8 * st.sigma); px <= xR; px += 1.5)';
+if(!js.includes(curveSource))throw new Error('Atomic curve sampling adapter target changed');
+js=js.replace(curveSource,'for (let px = X(.8 * st.sigma), step = 1 / Math.max(1, Math.abs(ctx.getTransform().a)); px <= xR; px += step)');
 js=js.replace(/if \('serviceWorker'[\s\S]*?\.catch\(\(\) => \{\}\);/,'');
 js=js.replace("const MONO = '\"JetBrains Mono\", ui-monospace, monospace';","const MONO = 'ui-monospace, monospace';").replaceAll('"Source Serif 4", Georgia, serif','Segoe UI, Arial, sans-serif').replaceAll('"Source Serif 4", serif','Georgia, serif');
 js=js.replace('(W < 600 ? 780 : 1000)','1000').replace('near = (x, y, d = 16)','near = (x, y, d = window.PraxisCourseLocalization.touch ? 34 : 16)');

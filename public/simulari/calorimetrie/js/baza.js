@@ -99,7 +99,7 @@ class Sim{
       tabs.forEach(b=>b.addEventListener('click',()=>{SND.unlock();tabs.forEach(x=>x.classList.toggle('on',x===b));this.mode=b.dataset.mode;this.showIn();this.onMode&&this.onMode(this.mode);this.render()}))}
     this.showIn();
     this.outs={};$$('[data-o]',this.fig).forEach(el=>this.outs[el.dataset.o]=el);
-    new ResizeObserver(()=>this.resize()).observe(this.c);
+    new ResizeObserver(()=>this.resize()).observe(this.c);window.addEventListener("resize",()=>this.resize());
     new IntersectionObserver(es=>{this.vis=es[0].isIntersecting;if(this.vis)this.loop();else this.onHide&&this.onHide()}).observe(this.fig);
     ALL.push(this);
   }
@@ -108,11 +108,11 @@ class Sim{
   out(k,v){const el=this.outs[k];if(el&&el._v!==v){el._v=v;el.innerHTML=v;window.PraxisMath?.enhance(el)}}
   btn(act){return $(`[data-act="${act}"]`,this.fig)}
   label(act,html,icon){const b=this.btn(act);if(!b)return;let s=b.querySelector('span');if(!s){[...b.childNodes].forEach(n=>n.nodeType===3&&n.remove());s=document.createElement('span');b.append(s)}s.textContent=html;if(icon){const u=b.querySelector('use');u&&u.setAttribute('href',icon)}}
-  resize(){const d=Math.min(2,devicePixelRatio||1);this.cv.forEach(c=>{const r=c.getBoundingClientRect();c.width=Math.round(r.width*d);c.height=Math.round(r.height*d);c.getContext('2d').setTransform(d,0,0,d,0,0);c._w=r.width;c._h=r.height});
-    this.w=this.c._w;this.h=this.c._h;this.onResize&&this.onResize();this.render()}
+  resize(){const primary=this.c.getBoundingClientRect();if(primary.width<=0||primary.height<=0)return;const previousWidth=this.w,previousHeight=this.h;this.cv.forEach(c=>{const r=c.getBoundingClientRect(),d=window.PraxisCanvasResolution?.forCanvas(c)??Math.min(2,devicePixelRatio||1);c.width=Math.round(r.width*d);c.height=Math.round(r.height*d);c.getContext('2d').setTransform(d,0,0,d,0,0);c._w=r.width;c._h=r.height});
+    this.w=this.c._w;this.h=this.c._h;if(previousWidth!==this.w||previousHeight!==this.h)this.onResize&&this.onResize();this.render()}
   render(){if(!this.w)return;this.ctx.clearRect(0,0,this.w,this.h);this.cv.forEach(c=>window.PraxisVelocityLabels.begin(c.getContext("2d"),c._w,c._h));this.draw&&this.draw(this.ctx,this.w,this.h);this.cv.forEach(c=>window.PraxisVelocityLabels.flush(c.getContext("2d")))}
-  loop(){if(this.raf||document.hidden)return;let last=performance.now();const step=now=>{this.raf=null;if(!this.vis||document.hidden)return;const dt=Math.min(.05,(now-last)/1000);last=now;
-      if(this.step)this.step(dt);this.render();this.raf=requestAnimationFrame(step)};this.raf=requestAnimationFrame(step)}
+  loop(){if(this.raf||document.hidden)return;let last=performance.now();const step=now=>{this.raf=null;if(!this.vis||document.hidden)return;const dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;
+      if(this.step&&dt>0)this.step(dt);this.render();this.raf=requestAnimationFrame(step)};this.raf=requestAnimationFrame(step)}
   // coordonate pointer relative la canvas
   pt(e,c=this.c){const r=c.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]}
 }

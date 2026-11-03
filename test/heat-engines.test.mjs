@@ -175,8 +175,17 @@ test('introductory animation tolerates a frame timestamp earlier than its schedu
  const helpers=(await read('public/simulari/motoare-termice/js/figuri-2.js')).split('// Schelet comun:')[0];
  const callbacks=[],ctx=new Proxy({}, {get:(obj,key)=>obj[key]??(()=>{}),set:(obj,key,value)=>(obj[key]=value,true)});
  const canvas={getContext:()=>ctx},hero={addEventListener(){}};
- const context={Math,window:{},document:{hidden:false,addEventListener(){}},$:s=>s==='#heroField'?canvas:hero,matchMedia:()=>({matches:false}),ResizeObserver:class{observe(){}},IntersectionObserver:class{observe(){}},performance:{now:()=>100},requestAnimationFrame:fn=>(callbacks.push(fn),callbacks.length),lerp:(a,b,t)=>a+(b-a)*t,clamp:(v,a,b)=>Math.max(a,Math.min(b,v)),TAU:2*Math.PI,f:String,SND:{whoosh(){}}};
+ const context={Math,window:{addEventListener(){}},document:{hidden:false,addEventListener(){}},$:s=>s==='#heroField'?canvas:hero,matchMedia:()=>({matches:false}),ResizeObserver:class{observe(){}},IntersectionObserver:class{observe(){}},performance:{now:()=>100},requestAnimationFrame:fn=>(callbacks.push(fn),callbacks.length),lerp:(a,b,t)=>a+(b-a)*t,clamp:(v,a,b)=>Math.max(a,Math.min(b,v)),TAU:2*Math.PI,f:String,SND:{whoosh(){}}};
  vm.runInNewContext(helpers+source.slice(start,end),context);
  assert.doesNotThrow(()=>callbacks.shift()(99));
  assert.doesNotThrow(()=>callbacks.shift()(132));
+});
+
+test('engine photographs retain their intrinsic aspect and enough source pixels at each display density',async()=>{
+ const source=await read('public/shared/heat-engines.js'),window={devicePixelRatio:2,PraxisCanvasResolution:{ratio:()=>3}};
+ vm.runInNewContext(source.slice(0,source.indexOf('/* Mount each topic')),{window});
+ const image={naturalWidth:1000,naturalHeight:667,style:{}};
+ window.PraxisHeatEnginePhotos.fit(image);assert.equal(parseFloat(image.style.maxWidth),1000/3);assert.equal(image.width,1000);assert.equal(image.height,667);assert.equal(image.style.aspectRatio,'auto');assert.equal(image.style.height,'auto');assert.equal(image.style.boxSizing,'border-box');
+ window.PraxisCanvasResolution.ratio=()=>2;window.PraxisHeatEnginePhotos.fit(image);assert.equal(image.style.maxWidth,'500px');
+ const pending={naturalWidth:0,naturalHeight:0,style:{}};window.PraxisHeatEnginePhotos.fit(pending);assert.deepEqual(pending.style,{});
 });

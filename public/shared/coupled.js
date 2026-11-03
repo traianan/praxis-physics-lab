@@ -11,6 +11,8 @@
  function buttons(){for(let n=1;n<=4;n++)$('b'+n+'play').textContent=tr(labs[n].playing?'⏸ Pauză':'▶ Play');}
  function toggle(n){labs[n].playing=!labs[n].playing;last=null;buttons();}
  function prepare(id){return PraxisApplicationsCanvas.prepare($(id));}
+ // Resample analytical diagrams at bitmap density; recorded integration histories stay intact.
+ function curveSamples(id,minimum=600){const canvas=$(id),width=canvas.getBoundingClientRect().width||640,density=window.PraxisCanvasResolution?.forCanvas(canvas)??(window.devicePixelRatio||1);return Math.max(minimum,Math.ceil(width*density*2));}
  function line(g,x,y,X,Y,color='#536b73',width=1){g.strokeStyle=color;g.lineWidth=width;g.beginPath();g.moveTo(x,y);g.lineTo(X,Y);g.stroke();}
  function text(g,s,x,y,color='#243e46',align='left'){g.font='14px "Segoe UI",sans-serif';g.fillStyle=color;g.textAlign=align;g.fillText(tr(s),x,y);g.textAlign='left';}
  function ball(g,x,y,color,r=12){g.fillStyle=color;g.beginPath();g.arc(x,y,r,0,2*Math.PI);g.fill();}
@@ -29,7 +31,7 @@
    line(g,120,65,390,65,c.blue,6);spring(g,255,70,255,bottom-18,c.blue);g.fillStyle=c.blue;g.fillRect(230,bottom-18,50,36);text(g,'m',255,bottom+5,'white','center');
    line(g,135,205,195,205,'#728890');text(g,'O',132,210);text(g,'x = '+x.toFixed(3)+' m',28,320);text(g,'v = '+s.y[1].toFixed(3)+' m/s',300,320);
    if(n===1){const f=p.F*Math.cos(s.forcePhase),dy=Math.sign(f)*Math.min(45,Math.abs(f)*4);line(g,350,bottom,350,bottom+dy,c.red,3);if(Math.abs(dy)>2){line(g,350,bottom+dy,345,bottom+dy-Math.sign(dy)*8,c.red,2);line(g,350,bottom+dy,355,bottom+dy-Math.sign(dy)*8,c.red,2);}text(g,'F = '+f.toFixed(2)+' N',380,110,c.red);text(g,'F(t) = F₀ cos(Ωt)',28,30);text(g,'m = 1 kg',28,54);
-    const A=M.response(p.w0,p.b,p.F,1,p.Om),wr=M.resonance(p.w0,p.b),maxA=M.response(p.w0,p.b,p.F,1,wr),data=Array.from({length:361},(_,i)=>{const o=i*8/360;return[o,M.response(p.w0,p.b,p.F,1,o)];});
+    const A=M.response(p.w0,p.b,p.F,1,p.Om),wr=M.resonance(p.w0,p.b),maxA=M.response(p.w0,p.b,p.F,1,wr),samples=curveSamples('c1res'),data=Array.from({length:samples+1},(_,i)=>{const o=i*8/samples;return[o,M.response(p.w0,p.b,p.F,1,o)];});
     plot('c1res',[{name:'A(Ω)',data}],{span:8,min:0,max:maxA*1.12,xLabel:'Ω (rad/s)',yLabel:'A (m)',cursor:[p.Om,A]});
     plot('c1time',[{name:'x(t)',data:s.hist.map(r=>[r.t,r.y[0]])}],{start:Math.max(0,s.t-12),max:range});
     info(1,`ω₀ = ${p.w0.toFixed(2)} rad/s\nΩ = ${p.Om.toFixed(2)} rad/s\nb = ${p.b.toFixed(2)} s⁻¹\nr = ${(2*p.b).toFixed(2)} N·s/m\nA(Ω) = ${A.toFixed(3)} m\nΩᵣ = ${wr.toFixed(3)} rad/s\nδ = ${Math.atan2(2*p.b*p.Om,p.w0*p.w0-p.Om*p.Om).toFixed(3)} rad`);
@@ -46,9 +48,9 @@
    }else{const ws=Math.sqrt(9.81/p.L1),wa=Math.sqrt(9.81/p.L1+2*p.k/p.m),tb=2*Math.PI/(wa-ws);info(3,`ω_s = ${ws.toFixed(3)} rad/s\nω_a = ${wa.toFixed(3)} rad/s\nT_b = ${tb.toFixed(3)} s`);plot('c3spec',[{name:'mod simetric',data:[[ws,0],[ws,1]],color:c.blue},{name:'mod antisimetric',data:[[wa,0],[wa,1]],color:c.orange}],{span:Math.max(8,wa*1.2),min:0,max:1.2,xLabel:'ω (rad/s)',yLabel:tr('moduri proprii')});}
   }
  }
- function drawTheory(){const c=palette(),w0=3,F=5;plot('teoRes',[.2,.5,1].map((b,i)=>({name:'b = '+b+' s⁻¹',color:[c.blue,c.purple,c.orange][i],data:Array.from({length:401},(_,j)=>[j*6/400,M.response(w0,b,F,1,j*6/400)])})),{span:6,min:0,max:4.6,xLabel:'Ω (rad/s)',yLabel:'A (m)'});
-  plot('teoBeat',[{name:'x₁ (m)',data:Array.from({length:600},(_,i)=>[i/10,.5*(Math.cos(3*i/10)+Math.cos(3.4*i/10))])}],{span:60,max:1.2});
-  const series=[.3,1,1.6].map((b,i)=>{let y=[1,0],data=[[0,1]],t=0;for(let j=1;j<=300;j++){y=M.advance(4,y,t,.03,{m:1,k:1,c:2*b});t+=.03;data.push([t,y[0]]);}return{name:'ζ = '+b,color:[c.blue,c.purple,c.orange][i],data};});plot('teoDamp',series,{span:9,max:1.1});}
+ function drawTheory(){const c=palette(),w0=3,F=5,resSamples=curveSamples('teoRes'),beatSamples=curveSamples('teoBeat',2200),dampSamples=curveSamples('teoDamp');plot('teoRes',[.2,.5,1].map((b,i)=>({name:'b = '+b+' s⁻¹',color:[c.blue,c.purple,c.orange][i],data:Array.from({length:resSamples+1},(_,j)=>[j*6/resSamples,M.response(w0,b,F,1,j*6/resSamples)])})),{span:6,min:0,max:4.6,xLabel:'Ω (rad/s)',yLabel:'A (m)'});
+  plot('teoBeat',[{name:'x₁ (m)',data:Array.from({length:beatSamples+1},(_,i)=>{const t=i*60/beatSamples;return[t,.5*(Math.cos(3*t)+Math.cos(3.4*t))];})}],{span:60,max:1.2});
+  const series=[.3,1,1.6].map((b,i)=>{let y=[1,0],data=[[0,1]],t=0;for(let j=1;j<=dampSamples;j++){y=M.advance(4,y,t,9/dampSamples,{m:1,k:1,c:2*b});t=j*9/dampSamples;data.push([t,y[0]]);}return{name:'ζ = '+b,color:[c.blue,c.purple,c.orange][i],data};});plot('teoDamp',series,{span:9,max:1.1});}
  function switchTab(name){tab=name;for(const id of ['teorie','lab','eval']){$(id).classList.toggle('hidden',id!==name);const b=document.querySelector('[data-tab="'+id+'"]');b.classList.toggle('active',id===name);b.setAttribute('aria-selected',String(id===name));}last=null;if(name==='teorie')drawTheory();if(name==='lab')draw(active);if(name==='eval')renderQuiz();history.replaceState(null,'','#'+name);}
  function switchLab(n){active=n;for(let i=1;i<=4;i++){$('lab'+i).classList.toggle('hidden',i!==n);$('lbtn'+i).classList.toggle('active',i===n);}last=null;draw(n);}
  function download(name,content,type='text/csv'){const url=URL.createObjectURL(new Blob(['\ufeff',content],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}

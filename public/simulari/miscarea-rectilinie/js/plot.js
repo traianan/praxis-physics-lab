@@ -12,6 +12,7 @@
       this.hoverT = null;
       this.w = 0; this.h = 0;
       new ResizeObserver(() => this.resize()).observe(canvas);
+      window.addEventListener('resize', () => this.resize());
       canvas.addEventListener('pointermove', (e) => {
         const t = this.pxToT(e);
         if (this.drag && this.o.onScrub) this.o.onScrub(t);
@@ -32,7 +33,7 @@
     resize() {
       const r = this.c.getBoundingClientRect();
       if (!r.width) return;
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = window.PraxisCanvasResolution?.forCanvas(this.c) ?? (window.devicePixelRatio || 1);
       this.w = r.width; this.h = r.height;
       this.c.width = Math.round(r.width * dpr);
       this.c.height = Math.round(r.height * dpr);
@@ -151,8 +152,9 @@
         ctx.setLineDash(se.dash || []);
         ctx.beginPath();
         let pen = false;
-        for (let i = 0; i <= 300; i++) {
-          const t = a + ((b - a) * i) / 300, y = se.fn(t);
+        const samples = Math.max(300, Math.min(8192, Math.ceil(this.c.width / 2)));
+        for (let i = 0; i <= samples; i++) {
+          const t = a + ((b - a) * i) / samples, y = se.fn(t);
           if (!isFinite(y)) { pen = false; continue; }
           pen ? ctx.lineTo(X(t), Y(y)) : ctx.moveTo(X(t), Y(y));
           pen = true;

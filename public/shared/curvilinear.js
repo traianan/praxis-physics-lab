@@ -9,7 +9,8 @@
  function sync(){const active=ids.find(id=>document.getElementById('panel-'+id).classList.contains('active'));for(const id of ids){const button=document.getElementById('curvilinear-tab-'+id);button.tabIndex=id===active?0:-1;const section=document.getElementById('panel-'+id);section.setAttribute('role','tabpanel');section.setAttribute('aria-labelledby',button.id);}return active;}
  window.addEventListener('praxis-curvilinear-tab-change',()=>{pause();sync();});
  document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});window.addEventListener('pagehide',pause);
- window.addEventListener('praxis-course-presentation-change',()=>{drawTheory();drawSim1(0);drawSim2(0);drawEllipse(0);});
+ const redraw=()=>{drawTheory();drawSim1(0);drawSim2(0);drawEllipse(0);};
+ window.addEventListener('praxis-course-presentation-change',redraw);window.addEventListener('resize',redraw);
  const tabs=document.querySelector('.praxis-lab-nav .tabs');tabs.setAttribute('role','tablist');
  tabs.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const current=ids.indexOf(event.target.dataset.tab),next=event.key==='Home'?0:event.key==='End'?2:(current+(event.key==='ArrowLeft'?-1:1)+3)%3;const button=document.getElementById('curvilinear-tab-'+ids[next]);button.click();button.focus();});
  for(const range of document.querySelectorAll('.sld input[type=range]')){

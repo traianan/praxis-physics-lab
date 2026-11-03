@@ -1,3 +1,10 @@
+/* Preserve photographic detail instead of enlarging the finite source pixels. */
+window.PraxisHeatEnginePhotos={fit(image){
+ if(!(image.naturalWidth>0&&image.naturalHeight>0))return;
+ const density=window.PraxisCanvasResolution?.ratio(1,1)??Math.max(2,(window.devicePixelRatio||1)*1.5);
+ image.width=image.naturalWidth;image.height=image.naturalHeight;
+ Object.assign(image.style,{width:'100%',maxWidth:image.naturalWidth/density+'px',height:'auto',aspectRatio:'auto',boxSizing:'border-box',marginInline:'auto'});
+}};
 /* Keep the lesson route and the shared four-stroke engine in the same mode. */
 window.PraxisHeatEngineNavigation={create({engine,compression,ottoHost,dieselHost,select}){
  let synchronising=false;
@@ -16,6 +23,8 @@ window.PraxisHeatEngineNavigation={create({engine,compression,ottoHost,dieselHos
 }};
 /* Mount each topic once so navigation preserves animation state and answers. */
 (() => {
+ const photos=[...document.querySelectorAll('.plate img')],fitPhotos=()=>photos.forEach(window.PraxisHeatEnginePhotos.fit);
+ photos.forEach(image=>image.addEventListener('load',()=>window.PraxisHeatEnginePhotos.fit(image)));fitPhotos();window.addEventListener('resize',fitPhotos);
  const menu=document.getElementById('menuBtn'),actions=document.querySelector('.praxis-lab-actions');
  if(menu&&actions){menu.className='button secondary';actions.prepend(menu);}
  document.getElementById('soundBtn').hidden=true;

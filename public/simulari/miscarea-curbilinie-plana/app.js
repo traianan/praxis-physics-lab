@@ -35,7 +35,7 @@ toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
 /* ============ Canvas helpers ============ */
 function fitCanvas(cv){
-  const dpr=devicePixelRatio||1,w=cv.clientWidth,hgt=cv.clientHeight;
+  const dpr=window.PraxisCanvasResolution?.forCanvas(cv)??(devicePixelRatio||1),w=cv.clientWidth,hgt=cv.clientHeight;
   if(cv.width!==Math.round(w*dpr)||cv.height!==Math.round(hgt*dpr)){cv.width=Math.round(w*dpr);cv.height=Math.round(hgt*dpr);}
   const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
   window.PraxisVelocityLabels.begin(ctx,w,hgt);
@@ -125,7 +125,7 @@ function drawTheory(){
   const arc=u=>({x:cx+sx*u,y:cy+sy*(.65*u*u-.15),dx:sx,dy:1.3*sy*u});
   ctx.strokeStyle='rgba(33,110,97,.9)';ctx.lineWidth=2;
   ctx.setLineDash([]);ctx.beginPath();
-  for(let i=0;i<=200;i++){const q=arc(-1+2*i/200);i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y);}ctx.stroke();
+  const samples=Math.max(200,Math.min(4096,Math.ceil(cv.width/2)));for(let i=0;i<=samples;i++){const q=arc(-1+2*i/samples);i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y);}ctx.stroke();
   const prog=Math.min(1,TH.t/3.2),uA=-.65,uB=uA+1.475*(1-prog)+.0001;
   const qa=arc(uA),qb=arc(uB);
   const ax=qa.x,ay=qa.y,bx=qb.x,by=qb.y;
@@ -224,7 +224,7 @@ function drawSim2(dt){
   const X=p=>ox+p.x*scale, Y=p=>oy+p.y*scale;
   // trajectory
   ctx.strokeStyle='rgba(33,110,97,.85)';ctx.lineWidth=2;ctx.beginPath();
-  for(let i=0;i<=240;i++){const p=geom(TMAX*i/240);const px=X(p),py=Y(p);
+  const samples=Math.max(240,Math.min(4096,Math.ceil(cv.width/2)));for(let i=0;i<=samples;i++){const p=geom(TMAX*i/samples);const px=X(p),py=Y(p);
     i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);}
   ctx.stroke();
   if(document.getElementById('s2Shape').value==='custom')drawCustomHandles(ctx,ox,oy,scale);
@@ -300,7 +300,7 @@ function drawEllipse(dt){
  drawAxes(ctx,ox,oy,a,b,scale,shape,w,h);
  const point=theta=>{const q=curve(theta,a,b,shape);return{x:ox+q.x*scale,y:oy+q.y*scale};};
  ctx.strokeStyle='#216e61';ctx.lineWidth=2;ctx.beginPath();
- for(let i=0;i<=200;i++){const q=point(2*Math.PI*i/200);i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y);}ctx.stroke();
+ const samples=Math.max(200,Math.min(4096,Math.ceil(cv.width/2)));for(let i=0;i<=samples;i++){const q=point(2*Math.PI*i/samples);i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y);}ctx.stroke();
  if(shape==='custom')drawCustomHandles(ctx,ox,oy,scale);
  const q=point(theta),motion=curve(theta,a,b,shape),vx=motion.dx*omega,vy=-motion.dy*omega,vs=90/Math.hypot(motion.dx*omega,motion.dy*omega);
  ctx.strokeStyle='rgba(67,135,111,.35)';ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(q.x-vx*vs,q.y+vy*vs);ctx.lineTo(q.x+vx*vs,q.y-vy*vs);ctx.stroke();ctx.setLineDash([]);
