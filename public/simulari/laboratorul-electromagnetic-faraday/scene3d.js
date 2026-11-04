@@ -97,16 +97,37 @@ export function createStand(canvas){
  const knife=new T.Group();knife.position.set(...k1);transformer.add(knife);box(.4,.035,.055,.2,0,0,materials.brass,knife);items.transformer.switch=knife;
  items.transformer.arrow=fieldArrow(transformer,V(-.5,1.98,0),V(.5,1.98,0),'#5c9996');
 
- const gen=groups.generator;const rotor=new T.Group();rotor.position.set(0,1.15,0);gen.add(rotor);items.generator.rotor=rotor;winding(rotor,.59,.2,7);const shaft=cylinder(.055,2.2,0,1.15,0,materials.steel,gen,'z');for(const z of [-1,1]){box(.45,1,.25,0,.55,z,materials.dark,gen);cylinder(.13,.32,0,1.15,z,materials.brass,gen,'z');}for(const x of [-1.35,1.35]){box(.5,1.2,1.25,x,1.15,0,x<0?materials.red:materials.blue,gen);box(.65,.1,1.4,x,.5,0,materials.iron,gen);const l=label(x<0?'N':'S',.3,.3);l.position.set(x,1.2,.67);gen.add(l);}for(const z of [-.4,.4])fieldArrow(gen,V(-1,1.6,z),V(1,1.6,z),'#5c9996');items.generator.normal=fieldArrow(rotor,V(0,0,0),V(.9,0,0),'#83689e');items.generator.meter=meter(gen,2.6,1.1,'e');
+ // Alternator: two coil leads -> two insulated slip rings -> two stationary brushes.
+ const gen=groups.generator;gen.scale.setScalar(.80);gen.position.y=.12;
+ const rotor=new T.Group();rotor.position.set(0,1.15,0);gen.add(rotor);items.generator.rotor=rotor;winding(rotor,.59,.2,7);
+ cylinder(.045,2.7,0,1.15,.2,materials.steel,gen,'z');
+ for(const z of [-1,1.5]){box(.35,1,.18,0,.55,z,materials.dark,gen);cylinder(.09,.2,0,1.15,z,materials.brass,gen,'z');}
+ for(const x of [-1.35,1.35]){box(.5,1.2,1.25,x,1.15,0,x<0?materials.red:materials.blue,gen);box(.65,.1,1.4,x,.5,0,materials.iron,gen);const l=label(x<0?'N':'S',.3,.3);l.position.set(x,1.2,.67);gen.add(l);}
+ for(const z of [-.4,.4])fieldArrow(gen,V(-1,1.6,z),V(1,1.6,z),'#5c9996');items.generator.normal=fieldArrow(rotor,V(0,0,0),V(.9,0,0),'#83689e');
+ // Rings rotate with rotor. Separate insulating hubs prevent a short through the shaft.
+ for(const z of [.8,1.08]){cylinder(.145,.1,0,0,z,materials.ceramic,rotor,'z');const ring=mesh(new T.TorusGeometry(.16,.025,12,48),materials.brass,rotor);ring.position.set(0,0,z);box(.14,.10,.08,.24,1.15,z,materials.dark,gen);}
+ // Positive emf follows the winding from its start to its end: red terminal is the end.
+ tube([[.1,.59,0],[.28,.5,.35],[.16,0,.8]],.018,materials.red,rotor);
+ tube([[-.1,.59,0],[-.28,.5,.4],[-.16,0,1.08]],.018,materials.blue,rotor);
+ const brushA=[.31,1.15,.8],brushB=[.31,1.15,1.08];
+ function genPost(point,color){const [x,y,z]=point;cylinder(.075,.05,x,y-.045,z,materials.dark,gen);cylinder(.045,.12,x,y,z,color,gen);}
+ // Voltage measurement stays across the brushes even with the load open.
+ items.generator.meter=meter(gen,2.65,1.4,'U');
+ const va=[2.4,.12,1.73],vb=[2.9,.12,1.73];genPost(va,materials.red);genPost(vb,materials.blue);
+ tube([brushA,[.7,.6,1.1],[1.75,.15,1.4],va],.025,materials.red,gen);
+ tube([brushB,[.65,.4,1.65],[1.7,.11,1.95],vb],.025,materials.blue,gen);
+ // Only four external component terminals: two on the meter and two on R.
+ box(.7,.25,.35,2.65,.7,-.2,materials.ceramic,gen);box(.55,.5,.3,2.65,.3,-.2,materials.dark,gen);
+ const loadLabel=label('R',.3,.25);loadLabel.position.set(2.65,1,-.05);gen.add(loadLabel);
+ const ra=[2.25,.7,-.2],rb=[3.05,.7,-.2],ka=[1.75,.25,.5],kb=[2.15,.25,.5];
+ for(const point of [ra,rb,ka,kb])genPost(point,materials.brass);
+ tube([brushA,[.75,.65,.9],[1.3,.3,.65],ka],.025,materials.red,gen);
+ tube([kb,[2.2,.4,.25],ra],.025,materials.red,gen);
+ tube([rb,[3.35,.2,.6],[3.3,.14,1.95],vb],.025,materials.blue,gen);
+ const loadSwitch=new T.Group();loadSwitch.position.set(...ka);gen.add(loadSwitch);box(.4,.035,.055,.2,0,0,materials.brass,loadSwitch);items.generator.switch=loadSwitch;
 
- // Slip rings, fixed brushes and external conductors complete the generator circuit.
- for(const z of [.72,.88]){const ring=mesh(new T.TorusGeometry(.14,.025,10,36),materials.brass,gen);ring.position.set(0,1.15,z);box(.12,.1,.09,.19,1.15,z,materials.dark,gen);}
- tube([[-.1,.59,0],[-.3,.45,.3],[-.14,0,.72]],.018,materials.red,rotor);
- tube([[.1,.59,0],[.3,.45,.3],[.14,0,.88]],.018,materials.blue,rotor);
- tube([[.25,1.15,.72],[.55,.5,1.1],[2.2,.25,1.1]],.025,materials.red,gen);
- tube([[.25,1.15,.88],[.65,.22,1.5],[3,.22,1.3]],.025,materials.blue,gen);
  const pickupField=field.clone();pickupField.traverse(o=>{if(o.isLine){o.material=o.material.clone();o.material.opacity=.13;}});pickupGroup.add(pickupField);items.pickup.field=pickupField;
- for(const name of ['pickup','generator']){const g=groups[name],lever=new T.Group();lever.position.set(name==='pickup'?.4:2.2,.22,name==='pickup'?1.2:1.45);g.add(lever);const arm=box(.32,.035,.055,.16,0,0,materials.brass,lever);cylinder(.055,.06,0,0,0,materials.dark,lever);items[name].switch=lever;}
+ for(const name of ['pickup']){const g=groups[name],lever=new T.Group();lever.position.set(name==='pickup'?.4:2.2,.22,name==='pickup'?1.2:1.45);g.add(lever);const arm=box(.32,.035,.055,.16,0,0,materials.brass,lever);cylinder(.055,.06,0,0,0,materials.dark,lever);items[name].switch=lever;}
 
  tube([[.4,.22,1.2],[.3,.2,1.2]],.025,materials.red,pickupGroup);
  const ray=new T.Raycaster(),plane=new T.Plane(V(0,0,1),0);let lastWidth=0,lastHeight=0,lastRatio=0,active='pickup';
@@ -115,7 +136,7 @@ export function createStand(canvas){
   const it=items[name];if(it.switch)it.switch.rotation.z=p.open?.6:0;for(const item of [items.magnet.field,items.pickup.field])item.traverse(o=>{if(o.isLine)o.material.color.set(P.teal);});items.pickup.normal.setColor(P.teal);items.generator.normal.setColor(P.purple);if(name==='pickup'||name==='magnet'){const bar=it.bar;bar.group.rotation.y=p.m<0?Math.PI:0;if(name==='pickup'){bar.group.position.set(1.6-s.x*9.6,1,0);it.field.position.x=bar.group.position.x;it.field.visible=p.m!==0;it.receiver.scale.set(1,p.a/.05,p.a/.05);it.meter.pivot.rotation.z=-Math.max(-1,Math.min(1,s.current/0.00003))*.9;}else{it.field.visible=p.m!==0;it.probe.position.set(p.x*9,.3,-p.y*9);const b=dipoleField(p.m,p.x,p.y);it.needle.visible=!!b&&!!Math.hypot(b.bx,b.by);if(it.needle.visible)it.needle.rotation.z=Math.atan2(b.by,b.bx);}}
   if(name==='rl'){it.meter.pivot.rotation.z=-s.current*.9;it.arrow.visible=Math.abs(s.B)>1e-12;it.arrow.position.x=s.B>=0?-.7:.7;it.arrow.setDirection(V(s.B>=0?1:-1,0,0));it.arrow.setColor(P.teal);}
   if(name==='transformer'){it.meter.pivot.rotation.z=-Math.max(-1,Math.min(1,s.u1/(p.N1*p.phi*p.omega||1)))*.9;it.meter2.pivot.rotation.z=-Math.max(-1,Math.min(1,s.u2/(p.N2*p.phi*p.omega||1)))*.9;it.arrow.visible=Math.abs(s.flux)>1e-12;it.arrow.position.x=s.flux>=0?-.5:.5;it.arrow.setDirection(V(s.flux>=0?1:-1,0,0));it.arrow.setColor(P.teal);}
-  if(name==='generator'){it.rotor.rotation.z=s.theta;it.meter.pivot.rotation.z=-Math.max(-1,Math.min(1,s.emf/(s.emfPeak||1)))*.9;}
+  if(name==='generator'){it.rotor.rotation.z=s.theta;it.meter.pivot.rotation.z=-Math.max(-1,Math.min(1,s.voltage/(s.emfPeak||1)))*.9;}
   renderer.render(scene,camera);
  }
  function pointer(x,y){size();ray.setFromCamera(new T.Vector2(x/lastWidth*2-1,1-y/lastHeight*2),camera);plane.set(active==='magnet'?V(0,1,0):V(0,0,1),active==='magnet'?-.3:0);const point=ray.ray.intersectPlane(plane,new T.Vector3());if(!point)return null;return active==='pickup'?{distance:(1.6-point.x)/9.6}:{x:point.x/9,y:-point.z/9};}

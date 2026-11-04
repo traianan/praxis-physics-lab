@@ -23,7 +23,6 @@
     "Trage magnetul. În pauză configurezi o măsurare nouă; în rulare produci inducție. Săgeți: deplasare cu tastatura.": "Drag the magnet. While paused, configure a new measurement; while running, produce induction. Arrow keys: keyboard movement.",
     "Comutarea sursei păstrează curentul. Pas = 0,001 s; redare implicită 0,01 s simulate / s real.": "Switching the source preserves current. Step = 0.001 s; default playback 0.01 simulated seconds / real second.",
     "Φ este fluxul unei spire. Tensiunea și curentul afișate sunt cele din secundar.": "Φ is the flux through one turn. The displayed voltage and current belong to the secondary.",
-    "θ este unghiul dintre B și normala n. Același model ca în laboratorul Generatorul electric.": "θ is the angle between B and normal n. The same model as in the Electric Generator laboratory.",
     "Fluxul și legea lui Faraday": "Flux and Faraday’s law",
     "Φ este fluxul unei spire; λ = NΦ. Unghiul θ se măsoară față de normala spirei. Câmpul poate exista fără tensiune indusă: contează variația fluxului.": "Φ is the flux through one turn; λ = NΦ. Angle θ is measured from the coil normal. A field can exist without induced voltage: the change in flux matters.",
     "Legea lui Lenz și energia": "Lenz’s law and energy",
@@ -143,6 +142,7 @@
     "Parametrii se configurează în pauză și încep o măsurare nouă. Redarea lentă nu schimbă fizica.": "Configure parameters while paused to start a new measurement. Slow playback does not change the physics.",
     "Bilanț energetic și model": "Energy balance and model",
     "Miez liniar ideal, fără saturație. Comutarea păstrează curentul. Pas = 0,001 s; redare 0,01 s / s. Marcajele +/− și săgeata i definesc referințele de semn; un curent negativ circulă invers. R include rezistența bobinei și a circuitului.": "Ideal linear core, no saturation. Switching preserves current. Step = 0.001 s; playback 0.01 s / s. The +/− marks and i arrow define sign references; negative current flows in reverse. R includes the coil and circuit resistance.",
-    "Acele sunt indicatoare schematice; citește valorile SI din carduri.": "Needles are schematic indicators; read SI values in the cards."
+    "Acele sunt indicatoare schematice; citește valorile SI din carduri.": "Needles are schematic indicators; read SI values in the cards.",
+    "Două inele izolate și două perii leagă bobina rotativă de circuit. Voltmetrul U rămâne în paralel; întrerupătorul deconectează numai R. U = e − r·i; cardul e indică tensiunea electromotoare. θ este unghiul dintre B și normala n.": "Two insulated slip rings and two brushes connect the rotating coil to the circuit. Voltmeter U stays in parallel; the switch disconnects only R. U = e − r·i; the e card shows the emf. θ is the angle between B and normal n."
   }
 }

@@ -23,7 +23,6 @@
     "Trage magnetul. În pauză configurezi o măsurare nouă; în rulare produci inducție. Săgeți: deplasare cu tastatura.": "Trage magnetul. În pauză configurezi o măsurare nouă; în rulare produci inducție. Săgeți: deplasare cu tastatura.",
     "Comutarea sursei păstrează curentul. Pas = 0,001 s; redare implicită 0,01 s simulate / s real.": "Comutarea sursei păstrează curentul. Pas = 0,001 s; redare implicită 0,01 s simulate / s real.",
     "Φ este fluxul unei spire. Tensiunea și curentul afișate sunt cele din secundar.": "Φ este fluxul unei spire. Tensiunea și curentul afișate sunt cele din secundar.",
-    "θ este unghiul dintre B și normala n. Același model ca în laboratorul Generatorul electric.": "θ este unghiul dintre B și normala n. Același model ca în laboratorul Generatorul electric.",
     "Fluxul și legea lui Faraday": "Fluxul și legea lui Faraday",
     "Φ este fluxul unei spire; λ = NΦ. Unghiul θ se măsoară față de normala spirei. Câmpul poate exista fără tensiune indusă: contează variația fluxului.": "Φ este fluxul unei spire; λ = NΦ. Unghiul θ se măsoară față de normala spirei. Câmpul poate exista fără tensiune indusă: contează variația fluxului.",
     "Legea lui Lenz și energia": "Legea lui Lenz și energia",
@@ -143,6 +142,7 @@
     "Parametrii se configurează în pauză și încep o măsurare nouă. Redarea lentă nu schimbă fizica.": "Parametrii se configurează în pauză și încep o măsurare nouă. Redarea lentă nu schimbă fizica.",
     "Bilanț energetic și model": "Bilanț energetic și model",
     "Miez liniar ideal, fără saturație. Comutarea păstrează curentul. Pas = 0,001 s; redare 0,01 s / s. Marcajele +/− și săgeata i definesc referințele de semn; un curent negativ circulă invers. R include rezistența bobinei și a circuitului.": "Miez liniar ideal, fără saturație. Comutarea păstrează curentul. Pas = 0,001 s; redare 0,01 s / s. Marcajele +/− și săgeata i definesc referințele de semn; un curent negativ circulă invers. R include rezistența bobinei și a circuitului.",
-    "Acele sunt indicatoare schematice; citește valorile SI din carduri.": "Acele sunt indicatoare schematice; citește valorile SI din carduri."
+    "Acele sunt indicatoare schematice; citește valorile SI din carduri.": "Acele sunt indicatoare schematice; citește valorile SI din carduri.",
+    "Două inele izolate și două perii leagă bobina rotativă de circuit. Voltmetrul U rămâne în paralel; întrerupătorul deconectează numai R. U = e − r·i; cardul e indică tensiunea electromotoare. θ este unghiul dintre B și normala n.": "Două inele izolate și două perii leagă bobina rotativă de circuit. Voltmetrul U rămâne în paralel; întrerupătorul deconectează numai R. U = e − r·i; cardul e indică tensiunea electromotoare. θ este unghiul dintre B și normala n."
   }
 }

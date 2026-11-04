@@ -62,3 +62,9 @@ Actualizare 4 noiembrie 2026: sursa și ampermetrul au borne distincte +/−; ce
 Sursă AC explicită în paralel cu primarul, sarcină rezistivă R și întrerupător în serie numai cu sarcina secundară. Voltmetrele V₁/V₂ sunt conectate în paralel la bornele înfășurărilor, independent de întrerupător. Capetele firelor urmăresc rotația reală a bobinelor; convenția bornelor secundare ține cont de sensurile opuse ale fluxului în cele două coloane. Primarul și secundarul rămân izolate galvanic. Sursa AC ilustrează tensiunea impusă de fluxul prescris al modelului ideal.
 
 Corectat și controllerul: deschiderea circuitului transformatorului nu mai resetează timpul/faza sursei. Regresie browser adăugată: tensiune neschimbată la comutare, i₂=P₂=0 în gol, i₂=u₂/R după reînchidere, Pin=Pout. Arhiva autonomă regenerată; opt teste fizice trecute.
+
+## Corecția circuitului generatorului și verificarea fotografiei
+
+Fotografia utilizatorului reprezintă transformatorul: bornele comune sunt necesare conexiunilor în paralel, nu componente electrice suplimentare. Schema sa include sursa AC pe primar și sarcina comutată pe secundar, cu voltmetre independente.
+
+Generator: două inele colectoare solidare rotorului, două manșoane izolante față de ax și două perii fixe în contact geometric cu inelele. Eliminat întrerupătorul decorativ nelegat la conductoare; adăugate sarcina R și un întrerupător în serie cu aceasta. Voltmetrul U este în paralel la perii și rămâne conectat în gol; indicația sa folosește `state.voltage`, nu `state.emf`. Explicații RO/EN pentru cele două inele/perii și distincția U=e−ri. Verificate cele 10 teste de model Faraday/generator; test browser nou pentru tensiunea la borne, circuit deschis fără resetarea fazei și Pmec=PR+Pcupru. Arhiva offline regenerată. Dispozitivele tactile fizice rămân netestate.
