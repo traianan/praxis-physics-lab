@@ -68,3 +68,19 @@ Corectat și controllerul: deschiderea circuitului transformatorului nu mai rese
 Fotografia utilizatorului reprezintă transformatorul: bornele comune sunt necesare conexiunilor în paralel, nu componente electrice suplimentare. Schema sa include sursa AC pe primar și sarcina comutată pe secundar, cu voltmetre independente.
 
 Generator: două inele colectoare solidare rotorului, două manșoane izolante față de ax și două perii fixe în contact geometric cu inelele. Eliminat întrerupătorul decorativ nelegat la conductoare; adăugate sarcina R și un întrerupător în serie cu aceasta. Voltmetrul U este în paralel la perii și rămâne conectat în gol; indicația sa folosește `state.voltage`, nu `state.emf`. Explicații RO/EN pentru cele două inele/perii și distincția U=e−ri. Verificate cele 10 teste de model Faraday/generator; test browser nou pentru tensiunea la borne, circuit deschis fără resetarea fazei și Pmec=PR+Pcupru. Arhiva offline regenerată. Dispozitivele tactile fizice rămân netestate.
+
+## Audit final — 4 noiembrie 2026
+
+Revizuite cele cinci activități, formulele, unitățile, semnele, cazurile de referință, traseele circuitelor, sincronizarea stării cu animația/graficele și explicațiile RO/EN.
+
+Corecții finale:
+- Generator: energia se integrează pe fiecare interval cu starea reală a întrerupătorului. Deschiderea/reînchiderea nu șterge energia acumulată și nu atribuie retroactiv lucru mecanic intervalelor în gol. Regresie browser inclusă; W=Q_R+Q_r.
+- Magnet și bobină: firele urmăresc capetele înfășurării la schimbarea razei; ampermetrul are contacte explicite. Câmpul urmărește centrul magnetului, iar curbele dipolului sunt dimensionate pentru scenă.
+- Schimbarea parametrilor anulează ținta de deplasare veche și începe o măsurare nouă.
+- Electromagnet: sursa indică +/−/0 și butonul selectat are aria-pressed. Explicația RO/EN precizează U=0 la descărcare și bucla închisă prin R; nu reprezintă deconectarea completă a bobinei.
+
+Rezultate: `npm run check` — 369/369 teste trecute; sintaxă, build și arhivă offline reușite. Scriptul browser complet a trecut: mouse, touch CDP emulat, formule, întrebări, RO/EN, navigare, 100 combinații de afișare, comutarea sarcinii la transformator/generator, energia acumulată și arhiva file:// fără cereri HTTP externe. Alte 36 verificări la minim/maxim ale parametrilor: stări numerice finite și fără erori JavaScript. Capturile tuturor celor cinci scene au fost inspectate.
+
+Performanță, câte 600 cadre, Chrome/1366×768/DPR1: p95 total magnet 3,5 ms; bobină 8,8 ms; RL 5,3 ms; transformator 6,3 ms; generator 6,7 ms. Intervalul dintre cadre p95 16,8–16,9 ms. Măsurători locale ale execuției JavaScript și trimiterii randării, nu garanție de performanță pe alte dispozitive. Ajustarea finală a întinderii curbelor dipolului păstrează numărul de primitive din măsurătoare.
+
+Dovezi locale: `outputs/faraday-final-audit-check.log`, `outputs/faraday-browser-qa.json`, `outputs/faraday-extremes.mjs`, capturile scenelor. Limitele fizice ale modelelor ideale și limitele de testare rămân cele de mai sus: fără telefon/tablă fizică, Safari/Firefox, teste de ore sau validare pedagogică externă. Scrolarea verticală la ecrane joase/text mărit rămâne necesară.

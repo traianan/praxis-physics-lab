@@ -23,7 +23,7 @@ function advance(dt){
   if(active==='pickup'){
    const target=a.mode==='approach'?.1:a.mode==='away'?.5:a.target??a.x;
    const s=movePickup(a.p,a.x,target,h);a.x=s.x;a.v=s.v;a.energy+=s.energy;
-  }else if(active==='rl'){const s=rlStep(a.p,a.i,h);a.i=s.current;a.heat+=s.heat;a.source+=s.source;}
+  }else if(active==='rl'){const s=rlStep(a.p,a.i,h);a.i=s.current;a.heat+=s.heat;a.source+=s.source;}else if(active==='generator'){const e=energyBetween(a.p,a.t,a.t+h);a.energy+=e.mechanical;a.heat+=e.load;a.source+=e.copper;}
   a.t+=h;a.s=measure(active,a);remember(a);
  }
  if(recording&&metrics.model.length<3600)metrics.model.push(performance.now()-start);
@@ -46,7 +46,7 @@ function controls(){
  for(const [i,canvas]of [...document.querySelectorAll('.faraday-graphs canvas')].entries())canvas.setAttribute('aria-label',tr(active==='magnet'?['Componenta Bx','Componenta By','Modulul câmpului'][i]:['Flux magnetic în timp','Tensiune indusă în timp','Curent electric în timp'][i]));
 }
 function selectActivity(key){pause();active=key;controls();draw();}
-function change(key,value){if(running)return;const row=parameters[active].find(r=>r[0]===key);if(!row||!Number.isFinite(value)||value<row[2]||value>row[3]||(['N','N1','N2'].includes(key)&&!Number.isInteger(value))){controls();return;}const a=current();a.p[key]=value;a.t=0;a.i=0;a.v=0;a.energy=a.source=a.heat=0;a.s=measure(active,a);a.history=[{...a.s,t:0}];for(const el of document.querySelectorAll(`[data-param="${key}"]`))el.value=value;draw();}
+function change(key,value){if(running)return;const row=parameters[active].find(r=>r[0]===key);if(!row||!Number.isFinite(value)||value<row[2]||value>row[3]||(['N','N1','N2'].includes(key)&&!Number.isInteger(value))){controls();return;}const a=current();a.p[key]=value;a.target=null;a.mode='manual';a.t=0;a.i=0;a.v=0;a.energy=a.source=a.heat=0;a.s=measure(active,a);a.history=[{...a.s,t:0}];for(const el of document.querySelectorAll(`[data-param="${key}"]`))el.value=value;draw();}
 function readouts(){
  const a=current(),s=a.s,P=palette();let rows;
  if(active==='magnet')rows=[['Bₓ',s.bx,'T',P.teal],['Bᵧ',s.by,'T',P.purple],['|B|',s.magnitude,'T',P.blue],['t',a.t,'s',P.orange]];
@@ -55,9 +55,10 @@ function readouts(){
  let energy='';if(active==='pickup')energy=`P = ${quantity(s.power,'W')} | −Fv = ${quantity(s.mechanical,'W')} | W = Q = ${quantity(a.energy,'J')}`;
  if(active==='rl')energy=`B = ${quantity(s.B,'T')} | W_B = ${quantity(s.stored,'J')} | Q = ${quantity(a.heat,'J')} | W_${tr('sursă')} = ${quantity(a.source,'J')} | Δ = ${quantity(a.source-a.heat-s.stored,'J')}`;
  if(active==='transformer')energy=`u₁ = ${quantity(s.u1,'V')} | i₁ = ${quantity(s.i1,'A')} | P_in = ${quantity(s.inputPower,'W')} | P_out = ${quantity(s.power,'W')} | U₁ef = ${quantity(s.u1rms,'V')} | U₂ef = ${quantity(s.u2rms,'V')} | P_med = ${quantity(s.meanPower,'W')}`;
- if(active==='generator'){const e=energyBetween(a.p,0,a.t);energy=`−τω = ${quantity(s.pMechanical,'W')} | P_R = ${quantity(s.pLoad,'W')} | P_r = ${quantity(s.pCopper,'W')} | W = ${quantity(e.mechanical,'J')} | Q_R + Q_r = ${quantity(e.load+e.copper,'J')}`;}
+ if(active==='generator'){const e={mechanical:a.energy,load:a.heat,copper:a.source};energy=`−τω = ${quantity(s.pMechanical,'W')} | P_R = ${quantity(s.pLoad,'W')} | P_r = ${quantity(s.pCopper,'W')} | W = ${quantity(e.mechanical,'J')} | Q_R + Q_r = ${quantity(e.load+e.copper,'J')}`;}
  if(active==='magnet')energy=tr(s.defined?'Busola se aliniază cu vectorul B local.':'Direcție nedefinită: câmp nul sau regiune exclusă.');
  $('#energy').textContent=energy;
+ if(active==='rl')for(const button of document.querySelectorAll('[data-source]'))button.setAttribute('aria-pressed',String(Number(button.dataset.source)===a.p.U));
  const formula=active==='pickup'?`e = −N (dΦ/dx) v = ${quantity(s.emf,'V')} ; v = ${quantity(s.v,'m/s')} ; i = ${a.p.open?'0':quantity(s.emf,'V')+' / '+number(a.p.R)+' Ω'} = ${quantity(s.current,'A')}`:active==='rl'?`L di/dt + Ri = U : ${number(a.p.L)} × ${number(s.derivative)} + ${number(a.p.R)} × ${number(s.current)} = ${number(a.p.U)} V`:active==='transformer'?`u₂ N₁ = u₁ N₂ : ${number(s.u2)} × ${a.p.N1} = ${number(s.u1)} × ${a.p.N2}`:active==='generator'?`e = NBAω sin θ = ${a.p.N} × ${number(a.p.B)} × ${number(a.p.A)} × ${number(a.p.omega)} × sin(${number(s.theta)}) = ${quantity(s.emf,'V')}`:`|B| = √(Bₓ²+Bᵧ²) = ${quantity(s.magnitude,'T')}`;
  $('#live-formula').textContent=formula;
 }
