@@ -4,6 +4,8 @@ const fmt=(v,n=3)=>v===null?'—':v.toLocaleString(window.PraxisI18n.locale,{max
 const node=(tag,attrs,body='')=>`<${tag} ${attrs}>${body}</${tag}>`;
 const label=(x,y,s,extra='')=>node('text',`x="${x}" y="${y}" ${extra}`,s);
 let dots=[],narrow=false;
+// Symbolic motion stays readable even at the highest supported short-circuit current.
+export const CHARGE_PER_MARKER_CYCLE=240;
 // Separate display lanes make counter-migration legible; they are not separate tubes.
 export function bridgePoint(species,progress,compact=false){
  const offset=species==='K'? -5:5,left=(compact?130:202)+offset,right=(compact?230:398)-offset,top=(compact?142:119)+offset,bottom=compact?210:201;
@@ -64,7 +66,7 @@ export function renderScene(p,s){
  $('copper-solution').style.opacity=String(.04+.24*Math.min(1,s.cCu/1000));
  $('zinc-plate').setAttribute('width',String(24*Math.max(0,s.mZn/.01)));
  $('copper-plate').setAttribute('width',String(24+12*s.progress));
- const phase=s.charge/20;
+ const phase=s.charge/CHARGE_PER_MARKER_CYCLE;
  dots.forEach((el,i)=>{
   const active=i<6?!p.open&&p.bridge&&!s.ended:p.bridge&&!p.open&&!s.ended;
   el.style.visibility=active?'visible':'hidden';

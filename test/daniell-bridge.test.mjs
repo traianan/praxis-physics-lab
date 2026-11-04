@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {bridgePoint} from '../public/simulari/pila-daniell/view.js';
+import {bridgePoint,CHARGE_PER_MARKER_CYCLE} from '../public/simulari/pila-daniell/view.js';
 test('both bridge geometries carry K towards Cu and nitrate towards Zn',()=>{
  for(const compact of [false,true])for(const ion of ['K','NO3']){
   const start=bridgePoint(ion,0,compact),end=bridgePoint(ion,1,compact);
@@ -14,4 +14,9 @@ test('both bridge geometries carry K towards Cu and nitrate towards Zn',()=>{
 });
 test('ion lanes remain distinct and rendering positions are deterministic',()=>{
  for(const compact of [false,true]){assert.notEqual(bridgePoint('K',.5,compact).y,bridgePoint('NO3',.5,compact).y);assert.deepEqual(bridgePoint('K',.3,compact),bridgePoint('K',.3,compact));}
+});
+test('maximum displayed current does not reverse identical markers through aliasing at 30 FPS',()=>{
+ const maximumCurrent=.6,simulatedSecondsPerRealSecond=600,markers=6;
+ const phasePerFrame=maximumCurrent*simulatedSecondsPerRealSecond/30/CHARGE_PER_MARKER_CYCLE;
+ assert.ok(phasePerFrame<1/(2*markers));
 });
