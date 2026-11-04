@@ -1,8 +1,12 @@
 const $=id=>document.getElementById(id),tr=s=>window.PraxisI18n.tr(s);
 const palette=()=>window.PraxisScientificColors.palette(window.PraxisCourseLocalization?.colors);
-const fmt=(v,n=3)=>v===null?'—':v.toLocaleString(window.PraxisI18n.locale,{maximumFractionDigits:n,minimumFractionDigits:n});
+// Suppress a minus sign when round-off is smaller than the displayed precision.
+const fmt=(v,n=3)=>v===null?'—':(Math.abs(v)<.5*10**(-n)?0:v).toLocaleString(window.PraxisI18n.locale,{maximumFractionDigits:n,minimumFractionDigits:n});
 const node=(tag,attrs,body='')=>`<${tag} ${attrs}>${body}</${tag}>`;
-const label=(x,y,s,extra='')=>node('text',`x="${x}" y="${y}" ${extra}`,s);
+// SVG needs explicit script placement: glyph-only Unicode scripts vary by font.
+const scriptChars={'₃':'3','₄':'4','²':'2','⁺':'+','⁻':'−'};
+export const svgNotation=s=>s.replace(/[₃₄]+|[²⁺⁻]+/g,part=>`<tspan baseline-shift="${/[₃₄]/.test(part)?'sub':'super'}" font-size="70%">${[...part].map(c=>scriptChars[c]).join('')}</tspan>`);
+const label=(x,y,s,extra='')=>node('text',`x="${x}" y="${y}" ${extra}`,svgNotation(s));
 let dots=[],narrow=false;
 // Symbolic motion stays readable even at the highest supported short-circuit current.
 export const CHARGE_PER_MARKER_CYCLE=240;
@@ -57,7 +61,7 @@ export function buildScene(){
  particles.insertAdjacentHTML('beforebegin',`<g id="bridge-directions" aria-hidden="true"><path d="M${middle-18} ${top-5}h36m-7 -4 7 4-7 4" fill="none" stroke="${c.green}" stroke-width="2"/><path d="M${middle+18} ${top+5}h-36m7 -4-7 4 7 4" fill="none" stroke="${c.purple}" stroke-width="2" stroke-dasharray="3 2"/></g>`);
  particles.innerHTML=Array.from({length:6},()=>`<circle data-particle="electron" r="3.5" fill="${c.red}"/>`).join('')+['K','NO3'].map(species=>Array.from({length:6},()=>`<g data-particle="ion" data-ion="${species}" fill="${species==='K'?c.green:c.purple}">${species==='K'?'<circle r="5.5"/>':'<rect x="-5.5" y="-5.5" width="11" height="11" rx="1"/>'}<path d="M-3 0H3${species==='K'?'M0 -3V3':''}" stroke="white" stroke-width="1.5"/></g>`).join('')).join('');
  dots=[...particles.children];
- $('bridge-legend').innerHTML=`<span style="color:${c.green}">● K⁺ → ${tr('spre Cu (catod)')}</span><span style="color:${c.purple}">■ NO₃⁻ ← ${tr('spre Zn (anod)')}</span>`;
+ $('bridge-legend').innerHTML=`<span style="color:${c.green}">● K<sup>+</sup> → ${tr('spre Cu (catod)')}</span><span style="color:${c.purple}">■ NO<sub>3</sub><sup>−</sup> ← ${tr('spre Zn (anod)')}</span>`;
  $('scene').setAttribute('aria-label',tr('Scenă schematică a pilei Daniell'));
 }
 export function renderScene(p,s){
@@ -76,8 +80,19 @@ export function renderScene(p,s){
 }
 export function renderReadouts(p,s){
  const c=palette();
- $('readouts').innerHTML=[['E / V',s.E,c.blue],['U / V',s.voltage,c.orange],['I / A',s.current,c.red],[tr('Timp')+' / s',s.t,null]].map(([name,v,color])=>`<div><span${color?` style="color:${color}"`:''}>${name}</span><strong>${fmt(v,name.endsWith('/ s')?0:4)}</strong></div>`).join('');
- $('balance').innerHTML=[['c(Zn²⁺)',fmt(s.cZn,3),'mol/m³'],['c(Cu²⁺)',fmt(s.cCu,3),'mol/m³'],[tr('Sarcină'),fmt(s.charge,3),'C'],[tr('Cu depus'),fmt(s.copperGain,7),'kg'],[tr('Zn rămas'),fmt(s.mZn,7),'kg'],[tr('Energie externă'),fmt(s.external,3),'J'],[tr('Energie internă'),fmt(s.internal,3),'J'],['<span data-science-math="tex" data-science-source="\\Delta_r G"></span>',fmt(s.deltaG,1),'J/mol'],['EI − I²(R+r)',fmt(s.pChemical-s.pExternal-s.pInternal,9),'W']].map(([name,v,u])=>`<span>${name}: <b>${v}</b> ${u}</span>`).join('');
+ const readings=[['E / V',s.E,c.blue],['U / V',s.voltage,c.orange],['I / A',s.current,c.red],[tr('Timp')+' / s',s.t,null]];
+ const balances=[['c(Zn<sup>2+</sup>)',fmt(s.cZn,3),'mol/m³'],['c(Cu<sup>2+</sup>)',fmt(s.cCu,3),'mol/m³'],[tr('Sarcină'),fmt(s.charge,3),'C'],[tr('Cu depus'),fmt(s.copperGain,7),'kg'],[tr('Zn rămas'),fmt(s.mZn,7),'kg'],[tr('Energie externă'),fmt(s.external,3),'J'],[tr('Energie internă'),fmt(s.internal,3),'J'],['<span data-science-math="tex" data-science-source="\\Delta_r G">Δ<sub>r</sub>G</span>',fmt(s.deltaG,1),'J/mol'],['EI − I<sup>2</sup>(R+r)',fmt(s.pChemical-s.pExternal-s.pInternal,9),'W']];
+ // Mount only once per language/palette. Never remove typeset labels on animation frames.
+ const key=JSON.stringify([window.PraxisI18n.locale,readings.map(r=>[r[0],r[2]]),balances.map(r=>r[0])]);
+ if($('readouts').dataset.presentation!==key){
+  $('readouts').innerHTML=readings.map(([name,,color])=>`<div><span${color?` style="color:${color}"`:''}>${name}</span><strong></strong></div>`).join('');
+  $('balance').innerHTML=balances.map(([name,,u])=>`<div class="balance-item"><span class="balance-label">${name}</span><span class="balance-reading"><b></b> <span>${u}</span></span></div>`).join('');
+  window.PraxisMath?.typeset?.($('balance'));
+  $('readouts').dataset.presentation=key;
+ }
+ const update=(el,value)=>{if(el.textContent!==value)el.textContent=value;};
+ [...$('readouts').querySelectorAll('strong')].forEach((el,i)=>update(el,fmt(readings[i][1],i===3?0:4)));
+ [...$('balance').querySelectorAll('b')].forEach((el,i)=>update(el,balances[i][1]));
  $('play').textContent=tr(s.running?'Pauză':'Pornire');
  $('status').textContent=tr(s.ended?'Pragul modelului atins; resetează experimentul.':!p.bridge?'Punte absentă: U nedefinit în model.':s.running?'În funcțiune':'În pauză');
 }

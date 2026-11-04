@@ -19,3 +19,8 @@ body[data-praxis-course=pila-daniell] .daniell-controls{margin-top:0!important;m
 @media(min-width:851px) and (max-height:850px){body[data-praxis-course=pila-daniell] .daniell-controls{padding:.35rem}body[data-praxis-course=pila-daniell] .daniell-controls h2{margin:0 0 .2rem}body[data-praxis-course=pila-daniell] .daniell-controls .parameter{margin:0}body[data-praxis-course=pila-daniell] .daniell-controls .parameter-heading{min-height:20px}body[data-praxis-course=pila-daniell] .daniell-controls .note{font-size:.8rem}}
 
 .bridge-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.25rem 1rem;font-size:.85rem;line-height:1.5;margin:.25rem 0;font-weight:600}
+#balance{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:.6rem 1rem;font-variant-numeric:tabular-nums lining-nums}
+.balance-item{min-width:0;display:flex;flex-direction:column;gap:.15rem;padding:.4rem;border-bottom:1px solid var(--praxis-color-border)}
+.balance-label{min-height:1.7em;line-height:1.7}.balance-reading{white-space:nowrap}.balance-reading b{font-variant-numeric:tabular-nums lining-nums}
+.bridge-legend sub,.bridge-legend sup,.balance-label sub,.balance-label sup{font-size:70%;line-height:0;position:relative;vertical-align:baseline}
+.bridge-legend sub,.balance-label sub{bottom:-.25em}.bridge-legend sup,.balance-label sup{top:-.5em}
