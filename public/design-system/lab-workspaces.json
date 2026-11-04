@@ -267,5 +267,16 @@
         "layout": "native"
       }
     ]
+  },
+  "laboratorul-electromagnetic-faraday": {
+    "workspaces": [
+      {
+        "selector": ".faraday-workspace",
+        "scene": ".faraday-visual",
+        "controls": ".faraday-controls",
+        "graphs": ".faraday-graphs",
+        "layout": "native"
+      }
+    ]
   }
 }

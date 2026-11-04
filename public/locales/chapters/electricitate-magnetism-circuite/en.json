@@ -5,7 +5,8 @@
   "messages": {
     "Electricitate, magnetism și circuite": "Electricity, magnetism and circuits",
     "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITY, MAGNETISM AND CIRCUITS",
-    "Generatorul electric": "Electric generator"
+    "Generatorul electric": "Electric generator",
+    "Laboratorul electromagnetic Faraday": "Faraday’s Electromagnetic Lab"
   },
   "simulations": {
     "generator-electric": {
@@ -19,6 +20,18 @@
         "Energy"
       ],
       "keywords": "electric generator alternator faraday lenz magnetic flux voltage alternating current energy"
+    },
+    "laboratorul-electromagnetic-faraday": {
+      "title": "Faraday’s Electromagnetic Lab",
+      "subtitle": "From magnetic field to energy transfer",
+      "description": "Five activities: magnet, coil, electromagnet, transformer and generator. Graphs, energy balances and problems.",
+      "alt": "Magnet beside a coil and induced voltage graph",
+      "tags": [
+        "Induction",
+        "Magnetism",
+        "Transformer"
+      ],
+      "keywords": "faraday lenz magnet coil electromagnet transformer induction flux energy compass"
     }
   }
 }

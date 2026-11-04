@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ro"><head><link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMyMTZlNjEiLz48dGV4dCB4PSIxNSIgeT0iNDYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI1NCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5wPC90ZXh0PjxjaXJjbGUgY3g9IjUyIiBjeT0iNDciIHI9IjUiIGZpbGw9IiNkNWFjNjciLz48L3N2Zz4K"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laboratorul electromagnetic Faraday — Praxis</title>
+<link rel="stylesheet" href="../../design-system/tokens.css"><link rel="stylesheet" href="../../design-system/components.css"><link rel="stylesheet" href="../../shared/course.css"><link rel="stylesheet" href="../../design-system/lab-layout.css"><link rel="stylesheet" href="../../design-system/laboratory.css"><link rel="stylesheet" href="../../design-system/compact.css"><link rel="stylesheet" href="style.css">
+<script src="../../shared/i18n.js"></script><script src="../../shared/sound.js"></script><script src="../../shared/lab-header.js"></script><script src="../../shared/scientific-colors.js"></script><script src="../../shared/course-localization.js"></script><script type="module" src="app.js"></script><style id="praxis-link-colors">/* One link colour across the library, imported lessons and standalone exports. */
+:root{--praxis-color-link:var(--praxis-color-primary,#17685f)}
+html body a[href],html body a[href]:visited,html body a[href]:hover,html body a[href]:active{color:var(--praxis-link-ink,var(--praxis-color-link))!important}
+/* Link controls use a light surface so their common text colour stays readable. */
+html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected=true],.active,.backlink){background:var(--praxis-link-button-background,var(--praxis-color-primary-soft,#e4eeea))!important}
+</style></head>
+<body data-praxis-course="laboratorul-electromagnetic-faraday" data-praxis-laboratory="true"><main id="praxis-original">
+<div class="tabs" role="tablist" aria-label="Secțiunea lecției"><button class="tab" role="tab" data-tab="experiment" id="tab-experiment" aria-controls="experiment" aria-selected="true">Experiment</button><button class="tab" role="tab" data-tab="theory" id="tab-theory" aria-controls="theory" aria-selected="false">Explicații și formule</button><button class="tab" role="tab" data-tab="problems" id="tab-problems" aria-controls="problems" aria-selected="false">Probleme</button><button class="tab" role="tab" data-tab="quiz" id="tab-quiz" aria-controls="quiz" aria-selected="false">Verificare și surse</button></div>
+<section id="experiment" role="tabpanel" aria-labelledby="tab-experiment">
+<div class="activity-bar"><label for="activity">Activitate</label><select id="activity"></select><span id="prediction" data-no-i18n></span></div>
+<div class="faraday-workspace" data-instrument-layout><div class="faraday-visual" data-instrument-role="visual">
+<div class="faraday-stage"><div class="stage-label"><span class="stage-dot"></span><span>PRAXIS · FARADAY</span><span class="stage-kind">3D</span></div><canvas id="scene" tabindex="0" role="img" aria-label="Scena experimentului electromagnetic"></canvas></div>
+<p id="scene-note" class="faraday-note" data-no-i18n></p><div id="readouts" data-no-i18n></div>
+<div class="faraday-graphs" data-instrument-role="graphs"><canvas id="graph-flux" role="img" aria-label="Flux magnetic în timp"></canvas><canvas id="graph-emf" role="img" aria-label="Tensiune indusă în timp"></canvas><canvas id="graph-current" role="img" aria-label="Curent electric în timp"></canvas></div>
+
+</div><aside class="faraday-controls" data-instrument-role="controls"><h2 data-content-type="simulation">Comenzile experimentului</h2>
+<div class="transport"><button id="play" class="button primary">Pornire</button><button id="step" class="button secondary">Pas</button><button id="reset" class="button secondary">Reset</button></div>
+<p id="status" role="status" data-no-i18n></p><div class="control-row"><label for="playback">Ritmul redării</label><select id="playback"><option value="0.01">0,01 s / s</option><option value="0.1">0,1 s / s</option><option value="1">1 s / s</option></select></div>
+<div id="actions" data-no-i18n></div><fieldset id="parameters"><legend>Parametri fizici</legend><div id="parameter-inputs" data-no-i18n></div></fieldset>
+</aside></div>
+<details><summary>Bilanț energetic și model</summary><div id="energy" data-no-i18n></div><p id="live-formula" data-no-i18n></p><p class="faraday-note">Graficele arată istoricul măsurat. Cursorul indică timpul scenei; fiecare axă are propria scară SI.</p><p class="faraday-note">Parametrii se configurează în pauză și încep o măsurare nouă. Redarea lentă nu schimbă fizica.</p><p id="limits" data-no-i18n></p></details>
+</section><section id="theory" role="tabpanel" aria-labelledby="tab-theory" hidden></section><section id="problems" role="tabpanel" aria-labelledby="tab-problems" hidden></section><section id="quiz" role="tabpanel" aria-labelledby="tab-quiz" hidden></section>
+</main></body></html>
+

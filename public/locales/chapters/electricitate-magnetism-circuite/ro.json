@@ -5,7 +5,8 @@
   "messages": {
     "Electricitate, magnetism și circuite": "Electricitate, magnetism și circuite",
     "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITATE, MAGNETISM ȘI CIRCUITE",
-    "Generatorul electric": "Generatorul electric"
+    "Generatorul electric": "Generatorul electric",
+    "Laboratorul electromagnetic Faraday": "Laboratorul electromagnetic Faraday"
   },
   "simulations": {
     "generator-electric": {
@@ -19,6 +20,18 @@
         "Energie"
       ],
       "keywords": "generator electric alternator faraday lenz flux magnetic tensiune curent alternativ energie"
+    },
+    "laboratorul-electromagnetic-faraday": {
+      "title": "Laboratorul electromagnetic Faraday",
+      "subtitle": "De la câmp magnetic la transfer de energie",
+      "description": "Cinci activități: magnet, bobină, electromagnet, transformator și generator. Grafice, bilanțuri energetice și probleme.",
+      "alt": "Magnet lângă o bobină și graficul tensiunii induse",
+      "tags": [
+        "Inducție",
+        "Magnetism",
+        "Transformator"
+      ],
+      "keywords": "faraday lenz magnet bobina electromagnet transformator inductie flux magnetic energie busola"
     }
   }
 }

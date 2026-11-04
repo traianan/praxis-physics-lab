@@ -1,6 +1,8 @@
 # Praxis · Fizică interactivă
 
-**Adăugat la 4 noiembrie 2026:** [Generatorul electric](docs/INTEGRARE_GENERATOR_ELECTRIC.md), în **Electricitate, magnetism și circuite**: alternator 3D HyperFrames cu zece repere numerotate, circuit complet, grafice și bilanț energetic, RO/EN, două probleme și șase întrebări. Biblioteca are **20 de laboratoare**.
+**Faraday, 4 noiembrie 2026:** cinci experimente 3D, modele SI independente de randare, RO/EN și arhivă autonomă. [Validare și limite](docs/FARADAY_VALIDARE_2026-11-04.md). Pentru regenerarea arhivei: `npm ci`, apoi `npm run offline:faraday` și `npm run build`.
+
+**Adăugat la 4 noiembrie 2026:** [Generatorul electric](docs/INTEGRARE_GENERATOR_ELECTRIC.md), în **Electricitate, magnetism și circuite**: alternator 3D HyperFrames cu zece repere numerotate, circuit complet, grafice și bilanț energetic, RO/EN, două probleme și șase întrebări. Biblioteca are **21 de laboratoare**.
 
 **Adăugat la 31 octombrie 2026:** [Motoare termice](docs/INTEGRARE_MOTOARE_TERMICE.md), în **Căldură și termodinamică**: nouă simulări și animația introductivă, motoare în patru timpi cu cicluri ideale Otto/Diesel, RO/EN, 12 întrebări, 14 probleme și arhivă offline. Biblioteca are **19 laboratoare**.
 
@@ -50,7 +52,7 @@ Alternativ, în acest folder:
 npm run dev
 ```
 
-Serverul local servește catalogul și cele 20 de laboratoare incluse. A deschide doar `public/index.html` cu dublu clic nu este metoda recomandată: catalogul utilizează module JavaScript și trebuie servit prin HTTP local. Simularea individuală de optică rămâne și un fișier autonom.
+Serverul local servește catalogul și cele 21 de laboratoare incluse. A deschide doar `public/index.html` cu dublu clic nu este metoda recomandată: catalogul utilizează module JavaScript și trebuie servit prin HTTP local. Simularea individuală de optică rămâne și un fișier autonom.
 
 ## Tabletă sau tablă Android, prin rețeaua locală
 

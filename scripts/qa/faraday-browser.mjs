@@ -1,0 +1,56 @@
+import {writeFile,mkdir} from 'node:fs/promises';
+import {pathToFileURL,fileURLToPath} from 'node:url';
+import assert from 'node:assert/strict';
+const {chromium}=await import(process.env.PRAXIS_PLAYWRIGHT_MODULE?pathToFileURL(process.env.PRAXIS_PLAYWRIGHT_MODULE).href:'playwright');
+const browser=await chromium.launch({channel:'chrome',headless:true}),base=process.env.PRAXIS_FARADAY_URL||'http://127.0.0.1:4205',route='/simulari/laboratorul-electromagnetic-faraday/index.html',out=new URL('../../outputs/',import.meta.url);
+await mkdir(out,{recursive:true});const report={browser:browser.version(),native:[],responsive:[],screenshots:[],performance:[],errors:[],failedRequests:[],externalRequests:[]};
+const snap=p=>p.evaluate(()=>PraxisFaraday.snapshot()),near=(a,b)=>assert.ok(Math.abs(a-b)<1e-10);
+async function ready(p){p.on('pageerror',e=>report.errors.push(e.message));p.on('response',r=>{if(r.status()>=400)report.failedRequests.push(r.url());});p.on('request',r=>{if(/^https?:/.test(r.url())&&!r.url().startsWith(base))report.externalRequests.push(r.url());});await p.goto(base+route);await p.waitForFunction(()=>window.PraxisFaraday&&document.querySelector('.praxis-site-row'));const consent=p.getByRole('button',{name:'Doar necesare',exact:true});if(await consent.isVisible())await consent.click();}
+try{
+ for(const touch of [false,true]){
+  const ctx=await browser.newContext({viewport:touch?{width:390,height:844}:{width:1366,height:768},hasTouch:touch,isMobile:touch}),p=await ctx.newPage();await ready(p);
+  await p.evaluate(()=>{window.pointerEvidence=[];document.addEventListener('pointerdown',e=>pointerEvidence.push({type:e.pointerType,trusted:e.isTrusted}));});
+  async function click(selector){const el=p.locator(selector);await el.scrollIntoViewIfNeeded();if(touch){const b=await el.boundingBox();await p.touchscreen.tap(b.x+b.width/2,b.y+b.height/2);}else await el.click();}
+  await click('#step');near((await snap(p)).t,.005);await click('#reset');await click('[data-adjust="N:1"]');assert.equal((await snap(p)).parameters.N,101);
+  await click('[data-motion="approach"]');await click('#play');await p.waitForTimeout(250);await click('#play');let s=await snap(p);assert.ok(s.t>0&&s.state.x<.25&&!s.running);const t=s.t;await p.waitForTimeout(100);near((await snap(p)).t,t);
+  // Regression: a paused frozen velocity must not leak into a fresh circuit configuration.
+  await click('#open');s=await snap(p);near(s.t,0);near(s.state.v,0);near(s.state.emf,0);await click('#reset');
+  const scene=p.locator('#scene');await scene.scrollIntoViewIfNeeded();let b=await scene.boundingBox();
+  if(touch){const cdp=await ctx.newCDPSession(p);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:b.x+b.width*.3,y:b.y+b.height*.5}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:b.x+b.width*.55,y:b.y+b.height*.5}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await cdp.detach();}
+  else{await p.mouse.move(b.x+b.width*.3,b.y+b.height*.5);await p.mouse.down();await p.mouse.move(b.x+b.width*.55,b.y+b.height*.5,{steps:10});await p.mouse.up();}
+  s=await snap(p);assert.ok(s.state.x>=.1&&s.state.x<=.5&&s.state.x!==.25);near(s.state.v,0);assert.equal(s.dragging,false);
+  await click('#play');await scene.scrollIntoViewIfNeeded();b=await scene.boundingBox();
+  if(touch){const cdp=await ctx.newCDPSession(p);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:b.x+b.width*.2,y:b.y+b.height*.5}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:b.x+b.width*.4,y:b.y+b.height*.5}]});await p.waitForTimeout(150);await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});await cdp.detach();}
+  else{await p.mouse.move(b.x+b.width*.4,b.y+b.height*.5);await p.mouse.down();await p.mouse.move(b.x-25,b.y+b.height*.5,{steps:8});await p.waitForTimeout(150);await p.mouse.up();}
+  s=await snap(p);assert.equal(s.dragging,false);near(s.state.v,0);await click('#play');
+  for(const activity of ['magnet','pickup','rl','transformer','generator']){await p.selectOption('#activity',activity);await click('#reset');if(activity==='rl')await click('[data-source="10"]');await click('#step');s=await snap(p);assert.ok(s.t>0&&s.scene.triangles>0);assert.ok(await p.locator('#live-formula').textContent());
+   const before=JSON.stringify({p:s.parameters,t:s.t,state:s.state});await p.evaluate(async()=>{await PraxisI18n.setLanguage('en');PraxisCourseLocalization.setColors('vivid');});s=await snap(p);assert.equal(JSON.stringify({p:s.parameters,t:s.t,state:s.state}),before);await p.evaluate(()=>PraxisI18n.setLanguage('ro'));
+   if(activity==='rl'){const i=s.state.current;await click('[data-source="0"]');near((await snap(p)).state.current,i);await click('#step');assert.ok((await snap(p)).state.current<i);}
+   if(!touch){const path=`faraday-${activity}-3d.png`;await p.locator('.faraday-visual').screenshot({path:fileURLToPath(new URL(path,out))});report.screenshots.push(path);}
+  }
+  await p.evaluate(()=>document.querySelector('#tab-theory').click());assert.equal(await p.locator('.science-math-error').count(),0);assert.ok(await p.locator('#theory math').count()>0);
+  await p.evaluate(()=>document.querySelector('#tab-quiz').click());await click('input[name=q0][value="1"]');assert.match(await p.locator('#feedback-0').textContent(),/Corect/);await p.evaluate(()=>PraxisI18n.setLanguage('en'));assert.match(await p.locator('#feedback-0').textContent(),/Correct/);
+  const evidence=await p.evaluate(()=>pointerEvidence);assert.ok(evidence.some(e=>e.type===(touch?'touch':'mouse')&&e.trusted));report.native.push({mode:touch?'touch emulated':'mouse',trustedEvents:evidence.length,passed:true});console.log('Native',touch?'touch':'mouse','passed');await ctx.close();
+ }
+ for(const [width,height,dpr]of [[3840,2160,1],[1920,1080,2],[1366,768,1],[1024,768,1],[390,844,1]]){
+  const ctx=await browser.newContext({viewport:{width,height},deviceScaleFactor:dpr}),p=await ctx.newPage();await ready(p);
+  const rows=await p.evaluate(async()=>{const rows=[];for(const size of [100,200])for(const lang of ['ro','en']){document.documentElement.style.fontSize=16*size/100+'px';await PraxisI18n.setLanguage(lang);for(const activity of ['magnet','pickup','rl','transformer','generator']){const select=document.querySelector('#activity');select.value=activity;select.dispatchEvent(new Event('change'));window.dispatchEvent(new Event('resize'));await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));const c=document.querySelector('#scene'),b=c.getBoundingClientRect(),controls=[...document.querySelectorAll('.transport button')];rows.push({size,lang,activity,overflow:document.documentElement.scrollWidth>innerWidth+1,canvas:[b.width,b.height,c.width,c.height],controls:controls.every(e=>e.getBoundingClientRect().width>=44),workspaceBottom:document.querySelector('.faraday-workspace').getBoundingClientRect().bottom});}}return rows;});
+  report.responsive.push({width,height,dpr,rows});assert.ok(rows.every(r=>!r.overflow&&r.controls),JSON.stringify(report.responsive.at(-1)));
+  await p.evaluate(()=>{document.documentElement.style.fontSize='16px';});await p.evaluate(()=>document.querySelector('button.site-board-button')?.click());
+  await p.screenshot({path:fileURLToPath(new URL(`faraday-${width}-layout.png`,out)),fullPage:true});console.log('Responsive',width,'passed');await ctx.close();
+ }
+ // Actual library and canonical chapter navigation.
+ {const p=await browser.newPage();await ready(p);await p.locator('.praxis-lab-chapter').click();await p.waitForURL(/capitol/);assert.ok(await p.locator(`a[href*="laboratorul-electromagnetic-faraday/index.html"]`).count()>0);await p.locator(`a[href*="laboratorul-electromagnetic-faraday/index.html"]`).first().click();await p.waitForFunction(()=>window.PraxisFaraday);await p.locator('.praxis-site-brand').click();await p.waitForURL(url=>!url.pathname.includes('simulari'));report.navigation=true;await p.close();}
+ if(process.env.PRAXIS_FARADAY_PERF!=='0'){
+  const p=await browser.newPage({viewport:{width:1366,height:768}});await ready(p);
+  for(const activity of ['magnet','pickup','rl','transformer','generator']){await p.selectOption('#activity',activity);await p.locator('#reset').click();if(activity==='pickup')await p.locator('[data-motion=approach]').click();if(activity==='rl')await p.locator('[data-source="10"]').click();await p.locator('#play').click();await p.waitForTimeout(700);await p.evaluate(()=>PraxisFaraday.startMetrics());await p.waitForFunction(()=>PraxisFaraday.snapshot().t>0);let metrics;
+   await p.waitForFunction(()=>PraxisFaraday.metricsCount()>=600,null,{timeout:120000});metrics=await p.evaluate(()=>PraxisFaraday.stopMetrics());
+   await p.locator('#play').click();const quant=(v,q)=>[...v].sort((a,b)=>a-b)[Math.floor((v.length-1)*q)]??0;report.performance.push({activity,frames:metrics.total.length,viewport:metrics.viewport,dpr:metrics.dpr,modelP95:quant(metrics.model,.95),sceneP95:quant(metrics.scene,.95),graphsP95:quant(metrics.graphs,.95),renderP50:quant(metrics.total,.5),renderP95:quant(metrics.total,.95),intervalP50:quant(metrics.intervals,.5),intervalP95:quant(metrics.intervals,.95),scene:(await snap(p)).scene});console.log('Performance',activity,report.performance.at(-1));assert.ok(metrics.total.length>=600);
+  }await p.close();
+ }
+ const offline=await browser.newPage();offline.on('pageerror',e=>report.errors.push('offline: '+e.message));const requests=[];offline.on('request',r=>{if(/^https?:/.test(r.url()))requests.push(r.url());});await offline.goto(new URL('../../outputs/offline-lessons/laboratorul-electromagnetic-faraday/index.html',import.meta.url).href);await offline.waitForFunction(()=>window.PraxisFaraday&&document.querySelector('.praxis-lab-logo img'));await offline.waitForTimeout(400);assert.ok(await offline.locator('.praxis-lab-logo img').evaluate(e=>e.complete&&e.naturalWidth>0));await offline.evaluate(()=>PraxisI18n.setLanguage('en'));await offline.selectOption('#activity','generator');await offline.locator('#step').click();assert.ok((await snap(offline)).t>0);assert.equal(requests.length,0);report.offline=true;await offline.close();
+ assert.deepEqual(report.errors,[]);assert.deepEqual(report.failedRequests,[]);assert.deepEqual(report.externalRequests,[]);report.passed=true;
+}catch(error){report.passed=false;report.error=error.stack;console.error(error);process.exitCode=1;}finally{await writeFile(new URL('faraday-browser-qa.json',out),JSON.stringify(report,null,2));await browser.close();}
+console.log(JSON.stringify({passed:report.passed,native:report.native,responsive:report.responsive.map(r=>({width:r.width,cases:r.rows.length})),error:report.error}));
+
+

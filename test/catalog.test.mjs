@@ -5,13 +5,13 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
- assert.deepEqual(latest.map(sim=>sim.id),['generator-electric','motoare-termice','principiile-mecanicii-newtoniene']);
- assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-03','2026-10-31','2026-10-30']);
- assert.equal(getLatestSimulations(1)[0].id,'generator-electric');
+ assert.deepEqual(latest.map(sim=>sim.id),['laboratorul-electromagnetic-faraday','generator-electric','motoare-termice']);
+ assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-04','2026-11-03','2026-10-31']);
+ assert.equal(getLatestSimulations(1)[0].id,'laboratorul-electromagnetic-faraday');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
- const home=getHomeSimulations();assert.equal(home.length,8);
+ const home=getHomeSimulations();assert.equal(home.length,9);
  for(const chapter of chapters)assert.ok(home.filter(sim=>sim.chapter===chapter.id).length<=2);
  assert.equal(findSimulations('miscare').length,6);assert.equal(findSimulations('','curbilinie osculator').length,1);
 });
@@ -19,8 +19,8 @@ test('exactly the seven physics chapters, with unique stable ids', () => {
  assert.equal(chapters.length,7); assert.equal(new Set(chapters.map(c=>c.id)).size,7);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite']);
 });
-test('twenty real local laboratories are available, including the existing optics', async () => {
- assert.equal(simulations.length,20); const s=simulations[0];
+test('twenty-one real local laboratories are available, including the existing optics', async () => {
+ assert.equal(simulations.length,21); const s=simulations.find(s=>s.id==='oglinzi-si-lentile');
  assert.equal(s.chapter,'lumina-si-radiatii');assert.equal(s.status,'available');
  assert.ok(!/^https?:/.test(s.href));
  const file=new URL('../public/'+s.href,import.meta.url); assert.ok((await stat(file)).size>100000);
