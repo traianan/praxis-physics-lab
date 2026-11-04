@@ -1,0 +1,83 @@
+const $=id=>document.getElementById(id),tr=s=>window.PraxisI18n.tr(s);
+const palette=()=>window.PraxisScientificColors.palette(window.PraxisCourseLocalization?.colors);
+const fmt=(v,n=3)=>v===null?'—':v.toLocaleString(window.PraxisI18n.locale,{maximumFractionDigits:n,minimumFractionDigits:n});
+const node=(tag,attrs,body='')=>`<${tag} ${attrs}>${body}</${tag}>`;
+const label=(x,y,s,extra='')=>node('text',`x="${x}" y="${y}" ${extra}`,s);
+let dots=[],narrow=false;
+export function buildScene(){
+ const c=palette();
+ narrow=$('scene').parentElement.clientWidth<480;
+ $('scene').setAttribute('viewBox',narrow?'0 0 360 300':'0 0 600 300');
+ $('scene').innerHTML=`<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="currentColor"/></marker></defs>
+ <g font-size="17" fill="currentColor">
+ <path d="M95 131V55H505V131" fill="none" stroke="currentColor" stroke-width="3"/>
+ <rect x="253" y="43" width="94" height="25" rx="5" fill="var(--praxis-color-surface)" stroke="currentColor"/>
+ ${label(300,35,tr('Sarcină R'),'text-anchor="middle"')}
+ ${label(120,20,tr('Electroni →'))}${label(390,92,tr('← Curent convențional'),'text-anchor="middle"')}
+ <path d="M160 27H230" stroke="currentColor" marker-end="url(#arrow)"/>
+ <path d="M45 139V262H240V139M360 139V262H555V139" fill="none" stroke="currentColor" stroke-width="2"/>
+ <rect x="48" y="163" width="189" height="96" fill="${c.purple}" opacity=".12"/>
+ <rect id="copper-solution" x="363" y="163" width="189" height="96" fill="${c.blue}" opacity=".28"/>
+ <path id="bridge-path" d="M202 201V119H398V201" fill="none" stroke="${c.green}" stroke-width="18" opacity=".4"/>
+ ${label(300,115,tr('Punte KNO₃'),'text-anchor="middle"')}
+ <rect id="zinc-plate" x="83" y="129" width="24" height="113" fill="${c.purple}"/><rect id="copper-plate" x="493" y="129" width="24" height="113" fill="${c.orange}"/>
+ ${label(95,113,'Zn · '+tr('Anod (−)'),'text-anchor="middle"')}${label(505,113,'Cu · '+tr('Catod (+)'),'text-anchor="middle"')}
+ ${label(142,285,'ZnSO₄(aq)','text-anchor="middle"')}${label(458,285,'CuSO₄(aq)','text-anchor="middle"')}
+ ${label(125,223,'Zn²⁺','fill="'+c.purple+'"')}${label(432,223,'Cu²⁺','fill="'+c.blue+'"')}
+ ${label(210,150,'NO₃⁻ ↓','text-anchor="middle"')}${label(392,150,'K⁺ ↓','text-anchor="middle"')}
+ ${label(300,245,'Zn → Zn²⁺ + 2e⁻','text-anchor="middle" font-size="15"')}
+ ${label(300,265,'Cu²⁺ + 2e⁻ → Cu','text-anchor="middle" font-size="15"')}
+ <path id="switch-gap" d="M170 55H220" stroke="var(--praxis-color-surface)" stroke-width="8" visibility="hidden"/>
+ <g id="particles"></g></g>`;
+ if(narrow)$('scene').innerHTML=`<g font-size="16" fill="currentColor">
+ <path d="M65 130V50H295V130" stroke="currentColor" stroke-width="3" fill="none"/>
+ <rect x="145" y="38" width="70" height="24" rx="4" fill="var(--praxis-color-surface)" stroke="currentColor"/>
+ ${label(180,30,tr('Sarcină R'),'text-anchor="middle"')}${label(12,79,tr('Electroni →'))}${label(180,100,tr('← Curent convențional'),'text-anchor="middle"')}
+ <path d="M15 150V260H158V150M202 150V260H345V150" fill="none" stroke="currentColor" stroke-width="2"/>
+ <rect x="18" y="180" width="137" height="77" fill="${c.purple}" opacity=".12"/><rect id="copper-solution" x="205" y="180" width="137" height="77" fill="${c.blue}" opacity=".28"/>
+ <path id="bridge-path" d="M130 210V142H230V210" fill="none" stroke="${c.green}" stroke-width="15" opacity=".4"/>
+ ${label(180,130,tr('Punte KNO₃'),'text-anchor="middle"')}
+ <rect id="zinc-plate" x="53" y="145" width="24" height="100" fill="${c.purple}"/><rect id="copper-plate" x="283" y="145" width="24" height="100" fill="${c.orange}"/>
+ ${label(65,124,'Zn (−)','text-anchor="middle"')}${label(295,124,'Cu (+)','text-anchor="middle"')}
+ ${label(85,280,'ZnSO₄(aq)','text-anchor="middle"')}${label(275,280,'CuSO₄(aq)','text-anchor="middle"')}
+ ${label(78,240,'Zn²⁺')}${label(239,240,'Cu²⁺')}${label(125,172,'NO₃⁻ ↓','text-anchor="middle"')}${label(232,172,'K⁺ ↓','text-anchor="middle"')}
+ <path id="switch-gap" d="M95 50H140" stroke="var(--praxis-color-surface)" stroke-width="8" visibility="hidden"/><g id="particles"></g></g>`;
+ const particles=$('particles');
+ particles.innerHTML=Array.from({length:6},(_,i)=>`<circle data-particle="electron" r="3.5" fill="${c.red}"/>`).join('')+Array.from({length:12},()=>`<circle data-particle="ion" r="4" fill="${c.green}"/>`).join('');
+ dots=[...particles.children];
+ $('scene').setAttribute('aria-label',tr('Scenă schematică a pilei Daniell'));
+}
+export function renderScene(p,s){
+ $('switch-gap').setAttribute('visibility',p.open?'visible':'hidden');$('bridge-path').style.opacity=p.bridge?'.4':'0';
+ $('copper-solution').style.opacity=String(.04+.24*Math.min(1,s.cCu/1000));
+ $('zinc-plate').setAttribute('width',String(24*Math.max(0,s.mZn/.01)));
+ $('copper-plate').setAttribute('width',String(24+12*s.progress));
+ const phase=s.charge/20;
+ dots.forEach((el,i)=>{
+  const active=i<6?!p.open&&p.bridge&&!s.ended:p.bridge&&!p.open&&!s.ended;
+  el.style.visibility=active?'visible':'hidden';
+  if(i<6){const left=narrow?65:95,right=narrow?295:505,top=narrow?50:55,bottom=narrow?145:131,leg=bottom-top,span=right-left,u=((i/6+phase)%1)*(2*leg+span);let x,y;if(u<leg){x=left;y=bottom-u;}else if(u<leg+span){x=left+u-leg;y=top;}else{x=right;y=top+u-leg-span;}el.setAttribute('cx',x);el.setAttribute('cy',y);}
+  else{const j=i-6,side=j<6?0:1,u=((j%6)/6+phase)%1;el.setAttribute('cx',narrow?(side?230:130):(side?398:202));el.setAttribute('cy',(narrow?177:150)+u*(narrow?35:54));}
+ });
+}
+export function renderReadouts(p,s){
+ const c=palette();
+ $('readouts').innerHTML=[['E / V',s.E,c.blue],['U / V',s.voltage,c.orange],['I / A',s.current,c.red],[tr('Timp')+' / s',s.t,null]].map(([name,v,color])=>`<div><span${color?` style="color:${color}"`:''}>${name}</span><strong>${fmt(v,name.endsWith('/ s')?0:4)}</strong></div>`).join('');
+ $('balance').innerHTML=[['c(Zn²⁺)',fmt(s.cZn,3),'mol/m³'],['c(Cu²⁺)',fmt(s.cCu,3),'mol/m³'],[tr('Sarcină'),fmt(s.charge,3),'C'],[tr('Cu depus'),fmt(s.copperGain,7),'kg'],[tr('Zn rămas'),fmt(s.mZn,7),'kg'],[tr('Energie externă'),fmt(s.external,3),'J'],[tr('Energie internă'),fmt(s.internal,3),'J'],['ΔrG',fmt(s.deltaG,1),'J/mol'],['EI − I²(R+r)',fmt(s.pChemical-s.pExternal-s.pInternal,9),'W']].map(([name,v,u])=>`<span>${name}: <b>${v}</b> ${u}</span>`).join('');
+ $('play').textContent=tr(s.running?'Pauză':'Pornire');
+ $('status').textContent=tr(s.ended?'Pragul modelului atins; resetează experimentul.':!p.bridge?'Punte absentă: U nedefinit în model.':s.running?'În funcțiune':'În pauză');
+}
+export function renderGraph(history){
+ const c=palette(),end=Math.max(60,history.at(-1).t),width=$('graph').parentElement.clientWidth<480?360:600,right=width-18,x=t=>46+t/end*(right-46);
+ $('graph').setAttribute('viewBox',`0 0 ${width} 120`);
+ const draw=(key,color,max,top,height)=>{
+  let d='',connected=false;for(const row of history){const value=row[key];if(value===null){connected=false;continue;}d+=`${connected?'L':'M'}${x(row.t).toFixed(2)},${(top+height-value/max*height).toFixed(2)} `;connected=true;}
+  return `<path d="${d}" stroke="${color}" stroke-width="2" fill="none"/>`;
+ };
+ $('graph').innerHTML=`<g font-size="14" fill="currentColor"><path d="M46 17V92H${right}M46 60H${right}" fill="none" stroke="currentColor" opacity=".3"/>
+ ${label(2,28,fmt(1.2,1)+' V')}${label(2,57,'0 V')}${label(2,73,fmt(.6,1)+' A')}${label(2,94,'0 A')}
+ ${label(46,113,'0')}${label(right,113,fmt(end,0)+' s','text-anchor="end"')}
+ ${label(65,14,'E / V',`fill="${c.blue}"`)}${label(145,14,'U / V',`fill="${c.orange}"`)}${label(225,14,'I / A',`fill="${c.red}"`)}
+ ${draw('E',c.blue,1.2,18,36)}${draw('voltage',c.orange,1.2,18,36)}${draw('current',c.red,.6,64,28)}</g>`;
+ $('graph').setAttribute('aria-label',tr('Istoricul tensiunii și curentului'));
+}

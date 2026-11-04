@@ -6,7 +6,8 @@
     "Electricitate, magnetism și circuite": "Electricity, magnetism and circuits",
     "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITY, MAGNETISM AND CIRCUITS",
     "Generatorul electric": "Electric generator",
-    "Laboratorul electromagnetic Faraday": "Faraday’s Electromagnetic Lab"
+    "Laboratorul electromagnetic Faraday": "Faraday’s Electromagnetic Lab",
+    "Pila Daniell": "Daniell cell"
   },
   "simulations": {
     "generator-electric": {
@@ -32,6 +33,18 @@
         "Transformer"
       ],
       "keywords": "faraday lenz magnet coil electromagnet transformer induction flux energy compass"
+    },
+    "pila-daniell": {
+      "title": "Daniell cell",
+      "subtitle": "From chemical reaction to electrical energy",
+      "description": "Zn/Cu electrodes, salt bridge, Nernst equation, graphs and charge and energy balances.",
+      "alt": "Zinc and copper connected by an external circuit and salt bridge",
+      "tags": [
+        "Circuits",
+        "Electrochemistry",
+        "Energy"
+      ],
+      "keywords": "daniell cell zinc copper anode cathode nernst voltage current salt bridge electrochemistry"
     }
   }
 }

@@ -1,0 +1,52 @@
+import {writeFile,mkdir,readFile} from 'node:fs/promises';
+import {pathToFileURL,fileURLToPath} from 'node:url';
+import assert from 'node:assert/strict';
+import {createServer} from '../serve.mjs';
+const {chromium}=await import(process.env.PRAXIS_PLAYWRIGHT_MODULE?pathToFileURL(process.env.PRAXIS_PLAYWRIGHT_MODULE).href:'playwright');
+const server=createServer();await new Promise(r=>server.listen(4212,'127.0.0.1',r));
+const base='http://127.0.0.1:4212',route='/simulari/pila-daniell/index.html';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const report={browser:browser.version(),native:[],responsive:[],performance:[],errors:[],failed:[],external:[],navigation:[]};
+const out=new URL('../../outputs/',import.meta.url);await mkdir(out,{recursive:true});
+const snap=p=>p.evaluate(()=>PraxisDaniell.snapshot()),near=(a,b)=>assert.ok(Math.abs(a-b)<1e-9);
+async function ready(page){page.on('pageerror',e=>report.errors.push(e.message));page.on('response',r=>{if(r.status()>=400)report.failed.push(r.url());});page.on('request',r=>{if(/^https?:/.test(r.url())&&!r.url().startsWith(base))report.external.push(r.url());});await page.goto(base+route);await page.waitForFunction(()=>window.PraxisDaniell&&document.querySelector('.praxis-site-row'));const consent=page.getByRole('button',{name:'Doar necesare',exact:true});if(await consent.isVisible())await consent.click();}
+try{
+ for(const touch of [false,true]){
+  const context=await browser.newContext({viewport:touch?{width:390,height:844}:{width:1366,height:768},hasTouch:touch,isMobile:touch,acceptDownloads:true});const page=await context.newPage();await ready(page);
+  await page.evaluate(()=>{window.pointerEvidence=[];document.addEventListener('pointerdown',e=>pointerEvidence.push({type:e.pointerType,trusted:e.isTrusted}));});
+  const click=async selector=>{const el=page.locator(selector);await el.scrollIntoViewIfNeeded();if(touch)await el.tap();else await el.click();};
+  await click('#step');near((await snap(page)).state.t,60);assert.ok((await snap(page)).state.cCu<1000);
+  await click('#reset');await click('#play');await page.waitForTimeout(350);await click('#play');const s=await snap(page);assert.ok(s.state.t>0&&!s.running);await page.waitForTimeout(100);near((await snap(page)).state.t,s.state.t);
+  await click('#open');near((await snap(page)).state.xi,s.state.xi);near((await snap(page)).state.current,0);await click('#step');near((await snap(page)).state.xi,s.state.xi);await click('#bridge');assert.equal((await snap(page)).state.voltage,null);await click('#reset');
+  await click('[data-adjust="R:1"]');assert.equal((await snap(page)).parameters.R,11);
+  // Native drag/touch motion of the slider, not DOM event simulation.
+  const slider=page.locator('#range-R');await slider.scrollIntoViewIfNeeded();const rect=await slider.boundingBox();
+  if(touch){const cdp=await context.newCDPSession(page);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:rect.x+rect.width*.2,y:rect.y+rect.height/2}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:rect.x+rect.width*.7,y:rect.y+rect.height/2}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await cdp.detach();}
+  else{await page.mouse.move(rect.x+rect.width*.2,rect.y+rect.height/2);await page.mouse.down();await page.mouse.move(rect.x+rect.width*.7,rect.y+rect.height/2,{steps:6});await page.mouse.up();}
+  assert.notEqual((await snap(page)).parameters.R,11);
+  await page.locator('#num-cCu').fill('100');await page.locator('#num-cCu').press('Tab');assert.equal((await snap(page)).parameters.cCu,100);near((await snap(page)).state.t,0);
+  await click('#step');const before=await snap(page);await page.evaluate(()=>PraxisI18n.setLanguage('en'));assert.match(await page.locator('#play').textContent(),/Start/);assert.deepEqual((await snap(page)).state,before.state);await page.evaluate(()=>PraxisCourseLocalization.setColors('vivid'));assert.deepEqual((await snap(page)).state,before.state);await page.evaluate(()=>PraxisI18n.setLanguage('ro'));
+  await click('#play');await page.evaluate(()=>document.querySelector('#tab-theory').click());const frozen=(await snap(page)).state.t;await page.waitForTimeout(150);near((await snap(page)).state.t,frozen);assert.equal(await page.locator('.science-math-error').count(),0);assert.ok(await page.locator('#theory math').count()>0);assert.equal(await page.locator('[data-science-math=tex] mfrac').first().evaluate(e=>e.children[1].textContent),'2F');await page.evaluate(()=>document.querySelector('#tab-experiment').click());await click('#play');
+  await page.evaluate(()=>document.querySelector('#tab-quiz').click());await click('input[name=q0][value="1"]');assert.match(await page.locator('#feedback-0').textContent(),/Corect/);await page.evaluate(()=>PraxisI18n.setLanguage('en'));assert.match(await page.locator('#feedback-0').textContent(),/Correct/);await page.evaluate(()=>{document.querySelector('#tab-experiment').click();});
+  const downloadPromise=page.waitForEvent('download');await click('#export');const download=await downloadPromise;const csv=await readFile(await download.path(),'utf8');assert.match(csv,/t_s,extent_mol,emf_V/);assert.ok(csv.split('\n').length>2);
+  await page.evaluate(()=>PraxisI18n.setLanguage('ro'));await click('#reset');await page.screenshot({path:fileURLToPath(new URL(touch?'daniell-phone.png':'daniell-desktop.png',out)),fullPage:true});
+  const events=await page.evaluate(()=>pointerEvidence);assert.ok(events.some(e=>e.trusted&&e.type===(touch?'touch':'mouse')));report.native.push({mode:touch?'touch emulated':'mouse',trustedEvents:events.length,csvRows:csv.split('\n').length,passed:true});console.log('Native passed',touch);await context.close();
+ }
+ for(const [width,height,dpr] of [[3840,2160,1],[1920,1080,2],[1366,768,1],[1024,768,1],[390,844,1]]){
+  const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:dpr}),page=await context.newPage();await ready(page);
+  for(const size of [100,200])for(const language of ['ro','en']){
+   const result=await page.evaluate(async({size,language})=>{document.documentElement.style.fontSize=16*size/100+'px';await PraxisI18n.setLanguage(language);await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));const w=document.querySelector('.daniell-workspace').getBoundingClientRect();return {overflow:document.documentElement.scrollWidth>innerWidth+1,workspaceBottom:w.bottom,workspaceTop:w.top,smallControls:[...document.querySelectorAll('.transport button,.range-row button')].filter(el=>el.getBoundingClientRect().width<44||el.getBoundingClientRect().height<44).length};},{size,language});
+   report.responsive.push({width,height,dpr,size,language,...result});if(width>=1024&&size===100)assert.ok(result.workspaceBottom<=height+1, 'workspace must fit '+width+': '+result.workspaceBottom);assert.equal(result.overflow,false);assert.equal(result.smallControls,0);
+   for(const section of ['theory','activities','quiz','experiment']){await page.evaluate(id=>document.querySelector('[data-tab='+id+']').click(),section);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
+  }
+  await page.evaluate(()=>{document.documentElement.style.fontSize='16px';PraxisCourseLocalization.setTouch(true);});assert.ok(await page.locator('#play').evaluate(e=>e.getBoundingClientRect().height>=52));await page.evaluate(()=>PraxisCourseLocalization.setTouch(false));
+  if(width>=1366){await page.evaluate(()=>{PraxisDaniell.startMetrics();document.querySelector('#play').click();});await page.waitForTimeout(2500);const metrics=await page.evaluate(()=>{document.querySelector('#play').click();return PraxisDaniell.stopMetrics();});const q=(a,p)=>a.sort((x,y)=>x-y)[Math.floor((a.length-1)*p)];report.performance.push({width,height,dpr,frames:metrics.costs.length,renderMedianMs:q(metrics.costs,.5),renderP95Ms:q(metrics.costs,.95),frameMedianMs:q(metrics.intervals,.5),frameP95Ms:q(metrics.intervals,.95)});}
+  await context.close();
+ }
+ const context=await browser.newContext(),page=await context.newPage();await ready(page);
+ const chapter=page.locator('a[href*="chapter=1"]').first();const chapterHref=await chapter.getAttribute('href');assert.ok(chapterHref.includes('electricitate-magnetism-circuite'));await chapter.click();await page.waitForURL(u=>u.pathname==='/');await page.waitForTimeout(200);const card=page.locator('a[href*="simulari/pila-daniell/index.html"]').first();await card.click();await page.waitForFunction(()=>window.PraxisDaniell);report.navigation.push('direct → chapter → lab');
+ await page.goto(base+'/?home=1');await page.waitForTimeout(300);await page.locator('a[href*="simulari/pila-daniell/index.html"]').first().click();await page.waitForFunction(()=>window.PraxisDaniell);report.navigation.push('home → lab');
+ const board=page.getByRole('button',{name:'Mod tablă',exact:true});if(await board.count()){await board.click();await page.waitForTimeout(100);report.navigation.push('board entered');assert.equal(await board.getAttribute('aria-pressed'),'true');await board.click();assert.equal(await board.getAttribute('aria-pressed'),'false');report.navigation.push('board exited');}
+ await page.locator('[data-praxis-sound]').click();assert.equal(await page.evaluate(()=>PraxisSound.enabled),true);await page.locator('a[href*="chapter=1"]').first().click();assert.equal(await page.evaluate(()=>PraxisSound.enabled),true);await page.goBack();await page.waitForFunction(()=>window.PraxisDaniell);assert.equal(await page.evaluate(()=>PraxisSound.enabled),true);await page.locator('[data-praxis-sound]').click();assert.equal(await page.evaluate(()=>PraxisSound.enabled),false);report.navigation.push('sound session and browser back');await context.close();assert.deepEqual(report.errors,[]);assert.deepEqual(report.failed,[]);assert.deepEqual(report.external,[]);
+}finally{await writeFile(new URL('daniell-browser.json',out),JSON.stringify(report,null,2));await browser.close();await new Promise(r=>server.close(r));}
+console.log(JSON.stringify(report,null,2));

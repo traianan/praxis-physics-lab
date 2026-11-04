@@ -6,7 +6,8 @@
     "Electricitate, magnetism și circuite": "Electricitate, magnetism și circuite",
     "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITATE, MAGNETISM ȘI CIRCUITE",
     "Generatorul electric": "Generatorul electric",
-    "Laboratorul electromagnetic Faraday": "Laboratorul electromagnetic Faraday"
+    "Laboratorul electromagnetic Faraday": "Laboratorul electromagnetic Faraday",
+    "Pila Daniell": "Pila Daniell"
   },
   "simulations": {
     "generator-electric": {
@@ -32,6 +33,18 @@
         "Transformator"
       ],
       "keywords": "faraday lenz magnet bobina electromagnet transformator inductie flux magnetic energie busola"
+    },
+    "pila-daniell": {
+      "title": "Pila Daniell",
+      "subtitle": "Din reacție chimică în energie electrică",
+      "description": "Electrozi Zn/Cu, punte salină, ecuația Nernst, grafice și bilanțuri de sarcină și energie.",
+      "alt": "Zinc și cupru conectate prin circuit exterior și punte salină",
+      "tags": [
+        "Circuite",
+        "Electrochimie",
+        "Energie"
+      ],
+      "keywords": "pila daniell zinc cupru anod catod nernst tensiune curent punte salina electrochimie"
     }
   }
 }

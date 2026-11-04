@@ -278,5 +278,16 @@
         "layout": "native"
       }
     ]
+  },
+  "pila-daniell": {
+    "workspaces": [
+      {
+        "selector": ".daniell-workspace",
+        "scene": ".daniell-visual",
+        "controls": ".daniell-controls",
+        "graphs": ".daniell-graphs",
+        "layout": "native"
+      }
+    ]
   }
 }
