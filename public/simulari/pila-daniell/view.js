@@ -4,6 +4,14 @@ const fmt=(v,n=3)=>v===null?'—':v.toLocaleString(window.PraxisI18n.locale,{max
 const node=(tag,attrs,body='')=>`<${tag} ${attrs}>${body}</${tag}>`;
 const label=(x,y,s,extra='')=>node('text',`x="${x}" y="${y}" ${extra}`,s);
 let dots=[],narrow=false;
+// Separate display lanes make counter-migration legible; they are not separate tubes.
+export function bridgePoint(species,progress,compact=false){
+ const offset=species==='K'? -5:5,left=(compact?130:202)+offset,right=(compact?230:398)-offset,top=(compact?142:119)+offset,bottom=compact?210:201;
+ const leg=bottom-top,span=right-left,length=2*leg+span,u=(species==='K'?progress:1-progress)*length;
+ if(u<=leg)return {x:left,y:bottom-u};
+ if(u<=leg+span)return {x:left+u-leg,y:top};
+ return {x:right,y:top+u-leg-span};
+}
 export function buildScene(){
  const c=palette();
  narrow=$('scene').parentElement.clientWidth<480;
@@ -18,13 +26,13 @@ export function buildScene(){
  <path d="M45 139V262H240V139M360 139V262H555V139" fill="none" stroke="currentColor" stroke-width="2"/>
  <rect x="48" y="163" width="189" height="96" fill="${c.purple}" opacity=".12"/>
  <rect id="copper-solution" x="363" y="163" width="189" height="96" fill="${c.blue}" opacity=".28"/>
- <path id="bridge-path" d="M202 201V119H398V201" fill="none" stroke="${c.green}" stroke-width="18" opacity=".4"/>
- ${label(300,115,tr('Punte KNO₃'),'text-anchor="middle"')}
+ <path id="bridge-path" d="M202 201V119H398V201" fill="none" stroke="${c.green}" stroke-width="26" opacity=".18"/>
+ ${label(300,151,tr('Punte KNO₃'),'text-anchor="middle"')}
  <rect id="zinc-plate" x="83" y="129" width="24" height="113" fill="${c.purple}"/><rect id="copper-plate" x="493" y="129" width="24" height="113" fill="${c.orange}"/>
  ${label(95,113,'Zn · '+tr('Anod (−)'),'text-anchor="middle"')}${label(505,113,'Cu · '+tr('Catod (+)'),'text-anchor="middle"')}
  ${label(142,285,'ZnSO₄(aq)','text-anchor="middle"')}${label(458,285,'CuSO₄(aq)','text-anchor="middle"')}
  ${label(125,223,'Zn²⁺','fill="'+c.purple+'"')}${label(432,223,'Cu²⁺','fill="'+c.blue+'"')}
- ${label(210,150,'NO₃⁻ ↓','text-anchor="middle"')}${label(392,150,'K⁺ ↓','text-anchor="middle"')}
+ ${label(190,180,'NO₃⁻ ↓',`text-anchor="end" fill="${c.purple}"`)}${label(410,180,'K⁺ ↓',`fill="${c.green}"`)}
  ${label(300,245,'Zn → Zn²⁺ + 2e⁻','text-anchor="middle" font-size="15"')}
  ${label(300,265,'Cu²⁺ + 2e⁻ → Cu','text-anchor="middle" font-size="15"')}
  <path id="switch-gap" d="M170 55H220" stroke="var(--praxis-color-surface)" stroke-width="8" visibility="hidden"/>
@@ -35,20 +43,24 @@ export function buildScene(){
  ${label(180,30,tr('Sarcină R'),'text-anchor="middle"')}${label(12,79,tr('Electroni →'))}${label(180,100,tr('← Curent convențional'),'text-anchor="middle"')}
  <path d="M15 150V260H158V150M202 150V260H345V150" fill="none" stroke="currentColor" stroke-width="2"/>
  <rect x="18" y="180" width="137" height="77" fill="${c.purple}" opacity=".12"/><rect id="copper-solution" x="205" y="180" width="137" height="77" fill="${c.blue}" opacity=".28"/>
- <path id="bridge-path" d="M130 210V142H230V210" fill="none" stroke="${c.green}" stroke-width="15" opacity=".4"/>
- ${label(180,130,tr('Punte KNO₃'),'text-anchor="middle"')}
+ <path id="bridge-path" d="M130 210V142H230V210" fill="none" stroke="${c.green}" stroke-width="26" opacity=".18"/>
+ ${label(180,118,tr('Punte KNO₃'),'text-anchor="middle"')}
  <rect id="zinc-plate" x="53" y="145" width="24" height="100" fill="${c.purple}"/><rect id="copper-plate" x="283" y="145" width="24" height="100" fill="${c.orange}"/>
  ${label(65,124,'Zn (−)','text-anchor="middle"')}${label(295,124,'Cu (+)','text-anchor="middle"')}
  ${label(85,280,'ZnSO₄(aq)','text-anchor="middle"')}${label(275,280,'CuSO₄(aq)','text-anchor="middle"')}
- ${label(78,240,'Zn²⁺')}${label(239,240,'Cu²⁺')}${label(125,172,'NO₃⁻ ↓','text-anchor="middle"')}${label(232,172,'K⁺ ↓','text-anchor="middle"')}
+ ${label(78,253,'Zn²⁺')}${label(239,253,'Cu²⁺')}${label(130,229,'NO₃⁻ ↓',`text-anchor="middle" fill="${c.purple}"`)}${label(230,229,'K⁺ ↓',`text-anchor="middle" fill="${c.green}"`)}
  <path id="switch-gap" d="M95 50H140" stroke="var(--praxis-color-surface)" stroke-width="8" visibility="hidden"/><g id="particles"></g></g>`;
  const particles=$('particles');
- particles.innerHTML=Array.from({length:6},(_,i)=>`<circle data-particle="electron" r="3.5" fill="${c.red}"/>`).join('')+Array.from({length:12},()=>`<circle data-particle="ion" r="4" fill="${c.green}"/>`).join('');
+ const middle=narrow?180:300,top=narrow?142:119;
+ particles.insertAdjacentHTML('beforebegin',`<g id="bridge-directions" aria-hidden="true"><path d="M${middle-18} ${top-5}h36m-7 -4 7 4-7 4" fill="none" stroke="${c.green}" stroke-width="2"/><path d="M${middle+18} ${top+5}h-36m7 -4-7 4 7 4" fill="none" stroke="${c.purple}" stroke-width="2" stroke-dasharray="3 2"/></g>`);
+ particles.innerHTML=Array.from({length:6},()=>`<circle data-particle="electron" r="3.5" fill="${c.red}"/>`).join('')+['K','NO3'].map(species=>Array.from({length:6},()=>`<g data-particle="ion" data-ion="${species}" fill="${species==='K'?c.green:c.purple}">${species==='K'?'<circle r="5.5"/>':'<rect x="-5.5" y="-5.5" width="11" height="11" rx="1"/>'}<path d="M-3 0H3${species==='K'?'M0 -3V3':''}" stroke="white" stroke-width="1.5"/></g>`).join('')).join('');
  dots=[...particles.children];
+ $('bridge-legend').innerHTML=`<span style="color:${c.green}">● K⁺ → ${tr('spre Cu (catod)')}</span><span style="color:${c.purple}">■ NO₃⁻ ← ${tr('spre Zn (anod)')}</span>`;
  $('scene').setAttribute('aria-label',tr('Scenă schematică a pilei Daniell'));
 }
 export function renderScene(p,s){
- $('switch-gap').setAttribute('visibility',p.open?'visible':'hidden');$('bridge-path').style.opacity=p.bridge?'.4':'0';
+ $('switch-gap').setAttribute('visibility',p.open?'visible':'hidden');$('bridge-path').style.opacity=p.bridge?'.18':'0';
+ $('bridge-directions').style.visibility=p.bridge&&!p.open&&!s.ended?'visible':'hidden';
  $('copper-solution').style.opacity=String(.04+.24*Math.min(1,s.cCu/1000));
  $('zinc-plate').setAttribute('width',String(24*Math.max(0,s.mZn/.01)));
  $('copper-plate').setAttribute('width',String(24+12*s.progress));
@@ -57,7 +69,7 @@ export function renderScene(p,s){
   const active=i<6?!p.open&&p.bridge&&!s.ended:p.bridge&&!p.open&&!s.ended;
   el.style.visibility=active?'visible':'hidden';
   if(i<6){const left=narrow?65:95,right=narrow?295:505,top=narrow?50:55,bottom=narrow?145:131,leg=bottom-top,span=right-left,u=((i/6+phase)%1)*(2*leg+span);let x,y;if(u<leg){x=left;y=bottom-u;}else if(u<leg+span){x=left+u-leg;y=top;}else{x=right;y=top+u-leg-span;}el.setAttribute('cx',x);el.setAttribute('cy',y);}
-  else{const j=i-6,side=j<6?0:1,u=((j%6)/6+phase)%1;el.setAttribute('cx',narrow?(side?230:130):(side?398:202));el.setAttribute('cy',(narrow?177:150)+u*(narrow?35:54));}
+  else{const point=bridgePoint(el.dataset.ion,((i-6)%6/6+phase)%1,narrow);el.setAttribute('transform',`translate(${point.x} ${point.y})`);}
  });
 }
 export function renderReadouts(p,s){

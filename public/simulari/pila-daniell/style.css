@@ -17,3 +17,5 @@ body[data-praxis-course=pila-daniell] .daniell-controls .note{line-height:1.35;m
 body[data-praxis-course=pila-daniell] .daniell-controls{margin-top:0!important;margin-bottom:0!important}
 @media(max-width:850px){#scene,#graph{min-width:0;max-height:none}.scene-scroll,.daniell-graphs{overflow:visible}}
 @media(min-width:851px) and (max-height:850px){body[data-praxis-course=pila-daniell] .daniell-controls{padding:.35rem}body[data-praxis-course=pila-daniell] .daniell-controls h2{margin:0 0 .2rem}body[data-praxis-course=pila-daniell] .daniell-controls .parameter{margin:0}body[data-praxis-course=pila-daniell] .daniell-controls .parameter-heading{min-height:20px}body[data-praxis-course=pila-daniell] .daniell-controls .note{font-size:.8rem}}
+
+.bridge-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.25rem 1rem;font-size:.85rem;line-height:1.5;margin:.25rem 0;font-weight:600}
