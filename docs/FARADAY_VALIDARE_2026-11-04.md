@@ -106,3 +106,11 @@ La lățimi ≤850 px, panoul existent de comenzi este mutat imediat după scena
 În activitatea statică „Magnet și busolă”, Pornire se numește „Înregistrează”: avansează timpul măsurării, fără a deplasa automat magnetul. Indicație explicită în RO/EN și secțiune „Ce fac comenzile?” pentru Pornire/Pauză/Pas/Reset. Celelalte activități păstrează numele Pornire.
 
 Verificat în cele șapte configurații tactile telefon/tabletă, portret/peisaj, RO/EN și text mărit. Panoul este imediat după scenă pe telefon și tableta în portret; pe tableta lată rămâne alături. Testarea este emulată în Chrome, nu pe dispozitive fizice. Arhiva offline regenerată.
+
+## Animație vizibilă în timpul reglajelor
+
+Scena reală WebGL rămâne sticky sub antet pe telefon (≤850 px), iar pe tabletă lată (851–1180 px) rămâne fixată în coloana vizuală, întinsă pe înălțimea comenzilor. Nu se dublează canvasul sau timpul simulării. Înălțimea previzualizării se adaptează spațiului disponibil; în peisaj devine mai mică. Scroll-padding rezervă loc deasupra câmpurilor, iar poziția folosește înălțimea actualizată a antetului comun.
+
+În teste au fost corectate două suprapuneri: min-height moștenit care împiedica micșorarea canvasului în peisaj și limita coloanei vizuale care ascundea scena sub antet la ultimii parametri pe tabletă.
+
+Script nou `scripts/qa/faraday-sticky.mjs`: atinge succesiv reglajele în pickup/RL/transformator/generator și verifică numeric că întregul canvas rămâne între antet și marginea de jos a viewportului. Trecut la 390×844, 844×390, 820×1180, 1024×768 și 1180×820. Capturi locale `outputs/faraday-sticky-*.png`. Suita tactilă existentă (șapte configurații), rotirea și verificarea web/offline a celor cinci scene au trecut. Teste Chrome cu touch emulat; tastatura mobilă și hardware-ul fizic nu au fost validate.

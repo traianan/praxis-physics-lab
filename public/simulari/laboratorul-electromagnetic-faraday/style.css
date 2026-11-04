@@ -39,3 +39,18 @@ body[data-praxis-course="laboratorul-electromagnetic-faraday"] #readouts div{bor
 
 body[data-praxis-course="laboratorul-electromagnetic-faraday"] .faraday-visual>.faraday-controls{margin:.5rem 0}
 body[data-praxis-course="laboratorul-electromagnetic-faraday"] .transport-help{font-size:.85rem}
+
+/* Keep the real WebGL canvas visible while editing; no duplicated scene or clock. */
+@media(max-width:850px){
+ html:has(body[data-praxis-course="laboratorul-electromagnetic-faraday"]){scroll-padding-top:calc(var(--faraday-sticky-top,100px) + var(--faraday-preview-height,220px) + 16px)}
+ body[data-praxis-course="laboratorul-electromagnetic-faraday"] .faraday-stage{position:sticky;top:var(--faraday-sticky-top,100px);z-index:100;box-shadow:0 4px 12px #173e3620}
+ body[data-praxis-course="laboratorul-electromagnetic-faraday"] #scene{height:var(--faraday-preview-height,220px)!important;min-height:0!important}
+}
+@media(min-width:851px) and (max-width:1180px){
+ body[data-praxis-course="laboratorul-electromagnetic-faraday"] .faraday-visual{position:sticky;top:var(--faraday-sticky-top,100px)}
+ body[data-praxis-course="laboratorul-electromagnetic-faraday"] #scene{height:var(--faraday-preview-height,220px)!important;min-height:0!important}
+}
+@media(min-width:851px) and (max-width:1180px){
+ body[data-praxis-course="laboratorul-electromagnetic-faraday"] .faraday-visual{position:static;align-self:stretch}
+ body[data-praxis-course="laboratorul-electromagnetic-faraday"] .faraday-stage{position:sticky;top:var(--faraday-sticky-top,100px);z-index:100;box-shadow:0 4px 12px #173e3620}
+}

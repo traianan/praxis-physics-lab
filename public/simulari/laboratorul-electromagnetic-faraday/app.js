@@ -63,7 +63,7 @@ function readouts(){
  $('#live-formula').textContent=formula;
 }
 // Move existing controls, preserving their listeners and experiment state.
-function placeControls(){const panel=$('.faraday-controls'),visual=$('.faraday-visual'),workspace=$('.faraday-workspace');if(matchMedia('(max-width:850px)').matches){if(panel.parentElement!==visual)$('.faraday-stage').after(panel);}else if(panel.parentElement!==workspace)workspace.append(panel);}
+function placeControls(){const header=document.querySelector('.praxis-site-header'),offset=header&&['sticky','fixed'].includes(getComputedStyle(header).position)?header.getBoundingClientRect().height:0;const viewport=window.visualViewport?.height||innerHeight;document.documentElement.style.setProperty('--faraday-sticky-top',`calc(var(--praxis-header-height, ${offset}px) + 8px)`);document.documentElement.style.setProperty('--faraday-preview-height',`clamp(72px, calc((${viewport}px - var(--praxis-header-height, ${offset}px)) * .32), 220px)`);const panel=$('.faraday-controls'),visual=$('.faraday-visual'),workspace=$('.faraday-workspace');if(matchMedia('(max-width:850px)').matches){if(panel.parentElement!==visual)$('.faraday-stage').after(panel);}else if(panel.parentElement!==workspace)workspace.append(panel);}
 function draw(){
  placeControls();
  const begin=performance.now(),a=current();renderScene($('#scene'),active,a.s,a.p,tr);const middle=performance.now();renderGraphs([...document.querySelectorAll('.faraday-graphs canvas')],a.history,active,tr);const after=performance.now();readouts();
@@ -98,5 +98,6 @@ document.addEventListener('visibilitychange',()=>{cancel();endDrag();if(!documen
 window.addEventListener('praxis-language-change',translate);for(const event of ['resize','praxis-course-presentation-change'])window.addEventListener(event,draw);new ResizeObserver(()=>{if(section==='experiment')draw();}).observe($('.faraday-visual'));
 const integration=document.createElement('script');integration.src='../../shared/course.js';integration.dataset.course=id;integration.dataset.title='Laboratorul electromagnetic Faraday';integration.onload=()=>{const subtitle=$('.praxis-lab-intro p');if(subtitle)subtitle.textContent='Câmp magnetic, inducție și transfer de energie';window.PraxisI18n.apply(document);window.PraxisLabWorkspace?.mount();};document.body.append(integration);
 window.PraxisFaraday=Object.freeze({snapshot:()=>structuredClone({active,section,running,parameters:current().p,t:current().t,state:current().s,history:current().history,energy:current().energy,source:current().source,heat:current().heat,dragging:!!drag,scene:standInfo($('#scene'))}),metricsCount:()=>metrics.total.length,startMetrics(){for(const values of Object.values(metrics))values.length=0;recording=true;},stopMetrics(){recording=false;return structuredClone({...metrics,viewport:[innerWidth,innerHeight],dpr:devicePixelRatio,browser:navigator.userAgent});}});
+window.visualViewport?.addEventListener('resize',draw);
 translate();selectTab('experiment');
 
