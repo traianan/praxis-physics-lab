@@ -41,7 +41,7 @@ function controls(){
  let html='';if(active==='pickup')html=`<button data-motion="approach">${tr('Apropie')}</button><button data-motion="away">${tr('Depărtează')}</button><button data-motion="manual">${tr('Oprește magnetul')}</button>`;
  if(active==='rl')html=[['10','Alimentează +10 V'],['-10','Inversează −10 V'],['0','Descarcă prin R']].map(([v,label])=>`<button data-source="${v}">${tr(label)}</button>`).join('');
  if(['pickup','generator','transformer'].includes(active))html+=`<label><input type="checkbox" id="open" ${a.p.open?'checked':''}>${tr('Circuit deschis')}</label>`;
- $('#actions').innerHTML=html;$('#prediction').textContent=tr(predictions[active]);$('#scene-note').textContent=tr(notes[active])+' '+tr('Acele sunt indicatoare schematice; citește valorile SI din carduri.');$('#limits').textContent=tr(limits[active]);
+ $('#actions').innerHTML=html;$('#control-hint').textContent=active==='magnet'?tr('Câmp static: trage sonda pentru a măsura în alt punct. Înregistrează urmărește măsurătorile în timp; magnetul nu se mișcă automat.'):tr('Pornire avansează simularea; Pas permite observarea schimbărilor pe rând.');$('#prediction').textContent=tr(predictions[active]);$('#scene-note').textContent=tr(notes[active])+' '+tr('Acele sunt indicatoare schematice; citește valorile SI din carduri.');$('#limits').textContent=tr(limits[active]);
  $('#scene').setAttribute('aria-label',tr(titles[active])+'. '+tr(notes[active]));
  for(const [i,canvas]of [...document.querySelectorAll('.faraday-graphs canvas')].entries())canvas.setAttribute('aria-label',tr(active==='magnet'?['Componenta Bx','Componenta By','Modulul câmpului'][i]:['Flux magnetic în timp','Tensiune indusă în timp','Curent electric în timp'][i]));
 }
@@ -62,9 +62,12 @@ function readouts(){
  const formula=active==='pickup'?`e = −N (dΦ/dx) v = ${quantity(s.emf,'V')} ; v = ${quantity(s.v,'m/s')} ; i = ${a.p.open?'0':quantity(s.emf,'V')+' / '+number(a.p.R)+' Ω'} = ${quantity(s.current,'A')}`:active==='rl'?`L di/dt + Ri = U : ${number(a.p.L)} × ${number(s.derivative)} + ${number(a.p.R)} × ${number(s.current)} = ${number(a.p.U)} V`:active==='transformer'?`u₂ N₁ = u₁ N₂ : ${number(s.u2)} × ${a.p.N1} = ${number(s.u1)} × ${a.p.N2}`:active==='generator'?`e = NBAω sin θ = ${a.p.N} × ${number(a.p.B)} × ${number(a.p.A)} × ${number(a.p.omega)} × sin(${number(s.theta)}) = ${quantity(s.emf,'V')}`:`|B| = √(Bₓ²+Bᵧ²) = ${quantity(s.magnitude,'T')}`;
  $('#live-formula').textContent=formula;
 }
+// Move existing controls, preserving their listeners and experiment state.
+function placeControls(){const panel=$('.faraday-controls'),visual=$('.faraday-visual'),workspace=$('.faraday-workspace');if(matchMedia('(max-width:850px)').matches){if(panel.parentElement!==visual)$('.faraday-stage').after(panel);}else if(panel.parentElement!==workspace)workspace.append(panel);}
 function draw(){
+ placeControls();
  const begin=performance.now(),a=current();renderScene($('#scene'),active,a.s,a.p,tr);const middle=performance.now();renderGraphs([...document.querySelectorAll('.faraday-graphs canvas')],a.history,active,tr);const after=performance.now();readouts();
- $('#play').textContent=tr(running?'Pauză':'Pornire');$('#status').textContent=tr(running?'Măsurare în desfășurare':'În pauză · instantaneu înghețat');$('#parameters').disabled=running;$('#step').disabled=running;const open=$('#open');if(open)open.disabled=running;
+ $('#play').textContent=tr(running?'Pauză':active==='magnet'?'Înregistrează':'Pornire');$('#status').textContent=tr(running?'Măsurare în desfășurare':'În pauză · instantaneu înghețat');$('#parameters').disabled=running;$('#step').disabled=running;const open=$('#open');if(open)open.disabled=running;
  if(recording&&metrics.total.length<3600){metrics.scene.push(middle-begin);metrics.graphs.push(after-middle);metrics.total.push(performance.now()-begin);}
 }
 $('#play').addEventListener('click',()=>{if(running)pause();else{running=true;previous=null;draw();schedule();}});

@@ -98,3 +98,11 @@ Capturi: `outputs/faraday-touch-*.png`; rezultate: `outputs/faraday-touch-qa.jso
 Limite: ADB nu arată niciun dispozitiv conectat; Maestro expune numai emulatoare oprite. Agent Device are o eroare de daemon. Nu s-au modificat configurările dispozitivelor. Testarea de mai sus reprezintă emulare tactilă în browser, nu verificare pe telefon/tabletă fizică, Android Chrome real sau iOS Safari. Derularea verticală a paginii rămâne necesară pe mobil.
 
 La inspecția capturilor de telefon s-au corectat și acțiunile prea înguste: grilă adaptivă cu minimum 9rem pe buton, două coloane când încap și una la text mărit. Valorile măsurate folosesc aceeași adaptare în loc de patru rânduri obligatorii. Nu s-au micșorat fonturile sau țintele tactile. Testele tactile și verificarea offline au fost reluate după ajustare.
+
+## Comenzi lângă animație și explicația redării
+
+La lățimi ≤850 px, panoul existent de comenzi este mutat imediat după scena 3D, înaintea explicațiilor, valorilor și graficelor. La lățimi mai mari revine în coloana din dreapta. Se mută același nod DOM, păstrând evenimentele, parametrii și timpul; regresia tactilă verifică distanța panou–scenă și păstrarea stării la rotire.
+
+În activitatea statică „Magnet și busolă”, Pornire se numește „Înregistrează”: avansează timpul măsurării, fără a deplasa automat magnetul. Indicație explicită în RO/EN și secțiune „Ce fac comenzile?” pentru Pornire/Pauză/Pas/Reset. Celelalte activități păstrează numele Pornire.
+
+Verificat în cele șapte configurații tactile telefon/tabletă, portret/peisaj, RO/EN și text mărit. Panoul este imediat după scenă pe telefon și tableta în portret; pe tableta lată rămâne alături. Testarea este emulată în Chrome, nu pe dispozitive fizice. Arhiva offline regenerată.

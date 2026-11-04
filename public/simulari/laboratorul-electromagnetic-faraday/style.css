@@ -36,3 +36,6 @@ body[data-praxis-course="laboratorul-electromagnetic-faraday"] #readouts div{bor
 /* Keep touch actions readable; larger text naturally falls back to one column. */
 @media(max-width:850px){body[data-praxis-course="laboratorul-electromagnetic-faraday"] #actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr))}body[data-praxis-course="laboratorul-electromagnetic-faraday"] #actions button{min-width:0;word-break:normal;overflow-wrap:normal}}
 @media(max-width:500px){body[data-praxis-course="laboratorul-electromagnetic-faraday"] #readouts{grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr))}}
+
+body[data-praxis-course="laboratorul-electromagnetic-faraday"] .faraday-visual>.faraday-controls{margin:.5rem 0}
+body[data-praxis-course="laboratorul-electromagnetic-faraday"] .transport-help{font-size:.85rem}
