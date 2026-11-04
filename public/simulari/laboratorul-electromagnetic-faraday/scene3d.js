@@ -61,7 +61,42 @@ export function createStand(canvas){
  const currentLabel=label('i',.2,.2);currentLabel.position.set(0,.42,1.8);rl.add(currentLabel);
  items.rl.arrow=fieldArrow(rl,V(-.7,1.7,0),V(.7,1.7,0),'#5c9996');
 
- const transformer=groups.transformer;for(const x of [-1.1,1.1])box(.36,1.65,.5,x,1,0,materials.iron,transformer);for(const y of [.25,1.75])box(2.55,.28,.5,0,y,0,materials.iron,transformer);for(let z=-.25;z<=.251;z+=.06){const geo=new T.BufferGeometry().setFromPoints([V(-1.27,.13,z),V(-1.27,1.89,z),V(1.27,1.89,z)]);transformer.add(new T.Line(geo,new T.LineBasicMaterial({color:'#a8b3ad'})));}for(const x of [-1.1,1.1]){const coil=winding(transformer,.44,.9,14);coil.rotation.z=Math.PI/2;coil.position.set(x,1,0);box(.7,.12,.7,x,.09,0,materials.dark,transformer);terminals(transformer,x,.22,.85);tube([[x-.44,.55,0],[x-.5,.3,.5],[x-.15,.23,.85]],.028,materials.red,transformer);tube([[x+.44,1.45,0],[x+.6,.4,.6],[x+.15,.23,.85]],.028,materials.blue,transformer);}items.transformer.meter=meter(transformer,-2.45,1.15,'u₁');items.transformer.meter2=meter(transformer,2.45,1.15,'u₂');items.transformer.arrow=fieldArrow(transformer,V(-.5,1.98,0),V(.5,1.98,0),'#5c9996');
+ // Transformer: two isolated circuits, voltage probes in parallel, switch only in load branch.
+ const transformer=groups.transformer;transformer.scale.setScalar(.83);transformer.position.y=.08;
+ for(const x of [-1.1,1.1])box(.36,1.65,.5,x,1,0,materials.iron,transformer);
+ for(const y of [.25,1.75])box(2.55,.28,.5,0,y,0,materials.iron,transformer);
+ function trPost(point,color){const [x,y,z]=point;cylinder(.075,.06,x,y-.045,z,materials.dark,transformer);cylinder(.045,.12,x,y,z,color,transformer);}
+ const p1=[-1.25,.23,.85],p0=[-.95,.23,.85],s1=[.95,.23,.85],s0=[1.25,.23,.85];
+ for(const [point,color] of [[p1,materials.red],[p0,materials.blue],[s1,materials.red],[s0,materials.blue]])trPost(point,color);
+ for(const x of [-1.1,1.1]){const coil=winding(transformer,.44,.9,14);coil.rotation.z=Math.PI/2;coil.position.set(x,1,0);box(.7,.12,.7,x,.09,0,materials.dark,transformer);}
+ // A +pi/2 rotation maps BOTH helix endpoints to x=center-.44.
+ // Reverse the secondary terminal convention because core flux runs in opposite directions in the two limbs.
+ tube([[-1.54,.55,0],[-1.65,.35,.45],p1],.025,materials.red,transformer);
+ tube([[-1.54,1.45,0],[-.65,1.55,-.4],[-.6,.3,.5],p0],.025,materials.blue,transformer);
+ tube([[.66,1.45,0],[.45,1.55,.4],[.5,.35,.6],s1],.025,materials.red,transformer);
+ tube([[.66,.55,0],[1.6,.35,.4],s0],.025,materials.blue,transformer);
+ items.transformer.meter=meter(transformer,-2.5,1.35,'V₁');items.transformer.meter2=meter(transformer,2.5,1.35,'V₂');
+ const v1a=[-2.75,.12,1.68],v1b=[-2.25,.12,1.68],v2a=[2.25,.12,1.68],v2b=[2.75,.12,1.68];
+ for(const [point,color] of [[v1a,materials.red],[v1b,materials.blue],[v2a,materials.red],[v2b,materials.blue]])trPost(point,color);
+ tube([p1,[-1.8,.13,1.2],v1a],.025,materials.red,transformer);tube([p0,[-1.5,.11,1.8],v1b],.025,materials.blue,transformer);
+ tube([s1,[1.65,.13,1.25],v2a],.025,materials.red,transformer);tube([s0,[1.7,.11,1.85],v2b],.025,materials.blue,transformer);
+ // AC supply across primary; red/blue identify reference terminals, not fixed AC polarity.
+ box(.8,.6,.6,-2.65,.4,-.25,materials.dark,transformer);
+ const ac=label('∿',.5,.35);ac.position.set(-2.65,.48,.08);transformer.add(ac);
+ const ac1=[-2.9,.2,.15],ac0=[-2.4,.2,.15];trPost(ac1,materials.red);trPost(ac0,materials.blue);
+ tube([ac1,[-3.2,.15,.65],[-1.65,.18,.65],p1],.025,materials.red,transformer);
+ tube([ac0,[-2,.14,.4],[-.8,.14,.5],p0],.025,materials.blue,transformer);
+ // Explicit resistive load in series with a two-contact knife switch.
+ box(.7,.25,.35,2.65,.65,-.25,materials.ceramic,transformer);box(.55,.45,.3,2.65,.27,-.25,materials.dark,transformer);
+ const rLabel=label('R',.3,.25);rLabel.position.set(2.65,.95,-.05);transformer.add(rLabel);
+ const r1=[2.25,.65,-.25],r0=[3.05,.65,-.25],k1=[1.65,.23,.45],k0=[2.05,.23,.45];
+ for(const point of [r1,r0,k1,k0])trPost(point,materials.brass);
+ tube([s1,[1.35,.18,.5],k1],.025,materials.red,transformer);
+ tube([k0,[2.2,.23,.2],r1],.025,materials.red,transformer);
+ tube([r0,[3.3,.15,.6],[1.5,.15,1.05],s0],.025,materials.blue,transformer);
+ const knife=new T.Group();knife.position.set(...k1);transformer.add(knife);box(.4,.035,.055,.2,0,0,materials.brass,knife);items.transformer.switch=knife;
+ items.transformer.arrow=fieldArrow(transformer,V(-.5,1.98,0),V(.5,1.98,0),'#5c9996');
+
  const gen=groups.generator;const rotor=new T.Group();rotor.position.set(0,1.15,0);gen.add(rotor);items.generator.rotor=rotor;winding(rotor,.59,.2,7);const shaft=cylinder(.055,2.2,0,1.15,0,materials.steel,gen,'z');for(const z of [-1,1]){box(.45,1,.25,0,.55,z,materials.dark,gen);cylinder(.13,.32,0,1.15,z,materials.brass,gen,'z');}for(const x of [-1.35,1.35]){box(.5,1.2,1.25,x,1.15,0,x<0?materials.red:materials.blue,gen);box(.65,.1,1.4,x,.5,0,materials.iron,gen);const l=label(x<0?'N':'S',.3,.3);l.position.set(x,1.2,.67);gen.add(l);}for(const z of [-.4,.4])fieldArrow(gen,V(-1,1.6,z),V(1,1.6,z),'#5c9996');items.generator.normal=fieldArrow(rotor,V(0,0,0),V(.9,0,0),'#83689e');items.generator.meter=meter(gen,2.6,1.1,'e');
 
  // Slip rings, fixed brushes and external conductors complete the generator circuit.
@@ -71,14 +106,9 @@ export function createStand(canvas){
  tube([[.25,1.15,.72],[.55,.5,1.1],[2.2,.25,1.1]],.025,materials.red,gen);
  tube([[.25,1.15,.88],[.65,.22,1.5],[3,.22,1.3]],.025,materials.blue,gen);
  const pickupField=field.clone();pickupField.traverse(o=>{if(o.isLine){o.material=o.material.clone();o.material.opacity=.13;}});pickupGroup.add(pickupField);items.pickup.field=pickupField;
- for(const name of ['pickup','transformer','generator']){const g=groups[name],lever=new T.Group();lever.position.set(name==='pickup'?.4:2.2,.22,name==='pickup'?1.2:1.45);g.add(lever);const arm=box(.32,.035,.055,.16,0,0,materials.brass,lever);cylinder(.055,.06,0,0,0,materials.dark,lever);items[name].switch=lever;}
+ for(const name of ['pickup','generator']){const g=groups[name],lever=new T.Group();lever.position.set(name==='pickup'?.4:2.2,.22,name==='pickup'?1.2:1.45);g.add(lever);const arm=box(.32,.035,.055,.16,0,0,materials.brass,lever);cylinder(.055,.06,0,0,0,materials.dark,lever);items[name].switch=lever;}
 
  tube([[.4,.22,1.2],[.3,.2,1.2]],.025,materials.red,pickupGroup);
- tube([[.95,.22,.85],[1.8,.2,1],[2.2,.22,1.45]],.025,materials.red,transformer);
- tube([[2.52,.22,1.45],[2.1,.2,1.15]],.025,materials.red,transformer);
- tube([[2.8,.2,1.15],[1.6,.17,1.1],[1.25,.22,.85]],.025,materials.blue,transformer);
- tube([[-1.25,.22,.85],[-2,.18,1],[-2.8,.2,1.15]],.025,materials.red,transformer);
- tube([[-2.1,.2,1.15],[-.95,.22,.85]],.025,materials.blue,transformer);
  const ray=new T.Raycaster(),plane=new T.Plane(V(0,0,1),0);let lastWidth=0,lastHeight=0,lastRatio=0,active='pickup';
  function size(){const b=canvas.getBoundingClientRect(),ratio=window.PraxisCanvasResolution.ratio(b.width,b.height);if(b.width===lastWidth&&b.height===lastHeight&&ratio===lastRatio)return;lastWidth=b.width;lastHeight=b.height;lastRatio=ratio;if(!b.width||!b.height)return;renderer.setPixelRatio(ratio);renderer.setSize(b.width,b.height,false);camera.aspect=b.width/b.height;const distance=Math.max(5.7,3.7/(Math.tan(Math.PI*32/360)*camera.aspect));camera.position.set(distance*.16,distance*.44,distance);camera.lookAt(0,.75,.1);camera.updateProjectionMatrix();}
  function draw(name,s,p,tr){active=name;size();for(const [key,g]of Object.entries(groups))g.visible=key===name;const P=window.PraxisScientificColors.palette(document.documentElement.dataset.courseColors);materials.red.color.set(P.red);materials.blue.color.set(P.blue);materials.current.color.set(P.green);

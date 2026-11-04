@@ -56,3 +56,9 @@ Nu au fost testate telefoane/tablete fizice, iOS/Safari, Firefox, o tablă inter
 ## Corecția conexiunilor electromagnetului
 
 Actualizare 4 noiembrie 2026: sursa și ampermetrul au borne distincte +/−; cele trei conductoare ajung la coordonatele contactelor, iar capetele bobinei sunt conectate exact la înfășurare. Returul este vizibil în fața standului. Ampermetrul este marcat A, iar săgeata i indică sensul pozitiv de referință, explicat în RO/EN; nu este o săgeată a sensului instantaneu. Rezistența R reprezintă rezistența totală, inclusiv bobina. Modelul RL rămâne neschimbat. Cele opt teste fizice trec; scena a fost inspectată în Chrome fără erori JavaScript. Arhiva offline a fost regenerată.
+
+## Corecția circuitului transformatorului
+
+Sursă AC explicită în paralel cu primarul, sarcină rezistivă R și întrerupător în serie numai cu sarcina secundară. Voltmetrele V₁/V₂ sunt conectate în paralel la bornele înfășurărilor, independent de întrerupător. Capetele firelor urmăresc rotația reală a bobinelor; convenția bornelor secundare ține cont de sensurile opuse ale fluxului în cele două coloane. Primarul și secundarul rămân izolate galvanic. Sursa AC ilustrează tensiunea impusă de fluxul prescris al modelului ideal.
+
+Corectat și controllerul: deschiderea circuitului transformatorului nu mai resetează timpul/faza sursei. Regresie browser adăugată: tensiune neschimbată la comutare, i₂=P₂=0 în gol, i₂=u₂/R după reînchidere, Pin=Pout. Arhiva autonomă regenerată; opt teste fizice trecute.

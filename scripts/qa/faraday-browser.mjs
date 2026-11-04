@@ -39,6 +39,8 @@ try{
   await p.evaluate(()=>{document.documentElement.style.fontSize='16px';});await p.evaluate(()=>document.querySelector('button.site-board-button')?.click());
   await p.screenshot({path:fileURLToPath(new URL(`faraday-${width}-layout.png`,out)),fullPage:true});console.log('Responsive',width,'passed');await ctx.close();
  }
+ // Opening the transformer load must not reset AC phase or disconnect the voltmeter.
+ {const p=await browser.newPage();await ready(p);await p.selectOption('#activity','transformer');await p.locator('#step').click();let a=await snap(p);assert.ok(a.state.u2>0);near(a.state.current,a.state.u2/a.parameters.R);const time=a.t,u=a.state.u2;await p.locator('#open').check();a=await snap(p);near(a.state.current,0);near(a.state.power,0);near(a.state.u2,u);near(a.t,time);await p.locator('#open').uncheck();a=await snap(p);assert.ok(a.state.current>0);near(a.state.inputPower,a.state.power);report.transformerSwitch=true;await p.close();}
  // Actual library and canonical chapter navigation.
  {const p=await browser.newPage();await ready(p);await p.locator('.praxis-lab-chapter').click();await p.waitForURL(/capitol/);assert.ok(await p.locator(`a[href*="laboratorul-electromagnetic-faraday/index.html"]`).count()>0);await p.locator(`a[href*="laboratorul-electromagnetic-faraday/index.html"]`).first().click();await p.waitForFunction(()=>window.PraxisFaraday);await p.locator('.praxis-site-brand').click();await p.waitForURL(url=>!url.pathname.includes('simulari'));report.navigation=true;await p.close();}
  if(process.env.PRAXIS_FARADAY_PERF!=='0'){
