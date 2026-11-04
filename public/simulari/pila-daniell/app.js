@@ -29,7 +29,9 @@ $('#export').addEventListener('click',()=>{const columns=[['t_s','t'],['extent_m
 for(const name of ['praxis-language-change','praxis-course-presentation-change'])window.addEventListener(name,()=>{buildScene();draw();feedback();});
 window.addEventListener('resize',()=>{buildScene();draw();});
 document.addEventListener('visibilitychange',()=>{cancel();schedule();});window.addEventListener('pagehide',cancel);window.addEventListener('pageshow',()=>{cancel();schedule();});
-new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;cancel();schedule();},{threshold:0}).observe($('.daniell-workspace'));
+// Layout/language changes can queue an exit and a re-entry in the same batch.
+// Use the latest observation so a visible experiment cannot remain suspended.
+new IntersectionObserver(entries=>{visible=entries.at(-1).isIntersecting;cancel();schedule();},{threshold:0}).observe($('.daniell-workspace'));
 const integration=document.createElement('script');integration.src='../../shared/course.js';integration.dataset.course='pila-daniell';integration.dataset.title='Pila Daniell';integration.onload=()=>{const subtitle=$('.praxis-lab-intro p');if(subtitle)subtitle.textContent='Din reacție chimică în energie electrică';PraxisI18n.apply(document);window.PraxisLabWorkspace?.mount();};document.body.append(integration);
 window.PraxisDaniell=Object.freeze({snapshot:()=>({parameters:{...p},state:observe(p,state),running,section,historyLength:history.length}),startMetrics(){costs=[];intervals=[];recording=true;},stopMetrics(){recording=false;return {costs,intervals};}});
 buildScene();reset();selectTab('experiment');PraxisI18n.apply(document);

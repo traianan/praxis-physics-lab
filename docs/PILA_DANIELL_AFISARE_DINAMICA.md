@@ -13,3 +13,5 @@ Verificări locale:
 - Inspecție vizuală a capturii desktop; rapoarte și capturi în `outputs/daniell-live-*` și `outputs/daniell-bridge-*`.
 
 Aceleași scripturi acceptă `PRAXIS_DANIELL_BASE` pentru verificarea publicării. Limite: touch/DPR emulate; dispozitive fizice, Safari și Firefox netestate. Laboratorul nu are o arhivă autonomă în registrul existent; această corecție vizează distribuția web.
+
+Verificarea online a necesitat așteptarea explicită a traducerii asincrone în scriptul QA. A expus și suspendarea după o rearanjare: callbackul de vizibilitate lua prima intrare din lot, putând ignora revenirea în viewport. Acum folosește ultima intrare. Verificarea locală repetată a trecut pentru toate cele opt combinații, inclusiv pornire/pauză la text 200%.
