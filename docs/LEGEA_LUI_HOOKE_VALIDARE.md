@@ -3,6 +3,8 @@
 4 noiembrie 2026. Specificație, cele trei URL-uri documentate prin Firecrawl, ipoteze, unități și referințe numerice: [LEGEA_LUI_HOOKE.md](LEGEA_LUI_HOOKE.md).
 
 ## Actualizare pentru publicare
+Publicarea și auditul ulterior pe site au fost încheiate cu succes: [raportul publicării](LEGEA_LUI_HOOKE_PUBLICARE.md).
+
 La cererea utilizatorului, pasajele cu indici sunt gazde explicite PraxisMath în modul prose, iar raportul ΔF_ap/Δx este o formulă TeX cu fracție și indice structural. SVG utilizează tspans poziționate explicit pentru indicii e/ap. Astfel, inserarea dinamică și traducerea RO/EN nu mai lasă indicii sub forma textului brut cu underscore.
 
 Sliderul de viteză 0,1×…2× include câmp numeric, reglaj ± și raportul dintre timpul real și cel simulat. Ceasul separat `hooke-clock.js` nu modifică modelul fizic; are teste pentru scalare, limita cadrelor lungi, valori invalide și conservarea energiei. Auditul browserului verifică sliderul cu mouse și touch, păstrarea stării, pasul fix de 0,02 s, resetarea vitezei și indicii structurali în RO→EN→RO. Poate fi rulat pe producție cu `PRAXIS_HOOKE_BASE=https://praxis-physics-lab.vercel.app`.
