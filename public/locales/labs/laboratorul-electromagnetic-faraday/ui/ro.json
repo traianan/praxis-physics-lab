@@ -142,7 +142,7 @@
     "Parametri fizici": "Parametri fizici",
     "Parametrii se configurează în pauză și încep o măsurare nouă. Redarea lentă nu schimbă fizica.": "Parametrii se configurează în pauză și încep o măsurare nouă. Redarea lentă nu schimbă fizica.",
     "Bilanț energetic și model": "Bilanț energetic și model",
-    "Miez liniar ideal, fără saturație. Comutarea păstrează curentul. Pas = 0,001 s; redare 0,01 s / s.": "Miez liniar ideal, fără saturație. Comutarea păstrează curentul. Pas = 0,001 s; redare 0,01 s / s.",
+    "Miez liniar ideal, fără saturație. Comutarea păstrează curentul. Pas = 0,001 s; redare 0,01 s / s. Marcajele +/− și săgeata i definesc referințele de semn; un curent negativ circulă invers. R include rezistența bobinei și a circuitului.": "Miez liniar ideal, fără saturație. Comutarea păstrează curentul. Pas = 0,001 s; redare 0,01 s / s. Marcajele +/− și săgeata i definesc referințele de semn; un curent negativ circulă invers. R include rezistența bobinei și a circuitului.",
     "Acele sunt indicatoare schematice; citește valorile SI din carduri.": "Acele sunt indicatoare schematice; citește valorile SI din carduri."
   }
 }

@@ -52,3 +52,7 @@ Script reproductibil: `scripts/qa/faraday-browser.mjs`, cu `PRAXIS_PLAYWRIGHT_MO
 ## Limite și aspecte netestate
 
 Nu au fost testate telefoane/tablete fizice, iOS/Safari, Firefox, o tablă interactivă reală, pierderea contextului WebGL, consumul energetic sau rulări de durată de ordinul orelor. Este necesar WebGL2. La ecrane joase, pe mobil și la text mărit se folosește derulare verticală; toate elementele nu încap simultan pe un singur ecran. Nu s-a făcut o verificare pedagogică de către profesor și nici o publicare/verificare pe domeniul de producție.
+
+## Corecția conexiunilor electromagnetului
+
+Actualizare 4 noiembrie 2026: sursa și ampermetrul au borne distincte +/−; cele trei conductoare ajung la coordonatele contactelor, iar capetele bobinei sunt conectate exact la înfășurare. Returul este vizibil în fața standului. Ampermetrul este marcat A, iar săgeata i indică sensul pozitiv de referință, explicat în RO/EN; nu este o săgeată a sensului instantaneu. Rezistența R reprezintă rezistența totală, inclusiv bobina. Modelul RL rămâne neschimbat. Cele opt teste fizice trec; scena a fost inspectată în Chrome fără erori JavaScript. Arhiva offline a fost regenerată.

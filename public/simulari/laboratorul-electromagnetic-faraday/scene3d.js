@@ -33,7 +33,34 @@ export function createStand(canvas){
  for(const scale of [1.1,1.8,2.7])for(const angle of [0,Math.PI/2,Math.PI,Math.PI*1.5]){const pts=[];for(let k=0;k<=70;k++){const theta=.32+(Math.PI-.64)*k/70,r=scale*Math.sin(theta)**2;pts.push(V(r*Math.cos(theta),1+r*Math.sin(theta)*Math.cos(angle),r*Math.sin(theta)*Math.sin(angle)));}const geo=new T.BufferGeometry().setFromPoints(pts),line=new T.Line(geo,new T.LineBasicMaterial({color:'#5c9996',transparent:true,opacity:.4}));field.add(line);}
  const probe=new T.Group();groups.magnet.add(probe);items.magnet.probe=probe;probe.rotation.x=-Math.PI/2;cylinder(.23,.07,0,0,0,materials.brass,probe,'z');cylinder(.205,.075,0,0,.01,materials.ceramic,probe,'z');const needle=new T.Group();probe.add(needle);items.magnet.needle=needle;const north=mesh(new T.ConeGeometry(.065,.19,3),materials.red,needle);north.rotation.z=-Math.PI/2;north.position.set(.095,0,.06);const south=mesh(new T.ConeGeometry(.065,.19,3),materials.blue,needle);south.rotation.z=Math.PI/2;south.position.set(-.095,0,.06);const probeLabel=label('B',.35,.2);probeLabel.position.set(0,.35,0);probe.add(probeLabel);
  const pickupGroup=groups.pickup,magnet=bar(pickupGroup);items.pickup.bar=magnet;const carriage=new T.Group();magnet.group.add(carriage);box(.85,.09,.6,0,-.6,0,materials.dark,carriage);cylinder(.05,.45,0,-.35,0,materials.steel,carriage);const receiver=new T.Group();receiver.position.set(1.6,1,0);pickupGroup.add(receiver);items.pickup.receiver=receiver;winding(receiver);for(const x of [-.37,.37]){const ring=mesh(new T.TorusGeometry(.56,.05,12,64),materials.ceramic,receiver);ring.rotation.y=Math.PI/2;ring.position.x=x;}support(pickupGroup,1.6);items.pickup.meter=meter(pickupGroup,-.1,1.1,'i');terminals(pickupGroup,1.6,.25,.8);tube([[1.29,1.52,0],[1.1,1.6,.5],[1.45,.3,.8],[.72,.22,1.2]],.025,materials.red,pickupGroup);tube([[1.91,1.52,0],[2.2,1.5,.5],[1.75,.3,.8],[-.5,.2,1.2]],.025,materials.blue,pickupGroup);items.pickup.normal=fieldArrow(pickupGroup,V(1.4,1.85,0),V(2.25,1.85,0),'#5c9996');const nl=label('n',.2,.18);nl.position.set(2.3,1.9,0);pickupGroup.add(nl);
- const rl=groups.rl;const core=cylinder(.3,2.1,0,1,0,materials.iron,rl,'x');winding(rl,.42,1.65,18).position.y=1;support(rl,-.75);support(rl,.75);items.rl.meter=meter(rl,1.9,1,'i');box(.75,.65,.5,-2,.4,.8,materials.dark,rl);const batteryLabel=label('U',.3,.25);batteryLabel.position.set(-2,.65,1.1);rl.add(batteryLabel);tube([[-2,.7,.8],[-1.4,.8,.7],[-.83,1.42,0]],.03,materials.red,rl);tube([[.83,1.42,0],[1.5,.7,.6],[1.9,.3,1]],.03,materials.blue,rl);tube([[1.5,.2,1],[-1.9,.16,1.1]],.03,materials.dark,rl);items.rl.arrow=fieldArrow(rl,V(-.7,1.7,0),V(.7,1.7,0),'#5c9996');
+ // RL: explicit binding posts; each wire terminates at a shared contact coordinate.
+ const rl=groups.rl;rl.scale.setScalar(.86);rl.position.y=.05;
+ cylinder(.3,2.1,0,1,0,materials.iron,rl,'x');
+ winding(rl,.42,1.65,18).position.y=1;support(rl,-.75);support(rl,.75);
+ items.rl.meter=meter(rl,1.9,1,'A');
+ box(.85,.65,.6,-2,.4,.8,materials.dark,rl);
+ const batteryLabel=label('U',.3,.25);batteryLabel.position.set(-2,.56,1.13);rl.add(batteryLabel);
+ function bindingPost(point,mat,symbol){
+  const [x,y,z]=point;
+  cylinder(.09,.05,x,y,z-.10,materials.dark,rl,'z');
+  cylinder(.055,.18,x,y,z-.045,mat,rl,'z');
+  cylinder(.035,.04,x,y,z+.025,materials.brass,rl,'z');
+  const mark=label(symbol,.18,.18);mark.position.set(x,y+.17,z+.04);rl.add(mark);
+ }
+ const sourcePlus=[-1.77,.28,1.24],sourceMinus=[-2.23,.28,1.24];
+ const meterPlus=[1.64,.12,1.43],meterMinus=[2.16,.12,1.43];
+ bindingPost(sourcePlus,materials.red,'+');bindingPost(sourceMinus,materials.blue,'−');
+ bindingPost(meterPlus,materials.red,'+');bindingPost(meterMinus,materials.blue,'−');
+ // Exact endpoints of winding(): x=±length/2, y=1+radius, z=0.
+ tube([sourcePlus,[-1.42,.45,1.12],[-1.18,1.2,.55],[-.825,1.42,0]],.03,materials.red,rl);
+ tube([[.825,1.42,0],[1.19,1.15,.55],[1.36,.38,1.45],meterPlus],.03,materials.red,rl);
+ tube([meterMinus,[2.3,.10,1.72],[0,.10,1.8],[-2.4,.10,1.72],sourceMinus],.03,materials.blue,rl);
+ const currentReference=fieldArrow(rl,V(-.45,.24,1.8),V(.45,.24,1.8),'#43876f');
+ // Reference current returns right-to-left; a signed readout gives the actual direction.
+ currentReference.position.x=.45;currentReference.setDirection(V(-1,0,0));
+ const currentLabel=label('i',.2,.2);currentLabel.position.set(0,.42,1.8);rl.add(currentLabel);
+ items.rl.arrow=fieldArrow(rl,V(-.7,1.7,0),V(.7,1.7,0),'#5c9996');
+
  const transformer=groups.transformer;for(const x of [-1.1,1.1])box(.36,1.65,.5,x,1,0,materials.iron,transformer);for(const y of [.25,1.75])box(2.55,.28,.5,0,y,0,materials.iron,transformer);for(let z=-.25;z<=.251;z+=.06){const geo=new T.BufferGeometry().setFromPoints([V(-1.27,.13,z),V(-1.27,1.89,z),V(1.27,1.89,z)]);transformer.add(new T.Line(geo,new T.LineBasicMaterial({color:'#a8b3ad'})));}for(const x of [-1.1,1.1]){const coil=winding(transformer,.44,.9,14);coil.rotation.z=Math.PI/2;coil.position.set(x,1,0);box(.7,.12,.7,x,.09,0,materials.dark,transformer);terminals(transformer,x,.22,.85);tube([[x-.44,.55,0],[x-.5,.3,.5],[x-.15,.23,.85]],.028,materials.red,transformer);tube([[x+.44,1.45,0],[x+.6,.4,.6],[x+.15,.23,.85]],.028,materials.blue,transformer);}items.transformer.meter=meter(transformer,-2.45,1.15,'u₁');items.transformer.meter2=meter(transformer,2.45,1.15,'u₂');items.transformer.arrow=fieldArrow(transformer,V(-.5,1.98,0),V(.5,1.98,0),'#5c9996');
  const gen=groups.generator;const rotor=new T.Group();rotor.position.set(0,1.15,0);gen.add(rotor);items.generator.rotor=rotor;winding(rotor,.59,.2,7);const shaft=cylinder(.055,2.2,0,1.15,0,materials.steel,gen,'z');for(const z of [-1,1]){box(.45,1,.25,0,.55,z,materials.dark,gen);cylinder(.13,.32,0,1.15,z,materials.brass,gen,'z');}for(const x of [-1.35,1.35]){box(.5,1.2,1.25,x,1.15,0,x<0?materials.red:materials.blue,gen);box(.65,.1,1.4,x,.5,0,materials.iron,gen);const l=label(x<0?'N':'S',.3,.3);l.position.set(x,1.2,.67);gen.add(l);}for(const z of [-.4,.4])fieldArrow(gen,V(-1,1.6,z),V(1,1.6,z),'#5c9996');items.generator.normal=fieldArrow(rotor,V(0,0,0),V(.9,0,0),'#83689e');items.generator.meter=meter(gen,2.6,1.1,'e');
 

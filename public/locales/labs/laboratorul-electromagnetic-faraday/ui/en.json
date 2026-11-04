@@ -142,7 +142,7 @@
     "Parametri fizici": "Physical parameters",
     "Parametrii se configurează în pauză și încep o măsurare nouă. Redarea lentă nu schimbă fizica.": "Configure parameters while paused to start a new measurement. Slow playback does not change the physics.",
     "Bilanț energetic și model": "Energy balance and model",
-    "Miez liniar ideal, fără saturație. Comutarea păstrează curentul. Pas = 0,001 s; redare 0,01 s / s.": "Ideal linear core, no saturation. Switching preserves current. Step = 0.001 s; playback 0.01 s / s.",
+    "Miez liniar ideal, fără saturație. Comutarea păstrează curentul. Pas = 0,001 s; redare 0,01 s / s. Marcajele +/− și săgeata i definesc referințele de semn; un curent negativ circulă invers. R include rezistența bobinei și a circuitului.": "Ideal linear core, no saturation. Switching preserves current. Step = 0.001 s; playback 0.01 s / s. The +/− marks and i arrow define sign references; negative current flows in reverse. R includes the coil and circuit resistance.",
     "Acele sunt indicatoare schematice; citește valorile SI din carduri.": "Needles are schematic indicators; read SI values in the cards."
   }
 }
