@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ro"><head><link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMyMTZlNjEiLz48dGV4dCB4PSIxNSIgeT0iNDYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI1NCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5wPC90ZXh0PjxjaXJjbGUgY3g9IjUyIiBjeT0iNDciIHI9IjUiIGZpbGw9IiNkNWFjNjciLz48L3N2Zz4K"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Legea lui Hooke — Praxis</title>
+<link rel="stylesheet" href="../../design-system/tokens.css"><link rel="stylesheet" href="../../design-system/components.css"><link rel="stylesheet" href="../../shared/course.css"><link rel="stylesheet" href="../../design-system/lab-layout.css"><link rel="stylesheet" href="../../design-system/laboratory.css"><link rel="stylesheet" href="../../design-system/compact.css"><link rel="stylesheet" href="style.css">
+<script src="../../shared/i18n.js"></script><script src="../../shared/sound.js"></script><script src="../../shared/lab-header.js"></script><script src="../../shared/scientific-colors.js"></script><script src="../../shared/course-localization.js"></script><script type="module" src="app.js"></script><style id="praxis-link-colors">/* One link colour across the library, imported lessons and standalone exports. */
+:root{--praxis-color-link:var(--praxis-color-primary,#17685f)}
+html body a[href],html body a[href]:visited,html body a[href]:hover,html body a[href]:active{color:var(--praxis-link-ink,var(--praxis-color-link))!important}
+/* Link controls use a light surface so their common text colour stays readable. */
+html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected=true],.active,.backlink){background:var(--praxis-link-button-background,var(--praxis-color-primary-soft,#e4eeea))!important}
+</style></head>
+<body data-praxis-course="legea-lui-hooke" data-praxis-laboratory="true"><main id="praxis-original">
+<div class="tabs" role="tablist" aria-label="Secțiunea lecției">
+<button class="tab" id="tab-experiment" role="tab" data-tab="experiment" aria-controls="experiment" aria-selected="true">Experiment</button>
+<button class="tab" id="tab-theory" role="tab" data-tab="theory" aria-controls="theory" aria-selected="false">Explicații și formule</button>
+<button class="tab" id="tab-activities" role="tab" data-tab="activities" aria-controls="activities" aria-selected="false">Activități și probleme</button>
+<button class="tab" id="tab-quiz" role="tab" data-tab="quiz" aria-controls="quiz" aria-selected="false">Verificare și surse</button></div>
+<section id="experiment" role="tabpanel" aria-labelledby="tab-experiment">
+<div class="hooke-workspace" data-instrument-layout>
+<div class="hooke-visual" data-instrument-role="visual">
+<svg id="scene" role="img" aria-label="Resort orizontal și corp deplasabil"></svg>
+<div id="readouts" data-no-i18n></div>
+<div class="hooke-graphs" data-instrument-role="graphs"><svg id="force-graph" role="img" aria-label="Forță în funcție de deformare"></svg><svg id="energy-graph" role="img" aria-label="Energie în funcție de deformare"></svg></div>
+<div id="energy-bars" data-no-i18n></div>
+</div>
+<aside class="hooke-controls" data-instrument-role="controls"><h2 data-content-type="simulation">Comenzile experimentului</h2>
+<div class="transport"><button id="play" class="button primary">Eliberează</button><button id="step" class="button secondary">Pas +0,02 s</button><button id="reset" class="button secondary">Reset</button></div>
+<p id="status" role="status" data-no-i18n></p><div id="parameters"></div>
+<div class="parameter speed-control"><div class="parameter-heading"><label for="num-speed">Viteza animației</label><input id="num-speed" type="number" min="0.1" max="2" step="0.1" value="1" aria-label="Viteza animației"></div><div class="range-row praxis-range-stepper"><button id="speed-down" aria-label="Scade">−</button><input id="range-speed" type="range" min="0.1" max="2" step="0.1" value="1" aria-label="Viteza animației"><button id="speed-up" aria-label="Crește">+</button></div><p id="speed-note" data-no-i18n></p></div>
+<div class="legend"><span class="elastic" data-science-math>F_e</span><span>Forță elastică</span><span class="applied" data-science-math>F_ap</span><span>Forță aplicată în pregătire</span></div>
+</aside></div>
+<details><summary>Condițiile experimentului</summary><p data-science-math="prose">Reglajele și tragerea corpului pregătesc un experiment nou, cu v₀ = 0.</p><p>Viteza animației schimbă numai scara timpului. Pasul rămâne 0,02 s simulate. Resort ideal, fără frecare.</p><p>Curbe ale resortului; punct = starea curentă.</p></details>
+</section>
+<section id="theory" class="reading" role="tabpanel" aria-labelledby="tab-theory" hidden></section>
+<section id="activities" class="reading" role="tabpanel" aria-labelledby="tab-activities" hidden></section>
+<section id="quiz" class="reading" role="tabpanel" aria-labelledby="tab-quiz" hidden></section>
+</main></body></html>

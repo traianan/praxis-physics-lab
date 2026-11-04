@@ -4,7 +4,21 @@
   "title": "Lucru mecanic, energie și putere",
   "messages": {
     "Lucru mecanic, energie și putere": "Lucru mecanic, energie și putere",
-    "LUCRU MECANIC, ENERGIE ȘI PUTERE": "LUCRU MECANIC, ENERGIE ȘI PUTERE"
+    "LUCRU MECANIC, ENERGIE ȘI PUTERE": "LUCRU MECANIC, ENERGIE ȘI PUTERE",
+    "Legea lui Hooke": "Legea lui Hooke"
   },
-  "simulations": {}
+  "simulations": {
+    "legea-lui-hooke": {
+      "title": "Legea lui Hooke",
+      "subtitle": "De la deformare la lucru mecanic și energie",
+      "description": "Resort interactiv, grafice forță–deformare și energie, lucru mecanic și conservarea energiei.",
+      "alt": "Resort orizontal și graficele forței și energiei elastice",
+      "tags": [
+        "Elasticitate",
+        "Lucru mecanic",
+        "Energie"
+      ],
+      "keywords": "hooke resort elastic constantă elastică deformare compresie lucru mecanic energie putere"
+    }
+  }
 }

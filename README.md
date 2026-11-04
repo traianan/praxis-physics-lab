@@ -1,5 +1,7 @@
 # Praxis · Fizică interactivă
 
+**Legea lui Hooke, 4 noiembrie 2026:** laborator RO/EN în capitolul **Lucru mecanic, energie și putere**, cu resort interactiv, constanta elastică, energie, grafice și viteză de animație reglabilă. Biblioteca are **23 de laboratoare**. [Deschide laboratorul](https://praxis-physics-lab.vercel.app/simulari/legea-lui-hooke/index.html) · [Specificație și surse](docs/LEGEA_LUI_HOOKE.md) · [Verificări](docs/LEGEA_LUI_HOOKE_VALIDARE.md).
+
 **Pila Daniell, 4 noiembrie 2026:** laborator RO/EN cu model Nernst, animație, grafice și bilanțuri de sarcină/energie, integrat în biblioteca de **22 de laboratoare**. [Deschide online](https://praxis-physics-lab.vercel.app/simulari/pila-daniell/index.html) · [Publicare și verificări](docs/PILA_DANIELL_PUBLICARE.md).
 
 **Faraday, 4 noiembrie 2026:** cinci experimente 3D, modele SI independente de randare, RO/EN și arhivă autonomă. [Validare și limite](docs/FARADAY_VALIDARE_2026-11-04.md). Pentru regenerarea arhivei: `npm ci`, apoi `npm run offline:faraday` și `npm run build`.

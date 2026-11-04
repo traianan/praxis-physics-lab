@@ -4,7 +4,21 @@
   "title": "Work, energy and power",
   "messages": {
     "Lucru mecanic, energie și putere": "Work, energy and power",
-    "LUCRU MECANIC, ENERGIE ȘI PUTERE": "WORK, ENERGY AND POWER"
+    "LUCRU MECANIC, ENERGIE ȘI PUTERE": "WORK, ENERGY AND POWER",
+    "Legea lui Hooke": "Hooke’s law"
   },
-  "simulations": {}
+  "simulations": {
+    "legea-lui-hooke": {
+      "title": "Hooke’s law",
+      "subtitle": "From deformation to work and energy",
+      "description": "Interactive spring, force–deformation and energy graphs, work and energy conservation.",
+      "alt": "Horizontal spring and spring force and energy graphs",
+      "tags": [
+        "Elasticity",
+        "Work",
+        "Energy"
+      ],
+      "keywords": "hooke spring elasticity stiffness deformation compression work energy power"
+    }
+  }
 }

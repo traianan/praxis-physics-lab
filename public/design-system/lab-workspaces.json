@@ -289,5 +289,16 @@
         "layout": "native"
       }
     ]
+  },
+  "legea-lui-hooke": {
+    "workspaces": [
+      {
+        "selector": ".hooke-workspace",
+        "scene": ".hooke-visual",
+        "controls": ".hooke-controls",
+        "graphs": ".hooke-graphs",
+        "layout": "native"
+      }
+    ]
   }
 }

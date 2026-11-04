@@ -1,0 +1,40 @@
+*{box-sizing:border-box}#praxis-original{max-width:1500px;margin:auto;padding:0 .75rem .75rem}
+body[data-praxis-course=legea-lui-hooke] .hooke-workspace{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:.75rem;align-items:start}
+.hooke-visual,.hooke-controls{min-width:0;background:var(--praxis-color-surface);border:1px solid var(--praxis-color-border);border-radius:14px;padding:.6rem}
+body[data-praxis-course=legea-lui-hooke] .hooke-controls{margin:0!important}.hooke-controls h2{font-size:1rem;margin:0 0 .4rem}
+.transport{display:flex;gap:.3rem;flex-wrap:wrap}.transport button{flex:1;padding:.4rem;white-space:nowrap}
+.hooke-controls button,.hooke-controls input{min-height:44px}.parameter{margin:.55rem 0}.parameter-heading{display:flex;justify-content:space-between;align-items:center;gap:.4rem}.parameter-heading label{font-size:.9rem}.parameter input[type=number]{width:5.6rem;padding:.3rem;font-size:1rem}.range-row{display:flex;align-items:center;gap:.35rem}.range-row input{width:100%;min-width:0}.range-row button{min-width:44px}
+#scene{display:block;width:100%;height:190px;touch-action:none;user-select:none}#scene [data-drag]{cursor:grab}#scene [data-drag]:active{cursor:grabbing}
+#readouts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.3rem;font-size:.85rem;font-variant-numeric:tabular-nums}#readouts div{padding:.35rem;background:var(--praxis-color-background);border-radius:8px}#readouts strong{display:block;font-size:1.05rem}
+.hooke-graphs{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}.hooke-graphs svg{width:100%;height:165px;display:block}svg text{font-family:inherit;fill:var(--praxis-color-ink)}
+#energy-bars{display:grid;gap:.25rem;font-size:.85rem;padding-top:.3rem}.bar-row{display:grid;grid-template-columns:2rem 1fr 6rem;gap:.5rem;align-items:center}.bar-track{height:.65rem;background:var(--praxis-color-background);border-radius:4px;overflow:hidden}.bar-fill{height:100%}.bar-value{text-align:right;font-variant-numeric:tabular-nums}
+.elastic{color:var(--praxis-science-red)}.applied{color:var(--praxis-science-blue)}.legend{display:grid;grid-template-columns:3rem 1fr;gap:.4rem;font-size:.85rem}.note,#status{font-size:.85rem;line-height:1.5;margin:.4rem 0}#status{min-height:1.5em}.reading{max-width:1000px;margin:auto;padding:.6rem;line-height:1.7}.reading .formula{padding:.6rem;background:var(--praxis-color-surface)}.reading fieldset{border:1px solid var(--praxis-color-border);border-radius:12px;margin:1rem 0;padding:1rem}.reading label{display:flex;gap:.7rem;align-items:center;min-height:44px}.reading input{min-width:20px;min-height:20px}.reading a{overflow-wrap:anywhere}.reading li{margin:.5rem 0}
+button:focus-visible,input:focus-visible,[data-drag]:focus-visible{outline:3px solid var(--praxis-color-focus);outline-offset:2px}
+html[data-course-touch=true] .hooke-controls button,html[data-course-touch=true] .hooke-controls input{min-height:52px}
+@media(max-width:900px){body[data-praxis-course=legea-lui-hooke] .hooke-workspace{grid-template-columns:1fr}.hooke-controls{grid-row:1}.hooke-graphs{grid-template-columns:1fr}#readouts{grid-template-columns:repeat(2,minmax(0,1fr))}#praxis-original{padding:.4rem}}
+@media(min-width:901px){html[style*="32px"] .hooke-workspace{grid-template-columns:1fr!important}}
+body[data-praxis-course=legea-lui-hooke] .hooke-controls{--praxis-text-heading:1rem;--praxis-text-body:.875rem}
+body[data-praxis-course=legea-lui-hooke] .hooke-controls h2{font-size:1rem;margin:0 0 .4rem}
+body[data-praxis-course=legea-lui-hooke] .hooke-controls .note{font-size:.85rem;line-height:1.45;margin:.4rem 0}
+.parameter-heading{position:relative;padding-right:6rem;min-height:24px}.parameter-heading input[type=number]{position:absolute;right:0;top:24px}.range-row{padding-right:6rem}
+@media(min-width:901px) and (max-width:1100px){body[data-praxis-course=legea-lui-hooke] .hooke-workspace{grid-template-columns:minmax(0,1fr) 340px}}
+body[data-praxis-course=legea-lui-hooke] .transport button{white-space:nowrap!important;font-size:.85rem;padding:.35rem!important}
+body[data-praxis-course=legea-lui-hooke] .parameter{margin:.25rem 0}
+body[data-praxis-course=legea-lui-hooke] .praxis-lab-nav{gap:.35rem}
+body[data-praxis-course=legea-lui-hooke] .praxis-lab-nav .tabs button{padding:.5rem .6rem;font-size:.875rem}
+summary{min-height:44px;padding:.6rem;cursor:pointer}
+.hooke-visual{overflow-x:auto}#scene{height:11.875rem;min-width:17.5rem}.hooke-graphs svg{height:10.3125rem;min-width:16.875rem}
+html[style*="32px"] .hooke-graphs{grid-template-columns:1fr}
+#scene text{pointer-events:none}
+body[data-praxis-course=legea-lui-hooke] .hooke-visual{padding:.4rem;margin:0!important}
+#readouts{line-height:1.3}#energy-bars{line-height:1.25}
+body[data-praxis-course=legea-lui-hooke] #speed-note{font-size:.8rem;line-height:1.3;margin:.2rem 0}
+/* Native workspace: prevent the generic instrument grid from adding empty rows. */
+body[data-praxis-course=legea-lui-hooke] .hooke-workspace{grid-template-areas:none;grid-template-rows:auto}
+body[data-praxis-course=legea-lui-hooke] .hooke-controls{padding:.5rem}
+body[data-praxis-course=legea-lui-hooke] .hooke-visual{grid-column:1;grid-row:1}
+body[data-praxis-course=legea-lui-hooke] .hooke-controls{grid-column:2;grid-row:1}
+.legend .science-math{margin:0!important}
+@media(max-width:900px){body[data-praxis-course=legea-lui-hooke] .hooke-visual{grid-column:1;grid-row:2}body[data-praxis-course=legea-lui-hooke] .hooke-controls{grid-column:1;grid-row:1}}
+html[style*="32px"] body[data-praxis-course=legea-lui-hooke] .hooke-visual{grid-column:1;grid-row:2}
+html[style*="32px"] body[data-praxis-course=legea-lui-hooke] .hooke-controls{grid-column:1;grid-row:1}
