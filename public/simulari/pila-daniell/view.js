@@ -77,7 +77,7 @@ export function renderScene(p,s){
 export function renderReadouts(p,s){
  const c=palette();
  $('readouts').innerHTML=[['E / V',s.E,c.blue],['U / V',s.voltage,c.orange],['I / A',s.current,c.red],[tr('Timp')+' / s',s.t,null]].map(([name,v,color])=>`<div><span${color?` style="color:${color}"`:''}>${name}</span><strong>${fmt(v,name.endsWith('/ s')?0:4)}</strong></div>`).join('');
- $('balance').innerHTML=[['c(Zn²⁺)',fmt(s.cZn,3),'mol/m³'],['c(Cu²⁺)',fmt(s.cCu,3),'mol/m³'],[tr('Sarcină'),fmt(s.charge,3),'C'],[tr('Cu depus'),fmt(s.copperGain,7),'kg'],[tr('Zn rămas'),fmt(s.mZn,7),'kg'],[tr('Energie externă'),fmt(s.external,3),'J'],[tr('Energie internă'),fmt(s.internal,3),'J'],['ΔrG',fmt(s.deltaG,1),'J/mol'],['EI − I²(R+r)',fmt(s.pChemical-s.pExternal-s.pInternal,9),'W']].map(([name,v,u])=>`<span>${name}: <b>${v}</b> ${u}</span>`).join('');
+ $('balance').innerHTML=[['c(Zn²⁺)',fmt(s.cZn,3),'mol/m³'],['c(Cu²⁺)',fmt(s.cCu,3),'mol/m³'],[tr('Sarcină'),fmt(s.charge,3),'C'],[tr('Cu depus'),fmt(s.copperGain,7),'kg'],[tr('Zn rămas'),fmt(s.mZn,7),'kg'],[tr('Energie externă'),fmt(s.external,3),'J'],[tr('Energie internă'),fmt(s.internal,3),'J'],['<span data-science-math="tex" data-science-source="\\Delta_r G"></span>',fmt(s.deltaG,1),'J/mol'],['EI − I²(R+r)',fmt(s.pChemical-s.pExternal-s.pInternal,9),'W']].map(([name,v,u])=>`<span>${name}: <b>${v}</b> ${u}</span>`).join('');
  $('play').textContent=tr(s.running?'Pauză':'Pornire');
  $('status').textContent=tr(s.ended?'Pragul modelului atins; resetează experimentul.':!p.bridge?'Punte absentă: U nedefinit în model.':s.running?'În funcțiune':'În pauză');
 }
