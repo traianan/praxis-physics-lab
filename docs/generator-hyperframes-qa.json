@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-04",
+  "version": "0.9.9",
+  "ok": true,
+  "checks": {
+    "lint": {
+      "ok": true,
+      "errors": 0,
+      "warnings": 1,
+      "findings": [
+        {
+          "code": "nested_structure_needs_subcomposition",
+          "severity": "warning",
+          "message": "<div id=\"assembly-frame\"> is a timeline element that contains nested <div id=\"assembly\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions."
+        }
+      ]
+    },
+    "runtime": {
+      "ok": true,
+      "errors": 0,
+      "warnings": 0,
+      "findings": []
+    },
+    "layout": {
+      "ok": true,
+      "errors": 0,
+      "warnings": 0,
+      "findings": []
+    },
+    "motion": {
+      "ok": true,
+      "errors": 0,
+      "warnings": 0,
+      "findings": []
+    },
+    "contrast": {
+      "ok": true,
+      "errors": 0,
+      "warnings": 0,
+      "findings": []
+    },
+    "craft": {
+      "ok": true,
+      "errors": 0,
+      "warnings": 0,
+      "findings": []
+    }
+  }
+}

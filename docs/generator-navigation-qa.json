@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-04",
+  "checks": [
+    "Home opens generator",
+    "canonical chapter and refresh",
+    "chapter return from direct entry",
+    "board entry/exit preserves time and parameters",
+    "sound state across laboratory and chapter",
+    "transport after board/navigation changes"
+  ],
+  "passed": true
+}

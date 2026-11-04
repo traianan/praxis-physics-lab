@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ro"><head><link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMyMTZlNjEiLz48dGV4dCB4PSIxNSIgeT0iNDYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI1NCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5wPC90ZXh0PjxjaXJjbGUgY3g9IjUyIiBjeT0iNDciIHI9IjUiIGZpbGw9IiNkNWFjNjciLz48L3N2Zz4K"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Generatorul electric — Praxis</title>
+
+<link rel="stylesheet" href="../../design-system/tokens.css"><link rel="stylesheet" href="../../design-system/components.css"><link rel="stylesheet" href="../../shared/course.css"><link rel="stylesheet" href="../../design-system/lab-layout.css"><link rel="stylesheet" href="../../design-system/laboratory.css"><link rel="stylesheet" href="../../design-system/compact.css"><link rel="stylesheet" href="style.css">
+<script src="../../shared/i18n.js"></script><script src="../../shared/sound.js"></script><script src="../../shared/lab-header.js"></script><script src="../../shared/scientific-colors.js"></script><script src="../../shared/course-localization.js"></script>
+<script src="../../vendor/gsap/gsap.min.js"></script><script type="module" src="app.js"></script><style id="praxis-link-colors">/* One link colour across the library, imported lessons and standalone exports. */
+:root{--praxis-color-link:var(--praxis-color-primary,#17685f)}
+html body a[href],html body a[href]:visited,html body a[href]:hover,html body a[href]:active{color:var(--praxis-link-ink,var(--praxis-color-link))!important}
+/* Link controls use a light surface so their common text colour stays readable. */
+html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected=true],.active,.backlink){background:var(--praxis-link-button-background,var(--praxis-color-primary-soft,#e4eeea))!important}
+</style></head>
+<body data-praxis-course="generator-electric" data-praxis-laboratory="true">
+<main id="praxis-original">
+<div class="tabs" role="tablist" aria-label="Secțiunea lecției">
+<button class="tab" role="tab" id="tab-experiment" data-tab="experiment" aria-controls="experiment" aria-selected="true">Experiment</button>
+<button class="tab" role="tab" id="tab-theory" data-tab="theory" aria-controls="theory" aria-selected="false">Explicații și formule</button>
+<button class="tab" role="tab" id="tab-problems" data-tab="problems" aria-controls="problems" aria-selected="false">Activități și probleme</button>
+<button class="tab" role="tab" id="tab-quiz" data-tab="quiz" aria-controls="quiz" aria-selected="false">Verificare și surse</button>
+</div>
+<section id="experiment" role="tabpanel" aria-labelledby="tab-experiment">
+<div class="generator-workspace" data-instrument-layout>
+<div class="generator-visual" data-instrument-role="visual">
+<div class="generator-scene-toolbar"><span>Ansamblu tehnic 3D</span><label>Vedere<select id="scene-view"><option value="perspective">Perspectivă</option><option value="front">Frontală</option></select></label></div><div class="generator-stage" id="generator-scene" role="img" aria-label="Alternator 3D cu înfășurare, două inele colectoare, perii fixe și circuit complet" data-composition-id="generator-assembly" data-start="0" data-duration="1" data-width="1280" data-height="720"></div>
+<div id="generator-readouts" class="generator-readouts" data-no-i18n></div>
+<div class="generator-graphs" data-instrument-role="graphs"><canvas id="flux-graph" role="img" aria-label="Fluxul magnetic în timp"></canvas><canvas id="voltage-graph" role="img" aria-label="Tensiunea indusă și tensiunea la borne în timp"></canvas><canvas id="current-graph" role="img" aria-label="Intensitatea curentului în timp"></canvas></div>
+<p class="generator-note">Curbele sunt predicții ale modelului. Linia verticală marchează timpul curent.</p>
+</div>
+<aside class="generator-controls" data-instrument-role="controls">
+<h2 data-content-type="controls">Comenzile experimentului</h2>
+<div class="generator-transport"><button id="play" class="button primary" type="button">Pornire</button><button id="step" class="button secondary" type="button">Pas</button><button id="reset" class="button secondary" type="button">Reset</button></div>
+<div class="generator-status-row"><p id="run-status" role="status"></p><label class="generator-check"><input id="open-circuit" type="checkbox">Circuit deschis</label></div>
+<div class="generator-case-row"><label class="generator-select">Caz de studiu<select id="preset"><option value="reference">Referință</option><option value="rest">Repaus</option><option value="zero">Câmp nul</option><option value="reverse">Sens invers</option><option value="open">Circuit deschis</option><option value="short">Scurtcircuit</option></select></label><label class="generator-select">Ritmul redării<select id="playback"><option value="0.1">Încetinit: 0,1 s simulat / s real</option><option value="1">Timp real: 1 s simulat / s real</option></select></label></div>
+<fieldset id="physical-controls"><legend>Parametri fizici</legend><div id="parameter-inputs"></div></fieldset>
+
+
+<p id="alias-note" class="generator-note" hidden>La frecvențe mari, rotația poate părea inversată sau lentă din cauza eșantionării ecranului. Urmărește graficele și valorile.</p>
+</aside></div>
+<p class="generator-note">Pas = 0,005 s simulate. Schimbarea parametrilor în pauză începe o măsurare nouă. Schimbarea ritmului nu modifică fizica.</p><details class="generator-energy"><summary>Bilanț energetic și valori efective</summary><div id="energy-readouts" data-no-i18n></div><p>Puterea mecanică furnizată de antrenor se transformă în putere utilă și încălzirea bobinei. Câmpul magnetic nu este o sursă de energie gratuită.</p></details>
+</section>
+<section id="theory" class="generator-reading" role="tabpanel" aria-labelledby="tab-theory" hidden></section>
+<section id="problems" class="generator-reading" role="tabpanel" aria-labelledby="tab-problems" hidden></section>
+<section id="quiz" class="generator-reading" role="tabpanel" aria-labelledby="tab-quiz" hidden></section>
+</main></body></html>

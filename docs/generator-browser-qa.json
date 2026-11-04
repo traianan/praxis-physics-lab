@@ -1,0 +1,164 @@
+{
+  "date": "2026-11-04",
+  "browser": "156.0.8078.80",
+  "native": [
+    {
+      "mode": "mouse",
+      "tests": [
+        "step",
+        "reset",
+        "start/pause",
+        "increment",
+        "slider gesture",
+        "open-circuit switch"
+      ],
+      "trustedPointerEvents": 7
+    },
+    {
+      "mode": "touchscreen emulation",
+      "tests": [
+        "step",
+        "reset",
+        "start/pause",
+        "increment",
+        "slider gesture",
+        "open-circuit switch"
+      ],
+      "trustedPointerEvents": 7
+    }
+  ],
+  "responsive": [
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 1,
+      "cases": 16,
+      "passed": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "dpr": 1,
+      "cases": 16,
+      "passed": true
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "dpr": 1,
+      "cases": 16,
+      "passed": true
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "cases": 16,
+      "passed": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 2,
+      "cases": 16,
+      "passed": true
+    },
+    {
+      "width": 3840,
+      "height": 2160,
+      "dpr": 1,
+      "cases": 16,
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "externalRequests": [],
+  "performance": {
+    "viewport": [
+      1366,
+      768
+    ],
+    "dpr": 1,
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "frames": 590,
+    "renderMedianMs": 7.6000001430511475,
+    "renderP95Ms": 11.600000143051147,
+    "intervalMedianMs": 16.699999999999818,
+    "intervalP95Ms": 16.80000000000109,
+    "framesOver33ms": 19
+  },
+  "math": [
+    {
+      "language": "ro",
+      "fractions": 4,
+      "indices": 13,
+      "powers": 3,
+      "errors": 0
+    },
+    {
+      "language": "en",
+      "fractions": 4,
+      "indices": 13,
+      "powers": 3,
+      "errors": 0
+    }
+  ],
+  "geometry": {
+    "quarterPeriod": {
+      "rotorAngle": 1.570796,
+      "normal": [
+        0,
+        -3.2679489669895645e-7,
+        -0.9999999999999466
+      ],
+      "ringCount": 2,
+      "brushPositions": [
+        [
+          3.08,
+          0,
+          0.69
+        ],
+        [
+          3.85,
+          0,
+          0.69
+        ]
+      ],
+      "timelinePaused": true,
+      "polarity": [
+        "a +",
+        "b −"
+      ],
+      "transparentParts": 0,
+      "loadWindingSamples": 679,
+      "conductorRoutes": [
+        {
+          "from": "brushA",
+          "to": "ammeterA"
+        },
+        {
+          "from": "ammeterB",
+          "to": "loadRight"
+        },
+        {
+          "from": "loadLeft",
+          "to": "switchA"
+        },
+        {
+          "from": "switchB",
+          "to": "brushB"
+        },
+        {
+          "from": "brushA",
+          "to": "voltmeterA"
+        },
+        {
+          "from": "brushB",
+          "to": "voltmeterB"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "passed": true
+}

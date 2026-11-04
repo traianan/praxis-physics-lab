@@ -1,0 +1,19 @@
+<!doctype html><html lang="ro"><head><link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMyMTZlNjEiLz48dGV4dCB4PSIxNSIgeT0iNDYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI1NCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5wPC90ZXh0PjxjaXJjbGUgY3g9IjUyIiBjeT0iNDciIHI9IjUiIGZpbGw9IiNkNWFjNjciLz48L3N2Zz4K"><meta charset="utf-8"><title>Generator electric · HyperFrames</title><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../style.css"><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f7f5ee}#root{position:relative;width:1280px;height:720px}#assembly-frame{width:1280px;height:720px;background:#f7f5ee}#assembly{width:100%;height:100%;min-height:0;height:600px}.generator-technical-labels{font-size:20px}.technical-label{font-size:18px}.technical-detail{font-size:20px}.technical-meter{width:130px}.generator-technical-labels .technical-label{font-size:19px}.technical-meter{width:140px;min-height:76px}.technical-meter span,.technical-meter strong,.technical-meter small,.technical-terminal,.technical-detail strong,.technical-detail span{font-size:19px}.technical-meter>span{width:27px;height:27px}.technical-detail{bottom:8px}.component-marker{font-size:19px;width:30px;height:30px}.generator-component-key li,.generator-component-key strong{font-size:19px}.component-key-number{font-size:19px;flex-basis:28px;width:28px;height:28px}.generator-component-key{margin:0;padding:8px;grid-template-columns:repeat(5,minmax(0,1fr))}</style>
+<script src="../../../vendor/gsap/gsap.min.js"></script><style id="praxis-link-colors">/* One link colour across the library, imported lessons and standalone exports. */
+:root{--praxis-color-link:var(--praxis-color-primary,#17685f)}
+html body a[href],html body a[href]:visited,html body a[href]:hover,html body a[href]:active{color:var(--praxis-link-ink,var(--praxis-color-link))!important}
+/* Link controls use a light surface so their common text colour stays readable. */
+html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected=true],.active,.backlink){background:var(--praxis-link-button-background,var(--praxis-color-primary-soft,#e4eeea))!important}
+</style></head><body>
+<div id="root" data-composition-id="generator-technical" data-start="0" data-duration="4" data-width="1280" data-height="720"><div id="assembly-frame" class="clip" data-start="0" data-duration="4" data-track-index="1" data-track-kind="graphics"><div id="assembly" class="generator-stage"></div></div></div>
+<script type="module">
+import {mountGeneratorScene} from '../scene3d.js';
+import {DEFAULTS,stateAt} from '../../../shared/generator-model.js';
+const assembly=mountGeneratorScene(document.getElementById('assembly'));
+const clock={time:0};
+const timeline=gsap.timeline({paused:true});timeline.fromTo(clock,{time:0},{time:.2,duration:4,ease:'none',onUpdate:()=>assembly.seek(stateAt(DEFAULTS,clock.time),DEFAULTS)},0);
+window.__timelines['generator-technical']=timeline;
+window.addEventListener('hf-seek',event=>timeline.time(Math.max(0,Math.min(4,event.detail.time)),false));
+assembly.seek(stateAt(DEFAULTS,0),DEFAULTS);
+</script></body></html>

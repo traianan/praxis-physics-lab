@@ -256,5 +256,16 @@
       }
     ],
     "reading": ".cols>.text"
+  },
+  "generator-electric": {
+    "workspaces": [
+      {
+        "selector": ".generator-workspace",
+        "scene": ".generator-visual",
+        "controls": ".generator-controls",
+        "graphs": ".generator-graphs",
+        "layout": "native"
+      }
+    ]
   }
 }

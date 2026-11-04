@@ -4,7 +4,21 @@
   "title": "Electricity, magnetism and circuits",
   "messages": {
     "Electricitate, magnetism și circuite": "Electricity, magnetism and circuits",
-    "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITY, MAGNETISM AND CIRCUITS"
+    "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITY, MAGNETISM AND CIRCUITS",
+    "Generatorul electric": "Electric generator"
   },
-  "simulations": {}
+  "simulations": {
+    "generator-electric": {
+      "title": "Electric generator",
+      "subtitle": "Induction, alternating current and energy conversion",
+      "description": "Rotating-coil alternator, synchronized graphs, energy balance, two problems and six self-check questions.",
+      "alt": "Rotating coil between magnetic poles and alternating voltage",
+      "tags": [
+        "Induction",
+        "Alternating current",
+        "Energy"
+      ],
+      "keywords": "electric generator alternator faraday lenz magnetic flux voltage alternating current energy"
+    }
+  }
 }

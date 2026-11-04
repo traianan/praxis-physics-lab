@@ -4,7 +4,21 @@
   "title": "Electricitate, magnetism și circuite",
   "messages": {
     "Electricitate, magnetism și circuite": "Electricitate, magnetism și circuite",
-    "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITATE, MAGNETISM ȘI CIRCUITE"
+    "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITATE, MAGNETISM ȘI CIRCUITE",
+    "Generatorul electric": "Generatorul electric"
   },
-  "simulations": {}
+  "simulations": {
+    "generator-electric": {
+      "title": "Generatorul electric",
+      "subtitle": "Inducție, curent alternativ și conversia energiei",
+      "description": "Alternator cu bobină rotativă, grafice sincronizate, bilanț energetic, două probleme și șase întrebări.",
+      "alt": "Bobină rotativă între polii unui magnet și tensiune alternativă",
+      "tags": [
+        "Inducție",
+        "Curent alternativ",
+        "Energie"
+      ],
+      "keywords": "generator electric alternator faraday lenz flux magnetic tensiune curent alternativ energie"
+    }
+  }
 }
