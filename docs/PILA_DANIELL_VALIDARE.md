@@ -1,5 +1,7 @@
 # Pila Daniell — raport de validare, 4 noiembrie 2026
 
+**Actualizare ulterioară:** laboratorul a fost publicat la solicitarea utilizatorului și verificat pe site. [Raport de publicare](PILA_DANIELL_PUBLICARE.md). Mențiunile de mai jos despre livrarea exclusiv locală descriu etapa inițială.
+
 Implementare originală în `public/simulari/pila-daniell/`, motor pur în `public/shared/daniell-model.js`. Înregistrare în catalog, capitolul Electricitate, magnetism și circuite, metadate RO/EN și workspace comun. `public/` este sursa autoritativă; `dist/` este rezultatul buildului. Nu s-a făcut commit, push sau deployment remote. Modificările preexistente din `public/shared/lab-header.js` și `content-types.bundle.js` nu au fost rescrise manual pentru acest laborator.
 
 Documentare și model: [specificație cu cele patru URL-uri](PILA_DANIELL_SPEC.md). Firecrawl a recuperat paginile direct; căutarea generală a expirat. Imaginea utilizatorului a fost folosită pentru compoziție, iar SVG-ul este original. Nu este necesară nicio cerere externă pentru rulare; linkurile surselor se deschid numai la cererea utilizatorului.
