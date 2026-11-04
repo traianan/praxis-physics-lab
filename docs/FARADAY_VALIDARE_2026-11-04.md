@@ -84,3 +84,17 @@ Rezultate: `npm run check` — 369/369 teste trecute; sintaxă, build și arhiv�
 Performanță, câte 600 cadre, Chrome/1366×768/DPR1: p95 total magnet 3,5 ms; bobină 8,8 ms; RL 5,3 ms; transformator 6,3 ms; generator 6,7 ms. Intervalul dintre cadre p95 16,8–16,9 ms. Măsurători locale ale execuției JavaScript și trimiterii randării, nu garanție de performanță pe alte dispozitive. Ajustarea finală a întinderii curbelor dipolului păstrează numărul de primitive din măsurătoare.
 
 Dovezi locale: `outputs/faraday-final-audit-check.log`, `outputs/faraday-browser-qa.json`, `outputs/faraday-extremes.mjs`, capturile scenelor. Limitele fizice ale modelelor ideale și limitele de testare rămân cele de mai sus: fără telefon/tablă fizică, Safari/Firefox, teste de ore sau validare pedagogică externă. Scrolarea verticală la ecrane joase/text mărit rămâne necesară.
+
+## Suportul magnetului și testarea tactilă — 4 noiembrie 2026
+
+Corectată levitația aparentă: magnetul rămâne pe axa bobinei (y=1 în scena schematică), baza căruciorului are fața inferioară la y=0,05, exact la fața superioară a șinelor. Tija unește baza cu corpul magnetului. Verificat vizual în Chrome.
+
+Corecție tactilă: scenele RL/transformator/generator permit acum derulare verticală prin `touch-action: pan-y`; magnetul și bobina receptoare păstrează glisarea obiectelor cu `touch-action: none`. Gesturi CDP de derulare verificate explicit pentru toate cele trei activități pe 390×844 și 820×1180.
+
+Test nou `scripts/qa/faraday-touch.mjs`: 360×800, 390×844, 844×390, 768×1024, 820×1180, 1024×768, 1180×820; DPR2, touch emulat Chrome, portret/peisaj. Toate cele cinci activități: pornire/pauză, pas, reset, ± parametri, sursa RL, circuit deschis/închis. Traseul include glisarea magnetului, anulare tactilă, glisarea sliderului, rotire, RO/EN și text mărit. 41 apăsări pe configurație, 44 evenimente pointer tactile de încredere; 287 apăsări și 308 evenimente în total. Fără erori JavaScript sau depășiri orizontale. Selectarea activității/limbii este programatică; nu este validarea selectorului nativ al unui sistem mobil.
+
+Capturi: `outputs/faraday-touch-*.png`; rezultate: `outputs/faraday-touch-qa.json`; derulare: `scripts/qa/faraday-touch-scroll.mjs`. Scripturile folosesc PRAXIS_PLAYWRIGHT_MODULE dacă Playwright nu este disponibil în proiect și serverul local pe portul 4205.
+
+Limite: ADB nu arată niciun dispozitiv conectat; Maestro expune numai emulatoare oprite. Agent Device are o eroare de daemon. Nu s-au modificat configurările dispozitivelor. Testarea de mai sus reprezintă emulare tactilă în browser, nu verificare pe telefon/tabletă fizică, Android Chrome real sau iOS Safari. Derularea verticală a paginii rămâne necesară pe mobil.
+
+La inspecția capturilor de telefon s-au corectat și acțiunile prea înguste: grilă adaptivă cu minimum 9rem pe buton, două coloane când încap și una la text mărit. Valorile măsurate folosesc aceeași adaptare în loc de patru rânduri obligatorii. Nu s-au micșorat fonturile sau țintele tactile. Testele tactile și verificarea offline au fost reluate după ajustare.

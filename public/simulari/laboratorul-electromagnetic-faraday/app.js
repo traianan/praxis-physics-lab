@@ -36,7 +36,7 @@ function reset(){cancel();running=false;endDrag();states[active]=fresh(active);c
 function stopMotion(){const a=current();if(active==='pickup'){a.target=null;a.v=0;a.s=measure(active,a);remember(a);}}
 function endDrag(){const old=drag;drag=null;if(old&&$('#scene').hasPointerCapture(old.id))$('#scene').releasePointerCapture(old.id);if(old)stopMotion();}
 function controls(){
- const a=current();$('#activity').value=active;$('#playback').value=String(a.rate);
+ const a=current();$('#scene').style.touchAction=['magnet','pickup'].includes(active)?'none':'pan-y';$('#activity').value=active;$('#playback').value=String(a.rate);
  $('#parameter-inputs').innerHTML=parameters[active].map(([key,label,min,max,step,unit])=>`<div class="faraday-param"><div class="param-heading"><label for="num-${key}">${tr(label)} <small>${unit}</small></label><input id="num-${key}" type="number" data-param="${key}" min="${min}" max="${max}" step="${step}" value="${a.p[key]}" aria-label="${tr(label)}"></div><div class="range-row praxis-range-stepper"><button data-adjust="${key}:-1" aria-label="${tr('Scade')} ${tr(label)}">−</button><input type="range" data-param="${key}" min="${min}" max="${max}" step="${step}" value="${a.p[key]}" aria-label="${tr(label)}"><button data-adjust="${key}:1" aria-label="${tr('Crește')} ${tr(label)}">+</button></div></div>`).join('');
  let html='';if(active==='pickup')html=`<button data-motion="approach">${tr('Apropie')}</button><button data-motion="away">${tr('Depărtează')}</button><button data-motion="manual">${tr('Oprește magnetul')}</button>`;
  if(active==='rl')html=[['10','Alimentează +10 V'],['-10','Inversează −10 V'],['0','Descarcă prin R']].map(([v,label])=>`<button data-source="${v}">${tr(label)}</button>`).join('');
