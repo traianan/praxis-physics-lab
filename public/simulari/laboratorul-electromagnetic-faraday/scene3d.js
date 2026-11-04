@@ -103,7 +103,10 @@ export function createStand(canvas){
  cylinder(.045,2.7,0,1.15,.2,materials.steel,gen,'z');
  for(const z of [-1,1.5]){box(.35,1,.18,0,.55,z,materials.dark,gen);cylinder(.09,.2,0,1.15,z,materials.brass,gen,'z');}
  for(const x of [-1.35,1.35]){box(.5,1.2,1.25,x,1.15,0,x<0?materials.red:materials.blue,gen);box(.65,.1,1.4,x,.5,0,materials.iron,gen);const l=label(x<0?'N':'S',.3,.3);l.position.set(x,1.2,.67);gen.add(l);}
- for(const z of [-.4,.4])fieldArrow(gen,V(-1,1.6,z),V(1,1.6,z),'#5c9996');items.generator.normal=fieldArrow(rotor,V(0,0,0),V(.9,0,0),'#83689e');
+ const uniformField=new T.Group();gen.add(uniformField);items.generator.field=uniformField;
+ // Parallel equally spaced samples of the ideal uniform gap field (N -> S).
+ for(const y of [.7,1,1.3,1.6])for(const z of [-.48,-.16,.16,.48]){const arrow=fieldArrow(uniformField,V(-1.09,y,z),V(1.09,y,z),'#5c9996');for(const part of [arrow.line,arrow.cone]){part.material.transparent=true;part.material.opacity=.65;}arrow.setLength(2.18,.10,.045);}
+ items.generator.normal=fieldArrow(rotor,V(0,0,0),V(.9,0,0),'#83689e');
  // Rings rotate with rotor. Separate insulating hubs prevent a short through the shaft.
  for(const z of [.8,1.08]){cylinder(.145,.1,0,0,z,materials.ceramic,rotor,'z');const ring=mesh(new T.TorusGeometry(.16,.025,12,48),materials.brass,rotor);ring.position.set(0,0,z);box(.14,.10,.08,.24,1.15,z,materials.dark,gen);}
  // Positive emf follows the winding from its start to its end: red terminal is the end.
@@ -136,7 +139,7 @@ export function createStand(canvas){
   const it=items[name];if(it.switch)it.switch.rotation.z=p.open?.6:0;for(const item of [items.magnet.field,items.pickup.field])item.traverse(o=>{if(o.isLine)o.material.color.set(P.teal);});items.pickup.normal.setColor(P.teal);items.generator.normal.setColor(P.purple);if(name==='pickup'||name==='magnet'){const bar=it.bar;bar.group.rotation.y=p.m<0?Math.PI:0;if(name==='pickup'){bar.group.position.set(1.6-s.x*9.6,1,0);it.field.position.x=bar.group.position.x;it.field.visible=p.m!==0;it.receiver.scale.set(1,p.a/.05,p.a/.05);it.meter.pivot.rotation.z=-Math.max(-1,Math.min(1,s.current/0.00003))*.9;}else{it.field.visible=p.m!==0;it.probe.position.set(p.x*9,.3,-p.y*9);const b=dipoleField(p.m,p.x,p.y);it.needle.visible=!!b&&!!Math.hypot(b.bx,b.by);if(it.needle.visible)it.needle.rotation.z=Math.atan2(b.by,b.bx);}}
   if(name==='rl'){it.meter.pivot.rotation.z=-s.current*.9;it.arrow.visible=Math.abs(s.B)>1e-12;it.arrow.position.x=s.B>=0?-.7:.7;it.arrow.setDirection(V(s.B>=0?1:-1,0,0));it.arrow.setColor(P.teal);}
   if(name==='transformer'){it.meter.pivot.rotation.z=-Math.max(-1,Math.min(1,s.u1/(p.N1*p.phi*p.omega||1)))*.9;it.meter2.pivot.rotation.z=-Math.max(-1,Math.min(1,s.u2/(p.N2*p.phi*p.omega||1)))*.9;it.arrow.visible=Math.abs(s.flux)>1e-12;it.arrow.position.x=s.flux>=0?-.5:.5;it.arrow.setDirection(V(s.flux>=0?1:-1,0,0));it.arrow.setColor(P.teal);}
-  if(name==='generator'){it.rotor.rotation.z=s.theta;it.meter.pivot.rotation.z=-Math.max(-1,Math.min(1,s.voltage/(s.emfPeak||1)))*.9;}
+  if(name==='generator'){it.field.visible=p.B>0;for(const arrow of it.field.children)arrow.setColor(P.teal);it.rotor.rotation.z=s.theta;it.meter.pivot.rotation.z=-Math.max(-1,Math.min(1,s.voltage/(s.emfPeak||1)))*.9;}
   renderer.render(scene,camera);
  }
  function pointer(x,y){size();ray.setFromCamera(new T.Vector2(x/lastWidth*2-1,1-y/lastHeight*2),camera);plane.set(active==='magnet'?V(0,1,0):V(0,0,1),active==='magnet'?-.3:0);const point=ray.ray.intersectPlane(plane,new T.Vector3());if(!point)return null;return active==='pickup'?{distance:(1.6-point.x)/9.6}:{x:point.x/9,y:-point.z/9};}
