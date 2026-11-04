@@ -1,5 +1,10 @@
 /* One active teaching page: use width before requiring vertical scrolling.
    Loaded after compact.css; text size and scientific canvas bounds are retained. */
+/* School browsers without :has() must also replace the original sidebar grid.
+   Keep this critical shell rule independent of newer selector features. */
+body[data-praxis-course=unde-mecanice] .lesson-redesign [class~="md:grid-cols-[280px_1fr]"]{display:block!important;width:100%;max-width:105rem!important;min-width:0;padding:0 24px 0!important}
+body[data-praxis-course=unde-mecanice] .lesson-redesign main{min-width:0;grid-column:1/-1}
+@media(max-width:760px){body[data-praxis-course=unde-mecanice] .lesson-redesign [class~="md:grid-cols-[280px_1fr]"]{padding-inline:16px!important}}
 body[data-praxis-course=unde-mecanice][data-praxis-laboratory] .praxis-lab-intro{padding:4px 12px!important;margin-block:4px!important;min-height:44px;gap:12px;flex-wrap:wrap}
 body[data-praxis-course=unde-mecanice] .praxis-lab-intro>div:first-child{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 18px}
 body[data-praxis-course=unde-mecanice] .praxis-lab-intro :is(h1,p){margin:0}
