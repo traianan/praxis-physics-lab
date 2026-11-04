@@ -19,7 +19,6 @@
     "Circuit RL liniar, miez ideal; fără saturație, histerezis sau pierderi în miez. B este media în secțiunea miezului. Descărcarea păstrează o buclă închisă prin R. N = 200, A = 0,001 m².": "Linear RL circuit, ideal core; no saturation, hysteresis or core losses. B is the mean field in the core cross-section. Discharge retains a closed loop through R. N = 200, A = 0.001 m².",
     "Flux comun impus, cuplaj perfect, fără pierderi și fără curent de magnetizare. i₁ intră din sursă, i₂ iese spre sarcină. La ω = 0 fluxul este constant; acest caz nu simulează conectarea unei baterii.": "Prescribed common flux, perfect coupling, no losses or magnetising current. i₁ enters from the source; i₂ flows to the load. At ω = 0 the flux is constant; this does not simulate connecting a battery.",
     "Bobină rotativă în câmp uniform, mișcare impusă și circuit rezistiv. A = 0,01 m², r = 2 Ω. Autoinductanța și frecarea sunt neglijate. Desen schematic; la frecvențe mari poate apărea aliasing vizual.": "Rotating coil in a uniform field, prescribed motion and resistive circuit. A = 0.01 m², r = 2 Ω. Self-inductance and friction are neglected. Schematic drawing; high frequencies may produce visual aliasing.",
-    "Trage sonda sau folosește coordonatele. Săgeți: deplasare cu tastatura.": "Drag the probe or use its coordinates. Arrow keys: keyboard movement.",
     "Trage magnetul. În pauză configurezi o măsurare nouă; în rulare produci inducție. Săgeți: deplasare cu tastatura.": "Drag the magnet. While paused, configure a new measurement; while running, produce induction. Arrow keys: keyboard movement.",
     "Comutarea sursei păstrează curentul. Pas = 0,001 s; redare implicită 0,01 s simulate / s real.": "Switching the source preserves current. Step = 0.001 s; default playback 0.01 simulated seconds / real second.",
     "Φ este fluxul unei spire. Tensiunea și curentul afișate sunt cele din secundar.": "Φ is the flux through one turn. The displayed voltage and current belong to the secondary.",
@@ -148,6 +147,7 @@
     "Ce fac comenzile?": "What do the controls do?",
     "Pornire avansează timpul și înregistrează graficele. Pauză oprește timpul. Pas avansează cu un interval mic. Reset restabilește parametrii inițiali și șterge istoricul.": "Start advances time and records the graphs. Pause stops time. Step advances by a small interval. Reset restores the initial parameters and clears the history.",
     "Câmp static: trage sonda pentru a măsura în alt punct. Înregistrează urmărește măsurătorile în timp; magnetul nu se mișcă automat.": "Static field: drag the probe to measure at another point. Record tracks measurements over time; the magnet does not move automatically.",
-    "Pornire avansează simularea; Pas permite observarea schimbărilor pe rând.": "Start advances the simulation; Step lets you observe changes one at a time."
+    "Pornire avansează simularea; Pas permite observarea schimbărilor pe rând.": "Start advances the simulation; Step lets you observe changes one at a time.",
+    "Trage sonda sau folosește coordonatele. Săgeți: deplasare cu tastatura. Sonda ocolește magnetul; x: −0,40…0,40 m, y: −0,20…0,40 m.": "Drag the probe or use the coordinates. Arrow keys: move the probe. The probe stays outside the magnet; x: −0.40…0.40 m, y: −0.20…0.40 m."
   }
 }

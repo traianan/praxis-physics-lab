@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {constrainProbe,PROBE_EXCLUSION as e} from '../public/shared/faraday-probe.js';
+test('probe clamps workspace and excludes full magnet/probe footprints',()=>{for(let x=-.5;x<=.5;x+=.01)for(let y=-.3;y<=.5;y+=.01)for(const axis of [undefined,'x','y']){const p=constrainProbe(x,y,axis);assert.ok(p.x>=-.4&&p.x<=.4&&p.y>=-.2&&p.y<=.4);assert.ok(Math.abs(p.x)>=e.x||Math.abs(p.y)>=e.y);}assert.deepEqual(constrainProbe(0,0,'x'),{x:.08,y:0});assert.deepEqual(constrainProbe(0,0,'y'),{x:0,y:.05});assert.deepEqual(constrainProbe(.2,.35),{x:.2,y:.35});assert.throws(()=>constrainProbe(NaN,0));});

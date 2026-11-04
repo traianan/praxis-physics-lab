@@ -19,7 +19,6 @@
     "Circuit RL liniar, miez ideal; fără saturație, histerezis sau pierderi în miez. B este media în secțiunea miezului. Descărcarea păstrează o buclă închisă prin R. N = 200, A = 0,001 m².": "Circuit RL liniar, miez ideal; fără saturație, histerezis sau pierderi în miez. B este media în secțiunea miezului. Descărcarea păstrează o buclă închisă prin R. N = 200, A = 0,001 m².",
     "Flux comun impus, cuplaj perfect, fără pierderi și fără curent de magnetizare. i₁ intră din sursă, i₂ iese spre sarcină. La ω = 0 fluxul este constant; acest caz nu simulează conectarea unei baterii.": "Flux comun impus, cuplaj perfect, fără pierderi și fără curent de magnetizare. i₁ intră din sursă, i₂ iese spre sarcină. La ω = 0 fluxul este constant; acest caz nu simulează conectarea unei baterii.",
     "Bobină rotativă în câmp uniform, mișcare impusă și circuit rezistiv. A = 0,01 m², r = 2 Ω. Autoinductanța și frecarea sunt neglijate. Desen schematic; la frecvențe mari poate apărea aliasing vizual.": "Bobină rotativă în câmp uniform, mișcare impusă și circuit rezistiv. A = 0,01 m², r = 2 Ω. Autoinductanța și frecarea sunt neglijate. Desen schematic; la frecvențe mari poate apărea aliasing vizual.",
-    "Trage sonda sau folosește coordonatele. Săgeți: deplasare cu tastatura.": "Trage sonda sau folosește coordonatele. Săgeți: deplasare cu tastatura.",
     "Trage magnetul. În pauză configurezi o măsurare nouă; în rulare produci inducție. Săgeți: deplasare cu tastatura.": "Trage magnetul. În pauză configurezi o măsurare nouă; în rulare produci inducție. Săgeți: deplasare cu tastatura.",
     "Comutarea sursei păstrează curentul. Pas = 0,001 s; redare implicită 0,01 s simulate / s real.": "Comutarea sursei păstrează curentul. Pas = 0,001 s; redare implicită 0,01 s simulate / s real.",
     "Φ este fluxul unei spire. Tensiunea și curentul afișate sunt cele din secundar.": "Φ este fluxul unei spire. Tensiunea și curentul afișate sunt cele din secundar.",
@@ -148,6 +147,7 @@
     "Ce fac comenzile?": "Ce fac comenzile?",
     "Pornire avansează timpul și înregistrează graficele. Pauză oprește timpul. Pas avansează cu un interval mic. Reset restabilește parametrii inițiali și șterge istoricul.": "Pornire avansează timpul și înregistrează graficele. Pauză oprește timpul. Pas avansează cu un interval mic. Reset restabilește parametrii inițiali și șterge istoricul.",
     "Câmp static: trage sonda pentru a măsura în alt punct. Înregistrează urmărește măsurătorile în timp; magnetul nu se mișcă automat.": "Câmp static: trage sonda pentru a măsura în alt punct. Înregistrează urmărește măsurătorile în timp; magnetul nu se mișcă automat.",
-    "Pornire avansează simularea; Pas permite observarea schimbărilor pe rând.": "Pornire avansează simularea; Pas permite observarea schimbărilor pe rând."
+    "Pornire avansează simularea; Pas permite observarea schimbărilor pe rând.": "Pornire avansează simularea; Pas permite observarea schimbărilor pe rând.",
+    "Trage sonda sau folosește coordonatele. Săgeți: deplasare cu tastatura. Sonda ocolește magnetul; x: −0,40…0,40 m, y: −0,20…0,40 m.": "Trage sonda sau folosește coordonatele. Săgeți: deplasare cu tastatura. Sonda ocolește magnetul; x: −0,40…0,40 m, y: −0,20…0,40 m."
   }
 }

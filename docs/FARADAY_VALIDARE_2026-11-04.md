@@ -114,3 +114,11 @@ Scena reală WebGL rămâne sticky sub antet pe telefon (≤850 px), iar pe tabl
 În teste au fost corectate două suprapuneri: min-height moștenit care împiedica micșorarea canvasului în peisaj și limita coloanei vizuale care ascundea scena sub antet la ultimii parametri pe tabletă.
 
 Script nou `scripts/qa/faraday-sticky.mjs`: atinge succesiv reglajele în pickup/RL/transformator/generator și verifică numeric că întregul canvas rămâne între antet și marginea de jos a viewportului. Trecut la 390×844, 844×390, 820×1180, 1024×768 și 1180×820. Capturi locale `outputs/faraday-sticky-*.png`. Suita tactilă existentă (șapte configurații), rotirea și verificarea web/offline a celor cinci scene au trecut. Teste Chrome cu touch emulat; tastatura mobilă și hardware-ul fizic nu au fost validate.
+
+## Sondă: evitarea magnetului și extinderea deplasării
+
+Adăugat `public/shared/faraday-probe.js`: aceeași limitare pentru glisare mouse/touch, săgeți, slider și câmp numeric. Zona exclusă dreptunghiulară conservatoare include amprenta magnetului, raza sondei și un mic joc; coordonatele nu pot plasa sonda în magnet. Protecția geometrică a scenei nu modifică formula câmpului dipolar.
+
+Domeniul devine x∈[−0,40;0,40] m și y∈[−0,20;0,40] m. Camera activității Magnet și busolă este mai înclinată și încadrează zona superioară; celelalte activități își păstrează perspectiva. Planul de sprijin este extins, iar sonda și magnetul au suporturi. Explicații RO/EN actualizate.
+
+Test de grilă pentru zona exclusă și limite, plus opt teste fizice: 9/9 trecute. `scripts/qa/faraday-probe.mjs`: desktop 1600×1000, telefon 390×844 și tabletă 820×1180; coordonate numerice, tastatură, mouse/touch emulat, fără suprapunere și cu deplasare efectivă peste y=0,20 m. Arhiva offline regenerată. Hardware mobil fizic netestat.
