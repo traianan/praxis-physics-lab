@@ -142,12 +142,18 @@
   "principiul-i-aplicatii": {
     "workspaces": [
       {
-        "selector": ".grid-2:has(>.demo)",
+        "selector": ".grid-2:has(>.demo):not(#view-sinteza>.grid-2)",
         "scene": ":scope>.demo",
         "layout": "reading"
+      },
+      {
+        "selector": "#view-sinteza>.grid-2",
+        "scene": ":scope>.demo",
+        "graphs": ":scope>.prose",
+        "layout": "native"
       }
     ],
-    "reading": ".grid-2:has(>.demo)>.prose"
+    "reading": ".grid-2:has(>.demo):not(#view-sinteza>.grid-2)>.prose"
   },
   "transformari-stare-agregare": {
     "workspaces": [

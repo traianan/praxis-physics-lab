@@ -3,7 +3,7 @@ export function adaptApplicationsContent(data,lang){
  const ro=lang==='ro';
  Object.assign(data.strings,ro?{
   'cal.demo.poly':'Poliatomică neliniară',
-  'cal.rotate':'Alege axa, apoi trage molecula cu mouseul sau degetul pentru a roti cadrul rigid. Trage de originea O pentru a deplasa întregul sistem. Tastatură: săgeți pentru rotație, Alt + săgeți pentru deplasare, Home pentru resetare.',
+  'cal.rotate':'Alege axa, apoi trage molecula cu mouseul sau degetul pentru a roti numai molecula; axele păstrează direcții fixe. Trage de originea O pentru a deplasa întregul sistem. Tastatură: săgeți pentru rotație, Alt + săgeți pentru deplasare, Home pentru resetare.',
   'cal.axis':'Axa de rotație',
   'cal.resetView':'Resetează perspectiva',
   'izo.demo.v':'Volumul maxim al procesului V_max','izo.kf2':'|L| = aria',
@@ -11,14 +11,14 @@ export function adaptApplicationsContent(data,lang){
   'pol.vertical':'Diagramă verticală: V constant; dp/dV nu este finit.',
   'ad.demo.pump':'Revino la V_i',
   'cal.degrees.mono':'<strong>3 translații = 3 grade de libertate.</strong> Centrul atomului se poate deplasa independent pe Ox, Oy și Oz. Modelul monoatomic nu include rotații sau vibrații interne.',
-  'cal.degrees.di':'<strong>3 translații + 2 rotații = 5 grade de libertate.</strong> Legătura rămâne aliniată cu Ox; cadrul se poate roti numai în jurul axelor perpendiculare Oy și Oz. Rotația în jurul legăturii și vibrațiile nu sunt incluse în acest model rigid.',
+  'cal.degrees.di':'<strong>3 translații + 2 rotații = 5 grade de libertate.</strong> Inițial, legătura este aliniată cu Ox. Comenzile Oy și Oz rotesc molecula față de reperul fix; orientarea unei molecule liniare are două grade de libertate. Rotația în jurul legăturii și vibrațiile nu sunt incluse în acest model rigid.',
   'cal.degrees.poly':'<strong>3 translații + 3 rotații = 6 grade de libertate.</strong> Exemplul este o moleculă neliniară rigidă, care se poate roti în jurul a trei axe independente. O moleculă poliatomică liniară are numai două rotații relevante. Vibrațiile nu sunt incluse.',
   'ad.demo.g':'Exponentul γ (fără unitate)','ad.demo.v':'Raportul V_f/V_i (fără unitate)',
   'tab141.note':'Modelul rigid descrie aproximativ gazele monoatomice și biatomice în domeniul în care rotațiile relevante sunt active și vibrațiile sunt neglijabile. Valorile experimentale pot diferi din cauza temperaturii și a interacțiunilor moleculare.',
   'ex1411.text':'Pentru o cantitate constantă de gaz ideal care urmează procesul liniar p = kV, determinați indicele politropic n, căldura molară C și lucrul mecanic L între temperaturile T_i și T_f.'
  }:{
   'cal.demo.poly':'Nonlinear polyatomic',
-  'cal.rotate':'Choose an axis, then drag the molecule with a mouse or finger to rotate the rigid frame. Drag the origin O to move the whole system. Keyboard: arrows to rotate, Alt + arrows to move, Home to reset.',
+  'cal.rotate':'Choose an axis, then drag the molecule with a mouse or finger to rotate only the molecule; the axes keep fixed directions. Drag the origin O to move the whole system. Keyboard: arrows to rotate, Alt + arrows to move, Home to reset.',
   'cal.axis':'Rotation axis',
   'cal.resetView':'Reset view',
   'izo.demo.v':'Maximum process volume V_max','izo.kf2':'|L| = area',
@@ -26,7 +26,7 @@ export function adaptApplicationsContent(data,lang){
   'pol.vertical':'Vertical diagram: V constant; dp/dV is not finite.',
   'ad.demo.pump':'Return to V_i',
   'cal.degrees.mono':'<strong>3 translations = 3 degrees of freedom.</strong> The atom can move independently along Ox, Oy and Oz. The monatomic model includes no internal rotations or vibrations.',
-  'cal.degrees.di':'<strong>3 translations + 2 rotations = 5 degrees of freedom.</strong> The bond stays aligned with Ox; the frame rotates only about the perpendicular Oy and Oz axes. Rotation about the bond and vibrations are excluded in this rigid model.',
+  'cal.degrees.di':'<strong>3 translations + 2 rotations = 5 degrees of freedom.</strong> Initially, the bond is aligned with Ox. The Oy and Oz controls rotate the molecule relative to the fixed frame; a linear molecule has two orientational degrees of freedom. Rotation about the bond and vibrations are excluded in this rigid model.',
   'cal.degrees.poly':'<strong>3 translations + 3 rotations = 6 degrees of freedom.</strong> This example is a rigid nonlinear molecule, with three independent rotational axes. A linear polyatomic molecule has only two relevant rotations. Vibrations are excluded.',
   'ad.demo.g':'Exponent γ (dimensionless)','ad.demo.v':'Ratio V_f/V_i (dimensionless)',
   'tab141.note':'The rigid model approximates monatomic and diatomic gases when the relevant rotations are active and vibrations are negligible. Experimental values may differ because of temperature and molecular interactions.',

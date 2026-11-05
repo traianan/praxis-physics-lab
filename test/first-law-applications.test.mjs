@@ -65,13 +65,26 @@ test('isothermal compression has negative work and reverses the initial and fina
  const state=iso.draw(0);assert.ok(state.L<0);close(state.L,-2*8.314*300*Math.log(2));close(state.pf,2*state.pi);close(state.T,300);
 });
 
-test('rigid molecule and attached axes move together with two diatomic and three nonlinear rotations',async()=>{
+test('rigid molecule preserves bond lengths with two diatomic and three nonlinear rotation controls',async()=>{
  const {window:w}=await simulation(),mol=w.Sims.get('mol');mol.set('di');
  for(const axis of ['y','z']){mol.axis=axis;mol.rotate(.7);const a=mol.transform([-40,0,0]),b=mol.transform([40,0,0]),ox=mol.transform([1,0,0]);for(let n=0;n<3;n++)close(b[n]-a[n],80*ox[n]);close(Math.hypot(...b.map((v,n)=>v-a[n])),80);}
  mol.axis='x';mol.rotate(.4);assert.equal(mol.roll,0);
  const pose=[mol.yaw,mol.pitch,mol.roll];mol.translate(23,-17);assert.deepEqual([mol.yaw,mol.pitch,mol.roll],pose);assert.deepEqual({...mol.pan},{x:23,y:-17});
  mol.set('poly');const before=mol.transform([0,58,0]);mol.axis='x';mol.rotate(.5);assert.notDeepEqual(mol.transform([0,58,0]),before);close(Math.hypot(...mol.transform([0,58,0])),58);
  mol.reset();assert.deepEqual({...mol.pan},{x:0,y:0});
+});
+
+test('reference axes stay fixed while atoms rotate about the selected world axis',async()=>{
+ const {window:w}=await simulation(),mol=w.Sims.get('mol');mol.set('poly');mol.reset();
+ const project=mol.project,drawn=[];mol.project=function(point,...args){const value=project.call(this,point,...args);drawn.push({...value});return value;};
+ mol.draw(0);const axes=drawn.slice(0,3),atoms=drawn.slice(3);drawn.length=0;
+ mol.axis='y';mol.rotate(Math.PI/2);mol.draw(0);
+ assert.deepEqual(drawn.slice(0,3),axes);assert.notDeepEqual(drawn.slice(3),atoms);
+ let v=mol.transform([1,0,0]);close(v[0],0);close(v[1],0);close(v[2],-1);
+ mol.axis='x';mol.rotate(Math.PI/2);v=mol.transform([1,0,0]);
+ close(v[0],0);close(v[1],1);close(v[2],0);
+ mol.reset();v=mol.transform([1,0,0]);close(v[0],1);close(v[1],0);close(v[2],0);
+ mol.set('di');const pose=mol.transform([40,0,0]);mol.axis='x';mol.rotate(.6);assert.deepEqual(mol.transform([40,0,0]),pose);
 });
 
 test('every imported and worked-solution formula parses in the local mathematical renderer',async()=>{

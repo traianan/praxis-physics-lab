@@ -2,15 +2,22 @@
 (() => {
  function create({prepare,colors,arrow,txt}){
   return {
-   cv:null,type:'mono',yaw:.25,pitch:-.1,roll:0,axis:'y',pan:{x:0,y:0},drag:null,
+   cv:null,type:'mono',yaw:0,pitch:0,roll:0,basis:null,axis:'y',pan:{x:0,y:0},drag:null,
    data:{mono:{i:3,color:colors.cyan},di:{i:5,color:colors.gold},poly:{i:6,color:colors.violet}},
    set(type){if(this.data[type])this.type=type;if(this.type!=='poly'){this.roll=0;if(this.axis==='x')this.axis='y';}this.explain();this.controls();},
    controls(){const group=document.getElementById('moleculeAxes');if(group)group.hidden=this.type==='mono';for(const button of document.querySelectorAll('#moleculeAxes [data-axis]')){button.hidden=button.dataset.axis==='x'&&this.type!=='poly';button.setAttribute('aria-pressed',String(button.dataset.axis===this.axis));}},
    explain(){const el=document.getElementById('degreesExplanation');if(el)el.innerHTML=window.I18N.t('cal.degrees.'+this.type);},
-   rotate(dx,dy=0){if(this.type==='mono')return;const angle=dx||dy;if(this.axis==='x'&&this.type==='poly')this.roll+=angle;else if(this.axis==='z')this.pitch+=angle;else this.yaw+=angle;},
+   rotate(dx,dy=0){
+    if(this.type==='mono'||(this.axis==='x'&&this.type!=='poly'))return;
+    const angle=dx||dy,c=Math.cos(angle),s=Math.sin(angle);
+    const rotatePoint=([x,y,z])=>this.axis==='x'?[x,c*y-s*z,s*y+c*z]:this.axis==='y'?[c*x+s*z,y,-s*x+c*z]:[c*x-s*y,s*x+c*y,z];
+    this.basis=(this.basis||[[1,0,0],[0,1,0],[0,0,1]]).map(rotatePoint);
+    if(this.axis==='x')this.roll+=angle;else if(this.axis==='y')this.yaw+=angle;else this.pitch+=angle;
+   },
    translate(dx,dy){const w=+(this.cv?.dataset.logicalWidth||400),h=+(this.cv?.dataset.logicalHeight||250);this.pan.x=Math.max(24-w/2,Math.min(w/2-24,this.pan.x+dx));this.pan.y=Math.max(24-h/2,Math.min(h/2-24,this.pan.y+dy));},
-   transform([x,y,z]){const a=this.type==='poly'?this.roll:0,b=this.yaw,c=this.pitch;const Y=y*Math.cos(a)-z*Math.sin(a),Z=y*Math.sin(a)+z*Math.cos(a),X=x*Math.cos(b)+Z*Math.sin(b),z2=-x*Math.sin(b)+Z*Math.cos(b);return [X*Math.cos(c)-Y*Math.sin(c),X*Math.sin(c)+Y*Math.cos(c),z2];},
-   reset(){this.yaw=.25;this.pitch=-.1;this.roll=0;this.pan={x:0,y:0};this.draw(0);},
+   transform(point){const b=this.basis||[[1,0,0],[0,1,0],[0,0,1]];return [0,1,2].map(i=>point[0]*b[0][i]+point[1]*b[1][i]+point[2]*b[2][i]);},
+   project([x,y,z],cx,cy){return {x:cx+.86*x-.5*y,y:cy+.28*x+.48*y-.84*z,z};},
+   reset(){this.yaw=0;this.pitch=0;this.roll=0;this.basis=null;this.pan={x:0,y:0};this.draw(0);},
    init(){
     this.cv=document.getElementById('molCanvas');if(!this.cv)return;const canvas=this.cv;canvas.tabIndex=0;
     canvas.addEventListener?.('pointerdown',event=>{if(event.button!==0)return;const rect=canvas.getBoundingClientRect(),scale=+(canvas.dataset.logicalWidth||400)/rect.width,w=+(canvas.dataset.logicalWidth||400),h=+(canvas.dataset.logicalHeight||250),x=(event.clientX-rect.left)*scale,y=(event.clientY-rect.top)*scale;this.drag={id:event.pointerId,x:event.clientX,y:event.clientY,scale,mode:Math.hypot(x-w/2-this.pan.x,y-h/2-this.pan.y)<(event.pointerType==='touch'?24:16)*scale?'translate':'rotate'};canvas.setPointerCapture(event.pointerId);canvas.focus({preventScroll:true});event.preventDefault();});
@@ -22,8 +29,8 @@
    },
    draw(){
     if(!this.cv)return;const {g,w,h}=prepare(this.cv),cx=w/2+this.pan.x,cy=h*.5+this.pan.y;
-    const project=point=>{const [x,y,z]=this.transform(point);return {x:cx+.86*x-.5*y,y:cy+.28*x+.48*y-.84*z,z};};
-    for(const [point,color,label]of [[[110,0,0],colors.blue||colors.accent2,'Ox'],[[0,110,0],colors.green,'Oy'],[[0,0,110],colors.red,'Oz']]){const end=project(point);arrow(g,cx,cy,end.x,end.y,color,label);}
+    const project=point=>this.project(this.transform(point),cx,cy);
+    for(const [point,color,label]of [[[110,0,0],colors.blue||colors.accent2,'Ox'],[[0,110,0],colors.green,'Oy'],[[0,0,110],colors.red,'Oz']]){const end=this.project(point,cx,cy);arrow(g,cx,cy,end.x,end.y,color,label);}
     const coordinates=this.type==='mono'?[[0,0,0]]:this.type==='di'?[[-40,0,0],[40,0,0]]:[[0,0,0],[66,0,0],[-24,58,0]];
     const points=coordinates.map(project);g.strokeStyle=colors.text;g.lineWidth=7;g.lineCap='round';
     if(points.length>1)for(let i=1;i<points.length;i++){g.beginPath();g.moveTo(points[0].x,points[0].y);g.lineTo(points[i].x,points[i].y);g.stroke();}

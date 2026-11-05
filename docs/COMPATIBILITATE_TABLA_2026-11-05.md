@@ -29,6 +29,12 @@ Surse tehnice: [Chrome 109 — introducerea MathML Core](https://developer.chrom
 
 ## Extinderea corecției la toate graficele lecției
 
+## Sinteză și rotația moleculei
+
+„Circuitul complet” este alăturat graficului procesului pe ecrane largi; pe mobil panourile sunt suprapuse vertical, cu derulare locală a diagramelor. Axele moleculei păstrează direcții fixe. Rotațiile succesive se aplică moleculei în jurul axei selectate, păstrând distanțele interatomice. Explicațiile RO/EN și arhivele offline au fost actualizate.
+
+Verificare: 401 teste trecute, build reușit, panouri alăturate la 1366 și 1920 px, fără depășirea paginii la 390 px; rotație din tastatură cu axe nemodificate și verificare în varianta offline. Publicare solicitată explicit de utilizator.
+
 La solicitarea ulterioară a utilizatorului, limita de 640 px a standului și 560 px a desenului a fost extinsă la toate cele nouă suprafețe Canvas din Aplicații ale principiului I: molecule, valori experimentale, izocoră, izobară, izotermă, adiabatică, graficul de sinteză, distribuția căldurii și politropă. Sursa autoritativă este `public/shared/first-law-applications.css`. Formulele și modelele fizice nu au fost modificate.
 
 Verificate toate cele opt secțiuni cu desene la 3840×2160 DPR 1, 1920×1080 DPR 2, 1366×768, 1024×768 și 390×844. Pe desktop lățimile sunt 544–560 px, cu 2 mostre/pixel CSS la DPR 1 și 3 la DPR 2. Mobilul păstrează lățimile logice și derularea locală existente; fără overflow al paginii. Verificate suplimentar EN și text 200% pe mobil, precum și toate desenele din arhiva offline. Cele 8 teste specifice lecției trec; build și verificarea diff finalizate. Arhiva lecției a fost regenerată. Publicarea acestei extinderi a fost solicitată ulterior de utilizator.
