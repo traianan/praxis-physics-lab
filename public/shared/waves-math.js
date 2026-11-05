@@ -133,7 +133,7 @@
    }
    const annotation=expression.match(/\s+(?:(?:castron|bowl|xilofon|xylophone|tobă|drum)\b(?:\s+\([^)]*\))?|\([^()]*[A-Za-zÀ-žȘșȚț]{4,}[^()]*\))\.?$/iu);
    if(annotation&&!/\b(?:sin|cos|tanh|sinh|cosh|exp|log)\b/.test(annotation[0])){suffix=annotation[0]+suffix;expression=expression.slice(0,annotation.index);}
-   try{return (prefix?'<span class="wave-math-prose">'+htmlProse(prefix)+'</span>':'')+'<span class="wave-math-item">'+window.katex.renderToString('\\displaystyle '+toTex(expression),{throwOnError:true,strict:'ignore',trust:false,output:'mathml'})+'</span>'+(suffix?'<span class="wave-math-prose">'+htmlProse(suffix.trim())+'</span>':'');}
+   try{return (prefix?'<span class="wave-math-prose">'+htmlProse(prefix)+'</span>':'')+'<span class="wave-math-item">'+(window.PraxisRenderMath||window.katex.renderToString)('\\displaystyle '+toTex(expression),{throwOnError:true,strict:'ignore',trust:false,output:'mathml'})+'</span>'+(suffix?'<span class="wave-math-prose">'+htmlProse(suffix.trim())+'</span>':'');}
    catch(error){return '<span class="wave-math-error" role="alert" title="'+htmlEscape(error.message).replaceAll('"','&quot;')+'">'+htmlEscape(part)+'</span>';}
   }).join('');
  }

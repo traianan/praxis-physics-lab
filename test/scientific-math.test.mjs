@@ -6,6 +6,27 @@ async function setup(){
  const window={addEventListener(){},PraxisI18n:{language:'ro',tr:s=>s}},document={readyState:'loading',addEventListener(){}};
  vm.runInNewContext(await scientificMathRuntime(),{window,document,Set,WeakMap});return window;
 }
+
+test('modern MathML output remains byte-for-byte identical and loads no fallback stylesheet',async()=>{
+ const w=await setup(),source=String.raw`pV^{1,00}=\mathrm{const.}`;
+ const result=w.PraxisMath.tex(source);
+ assert.equal(result,w.katex.renderToString(source,{throwOnError:true,strict:'ignore',trust:false,output:'mathml',displayMode:false}));
+ assert.ok(!result.includes('praxis-math-fallback'));
+});
+
+test('missing MathML layout uses local HTML mathematics with embedded fonts, once per document',async()=>{
+ const styles=[],window={addEventListener(){},PraxisI18n:{language:'ro',tr:s=>s}};
+ const element=()=>({style:{},setAttribute(){},appendChild(){},remove(){},getBoundingClientRect(){return {width:0,height:0};}});
+ const document={readyState:'loading',addEventListener(){},createElement:element,createElementNS:element,documentElement:element(),head:{appendChild:s=>styles.push(s)}};
+ vm.runInNewContext(await scientificMathRuntime(),{window,document,Set,WeakMap});
+ assert.equal(window.PraxisMathCompatibility.supportsMathML(),false);
+ for(const formula of [String.raw`pV^{1,00}=\mathrm{const.}`,String.raw`\displaystyle p=kV`,String.raw`\frac{Q}{\nu\Delta T}`]){
+  const html=window.PraxisMath.tex(formula);assert.match(html,/praxis-math-fallback/);assert.match(html,/katex-html/);assert.match(html,/katex-mathml/);assert.doesNotMatch(html,/science-math-error/);
+ }
+ assert.match(window.PraxisMath.render('p = kV'),/praxis-math-fallback/);
+ assert.equal(styles.length,1);assert.match(styles[0].textContent,/data:font\/woff2;base64,/);
+ assert.doesNotMatch(styles[0].textContent,/url\(fonts\//);
+});
 test('common math uses a local lazy engine and preserves healthy renderers',async()=>{
  const w=await setup();assert.equal(w.katex,undefined);
  const html=w.PraxisMath.render('a = ΣF/m');assert.ok(w.katex);assert.ok(html.includes('<mfrac>'));
