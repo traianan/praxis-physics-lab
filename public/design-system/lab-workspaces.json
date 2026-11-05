@@ -142,18 +142,18 @@
   "principiul-i-aplicatii": {
     "workspaces": [
       {
-        "selector": ".grid-2:has(>.demo):not(#view-sinteza>.grid-2)",
+        "selector": ".grid-2:has(>.demo):not(#view-sinteza>.grid-2,#view-tabel141>.grid-2)",
         "scene": ":scope>.demo",
         "layout": "reading"
       },
       {
-        "selector": "#view-sinteza>.grid-2",
+        "selector": "#view-sinteza>.grid-2,#view-tabel141>.grid-2",
         "scene": ":scope>.demo",
         "graphs": ":scope>.prose",
         "layout": "native"
       }
     ],
-    "reading": ".grid-2:has(>.demo):not(#view-sinteza>.grid-2)>.prose"
+    "reading": ".grid-2:has(>.demo):not(#view-sinteza>.grid-2,#view-tabel141>.grid-2)>.prose"
   },
   "transformari-stare-agregare": {
     "workspaces": [
