@@ -16,3 +16,4 @@ sources/
 *.keystore
 __pycache__/
 *.pyc
+.vercel
