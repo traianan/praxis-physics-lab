@@ -1,0 +1,96 @@
+/* Shared Praxis surfaces; scientific canvases retain their dark observation field. */
+body[data-praxis-course="pendulul-gravitational"]{background:var(--praxis-color-background,#F7F5EE)}
+body[data-praxis-course="pendulul-gravitational"] *,body[data-praxis-course="pendulul-gravitational"] *::before,body[data-praxis-course="pendulul-gravitational"] *::after{box-sizing:border-box}
+body[data-praxis-course="pendulul-gravitational"] .praxis-lab-nav{margin-inline:0!important;width:100%;flex-wrap:wrap}
+body[data-praxis-course="pendulul-gravitational"] .praxis-lab-nav svg{width:18px;height:18px;flex:none}
+body[data-praxis-course="pendulul-gravitational"] .praxis-lab-nav .tab-btn{display:inline-flex;align-items:center;gap:8px}
+#praxis-original{--bg-0:#F7F5EE;--bg-1:#FFFEFA;--panel:#FFFEFA;--panel-solid:#FFFEFA;--panel-2:#edf3e9;--line:#d2ded2;--line-strong:#a6bcae;--text:#18332F;--muted:#586D63;--dim:#586D63;--cyan:#176c7b;--violet:#7156a5;--teal:#237c63;--amber:#9b660b;--rose:#ae4556;--green:#28774d;--grad:linear-gradient(135deg,#C5E8A5,#d9edc5);--grad-soft:#edf3e9;--shadow:0 4px 18px #18332f0a;--radius:14px;--radius-sm:10px;max-width:1800px;margin:auto;padding:8px 16px 24px;font-size:1rem;color:var(--text)}
+#praxis-original .card,#praxis-original .modal-box{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+#praxis-original .card{padding:0}
+body[data-praxis-course="pendulul-gravitational"] #praxis-original .card{padding:0}
+#praxis-original [hidden]{display:none!important}
+#praxis-original .card-h h3{flex:1 0 auto;overflow-wrap:normal}
+#praxis-original .card-h{flex-wrap:wrap}
+#praxis-original .chart-tools button{min-width:54px;overflow-wrap:normal!important}
+body[data-praxis-course="pendulul-gravitational"] #praxis-original .chart-tools{display:flex;flex-wrap:wrap;max-width:100%;min-width:0}
+body[data-praxis-course="pendulul-gravitational"] #praxis-original .chart-tools button{flex:0 0 auto;width:auto;min-width:max-content;max-width:none;padding:8px 12px;white-space:nowrap;overflow-wrap:normal}
+#praxis-original .tbl td[style*="color"]{color:var(--text)!important}
+#praxis-original .side .card-h .ico,#praxis-original .stage-h .ico,#praxis-original .data .card-h .ico{display:none}
+#praxis-original .mini-label{display:none}
+#praxis-original :is(.sec p,.sec strong,.sec ul,.sec ol,.note,.kv dd,.glo div,.glo b,.tbl td,.tbl td.num,.data-tbl td,.fit-card .v,.fit-card .v small,.modal-b p,.modal-b li,.modal-b h4,.chip,.chip.v,.chip.t,.chip.a){color:var(--text)}
+#praxis-original :is(.formula,.note,.glo>div,.fit-card,.data-tbl th,.modal-h){background:#edf3e9;color:var(--text)}
+#praxis-original .frac .num,#praxis-original .sqrt{border-color:currentColor}
+body[data-praxis-course="pendulul-gravitational"] #praxis-original .formula{font-size:1rem!important;gap:12px 24px;padding:14px 16px;line-height:1.5}
+body[data-praxis-course="pendulul-gravitational"] #praxis-original .pendulum-equation,body[data-praxis-course="pendulul-gravitational"] #praxis-original .pendulum-equation math{font-size:1em!important}
+#praxis-original .formula .tag{flex-basis:100%;font:500 .8rem/1.4 var(--praxis-font-ui);text-transform:none;letter-spacing:normal;margin:0;color:var(--muted)}
+#praxis-original .figure{background:#080e1c}
+#praxis-original .figure figcaption{background:#edf3e9;color:var(--text)}
+#praxis-original .sec-num{display:none}
+body[data-praxis-course="pendulul-gravitational"] #praxis-original .sec,body[data-praxis-course="pendulul-gravitational"] #praxis-original .toc{padding:16px}
+#praxis-original .modal-h .x{width:44px;height:44px}
+#praxis-original .data-tbl tbody tr:hover td{color:var(--text)}
+#praxis-original .run-badge{color:var(--text)}
+@media(max-width:750px){#praxis-original .kv{grid-template-columns:minmax(0,1fr)}#praxis-original .kv dd{margin-bottom:8px}#praxis-original .grid-2,#praxis-original .glo{grid-template-columns:minmax(0,1fr)}}
+#praxis-original .stage-foot{background:var(--panel)}
+#praxis-original .ctl label,#praxis-original .ctl-top,#praxis-original .val,#praxis-original .mini-label,#praxis-original .switch-row .lbl,#praxis-original .sec-head h2{color:var(--text)}
+#praxis-original .val{background:#edf3e9;border-color:var(--line);margin-left:auto}
+#praxis-original .val{min-width:7.5em;text-align:right;font-variant-numeric:tabular-nums}
+#praxis-original .stage-top .pill{flex:0 0 auto;justify-content:space-between;white-space:nowrap;font-variant-numeric:tabular-nums}
+#praxis-original .stage-top .pill:nth-child(1){width:12ch}
+#praxis-original .stage-top .pill:nth-child(2){width:15ch}
+#praxis-original .stage-top .pill:nth-child(3){width:13ch}
+#praxis-original .stage-top .pill b{font-variant-numeric:tabular-nums;text-align:right}
+#praxis-original #statePill{width:8.5rem;justify-content:center;flex:none}
+#praxis-original kbd{background:#edf3e9;color:#18332F;border:1px solid #849e8d;border-bottom-width:2px;font:600 .9rem/1.4 ui-monospace,Consolas,monospace;padding:2px 6px;border-radius:5px}
+#praxis-original .pendulum-measurement{display:flex;align-items:center;justify-content:center;min-height:2.8rem;padding:6px 12px;line-height:1.3;color:#18332F;background:#edf3e9;border-top:1px solid var(--line);font-variant-numeric:tabular-nums;text-align:center}
+#praxis-original .stage-wrap .pill b{background:transparent}
+#praxis-original .chart{background:#080e1c;border-radius:8px}
+#praxis-original .card-h{padding:8px 12px;min-height:44px;background:#edf3e9}
+#praxis-original .card-b{padding:10px 12px}
+#praxis-original .btn,#praxis-original .mini-btn{min-height:44px;min-width:44px;background:#FFFEFA;color:#103F3B;border:1px solid var(--line-strong);border-radius:10px;white-space:normal}
+#praxis-original .btn-primary{background:#103F3B;color:#fff}
+#praxis-original .btn-teal{background:#C5E8A5;color:#103F3B}
+#praxis-original select,#praxis-original input[type=number]{background:#FFFEFA;color:#18332F;border-color:var(--line-strong);max-width:100%;min-height:44px}
+#praxis-original .lab-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(285px,330px);grid-template-areas:"stage side" "data side" "tasks tasks";gap:12px;align-items:start}
+#praxis-original .side{display:flex;gap:10px}
+#praxis-original .data{display:block;min-width:0}
+#praxis-original .pendulum-command-legend{margin-top:10px}
+#praxis-original .pendulum-command-legend dl{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:8px 12px;margin:0;padding:12px;font-size:.9rem;line-height:1.45}
+#praxis-original .pendulum-command-legend dt{font-weight:650;color:var(--text)}
+#praxis-original .pendulum-command-legend dd{margin:0;color:var(--muted)}
+@media(max-width:500px){#praxis-original .pendulum-command-legend dl{grid-template-columns:minmax(0,1fr);gap:4px}#praxis-original .pendulum-command-legend dd{margin-bottom:8px}}
+#praxis-original .stage{min-width:0}
+#praxis-original #sketch{height:clamp(250px,32vh,430px);min-height:250px}
+#praxis-original .chart{height:190px;width:100%;display:block}
+#praxis-original .stage-wrap{border-radius:0;background:#080e1c;color:#e9eefb}
+#praxis-original .stage-wrap .pill{background:#0d1526;color:#cbd5e1;border-color:#536075}
+#praxis-original .stage-wrap .pill b{color:white}
+#praxis-original .stage-legend{color:#dbe4f5;font-size:.8rem}
+#praxis-original .stage-foot{padding:6px 10px;gap:6px;flex-wrap:wrap}
+#praxis-original .stage-foot .hint{flex-basis:100%;margin:0;font-size:.8rem}
+#praxis-original .ctl{margin-bottom:4px}
+#praxis-original .ctl-top{margin-bottom:0}
+#praxis-original .ticks{display:none}
+#praxis-original .ctl input[type=range]{height:32px}
+#praxis-original .ro{background:#edf3e9;border-color:var(--line);padding:8px}
+#praxis-original .ro .v{font-size:1.15rem;color:var(--text)}
+#praxis-original .ro .k,#praxis-original .ro small{color:var(--muted)}
+#praxis-original .pill,#praxis-original .pill b{color:var(--text);background:#edf3e9}
+#praxis-original .chart-tools{display:flex;flex-wrap:wrap}
+#praxis-original .chart-tools button{min-width:44px;min-height:44px;color:var(--text)}
+#praxis-original .chart-tools button.active{background:#103F3B;color:white}
+#praxis-original .pendulum-help{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-bottom:8px;font-size:.85rem}
+#praxis-original details{margin-top:8px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+#praxis-original summary{padding:10px 12px;cursor:pointer;font-weight:600;min-height:44px}
+#praxis-original .theory-grid{grid-template-columns:240px minmax(0,1fr)}
+#praxis-original .toc{top:150px}
+#praxis-original .sec-num,#praxis-original .callout,#praxis-original .formula-box,#praxis-original .task{color:var(--text);background:#edf3e9;border-color:var(--line)}
+#praxis-original .site-foot{color:var(--muted);flex-wrap:wrap}
+#praxis-original .modal.open{z-index:1000}
+#praxis-original .modal-box{max-height:85vh;overflow:auto}
+#praxis-original :focus-visible{outline:3px solid #b88420;outline-offset:3px}
+#praxis-original .tbl-wrap{max-width:100%;overflow-x:auto}
+@media(min-width:1500px){#praxis-original .lab-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) 330px;grid-template-areas:"stage data side" "tasks tasks tasks"}#praxis-original #sketch{height:clamp(350px,48vh,580px)}#praxis-original .chart{height:300px}}
+@media(min-width:1000px) and (max-width:1499px){#praxis-original .lab-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) 270px;grid-template-areas:"stage data side" "tasks tasks tasks"}#praxis-original #sketch{height:300px}#praxis-original .chart{height:250px}#praxis-original .stage-legend{position:static;display:flex;flex-wrap:wrap}#praxis-original .stage-overlay{position:static;background:#080e1c}#praxis-original .stage-wrap{display:flex;flex-direction:column-reverse}#praxis-original .stage-top{display:flex}#praxis-original .chart-tools{gap:2px}}
+@media(max-width:750px){#praxis-original{padding:8px}#praxis-original .lab-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"stage" "data" "side" "tasks"}#praxis-original .theory-grid{grid-template-columns:minmax(0,1fr)}#praxis-original .toc{position:static}#praxis-original .card-h{flex-wrap:wrap}#praxis-original .stage-legend{position:static}#praxis-original .stage-overlay{position:static;background:#080e1c}#praxis-original .stage-top{order:-1}#praxis-original .pendulum-help{justify-content:flex-start;flex-wrap:wrap}#praxis-original .stage-wrap{display:flex;flex-direction:column-reverse}#praxis-original #tasksList{grid-template-columns:minmax(0,1fr)!important}}
+html[style*="32px"] #praxis-original .lab-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"stage" "data" "side" "tasks"}

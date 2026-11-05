@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pendulul gravitational · Teorie &amp; Laborator</title>
+<meta name="description" content="Aplicație interactivă pentru liceu: teoria pendulului gravitational și laborator virtual cu simulare, grafice și măsurători. Funcționează offline.">
+<meta name="theme-color" content="#060911">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a1020'/%3E%3Cpath d='M16 6v14' stroke='%2338bdf8' stroke-width='2'/%3E%3Ccircle cx='16' cy='23' r='5' fill='%232dd4bf'/%3E%3C/svg%3E">
+<style>
+/* ============================================================
+   PENDULUL GRAVITAȚIONAL — design system
+   ============================================================ */
+:root{
+  --bg-0:#05070d;
+  --bg-1:#0a1020;
+  --panel:rgba(13,21,38,.82);
+  --panel-solid:#0d1526;
+  --panel-2:#111c30;
+  --line:rgba(148,163,184,.16);
+  --line-strong:rgba(148,163,184,.32);
+  --text:#e9eefb;
+  --muted:#98a7be;
+  --dim:#6b7a92;
+  --cyan:#38bdf8;
+  --violet:#a78bfa;
+  --teal:#2dd4bf;
+  --amber:#fbbf24;
+  --rose:#fb7185;
+  --green:#34d399;
+  --grad:linear-gradient(135deg,#38bdf8 0%,#a78bfa 100%);
+  --grad-soft:linear-gradient(135deg,rgba(56,189,248,.16),rgba(167,139,250,.16));
+  --radius:18px;
+  --radius-sm:11px;
+  --shadow:0 30px 70px -32px rgba(2,6,23,.95),0 2px 10px rgba(0,0,0,.35);
+  --font:"Inter","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#05070d}
+body{
+  margin:0;font-family:var(--font);color:var(--text);
+  background:
+    radial-gradient(1100px 620px at 12% -10%,rgba(56,189,248,.14),transparent 60%),
+    radial-gradient(900px 560px at 88% 0%,rgba(167,139,250,.13),transparent 62%),
+    radial-gradient(800px 500px at 50% 110%,rgba(45,212,191,.08),transparent 60%),
+    linear-gradient(180deg,#05070d 0%,#070b15 45%,#05070d 100%);
+  background-attachment:fixed;
+  min-height:100vh;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  font-size:15px;line-height:1.6;
+}
+h1,h2,h3,h4{margin:0;line-height:1.25;letter-spacing:-.015em;font-weight:700}
+p{margin:0 0 .8em}
+a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(56,189,248,.3)}
+a:hover{color:#7dd3fc;border-bottom-color:#7dd3fc}
+code,kbd{font-family:var(--mono);font-size:.88em}
+kbd{background:rgba(148,163,184,.14);border:1px solid var(--line-strong);border-bottom-width:2px;border-radius:5px;padding:1px 6px;font-size:.78em;color:#cbd5e1}
+::selection{background:rgba(56,189,248,.3)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(148,163,184,.22);border-radius:99px;border:2px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background:rgba(148,163,184,.4);background-clip:padding-box}
+
+/* ---------- topbar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:12px clamp(14px,3vw,34px);
+  background:rgba(6,11,22,.72);
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{
+  width:42px;height:42px;border-radius:13px;flex:none;
+  background:var(--grad);
+  display:grid;place-items:center;
+  box-shadow:0 10px 26px -10px rgba(56,189,248,.85),inset 0 1px 0 rgba(255,255,255,.35);
+}
+.brand-mark svg{width:24px;height:24px}
+.brand-txt h1{font-size:1.06rem;letter-spacing:-.02em}
+.brand-txt h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand-txt p{margin:0;font-size:.72rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.tabs{
+  display:flex;gap:4px;padding:5px;border-radius:14px;
+  background:rgba(255,255,255,.045);border:1px solid var(--line);
+  margin-left:auto;
+}
+.tab-btn{
+  font:inherit;font-size:.86rem;font-weight:600;color:var(--muted);
+  background:none;border:0;padding:8px 16px;border-radius:10px;cursor:pointer;
+  transition:.22s;display:flex;align-items:center;gap:7px;white-space:nowrap;
+}
+.tab-btn svg{width:15px;height:15px;opacity:.8}
+.tab-btn:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.tab-btn.active{color:#04121f;background:var(--grad);box-shadow:0 8px 22px -10px rgba(56,189,248,.9)}
+.top-actions{display:flex;align-items:center;gap:8px}
+.badge-offline{
+  display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:600;
+  padding:6px 11px;border-radius:99px;color:#a7f3d0;
+  background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.28);
+}
+.dot-live{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.7);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.55)}70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+
+/* ---------- buttons ---------- */
+.btn{
+  font:inherit;font-size:.85rem;font-weight:650;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 16px;border-radius:11px;border:1px solid var(--line-strong);
+  background:rgba(255,255,255,.05);color:var(--text);
+  transition:transform .16s,background .2s,border-color .2s,box-shadow .2s;
+}
+.btn svg{width:16px;height:16px}
+.btn:hover{background:rgba(255,255,255,.1);border-color:rgba(148,163,184,.5);transform:translateY(-1px)}
+.btn:active{transform:translateY(0) scale(.985)}
+.btn:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.btn-primary{background:var(--grad);border-color:transparent;color:#04121f;box-shadow:0 14px 30px -16px rgba(56,189,248,.95)}
+.btn-primary:hover{box-shadow:0 18px 36px -16px rgba(56,189,248,1);background:var(--grad)}
+.btn-teal{background:linear-gradient(135deg,#34d399,#2dd4bf);border-color:transparent;color:#03231d;box-shadow:0 14px 30px -16px rgba(45,212,191,.9)}
+.btn-ghost{background:transparent}
+.btn-sm{padding:7px 12px;font-size:.78rem;border-radius:9px}
+.btn-icon{padding:9px;border-radius:10px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+
+/* ---------- generic panels ---------- */
+.wrap{max-width:1560px;margin:0 auto;padding:clamp(14px,2.4vw,30px)}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  overflow:hidden;
+}
+.card-h{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 16px;border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.045),transparent);
+}
+.card-h h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:#c7d2e4;font-weight:700}
+.card-h .ico{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:var(--grad-soft);border:1px solid var(--line);flex:none}
+.card-h .ico svg{width:14px;height:14px;color:var(--cyan)}
+.card-h .spacer{margin-left:auto}
+.card-b{padding:16px}
+.card-b.tight{padding:12px}
+.hint{font-size:.78rem;color:var(--dim);line-height:1.5}
+
+/* ---------- theory ---------- */
+.theory-grid{display:grid;grid-template-columns:250px minmax(0,1fr);gap:22px;align-items:start}
+.toc{position:sticky;top:82px;padding:14px}
+.toc h4{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);margin:0 0 10px 8px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc li{counter-increment:toc}
+.toc a{
+  display:flex;gap:10px;align-items:baseline;padding:8px 10px;border-radius:9px;
+  font-size:.855rem;color:var(--muted);border:0;transition:.18s;
+}
+.toc a::before{
+  content:counter(toc,decimal-leading-zero);font-family:var(--mono);font-size:.7rem;
+  color:var(--dim);flex:none;
+}
+.toc a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+.toc a.active{background:var(--grad-soft);color:#fff;box-shadow:inset 0 0 0 1px rgba(56,189,248,.28)}
+.toc a.active::before{color:var(--cyan)}
+.theory-body{display:flex;flex-direction:column;gap:20px;min-width:0}
+.sec{padding:clamp(18px,2.4vw,30px);scroll-margin-top:92px}
+.sec-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+.sec-num{
+  flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+  font-family:var(--mono);font-size:.9rem;font-weight:700;color:#04121f;background:var(--grad);
+  box-shadow:0 12px 26px -14px rgba(56,189,248,.9);
+}
+.sec-head h2{font-size:1.24rem}
+.sec-head .sub{font-size:.8rem;color:var(--dim);margin-top:2px}
+.sec p{color:#c8d4e6;font-size:.945rem}
+.sec strong{color:#fff}
+.sec ul,.sec ol{color:#c8d4e6;font-size:.945rem;padding-left:20px;margin:.5em 0 1em}
+.sec li{margin:.32em 0}
+.sec li::marker{color:var(--cyan)}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.note{
+  display:flex;gap:12px;padding:14px 16px;border-radius:13px;
+  background:linear-gradient(135deg,rgba(56,189,248,.09),rgba(167,139,250,.07));
+  border:1px solid rgba(56,189,248,.22);font-size:.9rem;color:#d6e2f2;
+}
+.note .ni{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--cyan);color:#04121f;font-weight:800;font-size:.75rem;margin-top:1px}
+.note.warn{background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(251,113,133,.07));border-color:rgba(251,191,36,.28)}
+.note.warn .ni{background:var(--amber)}
+.note.tip{background:linear-gradient(135deg,rgba(45,212,191,.1),rgba(56,189,248,.06));border-color:rgba(45,212,191,.26)}
+.note.tip .ni{background:var(--teal)}
+.note p{margin:0}
+.formula{
+  display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;
+  padding:20px;border-radius:14px;margin:14px 0;
+  background:
+    radial-gradient(420px 120px at 50% 0%,rgba(56,189,248,.12),transparent 70%),
+    rgba(6,11,22,.62);
+  border:1px solid var(--line);
+  font-family:var(--mono);font-size:1.22rem;color:#eaf3ff;letter-spacing:.01em;
+  text-align:center;
+}
+.formula .big{font-size:1.5rem}
+.formula .tag{font-size:.66rem;font-family:var(--font);text-transform:uppercase;letter-spacing:.12em;color:var(--dim);display:block;margin-top:6px;font-weight:700}
+.formula sup,.formula sub{font-size:.62em}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.92em;line-height:1.15}
+.frac .num{border-bottom:1.5px solid rgba(226,232,240,.65);padding:0 .28em}
+.frac .den{padding:0 .28em}
+.sqrt{border-top:1.6px solid rgba(226,232,240,.8);padding:0 .16em}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.88rem;margin:10px 0}
+.kv dt{color:var(--cyan);font-family:var(--mono);font-size:.84rem;white-space:nowrap}
+.kv dd{margin:0;color:#c2cfe2}
+table.tbl{width:100%;border-collapse:collapse;font-size:.86rem;margin:12px 0}
+table.tbl th{text-align:left;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding:8px 10px;border-bottom:1px solid var(--line-strong)}
+table.tbl td{padding:8px 10px;border-bottom:1px solid rgba(148,163,184,.09);color:#c8d4e6}
+table.tbl tr:last-child td{border-bottom:0}
+table.tbl tbody tr:hover td{background:rgba(56,189,248,.05)}
+table.tbl td.num{font-family:var(--mono);color:#dbeafe;text-align:right}
+.figure{
+  border-radius:14px;border:1px solid var(--line);overflow:hidden;
+  background:radial-gradient(500px 260px at 50% 0%,rgba(56,189,248,.09),transparent 65%),rgba(6,11,22,.55);
+  margin:14px 0;
+}
+.figure svg{display:block;width:100%;max-width:660px;height:auto;margin:0 auto}
+.figure figcaption{font-size:.76rem;color:var(--dim);padding:9px 14px;border-top:1px solid var(--line);text-align:center}
+.glo{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:8px}
+.glo div{padding:11px 14px;border-radius:11px;background:rgba(255,255,255,.035);border:1px solid var(--line);font-size:.86rem;color:#c2cfe2}
+.glo b{display:block;color:#fff;font-size:.88rem;margin-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{
+  font-size:.76rem;font-weight:600;padding:5px 11px;border-radius:99px;
+  background:rgba(56,189,248,.1);color:#7dd3fc;border:1px solid rgba(56,189,248,.22);
+}
+.chip.v{background:rgba(167,139,250,.12);color:#c4b5fd;border-color:rgba(167,139,250,.26)}
+.chip.t{background:rgba(45,212,191,.1);color:#5eead4;border-color:rgba(45,212,191,.24)}
+.chip.a{background:rgba(251,191,36,.1);color:#fcd34d;border-color:rgba(251,191,36,.24)}
+
+/* ---------- lab layout ---------- */
+.lab-grid{
+  display:grid;gap:16px;
+  grid-template-columns:minmax(0,1fr) 372px;
+  grid-template-areas:"stage side" "data data";
+  align-items:start;
+}
+.stage{grid-area:stage}
+.side{grid-area:side;display:flex;flex-direction:column;gap:16px;min-width:0}
+.data{grid-area:data;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px}
+@media (max-width:1180px){
+  .lab-grid{grid-template-columns:1fr;grid-template-areas:"stage" "side" "data"}
+  .side{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
+  .data{grid-template-columns:1fr}
+}
+@media (max-width:900px){.theory-grid{grid-template-columns:1fr}.toc{position:static}}
+
+/* stage */
+.stage-wrap{position:relative;background:
+  radial-gradient(700px 340px at 50% 0%,rgba(56,189,248,.1),transparent 65%),
+  linear-gradient(180deg,#080e1c,#05080f);
+}
+#sketch{display:block;width:100%;height:min(58vh,520px);min-height:330px;touch-action:none;cursor:grab}
+#sketch.dragging{cursor:grabbing}
+.stage-overlay{position:absolute;inset:0;pointer-events:none;padding:12px;display:flex;flex-direction:column;gap:8px}
+.stage-top{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.pill{
+  pointer-events:auto;font-size:.72rem;font-weight:650;letter-spacing:.02em;
+  padding:5px 10px;border-radius:99px;color:#cbd5e1;
+  background:rgba(9,15,28,.72);border:1px solid var(--line-strong);
+  backdrop-filter:blur(8px);display:inline-flex;gap:6px;align-items:center;
+}
+.pill b{color:#fff;font-family:var(--mono);font-weight:600}
+.pill.live{border-color:rgba(52,211,153,.4);color:#a7f3d0}
+.stage-top .right{margin-left:auto;display:flex;gap:6px;pointer-events:auto}
+.mini-btn{
+  pointer-events:auto;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+  background:rgba(9,15,28,.75);border:1px solid var(--line-strong);color:var(--muted);cursor:pointer;transition:.18s;
+}
+.mini-btn svg{width:15px;height:15px}
+.mini-btn:hover{color:#fff;background:rgba(56,189,248,.16);border-color:rgba(56,189,248,.5)}
+.mini-btn.on{color:#04121f;background:var(--grad);border-color:transparent}
+.stage-legend{
+  margin-top:auto;display:flex;gap:14px;flex-wrap:wrap;font-size:.72rem;color:var(--dim);
+}
+.stage-legend span{display:inline-flex;align-items:center;gap:6px}
+.stage-legend i{width:9px;height:9px;border-radius:50%;display:block}
+.stage-foot{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--line);background:rgba(8,13,24,.7)}
+.stage-foot .hint{margin-left:auto;text-align:right}
+
+/* readouts */
+.readout-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:400px){.readout-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ro{
+  padding:9px 11px;border-radius:10px;background:rgba(255,255,255,.035);
+  border:1px solid var(--line);min-width:0;
+}
+.ro .k{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ro .v{font-family:var(--mono);font-size:.95rem;color:#f1f6ff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ro .v small{font-size:.62rem;color:var(--dim);font-family:var(--font);margin-left:2px}
+.ro.c1 .v{color:#7dd3fc}.ro.c2 .v{color:#c4b5fd}.ro.c3 .v{color:#5eead4}.ro.c4 .v{color:#fcd34d}
+
+/* sliders */
+.ctl{margin-bottom:14px}
+.ctl:last-child{margin-bottom:0}
+.ctl-top{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.ctl-top label{font-size:.8rem;font-weight:650;color:#dbe6f5;display:flex;align-items:center;gap:7px}
+.ctl-top label .sym{font-family:var(--mono);color:var(--cyan);font-size:.8rem}
+.ctl-top .val{
+  margin-left:auto;font-family:var(--mono);font-size:.78rem;color:#fff;
+  background:rgba(56,189,248,.14);border:1px solid rgba(56,189,248,.28);
+  padding:2px 8px;border-radius:7px;min-width:74px;text-align:center;font-variant-numeric:tabular-nums;
+}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:22px;background:transparent;cursor:pointer;margin:0;display:block;
+}
+input[type=range]::-webkit-slider-runnable-track{
+  height:6px;border-radius:99px;
+  background:linear-gradient(90deg,var(--cyan) 0%,var(--violet) var(--p,50%),rgba(148,163,184,.2) var(--p,50%));
+}
+input[type=range]::-moz-range-track{height:6px;border-radius:99px;background:rgba(148,163,184,.2)}
+input[type=range]::-moz-range-progress{height:6px;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--violet))}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:17px;height:17px;margin-top:-5.5px;border-radius:50%;
+  background:#fff;border:3px solid #0a1020;box-shadow:0 0 0 1.5px rgba(56,189,248,.9),0 6px 14px -4px rgba(56,189,248,.9);
+  transition:transform .15s;
+}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #0a1020;box-shadow:0 0 0 1.5px rgba(56,189,248,.9)}
+input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.13)}
+input[type=range]:focus-visible{outline:2px solid rgba(56,189,248,.6);outline-offset:4px;border-radius:99px}
+input[type=range]:disabled{opacity:.42;cursor:not-allowed}
+.ticks{display:flex;justify-content:space-between;font-size:.64rem;color:var(--dim);font-family:var(--mono);margin-top:1px}
+
+/* segmented */
+.seg{display:flex;gap:3px;padding:3px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.seg button{
+  flex:1;font:inherit;font-size:.74rem;font-weight:650;padding:7px 6px;border:0;border-radius:8px;
+  background:none;color:var(--muted);cursor:pointer;transition:.18s;white-space:nowrap;
+}
+.seg button:hover{color:#fff;background:rgba(255,255,255,.06)}
+.seg button.active{background:rgba(56,189,248,.9);color:#04121f;box-shadow:0 6px 16px -8px rgba(56,189,248,.9)}
+
+/* switches */
+.switch-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(148,163,184,.08);font-size:.84rem;color:#c8d4e6;cursor:pointer}
+.switch-row:last-child{border-bottom:0}
+.switch-row .lbl{flex:1;min-width:0}
+.switch-row .lbl small{display:block;color:var(--dim);font-size:.7rem;line-height:1.35}
+.sw{position:relative;width:38px;height:21px;border-radius:99px;background:rgba(148,163,184,.22);flex:none;transition:.24s;border:1px solid rgba(148,163,184,.2)}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;background:#fff;transition:.24s cubic-bezier(.34,1.56,.64,1)}
+input[type=checkbox]{position:absolute;opacity:0;pointer-events:none}
+input:checked + .sw{background:linear-gradient(135deg,var(--cyan),var(--violet));border-color:transparent;box-shadow:0 0 18px -4px rgba(56,189,248,.65)}
+input:checked + .sw::after{transform:translateX(17px)}
+input:focus-visible + .sw{outline:2px solid var(--cyan);outline-offset:3px}
+
+/* select */
+select{
+  font:inherit;font-size:.82rem;color:#e9eefb;width:100%;padding:9px 11px;border-radius:10px;
+  background:rgba(255,255,255,.05) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4.5 6 8.5 10 4.5' stroke='%2398a7be' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 11px center;
+  border:1px solid var(--line-strong);appearance:none;-webkit-appearance:none;cursor:pointer;transition:.18s;
+}
+select:hover{border-color:rgba(56,189,248,.5);background-color:rgba(56,189,248,.06)}
+select:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+select option{background:#0d1526;color:#e9eefb}
+
+/* chart */
+.chart-tools{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+canvas.chart{display:block;width:100%;height:288px}
+.chart-empty{display:grid;place-items:center;height:100%;color:var(--dim);font-size:.82rem;text-align:center;padding:20px}
+
+/* table */
+.tbl-wrap{max-height:340px;overflow:auto;border-radius:12px;border:1px solid var(--line)}
+table.data-tbl{width:100%;border-collapse:collapse;font-size:.8rem;font-variant-numeric:tabular-nums}
+table.data-tbl thead th{
+  position:sticky;top:0;z-index:2;background:#0c1424;text-align:right;
+  font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
+  padding:9px 8px;border-bottom:1px solid var(--line-strong);font-weight:700;white-space:nowrap;
+}
+table.data-tbl thead th:first-child,table.data-tbl tbody td:first-child{text-align:left}
+table.data-tbl td{padding:7px 8px;text-align:right;font-family:var(--mono);border-bottom:1px solid rgba(148,163,184,.07);color:#c8d4e6;white-space:nowrap}
+table.data-tbl tbody tr:nth-child(odd) td{background:rgba(255,255,255,.022)}
+table.data-tbl tbody tr:hover td{background:rgba(56,189,248,.08);color:#fff}
+table.data-tbl tbody tr.new td{animation:rowIn .8s ease}
+@keyframes rowIn{from{background:rgba(56,189,248,.35)}to{background:transparent}}
+.tbl-empty{padding:26px 14px;text-align:center;color:var(--dim);font-size:.8rem}
+.run-badge{display:inline-flex;gap:5px;align-items:center;font-size:.6rem;font-weight:700;letter-spacing:.06em;padding:1px 7px;border-radius:99px;text-transform:uppercase}
+.run-A{background:rgba(56,189,248,.18);color:#7dd3fc}
+.run-B{background:rgba(167,139,250,.18);color:#c4b5fd}
+.run-C{background:rgba(45,212,191,.18);color:#5eead4}
+.run-D{background:rgba(251,191,36,.18);color:#fcd34d}
+.run-E{background:rgba(251,113,133,.18);color:#fda4af}
+
+/* fit panel */
+.fit-res{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.fit-card{padding:10px 12px;border-radius:11px;background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(167,139,250,.07));border:1px solid rgba(56,189,248,.22)}
+.fit-card .k{font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.fit-card .v{font-family:var(--mono);font-size:1.05rem;color:#fff}
+.fit-card .v small{font-size:.65rem;color:#7dd3fc;font-family:var(--font)}
+.fit-card.alt{background:linear-gradient(135deg,rgba(45,212,191,.1),rgba(56,189,248,.06));border-color:rgba(45,212,191,.24)}
+.fit-card.alt .v small{color:#5eead4}
+
+/* modal */
+.modal{
+  position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:18px;
+  background:rgba(3,6,13,.78);backdrop-filter:blur(8px);
+}
+.modal.open{display:grid;animation:fade .2s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal-box{
+  width:min(780px,100%);max-height:88vh;overflow:auto;border-radius:20px;
+  background:linear-gradient(180deg,#0d1526,#080d19);border:1px solid var(--line-strong);
+  box-shadow:0 40px 100px -30px #000;animation:pop .28s cubic-bezier(.34,1.4,.64,1);
+}
+@keyframes pop{from{transform:translateY(16px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.modal-h{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#0c1424;z-index:2}
+.modal-h h3{font-size:1.02rem}
+.modal-h .x{margin-left:auto;width:32px;height:32px;border-radius:9px;border:1px solid var(--line-strong);background:rgba(255,255,255,.05);color:var(--muted);cursor:pointer;display:grid;place-items:center}
+.modal-h .x:hover{background:rgba(251,113,133,.16);color:#fda4af;border-color:rgba(251,113,133,.4)}
+.modal-b{padding:20px}
+.modal-b p,.modal-b li{font-size:.9rem;color:#c8d4e6}
+.modal-b h4{font-size:.95rem;margin:16px 0 8px;color:#fff}
+.modal-b h4:first-child{margin-top:0}
+
+/* footer */
+.site-foot{
+  max-width:1560px;margin:0 auto;padding:26px clamp(14px,3vw,34px) 40px;
+  display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  color:var(--dim);font-size:.78rem;border-top:1px solid var(--line);
+}
+.site-foot .links{display:flex;gap:16px;flex-wrap:wrap}
+.site-foot a{border:0;color:var(--muted)}
+.site-foot a:hover{color:var(--cyan)}
+
+/* misc */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.view{display:none}
+.view.active{display:block;animation:viewIn .35s ease}
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row.tight{gap:6px}
+.mb0{margin-bottom:0}
+.mt12{margin-top:12px}
+.divider{height:1px;background:var(--line);margin:14px 0}
+.mini-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:700;margin-bottom:8px}
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);z-index:300;
+  padding:11px 18px;border-radius:12px;font-size:.86rem;font-weight:600;
+  background:rgba(13,21,38,.97);border:1px solid rgba(52,211,153,.45);color:#d1fae5;
+  box-shadow:0 24px 60px -24px #000;opacity:0;transition:.28s;pointer-events:none;
+  display:flex;align-items:center;gap:9px;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media print{.topbar,.toc,.side,.stage-foot{display:none}.card{box-shadow:none;border-color:#ccc}}
+@media (max-width:720px){
+  .pill{font-size:.65rem;padding:4px 8px}
+  .stage-top{gap:5px}
+  .topbar{gap:10px;padding:9px 12px}
+  .brand{gap:9px}
+  .brand-mark{width:34px;height:34px;border-radius:10px}
+  .brand-mark svg{width:20px;height:20px}
+  .brand-txt h1{font-size:.94rem;white-space:nowrap}
+  .brand-txt p{display:none}
+  .top-actions{order:2;margin-left:auto;gap:6px}
+  .tabs{order:3;width:100%;margin-left:0;justify-content:space-between}
+  .tab-btn{flex:1;justify-content:center;padding:8px 6px;font-size:.8rem}
+  .badge-offline{padding:5px 9px}
+  .badge-offline span{display:none}
+  .data{grid-template-columns:1fr}
+  #sketch{height:min(50vh,420px)}
+  .stage-foot{padding:10px 12px}
+  .stage-foot .hint{display:none}
+  .stage-legend{font-size:.66rem;gap:9px}
+  .wrap{padding:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v10.2" stroke="#04121f" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17.4" r="4.2" fill="#04121f"/><path d="M4 3h16" stroke="#04121f" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </div>
+    <div class="brand-txt">
+      <h1><span>Pendulul gravitational</span></h1>
+      <p>Fizică · clasa a IX-a – a XII-a</p>
+    </div>
+  </div>
+
+  <nav class="tabs" role="tablist" aria-label="Secțiuni">
+    <button class="tab-btn active" role="tab" data-view="theory" aria-selected="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5Z"/><path d="M8 7.5h8M8 11h5"/></svg>
+      <span>Teorie</span>
+    </button>
+    <button class="tab-btn" role="tab" data-view="lab" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v5.5L5.2 17A3 3 0 0 0 7.9 21h8.2a3 3 0 0 0 2.7-4L14 8.5V3"/><path d="M7.5 14.5h9"/></svg>
+      <span>Laborator</span>
+    </button>
+  </nav>
+
+  <div class="top-actions">
+    <span class="badge-offline" id="netBadge" title="Aplicația rulează complet local, fără internet">
+      <i class="dot-live"></i><span id="netTxt">Offline-ready</span>
+    </span>
+    <button class="btn btn-sm btn-ghost" id="btnHelp" title="Ghid rapid & scurtături">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.4 2.3c-.6.3-.9.8-.9 1.5v.4"/><circle cx="12" cy="17" r=".8" fill="currentColor" stroke="none"/></svg>
+      <span style="display:none">Ajutor</span>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============================ TEORIE ============================ -->
+<section class="view active" id="view-theory" role="tabpanel" aria-label="Teorie">
+  <div class="theory-grid">
+    <aside class="card toc" aria-label="Cuprins">
+      <h4>Cuprins</h4>
+      <ol id="tocList">
+        <li><a href="#t1" data-target="t1">Ce este pendulul</a></li>
+        <li><a href="#t2" data-target="t2">Elemente geometrice</a></li>
+        <li><a href="#t3" data-target="t3">Forțele &amp; ecuația</a></li>
+        <li><a href="#t4" data-target="t4">Perioada oscilației</a></li>
+        <li><a href="#t5" data-target="t5">Legea lui Galileo</a></li>
+        <li><a href="#t6" data-target="t6">Energia mecanică</a></li>
+        <li><a href="#t7" data-target="t7">Pendulul și g</a></li>
+        <li><a href="#t8" data-target="t8">Aproximații &amp; erori</a></li>
+        <li><a href="#t9" data-target="t9">Aplicații reale</a></li>
+        <li><a href="#t10" data-target="t10">Formular &amp; recapitulare</a></li>
+      </ol>
+      <div class="divider"></div>
+      <button class="btn btn-primary btn-sm" style="width:100%" id="btnGoLab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        Deschide laboratorul
+      </button>
+    </aside>
+
+    <div class="theory-body" id="theoryBody">
+
+      <!-- 1 -->
+      <article class="card sec" id="t1">
+        <div class="sec-head">
+          <div class="sec-num">01</div>
+          <div>
+            <h2>Ce este pendulul gravitational?</h2>
+            <div class="sub">Definiție, model, condiții de lucru</div>
+          </div>
+        </div>
+        <p>Un <strong>pendul gravitational</strong> (sau <em>pendul matematic</em>) este un sistem fizic idealizat format dintr-un <strong>punct material</strong> de masă <code>m</code>, suspendat de un fir inextensibil și de masă neglijabilă, de lungime <code>ℓ</code>, într-un punct fix numit <strong>punct de suspensie</strong>.</p>
+        <p>Dacă scoatem corpul din poziția sa de echilibru și îl lăsăm liber, el va oscila simetric față de <strong>poziția de echilibru</strong> (verticala locului), sub acțiunea gravitației. Mișcarea se repetă identic la intervale egale de timp: este o <strong>oscilație periodică</strong>.</p>
+
+        <figure class="figure">
+          <svg viewBox="0 0 620 260" role="img" aria-label="Pendul în două poziții: echilibru și deviat">
+            <defs>
+              <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+              <linearGradient id="gVio" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4b5fd"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+              <radialGradient id="gTeal"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#14b8a6"/></radialGradient>
+            </defs>
+            <!-- plafon -->
+            <rect x="60" y="26" width="500" height="9" rx="4.5" fill="rgba(148,163,184,.45)"/>
+            <path d="M60 35h60M500 35h60" stroke="rgba(148,163,184,.2)" stroke-width="1"/>
+            <!-- pozitia de echilibru (punctat) -->
+            <line x1="310" y1="35" x2="310" y2="225" stroke="rgba(148,163,184,.45)" stroke-width="1.4" stroke-dasharray="5 6"/>
+            <!-- pendul deviat stanga -->
+            <line x1="310" y1="35" x2="205" y2="150" stroke="rgba(167,139,250,.55)" stroke-width="1.6"/>
+            <circle cx="205" cy="150" r="13" fill="url(#gVio)" opacity=".55"/>
+            <!-- arc -->
+            <path d="M205 150 A 105 105 0 0 0 310 225" fill="none" stroke="rgba(56,189,248,.35)" stroke-width="1.5" stroke-dasharray="4 5"/>
+            <!-- pendul principal -->
+            <line x1="310" y1="35" x2="392" y2="150" stroke="url(#gBlue)" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="392" cy="150" r="15" fill="url(#gTeal)"/>
+            <circle cx="392" cy="150" r="15" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+            <circle cx="387" cy="145" r="4.5" fill="rgba(255,255,255,.55)"/>
+            <!-- unghi -->
+            <path d="M310 96 A 61 61 0 0 1 358 92" fill="none" stroke="#fbbf24" stroke-width="2"/>
+            <text x="345" y="80" fill="#fcd34d" font-family="monospace" font-size="13">θ</text>
+            <!-- etichete -->
+            <text x="325" y="238" fill="#98a7be" font-size="11" font-family="sans-serif">poziția de echilibru</text>
+            <text x="118" y="168" fill="#c4b5fd" font-size="11" font-family="sans-serif">poziție extremă</text>
+            <text x="404" y="146" fill="#5eead4" font-size="12" font-family="monospace">m</text>
+            <text x="318" y="120" fill="#38bdf8" font-size="12" font-family="monospace">ℓ</text>
+            <circle cx="310" cy="35" r="4.5" fill="#e2e8f0"/>
+          </svg>
+          <figcaption>Fig. 1 — Un pendul matematic: masa punctuală <em>m</em> atârnă de un fir de lungime <em>ℓ</em>; unghiul de deviație este <em>θ</em>.</figcaption>
+        </figure>
+
+        <div class="note">
+          <div class="ni">i</div>
+          <p><strong>Model ideal.</strong> Pentru ca un pendul real să se comporte ca unul matematic trebuie ca: firul să fie <em>inextensibil</em> (nu se alungește), <em>fără masă</em>, iar corpul să fie <em>mic</em> (dimensiuni mult mai mici decât ℓ, deci asimilabil unui punct material).</p>
+        </div>
+
+        <h4 style="margin:18px 0 8px">Vocabular esențial</h4>
+        <div class="glo">
+          <div><b>Oscilație</b>Mișcarea repetată în jurul unei poziții de echilibru.</div>
+          <div><b>Perioadă (T)</b>Durata unei oscilații complete, măsurată în secunde (s).</div>
+          <div><b>Frecvență (ν)</b>Numărul de oscilații în unitatea de timp: ν = 1/T, în hertzi (Hz).</div>
+          <div><b>Amplitudine (θ<sub>max</sub>)</b>Unghiul maxim de deviație față de verticală.</div>
+          <div><b>Elongație (θ)</b>Unghiul de deviație la un moment dat.</div>
+          <div><b>Fază</b>Starea oscilației la momentul t; se exprimă prin argumentul funcției sinus.</div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card sec" id="t2">
+        <div class="sec-head">
+          <div class="sec-num">02</div>
+          <div>
+            <h2>Elementele geometrice ale mișcării</h2>
+            <div class="sub">Lungime, unghi, arc, viteză unghiulară</div>
+          </div>
+        </div>
+        <p>Poziția pendulului este complet determinată de unghiul <code>θ</code> dintre fir și verticală. Deoarece distanța de la punctul de suspensie la corp este constantă (ℓ), mișcarea se desfășoară pe un <strong>arc de cerc</strong> de rază ℓ.</p>
+        <dl class="kv">
+          <dt>s = ℓ · θ</dt><dd>lungimea arcului parcurs (θ în radiani) — „elongația” liniară.</dd>
+          <dt>h = ℓ (1 − cos θ)</dt><dd>înălțimea la care se ridică masa față de poziția de echilibru.</dd>
+          <dt>v = ℓ · ω</dt><dd>viteza liniară a corpului, tangentă la traiectorie.</dd>
+          <dt>ω = 2πν = 2π/T</dt><dd>pulsația (viteza unghiulară) a oscilației, în rad/s.</dd>
+        </dl>
+        <div class="formula">
+          <span>h = ℓ − ℓ cos θ = ℓ (1 − cos θ)</span>
+        </div>
+        <p class="hint">Pentru unghiuri mici (θ ≤ 10° ≈ 0,17 rad) se poate folosi aproximația <code>cos θ ≈ 1 − θ²/2</code>, deci <code>h ≈ ℓθ²/2</code>.</p>
+        <div class="chips">
+          <span class="chip">θ în radiani</span>
+          <span class="chip v">1 rad ≈ 57,3°</span>
+          <span class="chip t">arc mic ⇒ mișcare armonică</span>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card sec" id="t3">
+        <div class="sec-head">
+          <div class="sec-num">03</div>
+          <div>
+            <h2>Forțele care acționează. Ecuația mișcării</h2>
+            <div class="sub">Descompunerea greutății și forța de revenire</div>
+          </div>
+        </div>
+        <p>Asupra corpului acționează două forțe: <strong>greutatea</strong> <code>G = m·g</code>, orientată vertical în jos, și <strong>tensiunea în fir</strong> <code>T</code>, orientată de-a lungul firului spre punctul de suspensie.</p>
+        <p>Descompunem greutatea în două componente:</p>
+        <ul>
+          <li><strong>componenta radială</strong> <code>G<sub>r</sub> = m g cos θ</code> — se echilibrează cu tensiunea în fir și asigură accelerația centripetă;</li>
+          <li><strong>componenta tangențială</strong> <code>G<sub>t</sub> = m g sin θ</code> — este <em>forța de revenire</em>, care readuce corpul spre echilibru.</li>
+        </ul>
+
+        <figure class="figure">
+          <svg viewBox="0 0 560 300" role="img" aria-label="Descompunerea greutății în componente radială și tangențială">
+            <defs>
+              <marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="context-stroke"/></marker>
+            </defs>
+            <line x1="250" y1="30" x2="250" y2="60" stroke="rgba(148,163,184,.4)" stroke-width="1.4" stroke-dasharray="5 5"/>
+            <line x1="180" y1="30" x2="370" y2="30" stroke="rgba(148,163,184,.45)" stroke-width="6" stroke-linecap="round"/>
+            <line x1="250" y1="30" x2="148" y2="205" stroke="#38bdf8" stroke-width="2.4"/>
+            <circle cx="148" cy="205" r="14" fill="url(#gTeal)"/>
+            <!-- verticala -->
+            <line x1="148" y1="205" x2="148" y2="288" stroke="rgba(148,163,184,.4)" stroke-width="1.2" stroke-dasharray="4 5"/>
+            <!-- greutate -->
+            <line x1="148" y1="205" x2="148" y2="278" stroke="#fb7185" stroke-width="2.6" marker-end="url(#arw)"/>
+            <text x="154" y="272" fill="#fda4af" font-size="12" font-family="monospace">G = mg</text>
+            <!-- componenta tangentiala -->
+            <line x1="148" y1="205" x2="205" y2="238" stroke="#fbbf24" stroke-width="2.6" marker-end="url(#arw)"/>
+            <text x="180" y="258" fill="#fcd34d" font-size="12" font-family="monospace">Gₜ = mg sinθ</text>
+            <!-- componenta radiala -->
+            <line x1="148" y1="205" x2="205" y2="145" stroke="#a78bfa" stroke-width="2.6" marker-end="url(#arw)"/>
+            <text x="212" y="150" fill="#c4b5fd" font-size="12" font-family="monospace">Gᵣ = mg cosθ</text>
+            <!-- linii ajutatoare -->
+            <line x1="148" y1="278" x2="205" y2="238" stroke="rgba(148,163,184,.3)" stroke-width="1" stroke-dasharray="3 4"/>
+            <line x1="148" y1="278" x2="205" y2="145" stroke="rgba(148,163,184,.18)" stroke-width="1" stroke-dasharray="3 4"/>
+            <!-- unghi theta -->
+            <path d="M250 100 A 70 70 0 0 0 200 110" fill="none" stroke="#fbbf24" stroke-width="1.8"/>
+            <text x="226" y="96" fill="#fcd34d" font-size="12" font-family="monospace">θ</text>
+            <text x="258" y="120" fill="#38bdf8" font-size="12" font-family="monospace">T (tensiune)</text>
+            <text x="330" y="60" fill="#98a7be" font-size="11" font-family="sans-serif">punct de suspensie</text>
+          </svg>
+          <figcaption>Fig. 2 — Greutatea se descompune în componentă radială (pe direcția firului) și tangențială (pe direcția mișcării).</figcaption>
+        </figure>
+
+        <p>Aplicând principiul fundamental al dinamicii pe direcția tangențială obținem ecuația diferențială a pendulului:</p>
+        <div class="formula">
+          <span class="big">m ℓ θ&#776; = − m g sin θ</span>
+          <span class="tag">ecuația exactă (neliniară)</span>
+        </div>
+        <div class="formula">
+          <span class="big">θ&#776; + <span class="frac"><span class="num">g</span><span class="den">ℓ</span></span> sin θ = 0</span>
+          <span class="tag">forma canonică</span>
+        </div>
+        <div class="note tip">
+          <div class="ni">✓</div>
+          <p>Semnul minus arată că forța de revenire este <strong>opusă</strong> deformării: dacă θ &gt; 0 (spre dreapta), accelerația unghiulară este negativă — exact comportamentul unui oscilator.</p>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card sec" id="t4">
+        <div class="sec-head">
+          <div class="sec-num">04</div>
+          <div>
+            <h2>Perioada oscilațiilor mici</h2>
+            <div class="sub">De unde apare formula T = 2π√(ℓ/g)</div>
+          </div>
+        </div>
+        <p>Pentru unghiuri mici, <code>sin θ ≈ θ</code> (exprimat în radiani). Ecuația devine <strong>liniară</strong>:</p>
+        <div class="formula"><span class="big">θ&#776; + <span class="frac"><span class="num">g</span><span class="den">ℓ</span></span> θ = 0</span></div>
+        <p>Aceasta este ecuația unui <strong>oscilator armonic</strong> cu pulsația <code>ω₀ = √(g/ℓ)</code>, a cărei soluție este:</p>
+        <div class="formula"><span>θ(t) = θ<sub>max</sub> · sin(ω₀ t + φ₀)</span></div>
+        <p>Perioada oscilației proprii rezultă imediat din <code>T = 2π/ω₀</code>:</p>
+        <div class="formula" style="padding:26px">
+          <span class="big">T = 2π <span class="sqrt">√<span style="padding:0 .1em">ℓ / g</span></span></span>
+          <span class="tag">perioada pendulului matematic (oscilații mici)</span>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Mărime</th><th>Cum influențează T</th><th>Explicație</th></tr></thead>
+          <tbody>
+            <tr><td>Lungimea ℓ</td><td style="color:#5eead4">crește T</td><td>T ∝ √ℓ — de 4 ori mai lung ⇒ de 2 ori mai lent</td></tr>
+            <tr><td>Gravitația g</td><td style="color:#fda4af">scade T</td><td>T ∝ 1/√g — pe Lună pendulul oscilează mai lent</td></tr>
+            <tr><td>Masa m</td><td style="color:#fbbf24">nu influențează</td><td>se simplifică în ecuație: toate corpurile cad „la fel”</td></tr>
+            <tr><td>Amplitudinea θ<sub>max</sub></td><td style="color:#fbbf24">aproape deloc</td><td>doar la unghiuri mari (izocronism aproximativ)</td></tr>
+          </tbody>
+        </table>
+        <div class="note warn">
+          <div class="ni">!</div>
+          <p><strong>Atenție:</strong> formula <code>T = 2π√(ℓ/g)</code> este valabilă <em>strict</em> doar pentru amplitudini mici. La 30° eroarea este deja ≈ 1,7%, iar la 90° de peste 18% — o poți verifica singur în laborator.</p>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card sec" id="t5">
+        <div class="sec-head">
+          <div class="sec-num">05</div>
+          <div>
+            <h2>Legea izocronismului (Galileo Galilei)</h2>
+            <div class="sub">De ce un pendul „măsoară” timpul</div>
+          </div>
+        </div>
+        <p>În jurul anului 1602, Galileo Galilei observa că oscilațiile unui candelabru din catedrala din Pisa au aceeași durată indiferent de amplitudine. Aceasta este <strong>legea izocronismului</strong>: <em>pentru amplitudini mici, perioada de oscilație a unui pendul nu depinde de amplitudine</em>.</p>
+        <p>Consecința practică este uriașă: un pendul cu lungime fixă este un <strong>etalon de timp</strong>. Christian Huygens a construit în 1656 primul ceas cu pendul, reducând eroarea zilnică de la ~15 minute la câteva secunde.</p>
+        <div class="note">
+          <div class="ni">i</div>
+          <p>Izocronismul este <strong>aproximativ</strong>. Corecția exactă pentru amplitudini mari, dezvoltată de Borda și Airy, este:<br>
+          <code style="display:inline-block;margin-top:6px">T ≈ T₀ (1 + θ₀²/16 + 11θ₀⁴/3072 + …)</code></p>
+        </div>
+        <div class="chips">
+          <span class="chip a">θ₀ = 10° ⇒ eroare 0,19%</span>
+          <span class="chip a">θ₀ = 30° ⇒ eroare 1,74%</span>
+          <span class="chip a">θ₀ = 60° ⇒ eroare 7,3%</span>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="card sec" id="t6">
+        <div class="sec-head">
+          <div class="sec-num">06</div>
+          <div>
+            <h2>Energia în mișcarea pendulului</h2>
+            <div class="sub">Conservarea energiei mecanice</div>
+          </div>
+        </div>
+        <p>Dacă neglijăm frecarea cu aerul și frecarea în ax, singura forță care efectuează lucru mecanic este greutatea — o forță <strong>conservativă</strong>. Atunci energia mecanică totală se conservă:</p>
+        <div class="formula">
+          <span>E<sub>c</sub> = ½ m v²</span>
+          <span style="color:#475569">|</span>
+          <span>E<sub>p</sub> = m g h = m g ℓ (1 − cos θ)</span>
+          <span style="color:#475569">|</span>
+          <span>E = E<sub>c</sub> + E<sub>p</sub> = const.</span>
+        </div>
+        <div class="grid-2">
+          <div class="note tip" style="align-items:flex-start">
+            <div class="ni">1</div>
+            <p style="margin:0"><strong>În poziția extremă</strong> (θ = θ<sub>max</sub>): viteza este zero, deci <code>E<sub>c</sub> = 0</code> și energia este <em>toată potențială</em>: <code>E = m g ℓ(1 − cos θ<sub>max</sub>)</code>.</p>
+          </div>
+          <div class="note" style="align-items:flex-start">
+            <div class="ni">2</div>
+            <p style="margin:0"><strong>În poziția de echilibru</strong> (θ = 0): înălțimea este zero, deci <code>E<sub>p</sub> = 0</code> și energia este <em>toată cinetică</em>. Viteza maximă atinsă: <code>v<sub>max</sub> = √(2gℓ(1 − cos θ<sub>max</sub>))</code>.</p>
+          </div>
+        </div>
+        <p class="hint mt12">Pe parcursul oscilației, energia se transformă continuu: potențială → cinetică → potențială. În realitate, frecarea transformă treptat energia mecanică în energie internă, iar oscilațiile sunt <strong>amortizate</strong>.</p>
+      </article>
+
+      <!-- 7 -->
+      <article class="card sec" id="t7">
+        <div class="sec-head">
+          <div class="sec-num">07</div>
+          <div>
+            <h2>Pendulul ca instrument de măsurare a lui g</h2>
+            <div class="sub">Determinarea accelerației gravitaționale</div>
+          </div>
+        </div>
+        <p>Din formula perioadei izolăm accelerația gravitațională:</p>
+        <div class="formula" style="padding:24px">
+          <span class="big">g = <span class="frac"><span class="num">4π² ℓ</span><span class="den">T²</span></span></span>
+          <span class="tag">metoda pendulului</span>
+        </div>
+        <p>Pentru a reduce erorile, se măsoară durata a <code>n</code> oscilații complete și se calculează <code>T = t/n</code>. O metodă și mai precisă este <strong>liniarizarea</strong>: se reprezintă grafic <code>T²</code> în funcție de <code>ℓ</code>; se obține o dreaptă prin origine cu panta:</p>
+        <div class="formula"><span>p = <span class="frac"><span class="num">T²</span><span class="den">ℓ</span></span> = <span class="frac"><span class="num">4π²</span><span class="den">g</span></span> &nbsp;⇒&nbsp; g = <span class="frac"><span class="num">4π²</span><span class="den">p</span></span></span></div>
+        <table class="tbl">
+          <thead><tr><th>Loc</th><th class="num">g (m/s²)</th><th>Observație</th></tr></thead>
+          <tbody>
+            <tr><td>Ecuator, nivelul mării</td><td class="num">9,780</td><td>cel mai mic — Pământul este aplatizat + rotație</td></tr>
+            <tr><td>București (≈ 44,4° lat.)</td><td class="num">9,806</td><td>valoare uzuală în problemele de liceu</td></tr>
+            <tr><td>Polul Nord</td><td class="num">9,832</td><td>cel mai mare</td></tr>
+            <tr><td>Luna</td><td class="num">1,62</td><td>pendul de 1 m ⇒ T ≈ 4,9 s</td></tr>
+            <tr><td>Marte</td><td class="num">3,72</td><td>pendul de 1 m ⇒ T ≈ 3,3 s</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- 8 -->
+      <article class="card sec" id="t8">
+        <div class="sec-head">
+          <div class="sec-num">08</div>
+          <div>
+            <h2>Aproximații, amortizare și erori</h2>
+            <div class="sub">De la modelul ideal la pendulul real</div>
+          </div>
+        </div>
+        <h4 style="margin-bottom:8px">Trei surse de „realism”</h4>
+        <ul>
+          <li><strong>Amplitudinea mare</strong> — mișcarea devine neliniară, perioada crește (nu mai e armonică).</li>
+          <li><strong>Frecarea</strong> — cu aerul și în ax; amplitudinea scade exponențial în timp: <code>θ<sub>max</sub>(t) = θ₀ e<sup>−t/τ</sup></code>.</li>
+          <li><strong>Masa firului / dimensiunea corpului</strong> — pendulul devine „fizic”, nu „matematic”; perioada depinde și de momentul de inerție.</li>
+        </ul>
+        <h4 style="margin:16px 0 8px">Erori de măsurare tipice în laborator</h4>
+        <table class="tbl">
+          <thead><tr><th>Sursă</th><th>Efect</th><th>Reducere</th></tr></thead>
+          <tbody>
+            <tr><td>Reacție la cronometrare</td><td>±0,2 s / măsurătoare</td><td>cronometrează n = 10…20 oscilații</td></tr>
+            <tr><td>Măsurarea lungimii</td><td>±1 mm</td><td>măsoară de la suspensie la centrul bilei</td></tr>
+            <tr><td>Unghi prea mare</td><td>T sistematic mai mare</td><td>folosește θ ≤ 10°</td></tr>
+            <tr><td>Fir elastic / deformat</td><td>T aleatoriu</td><td>fir inextensibil, fără noduri</td></tr>
+          </tbody>
+        </table>
+        <div class="note warn">
+          <div class="ni">!</div>
+          <p>Erorile <strong>sistematice</strong> apar mereu în același sens (ex. unghi prea mare) și nu dispar prin repetare; erorile <strong>aleatoare</strong> (reacția la cronometru) se reduc prin media mai multor măsurători.</p>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="card sec" id="t9">
+        <div class="sec-head">
+          <div class="sec-num">09</div>
+          <div>
+            <h2>Aplicații reale</h2>
+            <div class="sub">De la ceasuri la seismografe</div>
+          </div>
+        </div>
+        <div class="glo">
+          <div><b>Ceasul cu pendul</b>Huygens (1656) — primul etalon de timp precis; pendul cu compensare termică la ceasurile de precizie.</div>
+          <div><b>Metronomul</b>Mecanism cu pendul inversat; reglajul tempo-ului se face prin deplasarea masei pe vergea.</div>
+          <div><b>Seismograful</b>Oscilațiile solului pun în mișcare suportul, nu masa suspendată — se înregistrează deplasarea relativă.</div>
+          <div><b>Pendulul balistic</b>Măsurarea vitezei unui proiectil prin conservarea impulsului și a energiei.</div>
+          <div><b>Gravimetria</b>Prospecțiuni geologice: variațiile locale ale lui g dezvăluie zăcăminte sau cavități.</div>
+          <div><b>Pendulul lui Foucault</b>Demonstrează rotația Pământului prin rotirea planului de oscilație.</div>
+          <div><b>Pendul inversat</b>Folosit la măsurarea absolută a lui g cu precizie de 10⁻⁷.</div>
+          <div><b>Clădiri antisismice</b>Amortizoare cu masă acordată (TMD) — aceeași fizică, la scară de zeci de tone.</div>
+        </div>
+        <div class="note mt12">
+          <div class="ni">→</div>
+          <p>Vrei să aprofundezi? Caută <a href="https://phet.colorado.edu/ro/simulations/pendulum-lab" target="_blank" rel="noopener">simularea Pendulum Lab de la PhET (Universitatea Colorado)</a> sau descarcă aplicația noastră pentru utilizare offline.</p>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="card sec" id="t10">
+        <div class="sec-head">
+          <div class="sec-num">10</div>
+          <div>
+            <h2>Formular &amp; recapitulare</h2>
+            <div class="sub">Tot ce trebuie reținut pe o pagină</div>
+          </div>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Mărime / relație</th><th>Formulă</th><th>Unitate SI</th></tr></thead>
+          <tbody>
+            <tr><td>Perioada</td><td class="num" style="text-align:left">T = 2π√(ℓ/g)</td><td>s</td></tr>
+            <tr><td>Frecvența</td><td class="num" style="text-align:left">ν = 1/T</td><td>Hz</td></tr>
+            <tr><td>Pulsația</td><td class="num" style="text-align:left">ω = 2π/T = √(g/ℓ)</td><td>rad/s</td></tr>
+            <tr><td>Accelerația gravitațională</td><td class="num" style="text-align:left">g = 4π²ℓ/T²</td><td>m/s²</td></tr>
+            <tr><td>Elongația unghiulară</td><td class="num" style="text-align:left">θ(t) = θ₀ sin(ωt + φ₀)</td><td>rad</td></tr>
+            <tr><td>Înălțimea</td><td class="num" style="text-align:left">h = ℓ(1 − cos θ)</td><td>m</td></tr>
+            <tr><td>Viteza maximă</td><td class="num" style="text-align:left">v<sub>max</sub> = θ₀√(gℓ)</td><td>m/s</td></tr>
+            <tr><td>Energia mecanică</td><td class="num" style="text-align:left">E = ½mv² + mgℓ(1 − cos θ)</td><td>J</td></tr>
+            <tr><td>Forța de revenire</td><td class="num" style="text-align:left">F = −mg sin θ</td><td>N</td></tr>
+            <tr><td>Corecția de amplitudine</td><td class="num" style="text-align:left">T ≈ T₀(1 + θ₀²/16)</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <div class="row mt12">
+          <button class="btn btn-primary" id="btnGoLab2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            Treci la laborator
+          </button>
+        </div>
+        <div class="note tip mt12">
+          <div class="ni">✓</div>
+          <p><strong>Scurtă recapitulare:</strong> perioada crește cu lungimea, scade când g crește, <em>nu</em> depinde de masă, iar la amplitudini mici nu depinde de amplitudine.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LABORATOR ============================ -->
+<section class="view" id="view-lab" role="tabpanel" aria-label="Laborator">
+  <div class="lab-grid">
+
+    <!-- ------- stage ------- -->
+    <div class="stage card">
+      <div class="stage-h card-h">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+        <h3>Simulare</h3>
+        <div class="spacer"></div>
+        <span class="pill live" id="statePill"><i class="dot-live"></i><b id="stateTxt">în oscilație</b></span>
+      </div>
+      <div class="stage-wrap">
+        <canvas id="sketch" aria-label="Simulare pendul. Trage de bilă pentru a schimba amplitudinea."></canvas>
+        <div class="stage-overlay">
+          <div class="stage-top">
+            <span class="pill">θ = <b id="ov-theta">0,0°</b></span>
+            <span class="pill">t = <b id="ov-time">0,00 s</b></span>
+            <span class="pill">T = <b id="ov-T">2,01 s</b></span>
+            <div class="right">
+              <button class="mini-btn on" id="btnSound" title="Sunet (tic)" aria-label="Comută sunetul">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+              </button>
+              <button class="mini-btn" id="btnFull" title="Ecran complet" aria-label="Ecran complet">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="stage-legend">
+            <span><i style="background:#fda4af"></i>greutate</span>
+            <span><i style="background:#fcd34d"></i>forța de revenire</span>
+            <span><i style="background:#38bdf8"></i>viteză</span>
+            <span><i style="background:#a78bfa"></i>tensiune</span>
+            <span><i style="background:#34d399"></i>energie cinetică</span>
+            <span id="legendEp" style="display:none"><i style="background:#a78bfa"></i>energie potențială</span>
+          </div>
+        </div>
+      </div>
+      <div class="stage-foot">
+        <button class="btn btn-primary" id="btnPlay">
+          <svg id="playIco" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <span id="playTxt">Pauză</span>
+        </button>
+        <button class="btn" id="btnReset" title="Readuce pendulul la amplitudinea inițială (R)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 3.2-6.9"/><path d="M3 4v5h5"/></svg>
+          Reset
+        </button>
+        <button class="btn btn-ghost btn-sm" id="btnKickL" title="Împinge spre stânga">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H6M11 6l-6 6 6 6"/></svg>
+        </button>
+        <button class="btn btn-ghost btn-sm" id="btnKickR" title="Împinge spre dreapta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="btn btn-teal" id="btnMeasure" title="Măsoară automat 10 oscilații și adaugă în tabel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>
+          Măsoară (10 oscilații)
+        </button>
+        <p class="hint">Trage de bilă cu mouse-ul pentru a stabili amplitudinea · <kbd>Space</kbd> pauză · <kbd>R</kbd> reset</p>
+      </div>
+    </div>
+
+    <!-- ------- side ------- -->
+    <div class="side">
+
+      <div class="card">
+        <div class="card-h">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2.2" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="2.2" fill="currentColor" stroke="none"/><circle cx="7" cy="18" r="2.2" fill="currentColor" stroke="none"/></svg></div>
+          <h3>Parametri</h3>
+          <div class="spacer"></div>
+          <button class="btn btn-sm btn-ghost" id="btnDefaults" title="Revino la valorile inițiale">Implicit</button>
+        </div>
+        <div class="card-b">
+          <div class="ctl">
+            <div class="ctl-top"><label for="inPreset">Scenariu rapid</label></div>
+            <select id="inPreset">
+              <option value="">— alege un scenariu —</option>
+              <option value="p1">1 · Pendul de 1 m pe Pământ (etalon)</option>
+              <option value="p2">2 · Efectul lungimii (ℓ = 0,25 / 1 / 2,25 m)</option>
+              <option value="p3">3 · Aceeași perioadă pe Lună (ℓ = 0,165 m)</option>
+              <option value="p4">4 · Masa nu contează (m = 0,5 / 5 kg)</option>
+              <option value="p5">5 · Amplitudine mare: 5° vs 80°</option>
+              <option value="p6">6 · Amortizare puternică</option>
+              <option value="p7">7 · Pendul „uriaș” de 3 m (turn)</option>
+            </select>
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-top"><label for="inLen"><span class="sym">ℓ</span> Lungimea firului</label><span class="val" id="vLen">1,00 m</span></div>
+            <input type="range" id="inLen" min="0.1" max="3" step="0.005" value="1" aria-describedby="vLen">
+            <div class="ticks"><span>0,1</span><span>1,55</span><span>3,0 m</span></div>
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-top"><label for="inMass"><span class="sym">m</span> Masa corpului</label><span class="val" id="vMass">1,00 kg</span></div>
+            <input type="range" id="inMass" min="0.1" max="5" step="0.05" value="1">
+            <div class="ticks"><span>0,1</span><span>2,5</span><span>5,0 kg</span></div>
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-top"><label for="inAmp"><span class="sym">θ₀</span> Amplitudine</label><span class="val" id="vAmp">20°</span></div>
+            <input type="range" id="inAmp" min="1" max="90" step="1" value="20">
+            <div class="ticks"><span>1°</span><span>45°</span><span>90°</span></div>
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-top"><label for="inG"><span class="sym">g</span> Gravitație</label><span class="val" id="vG">9,81 m/s²</span></div>
+            <select id="inG" style="margin-bottom:8px">
+              <option value="9.81">Pământ — 9,81 m/s²</option>
+              <option value="9.78">Ecuator — 9,78 m/s²</option>
+              <option value="9.83">Pol — 9,83 m/s²</option>
+              <option value="1.62">Luna — 1,62 m/s²</option>
+              <option value="3.72">Marte — 3,72 m/s²</option>
+              <option value="24.79">Jupiter — 24,79 m/s²</option>
+              <option value="custom">Personalizat…</option>
+            </select>
+            <input type="range" id="inGcustom" min="0.5" max="25" step="0.01" value="9.81" disabled>
+            <div class="ticks"><span>0,5</span><span>12,5</span><span>25 m/s²</span></div>
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-top"><label for="inDamp"><span class="sym">β</span> Amortizare</label><span class="val" id="vDamp">0,00</span></div>
+            <input type="range" id="inDamp" min="0" max="0.6" step="0.01" value="0">
+            <div class="ticks"><span>ideal</span><span>mediu</span><span>puternic</span></div>
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-top"><label for="inSpeed"><span class="sym">×</span> Viteza timpului</label><span class="val" id="vSpeed">1,00×</span></div>
+            <input type="range" id="inSpeed" min="0.1" max="2" step="0.05" value="1">
+            <div class="ticks"><span>0,1×</span><span>1×</span><span>2×</span></div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="mini-label">Date calculate</div>
+          <div class="readout-grid">
+            <div class="ro c1"><div class="k">Perioadă T</div><div class="v" id="roT">2,01<small>s</small></div></div>
+            <div class="ro c1"><div class="k">Frecvență ν</div><div class="v" id="roF">0,50<small>Hz</small></div></div>
+            <div class="ro c2"><div class="k">Pulsație ω</div><div class="v" id="roW">3,13<small>rad/s</small></div></div>
+            <div class="ro c3"><div class="k">v max</div><div class="v" id="roVmax">1,08<small>m/s</small></div></div>
+            <div class="ro c4"><div class="k">E total</div><div class="v" id="roE">0,59<small>J</small></div></div>
+            <div class="ro"><div class="k" title="Perioada exactă a pendulului neliniar">T exact (AGM)</div><div class="v" id="roTexact">2,02<small>s</small></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="2.6"/></svg></div>
+          <h3>Afișare</h3>
+        </div>
+        <div class="card-b tight" style="padding:6px 16px 10px">
+          <label class="switch-row"><span class="lbl">Vectori de forță<small>greutate, componentă tangențială</small></span><input type="checkbox" id="ckForces" checked><span class="sw"></span></label>
+          <label class="switch-row"><span class="lbl">Vector viteză<small>tangent la traiectorie</small></span><input type="checkbox" id="ckVel" checked><span class="sw"></span></label>
+          <label class="switch-row"><span class="lbl">Urmă (trace)<small>traseul bilei</small></span><input type="checkbox" id="ckTrace"><span class="sw"></span></label>
+          <label class="switch-row"><span class="lbl">Raportor unghiular<small>arce de 10° și marcaj amplitudine</small></span><input type="checkbox" id="ckProt" checked><span class="sw"></span></label>
+          <label class="switch-row"><span class="lbl">Energie pe bilă<small>culoare după E<sub>c</sub>/E<sub>p</sub></small></span><input type="checkbox" id="ckEnergy"><span class="sw"></span></label>
+          <label class="switch-row"><span class="lbl">Pendul „fantomă”<small>poziția de echilibru</small></span><input type="checkbox" id="ckGhost" checked><span class="sw"></span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------- data ------- -->
+    <div class="data">
+      <div class="card">
+        <div class="card-h">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 4-6"/></svg></div>
+          <h3>Grafice</h3>
+          <div class="spacer"></div>
+          <div class="chart-tools seg" id="chartTabs" role="tablist">
+            <button class="active" data-chart="theta" role="tab">θ(t)</button>
+            <button data-chart="energy" role="tab">Energie</button>
+            <button data-chart="Tl" role="tab">T(ℓ)</button>
+            <button data-chart="T2l" role="tab">T²(ℓ)</button>
+          </div>
+        </div>
+        <div class="card-b" style="padding:10px 8px 6px">
+          <canvas class="chart" id="chart"></canvas>
+        </div>
+        <div class="stage-foot" style="border-top:1px solid var(--line)">
+          <button class="btn btn-sm btn-ghost" id="btnAddPoint" title="Adaugă punctul (ℓ, T) curent în graficul T(ℓ)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+            Adaugă punct (ℓ, T)
+          </button>
+          <button class="btn btn-sm btn-ghost" id="btnClearGraph">Golește punctele</button>
+          <p class="hint" id="chartHint">Graficul θ(t) se desenează automat. Folosește „Adaugă punct” pentru a construi T(ℓ).</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M15 9v11"/></svg></div>
+          <h3>Măsurători</h3>
+          <div class="spacer"></div>
+          <span class="pill" id="rowsPill"><b>0</b> măsurători</span>
+        </div>
+        <div class="card-b tight" style="padding:12px">
+          <div class="row tight" style="margin-bottom:10px">
+            <button class="btn btn-teal btn-sm" id="btnMark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+              Înregistrează
+            </button>
+            <button class="btn btn-sm btn-ghost" id="btnDelRow" title="Șterge ultima linie">Șterge ultima</button>
+            <button class="btn btn-sm btn-ghost" id="btnClearRows">Golește</button>
+            <button class="btn btn-sm btn-ghost" id="btnCsv" title="Exportă tabelul ca fișier CSV">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg>
+              CSV
+            </button>
+          </div>
+          <div class="tbl-wrap">
+            <table class="data-tbl" id="dataTbl">
+              <thead><tr>
+                <th>#</th><th>ℓ (m)</th><th>m (kg)</th><th>θ₀ (°)</th><th>g (m/s²)</th><th>t₁₀ (s)</th><th>T (s)</th><th>T² (s²)</th>
+              </tr></thead>
+              <tbody id="dataBody"></tbody>
+            </table>
+            <div class="tbl-empty" id="tblEmpty">Nicio măsurătoare încă.<br>Apasă <b>Măsoară</b> sau <b>Înregistrează</b>.</div>
+          </div>
+          <div class="divider"></div>
+          <div class="mini-label">Prelucrare: g din panta dreptei T²(ℓ)</div>
+          <div class="fit-res">
+            <div class="fit-card"><div class="k">Pantă p = T²/ℓ</div><div class="v" id="fitSlope">—</div></div>
+            <div class="fit-card alt"><div class="k">g experimental</div><div class="v" id="fitG">—</div></div>
+            <div class="fit-card"><div class="k">g din T mediu</div><div class="v" id="fitG2">—</div></div>
+            <div class="fit-card alt"><div class="k">Eroare relativă</div><div class="v" id="fitErr">—</div></div>
+          </div>
+          <p class="hint mt12" id="fitHint">Sunt necesare minim 2 măsurători cu lungimi diferite.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------- activitati ------- -->
+    <div class="card" style="grid-area:auto;margin-top:0" id="tasksCard">
+      <div class="card-h">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Activități de laborator (fișă)</h3>
+        <div class="spacer"></div>
+        <span class="hint">bifează pe măsură ce lucrezi</span>
+      </div>
+      <div class="card-b" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px" id="tasksList">
+        <!-- generat din JS -->
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<!-- ============================ MODAL AJUTOR ============================ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <div class="modal-h">
+      <div class="ico" style="width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--grad-soft);border:1px solid var(--line)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.4 2.3c-.6.3-.9.8-.9 1.5v.4"/></svg></div>
+      <h3 id="modalTitle">Ghid rapid</h3>
+      <button class="x" id="modalX" aria-label="Închide">✕</button>
+    </div>
+    <div class="modal-b" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toastTxt"></span></div>
+
+<footer class="site-foot">
+  <div>© <span id="year">2026</span> · Pendulul gravitational · aplicație didactică pentru liceu · funcționează 100% offline</div>
+  <div class="links">
+    <a href="#t4" data-goto="theory">Teoria perioadei</a>
+    <a href="#" data-goto="lab">Laborator</a>
+    <a href="https://phet.colorado.edu/ro/simulations/pendulum-lab" target="_blank" rel="noopener">Inspirat de PhET</a>
+    <a href="#" id="btnAbout">Despre</a>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   PENDULUL GRAVITAȚIONAL — aplicație didactică autonomă
+   Fizică: ecuația exactă θ'' = -(g/ℓ)sinθ - βθ', integrare numerică
+   ===================================================================== */
+(function () {
+  'use strict';
+
+  /* copie curată a documentului, capturată înainte de orice modificare din JS
+     (folosită de butonul „Salvează o copie offline”) */
+  const PRISTINE_HTML = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+  /* ------------------------------- utils ------------------------------- */
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const PI = Math.PI, TAU = 2 * PI;
+  const deg2rad = d => d * PI / 180;
+  const rad2deg = r => r * 180 / PI;
+
+  /** număr formatat în stil românesc (virgulă zecimală) */
+  function fmt(x, d = 2) {
+    if (!isFinite(x)) return '—';
+    const s = Number(x).toFixed(d);
+    return s.replace('.', ',');
+  }
+  /** formatare semnificativă compactă */
+  function fmtAuto(x, d = 3) {
+    if (!isFinite(x)) return '—';
+    if (x !== 0 && Math.abs(x) < 0.001) return x.toExponential(1).replace('.', ',');
+    return fmt(x, d);
+  }
+
+  /* stocare tolerantă (funcționează și în iframe sandbox) */
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem('pendul.v1.' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem('pendul.v1.' + k, JSON.stringify(v)); } catch (e) {} }
+  };
+
+  /* ------------------------------ audio ------------------------------- */
+  const AudioKit = {
+    ctx: null, on: false,
+    init() {
+      if (this.ctx) return;
+      try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { this.ctx = null; }
+    },
+    tick(freq = 880) {
+      if (!this.on) return;
+      this.init();
+      if (!this.ctx) return;
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+      const t = this.ctx.currentTime;
+      const o = this.ctx.createOscillator(), g = this.ctx.createGain();
+      o.type = 'sine'; o.frequency.setValueAtTime(freq, t);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.055, t + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
+      o.connect(g).connect(this.ctx.destination);
+      o.start(t); o.stop(t + 0.1);
+    }
+  };
+
+  /* ------------------------------ toast ------------------------------- */
+  let toastTimer = null;
+  function toast(msg) {
+    const el = $('#toast'); $('#toastTxt').textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+  }
+
+  /* --------------------------- navigare tabs -------------------------- */
+  const views = { theory: $('#view-theory'), lab: $('#view-lab') };
+  function showView(name) {
+    Object.entries(views).forEach(([k, el]) => el.classList.toggle('active', k === name));
+    $$('.tab-btn').forEach(b => {
+      const on = b.dataset.view === name;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    if (name === 'lab') { requestAnimationFrame(() => { resizeCanvas(); chart.resize(); }); }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(updateToc, 60);
+  }
+  $$('.tab-btn').forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
+  $$('[data-goto]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); showView(a.dataset.goto);
+  }));
+  $('#btnGoLab').addEventListener('click', () => showView('lab'));
+  $('#btnGoLab2').addEventListener('click', () => showView('lab'));
+
+  /* ------------------------------ cuprins ----------------------------- */
+  const tocLinks = $$('#tocList a');
+  const sections = $$('.sec');
+  function updateToc() {
+    if (!views.theory.classList.contains('active')) return;
+    let current = sections[0];
+    const line = 140;
+    sections.forEach(s => { if (s.getBoundingClientRect().top <= line) current = s; });
+    tocLinks.forEach(a => a.classList.toggle('active', a.dataset.target === current.id));
+  }
+  tocLinks.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.getElementById(a.dataset.target);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 82, behavior: 'smooth' });
+  }));
+  window.addEventListener('scroll', () => { if (rafToc === null) rafToc = requestAnimationFrame(() => { rafToc = null; updateToc(); }); }, { passive: true });
+  let rafToc = null;
+
+  /* ================================ STARE ============================== */
+  const DEFAULTS = { len: 1, mass: 1, amp: 20, g: 9.81, damp: 0, speed: 1 };
+
+  const S = {
+    len: 1, mass: 1, ampDeg: 20, g: 9.81, damp: 0, speed: 1,
+    theta: deg2rad(20), omega: 0, t: 0, t0: 0,
+    running: true,
+    trace: [], samples: [], points: [], rows: [],
+    measuring: null, crossings: 0,
+    showForces: true, showVel: true, showTrace: false, showProt: true, showEnergy: false, showGhost: true,
+    periodEst: 0, lastExtreme: 0
+  };
+  const physics = {
+    smallT: (L, g) => TAU * Math.sqrt(L / g),
+    /** perioada exactă prin medie aritmetico-geometrică (AGM) */
+    exactT(L, g, ampRad) {
+      const k = Math.sin(Math.abs(ampRad) / 2);
+      let a = 1, b = Math.sqrt(1 - k * k);
+      for (let i = 0; i < 24; i++) { const na = (a + b) / 2, nb = Math.sqrt(a * b); a = na; b = nb; }
+      const w0 = Math.sqrt(g / L);
+      return TAU / (w0 * a);
+    },
+    energy(L, m, g, th) {
+      const v = L * S.omega;
+      const Ec = 0.5 * m * v * v;
+      const Ep = m * g * L * (1 - Math.cos(th));
+      return { Ec, Ep, E: Ec + Ep, v };
+    }
+  };
+  const cur = () => ({
+    L: S.len, m: S.mass, g: S.g, amp: S.ampDeg, damp: S.damp,
+    T: physics.exactT(S.len, S.g, deg2rad(S.ampDeg)),
+    T0: physics.smallT(S.len, S.g)
+  });
+
+  /* ============================== SIMULARE ============================= */
+  function resetMotion(keepRunning) {
+    S.theta = deg2rad(S.ampDeg);
+    S.omega = 0; S.t = 0; S.trace = []; S.samples = [];
+    S.measuring = null; S.crossings = 0; S.periodEst = 0;
+    if (keepRunning !== false) S.running = true;
+    syncPlayBtn();
+    dirty = true;
+  }
+
+  function stepPhysics(dtSim) {
+    const n = Math.max(1, Math.ceil(dtSim / 0.0015));
+    const h = dtSim / n;
+    const s = { L: S.len, g: S.g, damp: S.damp };
+    for (let i = 0; i < n; i++) {
+      const alpha = -(s.g / s.L) * Math.sin(S.theta) - s.damp * S.omega;
+      S.omega += alpha * h;
+      const prev = S.theta;
+      S.theta += S.omega * h;
+      // traversări prin echilibru (θ = 0) cu viteză pozitivă → oscilație completă
+      if (prev < 0 && S.theta >= 0) {
+        if (S.measuring) {
+          if (S.measuring.tStart === null) { S.measuring.tStart = S.t; S.measuring.n = 0; }
+          else {
+            S.measuring.n++;
+            if (S.measuring.n >= S.measuring.target) finishMeasure(S.t - S.measuring.tStart);
+          }
+        }
+        AudioKit.tick(960);
+      }
+      if (prev > 0 && S.theta <= 0) AudioKit.tick(660);
+      S.t += h;
+    }
+    // limitare numerică
+    if (Math.abs(S.theta) > PI) S.theta = clamp(S.theta, -PI, PI);
+  }
+
+  let dirty = true;
+  const SAMPLES_MAX = 1400;
+  function collectSample() {
+    const amp0 = deg2rad(S.ampDeg);
+    S.samples.push({ t: S.t, th: S.theta, ...physics.energy(S.len, S.mass, S.g, S.theta), amp0 });
+    if (S.samples.length > SAMPLES_MAX) S.samples.splice(0, S.samples.length - SAMPLES_MAX);
+    if (S.showTrace) {
+      S.trace.push({ th: S.theta, L: S.len });
+      if (S.trace.length > 420) S.trace.shift();
+    }
+  }
+
+  /* =============================== CANVAS ============================== */
+  const cv = $('#sketch');
+  const ctx = cv.getContext('2d');
+  let W = 0, H = 0;
+  let ppm = 260, ppmTarget = 260;
+
+  function resizeCanvas() {
+    const r = cv.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+    W = Math.max(200, r.width); H = Math.max(240, r.height);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    dirty = true;
+  }
+  window.addEventListener('resize', () => { resizeCanvas(); chart.resize(); });
+
+  function arrow(x1, y1, x2, y2, color, width, label, dash) {
+    const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy);
+    if (len < 6) return;
+    ctx.save();
+    ctx.strokeStyle = color; ctx.fillStyle = color;
+    ctx.lineWidth = width; ctx.lineCap = 'round';
+    if (dash) ctx.setLineDash(dash);
+    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+    ctx.setLineDash([]);
+    const ang = Math.atan2(dy, dx), hl = 9 + width * 1.6;
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2 - hl * Math.cos(ang - 0.42), y2 - hl * Math.sin(ang - 0.42));
+    ctx.lineTo(x2 - hl * Math.cos(ang + 0.42), y2 - hl * Math.sin(ang + 0.42));
+    ctx.closePath(); ctx.fill();
+    if (label) {
+      ctx.font = '600 11px var(--mono, monospace)';
+      ctx.font = '600 11px ui-monospace, monospace';
+      ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      const lx = x2 + 8 * Math.cos(ang), ly = y2 + 8 * Math.sin(ang);
+      ctx.fillStyle = 'rgba(5,8,15,.75)';
+      const tw = ctx.measureText(label).width;
+      ctx.beginPath(); ctx.roundRect(lx - 3, ly - 8, tw + 7, 16, 5); ctx.fill();
+      ctx.fillStyle = color; ctx.fillText(label, lx + 1, ly);
+    }
+    ctx.restore();
+  }
+
+  function drawScene() {
+    if (!W) return;
+    const availH = H - 74;
+    ppmTarget = clamp(availH / (S.len * 1.85), 60, 430);
+    ppm += (ppmTarget - ppm) * 0.12;
+
+    const pivot = { x: W / 2, y: 58 };
+    const Lpx = S.len * ppm;
+    const bob = {
+      x: pivot.x + Lpx * Math.sin(S.theta),
+      y: pivot.y + Lpx * Math.cos(S.theta)
+    };
+    const rBob = 9 + 8 * Math.cbrt(S.mass);
+
+    ctx.clearRect(0, 0, W, H);
+
+    /* fundal: grilă subtilă */
+    ctx.save();
+    ctx.strokeStyle = 'rgba(148,163,184,.055)'; ctx.lineWidth = 1;
+    const gs = 34;
+    for (let x = (W / 2) % gs; x < W; x += gs) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let y = 56 % gs; y < H; y += gs) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    ctx.restore();
+
+    /* tavan + suport */
+    const cw = Math.min(W * 0.6, 520);
+    ctx.save();
+    const cg = ctx.createLinearGradient(0, 30, 0, 52);
+    cg.addColorStop(0, 'rgba(148,163,184,.42)');
+    cg.addColorStop(1, 'rgba(100,116,139,.22)');
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.roundRect(pivot.x - cw / 2, 30, cw, 12, 6); ctx.fill();
+    ctx.strokeStyle = 'rgba(203,213,225,.45)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pivot.x - cw / 2, 30.5); ctx.lineTo(pivot.x + cw / 2, 30.5); ctx.stroke();
+    // hașuri suport
+    ctx.strokeStyle = 'rgba(148,163,184,.28)'; ctx.lineWidth = 1.4;
+    for (let i = 0; i < cw - 10; i += 15) {
+      ctx.beginPath();
+      ctx.moveTo(pivot.x - cw / 2 + i + 4, 42);
+      ctx.lineTo(pivot.x - cw / 2 + i - 6, 54);
+      ctx.stroke();
+    }
+    ctx.beginPath(); ctx.arc(pivot.x, pivot.y - 6, 5.5, 0, TAU);
+    ctx.fillStyle = '#e2e8f0'; ctx.fill();
+    ctx.beginPath(); ctx.arc(pivot.x, pivot.y - 6, 2.2, 0, TAU);
+    ctx.fillStyle = '#0b1220'; ctx.fill();
+    ctx.restore();
+
+    /* raportor */
+    if (S.showProt) {
+      const R = Math.max(70, Math.min(Lpx * 0.62, 190));
+      ctx.save();
+      ctx.translate(pivot.x, pivot.y);
+      ctx.strokeStyle = 'rgba(148,163,184,.22)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(0, 0, R, PI / 2 - PI / 2, PI / 2 + PI / 2); ctx.stroke();
+      for (let a = -90; a <= 90; a += 5) {
+        const rad = deg2rad(a);
+        const big = a % 30 === 0, mid = a % 10 === 0;
+        const len = big ? 12 : mid ? 8 : 4;
+        const x1 = Math.sin(rad) * R, y1 = Math.cos(rad) * R;
+        const x2 = Math.sin(rad) * (R - len), y2 = Math.cos(rad) * (R - len);
+        ctx.strokeStyle = big ? 'rgba(203,213,225,.65)' : mid ? 'rgba(148,163,184,.45)' : 'rgba(148,163,184,.25)';
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+        if (big) {
+          ctx.fillStyle = 'rgba(148,163,184,.75)';
+          ctx.font = '10px ui-monospace, monospace';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(Math.abs(a) + '°', Math.sin(rad) * (R - 25), Math.cos(rad) * (R - 25));
+        }
+      }
+      // marcaj amplitudine
+      const am = deg2rad(S.ampDeg);
+      [-1, 1].forEach(s => {
+        const rad = am * s;
+        ctx.strokeStyle = 'rgba(251,191,36,.5)'; ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(0, 0);
+        ctx.lineTo(Math.sin(rad) * R * 1.28, Math.cos(rad) * R * 1.28);
+        ctx.stroke(); ctx.setLineDash([]);
+      });
+      ctx.restore();
+    }
+
+    /* verticala de echilibru */
+    if (S.showGhost) {
+      const grd = ctx.createLinearGradient(0, pivot.y, 0, pivot.y + Math.max(Lpx, H - pivot.y - 20));
+      grd.addColorStop(0, 'rgba(56,189,248,.45)');
+      grd.addColorStop(1, 'rgba(56,189,248,.03)');
+      ctx.save();
+      ctx.strokeStyle = grd; ctx.lineWidth = 1.4; ctx.setLineDash([6, 7]);
+      ctx.beginPath(); ctx.moveTo(pivot.x, pivot.y);
+      ctx.lineTo(pivot.x, Math.min(pivot.y + Lpx * 1.18, H - 18)); ctx.stroke();
+      ctx.restore();
+      // bilă fantomă
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(pivot.x, pivot.y + Lpx, rBob, 0, TAU);
+      ctx.strokeStyle = 'rgba(56,189,248,.3)'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 5]); ctx.stroke();
+      ctx.restore();
+    }
+
+    /* urmă */
+    if (S.showTrace && S.trace.length > 1) {
+      ctx.save();
+      ctx.lineWidth = 2; ctx.lineCap = 'round';
+      for (let i = 1; i < S.trace.length; i++) {
+        const a = S.trace[i - 1], b = S.trace[i];
+        const al = i / S.trace.length;
+        ctx.strokeStyle = `rgba(45,212,191,${al * 0.6})`;
+        ctx.beginPath();
+        ctx.moveTo(pivot.x + a.L * ppm * Math.sin(a.th), pivot.y + a.L * ppm * Math.cos(a.th));
+        ctx.lineTo(pivot.x + b.L * ppm * Math.sin(b.th), pivot.y + b.L * ppm * Math.cos(b.th));
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    /* fir */
+    ctx.save();
+    const rodG = ctx.createLinearGradient(pivot.x, pivot.y, bob.x, bob.y);
+    rodG.addColorStop(0, 'rgba(186,230,253,.95)');
+    rodG.addColorStop(1, 'rgba(56,189,248,.85)');
+    ctx.strokeStyle = rodG; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(pivot.x, pivot.y - 6); ctx.lineTo(bob.x, bob.y); ctx.stroke();
+    ctx.restore();
+
+    /* unghi */
+    if (Math.abs(S.theta) > 0.02) {
+      const arcR = Math.min(58, Lpx * 0.42);
+      ctx.save();
+      ctx.strokeStyle = 'rgba(251,191,36,.85)'; ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(pivot.x, pivot.y, arcR, PI / 2, PI / 2 - S.theta, S.theta > 0);
+      ctx.stroke();
+      ctx.fillStyle = '#fcd34d';
+      ctx.font = '700 12px ui-monospace, monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      const mid = PI / 2 - S.theta / 2;
+      ctx.fillText('θ', pivot.x + Math.cos(mid) * (arcR + 13), pivot.y + Math.sin(mid) * (arcR + 13));
+      ctx.restore();
+    }
+
+    /* vectori */
+    const vScalePx = 30 / Math.max(0.35, Math.sqrt(S.g / 9.81));
+    const mgPx = 52 * Math.min(1.7, S.mass / 1.2) + 24;
+    if (S.showForces) {
+      // greutate
+      arrow(bob.x, bob.y, bob.x, bob.y + mgPx, '#fb7185', 2.6, 'G');
+      // componenta tangențială
+      const Ft = -S.mass * S.g * Math.sin(S.theta);
+      const tang = { x: Math.cos(S.theta), y: -Math.sin(S.theta) };
+      const ftLen = clamp(Math.abs(Ft) / (S.mass * S.g) * mgPx, 0, mgPx);
+      if (ftLen > 5) {
+        arrow(bob.x, bob.y, bob.x + tang.x * Math.sign(Ft) * ftLen, bob.y + tang.y * Math.sign(Ft) * ftLen, '#fbbf24', 2.2, 'Ft');
+      }
+      // tensiune
+      const Tn = S.mass * (S.g * Math.cos(S.theta) + S.len * S.omega * S.omega);
+      const tnLen = clamp(Tn / (S.mass * S.g) * mgPx, 0, mgPx * 1.9);
+      arrow(bob.x, bob.y, bob.x - Math.sin(S.theta) * tnLen, bob.y - Math.cos(S.theta) * tnLen, 'rgba(167,139,250,.85)', 1.8, 'T', [5, 4]);
+    }
+    if (S.showVel) {
+      const v = S.len * S.omega;
+      const vLen = clamp(Math.abs(v) * 48 * Math.sqrt(S.len), 0, 110);
+      if (vLen > 5) {
+        const dir = { x: Math.cos(S.theta), y: -Math.sin(S.theta) };
+        arrow(bob.x, bob.y, bob.x + dir.x * Math.sign(v) * vLen, bob.y + dir.y * Math.sign(v) * vLen, '#38bdf8', 2.4, 'v');
+      }
+    }
+
+    /* bila */
+    ctx.save();
+    const e = physics.energy(S.len, S.mass, S.g, S.theta);
+    const frac = e.E > 0 ? e.Ec / e.E : 0;
+    const c1 = S.showEnergy
+      ? `hsl(${16 + frac * 150},92%,${64 + frac * 6}%)`
+      : '#5eead4';
+    const c2 = S.showEnergy
+      ? `hsl(${8 + frac * 150},80%,${40 + frac * 4}%)`
+      : '#0d9488';
+    const bg = ctx.createRadialGradient(bob.x - rBob * 0.35, bob.y - rBob * 0.4, rBob * 0.15, bob.x, bob.y, rBob);
+    bg.addColorStop(0, '#ffffff');
+    bg.addColorStop(0.28, c1);
+    bg.addColorStop(1, c2);
+    ctx.shadowColor = 'rgba(45,212,191,.55)'; ctx.shadowBlur = 22;
+    ctx.beginPath(); ctx.arc(bob.x, bob.y, rBob, 0, TAU); ctx.fillStyle = bg; ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = 1.2; ctx.stroke();
+    ctx.fillStyle = 'rgba(15,23,42,.75)';
+    ctx.font = '700 10px ui-monospace, monospace';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(fmt(S.mass, S.mass < 1 ? 2 : 1) + ' kg', bob.x, bob.y + 1);
+    ctx.restore();
+
+    /* bară de energie lângă bilă */
+    if (S.showEnergy) {
+      const h0 = Math.max(Lpx * (1 - Math.cos(deg2rad(S.ampDeg))), 8);
+      const bx = bob.x + rBob + 18, bh = 104, bw = 13;
+      const by = clamp(bob.y - bh / 2, 60, H - bh - 16);
+      ctx.save();
+      ctx.fillStyle = 'rgba(5,10,20,.65)';
+      ctx.beginPath(); ctx.roundRect(bx - 4, by - 6, bw + 8, bh + 12, 7); ctx.fill();
+      const ecH = (e.E > 0 ? e.Ec / e.E : 0) * bh;
+      ctx.fillStyle = '#34d399';
+      ctx.fillRect(bx, by + bh - ecH, bw, ecH);
+      ctx.fillStyle = '#a78bfa';
+      ctx.fillRect(bx, by, bw, bh - ecH);
+      ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.lineWidth = 1;
+      ctx.strokeRect(bx + .5, by + .5, bw - 1, bh - 1);
+      ctx.restore();
+    }
+
+    /* riglă (scară) */
+    drawRuler(pivot, 16, H - 20);
+
+    /* etichetă mod măsurare */
+    if (S.measuring) {
+      const txt = S.measuring.tStart === null ? 'măsurare… aștept o oscilație' : `măsurare: ${S.measuring.n}/10 oscilații`;
+      ctx.save();
+      ctx.font = '600 11px ui-monospace, monospace';
+      const tW = ctx.measureText(txt).width + 22;
+      ctx.fillStyle = 'rgba(251,113,133,.15)';
+      ctx.strokeStyle = 'rgba(251,113,133,.5)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.roundRect(W / 2 - tW / 2, H - 34, tW, 24, 8); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#fda4af'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(txt, W / 2, H - 22);
+      ctx.restore();
+    }
+  }
+
+  function drawRuler(pivot, x, yMax) {
+    const maxLen = Math.min(S.len * 1.25, 3.2);
+    ctx.save();
+    ctx.strokeStyle = 'rgba(148,163,184,.35)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, pivot.y); ctx.lineTo(x, yMax); ctx.stroke();
+    ctx.font = '9px ui-monospace, monospace';
+    ctx.fillStyle = 'rgba(148,163,184,.7)'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    for (let m = 0; m <= maxLen; m += 0.5) {
+      const yy = pivot.y + m * ppm;
+      if (yy > yMax) break;
+      const big = Math.abs(m % 1) < 0.001;
+      ctx.beginPath(); ctx.moveTo(x, yy); ctx.lineTo(x + (big ? 7 : 4), yy); ctx.stroke();
+      if (big && m > 0) ctx.fillText(m.toFixed(0) + ' m', x + 10, yy);
+    }
+    ctx.restore();
+  }
+
+  /* ============================== GRAFICE ============================== */
+  const chart = {
+    cv: $('#chart'), ctx: $('#chart').getContext('2d'), mode: 'theta', W: 0, H: 0,
+    resize() {
+      const r = this.cv.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+      this.W = Math.max(200, r.width); this.H = Math.max(150, r.height);
+      this.cv.width = Math.round(this.W * dpr); this.cv.height = Math.round(this.H * dpr);
+      this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    },
+    axes(xLabels, yLabels, o) {
+      const c = this.ctx, W = this.W, H = this.H;
+      const pad = { l: 48, r: 16, t: 30, b: 42 };
+      c.clearRect(0, 0, W, H);
+      const x0 = pad.l, y0 = H - pad.b, x1 = W - pad.r, y1 = pad.t;
+      c.strokeStyle = 'rgba(148,163,184,.16)'; c.lineWidth = 1;
+      c.font = '10px ui-monospace, monospace'; c.fillStyle = 'rgba(148,163,184,.75)';
+      const nx = 5, ny = 4;
+      for (let i = 0; i <= nx; i++) {
+        const xx = x0 + (x1 - x0) * i / nx;
+        c.beginPath(); c.moveTo(xx, y0); c.lineTo(xx, y1); c.stroke();
+        c.textAlign = 'center'; c.textBaseline = 'top';
+        c.fillText(xLabels(i / nx), xx, y0 + 7);
+      }
+      for (let j = 0; j <= ny; j++) {
+        const yy = y0 - (y0 - y1) * j / ny;
+        c.beginPath(); c.moveTo(x0, yy); c.lineTo(x1, yy); c.stroke();
+        c.textAlign = 'right'; c.textBaseline = 'middle';
+        c.fillText(yLabels(j / ny), x0 - 8, yy);
+      }
+      c.strokeStyle = 'rgba(148,163,184,.42)'; c.lineWidth = 1.4;
+      c.beginPath(); c.moveTo(x0, y1); c.lineTo(x0, y0); c.lineTo(x1, y0); c.stroke();
+      return { x0, y0, x1, y1, px: v => x0 + (x1 - x0) * v, py: v => y0 - (y0 - y1) * v };
+    },
+    draw() {
+      if (!this.W) this.resize();
+      const m = this.mode;
+      if (m === 'theta') this.drawTheta();
+      else if (m === 'energy') this.drawEnergy();
+      else if (m === 'Tl') this.drawTl(false);
+      else this.drawTl(true);
+    },
+    empty(msg) {
+      const c = this.ctx;
+      c.clearRect(0, 0, this.W, this.H);
+      c.fillStyle = 'rgba(148,163,184,.7)';
+      c.font = '600 12px system-ui, sans-serif';
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      msg.split('\n').forEach((line, i, arr) => c.fillText(line, this.W / 2, this.H / 2 + (i - (arr.length - 1) / 2) * 20));
+    },
+    line(pts, color, width, fill) {
+      if (pts.length < 1) return;
+      const c = this.ctx;
+      c.save();
+      c.strokeStyle = color; c.lineWidth = width; c.lineJoin = 'round'; c.lineCap = 'round';
+      c.beginPath();
+      pts.forEach((p, i) => i ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y));
+      c.stroke();
+      if (fill) {
+        const g = c.createLinearGradient(0, this.H * 0.2, 0, this.H);
+        g.addColorStop(0, fill); g.addColorStop(1, 'rgba(0,0,0,0)');
+        c.lineTo(pts[pts.length - 1].x, pts[0].baseY);
+        c.lineTo(pts[0].x, pts[0].baseY);
+        c.closePath(); c.fillStyle = g; c.fill();
+      }
+      c.restore();
+    },
+    drawTheta() {
+      const s = S.samples;
+      const win = 12; // secunde
+      const tEnd = Math.max(win, S.t);
+      const tStart = tEnd - win;
+      const amp = Math.max(5, S.ampDeg * 1.15);
+      const A = this.axes(
+        f => fmt(tStart + (tEnd - tStart) * f, 1) + ' s',
+        f => fmt(-amp + 2 * amp * f, 0) + '°'
+      );
+      // zero line
+      const c = this.ctx;
+      c.save(); c.strokeStyle = 'rgba(148,163,184,.35)'; c.setLineDash([4, 4]); c.lineWidth = 1;
+      c.beginPath(); c.moveTo(A.x0, A.py(0.5)); c.lineTo(A.x1, A.py(0.5)); c.stroke(); c.restore();
+
+      const pts = [];
+      for (let i = 0; i < s.length; i++) {
+        const sm = s[i];
+        if (sm.t < tStart) continue;
+        pts.push({
+          x: A.px((sm.t - tStart) / (tEnd - tStart)),
+          y: A.py((rad2deg(sm.th) + amp) / (2 * amp))
+        });
+      }
+      if (pts.length > 1) {
+        pts.forEach(p => p.baseY = A.y0);
+        this.line(pts, '#38bdf8', 2, 'rgba(56,189,248,.22)');
+      }
+      // marcaje amplitudine
+      c.save();
+      c.setLineDash([3, 5]); c.strokeStyle = 'rgba(251,191,36,.45)'; c.lineWidth = 1;
+      [S.ampDeg, -S.ampDeg].forEach(a => {
+        const y = A.py((a + amp) / (2 * amp));
+        c.beginPath(); c.moveTo(A.x0, y); c.lineTo(A.x1, y); c.stroke();
+      });
+      c.restore();
+      // etichete legendă
+      this.legend([['θ (elongație unghiulară)', '#38bdf8'], ['±θ₀ amplitudine', '#fbbf24']]);
+      this.title('θ(t) — elongația unghiulară în timp');
+    },
+    drawEnergy() {
+      const s = S.samples;
+      if (!s.length) { this.empty('Pornește simularea\npentru a vedea energiile'); return; }
+      const win = 12, tEnd = Math.max(win, S.t), tStart = tEnd - win;
+      const Emax = Math.max(1e-6, ...s.map(x => Math.max(x.E, x.amp0 ? 0 : 0)));
+      const scale = Emax * 1.12;
+      const A = this.axes(
+        f => fmt(tStart + (tEnd - tStart) * f, 1) + ' s',
+        f => fmt(scale * f, scale < 1 ? 3 : 2) + ' J'
+      );
+      const mk = key => {
+        const out = [];
+        for (const sm of s) {
+          if (sm.t < tStart) continue;
+          out.push({ x: A.px((sm.t - tStart) / (tEnd - tStart)), y: A.py(sm[key] / scale) });
+        }
+        return out;
+      };
+      const ec = mk('Ec'), ep = mk('Ep'), et = mk('E');
+      if (ec.length > 1) {
+        this.line(et, '#e2e8f0', 1.6);
+        this.line(ep, '#a78bfa', 2);
+        this.line(ec, '#34d399', 2);
+      }
+      this.legend([['E totală (constantă)', '#e2e8f0'], ['E potențială', '#a78bfa'], ['E cinetică', '#34d399']]);
+      this.title('Conservarea energiei mecanice');
+    },
+    drawTl(squared) {
+      const pts = S.points;
+      if (pts.length < 1) {
+        this.empty(squared
+          ? 'Adaugă cel puțin 2 puncte (ℓ, T)\npentru dreapta T²(ℓ)'
+          : 'Adaugă puncte cu butonul „Adaugă punct (ℓ, T)”\npentru graficul T(ℓ)');
+        return;
+      }
+      const xs = pts.map(p => p.L), ys = pts.map(p => squared ? p.T * p.T : p.T);
+      const xMax = Math.max(1.5, ...xs) * 1.12;
+      const yMax = Math.max(1, ...ys) * 1.15;
+      const A = this.axes(
+        f => fmt(xMax * f, 1),
+        f => fmt(yMax * f, squared ? 1 : 2)
+      );
+      const c = this.ctx;
+      // curbă teoretică
+      const theo = [];
+      const steps = 90;
+      for (let i = 0; i <= steps; i++) {
+        const L = xMax * i / steps;
+        if (L <= 0.02) continue;
+        const T = physics.exactT(L, S.g, deg2rad(Math.min(S.ampDeg, 40)));
+        const y = squared ? T * T : T;
+        if (y > yMax) break;
+        theo.push({ x: A.px(L / xMax), y: A.py(y / yMax) });
+      }
+      this.line(theo, 'rgba(56,189,248,.55)', 1.8, null);
+      // dreapta de regresie (T²)
+      const fit = regress();
+      if (squared && pts.length >= 2 && fit) {
+        const segs = [];
+        segs.push({ x: A.px(0), y: A.py(clamp(fit.intercept, -yMax, yMax) / yMax) });
+        const xEnd = Math.min(xMax, (yMax - fit.intercept) / fit.slope);
+        segs.push({ x: A.px(xEnd / xMax), y: A.py(clamp(fit.intercept + fit.slope * xEnd, 0, yMax) / yMax) });
+        this.line(segs, 'rgba(251,191,36,.9)', 2);
+      }
+      // puncte
+      pts.forEach(p => {
+        const x = A.px(p.L / xMax);
+        const y = A.py((squared ? p.T * p.T : p.T) / yMax);
+        c.save();
+        c.beginPath(); c.arc(x, y, 4.6, 0, TAU);
+        c.fillStyle = '#7dd3fc'; c.fill();
+        c.strokeStyle = 'rgba(255,255,255,.6)'; c.lineWidth = 1; c.stroke();
+        c.restore();
+      });
+      this.legend([
+        ['puncte măsurate', '#7dd3fc'],
+        ['curbă teoretică 2π√(ℓ/g)', '#38bdf8'],
+        squared && pts.length >= 2 ? ['dreaptă de regresie', '#fbbf24'] : ['', 'transparent']
+      ].filter(l => l[0]));
+      this.title(squared ? 'T²(ℓ) — liniarizare: panta = 4π²/g' : 'T(ℓ) — perioada crește cu √ℓ');
+    },
+    title(txt) {
+      const c = this.ctx;
+      c.save();
+      c.font = '600 11px system-ui, sans-serif';
+      c.fillStyle = 'rgba(203,213,225,.85)';
+      c.textAlign = 'left'; c.textBaseline = 'top';
+      c.fillText(txt, 12, 9);
+      c.restore();
+    },
+    legend(items) {
+      const c = this.ctx;
+      c.save();
+      c.font = '10px system-ui, sans-serif';
+      c.textAlign = 'left'; c.textBaseline = 'middle';
+      let x = 12, y = this.H - 11;
+      items.forEach(([label, color], i) => {
+        if (i > 0) x += 12;
+        if (i > 0 && x > this.W - 120) { x = 10; y -= 14; }
+        c.fillStyle = color;
+        c.beginPath(); c.arc(x + 4, y, 3.4, 0, TAU); c.fill();
+        c.fillStyle = 'rgba(148,163,184,.95)';
+        c.fillText(label, x + 11, y + 0.5);
+        x += 11 + c.measureText(label).width;
+      });
+      c.restore();
+    }
+  };
+  $$('#chartTabs button').forEach(b => b.addEventListener('click', () => {
+    $$('#chartTabs button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    chart.mode = b.dataset.chart;
+    chart.draw();
+    const hints = {
+      theta: 'Graficul θ(t) se desenează automat în timpul simulării.',
+      energy: 'Verifică: E totală rămâne constantă dacă amortizarea este 0.',
+      Tl: 'Adaugă puncte pentru mai multe lungimi: setează ℓ, apoi apasă „Adaugă punct”.',
+      T2l: 'Cu minim 2 puncte obții panta dreptei și valoarea experimentală a lui g.'
+    };
+    $('#chartHint').textContent = hints[chart.mode];
+  }));
+
+  /* --------------------------- regresie liniară ------------------------ */
+  function regress() {
+    const pts = S.points;
+    if (pts.length < 2) return null;
+    const n = pts.length;
+    const sx = pts.reduce((a, p) => a + p.L, 0);
+    const sy = pts.reduce((a, p) => a + p.T * p.T, 0);
+    const sxy = pts.reduce((a, p) => a + p.L * p.T * p.T, 0);
+    const sxx = pts.reduce((a, p) => a + p.L * p.L, 0);
+    const den = n * sxx - sx * sx;
+    let slope, intercept;
+    if (Math.abs(den) < 1e-12) { slope = sy / sx; intercept = 0; }
+    else {
+      slope = (n * sxy - sx * sy) / den;
+      intercept = (sy - slope * sx) / n;
+    }
+    return { slope: Math.abs(slope), intercept, n };
+  }
+
+  /* ============================ MĂSURĂTORI ============================ */
+  const body = $('#dataBody');
+  function renderRows() {
+    body.innerHTML = '';
+    const runNames = ['A', 'B', 'C', 'D', 'E'];
+    S.rows.forEach((r, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td>${fmt(r.L, 2)}</td>
+        <td>${fmt(r.m, 2)}</td>
+        <td>${fmt(r.amp, 0)}</td>
+        <td>${fmt(r.g, 2)}</td>
+        <td>${fmt(r.t10, 2)}</td>
+        <td style="color:#5eead4;font-weight:600">${fmt(r.T, 3)}</td>
+        <td>${fmt(r.T * r.T, 3)}</td>`;
+      body.appendChild(tr);
+    });
+    $('#tblEmpty').style.display = S.rows.length ? 'none' : 'block';
+    $('#rowsPill').innerHTML = `<b>${S.rows.length}</b> măsurători`;
+    computeFit();
+    store.set('rows', S.rows);
+  }
+  function addRow(r) {
+    S.rows.push(r);
+    renderRows();
+    const last = body.lastElementChild;
+    if (last) { last.classList.add('new'); setTimeout(() => last.classList.remove('new'), 900); }
+    // punct automat în grafic
+    S.points.push({ L: r.L, T: r.T, g: r.g });
+    store.set('points', S.points);
+    chart.draw(); computeFit();
+  }
+  function computeFit() {
+    const fit = regress();
+    if (fit && S.points.length >= 2) {
+      const gExp = 4 * PI * PI / fit.slope;
+      const gRef = S.g;
+      const err = (gExp - gRef) / gRef * 100;
+      $('#fitSlope').innerHTML = fmt(fit.slope, 3) + ' <small>s²/m</small>';
+      $('#fitG').innerHTML = fmt(gExp, 3) + ' <small>m/s²</small>';
+      $('#fitErr').innerHTML = (err >= 0 ? '+' : '') + fmt(err, 2) + ' <small>%</small>';
+      $('#fitHint').textContent = `${fit.n} puncte · comparație cu g setat (${fmt(gRef, 2)} m/s²). Eroarea provine din amplitudinea folosită și din precizia măsurătorii.`;
+    } else {
+      $('#fitSlope').innerHTML = '—';
+      $('#fitG').innerHTML = '—';
+      $('#fitErr').innerHTML = '—';
+      $('#fitHint').textContent = 'Sunt necesare minim 2 măsurători cu lungimi diferite.';
+    }
+    if (S.points.length) {
+      const gs = S.points.map(p => 4 * PI * PI * p.L / (p.T * p.T));
+      const mean = gs.reduce((a, b) => a + b, 0) / gs.length;
+      $('#fitG2').innerHTML = fmt(mean, 3) + ' <small>m/s²</small>';
+    } else $('#fitG2').innerHTML = '—';
+  }
+
+  function startMeasure() {
+    if (S.measuring) { S.measuring = null; toast('Măsurare anulată'); return; }
+    S.measuring = { tStart: null, n: 0, target: 10 };
+    if (!S.running) { S.running = true; syncPlayBtn(); }
+    toast('Măsurare pornită — se numără 10 oscilații complete');
+  }
+  function finishMeasure(t10) {
+    const c = cur();
+    const T = t10 / 10;
+    S.measuring = null;
+    addRow({ L: c.L, m: c.m, amp: c.amp, g: c.g, t10, T });
+    toast(`Măsurat: t₁₀ = ${fmt(t10, 2)} s ⇒ T = ${fmt(T, 3)} s`);
+    updateReadouts();
+  }
+  /** înregistrare instantanee — folosește perioada exactă calculată */
+  function quickMark() {
+    const c = cur();
+    const T = c.T;
+    addRow({ L: c.L, m: c.m, amp: c.amp, g: c.g, t10: T * 10, T });
+    toast(`Linie adăugată: ℓ = ${fmt(c.L, 2)} m, T = ${fmt(T, 3)} s`);
+  }
+
+  /* ============================ CONTROALE ============================ */
+  function setRangeFill(el) {
+    const min = +el.min, max = +el.max, v = +el.value;
+    const p = ((v - min) / (max - min)) * 100;
+    el.style.setProperty('--p', p + '%');
+  }
+  const inLen = $('#inLen'), inMass = $('#inMass'), inAmp = $('#inAmp'), inDamp = $('#inDamp'),
+        inSpeed = $('#inSpeed'), inG = $('#inG'), inGc = $('#inGcustom');
+
+  function syncLabels() {
+    $('#vLen').textContent = fmt(S.len, 2) + ' m';
+    $('#vMass').textContent = fmt(S.mass, 2) + ' kg';
+    $('#vAmp').textContent = fmt(S.ampDeg, 0) + '°';
+    $('#vG').textContent = fmt(S.g, 2) + ' m/s²';
+    $('#vDamp').textContent = S.damp === 0 ? 'ideal' : fmt(S.damp, 2);
+    $('#vSpeed').textContent = fmt(S.speed, 2) + '×';
+    [inLen, inMass, inAmp, inDamp, inSpeed, inGc].forEach(setRangeFill);
+  }
+  function updateReadouts() {
+    const c = cur();
+    const vmax = deg2rad(S.ampDeg) * Math.sqrt(S.g * S.len) * Math.cos(deg2rad(S.ampDeg) / 2);
+    const E = S.mass * S.g * S.len * (1 - Math.cos(deg2rad(S.ampDeg)));
+    $('#roT').innerHTML = fmt(c.T, 3) + '<small>s</small>';
+    $('#roF').innerHTML = fmt(1 / c.T, 3) + '<small>Hz</small>';
+    $('#roW').innerHTML = fmt(TAU / c.T, 2) + '<small>rad/s</small>';
+    $('#roVmax').innerHTML = fmt(vmax, 2) + '<small>m/s</small>';
+    $('#roE').innerHTML = fmtAuto(E) + '<small>J</small>';
+    $('#roTexact').innerHTML = fmt(c.T0, 3) + '<small>s</small>';
+    $('#ov-T').textContent = fmt(c.T, 2) + ' s';
+  }
+
+  function onParamChange(reset = true) {
+    S.len = +inLen.value;
+    S.mass = +inMass.value;
+    S.ampDeg = +inAmp.value;
+    S.damp = +inDamp.value;
+    S.speed = +inSpeed.value;
+    if (inG.value !== 'custom') S.g = +inG.value;
+    else S.g = +inGc.value;
+    syncLabels(); updateReadouts();
+    if (reset) resetMotion(true);
+    dirty = true;
+  }
+  [inLen, inMass, inAmp, inDamp, inSpeed].forEach(el => el.addEventListener('input', () => onParamChange(true)));
+  inG.addEventListener('change', () => {
+    const custom = inG.value === 'custom';
+    inGc.disabled = !custom;
+    if (!custom) { inGc.value = inG.value; }
+    onParamChange(true);
+    if (custom) inGc.focus();
+  });
+  inGc.addEventListener('input', () => { onParamChange(true); });
+
+  $('#btnDefaults').addEventListener('click', () => {
+    inLen.value = DEFAULTS.len; inMass.value = DEFAULTS.mass; inAmp.value = DEFAULTS.amp;
+    inDamp.value = DEFAULTS.damp; inSpeed.value = DEFAULTS.speed;
+    inG.value = '9.81'; inGc.value = 9.81; inGc.disabled = true;
+    $('#inPreset').value = '';
+    onParamChange(true); toast('Valori implicite restaurate');
+  });
+
+  /* scenarii */
+  const PRESETS = {
+    p1: { L: 1, m: 1, amp: 10, g: 9.81, damp: 0, msg: 'Pendul etalon: ℓ = 1 m ⇒ T ≈ 2,0 s' },
+    p2: { L: 0.25, m: 1, amp: 10, g: 9.81, damp: 0, msg: 'Începe cu ℓ = 0,25 m, apoi adaugă puncte pentru 1 m și 2,25 m' },
+    p3: { L: 0.165, m: 1, amp: 10, g: 1.62, damp: 0, msg: 'Pe Lună, ℓ = 0,165 m dă aceeași perioadă (≈ 2 s) ca 1 m pe Pământ' },
+    p4: { L: 1, m: 0.5, amp: 15, g: 9.81, damp: 0, msg: 'Schimbă masa: perioada rămâne aceeași!' },
+    p5: { L: 1, m: 1, amp: 80, g: 9.81, damp: 0, msg: 'Amplitudine 80°: perioada reală este cu ~7% mai mare decât 2π√(ℓ/g)' },
+    p6: { L: 1, m: 1, amp: 40, g: 9.81, damp: 0.28, msg: 'Amortizare: amplitudinea scade exponențial în timp' },
+    p7: { L: 3, m: 4, amp: 25, g: 9.81, damp: 0, msg: 'Pendul de 3 m: T ≈ 3,5 s' }
+  };
+  $('#inPreset').addEventListener('change', e => {
+    const p = PRESETS[e.target.value];
+    if (!p) return;
+    inLen.value = p.L; inMass.value = p.m; inAmp.value = p.amp;
+    inDamp.value = p.damp;
+    if ([...inG.options].some(o => +o.value === p.g)) { inG.value = String(p.g); inGc.disabled = true; inGc.value = p.g; }
+    else { inG.value = 'custom'; inGc.disabled = false; inGc.value = p.g; }
+    onParamChange(true);
+    toast(p.msg);
+  });
+
+  /* afișare */
+  const cks = {
+    ckForces: 'showForces', ckVel: 'showVel', ckTrace: 'showTrace',
+    ckProt: 'showProt', ckEnergy: 'showEnergy', ckGhost: 'showGhost'
+  };
+  Object.entries(cks).forEach(([id, key]) => {
+    const el = $('#' + id);
+    el.checked = S[key];
+    el.addEventListener('change', () => {
+      S[key] = el.checked;
+      if (key === 'showTrace') S.trace = [];
+      if (key === 'showEnergy') $('#legendEp').style.display = el.checked ? 'inline-flex' : 'none';
+      dirty = true;
+    });
+  });
+
+  /* butoane simulare */
+  function syncPlayBtn() {
+    $('#playTxt').textContent = S.running ? 'Pauză' : 'Start';
+    $('#playIco').innerHTML = S.running
+      ? '<path d="M7 5h3.4v14H7zM13.6 5H17v14h-3.4z"/>'
+      : '<path d="M8 5.5v13l11-6.5z"/>';
+    $('#playIco').setAttribute('viewBox', '0 0 24 24');
+    $('#playIco').setAttribute('fill', 'currentColor');
+    $('#stateTxt').textContent = S.running ? 'în oscilație' : 'pauză';
+    $('#statePill').classList.toggle('live', S.running);
+  }
+  $('#btnPlay').addEventListener('click', () => { S.running = !S.running; syncPlayBtn(); dirty = true; });
+  $('#btnReset').addEventListener('click', () => { resetMotion(true); toast('Pendul readus la amplitudinea inițială'); });
+  $('#btnKickL').addEventListener('click', () => { S.omega -= 0.9; S.running = true; syncPlayBtn(); });
+  $('#btnKickR').addEventListener('click', () => { S.omega += 0.9; S.running = true; syncPlayBtn(); });
+  $('#btnMeasure').addEventListener('click', startMeasure);
+  $('#btnMark').addEventListener('click', quickMark);
+  $('#btnDelRow').addEventListener('click', () => {
+    if (!S.rows.length) return;
+    const r = S.rows.pop();
+    const idx = S.points.findIndex(p => Math.abs(p.L - r.L) < 1e-9 && Math.abs(p.T - r.T) < 1e-9);
+    if (idx >= 0) { S.points.splice(idx, 1); store.set('points', S.points); }
+    renderRows(); chart.draw();
+  });
+  $('#btnClearRows').addEventListener('click', () => {
+    S.rows = []; S.points = []; store.set('rows', []); store.set('points', []);
+    renderRows(); chart.draw(); toast('Tabel și grafice golite');
+  });
+  $('#btnCsv').addEventListener('click', exportCsv);
+  $('#btnAddPoint').addEventListener('click', () => {
+    const c = cur();
+    if (S.points.some(p => Math.abs(p.L - c.L) < 0.005)) {
+      toast('Există deja un punct pentru această lungime — modifică ℓ');
+      return;
+    }
+    S.points.push({ L: c.L, T: c.T, g: c.g });
+    store.set('points', S.points);
+    chart.mode = chart.mode === 'T2l' ? 'T2l' : 'Tl';
+    $$('#chartTabs button').forEach(x => x.classList.toggle('active', x.dataset.chart === chart.mode));
+    chart.draw(); computeFit();
+    toast(`Punct adăugat: ℓ = ${fmt(c.L, 2)} m, T = ${fmt(c.T, 3)} s`);
+  });
+  $('#btnClearGraph').addEventListener('click', () => {
+    S.points = []; store.set('points', []); chart.draw(); computeFit(); toast('Punctele din grafic au fost șterse');
+  });
+
+  function exportCsv() {
+    if (!S.rows.length) { toast('Nu există măsurători de exportat'); return; }
+    const head = 'nr,lungime_l_m,masa_kg,amplitudine_deg,g_m_s2,t10_s,T_s,T2_s2\n';
+    const lines = S.rows.map((r, i) =>
+      [i + 1, r.L.toFixed(3), r.m.toFixed(2), r.amp.toFixed(0), r.g.toFixed(2),
+       r.t10.toFixed(3), r.T.toFixed(4), (r.T * r.T).toFixed(4)].join(',')).join('\n');
+    const blob = new Blob([head + lines], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'masuratori-pendul.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast('Fișier CSV descărcat');
+  }
+
+  /* drag pe canvas */
+  let dragging = false;
+  function pointerAngle(ev) {
+    const r = cv.getBoundingClientRect();
+    const px = (ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left;
+    const py = (ev.touches ? ev.touches[0].clientY : ev.clientY) - r.top;
+    const pivot = { x: W / 2, y: 58 };
+    const a = Math.atan2(px - pivot.x, py - pivot.y);
+    return clamp(a, -deg2rad(90), deg2rad(90));
+  }
+  function startDrag(ev) {
+    dragging = true; cv.classList.add('dragging');
+    S.running = false; syncPlayBtn();
+    applyDrag(ev); ev.preventDefault();
+  }
+  function applyDrag(ev) {
+    const a = pointerAngle(ev);
+    S.theta = a; S.omega = 0;
+    S.ampDeg = Math.max(1, Math.abs(rad2deg(a)));
+    inAmp.value = clamp(Math.round(S.ampDeg), 1, 90);
+    syncLabels(); updateReadouts();
+    S.t = 0; S.samples = []; S.trace = [];
+    dirty = true;
+  }
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false; cv.classList.remove('dragging');
+    S.omega = 0; S.running = true; syncPlayBtn();
+    toast(`Amplitudine setată: θ₀ = ${fmt(S.ampDeg, 0)}°`);
+  }
+  cv.addEventListener('mousedown', startDrag);
+  window.addEventListener('mousemove', e => { if (dragging) applyDrag(e); });
+  window.addEventListener('mouseup', endDrag);
+  cv.addEventListener('touchstart', startDrag, { passive: false });
+  cv.addEventListener('touchmove', e => { if (dragging) { applyDrag(e); e.preventDefault(); } }, { passive: false });
+  cv.addEventListener('touchend', endDrag);
+
+  /* fullscreen */
+  $('#btnFull').addEventListener('click', () => {
+    const el = $('.stage');
+    if (!document.fullscreenElement) { (el.requestFullscreen || el.webkitRequestFullscreen || (() => {})).call(el); }
+    else document.exitFullscreen();
+    setTimeout(() => { resizeCanvas(); chart.resize(); }, 300);
+  });
+  /* sunet */
+  $('#btnSound').addEventListener('click', () => {
+    AudioKit.on = !AudioKit.on;
+    $('#btnSound').classList.toggle('on', AudioKit.on);
+    if (AudioKit.on) { AudioKit.init(); AudioKit.tick(880); toast('Sunet activat'); }
+    else toast('Sunet oprit');
+  });
+
+  /* ============================== ACTIVITĂȚI ========================== */
+  const TASKS = [
+    { t: 'Măsoară perioada pentru ℓ = 1 m', d: 'Setează θ₀ = 10°, apasă „Măsoară (10 oscilații)”. Verifică T ≈ 2,0 s.', c: 'T = 2π√(ℓ/g) = 2,006 s' },
+    { t: 'Verifică independența de masă', d: 'Păstrează ℓ și θ₀, modifică masa de la 0,5 kg la 5 kg. Compară perioadele.', c: 'T nu depinde de m' },
+    { t: 'Legea T ∝ √ℓ', d: 'Adaugă puncte pentru ℓ = 0,25; 1,00; 2,25 m și urmărește graficul T(ℓ).', c: 'de 4× ℓ ⇒ de 2× T' },
+    { t: 'Determină g din pantă', d: 'Cu minim 3 puncte, citește panta din graficul T²(ℓ) și calculează g = 4π²/p.', c: 'g ≈ 9,8 m/s²' },
+    { t: 'Compară Pământ – Lună', d: 'Alege g = 1,62 m/s². Găsește lungimea pentru care T rămâne 2 s.', c: 'ℓ ≈ 0,165 m' },
+    { t: 'Efectul amplitudinii', d: 'Compară T la 5° și la 80° (pornește amortizarea pe 0). Estimează eroarea relativă.', c: '≈ 0,2% vs ≈ 7%' },
+    { t: 'Energia se conservă', d: 'Activează graficul „Energie” cu amortizare 0. Observă suma constantă Ec + Ep.', c: 'E = mgℓ(1 − cos θ₀)' },
+    { t: 'Amortizare', d: 'Setează β = 0,3 și urmărește descreșterea amplitudinii; explică transformarea energiei.', c: 'E mecanică → energie internă' }
+  ];
+  const checked = new Set(store.get('tasks', []));
+  function renderTasks() {
+    const box = $('#tasksList');
+    box.innerHTML = TASKS.map((t, i) => `
+      <label class="switch-row" style="align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid ${checked.has(i) ? 'rgba(52,211,153,.35)' : 'var(--line)'};border-radius:12px;padding:11px 13px">
+        <span class="lbl" style="padding-top:1px">
+          <b style="color:#fff;font-size:.865rem;display:block;margin-bottom:2px">${i + 1}. ${t.t}</b>
+          <span style="color:var(--muted);font-size:.78rem;line-height:1.45;display:block">${t.d}</span>
+          <span class="chip t" style="margin-top:7px;display:inline-block;font-size:.68rem">${t.c}</span>
+        </span>
+        <input type="checkbox" data-task="${i}" ${checked.has(i) ? 'checked' : ''}>
+        <span class="sw" style="margin-top:2px"></span>
+      </label>`).join('');
+    $$('input[data-task]', box).forEach(inp => inp.addEventListener('change', () => {
+      const i = +inp.dataset.task;
+      if (inp.checked) checked.add(i); else checked.delete(i);
+      store.set('tasks', [...checked]);
+      renderTasks();
+      if (checked.size === TASKS.length) toast('Felicitări! Ai parcurs toate activitățile 🎉');
+    }));
+  }
+
+  /* ================================ MODAL ============================= */
+  const modal = $('#modal');
+  function openModal(title, html) {
+    $('#modalTitle').textContent = title;
+    $('#modalBody').innerHTML = html;
+    modal.classList.add('open');
+    $('#modalX').focus();
+  }
+  function closeModal() { modal.classList.remove('open'); }
+  $('#modalX').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  $('#btnHelp').addEventListener('click', () => openModal('Ghid rapid', `
+    <h4>Ce poți face aici</h4>
+    <ul>
+      <li><b>Teorie</b> — 10 secțiuni cu formule, scheme și tabele, navigabile din cuprins.</li>
+      <li><b>Laborator</b> — simulare cu pendul real (ecuația exactă), vectori, energii, grafice și tabel de măsurători.</li>
+    </ul>
+    <h4>Scurtături de tastatură</h4>
+    <ul>
+      <li><kbd>Space</kbd> — start / pauză</li>
+      <li><kbd>R</kbd> — reset la amplitudinea inițială</li>
+      <li><kbd>←</kbd> / <kbd>→</kbd> — împinge pendulul</li>
+      <li><kbd>M</kbd> — pornește măsurarea celor 10 oscilații</li>
+      <li><kbd>Esc</kbd> — închide fereastra</li>
+    </ul>
+    <h4>Cum obții g experimental</h4>
+    <ol>
+      <li>Setează θ₀ ≤ 10° și amortizarea 0.</li>
+      <li>Pentru 3–5 lungimi diferite apasă „Adaugă punct (ℓ, T)” (sau măsoară).</li>
+      <li>Trece pe graficul <b>T²(ℓ)</b> și citește panta p; apoi g = 4π² / p.</li>
+    </ol>
+    <h4>Offline</h4>
+    <p>Aplicația este un singur fișier HTML — fără internet, fără instalare. Măsurătorile se păstrează local în browser.</p>
+    <p><button class="btn btn-teal btn-sm" id="btnSaveOffline">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg>
+      Salvează o copie offline (.html)
+    </button></p>
+  `));
+  document.addEventListener('click', e => {
+    const btn = e.target.closest && e.target.closest('#btnSaveOffline');
+    if (!btn) return;
+    try {
+      const blob = new Blob([PRISTINE_HTML], { type: 'text/html;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'pendulul-gravitational.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+      toast('Copie offline salvată — o poți deschide oricând, fără internet');
+    } catch (err) { toast('Descărcarea nu este permisă în acest context'); }
+  });
+
+  $('#btnAbout').addEventListener('click', e => {
+    e.preventDefault();
+    openModal('Despre aplicație', `
+      <h4>Pendulul gravitational — aplicație didactică</h4>
+      <p>Instrument interactiv pentru studiul pendulului matematic la liceu (Fizică, clasele IX–XII): teorie structurată, laborator virtual, prelucrare de date și fișă de activități.</p>
+      <h4>Model fizic</h4>
+      <p>Simularea integrează numeric ecuația exactă <code>θ'' = −(g/ℓ)·sin θ − β·θ'</code>, fără aproximația unghiurilor mici — de aceea poți observa creșterea perioadei la amplitudini mari. Perioada „exactă” din panoul de date este calculată analitic prin media aritmetico-geometrică (AGM).</p>
+      <h4>Confidențialitate</h4>
+      <p>Nu se colectează date, nu există conturi și nicio conexiune la rețea. Măsurătorile și bifele se salvează doar local (localStorage), când browserul permite.</p>
+      <h4>Inspirație</h4>
+      <p>Interfața și abordarea pedagogică se inspiră din <a href="https://phet.colorado.edu/ro/simulations/pendulum-lab" target="_blank" rel="noopener">PhET Interactive Simulations, University of Colorado Boulder</a> (licență CC BY 4.0).</p>
+      <p style="color:var(--dim);font-size:.8rem;margin-top:16px">Versiunea 1.0 · construcție autonomă, fără dependențe externe.</p>
+    `);
+  });
+
+  /* ============================== TASTATURĂ =========================== */
+  document.addEventListener('keydown', e => {
+    const tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
+    if (!views.lab.classList.contains('active')) {
+      if (e.key === ' ' && tag !== 'button') { /* nimic */ }
+      return;
+    }
+    if (e.code === 'Space') { e.preventDefault(); S.running = !S.running; syncPlayBtn(); dirty = true; }
+    else if (e.key === 'r' || e.key === 'R') resetMotion(true);
+    else if (e.key === 'ArrowLeft') { S.omega -= 0.9; S.running = true; syncPlayBtn(); }
+    else if (e.key === 'ArrowRight') { S.omega += 0.9; S.running = true; syncPlayBtn(); }
+    else if (e.key === 'm' || e.key === 'M') startMeasure();
+  });
+
+  /* =============================== BUCLE ============================== */
+  let last = performance.now(), acc = 0, uiAcc = 0, chartAcc = 0;
+  function loop(now) {
+    const dtReal = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    if (S.running) {
+      const dtSim = dtReal * S.speed;
+      stepPhysics(dtSim);
+      acc += dtSim;
+      if (acc > 0.012) { acc = 0; collectSample(); }
+      if (!dirty && S.showTrace) dirty = true;
+    }
+    if (dirty || S.running) { drawScene(); dirty = false; }
+    // UI throttled
+    uiAcc += dtReal; chartAcc += dtReal;
+    if (uiAcc > 0.09) {
+      uiAcc = 0;
+      $('#ov-theta').textContent = fmt(rad2deg(S.theta), 1) + '°';
+      $('#ov-time').textContent = fmt(S.t, 2) + ' s';
+      if (!S.running) { $('#stateTxt').textContent = 'pauză'; }
+      else if (S.damp > 0.02 && Math.abs(S.theta) < 0.004 && Math.abs(S.omega) < 0.02) {
+        $('#stateTxt').textContent = 'amortizat';
+      } else if (S.measuring) { $('#stateTxt').textContent = 'măsurare…'; }
+      else { $('#stateTxt').textContent = 'în oscilație'; }
+    }
+    if (chartAcc > 0.12 && views.lab.classList.contains('active')) {
+      chartAcc = 0;
+      if (chart.mode === 'theta' || chart.mode === 'energy') chart.draw();
+    }
+    requestAnimationFrame(loop);
+  }
+
+  /* ============================== INIȚIALIZARE ======================== */
+  function init() {
+    $('#year').textContent = new Date().getFullYear();
+    // stare din param. impliciti
+    S.rows = store.get('rows', []);
+    S.points = store.get('points', []);
+    syncLabels(); updateReadouts(); syncPlayBtn(); renderRows(); renderTasks();
+    resizeCanvas(); chart.resize();
+    resetMotion(true);
+    setTimeout(() => { resizeCanvas(); chart.resize(); }, 120);
+    requestAnimationFrame(loop);
+
+    // indicator online/offline
+    const setNet = () => {
+      const on = navigator.onLine;
+      $('#netTxt').textContent = on ? 'Online · offline-ready' : 'Offline · funcțional';
+      $('#netBadge').style.background = on ? 'rgba(52,211,153,.1)' : 'rgba(56,189,248,.1)';
+      $('#netBadge').style.borderColor = on ? 'rgba(52,211,153,.28)' : 'rgba(56,189,248,.28)';
+      $('#netBadge').style.color = on ? '#a7f3d0' : '#7dd3fc';
+    };
+    setNet();
+    window.addEventListener('online', setNet);
+    window.addEventListener('offline', setNet);
+    updateToc();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+
+  // expunere minimă pentru depanare
+  window.Pendul = { S, physics, chart };
+})();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a55c4abf38e6ca1d',t:'MTc5Mzg4NjI1Mw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a55c4abf38e6ca1d',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

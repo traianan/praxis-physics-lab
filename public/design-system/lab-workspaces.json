@@ -300,5 +300,16 @@
         "layout": "native"
       }
     ]
+  },
+  "pendulul-gravitational": {
+    "workspaces": [
+      {
+        "selector": ".lab-grid",
+        "scene": ".stage",
+        "controls": ".side",
+        "graphs": ".data",
+        "layout": "native"
+      }
+    ]
   }
 }

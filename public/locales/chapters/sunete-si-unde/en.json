@@ -67,6 +67,18 @@
         "Touch",
         "Offline"
       ]
+    },
+    "pendulul-gravitational": {
+      "title": "Gravitational pendulum",
+      "subtitle": "Oscillations, energy and measuring gravity",
+      "description": "Theory, nonlinear pendulum with damping, four graphs, period measurements and determination of gravitational acceleration.",
+      "alt": "Pendulum with force vectors and an oscillation graph",
+      "tags": [
+        "Oscillations",
+        "Gravity",
+        "Experiments",
+        "Offline"
+      ]
     }
   }
 }

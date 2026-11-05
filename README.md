@@ -1,5 +1,8 @@
 # Praxis · Fizică interactivă
 
+**Adăugat la 5 noiembrie 2026:** [Pendulul gravitațional](docs/INTEGRARE_PENDUL_GRAVITATIONAL.md), în **Sunete și unde**: teorie, simulare neliniară, grafice, măsurători, RO/EN și arhivă offline. Biblioteca cuprinde 24 de laboratoare.
+
+
 **Legea lui Hooke, 4 noiembrie 2026:** laborator RO/EN în capitolul **Lucru mecanic, energie și putere**, cu resort interactiv, constanta elastică, energie, grafice și viteză de animație reglabilă. Biblioteca are **23 de laboratoare**. [Deschide laboratorul](https://praxis-physics-lab.vercel.app/simulari/legea-lui-hooke/index.html) · [Specificație și surse](docs/LEGEA_LUI_HOOKE.md) · [Verificări](docs/LEGEA_LUI_HOOKE_VALIDARE.md).
 
 **Pila Daniell, 4 noiembrie 2026:** laborator RO/EN cu model Nernst, animație, grafice și bilanțuri de sarcină/energie, integrat în biblioteca de **22 de laboratoare**. [Deschide online](https://praxis-physics-lab.vercel.app/simulari/pila-daniell/index.html) · [Publicare și verificări](docs/PILA_DANIELL_PUBLICARE.md).

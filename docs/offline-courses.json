@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-04T11:43:21.081Z",
+  "builtAt": "2026-11-05T14:34:35.092Z",
   "courses": [
     {
       "id": "motoare-termice",
@@ -192,6 +192,17 @@
       "id": "unde-mecanice",
       "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
       "sha256": "2b69ee092dbacd810939f2150afae964ff7e74b06d4143b99d8cdb16bec734bb",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "pendulul-gravitational",
+      "file": "public/simulari/pendulul-gravitational/pendulul-gravitational.zip",
+      "sha256": "87d23fa297f75deb6d6fed443c720ae36c7c041cfb40f96f2f6ae183a5d964c5",
       "languages": [
         "ro",
         "en"

@@ -1,0 +1,27 @@
+<svg viewBox="0 0 640 400" role="img" aria-label="Descompunerea greutății în componente radială și tangențială">
+ <defs><marker id="pendulum-force-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="context-stroke"/></marker></defs>
+ <line x1="290" y1="45" x2="450" y2="45" stroke="#8493a7" stroke-width="6" stroke-linecap="round"/>
+ <line x1="370" y1="45" x2="370" y2="165" stroke="#9aaac0" stroke-width="1.5" stroke-dasharray="5 5"/>
+ <line data-force="string" x1="370" y1="45" x2="250" y2="245" stroke="#9aaac0" stroke-width="2.5"/>
+ <circle cx="370" cy="45" r="4" fill="#e9eefb"/>
+ <circle cx="250" cy="245" r="14" fill="#2dd4bf"/>
+ <g fill="none" stroke-width="3" marker-end="url(#pendulum-force-arrow)">
+  <line data-force="weight" x1="250" y1="245" x2="250" y2="345" stroke="#fb7185"/>
+  <line data-force="radial" x1="250" y1="245" x2="205.882353" y2="318.529412" stroke="#a78bfa"/>
+  <line data-force="tangential" x1="250" y1="245" x2="294.117647" y2="271.470588" stroke="#fbbf24"/>
+  <line data-force="tension" x1="250" y1="245" x2="311.739491" y2="142.100849" stroke="#38bdf8"/>
+ </g>
+ <g stroke="#9aaac0" stroke-width="1.2" stroke-dasharray="4 5">
+  <line x1="205.882353" y1="318.529412" x2="250" y2="345"/>
+  <line x1="294.117647" y1="271.470588" x2="250" y2="345"/>
+ </g>
+ <path data-force="angle" d="M370 115 A70 70 0 0 1 333.985297 105.024505" fill="none" stroke="#fbbf24" stroke-width="2"/>
+ <g font-family="Segoe UI, sans-serif" font-size="16">
+  <text x="345" y="133" fill="#fcd34d">θ</text>
+  <text x="268" y="354" fill="#fda4af">G = mg</text>
+  <text x="44" y="324" fill="#c4b5fd">Gᵣ = mg cosθ</text>
+  <text x="309" y="289" fill="#fcd34d">Gₜ = mg sinθ</text>
+  <text x="327" y="176" fill="#7dd3fc">T (tensiune)</text>
+  <text x="402" y="77" fill="#cbd5e1">punct de suspensie</text>
+ </g>
+</svg>

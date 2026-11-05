@@ -67,6 +67,18 @@
         "Touch",
         "Offline"
       ]
+    },
+    "pendulul-gravitational": {
+      "title": "Pendulul gravitațional",
+      "subtitle": "Oscilații, energie și măsurarea gravitației",
+      "description": "Teorie, pendul neliniar cu amortizare, patru grafice, măsurarea perioadei și determinarea accelerației gravitaționale.",
+      "alt": "Pendul gravitațional cu vectori de forță și graficul oscilației",
+      "tags": [
+        "Oscilații",
+        "Gravitație",
+        "Experimente",
+        "Offline"
+      ]
     }
   }
 }
