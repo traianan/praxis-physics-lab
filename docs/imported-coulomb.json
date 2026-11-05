@@ -1,0 +1,12 @@
+{
+  "id": "legea-lui-coulomb",
+  "source": "Legea lui Coulomb/legea-lui-coulomb.html",
+  "sha256": "f4b119b320e48f85974cbe20b31ba0ded264abc6cedf418d7e8bd11d9cd4b393",
+  "adaptations": [
+    "Shared Praxis shell, bilingual UI and offline archive",
+    "Responsive SVG, bounded force arrows and keyboard/pointer controls",
+    "SI conversion in independently testable model",
+    "Explicit scientific formulas and high-contrast theory",
+    "Discarded unrelated Cloudflare challenge injection"
+  ]
+}

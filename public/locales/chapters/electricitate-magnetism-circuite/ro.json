@@ -7,7 +7,8 @@
     "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITATE, MAGNETISM ȘI CIRCUITE",
     "Generatorul electric": "Generatorul electric",
     "Laboratorul electromagnetic Faraday": "Laboratorul electromagnetic Faraday",
-    "Pila Daniell": "Pila Daniell"
+    "Pila Daniell": "Pila Daniell",
+    "Legea lui Coulomb": "Legea lui Coulomb"
   },
   "simulations": {
     "generator-electric": {
@@ -45,6 +46,19 @@
         "Energie"
       ],
       "keywords": "pila daniell zinc cupru anod catod nernst tensiune curent punte salina electrochimie"
+    },
+    "legea-lui-coulomb": {
+      "title": "Legea lui Coulomb",
+      "subtitle": "Sarcini electrice, forțe și distanță",
+      "description": "Două sarcini interactive, atracție și respingere, vectori de forță, teorie și exemplu rezolvat.",
+      "alt": "Două sarcini electrice cu forțe egale și opuse",
+      "tags": [
+        "Electrostatică",
+        "Forțe",
+        "Experimente",
+        "Offline"
+      ],
+      "keywords": "coulomb sarcini electrice electrostatica atractie respingere forta distanta vid"
     }
   }
 }

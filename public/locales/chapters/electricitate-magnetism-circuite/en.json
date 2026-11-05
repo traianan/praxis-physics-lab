@@ -7,7 +7,8 @@
     "ELECTRICITATE, MAGNETISM ȘI CIRCUITE": "ELECTRICITY, MAGNETISM AND CIRCUITS",
     "Generatorul electric": "Electric generator",
     "Laboratorul electromagnetic Faraday": "Faraday’s Electromagnetic Lab",
-    "Pila Daniell": "Daniell cell"
+    "Pila Daniell": "Daniell cell",
+    "Legea lui Coulomb": "Coulomb’s law"
   },
   "simulations": {
     "generator-electric": {
@@ -45,6 +46,19 @@
         "Energy"
       ],
       "keywords": "daniell cell zinc copper anode cathode nernst voltage current salt bridge electrochemistry"
+    },
+    "legea-lui-coulomb": {
+      "title": "Coulomb’s law",
+      "subtitle": "Electric charges, forces and separation",
+      "description": "Two interactive charges, attraction and repulsion, force vectors, theory and a worked example.",
+      "alt": "Two electric charges with equal and opposite forces",
+      "tags": [
+        "Electrostatics",
+        "Forces",
+        "Experiments",
+        "Offline"
+      ],
+      "keywords": "coulomb electric charges electrostatics attraction repulsion force separation vacuum"
     }
   }
 }

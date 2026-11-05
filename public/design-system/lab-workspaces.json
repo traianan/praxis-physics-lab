@@ -311,5 +311,15 @@
         "layout": "native"
       }
     ]
+  },
+  "legea-lui-coulomb": {
+    "workspaces": [
+      {
+        "selector": ".coulomb-layout",
+        "scene": ".coulomb-layout>div",
+        "controls": ".coulomb-layout>aside",
+        "layout": "native"
+      }
+    ]
   }
 }
