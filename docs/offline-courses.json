@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-05T17:33:25.755Z",
+  "builtAt": "2026-11-05T17:47:28.799Z",
   "courses": [
     {
       "id": "legea-lui-coulomb",
@@ -156,17 +156,6 @@
       "localResources": true
     },
     {
-      "id": "principiul-i-aplicatii",
-      "file": "public/simulari/principiul-i-aplicatii/principiul-i-aplicatii.zip",
-      "sha256": "d4d9309ba23abb002e0f96c9ebf4e7a75ce6b6c1d81b2c727e5d0e0fa31cde22",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
       "id": "transformari-stare-agregare",
       "file": "public/simulari/transformari-stare-agregare/transformari-stare-agregare.zip",
       "sha256": "f0720b79890dbe071d135669993ab581c668f363ebf43ba4e3062366aaeda0d8",
@@ -214,6 +203,17 @@
       "id": "figuri-chladni",
       "file": "public/simulari/figuri-chladni/figuri-chladni.zip",
       "sha256": "6057442067113454bc6dc0af2bb38f6e17c96b3730c6fc034cc0070854ccfbe5",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "principiul-i-aplicatii",
+      "file": "public/simulari/principiul-i-aplicatii/principiul-i-aplicatii.zip",
+      "sha256": "caea3c9bc7f1fb334d4873cffbd06677747c22d257999f6024ef0545d57a0647",
       "languages": [
         "ro",
         "en"

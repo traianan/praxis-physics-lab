@@ -26,3 +26,9 @@ Fotografiile arată sursa TeX (`\\mathrm{const.}`, `\\displaystyle`) în locul f
 Nu s-a testat pe tabla fizică. Verificarea alternativă în Chrome nu emulează toate particularitățile browserului școlii. Publicarea modificărilor a fost solicitată ulterior, la 5 noiembrie 2026.
 
 Surse tehnice: [Chrome 109 — introducerea MathML Core](https://developer.chrome.com/blog/new-in-chrome-109/), [opțiunile de ieșire KaTeX](https://katex.org/docs/options).
+
+## Extinderea corecției la toate graficele lecției
+
+La solicitarea ulterioară a utilizatorului, limita de 640 px a standului și 560 px a desenului a fost extinsă la toate cele nouă suprafețe Canvas din Aplicații ale principiului I: molecule, valori experimentale, izocoră, izobară, izotermă, adiabatică, graficul de sinteză, distribuția căldurii și politropă. Sursa autoritativă este `public/shared/first-law-applications.css`. Formulele și modelele fizice nu au fost modificate.
+
+Verificate toate cele opt secțiuni cu desene la 3840×2160 DPR 1, 1920×1080 DPR 2, 1366×768, 1024×768 și 390×844. Pe desktop lățimile sunt 544–560 px, cu 2 mostre/pixel CSS la DPR 1 și 3 la DPR 2. Mobilul păstrează lățimile logice și derularea locală existente; fără overflow al paginii. Verificate suplimentar EN și text 200% pe mobil, precum și toate desenele din arhiva offline. Cele 8 teste specifice lecției trec; build și verificarea diff finalizate. Arhiva lecției a fost regenerată. Publicarea acestei extinderi a fost solicitată ulterior de utilizator.

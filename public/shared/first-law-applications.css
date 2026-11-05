@@ -13,10 +13,10 @@ body[data-praxis-course="principiul-i-aplicatii"]::before{display:none}
 #praxis-original .hero,#praxis-original .grid-2{gap:1rem;margin-bottom:1rem}
 #praxis-original .hero>* ,#praxis-original .grid-2>*{min-width:0}
 #praxis-original .demo{position:static;padding:1rem;box-shadow:none}
-/* The 440×320 polytropic plot is a diagram, not a full-width presentation slide. */
-#praxis-original #view-politrop .demo{width:100%;max-width:640px;justify-self:center;margin-inline:auto;}
-#praxis-original #view-politrop .sim-frame{max-width:562px;margin-inline:auto;}
-#praxis-original #polCanvas{max-width:560px;}
+/* Keep every experiment at a readable diagram scale, including the summary plots. */
+#praxis-original .demo{width:100%;max-width:640px;justify-self:center;margin-inline:auto;}
+#praxis-original .sim-frame,#praxis-original .mol-viz{max-width:562px;margin-inline:auto;}
+#praxis-original .demo canvas{max-width:560px;}
 #praxis-original .fx{color:var(--text);max-width:100%;overflow-x:auto;padding:.75rem 1rem}
 #praxis-original .fx :is(.mi,.mn),#praxis-original [data-fx-inline] :is(.mi,.mn){color:var(--text)}
 .praxis-lab-nav:has([data-nav="politrop"]) .praxis-course-nav-select{display:none!important}
