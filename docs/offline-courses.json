@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-05T18:23:20.598Z",
+  "builtAt": "2026-11-06T14:24:33.787Z",
   "courses": [
     {
       "id": "legea-lui-coulomb",
@@ -214,6 +214,17 @@
       "id": "figuri-chladni",
       "file": "public/simulari/figuri-chladni/figuri-chladni.zip",
       "sha256": "73e1072754eaff15dcd3ffca3dc1c9f18f623b0af0dfff1d2851a511d354c6a6",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "condensatorul",
+      "file": "public/simulari/condensatorul/condensatorul.zip",
+      "sha256": "530c1d47884b83d6abc65509cd968e6aa6971c91cc3d5e6c14077acc643c4dc6",
       "languages": [
         "ro",
         "en"

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resurse — Condensatorul | formule, glosar, linkuri</title>
+  <meta name="description" content="Fișă de formule pentru condensatoare, glosar de termeni, constante fizice și linkuri utile către simulări și materiale de fizică.">
+  <meta name="theme-color" content="#060912">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1020'/%3E%3Crect x='8' y='10' width='3' height='12' rx='1.5' fill='%233ee6d2'/%3E%3Crect x='21' y='10' width='3' height='12' rx='1.5' fill='%23a97bff'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#main">Sari la conținut</a>
+
+  <header class="header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3.5" y="6" width="2.6" height="12" rx="1.3" fill="#3ee6d2"/>
+            <rect x="17.9" y="6" width="2.6" height="12" rx="1.3" fill="#a97bff"/>
+            <path d="M7.5 9.5h3M7.5 14.5h3M13.5 9.5h3M13.5 14.5h3" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>Condensatorul<small>Fizică · interactiv</small></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navigație principală">
+        <a class="nav-link" href="index.html">Acasă</a>
+        <a class="nav-link" href="teorie.html">Teorie</a>
+        <a class="nav-link" href="laborator.html">Laborator</a>
+        <a class="nav-link" href="teorie.html#verifica">Testează-te</a>
+        <a class="nav-link" href="resurse.html" aria-current="page">Resurse</a>
+      </nav>
+
+      <button class="icon-btn" type="button" data-sound-toggle aria-pressed="true" aria-label="Sunet activ. Dezactivează sunetul" title="Sunet activ">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 9.5h3.2L12 5.4v13.2L7.2 14.5H4z" fill="currentColor" opacity=".95"/>
+          <path class="wave-2" d="M15.4 8.6a4.6 4.6 0 0 1 0 6.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path class="wave-3" d="M18 6.2a8 8 0 0 1 0 11.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".7"/>
+          <line class="mute-line" x1="16.5" y1="9" x2="21" y2="15" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Deschide meniul">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--tight" style="padding-top:52px">
+      <div class="wrap">
+        <span class="kicker">Materiale de sprijin</span>
+        <h1 class="h1" style="font-size:clamp(2rem,4.4vw,3.2rem)">Resurse și <span class="grad-text">fișă de formule</span></h1>
+        <p class="lead">Toate formulele într-un singur loc, termenii importanți explicați în două rânduri și linkuri verificate pentru aprofundare.</p>
+      </div>
+    </section>
+
+    <section class="section" id="formule" style="padding-top:0;scroll-margin-top:calc(var(--header-h) + 20px)">
+      <div class="wrap">
+        <h2 class="h2" style="font-size:clamp(1.4rem,2.8vw,2rem)">Fișă de formule</h2>
+        <p style="color:var(--muted);max-width:70ch">Poți tipări această pagină (Ctrl/Cmd + P) — antetul și meniul dispar automat la print.</p>
+
+        <div class="grid grid-2" style="margin-top:24px">
+          <div class="card reveal">
+            <span class="badge badge-cyan">Definiții</span>
+            <h3 style="margin-top:12px;font-size:1.05rem">Mărimi fundamentale</h3>
+            <div class="table-wrap" style="margin:0">
+              <table>
+                <thead><tr><th>Mărime</th><th>Formulă</th><th>Unitate</th></tr></thead>
+                <tbody>
+                  <tr><td>Capacitate</td><td><b>C = Q/U</b></td><td>F</td></tr>
+                  <tr><td>Sarcină</td><td>Q = C·U</td><td>C</td></tr>
+                  <tr><td>Tensiune</td><td>U = Q/C</td><td>V</td></tr>
+                  <tr><td>Condensator plan</td><td><b>C = ε₀ε<sub>r</sub>S/d</b></td><td>F</td></tr>
+                  <tr><td>Câmp uniform</td><td>E = U/d</td><td>V/m</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <span class="badge badge-violet">Energie</span>
+            <h3 style="margin-top:12px;font-size:1.05rem">Energia stocată</h3>
+            <div class="table-wrap" style="margin:0">
+              <table>
+                <thead><tr><th>Formă</th><th>Expresie</th><th>Când o folosești</th></tr></thead>
+                <tbody>
+                  <tr><td>Cu C și U</td><td><b>W = CU²/2</b></td><td>cunoști capacitatea și tensiunea</td></tr>
+                  <tr><td>Cu Q și U</td><td>W = QU/2</td><td>cunoști sarcina</td></tr>
+                  <tr><td>Cu Q și C</td><td>W = Q²/(2C)</td><td>sursa e deconectată, Q constant</td></tr>
+                  <tr><td>Densitate</td><td>w = ε₀ε<sub>r</sub>E²/2</td><td>energie pe unitatea de volum</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <span class="badge badge-amber">Tranzitoriu</span>
+            <h3 style="margin-top:12px;font-size:1.05rem">Încărcare și descărcare</h3>
+            <div class="table-wrap" style="margin:0">
+              <table>
+                <thead><tr><th>Situație</th><th>Expresie</th></tr></thead>
+                <tbody>
+                  <tr><td>Constanta de timp</td><td><b>τ = R·C</b></td></tr>
+                  <tr><td>Încărcare, tensiune</td><td>U<sub>C</sub> = E(1 − e<sup>−t/τ</sup>)</td></tr>
+                  <tr><td>Încărcare, curent</td><td>I = (E/R)e<sup>−t/τ</sup></td></tr>
+                  <tr><td>Descărcare, tensiune</td><td>U<sub>C</sub> = U₀e<sup>−t/τ</sup></td></tr>
+                  <tr><td>Descărcare, curent</td><td>I = −(U₀/R)e<sup>−t/τ</sup></td></tr>
+                  <tr><td>Încărcare practică</td><td>t ≈ 5τ</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <span class="badge badge-cyan">Grupare</span>
+            <h3 style="margin-top:12px;font-size:1.05rem">Serie și paralel</h3>
+            <div class="table-wrap" style="margin:0">
+              <table>
+                <thead><tr><th>Legare</th><th>Capacitate echivalentă</th><th>Constant</th></tr></thead>
+                <tbody>
+                  <tr><td>Serie</td><td><span data-science-math="tex" data-science-source="\displaystyle \frac{1}{C_s}=\frac{1}{C_1}+\frac{1}{C_2}+\cdots+\frac{1}{C_n}=\sum_{i=1}^{n}\frac{1}{C_i}"></span></td><td>Q (sarcina)</td></tr>
+                  <tr><td>Serie (2 buc.)</td><td>C = C₁C₂/(C₁+C₂)</td><td>Q</td></tr>
+                  <tr><td>Paralel</td><td><span data-science-math="tex" data-science-source="\displaystyle C_p=C_1+C_2+\cdots+C_n=\sum_{i=1}^{n}C_i"></span></td><td>U (tensiunea)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="margin-top:18px">
+          <span class="badge badge-amber">Constante</span>
+          <h3 style="margin-top:12px;font-size:1.05rem">Valori de care ai nevoie</h3>
+          <div class="grid grid-4" style="margin-top:14px;gap:14px">
+            <div class="panel">
+              <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)">Permitivitatea vidului</div>
+              <div style="font-family:var(--font-head);font-size:1.05rem;color:var(--cyan);margin-top:4px">ε₀ = 8,85·10⁻¹² F/m</div>
+            </div>
+            <div class="panel">
+              <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)">Sarcină elementară</div>
+              <div style="font-family:var(--font-head);font-size:1.05rem;color:var(--cyan);margin-top:4px">e = 1,6·10⁻¹⁹ C</div>
+            </div>
+            <div class="panel">
+              <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)">1 µF</div>
+              <div style="font-family:var(--font-head);font-size:1.05rem;color:var(--cyan);margin-top:4px">10⁻⁶ F</div>
+            </div>
+            <div class="panel">
+              <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)">1 cm²</div>
+              <div style="font-family:var(--font-head);font-size:1.05rem;color:var(--cyan);margin-top:4px">10⁻⁴ m²</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" id="glosar" style="scroll-margin-top:calc(var(--header-h) + 20px)">
+      <div class="wrap">
+        <h2 class="h2" style="font-size:clamp(1.4rem,2.8vw,2rem)">Glosar</h2>
+        <div class="grid grid-2" style="margin-top:22px">
+          <article class="card reveal">
+            <h3 style="font-size:1rem">Armătură</h3>
+            <p style="color:var(--muted);font-size:.89rem;margin:0">Fiecare dintre cei doi conductori ai condensatorului. Pe una se acumulează sarcina +Q, pe cealaltă −Q.</p>
+          </article>
+          <article class="card reveal">
+            <h3 style="font-size:1rem">Dielectric</h3>
+            <p style="color:var(--muted);font-size:.89rem;margin:0">Material izolant între armături. Se polarizează în câmp electric și mărește capacitatea de ε<sub>r</sub> ori.</p>
+          </article>
+          <article class="card reveal">
+            <h3 style="font-size:1rem">Permitivitate relativă (ε<sub>r</sub>)</h3>
+            <p style="color:var(--muted);font-size:.89rem;margin:0">Raportul dintre permitivitatea materialului și cea a vidului. Adimensională; aerul are ≈ 1, ceramica poate depăși 1000.</p>
+          </article>
+          <article class="card reveal">
+            <h3 style="font-size:1rem">Constanta de timp (τ)</h3>
+            <p style="color:var(--muted);font-size:.89rem;margin:0">τ = R·C. Timpul în care tensiunea ajunge la 63,2 % din valoarea finală (la încărcare) sau scade la 36,8 % (la descărcare).</p>
+          </article>
+          <article class="card reveal">
+            <h3 style="font-size:1rem">Regim tranzitoriu</h3>
+            <p style="color:var(--muted);font-size:.89rem;margin:0">Perioada în care tensiunile și curenții se schimbă după comutarea unui circuit RC închis. Durează practic 5τ; un condensator ideal izolat își păstrează sarcina.</p>
+          </article>
+          <article class="card reveal">
+            <h3 style="font-size:1rem">Rigiditate dielectrică</h3>
+            <p style="color:var(--muted);font-size:.89rem;margin:0">Intensitatea maximă a câmpului pe care un dielectric o suportă fără să conducă. Depășirea ei produce străpungerea condensatorului.</p>
+          </article>
+          <article class="card reveal">
+            <h3 style="font-size:1rem">Curent de deplasare</h3>
+            <p style="color:var(--muted);font-size:.89rem;margin:0">Termenul asociat variației fluxului electric din legea Ampère–Maxwell. În dielectricul ideal nu trec sarcini libere de la o armătură la alta; curentul din fire este asociat variației sarcinii armăturilor.</p>
+          </article>
+          <article class="card reveal">
+            <h3 style="font-size:1rem">Condensator variabil</h3>
+            <p style="color:var(--muted);font-size:.89rem;margin:0">Condensator a cărui capacitate se reglează mecanic (prin rotirea unor armături). Folosit în circuitele de acord ale radiourilor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" style="padding-bottom:74px">
+      <div class="wrap">
+        <h2 class="h2" style="font-size:clamp(1.4rem,2.8vw,2rem)">Linkuri utile</h2>
+        <p style="color:var(--muted)">Resurse externe verificate. Se deschid în filă nouă.</p>
+
+        <div class="grid grid-2" style="margin-top:20px">
+          <div class="card">
+            <span class="badge badge-cyan">Simulări</span>
+            <ul class="link-list" style="margin-top:14px">
+              <li><a href="https://phet.colorado.edu/sims/html/capacitor-lab-basics/latest/capacitor-lab-basics_all.html" target="_blank" rel="noopener noreferrer">
+                <span>PhET — Capacitor Lab: Basics<small>Simularea originală care a inspirat acest laborator</small></span>
+                <span class="ext">↗</span>
+              </a></li>
+              <li><a href="https://phet.colorado.edu/ro/simulations/circuit-construction-kit-ac-virtual-lab" target="_blank" rel="noopener noreferrer">
+                <span>PhET — Circuit Construction Kit (AC)<small>Construiește circuite cu baterii, rezistoare și condensatoare</small></span>
+                <span class="ext">↗</span>
+              </a></li>
+              <li><a href="https://www.falstad.com/circuit/" target="_blank" rel="noopener noreferrer">
+                <span>Falstad — Circuit Simulator<small>Simulator de circuite în browser, cu vizualizarea curenților</small></span>
+                <span class="ext">↗</span>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="badge badge-violet">Teorie și exerciții</span>
+            <ul class="link-list" style="margin-top:14px">
+              <li><a href="https://ro.wikipedia.org/wiki/Condensator_electric" target="_blank" rel="noopener noreferrer">
+                <span>Wikipedia — Condensator electric<small>Prezentare generală, istoric și tipuri constructive</small></span>
+                <span class="ext">↗</span>
+              </a></li>
+              <li><a href="https://www.allaboutcircuits.com/textbook/direct-current/chpt-13/capacitors/" target="_blank" rel="noopener noreferrer">
+                <span>All About Circuits — Capacitors<small>Curs de electronică, capitolul despre condensatoare</small></span>
+                <span class="ext">↗</span>
+              </a></li>
+              <li><a href="https://www.khanacademy.org/science/electrical-engineering/ee-circuit-analysis-topic/ee-natural-and-forced-response/v/ee-capacitor" target="_blank" rel="noopener noreferrer">
+                <span>Khan Academy — Capacitors<small>Video despre răspunsul condensatorului în circuite RC</small></span>
+                <span class="ext">↗</span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <span class="badge badge-amber">În site</span>
+          <ul class="link-list" style="margin-top:14px">
+            <li><a href="laborator.html"><span>Laborator interactiv<small>Încărcare, descărcare, geometrie și dielectric</small></span><span class="ext">→</span></a></li>
+            <li><a href="teorie.html#calculator"><span>Calculator de mărimi<small>Calculează C, Q, U, W și τ</small></span><span class="ext">→</span></a></li>
+            <li><a href="teorie.html#verifica"><span>Test cu 7 întrebări<small>Feedback imediat și explicații</small></span><span class="ext">→</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html" style="margin-bottom:12px">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3.5" y="6" width="2.6" height="12" rx="1.3" fill="#3ee6d2"/>
+                <rect x="17.9" y="6" width="2.6" height="12" rx="1.3" fill="#a97bff"/>
+              </svg>
+            </span>
+            <span>Condensatorul<small>Fizică · interactiv</small></span>
+          </a>
+          <p>Material didactic interactiv despre condensatoare, pentru liceu. Linkurile externe aparțin autorilor lor.</p>
+        </div>
+        <div>
+          <h5>Conținut</h5>
+          <div class="footer-links">
+            <a href="index.html">Acasă</a>
+            <a href="teorie.html">Teorie</a>
+            <a href="laborator.html">Laborator</a>
+          </div>
+        </div>
+        <div>
+          <h5>Pe această pagină</h5>
+          <div class="footer-links">
+            <a href="#formule">Fișă de formule</a>
+            <a href="#glosar">Glosar</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Condensatorul · proiect didactic</span>
+        <span>HTML · CSS · JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

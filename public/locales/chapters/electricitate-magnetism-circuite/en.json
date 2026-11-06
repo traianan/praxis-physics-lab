@@ -8,7 +8,8 @@
     "Generatorul electric": "Electric generator",
     "Laboratorul electromagnetic Faraday": "Faraday’s Electromagnetic Lab",
     "Pila Daniell": "Daniell cell",
-    "Legea lui Coulomb": "Coulomb’s law"
+    "Legea lui Coulomb": "Coulomb’s law",
+    "Condensatorul": "Capacitor"
   },
   "simulations": {
     "generator-electric": {
@@ -59,6 +60,19 @@
         "Offline"
       ],
       "keywords": "coulomb electric charges electrostatics attraction repulsion force separation vacuum"
+    },
+    "condensatorul": {
+      "title": "Capacitor",
+      "subtitle": "Capacitance, dielectrics and RC circuits",
+      "description": "Charging, discharging and isolation, variable geometry, dielectrics, theory, calculators and quiz.",
+      "alt": "Parallel plates with opposite charges and an RC circuit",
+      "tags": [
+        "Electrostatics",
+        "Circuits",
+        "Experiments",
+        "Offline"
+      ],
+      "keywords": "capacitor capacitance dielectric charge energy RC circuit"
     }
   }
 }

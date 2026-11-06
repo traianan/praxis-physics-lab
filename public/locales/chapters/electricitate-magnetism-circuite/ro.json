@@ -8,7 +8,8 @@
     "Generatorul electric": "Generatorul electric",
     "Laboratorul electromagnetic Faraday": "Laboratorul electromagnetic Faraday",
     "Pila Daniell": "Pila Daniell",
-    "Legea lui Coulomb": "Legea lui Coulomb"
+    "Legea lui Coulomb": "Legea lui Coulomb",
+    "Condensatorul": "Condensatorul"
   },
   "simulations": {
     "generator-electric": {
@@ -59,6 +60,19 @@
         "Offline"
       ],
       "keywords": "coulomb sarcini electrice electrostatica atractie respingere forta distanta vid"
+    },
+    "condensatorul": {
+      "title": "Condensatorul",
+      "subtitle": "Capacitate, dielectric și circuite RC",
+      "description": "Încărcare, descărcare și izolare, geometrie variabilă, dielectric, teorie, calculatoare și test.",
+      "alt": "Condensator plan cu sarcini opuse și circuit RC",
+      "tags": [
+        "Electrostatică",
+        "Circuite",
+        "Experimente",
+        "Offline"
+      ],
+      "keywords": "condensator capacitate dielectric sarcina energie circuit RC"
     }
   }
 }

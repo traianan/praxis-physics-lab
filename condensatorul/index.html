@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Condensatorul — laborator interactiv de fizică</title>
+  <meta name="description" content="Condensatorul: teorie pe înțelesul liceenilor și laborator interactiv cu încărcare, descărcare, modificarea capacității, dielectric, animații și sunete. Fizică.">
+  <meta name="theme-color" content="#060912">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1020'/%3E%3Crect x='8' y='10' width='3' height='12' rx='1.5' fill='%233ee6d2'/%3E%3Crect x='21' y='10' width='3' height='12' rx='1.5' fill='%23a97bff'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#main">Sari la conținut</a>
+
+  <header class="header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3.5" y="6" width="2.6" height="12" rx="1.3" fill="#3ee6d2"/>
+            <rect x="17.9" y="6" width="2.6" height="12" rx="1.3" fill="#a97bff"/>
+            <path d="M7.5 9.5h3M7.5 14.5h3M13.5 9.5h3M13.5 14.5h3" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>
+          Condensatorul
+          <small>Fizică · interactiv</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navigație principală">
+        <a class="nav-link" href="index.html">Acasă</a>
+        <a class="nav-link" href="teorie.html">Teorie</a>
+        <a class="nav-link" href="laborator.html">Laborator</a>
+        <a class="nav-link" href="teorie.html#verifica">Testează-te</a>
+        <a class="nav-link" href="resurse.html">Resurse</a>
+      </nav>
+
+      <button class="icon-btn" type="button" data-sound-toggle aria-pressed="true" aria-label="Sunet activ. Dezactivează sunetul" title="Sunet activ">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 9.5h3.2L12 5.4v13.2L7.2 14.5H4z" fill="currentColor" opacity=".95"/>
+          <path class="wave-2" d="M15.4 8.6a4.6 4.6 0 0 1 0 6.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path class="wave-3" d="M18 6.2a8 8 0 0 1 0 11.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".7"/>
+          <line class="mute-line" x1="16.5" y1="9" x2="21" y2="15" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Deschide meniul">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="kicker">Fizică ·</span>
+          <h1 class="h1">Energia care<br><span class="grad-text">stă pe loc.</span></h1>
+          <p class="lead">
+            Un condensator este cea mai simplă „baterie” din fizică: două armături și un câmp electric
+            între ele. Aici poți să-l încarci, să-l descarci și să vezi cu ochii tăi
+            ce se întâmplă când schimbi dimensiunile, distanța sau dielectricul.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="laborator.html">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10-6.5-10-6.5z" fill="currentColor"/></svg>
+              Deschide laboratorul
+            </a>
+            <a class="btn btn-ghost" href="teorie.html">
+              Începe cu teoria
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div><b>C = Q/U</b><span>DEFINIȚIA</span></div>
+            <div><b>τ = RC</b><span>CONSTANTA DE TIMP</span></div>
+            <div><b>W = CU²/2</b><span>ENERGIA STOCATĂ</span></div>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <canvas id="heroCanvas" width="760" height="520" aria-label="Animație: două armături ale unui condensator cu sarcini care se acumulează" role="img"></canvas>
+          <div class="hero-art-caption">
+            <span class="live"><span class="dot"></span> simulare în timp real</span>
+            <span id="heroReadout">Q = 0 µC · U = 0 V</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CE POȚI FACE -->
+    <section class="section" id="exploreaza">
+      <div class="wrap">
+        <div class="center" style="margin-bottom:38px">
+          <span class="kicker" style="margin-inline:auto">Trei moduri de a învăța</span>
+          <h2 class="h2">De la definiție la <span class="grad-text">experiment</span></h2>
+          <p class="lead" style="margin-inline:auto">Alege cum vrei să lucrezi. Teoria explică „de ce”, laboratorul arată „ce se întâmplă”.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <a class="card card-hover card-link reveal" href="teorie.html">
+            <div class="feature-icon">📘</div>
+            <h3>Teorie clară</h3>
+            <p style="color:var(--muted);font-size:.93rem">Definiție, unitate, capacitatea condensatorului plan, energia câmpului electric și legarea în serie/paralel — cu formule explicate rând pe rând.</p>
+            <span style="color:var(--cyan);font-size:.85rem;font-weight:600">6 capitole →</span>
+          </a>
+
+          <a class="card card-hover card-link reveal" href="laborator.html">
+            <div class="feature-icon violet">⚡</div>
+            <h3>Laborator interactiv</h3>
+            <p style="color:var(--muted);font-size:.93rem">Slidere pentru tensiune, arie, distanță și dielectric. Vezi sarcinile, câmpul electric, graficul Q(t) și auzi sunetul încărcării.</p>
+            <span style="color:#c4b2ff;font-size:.85rem;font-weight:600">Experimentează →</span>
+          </a>
+
+          <a class="card card-hover card-link reveal" href="teorie.html#verifica">
+            <div class="feature-icon amber">🎯</div>
+            <h3>Testează-te</h3>
+            <p style="color:var(--muted);font-size:.93rem">Șapte întrebări cu feedback imediat, plus un calculator care îți verifică pașii de calcul pentru C, Q, U și W.</p>
+            <span style="color:var(--amber);font-size:.85rem;font-weight:600">Începe testul →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARCURGI -->
+    <section class="section section--tight">
+      <div class="wrap">
+        <div class="grid grid-2">
+          <article class="card path-card reveal">
+            <div class="path-top">
+              <div>
+                <span class="badge badge-cyan">Capitolul 1</span>
+                <h3 class="h3" style="margin-top:12px">Ce este un condensator?</h3>
+              </div>
+              <div class="feature-icon" style="margin:0">⚡</div>
+            </div>
+            <p style="color:var(--muted);font-size:.93rem">Doi conductori apropiați, separați de un izolator. Între ei apare un câmp electric care poate stoca energie.</p>
+            <ul class="path-list">
+              <li><span class="tick">✓</span> Definiția capacității și unitatea farad</li>
+              <li><span class="tick">✓</span> Formula condensatorului plan</li>
+              <li><span class="tick">✓</span> Rolul dielectricului și permitivitatea relativă</li>
+            </ul>
+            <a class="btn btn-sm btn-ghost" href="teorie.html#definitie">Citește capitolul</a>
+          </article>
+
+          <article class="card path-card reveal">
+            <div class="path-top">
+              <div>
+                <span class="badge badge-violet">Capitolul 2</span>
+                <h3 class="h3" style="margin-top:12px">Încărcarea și descărcarea</h3>
+              </div>
+              <div class="feature-icon violet" style="margin:0">🔋</div>
+            </div>
+            <p style="color:var(--muted);font-size:.93rem">Prin rezistor, condensatorul se încarcă exponențial. Totul se măsoară în constante de timp τ = RC.</p>
+            <ul class="path-list">
+              <li><span class="tick">✓</span> Legea exponențială a încărcării</li>
+              <li><span class="tick">✓</span> Constanta de timp și regimul tranzitoriu</li>
+              <li><span class="tick">✓</span> Experiment ghidat: măsoară τ</li>
+            </ul>
+            <a class="btn btn-sm btn-ghost" href="laborator.html">Intră în laborator</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAPTE RAPIDE -->
+    <section class="section">
+      <div class="wrap">
+        <div class="card reveal" style="padding:clamp(24px,4vw,42px);background:linear-gradient(120deg,rgba(62,230,210,.09),rgba(139,107,255,.09))">
+          <div class="grid grid-4" style="gap:26px">
+            <div>
+              <b style="display:block;font-family:var(--font-head);font-size:2rem;font-weight:700" class="grad-text">1 F</b>
+              <span style="font-size:.84rem;color:var(--muted)">Un farad = 1 coulomb pentru 1 volt. Uriaș pentru uz practic — de aceea folosim µF, nF, pF.</span>
+            </div>
+            <div>
+              <b style="display:block;font-family:var(--font-head);font-size:2rem;font-weight:700" class="grad-text">ε₀</b>
+              <span style="font-size:.84rem;color:var(--muted)">8,85 · 10⁻¹² F/m — permitivitatea vidului, constanta din formula condensatorului plan.</span>
+            </div>
+            <div>
+              <b style="display:block;font-family:var(--font-head);font-size:2rem;font-weight:700" class="grad-text">5τ</b>
+              <span style="font-size:.84rem;color:var(--muted)">După cinci constante de timp un condensator e practic încărcat complet (99,3%).</span>
+            </div>
+            <div>
+              <b style="display:block;font-family:var(--font-head);font-size:2rem;font-weight:700" class="grad-text">0 A</b>
+              <span style="font-size:.84rem;color:var(--muted)">Curentul continuu nu trece prin condensator. În curent alternativ, însă, el „conduce”.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--tight" style="padding-bottom:70px">
+      <div class="wrap center">
+        <h2 class="h2">Gata să încarci <span class="grad-text">primul condensator</span>?</h2>
+        <p class="lead" style="margin-inline:auto 26px">Pornește laboratorul, apasă butonul de încărcare și urmărește cum sarcinile se adună pe armături.</p>
+        <div class="btn-row" style="justify-content:center">
+          <a class="btn btn-primary" href="laborator.html">Deschide laboratorul</a>
+          <a class="btn btn-ghost" href="resurse.html">Vezi resurse suplimentare</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html" style="margin-bottom:12px">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3.5" y="6" width="2.6" height="12" rx="1.3" fill="#3ee6d2"/>
+                <rect x="17.9" y="6" width="2.6" height="12" rx="1.3" fill="#a97bff"/>
+              </svg>
+            </span>
+            <span>Condensatorul<small>Fizică · interactiv</small></span>
+          </a>
+          <p>Material didactic interactiv despre condensatoare, pentru liceu. Simulările rulează integral în browser, fără cont și fără date trimise undeva.</p>
+        </div>
+        <div>
+          <h5>Conținut</h5>
+          <div class="footer-links">
+            <a href="teorie.html">Teorie</a>
+            <a href="laborator.html">Laborator</a>
+            <a href="teorie.html#verifica">Testează-te</a>
+          </div>
+        </div>
+        <div>
+          <h5>Resurse</h5>
+          <div class="footer-links">
+            <a href="resurse.html">Linkuri utile</a>
+            <a href="resurse.html#formule">Fișă de formule</a>
+            <a href="resurse.html#glosar">Glosar</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Condensatorul · proiect didactic</span>
+        <span>Construit cu HTML, CSS și JavaScript · fără urmărire</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/hero.js"></script>
+</body>
+</html>

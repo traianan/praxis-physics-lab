@@ -1,0 +1,55 @@
+{
+  "id": "condensatorul",
+  "sources": [
+    {
+      "file": "condensatorul/laborator.html",
+      "sha256": "d5973a611fae84e123423ad156acdc8ee0f0c4bcba8506b7a6f25db987d0a574"
+    },
+    {
+      "file": "condensatorul/teorie.html",
+      "sha256": "d93a3ce58638f7daa2244239db09dd0927d66dcfe66c3fdcb3014e0fa8cc1b8f"
+    },
+    {
+      "file": "condensatorul/resurse.html",
+      "sha256": "4a00e9277a09284821a71c26c8d7ed5ddbc75bf1ba5fb9466eae6189f6c5c133"
+    },
+    {
+      "file": "condensatorul/css/style.css",
+      "sha256": "e98ef5953def348e65b122c7922b5442b196db004497c721265311b34ab91140"
+    },
+    {
+      "file": "condensatorul/css/praxis.css",
+      "sha256": "3d8087a5b0c7f5264b8700f14bd7ccde711d21471370826a0b38a93c1ccf8e64"
+    },
+    {
+      "file": "condensatorul/js/model.js",
+      "sha256": "43e043d38bfc5212c5270e5e85b31f847e61501e20e9838ef9121ff3165b6d79"
+    },
+    {
+      "file": "condensatorul/js/lab.js",
+      "sha256": "fd502289216f68f0941807a5dc2a71d99706211e7d937d56430333390963c353"
+    },
+    {
+      "file": "condensatorul/js/teorie.js",
+      "sha256": "2fc7aea67bda5a3e26461de8bfb84cb8f6966c4f169e0b8be82224c910f2b224"
+    },
+    {
+      "file": "condensatorul/js/main.js",
+      "sha256": "6f1aef026f6af58923ef39ee519a93d340aafb863611521b3753049660e6ccc2"
+    },
+    {
+      "file": "condensatorul/js/integration.js",
+      "sha256": "f4da168ee2422282c21e2903037db0069dee19a0c6cf5ca8ad7d4fc7e6fa1376"
+    },
+    {
+      "file": "condensatorul/translations.tsv",
+      "sha256": "67130c467435539a8dc54e38e5dc49d6b5d1e4fbbf4a302c7a438cf0660ca483"
+    }
+  ],
+  "adaptations": [
+    "Shared Praxis shell, catalog, workspaces, RO/EN and offline archive",
+    "Exact RC solution, signed current, explicit adaptive time scale and conservative isolation",
+    "Open switch gap and resistor in both closed circuit modes",
+    "Qualified linear dielectric and edge-effect assumptions"
+  ]
+}

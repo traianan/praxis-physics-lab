@@ -327,5 +327,23 @@
         "layout": "native"
       }
     ]
+  },
+  "condensatorul": {
+    "workspaces": [
+      {
+        "selector": ".lab-shell",
+        "scene": ".stage",
+        "controls": ".side-stack",
+        "graphs": ".graph-card",
+        "layout": "native"
+      }
+    ],
+    "activities": [
+      {
+        "scope": ".side-stack",
+        "items": ":scope>.side-card",
+        "default": 0
+      }
+    ]
   }
 }
