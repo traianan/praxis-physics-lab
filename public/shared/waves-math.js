@@ -165,6 +165,6 @@
   const words=value.replace(/_\{[^}]+\}|_[\p{L}\p{N}]+/gu,'').replace(/tanh|sinh|cosh|sin|cos|tan|log|exp|ln/g,'');
   return !/[\p{L}]{3}|[^\p{L}\p{N}\s_.(){}[\]\/+−\-^·*|=≈√%]/u.test(words);
  }
- const listeners=new Set();window.addEventListener('praxis-language-change',()=>{for(const fn of listeners)fn();});
- window.PraxisWaveMath={toTex,statements,render,flatten,inline,formula,bare:isBare,subscribe:fn=>(listeners.add(fn),()=>listeners.delete(fn)),language:()=>window.PraxisI18n?.language||'ro'};
+ const listeners=new Set();for(const event of ['praxis-language-change','praxis-math-ready'])window.addEventListener(event,()=>{for(const fn of listeners)fn();});
+ window.PraxisWaveMath={toTex,statements,render,flatten,inline,formula,bare:isBare,subscribe:fn=>(listeners.add(fn),()=>listeners.delete(fn)),language:()=>window.PraxisI18n?.language||'ro',revision:()=>(window.PraxisI18n?.language||'ro')+'|'+Boolean(window.katex)};
 })();

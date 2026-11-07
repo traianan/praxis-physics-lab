@@ -7,8 +7,8 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 ## 1. Integrare unitară și surse
 
 - Reutilizează [sistemul vizual](../DESIGN_SYSTEM.md), componentele și mecanismele comune. Nu crea un antet, o paletă sau un sistem de navigare separat pentru un laborator nou.
-- Înregistrează laboratorul în `public/catalog.js`, în capitolul corect, cu identificator stabil, descriere, imagine și data adăugării conform convenției catalogului. Nu introduce laboratoare fictive pentru a umple capitolele.
-- Integrează laboratorul în `public/design-system/lab-workspaces.json`. Folosește marcajele și montarea comună din `public/shared/lab-workspace.js`, inclusiv configurația activităților când există mai multe experimente.
+- Înregistrează laboratorul în `labs.manifest.json`, în capitolul corect, cu identificator stabil, descriere, imagine și data adăugării conform convenției catalogului. Rulează `npm run registry:generate`; catalogul public se generează din manifest. Nu introduce laboratoare fictive pentru a umple capitolele.
+- Integrează configurația workspace, activitățile, namespace-urile și tipul de export în intrarea laboratorului din manifest. `public/design-system/lab-workspaces.json` este generat. Folosește marcajele și montarea comună din `public/shared/lab-workspace.js`. Detalii: [registrul laboratoarelor](REGISTRU_LABORATOARE.md).
 - Clasifică titlurile relevante prin `data-content-type`, potrivit [catalogului de conținut](CATALOG_CONTINUT.md). Păstrează textul lângă pictograme.
 - Modifică sursa autoritativă, adaptorul sau importatorul. Nu lăsa o corecție doar într-un fișier generat din `public/simulari/`, într-un bundle sau în `dist/`.
 - Pentru optică, respectă separarea dintre proiectul `Optica-Lab` și adaptarea lui în aplicație. Reguli comune de prezentare se pot implementa în stratul comun; schimbările motorului se fac în sursa autoritativă.

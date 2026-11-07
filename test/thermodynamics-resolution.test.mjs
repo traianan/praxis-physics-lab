@@ -5,7 +5,7 @@ import {readFile} from 'node:fs/promises';
 import {thermoReadability} from '../scripts/adaptations/thermodynamics-readability.mjs';
 const read=path=>readFile(new URL('../'+path,import.meta.url),'utf8');
 
-for(const [course,path] of [['calorimetry','sources/calorimetrie/site/js/baza.js'],['notions','sources/notiuni-termodinamice/site/js/baza.js'],['engines','motoare-termice/js/baza.js']]){
+for(const [course,path] of [['calorimetry','sources/calorimetrie/site/js/baza.js'],['notions','sources/notiuni-termodinamice/site/js/baza.js'],['engines','sources/motoare-termice/js/baza.js']]){
  test(`${course}: each canvas uses its own density and DPR-only resize preserves the model`,async()=>{
   const source=thermoReadability(course,'js/baza.js',await read(path));
   const method=source.slice(source.indexOf('  resize(){'),source.indexOf('\n  render(){'));

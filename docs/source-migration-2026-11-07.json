@@ -1,0 +1,757 @@
+{
+  "mapping": {
+    "compunerea_oscilatiilor": "sources/compunerea-oscilatiilor",
+    "condensatorul": "sources/condensatorul",
+    "Legea lui Coulomb": "sources/legea-lui-coulomb",
+    "pendulul gravitational": "sources/pendulul-gravitational",
+    "motoare-termice": "sources/motoare-termice",
+    "principiul-i-aplicatii": "sources/principiul-i-aplicatii",
+    "interactii-atomice": "sources/interactii-atomice",
+    "Transformari de stare de agregare": "sources/transformari-stare-agregare",
+    "oscillator-mecanic": "sources/oscilator-mecanic",
+    "chladni.html": "sources/figuri-chladni/chladni.html",
+    "Mcu-Lectie-Interactiva-Premium.html": "sources/miscarea-circulara-uniforma/Mcu-Lectie-Interactiva-Premium.html",
+    "gemini-code-1793291347541.html": "sources/oscilatori-mecanici-cuplati/gemini-code-1793291347541.html",
+    "Interactii atomice": "sources/interactii-atomice/provenance"
+  },
+  "files": [
+    {
+      "from": "compunerea_oscilatiilor/app.js",
+      "to": "sources/compunerea-oscilatiilor/app.js",
+      "bytes": 17226,
+      "sha256": "cb2ff30fdbeaf2530ba5107d8031fe70af90cada986bf5f071c0d053f38721ef"
+    },
+    {
+      "from": "compunerea_oscilatiilor/index.html",
+      "to": "sources/compunerea-oscilatiilor/index.html",
+      "bytes": 6925,
+      "sha256": "1102248cf7c5a6d45ae7d0cf02750de050f2837c07d1eedc90b4db9d30bc018a"
+    },
+    {
+      "from": "compunerea_oscilatiilor/README.txt",
+      "to": "sources/compunerea-oscilatiilor/README.txt",
+      "bytes": 335,
+      "sha256": "14bff008a2fe263f79c842d4d123edf1205ccb4e05a507ffb31e66b17b29c81e"
+    },
+    {
+      "from": "compunerea_oscilatiilor/style.css",
+      "to": "sources/compunerea-oscilatiilor/style.css",
+      "bytes": 7174,
+      "sha256": "43fef4e967fc3de93aed34110183e270a802a4d097e672c51a1536a132331dec"
+    },
+    {
+      "from": "compunerea_oscilatiilor/teorie.html",
+      "to": "sources/compunerea-oscilatiilor/teorie.html",
+      "bytes": 9817,
+      "sha256": "3315935b681072d7059a37b6f8279f23aa7140e4a7247c55793f3452d678b44a"
+    },
+    {
+      "from": "condensatorul/css/praxis.css",
+      "to": "sources/condensatorul/css/praxis.css",
+      "bytes": 10621,
+      "sha256": "fd8ff15691b7385c7172b45fb88f41004f6ec74977a5beebc75b35849ecb8d1c"
+    },
+    {
+      "from": "condensatorul/css/style.css",
+      "to": "sources/condensatorul/css/style.css",
+      "bytes": 33321,
+      "sha256": "e98ef5953def348e65b122c7922b5442b196db004497c721265311b34ab91140"
+    },
+    {
+      "from": "condensatorul/index.html",
+      "to": "sources/condensatorul/index.html",
+      "bytes": 13508,
+      "sha256": "996a579619f5c53ac3d9069d39d47c2172dbf861d06e612e7279f6af291fe100"
+    },
+    {
+      "from": "condensatorul/js/hero.js",
+      "to": "sources/condensatorul/js/hero.js",
+      "bytes": 12056,
+      "sha256": "b75358d22ae0e729903afc58b775d0b096ec1a6b84c592ea10e65c6bd660aa0f"
+    },
+    {
+      "from": "condensatorul/js/integration.js",
+      "to": "sources/condensatorul/js/integration.js",
+      "bytes": 3839,
+      "sha256": "7bf36d0c379c88785e5d1fe068e4a843e8c41758a55d4134952d2a1f7778c6b2"
+    },
+    {
+      "from": "condensatorul/js/lab.js",
+      "to": "sources/condensatorul/js/lab.js",
+      "bytes": 36370,
+      "sha256": "addc6c0923aaa8d49471eeda7e04757de8a092ad12e298edadc1dab3116baa35"
+    },
+    {
+      "from": "condensatorul/js/main.js",
+      "to": "sources/condensatorul/js/main.js",
+      "bytes": 7166,
+      "sha256": "bf392f1473eb5bd1a0399486d9a5e17fda1b50f60bd8e52c1c64c3c9fee1ae5f"
+    },
+    {
+      "from": "condensatorul/js/model.js",
+      "to": "sources/condensatorul/js/model.js",
+      "bytes": 562,
+      "sha256": "43e043d38bfc5212c5270e5e85b31f847e61501e20e9838ef9121ff3165b6d79"
+    },
+    {
+      "from": "condensatorul/js/sound.js",
+      "to": "sources/condensatorul/js/sound.js",
+      "bytes": 6001,
+      "sha256": "e08ab8ab24cabbdca903f32ab8b71ca30811e1980f1f23163f5a8f33add1ed89"
+    },
+    {
+      "from": "condensatorul/js/teorie.js",
+      "to": "sources/condensatorul/js/teorie.js",
+      "bytes": 15926,
+      "sha256": "a4b8f80cf1e93cfc6f0a0cb4ac22b0b89ab044933d204617e173e993eb227d6f"
+    },
+    {
+      "from": "condensatorul/laborator.html",
+      "to": "sources/condensatorul/laborator.html",
+      "bytes": 17119,
+      "sha256": "a93eb093795ecae1ce1bb88ecd96618db8ef96bc3d5b3cea752216b98b091497"
+    },
+    {
+      "from": "condensatorul/README.md",
+      "to": "sources/condensatorul/README.md",
+      "bytes": 8761,
+      "sha256": "3dd5a875caec0c7eb5ffab71162e64cb6f56ebcd20bde59c0b7af1ce2cd8e87b"
+    },
+    {
+      "from": "condensatorul/resurse.html",
+      "to": "sources/condensatorul/resurse.html",
+      "bytes": 17821,
+      "sha256": "fd9eca610386ecd568e17b37a1a96e1e15576fdb29b2634b3e4c9bee70fcaca9"
+    },
+    {
+      "from": "condensatorul/teorie.html",
+      "to": "sources/condensatorul/teorie.html",
+      "bytes": 29339,
+      "sha256": "40778ac4e4fa36666e740620f7de1ddcf75a241231f88c65088344e98da69560"
+    },
+    {
+      "from": "condensatorul/translations.tsv",
+      "to": "sources/condensatorul/translations.tsv",
+      "bytes": 27918,
+      "sha256": "216a96904ec56d582d0a3c8f405d05c52d1fefa21ae183f36ab64b32f514a6af"
+    },
+    {
+      "from": "Legea lui Coulomb/legea-lui-coulomb.html",
+      "to": "sources/legea-lui-coulomb/legea-lui-coulomb.html",
+      "bytes": 24585,
+      "sha256": "f4b119b320e48f85974cbe20b31ba0ded264abc6cedf418d7e8bd11d9cd4b393"
+    },
+    {
+      "from": "pendulul gravitational/pendulul-gravitational.html",
+      "to": "sources/pendulul-gravitational/pendulul-gravitational.html",
+      "bytes": 125463,
+      "sha256": "f8d57b06d8031101cae1c3b3bc97c9d23dbbc48935ebd98487557e9a0488396e"
+    },
+    {
+      "from": "motoare-termice/css/lectie.css",
+      "to": "sources/motoare-termice/css/lectie.css",
+      "bytes": 30810,
+      "sha256": "5b191d4989ed16e84593a216881fb31f2c03eee49321f79a5cf0e38a1381edf5"
+    },
+    {
+      "from": "motoare-termice/icons/apple-touch-icon.png",
+      "to": "sources/motoare-termice/icons/apple-touch-icon.png",
+      "bytes": 31839,
+      "sha256": "d1c9039046f74c4684e93df9171acef737bf1ce8287292eb3cdd1dffc3b90a2c"
+    },
+    {
+      "from": "motoare-termice/icons/icon-192.png",
+      "to": "sources/motoare-termice/icons/icon-192.png",
+      "bytes": 31217,
+      "sha256": "1e76dfe731f9324212ce874bc0e1d01d55dbd3aad4d4d7149f9b576835d0bf4d"
+    },
+    {
+      "from": "motoare-termice/icons/icon-512.png",
+      "to": "sources/motoare-termice/icons/icon-512.png",
+      "bytes": 83548,
+      "sha256": "47b6c1e857465f1f3d79a89684eeab34a171cf2de7319fffd9f3f1195bd7d5ba"
+    },
+    {
+      "from": "motoare-termice/icons/icon-maskable-192.png",
+      "to": "sources/motoare-termice/icons/icon-maskable-192.png",
+      "bytes": 28580,
+      "sha256": "f00096f33dc9ad1aac3fe99e73ca1bff55dd640b9151a4305f50b6123ce6ca86"
+    },
+    {
+      "from": "motoare-termice/icons/icon-maskable-512.png",
+      "to": "sources/motoare-termice/icons/icon-maskable-512.png",
+      "bytes": 71502,
+      "sha256": "51e065bed912de720993eb4872b995d8f6b47bdac86d5441c66a989f9449da8b"
+    },
+    {
+      "from": "motoare-termice/icons/icon.svg",
+      "to": "sources/motoare-termice/icons/icon.svg",
+      "bytes": 836,
+      "sha256": "36acf1bd403fb40c32fe32ce5aea7a7c4222a9faa0253bd8639934ce1629c90d"
+    },
+    {
+      "from": "motoare-termice/img/abur.jpg",
+      "to": "sources/motoare-termice/img/abur.jpg",
+      "bytes": 125008,
+      "sha256": "2a46f7cfd72f705dd9a6443271e965816d6221b99693052b007ab45e0b1c50aa"
+    },
+    {
+      "from": "motoare-termice/img/diesel.jpg",
+      "to": "sources/motoare-termice/img/diesel.jpg",
+      "bytes": 215694,
+      "sha256": "d55fedbee4160201875905c4ab49c74a236a49529050913b9b5234e869d7df73"
+    },
+    {
+      "from": "motoare-termice/img/frigider.jpg",
+      "to": "sources/motoare-termice/img/frigider.jpg",
+      "bytes": 182329,
+      "sha256": "fd16538daf809acde422cedb266c67515af7b1ed810127777c99bdd74f27be28"
+    },
+    {
+      "from": "motoare-termice/img/otto.jpg",
+      "to": "sources/motoare-termice/img/otto.jpg",
+      "bytes": 99555,
+      "sha256": "985897308e58e6160202efc99a29926e7ea15e2f062815d9ec2433ace990b1e3"
+    },
+    {
+      "from": "motoare-termice/index.html",
+      "to": "sources/motoare-termice/index.html",
+      "bytes": 59520,
+      "sha256": "66f2f27ea67ac4814e03ca5808ff9b916399d4eb11700a83f026a82f4a84a4ce"
+    },
+    {
+      "from": "motoare-termice/js/baza.js",
+      "to": "sources/motoare-termice/js/baza.js",
+      "bytes": 12381,
+      "sha256": "5eab195b62a9a37420ddae6c7715b0afdb856993ba90a92cf097ebb7d82f85fd"
+    },
+    {
+      "from": "motoare-termice/js/figuri-1.js",
+      "to": "sources/motoare-termice/js/figuri-1.js",
+      "bytes": 37619,
+      "sha256": "8c408dc783e004dd08d67f45b4bb34c3d81cfed4697c5978f63c714c19125a03"
+    },
+    {
+      "from": "motoare-termice/js/figuri-2.js",
+      "to": "sources/motoare-termice/js/figuri-2.js",
+      "bytes": 15831,
+      "sha256": "90c5b8645571b7532b73cf886264f7e397ff7bd263f989395885fbb0d9e6b2aa"
+    },
+    {
+      "from": "motoare-termice/js/lectie.js",
+      "to": "sources/motoare-termice/js/lectie.js",
+      "bytes": 30853,
+      "sha256": "55a4aca8bebe88889a90d58eb296718502ef926cdf58775c457c7a2a1016f83c"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/fonts.css",
+      "to": "sources/motoare-termice/vendor/fonts/fonts.css",
+      "bytes": 6332,
+      "sha256": "8dc448cd9c89b393f84501bd6dc7285341e506caff042e78029453b0d03e284b"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/Fraunces-italic-latin-ext-6cc8f6.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/Fraunces-italic-latin-ext-6cc8f6.woff2",
+      "bytes": 71460,
+      "sha256": "4983926d3a16544eedcd2233448bd8a43f711e7bf1fabaae8431e78e0b798635"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/Fraunces-italic-latin-feced2.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/Fraunces-italic-latin-feced2.woff2",
+      "bytes": 81520,
+      "sha256": "066710ce7ed235a339d3d6cdcc8b55c0bea5632232662d83aacea25852108271"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/Fraunces-normal-latin-39ce20.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/Fraunces-normal-latin-39ce20.woff2",
+      "bytes": 67304,
+      "sha256": "7234ed860a9cc83045413c4faee63c960a8f2d1917adcf728119307d56e0d783"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/Fraunces-normal-latin-ext-796716.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/Fraunces-normal-latin-ext-796716.woff2",
+      "bytes": 59388,
+      "sha256": "a2930b27d13a228bd9ab6a49269b5f800237892ad560cb9dd7fab01b1620f88e"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/JetBrainsMono-normal-latin-480c06.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/JetBrainsMono-normal-latin-480c06.woff2",
+      "bytes": 31432,
+      "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/JetBrainsMono-normal-latin-ext-ba1653.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/JetBrainsMono-normal-latin-ext-ba1653.woff2",
+      "bytes": 11624,
+      "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/SourceSerif4-italic-latin-d27161.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/SourceSerif4-italic-latin-d27161.woff2",
+      "bytes": 130188,
+      "sha256": "96e6393209728ab93c334ae739af8a040cd2006c82e8614d6465a8084db88f89"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/SourceSerif4-italic-latin-ext-042db4.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/SourceSerif4-italic-latin-ext-042db4.woff2",
+      "bytes": 110324,
+      "sha256": "2078240cee94e627d0e180d56d74a11b2a1d387bbd61a9b7269f0a43df756896"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/SourceSerif4-normal-latin-3084ac.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/SourceSerif4-normal-latin-3084ac.woff2",
+      "bytes": 122360,
+      "sha256": "f2ea9c12d2fe9bd3a9589b02ad2c0909da88f30938c91adc838c4f4098f9f9e0"
+    },
+    {
+      "from": "motoare-termice/vendor/fonts/SourceSerif4-normal-latin-ext-ea2a53.woff2",
+      "to": "sources/motoare-termice/vendor/fonts/SourceSerif4-normal-latin-ext-ea2a53.woff2",
+      "bytes": 100872,
+      "sha256": "155f6e701097cc269cf8d5d7ac86795f263f1afbeb47c14d1d747108c9335389"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/contrib/auto-render.min.js",
+      "to": "sources/motoare-termice/vendor/katex/contrib/auto-render.min.js",
+      "bytes": 3481,
+      "sha256": "7b57d427ac6270677daf8d8380ded2cc73336f9149a167b8e1fe0d6ef66604ae"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_AMS-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_AMS-Regular.woff2",
+      "bytes": 28076,
+      "sha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2",
+      "bytes": 6912,
+      "sha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2",
+      "bytes": 6908,
+      "sha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2",
+      "bytes": 11348,
+      "sha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2",
+      "bytes": 11316,
+      "sha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Main-Bold.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Main-Bold.woff2",
+      "bytes": 25324,
+      "sha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2",
+      "bytes": 16780,
+      "sha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Main-Italic.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Main-Italic.woff2",
+      "bytes": 16988,
+      "sha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+      "bytes": 26272,
+      "sha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2",
+      "bytes": 16400,
+      "sha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Math-Italic.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Math-Italic.woff2",
+      "bytes": 16440,
+      "sha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2",
+      "bytes": 12216,
+      "sha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2",
+      "bytes": 12028,
+      "sha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2",
+      "bytes": 10344,
+      "sha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Script-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Script-Regular.woff2",
+      "bytes": 9644,
+      "sha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Size1-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Size1-Regular.woff2",
+      "bytes": 5468,
+      "sha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Size2-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Size2-Regular.woff2",
+      "bytes": 5208,
+      "sha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Size3-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Size3-Regular.woff2",
+      "bytes": 3624,
+      "sha256": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Size4-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Size4-Regular.woff2",
+      "bytes": 4928,
+      "sha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2",
+      "to": "sources/motoare-termice/vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2",
+      "bytes": 13568,
+      "sha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/katex.min.css",
+      "to": "sources/motoare-termice/vendor/katex/katex.min.css",
+      "bytes": 21201,
+      "sha256": "f0dbfcc2940b4d788c805c1a1e117e898d2814b0f1a52bf16640543216e0964d"
+    },
+    {
+      "from": "motoare-termice/vendor/katex/katex.min.js",
+      "to": "sources/motoare-termice/vendor/katex/katex.min.js",
+      "bytes": 275414,
+      "sha256": "e6bfe5deebd4c7ccd272055bab63bd3ab2c73b907b6e6a22d352740a81381fd4"
+    },
+    {
+      "from": "principiul-i-aplicatii/.gitignore",
+      "to": "sources/principiul-i-aplicatii/.gitignore",
+      "bytes": 332,
+      "sha256": "5ffd9e75ba9823c9cfdcf83b40b002ba704d14788a97f64e91b68b62ebf87bbf"
+    },
+    {
+      "from": "principiul-i-aplicatii/check.browser.mjs",
+      "to": "sources/principiul-i-aplicatii/check.browser.mjs",
+      "bytes": 15507,
+      "sha256": "5f4c52ad4b2669c59503d4c12e2d5496015964e63584512cbe076a668cca1d91"
+    },
+    {
+      "from": "principiul-i-aplicatii/check.mjs",
+      "to": "sources/principiul-i-aplicatii/check.mjs",
+      "bytes": 5512,
+      "sha256": "63a6869e2723e4e1d1a35e3ee0b2c547574740c4a5e8e63d72a735c8e52df723"
+    },
+    {
+      "from": "principiul-i-aplicatii/css/styles.css",
+      "to": "sources/principiul-i-aplicatii/css/styles.css",
+      "bytes": 29273,
+      "sha256": "0e117dee7d63d05f337f9e72bc99e6ab99a8767f495b76ab84abe9b6f6d53156"
+    },
+    {
+      "from": "principiul-i-aplicatii/index.html",
+      "to": "sources/principiul-i-aplicatii/index.html",
+      "bytes": 42519,
+      "sha256": "d26f71f5fd16dd7cf7ef6230bee6a4a0a0cd26c0a06a67285c3d098d5ae6d4c8"
+    },
+    {
+      "from": "principiul-i-aplicatii/js/app.js",
+      "to": "sources/principiul-i-aplicatii/js/app.js",
+      "bytes": 22996,
+      "sha256": "06f516c4f6c85f330c463f3102ecad888379824dd79cf0efee47077d9f81cb01"
+    },
+    {
+      "from": "principiul-i-aplicatii/js/audio.js",
+      "to": "sources/principiul-i-aplicatii/js/audio.js",
+      "bytes": 7995,
+      "sha256": "de6ac6233783e4f34662fe276a2e6ecc71fe462079f05779dea1f96aa27108ec"
+    },
+    {
+      "from": "principiul-i-aplicatii/js/i18n.js",
+      "to": "sources/principiul-i-aplicatii/js/i18n.js",
+      "bytes": 50556,
+      "sha256": "5b4e76d462f563a468cd5d5dfb01e92d030c4447d2d968298120bb1d134b5c71"
+    },
+    {
+      "from": "principiul-i-aplicatii/js/math.js",
+      "to": "sources/principiul-i-aplicatii/js/math.js",
+      "bytes": 9335,
+      "sha256": "1040dc2cc49d1c49113479a70ef46192120f16d72314fb87224c96ce97911be1"
+    },
+    {
+      "from": "principiul-i-aplicatii/js/quiz.js",
+      "to": "sources/principiul-i-aplicatii/js/quiz.js",
+      "bytes": 13272,
+      "sha256": "00bb68d2916ace4e4aceb65d10dd516257bf77da518566db03c9e86077209f16"
+    },
+    {
+      "from": "principiul-i-aplicatii/js/sims.js",
+      "to": "sources/principiul-i-aplicatii/js/sims.js",
+      "bytes": 32566,
+      "sha256": "59ba3ee67371f63a876860287cca4c12ab60fe2cd473b2f0052d85972a36ce17"
+    },
+    {
+      "from": "principiul-i-aplicatii/README.md",
+      "to": "sources/principiul-i-aplicatii/README.md",
+      "bytes": 4830,
+      "sha256": "27993fc1812008fef194b20d943fe4f6b365699e1f0507c608498cbd2483eabc"
+    },
+    {
+      "from": "interactii-atomice/icons/apple-touch-icon.png",
+      "to": "sources/interactii-atomice/icons/apple-touch-icon.png",
+      "bytes": 37283,
+      "sha256": "ff1df55465295c0d6abd39103239c6339ceb04cdb3cab8554f7e8f643f1e8c30"
+    },
+    {
+      "from": "interactii-atomice/icons/icon-192.png",
+      "to": "sources/interactii-atomice/icons/icon-192.png",
+      "bytes": 39945,
+      "sha256": "d32e69e353757ab031dd3aef5214ad1c388a8eff8844e39225890156c99d1e04"
+    },
+    {
+      "from": "interactii-atomice/icons/icon-512.png",
+      "to": "sources/interactii-atomice/icons/icon-512.png",
+      "bytes": 111217,
+      "sha256": "87ca61f0a6c08ff7f5ce0ac7227e8b7e5dfa2b20eeee6203b19c4df9d3d67380"
+    },
+    {
+      "from": "interactii-atomice/icons/icon-maskable-192.png",
+      "to": "sources/interactii-atomice/icons/icon-maskable-192.png",
+      "bytes": 31632,
+      "sha256": "dabfee894f84530feb9879f3a875ce591a062942d94ea8df7e5e9be9ece5e2c5"
+    },
+    {
+      "from": "interactii-atomice/icons/icon-maskable-512.png",
+      "to": "sources/interactii-atomice/icons/icon-maskable-512.png",
+      "bytes": 92808,
+      "sha256": "c8f900de2375bb2c64742e2794e4e8760a101b7ad04ad8eba1c575d532e1c4be"
+    },
+    {
+      "from": "interactii-atomice/icons/icon.svg",
+      "to": "sources/interactii-atomice/icons/icon.svg",
+      "bytes": 758,
+      "sha256": "4b107e5ea9e43d02e0e08dcd94447311504ef08da77a0a2b3ab5ff82183ee0b0"
+    },
+    {
+      "from": "interactii-atomice/index.html",
+      "to": "sources/interactii-atomice/index.html",
+      "bytes": 11753,
+      "sha256": "c994f9320ae04f4d5d959c445fa7d005f4ee263711def72e1add13c0a0e44d29"
+    },
+    {
+      "from": "interactii-atomice/js/app.js",
+      "to": "sources/interactii-atomice/js/app.js",
+      "bytes": 15877,
+      "sha256": "63e5deab7dc479df6143da46fee2b44da183d452f9c4511a10b54ba2e44feb0f"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/fonts.css",
+      "to": "sources/interactii-atomice/vendor/fonts/fonts.css",
+      "bytes": 6332,
+      "sha256": "8dc448cd9c89b393f84501bd6dc7285341e506caff042e78029453b0d03e284b"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/Fraunces-italic-latin-ext-6cc8f6.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/Fraunces-italic-latin-ext-6cc8f6.woff2",
+      "bytes": 71460,
+      "sha256": "4983926d3a16544eedcd2233448bd8a43f711e7bf1fabaae8431e78e0b798635"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/Fraunces-italic-latin-feced2.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/Fraunces-italic-latin-feced2.woff2",
+      "bytes": 81520,
+      "sha256": "066710ce7ed235a339d3d6cdcc8b55c0bea5632232662d83aacea25852108271"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/Fraunces-normal-latin-39ce20.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/Fraunces-normal-latin-39ce20.woff2",
+      "bytes": 67304,
+      "sha256": "7234ed860a9cc83045413c4faee63c960a8f2d1917adcf728119307d56e0d783"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/Fraunces-normal-latin-ext-796716.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/Fraunces-normal-latin-ext-796716.woff2",
+      "bytes": 59388,
+      "sha256": "a2930b27d13a228bd9ab6a49269b5f800237892ad560cb9dd7fab01b1620f88e"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/JetBrainsMono-normal-latin-480c06.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/JetBrainsMono-normal-latin-480c06.woff2",
+      "bytes": 31432,
+      "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/JetBrainsMono-normal-latin-ext-ba1653.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/JetBrainsMono-normal-latin-ext-ba1653.woff2",
+      "bytes": 11624,
+      "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/SourceSerif4-italic-latin-d27161.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/SourceSerif4-italic-latin-d27161.woff2",
+      "bytes": 130188,
+      "sha256": "96e6393209728ab93c334ae739af8a040cd2006c82e8614d6465a8084db88f89"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/SourceSerif4-italic-latin-ext-042db4.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/SourceSerif4-italic-latin-ext-042db4.woff2",
+      "bytes": 110324,
+      "sha256": "2078240cee94e627d0e180d56d74a11b2a1d387bbd61a9b7269f0a43df756896"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/SourceSerif4-normal-latin-3084ac.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/SourceSerif4-normal-latin-3084ac.woff2",
+      "bytes": 122360,
+      "sha256": "f2ea9c12d2fe9bd3a9589b02ad2c0909da88f30938c91adc838c4f4098f9f9e0"
+    },
+    {
+      "from": "interactii-atomice/vendor/fonts/SourceSerif4-normal-latin-ext-ea2a53.woff2",
+      "to": "sources/interactii-atomice/vendor/fonts/SourceSerif4-normal-latin-ext-ea2a53.woff2",
+      "bytes": 100872,
+      "sha256": "155f6e701097cc269cf8d5d7ac86795f263f1afbeb47c14d1d747108c9335389"
+    },
+    {
+      "from": "Transformari de stare de agregare/.gitignore",
+      "to": "sources/transformari-stare-agregare/.gitignore",
+      "bytes": 332,
+      "sha256": "5ffd9e75ba9823c9cfdcf83b40b002ba704d14788a97f64e91b68b62ebf87bbf"
+    },
+    {
+      "from": "Transformari de stare de agregare/check.browser.mjs",
+      "to": "sources/transformari-stare-agregare/check.browser.mjs",
+      "bytes": 16780,
+      "sha256": "47f8ec0b713b3ad540e9ca89dedf02bb55c195e8e1001923743a05460db36c29"
+    },
+    {
+      "from": "Transformari de stare de agregare/check.mjs",
+      "to": "sources/transformari-stare-agregare/check.mjs",
+      "bytes": 6233,
+      "sha256": "9a9421ccc7ce88845e5cc7ce3d4dcd785fd2f915cb627398b38a7d163dfba921"
+    },
+    {
+      "from": "Transformari de stare de agregare/css/styles.css",
+      "to": "sources/transformari-stare-agregare/css/styles.css",
+      "bytes": 32225,
+      "sha256": "9affd7fed216b37b5203a22320c574686956348ad352b3031a1be932372b0805"
+    },
+    {
+      "from": "Transformari de stare de agregare/index.html",
+      "to": "sources/transformari-stare-agregare/index.html",
+      "bytes": 58570,
+      "sha256": "32820c44fda922f4c908fd4c93989f29cb9675a356c3a24d5d41f098bc2a3171"
+    },
+    {
+      "from": "Transformari de stare de agregare/js/app.js",
+      "to": "sources/transformari-stare-agregare/js/app.js",
+      "bytes": 24414,
+      "sha256": "ec3a33fb0dad80b8ce6245042250d0b1548edd4645bc0c5c456f338ecab09ac0"
+    },
+    {
+      "from": "Transformari de stare de agregare/js/audio.js",
+      "to": "sources/transformari-stare-agregare/js/audio.js",
+      "bytes": 10777,
+      "sha256": "dd364c44765b9544e9e87b73f17dddc98a063599b0887211a12b829fe1e82165"
+    },
+    {
+      "from": "Transformari de stare de agregare/js/i18n.js",
+      "to": "sources/transformari-stare-agregare/js/i18n.js",
+      "bytes": 76162,
+      "sha256": "e1966a6599224df68d0fda67c09f4cf41cabe2614bdd185c83247dbc565db0d1"
+    },
+    {
+      "from": "Transformari de stare de agregare/js/math.js",
+      "to": "sources/transformari-stare-agregare/js/math.js",
+      "bytes": 9347,
+      "sha256": "6bf800216d99fba823f241f6db23b7297958494180a4162bf7bd8765e238de37"
+    },
+    {
+      "from": "Transformari de stare de agregare/js/quiz.js",
+      "to": "sources/transformari-stare-agregare/js/quiz.js",
+      "bytes": 16430,
+      "sha256": "023063ed45afb5d2382e0a421ab4e81919cda04bf635a47c3ae036d6ac05afba"
+    },
+    {
+      "from": "Transformari de stare de agregare/js/sims.js",
+      "to": "sources/transformari-stare-agregare/js/sims.js",
+      "bytes": 48024,
+      "sha256": "26045c65b0fc972eca18e3d9c8ba8c9930447641b9f1db59b9b246fd27613c05"
+    },
+    {
+      "from": "Transformari de stare de agregare/README.md",
+      "to": "sources/transformari-stare-agregare/README.md",
+      "bytes": 6449,
+      "sha256": "e4bc3aabf2197889caf7ce1cc6132bcaf08427ca5fda6021689f5a7afd91ea4d"
+    },
+    {
+      "from": "oscillator-mecanic/css/styles.css",
+      "to": "sources/oscilator-mecanic/css/styles.css",
+      "bytes": 7859,
+      "sha256": "569f39a7f9ad71210cdcecbb13fe3a603b37bbe8593c823d8b72ca4e96cf66a3"
+    },
+    {
+      "from": "oscillator-mecanic/index.html",
+      "to": "sources/oscilator-mecanic/index.html",
+      "bytes": 35734,
+      "sha256": "4db6688f37cd9c9da092fa80c8caf0c3faa3321292f7cf36db3aa2a6f7f0f87f"
+    },
+    {
+      "from": "oscillator-mecanic/js/app.js",
+      "to": "sources/oscilator-mecanic/js/app.js",
+      "bytes": 16759,
+      "sha256": "39f63eafa9fef0d31acb21b009abb2660e7f7c6ee22942ab82458519195da4bd"
+    },
+    {
+      "from": "oscillator-mecanic/js/demos.js",
+      "to": "sources/oscilator-mecanic/js/demos.js",
+      "bytes": 39016,
+      "sha256": "f3d31cde7b6ead3717a9548138f61177d4d667fbbcdfdca9dcd22f3b106830c3"
+    },
+    {
+      "from": "chladni.html",
+      "to": "sources/figuri-chladni/chladni.html",
+      "bytes": 11568,
+      "sha256": "186e9bd438b3d03fab20f02aea94f97deb53e9373ba276b9a5f1845fde329653"
+    },
+    {
+      "from": "Mcu-Lectie-Interactiva-Premium.html",
+      "to": "sources/miscarea-circulara-uniforma/Mcu-Lectie-Interactiva-Premium.html",
+      "bytes": 237425,
+      "sha256": "9cb2e37ac8aa110fa8a5e4bea7d6485e555fad643d6ea88210ac607ac1056f71"
+    },
+    {
+      "from": "gemini-code-1793291347541.html",
+      "to": "sources/oscilatori-mecanici-cuplati/gemini-code-1793291347541.html",
+      "bytes": 41025,
+      "sha256": "5a72b57c4f0bbde386823b3de76c290df2b8ae664629bbc2f134d221552506ed"
+    },
+    {
+      "from": "Interactii atomice/interactii-atomice.zip",
+      "to": "sources/interactii-atomice/provenance/interactii-atomice.zip",
+      "bytes": 1111118,
+      "sha256": "4db0cb4a44131a7687d3143e35ec97e725729bd26d3b52ca527e92943fbccfd2"
+    }
+  ]
+}

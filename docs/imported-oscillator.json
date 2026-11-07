@@ -1,6 +1,6 @@
 {
   "id": "oscilator-mecanic",
-  "source": "oscillator-mecanic",
+  "source": "sources/oscilator-mecanic",
   "files": [
     {
       "path": "index.html",

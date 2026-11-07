@@ -10,7 +10,7 @@ test('atomic laboratory is searchable under heat and preserves source provenance
  const [sim]=findSimulations('caldura-termodinamica','interactii atomice');assert.equal(sim.id,'interactii-atomice');
  assert.equal(findSimulations('fenomene-cuantice','interactii').length,0);
  assert.ok((await stat(new URL('../public/'+sim.image,import.meta.url))).size>100);
- const original=await read('interactii-atomice/js/app.js'),report=JSON.parse(await read('docs/imported-atomic.json'));
+ const original=await read('sources/interactii-atomice/js/app.js'),report=JSON.parse(await read('docs/imported-atomic.json'));
  assert.equal(report.sha256.js,createHash('sha256').update(original).digest('hex'));
  const quiz=text=>text.match(/const Q = ([\s\S]*?);\s*let tried/)[1];
  assert.equal(quiz(code),quiz(original));assert.equal(vm.runInNewContext(quiz(code)).length,6);

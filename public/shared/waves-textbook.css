@@ -232,3 +232,6 @@ body[data-praxis-course=unde-mecanice] .lesson-navigation{padding-block:3px}
 @container tsunami (min-width:58rem){.tsunami-layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
 @container tsunami (max-width:34rem){.tsunami-controls{grid-template-columns:minmax(0,1fr)}.tsunami-controls>label:first-child{flex-direction:column;align-items:stretch}.tsunami-stations{font-size:.875em}.tsunami-stations :is(th,td){padding-inline:3px}}
 @media print{.tsunami-actions,.tsunami-controls>label{display:none}.tsunami-explanation{display:block}}
+/* Some stands have separate slider and selector groups. They must occupy
+   successive rows rather than both being pinned to the first controls row. */
+body[data-praxis-course=unde-mecanice] [data-wave-stand]:has(>[data-wave-role=controls]~[data-wave-role=controls])>:is([data-wave-role=controls],[data-wave-role=actions]){grid-row:auto}

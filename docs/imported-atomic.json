@@ -1,6 +1,6 @@
 {
   "id": "interactii-atomice",
-  "source": "interactii-atomice",
+  "source": "sources/interactii-atomice",
   "sha256": {
     "html": "c994f9320ae04f4d5d959c445fa7d005f4ee263711def72e1add13c0a0e44d29",
     "js": "63e5deab7dc479df6143da46fee2b44da183d452f9c4511a10b54ba2e44feb0f"

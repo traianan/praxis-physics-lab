@@ -1,11 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
-import {scientificMathRuntime} from '../scripts/scientific-math-runtime.mjs';
+import {scientificMathRuntime,inlineMathFonts} from '../scripts/scientific-math-runtime.mjs';
 async function setup(){
  const window={addEventListener(){},PraxisI18n:{language:'ro',tr:s=>s}},document={readyState:'loading',addEventListener(){}};
  vm.runInNewContext(await scientificMathRuntime(),{window,document,Set,WeakMap});return window;
 }
+
+test('web fonts use local URLs under a subdirectory; autonomous export embeds them',async()=>{
+ const source=await scientificMathRuntime({embedFonts:false});
+ assert.ok(Buffer.byteLength(source)<350000);
+ assert.doesNotMatch(source,/data:font\/woff2;base64/);
+ const window={addEventListener(){}},document={currentScript:{src:'https://example.test/physics/shared/lab-header.js'},readyState:'loading',addEventListener(){}};
+ vm.runInNewContext(source,{window,document,URL,Set,WeakMap});
+ assert.match(window.PraxisMathFallbackCSS,/https:\/\/example.test\/physics\/simulari\/calorimetrie\/vendor\/katex\/fonts\//);
+ assert.match(window.PraxisMathFallbackCSS,/font-display:swap/);
+ const standalone=await inlineMathFonts(source);
+ assert.match(standalone,/data:font\/woff2;base64/);
+ assert.doesNotMatch(standalone,/__PRAXIS_MATH_FONTS__/);
+});
 
 test('modern MathML output remains byte-for-byte identical and loads no fallback stylesheet',async()=>{
  const w=await setup(),source=String.raw`pV^{1,00}=\mathrm{const.}`;

@@ -22,7 +22,7 @@ async function simulation(){
 }
 test('applications retain source provenance, eleven topics, nine simulations and all bilingual questions',async()=>{
  const report=JSON.parse(await read('docs/imported-first-law-applications.json'));
- for(const file of report.files)assert.equal(createHash('sha256').update(await read(id+'/'+file.path)).digest('hex'),file.sha256);
+ for(const file of report.files)assert.equal(createHash('sha256').update(await read(report.source+'/'+file.path)).digest('hex'),file.sha256);
  const [sim]=findSimulations('caldura-termodinamica','aplicatii principiul');assert.equal(sim.id,id);await stat(new URL('../public/'+sim.image,import.meta.url));
  const html=await read(dir+'index.html');assert.equal((html.match(/class="view/g)||[]).length,11);assert.equal((html.match(/<canvas /g)||[]).length,9);
  assert.match(html,/shared\/course.js/);assert.match(html,/initEmbedded/);assert.doesNotMatch(html,/(?:src|href)="https?:/);

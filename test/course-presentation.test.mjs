@@ -19,8 +19,9 @@ test('scientific palettes and Canvas labels switch without resetting the simulat
  vm.runInContext(await read('public/shared/scientific-colors.js'),context);
  vm.runInContext(await read('public/shared/course-localization.js'),context);
  const ctx=new Context(),api=window.PraxisCourseLocalization;ctx.fillText('viteza');assert.equal(ctx.lastText,'velocity');
- ctx.fillStyle='#c8402a';assert.equal(ctx.fillStyle,'#b54d45');api.setColors('vivid');ctx.fillStyle='#b54d45';assert.equal(ctx.fillStyle,'#ed2929');ctx.strokeStyle='rgba(31,90,138,0.25)';assert.equal(ctx.strokeStyle,'rgba(0,102,255,0.25)');
- api.setColors('praxis');ctx.fillStyle='#ed2929';assert.equal(ctx.fillStyle,'#b54d45');api.setTouch(true);assert.equal(document.documentElement.dataset.courseTouch,'true');assert.equal(storage.get('praxis-course-touch'),'true');assert.equal(redraws,3);
+ ctx.fillStyle='#c8402a';assert.equal(ctx.fillStyle,'#ad453d');api.setColors('vivid');ctx.fillStyle='#b54d45';assert.equal(ctx.fillStyle,'#c61919');ctx.strokeStyle='rgba(31,90,138,0.25)';assert.equal(ctx.strokeStyle,'rgba(0,82,204,0.25)');
+ api.setColors('praxis');ctx.fillStyle='#ed2929';assert.equal(ctx.fillStyle,'#ad453d');api.setTouch(true);assert.equal(document.documentElement.dataset.courseTouch,'true');assert.equal(storage.get('praxis-course-touch'),'true');assert.equal(redraws,3);
+ document.documentElement.dataset.theme='dark';api.refreshPalette();ctx.fillStyle='#c8402a';assert.equal(ctx.fillStyle,'#f18a82');assert.equal(redraws,4);assert.equal(storage.get('praxis-course-colors'),'praxis');
 });
 test('imported controls retain pointer interaction and expose enlarged touch targets',async()=>{
  const vector=await read('public/simulari/calcul-vectorial/index.html'),motion=await read('public/simulari/miscarea-rectilinie/js/plot.js');

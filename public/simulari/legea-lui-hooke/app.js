@@ -1,9 +1,10 @@
+import {labNamespaces} from '../../shared/lab-locales.js';
 import {DEFAULTS,LIMITS,observe,validate} from '../../shared/hooke-model.js';
 import {advanceTime,validSpeed} from '../../shared/hooke-clock.js';
 import {pairs,reading,questions,sources} from './content.js';
 import {render,deformationAt} from './view.js';
 const $=s=>document.querySelector(s),tr=s=>PraxisI18n.tr(s),namespace='labs/legea-lui-hooke/ui';
-await PraxisI18n.init({baseUrl:'../../locales/',namespaceList:['common','courses/shared','chapters/lucru-energie-putere',namespace],embedded:{ro:{[namespace]:{messages:Object.fromEntries(pairs.map(([ro])=>[ro,ro]))}},en:{[namespace]:{messages:Object.fromEntries(pairs)}}}});
+await PraxisI18n.init({baseUrl:'../../locales/',namespaceList:labNamespaces['legea-lui-hooke'],embedded:{ro:{[namespace]:{messages:Object.fromEntries(pairs.map(([ro])=>[ro,ro]))}},en:{[namespace]:{messages:Object.fromEntries(pairs)}}}});
 let p={...DEFAULTS},t=0,speed=1,released=false,running=false,frame=null,previous=null,section='experiment',visible=true,dragging=null,recording=false,costs=[],intervals=[];
 const parameters=[['k','Constanta elastică k',10,'N/m'],['m','Masa m',.1,'kg'],['x0','Deformarea inițială x₀',.01,'m']];
 $('#parameters').innerHTML=parameters.map(([key,label,step,unit])=>`<div class="parameter"><div class="parameter-heading"><label for="num-${key}">${label} <small>${unit}</small></label><input id="num-${key}" type="number" data-param="${key}" min="${LIMITS[key][0]}" max="${LIMITS[key][1]}" step="${step}" aria-label="${label}"></div><div class="range-row praxis-range-stepper"><button data-adjust="${key}:-1" aria-label="Scade">−</button><input id="range-${key}" type="range" data-param="${key}" min="${LIMITS[key][0]}" max="${LIMITS[key][1]}" step="${step}" aria-label="${label}"><button data-adjust="${key}:1" aria-label="Crește">+</button></div></div>`).join('');

@@ -1,15 +1,16 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir,cp} from 'node:fs/promises';
 import {withFavicon} from './favicon.mjs';
 import {createHash} from 'node:crypto';
 const root=new URL('../',import.meta.url),out='public/simulari/condensatorul/';
 const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
-const pairs=(await read('condensatorul/translations.tsv')).trim().split(/\r?\n/).map(line=>line.split('\t'));
+const pairs=(await read('sources/condensatorul/translations.tsv')).trim().split(/\r?\n/).map(line=>line.split('\t'));
 for(const lang of ['ro','en'])await write('public/locales/capacitor/'+lang+'.json',JSON.stringify({locale:lang,namespace:'capacitor',messages:Object.fromEntries(pairs.map(([ro,en])=>[ro,lang==='ro'?ro:en]))},null,2)+'\n');
 const pages=[['laborator','Laborator'],['teorie','Teorie'],['resurse','Resurse']];
 let content='';
 for(const [page] of pages){
- let body=(await read('condensatorul/'+page+'.html')).match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
+ let body=(await read('sources/condensatorul/'+page+'.html')).match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
  body=body.replace(/<section class="section section--tight"[\s\S]*?<\/section>/,'');
  body=body.replace(/href="(laborator|teorie|resurse)\.html(?:#([^"]+))?"/g,(_,p,hash)=>'href="#'+(hash||'cond-'+p)+'"');
  body=body.replace(/class="reveal"/g,'class="reveal in"');
@@ -17,16 +18,16 @@ for(const [page] of pages){
  body=body.replace(/(<section id="(?:calculator|verifica)"[\s\S]*?<h2 )data-content-type="theory"/g,(_,before)=>before+'data-content-type="'+(before.includes('verifica')?'assessment':'experiment')+'"');
  content+='<div id="cond-'+page+'" data-cond-panel="'+page+'" '+(page==='laborator'?'':'hidden')+'>'+body+'</div>';
 }
-const ns=['common','chapters/electricitate-magnetism-circuite','courses/shared','capacitor'],embedded={ro:{},en:{}};
+const ns=await labNamespaces('condensatorul'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const n of ns)embedded[lang][n]=JSON.parse(await read('public/locales/'+n+'/'+lang+'.json'));
 const styles=['design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css'];
 const scripts=['sound.js','lab-header.js','canvas-typography.js','canvas-resolution.js','scientific-colors.js','course-localization.js'];
 const head=styles.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+'<link rel="stylesheet" href="./style.css"><script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded}).replaceAll('</script','<\\/script')+');</script>'+scripts.map(p=>'<script src="../../shared/'+p+'"></script>').join('');
 const tabs='<nav class="tabs" role="tablist" aria-label="Secțiunile lecției">'+pages.map(([p,t])=>'<button role="tab" data-tab="'+p+'" aria-controls="cond-'+p+'" aria-selected="'+(p==='laborator')+'">'+t+'</button>').join('')+'</nav>';
 await write(out+'index.html',withFavicon('<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Condensatorul — Praxis</title>'+head+'</head><body data-praxis-course="condensatorul" data-praxis-laboratory="true"><main id="praxis-original" class="cond-course">'+tabs+content+'<p><a href="condensatorul.zip">Descarcă lecția offline</a></p></main><script src="./js/model.js"></script><script src="./js/integration.js"></script><script src="./js/main.js"></script><script src="./js/lab.js"></script><script src="./js/teorie.js"></script><script src="../../shared/course.js" data-course="condensatorul" data-title="Condensatorul"></script></body></html>'));
-for(const name of ['main','model','lab','teorie','integration'])await write(out+'js/'+name+'.js',await read('condensatorul/js/'+name+'.js'));
-let css=(await read('condensatorul/css/style.css')).replace(/@import[^;]+;/,'').replace(':root {',':scope {');
-await write(out+'style.css','@scope (.cond-course) {\n'+css+'\n}\n'+await read('condensatorul/css/praxis.css'));
+for(const name of ['main','model','lab','teorie','integration'])await write(out+'js/'+name+'.js',await read('sources/condensatorul/js/'+name+'.js'));
+let css=(await read('sources/condensatorul/css/style.css')).replace(/@import[^;]+;/,'').replace(':root {',':scope {');
+await write(out+'style.css','@scope (.cond-course) {\n'+css+'\n}\n'+await read('sources/condensatorul/css/praxis.css'));
 const sources=['laborator.html','teorie.html','resurse.html','css/style.css','css/praxis.css','js/model.js','js/lab.js','js/teorie.js','js/main.js','js/integration.js','translations.tsv'];
-await write('docs/imported-capacitor.json',JSON.stringify({id:'condensatorul',sources:await Promise.all(sources.map(async file=>({file:'condensatorul/'+file,sha256:createHash('sha256').update((await read('condensatorul/'+file)).replaceAll('\r\n','\n')).digest('hex')}))),adaptations:['Shared Praxis shell, catalog, workspaces, RO/EN and offline archive','Exact RC solution, signed current, explicit adaptive time scale and conservative isolation','Open switch gap and resistor in both closed circuit modes','Qualified linear dielectric and edge-effect assumptions']},null,2)+'\n');
+await write('docs/imported-capacitor.json',JSON.stringify({id:'condensatorul',sources:await Promise.all(sources.map(async file=>({file:'sources/condensatorul/'+file,sha256:createHash('sha256').update((await read('sources/condensatorul/'+file)).replaceAll('\r\n','\n')).digest('hex')}))),adaptations:['Shared Praxis shell, catalog, workspaces, RO/EN and offline archive','Exact RC solution, signed current, explicit adaptive time scale and conservative isolation','Open switch gap and resistor in both closed circuit modes','Qualified linear dielectric and edge-effect assumptions']},null,2)+'\n');
 console.log('Integrat: Condensatorul');

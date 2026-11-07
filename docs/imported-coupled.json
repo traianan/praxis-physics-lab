@@ -1,6 +1,6 @@
 {
   "id": "oscilatori-mecanici-cuplati",
-  "source": "gemini-code-1793291347541.html",
+  "source": "sources/oscilatori-mecanici-cuplati/gemini-code-1793291347541.html",
   "sha256": "5a72b57c4f0bbde386823b3de76c290df2b8ae664629bbc2f134d221552506ed",
   "experiments": 4,
   "questions": 10,

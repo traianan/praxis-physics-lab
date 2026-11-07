@@ -15,6 +15,12 @@ test('home previews show at most two per chapter while chapter/search retain the
  for(const chapter of chapters)assert.ok(home.filter(sim=>sim.chapter===chapter.id).length<=2);
  assert.equal(findSimulations('miscare').length,6);assert.equal(findSimulations('','curbilinie osculator').length,1);
 });
+
+test('Home previews select the latest two laboratories in each chapter',()=>{
+ const home=getHomeSimulations();
+ const ordered=[...getLatestSimulations(simulations.length),...simulations.filter(s=>!s.addedOn)];
+ for(const chapter of chapters)assert.deepEqual(home.filter(s=>s.chapter===chapter.id).map(s=>s.id),ordered.filter(s=>s.chapter===chapter.id).slice(0,2).map(s=>s.id));
+});
 test('exactly the seven physics chapters, with unique stable ids', () => {
  assert.equal(chapters.length,7); assert.equal(new Set(chapters.map(c=>c.id)).size,7);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite']);

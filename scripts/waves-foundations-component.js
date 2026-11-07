@@ -87,7 +87,7 @@ function LessonWavePropagation(){
    }).join(' ');
    return el('figure',{className:'wave-propagation-step','data-time-periods':time,'data-one-period':time===1?'':undefined},[
     el('figcaption',{},['('+String.fromCharCode(97+index)+') ',Cv(LessonMathText,{children:'t = '+labels[index]})]),
-    el('div',{className:'wave-propagation-scroll',tabIndex:0,role:'region','aria-label':tr('Etapă a propagării; derulare orizontală pe ecrane înguste')},[
+    el('div',{className:'wave-propagation-scroll',tabIndex:0,role:'group','aria-label':tr('Etapă a propagării; derulare orizontală pe ecrane înguste')},[
      el('svg',{viewBox:'0 0 420 140',role:'img','aria-labelledby':prefix+'-title '+prefix+'-desc',className:'wave-propagation-svg',xmlns:'http://www.w3.org/2000/svg'},[
       el('title',{id:prefix+'-title'},[tr('Propagarea perturbației'),' — t = '+labels[index]]),
       el('desc',{id:prefix+'-desc'},[tr('A este sursa. B este capătul îndepărtat; frontul nu a ajuns încă la B. Săgeata verticală indică oscilația sursei, iar săgeata orizontală propagarea.')]),

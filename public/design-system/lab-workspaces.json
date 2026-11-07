@@ -1,4 +1,65 @@
 {
+  "condensatorul": {
+    "workspaces": [
+      {
+        "selector": ".lab-shell",
+        "scene": ".stage",
+        "controls": ".side-stack",
+        "graphs": ".graph-card",
+        "layout": "native"
+      }
+    ],
+    "activities": [
+      {
+        "scope": ".side-stack",
+        "items": ":scope>.side-card",
+        "default": 0
+      }
+    ]
+  },
+  "legea-lui-coulomb": {
+    "workspaces": [
+      {
+        "selector": ".coulomb-layout",
+        "scene": ".coulomb-layout>div",
+        "controls": ".coulomb-layout>aside",
+        "layout": "native"
+      }
+    ]
+  },
+  "legea-lui-hooke": {
+    "workspaces": [
+      {
+        "selector": ".hooke-workspace",
+        "scene": ".hooke-visual",
+        "controls": ".hooke-controls",
+        "graphs": ".hooke-graphs",
+        "layout": "native"
+      }
+    ]
+  },
+  "pila-daniell": {
+    "workspaces": [
+      {
+        "selector": ".daniell-workspace",
+        "scene": ".daniell-visual",
+        "controls": ".daniell-controls",
+        "graphs": ".daniell-graphs",
+        "layout": "native"
+      }
+    ]
+  },
+  "laboratorul-electromagnetic-faraday": {
+    "workspaces": [
+      {
+        "selector": ".faraday-workspace",
+        "scene": ".faraday-visual",
+        "controls": ".faraday-controls",
+        "graphs": ".faraday-graphs",
+        "layout": "native"
+      }
+    ]
+  },
   "oglinzi-si-lentile": {
     "workspaces": [
       {
@@ -274,39 +335,6 @@
       }
     ]
   },
-  "laboratorul-electromagnetic-faraday": {
-    "workspaces": [
-      {
-        "selector": ".faraday-workspace",
-        "scene": ".faraday-visual",
-        "controls": ".faraday-controls",
-        "graphs": ".faraday-graphs",
-        "layout": "native"
-      }
-    ]
-  },
-  "pila-daniell": {
-    "workspaces": [
-      {
-        "selector": ".daniell-workspace",
-        "scene": ".daniell-visual",
-        "controls": ".daniell-controls",
-        "graphs": ".daniell-graphs",
-        "layout": "native"
-      }
-    ]
-  },
-  "legea-lui-hooke": {
-    "workspaces": [
-      {
-        "selector": ".hooke-workspace",
-        "scene": ".hooke-visual",
-        "controls": ".hooke-controls",
-        "graphs": ".hooke-graphs",
-        "layout": "native"
-      }
-    ]
-  },
   "pendulul-gravitational": {
     "workspaces": [
       {
@@ -315,34 +343,6 @@
         "controls": ".side",
         "graphs": ".data",
         "layout": "native"
-      }
-    ]
-  },
-  "legea-lui-coulomb": {
-    "workspaces": [
-      {
-        "selector": ".coulomb-layout",
-        "scene": ".coulomb-layout>div",
-        "controls": ".coulomb-layout>aside",
-        "layout": "native"
-      }
-    ]
-  },
-  "condensatorul": {
-    "workspaces": [
-      {
-        "selector": ".lab-shell",
-        "scene": ".stage",
-        "controls": ".side-stack",
-        "graphs": ".graph-card",
-        "layout": "native"
-      }
-    ],
-    "activities": [
-      {
-        "scope": ".side-stack",
-        "items": ":scope>.side-card",
-        "default": 0
       }
     ]
   }

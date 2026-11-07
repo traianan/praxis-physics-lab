@@ -1,3 +1,4 @@
+import {labNamespaces,labMetadata} from './lab-registry.mjs';
 import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {thermoReadability} from './adaptations/thermodynamics-readability.mjs';
 import {createHash} from 'node:crypto';
@@ -5,14 +6,14 @@ import {withFavicon} from './favicon.mjs';
 const root=new URL('../',import.meta.url),id='motoare-termice';
 const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{const u=new URL(p,root);await mkdir(new URL('./',u),{recursive:true});await writeFile(u,s);};
-const source=new URL(id+'/',root),target=new URL('public/simulari/'+id+'/',root);
+const source=new URL('sources/'+id+'/',root),target=new URL('public/simulari/'+id+'/',root);
 await mkdir(target,{recursive:true});await cp(source,target,{recursive:true});
 const patch=(s,from,to)=>{if(!s.includes(from))throw new Error('Missing import anchor: '+from.slice(0,100));return s.replace(from,to);};
 const clean=s=>s.replace(/\s*\([^)]*(?:manual|Fig\. 1\.6)[^)]*\)/gi,'')
  .replace(/<small>1\.6(?:\.\d+)*<\/small>/g,'')
  .replace(/\b(?:Fig\.|Tabelul|exercițiile|Exercițiul)\s*1\.6(?:\.\d+)*(?:\s*[,·–]\s*1\.6(?:\.\d+)*)*/g,'')
  .replace(/\b1\.6(?:\.\d+)*(?![\d.])\s*[·–]?\s*/g,'').replace(/\s*·\s*(?=<\/)/g,'');
-let html=await read(id+'/index.html');
+let html=await read('sources/'+id+'/index.html');
 html=html.replace(' · Clasa a X-a','').replace('Clasa a X-a · ','').replace(' (clasa a X-a, 1.6)','');
 html=html.replace(/<link rel="manifest"[^>]*>/,'')
  .replace(/<p class="src">[\s\S]*?<\/p>/,'')
@@ -56,13 +57,13 @@ html=html.replace('Motorul în patru timpi și diagrama p–V','Motorul în patr
 html=html.replace('Admisia și evacuarea se fac pe aceeași dreaptă orizontală, la presiunea atmosferică: lucrurile lor mecanice se anulează. Rămâne aria buclei 1-2-3-4.',
  'Ciclul termodinamic ideal este bucla 1→2→3→4→1. Admisia și evacuarea sunt curse de schimb de gaze, în afara acestei bucle. În model au aceeași presiune p₀, iar lucrurile lor mecanice se anulează. La izocore, pistonul staționează pentru a face vizibil schimbul de căldură.');
 html=html.replace('În model au aceeași presiune p₀, iar lucrurile lor mecanice se anulează.','Diagrama arată schematic numai cele patru transformări ideale, fără traseele de admisie și evacuare.');
-const namespaces=['common','chapters/caldura-termodinamica','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+const namespaces=await labNamespaces('motoare-termice'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const ns of namespaces){try{embedded[lang][ns]=JSON.parse(await read('public/locales/'+ns+'/'+lang+'.json'));}catch{embedded[lang][ns]={locale:lang,namespace:ns,messages:{}};}}
 const styles=['design-system/tokens.css','design-system/components.css','shared/course.css','design-system/lab-layout.css','design-system/laboratory.css','shared/heat-engines.css','design-system/compact.css'];
 const head=styles.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded}).replaceAll('<','\\u003c')+');</script>'+['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','velocity-labels.js','ideal-engine-cycles.js','ideal-cycle-diagram.js','heat-engines-model.js','carnot-diagram.js'].map(p=>'<script src="../../shared/'+p+'"></script>').join('');
 html=html.replace('</head>',()=>head+'</head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">').replace('</body>','</div><script src="../../shared/course.js" data-course="'+id+'" data-title="Motoare termice"></script><script src="../../shared/heat-engines.js"></script></body>');
 await write('public/simulari/'+id+'/index.html',withFavicon(html).replace(/[ \t]+$/gm,''));
-let base=thermoReadability('engines','js/baza.js',await read(id+'/js/baza.js'));
+let base=thermoReadability('engines','js/baza.js',await read('sources/'+id+'/js/baza.js'));
 base=patch(base,"inp.parentElement.querySelector('output')","inp.closest('label').querySelector('output')");
 base=patch(base,"const S={on:localStorage.getItem('mt-sound')!=='0'};",'const S={on:window.PraxisSound.enabled};');
 base=patch(base,'if(!S.on)return null;','if(!S.on||!window.PraxisSound.enabled||document.hidden)return null;');
@@ -71,7 +72,7 @@ base=patch(base,'return S;','window.addEventListener("praxis-sound-change",()=>S
 base=base.replace('if(this.raf)return;','if(this.raf||document.hidden)return;').replace('if(!this.vis)return;','if(!this.vis||document.hidden)return;');
 base+='\ndocument.addEventListener("visibilitychange",()=>{if(!document.hidden)ALL.filter(s=>s.vis).forEach(s=>s.loop());});\n';
 await write('public/simulari/'+id+'/js/baza.js',base);
-let figures=await read(id+'/js/figuri-1.js');
+let figures=await read('sources/'+id+'/js/figuri-1.js');
 figures=patch(figures,"    txt(ctx,dsl?'prag orientativ pentru autoaprinderea sigură a motorinei':'prag orientativ de detonație a benzinei',b.x+b.w-4,Y(TH[S.mode])-11,{align:'right',font:MONO,color:tc});",`    // Translate the whole caption before wrapping; partial lines have no locale key.
     const captionSource=dsl?'prag orientativ pentru autoaprinderea sigură a motorinei':'prag orientativ de detonație a benzinei';
     const caption=window.PraxisI18n?.tr(captionSource)??captionSource,captionLines=[];
@@ -95,7 +96,7 @@ figures=figures.slice(0,gStart)+await read('scripts/adaptations/heat-engines-dia
 figures=figures.replace('Aerul este comprimat aproximativ adiabatic până la ~50 atm; temperatura lui depășește 600 °C.','Aerul este comprimat adiabatic (1→2): volumul scade, iar presiunea și temperatura cresc.');
 figures=figures.replaceAll('aproximativ adiabatică','adiabatică în modelul ideal').replaceAll('aproximativ adiabatic','adiabatic în modelul ideal').replaceAll('V ≈ const.','V = const.').replaceAll('p ≈ const.','p = const.').replaceAll('Singurul timp cu lucru mecanic.','Timpul care furnizează lucru mecanic util.');
 await write('public/simulari/'+id+'/js/figuri-1.js',figures);
-let cycles=await read(id+'/js/figuri-2.js');
+let cycles=await read('sources/'+id+'/js/figuri-2.js');
 cycles=patch(cycles,"return {g,legs:['T','S','T','S'],P:","return {carnot:true,g,legs:['T','S','T','S'],P:");
 const cycleGraphStart=cycles.indexOf('    const b={x:62,y:34'),cycleGraphEnd=cycles.indexOf('    // punctul mobil',cycleGraphStart);
 if(cycleGraphStart<0||cycleGraphEnd<0)throw new Error('Cycle drawing anchors');
@@ -105,7 +106,7 @@ cycles=cycles.slice(0,cycleGraphStart)+'    const cur=Math.floor(u+1e-9)%4,su=u-
 cycles=patch(cycles,'}pts.push(p1);','}pts.push({V:p1.V,T:T4o},p1);');
 cycles=patch(cycles,'ctx.lineTo(...xy({V:p1.V,T:T4o}));ctx.stroke();','ctx.stroke();');
 await write('public/simulari/'+id+'/js/figuri-2.js',cycles);
-let lesson=await read(id+'/js/lectie.js');
+let lesson=await read('sources/'+id+'/js/lectie.js');
 lesson=lesson.replace(/\/\* PWA:[\s\S]*$/,'').replace('(Aplicația din manual) ','');
 lesson=lesson.replace('p:Math.sqrt(R*s.T/s.V)','p:R*s.T/s.V').replace('p „comprimat” cu radical, doar pentru aspect','presiune pe scară liniară');
 lesson=patch(lesson,"{n:'Carnot',g:1.4,legs:['T','S','T','S'],P:(()=>{const fV=Math.pow(2,2.5);return [{V:1,T:600},{V:2.5,T:600},{V:2.5*fV,T:300},{V:fV,T:300}]})()}","{n:'Carnot',g:5/3,legs:['T','S','T','S'],P:(()=>{const fV=Math.pow(2,1.5);return [{V:5,T:600},{V:15,T:600},{V:15*fV,T:300},{V:5*fV,T:300}]})()}");
@@ -124,10 +125,9 @@ const introStart=lesson.indexOf("(()=>{const c=$('#heroField')"),introEnd=lesson
 if(introStart<0||introEnd<6)throw new Error('Introductory diagram anchors');
 lesson=lesson.slice(0,introStart)+await read('scripts/adaptations/heat-engines-intro.js')+lesson.slice(introEnd);
 await write('public/simulari/'+id+'/js/lectie.js',lesson.trimEnd()+'\n');
-await write('public/simulari/'+id+'/css/lectie.css',(await read(id+'/css/lectie.css')).replaceAll('Subtitlul manualului','Subtitlul lecției').replaceAll('corectură a manualului','precizare'));
-const sim={id,addedOn:'2026-10-31',addedOrder:1,chapter:'caldura-termodinamica',title:'Motoare termice',subtitle:'Cicluri ideale, randament și motoare în patru timpi',description:'Nouă simulări animate: motoare Otto și Diesel, transferuri de energie, frigider, ciclurile Carnot, Otto, Diesel și modelul didactic Rankine, cu 12 întrebări și 14 probleme.',href:'./simulari/'+id+'/index.html',image:'./assets/'+id+'.svg',alt:'Motor cu piston și ciclurile ideale Otto și Diesel pe diagrama presiune–volum',tags:['Termodinamică','Motoare','Cicluri ideale','Offline'],keywords:'motoare termice otto diesel carnot rankine randament ciclu ideal piston patru timpi frigider pompa caldura compresie adiabatic izocor izobar',status:'available'};
-let catalog=await read('public/catalog.js');if(!catalog.includes('"id":"'+id+'"'))await write('public/catalog.js',catalog.replace('\n];\nexport const normalize',',\n '+JSON.stringify(sim)+'\n];\nexport const normalize'));
+await write('public/simulari/'+id+'/css/lectie.css',(await read('sources/'+id+'/css/lectie.css')).replaceAll('Subtitlul manualului','Subtitlul lecției').replaceAll('corectură a manualului','precizare'));
+const sim=await labMetadata(id);
 for(const lang of ['ro','en']){const p='public/locales/chapters/caldura-termodinamica/'+lang+'.json',data=JSON.parse(await read(p));data.simulations[id]=lang==='ro'?Object.fromEntries(['title','subtitle','description','alt','tags'].map(k=>[k,sim[k]])):{title:'Heat engines',subtitle:'Ideal cycles, efficiency and four-stroke engines',description:'Nine animated simulations: Otto and Diesel engines, energy transfers, refrigerator, Carnot, Otto, Diesel and a teaching model of Rankine, with 12 questions and 14 problems.',alt:'Piston engine and ideal Otto and Diesel pressure–volume cycles',tags:['Thermodynamics','Engines','Ideal cycles','Offline']};await write(p,JSON.stringify(data,null,2)+'\n');}
 const files=[];async function inventory(dir,prefix=''){for(const e of await readdir(dir,{withFileTypes:true})){if(e.isDirectory())await inventory(new URL(e.name+'/',dir),prefix+e.name+'/');else files.push({path:prefix+e.name,sha256:createHash('sha256').update(await readFile(new URL(e.name,dir))).digest('hex')});}}
-await inventory(source);await write('docs/imported-heat-engines.json',JSON.stringify({id,source:id,files,adaptations:'Shared Praxis UI, ideal p–V cycle and constant-volume dwells, linear hero pressure axis, corrected Otto comparison overlay, textbook references and source PWA removed. Original sources and animation mechanisms preserved.'},null,2)+'\n');
+await inventory(source);await write('docs/imported-heat-engines.json',JSON.stringify({id,source:'sources/'+id,files,adaptations:'Shared Praxis UI, ideal p–V cycle and constant-volume dwells, linear hero pressure axis, corrected Otto comparison overlay, textbook references and source PWA removed. Original sources and animation mechanisms preserved.'},null,2)+'\n');
 console.log('Integrat: '+id);

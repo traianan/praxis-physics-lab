@@ -32,9 +32,10 @@
   }
 
   /* stocare tolerantă (funcționează și în iframe sandbox) */
+  const pageResults = new Map();
   const store = {
-    get(k, d) { try { const v = localStorage.getItem('pendul.v1.' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
-    set(k, v) { try { localStorage.setItem('pendul.v1.' + k, JSON.stringify(v)); } catch (e) {} }
+    get(k, d) { return pageResults.has(k) ? JSON.parse(pageResults.get(k)) : d; },
+    set(k, v) { pageResults.set(k, JSON.stringify(v)); }
   };
 
   /* ------------------------------ audio ------------------------------- */
@@ -1068,7 +1069,7 @@
       <li>Trece pe graficul <b>T²(ℓ)</b> și citește panta p; apoi g = 4π² / p.</li>
     </ol>
     <h4>Offline</h4>
-    <p>Descarcă arhiva offline, dezarhiveaz-o și deschide index.html. Măsurătorile se păstrează local în browser.</p>
+    <p>Descarcă arhiva offline, dezarhiveaz-o și deschide index.html. Măsurătorile rămân doar în pagina curentă și se pierd la reîncărcare.</p>
     <p><button class="btn btn-teal btn-sm" id="btnSaveOffline">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg>
       Descarcă lecția offline
@@ -1091,7 +1092,7 @@
       <h4>Model fizic</h4>
       <p>Simularea integrează numeric ecuația exactă <code>θ'' = −(g/ℓ)·sin θ − β·θ'</code>, fără aproximația unghiurilor mici — de aceea poți observa creșterea perioadei la amplitudini mari. Perioada „exactă” din panoul de date este calculată analitic prin media aritmetico-geometrică (AGM).</p>
       <h4>Confidențialitate</h4>
-      <p>Nu se colectează date, nu există conturi și nicio conexiune la rețea. Măsurătorile și bifele se salvează doar local (localStorage), când browserul permite.</p>
+      <p>Măsurătorile și bifele rămân doar în memoria paginii și se pierd la reîncărcare. Exportă măsurătorile pentru a păstra un fișier pe dispozitiv.</p>
       <h4>Inspirație</h4>
       <p>Interfața și abordarea pedagogică se inspiră din <a href="https://phet.colorado.edu/ro/simulations/pendulum-lab" target="_blank" rel="noopener">PhET Interactive Simulations, University of Colorado Boulder</a> (licență CC BY 4.0).</p>
       <p style="color:var(--dim);font-size:.8rem;margin-top:16px">Versiunea 1.0 · construcție autonomă, fără dependențe externe.</p>

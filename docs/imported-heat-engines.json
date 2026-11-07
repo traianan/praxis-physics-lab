@@ -1,6 +1,6 @@
 {
   "id": "motoare-termice",
-  "source": "motoare-termice",
+  "source": "sources/motoare-termice",
   "files": [
     {
       "path": "css/lectie.css",

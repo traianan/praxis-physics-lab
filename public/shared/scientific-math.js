@@ -4,8 +4,7 @@
  const coreRender=math.render,records=new WeakMap(),hosts=new Set();let paints=0;
  const escape=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
  const tr=s=>window.PraxisI18n?.tr(s)??s;
- function engine(){return window.PraxisEnsureMathEngine();}
- math.render=source=>{engine();return coreRender(String(source));};
+ math.render=source=>coreRender(String(source));
  math.tex=source=>{try{return window.PraxisRenderMath(String(source),{throwOnError:true,strict:'ignore',trust:false,output:'mathml',displayMode:false});}catch(error){return '<span class="science-math-error" role="alert" title="'+escape(error.message)+'">'+escape(source)+'</span>';}};
  const scripts=/(?<![\p{L}\p{N}_])([A-Za-zΑ-ω])(?:_\{([^}]+)\}|_([\p{L}\p{N}]+)|([₀-₉ₙₒₐₑₕᵢⱼₖₗₘₚᵣₛₜᵤᵥₓᵧ]+)|([0-9]+)\b)([⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]*)|(?<![\p{L}\p{N}_])([A-Za-zΑ-ω])(?:\^\(([^)]+)\)|\^([−+\d.]+)|([⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+))/gu;
  math.prose=source=>{
@@ -82,5 +81,6 @@
   }).observe(root,{subtree:true,childList:true,characterData:true});
  }
  window.addEventListener('praxis-language-change',()=>{for(const el of hosts){if(!el.isConnected){hosts.delete(el);continue;}const record=records.get(el);if(record&&record.html===el.innerHTML)paint(el,record);}});
+ window.addEventListener('praxis-math-ready',()=>{for(const el of hosts){if(!el.isConnected){hosts.delete(el);continue;}const record=records.get(el);if(record)paint(el,record);}});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();

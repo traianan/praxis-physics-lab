@@ -1,10 +1,12 @@
+import {readManifest} from './lab-registry.mjs';
+import {inlineMathFonts} from './scientific-math-runtime.mjs';
 import {withFavicon} from './favicon.mjs';
 import {withLinkPresentation} from './link-presentation.mjs';
 import {preparePresentation} from './prepare-presentation.mjs';
 await preparePresentation();
 import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';import {zipDirectory} from './zip.mjs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';import vm from 'node:vm';
 const root=fileURLToPath(new URL('../',import.meta.url)),report=[];
-const courses=[['condensatorul','condensatorul.zip'],['legea-lui-coulomb','legea-lui-coulomb.zip'],['pendulul-gravitational','pendulul-gravitational.zip'],['motoare-termice','motoare-termice.zip'],['principiile-mecanicii-newtoniene','principiile-mecanicii-newtoniene.zip'],['miscarea-circulara-uniforma','miscarea-circulara-uniforma.zip'],['miscarea-rectilinie','miscarea-rectilinie-offline.zip'],['calcul-vectorial','calcul-vectorial.zip'],['unde-mecanice','unde-mecanice-offline.zip'],['viteza-si-acceleratia','viteza-si-acceleratia-offline.zip'],['miscarea-curbilinie-plana','miscarea-curbilinie-plana-offline.zip'],['notiuni-termodinamice','notiuni-termodinamice.zip'],['calorimetrie','calorimetrie.zip'],['principiul-i-al-termodinamicii','principiul-i-al-termodinamicii.zip'],['interactii-atomice','interactii-atomice.zip'],['principiul-i-aplicatii','principiul-i-aplicatii.zip'],['transformari-stare-agregare','transformari-stare-agregare.zip'],['oscilator-mecanic','oscilator-mecanic.zip'],['oscilatori-mecanici-cuplati','oscilatori-mecanici-cuplati.zip'],['compunerea-oscilatiilor','compunerea-oscilatiilor.zip'],['figuri-chladni','figuri-chladni.zip']];
+const courses=(await readManifest()).labs.filter(lab=>lab.offline.kind==='archive').map(lab=>[lab.metadata.id,lab.offline.file]);
 const requested=process.argv.find(arg=>arg.startsWith('--course='))?.slice('--course='.length);
 if(!requested||requested==='laboratorul-electromagnetic-faraday')await import('./build-faraday-offline.mjs');
 if(requested==='laboratorul-electromagnetic-faraday')process.exit(0);
@@ -17,7 +19,7 @@ for(const [id,zipName]of selected){
  let html=withLinkPresentation(withFavicon(await readFile(path.join(source,'index.html'),'utf8')));
  for(const match of [...html.matchAll(/<link[^>]+href="\.\.\/\.\.\/([^"]+\.css)"[^>]*>/g)]){const css=await readFile(path.join(root,'public',match[1]),'utf8');html=html.replace(match[0],()=>'<style>'+css+'</style>');}
  for(const match of [...html.matchAll(/<script([^>]*?)src="\.\.\/\.\.\/([^"]+)"([^>]*)><\/script>/g)]){
-  const js=await readFile(path.join(root,'public',match[2]),'utf8');html=html.replace(match[0],()=>'<script'+match[1]+match[3]+'>'+js.replaceAll('</script','<\\/script')+'</script>');
+  const js=await inlineMathFonts(await readFile(path.join(root,'public',match[2]),'utf8'));html=html.replace(match[0],()=>'<script'+match[1]+match[3]+'>'+js.replaceAll('</script','<\\/script')+'</script>');
  }
  html=html.replace('href="../../assets/favicon.svg"','href="./assets/favicon.svg"');
  html=html.replace('<head>','<head><script>document.documentElement.dataset.praxisStandalone="true";</script>');

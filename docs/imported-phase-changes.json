@@ -1,6 +1,6 @@
 {
   "id": "transformari-stare-agregare",
-  "source": "Transformari de stare de agregare",
+  "source": "sources/transformari-stare-agregare",
   "files": [
     {
       "path": "index.html",

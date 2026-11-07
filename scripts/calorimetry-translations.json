@@ -454,5 +454,6 @@
   "Glosar și formule": "Glossary and formulae",
   "Secțiunea lecției": "Lesson section",
   "Toate cele trei moduri de transfer al căldurii sunt reduse:": "All three modes of heat transfer are reduced:",
-  "Ai deschis versiunea autonomă. Toate simulările, formulele, testul și problemele sunt disponibile fără internet. Folosește taburile de sus pentru navigare.": "You opened the standalone version. All simulations, formulae, the quiz and problems are available without internet. Use the tabs above to navigate."
+  "Ai deschis versiunea autonomă. Toate simulările, formulele, testul și problemele sunt disponibile fără internet. Folosește taburile de sus pentru navigare.": "You opened the standalone version. All simulations, formulae, the quiz and problems are available without internet. Use the tabs above to navigate.",
+  "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"răspuns\">": "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"answer\">"
 }

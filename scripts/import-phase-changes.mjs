@@ -1,3 +1,4 @@
+import {labNamespaces,labMetadata} from './lab-registry.mjs';
 import {phaseLayout} from './adaptations/animation-layout-audit.mjs';
 import {readFile,writeFile,mkdir,cp} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -5,7 +6,7 @@ import vm from 'node:vm';
 import {withFavicon} from './favicon.mjs';
 import {adaptContent} from './adaptations/phase-changes-content.mjs';
 import {liquefactionSection} from './adaptations/liquefaction-content.mjs';
-const root=new URL('../',import.meta.url),sourceDir='Transformari de stare de agregare',id='transformari-stare-agregare',title='Transformări de stare de agregare';
+const root=new URL('../',import.meta.url),sourceDir='sources/transformari-stare-agregare',id='transformari-stare-agregare',title='Transformări de stare de agregare';
 const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{const url=new URL(p,root);await mkdir(new URL('./',url),{recursive:true});await writeFile(url,s);};
 const patch=(s,a,b)=>{if(!s.includes(a))throw new Error('Missing adaptation: '+a.slice(0,90));return s.replace(a,b);};
@@ -19,7 +20,7 @@ for(const lang of ['ro','en']){
  await write('public/locales/courses/'+id+'/content/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/content',messages:{},...locales[lang]},null,2)+'\n');
  await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='ro'?{[title]:title,'Laborator interactiv de căldură și termodinamică':'Laborator interactiv de căldură și termodinamică'}:{[title]:'Phase changes','Laborator interactiv de căldură și termodinamică':'Interactive heat and thermodynamics laboratory'}},null,2)+'\n');
 }
-const ns=['common','chapters/caldura-termodinamica','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+const ns=await labNamespaces('transformari-stare-agregare'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 let body=source.match(/<body>([\s\S]*?)<script src="js\/math.js">/)[1];
 body=body.replace(/<header class="site-header">[\s\S]*?<\/header>/,'').replace(/<footer class="site-footer">[\s\S]*?<\/footer>/,'')
@@ -171,9 +172,7 @@ for(const file of ['math','i18n','audio','sims','quiz','app']){
 }
 const files=['index.html','css/styles.css',...['math','i18n','audio','sims','quiz','app'].map(x=>'js/'+x+'.js')];
 await write('docs/imported-phase-changes.json',JSON.stringify({id,source:sourceDir,files:await Promise.all(files.map(async path=>({path,sha256:createHash('sha256').update(await read(sourceDir+'/'+path)).digest('hex')}))),sections:12,simulations:11,questions:15,problems:2},null,2)+'\n');
-const simulation={id,chapter:'caldura-termodinamica',title,subtitle:'Topire, vaporizare, lichefiere și diagrama de faze',description:'12 secțiuni, 11 demonstrații despre transformările de stare, lichefierea gazelor, izotermele lui Andrews și punctul critic, două probleme rezolvate și 15 întrebări.',href:'./simulari/'+id+'/index.html',image:'./assets/'+id+'.svg',alt:'Gheață, apă și vapori, cu o curbă de încălzire și punctul triplu',tags:['Termodinamică','Schimbări de fază','Test','Offline'],keywords:'transformari stare agregare solid lichid gaz topire solidificare vaporizare condensare evaporare fierbere sublimare desublimare caldura latenta presiune vapori saturanti punct triplu lichefiere gaze andrews izoterme critic supercritic co2',status:'available'};
-let catalog=await read('public/catalog.js');if(!catalog.includes('"id":"'+id+'"'))await write('public/catalog.js',patch(catalog,'\n];\nexport const normalize',',\n '+JSON.stringify(simulation)+'\n];\nexport const normalize'));
-else await write('public/catalog.js',catalog.replace(new RegExp('^ \\{"id":"'+id+'"[^\\n]+','m'),' '+JSON.stringify(simulation)));
+const simulation=await labMetadata(id);
 for(const lang of ['ro','en']){
  const path='public/locales/chapters/caldura-termodinamica/'+lang+'.json',chapter=JSON.parse(await read(path));
  chapter.simulations[id]=lang==='ro'?Object.fromEntries(['title','subtitle','description','alt','tags'].map(k=>[k,simulation[k]])):{title:'Phase changes',subtitle:'Melting, vaporisation, liquefaction and phase diagrams',description:'12 topics, 11 demonstrations about phase changes, gas liquefaction, Andrews isotherms and the critical point, two worked problems and 15 questions.',alt:'Ice, liquid water and vapour with a heating curve and triple point',tags:['Thermodynamics','Phase changes','Quiz','Offline']};

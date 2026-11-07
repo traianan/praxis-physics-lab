@@ -468,6 +468,8 @@
     "Pornește sau oprește temporar simularea.": "Start or temporarily pause the simulation.",
     "Reia oscilația de la amplitudinea aleasă, cu timpul zero.": "Restart from the selected amplitude, with time reset to zero.",
     "Oprește pendulul vertical, cu viteză zero.": "Stop the pendulum vertically, with zero velocity.",
-    "Cronometrează 10 oscilații complete și adaugă rezultatul în tabel.": "Time 10 complete oscillations and add the result to the table."
+    "Cronometrează 10 oscilații complete și adaugă rezultatul în tabel.": "Time 10 complete oscillations and add the result to the table.",
+    "Descarcă arhiva offline, dezarhiveaz-o și deschide index.html. Măsurătorile rămân doar în pagina curentă și se pierd la reîncărcare.": "Download and extract the offline archive, then open index.html. Measurements remain only in the current page and are lost on reload.",
+    "Măsurătorile și bifele rămân doar în memoria paginii și se pierd la reîncărcare. Exportă măsurătorile pentru a păstra un fișier pe dispozitiv.": "Measurements and checkmarks remain only in page memory and are lost on reload. Export measurements to keep a file on your device."
   }
 }

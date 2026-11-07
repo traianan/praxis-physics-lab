@@ -8,7 +8,7 @@
   if(!header||header.dataset.siteNavigation)return;
   header.dataset.siteNavigation='';header.classList.add('praxis-site-header');
   const row=document.createElement('div');row.className='praxis-site-row';
-  const logo=document.createElement('a');logo.href=new URL('?home=1',base);logo.className='praxis-site-brand';logo.setAttribute('aria-label','Praxis Science Lab');logo.innerHTML=`<img src="${new URL('assets/favicon.svg',base)}" width="37" height="39" alt=""><span>praxis<small>SCIENCE LAB</small></span>`;
+  const logo=document.createElement('a');logo.href=new URL('?home=1',base);logo.className='praxis-site-brand';logo.setAttribute('aria-label','Praxis Science Lab');logo.innerHTML=`<img src="${new URL('assets/favicon.svg',base)}" width="37" height="39" alt=""><span>praxis <small>SCIENCE LAB</small></span>`;
   const menu=document.createElement('nav');menu.id='praxis-main-menu';menu.className='praxis-site-menu';menu.dataset.noI18n='';
   const toggle=document.createElement('button');toggle.type='button';toggle.className='site-menu-toggle';toggle.dataset.noI18n='';toggle.setAttribute('aria-controls',menu.id);toggle.setAttribute('aria-expanded','false');
   const quickLanguage=document.createElement('span');quickLanguage.className='site-quick-language';quickLanguage.dataset.noI18n='';

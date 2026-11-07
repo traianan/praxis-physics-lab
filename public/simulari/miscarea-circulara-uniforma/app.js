@@ -9,10 +9,12 @@ Error generating stack: `+o.message+`
 /* JSX presentation adapter, evaluated in the preserved React bundle's scope. */
 function McuMathText({value}){
  const math=window.PraxisMath;
- const language=I.useSyncExternalStore(math.subscribe,math.language,math.language);
+ const language=I.useSyncExternalStore(math.subscribe,math.revision,math.revision);
  const translated=window.PraxisI18n.tr(value);
  const html=I.useMemo(()=>math.render(translated),[translated,language]);
- return Rc('span',{className:'science-math','data-no-i18n':true,dangerouslySetInnerHTML:{__html:html}});
+ const ref=I.useRef(null);
+ I.useEffect(()=>{const node=ref.current;if(!node)return;const measure=()=>{for(const el of node.querySelectorAll('.wave-math-item')){if(el.scrollWidth>el.clientWidth+1){el.tabIndex=0;el.setAttribute('role','group');el.setAttribute('aria-label',window.PraxisI18n.language==='en'?'Formula with horizontal scrolling':'Formulă cu derulare orizontală');}else{el.removeAttribute('tabindex');el.removeAttribute('role');el.removeAttribute('aria-label');}}};measure();const observer=new ResizeObserver(measure);observer.observe(node);return()=>observer.disconnect();},[html,language]);
+ return Rc('span',{ref,className:'science-math mcu-math-text','data-no-i18n':true,dangerouslySetInnerHTML:{__html:html}});
 }
 function mcuJsx(type,props,key){
  props={...props};

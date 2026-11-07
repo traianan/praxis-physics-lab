@@ -1,8 +1,9 @@
+import {labNamespaces} from '../../shared/lab-locales.js';
 import {prepareGeneratorMath,renderGeneratorLiveFormula} from './lesson-math.js';
 import {DEFAULTS,validateParameters,stateAt,energyBetween} from '../../shared/generator-model.js';
 import {renderScene,setSceneView,getSceneSnapshot,renderGraphs,renderReadouts} from './view.js';
 const $=s=>document.querySelector(s),tr=s=>window.PraxisI18n.tr(s);
-await window.PraxisI18n.init({baseUrl:'../../locales/',namespaceList:['common','courses/shared','chapters/electricitate-magnetism-circuite','labs/generator-electric/ui']});
+await window.PraxisI18n.init({baseUrl:'../../locales/',namespaceList:labNamespaces['generator-electric']});
 let p={...DEFAULTS},t=0,running=false,frame=null,previous=null,section='experiment',graphDirty=true;
 const metrics={costs:[],intervals:[]};let recording=false;
 const params=[['N','Număr de spire',1,500,1,''],['B','Inducție magnetică',0,1,.01,'T'],['A','Aria unei spire',.001,.05,.001,'m²'],['omega','Viteză unghiulară',-100*Math.PI,100*Math.PI,Math.PI,'rad/s'],['R','Rezistența sarcinii',0,200,1,'Ω'],['r','Rezistența internă',1,20,1,'Ω']];

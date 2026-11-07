@@ -3,7 +3,7 @@ outputs/
 node_modules/
 .vercel/
 *.log
-sources/
+sources/*
 
 # Local tooling and private configuration
 .serena/
@@ -17,3 +17,17 @@ sources/
 __pycache__/
 *.pyc
 .vercel
+
+# Previously tracked source snapshots, relocated without dropping version control
+!sources/compunerea-oscilatiilor/
+!sources/condensatorul/
+!sources/figuri-chladni/
+!sources/interactii-atomice/
+!sources/legea-lui-coulomb/
+!sources/miscarea-circulara-uniforma/
+!sources/motoare-termice/
+!sources/oscilator-mecanic/
+!sources/oscilatori-mecanici-cuplati/
+!sources/pendulul-gravitational/
+!sources/principiul-i-aplicatii/
+!sources/transformari-stare-agregare/

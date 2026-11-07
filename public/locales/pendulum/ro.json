@@ -468,6 +468,8 @@
     "Pornește sau oprește temporar simularea.": "Pornește sau oprește temporar simularea.",
     "Reia oscilația de la amplitudinea aleasă, cu timpul zero.": "Reia oscilația de la amplitudinea aleasă, cu timpul zero.",
     "Oprește pendulul vertical, cu viteză zero.": "Oprește pendulul vertical, cu viteză zero.",
-    "Cronometrează 10 oscilații complete și adaugă rezultatul în tabel.": "Cronometrează 10 oscilații complete și adaugă rezultatul în tabel."
+    "Cronometrează 10 oscilații complete și adaugă rezultatul în tabel.": "Cronometrează 10 oscilații complete și adaugă rezultatul în tabel.",
+    "Descarcă arhiva offline, dezarhiveaz-o și deschide index.html. Măsurătorile rămân doar în pagina curentă și se pierd la reîncărcare.": "Descarcă arhiva offline, dezarhiveaz-o și deschide index.html. Măsurătorile rămân doar în pagina curentă și se pierd la reîncărcare.",
+    "Măsurătorile și bifele rămân doar în memoria paginii și se pierd la reîncărcare. Exportă măsurătorile pentru a păstra un fișier pe dispozitiv.": "Măsurătorile și bifele rămân doar în memoria paginii și se pierd la reîncărcare. Exportă măsurătorile pentru a păstra un fișier pe dispozitiv."
   }
 }

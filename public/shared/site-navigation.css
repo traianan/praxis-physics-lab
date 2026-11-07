@@ -56,3 +56,5 @@ html body .praxis-site-menu .site-runtime{width:180px;height:44px;padding:4px 8p
 html body .praxis-site-header .praxis-site-menu .site-menu-control{line-height:1.3!important}
 /* Keep the existing full-screen board interfaces and their exit controls. */
 html[data-library-board=true] body .praxis-site-header.topbar,html[data-board=true] body .praxis-site-header.topbar{display:none!important}
+
+.info-content .eyebrow{color:#435f54}

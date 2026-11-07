@@ -1,7 +1,8 @@
+import {labNamespaces,labMetadata} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir,cp} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {withFavicon} from './favicon.mjs';
-const root=new URL('../',import.meta.url),id='oscilator-mecanic',source='oscillator-mecanic';
+const root=new URL('../',import.meta.url),id='oscilator-mecanic',source='sources/oscilator-mecanic';
 const read=async p=>(await readFile(new URL(p,root),'utf8')).replaceAll('\r\n','\n');
 const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
 const clean=s=>s.replace(/\([^)]*(?:fig\.|figura|1\.1\.)[^)]*\)/gi,'').replace(/\b1\.1\.\d+(?:\.\d+)*\.?\s*(?:[–-]\s*)?/g,'').replace(/(?:din|după|conform) manual(?:ul)?(?: scanat)?/gi,'').replace(/\s*\(manual\)/gi,'').replace(/\bmanual(?:ul)?\b|subcapitol(?:ul|ului)?/gi,'').replace(/\s+\./g,'.');
@@ -39,7 +40,7 @@ const topics=[['s111','Fenomene periodice','theory'],['s112','Mărimi caracteris
 const nav='<nav id="nav" class="tabs" aria-label="Secțiunea lecției">'+topics.map(([key,title,type])=>'<a class="tab" href="#'+key+'" data-tab="'+key+'" data-content-type="'+type+'">'+title+'</a>').join('')+'</nav>';
 let translations={};try{translations=JSON.parse(await read('scripts/oscillator-translations.json'));}catch{}
 for(const lang of ['ro','en'])await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?translations:Object.fromEntries(Object.keys(translations).map(k=>[k,k]))},null,2)+'\n');
-const ns=['common','chapters/sunete-si-unde','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+const ns=await labNamespaces('oscilator-mecanic'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 const styles=['design-system/tokens.css','simulari/'+id+'/css/styles.css','design-system/components.css','shared/course.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/oscillator.css'];
 const scripts=['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js'];
@@ -109,7 +110,6 @@ demos=demos.replace(forkSampling,'const samples=Math.max(900,Math.ceil((w-60)*Ma
 demos+='\n'+await read('scripts/adaptations/oscillator-audit.js');
 await write('public/simulari/'+id+'/js/demos.js',demos);
 const files=['index.html','css/styles.css','js/app.js','js/demos.js'];await write('docs/imported-oscillator.json',JSON.stringify({id,source,files:await Promise.all(files.map(async path=>({path,sha256:createHash('sha256').update(await readFile(new URL(source+'/'+path,root))).digest('hex')}))),topics:4,questions:18,simulations:(body.match(/<canvas /g)||[]).length,problems:6,languages:['ro','en'],excluded:'Compunerea oscilațiilor, bătăi și Lissajous: laborator separat, la cererea utilizatorului.'},null,2)+'\n');
-const simulation={id,chapter:'sunete-si-unde',title:'Oscilatorul mecanic',subtitle:'Fenomene periodice și oscilații armonice',description:'Patru teme, unsprezece demonstrații, șase probleme rezolvate și verificări: mărimi, amortizare, fază, pendule și energie.',href:'./simulari/'+id+'/index.html',image:'./assets/oscilator-mecanic.svg',alt:'Resort și corp oscilant, cu graficul elongației',tags:['Oscilații','Pendule','Probleme','Offline'],keywords:'oscilator mecanic armonic pendul resort perioada frecventa amplitudine faza amortizare energie',status:'available'};
-let catalog=await read('public/catalog.js');if(!catalog.includes('"id":"'+id+'"'))await write('public/catalog.js',catalog.replace('\n];\nexport const normalize',',\n '+JSON.stringify(simulation)+'\n];\nexport const normalize'));
+const simulation=await labMetadata(id);
 for(const lang of ['ro','en']){const path='public/locales/chapters/sunete-si-unde/'+lang+'.json',data=JSON.parse(await read(path));data.simulations[id]=lang==='ro'?Object.fromEntries(['title','subtitle','description','alt','tags'].map(k=>[k,simulation[k]])):{title:'Mechanical oscillator',subtitle:'Periodic phenomena and harmonic oscillations',description:'Four topics, eleven demonstrations and six worked problems: quantities, damping, phase, pendulums and energy.',alt:'Spring–mass oscillator and displacement graph',tags:['Oscillations','Pendulums','Problems','Offline']};await write(path,JSON.stringify(data,null,2)+'\n');}
 console.log('Integrat: Oscilatorul mecanic');

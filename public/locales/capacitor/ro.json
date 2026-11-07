@@ -399,6 +399,12 @@
     "pauză": "pauză",
     "La încărcare, sarcinile + apar pe armătura legată la borna pozitivă, iar cele − pe cealaltă. Sarcina tinde exponențial spre C·E. La echilibru, U ≈ E (U/E ≈ 100 %). Semnele reprezintă schematic sarcini distribuite pe întreaga suprafață; numărul lor nu indică o porțiune umplută a plăcii.": "La încărcare, sarcinile + apar pe armătura legată la borna pozitivă, iar cele − pe cealaltă. Sarcina tinde exponențial spre C·E. La echilibru, U ≈ E (U/E ≈ 100 %). Semnele reprezintă schematic sarcini distribuite pe întreaga suprafață; numărul lor nu indică o porțiune umplută a plăcii.",
     "Aria dublă → capacitate dublă.": "Aria dublă → capacitate dublă.",
-    "Distanța dublă → capacitate înjumătățită.": "Distanța dublă → capacitate înjumătățită."
+    "Distanța dublă → capacitate înjumătățită.": "Distanța dublă → capacitate înjumătățită.",
+    "Laborator": "Laborator",
+    "Secțiunile lecției": "Secțiunile lecției",
+    "Laborator interactiv de electrostatică": "Laborator interactiv de electrostatică",
+    "Teorie": "Teorie",
+    "Tip de proces": "Tip de proces",
+    "Ce calculează": "Ce calculează"
   }
 }

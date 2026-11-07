@@ -1,3 +1,4 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir,readdir,cp}from'node:fs/promises';import{createHash}from'node:crypto';
 import{adaptWaveAnimations}from './waves-animation-adapter.mjs';
 import{adaptWaveResolution}from './waves-resolution-adapter.mjs';
@@ -11,7 +12,7 @@ import{adaptWaveEditorial,adaptLessonEditorial}from './lesson-editorial-adapter.
 const sourcePath='sources/unde-mecanice/Unde-Mecanice.html',source=await readFile(sourcePath,'utf8'),target='public/simulari/unde-mecanice';await mkdir(target,{recursive:true});
 await mkdir(target+'/vendor',{recursive:true});await cp('public/simulari/calorimetrie/vendor/katex/katex.min.js',target+'/vendor/katex.min.js');
 const textbookSource=adaptWaveResolution(adaptWaveCanvasFormulas(adaptWaveFormulaContent(adaptWaveAcousticsAudit(adaptWaveCoreAudit(adaptWaveTextbook(await adaptWavePhysics(source)))))));
-const groups=(await readdir('public/locales/courses/unde-mecanice',{withFileTypes:true})).filter(e=>e.isDirectory()).map(e=>'courses/unde-mecanice/'+e.name),namespaceList=['common','chapters/sunete-si-unde','courses/shared',...groups];const embedded={ro:{},en:{}};for(const lang of ['ro','en'])for(const ns of namespaceList)embedded[lang][ns]=JSON.parse(await readFile('public/locales/'+ns+'/'+lang+'.json','utf8'));
+const namespaceList=await labNamespaces('unde-mecanice');const embedded={ro:{},en:{}};for(const lang of ['ro','en'])for(const ns of namespaceList)embedded[lang][ns]=JSON.parse(await readFile('public/locales/'+ns+'/'+lang+'.json','utf8'));
 Object.assign(textbookTranslations,JSON.parse(await readFile('scripts/waves-tsunami-translations.json','utf8')));
 // Preserve complete English prose when only the mathematics in a literal changes.
 const originalEnglish=Object.create(null);

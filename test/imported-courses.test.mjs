@@ -17,7 +17,9 @@ test('imports preserve every original asset, lesson paragraph and simulation scr
   if(course.id==='miscarea-rectilinie'&&file.path.endsWith('.js'))content=Buffer.from(content.toString('utf8').replaceAll(".replace('.', window.PraxisI18n.language === 'en' ? '.' : ',')",".replace('.', ',')").replaceAll('window.PraxisI18n.locale',"'ro-RO'").replace("$('#pt-quit').addEventListener('click', async () => {","$('#pt-quit').addEventListener('click', () => {").replace("if (await window.PraxisCourseLocalization.confirm('Renunți la test? Răspunsurile date până acum se pierd.'))","if (window.confirm('Renunți la test? Răspunsurile date până acum se pierd.'))"));
   if(course.id==='miscarea-rectilinie'&&file.path==='index.html')content=Buffer.from(await adaptMotionBehavior(content.toString('utf8'),'index.html',true));
   if(course.id==='miscarea-rectilinie'&&/^js\/(core|sec1-tipuri|sec2-mru|sec3-mruv)\.js$/.test(file.path))content=Buffer.from(await adaptMotionBehavior(content.toString('utf8'),file.path.slice(3),true));
-  if(course.id==='calcul-vectorial'&&file.path==='index.html')content=Buffer.from(await adaptVectorPhysics(adaptVectorNavigation(content.toString('utf8'),true),true));
+  // The introduction is a named section, not a second page banner; reverse only
+  // this documented semantic change before checking every original byte.
+  if(course.id==='calcul-vectorial'&&file.path==='index.html')content=Buffer.from(await adaptVectorPhysics(adaptVectorNavigation(content.toString('utf8').replace(/<section(\s[^>]*class="hero"[^>]*)>([\s\S]*?)<\/section>/,'<header$1>$2</header>'),true),true));
   if(file.path==='index.html'){const source=await readFile(new URL('sources/'+course.repo+'/site/index.html',root));assert.equal(sha(source),file.sha256);assert.equal(withoutIcons(content.toString('utf8')),withoutIcons(source.toString('utf8')),course.id+'/index.html');}else if(file.path!=='sw.js'&&!file.path.endsWith('.zip'))assert.equal(sha(content),file.sha256,course.id+'/'+file.path);
  }
 });

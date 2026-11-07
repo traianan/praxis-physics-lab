@@ -1,10 +1,11 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {withFavicon} from './favicon.mjs';
 const root=new URL('../',import.meta.url),id='legea-lui-coulomb';
 const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
-const raw=(await read('Legea lui Coulomb/legea-lui-coulomb.html')).replaceAll('\r\n','\n');
+const raw=(await read('sources/legea-lui-coulomb/legea-lui-coulomb.html')).replaceAll('\r\n','\n');
 let body=raw.match(/<main>([\s\S]*?)<\/main>/)[1];
 body=body.replace('✥ &nbsp; Trage','Trage').replace('＋ &nbsp; Respingere','Respingere').replace('↔ &nbsp; Atracție','Atracție').replace('↺ &nbsp; Resetează','Resetează').replace('Experimentează în laborator &nbsp; →','Experimentează în laborator');
 body=body.replace('</button></div><button class="reset" id="reset">Resetează experimentul</button>','</button><button class="reset" id="reset" title="Resetează experimentul">Reset</button></div>');
@@ -28,12 +29,12 @@ body=body.replace('class="note">|F₁₂| = |F₂₁|','class="note" data-scienc
 body=body.replace(/class="([^"]*)"/g,(_,classes)=>'class="'+classes.split(' ').map(c=>c==='layout'?'coulomb-layout':c==='card'?'coulomb-card':c).join(' ')+'"');
 const tabs='<nav class="tabs" role="tablist" aria-label="Secțiunile lecției"><button role="tab" data-tab="lab" aria-selected="true" class="active">Laborator</button><button role="tab" data-tab="theory" aria-selected="false">Teorie</button></nav>';
 const footer='<footer class="footer"><a class="coulomb-download" href="legea-lui-coulomb.zip">Descarcă lecția offline</a><span>Inspirat de <a href="https://phet.colorado.edu/sims/html/coulombs-law/latest/coulombs-law_all.html">PhET: Coulomb’s Law</a></span></footer>';
-const ns=['common','chapters/electricitate-magnetism-circuite','courses/shared','coulomb'],embedded={ro:{},en:{}};
+const ns=await labNamespaces('legea-lui-coulomb'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 const styles=['design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css','shared/coulomb.css'];
 const scripts=['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','coulomb-model.js'];
 const head=styles.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded}).replaceAll('</script','<\\/script')+');</script>'+scripts.map(p=>'<script src="../../shared/'+p+'"></script>').join('');
 await write('public/simulari/'+id+'/index.html',withFavicon('<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Legea lui Coulomb — Praxis</title>'+head+'</head><body data-praxis-course="'+id+'" data-praxis-laboratory="true"><main id="praxis-original" class="coulomb-course">'+tabs+body+footer+'</main><script src="./app.js"></script><script src="../../shared/course.js" data-course="'+id+'" data-title="Legea lui Coulomb"></script></body></html>'));
 await write('public/simulari/'+id+'/app.js',await read('scripts/adaptations/coulomb-app.js'));
-await write('docs/imported-coulomb.json',JSON.stringify({id,source:'Legea lui Coulomb/legea-lui-coulomb.html',sha256:createHash('sha256').update(raw).digest('hex'),adaptations:['Shared Praxis shell, bilingual UI and offline archive','Responsive SVG, bounded force arrows and keyboard/pointer controls','SI conversion in independently testable model','Explicit scientific formulas and high-contrast theory','Discarded unrelated Cloudflare challenge injection']},null,2)+'\n');
+await write('docs/imported-coulomb.json',JSON.stringify({id,source:'sources/legea-lui-coulomb/legea-lui-coulomb.html',sha256:createHash('sha256').update(raw).digest('hex'),adaptations:['Shared Praxis shell, bilingual UI and offline archive','Responsive SVG, bounded force arrows and keyboard/pointer controls','SI conversion in independently testable model','Explicit scientific formulas and high-contrast theory','Discarded unrelated Cloudflare challenge injection']},null,2)+'\n');
 console.log('Integrat: Legea lui Coulomb');

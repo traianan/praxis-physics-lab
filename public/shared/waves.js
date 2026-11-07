@@ -1,6 +1,6 @@
 /* Wait for the React lesson, then attach the common shell without remounting it. */
 (()=>{
- const theme=()=>document.documentElement.dataset.theme=document.documentElement.classList.contains('dark')?'dark':'light';theme();new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+ const theme=()=>{document.documentElement.dataset.theme=document.documentElement.classList.contains('dark')?'dark':'light';if(window.PraxisCourseLocalization?.refreshPalette)window.PraxisCourseLocalization.refreshPalette();else window.PraxisScientificColors?.apply(document.documentElement.dataset.courseColors);};theme();new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
  function ready(){if(!document.querySelector('.praxis-course-tools'))return false;{
   const tools=document.querySelector('.praxis-course-tools');
   const nativeActions=[...document.querySelectorAll('#root header button')];

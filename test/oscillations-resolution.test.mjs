@@ -17,7 +17,7 @@ test('oscillator navigation redraw prepares below-fold activities without advanc
 });
 
 test('atomic import changes pixel density while preserving scene geometry and physical range',async()=>{
- const importer=await read('scripts/import-atomic.mjs'),source=await read('interactii-atomice/js/app.js');
+ const importer=await read('scripts/import-atomic.mjs'),source=await read('sources/interactii-atomice/js/app.js');
  const start=importer.indexOf('const resizeSource='),end=importer.indexOf("js=js.replace(/if ",start);
  const adapted=vm.runInNewContext('let js=source;'+importer.slice(start,end)+'\njs',{source});
  const resize=adapted.match(/function resize\(\) \{[\s\S]*?\n\}/)[0];
@@ -35,7 +35,7 @@ test('atomic import changes pixel density while preserving scene geometry and ph
 
 test('composition import resamples analytical component waves without moving phase or endpoints',async()=>{
  const importer=await read('scripts/import-composition.mjs');
- let app=(await read('compunerea_oscilatiilor/app.js')).replaceAll('\r\n','\n');
+ let app=(await read('sources/compunerea-oscilatiilor/app.js')).replaceAll('\r\n','\n');
  // Execute the durable sampling adapters directly, without writing generated assets.
  const patches=importer.slice(importer.indexOf("patch('const N=Math.max"),importer.indexOf('patch("if($(\'showSymmetry\')'));
  app=vm.runInNewContext('let app=source;function patch(a,b){if(!app.includes(a))throw Error(a);app=app.replace(a,b);}'+patches+'\napp',{source:app});

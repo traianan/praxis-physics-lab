@@ -1,3 +1,4 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {thermoReadability} from './adaptations/thermodynamics-readability.mjs';
 import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -24,7 +25,7 @@ html=html.replace('Manualul prezintă \\(U=U(T)\\) ca fapt experimental general.
  .replace(/AE1:?\s*/g,'').replace(/AE2:?\s*/g,'').replaceAll('href="../index.html"','href="../calcul-vectorial/index.html"');
 html=html.replaceAll('Exercițiul 1.21','Căldura specifică a uleiului').replaceAll('· Amestecuri','Amestecarea apei').replaceAll('· Căldura specifică','Identificarea materialelor').replaceAll('← 1.1 Noțiuni termodinamice','← Noțiuni termodinamice').replace(/\s*\(pag\.\s*[\d–-]+\)/g,'').replace(/§[\d.]+/g,'').replace(/1\.2 · /g,'').replace(/1\.1 · /g,'').replace('Coeficienții calorici au fost introduși în lecția precedentă (). Îi recapitulăm,','Recapitulăm coeficienții calorici,').replace('recapitulare ','recapitulare').replaceAll(' ()','').replaceAll('Lecția anterioară · 1.1','Lecția anterioară').replaceAll('href="../notiuni-termodinamice/"','href="../notiuni-termodinamice/index.html"').replaceAll('href="../unde-mecanice/"','href="../unde-mecanice/index.html"').replaceAll('se tratează în ','se studiază separat').replaceAll('LECȚIA ANTERIOARĂ','Lecția anterioară').replaceAll('ACEASTĂ LECȚIE','Această lecție');
 html=html.replace(/<section class="sec" id="(s\d+)"/g,(all,sectionId)=>{const title=html.match(new RegExp('<a href="#'+sectionId+'">([^<]*)</a>'))?.[1]||sectionId;return all+' data-thermo-title="'+title.replaceAll('&','&amp;').replaceAll('"','&quot;')+'"';});
-const namespaces=['common','chapters/caldura-termodinamica','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+const namespaces=await labNamespaces('calorimetrie'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const ns of namespaces){try{embedded[lang][ns]=JSON.parse(await read('public/locales/'+ns+'/'+lang+'.json'));}catch{embedded[lang][ns]={locale:lang,namespace:ns,messages:{}};}}
 const styles=['design-system/tokens.css','design-system/components.css','shared/course.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/calorimetry.css'];
 const head=styles.map(path=>'<link rel="stylesheet" href="../../'+path+'">').join('')+'<script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded})+');</script>'+['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','velocity-labels.js','calorimetry-model.js'].map(name=>'<script src="../../shared/'+name+'"></script>').join('');

@@ -1,3 +1,4 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
@@ -10,15 +11,15 @@ import{adaptVectorNavigation}from './vector-navigation-adapter.mjs';
 import{adaptVectorServiceWorker}from './vector-service-worker-adapter.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const courses=[{id:'miscarea-rectilinie',repo:'miscarea-rectilinie',title:'Mișcarea rectilinie'},{id:'calcul-vectorial',repo:'vectori',title:'Calcul vectorial'}];
-const baseNamespaces=['common','chapters/miscare','courses/shared'];let ns=[],embedded={};
+let ns=[],embedded={};
 const manifest=[];
 async function hashes(dir,prefix=''){let out=[];for(const e of await readdir(dir,{withFileTypes:true})){const rel=prefix+e.name;if(e.isDirectory())out.push(...await hashes(path.join(dir,e.name),rel+'/'));else out.push({path:rel,sha256:createHash('sha256').update(await readFile(path.join(dir,e.name))).digest('hex')});}return out;}
 for(const course of courses){
  const source=path.join(root,'sources',course.repo,'site'),target=path.join(root,'public/simulari',course.id);await mkdir(target,{recursive:true});await cp(source,target,{recursive:true});
  const originalSource=await readFile(path.join(source,'index.html'),'utf8');
- const original=course.id==='calcul-vectorial'?adaptVectorNavigation(await adaptVectorPhysics(originalSource)):await adaptMotionBehavior(originalSource,'index.html');
- const groups=(await readdir(path.join(root,'public/locales/courses',course.id),{withFileTypes:true})).filter(e=>e.isDirectory()).map(e=>'courses/'+course.id+'/'+e.name);
- groups.sort((a,b)=>a.endsWith('/ui')?-1:b.endsWith('/ui')?1:a.localeCompare(b));ns=[...baseNamespaces,...groups];embedded={ro:{},en:{}};
+ let original=course.id==='calcul-vectorial'?adaptVectorNavigation(await adaptVectorPhysics(originalSource)):await adaptMotionBehavior(originalSource,'index.html');
+ if(course.id==='calcul-vectorial')original=original.replace(/<header(\s[^>]*class="hero"[^>]*)>([\s\S]*?)<\/header>/,'<section$1>$2</section>');
+ ns=await labNamespaces(course.id);embedded={ro:{},en:{}};
  for(const lang of ['ro','en'])for(const group of ns)embedded[lang][group]=JSON.parse(await readFile(path.join(root,'public/locales',group,lang+'.json'),'utf8'));
  const head=`<!-- praxis:head --><link rel="stylesheet" href="../../design-system/tokens.css"><link rel="stylesheet" href="../../design-system/components.css"><link rel="stylesheet" href="../../shared/course.css"><link rel="stylesheet" href="../../design-system/lab-layout.css"><link rel="stylesheet" href="../../design-system/laboratory.css"><link rel="stylesheet" href="../../design-system/compact.css"><script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded(${JSON.stringify({namespaceList:ns,embedded})});</script><script src="../../shared/sound.js"></script><script src="../../shared/lab-header.js"></script><!-- /praxis:head -->`;
  const footer=`<!-- praxis:bridge --><script src="../../shared/course.js" data-course="${course.id}" data-title="${course.title}" defer></script>${course.id==='calcul-vectorial'?'<script src="../../shared/vector-tabs.js" defer></script>':''}<!-- /praxis:bridge -->`;

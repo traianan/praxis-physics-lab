@@ -7,7 +7,7 @@ import {scientificMathRuntime} from '../scripts/scientific-math-runtime.mjs';
 const read=p=>readFile(new URL(p,import.meta.url),'utf8');
 
 test('real composition plot keeps its coordinate tr local while Canvas typography and locale wrappers translate the period',async()=>{
- const importer=await read('../scripts/import-composition.mjs'),original=await read('../compunerea_oscilatiilor/app.js');
+ const importer=await read('../scripts/import-composition.mjs'),original=await read('../sources/compunerea-oscilatiilor/app.js');
  const call=importer.split('\n').find(line=>line.startsWith('patch("ctx.fillText(`T comun'));
  const replacement={};vm.runInNewContext(call,{patch(before,after){assert.ok(original.includes(before));replacement.after=after;}});
  const plot=original.replace(original.match(/ctx\.fillText\(`T comun[^\n]+/)[0],replacement.after).match(/function plot\(\)\{[\s\S]*?\nfunction wave/)[0].replace(/\nfunction wave$/,'');
@@ -46,15 +46,15 @@ test('authored composition, Chladni and atomic markers retain structural mathema
  const m=window.PraxisMath;
  const sources=[];
  const collect=(name,markup)=>{for(const match of markup.matchAll(/data-science-source="([^"]*)"/g))sources.push([name,match[1].replaceAll('&quot;','"').replaceAll('&lt;','<').replaceAll('&amp;','&')]);};
- const composition=await read('../scripts/import-composition.mjs'),theory=await read('../compunerea_oscilatiilor/teorie.html');
+ const composition=await read('../scripts/import-composition.mjs'),theory=await read('../sources/compunerea-oscilatiilor/teorie.html');
  const c={theory};vm.runInNewContext(composition.slice(composition.indexOf('const mathAttr='),composition.indexOf('let app='))+';globalThis.marked=theory;',c);collect('composition',c.marked);
- const chladni=await read('../scripts/import-chladni.mjs'),body=await read('../chladni.html');
+ const chladni=await read('../scripts/import-chladni.mjs'),body=await read('../sources/figuri-chladni/chladni.html');
  const ch={body};vm.runInNewContext(chladni.slice(chladni.indexOf('const mathAttr='),chladni.indexOf('body=body.replace(/<h1>'))+';globalThis.marked=body;',ch);collect('chladni-lab',ch.marked);
  assert.equal((ch.marked.match(/<code data-science-math="plain"/g)||[]).length,2);
  const ct=await read('../scripts/adaptations/chladni-content.html');
- const formula=chladni.slice(chladni.indexOf('const content='),chladni.indexOf(",ns=['common'",chladni.indexOf('const content='))).replace("(await read('scripts/adaptations/chladni-content.html'))",'input');
+ const formula=chladni.slice(chladni.indexOf('const content='),chladni.indexOf("const ns=",chladni.indexOf('const content='))).replace("(await read('scripts/adaptations/chladni-content.html'))",'input');
  const ctx={input:ct};vm.runInNewContext(chladni.slice(chladni.indexOf('const mathAttr='),chladni.indexOf('body=body.replace(/<code>'))+formula+';globalThis.marked=content;',ctx);collect('chladni-theory',ctx.marked);
- const atomic=await read('../scripts/import-atomic.mjs'),ab=await read('../interactii-atomice/index.html'),a={body:ab};
+ const atomic=await read('../scripts/import-atomic.mjs'),ab=await read('../sources/interactii-atomice/index.html'),a={body:ab};
  vm.runInNewContext(atomic.slice(atomic.indexOf('const mathAttr='),atomic.indexOf("body=body.replace('<div class=\"sim\""))+';globalThis.marked=body;',a);collect('atomic',a.marked);
  assert.equal(sources.length,16);
  for(const [name,source]of sources){const html=m.render(source);assert.ok(html.includes('<math'),name+': '+source);assert.doesNotMatch(html,/math-error/);if(source.includes('/'))assert.match(html,/<mfrac>/,name+': '+source);if(source.includes('√'))assert.match(html,/<msqrt>/,name+': '+source);}

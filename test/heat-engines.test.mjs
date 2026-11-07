@@ -89,7 +89,7 @@ test('heat engines is available in the library with every simulation and no text
  const html=await read('public/simulari/motoare-termice/index.html');
  for(let i=1;i<=9;i++)assert.match(html,new RegExp('id="fig'+i+'"'));
  assert.match(html,/id="heroField"/);
- const source=(await read('motoare-termice/index.html'))
+ const source=(await read('sources/motoare-termice/index.html'))
   .replace(/(<figure class="fig" id="fig7">[\s\S]*?<\/figure>)/,s=>s.replace('value="8" data-k="eps"','value="3" data-k="eps"'))
   .replace(/(<figure class="fig" id="fig8">[\s\S]*?<\/figure>)/,s=>s.replace('value="18" data-k="eps"','value="6" data-k="eps"'));
  const sliders=s=>Array.from(s.matchAll(/<input type="range"[^>]+>/g),m=>m[0]);

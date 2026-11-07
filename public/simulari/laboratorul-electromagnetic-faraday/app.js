@@ -1,3 +1,4 @@
+import {labNamespaces} from '../../shared/lab-locales.js';
 import {constrainProbe} from '../../shared/faraday-probe.js';
 import {dipoleField,pickup,movePickup,rlStep,transformer} from '../../shared/faraday-model.js';
 import {DEFAULTS as GENERATOR,stateAt,energyBetween} from '../../shared/generator-model.js';
@@ -5,7 +6,7 @@ import {renderScene,renderGraphs,quantity,number,palette} from './view.js';
 import {pointerToModel,standInfo} from './scene3d.js';
 import {activities,titles,predictions,limits,notes,questions,buildContent} from './content.js';
 const $=s=>document.querySelector(s),tr=s=>window.PraxisI18n.tr(s),id='laboratorul-electromagnetic-faraday';
-await window.PraxisI18n.init({baseUrl:'../../locales/',namespaceList:['common','courses/shared','chapters/electricitate-magnetism-circuite',`labs/${id}/ui`]});
+await window.PraxisI18n.init({baseUrl:'../../locales/',namespaceList:labNamespaces['laboratorul-electromagnetic-faraday']});
 const defaults={magnet:{m:1,x:.1,y:0},pickup:{m:1,a:.05,N:100,R:10,open:false,speed:.1},rl:{U:0,R:10,L:.1,N:200,A:.001},transformer:{N1:200,N2:100,phi:.001,omega:100,R:10,open:false},generator:{...GENERATOR}};
 const parameters={magnet:[['m','Moment magnetic',-10,10,.1,'A·m²'],['x','Sonda x',-.4,.4,.01,'m'],['y','Sonda y',-.2,.4,.01,'m']],pickup:[['m','Moment magnetic',-10,10,.1,'A·m²'],['N','Număr de spire',1,500,1,''],['a','Raza bobinei',.02,.08,.005,'m'],['R','Rezistență totală',1,100,1,'Ω']],rl:[['R','Rezistență',10,100,1,'Ω'],['L','Inductanță',.01,.1,.01,'H']],transformer:[['N1','Spire primar',1,500,1,''],['N2','Spire secundar',1,500,1,''],['phi','Flux maxim',0,.002,.0001,'Wb'],['omega','Viteză unghiulară',0,100,1,'rad/s'],['R','Rezistența sarcinii',1,100,1,'Ω']],generator:[['N','Număr de spire',1,500,1,''],['B','Inducție magnetică',0,1,.01,'T'],['omega','Viteză unghiulară',-100,100,1,'rad/s'],['R','Rezistența sarcinii',0,100,1,'Ω']]};
 const states={};let active='pickup',section='experiment',running=false,frame=null,previous=null,drag=null;

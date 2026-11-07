@@ -1,3 +1,4 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
@@ -16,14 +17,14 @@ const indices={m:'ₘ',n:'ₙ',t:'ₜ'};
 const subscripts=text=>text.replace(/\b([va])_([mnt])\b/g,(_,symbol,index)=>symbol+indices[index]);
 const target=new URL('public/simulari/'+id+'/',root);
 await mkdir(target,{recursive:true});
-const namespaces=['common','chapters/miscare','courses/shared','courses/'+id+'/ui'];
+const namespaces=await labNamespaces('viteza-si-acceleratia');
 const embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const ns of namespaces)embedded[lang][ns]=JSON.parse(await read('public/locales/'+ns+'/'+lang+'.json'));
 let html=subscripts(adaptScience(await read('sources/'+id+'/index.html'),'index.html'));
 // The common course bridge owns the only header, settings and section navigation.
 html=html.replace(/<div class="brand-group">[\s\S]*?<nav class="main-nav"/,'<nav class="tabs"')
  .replace(/(<button class="nav-btn[^>]*)( onclick="switchMainTab\('([^']+)'\)")/g,'$1 data-tab="$3"$2')
- .replace('<header class="app-header">','<header class="velocity-navigation">')
+ .replace('<header class="app-header">','<header class="velocity-navigation" role="presentation">')
  .replace(/(<button[^>]*id="btn-tab-[^"]+"[^>]*>)[\s\S]*?<\/button>/g,(all,open)=>all.replace(/<span>[^<]*<\/span>\s*\d+\.\s*/,''));
 html=html.replace(/(<canvas[^>]*width="(\d+)" height="(\d+)")/g,'$1 data-logical-width="$2" data-logical-height="$3"');
 // Keep vector arrows and their indices in one inline box; flex items must not split formulas.

@@ -1,10 +1,11 @@
+import {labNamespaces,labMetadata} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {withFavicon} from './favicon.mjs';
 const root=new URL('../',import.meta.url),id='compunerea-oscilatiilor',title='Compunerea oscilațiilor';
 const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,text)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),text);};
-const source='compunerea_oscilatiilor/',files=['index.html','teorie.html','style.css','app.js','README.txt'],hashes={};
+const source='sources/compunerea-oscilatiilor/',files=['index.html','teorie.html','style.css','app.js','README.txt'],hashes={};
 for(const file of files)hashes[file]=createHash('sha256').update(await read(source+file)).digest('hex');
 const main=html=>html.match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
 let lab=main(await read(source+'index.html')).replace('class="tabs"','class="mode-tabs"').replace('role="tablist"','role="group"');
@@ -104,7 +105,7 @@ app=app.replace('function updateInterpretation(target=$){',`window.PraxisComposi
 function updateInterpretation(target=$){`);
 await write('public/simulari/'+id+'/app.js',app);
 // JSON is embedded so the same page works in the autonomous offline archive.
-const ns=['common','courses/shared','composition'],embedded={ro:{},en:{}};
+const ns=await labNamespaces('compunerea-oscilatiilor'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 const css=['design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css','shared/composition.css'];
 const js=['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','first-law-applications-canvas.js'];
@@ -114,8 +115,7 @@ for(const [color,role]of Object.entries(colors))html=html.replaceAll(color,'var(
 html=html.replaceAll('<h3>Traiectoria punctului','<h3 data-content-type="simulation">Traiectoria punctului').replaceAll('<h3>Oscilația','<h3 data-content-type="graph">Oscilația');
 await write('public/simulari/'+id+'/index.html',withFavicon(html));
 await write('public/simulari/'+id+'/teorie.html','<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=index.html#teorie"><title>Teorie</title></head><body><a href="index.html#teorie">Teorie și explicații</a></body></html>');
-const simulation={id,chapter:'sunete-si-unde',title,subtitle:'Oscilații perpendiculare și figuri Lissajous',description:'Pulsații egale și diferite, 12 situații particulare, nouă rapoarte rapide, contacte, simetrii, opriri la extreme, sunet și export PNG, cu șapte teme teoretice.',href:'./simulari/'+id+'/index.html',image:'./assets/'+id+'.svg',alt:'Figură Lissajous și oscilațiile componente pe două axe perpendiculare',tags:['Oscilații','Lissajous','Experimente','Offline'],keywords:'compunerea oscilatiilor armonice perpendiculare lissajous faza elipsa cerc raport pulsatii simetrii tangente',status:'available'};
-let catalog=await read('public/catalog.js');if(!catalog.includes('"id":"'+id+'"'))await write('public/catalog.js',catalog.replace('\n];\nexport const normalize',',\n '+JSON.stringify(simulation)+'\n];\nexport const normalize'));
+const simulation=await labMetadata(id);
 for(const lang of ['ro','en']){const p='public/locales/chapters/sunete-si-unde/'+lang+'.json',data=JSON.parse(await read(p));data.simulations[id]=lang==='ro'?Object.fromEntries(['title','subtitle','description','alt','tags'].map(k=>[k,simulation[k]])):{title:'Superposition of oscillations',subtitle:'Perpendicular oscillations and Lissajous figures',description:'Equal and different angular frequencies, 12 presets, nine quick ratios, contacts, symmetries, pauses at extrema, sound and PNG export, with seven theory topics.',alt:'Lissajous figure and its component oscillations along perpendicular axes',tags:['Oscillations','Lissajous','Experiments','Offline']};await write(p,JSON.stringify(data,null,2)+'\n');}
 await write('docs/imported-composition.json',JSON.stringify({id,source,hashes,canvases:3,presets:12,quickRatios:9,theoryTopics:7,historicalNotes:1},null,2)+'\n');
 console.log('Integrat: '+title);

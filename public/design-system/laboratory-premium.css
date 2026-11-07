@@ -204,3 +204,22 @@
 @media (prefers-reduced-motion: reduce) {
   body[data-praxis-laboratory] .praxis-lab-nav :is(.tab,[role=tab],.module-tabs button) { transition: none; }
 }
+/* Text must remain readable in secondary and inactive lesson panels. */
+body[data-praxis-course="calorimetrie"] #praxis-original .later{opacity:1}
+body[data-praxis-course="calorimetrie"] #praxis-original .later small,
+body[data-praxis-course="calorimetrie"] #praxis-original .later b{color:#435b52}
+body[data-praxis-course="miscarea-curbilinie-plana"] .pn a.disabled{opacity:1;color:#52635b}
+body[data-praxis-laboratory] .small-tag,
+body[data-praxis-laboratory] .zoom-label,
+body[data-praxis-laboratory] .result-label,
+body[data-praxis-laboratory] .result-label>span,
+body[data-praxis-laboratory] .panel-heading>span,
+body[data-praxis-laboratory] footer>span{color:#4b6264}
+body[data-praxis-course="interactii-atomice"] dl.ro{margin:0}
+body[data-praxis-course="unde-mecanice"] #root .text-emerald-600{color:var(--praxis-science-green)}
+body[data-praxis-course="unde-mecanice"] #root .text-amber-600{color:var(--praxis-science-orange)}
+[data-accessible-scroll]:focus-visible{outline:3px solid var(--praxis-color-focus);outline-offset:3px}
+body[data-praxis-laboratory] .ex-badge{color:#fffefa}
+body[data-praxis-course="transformari-stare-agregare"] #praxis-original table thead th{color:#435a50}
+body[data-praxis-course="miscarea-circulara-uniforma"] button .opacity-50{opacity:1}
+.mcu-math-text .wave-math-item:focus-visible{outline:3px solid var(--praxis-color-focus);outline-offset:3px}

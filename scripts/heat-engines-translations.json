@@ -638,5 +638,6 @@
   "Cicluri ideale — reprezentare schematică, fără scară numerică. Fă clic pe diagramă pentru a schimba ciclul: Otto → Diesel → Carnot.": "Ideal cycles — schematic representation, not to scale. Click the diagram to switch cycles: Otto → Diesel → Carnot.",
   "În animația motorului în patru timpi, în locul bujiei se află o": "In the four-stroke engine animation, the spark plug is replaced by an",
   ". În animația motorului în patru timpi, în locul bujiei se află o": ". In the four-stroke engine animation, the spark plug is replaced by an",
-  "Experiment separat: comprimă gazul și urmărește temperatura și autoaprinderea.": "Separate experiment: compress the gas and observe its temperature and autoignition."
+  "Experiment separat: comprimă gazul și urmărește temperatura și autoaprinderea.": "Separate experiment: compress the gas and observe its temperature and autoignition.",
+  "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"răspuns\">": "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"answer\">"
 }

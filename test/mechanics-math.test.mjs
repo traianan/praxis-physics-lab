@@ -5,11 +5,12 @@ import vm from 'node:vm';
 const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8');
 
 test('MCU math stays React-owned and receives complete inline formulas and language snapshots',async()=>{
- const listeners=new Set(),calls=[],window={PraxisI18n:{language:'ro',tr:s=>s}};
+ const listeners=new Set(),calls=[],snapshots=[],window={PraxisI18n:{language:'ro',tr:s=>s}};
  window.PraxisMath={subscribe:fn=>{listeners.add(fn);return()=>listeners.delete(fn);},language:()=>window.PraxisI18n.language,
+  revision:()=>window.PraxisI18n.language+'|'+Boolean(window.katex),
   inline:v=>typeof v==='string'||Array.isArray(v)&&v.every(x=>typeof x==='string'),flatten:v=>Array.isArray(v)?v.join(''):v,
   formula:s=>s.includes('='),bare:()=>false,render:s=>{calls.push([s,window.PraxisI18n.language]);return '<math>'+s+'</math>';}};
- const Rc=(type,props)=>({type,...props}),I={useSyncExternalStore:(subscribe,snapshot)=>snapshot(),useMemo:fn=>fn()};
+ const Rc=(type,props)=>({type,...props}),I={useSyncExternalStore:(subscribe,snapshot)=>{const value=snapshot();snapshots.push(value);return value;},useMemo:fn=>fn(),useRef:value=>({current:value}),useEffect:fn=>fn()};
  const context=vm.createContext({window,Rc,I});vm.runInContext(await read('scripts/adaptations/mcu-jsx.js'),context);
  const first=vm.runInContext("mcuJsx('span',{children:['a_cp = ', 'v²/R']})",context);
  assert.equal(typeof first.children.type,'function');assert.equal(first.children.value,'a_cp = v²/R');
@@ -17,7 +18,8 @@ test('MCU math stays React-owned and receives complete inline formulas and langu
  assert.match(rendered.dangerouslySetInnerHTML.__html,/<math>/);
  window.PraxisI18n.language='en';rendered=first.children.type({value:first.children.value});
  assert.deepEqual(calls.map(c=>c[1]),['ro','en']);assert.equal(rendered.type,'span');
- assert.equal(rendered.className,'science-math');
+ window.katex={};first.children.type({value:first.children.value});assert.deepEqual(snapshots,['ro|false','en|false','en|true']);
+ assert.equal(rendered.className,'science-math mcu-math-text');
  const svg=vm.runInContext("mcuJsx('text',{children:'a_cp'})",context);
  assert.equal(svg.children[1].type,'tspan');assert.equal(svg.children[1].children[1].baselineShift,'sub');
  for(const type of ['option','title','button']){

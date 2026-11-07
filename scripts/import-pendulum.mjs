@@ -1,10 +1,11 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {readFile, writeFile, mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {withFavicon} from './favicon.mjs';
 const root=new URL('../',import.meta.url), id='pendulul-gravitational';
 const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
-const raw=(await read('pendulul gravitational/pendulul-gravitational.html')).replaceAll('\r\n','\n');
+const raw=(await read('sources/pendulul-gravitational/pendulul-gravitational.html')).replaceAll('\r\n','\n');
 let body=raw.match(/<body>([\s\S]*?)<script>/)[1];
 // The angle arc is centred on the pivot and ends exactly on the string.
 body=body.replace('M310 96 A 61 61 0 0 1 358 92','M310 96 A 61 61 0 0 0 345.414664 84.666906')
@@ -42,6 +43,12 @@ css=css.replace(':root{','#praxis-original{').replace(/html\{[^}]*\}/g,'').repla
 // Keep source styles scoped: the shared header and settings retain their own geometry.
 await write('public/shared/pendulum-source.css','@scope (#praxis-original) {\n'+css.replace(/[ \t]+$/gm,'')+'\n}\n');
 let js=raw.match(/<script>([\s\S]*?)<\/script>/)[1];
+// Results belong to this page only, including in the autonomous export.
+js=js.replace(/  const store = \{[\s\S]*?\n  \};/,`  const pageResults = new Map();
+  const store = {
+    get(k, d) { return pageResults.has(k) ? JSON.parse(pageResults.get(k)) : d; },
+    set(k, v) { pageResults.set(k, JSON.stringify(v)); }
+  };`);
 js=js.replace(/    \/\* etichetă mod măsurare \*\/[\s\S]*?(?=\n  \}\n\n  function drawRuler)/,'');
 js=js.replace('      uiAcc = 0;',`      uiAcc = 0;
       const status=S.measuring?(S.measuring.tStart===null?'măsurare… aștept o oscilație':\`măsurare: \${S.measuring.n}/10 oscilații\`):'Măsurare inactivă';
@@ -59,6 +66,8 @@ js=js.replace('  function showView(name) {',`  function showView(name) {
     if(['lab','theory'].includes(name))history.replaceState(null,'','#'+name);`);
 js=js.replace('la liceu (Fizică, clasele IX–XII)','și al oscilațiilor mecanice');
 js=js.replace('Aplicația este un singur fișier HTML — fără internet, fără instalare. Măsurătorile se păstrează local în browser.','Descarcă arhiva offline, dezarhiveaz-o și deschide index.html. Măsurătorile se păstrează local în browser.');
+js=js.replaceAll('Măsurătorile se păstrează local în browser.','Măsurătorile rămân doar în pagina curentă și se pierd la reîncărcare.');
+js=js.replace('Nu se colectează date, nu există conturi și nicio conexiune la rețea. Măsurătorile și bifele se salvează doar local (localStorage), când browserul permite.','Măsurătorile și bifele rămân doar în memoria paginii și se pierd la reîncărcare. Exportă măsurătorile pentru a păstra un fișier pe dispozitiv.');
 js=js.replace('cu ~7% mai mare','cu ~14% mai mare').replace('curbă teoretică 2π√(ℓ/g)','curbă teoretică (amplitudinea selectată)');
 js=js.replace("'E totală (constantă)'","'E totală'");
 js=js.replace(/      const blob = new Blob\(\[PRISTINE_HTML\][\s\S]*?      setTimeout\(\(\) => URL\.revokeObjectURL\(a\.href\), 5000\);/,"      const a = document.createElement('a'); a.href='pendulul-gravitational.zip'; a.download='pendulul-gravitational.zip'; a.click();");
@@ -88,7 +97,7 @@ js=js.replace('window.Pendul = { S, physics, chart };',`window.Pendul = { S, phy
   new ResizeObserver(()=>{if(views.lab.classList.contains('active')){resizeCanvas();chart.resize();}}).observe($('.lab-grid'));
   document.addEventListener('visibilitychange',()=>{last=performance.now();});`);
 await write('public/simulari/'+id+'/app.js',js+'\n'+await read('scripts/adaptations/pendulum-layout.js'));
-const ns=['common','chapters/sunete-si-unde','courses/shared','pendulum'],embedded={ro:{},en:{}};
+const ns=await labNamespaces('pendulul-gravitational'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 const styles=['shared/pendulum-source.css','design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css','shared/pendulum.css'];
 const scripts=['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js'];
@@ -96,5 +105,5 @@ const head=styles.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+
 // Keep dialogs and source footer inside the lesson scope too.
 body=body.replace('</main>','')+'</main>';
 await write('public/simulari/'+id+'/index.html',withFavicon('<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pendulul gravitațional — Praxis</title>'+head+'</head><body data-praxis-course="'+id+'" data-praxis-laboratory="true">'+body+'<script src="./app.js"></script><script src="../../shared/course.js" data-course="'+id+'" data-title="Pendulul gravitațional"></script></body></html>'));
-await write('docs/imported-pendulum.json',JSON.stringify({id,source:'pendulul gravitational/pendulul-gravitational.html',sha256:createHash('sha256').update(raw).digest('hex'),adaptations:['Shared shell, workspace, sound and display resolution','Removed school-year references and unrelated injected Cloudflare challenge','Pause time while hidden or reading theory','Exact maximum speed from energy conservation','Amplitude-consistent theoretical period curves','Bilingual offline archive']},null,2)+'\n');
+await write('docs/imported-pendulum.json',JSON.stringify({id,source:'sources/pendulul-gravitational/pendulul-gravitational.html',sha256:createHash('sha256').update(raw).digest('hex'),adaptations:['Shared shell, workspace, sound and display resolution','Removed school-year references and unrelated injected Cloudflare challenge','Pause time while hidden or reading theory','Exact maximum speed from energy conservation','Amplitude-consistent theoretical period curves','Bilingual offline archive']},null,2)+'\n');
 console.log('Integrat: Pendulul gravitațional');

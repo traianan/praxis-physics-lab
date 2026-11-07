@@ -1031,5 +1031,8 @@
   "efectuat de gaz la fiecare ciclu — toate aceste cuvinte vor primi, pe rând, un sens precis.": "done by the gas during each cycle — these words will be given a precise meaning in the following sections.",
   "Fig. 4 — Masă molară și cantitate de substanță": "Fig. 4 — Molar mass and amount of substance",
   ", μ, ν, N, m, amestecuri": ", μ, ν, N, m, mixtures",
-  "Mᵣ, μ, ν, N, m, amestecuri": "Mᵣ, μ, ν, N, m, mixtures"
+  "Mᵣ, μ, ν, N, m, amestecuri": "Mᵣ, μ, ν, N, m, mixtures",
+  "Exact exercițiul despre amestec: μ = 29·10⁻³ kg/mol — aproape cât aerul!": "The mixture exercise: μ = 29·10⁻³ kg/mol — almost the same as air!",
+  "Încearcă N₁ = 12, N₂ = 4 (exercițiul despre amestec) sau N₁ ≈ 4·N₂ (compoziția aerului).": "Try N₁ = 12, N₂ = 4 (the mixture exercise) or N₁ ≈ 4·N₂ (the composition of air).",
+  "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"răspuns\">": "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"answer\">"
 }

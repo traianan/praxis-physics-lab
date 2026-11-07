@@ -1,6 +1,6 @@
 {
   "id": "figuri-chladni",
-  "source": "chladni.html",
+  "source": "sources/figuri-chladni/chladni.html",
   "sha256": "186e9bd438b3d03fab20f02aea94f97deb53e9373ba276b9a5f1845fde329653",
   "modes": 19,
   "poisson": 0.33,

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8');
-const ctx=vm.createContext({});vm.runInContext(await read('condensatorul/js/model.js'),ctx);
+const ctx=vm.createContext({});vm.runInContext(await read('sources/condensatorul/js/model.js'),ctx);
 const m=ctx.CapacitorModel,near=(a,b)=>assert.ok(Math.abs(a-b)<=Math.max(1e-25,Math.abs(b)*1e-12),`${a} != ${b}`);
 test('capacitor geometry, units and dielectric scaling',()=>{
  const C=m.capacitance(.02,.005);near(C,35.4167512512e-12);
@@ -38,7 +38,7 @@ test('integrated source has unique anchors, shared UI, no grade or remote runtim
  assert.doesNotMatch(html,/clasa a XI|fonts.googleapis|js\/sound.js/);
  for(const file of ['course.js','lab-header.js','sound.js','canvas-resolution.js'])assert.ok(html.includes(file));
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length);
- for(const f of ['lab','teorie','main','integration','model'])assert.equal(await read('condensatorul/js/'+f+'.js'),await read('public/simulari/condensatorul/js/'+f+'.js'));
+ for(const f of ['lab','teorie','main','integration','model'])assert.equal(await read('sources/condensatorul/js/'+f+'.js'),await read('public/simulari/condensatorul/js/'+f+'.js'));
  const ro=JSON.parse(await read('public/locales/capacitor/ro.json')),en=JSON.parse(await read('public/locales/capacitor/en.json'));
  assert.deepEqual(Object.keys(ro.messages),Object.keys(en.messages));assert.ok(Object.values(en.messages).every(v=>typeof v==='string'));
 });

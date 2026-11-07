@@ -1,3 +1,5 @@
+import {labNamespaces} from './lab-registry.mjs';
+import {inlineMathFonts} from './scientific-math-runtime.mjs';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';import {fileURLToPath} from 'node:url';import path from 'node:path';
 import {localizeOpticsSource} from './localize-optics.mjs';
 import {preparePresentation} from './prepare-presentation.mjs';
@@ -11,8 +13,8 @@ const sound=await readFile(path.join(root,'public/shared/sound.js'),'utf8');
 const adapter=await readFile(path.join(root,'scripts/optics-library.js'),'utf8');
 const i18n=await readFile(path.join(root,'public/shared/i18n.js'),'utf8');
 const science=await readFile(path.join(root,'public/shared/scientific-colors.js'),'utf8');
-const labHeader=await readFile(path.join(root,'public/shared/lab-header.js'),'utf8');
-const namespaceList=['common','chapters/lumina-si-radiatii','labs/oglinzi-si-lentile/ui','labs/oglinzi-si-lentile/lessons'];
+const labHeader=await inlineMathFonts(await readFile(path.join(root,'public/shared/lab-header.js'),'utf8'));
+const namespaceList=await labNamespaces('oglinzi-si-lentile');
 const embedded={ro:{},en:{}};for(const lang of ['ro','en'])for(const ns of namespaceList)embedded[lang][ns]=JSON.parse(await readFile(path.join(root,`public/locales/${ns}/${lang}.json`),'utf8'));
 const theme=(await Promise.all(['tokens.css','components.css','lab-layout.css','laboratory.css','compact.css'].map(name=>readFile(path.join(root,'public/design-system',name),'utf8')))).join('\n');
 const prelude="try{const c=JSON.parse(sessionStorage.getItem('praxis-library-return')||'null');if(c?.board?.enabled&&[1,1.25,1.5,1.75,2,2.5,3].includes(c.board.desired))localStorage.setItem('praxis-optica-board-scale',String(c.board.desired));}catch{}";

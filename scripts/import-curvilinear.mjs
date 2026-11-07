@@ -1,10 +1,11 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 const root=new URL('../',import.meta.url),id='miscarea-curbilinie-plana';
 const read=path=>readFile(new URL(path,root),'utf8');
 const source=await read('sources/'+id+'/index.html'),target=new URL('public/simulari/'+id+'/',root);
 await mkdir(target,{recursive:true});
-const namespaces=['common','chapters/miscare','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+const namespaces=await labNamespaces('miscarea-curbilinie-plana'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const ns of namespaces)embedded[lang][ns]=JSON.parse(await read('public/locales/'+ns+'/'+lang+'.json'));
 const palette={'#070b16':'#f6f8f6','#0c1226':'#f6f8f6','#eef2ff':'#243c40','#c6cfe6':'#536e64','#97a3c4':'#536e64','#6b7699':'#6d8478','#bceaff':'#3879ac','#aab6d1':'#8ca69a','#8f9bb8':'#6d8478','#e8c66a':'#216e61','#c9a13b':'#216e61','#3ddc97':'#43876f','#ff6b6b':'#b54d45','#ffc857':'#b28b3b','#b39dff':'#83689e','#6fd3ff':'#3879ac'};
 function colors(code){

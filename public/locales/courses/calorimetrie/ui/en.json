@@ -730,7 +730,7 @@
     "răspuns": "answer",
     "Indiciu": "Hint",
     "Rezolvare": "Solution",
-    "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"răspuns\">": "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"răspuns\">",
+    "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"răspuns\">": "\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"answer\">",
     "fb bad": "fb bad",
     "Scrie un număr.": "Enter a number.",
     "✓ Corect!": "✓ Correct!",

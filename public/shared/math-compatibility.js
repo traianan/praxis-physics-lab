@@ -1,6 +1,7 @@
 /* Capability detection, not device sniffing: modern MathML output stays unchanged. */
 (()=>{
  let nativeSupport,stylesInstalled=false;
+ const escape=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
  function supportsMathML(){
   if(nativeSupport!==undefined)return nativeSupport;
   // Non-DOM consumers (build-time tests) keep the existing MathML serialization.
@@ -15,6 +16,7 @@
  }
  window.PraxisRenderMath=(source,options)=>{
   const engine=window.PraxisEnsureMathEngine();
+  if(!engine)return '<span data-praxis-math-pending="'+escape(JSON.stringify({source,options}))+'">'+escape(source)+'</span>';
   if(supportsMathML())return engine.renderToString(source,options);
   if(!stylesInstalled){
    const style=document.createElement('style');style.id='praxis-math-compatibility';
@@ -24,4 +26,13 @@
   return '<span class="praxis-math-fallback">'+engine.renderToString(source,{...options,output:'htmlAndMathml'})+'</span>';
  };
  window.PraxisMathCompatibility={supportsMathML};
+ window.addEventListener('praxis-math-ready',()=>{
+  // Only hydrate our native placeholders. React adapters rerender their own components.
+  for(const host of document.querySelectorAll('[data-praxis-math-pending]')){
+   if(host.closest('#root,[data-reactroot],[data-science-owner="react"]'))continue;
+   const {source,options}=JSON.parse(host.getAttribute('data-praxis-math-pending'));
+   try{host.innerHTML=window.PraxisRenderMath(source,options);host.removeAttribute('data-praxis-math-pending');}
+   catch{host.removeAttribute('data-praxis-math-pending');host.classList.add('science-math-error');}
+  }
+ });
 })();

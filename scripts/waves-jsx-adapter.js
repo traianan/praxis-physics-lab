@@ -1,6 +1,10 @@
 // Keep a label's text, value and units together above its range.
 if(type==='label'&&props){const children=N.Children.toArray(props.children),range=children.find(c=>c?.props?.className==='praxis-range-stepper');if(range)props={...props,children:[Cv('span',{className:'wave-range-label-title',children:children.filter(c=>c!==range)}),range]};}
 // Explicit navigation levels keep the section selector distinct from topic/activity tabs.
+if(type==='th'&&props&&N.Children.toArray(props.children).every(child=>typeof child==='string'&&!child.trim()))props={...props,scope:'col',children:window.PraxisI18n?.language==='en'?'Actions':'Acțiuni'};
+if(type==='th'&&typeof props?.children==='string')props={...props,'aria-label':window.PraxisI18n?.tr(props.children)||props.children};
+if(type==='h4'&&props)props={...props,'aria-level':3};
+if(type==='div'&&props?.className==='lesson-navigation')props={...props,role:'navigation','aria-label':window.PraxisI18n?.language==='en'?'Wave topics and activities':'Teme și activități despre unde'};
 if(type==='div'&&['lesson-topics','lesson-parts'].includes(props?.className))props={...props,children:[Cv('span',{className:'wave-navigation-label',children:props.className==='lesson-topics'?'Temă':'Activitate'}),...N.Children.toArray(props.children)]};
 if(type===Me)return Cv(LessonFormulaBox,props,key);
 // The lesson progress counter is navigation, not a mathematical fraction.

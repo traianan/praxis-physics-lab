@@ -1,3 +1,4 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {thermoReadability} from './adaptations/thermodynamics-readability.mjs';
 import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -48,7 +49,7 @@ html=html.replace('Fig. 0 — Ciclul motorului cu aprindere prin scânteie','Fig
  .replace('p / p<sub>atm</sub>','p / p<sub>0</sub>')
  .replace('efectuat de gaz la fiecare rotație','efectuat de gaz la fiecare ciclu')
  .replace('Punctul roșu parcurge ciclul; aria colorată este lucrul mecanic util dintr-un ciclu.','<span data-in="otto">Otto ideal: 1→2 compresie adiabatică; 2→3 încălzire izocoră; 3→4 destindere adiabatică; 4→1 răcire izocoră.</span><span data-in="diesel">Diesel ideal: a→b compresie adiabatică; b→c încălzire izobară; c→d destindere adiabatică; d→a răcire izocoră.</span><p>Admisia și evacuarea au aceeași presiune p₀. Aria închisă de ciclul termodinamic reprezintă lucrul mecanic util.</p>');
-const namespaces=['common','chapters/caldura-termodinamica','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+const namespaces=await labNamespaces('notiuni-termodinamice'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const ns of namespaces){try{embedded[lang][ns]=JSON.parse(await read('public/locales/'+ns+'/'+lang+'.json'));}catch{embedded[lang][ns]={locale:lang,namespace:ns,messages:{}};}}
 const styles=['design-system/tokens.css','design-system/components.css','shared/course.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/thermodynamics.css'];
 const head=styles.map(path=>'<link rel="stylesheet" href="../../'+path+'">').join('')+'<script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded})+');</script>'+['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','velocity-labels.js','ideal-engine-cycles.js'].map(name=>'<script src="../../shared/'+name+'"></script>').join('');

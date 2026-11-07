@@ -1,6 +1,8 @@
 /* Integration: one header, shared sound and a complete searchable table of contents. */
 (() => {
  const menu=document.getElementById('menuBtn'),actions=document.querySelector('.praxis-lab-actions');
+ const translateMenu=()=>{const label=menu?.querySelector('.lbl');if(label)label.textContent=window.PraxisI18n.tr('Cuprins');};
+ translateMenu();window.addEventListener('praxis-language-change',translateMenu);
  if(menu&&actions){menu.className='button secondary';actions.insertBefore(menu,actions.querySelector('[data-praxis-sound]'));}
  const nativeSound=document.getElementById('soundBtn');if(nativeSound)nativeSound.hidden=true;
  for(const sim of ALL){

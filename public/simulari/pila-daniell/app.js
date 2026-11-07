@@ -1,8 +1,9 @@
+import {labNamespaces} from '../../shared/lab-locales.js';
 import {DEFAULTS,initial,observe,advance} from '../../shared/daniell-model.js';
 import {messages,theory,activities,questions,sources} from './content.js';
 import {buildScene,renderScene,renderReadouts,renderGraph} from './view.js';
 const $=s=>document.querySelector(s),tr=s=>PraxisI18n.tr(s),namespace='labs/pila-daniell/ui';
-await PraxisI18n.init({baseUrl:'../../locales/',namespaceList:['common','courses/shared','chapters/electricitate-magnetism-circuite',namespace],embedded:{ro:{[namespace]:{messages:Object.fromEntries(Object.keys(messages).map(k=>[k,k]))}},en:{[namespace]:{messages}}}});
+await PraxisI18n.init({baseUrl:'../../locales/',namespaceList:labNamespaces['pila-daniell'],embedded:{ro:{[namespace]:{messages:Object.fromEntries(Object.keys(messages).map(k=>[k,k]))}},en:{[namespace]:{messages}}}});
 let p={...DEFAULTS},state=initial(),running=false,frame=null,previous=null,section='experiment',visible=true,history=[],samples=[],costs=[],intervals=[],recording=false;
 const parameters=[['cZn','Concentrație inițială Zn²⁺',10,1000,10,'mol/m³'],['cCu','Concentrație inițială Cu²⁺',10,1000,10,'mol/m³'],['R','Rezistența sarcinii',0,100,1,'Ω']];
 $('#parameters').innerHTML=parameters.map(([key,name,min,max,step,unit])=>`<div class="parameter"><div class="parameter-heading"><label for="num-${key}">${name} <small>${unit}</small></label><input id="num-${key}" type="number" data-param="${key}" min="${min}" max="${max}" step="${step}" aria-label="${name}"></div><div class="range-row praxis-range-stepper"><button data-adjust="${key}:-1" aria-label="Scade">−</button><input id="range-${key}" type="range" data-param="${key}" min="${min}" max="${max}" step="${step}" aria-label="${name}"><button data-adjust="${key}:1" aria-label="Crește">+</button></div></div>`).join('');

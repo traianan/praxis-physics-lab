@@ -4,7 +4,7 @@
  function makeCycle(){r=S.mode==='diesel'?6:3;return window.PraxisIdealEngineCycles.create(S.mode||'otto',{compression:r,heatRatio:3,cutoff:2.2});}
  let cycle=makeCycle(),ph=0,s=0,run=true;
  const durations=()=>[1,1,cycle.kind==='otto'?.35:.65,1,.35,1];
- const names=()=>['Admisie','Compresie adiabatică',cycle.kind==='otto'?'Încălzire izocoră':'Încălzire izobară','Destindere adiabatică','Răcire izocoră','Evacuare'];
+ const names=()=>['Admisie','Compresie adiabatică',cycle.kind==='otto'?'Încălzire izocoră':'Încălzire izobară','Destindere adiabatică','Răcire izocoră','Evacuare'].map(text=>window.PraxisI18n?.tr(text)??text);
  const colors=()=>[COL.c,COL.o,COL.a,COL.a,COL.b,COL.b];
  const G=()=>{const cx=Math.min(110,S.w*.2)+10,top=64,Lc=clamp((S.h-126)/2.05,60,150),R=Lc*(r-1)/r/2,rod=R*2.4,yc=top+Lc/r+22+rod+R;return {cx,top,Lc,R,rod,yc};};
  function mechanicalState(){

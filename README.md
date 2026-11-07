@@ -1,15 +1,15 @@
 # Praxis · Fizică interactivă
 
-**Adăugat la 5 noiembrie 2026:** [Pendulul gravitațional](docs/INTEGRARE_PENDUL_GRAVITATIONAL.md), în **Sunete și unde**: teorie, simulare neliniară, grafice, măsurători, RO/EN și arhivă offline. Biblioteca cuprinde 24 de laboratoare.
+**Adăugat la 5 noiembrie 2026:** [Pendulul gravitațional](docs/INTEGRARE_PENDUL_GRAVITATIONAL.md), în **Sunete și unde**: teorie, simulare neliniară, grafice, măsurători, RO/EN și arhivă offline. Catalogul actual este definit în `labs.manifest.json`.
 
 
-**Legea lui Hooke, 4 noiembrie 2026:** laborator RO/EN în capitolul **Lucru mecanic, energie și putere**, cu resort interactiv, constanta elastică, energie, grafice și viteză de animație reglabilă. Biblioteca are **23 de laboratoare**. [Deschide laboratorul](https://praxis-physics-lab.vercel.app/simulari/legea-lui-hooke/index.html) · [Specificație și surse](docs/LEGEA_LUI_HOOKE.md) · [Verificări](docs/LEGEA_LUI_HOOKE_VALIDARE.md).
+**Legea lui Hooke, 4 noiembrie 2026:** laborator RO/EN în capitolul **Lucru mecanic, energie și putere**, cu resort interactiv, constanta elastică, energie, grafice și viteză de animație reglabilă.  [Deschide laboratorul](https://praxis-physics-lab.vercel.app/simulari/legea-lui-hooke/index.html) · [Specificație și surse](docs/LEGEA_LUI_HOOKE.md) · [Verificări](docs/LEGEA_LUI_HOOKE_VALIDARE.md).
 
 **Pila Daniell, 4 noiembrie 2026:** laborator RO/EN cu model Nernst, animație, grafice și bilanțuri de sarcină/energie, integrat în biblioteca de **22 de laboratoare**. [Deschide online](https://praxis-physics-lab.vercel.app/simulari/pila-daniell/index.html) · [Publicare și verificări](docs/PILA_DANIELL_PUBLICARE.md).
 
 **Faraday, 4 noiembrie 2026:** cinci experimente 3D, modele SI independente de randare, RO/EN și arhivă autonomă. [Validare și limite](docs/FARADAY_VALIDARE_2026-11-04.md). Pentru regenerarea arhivei: `npm ci`, apoi `npm run offline:faraday` și `npm run build`.
 
-**Adăugat la 4 noiembrie 2026:** [Generatorul electric](docs/INTEGRARE_GENERATOR_ELECTRIC.md), în **Electricitate, magnetism și circuite**: alternator 3D HyperFrames cu zece repere numerotate, circuit complet, grafice și bilanț energetic, RO/EN, două probleme și șase întrebări. Biblioteca are **21 de laboratoare**.
+**Adăugat la 4 noiembrie 2026:** [Generatorul electric](docs/INTEGRARE_GENERATOR_ELECTRIC.md), în **Electricitate, magnetism și circuite**: alternator 3D HyperFrames cu zece repere numerotate, circuit complet, grafice și bilanț energetic, RO/EN, două probleme și șase întrebări.
 
 **Adăugat la 31 octombrie 2026:** [Motoare termice](docs/INTEGRARE_MOTOARE_TERMICE.md), în **Căldură și termodinamică**: nouă simulări și animația introductivă, motoare în patru timpi cu cicluri ideale Otto/Diesel, RO/EN, 12 întrebări, 14 probleme și arhivă offline. Biblioteca are **19 laboratoare**.
 
@@ -36,14 +36,14 @@ Integrarea și verificarea conținutului sunt documentate în [docs/INTEGRARE_LE
 
 Volumul va fi adăugat atunci când implementăm un laborator în care sunetul face parte din fenomenul studiat.
 
-Distribuția actualizată este `outputs/Praxis-Fizica-local.zip`. Pentru laboratorul individual bilingv, fișierul autonom este `dist/simulari/oglinzi-si-lentile/index.html`. Verificările acestei versiuni sunt în [docs/VERIFICARE_RO_EN.md](docs/VERIFICARE_RO_EN.md).
+Pachetul local se generează la nevoie cu `npm run package:local`, în `outputs/Praxis-Fizica-local.zip`; arhivele vechi și directoarele de lucru extrase pot fi eliminate după verificare. Pentru laboratorul individual bilingv, fișierul autonom este `dist/simulari/oglinzi-si-lentile/index.html`. Verificările acestei versiuni sunt în [docs/VERIFICARE_RO_EN.md](docs/VERIFICARE_RO_EN.md).
 
 ## O singură sursă pentru online și local
 
 Proiect: `D:/ProiecteAI/Praxis-Fizica`.
 
 - `public/`: catalogul, interfața, ilustrațiile originale și copia de distribuție a opticii.
-- `public/catalog.js`: cele șapte capitole și registrul simulărilor; aici adăugăm viitoarele simulări.
+- `labs.manifest.json`: capitole, laboratoare, workspace-uri, traduceri și exporturi; rulează `npm run registry:generate` după modificare. `public/catalog.js` păstrează API-ul de căutare și selecție.
 - `public/simulari/oglinzi-si-lentile/index.html`: laboratorul existent, inclus integral; nu depinde de site-ul privat sau de un cont ChatGPT.
 - `scripts/`: construire, server local și sincronizarea opticii.
 - `dist/`: distribuția generată, identică pentru rulare locală și publicare statică.
@@ -59,7 +59,7 @@ Alternativ, în acest folder:
 npm run dev
 ```
 
-Serverul local servește catalogul și cele 21 de laboratoare incluse. A deschide doar `public/index.html` cu dublu clic nu este metoda recomandată: catalogul utilizează module JavaScript și trebuie servit prin HTTP local. Simularea individuală de optică rămâne și un fișier autonom.
+Serverul local servește catalogul și toate laboratoarele din catalog. A deschide doar `public/index.html` cu dublu clic nu este metoda recomandată: catalogul utilizează module JavaScript și trebuie servit prin HTTP local. Simularea individuală de optică rămâne și un fișier autonom.
 
 ## Tabletă sau tablă Android, prin rețeaua locală
 
@@ -189,7 +189,7 @@ Integrată în **Căldură și termodinamică**, cu șapte perechi de atomi, par
 
 [Catalogul tipurilor de conținut](docs/CATALOG_CONTINUT.md) definește 14 tipuri și șapte familii de pictograme SVG locale. Folosiți atributul data-content-type pe titlurile conținuturilor noi. Componentele comune aplică regulile și în lecțiile autonome.
 
-[Auditul ultimei lecții](docs/VERIFICARE_PRINCIPIUL_I_APLICATII.md) documentează lizibilitatea RO/EN, formulele și interacțiunile moleculare. [Restaurarea sursei atomice](docs/RESTAURARE_SURSA_ATOMICA.md) rezolvă testul de proveniență. Verificarea completă: 109/109 teste trecute.
+[Auditul ultimei lecții](docs/VERIFICARE_PRINCIPIUL_I_APLICATII.md) documentează lizibilitatea RO/EN, formulele și interacțiunile moleculare. [Restaurarea sursei atomice](docs/RESTAURARE_SURSA_ATOMICA.md) rezolvă testul de proveniență. Pentru starea curentă, rulează `npm run check`; numărul testelor evoluează odată cu aplicația.
 
 ## Transformări de stare de agregare
 

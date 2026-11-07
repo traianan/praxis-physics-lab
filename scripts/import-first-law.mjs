@@ -1,3 +1,4 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';import {createHash} from 'node:crypto';import {withFavicon} from './favicon.mjs';
 const root=new URL('../',import.meta.url),id='principiul-i-al-termodinamicii',read=p=>readFile(new URL(p,root),'utf8');
 const original=await read('sources/'+id+'/original.html'),target=new URL('public/simulari/'+id+'/',root);await mkdir(target,{recursive:true});
@@ -63,7 +64,7 @@ body=body.replace(/(<section id="general"[\s\S]*?<div class="card">\s*<h2>[^<]*<
 // Local parameter grids make the other calculators compact as well.
 const starts=[...body.matchAll(/<div class="calc-card">/g)].map(match=>match.index).reverse();
 for(const start of starts){let depth=0,end=-1;const tokens=/<div\b[^>]*>|<\/div>/g;tokens.lastIndex=start;for(let token;(token=tokens.exec(body));){depth+=token[0].startsWith('</')?-1:1;if(depth===0){end=tokens.lastIndex;break;}}if(end<0)throw new Error('Unbalanced calculator panel');const block=body.slice(start,end),groups=[...block.matchAll(/<div class="input-group">[\s\S]*?<\/div>/g)].map(match=>match[0]);if(groups.length<2)continue;let compact=block;for(const group of groups)compact=compact.replace(group,'');const headingEnd=compact.indexOf('</h4>')+5;const insert=headingEnd>4?headingEnd:compact.indexOf('>')+1;compact=compact.slice(0,insert)+'<div class="parameter-grid">'+groups.join('')+'</div>'+compact.slice(insert);body=body.slice(0,start)+compact+body.slice(end);}
-const ns=['common','chapters/caldura-termodinamica','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+const ns=await labNamespaces('principiul-i-al-termodinamicii'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns){try{embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));}catch{embedded[lang][name]={locale:lang,namespace:name,messages:{}};}}
 const styles=['design-system/tokens.css','design-system/components.css','shared/course.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/first-law.css'];
 const head=styles.map(s=>'<link rel="stylesheet" href="../../'+s+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded})+');</script>'+['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','first-law-model.js'].map(s=>'<script src="../../shared/'+s+'"></script>').join('');

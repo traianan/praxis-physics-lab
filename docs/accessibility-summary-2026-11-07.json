@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-07",
+  "axe": "4.14.0",
+  "browser": "156.0.8078.81",
+  "initialRoutes": 38,
+  "initialLanguageChecks": 76,
+  "viewportAndRootFontChecks": 304,
+  "initialUnresolvedFindings": 0,
+  "exploredStates": 786,
+  "waveStates": 136,
+  "notionsRecheckedStates": 110,
+  "lastOtherRecheckedStates": 26,
+  "lastRecheckUnresolvedFindings": 0,
+  "keyboardRoutes": 27,
+  "projectTestsPassed": 426,
+  "syntaxFilesChecked": 282,
+  "migratedSourceFiles": 123,
+  "sourceHashesMatch": true,
+  "offlineArchivesVerified": 22,
+  "dataRetentionPolicyChanged": false,
+  "limitations": [
+    "No physical-device or real screen-reader testing",
+    "No Safari coverage",
+    "Root-font scaling does not double pixel-sized text",
+    "axe incomplete findings retained for contextual review"
+  ]
+}

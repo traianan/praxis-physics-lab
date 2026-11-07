@@ -1,6 +1,6 @@
 {
   "id": "pendulul-gravitational",
-  "source": "pendulul gravitational/pendulul-gravitational.html",
+  "source": "sources/pendulul-gravitational/pendulul-gravitational.html",
   "sha256": "f8d57b06d8031101cae1c3b3bc97c9d23dbbc48935ebd98487557e9a0488396e",
   "adaptations": [
     "Shared shell, workspace, sound and display resolution",

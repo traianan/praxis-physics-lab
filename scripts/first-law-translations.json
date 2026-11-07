@@ -155,5 +155,7 @@
   "p = 101325 Pa; V₀ = 0,0224 m³ la T₀ = 273,15 K.": "p = 101325 Pa; V₀ = 0.0224 m³ at T₀ = 273.15 K.",
   "V = 0,0224 m³; p₀ = 101325 Pa la T₀ = 273,15 K.": "V = 0.0224 m³; p₀ = 101325 Pa at T₀ = 273.15 K.",
   "Starea 1": "State 1",
-  "Starea 2": "State 2"
+  "Starea 2": "State 2",
+  "Tub închis la ambele capete": "Tube closed at both ends",
+  "Diagramă": "Diagram"
 }

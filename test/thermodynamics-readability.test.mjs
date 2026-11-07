@@ -25,7 +25,7 @@ test('calorimetry displayed internal energy follows heating and returns to zero 
 });
 
 test('polytrope preserves p V^n and renders decimal exponents and the isochoric limit in DOM',async()=>{
- const source=await read('principiul-i-aplicatii/js/sims.js');
+ const source=await read('sources/principiul-i-aplicatii/js/sims.js');
  const block=source.slice(source.indexOf('  var Politrop = {'),source.indexOf('  /* =============== 10.'));
  const formula={},canvas={};const formulas=[];
  const global={Util:{clamp:(x,a,b)=>Math.max(a,Math.min(b,x))},PraxisMath:{set:(el,raw,options)=>formulas.push({raw,options})}};

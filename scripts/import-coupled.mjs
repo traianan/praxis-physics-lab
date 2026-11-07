@@ -1,7 +1,8 @@
+import {labNamespaces,labMetadata} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir,cp} from 'node:fs/promises';
 import {createHash} from 'node:crypto';import vm from 'node:vm';
 import {withFavicon} from './favicon.mjs';
-const root=new URL('../',import.meta.url),id='oscilatori-mecanici-cuplati',source='gemini-code-1793291347541.html',title='Oscilatori mecanici cuplați';
+const root=new URL('../',import.meta.url),id='oscilatori-mecanici-cuplati',source='sources/oscilatori-mecanici-cuplati/gemini-code-1793291347541.html',title='Oscilatori mecanici cuplați';
 const read=p=>readFile(new URL(p,root),'utf8'),write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
 const raw=await read(source),html=raw.replaceAll('\r\n','\n');let body=html.match(/<main>([\s\S]*?)<\/main>/)[1];
 body=body.replaceAll(/font-size:\s*\d+px;?/g,'').replaceAll('Ω=ω₀ → A_max','Ω=ω₀ → A=F₀/(rω₀)').replace('La rezonanță A_max = F₀/(r·ω₀) = F₀/(2·m·b·ω₀).','La Ω=ω₀, A=F₀/(rω₀). Maximul amplitudinii este deplasat de amortizare.').replace('când pulsația excitatorului Ω este egală cu pulsația proprie ω a rezonatorului.','când răspunsul sistemului la excitația periodică este maxim. Pentru amortizare slabă, frecvența de rezonanță este apropiată de frecvența proprie.');
@@ -29,15 +30,14 @@ questions[8].opts[1]='Excitație laterală sincronizată cu mersul pietonilor';
 await write('public/simulari/'+id+'/questions.json',JSON.stringify(questions,null,2));
 let translations={};try{translations=JSON.parse(await read('scripts/coupled-translations.json'));}catch{}
 for(const lang of ['ro','en'])await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?translations:Object.fromEntries(Object.keys(translations).map(k=>[k,k]))},null,2));
-const ns=['common','chapters/sunete-si-unde','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+const ns=await labNamespaces('oscilatori-mecanici-cuplati'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 const css=['design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css','shared/coupled.css'];
 const js=['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','first-law-applications-canvas.js','coupled-model.js'];
 const head=css.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+'<link rel="stylesheet" href="vendor/katex/katex.min.css"><script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded})+');window.CoupledQuestions='+JSON.stringify(questions)+';</script>'+js.map(p=>'<script src="../../shared/'+p+'"></script>').join('')+'<script src="vendor/katex/katex.min.js"></script><script src="../../shared/first-law-applications-math.js" defer></script>';
 await cp(new URL('public/simulari/calorimetrie/vendor/',root),new URL('public/simulari/'+id+'/vendor/',root),{recursive:true});
 await write('public/simulari/'+id+'/index.html',withFavicon('<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+title+' — Praxis</title>'+head+'</head><body data-praxis-course="'+id+'" data-praxis-laboratory="true"><main id="praxis-original">'+body+'</main><script src="../../shared/coupled.js"></script><script src="../../shared/course.js" data-course="'+id+'" data-title="'+title+'"></script></body></html>'));
-const simulation={id,chapter:'sunete-si-unde',title,subtitle:'Rezonanță, transfer de energie și moduri normale',description:'Patru experimente interactive despre oscilații forțate, cuplaj slab și strâns, bătăi și amortizare; zece întrebări, exporturi CSV și raport.',href:'./simulari/'+id+'/index.html',image:'./assets/'+id+'.svg',alt:'Două pendule legate printr-un resort, cu transfer de energie',tags:['Oscilații','Rezonanță','Experimente','Offline'],keywords:'oscilatori mecanici cuplati rezonanta batai moduri normale simetric antisimetric amortizor energie pendule',status:'available'};
-let catalog=await read('public/catalog.js');if(!catalog.includes('"id":"'+id+'"'))await write('public/catalog.js',catalog.replace('\n];\nexport const normalize',',\n '+JSON.stringify(simulation)+'\n];\nexport const normalize'));
+const simulation=await labMetadata(id);
 for(const lang of ['ro','en']){const p='public/locales/chapters/sunete-si-unde/'+lang+'.json',data=JSON.parse(await read(p));data.simulations[id]=lang==='ro'?Object.fromEntries(['title','subtitle','description','alt','tags'].map(k=>[k,simulation[k]])):{title:'Coupled mechanical oscillators',subtitle:'Resonance, energy transfer and normal modes',description:'Four interactive experiments on forced oscillations, weak and strong coupling, beats and damping; ten questions, CSV exports and a report.',alt:'Two spring-coupled pendulums exchanging energy',tags:['Oscillations','Resonance','Experiments','Offline']};await write(p,JSON.stringify(data,null,2));}
 await write('docs/imported-coupled.json',JSON.stringify({id,source,sha256:createHash('sha256').update(raw).digest('hex'),experiments:4,questions:10,canvases:14},null,2));
 console.log('Integrat: '+title);

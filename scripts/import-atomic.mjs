@@ -1,3 +1,4 @@
+import {labNamespaces} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {withFavicon} from './favicon.mjs';
@@ -6,11 +7,12 @@ const read=p=>readFile(new URL(p,root),'utf8');
 const translations=JSON.parse(await read('scripts/atomic-translations.json'));
 const localeRoot=new URL('public/locales/courses/'+id+'/ui/',root);await mkdir(localeRoot,{recursive:true});
 for(const lang of ['ro','en'])await writeFile(new URL(lang+'.json',localeRoot),JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?translations:Object.fromEntries(Object.keys(translations).map(key=>[key,key]))},null,2)+'\n');
-const original=await read(id+'/index.html'),source=await read(id+'/js/app.js');
+const original=await read('sources/'+id+'/index.html'),source=await read('sources/'+id+'/js/app.js');
 const target=new URL('public/simulari/'+id+'/',root);await mkdir(new URL('js/',target),{recursive:true});
 let css=original.match(/<style>([\s\S]*?)<\/style>/)[1];
 css=css.replace(/\.topbar[^{}]*\{[^{}]*\}/g,'').replaceAll('"Fraunces",Georgia,serif','var(--praxis-font-ui)').replaceAll('"Source Serif 4",Georgia,serif','var(--praxis-font-ui)').replaceAll('"JetBrains Mono",ui-monospace,monospace','ui-monospace,monospace');
 let body=original.match(/<main class="wrap">([\s\S]*?)<\/main>/)[1];
+body=body.replace(/<div class="ro">([\s\S]*?)<\/div>\s*<div class="bar">/, '<dl class="ro">$1</dl><div class="bar">');
 const mathAttr=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
 body=body.replace(/<div class="f">([\s\S]*?)<\/div>/g,(_,content)=>{const source=content.replace(/<sup>([^<]+)<\/sup>/g,'^($1)').replaceAll('&nbsp;',' ');return '<div class="f" data-science-math="plain" data-science-source="'+mathAttr(source)+'">'+content+'</div>';});
 body=body.replace('<div class="sim" id="sim">','<section id="sim" role="tabpanel"><p class="lede">'+original.match(/<p class="lede">(.*?)<\/p>/)[1]+'</p><div class="sim">')
@@ -29,7 +31,7 @@ body=body.replace('background:#2e7d57','background:var(--atomic-tot)').replace('
 body=body.replace(/(<section id="resurse"[\s\S]*?)(<\/section>)/,(_,section,end)=>section+'<p class="model-note">Simulare inspirată de „Atomic Interactions” (PhET, University of Colorado Boulder). Valorile σ și ε sunt aproximative. Funcționează și offline.</p>'+end);
 body+='<p class="model-note">Model didactic pentru atomi neutri: valorile σ și ε sunt aproximative; oxigenul atomic nu reprezintă molecula O₂. Sunetele marchează acțiuni și oscilații; nu reprezintă sunete emise de atomi.</p><p class="offline-download"><a class="button secondary" href="./interactii-atomice.zip" download>Descarcă laboratorul offline</a></p>';
 const nav='<nav class="tabs" role="tablist" aria-label="Secțiunea lecției">'+[['sim','Simulare'],['teorie','Explicații'],['test','Test'],['resurse','Alte lecții']].map(([key,title])=>'<button class="tab" type="button" role="tab" id="tab-'+key+'" data-tab="'+key+'" aria-controls="'+key+'">'+title+'</button>').join('')+'</nav>';
-const ns=['common','chapters/caldura-termodinamica','courses/shared','courses/'+id+'/ui'],embedded={ro:{},en:{}};
+const ns=await labNamespaces('interactii-atomice'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 const styles=['design-system/tokens.css','simulari/'+id+'/original.css','design-system/components.css','shared/course.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/atomic.css'];
 const head=styles.map(s=>'<link rel="stylesheet" href="../../'+s+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded})+');</script>'+['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js'].map(s=>'<script src="../../shared/'+s+'"></script>').join('');
@@ -80,5 +82,5 @@ const equilibrium=`\n$('#equilibrium').onclick = () => {
 js=js.replace(/\}\)\(\);\s*$/,equilibrium+'\n})();\n');
 js=js.replace(/\}\)\(\);\s*$/,adapter+'\n})();\n');
 await writeFile(new URL('index.html',target),html);await writeFile(new URL('original.css',target),css);await writeFile(new URL('js/app.js',target),js);
-await writeFile(new URL('docs/imported-atomic.json',root),JSON.stringify({id,source:id,sha256:{html:createHash('sha256').update(original).digest('hex'),js:createHash('sha256').update(source).digest('hex')},pairs:7,questions:6,tabs:4,audio:'Shared PraxisSound, synthesized event cues',languages:['ro','en']},null,2)+'\n');
+await writeFile(new URL('docs/imported-atomic.json',root),JSON.stringify({id,source:'sources/'+id,sha256:{html:createHash('sha256').update(original).digest('hex'),js:createHash('sha256').update(source).digest('hex')},pairs:7,questions:6,tabs:4,audio:'Shared PraxisSound, synthesized event cues',languages:['ro','en']},null,2)+'\n');
 console.log('Interacții atomice integrate în Termodinamică.');
