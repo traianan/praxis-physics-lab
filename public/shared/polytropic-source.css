@@ -323,7 +323,7 @@ samp {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -454,7 +454,7 @@ samp {
   border-radius: 999px;
   background: var(--surface-2);
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
@@ -533,7 +533,7 @@ samp {
 
 .card-kicker {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted-2);
@@ -681,7 +681,7 @@ samp {
 
 .brand-copy small {
   margin-top: 0.16rem;
-  font-size: 0.62rem;
+  font-size: .8125rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -748,7 +748,7 @@ samp {
   border-radius: 999px;
   background: var(--surface);
   color: var(--muted);
-  font-size: 0.74rem;
+  font-size: .8125rem;
   font-weight: 650;
   transition:
     background 160ms ease,
@@ -774,7 +774,7 @@ samp {
 }
 
 .nav-tool-label {
-  font-size: 0.72rem;
+  font-size: .8125rem;
 }
 
 .theme-dark-only {
@@ -798,7 +798,7 @@ samp {
   border-radius: 999px;
   background: var(--button-primary-bg);
   color: var(--button-primary-text);
-  font-size: 0.77rem;
+  font-size: .8125rem;
   font-weight: 700;
   transition:
     transform 160ms ease,
@@ -904,7 +904,7 @@ samp {
   gap: 0.7rem;
   margin-bottom: 1.4rem;
   color: rgba(247, 245, 238, 0.62);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 650;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -922,7 +922,7 @@ samp {
   background: rgba(197, 232, 165, 0.08);
   color: var(--mint);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
 }
 
@@ -1015,7 +1015,7 @@ samp {
 
 .hero-stat span:last-child {
   margin-top: 0.1rem;
-  font-size: 0.68rem;
+  font-size: .8125rem;
   color: rgba(247, 245, 238, 0.48);
   letter-spacing: 0.02em;
 }
@@ -1067,7 +1067,7 @@ samp {
   background: rgba(7, 26, 23, 0.6);
   backdrop-filter: blur(10px);
   color: rgba(247, 245, 238, 0.78);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1092,7 +1092,7 @@ samp {
   margin-top: 0.6rem;
   padding-left: 6%;
   color: rgba(247, 245, 238, 0.4);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -1113,7 +1113,7 @@ samp {
   align-items: center;
   gap: 0.55rem;
   color: rgba(247, 245, 238, 0.38);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   transition: color 160ms ease;
@@ -1164,7 +1164,7 @@ samp {
   gap: 0.7rem;
   margin-bottom: 0.9rem;
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1181,7 +1181,7 @@ samp {
   border-radius: 999px;
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
 }
 
@@ -1221,7 +1221,7 @@ samp {
   align-items: baseline;
   justify-content: space-between;
   gap: 0.6rem;
-  font-size: 0.78rem;
+  font-size: .8125rem;
   font-weight: 650;
   color: var(--muted);
 }
@@ -1243,13 +1243,13 @@ samp {
 
 .field-value small {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 600;
   color: var(--muted-2);
 }
 
 .field-hint {
-  font-size: 0.7rem;
+  font-size: .8125rem;
   color: var(--muted-2);
   line-height: 1.45;
 }
@@ -1370,7 +1370,7 @@ select {
   top: 50%;
   transform: translateY(-50%);
   color: var(--muted-2);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   font-weight: 600;
   pointer-events: none;
 }
@@ -1393,7 +1393,7 @@ select {
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: .8125rem;
   font-weight: 650;
   white-space: nowrap;
   transition:
@@ -1449,7 +1449,7 @@ td:first-child {
 th {
   background: var(--surface-2);
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1607,7 +1607,7 @@ th.num {
     width: 28px;
     color: var(--gold);
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: .8125rem;
   }
 
   .mobile-menu-note {
@@ -1617,7 +1617,7 @@ th.num {
     margin-top: 1.5rem;
     color: var(--muted-2);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: .8125rem;
   }
 }
 
@@ -1695,7 +1695,7 @@ th.num {
   }
 
   .hero-kicker {
-    font-size: 0.62rem;
+    font-size: .8125rem;
     letter-spacing: 0.1em;
   }
 
@@ -1726,7 +1726,7 @@ th.num {
   }
 
   .hero-stat span:last-child {
-    font-size: 0.72rem;
+    font-size: .8125rem;
   }
 
   .hero-visual {
@@ -1739,7 +1739,7 @@ th.num {
 
   .hero-visual-caption {
     padding-left: 0;
-    font-size: 0.6rem;
+    font-size: .8125rem;
   }
 
   .section-heading {
@@ -1910,7 +1910,7 @@ th.num {
 
 .law-meta-label {
   color: rgba(247, 245, 238, 0.44);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1973,7 +1973,7 @@ th.num {
   align-items: center;
   color: rgba(247, 245, 238, 0.82);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   line-height: 1.2;
   white-space: nowrap;
 }
@@ -1981,7 +1981,7 @@ th.num {
 .n-spectrum-label small {
   color: rgba(247, 245, 238, 0.38);
   font-family: var(--font-sans);
-  font-size: 0.55rem;
+  font-size: .8125rem;
   letter-spacing: 0.02em;
 }
 
@@ -2049,7 +2049,7 @@ th.num {
   align-self: flex-start;
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -2066,7 +2066,7 @@ th.num {
 
 .formula-tile p {
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   line-height: 1.55;
 }
 
@@ -2106,7 +2106,7 @@ th.num {
   border-radius: var(--radius-xs);
   background: var(--surface-2);
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   line-height: 1.55;
 }
 
@@ -2147,7 +2147,7 @@ th.num {
 }
 
 .energy-formula-label {
-  font-size: 0.65rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2156,7 +2156,7 @@ th.num {
 
 .energy-formula-ref {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   color: var(--muted-2);
 }
 
@@ -2206,7 +2206,7 @@ th.num {
   background: var(--surface-2);
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: .8125rem;
 }
 
 .molar-chain svg {
@@ -2303,7 +2303,7 @@ th.num {
   align-items: center;
   padding: 0.18rem 0.55rem;
   border-radius: 999px;
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 650;
 }
 
@@ -2340,7 +2340,7 @@ th.num {
   padding-top: 1rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: .8125rem;
 }
 
 .family-foot span {
@@ -2371,7 +2371,7 @@ th.num {
   background: var(--gold);
   color: var(--petrol-2);
   font-family: var(--font-serif);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   font-weight: 700;
   line-height: 1;
 }
@@ -2439,7 +2439,7 @@ th.num {
   }
 
   .n-spectrum-label {
-    font-size: 0.6rem;
+    font-size: .8125rem;
   }
 
   .n-spectrum-label small {
@@ -2475,7 +2475,7 @@ th.num {
   border-radius: 999px;
   background: var(--mint-soft);
   color: var(--ink);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   font-weight: 650;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -2521,7 +2521,7 @@ th.num {
   border-radius: 10px;
   background: transparent;
   color: var(--muted);
-  font-size: 0.73rem;
+  font-size: .8125rem;
   font-weight: 650;
   line-height: 1;
   transition:
@@ -2546,7 +2546,7 @@ th.num {
 .lab-preset small {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.56rem;
+  font-size: .8125rem;
   font-weight: 500;
 }
 
@@ -2621,7 +2621,7 @@ th.num {
   gap: 0.45rem;
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -2660,7 +2660,7 @@ th.num {
 .lab-chart-head p {
   margin-top: 0.25rem;
   color: var(--muted);
-  font-size: 0.74rem;
+  font-size: .8125rem;
   line-height: 1.45;
 }
 
@@ -2679,7 +2679,7 @@ th.num {
   border: 1px solid transparent;
   border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1.4;
   white-space: nowrap;
@@ -2756,14 +2756,14 @@ th.num {
   border-radius: 999px;
   background: var(--surface-glass);
   color: var(--muted-2);
-  font-size: 0.6rem;
+  font-size: .8125rem;
   pointer-events: none;
   backdrop-filter: blur(6px);
 }
 
 .lab-chart-hint span {
   color: var(--gold);
-  font-size: 0.8rem;
+  font-size: .8125rem;
 }
 
 .lab-timeline {
@@ -2781,7 +2781,7 @@ th.num {
 .lab-timeline-label {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
@@ -2790,7 +2790,7 @@ th.num {
   min-width: 34px;
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
@@ -2801,7 +2801,7 @@ th.num {
   gap: 0.35rem 0.85rem;
   margin-top: 0.55rem;
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .lab-legend span {
@@ -2875,7 +2875,7 @@ th.num {
   align-items: center;
   padding: 0.2rem 0.5rem;
   border-radius: 999px;
-  font-size: 0.6rem;
+  font-size: .8125rem;
   font-weight: 650;
   white-space: nowrap;
 }
@@ -2908,7 +2908,7 @@ th.num {
   padding-top: 0.55rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.63rem;
+  font-size: .8125rem;
 }
 
 .cylinder-foot span {
@@ -2945,12 +2945,12 @@ th.num {
 .state-index {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
 }
 
 .state-title {
   color: var(--muted-2);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   font-weight: 650;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -2966,7 +2966,7 @@ th.num {
 
 .state-card span:last-child {
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: .8125rem;
 }
 
 .energy-flow {
@@ -3004,7 +3004,7 @@ th.num {
   align-items: center;
   gap: 0.35rem;
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   line-height: 1.1;
 }
 
@@ -3018,7 +3018,7 @@ th.num {
   border-radius: 6px;
   color: var(--surface);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   font-weight: 700;
 }
 
@@ -3083,7 +3083,7 @@ th.num {
 .energy-value {
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
@@ -3100,14 +3100,14 @@ th.num {
 .energy-equation-formula {
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
 .energy-equation-check {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   text-align: right;
 }
 
@@ -3116,7 +3116,7 @@ th.num {
   flex-wrap: wrap;
   gap: 0.25rem 0.7rem;
   color: var(--muted-2);
-  font-size: 0.6rem;
+  font-size: .8125rem;
 }
 
 .energy-meta strong {
@@ -3157,7 +3157,7 @@ th.num {
   flex: 1 1 0;
   min-width: 0;
   padding-inline: 0.35rem;
-  font-size: 0.65rem;
+  font-size: .8125rem;
 }
 
 .lab-control-actions {
@@ -3174,7 +3174,7 @@ th.num {
   align-items: center;
   gap: 0.35rem;
   color: var(--petrol);
-  font-size: 0.75rem;
+  font-size: .8125rem;
   font-weight: 650;
   transition: gap 160ms ease;
 }
@@ -3204,7 +3204,7 @@ th.num {
 
 .lab-status-item strong {
   color: var(--ink);
-  font-size: 0.74rem;
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1.35;
 }
@@ -3277,7 +3277,7 @@ th.num {
   }
 
   .lab-timeline-label {
-    font-size: 0.52rem;
+    font-size: .8125rem;
   }
 
   .lab-side {
@@ -3408,7 +3408,7 @@ th.num {
 
 .linear-fact-kicker {
   color: var(--muted-2);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -3426,7 +3426,7 @@ th.num {
 
 .linear-fact span:last-child {
   color: var(--muted);
-  font-size: 0.61rem;
+  font-size: .8125rem;
   line-height: 1.4;
 }
 
@@ -3439,7 +3439,7 @@ th.num {
   border-radius: var(--radius-xs);
   background: var(--gold-soft);
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -3454,7 +3454,7 @@ th.num {
   background: var(--gold);
   color: var(--petrol-2);
   font-family: var(--font-serif);
-  font-size: 0.75rem;
+  font-size: .8125rem;
   font-weight: 700;
 }
 
@@ -3494,7 +3494,7 @@ th.num {
 .linear-chart-hint {
   margin-top: 0.4rem;
   color: var(--muted-2);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   text-align: right;
 }
 
@@ -3519,7 +3519,7 @@ th.num {
 }
 
 .linear-gas .segmented button {
-  font-size: 0.68rem;
+  font-size: .8125rem;
 }
 
 .linear-field {
@@ -3550,13 +3550,13 @@ th.num {
 .linear-readout span {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
 }
 
 .linear-readout strong {
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
@@ -3582,7 +3582,7 @@ th.num {
   padding-top: 0.55rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.65rem;
+  font-size: .8125rem;
 }
 
 .linear-balance span:first-child {
@@ -3593,7 +3593,7 @@ th.num {
 
 .linear-balance span:last-child {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: .8125rem;
 }
 
 .linear-exercise {
@@ -3656,7 +3656,7 @@ th.num {
   background: var(--mint-soft);
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
@@ -3669,7 +3669,7 @@ th.num {
 .linear-steps p {
   margin-top: 0.25rem;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -3694,7 +3694,7 @@ th.num {
   border-radius: 8px;
   background: var(--surface);
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: .8125rem;
 }
 
 .linear-exercise-foot {
@@ -3705,7 +3705,7 @@ th.num {
   padding-top: 0.85rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: .8125rem;
 }
 
 .linear-exercise-foot span {
@@ -3834,7 +3834,7 @@ th.num {
 }
 
 .calc-gas-toggle button {
-  font-size: 0.68rem;
+  font-size: .8125rem;
 }
 
 .calc-n-row {
@@ -3870,7 +3870,7 @@ th.num {
   background: var(--surface-2);
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   font-weight: 600;
   transition:
     background 160ms ease,
@@ -3898,7 +3898,7 @@ th.num {
   padding-top: 0.8rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.67rem;
+  font-size: .8125rem;
 }
 
 .calc-form-foot strong {
@@ -3950,7 +3950,7 @@ th.num {
 
 .calc-result-label {
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -3967,7 +3967,7 @@ th.num {
 
 .calc-result-card small {
   color: var(--muted);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .calc-state-strip {
@@ -3991,7 +3991,7 @@ th.num {
 .calc-state-tag {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -4005,7 +4005,7 @@ th.num {
 
 .calc-state span:last-child {
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: .8125rem;
 }
 
 .calc-state-arrow {
@@ -4058,7 +4058,7 @@ th.num {
 .calc-balance > span {
   color: rgba(247, 245, 238, 0.75);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   text-align: right;
 }
 
@@ -4072,7 +4072,7 @@ th.num {
 .calc-actions-note {
   margin-left: auto;
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .calc-steps-card,
@@ -4128,7 +4128,7 @@ th.num {
   background: var(--mint-soft);
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
@@ -4139,14 +4139,14 @@ th.num {
 .calc-step strong {
   display: block;
   color: var(--ink);
-  font-size: 0.8rem;
+  font-size: .8125rem;
 }
 
 .calc-step p {
   margin-top: 0.35rem;
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
@@ -4190,7 +4190,7 @@ th.num {
 .calc-compare-note {
   margin-top: 0.7rem;
   color: var(--muted-2);
-  font-size: 0.68rem;
+  font-size: .8125rem;
 }
 
 @media (max-width: 1050px) {
@@ -4316,7 +4316,7 @@ th.num {
 
 .quiz-score-box > span {
   color: var(--muted-2);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -4333,7 +4333,7 @@ th.num {
 .quiz-score-box small {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .quiz-progress-wrap {
@@ -4361,7 +4361,7 @@ th.num {
   display: flex;
   justify-content: space-between;
   color: var(--muted-2);
-  font-size: 0.56rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -4382,7 +4382,7 @@ th.num {
 
 .quiz-counter span {
   color: var(--muted-2);
-  font-size: 0.65rem;
+  font-size: .8125rem;
 }
 
 .quiz-:scope {
@@ -4399,7 +4399,7 @@ th.num {
 .quiz-number {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: .8125rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -4476,7 +4476,7 @@ th.num {
   background: var(--surface);
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
@@ -4557,7 +4557,7 @@ th.num {
 .quiz-feedback p {
   margin-top: 0.3rem;
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -4569,7 +4569,7 @@ th.num {
   background: var(--surface);
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: .8125rem;
 }
 
 .quiz-actions {
@@ -4596,7 +4596,7 @@ th.num {
   border: 0;
   background: transparent;
   color: var(--muted-2);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
@@ -4656,7 +4656,7 @@ th.num {
 
 .quiz-result-badge span {
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .quiz-result h3 {
@@ -4710,14 +4710,14 @@ th.num {
 
 .quiz-review-item strong {
   color: var(--ink);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1.35;
 }
 
 .quiz-review-item span {
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .quiz-result-actions {
@@ -4868,7 +4868,7 @@ th.num {
   background: var(--mint-soft);
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
@@ -4881,7 +4881,7 @@ th.num {
 .lesson-step p {
   margin-top: 0.2rem;
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -4900,7 +4900,7 @@ th.num {
   align-items: center;
   gap: 0.35rem;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 600;
   transition: color 160ms ease;
 }
@@ -4946,7 +4946,7 @@ th.num {
 .resource-link-tag {
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: .8125rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -4954,13 +4954,13 @@ th.num {
 
 .resource-link strong {
   color: var(--ink);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   line-height: 1.35;
 }
 
 .resource-link p {
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: .8125rem;
   line-height: 1.5;
 }
 
@@ -4969,7 +4969,7 @@ th.num {
   padding-top: 0.6rem;
   border-top: 1px dashed var(--line);
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   line-height: 1.5;
 }
 
@@ -5012,7 +5012,7 @@ th.num {
 
 .recap-formula > span {
   color: var(--muted-2);
-  font-size: 0.55rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -5035,7 +5035,7 @@ th.num {
   padding-top: 0.8rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -5090,7 +5090,7 @@ th.num {
 .footer-brand span {
   margin-top: 0.15rem;
   color: rgba(247, 245, 238, 0.45);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -5099,7 +5099,7 @@ th.num {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem 0.8rem;
-  font-size: 0.7rem;
+  font-size: .8125rem;
 }
 
 .footer-links a {
@@ -5116,7 +5116,7 @@ th.num {
   flex-wrap: wrap;
   gap: 0.25rem 0.9rem;
   color: rgba(247, 245, 238, 0.4);
-  font-size: 0.6rem;
+  font-size: .8125rem;
 }
 
 .footer-meta span {
@@ -5137,7 +5137,7 @@ th.num {
   border: 1px solid rgba(197, 232, 165, 0.2);
   border-radius: 999px;
   color: rgba(247, 245, 238, 0.62);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   font-weight: 600;
   white-space: nowrap;
   transition:

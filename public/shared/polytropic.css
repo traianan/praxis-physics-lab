@@ -32,7 +32,19 @@ body[data-praxis-course=transformarea-politropa] #praxis-original{width:100%;max
 #polytropic-root .lab-timeline{flex-wrap:wrap}
 #polytropic-root .linear-controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
 #polytropic-root .print-sheet{display:none}
+/* Readable ink, including small process labels on tinted cards. */
+#polytropic-root{--muted-2:var(--praxis-color-muted);--gold:#80601d;--coral:#a04330;--blue:#356a91;--violet:#74598e;--rose:#9b4359;--cyan:#326f6c;--success:#286048;--danger:#9b352a}
+#polytropic-root .section-quiz{background:var(--praxis-color-canvas);color:var(--praxis-color-ink)}
+#polytropic-root .section-quiz :is(h2,.section-eyebrow,.section-lead,.head-chip,.section-index){color:var(--praxis-color-ink)}
+#polytropic-root a.button-primary{--praxis-link-ink:var(--praxis-color-primary);--praxis-link-button-background:var(--praxis-color-surface);background:var(--praxis-color-surface);color:var(--praxis-color-primary)}
+#polytropic-root button:disabled{opacity:1;color:var(--praxis-color-muted);background:var(--praxis-color-canvas);border-style:dashed;cursor:not-allowed}
+#polytropic-root .lab-field.is-disabled{opacity:1}
+#polytropic-root .energy-symbol-du{color:#fffefa}
+#polytropic-root .lab-preset{flex-wrap:wrap;gap:.3rem}
+#polytropic-root .lab-preset small{white-space:normal}
+#polytropic-root :is(.lab-chart-head,.cylinder-card-head,.energy-flow-head,.energy-equation,.energy-meta,.quiz-top){flex-wrap:wrap}
 #polytropic-root .table-wrap,#polytropic-root .comparison-table-wrap{max-width:100%;overflow-x:auto}
 @media(max-width:850px){#polytropic-root .lab-main{grid-template-columns:minmax(0,1fr)}#polytropic-root .lab-side{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:.75rem}}
 @media(max-width:500px){#polytropic-root .lab-shell{padding:.6rem}#polytropic-root .section{padding:.75rem}#polytropic-root .lab-chart-wrap{height:280px}#polytropic-root .lab-preset{flex:1 1 8rem}#polytropic-root .lab-controls{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:650px){#polytropic-root .lab-presets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8rem),1fr));width:100%}#polytropic-root .lab-preset{justify-content:center;overflow-wrap:normal}#polytropic-root .lab-preset small{flex-basis:100%}#polytropic-root .state-pair{grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr))}}
 @media print{body>*:not(#praxis-original){display:none!important}#praxis-original>:not(#polytropic-root){display:none!important}#polytropic-root>[role=tabpanel]{display:none!important}#polytropic-root .print-sheet{display:block!important}}

@@ -15,7 +15,14 @@ export function adaptPolytropic(code,name){
   if(start<0||end<start)throw Error('Polytropic lesson attribution changed');
   code=code.slice(0,start)+code.slice(end+'          </div>'.length);
  }
- if(/(?:PVChart|GasCylinder)\.tsx$/.test(name))code=code.replace(/\b(9|10|11)px /g,'12px ');
+ if(/(?:PVChart|GasCylinder|LinearLab)\.tsx$/.test(name)){
+  code=code.replace(/\b(9|10|11|12)px /g,'13px ').replaceAll('#7b8d83','#586d63').replaceAll('#6d8177','#586d63').replaceAll('#b17b20','#80601d').replaceAll('#c45b4f','#a04330').replaceAll('#4f8fbf','#356a91');
+ }
+ if(name.endsWith('PVChart.tsx')){
+  // The comparison paths stay subtle, but their labels must remain readable.
+  code=replace(code,'    const labelAt = (text: string, x: number, y: number, color: string) => {','    const placedLabels: Array<{left:number,right:number,top:number,bottom:number}> = [];\n    const labelAt = (text: string, x: number, y: number, color: string) => {\n      const w=ctx.measureText(text).width;\n      for(const offset of [0,-17,17,-34,34,-51,51,-68,68]){\n        const candidate=Math.max(plot.y+15,Math.min(plot.y+plot.h-3,y+offset));\n        const box={left:x-w-3,right:x+3,top:candidate-15,bottom:candidate+2};\n        if(!placedLabels.some(b=>box.left<b.right&&box.right>b.left&&box.top<b.bottom&&box.bottom>b.top)){y=candidate;placedLabels.push(box);break;}\n      }');
+  code=replace(code,'ctx.fillStyle = color;','const role={ [palette.ghostIsobar]:"blue",[palette.ghostIsotherm]:"teal",[palette.ghostAdiabat]:"orange",[palette.ghostIsochor]:"purple",[palette.ghostLinear]:"red" }[color];\n      ctx.fillStyle = role ? window.PraxisScientificColors.palette(document.documentElement.dataset.courseColors)[role] : color;');
+ }
  if(name.endsWith('SectionHeading.tsx'))code=replace(code,'<h2>{title}</h2>','<h2 data-content-type={index==="02"||index==="03"?"simulation":index==="04"?"problem":index==="05"?"assessment":index==="06"?"resources":"theory"}>{title}</h2>');
  if(name.endsWith('Quiz.tsx'))code=replace(code,'aria-checked={selected === optionIndex}','aria-checked={selected === optionIndex}\n                        tabIndex={(selected??0)===optionIndex?0:-1}\n                        onKeyDown={event=>{if(checked||!["ArrowDown","ArrowRight","ArrowUp","ArrowLeft"].includes(event.key))return;event.preventDefault();const next=(optionIndex+(["ArrowDown","ArrowRight"].includes(event.key)?1:3))%4;setSelected(next);event.currentTarget.parentElement.querySelectorAll("[role=radio]")[next]?.focus();}}');
  if(name.endsWith('physics.ts')){
@@ -70,6 +77,8 @@ await mkdir(output,{recursive:true});
 await build({entryPoints:[path.join(adapt,'entry.jsx')],outfile:path.join(output,'app.js'),bundle:true,minify:true,format:'iife',jsx:'transform',jsxFactory:'PraxisElement',jsxFragment:'PraxisFragment',inject:[path.join(adapt,'runtime.jsx')],define:{'process.env.NODE_ENV':'"production"'},plugins:[plugin],legalComments:'eof'});
 await build({stdin:{contents:adaptPolytropic((await readFile(path.join(source,'lib/physics.ts'),'utf8')).replaceAll('\r\n','\n'),'physics.ts'),loader:'ts',resolveDir:source},outfile:path.join(output,'physics.mjs'),format:'esm'});
 let css='';for(const file of ['globals','theory','lab','linear','calculator','quiz','resources'])css+='\n'+await readFile(path.join(source,'app',file+'.css'),'utf8');
+// Keep auxiliary UI text readable and scalable; math scripts retain their own sizes.
+css=css.replace(/font-size:\s*([\d.]+)rem/g,(match,size)=>Number(size)<.8125?'font-size: .8125rem':match);
 css=css.replace(/:root/g,':scope').replace(/\[data-theme="dark"\]/g,':scope:where([data-theme="dark"])').replace(/html\s*\{/g,':scope {').replace(/body\s*\{/g,':scope {');
 await write('public/shared/polytropic-source.css','@scope (#polytropic-root) {\n'+css+'\n}\n');
 await cp(path.join(root,'public/simulari/calorimetrie/vendor/katex'),path.join(output,'vendor/katex'),{recursive:true});

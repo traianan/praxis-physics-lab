@@ -1,0 +1,23 @@
+/* Auxiliary lesson text uses the shared 13px-at-100% role, including units.
+   Mathematical subscripts and the scientific drawing geometry are unchanged. */
+body[data-praxis-laboratory] #praxis-original small:not(.katex *){font-size:max(var(--praxis-text-small),.8em);line-height:1.5}
+body[data-praxis-course=condensatorul] #praxis-original :is(.badge,.control-scale),
+body[data-praxis-course=legea-lui-coulomb] #praxis-original :is(.live,.section-label,.eyebrow,.range-labels),
+body[data-praxis-course=laboratorul-electromagnetic-faraday] #praxis-original :is(.stage-label,.stage-kind),
+body[data-praxis-course=miscarea-rectilinie] #praxis-original :is(.tag,.group-title,.lbl,.k,.pb-no,.pb-badge,.pb-lbl){font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=calcul-vectorial] #praxis-original :is(.eyebrow,.hero-caption,.hd,.pill,.qn){font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=calcul-vectorial] #praxis-original :is(.hero-meta span,.fig-h b,footer,footer a){font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original :is(.formula-note,.telemetry-caption,.telemetry-label,.poly-eq-title),
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original :is(.tag,.dir,.k,.lbl),
+body[data-praxis-course=notiuni-termodinamice] #praxis-original :is(.drawer-f,.drawer-f kbd,.tag,.pill,.qn,.lvl),
+body[data-praxis-course=principiul-i-aplicatii] #praxis-original :is(.tile-k,.offline-chip,.ex-badge,.toggle,.q-tag,.host){font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=transformari-stare-agregare] #praxis-original :is(.offline-chip,.ex-badge,.toggle,.q-tag,.host){font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=transformari-stare-agregare] #praxis-original :is(.keyfacts b,.callout>b){font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=oscilator-mecanic] #praxis-original .tag{font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-laboratory] #praxis-original :is(.drawer-h>b,.drawer-body h5,.drawer-f,.drawer-f kbd){font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=calorimetrie] #praxis-original summary{font-size:var(--praxis-text-label);line-height:1.5}
+body:is([data-praxis-course=calorimetrie],[data-praxis-course=principiul-i-al-termodinamicii],[data-praxis-course=motoare-termice]) #praxis-original :is(.pill,.qn,.lvl,.chips-l,.eyebrow,.hero-caption,.tag){font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=motoare-termice] #praxis-original .pset{font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .lbl{font-size:var(--praxis-text-small)!important}
+body[data-praxis-course=generator-electric] #praxis-original :is(.component-key-number,legend){font-size:var(--praxis-text-small);line-height:1.5}
+body[data-praxis-course=pendulul-gravitational] #praxis-original :is(.pill,.val,.sub,figcaption,.ni,.chip,.tag,.k,.tbl-empty){font-size:var(--praxis-text-small);line-height:1.5}

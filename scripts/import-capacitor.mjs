@@ -14,6 +14,7 @@ for(const [page] of pages){
  body=body.replace(/<section class="section section--tight"[\s\S]*?<\/section>/,'');
  body=body.replace(/href="(laborator|teorie|resurse)\.html(?:#([^"]+))?"/g,(_,p,hash)=>'href="#'+(hash||'cond-'+p)+'"');
  body=body.replace(/class="reveal"/g,'class="reveal in"');
+ body=body.replace(/font-size:\s*([\d.]+)rem/g,(match,size)=>Number(size)<.8125?'font-size:.8125rem':match);
  body=body.replace(/<h2 /g,'<h2 data-content-type="theory" ');
  body=body.replace(/(<section id="(?:calculator|verifica)"[\s\S]*?<h2 )data-content-type="theory"/g,(_,before)=>before+'data-content-type="'+(before.includes('verifica')?'assessment':'experiment')+'"');
  content+='<div id="cond-'+page+'" data-cond-panel="'+page+'" '+(page==='laborator'?'':'hidden')+'>'+body+'</div>';
@@ -27,6 +28,7 @@ const tabs='<nav class="tabs" role="tablist" aria-label="Secțiunile lecției">'
 await write(out+'index.html',withFavicon('<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Condensatorul — Praxis</title>'+head+'</head><body data-praxis-course="condensatorul" data-praxis-laboratory="true"><main id="praxis-original" class="cond-course">'+tabs+content+'<p><a href="condensatorul.zip">Descarcă lecția offline</a></p></main><script src="./js/model.js"></script><script src="./js/integration.js"></script><script src="./js/main.js"></script><script src="./js/lab.js"></script><script src="./js/teorie.js"></script><script src="../../shared/course.js" data-course="condensatorul" data-title="Condensatorul"></script></body></html>'));
 for(const name of ['main','model','lab','teorie','integration'])await write(out+'js/'+name+'.js',await read('sources/condensatorul/js/'+name+'.js'));
 let css=(await read('sources/condensatorul/css/style.css')).replace(/@import[^;]+;/,'').replace(':root {',':scope {');
+css=css.replace(/font-size:\s*([\d.]+)rem/g,(match,size)=>Number(size)<.8125?'font-size:.8125rem':match);
 await write(out+'style.css','@scope (.cond-course) {\n'+css+'\n}\n'+await read('sources/condensatorul/css/praxis.css'));
 const sources=['laborator.html','teorie.html','resurse.html','css/style.css','css/praxis.css','js/model.js','js/lab.js','js/teorie.js','js/main.js','js/integration.js','translations.tsv'];
 await write('docs/imported-capacitor.json',JSON.stringify({id:'condensatorul',sources:await Promise.all(sources.map(async file=>({file:'sources/condensatorul/'+file,sha256:createHash('sha256').update((await read('sources/condensatorul/'+file)).replaceAll('\r\n','\n')).digest('hex')}))),adaptations:['Shared Praxis shell, catalog, workspaces, RO/EN and offline archive','Exact RC solution, signed current, explicit adaptive time scale and conservative isolation','Open switch gap and resistor in both closed circuit modes','Qualified linear dielectric and edge-effect assumptions']},null,2)+'\n');
