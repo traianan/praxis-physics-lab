@@ -444,5 +444,8 @@
   "{0} — {1}": "{0} — {1}",
   "Material: {0} (ρ₀ = {1})": "Material: {0} (ρ₀ = {1})",
   "Aceleași dimensiuni, materiale diferite": "Same dimensions, different materials",
-  "Barele reprezintă rezistența electrică pe o scară logaritmică, nu lungimea firelor. Comparația folosește fire de 1 m, cu secțiunea de 1 mm², la 20 °C.": "The bars show electrical resistance on a logarithmic scale, not wire length. The comparison uses 1 m wires with a 1 mm² cross-section at 20 °C."
+  "Barele reprezintă rezistența electrică pe o scară logaritmică, nu lungimea firelor. Comparația folosește fire de 1 m, cu secțiunea de 1 mm², la 20 °C.": "The bars show electrical resistance on a logarithmic scale, not wire length. The comparison uses 1 m wires with a 1 mm² cross-section at 20 °C.",
+  "A, B — contacte electrice": "A, B — electrical contacts",
+  "e⁻ · mișcare ordonată": "e⁻ · directed motion",
+  "Deriva electronilor este mișcarea lor medie orientată sub acțiunea câmpului electric, opusă sensului convențional al curentului. Ea se suprapune peste mișcarea dezordonată. Barele A și B reprezintă contactele de conectare a firului la circuit. Animația este schematică: viteza electronilor este amplificată pentru vizibilitate.": "Electron drift is their average directed motion under an electric field, opposite to conventional current. It is superimposed on random motion. Bars A and B represent the contacts connecting the wire to the circuit. The animation is schematic: electron speed is exaggerated for visibility."
 }

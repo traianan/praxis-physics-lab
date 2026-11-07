@@ -43,3 +43,21 @@ Verificările pentru tablă și mobil sunt emulări Chrome, nu teste pe dispozit
 Tabelul Materiale folosește acum suprafețele și culorile textului din sistemul Praxis, inclusiv rândurile selectate și informațiile secundare. Titlul precizează „Aceleași dimensiuni, materiale diferite”, iar legenda explică faptul că barele reprezintă rezistența pe o scară logaritmică, nu lungimea conductorilor. Datele comparației rămân L = 1 m, A = 1 mm² și t = 20 °C.
 
 `scripts/qa/wire-materials.mjs` verifică RO/EN, 1920×1080 și 390×844, text 100%/200%, sortarea și selectarea materialului. Toate cele 8 combinații au trecut fără overflow și fără încălcări de contrast detectate de axe-core. Captura finală a fost inspectată vizual.
+
+## Audit complet de lizibilitate și explicația conductorului
+
+La solicitarea utilizatorului, toate cele șapte secțiuni au fost verificate în RO/EN, la 1366×768 și 390×844, cu text 100%/200% (56 combinații). S-au corectat:
+
+- textele secundare palide din Laborator, Teorie, Factori, Calculator, Test și Resurse;
+- fundalul secțiunii Test și culorile formulelor, indicatorilor și etichetelor resurselor;
+- etichetele CSS mai mici de 0,8125 rem, fără micșorarea țintelor tactile;
+- etichetele SVG (13 unități logice) și scara minimă a diagramelor pe mobil, cu derulare locală;
+- culorile textelor desenate în Canvas;
+- formula temperaturii din Calculator/fișa de printare: grupul gol înainte de exponentul gradelor evită eroarea KaTeX „unknown type: internal”;
+- litera R decorativă suprapusă peste definiție.
+
+„Derivă” desemnează mișcarea medie orientată a electronilor sub acțiunea câmpului electric. În desen eticheta este acum „mișcare ordonată”, iar ghidul explică relația cu sensul convențional al curentului și caracterul schematic al animației. Barele A și B sunt contactele electrice de conectare a firului; legenda le identifică explicit.
+
+Referințe conceptuale: [OpenStax, Model of Conduction in Metals](https://openstax.org/books/university-physics-volume-2/pages/9-2-model-of-conduction-in-metals), [UTCN, Studiul conductibilității electrice](https://phys.utcluj.ro/PersonalFile/Cursuri/BarleaLaborator/R_Metal.pdf) — viteză de drift/transport, mișcare ordonată.
+
+Validare: 435 teste ale proiectului trecute; audit axe-core fără încălcări de contrast în 56 combinații; 58 stări suplimentare pentru preseturi, cele trei grafice Factori și selecțiile/feedbackul/rezultatele celor zece întrebări, în ambele limbi. Auditul verifică și lipsa erorilor KaTeX. Capturile secțiunilor au fost inspectate vizual; auditul automat nu măsoară textele rasterizate în Canvas. Rapoarte: `outputs/wire-readability.json`, `outputs/wire-contrast-states.json`, `outputs/wire-readability-check.log`.

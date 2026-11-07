@@ -447,6 +447,9 @@
     "{0} — {1}": "{0} — {1}",
     "Material: {0} (ρ₀ = {1})": "Material: {0} (ρ₀ = {1})",
     "Aceleași dimensiuni, materiale diferite": "Aceleași dimensiuni, materiale diferite",
-    "Barele reprezintă rezistența electrică pe o scară logaritmică, nu lungimea firelor. Comparația folosește fire de 1 m, cu secțiunea de 1 mm², la 20 °C.": "Barele reprezintă rezistența electrică pe o scară logaritmică, nu lungimea firelor. Comparația folosește fire de 1 m, cu secțiunea de 1 mm², la 20 °C."
+    "Barele reprezintă rezistența electrică pe o scară logaritmică, nu lungimea firelor. Comparația folosește fire de 1 m, cu secțiunea de 1 mm², la 20 °C.": "Barele reprezintă rezistența electrică pe o scară logaritmică, nu lungimea firelor. Comparația folosește fire de 1 m, cu secțiunea de 1 mm², la 20 °C.",
+    "A, B — contacte electrice": "A, B — contacte electrice",
+    "e⁻ · mișcare ordonată": "e⁻ · mișcare ordonată",
+    "Deriva electronilor este mișcarea lor medie orientată sub acțiunea câmpului electric, opusă sensului convențional al curentului. Ea se suprapune peste mișcarea dezordonată. Barele A și B reprezintă contactele de conectare a firului la circuit. Animația este schematică: viteza electronilor este amplificată pentru vizibilitate.": "Deriva electronilor este mișcarea lor medie orientată sub acțiunea câmpului electric, opusă sensului convențional al curentului. Ea se suprapune peste mișcarea dezordonată. Barele A și B reprezintă contactele de conectare a firului la circuit. Animația este schematică: viteza electronilor este amplificată pentru vizibilitate."
   }
 }

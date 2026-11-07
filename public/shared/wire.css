@@ -121,3 +121,20 @@ body[data-praxis-course=rezistenta-unui-fir] #praxis-original{width:100%;max-wid
 #wire-root .section-materials :is(.materials-name small,.materials-name em,.materials-unit,.materials-row-head,.materials-rho,.materials-alpha,.materials-density,.materials-bar-cell b,.materials-compare-grid small,.materials-card-metric){font-size:.875rem}
 #wire-root .materials-name small{white-space:normal;overflow:visible}
 #wire-root .materials-shell{overflow-x:auto}
+/* Readable secondary text and consistent surfaces across all lesson sections. */
+#wire-root{--muted-2:var(--praxis-color-muted);--line:var(--praxis-color-border);--line-strong:var(--praxis-color-border)}
+#wire-root :is(.factor-law,.factor-experiment-value .is-up,.factor-experiment-value .is-down){color:var(--praxis-color-ink)}
+#wire-root .section-quiz{background:var(--praxis-color-canvas);color:var(--praxis-color-ink)}
+#wire-root .section-quiz :is(h2,.section-eyebrow,.section-lead,.head-chip){color:var(--praxis-color-ink)}
+#wire-root .section-quiz .head-chip{background:var(--praxis-color-surface);border-color:var(--praxis-color-border)}
+#wire-root a.button-primary{--praxis-link-ink:var(--praxis-color-primary);--praxis-link-button-background:var(--praxis-color-surface);background:var(--praxis-color-surface);color:var(--praxis-color-primary)}
+#wire-root .wire-science-note{font-size:1rem;line-height:1.6;max-width:85ch}
+#wire-root .field-hint,#wire-root .lab-legend,#wire-root .lab-stage-hint,#wire-root .lab-chart-hint{color:var(--praxis-color-muted)}
+#wire-root .wire-diagram-scroll{max-width:100%;overflow-x:auto}
+#wire-root .wire-diagram-scroll>.factor-plot{min-width:520px}
+#wire-root .wire-diagram-scroll>svg:not(.factor-plot){min-width:420px}
+#wire-root .wire-diagram-scroll text{opacity:1;fill:var(--praxis-color-muted)}
+#wire-root .resource-link-tag{color:var(--praxis-color-ink);background:var(--praxis-color-canvas)}
+#wire-root{--success:#286048;--danger:#9b352a}
+/* Disabled actions remain readable; native disabled semantics and dashed borders indicate availability. */
+#wire-root button:disabled{opacity:1;color:var(--praxis-color-muted);background:var(--praxis-color-canvas);border-style:dashed;box-shadow:none;cursor:not-allowed}

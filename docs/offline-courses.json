@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-07T13:02:56.329Z",
+  "builtAt": "2026-11-07T13:19:22.501Z",
   "courses": [
     {
       "id": "condensatorul",
@@ -246,7 +246,7 @@
     {
       "id": "rezistenta-unui-fir",
       "file": "public/simulari/rezistenta-unui-fir/rezistenta-unui-fir.zip",
-      "sha256": "2497c3e524e10cebc473d71b47a131a966ddf172b97deb11c3a86d5ec9de08e6",
+      "sha256": "a47585407109f8e656899f941f4c778ddb2884b463d858c7fbc3744fe0da813b",
       "languages": [
         "ro",
         "en"

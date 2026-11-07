@@ -10,6 +10,12 @@ const read=p=>readFile(path.join(root,p),'utf8');
 const write=async(p,text)=>{await mkdir(path.dirname(path.join(root,p)),{recursive:true});await writeFile(path.join(root,p),text);};
 const replace=(text,from,to)=>{if(!text.includes(from))throw Error('Wire source changed: '+from.slice(0,90));return text.replace(from,to);};
 export function adaptWire(code,name){
+ code=code.replaceAll(String.raw`20\,^{\circ}`,String.raw`20\,{}^{\circ}`);
+ if(name.endsWith('TheorySection.tsx'))code=replace(code,'<span className="definition-mark">R</span>','');
+ if(/(?:FactorSection|TheorySection)\.tsx$/.test(name)){
+  code=code.replace(/fontSize="(?:9\.5|10|11)"/g,'fontSize="13"');
+  code=code.replace('<svg','<div className="wire-diagram-scroll"><svg').replace('</svg>','</svg></div>');
+ }
  if(name.endsWith('MaterialsSection.tsx')){
   code=replace(code,'title="Aceeași formă, materiale diferite"','title="Aceleași dimensiuni, materiale diferite"');
   code=replace(code,'          <div className="materials-table"','          <p className="materials-bar-note">Barele reprezintă rezistența electrică pe o scară logaritmică, nu lungimea firelor. Comparația folosește fire de 1 m, cu secțiunea de 1 mm², la 20 °C.</p><div className="materials-table"');
@@ -25,10 +31,13 @@ export function adaptWire(code,name){
   code='import {tr} from '+JSON.stringify(path.join(adapt,'runtime.jsx'))+';\n'+code;
  }
  if(name.endsWith('WireLab.tsx')){
+  code=replace(code,'              <div className="lab-legend">','              <div className="lab-legend"><span>A, B — contacte electrice</span>');
+  code=replace(code,'        <Reveal>\n          <SectionHeading','        <Reveal><p className="wire-science-note">Deriva electronilor este mișcarea lor medie orientată sub acțiunea câmpului electric, opusă sensului convențional al curentului. Ea se suprapune peste mișcarea dezordonată. Barele A și B reprezintă contactele de conectare a firului la circuit. Animația este schematică: viteza electronilor este amplificată pentru vizibilitate.</p>\n          <SectionHeading');
+
   code=replace(code,'const [animate, setAnimate] = useState(true);','const [animate, setAnimate] = useState(false);\n  const [restart,setRestart]=useState(0);\n  useEffect(()=>{const stop=()=>{if(document.hidden)setAnimate(false);};const section=e=>{if(e.detail!=="laborator")setAnimate(false);};document.addEventListener("visibilitychange",stop);window.addEventListener("praxis-wire-section",section);return()=>{document.removeEventListener("visibilitychange",stop);window.removeEventListener("praxis-wire-section",section);};},[]);');
   code=replace(code,'}, [animate]);','}, [animate, restart]);');
   code=code.replaceAll('setSweep(0);','sweepRef.current=0;setSweep(0);setRestart(v=>v+1);');
-  code=replace(code,'        <Reveal>\n          <SectionHeading','        <details className="wire-guide"><summary>Ghidul experimentului</summary><Reveal>\n          <SectionHeading');
+  code=replace(code,'        <Reveal><p className="wire-science-note">','        <details className="wire-guide"><summary>Ghidul experimentului</summary><Reveal><p className="wire-science-note">');
   code=replace(code,'        </Reveal>\n\n        <Reveal className="lab-shell"','        </Reveal></details>\n\n        <Reveal className="lab-shell"');
   const presetStart=code.indexOf('            <div className="lab-presets"'),presetEnd=code.indexOf('            <div className="lab-playback">',presetStart);
   if(presetStart<0||presetEnd<0)throw Error('Wire preset markup changed');
@@ -42,6 +51,7 @@ export function adaptWire(code,name){
 
  }
  if(name.endsWith('WireCanvas.tsx')){
+  code=code.replace('e⁻ · deriva electronilor','e⁻ · mișcare ordonată');
   code=replace(code,'const { theme } = useTheme();','const { theme, language } = useTheme();');
   code=replace(code,'    frame = window.requestAnimationFrame(tick);\n    return () => window.cancelAnimationFrame(frame);','    const visibility=()=>{window.cancelAnimationFrame(frame);last=performance.now();if(!document.hidden&&canvas.checkVisibility())frame=window.requestAnimationFrame(tick);};\n    const observer=new IntersectionObserver(visibility);observer.observe(canvas);document.addEventListener("visibilitychange",visibility);visibility();\n    return () => {window.cancelAnimationFrame(frame);observer.disconnect();document.removeEventListener("visibilitychange",visibility);};');
   code=replace(code,'      const delta = Math.min','      if(document.hidden||!canvas.checkVisibility())return;\n      const delta = Math.min');
@@ -59,7 +69,7 @@ export function adaptWire(code,name){
   code=replace(code,'    theme,','    theme, language,');
   code=replace(code,'role="img"','role="slider" tabIndex={0} aria-valuemin={0} aria-valuemax={20} aria-valuenow={current} onKeyDown={event=>{if(["ArrowLeft","ArrowDown","ArrowRight","ArrowUp","Home","End"].includes(event.key)){event.preventDefault();onCurrent(event.key==="Home"?0:event.key==="End"?20:clamp(current+(["ArrowRight","ArrowUp"].includes(event.key)?.1:-.1),0,20));}}}');
  }
- if(/(?:WireCanvas|IuChart)\.tsx$/.test(name))code=code.replace(/\b(10|11)px /g,'12px ');
+ if(/(?:WireCanvas|IuChart)\.tsx$/.test(name)){code=code.replace(/\b(10|11)px /g,'12px ');code=code.replaceAll('#83939b','#586d63').replaceAll('#7d919b','#b9c8c2');}
  return code;
 }
 const plugin={name:'wire-adaptation',setup(b){
@@ -73,6 +83,7 @@ await mkdir(output,{recursive:true});
 await build({entryPoints:[path.join(adapt,'entry.jsx')],outfile:path.join(output,'app.js'),bundle:true,minify:true,format:'iife',jsx:'transform',jsxFactory:'PraxisElement',jsxFragment:'PraxisFragment',inject:[path.join(adapt,'runtime.jsx')],define:{'process.env.NODE_ENV':'"production"'},plugins:[plugin],legalComments:'eof'});
 await build({stdin:{contents:adaptWire((await readFile(path.join(source,'lib/resistance.ts'),'utf8')).replaceAll('\r\n','\n'),'resistance.ts'),loader:'ts',resolveDir:source},outfile:path.join(output,'physics.mjs'),format:'esm'});
 let css='';for(const file of ['globals','theory','lab','factor','comparison','calculator','quiz','resources'])css+='\n'+await readFile(path.join(source,'app',file+'.css'),'utf8');
+css=css.replace(/font-size:\s*(0?\.\d+)rem/g,(declaration,size)=>Number(size)<.8125?'font-size: .8125rem':declaration);
 css=css.replace(/:root/g,':scope').replace(/\[data-theme="dark"\]/g,':scope:where([data-theme="dark"])').replace(/html\s*\{/g,':scope {').replace(/body\s*\{/g,':scope {');
 await write('public/shared/wire-source.css','@scope (#wire-root) {\n'+css+'\n}\n');
 await cp(path.join(root,'public/simulari/calorimetrie/vendor/katex'),path.join(output,'vendor/katex'),{recursive:true});

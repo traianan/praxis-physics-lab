@@ -332,7 +332,7 @@ samp {
   align-items: center;
   gap: 0.5rem;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -465,7 +465,7 @@ samp {
   border-radius: 999px;
   background: var(--surface-2);
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
@@ -549,7 +549,7 @@ samp {
 .card-kicker {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -693,7 +693,7 @@ samp {
 .brand-copy small {
   margin-top: 0.16rem;
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -759,7 +759,7 @@ samp {
   border-radius: 999px;
   background: var(--surface);
   color: var(--muted);
-  font-size: 0.74rem;
+  font-size: .8125rem;
   font-weight: 650;
   transition:
     background 160ms ease,
@@ -785,7 +785,7 @@ samp {
 }
 
 .nav-tool-label {
-  font-size: 0.72rem;
+  font-size: .8125rem;
 }
 
 .theme-dark-only {
@@ -809,7 +809,7 @@ samp {
   border-radius: 999px;
   background: var(--button-primary-bg);
   color: var(--button-primary-text);
-  font-size: 0.77rem;
+  font-size: .8125rem;
   font-weight: 700;
   transition:
     transform 160ms ease,
@@ -915,7 +915,7 @@ samp {
   gap: 0.7rem;
   margin-bottom: 1.4rem;
   color: rgba(246, 244, 239, 0.62);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 650;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -934,7 +934,7 @@ samp {
   background: rgba(217, 162, 74, 0.1);
   color: var(--brass);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
 }
 
@@ -1028,7 +1028,7 @@ samp {
 .hero-stat span:last-child {
   margin-top: 0.1rem;
   color: rgba(246, 244, 239, 0.48);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   letter-spacing: 0.02em;
 }
 
@@ -1079,7 +1079,7 @@ samp {
   background: rgba(6, 16, 22, 0.62);
   backdrop-filter: blur(10px);
   color: rgba(246, 244, 239, 0.78);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1104,7 +1104,7 @@ samp {
   margin-top: 0.6rem;
   padding-left: 6%;
   color: rgba(246, 244, 239, 0.4);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -1125,7 +1125,7 @@ samp {
   gap: 0.55rem;
   transform: translateX(-50%);
   color: rgba(246, 244, 239, 0.38);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   transition: color 160ms ease;
@@ -1176,7 +1176,7 @@ samp {
   gap: 0.7rem;
   margin-bottom: 0.9rem;
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1193,7 +1193,7 @@ samp {
   border-radius: 999px;
   color: var(--copper-strong);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
 }
 
@@ -1232,7 +1232,7 @@ samp {
   border-radius: 999px;
   background: var(--copper-soft);
   color: var(--ink);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   font-weight: 650;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1257,7 +1257,7 @@ samp {
   justify-content: space-between;
   gap: 0.6rem;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   font-weight: 650;
 }
 
@@ -1279,13 +1279,13 @@ samp {
 .field-value small {
   color: var(--muted-2);
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
 .field-hint {
   color: var(--muted-2);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   line-height: 1.45;
 }
 
@@ -1405,7 +1405,7 @@ select {
   top: 50%;
   transform: translateY(-50%);
   color: var(--muted-2);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   font-weight: 600;
   pointer-events: none;
 }
@@ -1428,7 +1428,7 @@ select {
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: .8125rem;
   font-weight: 650;
   white-space: nowrap;
   transition:
@@ -1484,7 +1484,7 @@ td:first-child {
 th {
   background: var(--surface-2);
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1534,7 +1534,7 @@ th.num {
   background: var(--copper);
   color: #fffdf9;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 700;
 }
 
@@ -1606,7 +1606,7 @@ th.num {
 
 .footer-brand span {
   color: var(--muted-2);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -1619,7 +1619,7 @@ th.num {
 
 .footer-links a {
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: .8125rem;
   transition: color 160ms ease;
 }
 
@@ -1636,7 +1636,7 @@ th.num {
   flex-direction: column;
   gap: 0.35rem;
   color: var(--muted-2);
-  font-size: 0.72rem;
+  font-size: .8125rem;
 }
 
 .footer-meta span {
@@ -1655,7 +1655,7 @@ th.num {
   gap: 0.4rem;
   align-self: center;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   font-weight: 650;
   transition: color 160ms ease;
 }
@@ -1763,7 +1763,7 @@ th.num {
     width: 28px;
     color: var(--copper);
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: .8125rem;
   }
 
   .mobile-menu-note {
@@ -1773,7 +1773,7 @@ th.num {
     margin-top: 1.5rem;
     color: var(--muted-2);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: .8125rem;
   }
 }
 
@@ -1851,7 +1851,7 @@ th.num {
   }
 
   .hero-kicker {
-    font-size: 0.62rem;
+    font-size: .8125rem;
     letter-spacing: 0.1em;
   }
 
@@ -1882,7 +1882,7 @@ th.num {
   }
 
   .hero-stat span:last-child {
-    font-size: 0.72rem;
+    font-size: .8125rem;
   }
 
   .hero-visual {
@@ -1895,7 +1895,7 @@ th.num {
 
   .hero-visual-caption {
     padding-left: 0;
-    font-size: 0.6rem;
+    font-size: .8125rem;
   }
 
   .section-heading {
@@ -2073,7 +2073,7 @@ th.num {
 
 .law-panel-meta strong {
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1.35;
 }
@@ -2086,7 +2086,7 @@ th.num {
   padding-top: 0.7rem;
   border-top: 1px dashed var(--line-strong);
   color: var(--muted-2);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   line-height: 1.4;
 }
 
@@ -2153,7 +2153,7 @@ th.num {
   border-radius: 999px;
   background: var(--surface-2);
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: .8125rem;
 }
 
 .analogy-map b {
@@ -2292,14 +2292,14 @@ th.num {
   margin-top: 0.15rem;
   color: var(--factor-color);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
 .factor-card p {
   margin-top: 0.5rem;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   line-height: 1.62;
 }
 
@@ -2348,7 +2348,7 @@ th.num {
 }
 
 .theory-compare-table table {
-  font-size: 0.78rem;
+  font-size: .8125rem;
 }
 
 .theory-compare-table td {
@@ -2364,7 +2364,7 @@ th.num {
   border-top: 1px solid var(--line);
   background: var(--surface-2);
   color: var(--muted-2);
-  font-size: 0.68rem;
+  font-size: .8125rem;
 }
 
 .theory-link-row {
@@ -2476,7 +2476,7 @@ th.num {
   border-radius: 10px;
   background: transparent;
   color: var(--muted);
-  font-size: 0.73rem;
+  font-size: .8125rem;
   font-weight: 650;
   line-height: 1;
   transition:
@@ -2501,7 +2501,7 @@ th.num {
 .lab-preset small {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.56rem;
+  font-size: .8125rem;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -2565,7 +2565,7 @@ th.num {
   gap: 0.45rem;
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -2605,7 +2605,7 @@ th.num {
 .lab-stage-head p {
   margin-top: 0.25rem;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   line-height: 1.45;
 }
 
@@ -2624,7 +2624,7 @@ th.num {
   padding: 0.24rem 0.6rem;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-size: 0.64rem;
+  font-size: .8125rem;
   font-weight: 650;
   white-space: nowrap;
   transition:
@@ -2704,7 +2704,7 @@ th.num {
   border-radius: 999px;
   background: var(--surface-glass);
   color: var(--muted-2);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   pointer-events: none;
   backdrop-filter: blur(6px);
 }
@@ -2724,7 +2724,7 @@ th.num {
 .lab-timeline-label {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
@@ -2733,7 +2733,7 @@ th.num {
   min-width: 34px;
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
@@ -2744,7 +2744,7 @@ th.num {
   gap: 0.35rem 0.85rem;
   margin-top: 0.55rem;
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .lab-legend span {
@@ -2854,7 +2854,7 @@ th.num {
   justify-content: space-between;
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.54rem;
+  font-size: .8125rem;
   letter-spacing: 0.04em;
 }
 
@@ -2863,7 +2863,7 @@ th.num {
   padding-top: 0.45rem;
   border-top: 1px dashed var(--line-strong);
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   line-height: 1.45;
 }
 
@@ -2928,7 +2928,7 @@ th.num {
   border-radius: 999px;
   background: var(--surface-glass);
   color: var(--muted-2);
-  font-size: 0.56rem;
+  font-size: .8125rem;
   pointer-events: none;
   backdrop-filter: blur(6px);
 }
@@ -2945,7 +2945,7 @@ th.num {
   padding-top: 0.5rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: .8125rem;
 }
 
 .iu-values b {
@@ -2973,7 +2973,7 @@ th.num {
 }
 
 .lab-material-field select {
-  font-size: 0.8rem;
+  font-size: .8125rem;
 }
 
 .lab-control-actions {
@@ -2994,7 +2994,7 @@ th.num {
   gap: 0.35rem;
   margin-left: auto;
   color: var(--copper-strong);
-  font-size: 0.75rem;
+  font-size: .8125rem;
   font-weight: 650;
   transition: gap 160ms ease;
 }
@@ -3038,7 +3038,7 @@ th.num {
   background: var(--surface-2);
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   font-weight: 600;
   transition:
     background 150ms ease,
@@ -3064,7 +3064,7 @@ th.num {
 .lab-quick-gauge-note {
   margin-left: auto;
   color: var(--muted-2);
-  font-size: 0.6rem;
+  font-size: .8125rem;
 }
 
 .lab-status {
@@ -3095,7 +3095,7 @@ th.num {
 
 .lab-status-item strong {
   color: var(--ink);
-  font-size: 0.74rem;
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1.35;
 }
@@ -3103,7 +3103,7 @@ th.num {
 .lab-status-item em {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-style: normal;
 }
 
@@ -3215,7 +3215,7 @@ th.num {
   }
 
   .lab-timeline-label {
-    font-size: 0.52rem;
+    font-size: .8125rem;
   }
 
   .lab-status {
@@ -3263,7 +3263,7 @@ th.num {
   border-radius: 10px;
   background: transparent;
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: .8125rem;
   font-weight: 650;
   transition:
     background 160ms ease,
@@ -3372,7 +3372,7 @@ th.num {
 .factor-hint {
   margin-top: 0.1rem;
   color: var(--muted-2);
-  font-size: 0.7rem;
+  font-size: .8125rem;
 }
 
 .factor-side {
@@ -3401,7 +3401,7 @@ th.num {
 .factor-explanation p {
   margin-top: 0.5rem;
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: .8125rem;
   line-height: 1.65;
 }
 
@@ -3412,7 +3412,7 @@ th.num {
   background: var(--surface);
   color: var(--ink) !important;
   font-family: var(--font-mono);
-  font-size: 0.72rem !important;
+  font-size: .8125rem !important;
   font-variant-numeric: tabular-nums;
 }
 
@@ -3442,13 +3442,13 @@ th.num {
 .factor-compare span {
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: .8125rem;
 }
 
 .factor-compare b {
   color: var(--ink-strong);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
@@ -3479,14 +3479,14 @@ th.num {
   display: flex;
   flex-direction: column;
   color: var(--muted-2);
-  font-size: 0.6rem;
+  font-size: .8125rem;
   line-height: 1.35;
 }
 
 .factor-meta-card b {
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
@@ -3535,7 +3535,7 @@ th.num {
 .factor-experiment-index {
   color: var(--copper);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   letter-spacing: 0.08em;
 }
 
@@ -3559,7 +3559,7 @@ th.num {
   background: var(--surface-2);
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: .8125rem;
 }
 
 .factor-experiment-value {
@@ -3579,7 +3579,7 @@ th.num {
 
 .factor-experiment-value span {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
@@ -3594,7 +3594,7 @@ th.num {
 .factor-experiment p {
   margin-top: 0.4rem;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   line-height: 1.55;
 }
 
@@ -3760,7 +3760,7 @@ th.num {
   border-radius: 999px;
   background: transparent;
   color: rgba(246, 244, 239, 0.6);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 650;
   white-space: nowrap;
   transition:
@@ -3780,7 +3780,7 @@ th.num {
 .materials-unit {
   color: rgba(246, 244, 239, 0.44);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   letter-spacing: 0.04em;
 }
 
@@ -3800,7 +3800,7 @@ th.num {
   border-radius: 10px;
   background: transparent;
   color: rgba(246, 244, 239, 0.78);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   text-align: left;
   transition:
     background 160ms ease,
@@ -3813,7 +3813,7 @@ th.num {
   border-radius: 0;
   color: rgba(246, 244, 239, 0.42);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -3860,14 +3860,14 @@ th.num {
 .materials-name em {
   color: rgba(246, 244, 239, 0.45);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: .8125rem;
   font-style: normal;
 }
 
 .materials-name small {
   overflow: hidden;
   color: rgba(246, 244, 239, 0.42);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -3877,7 +3877,7 @@ th.num {
 .materials-density {
   color: rgba(246, 244, 239, 0.72);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-variant-numeric: tabular-nums;
 }
 
@@ -3911,7 +3911,7 @@ th.num {
   min-width: 62px;
   color: #f6f4ef;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   text-align: right;
@@ -3956,7 +3956,7 @@ th.num {
 .materials-detail-head h3 em {
   color: rgba(246, 244, 239, 0.45);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   font-style: normal;
 }
 
@@ -3994,7 +3994,7 @@ th.num {
 
 .materials-compare-grid .card-kicker {
   color: rgba(246, 244, 239, 0.42);
-  font-size: 0.56rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
   text-transform: none;
 }
@@ -4010,7 +4010,7 @@ th.num {
 
 .materials-compare-grid small {
   color: rgba(246, 244, 239, 0.5);
-  font-size: 0.62rem;
+  font-size: .8125rem;
   line-height: 1.4;
 }
 
@@ -4030,7 +4030,7 @@ th.num {
 .materials-detail-note {
   margin-top: 0.8rem;
   color: rgba(246, 244, 239, 0.58);
-  font-size: 0.8rem;
+  font-size: .8125rem;
   line-height: 1.65;
 }
 
@@ -4079,7 +4079,7 @@ th.num {
 .materials-card p {
   margin-top: 0.4rem;
   color: rgba(246, 244, 239, 0.55);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -4088,7 +4088,7 @@ th.num {
   padding-top: 0.6rem;
   color: rgba(143, 211, 182, 0.8);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: .8125rem;
 }
 
 .materials-card-warn .materials-card-icon {
@@ -4212,7 +4212,7 @@ th.num {
   padding-top: 0.8rem;
   border-top: 1px dashed var(--line-strong);
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: .8125rem;
 }
 
 .calc-form-foot strong {
@@ -4261,7 +4261,7 @@ th.num {
 .calc-result-label {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: .8125rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -4278,7 +4278,7 @@ th.num {
 
 .calc-result-card small {
   color: var(--muted-2);
-  font-size: 0.64rem;
+  font-size: .8125rem;
   line-height: 1.4;
 }
 
@@ -4312,7 +4312,7 @@ th.num {
 .calc-state-tag {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.56rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -4327,7 +4327,7 @@ th.num {
 
 .calc-state span:last-child {
   color: var(--muted);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .calc-state-arrow {
@@ -4362,7 +4362,7 @@ th.num {
 .calc-balance > span {
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   text-align: right;
 }
 
@@ -4375,7 +4375,7 @@ th.num {
 
 .calc-actions-note {
   color: var(--muted-2);
-  font-size: 0.64rem;
+  font-size: .8125rem;
 }
 
 /* --------------------------------- steps --------------------------------- */
@@ -4431,7 +4431,7 @@ th.num {
   flex: 0 0 auto;
   color: var(--copper);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -4462,7 +4462,7 @@ th.num {
 
 .calc-step p {
   color: var(--muted);
-  font-size: 0.74rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -4485,7 +4485,7 @@ th.num {
 }
 
 .calc-table-wrap table {
-  font-size: 0.78rem;
+  font-size: .8125rem;
 }
 
 .calc-table-wrap tr.is-current td {
@@ -4505,7 +4505,7 @@ th.num {
 .calc-compare-note {
   margin-top: 0.6rem;
   color: var(--muted-2);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   line-height: 1.5;
 }
 
@@ -4612,7 +4612,7 @@ th.num {
 
 .quiz-score-box > span {
   color: var(--muted-2);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -4629,7 +4629,7 @@ th.num {
 .quiz-score-box small {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .quiz-progress-wrap {
@@ -4657,7 +4657,7 @@ th.num {
   display: flex;
   justify-content: space-between;
   color: var(--muted-2);
-  font-size: 0.56rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -4678,7 +4678,7 @@ th.num {
 
 .quiz-counter span {
   color: var(--muted-2);
-  font-size: 0.65rem;
+  font-size: .8125rem;
 }
 
 .quiz-:scope {
@@ -4695,7 +4695,7 @@ th.num {
 .quiz-number {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: .8125rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -4772,7 +4772,7 @@ th.num {
   background: var(--surface);
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
@@ -4853,7 +4853,7 @@ th.num {
 .quiz-feedback p {
   margin-top: 0.3rem;
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -4865,7 +4865,7 @@ th.num {
   background: var(--surface);
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: .8125rem;
 }
 
 .quiz-actions {
@@ -4892,7 +4892,7 @@ th.num {
   border: 0;
   background: transparent;
   color: var(--muted-2);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 600;
 }
 
@@ -4952,7 +4952,7 @@ th.num {
 
 .quiz-result-badge span {
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .quiz-result h3 {
@@ -5006,14 +5006,14 @@ th.num {
 
 .quiz-review-item strong {
   color: var(--ink);
-  font-size: 0.7rem;
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1.35;
 }
 
 .quiz-review-item span {
   color: var(--muted-2);
-  font-size: 0.62rem;
+  font-size: .8125rem;
 }
 
 .quiz-result-actions {
@@ -5155,7 +5155,7 @@ th.num {
   flex: 0 0 auto;
   color: var(--copper);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: .8125rem;
   font-weight: 700;
 }
 
@@ -5170,7 +5170,7 @@ th.num {
 .lesson-step p {
   margin-top: 0.2rem;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -5189,7 +5189,7 @@ th.num {
   align-items: center;
   gap: 0.35rem;
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: .8125rem;
   font-weight: 650;
   transition: color 160ms ease;
 }
@@ -5245,7 +5245,7 @@ th.num {
   background: var(--copper-soft);
   color: var(--copper-strong);
   font-family: var(--font-mono);
-  font-size: 0.56rem;
+  font-size: .8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -5265,14 +5265,14 @@ th.num {
 .resource-link p {
   margin-top: 0.3rem;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: .8125rem;
   line-height: 1.55;
 }
 
 .resource-footnote {
   margin-top: 0.8rem;
   color: var(--muted-2);
-  font-size: 0.66rem;
+  font-size: .8125rem;
   line-height: 1.5;
 }
 
@@ -5324,7 +5324,7 @@ th.num {
 .recap-formula > span {
   color: var(--muted-2);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: .8125rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -5358,7 +5358,7 @@ th.num {
 .recap-materials span {
   color: var(--copper-strong);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: .8125rem;
   font-weight: 700;
 }
 
@@ -5377,12 +5377,12 @@ th.num {
 
 .recap-materials small {
   color: var(--muted-2);
-  font-size: 0.56rem;
+  font-size: .8125rem;
 }
 
 .recap-materials p {
   color: var(--muted-2);
-  font-size: 0.66rem;
+  font-size: .8125rem;
   line-height: 1.5;
 }
 
@@ -5394,7 +5394,7 @@ th.num {
   padding-top: 0.8rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
