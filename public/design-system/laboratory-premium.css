@@ -223,3 +223,13 @@ body[data-praxis-laboratory] .ex-badge{color:#fffefa}
 body[data-praxis-course="transformari-stare-agregare"] #praxis-original table thead th{color:#435a50}
 body[data-praxis-course="miscarea-circulara-uniforma"] button .opacity-50{opacity:1}
 .mcu-math-text .wave-math-item:focus-visible{outline:3px solid var(--praxis-color-focus);outline-offset:3px}
+/* Keep each quantity and its reading together above the full-width slider. */
+body[data-praxis-laboratory] #praxis-original label:has(>output){justify-content:flex-start;column-gap:.5rem}
+body[data-praxis-laboratory] #praxis-original label:has(>.praxis-range-stepper){justify-content:flex-start;column-gap:.5rem}
+body[data-praxis-laboratory] #praxis-original label:has(>.praxis-range-stepper)>span:not(.praxis-range-stepper){margin-inline-start:0}
+body[data-praxis-laboratory] #praxis-original .wave-range-label-title{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:flex-start;gap:.25rem .5rem}
+body[data-praxis-laboratory] #praxis-original label>output{margin-inline:0;text-align:start;white-space:nowrap}
+body[data-praxis-laboratory] #praxis-original .sl:has(>.praxis-range-stepper):has(>output){grid-template-columns:fit-content(60%) minmax(0,1fr);gap:4px 8px}
+body[data-praxis-laboratory] #praxis-original .sl:has(>.praxis-range-stepper)>span:first-child{grid-column:1;grid-row:1}
+body[data-praxis-laboratory] #praxis-original .sl:has(>.praxis-range-stepper)>output{grid-column:2;grid-row:1;justify-self:start;width:auto;min-width:0;text-align:start}
+body[data-praxis-laboratory] #praxis-original .sl:has(>output)>.praxis-range-stepper{grid-column:1/-1;grid-row:2}

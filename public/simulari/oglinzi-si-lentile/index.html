@@ -815,12 +815,14 @@ window.PraxisLabWorkspaceConfig={"condensatorul":{"workspaces":[{"selector":".la
   if(sectionNav)sectionNav.setAttribute('aria-label',en?'Laboratory section selector':'Selectorul secțiunilor laboratorului');
   document.querySelectorAll('#praxis-original header.hero').forEach(el=>el.setAttribute('role','presentation'));
   if(id==='calcul-vectorial'){
+   document.querySelectorAll('#praxis-original section.hero').forEach(el=>{el.setAttribute('role','region');el.setAttribute('aria-label',en?'Introduction':'Introducere');});
    document.querySelectorAll('input[data-c]').forEach(el=>{const key=el.dataset.c;el.setAttribute('aria-label',key==='k'?'k':en?`Vector ${key[0]}, component ${key[1]}`:`Vector ${key[0]}, componenta ${key[1]}`);});
    document.querySelectorAll('button[data-act="reset"]').forEach(el=>{if(!el.textContent.trim())el.setAttribute('aria-label',en?'Reset':'Resetează');});
    document.querySelectorAll('[data-i]>h4').forEach(el=>el.setAttribute('aria-level','3'));
   }
   if(id==='viteza-si-acceleratia'){
    document.querySelectorAll('.control-group h4').forEach(el=>el.setAttribute('aria-level','3'));
+   document.querySelectorAll('aside>.control-group:first-child>h4').forEach(el=>el.setAttribute('aria-level','2'));
    const mode=document.getElementById('curv-mode-select'),heading=mode?.parentElement.querySelector('h4');
    if(mode&&heading){heading.id='curvilinear-mode-heading';mode.setAttribute('aria-labelledby',heading.id);}
   }
@@ -1498,8 +1500,8 @@ body[data-praxis-course=miscarea-rectilinie] #praxis-original>.top{display:none}
 :root:not([data-board=true]) body[data-praxis-laboratory] :is(select,input[type=number],input[type=text],textarea){background:var(--praxis-color-surface);color:var(--praxis-color-ink);border:1px solid var(--praxis-color-border);padding:8px 10px;max-width:100%}
 :root:not([data-board=true]) body[data-praxis-laboratory] :is(label,.control-label){font-family:var(--praxis-font-ui)!important;font-size:var(--praxis-text-label)!important;line-height:1.5!important}
 body[data-praxis-laboratory] input[type=range]{appearance:none!important;-webkit-appearance:none!important;height:var(--praxis-control-height)!important;min-height:var(--praxis-control-height)!important;background:transparent!important;border:0!important;padding:0;cursor:pointer;accent-color:var(--praxis-color-primary);touch-action:pan-y}
-body[data-praxis-laboratory] input[type=range]::-webkit-slider-runnable-track{height:var(--praxis-slider-track)!important;border:0!important;border-radius:4px;background:var(--praxis-color-border)!important}
-body[data-praxis-laboratory] input[type=range]::-moz-range-track{height:var(--praxis-slider-track)!important;border:0!important;border-radius:4px;background:var(--praxis-color-border)!important}
+body[data-praxis-laboratory] input[type=range]::-webkit-slider-runnable-track{height:var(--praxis-slider-track)!important;border:0!important;border-radius:4px;background:#698478!important}
+body[data-praxis-laboratory] input[type=range]::-moz-range-track{height:var(--praxis-slider-track)!important;border:0!important;border-radius:4px;background:#698478!important}
 body[data-praxis-laboratory] input[type=range]::-webkit-slider-thumb{appearance:none!important;-webkit-appearance:none!important;width:var(--praxis-slider-thumb)!important;height:var(--praxis-slider-thumb)!important;margin-top:calc((var(--praxis-slider-track) - var(--praxis-slider-thumb))/2)!important;border:2px solid var(--praxis-color-primary)!important;border-radius:50%!important;background:var(--praxis-color-surface)!important;box-shadow:none!important}
 body[data-praxis-laboratory] input[type=range]::-moz-range-thumb{width:var(--praxis-slider-thumb)!important;height:var(--praxis-slider-thumb)!important;border:2px solid var(--praxis-color-primary)!important;border-radius:50%!important;background:var(--praxis-color-surface)!important;box-shadow:none!important}
 body[data-praxis-laboratory] .praxis-range-stepper button,body[data-praxis-laboratory] .range-step-button{min-width:var(--praxis-control-height)!important;background:var(--praxis-color-surface)!important;border:1px solid var(--praxis-color-border)!important;color:var(--praxis-color-primary)!important}
@@ -1751,9 +1753,19 @@ body[data-praxis-course="unde-mecanice"] #root .text-emerald-600{color:var(--pra
 body[data-praxis-course="unde-mecanice"] #root .text-amber-600{color:var(--praxis-science-orange)}
 [data-accessible-scroll]:focus-visible{outline:3px solid var(--praxis-color-focus);outline-offset:3px}
 body[data-praxis-laboratory] .ex-badge{color:#fffefa}
-body[data-praxis-course="transformari-stare-agregare"] th{color:#435a50}
+body[data-praxis-course="transformari-stare-agregare"] #praxis-original table thead th{color:#435a50}
 body[data-praxis-course="miscarea-circulara-uniforma"] button .opacity-50{opacity:1}
 .mcu-math-text .wave-math-item:focus-visible{outline:3px solid var(--praxis-color-focus);outline-offset:3px}
+/* Keep each quantity and its reading together above the full-width slider. */
+body[data-praxis-laboratory] #praxis-original label:has(>output){justify-content:flex-start;column-gap:.5rem}
+body[data-praxis-laboratory] #praxis-original label:has(>.praxis-range-stepper){justify-content:flex-start;column-gap:.5rem}
+body[data-praxis-laboratory] #praxis-original label:has(>.praxis-range-stepper)>span:not(.praxis-range-stepper){margin-inline-start:0}
+body[data-praxis-laboratory] #praxis-original .wave-range-label-title{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:flex-start;gap:.25rem .5rem}
+body[data-praxis-laboratory] #praxis-original label>output{margin-inline:0;text-align:start;white-space:nowrap}
+body[data-praxis-laboratory] #praxis-original .sl:has(>.praxis-range-stepper):has(>output){grid-template-columns:fit-content(60%) minmax(0,1fr);gap:4px 8px}
+body[data-praxis-laboratory] #praxis-original .sl:has(>.praxis-range-stepper)>span:first-child{grid-column:1;grid-row:1}
+body[data-praxis-laboratory] #praxis-original .sl:has(>.praxis-range-stepper)>output{grid-column:2;grid-row:1;justify-self:start;width:auto;min-width:0;text-align:start}
+body[data-praxis-laboratory] #praxis-original .sl:has(>output)>.praxis-range-stepper{grid-column:1/-1;grid-row:2}
 
 /* /praxis:lab-discovery */
 

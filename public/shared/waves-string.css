@@ -44,7 +44,7 @@ html.dark .wave-string{--string-incident:#93c5fd;--string-reflected:#fcd34d;--st
 .string-explanation>summary{min-height:44px;box-sizing:border-box;padding:.5rem 0;font-size:1rem;line-height:1.4;cursor:pointer;}
 .string-controls :focus-visible,.string-actions :focus-visible,.string-diagram-scroll:focus-visible{outline:3px solid var(--string-sum);outline-offset:2px;}
 @container(min-width:56rem){.string-layout{grid-template-columns:minmax(0,1.6fr) minmax(17rem,1fr);gap:.9rem;}.string-visual{grid-column:1;grid-row:1;}.string-controls{grid-column:2;grid-row:1;grid-template-columns:repeat(2,minmax(0,1fr));gap:.2rem .6rem;}.string-controls>label{grid-column:1 / -1;}.string-controls>label:first-child{grid-column:1;grid-row:1;}.string-controls>label:nth-child(5):has(input[max="6"]){grid-column:2;grid-row:1;}.string-controls>.string-actions{grid-column:1 / -1;}}
-@container(min-width:56rem){[data-string-kind=reflection] .string-controls>label:nth-child(2){grid-column:2;grid-row:1;}}
+@container(min-width:56rem){.string-controls>label:first-child,.string-controls>label:nth-child(5):has(input[max="6"]){grid-column:1/-1;grid-row:auto;}}
 #stationare .lesson-part-content>h4{display:none;}
 @container(max-width:33rem){.string-controls{grid-template-columns:minmax(0,1fr);}.string-actions{gap:.5rem;}.string-actions button{flex:1;}}
 @media(prefers-contrast:more){.string-incident,.string-reflected{stroke-width:3;}.string-sum{stroke-width:4;}}

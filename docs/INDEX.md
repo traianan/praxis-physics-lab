@@ -15,6 +15,7 @@
 - [Audit general, 6 noiembrie 2026](AUDIT_GENERAL_2026-11-06.md) — constatări istorice, nu instrucțiuni de produs.
 - [Remedieri și verificări](IMBUNATATIRI_AUDIT_2026-11-06.md).
 - [Accesibilitate, 7 noiembrie 2026](ACCESIBILITATE_2026-11-07.md) — acoperire, remedieri și limitele verificărilor.
+- [Slidere și etichete numerice, 7 noiembrie 2026](CONTROALE_LABORATOARE_2026-11-07.md) — remedieri și verificări reproductibile.
 - [Curățarea fișierelor temporare și redundante](CURATARE_PROIECT_2026-11-06.md).
 
 ## Rapoarte istorice și proveniență

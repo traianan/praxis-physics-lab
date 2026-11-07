@@ -1,5 +1,5 @@
 /* Section/activity navigation only: never submit, export or start sound. */
-window.PraxisAccessibilityWalk=async(scan)=>{
+window.PraxisAccessibilityWalk=async(scan,{settleMs=550}={})=>{
  const groupSelector='[role="tablist"],.praxis-workspace-activities,.praxis-lab-nav .tabs,.praxis-lab-nav .module-tabs,#praxis-original .tabs,#praxis-original .mode-tabs,#praxis-original .lab-nav,#praxis-original .lesson-tabs,#praxis-original .lesson-topics,#praxis-original .lesson-parts,#optic-choices';
  const selectSelector='.praxis-course-sections,select[data-workspace-activity],select[data-activity],.wave-group-choice select,.wave-part-choice select';
  const visible=e=>e.isConnected&&e.checkVisibility()&&!e.closest('[hidden],[inert]');
@@ -11,7 +11,7 @@ window.PraxisAccessibilityWalk=async(scan)=>{
  const selectKey=e=>nodeKey(e)+'|'+[...e.options].map(o=>o.value).join('~');
  const visited=new Set(),pending=new Map(),errors=[];let states=0;
  const initialWaveGroup=document.querySelector('.wave-group-choice select')?.selectedOptions[0]?.textContent.trim();
- const capture=async route=>{await new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,550)));await scan(route);states++;};
+ const capture=async route=>{await new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,settleMs)));await scan(route);states++;};
  async function walk(path=[],ancestors=new Set()){
   const lists=[...groups().map(g=>({key:signature(g),kind:'buttons',targets:buttons(g).map(e=>({key:e.id||label(e),label:label(e)}))})),...[...document.querySelectorAll(selectSelector)].filter(visible).map(e=>({key:selectKey(e),kind:'select',targets:[...e.options].filter(o=>!o.disabled).map(o=>({key:o.value,label:o.textContent.trim()}))}))];
   for(const list of lists){if(ancestors.has(list.key))continue;

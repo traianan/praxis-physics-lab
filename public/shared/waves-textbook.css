@@ -89,7 +89,7 @@ body[data-praxis-course=unde-mecanice] .wave-textbook-experiment [data-wave-role
 .wave-water-body>*{min-width:0}
 .wave-water-orbit-note{font-size:.875rem;line-height:1.4;margin:.35rem 0 0;color:var(--ink,#173c50)}
 body[data-praxis-course=unde-mecanice] .wave-water-body [hidden]{display:none!important}
-body[data-praxis-course=unde-mecanice] .wave-water-controls>.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+body[data-praxis-course=unde-mecanice] .wave-water-controls>.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr))!important;gap:8px!important}
 .wave-water-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:start}
 .wave-water-results>div{margin:0!important}
 body[data-praxis-course=unde-mecanice] .wave-water-results>div{padding:8px!important;row-gap:4px}

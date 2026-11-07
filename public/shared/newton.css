@@ -13,11 +13,11 @@ body[data-praxis-course="principiile-mecanicii-newtoniene"] *,body[data-praxis-c
 .newton-stage [data-hooke-force]>path[fill]:not([fill=none]){stroke:#f1f6f4;stroke-width:2;paint-order:stroke fill}
 .newton-stage [data-newton-force=normal]>path[stroke]{stroke-width:3}
 .newton-stage [data-newton-force]>path[fill]:not([fill=none]){stroke:#f1f6f4;stroke-width:2;paint-order:stroke fill}
-.newton-controls{padding:.75rem;background:#f7faf7;border:1px solid var(--praxis-color-border);border-radius:7px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:.5rem .75rem}
+.newton-controls{padding:.75rem;background:#f7faf7;border:1px solid var(--praxis-color-border);border-radius:7px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));align-content:start;gap:.5rem .75rem}
 .newton-controls>.newton-actions,.newton-controls>.newton-readout,.newton-controls>label:has(input[type=checkbox]){grid-column:1/-1}
 .newton-demo:not([data-lab=hooke]) .newton-stage svg{max-height:18rem}
 .newton-demo[data-lab=newton2] .newton-stage svg{min-height:0}
-.newton-controls label{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}.newton-controls output{margin-left:auto;font-variant-numeric:tabular-nums}.newton-controls input[type=range]{width:100%;min-width:0}
+.newton-controls label{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}.newton-controls output{margin-left:0;white-space:nowrap;font-variant-numeric:tabular-nums}.newton-controls input[type=range]{width:100%;min-width:0}
 .newton-readout{background:#edf4f1;border:1px solid var(--praxis-color-border);padding:.6rem;border-radius:7px;line-height:1.6;font-variant-numeric:tabular-nums;display:flex;flex-wrap:wrap;gap:.25rem 1rem}.newton-actions{display:flex;gap:.5rem;flex-wrap:wrap}
 .newton-caption{font-size:.8125rem;color:var(--praxis-color-muted);margin:.5rem}.newton-question button{display:block;width:100%;text-align:left;margin:.5rem 0;background:#fffefa;color:var(--praxis-color-ink);border:1px solid var(--praxis-color-border);padding:.75rem;border-radius:7px;cursor:pointer}
 .newton-question button[data-result=correct]{background:#e5f3e9;border-color:#4c926a}.newton-question button[data-result=wrong]{background:#fff0e9;border-color:#c46d4e}.newton-feedback{padding:.75rem;background:#f1f6f4}.newton-question button:disabled{opacity:1;color:var(--praxis-color-ink)}
@@ -45,3 +45,5 @@ body[data-praxis-course="principiile-mecanicii-newtoniene"] *,body[data-praxis-c
 .newton-material-controls .newton-readout{margin:.25rem 0}
 .newton-material-note{margin:.5rem 0 0;padding-top:.75rem;border-top:1px solid var(--praxis-color-border)}
 @media(max-width:850px){.newton-material-layout{grid-template-columns:1fr}}
+
+.newton-control-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .5rem;width:100%}
