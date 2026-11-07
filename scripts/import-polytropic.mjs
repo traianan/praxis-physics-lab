@@ -10,6 +10,11 @@ const read=p=>readFile(path.join(root,p),'utf8');
 const write=async(p,text)=>{await mkdir(path.dirname(path.join(root,p)),{recursive:true});await writeFile(path.join(root,p),text);};
 const replace=(text,from,to)=>{if(!text.includes(from))throw Error('Polytropic source changed: '+from.slice(0,90));return text.replace(from,to);};
 export function adaptPolytropic(code,name){
+ if(name.endsWith('ResourcesSection.tsx')){
+  const start=code.indexOf('          <div className="recap-note">'),end=code.indexOf('          </div>',start);
+  if(start<0||end<start)throw Error('Polytropic lesson attribution changed');
+  code=code.slice(0,start)+code.slice(end+'          </div>'.length);
+ }
  if(/(?:PVChart|GasCylinder)\.tsx$/.test(name))code=code.replace(/\b(9|10|11)px /g,'12px ');
  if(name.endsWith('SectionHeading.tsx'))code=replace(code,'<h2>{title}</h2>','<h2 data-content-type={index==="02"||index==="03"?"simulation":index==="04"?"problem":index==="05"?"assessment":index==="06"?"resources":"theory"}>{title}</h2>');
  if(name.endsWith('Quiz.tsx'))code=replace(code,'aria-checked={selected === optionIndex}','aria-checked={selected === optionIndex}\n                        tabIndex={(selected??0)===optionIndex?0:-1}\n                        onKeyDown={event=>{if(checked||!["ArrowDown","ArrowRight","ArrowUp","ArrowLeft"].includes(event.key))return;event.preventDefault();const next=(optionIndex+(["ArrowDown","ArrowRight"].includes(event.key)?1:3))%4;setSelected(next);event.currentTarget.parentElement.querySelectorAll("[role=radio]")[next]?.focus();}}');

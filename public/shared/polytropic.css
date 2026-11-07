@@ -2,7 +2,7 @@ body[data-praxis-course=transformarea-politropa] *,body[data-praxis-course=trans
 body[data-praxis-course=transformarea-politropa] #praxis-original{width:100%;max-width:88rem;margin-inline:auto;padding:0 1rem 2rem}
 #polytropic-root{color:var(--praxis-color-ink);font-family:var(--praxis-font-body);min-width:0}
 #polytropic-root [hidden]{display:none!important}
-#polytropic-root .section{padding:1rem 0;scroll-margin-top:8rem}
+#polytropic-root .section{padding:1rem;scroll-margin-top:8rem;border-radius:12px}
 #polytropic-root .container{width:100%;max-width:100%;padding:0}
 #polytropic-root .section-heading{margin-bottom:1rem}
 #polytropic-root .section-heading h2{font-size:clamp(1.35rem,2vw,1.8rem)}
@@ -34,5 +34,5 @@ body[data-praxis-course=transformarea-politropa] #praxis-original{width:100%;max
 #polytropic-root .print-sheet{display:none}
 #polytropic-root .table-wrap,#polytropic-root .comparison-table-wrap{max-width:100%;overflow-x:auto}
 @media(max-width:850px){#polytropic-root .lab-main{grid-template-columns:minmax(0,1fr)}#polytropic-root .lab-side{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:.75rem}}
-@media(max-width:500px){#polytropic-root .lab-shell{padding:.6rem}#polytropic-root .section{padding:.5rem 0}#polytropic-root .lab-chart-wrap{height:280px}#polytropic-root .lab-preset{flex:1 1 8rem}#polytropic-root .lab-controls{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:500px){#polytropic-root .lab-shell{padding:.6rem}#polytropic-root .section{padding:.75rem}#polytropic-root .lab-chart-wrap{height:280px}#polytropic-root .lab-preset{flex:1 1 8rem}#polytropic-root .lab-controls{grid-template-columns:minmax(0,1fr)}}
 @media print{body>*:not(#praxis-original){display:none!important}#praxis-original>:not(#polytropic-root){display:none!important}#polytropic-root>[role=tabpanel]{display:none!important}#polytropic-root .print-sheet{display:block!important}}

@@ -17,6 +17,8 @@ body[data-praxis-laboratory] #praxis-original .sec-head{margin-bottom:16px}
 body[data-praxis-laboratory] #praxis-original .cols{gap:24px}
 body[data-praxis-laboratory] #praxis-original .fig canvas{height:320px}
 body[data-praxis-laboratory] #praxis-original .fig canvas.h3d{height:340px!important}
+/* Keep figure explanations inset even when the canvas panel itself is edge-to-edge. */
+body[data-praxis-laboratory] #praxis-original .fig>p{padding:.5rem 1rem;box-sizing:border-box}
 body[data-praxis-laboratory] #praxis-original .text h3{margin-top:1em}
 body[data-praxis-course=unde-mecanice] .lesson-redesign div:has(>aside){width:100%;max-width:105rem!important;padding:0 24px 16px!important}
 body[data-praxis-course=unde-mecanice] .lesson-navigation{padding:10px 24px 12px}
