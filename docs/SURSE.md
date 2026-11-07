@@ -16,6 +16,13 @@ Sursele anterior urmărite de Git sunt exceptate explicit de la regula de ignora
 își păstrează statutul local. Nu s-a introdus publicarea lor sau schimbarea licenței.
 Pachetul local include întregul director `sources/`.
 
+`.gitattributes` dezactivează conversia automată LF/CRLF pentru snapshoturile din
+`sources/`. Astfel, și bloburile publicate în Git păstrează hashurile originale,
+indiferent de platformă. Comparațiile de cod cu distribuția generată permit doar
+diferența de terminator de linie; verificările SHA-256 ale originalelor rămân stricte.
+Verificările pentru snapshoturile locale ignorate sunt separate în suita locală;
+testele funcționale ale acelorași laboratoare rulează și în CI.
+
 Validare la 7 noiembrie: toate cele 123 de hashuri SHA-256 coincid cu inventarul,
 vechile căi au fost eliminate prin mutare, iar niciuna dintre noile căi nu este
 ignorată de Git. Au fost executate cele 12 importatoare afectate și regenerate

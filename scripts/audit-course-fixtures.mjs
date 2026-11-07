@@ -1,4 +1,4 @@
-import vm from 'node:vm';import {readFile,writeFile,readdir} from 'node:fs/promises';
+import vm from 'node:vm';import {readFile,writeFile,readdir,mkdir} from 'node:fs/promises';
 // Use the distributed bank, including the appended problems and physics corrections.
 const source=await readFile('public/simulari/miscarea-rectilinie/js/sec4-probleme.js','utf8');
 const end=source.indexOf('  /* ---------- stare ----------');
@@ -12,6 +12,7 @@ for(const problem of fixtureContext.problemDefinitions)for(let version=0;version
  const values=version?problem.gen():problem.base;
  for(const name of ['title','text','steps','ask','data','ans','fig'])try{const value=typeof problem[name]==='function'?problem[name](values):problem[name];if(value!==undefined)fixtures.push({id:problem.id,version,name,value});}catch(error){throw new Error(problem.id+'/'+name+': '+error.message);}
 }
+await mkdir('outputs',{recursive:true});
 await writeFile('outputs/course-problem-fixtures.json',JSON.stringify(fixtures,null,2));
 // Translation-only VM: no browser state or application functions are invoked.
 const embedded={en:{}};for(const name of await readdir('public/locales/courses/miscarea-rectilinie')){const group='courses/miscarea-rectilinie/'+name;embedded.en[group]=JSON.parse(await readFile('public/locales/'+group+'/en.json','utf8'));}

@@ -12,9 +12,10 @@ test('atomic laboratory is searchable under heat and preserves source provenance
  assert.ok((await stat(new URL('../public/'+sim.image,import.meta.url))).size>100);
  const original=await read('sources/interactii-atomice/js/app.js'),report=JSON.parse(await read('docs/imported-atomic.json'));
  assert.equal(report.sha256.js,createHash('sha256').update(original).digest('hex'));
- const quiz=text=>text.match(/const Q = ([\s\S]*?);\s*let tried/)[1];
+ // Distributed text may use checkout line endings; original hashes stay byte-exact.
+ const quiz=text=>text.match(/const Q = ([\s\S]*?);\s*let tried/)[1].replaceAll('\r\n','\n');
  assert.equal(quiz(code),quiz(original));assert.equal(vm.runInNewContext(quiz(code)).length,6);
- const model=text=>text.match(/const U = [\s\S]*?const F = [^;]*;/)[0];assert.equal(model(code),model(original));
+ const model=text=>text.match(/const U = [\s\S]*?const F = [^;]*;/)[0].replaceAll('\r\n','\n');assert.equal(model(code),model(original));
 });
 test('Lennard-Jones force equals minus the energy derivative across the seven pairs and slider extremes',()=>{
  const atoms=vm.runInNewContext('('+code.match(/const ATOMS = ([\s\S]*?);\s*const PAIRS/)[1]+')');

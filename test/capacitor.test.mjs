@@ -38,7 +38,8 @@ test('integrated source has unique anchors, shared UI, no grade or remote runtim
  assert.doesNotMatch(html,/clasa a XI|fonts.googleapis|js\/sound.js/);
  for(const file of ['course.js','lab-header.js','sound.js','canvas-resolution.js'])assert.ok(html.includes(file));
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length);
- for(const f of ['lab','teorie','main','integration','model'])assert.equal(await read('sources/condensatorul/js/'+f+'.js'),await read('public/simulari/condensatorul/js/'+f+'.js'));
+ // Compare source code, allowing only Git's line-ending conversion in the distribution.
+ for(const f of ['lab','teorie','main','integration','model'])assert.equal((await read('sources/condensatorul/js/'+f+'.js')).replaceAll('\r\n','\n'),(await read('public/simulari/condensatorul/js/'+f+'.js')).replaceAll('\r\n','\n'));
  const ro=JSON.parse(await read('public/locales/capacitor/ro.json')),en=JSON.parse(await read('public/locales/capacitor/en.json'));
  assert.deepEqual(Object.keys(ro.messages),Object.keys(en.messages));assert.ok(Object.values(en.messages).every(v=>typeof v==='string'));
 });
