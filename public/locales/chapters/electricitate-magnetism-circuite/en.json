@@ -9,7 +9,8 @@
     "Laboratorul electromagnetic Faraday": "Faraday’s Electromagnetic Lab",
     "Pila Daniell": "Daniell cell",
     "Legea lui Coulomb": "Coulomb’s law",
-    "Condensatorul": "Capacitor"
+    "Condensatorul": "Capacitor",
+    "Rezistența unui fir": "Resistance of a wire"
   },
   "simulations": {
     "generator-electric": {
@@ -73,6 +74,19 @@
         "Offline"
       ],
       "keywords": "capacitor capacitance dielectric charge energy RC circuit"
+    },
+    "rezistenta-unui-fir": {
+      "title": "Resistance of a wire",
+      "subtitle": "Material, geometry, temperature and Ohm’s law",
+      "description": "Animated wire, I–V graph, factor explorer, ten materials, calculator and quiz.",
+      "alt": "Conducting wire with electrons and a current–voltage graph",
+      "tags": [
+        "Circuits",
+        "Resistivity",
+        "Experiments",
+        "Offline"
+      ],
+      "keywords": "resistance wire conductor resistivity length cross section diameter temperature Ohm"
     }
   }
 }

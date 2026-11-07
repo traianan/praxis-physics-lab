@@ -1,0 +1,147 @@
+{
+  "id": "rezistenta-unui-fir",
+  "source": "sources/rezistenta-unui-fir",
+  "files": [
+    {
+      "path": "sources/rezistenta-unui-fir/app/calculator.css",
+      "sha256": "eab437bb39862505e68227f3627d7be2e84080cc43b8866ee100e95b1a98de5d"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/app/comparison.css",
+      "sha256": "d3e2228a13f653e2e7c610d9c25a4e74624d630398f2366f3ff8a1deff336be6"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/app/factor.css",
+      "sha256": "a57c6df8b1a326c0d8363aa126b6491deff331f04ac6543810e2ac0366e859e8"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/app/globals.css",
+      "sha256": "137782c2a869206cf6bcba31f9658565b3647d547bf88851f6ed6df9853d522d"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/app/lab.css",
+      "sha256": "f8aed7d28bd440c7fbd33332c894863b8349333db34448d83bd70d83946cc0a6"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/app/layout.tsx",
+      "sha256": "1327310771e8902254f3701a284144179a922b2218822f74ef21c6bfdbdfd050"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/app/page.tsx",
+      "sha256": "bd14a80ade20f55ca8c6891ce711d7df6d78463fa0842b75e72c015b7989497a"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/app/quiz.css",
+      "sha256": "cdca32a9d9083b8e6805d9f82c13f7b9cc44e35c526166601fab657934993472"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/app/resources.css",
+      "sha256": "aaee2bbee5bf4745f446f62c6dc104d46b4d138baf69daee4704edb29af9139a"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/app/theory.css",
+      "sha256": "9539d40081f3a683f0e5f51512eb35a8d949957522312b1c64bc54d5ce91c190"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/CalculatorSection.tsx",
+      "sha256": "b216dc995541c53beb8ceca13a2b82e42d3cf7df39e6596654e0bda96869f1e4"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/FactorSection.tsx",
+      "sha256": "e77ac07fef7d64e49099037f2b014ab44f055ae955333696023a067de1435f3d"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/Footer.tsx",
+      "sha256": "1095d4f044796da4ca9aa9cd629999e632ffc6a472516f45627a74dc88ded9dc"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/Formula.tsx",
+      "sha256": "d55fc93072f470c9af40dcd9ce1af3120cb561d88f8b85d5dce2c30f8bec58f6"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/Hero.tsx",
+      "sha256": "43229ae946102e602b4650a795646a6016983ce537bcd900954252ee05cf5d48"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/HeroDiagram.tsx",
+      "sha256": "145afc8fee14e2387be6ad82b6ee2217118367a2cc93b67f15abe2c0cd39f923"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/Icons.tsx",
+      "sha256": "a90756327886d16350f8f5e76453968774d70a702c9eb62dc3f624e12528174d"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/IuChart.tsx",
+      "sha256": "327d58702d37120cfa47b8d936591d32ab781c447eb81623085a90cdc90c9cd7"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/MaterialsSection.tsx",
+      "sha256": "710e10a5eacc1bb119e98df2a48ac04491ca58a3b4318ea2420e38291a053826"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/Nav.tsx",
+      "sha256": "91601ec775e4d4c72b467f6a9f777201a3a0f453e13110ed4a533c4a71eb486b"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/PrintSheet.tsx",
+      "sha256": "5c506285cf16beb21e26ec76dcfe55cdd01e15993c80a563ad1ae85b8f613429"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/Quiz.tsx",
+      "sha256": "747920f0aa24e2296baa31cfda1d91b6c39dd87b64f5d63cf77dd5b7260e1e62"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/ResourcesSection.tsx",
+      "sha256": "6634c1fc3763e14803d916d96b3cea4d7a1de2726685a6791a5a48eae927f0e4"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/Reveal.tsx",
+      "sha256": "7c961382803034f871c226fd1fe37f6fbecb7a984efae98de3e76b841a2ed231"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/SectionHeading.tsx",
+      "sha256": "05592187260f7775cddeb26df417a2fc640890df30de0c4733e954d36e34706a"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/ThemeProvider.tsx",
+      "sha256": "ef7c160358c5a485d98979ac3fece2ad80d942b2f71363749cc81949d6c8fbce"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/TheorySection.tsx",
+      "sha256": "ec490750069ef15219110ee67ef5f897147587a30717c091662866491f03286d"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/WireCanvas.tsx",
+      "sha256": "df35a9c2800777921afb1045f68258c11ac85994e42a7ac4f25e6e5228aa0a45"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/components/WireLab.tsx",
+      "sha256": "67b99b54444a8c8e93a4be9e1b39fd402185583a83159ad0601dc2b322066ada"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/lib/canvas.ts",
+      "sha256": "840bbbecd109bad3c205c1ea6b7818ae8c9b80c09d891c3e41c235e14e96664e"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/lib/color.ts",
+      "sha256": "abb0725a9c106ed65e47df83691f6ebd09495ee083fba691fbbf6d1ab4fc2b67"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/lib/format.ts",
+      "sha256": "0e9603da41d4738c56c2b7f4ec9d74768eaf1c742f312b1378427bbad9ea85b4"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/lib/resistance.ts",
+      "sha256": "739a6d695ed8619b2e81a176d73de6e11c8c40e434ec67c4df48b77615202d08"
+    },
+    {
+      "path": "sources/rezistenta-unui-fir/README.md",
+      "sha256": "18bdc0c65cde64c914cf366c8ddf0de4112b815ddec8f1eb40676d3c6a158a6d"
+    }
+  ],
+  "adaptations": [
+    "Static React bundle with shared Praxis shell and bilingual rendering",
+    "Shared presentation, canvas resolution and accessible controls",
+    "Original wire physics preserved; animation suspended outside active lab"
+  ]
+}

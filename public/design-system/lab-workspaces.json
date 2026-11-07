@@ -1,4 +1,14 @@
 {
+  "rezistenta-unui-fir": {
+    "workspaces": [
+      {
+        "selector": ".wire-workspace",
+        "scene": ".lab-main",
+        "controls": ".lab-controls",
+        "layout": "native"
+      }
+    ]
+  },
   "condensatorul": {
     "workspaces": [
       {

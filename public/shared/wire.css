@@ -1,0 +1,123 @@
+body[data-praxis-course=rezistenta-unui-fir] *,body[data-praxis-course=rezistenta-unui-fir] *::before,body[data-praxis-course=rezistenta-unui-fir] *::after{box-sizing:border-box}
+body[data-praxis-course=rezistenta-unui-fir] #praxis-original{width:100%;max-width:88rem;margin-inline:auto;padding:0 1rem 2rem}
+#wire-root{color:var(--praxis-color-ink);font-family:var(--praxis-font-body);min-width:0}
+#wire-root [hidden]{display:none!important}
+#wire-root .section{padding:1rem;scroll-margin-top:8rem;border-radius:12px}
+#wire-root .container{width:100%;max-width:100%;padding:0}
+#wire-root .section-heading{margin-bottom:1rem}
+#wire-root .section-heading h2{font-size:clamp(1.35rem,2vw,1.8rem)}
+#wire-root .section-lead{max-width:85ch;font-size:1rem}
+#wire-root .reveal{opacity:1;transform:none;transition:none}
+#wire-root .lab-shell{padding:1rem;border-radius:12px}
+#wire-root .lab-primary-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:.5rem 1rem;margin-bottom:.75rem}
+#wire-root .wire-guide,#wire-root .wire-initial{padding:.25rem .5rem;border:1px solid var(--line);border-radius:10px;margin-bottom:.5rem}
+#wire-root summary{min-height:44px;display:list-item;align-content:center;cursor:pointer}
+#wire-root .lab-chart-wrap{min-height:0!important;height:280px!important;flex:0 0 auto}
+#wire-root .lab-chart-card{padding:.6rem}
+#wire-root .lab-chart-head{padding-bottom:.4rem}
+#wire-root .lab-chart-head p{margin:.25rem 0;font-size:.9rem}
+#wire-root .cylinder-canvas{height:150px!important}
+#wire-root .cylinder-card,#wire-root .energy-card{padding:.6rem}
+#wire-root .lab-main{grid-template-columns:minmax(0,1.5fr) minmax(18rem,1fr);gap:1rem;align-items:start}
+#wire-root .lab-chart-wrap{height:clamp(280px,30vw,360px)}
+#wire-root .lab-controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:.75rem}
+#wire-root .field-label{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:baseline;gap:.25rem .5rem;font-size:1rem}
+#wire-root .field-value{margin-inline:0;white-space:nowrap;font-size:1rem}
+#wire-root .praxis-range-stepper{display:flex;align-items:center;gap:.5rem;width:100%;min-width:0}
+#wire-root .praxis-range-stepper>input{flex:1 1 0%;min-width:0;width:100%;height:44px;margin:0}
+#wire-root .praxis-range-stepper>button{flex:0 0 44px;min-height:44px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink)}
+#wire-root button,#wire-root select,#wire-root input{min-height:44px}
+#wire-root :focus-visible{outline:3px solid #297d75;outline-offset:3px}
+#wire-root .lab-timeline>.praxis-range-stepper{flex:1;min-width:min(100%,14rem)}
+#wire-root .lab-timeline{flex-wrap:wrap}
+#wire-root .linear-controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
+#wire-root .print-sheet{display:none}
+#wire-root .table-wrap,#wire-root .comparison-table-wrap{max-width:100%;overflow-x:auto}
+@media(max-width:850px){#wire-root .lab-main{grid-template-columns:minmax(0,1fr)}#wire-root .lab-side{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:.75rem}}
+@media(max-width:500px){#wire-root .lab-shell{padding:.6rem}#wire-root .section{padding:.75rem}#wire-root .lab-chart-wrap{height:280px}#wire-root .lab-preset{flex:1 1 8rem}#wire-root .lab-controls{grid-template-columns:minmax(0,1fr)}}
+@media print{body>*:not(#praxis-original){display:none!important}#praxis-original>:not(#wire-root){display:none!important}#wire-root>[role=tabpanel]{display:none!important}#wire-root .print-sheet{display:block!important}}
+/* Integration layout: one experiment workspace, controls alongside scene and graph. */
+#wire-root{--bg:var(--praxis-color-background,#f7f5ee);--bg-soft:var(--praxis-color-background,#f7f5ee);--surface:var(--praxis-color-surface);--surface-2:var(--praxis-color-canvas);--ink:var(--praxis-color-ink);--ink-strong:var(--praxis-color-ink);--muted:var(--praxis-color-muted);--copper:var(--praxis-color-primary);--font-sans:var(--praxis-font-body)}
+#wire-root .wire-workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(17rem,22rem);gap:1rem;align-items:start}
+#wire-root .lab-main{display:grid;grid-template-columns:minmax(0,1fr);gap:.5rem}
+#wire-root .lab-side{display:grid;grid-template-columns:minmax(10rem,.6fr) minmax(0,1fr);gap:.5rem}
+#wire-root .lab-controls{display:flex;flex-direction:column;gap:.5rem;padding:.6rem;margin:0}
+#wire-root .lab-stage-wrap{height:160px;min-height:160px;flex:none}
+#wire-root .wire-canvas{width:100%;height:160px;display:block}
+#wire-root .lab-chart-wrap{height:170px!important;min-height:170px!important}
+#wire-root .iu-canvas{width:100%;height:100%;display:block;touch-action:none}
+#wire-root .lab-stage-card,#wire-root .lab-readout,#wire-root .lab-chart-card{padding:.5rem}
+#wire-root .lab-stage-head p{margin:.1rem 0}
+#wire-root .lab-readout-value{font-size:1.75rem}
+#wire-root .lab-stage-head h3,#wire-root .lab-chart-head h3{font-size:1.125rem}
+#wire-root .lab-toolbar{flex-wrap:wrap;margin-bottom:.5rem;gap:.5rem}
+#wire-root .lab-presets{flex-wrap:wrap}
+#wire-root .lab-preset{white-space:normal;flex:1 1 auto;font-size:.875rem}
+#wire-root .lab-preset small{font-size:.8125rem}
+#wire-root .lab-legend,#wire-root .iu-values{flex-wrap:wrap;gap:.4rem;font-size:.8125rem}
+#wire-root .field-hint,#wire-root .lab-chart-kicker,#wire-root .card-kicker,#wire-root .lab-readout-note{font-size:.8125rem}
+#wire-root .lab-control-actions{display:flex;flex-wrap:wrap;gap:.3rem}
+#wire-root .lab-control-actions>*{flex:1 1 100%}
+#wire-root .wire-details{margin-top:.5rem}
+#wire-root .section-index{display:none}
+#wire-root .section-heading-main{display:block}
+#wire-root .lab-timeline{gap:.3rem;margin:.25rem 0;padding:.25rem 0}
+#wire-root .lab-timeline>.praxis-range-stepper{min-width:8rem}
+#wire-root .lab-timeline-value{font-size:.875rem}
+#wire-root .lab-stage-hint,#wire-root .lab-chart-hint{position:static;font-size:.8125rem}
+#wire-root .lab-stage-wrap{margin-bottom:1.4rem}
+#wire-root .lab-chart-wrap{margin-bottom:1.3rem}
+#wire-root .factor-layout,#wire-root .materials-layout,#wire-root .calc-layout{min-width:0}
+#wire-root .materials-table-wrap{overflow-x:auto;max-width:100%}
+#wire-root .materials-table{min-width:32rem}
+#wire-root svg{max-width:100%}
+@media(max-width:1100px){#wire-root .wire-workspace{grid-template-columns:minmax(0,1fr) minmax(16rem,19rem)}#wire-root .lab-side{grid-template-columns:minmax(0,1fr)}#wire-root .lab-readout{display:block}#wire-root .lab-controls{padding:.3rem}}
+@media(max-width:800px){#wire-root .wire-workspace{grid-template-columns:minmax(0,1fr)}#wire-root .lab-readout{display:block}#wire-root .lab-stage-head{flex-wrap:wrap}#wire-root .lab-controls{display:flex}#wire-root .lab-stage-wrap,#wire-root .wire-canvas{height:200px}#wire-root .lab-chart-wrap{height:210px!important}}
+@media print{#wire-root .print-sheet{display:block!important}}
+#wire-root .lab-main{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:start}
+#wire-root .lab-side{display:flex;flex-direction:column}
+#wire-root .lab-readout{padding:.4rem}
+#wire-root .lab-readout-value{margin:.3rem 0;font-size:1.5rem}
+#wire-root .lab-readout-scale,#wire-root .lab-readout-foot{display:none}
+#wire-root .lab-readout-note{padding-top:.2rem;margin:0}
+#wire-root .lab-stage-head{flex-wrap:wrap;gap:.2rem}
+#wire-root .lab-stage-badges{flex-direction:row;flex-wrap:wrap}
+#wire-root .lab-timeline>.praxis-range-stepper{min-width:12rem}
+#wire-root .lab-stage-head p{font-size:.8125rem}
+#wire-root .lab-stage-head h3{margin:.1rem 0}
+#wire-root .lab-legend{margin:.2rem 0}
+#wire-root .lab-chart-head{flex-wrap:wrap;gap:.2rem}
+#wire-root .iu-values{padding-top:.3rem;margin-top:.2rem}
+#wire-root .section{padding:.25rem}
+#wire-root .lab-shell{padding:.5rem}
+#wire-root .wire-guide{padding:0 .4rem;margin:0 0 .4rem}
+#wire-root .lab-presets{flex:1}
+#wire-root .lab-preset small{display:block;white-space:normal}
+#wire-root .lab-preset{flex-wrap:wrap;justify-content:center;gap:.2rem}
+#wire-root .wire-workspace{grid-template-columns:minmax(0,1.8fr) minmax(21rem,1fr);gap:.5rem}
+#wire-root .lab-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+#wire-root .lab-material-field,#wire-root .lab-control-actions{grid-column:1/-1}
+#wire-root .lab-field{gap:.2rem}
+#wire-root .lab-control-actions>*{flex:1 1 10rem}
+#wire-root .lab-readout-head{flex-wrap:wrap}
+@media(min-width:1600px){#wire-root .wire-workspace{grid-template-columns:minmax(0,1fr) minmax(18rem,22rem)}#wire-root .lab-controls{display:flex}#wire-root .lab-main{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+@media(max-width:1100px){#wire-root .wire-workspace{grid-template-columns:minmax(0,1fr)}#wire-root .lab-main{grid-template-columns:repeat(2,minmax(0,1fr))}#wire-root .lab-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){#wire-root .lab-main,#wire-root .lab-controls{grid-template-columns:minmax(0,1fr)}#wire-root .lab-timeline>.praxis-range-stepper{flex-basis:100%}#wire-root .lab-playback{flex-wrap:wrap}}
+
+#wire-root .lab-stage-wrap,#wire-root .wire-canvas{height:200px;min-height:200px}
+
+#wire-root .wire-preset-select{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;flex:1}#wire-root .wire-preset-select select{min-width:0;flex:1;font-size:.875rem}#wire-root .wire-preset-select span{font-size:.875rem}#wire-root .wire-guide{margin-top:.5rem}
+@media(max-width:650px){#wire-root .wire-preset-select{flex-basis:100%}#wire-root .wire-preset-select select{flex-basis:100%}}
+/* Materials use the shared light surfaces: never combine source light ink with Praxis buttons. */
+#wire-root .section-materials{background:var(--praxis-color-canvas);color:var(--praxis-color-ink);overflow:visible}
+#wire-root .section-materials :is(h2,h3,h4,p,span,strong,small,em,b,button,.katex){color:var(--praxis-color-ink)}
+#wire-root .section-materials :is(.section-lead,.card-kicker,.materials-name small,.materials-name em,.materials-unit,.materials-row-head,.materials-density,.materials-detail-note,.materials-card p){color:var(--praxis-color-muted)}
+#wire-root .section-materials :is(.materials-shell,.materials-detail-card,.materials-card,.materials-compare-grid>div,.formula-block){background:var(--praxis-color-surface);border-color:var(--praxis-color-border)}
+#wire-root .section-materials :is(.head-chip,.chip,.materials-sorts,.materials-card-icon){background:var(--praxis-color-canvas);border-color:var(--praxis-color-border);color:var(--praxis-color-ink)}
+#wire-root .section-materials .materials-row{background:var(--praxis-color-surface);border-color:var(--praxis-color-border)}
+#wire-root .section-materials .materials-row:is(:hover,.is-active),#wire-root .section-materials .materials-sort.is-active{background:var(--praxis-color-mint);border-color:var(--praxis-color-primary)}
+#wire-root .materials-bar{background:var(--praxis-color-border)}
+#wire-root .materials-bar-note{font-size:1rem;line-height:1.5;margin:.5rem 0 1rem}
+#wire-root .section-materials :is(.materials-name small,.materials-name em,.materials-unit,.materials-row-head,.materials-rho,.materials-alpha,.materials-density,.materials-bar-cell b,.materials-compare-grid small,.materials-card-metric){font-size:.875rem}
+#wire-root .materials-name small{white-space:normal;overflow:visible}
+#wire-root .materials-shell{overflow-x:auto}

@@ -45,6 +45,26 @@ export const chapters = [
 ];
 export const simulations = [
   {
+    "id": "rezistenta-unui-fir",
+    "addedOn": "2026-11-07",
+    "addedOrder": 2,
+    "chapter": "electricitate-magnetism-circuite",
+    "title": "Rezistența unui fir",
+    "subtitle": "Material, geometrie, temperatură și legea lui Ohm",
+    "description": "Fir animat, grafic I–U, explorarea factorilor, zece materiale, calculator și test.",
+    "href": "./simulari/rezistenta-unui-fir/index.html",
+    "image": "./assets/rezistenta-unui-fir.svg",
+    "alt": "Fir conductor cu electroni și grafic intensitate–tensiune",
+    "tags": [
+      "Circuite",
+      "Rezistivitate",
+      "Experimente",
+      "Offline"
+    ],
+    "keywords": "rezistenta fir conductor rezistivitate lungime sectiune diametru temperatura Ohm",
+    "status": "available"
+  },
+  {
     "id": "condensatorul",
     "addedOn": "2026-11-06",
     "addedOrder": 1,

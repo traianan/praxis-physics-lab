@@ -1,5 +1,7 @@
 # Praxis · Fizică interactivă
 
+**Adăugat la 7 noiembrie 2026:** [Rezistența unui fir](docs/REZISTENTA_UNUI_FIR_2026-11-07.md), în **Electricitate, magnetism și circuite**: laborator, factori, materiale, calculator, test, RO/EN și arhivă offline. [Deschide online](https://praxis-physics-lab.vercel.app/simulari/rezistenta-unui-fir/index.html).
+
 **Adăugat la 5 noiembrie 2026:** [Pendulul gravitațional](docs/INTEGRARE_PENDUL_GRAVITATIONAL.md), în **Sunete și unde**: teorie, simulare neliniară, grafice, măsurători, RO/EN și arhivă offline. Catalogul actual este definit în `labs.manifest.json`.
 
 

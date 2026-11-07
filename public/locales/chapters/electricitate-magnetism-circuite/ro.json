@@ -9,7 +9,8 @@
     "Laboratorul electromagnetic Faraday": "Laboratorul electromagnetic Faraday",
     "Pila Daniell": "Pila Daniell",
     "Legea lui Coulomb": "Legea lui Coulomb",
-    "Condensatorul": "Condensatorul"
+    "Condensatorul": "Condensatorul",
+    "Rezistența unui fir": "Rezistența unui fir"
   },
   "simulations": {
     "generator-electric": {
@@ -73,6 +74,19 @@
         "Offline"
       ],
       "keywords": "condensator capacitate dielectric sarcina energie circuit RC"
+    },
+    "rezistenta-unui-fir": {
+      "title": "Rezistența unui fir",
+      "subtitle": "Material, geometrie, temperatură și legea lui Ohm",
+      "description": "Fir animat, grafic I–U, explorarea factorilor, zece materiale, calculator și test.",
+      "alt": "Fir conductor cu electroni și grafic intensitate–tensiune",
+      "tags": [
+        "Circuite",
+        "Rezistivitate",
+        "Experimente",
+        "Offline"
+      ],
+      "keywords": "rezistenta fir conductor rezistivitate lungime sectiune diametru temperatura Ohm"
     }
   }
 }

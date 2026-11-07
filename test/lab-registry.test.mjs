@@ -9,7 +9,7 @@ test('manifest migration preserves every laboratory, chapter and workspace',asyn
  assert.deepEqual(manifest.chapters,chapters);
  assert.deepEqual(manifest.labs.map(lab=>lab.metadata),simulations);
  assert.deepEqual(Object.fromEntries(manifest.labs.map(lab=>[lab.metadata.id,lab.workspace])),JSON.parse(await readFile(new URL('../public/design-system/lab-workspaces.json',import.meta.url),'utf8')));
- assert.equal(manifest.labs.filter(lab=>lab.offline.kind==='archive').length,22);
+ assert.equal(manifest.labs.filter(lab=>lab.offline.kind==='archive').length,23);
  assert.equal(manifest.labs.filter(lab=>lab.offline.kind==='faraday').length,1);
 });
 test('registry rejects duplicate ids, invalid chapters and unsafe paths',async()=>{

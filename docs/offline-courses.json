@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-07T09:07:40.160Z",
+  "builtAt": "2026-11-07T13:02:56.329Z",
   "courses": [
     {
       "id": "condensatorul",
@@ -236,6 +236,17 @@
       "id": "transformarea-politropa",
       "file": "public/simulari/transformarea-politropa/transformarea-politropa.zip",
       "sha256": "50f62cb07e900cd8e9ca3075420b85fac95cefd3cf89ea45fecf0df531eef318",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "rezistenta-unui-fir",
+      "file": "public/simulari/rezistenta-unui-fir/rezistenta-unui-fir.zip",
+      "sha256": "2497c3e524e10cebc473d71b47a131a966ddf172b97deb11c3a86d5ec9de08e6",
       "languages": [
         "ro",
         "en"
