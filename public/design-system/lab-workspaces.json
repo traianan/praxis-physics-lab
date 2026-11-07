@@ -345,5 +345,16 @@
         "layout": "native"
       }
     ]
+  },
+  "transformarea-politropa": {
+    "react": true,
+    "workspaces": [
+      {
+        "selector": "#polytropic-root .lab-shell",
+        "layout": "native",
+        "controls": ".lab-primary-controls",
+        "scene": ".lab-main"
+      }
+    ]
   }
 }

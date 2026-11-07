@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-07T08:04:22.066Z",
+  "builtAt": "2026-11-07T08:41:50.813Z",
   "courses": [
     {
       "id": "condensatorul",
@@ -225,6 +225,17 @@
       "id": "principiile-mecanicii-newtoniene",
       "file": "public/simulari/principiile-mecanicii-newtoniene/principiile-mecanicii-newtoniene.zip",
       "sha256": "b8af6765ce1ebaa4b83037eb924f48c16cd5ec358dbc431b4a109b5d652d9542",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "transformarea-politropa",
+      "file": "public/simulari/transformarea-politropa/transformarea-politropa.zip",
+      "sha256": "ea05815192f8c1fe20191d7352759bc3d5ceb10e582695290a86f5420f973301",
       "languages": [
         "ro",
         "en"

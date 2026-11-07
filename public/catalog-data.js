@@ -531,5 +531,25 @@ export const simulations = [
     ],
     "keywords": "pendul gravitational perioada amplitudine lungime masa energie gravitatie galileo masuratori",
     "status": "available"
+  },
+  {
+    "id": "transformarea-politropa",
+    "addedOn": "2026-11-07",
+    "addedOrder": 1,
+    "chapter": "caldura-termodinamica",
+    "title": "Transformarea politropă",
+    "subtitle": "Procese pVⁿ = constant și bilanț energetic",
+    "description": "Explorează procesele politrope pe diagrama p–V, pistonul animat, cazul liniar și comparațiile energetice, cu un calculator și un test de verificare.",
+    "href": "./simulari/transformarea-politropa/index.html",
+    "image": "./assets/transformarea-politropa.svg",
+    "alt": "Familie de curbe politrope pe o diagramă presiune–volum",
+    "tags": [
+      "Termodinamică",
+      "Procese politrope",
+      "Calculator",
+      "Offline"
+    ],
+    "keywords": "politropa politropic presiune volum temperatura gaz ideal izoterma adiabata izobara izocora caldura lucru mecanic energie",
+    "status": "available"
   }
 ];

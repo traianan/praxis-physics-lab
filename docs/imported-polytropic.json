@@ -1,0 +1,156 @@
+{
+  "id": "transformarea-politropa",
+  "source": "sources/transformarea-politropa",
+  "files": [
+    {
+      "path": "sources/transformarea-politropa/app/calculator.css",
+      "sha256": "fd31129287a2abd6e7ea4d167a75d5f3b67b328db7666ecc2c40c2dd53e7ae54"
+    },
+    {
+      "path": "sources/transformarea-politropa/app/globals.css",
+      "sha256": "6426b13294f0753937de444f376f20dbe506ac4bb668349e93ec5d0fed6db25b"
+    },
+    {
+      "path": "sources/transformarea-politropa/app/lab.css",
+      "sha256": "16059eaebdd1263ce951ed6e3aa1a6c124c97cfba0df6fa33ffe0985852e2a12"
+    },
+    {
+      "path": "sources/transformarea-politropa/app/layout.tsx",
+      "sha256": "c33aaf8f83093647053d8d04adb9a9ba0837717e563466bc567be7bc4a96897c"
+    },
+    {
+      "path": "sources/transformarea-politropa/app/linear.css",
+      "sha256": "c08aca5774c6f424696503c8d59b8c5956395c192d85d5a464415a0a64f7cda5"
+    },
+    {
+      "path": "sources/transformarea-politropa/app/page.tsx",
+      "sha256": "df8dc6bf34ab2d300af4b0a128b92e3a76bf4e01a02ca7255744e4ae505e736f"
+    },
+    {
+      "path": "sources/transformarea-politropa/app/quiz.css",
+      "sha256": "83766b3edf1f099f081dfb4ded9d0bf3200d1e86d8d72ea1640ac5468003bce8"
+    },
+    {
+      "path": "sources/transformarea-politropa/app/resources.css",
+      "sha256": "1dc6b6d9cf1f683d807957ef77e7739bfe6f047525336e82810eac2f278e85e2"
+    },
+    {
+      "path": "sources/transformarea-politropa/app/theory.css",
+      "sha256": "b34c9629b7122a9c1b39bff72c1d0bda399c6815d0916ab5cf525b78069ba5c1"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/CalculatorSection.tsx",
+      "sha256": "71689b086c4101af8bb66ab4b236040e4275220c7ab8f9b71dec8a53f32ae26b"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/EnergyBars.tsx",
+      "sha256": "ff81a0074a10e4337f7308630e6c336718df20a08ff88cdb2e8491710ef383bd"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/Footer.tsx",
+      "sha256": "dd33f7ef7a5d3e74388eda84acc92aff6678f11c376253cd8f030ea016e8650a"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/Formula.tsx",
+      "sha256": "d55fc93072f470c9af40dcd9ce1af3120cb561d88f8b85d5dce2c30f8bec58f6"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/GasCylinder.tsx",
+      "sha256": "0473fc0617a644f45ac070fd59452bacf8924fe595d551b2e94108985fcf4d06"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/Hero.tsx",
+      "sha256": "d90a96b5167606f3c49ce0eb8e470ac9996f20a35f5b7def86495801166b828d"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/HeroDiagram.tsx",
+      "sha256": "c24aa1da28fb18baa0427d7d1a02f21624a5eea7f736b8b6be03ad665d078eb2"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/Icons.tsx",
+      "sha256": "5e729fcccd3e02e7096180b2e5d89a91d79f5febf4b9dd4e0fed3f51438645c2"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/LinearLab.tsx",
+      "sha256": "fe305ff52ef7c81293c807b73c3a9887423e3ee1016dbaa0485abb38d40b53c9"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/Nav.tsx",
+      "sha256": "ab88390be977aec626135a1d7ef7cbf8b200302ca060adfc0c250b9b7c2e7e2b"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/PolytropicLab.tsx",
+      "sha256": "3f68b25341458413390d35f8dec2e5eb591f4e19cec6ae0f6ce90794acc94f2d"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/PrintSheet.tsx",
+      "sha256": "5fdf0860c4666532567038307314e56de680a2b8718e04ded068372b16722ae9"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/PVChart.tsx",
+      "sha256": "36e507f262ff6e980a81e029e7018ccdcb5ebb70eefbc79a10f73b1e02123c80"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/Quiz.tsx",
+      "sha256": "4e8e59bbe9b134421951655530a27976ca5b9692e837edcebc63ddf1a5f763b8"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/ResourcesSection.tsx",
+      "sha256": "df4ca20b7ac2e51127b3a520bbacb9879ceca6eb816c451970e025f1f1674cc3"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/Reveal.tsx",
+      "sha256": "7c961382803034f871c226fd1fe37f6fbecb7a984efae98de3e76b841a2ed231"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/SectionHeading.tsx",
+      "sha256": "05592187260f7775cddeb26df417a2fc640890df30de0c4733e954d36e34706a"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/ThemeProvider.tsx",
+      "sha256": "6f674c0692af074264a0aa0ac0607f51e588942eeccc248d23b0affdf4100033"
+    },
+    {
+      "path": "sources/transformarea-politropa/components/TheorySection.tsx",
+      "sha256": "cc2cdda0c3df220e7d7b4f9ceb9b197834e844b41ce2cacb01ae0872fa2868df"
+    },
+    {
+      "path": "sources/transformarea-politropa/lib/canvas.ts",
+      "sha256": "840bbbecd109bad3c205c1ea6b7818ae8c9b80c09d891c3e41c235e14e96664e"
+    },
+    {
+      "path": "sources/transformarea-politropa/lib/format.ts",
+      "sha256": "fbe063e6182d9a43e093c22888cae6ba24778bd4cebaf8a216a756cb7f2e231a"
+    },
+    {
+      "path": "sources/transformarea-politropa/lib/physics.ts",
+      "sha256": "7a96566a7945c684d50c508cbdcc29f079c55d4d2a9583b142c9f5e59cbca08e"
+    },
+    {
+      "path": "sources/transformarea-politropa/next.config.ts",
+      "sha256": "c5efcdb15ee66db5a3a749082d8a2d68abdd0555ce251baee0e3fd920b4c55b5"
+    },
+    {
+      "path": "sources/transformarea-politropa/package-lock.json",
+      "sha256": "fa90354c0dbccbb19dfc727c5f1e1e57bc22bbf09399986d6ccf72419af6dba2"
+    },
+    {
+      "path": "sources/transformarea-politropa/package.json",
+      "sha256": "0f9c3cb2e7a2913cb6436a40b0656e377f4fdac13f3cfedd12298dffca7e5b76"
+    },
+    {
+      "path": "sources/transformarea-politropa/README.md",
+      "sha256": "d76d07191bebf795251904f96dcbe60c725718b03d01d75b9949d0438b3974cf"
+    },
+    {
+      "path": "sources/transformarea-politropa/tsconfig.json",
+      "sha256": "6d5d2c00de2d7f7548eeb79aaf0714fabecb6d8bf80df8791bd9d806640a9d5c"
+    }
+  ],
+  "adaptations": [
+    "Static React bundle with shared Praxis shell and bilingual React-owned rendering",
+    "Shared presentation and canvas resolution; no lesson-specific persistent preferences",
+    "Accessible sliders, keyboard chart controls and animation speed",
+    "Canonical limiting-process exponent and corrected negative-index heat-capacity interval"
+  ]
+}

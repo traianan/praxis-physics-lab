@@ -1,0 +1,443 @@
+/* =============================== LINEAR ================================== */
+
+.section-linear {
+  background:
+    radial-gradient(760px 460px at 100% 0%, rgba(232, 184, 92, 0.09), transparent 62%),
+    radial-gradient(680px 420px at 0% 100%, rgba(197, 232, 165, 0.07), transparent 64%),
+    var(--bg);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.linear-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(1.4rem, 3.5vw, 2.8rem);
+  align-items: start;
+}
+
+.linear-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.linear-intro p {
+  margin-top: 0.55rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.72;
+}
+
+.linear-main-formula {
+  margin-top: 1rem;
+  padding: 1.1rem 1rem;
+  border: 1px solid rgba(197, 232, 165, 0.18);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(360px 200px at 90% 0%, rgba(232, 184, 92, 0.14), transparent 66%),
+    linear-gradient(140deg, #0a2420, #103f3b 70%, #0b2b26);
+}
+
+.linear-main-formula .formula-block {
+  border: 0;
+  background: transparent;
+  padding: 0.2rem;
+}
+
+.linear-main-formula .katex {
+  color: #f7f5ee;
+  font-size: 1.25em;
+}
+
+.linear-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.linear-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  border-top: 3px solid var(--gold);
+}
+
+.linear-fact-l {
+  border-top-color: var(--mint-strong);
+}
+
+.linear-fact-t {
+  border-top-color: var(--coral);
+}
+
+.linear-fact-kicker {
+  color: var(--muted-2);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.linear-fact .formula-block {
+  padding: 0.3rem 0;
+  border: 0;
+  background: transparent;
+}
+
+.linear-fact .katex {
+  font-size: 0.88em;
+}
+
+.linear-fact span:last-child {
+  color: var(--muted);
+  font-size: 0.61rem;
+  line-height: 1.4;
+}
+
+.linear-note {
+  display: flex;
+  gap: 0.7rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-xs);
+  background: var(--gold-soft);
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.linear-note-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--petrol-2);
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.linear-demo {
+  padding: clamp(0.9rem, 2vw, 1.2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.linear-demo-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.55rem;
+}
+
+.linear-demo-head h3 {
+  margin-top: 0.2rem;
+  color: var(--ink-strong);
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.linear-chart {
+  height: clamp(300px, 30vw, 380px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.linear-chart-hint {
+  margin-top: 0.4rem;
+  color: var(--muted-2);
+  font-size: 0.64rem;
+  text-align: right;
+}
+
+.linear-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem 1rem;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--line-strong);
+}
+
+.linear-gas {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.linear-gas .segmented {
+  flex-wrap: nowrap;
+}
+
+.linear-gas .segmented button {
+  font-size: 0.68rem;
+}
+
+.linear-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.linear-readouts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.linear-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-2);
+  border-top: 2px solid var(--line-strong);
+}
+
+.linear-readout span {
+  color: var(--muted-2);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+}
+
+.linear-readout strong {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.linear-readout-l {
+  border-top-color: var(--mint-strong);
+}
+
+.linear-readout-q {
+  border-top-color: var(--coral);
+}
+
+.linear-readout-du {
+  border-top-color: var(--gold);
+}
+
+.linear-balance {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.6rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.linear-balance span:first-child {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.linear-balance span:last-child {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+}
+
+.linear-exercise {
+  margin-top: clamp(2.4rem, 4.5vw, 3.5rem);
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.linear-exercise-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.linear-exercise-head h3 {
+  margin-top: 0.35rem;
+  color: var(--ink-strong);
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.linear-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.linear-steps li {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+
+.linear-steps li:last-child {
+  grid-column: 1 / -1;
+}
+
+.linear-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mint-soft);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+}
+
+.linear-steps strong {
+  display: block;
+  color: var(--ink);
+  font-size: 0.84rem;
+}
+
+.linear-steps p {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.linear-steps .formula-block {
+  margin-top: 0.55rem;
+  padding: 0.5rem 0.6rem;
+  border-color: transparent;
+  background: var(--surface);
+}
+
+.linear-steps .katex {
+  font-size: 0.95em;
+}
+
+.linear-step-check {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.linear-exercise-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.2rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.linear-exercise-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.linear-exercise-foot svg {
+  color: var(--gold);
+}
+
+@media (max-width: 1060px) {
+  .linear-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .linear-demo {
+    max-width: 760px;
+  }
+
+  .linear-chart {
+    height: 360px;
+  }
+}
+
+@media (max-width: 760px) {
+  .linear-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .linear-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .linear-gas {
+    grid-column: auto;
+  }
+
+  .linear-readouts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .linear-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .linear-steps li:last-child {
+    grid-column: auto;
+  }
+
+  .linear-exercise-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .linear-chart {
+    height: 300px;
+  }
+
+  .linear-balance {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}

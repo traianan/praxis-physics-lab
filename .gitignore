@@ -31,3 +31,5 @@ __pycache__/
 !sources/pendulul-gravitational/
 !sources/principiul-i-aplicatii/
 !sources/transformari-stare-agregare/
+
+!sources/transformarea-politropa/

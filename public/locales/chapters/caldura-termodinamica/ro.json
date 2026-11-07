@@ -90,6 +90,18 @@
         "Cicluri ideale",
         "Offline"
       ]
+    },
+    "transformarea-politropa": {
+      "title": "Transformarea politropă",
+      "subtitle": "Procese pVⁿ = constant și bilanț energetic",
+      "description": "Explorează procesele politrope pe diagrama p–V, pistonul animat, cazul liniar și comparațiile energetice, cu un calculator și un test de verificare.",
+      "alt": "Familie de curbe politrope pe o diagramă presiune–volum",
+      "tags": [
+        "Termodinamică",
+        "Procese politrope",
+        "Calculator",
+        "Offline"
+      ]
     }
   }
 }

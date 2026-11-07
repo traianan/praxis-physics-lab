@@ -39,11 +39,14 @@
     "registry:generate": "node scripts/generate-lab-registry.mjs",
     "audit:a11y": "node scripts/qa/accessibility.mjs",
     "audit:a11y:deep": "node scripts/qa/accessibility.mjs --deep",
-    "audit:keyboard": "node scripts/qa/accessibility-keyboard.mjs"
+    "audit:keyboard": "node scripts/qa/accessibility-keyboard.mjs",
+    "import:polytropic": "node scripts/import-polytropic.mjs"
   },
   "devDependencies": {
     "axe-core": "4.14.0",
     "esbuild": "0.28.0",
-    "playwright-core": "1.65.0"
+    "playwright-core": "1.65.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   }
 }

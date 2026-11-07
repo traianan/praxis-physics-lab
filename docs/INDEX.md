@@ -2,6 +2,8 @@
 
 ## Ghiduri active
 
+- [Integrarea laboratorului Transformarea politropă](INTEGRARE_POLITROPA_2026-11-07.md).
+
 - [Reguli pentru laboratoare](REGULI_LABORATOARE.md) — deciziile comune de integrare și verificare.
 - [Registrul laboratoarelor](REGISTRU_LABORATOARE.md) — manifestul și fișierele generate.
 - [Surse și proveniență](SURSE.md) — locațiile autoritative și migrarea snapshoturilor.

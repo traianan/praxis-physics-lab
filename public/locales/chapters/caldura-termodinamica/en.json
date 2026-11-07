@@ -90,6 +90,18 @@
         "Ideal cycles",
         "Offline"
       ]
+    },
+    "transformarea-politropa": {
+      "title": "Polytropic process",
+      "subtitle": "Processes with pVⁿ = constant and energy balance",
+      "description": "Explore polytropic processes on a p–V diagram, an animated piston, the linear case and energy comparisons, with a calculator and quiz.",
+      "alt": "Family of polytropic curves on a pressure–volume diagram",
+      "tags": [
+        "Thermodynamics",
+        "Polytropic processes",
+        "Calculator",
+        "Offline"
+      ]
     }
   }
 }

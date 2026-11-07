@@ -184,5 +184,11 @@ export const labNamespaces = {
     "chapters/sunete-si-unde",
     "courses/shared",
     "pendulum"
+  ],
+  "transformarea-politropa": [
+    "common",
+    "chapters/caldura-termodinamica",
+    "courses/shared",
+    "courses/transformarea-politropa/ui"
   ]
 };
