@@ -14,7 +14,7 @@ test('manifest migration preserves every laboratory, chapter and workspace',asyn
 });
 test('registry rejects duplicate ids, invalid chapters and unsafe paths',async()=>{
  const original=await readManifest();
- for(const mutate of [m=>m.labs.push(m.labs[0]),m=>m.labs[0].metadata.chapter='missing',m=>m.labs[0].offline.file='../escape.zip',m=>m.labs[0].locales.push('../private')]){
+ for(const mutate of [m=>m.labs.push(m.labs[0]),m=>m.labs[0].metadata.chapter='missing',m=>{m.labs.find(lab=>lab.offline.kind==='archive').offline.file='../escape.zip';},m=>m.labs[0].locales.push('../private')]){
   const changed=structuredClone(original);mutate(changed);assert.throws(()=>validateManifest(changed));
  }
 });
