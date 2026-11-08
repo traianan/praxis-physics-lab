@@ -45,6 +45,26 @@ export const chapters = [
 ];
 export const simulations = [
   {
+    "id": "legea-lui-ohm",
+    "addedOn": "2026-11-08",
+    "addedOrder": 1,
+    "chapter": "electricitate-magnetism-circuite",
+    "title": "Legile lui Ohm",
+    "subtitle": "Legea pe o porțiune și legea pentru întreg circuitul",
+    "description": "Lecție interactivă cu teorie, laborator U–I, circuit complet, reostat, măsurători, probleme rezolvate și verificare.",
+    "href": "./simulari/legea-lui-ohm/index.html",
+    "image": "./assets/legea-lui-ohm.svg",
+    "alt": "Circuit electric cu baterie, rezistor și ampermetru",
+    "tags": [
+      "Circuite",
+      "Legea lui Ohm",
+      "Experimente",
+      "Probleme"
+    ],
+    "keywords": "legea lui ohm tensiune curent rezistenta circuit complet reostat masuratori ampermetru voltmetru",
+    "status": "available"
+  },
+  {
     "id": "rezistenta-unui-fir",
     "addedOn": "2026-11-07",
     "addedOrder": 2,

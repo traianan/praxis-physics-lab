@@ -1,0 +1,191 @@
+{
+  "id": "legea-lui-ohm",
+  "source": "sources/legea-lui-ohm",
+  "files": [
+    {
+      "path": "sources/legea-lui-ohm/app/circuit.css",
+      "sha256": "361c909c7a6286cf1337e7407b2596f2d2da63cfc4b8f78d320f34746998ead5"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/globals.css",
+      "sha256": "4d9c92649239d0ff8ee4b7b229c5f00762d62d892df12b96b4a423f248f03e8a"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/hero.css",
+      "sha256": "9dffb2cfa0528c75c585612aa738d86e362f7c50eee0fc339dc165a7245522fc"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/lab.css",
+      "sha256": "415f1dbfa307728858ec54a45786371e26333e7b6311d6a0b9917cfa1160e635"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/layout.tsx",
+      "sha256": "b7df04e84848d3fc304f35f1b4b8893569e907cd6f59f0db64d24901b663ef85"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/measure.css",
+      "sha256": "8503d382da114896f065d4bc9e7d46fef4c09ec0a3b517740e0b1a46bfe12e0d"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/page.tsx",
+      "sha256": "0dfe60eccbf00ad80f0460d64f8c7a65cae4f579d04b2c42c4f14ea730f696e3"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/problems.css",
+      "sha256": "85ac610a7f3eee5073f4c87c574ad88813f3a5d6283397149a109c8c3e4dc97d"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/quiz.css",
+      "sha256": "f80a5e9c3d15548860fd98fe3582d9cbc4cebc25fede3cab95a98501d564954c"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/resources.css",
+      "sha256": "ab75e81950a8148a32ce2a58d4e491319b93f884c4d015bc3ddc5af31b080c41"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/rheostat.css",
+      "sha256": "98b8830bb22aa126b55ead409fad2b27f400f9ad21ed7f4b009113348a39cb79"
+    },
+    {
+      "path": "sources/legea-lui-ohm/app/theory.css",
+      "sha256": "3094ef9745773febd5b62ade3581b2f5001b9e6bdb51936e383280081cd5eb46"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/CharacteristicGuide.tsx",
+      "sha256": "753b8fcd5dbef77a7b331b545601808a6d2f820f92e0f11e86d0bf5ad9304f3c"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/CircuitLab.tsx",
+      "sha256": "79e9c3de04bcc333c6685a9eabd6b4525dd212f84de648031622826be625108e"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/CircuitSchematic.tsx",
+      "sha256": "73875c558ed19d00a5eb2931b218fa78547d6c00f023107e09883d150a8f685f"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/ConductorCanvas.tsx",
+      "sha256": "70709116cae5711ce185a445389c9640b93896d456ecc3d4ed16b90c744d386f"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/Footer.tsx",
+      "sha256": "4db3aa02169b30dd219e47a8678dd5aca2e82f68f9c58b7dcfbfb4081f39aa0d"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/Formula.tsx",
+      "sha256": "d55fc93072f470c9af40dcd9ce1af3120cb561d88f8b85d5dce2c30f8bec58f6"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/FormulaTriangle.tsx",
+      "sha256": "a3cbc90f398e74b640a1cfe013c1ac9a5d01a8338e44e9a83da589cec3f75cd3"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/Hero.tsx",
+      "sha256": "9be4a2bbbbbaed0cc99cad02f56fd010d73b8bd8a723e69cd95ec6c2d1dcc243"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/HeroDiagram.tsx",
+      "sha256": "9ec949a16cd3a4bc483927b0797217a8e9d3fd58d9e5aa06623da3eda153f784"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/Icons.tsx",
+      "sha256": "e3cd5fdeb4332734089433867cee007e410b513c63d23c012e838f711dfab373"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/LessonTabs.tsx",
+      "sha256": "0c4fb01a805119c0142515489d00b01b45eb95b554156a8099183964e88e1dd1"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/MeasureLab.tsx",
+      "sha256": "8c9605b899e3a3725a060f5cb9788cafd3d5b909f664b23baff7408473bf086b"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/MeasureSchematic.tsx",
+      "sha256": "006f5267abccf69396d06f20cc7179afb625719a96289e0440094a91983ef3b3"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/Nav.tsx",
+      "sha256": "872ce302e615db8a4fc504bc46f6ea1891e38dcc6041ffee25a91c22cbb9e961"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/OhmLab.tsx",
+      "sha256": "6684d536a070c75d0b329e2123401af3e60d1bc9b1bd382b26425ad50a54ad23"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/PrintSheet.tsx",
+      "sha256": "88e81d646a2a9c9757f704354dab08f82d6451b52e6483f972905a8d58a238cb"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/ProblemsSection.tsx",
+      "sha256": "d06679fb4ec77cf952e2eb62bfd6c4ddc82cb5eead1cc2004f518a1b6af11c6f"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/Quiz.tsx",
+      "sha256": "739ead742450fa432c85944b824784516a89ff43e2646431c11d18f0a3edbe05"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/ResourcesSection.tsx",
+      "sha256": "1c8594ba050c6e871d4492de1a0d886b650f01f8dbe5614f8fdf0c040245277d"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/Reveal.tsx",
+      "sha256": "7c961382803034f871c226fd1fe37f6fbecb7a984efae98de3e76b841a2ed231"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/RheostatLab.tsx",
+      "sha256": "94a9526a653d8c68feb94c55adcce4508b3f5d2d9c2b540e4d3b62574704c168"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/RheostatSchematic.tsx",
+      "sha256": "5706d0257c52001f28f601e79dbf04ecff0f19a16231e4c292ca82872cfff584"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/SectionHeading.tsx",
+      "sha256": "bfe668badc125c986887ecf5f8d7e65c160a872453dc59c8573ef817ac03c881"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/SourceChart.tsx",
+      "sha256": "01c6813c844722dcbf9a078edda23d1df2d17d8709dd9f43ff01217bda8b791f"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/ThemeProvider.tsx",
+      "sha256": "b2394fac9748432503370154ff8a2156d8efe7a10b5615bbc27ddfdefba1a5a8"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/TheorySection.tsx",
+      "sha256": "5b1fef005d9a4eef9a116a64f64ac53048a222649fe769f8398e879247bc74b2"
+    },
+    {
+      "path": "sources/legea-lui-ohm/components/UIPlot.tsx",
+      "sha256": "bf486562e1b9b70182c97adcac2d0c73cdff615eeb54da32404dd1fccbd5b20d"
+    },
+    {
+      "path": "sources/legea-lui-ohm/lib/canvas.ts",
+      "sha256": "ac90d908abf4f7c94ecbfd5225c8ecd197684407a67fb192ee34fd8a0e99de6c"
+    },
+    {
+      "path": "sources/legea-lui-ohm/lib/format.ts",
+      "sha256": "1937dc8212be2c16322c37e652b8d32a8b21cecf3ca943c026fccfa13adb2065"
+    },
+    {
+      "path": "sources/legea-lui-ohm/lib/physics.ts",
+      "sha256": "2373df41e60ec17e4cfb107f0f68a75caf282fbef79db98c0f304ad6d596918d"
+    },
+    {
+      "path": "sources/legea-lui-ohm/lib/schematic.ts",
+      "sha256": "080f3632904f9024894e0103596edbfe9a9a1753d028fda5c519f60f7b0db3ec"
+    },
+    {
+      "path": "sources/legea-lui-ohm/package.json",
+      "sha256": "0e64596f593db93698e5d3bc069fd8509c2e99d6f77df6d98f960868675f5dc0"
+    },
+    {
+      "path": "sources/legea-lui-ohm/README.md",
+      "sha256": "61f919e228a69f0ce710e254fa9b1dfb5b643a6c1074abaef725047d6f92babd"
+    }
+  ],
+  "adaptations": [
+    "Static React bundle integrated with the shared Praxis course shell",
+    "Shared section navigation, typography and color presentation",
+    "Scoped lesson styles and bundled KaTeX assets"
+  ]
+}

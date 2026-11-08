@@ -1,4 +1,15 @@
 {
+  "legea-lui-ohm": {
+    "react": true,
+    "workspaces": [
+      {
+        "selector": "#ohm-root .lab-shell",
+        "layout": "native",
+        "controls": ".lab-controls",
+        "scene": ".lab-main"
+      }
+    ]
+  },
   "rezistenta-unui-fir": {
     "workspaces": [
       {

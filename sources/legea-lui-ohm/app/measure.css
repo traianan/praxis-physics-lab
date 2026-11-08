@@ -1,0 +1,374 @@
+/* ==========================================================================
+   Secțiunea 05 — măsurarea rezistenței
+   ========================================================================== */
+
+.measure-shell {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+}
+
+.measure-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding: 0.9rem 1.15rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.measure-mode button {
+  font-size: 0.77rem;
+}
+
+.measure-toolbar-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.measure-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.measure-presets .lab-preset {
+  padding: 0.4rem 0.65rem;
+}
+
+.measure-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+}
+
+.measure-canvas-card {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border-right: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.measure-canvas {
+  width: 100%;
+  height: clamp(200px, 22vw, 280px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.measure-canvas-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+/* --------------------------------- side ---------------------------------- */
+
+.measure-side {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+}
+
+.measure-equation {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.measure-equation .formula-block {
+  border-color: rgba(192, 122, 62, 0.24);
+  background: var(--formula-bg);
+}
+
+.measure-comparison {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.measure-comparison > div {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.measure-comparison strong {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.measure-comparison .is-good strong {
+  color: var(--green);
+}
+
+.measure-comparison .is-bad strong {
+  color: var(--red);
+}
+
+.measure-verdict {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.measure-verdict svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+.measure-verdict strong {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.84rem;
+  color: var(--ink-strong);
+}
+
+.measure-verdict.is-good {
+  border-color: rgba(61, 138, 99, 0.32);
+  background: var(--green-soft);
+}
+
+.measure-verdict.is-good svg {
+  color: var(--green);
+}
+
+.measure-verdict.is-bad {
+  border-color: rgba(184, 80, 63, 0.3);
+  background: var(--red-soft);
+}
+
+.measure-verdict.is-bad svg {
+  color: var(--red);
+}
+
+.measure-correction {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.measure-correction p {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.measure-correction-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.74rem;
+  color: var(--muted-2);
+}
+
+.measure-correction-value strong {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--copper-strong);
+}
+
+/* -------------------------------- methods -------------------------------- */
+
+.measure-methods {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+
+.method-card {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border-right: 1px solid var(--line);
+  background: var(--surface);
+  transition: background 200ms ease;
+}
+
+.method-card:last-child {
+  border-right: 0;
+}
+
+.method-card.is-active {
+  background: linear-gradient(150deg, var(--copper-soft), transparent 60%);
+}
+
+.method-card-note {
+  background: var(--surface-2);
+}
+
+.method-tag {
+  display: inline-flex;
+  align-self: start;
+  padding: 0.16rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  justify-self: start;
+}
+
+.method-card.is-active .method-tag {
+  border-color: rgba(192, 122, 62, 0.4);
+  color: var(--copper-strong);
+}
+
+.method-card h3 {
+  font-size: 0.92rem;
+  color: var(--ink-strong);
+  line-height: 1.35;
+}
+
+.method-card p {
+  font-size: 0.79rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.method-card .formula {
+  font-size: 0.98rem;
+  color: var(--ink-strong);
+}
+
+.method-use {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--muted-2);
+}
+
+.method-use svg {
+  color: var(--copper);
+}
+
+/* -------------------------------- controls ------------------------------- */
+
+.measure-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 1.35rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border-top: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+/* --------------------------------- table --------------------------------- */
+
+.measure-lab-table {
+  margin-top: 1.25rem;
+  padding: clamp(1.15rem, 2.2vw, 1.6rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.cell-warn {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.measure-table-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  margin-top: 0.9rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted-2);
+}
+
+.measure-table-note svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--copper);
+}
+
+.measure-callout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 1180px) {
+  .measure-body {
+    grid-template-columns: 1fr;
+  }
+
+  .measure-canvas-card {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .measure-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .method-card {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .method-card:last-child {
+    border-bottom: 0;
+  }
+
+  .measure-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .measure-callout {
+    grid-template-columns: 1fr;
+  }
+
+  .measure-comparison {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .measure-controls {
+    grid-template-columns: 1fr;
+  }
+}

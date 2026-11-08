@@ -1,5 +1,11 @@
 // Generated from labs.manifest.json; run npm run registry:generate.
 export const labNamespaces = {
+  "legea-lui-ohm": [
+    "common",
+    "chapters/electricitate-magnetism-circuite",
+    "courses/shared",
+    "courses/legea-lui-ohm/ui"
+  ],
   "rezistenta-unui-fir": [
     "common",
     "chapters/electricitate-magnetism-circuite",

@@ -1,0 +1,517 @@
+/* ==========================================================================
+   Circuit complet
+   ========================================================================== */
+
+.section-circuit {
+  background:
+    radial-gradient(900px 500px at 88% 4%, rgba(192, 122, 62, 0.06), transparent 62%),
+    var(--bg-soft);
+}
+
+[data-theme="dark"] .section-circuit {
+  background:
+    radial-gradient(900px 500px at 88% 4%, rgba(226, 160, 106, 0.08), transparent 62%),
+    var(--bg-soft);
+}
+
+.circuit-law {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.05fr);
+  align-items: center;
+  gap: 1.5rem;
+  padding: clamp(1.15rem, 2.2vw, 1.6rem);
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.circuit-law-copy,
+.circuit-law-main {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.circuit-law-copy p,
+.circuit-law-main p {
+  font-size: 0.86rem;
+  line-height: 1.62;
+  color: var(--muted);
+}
+
+.circuit-law-copy .formula-block,
+.circuit-law-main .formula-block {
+  justify-content: center;
+}
+
+.circuit-law-main .formula-block {
+  border-color: rgba(192, 122, 62, 0.28);
+  background: linear-gradient(135deg, var(--copper-soft), transparent 62%), var(--formula-bg);
+}
+
+.circuit-law-formula .katex {
+  font-size: 1.3em;
+}
+
+.circuit-law-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--copper-strong);
+}
+
+.circuit-law-chips {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+/* --------------------------------- shell --------------------------------- */
+
+.circuit-shell {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+}
+
+.circuit-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.circuit-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.circuit-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.toggle-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.74rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.toggle-inline input {
+  appearance: none;
+  width: 34px;
+  height: 19px;
+  border-radius: 999px;
+  background: var(--line-strong);
+  position: relative;
+  transition: background 180ms ease;
+  cursor: pointer;
+  flex: none;
+}
+
+.toggle-inline input::after {
+  content: "";
+  position: absolute;
+  top: 2.5px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--surface);
+  transition: transform 180ms ease;
+}
+
+.toggle-inline input:checked {
+  background: var(--copper);
+}
+
+.toggle-inline input:checked::after {
+  transform: translateX(15px);
+}
+
+/* --------------------------------- body ---------------------------------- */
+
+.circuit-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 0;
+}
+
+.circuit-schematic-card,
+.circuit-chart-card {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+}
+
+.circuit-schematic-card {
+  border-right: 1px solid var(--line);
+}
+
+.circuit-schematic-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.circuit-canvas {
+  width: 100%;
+  height: clamp(190px, 21vw, 260px);
+}
+
+.source-canvas {
+  width: 100%;
+  height: clamp(190px, 21vw, 260px);
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.circuit-schematic-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.95rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.circuit-schematic-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.circuit-chart-note {
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+
+/* -------------------------------- metrics -------------------------------- */
+
+.circuit-metrics {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.metric-card {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.9rem 1rem;
+  border-right: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.metric-card:last-child {
+  border-right: 0;
+}
+
+.metric-card strong {
+  font-family: var(--font-mono);
+  font-size: 1.02rem;
+  color: var(--ink-strong);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.metric-card-main {
+  background: var(--copper-soft);
+}
+
+.metric-card-main strong {
+  color: var(--copper-strong);
+}
+
+.metric-formula {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--muted-2);
+}
+
+.metric-card-good strong {
+  color: var(--green);
+}
+
+.metric-card-mid strong {
+  color: var(--copper-strong);
+}
+
+.metric-card-low strong {
+  color: var(--red);
+}
+
+/* --------------------------------- balance ------------------------------- */
+
+.balance-bar {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.9rem clamp(1rem, 2vw, 1.4rem);
+  background: var(--surface);
+}
+
+.balance-bar-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.balance-track {
+  display: flex;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--surface-3);
+}
+
+.balance-useful {
+  background: linear-gradient(90deg, var(--cyan), rgba(21, 127, 150, 0.55));
+  transition: width 200ms ease;
+}
+
+.balance-internal {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--copper) 0 6px,
+    rgba(192, 122, 62, 0.4) 6px 12px
+  );
+  transition: width 200ms ease;
+}
+
+.balance-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--muted-2);
+}
+
+.balance-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* -------------------------------- controls ------------------------------- */
+
+.circuit-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 1.35rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border-top: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.circuit-quick {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+}
+
+.circuit-quick-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.circuit-quick-buttons .button {
+  min-height: 32px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.7rem;
+}
+
+/* --------------------------------- explain ------------------------------- */
+
+.circuit-explain {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.explain-card {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+  padding: clamp(1.15rem, 2.2vw, 1.65rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.explain-card h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+}
+
+.explain-card > p {
+  font-size: 0.86rem;
+  line-height: 1.66;
+  color: var(--muted);
+}
+
+.explain-steps {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+.explain-steps > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.explain-steps .katex {
+  font-size: 1.02em;
+}
+
+.explain-result {
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--line-strong);
+}
+
+.explain-result .formula {
+  color: var(--copper-strong);
+}
+
+.explain-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.78rem !important;
+  color: var(--muted-2) !important;
+}
+
+.explain-note svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--copper);
+}
+
+.circuit-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 1180px) {
+  .circuit-law {
+    grid-template-columns: 1fr;
+  }
+
+  .circuit-law-arrow {
+    transform: rotate(90deg);
+    margin-inline: auto;
+  }
+
+  .circuit-body {
+    grid-template-columns: 1fr;
+  }
+
+  .circuit-schematic-card {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .circuit-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .metric-card:nth-child(3) {
+    border-right: 0;
+  }
+
+  .metric-card:nth-child(n + 4) {
+    border-top: 1px solid var(--line);
+  }
+
+  .circuit-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .circuit-explain {
+    grid-template-columns: 1fr;
+  }
+
+  .circuit-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .circuit-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-card:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .metric-card:nth-child(3) {
+    border-right: 1px solid var(--line);
+  }
+
+  .metric-card:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 640px) {
+  .circuit-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .circuit-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-card {
+    border-right: 0 !important;
+    border-top: 1px solid var(--line);
+  }
+
+  .metric-card:first-child {
+    border-top: 0;
+  }
+}

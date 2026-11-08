@@ -87,6 +87,19 @@
         "Offline"
       ],
       "keywords": "resistance wire conductor resistivity length cross section diameter temperature Ohm"
+    },
+    "legea-lui-ohm": {
+      "title": "Ohm’s laws",
+      "subtitle": "Ohm’s law for a circuit segment and for a complete circuit",
+      "description": "Interactive lesson with theory, a current–voltage lab, complete circuit, rheostat, measurements, worked problems and a quiz.",
+      "alt": "Electric circuit with a battery, resistor and ammeter",
+      "tags": [
+        "Circuits",
+        "Ohm’s law",
+        "Experiments",
+        "Problems"
+      ],
+      "keywords": "Ohm law voltage current resistance complete circuit rheostat measurements ammeter voltmeter"
     }
   }
 }

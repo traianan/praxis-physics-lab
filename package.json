@@ -41,7 +41,8 @@
     "audit:a11y:deep": "node scripts/qa/accessibility.mjs --deep",
     "audit:keyboard": "node scripts/qa/accessibility-keyboard.mjs",
     "import:polytropic": "node scripts/import-polytropic.mjs",
-    "import:wire": "node scripts/import-wire.mjs"
+    "import:wire": "node scripts/import-wire.mjs",
+    "import:ohm": "node scripts/import-ohm.mjs"
   },
   "devDependencies": {
     "axe-core": "4.14.0",

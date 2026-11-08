@@ -1,0 +1,25 @@
+{
+  "name": "legea-lui-ohm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aplicație interactivă pentru predarea legii lui Ohm: laborator U–I, circuit complet, reostat, măsurători",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "katex": "^0.16.25",
+    "next": "^16.4.5",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/katex": "^0.16.7",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.0"
+  }
+}

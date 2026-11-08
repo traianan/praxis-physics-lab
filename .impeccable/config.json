@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "sources/legea-lui-ohm/app/globals.css"
+        ],
+        "createdAt": "2026-11-08T16:37:34.810Z",
+        "reason": "False positive: this stylesheet uses full 1px borders on note strips; inspected current selector and no side-tab accent is present."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "sources/legea-lui-ohm/app/lab.css"
+        ],
+        "createdAt": "2026-11-08T16:37:43.784Z",
+        "reason": "False positive: these rules only tint the uniform borders and backgrounds of two state cards; they do not create a side-tab accent."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "sources/legea-lui-ohm/app/hero.css"
+        ],
+        "createdAt": "2026-11-08T16:38:55.818Z",
+        "reason": "False positive: the left border is the CSS triangle arrowhead for the current-direction legend icon, not a card accent."
+      }
+    ]
+  }
+}

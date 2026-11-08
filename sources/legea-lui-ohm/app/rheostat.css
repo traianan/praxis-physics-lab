@@ -1,0 +1,361 @@
+/* ==========================================================================
+   Reostat și montaj potențiometric
+   ========================================================================== */
+
+.rheostat-law {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.rheostat-law-item {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.rheostat-law-item .formula {
+  font-size: 1.02rem;
+  color: var(--ink-strong);
+}
+
+.rheostat-law-item p {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.rheostat-shell {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+}
+
+.rheostat-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding: 0.9rem 1.15rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.rheostat-mode button {
+  font-size: 0.78rem;
+}
+
+.rheostat-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.rheostat-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+}
+
+.rheostat-canvas-card {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border-right: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.rheostat-canvas {
+  width: 100%;
+  height: clamp(200px, 22vw, 280px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.rheostat-slot {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rheostat-slot-label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.rheostat-slot-value {
+  min-width: 48px;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 650;
+  color: var(--ink-strong);
+}
+
+.rheostat-canvas-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.rheostat-canvas-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.rheostat-canvas-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem 1.25rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.rheostat-canvas-legend > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.rheostat-legend-term {
+  flex: none;
+  min-width: 44px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 650;
+  color: var(--copper-strong);
+}
+
+/* --------------------------------- side ---------------------------------- */
+
+.rheostat-side {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+}
+
+.rheostat-readout {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.rheostat-readout-main {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(120deg, var(--copper-soft), transparent 70%);
+  border-bottom: 1px solid var(--line);
+}
+
+.rheostat-readout-main strong {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--copper-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.rheostat-readout-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rheostat-readout-grid > div {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.6rem 0.85rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.rheostat-readout-grid > div:nth-child(2n) {
+  border-right: 0;
+}
+
+.rheostat-readout-grid > div:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.rheostat-readout-grid strong {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-strong);
+}
+
+.rheostat-hint {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.8rem 0.95rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.rheostat-hint svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--copper);
+}
+
+.rheostat-mini-chart {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.rheostat-mini-svg {
+  width: 100%;
+  height: auto;
+}
+
+.rheostat-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 1.35rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border-top: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+/* -------------------------------- explain -------------------------------- */
+
+.rheostat-explain {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.rheostat-problem {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  margin-top: 1.25rem;
+  padding: clamp(1.25rem, 2.4vw, 1.9rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(120deg, rgba(21, 127, 150, 0.06), transparent 55%),
+    var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.rheostat-problem-copy {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+}
+
+.rheostat-problem-copy h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+  line-height: 1.2;
+}
+
+.rheostat-problem-copy p {
+  font-size: 0.9rem;
+  line-height: 1.68;
+  color: var(--muted);
+}
+
+.rheostat-problem-steps {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.rheostat-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 1180px) {
+  .rheostat-body {
+    grid-template-columns: 1fr;
+  }
+
+  .rheostat-canvas-card {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rheostat-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .rheostat-law {
+    grid-template-columns: 1fr;
+  }
+
+  .rheostat-explain {
+    grid-template-columns: 1fr;
+  }
+
+  .rheostat-problem {
+    grid-template-columns: 1fr;
+  }
+
+  .rheostat-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .rheostat-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .rheostat-readout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rheostat-readout-grid > div {
+    border-right: 0;
+  }
+
+  .rheostat-readout-grid > div:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rheostat-readout-grid > div:last-child {
+    border-bottom: 0;
+  }
+}

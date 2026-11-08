@@ -1,0 +1,495 @@
+/* ==========================================================================
+   Secțiunea 08 — resurse + fișa printabilă
+   ========================================================================== */
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.lesson-plan,
+.links-panel,
+.recap-card {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: clamp(1.25rem, 2.4vw, 1.85rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.resources-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.resources-card-head h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+  margin-top: 0.2rem;
+}
+
+.lesson-steps {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.lesson-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  align-items: start;
+}
+
+.lesson-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--copper-strong);
+  flex: none;
+}
+
+.lesson-step strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--ink-strong);
+  line-height: 1.4;
+}
+
+.lesson-step p {
+  margin-top: 0.15rem;
+  font-size: 0.81rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.lesson-plan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.lesson-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--copper-strong);
+}
+
+.lesson-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --------------------------------- links --------------------------------- */
+
+.resource-links {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.resource-link {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.resource-link:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.resource-link-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted-2);
+}
+
+.resource-link-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--copper-strong);
+}
+
+.resource-link strong {
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--ink-strong);
+}
+
+.resource-link p {
+  font-size: 0.77rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.resource-footnote {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted-2);
+}
+
+/* --------------------------------- recap --------------------------------- */
+
+.recap-card {
+  margin-top: 1.25rem;
+}
+
+.recap-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.recap-card-head h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+  margin-top: 0.2rem;
+}
+
+.recap-formulas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.recap-formula {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+.recap-formula > span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.recap-formula .formula-block {
+  padding: 0.35rem 0.5rem;
+  background: transparent;
+  border: 0;
+  justify-content: center;
+}
+
+.recap-formula .katex {
+  font-size: 1rem;
+}
+
+.recap-checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.5rem;
+  padding: 1rem 0 0.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.recap-check {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  line-height: 1.58;
+  color: var(--muted);
+}
+
+.recap-check-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 0.7rem;
+  flex: none;
+  margin-top: 2px;
+}
+
+.recap-check strong {
+  color: var(--ink-strong);
+}
+
+.recap-note {
+  display: flex;
+  gap: 0.7rem;
+  padding: 0.85rem 1rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: 0.78rem;
+  line-height: 1.62;
+  color: var(--muted);
+}
+
+.recap-note svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--copper);
+}
+
+/* ------------------------------ print sheet ------------------------------ */
+
+.print-sheet {
+  padding: 0;
+  color: #111;
+  background: #fff;
+  font-family: var(--font-sans);
+  font-size: 10.5pt;
+  line-height: 1.5;
+}
+
+.print-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #111;
+}
+
+.print-head div {
+  display: grid;
+}
+
+.print-head strong {
+  font-family: var(--font-serif);
+  font-size: 20pt;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.print-head span {
+  font-size: 8.5pt;
+  color: #444;
+}
+
+.print-head-mark {
+  font-size: 8pt !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666 !important;
+}
+
+.print-block {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #ddd;
+  break-inside: avoid;
+}
+
+.print-block:last-of-type {
+  border-bottom: 0;
+}
+
+.print-block h2 {
+  font-size: 11.5pt;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.print-block h3 {
+  font-size: 10pt;
+  margin-bottom: 0.25rem;
+}
+
+.print-block p {
+  margin: 0.2rem 0;
+  font-size: 9.5pt;
+  line-height: 1.45;
+}
+
+.print-formula-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 0.3rem 0;
+}
+
+.print-formula-row .formula {
+  color: #111;
+}
+
+.print-particle-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.print-def {
+  padding: 0.35rem 0.5rem;
+  border-left: 2px solid #111;
+  background: #f6f6f4;
+  font-size: 9.5pt;
+}
+
+.print-list {
+  margin: 0.2rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 9.5pt;
+  line-height: 1.5;
+}
+
+.print-block-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.print-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #ddd;
+  font-size: 7.5pt;
+  color: #777;
+}
+
+@media print {
+  .print-sheet {
+    padding: 0 6mm;
+  }
+
+  .print-block .formula-block {
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
+}
+
+@media (max-width: 1080px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recap-formulas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .recap-checks {
+    grid-template-columns: 1fr;
+  }
+
+  .recap-formulas {
+    grid-template-columns: 1fr;
+  }
+}
+.lesson-tabs {
+  width: min(1360px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.25rem) 4rem;
+}
+
+.lesson-tablist {
+  position: sticky;
+  top: var(--course-header, 0px);
+  z-index: 20;
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: 0 8px 24px rgba(16, 63, 59, 0.08);
+  scrollbar-width: thin;
+  overscroll-behavior-inline: contain;
+}
+
+.lesson-tab {
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 650;
+  white-space: nowrap;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.lesson-tab:hover {
+  background: var(--surface-2);
+  color: var(--ink-strong);
+}
+
+.lesson-tab.is-active {
+  border-color: var(--copper);
+  background: var(--copper-soft);
+  color: var(--copper-strong);
+}
+
+.lesson-tab:focus-visible,
+.lesson-tab-panel:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+}
+
+.lesson-tab-panel {
+  min-height: 40vh;
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .lesson-tabs {
+    padding-inline: 0.85rem;
+  }
+
+  .lesson-tablist {
+    margin-inline: -0.25rem;
+    border-radius: var(--radius);
+  }
+}

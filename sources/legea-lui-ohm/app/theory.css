@@ -1,0 +1,725 @@
+/* ==========================================================================
+   Teorie
+   ========================================================================== */
+
+.theory-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.definition-panel,
+.unit-panel {
+  display: grid;
+  align-content: start;
+  gap: 1.1rem;
+  padding: clamp(1.25rem, 2.4vw, 1.9rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.definition-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.definition-quote {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+}
+
+.definition-mark {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  line-height: 0.6;
+  color: var(--copper);
+  opacity: 0.35;
+}
+
+.definition-quote p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.9vw, 1.42rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink-strong);
+  letter-spacing: -0.012em;
+}
+
+.definition-formula.formula-block {
+  border-color: rgba(192, 122, 62, 0.24);
+  background: linear-gradient(135deg, var(--copper-soft), transparent 65%), var(--formula-bg);
+}
+
+.definition-formula .katex {
+  font-size: 1.28em;
+}
+
+.definition-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.definition-note {
+  display: flex;
+  gap: 0.7rem;
+  padding: 0.85rem 1rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.definition-note svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--copper);
+}
+
+.unit-panel {
+  background:
+    radial-gradient(400px 260px at 100% 0%, var(--amber-soft), transparent 70%),
+    var(--surface);
+}
+
+.unit-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.unit-formula.formula-block {
+  border-color: rgba(224, 165, 63, 0.3);
+  background: var(--formula-bg);
+}
+
+.unit-definition {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.unit-definition strong {
+  color: var(--ink-strong);
+}
+
+.unit-derived {
+  display: grid;
+  gap: 0.5rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.unit-derived-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.unit-derived-grid div {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xs);
+  background: var(--surface-2);
+  text-align: center;
+}
+
+.unit-derived-grid strong {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--ink-strong);
+}
+
+.unit-derived-grid span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted-2);
+}
+
+.unit-note {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+
+.unit-note svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--amber);
+}
+
+/* ---------------------------- mărimile legii ----------------------------- */
+
+.quantity-strip {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.quantity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.quantity-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.quantity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.quantity-card-amber:hover {
+  border-color: rgba(224, 165, 63, 0.5);
+}
+
+.quantity-card-cyan:hover {
+  border-color: rgba(21, 127, 150, 0.45);
+}
+
+.quantity-card-copper:hover {
+  border-color: rgba(192, 122, 62, 0.5);
+}
+
+.quantity-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.quantity-card-amber .quantity-symbol {
+  color: var(--copper-strong);
+  background: var(--amber-soft);
+  border-color: rgba(224, 165, 63, 0.32);
+}
+
+.quantity-card-cyan .quantity-symbol {
+  color: var(--cyan);
+  background: var(--cyan-soft);
+  border-color: rgba(21, 127, 150, 0.28);
+}
+
+.quantity-card-copper .quantity-symbol {
+  color: var(--copper-strong);
+  background: var(--copper-soft);
+  border-color: rgba(192, 122, 62, 0.3);
+}
+
+.quantity-card strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--ink-strong);
+  line-height: 1.3;
+}
+
+.quantity-unit {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.quantity-instrument {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+  font-size: 0.72rem;
+  color: var(--muted-2);
+}
+
+/* --------------------------- triunghi + grafic --------------------------- */
+
+.theory-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  align-items: stretch;
+}
+
+.triangle-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: 1rem;
+  height: 100%;
+  padding: clamp(1.15rem, 2.2vw, 1.75rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.triangle-copy {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+}
+
+.triangle-copy h3,
+.characteristic-head h3,
+.observations-head h3,
+.review-card h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.22rem, 2vw, 1.55rem);
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+  line-height: 1.2;
+}
+
+.triangle-copy > p {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.triangle-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+.triangle-button {
+  display: grid;
+  gap: 0.1rem;
+  justify-items: center;
+  padding: 0.6rem 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.triangle-button:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+
+.triangle-button.is-active {
+  border-color: var(--copper);
+  background: var(--copper-soft);
+}
+
+.triangle-button-symbol {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--ink-strong);
+}
+
+.triangle-button.is-active .triangle-button-symbol {
+  color: var(--copper-strong);
+}
+
+.triangle-button-label {
+  font-size: 0.64rem;
+  letter-spacing: 0.03em;
+  color: var(--muted-2);
+  text-align: center;
+}
+
+.triangle-legend {
+  display: grid;
+  gap: 0.3rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.triangle-legend-row {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  gap: 0.5rem;
+  align-items: baseline;
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.triangle-symbol {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--copper-strong);
+}
+
+.triangle-unit {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--muted-2);
+  white-space: nowrap;
+}
+
+.triangle-visual {
+  display: grid;
+  align-content: center;
+  gap: 0.6rem;
+}
+
+.triangle-svg {
+  width: 100%;
+  height: auto;
+}
+
+.triangle-glyph {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 26px;
+  fill: var(--muted);
+  transition: fill 220ms ease;
+}
+
+.triangle-glyph.is-active {
+  fill: var(--copper-strong);
+  font-size: 30px;
+}
+
+.triangle-tiny {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--muted-2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.triangle-result {
+  display: grid;
+  gap: 0.2rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.triangle-result .formula-block {
+  padding: 0.55rem 0.75rem;
+  justify-content: center;
+}
+
+.triangle-result-caption {
+  font-size: 0.7rem;
+  color: var(--muted-2);
+}
+
+.triangle-result-caption b {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--copper-strong);
+}
+
+/* ------------------------------- caracteristică --------------------------- */
+
+.characteristic-card {
+  display: grid;
+  align-content: start;
+  gap: 0.9rem;
+  height: 100%;
+  padding: clamp(1.15rem, 2.2vw, 1.75rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(420px 300px at 100% 0%, var(--cyan-soft), transparent 70%),
+    var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.characteristic-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.characteristic-note {
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.char-guide {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.char-svg {
+  width: 100%;
+  height: auto;
+}
+
+.char-tick {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--muted-2);
+}
+
+.char-axis {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 11px;
+  fill: var(--muted);
+}
+
+.char-label {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+}
+
+.char-label-cyan {
+  fill: var(--cyan);
+}
+
+.char-label-copper {
+  fill: var(--copper-strong);
+}
+
+.char-label-amber {
+  fill: var(--copper-strong);
+}
+
+.char-guide figcaption {
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+
+.char-guide figcaption b {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+/* -------------------------------- observații ----------------------------- */
+
+.observations-card {
+  margin-top: 1.25rem;
+  padding: clamp(1.25rem, 2.4vw, 1.9rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.observations-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.1rem;
+}
+
+.observations-head .eyebrow {
+  margin-bottom: 0.35rem;
+}
+
+.observations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem 2rem;
+}
+
+.observation {
+  display: grid;
+  gap: 0.3rem;
+  padding-left: 0.9rem;
+  border-left: 1px solid var(--line);
+}
+
+.observation-index {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  color: var(--copper-strong);
+}
+
+.observation strong {
+  font-size: 0.92rem;
+  color: var(--ink-strong);
+  line-height: 1.35;
+}
+
+.observation p {
+  font-size: 0.83rem;
+  line-height: 1.62;
+  color: var(--muted);
+}
+
+/* ------------------------------ exercițiu --------------------------------- */
+
+.review-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  margin-top: 1.25rem;
+  padding: clamp(1.25rem, 2.4vw, 1.9rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(120deg, rgba(192, 122, 62, 0.06), transparent 55%),
+    var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.review-card-copy {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+}
+
+.review-card-copy p {
+  font-size: 0.9rem;
+  line-height: 1.68;
+  color: var(--muted);
+}
+
+.review-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.review-card-solution {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.solution-step {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+.solution-step-accent {
+  border-color: rgba(192, 122, 62, 0.35);
+  background: var(--copper-soft);
+}
+
+.solution-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.solution-step p {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* -------------------------------- callouts ------------------------------- */
+
+.callout-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.callout {
+  display: flex;
+  gap: 0.8rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(192, 122, 62, 0.28);
+  border-radius: var(--radius);
+  background: var(--copper-soft);
+  font-size: 0.85rem;
+  line-height: 1.62;
+  color: var(--ink);
+}
+
+.callout-cyan {
+  border-color: rgba(21, 127, 150, 0.26);
+  background: var(--cyan-soft);
+}
+
+.callout-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--copper-strong);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.callout-cyan .callout-icon {
+  color: var(--cyan);
+}
+
+@media (max-width: 1100px) {
+  .theory-top {
+    grid-template-columns: 1fr;
+  }
+
+  .theory-split {
+    grid-template-columns: 1fr;
+  }
+
+  .review-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .quantity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .triangle-card {
+    grid-template-columns: 1fr;
+  }
+
+  .observations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .callout-row {
+    grid-template-columns: 1fr;
+  }
+}
