@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "sources/legea-lui-ohm/app/circuit.css",
-      "sha256": "361c909c7a6286cf1337e7407b2596f2d2da63cfc4b8f78d320f34746998ead5"
+      "sha256": "6b1213afe463480f430fe41595892696d9bd75338a949f77ef9dfb76fe1856b4"
     },
     {
       "path": "sources/legea-lui-ohm/app/globals.css",
@@ -68,7 +68,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/Footer.tsx",
-      "sha256": "4db3aa02169b30dd219e47a8678dd5aca2e82f68f9c58b7dcfbfb4081f39aa0d"
+      "sha256": "9d4551005fe8bf2c5d80cfcde8e867be118cdfafef95198b341a44ce48cae132"
     },
     {
       "path": "sources/legea-lui-ohm/components/Formula.tsx",
@@ -168,7 +168,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/lib/physics.ts",
-      "sha256": "2373df41e60ec17e4cfb107f0f68a75caf282fbef79db98c0f304ad6d596918d"
+      "sha256": "6f8bc63c89f05e93aaad46d50f86b9640a8ac181286396d66ebbb87aa438e321"
     },
     {
       "path": "sources/legea-lui-ohm/lib/schematic.ts",

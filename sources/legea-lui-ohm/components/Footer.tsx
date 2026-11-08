@@ -27,9 +27,6 @@ export function Footer() {
         </div>
       </div>
       <div className="container footer-base">
-        <span>
-          Inspirat de lucrările lui Constantin Mantea și Mihaela Garabet.
-        </span>
         <span>Aplicație originală · Praxis Science Lab</span>
       </div>
     </footer>

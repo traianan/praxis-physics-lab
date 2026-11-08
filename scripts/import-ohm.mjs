@@ -61,7 +61,9 @@ const scripts=['sound.js','lab-header.js','canvas-typography.js','scientific-col
 const namespaces=await labNamespaces(id),embedded={ro:{},en:{}};
 for(const language of ['ro','en'])for(const namespace of namespaces)embedded[language][namespace]=JSON.parse(await read(`public/locales/${namespace}/${language}.json`));
 const lessonMessages=Object.fromEntries(Object.entries(JSON.parse(await read('scripts/adaptations/ohm/translations.json'))).map(([key,value])=>[key.trim(),value]));
-embedded.en[`courses/${id}/ui`].messages={...embedded.en[`courses/${id}/ui`].messages,...lessonMessages};
+const englishUi=embedded.en[`courses/${id}/ui`];
+englishUi.messages=Object.fromEntries(Object.entries(englishUi.messages).filter(([key,value])=>!/(mantea|garabet|sursa de inspirație|all educational|inspired by the topics covered|inspirată de temele lucrării)/i.test(`${key} ${value}`)));
+englishUi.messages={...englishUi.messages,...lessonMessages};
 embedded.ro[`courses/${id}/ui`].messages=Object.fromEntries(Object.keys(lessonMessages).map(key=>[key,key]));
 await write(`public/locales/courses/${id}/ui/en.json`,JSON.stringify(embedded.en[`courses/${id}/ui`],null,2)+'\n');
 await write(`public/locales/courses/${id}/ui/ro.json`,JSON.stringify(embedded.ro[`courses/${id}/ui`],null,2)+'\n');
