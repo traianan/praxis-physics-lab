@@ -280,11 +280,21 @@ export function HeroDiagram() {
       // ---- etichete unghiuri ----
       ctx.font = '600 10px "Cascadia Code", "Cascadia Mono", Consolas, monospace';
       ctx.fillStyle = palette.muted;
-      ctx.textAlign = "left";
       ctx.textBaseline = "top";
-      ctx.fillText("I", right + 22, ampY - 6);
-      ctx.fillStyle = palette.amber;
-      ctx.fillText("U", left - 34, voltY - 6);
+      if (w < 560) {
+        // On narrow canvases, place labels above the instruments to keep them
+        // clear of both the meter symbols and the canvas edge.
+        ctx.textAlign = "center";
+        ctx.fillText("I", right, ampY - 34);
+        ctx.fillStyle = palette.amber;
+        ctx.fillText("U", left, voltY - 34);
+      } else {
+        ctx.textAlign = "left";
+        ctx.fillText("I", right + 32, ampY - 6);
+        ctx.fillStyle = palette.amber;
+        ctx.textAlign = "right";
+        ctx.fillText("U", left - 34, voltY - 6);
+      }
     };
 
     const loop = (now: number) => {

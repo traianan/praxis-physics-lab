@@ -9,3 +9,4 @@
 
 - 2026-11-08: Ajustată lecția Legile lui Ohm după feedback vizual: reparat selectorul CSS care elimina spațierea conținutului problemelor, indici fizici formatați corect, eliminată nota despre manual, sursa desenată cu borne apropiate și etichete E/r. Diagrama explică electronii și sensul opus curentului convențional; săgeata de lângă sursă a fost eliminată. Verificare: `npm run import:ohm` și `npm run build` au reușit.
 - Impeccable: accentul lateral al observațiilor a fost redus la o linie neutră de 1px; semnalările laterale din globals.css și lab.css au fost suprimate per fișier ca false positive, după inspecția regulilor cu contururi uniforme.
+- 2026-11-08: Depărtate etichetele U și I de voltmetru/ampermetru; pe diagrame înguste sunt așezate deasupra instrumentelor. Verificare: import Ohm și build reușite.
