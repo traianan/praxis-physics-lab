@@ -7,6 +7,10 @@
       "sha256": "6b1213afe463480f430fe41595892696d9bd75338a949f77ef9dfb76fe1856b4"
     },
     {
+      "path": "sources/legea-lui-ohm/app/concepts.css",
+      "sha256": "919035aaa1843c081dbcbf4387941eaad8e735c378317e8e889f29ae2b76127c"
+    },
+    {
       "path": "sources/legea-lui-ohm/app/globals.css",
       "sha256": "4d9c92649239d0ff8ee4b7b229c5f00762d62d892df12b96b4a423f248f03e8a"
     },
@@ -20,7 +24,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/app/layout.tsx",
-      "sha256": "b7df04e84848d3fc304f35f1b4b8893569e907cd6f59f0db64d24901b663ef85"
+      "sha256": "771447df1ef3088f4e86d245c7a26fd720af6711e021e55554f4beb941a2513e"
     },
     {
       "path": "sources/legea-lui-ohm/app/measure.css",
@@ -63,6 +67,10 @@
       "sha256": "73875c558ed19d00a5eb2931b218fa78547d6c00f023107e09883d150a8f685f"
     },
     {
+      "path": "sources/legea-lui-ohm/components/ConceptMap.tsx",
+      "sha256": "e3b921dc45f85111525c3fd78bf048b7cc21c04a5c94e558b844b60f65fd140d"
+    },
+    {
       "path": "sources/legea-lui-ohm/components/ConductorCanvas.tsx",
       "sha256": "70709116cae5711ce185a445389c9640b93896d456ecc3d4ed16b90c744d386f"
     },
@@ -92,7 +100,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/LessonTabs.tsx",
-      "sha256": "0c4fb01a805119c0142515489d00b01b45eb95b554156a8099183964e88e1dd1"
+      "sha256": "1d81f84979996bb031f49954bbbb130f020b9726d6441117e46820b618447f33"
     },
     {
       "path": "sources/legea-lui-ohm/components/MeasureLab.tsx",
@@ -180,7 +188,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/README.md",
-      "sha256": "61f919e228a69f0ce710e254fa9b1dfb5b643a6c1074abaef725047d6f92babd"
+      "sha256": "aab0082709537bb30a05d3a2faec65cdf0ffb3eb60e1e0984ba75d73f62bf59e"
     }
   ],
   "adaptations": [

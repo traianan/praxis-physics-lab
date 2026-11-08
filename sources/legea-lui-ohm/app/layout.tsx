@@ -11,6 +11,7 @@ import "./measure.css";
 import "./problems.css";
 import "./quiz.css";
 import "./resources.css";
+import "./concepts.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {

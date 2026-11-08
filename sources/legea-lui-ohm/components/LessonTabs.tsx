@@ -9,6 +9,8 @@ import { MeasureLab } from "./MeasureLab";
 import { ProblemsSection } from "./ProblemsSection";
 import { Quiz } from "./Quiz";
 import { ResourcesSection } from "./ResourcesSection";
+import { ConceptMap } from "./ConceptMap";
+import { useTheme } from "./ThemeProvider";
 
 const TABS = [
   { id: "teorie", label: "Teorie" },
@@ -18,11 +20,13 @@ const TABS = [
   { id: "masurari", label: "Măsurări" },
   { id: "evaluare", label: "Probleme și verificare" },
   { id: "resurse", label: "Resurse" },
+  { id: "harta", label: "Harta conceptelor" },
 ] as const;
 
 export function LessonTabs() {
   const [active, setActive] = useState<(typeof TABS)[number]["id"]>("teorie");
   const buttons = useRef<Array<HTMLButtonElement | null>>([]);
+  const { language } = useTheme();
 
   useEffect(() => {
     const syncFromHash = () => {
@@ -64,7 +68,7 @@ export function LessonTabs() {
             onClick={() => setActive(tab.id)}
             onKeyDown={handleKeyDown}
           >
-            {tab.label}
+            {tab.id === "harta" && language === "en" ? "Concept map" : tab.label}
           </button>
         ))}
       </div>
@@ -76,6 +80,7 @@ export function LessonTabs() {
         {active === "masurari" ? <MeasureLab /> : null}
         {active === "evaluare" ? <><ProblemsSection /><Quiz /></> : null}
         {active === "resurse" ? <ResourcesSection /> : null}
+        {active === "harta" ? <ConceptMap onOpenTab={setActive} /> : null}
       </div>
     </div>
   );

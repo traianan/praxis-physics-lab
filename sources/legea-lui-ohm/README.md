@@ -13,6 +13,7 @@ Construită pe modelul laboratorului *Transformarea politropă*, cu o identitate
 - **Măsurări** — montaje amonte și aval, citiri live, eroare relativă, regula `√(R_A·R_V)` și tabel comparativ.
 - **Probleme și verificare** — probleme rezolvate, calculator cu patru moduri și întrebări cu feedback imediat.
 - **Resurse** — scenariu de lecție, linkuri externe și fișă de recapitulare printabilă.
+- **Harta conceptelor** — relațiile dintre mărimi, legea lui Ohm, componente și circuitul complet.
 
 ## Tehnologii
 
