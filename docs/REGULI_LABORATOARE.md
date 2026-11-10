@@ -21,6 +21,7 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 - Folosește spațiul orizontal disponibil înainte de a adăuga conținut pe verticală. Așază alături scenele, graficele sau figurile care se compară și încap lizibil.
 - Pentru standurile cu o singură scenă și mai mulți parametri, preferă scena în stânga și comenzile în dreapta, cu sliderele unul sub altul. Respectă configurația existentă a instrumentelor care au altă organizare justificată.
 - Alege pragul de reorganizare după lățimea reală a containerului și după dimensiunea textului. Un viewport mare nu garantează că un stand interior are loc pentru două coloane.
+- În lecțiile cu taburi, containerul și panoul selectat trebuie să rămână centrate și să poată folosi lățimea disponibilă (`min-width: 0`, `max-width: 100%`). Nu lăsa un `max-width` fix să alinieze lecția ca o coloană îngustă la marginea stângă; verifică și ferestre încorporate, nu doar ecranul complet.
 - Pe telefon, în containere înguste și la text mărit, revino la o organizare verticală lizibilă. Nu forța două coloane prin micșorarea textului sau a scenelor.
 - Păstrează introducerile și barele de instrumente compacte. Explicațiile lungi, formulele de referință și preferințele secundare pot fi în secțiuni pliabile, cu etichete clare. Nu ascunde comenzile necesare experimentului.
 - Dacă o secțiune are mai multe experimente, oferă selecție explicită între activități. Un preset sau un link către o activitate trebuie întâi să o facă vizibilă, apoi să execute acțiunea existentă.

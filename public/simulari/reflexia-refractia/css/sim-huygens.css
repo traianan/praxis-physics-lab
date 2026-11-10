@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Simularea „Construcția frontului de undă” — detalii specifice
+   Se sprijină integral pe kit-ul .rr-* din controls.css și pe tokenii din
+   base.css; aici doar ajustările proprii scenei și barei de controale.
+   ========================================================================== */
+
+/* ------------------------------- HUD ------------------------------------- */
+.huy-formula {
+  text-transform: none;
+  letter-spacing: .02em;
+  gap: 8px;
+  color: var(--text-soft);
+  border-color: rgba(255, 180, 105, .34);
+}
+.huy-formula b {
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+.huy-formula-val {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--incident);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.huy-step { gap: 6px; }
+.huy-step b { color: var(--accent); }
+
+/* ------------------------------ legendă ---------------------------------- */
+/* Legenda stă sub scenă (legendă de instrument, nu overlay peste desen). */
+.huy-legend {
+  position: static;
+  left: auto;
+  bottom: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 10px 2px 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  pointer-events: none;
+  z-index: auto;
+}
+.huy-legend .rr-legend-item {
+  font-size: 10px;
+  letter-spacing: .07em;
+  color: var(--muted);
+}
+.huy-legend .rr-legend-item i {
+  width: 14px;
+  border-top-width: 2px;
+}
+.huy-leg-old { color: var(--dim); }
+.huy-leg-old i { border-top-style: dashed; }
+.huy-leg-new { color: var(--accent); }
+
+/* ------------------------------- controale ------------------------------- */
+.huy-bar { gap: 14px 18px; }
+
+.huy-field-seg {
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: none;
+}
+.huy-field-seg .rr-seg { width: 100%; }
+.huy-field-seg .rr-seg button { flex: 1 1 auto; padding: 0 10px; }
+
+.huy-actions-main,
+.huy-actions-toggles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* iconițele butonului de redare */
+.huy-play .huy-ico-pause { display: none; }
+.huy-play[aria-pressed="true"] .huy-ico-play { display: none; }
+.huy-play[aria-pressed="true"] .huy-ico-pause { display: block; }
+
+.huy-note { margin-top: 10px; }
+
+/* ------------------------------- mobil ----------------------------------- */
+@media (max-width: 640px) {
+  .huy-legend {
+    margin-top: 8px;
+    gap: 5px 14px;
+  }
+  .huy-legend .rr-legend-item {
+    font-size: 9px;
+    letter-spacing: .05em;
+  }
+  .huy-legend .rr-legend-item i { width: 12px; }
+  .huy-formula { gap: 6px; }
+  .huy-formula-val { font-size: 9.5px; }
+  .huy-bar { gap: 12px 14px; }
+}

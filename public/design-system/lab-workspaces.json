@@ -305,6 +305,30 @@
       }
     ]
   },
+  "reflexia-refractia": {
+    "workspaces": [
+      {
+        "selector": "#sim-aperture",
+        "scene": "canvas",
+        "layout": "native"
+      },
+      {
+        "selector": "#sim-huygens",
+        "scene": "canvas",
+        "layout": "native"
+      },
+      {
+        "selector": "#sim-reflectie",
+        "scene": "canvas",
+        "layout": "native"
+      },
+      {
+        "selector": "#sim-refractie",
+        "scene": "canvas",
+        "layout": "native"
+      }
+    ]
+  },
   "figuri-chladni": {
     "workspaces": [
       {

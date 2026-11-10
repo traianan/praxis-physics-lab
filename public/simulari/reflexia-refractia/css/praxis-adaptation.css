@@ -1,0 +1,191 @@
+/* Palette and spacing for the Praxis course shell. The dark stage stays as a
+   focused instrument surface; lesson text and controls use Praxis tokens. */
+#praxis-original {
+  --ink: var(--praxis-color-canvas, #f7f5ee);
+  --ink-2: var(--praxis-color-canvas, #f7f5ee);
+  --surface: var(--praxis-color-surface, #fffefa);
+  --surface-2: var(--praxis-color-primary-soft, #edf2e9);
+  --line: rgba(24, 51, 47, .16);
+  --line-strong: rgba(24, 51, 47, .3);
+  --text: var(--praxis-color-ink, #18332f);
+  --text-soft: #304a43;
+  --muted: var(--praxis-color-muted, #586d63);
+  --dim: #6d7e74;
+  --incident: var(--praxis-science-orange, #87621f);
+  --reflectat: var(--praxis-science-teal, #326f6c);
+  --refractat: var(--praxis-science-blue, #356a91);
+  --accent: var(--praxis-color-primary, #17685f);
+  --accent-soft: rgba(23, 104, 95, .1);
+  --warn: var(--praxis-color-error, #a33d35);
+  --sans: var(--praxis-font-ui, "Segoe UI", Arial, sans-serif);
+  --serif: var(--praxis-font-ui, "Segoe UI", Arial, sans-serif);
+  background: var(--praxis-color-canvas, #f7f5ee);
+  color: var(--praxis-color-ink, #18332f);
+}
+
+#praxis-original :is(h1, h2, h3, h4, .prose .term, strong, b) {
+  color: var(--praxis-color-ink, #18332f);
+}
+#praxis-original .hero {
+  background: var(--praxis-color-primary-soft, #edf2e9);
+  padding-block: 18px 16px;
+}
+#praxis-original .hero-grid { gap: 20px; }
+#praxis-original .hero h1 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -.025em;
+  margin-bottom: .35em;
+  display: none;
+}
+#praxis-original .hero h1 em { color: var(--praxis-color-primary, #17685f); }
+#praxis-original .hero-lead { color: var(--praxis-color-muted, #586d63); margin-bottom: .8em; }
+#praxis-original .hero-meta { margin: 0 0 12px; color: var(--praxis-color-muted, #586d63); }
+#praxis-original .hero-meta .sep { background: var(--praxis-color-border, #d8ded3); }
+#praxis-original .section {
+  padding: 26px 0 32px;
+  border-color: var(--praxis-color-border, #d8ded3);
+  background: transparent;
+}
+#praxis-original .sec-head { margin-bottom: 16px; }
+#praxis-original .sec-title-row { margin-bottom: 8px; }
+#praxis-original .sec-title-row h2 { font-size: clamp(1.6rem, 2.5vw, 2rem); }
+#praxis-original .sec-lead { color: var(--praxis-color-muted, #586d63); line-height: 1.5; }
+#praxis-original .lesson-grid {
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(20px, 2.6vw, 34px);
+}
+#praxis-original .lesson-sim { top: calc(var(--course-header, 64px) + 14px); }
+#praxis-original .prose { max-width: none; }
+#praxis-original .prose > p { color: #304a43; margin-bottom: .8em; }
+#praxis-original .prose h3 { margin-top: 1.25em; }
+#praxis-original .lead-in { color: #18332f; }
+#praxis-original .note-block {
+  margin: 1em 0;
+  padding: 13px 15px;
+  background: rgba(23, 104, 95, .045);
+  border-color: rgba(23, 104, 95, .2);
+}
+#praxis-original .note-block--law { background: rgba(135, 98, 31, .055); border-color: rgba(135, 98, 31, .22); }
+#praxis-original .note-block-label { color: var(--praxis-color-primary, #17685f); margin-bottom: 6px; }
+#praxis-original .note-block p { color: var(--praxis-color-ink, #18332f); }
+#praxis-original .sec-ref { display: none; }
+#praxis-original .quiz {
+  border-color: var(--praxis-color-border, #d8ded3);
+  background: var(--praxis-color-surface, #fffefa);
+  color: var(--praxis-color-ink, #18332f);
+}
+#praxis-original .q-text { color: var(--praxis-color-ink, #18332f); }
+#praxis-original .quiz-progress-label { color: #4d6259; }
+#praxis-original .quiz-progress-label b { color: var(--praxis-color-ink, #18332f); }
+#praxis-original .quiz-restart { color: var(--praxis-color-primary-hover, #104f49); border-color: var(--praxis-color-border, #d8ded3); }
+#praxis-original .quiz-track { background: rgba(24, 51, 47, .16); }
+#praxis-original .q-option.is-correct { background: #e8f2e9; color: var(--praxis-color-ink, #18332f); border-color: rgba(23, 104, 95, .45); }
+#praxis-original .q-option.is-correct .k { color: var(--praxis-color-primary-hover, #104f49); border-color: rgba(23, 104, 95, .45); }
+#praxis-original .q-option.is-wrong { background: #f8e9e5; color: var(--praxis-color-ink, #18332f); border-color: rgba(146, 56, 47, .4); }
+#praxis-original .q-option.is-wrong .k { color: #92382f; border-color: rgba(146, 56, 47, .4); }
+#praxis-original .q-feedback { color: #304a43; border-color: var(--praxis-color-border, #d8ded3); }
+#praxis-original .q-feedback b { color: var(--praxis-color-ink, #18332f); }
+#praxis-original .q-feedback .verdict.ok { color: var(--praxis-color-primary-hover, #104f49); }
+#praxis-original .q-feedback .verdict.no { color: #92382f; }
+#praxis-original .q-result .score-line b { color: var(--praxis-color-primary-hover, #104f49); }
+#praxis-original .reveal,
+#praxis-original .js .reveal,
+#praxis-original .js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Keep Canvas overlays legible on their dark instrument surface. */
+#praxis-original .rr-stage {
+  --line: rgba(148, 163, 184, .2);
+  background-color: #070b12;
+  background-image: radial-gradient(120% 90% at 50% 0%, #203a52 0%, #080d15 62%, #070c14 100%);
+}
+#praxis-original .rr-stage .rr-hud {
+  --text: #e8edf5;
+  --text-soft: #cfd8e6;
+  --muted: #93a1b5;
+  --dim: #8191a4;
+  --incident: #e5b967;
+  --reflectat: #80c9c4;
+  --refractat: #83b8e0;
+  --accent: #80c9c4;
+  --warn: #ff9a7e;
+  --line: rgba(148, 163, 184, .24);
+  --line-strong: rgba(163, 181, 201, .38);
+}
+#praxis-original .rr-stage .huy-formula b { color: #e8edf5; }
+#praxis-original .rr-bar { gap: 10px 16px; padding-top: 9px; }
+#praxis-original .rr-btn {
+  border-color: var(--praxis-color-border, #d8ded3);
+  background: var(--praxis-color-surface, #fffefa);
+  color: var(--praxis-color-ink, #18332f);
+}
+#praxis-original .rr-btn:hover { border-color: var(--praxis-color-primary, #17685f); color: var(--praxis-color-primary-hover, #104f49); background: var(--praxis-color-primary-soft, #edf2e9); }
+#praxis-original .rr-btn--primary { background: var(--praxis-color-primary, #17685f); border-color: var(--praxis-color-primary, #17685f); color: #fffefa; }
+#praxis-original .rr-btn--primary:hover { background: var(--praxis-color-primary-hover, #104f49); color: #fffefa; }
+#praxis-original .rr-btn[aria-pressed="true"],
+#praxis-original .rr-seg button[aria-pressed="true"],
+#praxis-original .rr-toggle[aria-pressed="true"] {
+  color: var(--praxis-color-primary-hover, #104f49);
+  background: var(--praxis-color-primary-soft, #edf2e9);
+  border-color: rgba(23, 104, 95, .4);
+}
+#praxis-original .rr-seg { background: var(--praxis-color-surface, #fffefa); border-color: var(--praxis-color-border, #d8ded3); }
+#praxis-original .rr-seg button + button { border-color: var(--praxis-color-border, #d8ded3); }
+#praxis-original .rr-range::-webkit-slider-thumb { background: var(--praxis-color-surface, #fffefa); }
+#praxis-original .rr-range::-moz-range-thumb { background: var(--praxis-color-surface, #fffefa); }
+#praxis-original .rr-range::-webkit-slider-runnable-track { background: linear-gradient(to right, var(--praxis-color-primary, #17685f) 0, var(--praxis-color-primary, #17685f) var(--fill), rgba(24, 51, 47, .2) var(--fill), rgba(24, 51, 47, .2) 100%); }
+#praxis-original .rr-range::-moz-range-track { background: rgba(24, 51, 47, .2); }
+#praxis-original .rr-range::-moz-range-progress { background: var(--praxis-color-primary, #17685f); }
+#praxis-original .rr-offline-download { margin: 18px auto 0; text-align: center; }
+#praxis-original [data-rr-panel][hidden] { display: none !important; }
+
+.praxis-lab-nav > .rr-tabs {
+  display: flex !important;
+  flex: 1 1 100%;
+  max-width: 100%;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 6px 0;
+  background: transparent;
+  border-bottom: 1px solid var(--praxis-color-border, #d8ded3);
+  scrollbar-width: thin;
+}
+.praxis-lab-nav > .rr-tabs .tab {
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 7px 13px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--praxis-color-muted, #586d63);
+  font: 500 14px/1.2 var(--praxis-font-ui, "Segoe UI", Arial, sans-serif);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.praxis-lab-nav > .rr-tabs .tab:hover { background: rgba(23, 104, 95, .07); }
+.praxis-lab-nav > .rr-tabs .tab[aria-selected="true"] {
+  border-color: rgba(23, 104, 95, .28);
+  background: var(--praxis-color-primary, #17685f);
+  color: var(--praxis-color-surface, #fffefa);
+}
+.praxis-lab-nav > .rr-tabs .tab:focus-visible { outline: 2px solid var(--praxis-color-primary, #17685f); outline-offset: 2px; }
+.praxis-lab-nav .praxis-course-sections { display: none !important; }
+#praxis-original > .section, #praxis-original > .hero { scroll-margin-top: calc(var(--course-header, 64px) + 24px); }
+
+@media (max-width: 1024px) {
+  #praxis-original .section { padding-block: 20px 28px; }
+  #praxis-original .lesson-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  #praxis-original .lesson-sim { position: static; max-width: 760px; margin-inline: auto; width: 100%; }
+}
+@media (max-width: 640px) {
+  #praxis-original .hero { padding-block: 14px; }
+  #praxis-original .hero-meta { font-size: 10px; letter-spacing: .06em; }
+  #praxis-original .sec-head { margin-bottom: 12px; }
+  #praxis-original .note-block { padding: 12px 13px; }
+  .praxis-lab-nav > .rr-tabs { gap: 2px; padding-inline: 0; }
+  .praxis-lab-nav > .rr-tabs .tab { min-height: 40px; padding-inline: 10px; font-size: 13px; }
+}

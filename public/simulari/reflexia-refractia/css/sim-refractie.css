@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Simularea „refracția” — detalii proprii peste kit-ul .rr-*
+   Stage-ul, HUD-ul, bara și stările butoanelor vin din css/controls.css.
+   Aici: grila celor trei slidere, badge-ul de reflexie totală (jos, centrat),
+   HUD-ul compact pe ecran mic și câteva retușuri de tipografie mono.
+   ========================================================================== */
+
+/* atributele [hidden] trebuie să învingă display-ul claselor .rr-* */
+#sim-refractie [hidden] { display: none !important; }
+
+/* ancora către simulare nu intră sub header-ul lipicios */
+#sim-refractie { scroll-margin-top: calc(var(--header-h) + 16px); }
+
+/* ------------------------------ bara de jos ------------------------------ */
+/* un rând de acțiuni, apoi exact trei coloane egale de slidere */
+#sim-refractie .rr-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 20px;
+  align-items: end;
+  padding-top: 14px;
+}
+#sim-refractie .rr-field {
+  flex: none;
+  min-width: 0;
+  max-width: none;
+}
+#sim-refractie .rr-bar-actions {
+  grid-column: 1 / -1;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-left: 0;
+}
+
+/* butonul principal rămâne în accent cât timp animația rulează */
+#sim-refractie .rf-play[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: transparent;
+  color: #04150f;
+}
+#sim-refractie .rf-play[aria-pressed="true"]:hover {
+  background: #7df0d2;
+  border-color: transparent;
+  color: #04150f;
+}
+#sim-refractie .rf-play svg { width: 14px; height: 14px; }
+#sim-refractie .rf-play span { letter-spacing: .005em; }
+
+/* ---------------------------------- HUD ---------------------------------- */
+#sim-refractie .rr-hud { padding: 11px 12px; }
+#sim-refractie .rr-hud-left,
+#sim-refractie .rr-hud-right { gap: 5px; }
+
+#sim-refractie .rr-readout b { font-size: 16px; }
+#sim-refractie .rr-readout-label { white-space: nowrap; }
+
+/* când nu există rază refractată, valoarea lui r devine martor mut */
+#sim-refractie .rf-readout--r.is-off b { color: var(--dim); }
+
+/* indicele de refracție se citește ca formulă, nu ca text obișnuit */
+#sim-refractie .rr-badge sub {
+  font-size: .72em;
+  line-height: 0;
+  vertical-align: -.25em;
+}
+#sim-refractie .rr-readout-label sub {
+  font-size: .78em;
+  line-height: 0;
+}
+
+/* ------------------------- badge de reflexie totală ----------------------- */
+/* stă jos, centrat, peste zona în care oricum nu mai există undă refractată */
+#sim-refractie .rf-status {
+  position: absolute;
+  left: 50%;
+  bottom: 13px;
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 10px 26px -14px rgba(0, 0, 0, .95);
+}
+#sim-refractie .rf-warn { animation: rf-warn 1.6s ease-in-out infinite; }
+@keyframes rf-warn {
+  0%, 100% { border-color: rgba(255, 143, 107, .42); color: var(--warn); }
+  50% { border-color: rgba(255, 143, 107, .9); color: #ffc4ae; }
+}
+#sim-refractie .rf-warn .dot { box-shadow: 0 0 0 3px rgba(255, 143, 107, .16); }
+
+/* -------------------------------- ecran mic ------------------------------ */
+@media (max-width: 640px) {
+  #sim-refractie .rr-bar {
+    grid-template-columns: 1fr;
+    gap: 12px 14px;
+    padding-top: 12px;
+  }
+  #sim-refractie .rr-hud { padding: 8px 9px; gap: 6px; }
+  #sim-refractie .rr-hud-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  #sim-refractie .rr-hud-right { gap: 4px; }
+  #sim-refractie .rr-readout { padding: 4px 7px; border-radius: 7px; }
+  #sim-refractie .rr-readout b { font-size: 12.5px; }
+  #sim-refractie .rr-readout-label { font-size: 8.5px; letter-spacing: .06em; }
+  #sim-refractie .rr-badge {
+    font-size: 9px;
+    letter-spacing: .05em;
+    padding: 3px 6px;
+    line-height: 1.4;
+  }
+  #sim-refractie .rf-status { bottom: 10px; }
+  #sim-refractie .rr-field-label { font-size: 9.5px; letter-spacing: .06em; }
+  #sim-refractie .rr-ticks { font-size: 9px; }
+}

@@ -454,6 +454,26 @@ export const simulations = [
     "status": "available"
   },
   {
+    "id": "reflexia-refractia",
+    "addedOn": "2026-11-10",
+    "addedOrder": 3,
+    "chapter": "sunete-si-unde",
+    "title": "Reflexia și refracția undelor mecanice",
+    "subtitle": "Principiul lui Huygens, reflexie și refracție",
+    "description": "Lecție interactivă cu patru simulări, construcția lui Huygens, exemple rezolvate și o verificare cu nouă întrebări.",
+    "href": "./simulari/reflexia-refractia/index.html",
+    "image": "./assets/reflexia-refractia.svg",
+    "alt": "Front de undă incident, reflectat și refractat la o suprafață de separație",
+    "tags": [
+      "Unde",
+      "Huygens",
+      "Experimente",
+      "Offline"
+    ],
+    "keywords": "reflexia refractia unde mecanice huygens front unda incident reflectat refractat",
+    "status": "available"
+  },
+  {
     "id": "figuri-chladni",
     "addedOn": "2026-10-30",
     "addedOrder": 2,

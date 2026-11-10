@@ -84,7 +84,8 @@
         "courses/legea-lui-ohm/ui"
       ],
       "offline": {
-        "kind": "web-only"
+        "kind": "archive",
+        "file": "legea-lui-ohm.zip"
       }
     },
     {
@@ -1053,6 +1054,43 @@
       "offline": {
         "kind": "archive",
         "file": "compunerea-oscilatiilor.zip"
+      }
+    },
+    {
+      "metadata": {
+        "id": "reflexia-refractia",
+        "addedOn": "2026-11-10",
+        "addedOrder": 3,
+        "chapter": "sunete-si-unde",
+        "title": "Reflexia și refracția undelor mecanice",
+        "subtitle": "Principiul lui Huygens, reflexie și refracție",
+        "description": "Lecție interactivă cu patru simulări, construcția lui Huygens, exemple rezolvate și o verificare cu nouă întrebări.",
+        "href": "./simulari/reflexia-refractia/index.html",
+        "image": "./assets/reflexia-refractia.svg",
+        "alt": "Front de undă incident, reflectat și refractat la o suprafață de separație",
+        "tags": ["Unde", "Huygens", "Experimente", "Offline"],
+        "keywords": "reflexia refractia unde mecanice huygens front unda incident reflectat refractat",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {"selector": "#sim-aperture", "scene": "canvas", "layout": "native"},
+          {"selector": "#sim-huygens", "scene": "canvas", "layout": "native"},
+          {"selector": "#sim-reflectie", "scene": "canvas", "layout": "native"},
+          {"selector": "#sim-refractie", "scene": "canvas", "layout": "native"}
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/sunete-si-unde",
+        "courses/shared",
+        "courses/unde-mecanice/basics",
+        "courses/reflexia-refractia/ui"
+      ],
+      "inlineLocales": ["courses/reflexia-refractia/ui"],
+      "offline": {
+        "kind": "archive",
+        "file": "reflexia-refractia.zip"
       }
     },
     {

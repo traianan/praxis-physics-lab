@@ -79,6 +79,18 @@
         "Experimente",
         "Offline"
       ]
+    },
+    "reflexia-refractia": {
+      "title": "Reflexia și refracția undelor mecanice",
+      "subtitle": "Principiul lui Huygens, reflexie și refracție",
+      "description": "Lecție interactivă cu patru simulări, construcția lui Huygens, exemple rezolvate și o verificare cu nouă întrebări.",
+      "alt": "Front de undă incident, reflectat și refractat la o suprafață de separație",
+      "tags": [
+        "Unde",
+        "Huygens",
+        "Experimente",
+        "Offline"
+      ]
     }
   }
 }

@@ -1,0 +1,400 @@
+/* ==========================================================================
+   Kit de controale .rr-* — folosit de toate simulările
+   Stage = obiectul de instrument; controalele stau pe pagina, nu într-un card.
+   ========================================================================== */
+
+/* ------------------------------- stage ----------------------------------- */
+.rr-stage {
+  position: relative;
+  aspect-ratio: var(--stage-aspect, 16 / 10);
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(32, 58, 82, .38) 0%, rgba(8, 13, 21, .9) 62%, #070c14 100%);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.rr-stage > canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+.rr-stage--tall { --stage-aspect: 4 / 3; }
+.rr-stage--wide { --stage-aspect: 16 / 9; }
+.rr-stage--square { --stage-aspect: 1 / 1; }
+
+/* -------------------------------- HUD ------------------------------------ */
+.rr-hud {
+  position: absolute;
+  inset: 0;
+  padding: 13px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  pointer-events: none;
+  z-index: 2;
+}
+.rr-hud--bottom { align-items: flex-end; }
+.rr-hud-left, .rr-hud-right { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.rr-hud-right { align-items: flex-end; text-align: right; }
+
+.rr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(7, 12, 20, .78);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 4px 8px;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+.rr-badge b { color: var(--text); font-weight: 500; letter-spacing: .02em; }
+.rr-badge--accent { color: var(--accent); border-color: rgba(95, 227, 192, .38); }
+.rr-badge--warn { color: var(--warn); border-color: rgba(255, 143, 107, .42); }
+.rr-badge--incident { color: var(--incident); border-color: rgba(255, 180, 105, .4); }
+.rr-badge--reflectat { color: var(--reflectat); border-color: rgba(95, 227, 192, .38); }
+.rr-badge--refractat { color: var(--refractat); border-color: rgba(147, 167, 255, .42); }
+.rr-badge .dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor; flex: 0 0 auto;
+}
+
+.rr-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 6px 10px;
+  background: rgba(7, 12, 20, .78);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font-family: var(--mono);
+}
+.rr-readout-label {
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.rr-readout b {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .01em;
+}
+.rr-readout b .u { color: var(--muted); font-size: 11px; }
+.rr-readout--accent b { color: var(--accent); }
+.rr-readout--incident b { color: var(--incident); }
+.rr-readout--reflectat b { color: var(--reflectat); }
+.rr-readout--refractat b { color: var(--refractat); }
+.rr-readout--warn b { color: var(--warn); }
+
+.rr-legend {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  display: flex;
+  gap: 14px;
+  z-index: 2;
+  pointer-events: none;
+  font-family: var(--mono);
+}
+.rr-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rr-legend-item i {
+  width: 16px; height: 0;
+  border-top: 2px solid currentColor;
+  display: inline-block;
+}
+.rr-legend-item--incident { color: var(--incident); }
+.rr-legend-item--reflectat { color: var(--reflectat); }
+.rr-legend-item--refractat { color: var(--refractat); }
+.rr-legend-item--muted { color: var(--dim); }
+
+/* ------------------------------ bara de jos ------------------------------ */
+.rr-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px 20px;
+  padding: 14px 2px 0;
+}
+.rr-bar--between { justify-content: space-between; }
+.rr-bar-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+.rr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 132px;
+  flex: 1 1 132px;
+  max-width: 230px;
+}
+.rr-field-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.rr-field-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--dim);
+  white-space: nowrap;
+}
+.rr-val {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  white-space: nowrap;
+}
+.rr-val .rr-unit { color: var(--dim); font-size: 10.5px; margin-left: 2px; }
+.rr-val--accent { color: var(--accent); }
+
+/* ------------------------------- slider ---------------------------------- */
+.rr-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 32px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  --fill: 50%;
+}
+.rr-range:focus { outline: none; }
+.rr-range::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0,
+    var(--accent) var(--fill),
+    rgba(148, 163, 184, .22) var(--fill),
+    rgba(148, 163, 184, .22) 100%
+  );
+}
+.rr-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5.5px;
+  border-radius: 50%;
+  background: #07111a;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 0 rgba(95, 227, 192, .22);
+  transition: box-shadow .18s ease, border-color .18s ease;
+}
+.rr-range:hover::-webkit-slider-thumb { box-shadow: 0 0 0 5px rgba(95, 227, 192, .14); }
+.rr-range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 5px rgba(95, 227, 192, .26);
+  border-color: #b9fff0;
+}
+.rr-range::-moz-range-track {
+  height: 3px;
+  border-radius: 99px;
+  background: rgba(148, 163, 184, .22);
+}
+.rr-range::-moz-range-progress {
+  height: 3px;
+  border-radius: 99px;
+  background: var(--accent);
+}
+.rr-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #07111a;
+  border: 2px solid var(--accent);
+}
+.rr-range:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 5px rgba(95, 227, 192, .26);
+  border-color: #b9fff0;
+}
+.rr-range:focus-visible { outline: none; }
+.rr-range:disabled { opacity: .4; cursor: not-allowed; }
+
+.rr-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--dim);
+  letter-spacing: .04em;
+  margin-top: -2px;
+}
+
+/* ------------------------------- butoane --------------------------------- */
+.rr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 9px;
+  border: 1px solid var(--line-strong);
+  background: rgba(148, 163, 184, .05);
+  color: var(--text);
+  font: 500 12.5px/1 var(--sans);
+  letter-spacing: .005em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color .16s ease, background-color .16s ease, color .16s ease, transform .12s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.rr-btn:hover {
+  border-color: rgba(95, 227, 192, .55);
+  color: #fff;
+  background: rgba(95, 227, 192, .08);
+}
+.rr-btn:active { transform: translateY(1px); }
+.rr-btn:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(95, 227, 192, .22);
+}
+.rr-btn svg { width: 14px; height: 14px; flex: 0 0 auto; }
+.rr-btn--primary {
+  background: var(--accent);
+  border-color: transparent;
+  color: #04150f;
+  font-weight: 600;
+}
+.rr-btn--primary:hover {
+  background: #7df0d2;
+  border-color: transparent;
+  color: #04150f;
+}
+.rr-btn--quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+}
+.rr-btn--quiet:hover { background: rgba(148, 163, 184, .07); color: var(--text); }
+.rr-btn[aria-pressed="true"] {
+  background: rgba(95, 227, 192, .13);
+  border-color: rgba(95, 227, 192, .5);
+  color: #d8fff5;
+}
+.rr-btn:disabled { opacity: .4; pointer-events: none; }
+
+.rr-seg {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  overflow: hidden;
+  background: rgba(148, 163, 184, .04);
+}
+.rr-seg button {
+  height: 30px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: 500 12px/1 var(--sans);
+  cursor: pointer;
+  transition: background-color .16s ease, color .16s ease;
+}
+.rr-seg button + button { border-left: 1px solid var(--line); }
+.rr-seg button:hover { color: var(--text); background: rgba(148, 163, 184, .07); }
+.rr-seg button[aria-pressed="true"] {
+  background: rgba(95, 227, 192, .14);
+  color: #d8fff5;
+}
+.rr-seg button:focus-visible { outline: none; box-shadow: inset 0 0 0 2px rgba(95, 227, 192, .6); }
+
+/* --------------------------- comutator cu punct -------------------------- */
+.rr-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 10px 0 8px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  font: 500 12px/1 var(--sans);
+  cursor: pointer;
+  transition: color .16s ease, background-color .16s ease;
+  white-space: nowrap;
+}
+.rr-toggle::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dim);
+  box-shadow: 0 0 0 3px rgba(148, 163, 184, .08);
+  transition: background-color .16s ease, box-shadow .16s ease;
+}
+.rr-toggle:hover { color: var(--text); background: rgba(148, 163, 184, .06); }
+.rr-toggle[aria-pressed="true"] { color: #d8fff5; }
+.rr-toggle[aria-pressed="true"]::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(95, 227, 192, .18);
+}
+.rr-toggle:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(95, 227, 192, .22); }
+.rr-toggle:disabled {
+  opacity: .42;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.rr-note {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--dim);
+  max-width: 56ch;
+}
+.rr-note b { color: var(--muted); font-weight: 500; }
+.rr-spacer { flex: 1 1 auto; }
+
+/* --------------------------- stări speciale ------------------------------ */
+.rr-flash { animation: rr-flash .5s cubic-bezier(.22, .61, .36, 1); }
+@keyframes rr-flash {
+  0% { box-shadow: inset 0 0 0 1px rgba(95, 227, 192, .7), 0 0 34px -8px rgba(95, 227, 192, .55); }
+  100% { box-shadow: inset 0 0 0 1px rgba(95, 227, 192, 0), 0 0 0 0 rgba(95, 227, 192, 0); }
+}
+.rr-pulse { animation: rr-pulse 1.6s ease-in-out infinite; }
+@keyframes rr-pulse {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+
+/* ecran mic: controalele se așază pe două rânduri, stage-ul rămâne lizibil */
+@media (max-width: 640px) {
+  .rr-bar { gap: 12px 14px; }
+  .rr-field { min-width: 118px; max-width: none; flex: 1 1 118px; }
+  .rr-stage { border-radius: 13px; }
+  .rr-hud { padding: 9px 10px; }
+  .rr-badge { font-size: 9.5px; padding: 3px 6px; }
+  .rr-readout { padding: 5px 8px; }
+  .rr-readout b { font-size: 13px; }
+  .rr-legend { left: 10px; bottom: 9px; gap: 10px; }
+  .rr-legend-item { font-size: 9px; }
+  .rr-btn { height: 30px; padding: 0 10px; }
+}

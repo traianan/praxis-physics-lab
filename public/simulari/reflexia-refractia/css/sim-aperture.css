@@ -1,0 +1,106 @@
+/* ==========================================================================
+   Simularea „aperture” — hero: fanta și undele elementare
+   Kit-ul .rr-* și tokenii vin din css/controls.css + css/base.css.
+   Aici stau doar detaliile specifice: HUD, legendă, măsuri de bară.
+   (Etichetele desenate pe canvas — paravan, fantă, undă plană — sunt în JS.)
+   ========================================================================== */
+
+/* ------------------------------- HUD ------------------------------------- */
+#sim-aperture .rr-hud { padding: 12px 13px; }
+#sim-aperture .ap-hud-left,
+#sim-aperture .ap-hud-right { gap: 5px; }
+
+/* valorile rămân cu simbolurile științifice — fără transformare în majuscule */
+#sim-aperture .ap-hud-left .rr-badge {
+  text-transform: none;
+  letter-spacing: .015em;
+  font-size: 10.5px;
+}
+#sim-aperture .ap-sep { color: var(--dim); margin: 0 1px; }
+
+#sim-aperture .ap-unit {
+  margin-left: 1px;
+  color: var(--dim);
+  font-size: 9px;
+  letter-spacing: .04em;
+}
+
+/* indicatorul „front circular”: aprins doar când d/λ < 0,6 */
+#sim-aperture .ap-status {
+  color: var(--muted);
+  transition: color .22s var(--ease), border-color .22s var(--ease);
+}
+#sim-aperture .ap-status .dot {
+  background: var(--dim);
+  box-shadow: 0 0 0 3px rgba(148, 163, 184, .07);
+  transition: background-color .22s var(--ease), box-shadow .22s var(--ease);
+}
+#sim-aperture .ap-status.is-on {
+  color: var(--accent);
+  border-color: rgba(95, 227, 192, .38);
+}
+#sim-aperture .ap-status.is-on .dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(95, 227, 192, .16);
+}
+
+/* 0,6 ≤ d/λ < 1: difracție încă pronunțată, dar frontul nu mai e circular */
+#sim-aperture .ap-status.is-mid {
+  color: rgba(95, 227, 192, .72);
+  border-color: rgba(95, 227, 192, .26);
+}
+#sim-aperture .ap-status.is-mid .dot {
+  background: rgba(95, 227, 192, .72);
+  box-shadow: 0 0 0 3px rgba(95, 227, 192, .08);
+}
+
+#sim-aperture .ap-marker {
+  color: var(--incident);
+  border-color: rgba(255, 180, 105, .34);
+  text-transform: none;
+  letter-spacing: .05em;
+}
+#sim-aperture .ap-status[hidden],
+#sim-aperture .ap-marker[hidden] { display: none; }
+
+/* ------------------------------- legendă --------------------------------- */
+/* un singur chip tehnic, ca să rămână lizibil peste fronturile desenate */
+#sim-aperture .ap-legend {
+  left: 13px;
+  bottom: 11px;
+  gap: 12px;
+  padding: 5px 9px;
+  background: rgba(7, 12, 20, .66);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+#sim-aperture .ap-legend .rr-legend-item { font-size: 9.5px; letter-spacing: .07em; }
+
+/* ------------------------------ bara -------------------------------------- */
+#sim-aperture .rr-bar { padding-top: 13px; }
+#sim-aperture .ap-field-d,
+#sim-aperture .ap-field-l { flex: 1 1 150px; }
+#sim-aperture .ap-play { min-width: 98px; }
+
+/* ------------------------------ mobil ------------------------------------ */
+@media (max-width: 640px) {
+  #sim-aperture .rr-hud { padding: 9px 10px; }
+  #sim-aperture .ap-hud-left,
+  #sim-aperture .ap-hud-right { gap: 4px; }
+  #sim-aperture .ap-hud-left .rr-badge { font-size: 10px; }
+  #sim-aperture .ap-legend {
+    left: 10px;
+    bottom: 8px;
+    gap: 9px;
+    padding: 4px 7px;
+  }
+  #sim-aperture .ap-legend .rr-legend-item {
+    font-size: 9px;
+    letter-spacing: .05em;
+    gap: 5px;
+  }
+  #sim-aperture .ap-legend .rr-legend-item i { width: 13px; }
+  #sim-aperture .ap-play { min-width: 88px; }
+}

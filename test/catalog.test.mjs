@@ -5,9 +5,9 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
- assert.deepEqual(latest.map(sim=>sim.id),['legea-lui-ohm','rezistenta-unui-fir','transformarea-politropa']);
- assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-08','2026-11-07','2026-11-07']);
- assert.equal(getLatestSimulations(1)[0].id,'legea-lui-ohm');
+ assert.deepEqual(latest.map(sim=>sim.id),['reflexia-refractia','legea-lui-ohm','rezistenta-unui-fir']);
+ assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-10','2026-11-08','2026-11-07']);
+ assert.equal(getLatestSimulations(1)[0].id,'reflexia-refractia');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
@@ -25,8 +25,8 @@ test('exactly the seven physics chapters, with unique stable ids', () => {
  assert.equal(chapters.length,7); assert.equal(new Set(chapters.map(c=>c.id)).size,7);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite']);
 });
-test('twenty-nine real local laboratories are available, including Ohm and the existing optics', async () => {
- assert.equal(simulations.length,29);
+test('thirty real local laboratories are available, including Ohm, optics and wave reflection/refraction', async () => {
+ assert.equal(simulations.length,30);
  const ohm=simulations.find(s=>s.id==='legea-lui-ohm');
  assert.equal(ohm.chapter,'electricitate-magnetism-circuite');assert.equal(ohm.status,'available');
  const header=await readFile(new URL('../public/shared/lab-header.js',import.meta.url),'utf8');

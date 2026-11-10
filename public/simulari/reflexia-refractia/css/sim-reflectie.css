@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Simularea reflexiei — detalii proprii.
+   Anatomia (stage, HUD, bară, controale) vine din css/controls.css; aici stau
+   doar lucrurile specifice acestei simulări.
+   ========================================================================== */
+
+/* denumirile celor două medii, în colțul de sus al cadrului */
+.refl-media-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+.refl-media { gap: 8px; }
+.refl-media i {
+  width: 3px;
+  height: 13px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+  background: #0a1520;
+  box-shadow: inset 0 0 0 1px rgba(163, 181, 201, .3);
+}
+.refl-media--1 i { background: #31566a; box-shadow: none; }
+.refl-media--2 i { background: #060b12; }
+
+/* readout-urile i / r */
+.refl-hud-row { display: flex; gap: 6px; }
+.refl-num { font-variant-numeric: tabular-nums; }
+
+/* badge-ul de egalitate i − r, care se aprinde scurt când legea se confirmă */
+.refl-eq {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  line-height: 1.4;
+  letter-spacing: .03em;
+  color: var(--muted);
+  background: rgba(7, 12, 20, .78);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 4px 8px;
+  white-space: nowrap;
+  transition: color .18s var(--ease), border-color .18s var(--ease),
+    background-color .18s var(--ease), box-shadow .18s var(--ease);
+}
+.refl-eq b {
+  color: var(--accent);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.refl-eq.is-hot {
+  color: #d8fff5;
+  border-color: rgba(95, 227, 192, .62);
+  background: rgba(11, 40, 36, .92);
+  box-shadow: 0 0 0 1px rgba(95, 227, 192, .2), 0 0 20px -6px rgba(95, 227, 192, .55);
+}
+
+/* legenda stă în dreapta-jos, ca să nu acopere eticheta mediului 2 */
+.refl-legend { left: auto; right: 14px; }
+
+/* butonul play are lățime stabilă, ca textul să nu miște bara */
+.refl-play { min-width: 92px; }
+
+@media (max-width: 640px) {
+  .refl-legend { right: 10px; bottom: 8px; gap: 9px; }
+  .refl-media i { height: 12px; }
+  .refl-eq { font-size: 9.5px; padding: 3px 6px; }
+  .refl-play { min-width: 82px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .refl-eq { transition: none; }
+  .refl-eq.is-hot { box-shadow: none; }
+}

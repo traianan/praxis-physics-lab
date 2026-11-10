@@ -79,6 +79,18 @@
         "Experiments",
         "Offline"
       ]
+    },
+    "reflexia-refractia": {
+      "title": "Mechanical wave reflection and refraction",
+      "subtitle": "Huygens’s principle, reflection and refraction",
+      "description": "Interactive lesson with four wave simulations, Huygens construction, solved examples and a nine-question check.",
+      "alt": "Incident, reflected and refracted wave fronts at a boundary",
+      "tags": [
+        "Waves",
+        "Huygens",
+        "Experiments",
+        "Offline"
+      ]
     }
   }
 }

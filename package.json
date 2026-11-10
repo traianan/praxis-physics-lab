@@ -42,7 +42,9 @@
     "audit:keyboard": "node scripts/qa/accessibility-keyboard.mjs",
     "import:polytropic": "node scripts/import-polytropic.mjs",
     "import:wire": "node scripts/import-wire.mjs",
-    "import:ohm": "node scripts/import-ohm.mjs"
+    "import:ohm": "node scripts/import-ohm.mjs",
+    "import:reflexia-refractia": "node scripts/import-reflexia-refractia.mjs",
+    "offline:reflexia-refractia": "node scripts/build-courses-offline.mjs --course=reflexia-refractia"
   },
   "devDependencies": {
     "@xyflow/react": "^12.12.1",

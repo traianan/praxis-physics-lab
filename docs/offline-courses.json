@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-07T13:58:21.813Z",
+  "builtAt": "2026-11-10T16:12:34.516Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -247,6 +247,17 @@
       "id": "transformarea-politropa",
       "file": "public/simulari/transformarea-politropa/transformarea-politropa.zip",
       "sha256": "9a7723e9a9e2042d871bdef8c50294bdc413fc8a5e59490a22c168fd761d2798",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "reflexia-refractia",
+      "file": "public/simulari/reflexia-refractia/reflexia-refractia.zip",
+      "sha256": "6f329df913acf7e6c0693f621d0c657dc3b45613af4e35b4609c00f5e22d9418",
       "languages": [
         "ro",
         "en"

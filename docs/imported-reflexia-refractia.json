@@ -1,0 +1,21 @@
+{
+  "id": "reflexia-refractia",
+  "source": "../reflexia-refractia/index.html",
+  "sha256": "d0b8a023bba4f341c7509045254e9415f0553617f1de27b648db436affa973e2",
+  "simulations": 4,
+  "sections": [
+    "Introducere",
+    "Principiul lui Huygens",
+    "Reflexia",
+    "Refracția",
+    "Exemple rezolvate",
+    "Verificare",
+    "Resurse"
+  ],
+  "adaptations": [
+    "Praxis shared header, settings, sound and chapter return",
+    "Seven accessible lesson tabs",
+    "Locally bundled lesson scripts, styles and fonts",
+    "Single shared sound switch"
+  ]
+}
