@@ -89,7 +89,7 @@
     hudRow.appendChild(readR.box);
     hudRight.appendChild(hudRow);
 
-    var eq = RR.el('span', { class: 'refl-eq', html: 'i − r = <b>0,0°</b>' });
+    var eq = RR.el('span', { class: 'refl-eq', html: 'i = r' });
     hudRight.appendChild(eq);
 
     var hud = RR.el('div', { class: 'rr-hud' });

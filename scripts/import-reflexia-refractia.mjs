@@ -12,6 +12,9 @@ if(!main)throw new Error('Main lesson content was not found in reflexia-refracti
 
 const tabs=[['deschidere','Introducere'],['principiu','Principiul lui Huygens'],['reflexia','Reflexia'],['refractia','Refracția'],['exemple','Exemple rezolvate'],['verificare','Verificare'],['resurse','Resurse']];
 let body=main.trim();
+const oldReflectionCaption='Valoarea <i>i</i> − <i>r</i> rămâne zero.';
+if(!body.includes(oldReflectionCaption))throw new Error('The reflection-law caption changed; review its adapted statement');
+body=body.replace(oldReflectionCaption,'Legea reflexiei: <i>i</i> = <i>r</i>.');
 for(const [id]of tabs){
  if(id==='deschidere')body=body.replace('<section class="hero">','<section class="hero" id="deschidere">');
  else if(!body.includes(`id="${id}"`))throw new Error(`Lesson section #${id} was not found`);
@@ -36,6 +39,10 @@ const html='<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta nam
 
 const target=new URL('public/simulari/'+id+'/',root);await mkdir(target,{recursive:true});
 for(const dir of ['css','js','fonts'])await cp(new URL(dir+'/',sourceRoot),new URL(dir+'/',target),{recursive:true});
+const reflectionScript=new URL('js/sim-reflectie.js',target),reflectionCode=await readFile(reflectionScript,'utf8');
+const oldReflectionReadout="html: 'i − r = <b>0,0°</b>'";
+if(reflectionCode.split(oldReflectionReadout).length!==2)throw new Error('The reflection-law readout changed; review the simulation before importing');
+await writeFile(reflectionScript,reflectionCode.replace(oldReflectionReadout,"html: 'i = r'"));
 await cp(new URL('scripts/adaptations/reflexia-refractia.css',root),new URL('css/praxis-adaptation.css',target));
 await cp(new URL('scripts/adaptations/reflexia-refractia-audio.js',root),new URL('js/praxis-adapter.js',target));
 await cp(new URL('scripts/adaptations/reflexia-refractia-tabs.js',root),new URL('js/tabs.js',target));
