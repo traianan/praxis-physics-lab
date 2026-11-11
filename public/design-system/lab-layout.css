@@ -20,7 +20,7 @@ body[data-praxis-course=miscarea-rectilinie] #praxis-original>.top{display:none}
 /* Keep imported lesson roots and active tab panels centered in wide or embedded viewports. */
 body[data-praxis-laboratory] #praxis-original{box-sizing:border-box;width:100%;min-width:0;max-width:100%;margin-inline:auto}
 body[data-praxis-laboratory] #praxis-original>:is(main,[role=main]):not(.app-shell){box-sizing:border-box;min-width:0;max-width:100%;margin-inline:auto}
-body[data-praxis-laboratory] #praxis-original :is([role=tabpanel],.lesson-tab-panel){box-sizing:border-box;min-width:0;max-width:100%;margin-inline:auto}
+body[data-praxis-laboratory] #praxis-original :is([role=tabpanel],.lesson-tab-panel){box-sizing:border-box;width:100%;min-width:0;max-width:100%;margin-inline:auto}
 :root[data-board=true] .praxis-lab-header{display:none}
 .praxis-lab-nav .tabs,.praxis-lab-nav .module-tabs{display:inline-flex;gap:4px;background:#e8efeb;padding:4px;border-radius:9px}.praxis-lab-nav .tab,.praxis-lab-nav .module-tabs button{font:600 14px var(--praxis-font-ui);min-height:44px;padding:9px 16px;border:0;border-radius:6px;background:transparent;color:var(--praxis-color-muted)}.praxis-lab-nav .tab[aria-selected=true],.praxis-lab-nav .module-tabs button[aria-selected=true]{background:var(--praxis-color-surface);color:var(--praxis-color-primary)}.praxis-lab-nav .tab::after{display:none}.praxis-lab-nav .workspace-note{margin-left:auto}
 :root:not([data-board=true]) .app-shell{display:block;max-width:none}:root:not([data-board=true]) .app-shell>.rail{display:none}:root:not([data-board=true]) .app-shell>main{padding:0;max-width:none}:root:not([data-board=true]) .app-shell .workspace{padding:0 24px}:root:not([data-board=true]) .app-shell .page-intro{margin-bottom:0}
