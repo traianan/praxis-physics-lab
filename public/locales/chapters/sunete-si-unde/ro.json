@@ -80,6 +80,14 @@
         "Offline"
       ]
     },
+    "unde-seismice": {
+      "title": "Unde seismice",
+      "subtitle": "De la focar la seismogramă",
+      "description": "Simulează sosirea undelor P, S și de suprafață, compară Richter, Mw, Mercalli și MSK-64 și explorează cutremure reale.",
+      "alt": "Fronturi de undă seismică și o seismogramă",
+      "tags": ["Unde", "Seismologie", "Experimente"],
+      "keywords": "unde seismice seism cutremure vrancea focar epicentru richter mercalli msk mks love rayleigh seismograma"
+    },
     "reflexia-refractia": {
       "title": "Reflexia și refracția undelor mecanice",
       "subtitle": "Principiul lui Huygens, reflexie și refracție",

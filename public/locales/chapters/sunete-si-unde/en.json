@@ -80,6 +80,14 @@
         "Offline"
       ]
     },
+    "unde-seismice": {
+      "title": "Seismic waves",
+      "subtitle": "From the focus to the seismogram",
+      "description": "Simulate P, S and surface arrivals, compare Richter, Mw, Mercalli and MSK-64, and explore real earthquakes.",
+      "alt": "Seismic wavefronts and a seismogram",
+      "tags": ["Waves", "Seismology", "Experiments"],
+      "keywords": "seismic waves earthquake vrancea focus epicentre richter mercalli msk mks love rayleigh seismogram"
+    },
     "reflexia-refractia": {
       "title": "Mechanical wave reflection and refraction",
       "subtitle": "Huygens’s principle, reflection and refraction",

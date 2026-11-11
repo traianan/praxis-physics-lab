@@ -29,7 +29,7 @@ test('distributed embedded lessons use namespace ordering from the manifest',asy
   if(embedded)assert.deepEqual(JSON.parse(embedded[1]),lab.locales,lab.metadata.id);
   else{
    const app=await readFile(new URL('../public/simulari/'+lab.metadata.id+'/app.js',import.meta.url),'utf8');
-   assert.ok(app.includes("namespaceList:labNamespaces['"+lab.metadata.id+"']"),lab.metadata.id);
+   assert.match(app,new RegExp("namespaceList:\\s*labNamespaces\\['"+lab.metadata.id+"'\\]"),lab.metadata.id);
   }
  }
 });

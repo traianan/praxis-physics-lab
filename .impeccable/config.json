@@ -29,6 +29,15 @@
         ],
         "createdAt": "2026-11-08T16:38:55.818Z",
         "reason": "False positive: the left border is the CSS triangle arrowhead for the current-direction legend icon, not a card accent."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "public/simulari/unde-seismice/index.html"
+        ],
+        "createdAt": "2026-11-11T16:36:38.760Z",
+        "reason": "Alegere documentată în DESIGN_SYSTEM.md: paleta Praxis rafinat, varianta A, aprobată la 1 noiembrie 2026, include fundalul ivory #F7F5EE pentru laboratoare."
       }
     ]
   }

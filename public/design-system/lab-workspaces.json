@@ -305,6 +305,23 @@
       }
     ]
   },
+  "unde-seismice": {
+    "workspaces": [
+      {
+        "selector": "#station .seismic-workspace",
+        "scene": "#propagation",
+        "graphs": "#seismogram",
+        "controls": ".seismic-controls",
+        "layout": "native"
+      },
+      {
+        "selector": "#waves .seismic-workspace",
+        "scene": "#particles",
+        "controls": ".seismic-controls",
+        "layout": "native"
+      }
+    ]
+  },
   "reflexia-refractia": {
     "workspaces": [
       {

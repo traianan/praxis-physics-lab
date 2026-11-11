@@ -454,6 +454,25 @@ export const simulations = [
     "status": "available"
   },
   {
+    "id": "unde-seismice",
+    "addedOn": "2026-11-11",
+    "addedOrder": 1,
+    "chapter": "sunete-si-unde",
+    "title": "Unde seismice",
+    "subtitle": "De la focar la seismogramă",
+    "description": "Simulează sosirea undelor P, S și de suprafață, compară Richter, Mw, Mercalli și MSK-64 și explorează cutremure reale.",
+    "href": "./simulari/unde-seismice/index.html",
+    "image": "./assets/unde-seismice.png",
+    "alt": "Fronturi de undă seismică și o seismogramă",
+    "tags": [
+      "Unde",
+      "Seismologie",
+      "Experimente"
+    ],
+    "keywords": "unde seismice seism cutremure vrancea focar epicentru richter mercalli msk mks love rayleigh seismograma",
+    "status": "available"
+  },
+  {
     "id": "reflexia-refractia",
     "addedOn": "2026-11-10",
     "addedOrder": 3,

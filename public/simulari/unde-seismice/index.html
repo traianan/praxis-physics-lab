@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ro">
+<head><link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMyMTZlNjEiLz48dGV4dCB4PSIxNSIgeT0iNDYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI1NCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5wPC90ZXh0PjxjaXJjbGUgY3g9IjUyIiBjeT0iNDciIHI9IjUiIGZpbGw9IiNkNWFjNjciLz48L3N2Zz4K">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Unde seismice · Praxis</title>
+  <link rel="stylesheet" href="../../design-system/tokens.css">
+  <link rel="stylesheet" href="../../design-system/components.css">
+  <link rel="stylesheet" href="../../shared/course.css">
+  <link rel="stylesheet" href="../../design-system/lab-layout.css">
+  <link rel="stylesheet" href="../../design-system/laboratory.css">
+  <link rel="stylesheet" href="../../design-system/compact.css">
+  <link rel="stylesheet" href="seismic.css">
+  <script src="../../shared/i18n.js"></script>
+  <script src="../../shared/sound.js"></script>
+  <script src="../../shared/lab-header.js"></script>
+  <script src="../../shared/scientific-colors.js"></script>
+  <script src="../../shared/course-localization.js"></script>
+  <script type="module" src="app.js"></script>
+<style id="praxis-link-colors">/* One link colour across the library, imported lessons and standalone exports. */
+:root{--praxis-color-link:var(--praxis-color-primary,#17685f)}
+html body a[href],html body a[href]:visited,html body a[href]:hover,html body a[href]:active{color:var(--praxis-link-ink,var(--praxis-color-link))!important}
+/* Link controls use a light surface so their common text colour stays readable. */
+html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected=true],.active,.backlink){background:var(--praxis-link-button-background,var(--praxis-color-primary-soft,#e4eeea))!important}
+</style></head>
+<body data-praxis-course="unde-seismice" data-praxis-laboratory="true">
+  <main id="praxis-original" class="seismic">
+    <div class="tabs" role="tablist" aria-label="Secțiunea lecției">
+      <button type="button" class="tab" role="tab" id="tab-station" data-tab="station" aria-controls="station" aria-selected="true">Stație seismică</button>
+      <button type="button" class="tab" role="tab" id="tab-waves" data-tab="waves" aria-controls="waves" aria-selected="false" tabindex="-1">Tipuri de unde</button>
+      <button type="button" class="tab" role="tab" id="tab-scales" data-tab="scales" aria-controls="scales" aria-selected="false" tabindex="-1">Scări seismice</button>
+      <button type="button" class="tab" role="tab" id="tab-events" data-tab="events" aria-controls="events" aria-selected="false" tabindex="-1">Cutremure reale</button>
+      <button type="button" class="tab" role="tab" id="tab-review" data-tab="review" aria-controls="review" aria-selected="false" tabindex="-1">Verificare și surse</button>
+    </div>
+    <section id="station" role="tabpanel" aria-labelledby="tab-station">
+      <div class="seismic-workspace">
+        <div class="seismic-visuals">
+          <div class="seismic-stage">
+            <div class="seismic-stage-bar">
+              <h2 data-content-type="simulation">De la focar la stație</h2>
+              <div class="seismic-actions">
+                <button type="button" id="play" class="button primary" data-no-i18n>Pornește seismul</button>
+                <button type="button" id="reset" class="button secondary">Reset</button>
+              </div>
+            </div>
+            <canvas id="propagation" role="img" aria-label="Secțiune prin scoarță, cu focar, epicentru, stație și fronturi de undă"></canvas>
+          </div>
+          <div class="seismic-stage">
+            <h2 data-content-type="diagram">Seismogramă sintetică</h2>
+            <canvas id="seismogram" role="img" aria-label="Semnal seismic normalizat în funcție de timpul de la rupere"></canvas>
+          </div>
+        </div>
+        <aside class="seismic-card seismic-controls">
+          <h2 data-content-type="controls">Controlează experimentul</h2>
+          <div class="seismic-parameter">
+            <label for="distance">Distanță epicentrală <output id="distance-value" for="distance"></output></label>
+            <input type="range" id="distance" min="40" max="220" step="5" value="120">
+          </div>
+          <div class="seismic-parameter">
+            <label for="depth">Adâncimea focarului <output id="depth-value" for="depth"></output></label>
+            <input type="range" id="depth" min="0" max="80" step="5" value="25">
+          </div>
+          <div class="seismic-parameter">
+            <label for="speed">Ritmul redării</label>
+            <select id="speed"><option value="2">2×</option><option value="4" selected>4×</option><option value="8">8×</option></select>
+          </div>
+          <dl class="seismic-arrivals">
+            <div class="phase-p"><dt>P</dt><dd id="arrival-p"></dd></div>
+            <div class="phase-s"><dt>S</dt><dd id="arrival-s"></dd></div>
+            <div class="phase-surface"><dt>Suprafață</dt><dd id="arrival-surface"></dd></div>
+            <div><dt>Δt S–P</dt><dd id="arrival-delay"></dd></div>
+          </dl>
+          <p id="station-status" role="status" data-no-i18n></p>
+          <p class="seismic-muted">Sunetul din antet activează tonuri sintetice la sosiri.</p>
+        </aside>
+      </div>
+      <details class="seismic-card seismic-note">
+        <summary>Cum estimezi distanța din decalajul S–P?</summary>
+        <p>Modelul folosește un mediu omogen și raze drepte. Vitezele alese sunt 6,0 km/s pentru P și 3,5 km/s pentru S. Pentru suprafață, modelul adaugă timpul parcurs de P până la epicentru și apoi deplasarea la 2,9 km/s de-a lungul suprafeței.</p>
+        <p data-science-math="prose">Din t = d/v obții Δt = d(1/vₛ − 1/vₚ). Aici d este distanța focar–stație. La Δt = 10 s, d ≈ 84 km. Dacă focarul e la 40 km adâncime, distanța epicentrală este ≈ 74 km.</p>
+        <p>O stație estimează distanța. Datele mai multor stații ajută la localizarea focarului și la estimarea timpului de origine. Amplitudinile și tonurile din laborator sunt ilustrative.</p>
+      </details>
+    </section>
+    <section id="waves" role="tabpanel" aria-labelledby="tab-waves" hidden>
+      <div class="seismic-workspace wave-workspace">
+        <div class="seismic-stage">
+          <h2 data-content-type="simulation">Mișcarea particulelor</h2>
+          <canvas id="particles" role="img" aria-label="Grilă de particule cu un punct urmărit și direcția de propagare"></canvas>
+        </div>
+        <div class="seismic-card seismic-controls">
+          <h2 data-content-type="theory">Alege tipul de undă</h2>
+          <label class="seismic-parameter" for="wave-mode">
+            <select id="wave-mode" aria-label="Alege tipul de undă">
+              <option value="p">P · compresie</option><option value="s">S · forfecare</option>
+              <option value="love">Love · suprafață</option><option value="rayleigh">Rayleigh · suprafață</option>
+            </select>
+          </label>
+          <p id="wave-description" data-no-i18n></p>
+          <div class="seismic-actions">
+            <button type="button" id="wave-play" class="button primary" data-no-i18n>Animează</button>
+            <button type="button" id="wave-reset" class="button secondary">Reset</button>
+          </div>
+          <p class="seismic-muted">Mișcare amplificată. Punctul auriu urmărește aceeași particulă.</p>
+        </div>
+      </div>
+      <div id="definitions" class="seismic-reading"></div>
+    </section>
+    <section id="scales" class="seismic-reading" role="tabpanel" aria-labelledby="tab-scales" hidden></section>
+    <section id="events" role="tabpanel" aria-labelledby="tab-events" hidden></section>
+    <section id="review" role="tabpanel" aria-labelledby="tab-review" hidden></section>
+  </main>
+</body>
+</html>

@@ -161,6 +161,12 @@ export const labNamespaces = {
     "courses/shared",
     "composition"
   ],
+  "unde-seismice": [
+    "common",
+    "chapters/sunete-si-unde",
+    "courses/shared",
+    "labs/unde-seismice/ui"
+  ],
   "reflexia-refractia": [
     "common",
     "chapters/sunete-si-unde",

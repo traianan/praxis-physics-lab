@@ -5,9 +5,9 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
- assert.deepEqual(latest.map(sim=>sim.id),['reflexia-refractia','legea-lui-ohm','rezistenta-unui-fir']);
- assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-10','2026-11-08','2026-11-07']);
- assert.equal(getLatestSimulations(1)[0].id,'reflexia-refractia');
+ assert.deepEqual(latest.map(sim=>sim.id),['unde-seismice','reflexia-refractia','legea-lui-ohm']);
+ assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-11','2026-11-10','2026-11-08']);
+ assert.equal(getLatestSimulations(1)[0].id,'unde-seismice');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
@@ -25,8 +25,11 @@ test('exactly the seven physics chapters, with unique stable ids', () => {
  assert.equal(chapters.length,7); assert.equal(new Set(chapters.map(c=>c.id)).size,7);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite']);
 });
-test('thirty real local laboratories are available, including Ohm, optics and wave reflection/refraction', async () => {
- assert.equal(simulations.length,30);
+test('thirty-one real local laboratories are available, including Ohm, optics and seismic waves', async () => {
+ assert.equal(simulations.length,31);
+ const seismic=simulations.find(s=>s.id==='unde-seismice');
+ assert.equal(seismic.chapter,'sunete-si-unde');assert.equal(seismic.status,'available');
+ assert.ok((await stat(new URL('../public/'+seismic.image,import.meta.url))).size>0);
  const ohm=simulations.find(s=>s.id==='legea-lui-ohm');
  assert.equal(ohm.chapter,'electricitate-magnetism-circuite');assert.equal(ohm.status,'available');
  const header=await readFile(new URL('../public/shared/lab-header.js',import.meta.url),'utf8');
