@@ -163,11 +163,34 @@ function renderRatios() {
   write('#magnitude-example', tr(labels.magnitudeExample, {lower: number(3), higher: number(3 + difference)}));
   write('#delta-value', number(difference));
   write('#amp-ratio', '×' + number(amplitude));
+  write('#amp-exponent', number(difference));
   write('#energy-ratio', '×' + number(energy));
+  write('#energy-exponent', number(1.5) + ' × ' + number(difference));
 }
 
 const sourceLink = ([url, label]) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
 const eventLabel = ([name, date]) => `${name} ${date.slice(0, 4)}`;
+
+function renderRealComparison() {
+  const [first, second] = eventPickers.map(picker => events[Number(picker.value)]);
+  const difference = Math.abs(first[2] - second[2]);
+  const {energy} = magnitudeRatios(difference);
+  const [larger, smaller] = first[2] >= second[2] ? [first, second] : [second, first];
+  write('#real-difference', number(difference));
+  write('#real-energy', '×' + number(energy));
+  write('#real-exponent', number(1.5) + ' × ' + number(difference));
+  write('#real-comparison', difference === 0 ? tr(labels.equalMagnitude) :
+    tr(labels.realComparison, {larger: eventLabel(larger), smaller: eventLabel(smaller)}));
+}
+
+function localizeEventPickers() {
+  for (const picker of eventPickers) {
+    events.forEach((event, index) => {
+      picker.options[index].textContent = `${eventLabel(event)} (Mw ${number(event[2])})`;
+    });
+  }
+}
+
 function showEvent(index) {
   selectedEvent = index;
   const [name, date, magnitude, depth, [latitude, longitude], source, description] = events[index];
@@ -201,6 +224,18 @@ function feedback() {
 
 $('#definitions').innerHTML = definitions;
 $('#scales').innerHTML = scales;
+const eventPickers = [$('#compare-event-a'), $('#compare-event-b')];
+for (const [pickerIndex, picker] of eventPickers.entries()) {
+  const defaultEvent = pickerIndex === 0 ? 1 : 4;
+  events.forEach((_, index) => picker.add(new Option('', String(index))));
+  picker.value = String(defaultEvent);
+  picker.addEventListener('change', renderRealComparison);
+}
+$('#compare-mode').addEventListener('change', event => {
+  const real = event.target.value === 'real';
+  $('#compare-real').hidden = !real;
+  $('#compare-hypothetical').hidden = real;
+});
 $('#events').innerHTML = `<div class="seismic-workspace event-workspace">
   <div class="seismic-card" id="event-detail" aria-live="polite"></div>
   <div class="seismic-card"><h2 data-content-type="diagram">${labels.compare}</h2>
@@ -247,6 +282,8 @@ window.addEventListener('praxis-sound-change', event => { if (!event.detail.enab
 window.addEventListener('praxis-language-change', () => {
   updateModel();
   renderRatios();
+  localizeEventPickers();
+  renderRealComparison();
   showEvent(selectedEvent);
   feedback();
   draw();
@@ -257,6 +294,8 @@ window.addEventListener('pageshow', schedule);
 
 updateModel();
 renderRatios();
+localizeEventPickers();
+renderRealComparison();
 showEvent(selectedEvent);
 draw();
 PraxisI18n.apply(document);

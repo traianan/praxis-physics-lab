@@ -1,5 +1,7 @@
 # PROGRESS
 
+- 2026-11-11: În „Scări seismice”, exemplul Richter arată formulele și factorii pentru ΔM = 1,7 la deschidere. Comparația Mw preia două cutremure din cele cinci fișe și afișează diferența absolută și raportul estimat 10^(1,5ΔMw), cu evenimentul de magnitudine mai mare indicat explicit.
+
 - 2026-11-11: Clarificat calculatorul din „Scări seismice” cu o pereche ipotetică de magnitudini locale, raportul amplitudinilor corectate și estimarea empirică a raportului energiilor. Fișele celor cinci evenimente afișează coordonatele epicentrului, adâncimea hipocentrului, data și ora de origine UTC și magnitudinea moment, conform ROMPLUS și USGS.
 
 - 2026-11-11: Adăugat „Unde seismice” în „Sunete și unde”, cu cinci taburi RO/EN, fronturi P/S și de suprafață sincronizate cu seismograma, tonuri de sosire opționale, demonstrații P/S/Love/Rayleigh, scări Richter/Mw/MMI/MSK-64, cinci cutremure reale și verificare. Distribuție Web prin catalog și serverul local. Verificate 629 de combinații de distanță/adâncime, navigarea Home/capitol/URL direct, redarea, pauza, resetarea, sunetele, toate taburile și Mod tablă în Chrome, la cinci dimensiuni, DPR 2 și text 200%. Build reușit. Verificarea generală a trecut 434 din 435 de teste. Testul serverului local a fost blocat de EACCES la loopback, iar verificarea Chrome a servit conținutul din dist prin interceptarea cererilor.

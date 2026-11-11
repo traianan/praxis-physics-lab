@@ -85,17 +85,42 @@ export const scales = [
   card(message('MSK-64 (Medvedev–Sponheuer–Kárník)', 'MSK-64 (Medvedev–Sponheuer–Kárník)'),
     message('Scară macroseismică istorică cu gradele I–XII, folosită și în studiile despre Vrancea. Clasifică efectele locale și ține cont de tipul clădirii și de severitatea avariilor. În Europa, revizuirea ei a dus la EMS-98. Gradele MSK și MMI au criterii proprii.', 'A historical macroseismic scale from I to XII, also used in studies of Vrancea earthquakes. It classifies local effects and accounts for building type and damage severity. Its European revision led to EMS-98. MSK and MMI degrees have their own criteria.')),
 ].join('') + `<article class="seismic-card seismic-compare">
-  <h2 data-content-type="formula">${message('Ce înseamnă o diferență de magnitudine?', 'What does a magnitude difference mean?')}</h2>
-  <p id="magnitude-example" data-no-i18n></p>
-  <div class="seismic-parameter">
-    <label for="delta-m">${message('Diferență de magnitudine ΔM', 'Magnitude difference ΔM')} <output id="delta-value" for="delta-m"></output></label>
-    <input type="range" id="delta-m" min="0" max="3" value="1" step="0.1">
+  <div class="seismic-compare-header">
+    <h2 data-content-type="formula">${message('Compară două cutremure', 'Compare two earthquakes')}</h2>
+    <label for="compare-mode">${message('Tipul comparației', 'Comparison type')}</label>
+    <select id="compare-mode">
+      <option value="hypothetical">${message('Exemplu ipotetic (Mₗ)', 'Hypothetical example (Mₗ)')}</option>
+      <option value="real">${message('Cutremure reale (Mw)', 'Real earthquakes (Mw)')}</option>
+    </select>
   </div>
-  <dl class="seismic-arrivals">
-    <div><dt>${message('Raportul amplitudinilor corectate (Mₗ)', 'Corrected amplitude ratio (Mₗ)')}</dt><dd id="amp-ratio"></dd></div>
-    <div><dt>${message('Raportul estimat al energiilor radiate', 'Estimated radiated energy ratio')}</dt><dd id="energy-ratio"></dd></div>
-  </dl>
-  <p>${message('Primul raport rezultă din definiția Richter, după corecția pentru distanță. Al doilea folosește o relație empirică și poate diferi pentru seisme reale. Mișcarea solului într-un loc depinde și de adâncime, distanță și teren.', 'The first ratio follows from the Richter definition after correcting for distance. The second uses an empirical relationship and can differ for real earthquakes. Ground motion at a site also depends on depth, distance and local ground conditions.')}</p>
+  <div id="compare-hypothetical">
+    <p id="magnitude-example" data-no-i18n></p>
+    <div class="seismic-parameter">
+      <label for="delta-m">${message('Diferență de magnitudine ΔM', 'Magnitude difference ΔM')} <output id="delta-value" for="delta-m"></output></label>
+      <input type="range" id="delta-m" min="0" max="3" value="1.7" step="0.1">
+    </div>
+    <dl class="seismic-arrivals">
+      <div><dt>${message('Raportul amplitudinilor corectate (Mₗ)', 'Corrected amplitude ratio (Mₗ)')}</dt>
+        <dd><span id="amp-ratio"></span> <span class="seismic-calculation">(10<sup id="amp-exponent"></sup>)</span></dd></div>
+      <div><dt>${message('Raportul estimat al energiilor radiate', 'Estimated radiated energy ratio')}</dt>
+        <dd><span id="energy-ratio"></span> <span class="seismic-calculation">(10<sup id="energy-exponent"></sup>)</span></dd></div>
+    </dl>
+    <p>${message('La Richter, 10 la puterea ΔM compară amplitudinile folosite pentru calculul magnitudinii, după corecția pentru distanță. Pentru energiile radiate, 10 la puterea 1,5ΔM este o aproximație empirică.', 'On the Richter scale, 10 to the power ΔM compares the amplitudes used to calculate magnitude after correcting for distance. For radiated energy, 10 to the power 1.5ΔM is an empirical approximation.')}</p>
+  </div>
+  <div id="compare-real" hidden>
+    <div class="seismic-event-pickers">
+      <label class="seismic-parameter" for="compare-event-a">${message('Primul cutremur', 'First earthquake')} <select id="compare-event-a" data-no-i18n></select></label>
+      <label class="seismic-parameter" for="compare-event-b">${message('Al doilea cutremur', 'Second earthquake')} <select id="compare-event-b" data-no-i18n></select></label>
+    </div>
+    <dl class="seismic-arrivals">
+      <div><dt>${message('Diferența de magnitudine ΔMw', 'Magnitude difference ΔMw')}</dt><dd id="real-difference"></dd></div>
+      <div><dt>${message('Raportul estimat al energiilor radiate', 'Estimated radiated energy ratio')}</dt>
+        <dd><span id="real-energy"></span> <span class="seismic-calculation">(10<sup id="real-exponent"></sup>)</span></dd></div>
+    </dl>
+    <p id="real-comparison" role="status" data-no-i18n></p>
+  </div>
+  <p>${message('Raportul real al energiilor poate diferi de estimare. Zguduirea într-un loc depinde și de distanță, adâncime și teren.', 'The actual energy ratio can differ from the estimate. Shaking at a site also depends on distance, depth and local ground conditions.')}
+    <a href="https://earthquake.usgs.gov/education/how_much_bigger.php" target="_blank" rel="noopener noreferrer">USGS</a></p>
 </article>`;
 
 export const sources = {
@@ -141,6 +166,8 @@ export const labels = {
   quiz: message('Verifică ce ai observat', 'Check what you observed'),
   select: message('Alege cutremurul', 'Choose an earthquake'),
   magnitudeExample: message('Exemplu ipotetic: Mₗ {lower} și Mₗ {higher}. Rapoartele compară al doilea eveniment cu primul.', 'Hypothetical example: Mₗ {lower} and Mₗ {higher}. The ratios compare the second event with the first.'),
+  realComparison: message('Comparația estimează energia radiată de {larger} în raport cu cea radiată de {smaller}.', 'The comparison estimates the energy radiated by {larger} relative to {smaller}.'),
+  equalMagnitude: message('Magnitudinile selectate coincid. Formula dă un raport estimat de 1.', 'The selected magnitudes are equal. The formula estimates a ratio of 1.'),
   depth: message('Adâncimea hipocentrului', 'Hypocentral depth'),
   compare: message('Magnitudini moment raportate', 'Reported moment magnitudes'),
   epicentre: message('Epicentru (latitudine, longitudine)', 'Epicentre (latitude, longitude)'),

@@ -175,6 +175,21 @@ body[data-praxis-course="unde-seismice"] .praxis-lab-nav {
 }
 #definitions { margin-top: 0.75rem; }
 .seismic-compare { grid-column: 1 / -1; }
+.seismic-compare-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+}
+#praxis-original .seismic-compare-header h2 { margin: 0 auto 0 0; }
+.seismic-compare-header select { min-height: 44px; max-width: 100%; }
+.seismic-calculation { font-weight: 400; white-space: nowrap; }
+.seismic-event-pickers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0 0.75rem;
+  margin-top: 0.5rem;
+}
 .seismic-compare .seismic-arrivals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .event-workspace { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .seismic-event-parameters {
