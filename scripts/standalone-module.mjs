@@ -1,18 +1,18 @@
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
-import {labNamespaces} from './lab-registry.mjs';
 
 const scriptText = value => value.replaceAll('</script', '<\\/script');
 
-export async function inlineStandaloneModule(html, {id, source, root}) {
+export async function inlineStandaloneModule(html, {id, source, root, namespaceList, inlineLocales = []}) {
  const moduleTag = '<script type="module" src="app.js"></script>';
  const i18nTag = '<script src="../../shared/i18n.js"></script>';
  if (!html.includes(moduleTag) || !html.includes(i18nTag)) throw new Error('Standalone entry changed: '+id);
 
- const namespaceList = await labNamespaces(id), embedded = {ro:{},en:{}};
+ const embedded = {ro:{},en:{}};
  for (const lang of Object.keys(embedded)) {
   for (const namespace of namespaceList) {
+   if (inlineLocales.includes(namespace)) continue;
    embedded[lang][namespace] = JSON.parse(await readFile(path.join(root,'public/locales',namespace,lang+'.json'),'utf8'));
   }
  }
@@ -20,9 +20,9 @@ export async function inlineStandaloneModule(html, {id, source, root}) {
  // The Web app mounts the common header after loading course.js. For file://,
  // give that script its contents directly after document-ready listeners run.
  let entry = 'await window.PraxisStandaloneDocumentReady;'+await readFile(path.join(source,'app.js'),'utf8');
- const courseUrl = "integration.src='../../shared/course.js'";
+ const courseUrl = /integration\.src\s*=\s*'\.\.\/\.\.\/shared\/course\.js'/;
  const mount = 'document.body.append(integration);';
- if (!entry.includes(courseUrl) || !entry.includes(mount)) throw new Error('Standalone course bridge changed: '+id);
+ if (!courseUrl.test(entry) || !entry.includes(mount)) throw new Error('Standalone course bridge changed: '+id);
  const course = await readFile(path.join(root,'public/shared/course.js'),'utf8');
  entry = entry.replace(courseUrl, () => 'integration.textContent='+JSON.stringify(course));
  entry = entry.replace(mount, mount+'integration.onload();');

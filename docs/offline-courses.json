@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-12T18:19:32.788Z",
+  "builtAt": "2026-11-12T18:34:12.364Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -81,7 +81,7 @@
     {
       "id": "miscarea-curbilinie-plana",
       "file": "public/simulari/miscarea-curbilinie-plana/miscarea-curbilinie-plana-offline.zip",
-      "sha256": "694d7e24bf8b8bae48e9f9dc71025578434c4980f090e1bdb7621b19ee84436b",
+      "sha256": "14aa8480a85f8281f756d235b4244f11fa3b71b23bf64dd226f9496f85ec1fc5",
       "languages": [
         "ro",
         "en"
@@ -280,6 +280,50 @@
       "id": "generator-electric",
       "file": "public/simulari/generator-electric/generator-electric.zip",
       "sha256": "19d9cf976b6ce3df06e70100667e4ee0bceb888add69da719436471295132ff6",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "legea-lui-ohm",
+      "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
+      "sha256": "15e12f31c17dcdded80256d8d8b02800d94cf336b7d1e49128c996f18546773a",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "oglinzi-si-lentile",
+      "file": "public/simulari/oglinzi-si-lentile/oglinzi-si-lentile.zip",
+      "sha256": "adf6adf3f1c24dc30647aa4a95a360bc8f9137209f7b4a24ce41edf67873c864",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "pila-daniell",
+      "file": "public/simulari/pila-daniell/pila-daniell.zip",
+      "sha256": "af7fec5806505bbcc68c73657ba08493afdebaa41022d482c089b0afe8ac7443",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "unde-seismice",
+      "file": "public/simulari/unde-seismice/unde-seismice.zip",
+      "sha256": "a05541428d3c655aa094dc01fd60ac0399e900ee5e753baeb8ce684d318d99bc",
       "languages": [
         "ro",
         "en"

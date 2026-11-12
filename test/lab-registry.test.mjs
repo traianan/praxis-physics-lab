@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {access,readFile} from 'node:fs/promises';
 import {chapters,simulations} from '../public/catalog.js';
 import {readManifest,validateManifest,registryOutputs} from '../scripts/lab-registry.mjs';
 
@@ -9,8 +9,12 @@ test('manifest migration preserves every laboratory, chapter and workspace',asyn
  assert.deepEqual(manifest.chapters,chapters);
  assert.deepEqual(manifest.labs.map(lab=>lab.metadata),simulations);
  assert.deepEqual(Object.fromEntries(manifest.labs.map(lab=>[lab.metadata.id,lab.workspace])),JSON.parse(await readFile(new URL('../public/design-system/lab-workspaces.json',import.meta.url),'utf8')));
- assert.equal(manifest.labs.filter(lab=>lab.offline.kind==='archive').length,27);
- assert.equal(manifest.labs.filter(lab=>lab.offline.kind==='faraday').length,1);
+});
+test('every registered lesson ships an offline archive',async()=>{
+ for(const {metadata,offline} of (await readManifest()).labs){
+  assert.ok(['archive','faraday'].includes(offline.kind),metadata.id);
+  await access(new URL('../public/simulari/'+metadata.id+'/'+offline.file,import.meta.url));
+ }
 });
 test('registry rejects duplicate ids, invalid chapters and unsafe paths',async()=>{
  const original=await readManifest();

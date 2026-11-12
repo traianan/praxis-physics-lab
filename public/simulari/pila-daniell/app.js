@@ -33,6 +33,6 @@ document.addEventListener('visibilitychange',()=>{cancel();schedule();});window.
 // Layout/language changes can queue an exit and a re-entry in the same batch.
 // Use the latest observation so a visible experiment cannot remain suspended.
 new IntersectionObserver(entries=>{visible=entries.at(-1).isIntersecting;cancel();schedule();},{threshold:0}).observe($('.daniell-workspace'));
+buildScene();reset();selectTab('experiment');PraxisI18n.apply(document);
 const integration=document.createElement('script');integration.src='../../shared/course.js';integration.dataset.course='pila-daniell';integration.dataset.title='Pila Daniell';integration.onload=()=>{const subtitle=$('.praxis-lab-intro p');if(subtitle)subtitle.textContent='Din reacție chimică în energie electrică';PraxisI18n.apply(document);window.PraxisLabWorkspace?.mount();};document.body.append(integration);
 window.PraxisDaniell=Object.freeze({snapshot:()=>({parameters:{...p},state:observe(p,state),running,section,historyLength:history.length}),startMetrics(){costs=[];intervals=[];recording=true;},stopMetrics(){recording=false;return {costs,intervals};}});
-buildScene();reset();selectTab('experiment');PraxisI18n.apply(document);

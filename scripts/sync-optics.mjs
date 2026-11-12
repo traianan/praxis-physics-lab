@@ -24,7 +24,7 @@ source=source.replaceAll('praxis-optica-color-scheme','praxis-course-colors');
 const palettePattern=/function scenePalette\(markup\) \{[\s\S]*?\n\}\s*(?=function line\()/;
 if(!palettePattern.test(source))throw new Error('Optics palette adapter target changed');
 source=source.replace(palettePattern,'function scenePalette(markup) { return window.PraxisScientificColors.optics(markup,colorScheme); }\n\n');
-const html=source.replace('<body', '<body data-praxis-laboratory="true"').replace('<head>',()=>'<head><script>'+prelude+i18n+bundle+science+sound+labHeader+'</script>').replace('</head>',()=>'<style>'+theme+'\n[data-color-scheme="vivid"] .object-color{background:var(--praxis-science-orange)}\n[data-color-scheme="vivid"] .image-color{background:var(--praxis-science-blue)}</style></head>').replace('</body>',()=>'<script>'+adapter+'</script></body>');
+const html=source.replace('<body', '<body data-praxis-laboratory="true"').replace('<head>',()=>'<head><script>'+prelude+i18n+bundle+science+sound+labHeader+'</script>').replace('</head>',()=>'<style>'+theme+'\n[data-color-scheme="vivid"] .object-color{background:var(--praxis-science-orange)}\n[data-color-scheme="vivid"] .image-color{background:var(--praxis-science-blue)}</style></head>').replace('<footer class="page-footer">','<footer class="page-footer">'+ '<a data-offline-download href="oglinzi-si-lentile.zip" download>Offline (ZIP)</a>').replace('</body>',()=>'<script>'+adapter+'</script></body>');
 const normalized=withFavicon(html).replace(/^[ \t]+(?=\r?$)/gm,'');
 await writeFile(path.join(destination,'index.html'),normalized,'utf8');
 await mkdir(path.join(root,'docs'),{recursive:true});
