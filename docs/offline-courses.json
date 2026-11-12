@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-12T18:03:07.476Z",
+  "builtAt": "2026-11-12T18:19:32.788Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -81,7 +81,7 @@
     {
       "id": "miscarea-curbilinie-plana",
       "file": "public/simulari/miscarea-curbilinie-plana/miscarea-curbilinie-plana-offline.zip",
-      "sha256": "5a2a840b0fbbaba451ca5d9da9bc5beee07301282aa67a32c5041fd217500150",
+      "sha256": "694d7e24bf8b8bae48e9f9dc71025578434c4980f090e1bdb7621b19ee84436b",
       "languages": [
         "ro",
         "en"
@@ -258,6 +258,28 @@
       "id": "miscarea-circulara-uniforma",
       "file": "public/simulari/miscarea-circulara-uniforma/miscarea-circulara-uniforma.zip",
       "sha256": "1d6137aa17ef6fdfa2668777da5a39d6be46b46cf977e37d8fad29b668c26cff",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "legea-lui-hooke",
+      "file": "public/simulari/legea-lui-hooke/legea-lui-hooke.zip",
+      "sha256": "751f98fadba8b53cf0e033914d476a24b0ce212fd117a6babf02caf246daf965",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "generator-electric",
+      "file": "public/simulari/generator-electric/generator-electric.zip",
+      "sha256": "19d9cf976b6ce3df06e70100667e4ee0bceb888add69da719436471295132ff6",
       "languages": [
         "ro",
         "en"

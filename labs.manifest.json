@@ -260,7 +260,8 @@
         "labs/legea-lui-hooke/ui"
       ],
       "offline": {
-        "kind": "web-only"
+        "kind": "archive",
+        "file": "legea-lui-hooke.zip"
       },
       "inlineLocales": [
         "labs/legea-lui-hooke/ui"
@@ -1325,7 +1326,8 @@
         "labs/generator-electric/ui"
       ],
       "offline": {
-        "kind": "web-only"
+        "kind": "archive",
+        "file": "generator-electric.zip"
       }
     },
     {
