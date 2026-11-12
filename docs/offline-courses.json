@@ -1,10 +1,10 @@
 {
-  "builtAt": "2026-11-12T18:41:27.373Z",
+  "builtAt": "2026-11-12T19:12:57.633Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
       "file": "public/simulari/rezistenta-unui-fir/rezistenta-unui-fir.zip",
-      "sha256": "8f88beee16ea1d767a67cf2a927adce5a3a9df67e69e092df91ab101d9433ca8",
+      "sha256": "be512f9ca96e3d7c3c1ab21fa8e2da4e0b63d1e4e9ebb6c9403a0b571d62a797",
       "languages": [
         "ro",
         "en"
@@ -15,7 +15,7 @@
     {
       "id": "condensatorul",
       "file": "public/simulari/condensatorul/condensatorul.zip",
-      "sha256": "bbda7bebfa365ac1c090bc83e4caa3915bacbf4b56e0aa283b2085ea479b9765",
+      "sha256": "45a4b32cfdaeff273bf7c9d38cd9faa956807e7b3cd6b9bb9a42d93200b1bc83",
       "languages": [
         "ro",
         "en"
@@ -48,7 +48,7 @@
     {
       "id": "unde-mecanice",
       "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
-      "sha256": "c609e44422dbd55c3bd9f440ba9fec9220bff00bf90dbcc85b69d0443e020d21",
+      "sha256": "aad083551093ad8f3674c7b64f5ae90c7454168403c64eaccd85917ee27b9c2d",
       "languages": [
         "ro",
         "en"
@@ -59,7 +59,7 @@
     {
       "id": "calcul-vectorial",
       "file": "public/simulari/calcul-vectorial/calcul-vectorial.zip",
-      "sha256": "f3606237f11a418c1e4df88925592b6f615646a855360d78ecbea0b5fa1968c4",
+      "sha256": "06500084d3d08f440823514f5ab4145fc601dad0d1f0dfc24597d0fda70d8df1",
       "languages": [
         "ro",
         "en"
@@ -224,7 +224,7 @@
     {
       "id": "pendulul-gravitational",
       "file": "public/simulari/pendulul-gravitational/pendulul-gravitational.zip",
-      "sha256": "ef77672a4ec97be534e884bfbcb75b22debd9317abb0047a8c15f96a25469f13",
+      "sha256": "4c470173af09e52eeed84ccd2e412b678b967dbb78c7573e427a4ba73f3a8def",
       "languages": [
         "ro",
         "en"
@@ -268,7 +268,7 @@
     {
       "id": "legea-lui-hooke",
       "file": "public/simulari/legea-lui-hooke/legea-lui-hooke.zip",
-      "sha256": "41ad43f57d806271a8ebc80cec1636abbb5defd11478fb2e3f79c3f93bbb780c",
+      "sha256": "9eeeee26f9ddc2f364026cd9788aa102fff6c3614e8a6a378f70ffaea5d70637",
       "languages": [
         "ro",
         "en"
@@ -290,7 +290,7 @@
     {
       "id": "legea-lui-ohm",
       "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
-      "sha256": "15e12f31c17dcdded80256d8d8b02800d94cf336b7d1e49128c996f18546773a",
+      "sha256": "3b7623fac2ded2f26a98e256f3111a99b215743c7427c69c7286f8eb5e45a69e",
       "languages": [
         "ro",
         "en"

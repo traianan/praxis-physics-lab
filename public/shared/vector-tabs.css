@@ -10,3 +10,10 @@ body[data-praxis-course=calcul-vectorial] :is(.vector-tabs,.vector-subtabs) .tab
 body[data-praxis-course=calcul-vectorial] .vector-topic-panel .sec{padding-top:.75rem;border-top:0}
 body[data-praxis-course=calcul-vectorial] .vector-topic-panel .rv{opacity:1;transform:none}
 @media(max-width:760px){body[data-praxis-course=calcul-vectorial] #praxis-original .layout{padding-inline:1rem}body[data-praxis-course=calcul-vectorial] .vector-tabs .tab{flex:1 1 8rem}body[data-praxis-course=calcul-vectorial] .vector-subtabs .tab{flex:1 1 9rem}}
+
+@media(max-width:40rem){
+  body[data-praxis-course=calcul-vectorial] #praxis-original .katex-display{max-width:100%;text-align:start}
+  body[data-praxis-course=calcul-vectorial] #praxis-original .katex-display>.katex{display:block;width:max-content;min-width:100%;text-align:center}
+  body[data-praxis-course=calcul-vectorial] #praxis-original .katex:not(.katex-display>.katex){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}
+  body[data-praxis-course=calcul-vectorial] #praxis-original #s12>div:has(>.recap){position:relative;min-width:0;max-width:100%;overflow-x:auto!important}
+}

@@ -430,9 +430,12 @@ export function CircuitLab() {
               </div>
             </div>
             <p className="explain-note">
-              <Target size={14} /> Rezultatul se verifică imediat:{" "}
-              <Formula tex="I=12/3{,}6=3{,}33\ \mathrm{A}" />, deci{" "}
-              <Formula tex="U=I\cdot R\approx11\ \mathrm{V}" />.
+              <Target size={14} />
+              <span>
+                Rezultatul se verifică imediat:{" "}
+                <Formula tex="I=12/3{,}6=3{,}33\ \mathrm{A}" />, deci{" "}
+                <Formula tex="U=I\cdot R\approx11\ \mathrm{V}" />.
+              </span>
             </p>
           </Reveal>
         </div>

@@ -205,7 +205,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
         <div class="formula" data-no-science-math><span class="pendulum-equation" data-science-math="tex" data-science-source="\theta(t)=\theta_{\max}\sin(\omega_0t+\varphi_0)"></span></div>
         <p>Perioada oscilației proprii rezultă imediat din <code>T = 2π/ω₀</code>:</p>
         <div class="formula" data-no-science-math><span class="pendulum-equation" data-science-math="tex" data-science-source="T=2\pi\sqrt{\frac{\ell}{g}}"></span><span class="tag" data-no-science-math>perioada pendulului matematic (oscilații mici)</span></div>
-        <table class="tbl">
+        <div class="tbl-wrap" tabindex="0"><table class="tbl">
           <thead><tr><th>Mărime</th><th>Cum influențează T</th><th>Explicație</th></tr></thead>
           <tbody>
             <tr><td>Lungimea ℓ</td><td style="color:#5eead4">crește T</td><td>T ∝ √ℓ — de 4 ori mai lung ⇒ de 2 ori mai lent</td></tr>
@@ -213,7 +213,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
             <tr><td>Masa m</td><td style="color:#fbbf24">nu influențează</td><td>se simplifică în ecuație: toate corpurile cad „la fel”</td></tr>
             <tr><td>Amplitudinea θ<sub>max</sub></td><td style="color:#fbbf24">aproape deloc</td><td>doar la unghiuri mari (izocronism aproximativ)</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <div class="note warn">
           <div class="ni">!</div>
           <p><strong>Atenție:</strong> formula <code>T = 2π√(ℓ/g)</code> este valabilă <em>strict</em> doar pentru amplitudini mici. La 30° eroarea este deja ≈ 1,7%, iar la 90° de peste 18% — o poți verifica singur în laborator.</p>
@@ -280,7 +280,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
         <div class="formula" data-no-science-math><span class="pendulum-equation" data-science-math="tex" data-science-source="g=\frac{4\pi^2\ell}{T^2}"></span><span class="tag" data-no-science-math>metoda pendulului</span></div>
         <p>Pentru a reduce erorile, se măsoară durata a <code>n</code> oscilații complete și se calculează <code>T = t/n</code>. O metodă și mai precisă este <strong>liniarizarea</strong>: se reprezintă grafic <code>T²</code> în funcție de <code>ℓ</code>; se obține o dreaptă prin origine cu panta:</p>
         <div class="formula" data-no-science-math><span class="pendulum-equation" data-science-math="tex" data-science-source="p=\frac{T^2}{\ell}=\frac{4\pi^2}{g}"></span><span class="pendulum-equation" data-science-math="tex" data-science-source="g=\frac{4\pi^2}{p}"></span></div>
-        <table class="tbl">
+        <div class="tbl-wrap" tabindex="0"><table class="tbl">
           <thead><tr><th>Loc</th><th class="num">g (m/s²)</th><th>Observație</th></tr></thead>
           <tbody>
             <tr><td>Ecuator, nivelul mării</td><td class="num">9,780</td><td>cel mai mic — Pământul este aplatizat + rotație</td></tr>
@@ -289,7 +289,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
             <tr><td>Luna</td><td class="num">1,62</td><td>pendul de 1 m ⇒ T ≈ 4,9 s</td></tr>
             <tr><td>Marte</td><td class="num">3,72</td><td>pendul de 1 m ⇒ T ≈ 3,3 s</td></tr>
           </tbody>
-        </table>
+        </table></div>
       </article>
 
       <!-- 8 -->
@@ -308,7 +308,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
           <li><strong>Masa firului / dimensiunea corpului</strong> — pendulul devine „fizic”, nu „matematic”; perioada depinde și de momentul de inerție.</li>
         </ul>
         <h4 style="margin:16px 0 8px">Erori de măsurare tipice în laborator</h4>
-        <table class="tbl">
+        <div class="tbl-wrap" tabindex="0"><table class="tbl">
           <thead><tr><th>Sursă</th><th>Efect</th><th>Reducere</th></tr></thead>
           <tbody>
             <tr><td>Reacție la cronometrare</td><td>±0,2 s / măsurătoare</td><td>cronometrează n = 10…20 oscilații</td></tr>
@@ -316,7 +316,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
             <tr><td>Unghi prea mare</td><td>T sistematic mai mare</td><td>folosește θ ≤ 10°</td></tr>
             <tr><td>Fir elastic / deformat</td><td>T aleatoriu</td><td>fir inextensibil, fără noduri</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <div class="note warn">
           <div class="ni">!</div>
           <p>Erorile <strong>sistematice</strong> apar mereu în același sens (ex. unghi prea mare) și nu dispar prin repetare; erorile <strong>aleatoare</strong> (reacția la cronometru) se reduc prin media mai multor măsurători.</p>
@@ -357,7 +357,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
             <div class="sub">Tot ce trebuie reținut pe o pagină</div>
           </div>
         </div>
-        <table class="tbl">
+        <div class="tbl-wrap" tabindex="0"><table class="tbl">
           <thead><tr><th>Mărime / relație</th><th>Formulă</th><th>Unitate SI</th></tr></thead>
           <tbody>
             <tr><td>Perioada</td><td class="num" style="text-align:left">T = 2π√(ℓ/g)</td><td>s</td></tr>
@@ -371,7 +371,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
             <tr><td>Forța de revenire</td><td class="num" style="text-align:left">F = −mg sin θ</td><td>N</td></tr>
             <tr><td>Corecția de amplitudine</td><td class="num" style="text-align:left">T ≈ T₀(1 + θ₀²/16)</td><td>—</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <div class="row mt12">
           <button class="btn btn-primary" id="btnGoLab2">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>

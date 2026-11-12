@@ -719,7 +719,7 @@ function LessonWavePropagation(){
       el('defs',{},[el('marker',{id:prefix+'-arrow',viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'},[el('path',{d:'M 0 0 L 10 5 L 0 10 Z',fill:'context-stroke'})])]),
       line(left,axis+35,left,12,{className:'propagation-axis',markerEnd:'url(#'+prefix+'-arrow)'}),
       line(left,axis,395,axis,{className:'propagation-axis',markerEnd:'url(#'+prefix+'-arrow)'}),
-      text(left-15,axis+17,'O'),text(left-14,17,'y'),text(398,axis+17,'x'),
+      text(left-15,axis+17,'O'),text(left-14,26,'y'),text(398,axis+17,'x'),
       el('rect',{x:right,y:axis-42,width:7,height:84,className:'propagation-support'}),
       ...Array.from({length:6},(_,j)=>line(right+7,axis-38+j*15,right+17,axis-46+j*15,{className:'propagation-hatch'})),
       text(right-16,axis-9,'B'),

@@ -135,7 +135,7 @@ export function TheorySection() {
             </div>
             <Formula
               block
-              tex="[R]_{\mathrm{SI}}=\frac{[U]_{\mathrm{SI}}}{[I]_{\mathrm{SI}}}=\frac{1\ \mathrm{V}}{1\ \mathrm{A}}=1\ \Omega"
+              tex="\begin{aligned}[R]_{\mathrm{SI}}&=\frac{[U]_{\mathrm{SI}}}{[I]_{\mathrm{SI}}}\\&=\frac{1\ \mathrm{V}}{1\ \mathrm{A}}=1\ \Omega\end{aligned}"
               label="unitatea de rezistență este volt pe amper, adică un ohm"
               className="unit-formula"
             />

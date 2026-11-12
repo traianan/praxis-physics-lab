@@ -56,11 +56,11 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/CharacteristicGuide.tsx",
-      "sha256": "753b8fcd5dbef77a7b331b545601808a6d2f820f92e0f11e86d0bf5ad9304f3c"
+      "sha256": "cf4b20b84ff00b9072ff2041c0db51116fbac7ff868918ea9d4a0936900bbfa5"
     },
     {
       "path": "sources/legea-lui-ohm/components/CircuitLab.tsx",
-      "sha256": "79e9c3de04bcc333c6685a9eabd6b4525dd212f84de648031622826be625108e"
+      "sha256": "717dc0b4e843788ab2bfb29d9cdd974800712fe322098e94e1cf012e7b087323"
     },
     {
       "path": "sources/legea-lui-ohm/components/CircuitSchematic.tsx",
@@ -160,7 +160,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/TheorySection.tsx",
-      "sha256": "5b1fef005d9a4eef9a116a64f64ac53048a222649fe769f8398e879247bc74b2"
+      "sha256": "92e0b66d186098138dfe90b886e89f80ac6d6ec2442a842daba5723af74bb885"
     },
     {
       "path": "sources/legea-lui-ohm/components/UIPlot.tsx",

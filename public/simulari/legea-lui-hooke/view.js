@@ -44,11 +44,11 @@ function graph(id,p,s,c,energy){
  const count=Math.ceil(w/3),path=Array.from({length:count+1},(_,i)=>{const x=-.2+.4*i/count;return `${i?'L':'M'}${px(x)},${py(value(x))}`;}).join(' ');
  let markup=text(L,15,energy?'U (J)':'Fₑ (N)', 'start',energy?c.purple:c.red)+text(L-4,top+4,number(max,1),'end')+text(L-4,bottom,energy?'0':number(-max,1),'end')+
  line(L,mid,R,mid,'currentColor')+line(px(0),top,px(0),bottom,'currentColor','3 3')+
- [-.2,0,.2].map(x=>text(px(x),149,number(x,1),'middle')).join('')+text(R,164,'x (m)','end')+
+ [-.2,0,.2].map(x=>text(px(x),149,number(x,1),'middle')).join('')+text(R,159,'x (m)','end')+
  `<path d="${path}" fill="none" stroke="${energy?c.purple:c.red}" stroke-width="2.5"/>`;
  if(!energy&&!s.released){
   markup+=line(px(-.2),py(-p.k*.2),px(.2),py(p.k*.2),c.blue,'5 4')+
-  `<path d="M${px(0)},${py(0)} L${px(s.x)},${py(0)} L${px(s.x)},${py(p.k*s.x)} Z" fill="${c.blue}" opacity=".2"/>`+text(L,164,tr('Arie: L_ap = U'),'start',c.blue);
+  `<path d="M${px(0)},${py(0)} L${px(s.x)},${py(0)} L${px(s.x)},${py(p.k*s.x)} Z" fill="${c.blue}" opacity=".2"/>`+text(L,159,tr('Arie: L_ap = U'),'start',c.blue);
  }
  markup+=`<circle cx="${px(s.x)}" cy="${py(value(s.x))}" r="5" fill="${energy?c.purple:c.red}" stroke="var(--praxis-color-surface)" stroke-width="2"/>`;
  el.innerHTML=markup;

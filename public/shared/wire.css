@@ -130,9 +130,14 @@ body[data-praxis-course=rezistenta-unui-fir] #praxis-original{width:100%;max-wid
 #wire-root a.button-primary{--praxis-link-ink:var(--praxis-color-primary);--praxis-link-button-background:var(--praxis-color-surface);background:var(--praxis-color-surface);color:var(--praxis-color-primary)}
 #wire-root .wire-science-note{font-size:1rem;line-height:1.6;max-width:85ch}
 #wire-root .field-hint,#wire-root .lab-legend,#wire-root .lab-stage-hint,#wire-root .lab-chart-hint{color:var(--praxis-color-muted)}
-#wire-root .wire-diagram-scroll{max-width:100%;overflow-x:auto}
+#wire-root .wire-diagram-scroll{width:100%;min-width:0;max-width:100%;overflow-x:auto}
 #wire-root .wire-diagram-scroll>.factor-plot{min-width:520px}
 #wire-root .wire-diagram-scroll>svg:not(.factor-plot){min-width:420px}
+@media(max-width:40rem){
+  #wire-root .wire-diagram-scroll>svg:not(.factor-plot){width:100%;height:auto;min-width:0}
+  #wire-root .formula-block{min-width:0;max-width:100%;overflow-x:auto}
+  #wire-root .formula-block .katex-display{width:max-content;min-width:100%;padding-inline:.125em}
+}
 #wire-root .wire-diagram-scroll text{opacity:1;fill:var(--praxis-color-muted)}
 #wire-root .resource-link-tag{color:var(--praxis-color-ink);background:var(--praxis-color-canvas)}
 #wire-root{--success:#286048;--danger:#9b352a}

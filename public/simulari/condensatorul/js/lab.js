@@ -364,8 +364,10 @@
     baseSizes.forEach(function (s) {
       var cv = s.cv;
       if (!cv) return;
-      var cssW = Math.min(cv.parentElement.clientWidth,cv===canvas?(innerHeight<=850&&innerWidth>=900?450:720):900);
-      if(!cssW)return;
+      var parentStyle = getComputedStyle(cv.parentElement);
+      var contentWidth = cv.parentElement.clientWidth - parseFloat(parentStyle.paddingLeft) - parseFloat(parentStyle.paddingRight);
+      var cssW = Math.min(contentWidth,cv===canvas?(innerHeight<=850&&innerWidth>=900?450:720):900);
+      if(cssW<=0)return;
       var cssH = cv===gCanvas?160:cssW * (s.h / s.w);
       var dpr = window.PraxisCanvasResolution?.ratio(cssW,cssH)||2;
       cv.style.width = cssW+'px';

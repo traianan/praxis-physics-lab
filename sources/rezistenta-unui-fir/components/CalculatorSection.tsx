@@ -330,7 +330,7 @@ export function CalculatorSection() {
               <span className="calc-step-num">01</span>
               <div>
                 <strong>Rezistivitatea la temperatura dată</strong>
-                <Formula block tex="\rho=\rho_{0}\left[1+\alpha\left(t-20\,^{\circ}\mathrm{C}\right)\right]" />
+                <Formula block tex="\begin{aligned}\rho&=\rho_0(1+\alpha\,\Delta t)\\\Delta t&=t-20\,^{\circ}\mathrm{C}\end{aligned}" />
                 <p>
                   {fmtRho(material.rho20)} × [1 + {fmt(material.alpha, 5)} × (
                   {fmt(temperature, 0)} − 20)] = <b>{fmtRho(model.rho)}</b>.
@@ -381,7 +381,7 @@ export function CalculatorSection() {
               <span className="calc-step-num">05</span>
               <div>
                 <strong>Puterea disipată și masa</strong>
-                <Formula block tex="P=UI=R\,I^{2}\qquad m=\rho_{m}\,L\,A" />
+                <Formula block tex="\begin{gathered}P=UI=R\,I^{2}\\m=\rho_{m}\,L\,A\end{gathered}" />
                 <p>
                   P = {fmtVoltage(voltage)} × {fmtCurrent(current)} ={" "}
                   <b>{fmtPower(power)}</b>; m = {fmt(material.density, 0)} ×{" "}

@@ -102,6 +102,7 @@ js=js.replace('window.Pendul = { S, physics, chart };',`window.Pendul = { S, phy
 await write('public/simulari/'+id+'/app.js',js+'\n'+await read('scripts/adaptations/pendulum-layout.js'));
 const ns=await labNamespaces('pendulul-gravitational'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
+body=body.replace(/<table class="tbl">[\s\S]*?<\/table>/g,table=>'<div class="tbl-wrap" tabindex="0">'+table+'</div>');
 const styles=['shared/pendulum-source.css','design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css','shared/pendulum.css'];
 const scripts=['sound.js','lab-header.js','canvas-typography.js','vector-label.js','scientific-colors.js','course-localization.js'];
 const head=styles.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded}).replaceAll('</script','<\\/script')+');</script>'+scripts.map(p=>'<script src="../../shared/'+p+'"></script>').join('');

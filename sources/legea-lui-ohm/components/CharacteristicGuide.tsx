@@ -17,8 +17,8 @@ export function CharacteristicGuide({ ohms = 40 }: CharacteristicGuideProps) {
   const X = (u: number) => plot.x + (u / uMax) * plot.w;
   const Y = (i: number) => plot.y + plot.h - (i / iMax) * plot.h;
 
-  const steep = 0.42; // 1/R pentru un rezistor mic
-  const shallow = 0.16;
+  const steep = 1 / ohms;
+  const shallow = 1 / (2 * ohms);
   const bulbs = Array.from({ length: 30 }, (_, index) => {
     const u = (uMax * index) / 29;
     // filament neliniar: I crește mai încet la tensiuni mari
@@ -106,7 +106,7 @@ export function CharacteristicGuide({ ohms = 40 }: CharacteristicGuideProps) {
           <rect x="-56" y="-12" width="112" height="20" rx="6" fill="var(--surface)" opacity="0.9" />
           <text textAnchor="middle" y="3" className="char-label char-label-copper">R mare — pantă mică</text>
         </g>
-        <g transform={`translate(${X(10.2)},${Y(10.2 * shallow * 0.72) + 26})`}>
+        <g transform={`translate(${X(10.2)},${Y(bulbs[25].i) + 18})`}>
           <rect x="-54" y="-12" width="108" height="20" rx="6" fill="var(--surface)" opacity="0.9" />
           <text textAnchor="middle" y="3" className="char-label char-label-amber">bec — neliniar</text>
         </g>
