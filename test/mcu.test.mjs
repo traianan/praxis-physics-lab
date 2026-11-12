@@ -32,9 +32,18 @@ test('worked disk and bank problems have independently checked numerical answers
  near(60/(2*Math.PI)*Math.sqrt(.24*9.81/.6),18.916286426021365,1e-10);
  const b=M.bank(50,10,.3);near(b.min,0);near(b.optimal,9.299913119889995,1e-10);near(b.max,15.706294688921131,1e-10);
 });
-test('MCU source is preserved; distributed lesson has seven tabs, two laboratories, accessible controls and complete local assets',async()=>{
+test('everyday examples: rpm conversion, equal angular speeds and doubled period',()=>{
+ const wheel=M.circular(.35,120/60*2*Math.PI);
+ near(wheel.T,.5);near(wheel.v,4.39822971502571);near(wheel.a,55.2697846461004);
+ const outer=M.circular(2,Math.PI/2),inner=M.circular(1,Math.PI/2),slower=M.circular(2,Math.PI/4);
+ near(outer.T,inner.T);near(outer.v,2*inner.v);near(outer.a,2*inner.a);
+ near(slower.T,2*outer.T);near(slower.v,outer.v/2);near(slower.a,outer.a/4);
+ // One extra lap is independent of track radius.
+ for(const radius of [20,50,100]){const L=2*Math.PI*radius,time=L/(15-10);near(15*time/L,3);near(10*time/L,2);}
+});
+test('MCU source is preserved; distributed lesson has nine tabs, three laboratories, accessible controls and complete local assets',async()=>{
  const info=JSON.parse(await read('docs/imported-mcu.json'));assert.equal(createHash('sha256').update(await read(info.source)).digest('hex'),info.sha256);const html=await read('public/simulari/miscarea-circulara-uniforma/index.html'),app=await read('public/simulari/miscarea-circulara-uniforma/app.js');
- assert.equal((html.match(/data-tab=/g)||[]).length,7);assert.doesNotMatch(app,/manual|Litera|\bpag\.?\s*\d/i);assert.match(app,/data-mcu-phase/);for(const key of ['bank-angle','bank-friction','bank-radius','bank-speed'])assert.ok(app.includes(key));
+ assert.equal((html.match(/data-tab=/g)||[]).length,9);assert.doesNotMatch(app,/manual|Litera|\bpag\.?\s*\d/i);assert.match(app,/data-mcu-phase/);for(const key of ['bank-angle','bank-friction','bank-radius','bank-speed'])assert.ok(app.includes(key));
  for(const lang of ['ro','en']){const d=JSON.parse(await read('public/locales/mcu/'+lang+'.json'));assert.ok(Object.keys(d.messages).length>180);assert.doesNotMatch(JSON.stringify(d),/manual|Litera|\bpag\.?\s*\d/i);}assert.doesNotMatch(html,/<(?:script|link)\b[^>]*(?:src|href)="https?:/);
 });
 
@@ -51,4 +60,15 @@ test('vector notation uses separate arrow symbols and real subscripts instead of
  const context={window:{PraxisI18n:{tr:s=>s,language:'ro'}},Rc:(type,props)=>({type,...props})};vm.createContext(context);vm.runInContext(await read('scripts/adaptations/mcu-jsx.js'),context);
  const result=vm.runInContext("mcuJsx('code',{children:'F_cp = -m ω² R⃗'})",context),nodes=[];function visit(n){if(!n||typeof n!=='object')return;nodes.push(n);const children=Array.isArray(n.children)?n.children:[n.children];children.forEach(visit);}visit(result);
  assert.equal(nodes.filter(n=>n.className==='mcu-vector-symbol').length,2);assert.equal(nodes.filter(n=>n.type==='sub'&&n.children==='cp').length,1);assert.doesNotMatch(JSON.stringify(result),/\u20d7/);
+});
+
+test('force notation distinguishes vector identities from magnitudes and projections',async()=>{
+ const context={};vm.createContext(context);vm.runInContext(await read('scripts/adaptations/mcu-jsx.js'),context);
+ const notation=value=>context.mcuNotation(value);
+ assert.equal(notation('F_i = -m·a₀'),'F⃗_i = −m·a⃗₀');
+ assert.equal(notation('F_cf = m ω² R'),'F⃗_cf = m ω² R⃗');
+ assert.equal(notation('ΣF = m·a_cp = F_cp'),'ΣF⃗ = m·a⃗_cp = F⃗_cp');
+ assert.equal(notation('F_cp + F_cf = 0 în SRNI (echilibru aparent)'),'F⃗_cp + F⃗_cf = 0⃗ în SRNI (echilibru aparent)');
+ for(const scalar of ['F_cp = m·a_cp = m·v²/R = m·ω²·R','F_cp = m·a_cp','m v²/r = N sinθ ± μ N cosθ','0 = N cosθ ∓ μ N sinθ - m g','Condiție: F_fmax = F_cp'])assert.equal(notation(scalar),scalar);
+ assert.equal(notation('ΣF — rezultanta N + G + F_f'),'ΣF⃗ — rezultanta N⃗ + G⃗ + F⃗_f');
 });

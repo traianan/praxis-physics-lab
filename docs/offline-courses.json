@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-10T16:52:39.084Z",
+  "builtAt": "2026-11-12T15:06:15.570Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -200,17 +200,6 @@
       "localResources": true
     },
     {
-      "id": "miscarea-circulara-uniforma",
-      "file": "public/simulari/miscarea-circulara-uniforma/miscarea-circulara-uniforma.zip",
-      "sha256": "e08c0e56665ef7add2ec7c2bd093a5038e2d7da14f3aa7d48c3600b6cb5cb71a",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
       "id": "principiile-mecanicii-newtoniene",
       "file": "public/simulari/principiile-mecanicii-newtoniene/principiile-mecanicii-newtoniene.zip",
       "sha256": "f6fde0fbcfe5bd8ad9ad51cc82ab19c23fa87363ffc86db1bc3a0c8a3ff0c911",
@@ -258,6 +247,17 @@
       "id": "reflexia-refractia",
       "file": "public/simulari/reflexia-refractia/reflexia-refractia.zip",
       "sha256": "ee98a98e1ba5e306be46ddf00f80dc4e23fba81ca6f79e4e6cf993a96e46b57b",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "miscarea-circulara-uniforma",
+      "file": "public/simulari/miscarea-circulara-uniforma/miscarea-circulara-uniforma.zip",
+      "sha256": "2f2187f24dc61850cfafceb239db24cb8c0f5eeee8a8b2a167331afaf0da372d",
       "languages": [
         "ro",
         "en"

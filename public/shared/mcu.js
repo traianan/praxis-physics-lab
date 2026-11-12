@@ -1,9 +1,9 @@
 (()=>{
  'use strict';const tr=s=>PraxisI18n.tr(s),model=window.PraxisMCUModel;let vectorScale=.75;
  function setVectorScale(value){const parsed=Number(value);if(!Number.isFinite(parsed))return;vectorScale=Math.max(.25,Math.min(1.5,parsed));window.dispatchEvent(new Event('praxis-mcu-vector-scale-change'));}
- const groups={concepte:['definitie','marimi'],dinamica:['acceleratie','forta','sri-srni'],curbe:['suprainaltare'],laborator:['sim-mcu'],viraj:['sim-curba'],probleme:['probleme'],test:['quiz']};
+ const groups={concepte:['definitie','marimi'],dinamica:['acceleratie','forta','sri-srni'],curbe:['suprainaltare'],laborator:['sim-mcu'],masurare:['masurare'],cotidian:['cotidian'],viraj:['sim-curba'],probleme:['probleme','probleme-aplicate'],test:['quiz']};
  function initTabs(){
-  if(!document.querySelector('[data-mcu-section]'))return false;
+  if(!document.querySelector('#root [data-mcu-section]'))return false;
   function show(id,hash=true){if(!groups[id])id='concepte';document.body.dataset.mcuActive=id;for(const section of document.querySelectorAll('[data-mcu-section]'))section.hidden=!groups[id].includes(section.id);for(const b of document.querySelectorAll('.praxis-lab-nav [data-tab],#praxis-original>.tabs [data-tab]')){const active=b.dataset.tab===id;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;}const select=document.querySelector('.praxis-course-sections');if(select)select.value=id;if(hash&&location.hash!=='#'+id)history.replaceState(null,'','#'+id);window.dispatchEvent(new Event('praxis-mcu-tab-change'));}
   const buttons=[...document.querySelectorAll('[data-tab]')];
   for(const [i,b]of buttons.entries()){b.id='mcu-tab-'+b.dataset.tab;b.setAttribute('aria-controls',groups[b.dataset.tab].join(' '));b.addEventListener('click',()=>show(b.dataset.tab));b.addEventListener('keydown',event=>{let index=event.key==='Home'?0:event.key==='End'?buttons.length-1:event.key==='ArrowRight'?(i+1)%buttons.length:event.key==='ArrowLeft'?(i-1+buttons.length)%buttons.length:-1;if(index<0)return;event.preventDefault();buttons[index].click();buttons[index].focus();});}
@@ -29,7 +29,14 @@
    let chosen;for(const [dx,dy]of [[0,0],[14,-24],[14,24],[-width-12,0],[0,-28],[-width-12,26]]){const candidate={x:clampX(x+dx),y:clampY(y+dy)-17,w:width,h:23};if(!g.praxisLabelBoxes.some(b=>candidate.x<b.x+b.w+5&&candidate.x+candidate.w+5>b.x&&candidate.y<b.y+b.h+4&&candidate.y+candidate.h+4>b.y)){chosen=candidate;break;}}
    chosen??={x:clampX(x),y:clampY(y)-17,w:width,h:23};g.praxisLabelBoxes.push(chosen);x=chosen.x;y=chosen.y+17;
    // Use the same measured subscript renderer as the other laboratories.
-   g.fillText(tr(text),x,y);
+   const translated=tr(text);g.fillText(translated,x,y);
+   // Draw the vector accent as geometry, not as an unsupported combining glyph.
+   // These are labels of drawn force arrows, not scalar numerical readouts.
+   for(const match of translated.matchAll(/(?:Σ)?(F(?:_(?:cp|cf|f))?|N|G)(?=\s|$)/g)){
+    const prefix=translated.slice(0,match.index)+(match[0].startsWith('Σ')?'Σ':'');
+    const left=x+g.measureText(prefix).width,top=y-18,right=left+g.measureText(match[1][0]).width;
+    g.strokeStyle=color;g.lineWidth=1.2;g.beginPath();g.moveTo(left,top);g.lineTo(right,top);g.lineTo(right-3,top-2.5);g.moveTo(right,top);g.lineTo(right-3,top+2.5);g.stroke();
+   }
   }
   function arrow(g,x,y,dx,dy,color,text,offset=0,width=2.5){const length=Math.hypot(dx,dy);if(length<.01)return;const nx=-dy/length,ny=dx/length;x+=nx*offset;y+=ny*offset;g.strokeStyle=color;g.fillStyle=color;g.lineWidth=width;g.beginPath();g.moveTo(x,y);g.lineTo(x+dx,y+dy);g.stroke();const a=Math.atan2(dy,dx),head=Math.min(9*Math.sqrt(width/2.5),length*.32);g.beginPath();g.moveTo(x+dx,y+dy);g.lineTo(x+dx-head*Math.cos(a-.45),y+dy-head*Math.sin(a-.45));g.lineTo(x+dx-head*Math.cos(a+.45),y+dy-head*Math.sin(a+.45));g.closePath();g.fill();if(text)label(g,text,x+dx+nx*14,y+dy+ny*14,color);}
   function circle(){
@@ -58,7 +65,7 @@
    // Reserve enough space at the maximum user scale (150%); never enlarge a small force alone.
    arrow(g,x,y,0,model.g*scale,C.purple,'');arrow(g,x,y,-s.N*sin*scale,-s.N*c*scale,C.green,'');arrow(g,x,y,s.friction*c*scale,-s.friction*sin*scale,C.orange,'');
    g.fillStyle='#28454b';g.beginPath();g.arc(x,y,3,0,Math.PI*2);g.fill();
-   label(g,'N',x-s.N*sin*scale+12,y-s.N*c*scale,C.green);label(g,'G = mg',x+13,y+model.g*scale+6,C.purple);
+   label(g,'N',x-s.N*sin*scale+12,y-s.N*c*scale,C.green);label(g,'G',x+13,y+model.g*scale+6,C.purple);
    label(g,Math.abs(s.friction)<1e-9?'F_f = 0':'F_f',x+s.friction*c*scale-38,y-s.friction*sin*scale+24,C.orange);
    if(Math.hypot(s.realX,s.realY)>1e-9){arrow(g,x,y,s.realX*scale,-s.realY*scale,C.blue,'',0,6);label(g,'ΣF',x+s.realX*scale-26,y-s.realY*scale-44,C.blue);}else label(g,'ΣF = 0',x-110,y-44,C.blue);
    if(s.q>1e-9){g.setLineDash([7,3]);arrow(g,x,y,-s.q*scale,0,C.red,'');g.setLineDash([]);label(g,'F_cp',x-s.q*scale-20,y-18,C.red);}else label(g,'F_cp = 0',x-100,y-18,C.red);

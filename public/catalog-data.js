@@ -519,7 +519,7 @@ export const simulations = [
     "chapter": "miscare",
     "title": "Mișcarea circulară uniformă",
     "subtitle": "Vectori, forțe și curbe supraînălțate",
-    "description": "Șase teme teoretice, două laboratoare interactive, două probleme rezolvate și cinci întrebări: perioadă, frecvență, accelerație, forță centripetă și viraje.",
+    "description": "Laboratoare interactive, măsurarea a zece rotații, exemple cotidiene, cinci probleme rezolvate și verificare: perioadă, frecvență, accelerație și viraje.",
     "href": "./simulari/miscarea-circulara-uniforma/index.html",
     "image": "./assets/miscarea-circulara-uniforma.svg",
     "alt": "Mobil pe cerc cu vectorul viteză tangent și accelerația orientată spre centru",

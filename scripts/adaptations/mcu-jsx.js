@@ -1,8 +1,23 @@
 /* JSX presentation adapter, evaluated in the preserved React bundle's scope. */
+function mcuNotation(value){
+ // Mark vectors explicitly, never infer vector notation from a scalar force magnitude.
+ value=value.replace(/ΣF = m·a_cp = F_cp/g,'ΣF⃗ = m·a⃗_cp = F⃗_cp')
+  .replace(/F_i = -m·a₀/g,'F⃗_i = −m·a⃗₀')
+  .replace(/F_cf = m ω² R/g,'F⃗_cf = m ω² R⃗')
+  .replace(/F_cp \+ F_cf = 0/g,'F⃗_cp + F⃗_cf = 0⃗')
+  .replace(/F_cp = -m ω² R⃗/g,'F⃗_cp = −m ω² R⃗')
+  .replace(/a_cp = -ω²·R⃗/g,'a⃗_cp = −ω²·R⃗')
+  .replace(/a₀/g,'a⃗₀');
+ if(/^\s*F_cp$/.test(value)||/^F_cp = (frecare|forța|componenta|static|gravitational|horizontal)/.test(value))value=value.replace('F_cp','F⃗_cp');
+ if(/^(N|G|F_f|ΣF|F_cp) —/.test(value)||/^(N, G și|N, G and)/.test(value)){
+  value=value.replace('F_cp = mv²/r','|F_cp| = mv²/r').replace(/\b(F_(?:cp|f)|N|G)\b|ΣF/g,token=>token.replace(/^ΣF$/,'ΣF⃗').replace(/^F_/,'F⃗_').replace(/^[NG]$/,x=>x+'⃗'));
+ }
+ return value;
+}
 function McuMathText({value}){
  const math=window.PraxisMath;
  const language=I.useSyncExternalStore(math.subscribe,math.revision,math.revision);
- const translated=window.PraxisI18n.tr(value);
+ const translated=mcuNotation(window.PraxisI18n.tr(value));
  const html=I.useMemo(()=>math.render(translated),[translated,language]);
  const ref=I.useRef(null);
  I.useEffect(()=>{const node=ref.current;if(!node)return;const measure=()=>{for(const el of node.querySelectorAll('.wave-math-item')){if(el.scrollWidth>el.clientWidth+1){el.tabIndex=0;el.setAttribute('role','group');el.setAttribute('aria-label',window.PraxisI18n.language==='en'?'Formula with horizontal scrolling':'Formulă cu derulare orizontală');}else{el.removeAttribute('tabindex');el.removeAttribute('role');el.removeAttribute('aria-label');}}};measure();const observer=new ResizeObserver(measure);observer.observe(node);return()=>observer.disconnect();},[html,language]);
@@ -19,21 +34,28 @@ function mcuJsx(type,props,key){
  const tr=s=>window.PraxisI18n.tr(s);
  const math=window.PraxisMath,svgText=type==='text'||type==='tspan';
  const readingHost=typeof type==='string'&&/^(?:div|span|p|li|h[1-6]|td|th|output)$/.test(type);
- if(math&&readingHost&&math.inline(props.children)){
-  const flattened=math.flatten(props.children),translated=tr(flattened);
-  if(!flattened.includes('\u20d7')&&(math.formula(translated)||math.bare(translated)))props.children=Rc(McuMathText,{value:flattened},'math');
+ const hasVector=value=>Array.isArray(value)?value.some(hasVector):!!(value&&typeof value==='object'&&(value.props?.className==='mcu-vector-symbol'||hasVector(value.props?.children)));
+ if(math&&readingHost&&!hasVector(props.children)&&math.inline(props.children)){
+  const flattened=math.flatten(props.children),translated=mcuNotation(tr(flattened));
+  if(!translated.includes('\u20d7')&&(math.formula(translated)||math.bare(translated)))props.children=Rc(McuMathText,{value:flattened},'math');
  }
  function formatted(value,svg=false){
   if(typeof value!=='string')return value;
-  value=tr(value);
+  value=mcuNotation(tr(value));
   value=value.replace('R = const • |v| = const','R = const, |v| = const').replace(/\s*•\s*/g,' — ');
   value=value.replace(/(R\s*=\s*[\d.,]+\s*m)\s*[—–-]\s*(μ\s*=)/g,'$1, $2');
   if(window.PraxisI18n.language==='en')value=value.replace(/\btg(?=θ)/g,'tan');
   // React owns this subtree: rendering HTML here avoids replacing its text nodes
   // from a document observer when the language or a numeric value changes.
   if(!svg&&readingHost&&math&&!value.includes('\u20d7')&&(math.formula(value)||math.bare(value)))return Rc(McuMathText,{value},'math-'+value);
-  const vectorEquation=value.includes('\u20d7'),parts=[],pattern=/\b(a|F|v|n|T|ω)_(fmax|cp|cf|min|max|f|i|[012])\b|([A-Za-z])\u20d7/g;let match,last=0;
-  while(match=pattern.exec(value)){parts.push(value.slice(last,match.index));if(match[3])parts.push(Rc('span',{className:'mcu-vector-symbol',children:match[3]},'vector-'+match.index));else parts.push(Rc(svg?'tspan':'span',{children:[vectorEquation?Rc('span',{className:'mcu-vector-symbol',children:match[1]},'base'):match[1],Rc(svg?'tspan':'sub',svg?{baselineShift:'sub',fontSize:'70%',children:match[2]}:{children:match[2]},'index')]},'mcu-sub-'+match.index));last=pattern.lastIndex;}
+  const parts=[],pattern=/([A-Za-z0])\u20d7(?:_(cp|cf|f|i|[012])|([₀₁₂]))?|\b(a|F|v|n|T|ω)_(fmax|cp|cf|min|max|f|i|[012])\b/g;let match,last=0;
+  while(match=pattern.exec(value)){
+   parts.push(value.slice(last,match.index));
+   const base=match[1]||match[4],sub=match[2]||(match[3]?{'₀':'0','₁':'1','₂':'2'}[match[3]]:match[5]);
+   const symbol=match[1]?Rc(svg?'tspan':'span',svg?{children:[Rc('tspan',{dy:'-.65em',children:'→'},'arrow'),Rc('tspan',{dx:'-1em',dy:'.65em',children:base},'base')]}:{className:'mcu-vector-symbol',children:base},'vector-'+match.index):base;
+   parts.push(Rc(svg?'tspan':'span',{children:[symbol,...(sub?[Rc(svg?'tspan':'sub',svg?{baselineShift:'sub',fontSize:'70%',children:sub}:{children:sub},'index')]:[])]},'mcu-sub-'+match.index));
+   last=pattern.lastIndex;
+  }
   if(!last)return value;parts.push(value.slice(last));return parts;
  }
  if(props.children!==undefined)props.children=Array.isArray(props.children)?props.children.map(v=>formatted(v,type==='text'||type==='tspan')):formatted(props.children,type==='text'||type==='tspan');
@@ -56,7 +78,10 @@ function mcuJsx(type,props,key){
   else if(/^#0[7d]/i.test(props[attr]))props[attr]='#f2f6f4';
  }
  if(type==='main'){props.className=(props.className||'')+' mcu-main';type='div';}
- if(type==='section')props['data-mcu-section']=props.id;
+ if(type==='section'){
+  props['data-mcu-section']=props.id;
+  if(props.id==='forta')props.children=[props.children,Rc('p',{className:'mcu-notation-note',children:tr('Săgeata indică un vector. Simbolurile fără săgeată din calculele numerice reprezintă module; ecuațiile pe Ox și Oy folosesc componente scalare.')},'notation-note')];
+ }
  if(type==='input'&&props.type==='range'&&!props.id){const name=/u\(|\.setter/.test(String(props.onChange))&&props.max===5&&props.min===.5?'radius':props.max===4?'omega':'mass';props.id='mcu-'+name;props['aria-label']=tr(name==='radius'?'Rază R':name==='omega'?'Viteză unghiulară ω':'Masă m');}
  if(type==='canvas'){props.className='mcu-canvas';props.tabIndex=0;props['aria-label']=tr('Diagramă interactivă de mișcare circulară.');}
  if(type==='canvas')return Rc(I.Fragment,{children:[Rc(type,props,'canvas'),...(props['data-mcu-canvas']==='bank'?[Rc(McuForceLegend,{},'forces')]:[]),Rc(McuVectorScale,{kind:props['data-mcu-canvas']},'scale')]},key);

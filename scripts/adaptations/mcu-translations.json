@@ -221,5 +221,6 @@
   "Comparație — scară comună": "Comparison — common scale",
   "Forțe și necesar radial": "Forces and radial requirement",
   "N, G și F_f sunt forțele reale, iar ΣF = N + G + F_f este rezultanta lor efectivă (suma vectorială). F_cp = mv²/r este rezultanta spre centru necesară pentru mișcarea circulară la viteza aleasă, nu o forță suplimentară. În regimul sigur, ΣF și F_cp coincid: albastru cu roșu întrerupt. Toți vectorii folosesc aceeași scară, inclusiv copiile separate din comparația de jos. Forțele foarte mici au săgeți proporțional scurte; zero este indicat explicit.": "N, G and F_f are the real forces, and ΣF = N + G + F_f is their actual resultant (vector sum). F_cp = mv²/r is the inward resultant needed for circular motion at the selected speed, not an additional force. In the safe regime, ΣF and F_cp coincide: blue with dashed red. All vectors use the same scale, including the separate copies in the lower comparison. Very small forces have proportionally short arrows; zero is explicitly indicated.",
-  "ΣF — rezultanta N + G + F_f": "ΣF — resultant N + G + F_f"
+  "ΣF — rezultanta N + G + F_f": "ΣF — resultant N + G + F_f",
+  "Săgeata indică un vector. Simbolurile fără săgeată din calculele numerice reprezintă module; ecuațiile pe Ox și Oy folosesc componente scalare.": "An arrow marks a vector. Symbols without arrows in numerical calculations denote magnitudes; the equations along Ox and Oy use scalar components."
 }
