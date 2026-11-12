@@ -1,0 +1,23 @@
+*{box-sizing:border-box}
+body{margin:0;background:var(--praxis-color-canvas,#f4f3ed);color:var(--praxis-color-ink,#173633);font:1rem/1.55 var(--praxis-font-ui,system-ui,sans-serif)}
+header{padding:.8rem max(1rem,calc((100% - 48rem)/2));background:var(--praxis-color-surface,#fffefa);border-bottom:1px solid var(--praxis-color-border,#c9d5ca)}
+header a{display:inline-flex;gap:.65rem;align-items:center;min-height:44px;font-weight:700;text-decoration:none}
+a{color:var(--praxis-color-primary,#17685f)}
+.logo{display:inline-grid;grid-auto-flow:column;place-items:center;width:2.2rem;height:2.2rem;background:#216e61;border-radius:.55rem;color:white;font-size:1.5rem;letter-spacing:-.1em;padding-inline:.3rem}
+.logo span{color:#d5ac67}
+main{max-width:50rem;margin:0 auto;padding:1.1rem 1rem 2rem}
+h1,h2{line-height:1.2;margin:0 0 .65rem}
+h1{font-size:clamp(1.7rem,6vw,2.4rem)}
+h2{font-size:1.2rem}
+p{margin:.45rem 0 .85rem}
+section,details{margin-block:1rem;padding:1rem;background:var(--praxis-color-surface,#fffefa);border:1px solid var(--praxis-color-border,#c9d5ca);border-radius:1rem;min-width:0}
+label{display:block;font-weight:650}
+input{display:block;max-width:100%;font:inherit;color:inherit;margin-block:.35rem}
+input::file-selector-button,button{font:inherit;min-height:44px;padding:.4rem .65rem;border:1px solid var(--praxis-color-border,#c9d5ca);border-radius:.5rem;background:#edf2e9;color:#17685f}
+#status{margin-bottom:0}
+[data-error]{color:#923d31}
+ul{list-style:none;margin:0;padding:0}
+li{display:flex;align-items:center;gap:.5rem;justify-content:space-between;flex-wrap:wrap;border-top:1px solid var(--praxis-color-border,#c9d5ca)}
+li a,summary{min-height:44px;display:inline-flex;align-items:center;padding:.35rem 0}
+summary{cursor:pointer;font-weight:650;display:list-item}
+:focus-visible{outline:2px solid #216e61;outline-offset:3px}
