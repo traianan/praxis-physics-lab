@@ -48,3 +48,10 @@ body[data-praxis-course=transformarea-politropa] #praxis-original{width:100%;max
 @media(max-width:500px){#polytropic-root .lab-shell{padding:.6rem}#polytropic-root .section{padding:.75rem}#polytropic-root .lab-chart-wrap{height:280px}#polytropic-root .lab-preset{flex:1 1 8rem}#polytropic-root .lab-controls{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:650px){#polytropic-root .lab-presets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8rem),1fr));width:100%}#polytropic-root .lab-preset{justify-content:center;overflow-wrap:normal}#polytropic-root .lab-preset small{flex-basis:100%}#polytropic-root .state-pair{grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr))}}
 @media print{body>*:not(#praxis-original){display:none!important}#praxis-original>:not(#polytropic-root){display:none!important}#polytropic-root>[role=tabpanel]{display:none!important}#polytropic-root .print-sheet{display:block!important}}
+
+@media(max-width:500px){
+  #polytropic-root :is(.linear-grid,.linear-facts,.linear-steps,.calc-grid,.calc-steps){grid-template-columns:minmax(0,1fr)}
+  #polytropic-root :is(.linear-copy,.linear-demo,.calc-form,.calc-results,.formula-block){min-width:0;max-width:100%}
+  #polytropic-root .katex-display{max-width:100%;overflow-x:auto;text-align:start}
+  #polytropic-root .katex-display>.katex{display:block;width:max-content;min-width:100%;text-align:center}
+}

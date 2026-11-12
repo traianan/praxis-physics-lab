@@ -67,6 +67,20 @@ Serverul local servește catalogul și toate laboratoarele din catalog. A deschi
 
 Pe PC, pornește **Porneste-in-retea.cmd**. Acesta activează explicit accesul în LAN. PC-ul și dispozitivul Android trebuie conectate la aceeași rețea locală; nu este necesar internetul. Pe tabletă deschide `http://ADRESA-IP-A-PC-ULUI:4190` (adresa reală se află cu `ipconfig`, câmpul IPv4 al conexiunii utilizate). Poate fi necesară permisiunea în firewall pentru rețeaua privată; nu s-au modificat regulile firewall în această sarcină. `127.0.0.1` pe tabletă desemnează tableta, nu PC-ul.
 
+## Arhive autonome pe Android, fără rețea
+
+Pe OPPO CPH2529 cu Android 15, Chrome a refuzat accesul direct prin `file://` la HTML din dosarul Descărcări. Arhivele pot rula din dosarul local al Chrome. Metoda de mai jos folosește un PC cu ADB și un cablu USB pentru pregătire. Lecția rulează pe telefon, cu Wi-Fi și datele mobile oprite.
+
+1. Deblochează telefonul, activează temporar „Depanare USB” și autorizează PC-ul.
+2. Transferă și dezarhivează complet lecția. Exemplul este pentru „Legea lui Hooke”.
+
+   ```sh
+   adb push public/simulari/legea-lui-hooke/legea-lui-hooke.zip /sdcard/Download/legea-lui-hooke.zip
+   adb shell "mkdir -p /sdcard/Android/data/com.android.chrome/files/Praxis/legea-lui-hooke && unzip -o /sdcard/Download/legea-lui-hooke.zip -d /sdcard/Android/data/com.android.chrome/files/Praxis/legea-lui-hooke"
+   ```
+
+3. Deschide în Chrome adresa `file:///storage/emulated/0/Android/data/com.android.chrome/files/Praxis/legea-lui-hooke/index.html`. Oprește Wi-Fi și datele mobile pentru utilizare fără conexiune. Dosarul lecției rămâne pe telefon și după deconectarea cablului.
+
 ## Actualizarea laboratorului de optică
 
 Proiectul autoritativ al motorului și interfeței de optică rămâne `D:/ProiecteAI/Optica-Lab`. Nu edita manual copia din bibliotecă. După schimbări acolo, rulează:

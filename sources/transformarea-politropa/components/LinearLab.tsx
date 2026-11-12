@@ -111,7 +111,7 @@ export function LinearLab() {
               <div className="linear-main-formula">
                 <Formula
                   block
-                  tex="pV^{-1}=\mathrm{constant}\quad\Longrightarrow\quad p=k\,V"
+                  tex="\begin{gathered}pV^{-1}=\mathrm{constant}\\\Longrightarrow\ p=k\,V\end{gathered}"
                   label="p ori V la minus unu egal constant, deci p egal k ori V"
                 />
               </div>
@@ -314,7 +314,7 @@ export function LinearLab() {
                 </p>
                 <Formula
                   block
-                  tex="L=\dfrac{p_{1}+p_{2}}{2}(V_{2}-V_{1})=\dfrac{\nu R\,\Delta T}{2}"
+                  tex="\begin{aligned}L&=\dfrac{p_{1}+p_{2}}{2}(V_{2}-V_{1})\\&=\dfrac{\nu R\,\Delta T}{2}\end{aligned}"
                 />
               </div>
             </li>

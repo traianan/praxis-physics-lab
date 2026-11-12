@@ -40,7 +40,7 @@
     },
     {
       "path": "sources/transformarea-politropa/components/CalculatorSection.tsx",
-      "sha256": "71689b086c4101af8bb66ab4b236040e4275220c7ab8f9b71dec8a53f32ae26b"
+      "sha256": "f46838a2e9ffe7da6f017a9d5c6d5409cded13b76e2682564361ac9e90fa079a"
     },
     {
       "path": "sources/transformarea-politropa/components/EnergyBars.tsx",
@@ -72,7 +72,7 @@
     },
     {
       "path": "sources/transformarea-politropa/components/LinearLab.tsx",
-      "sha256": "fe305ff52ef7c81293c807b73c3a9887423e3ee1016dbaa0485abb38d40b53c9"
+      "sha256": "452f3e0addf3f7a27cf5c155432ec9043a5d924a669841a0236f9a39c612bfe9"
     },
     {
       "path": "sources/transformarea-politropa/components/Nav.tsx",

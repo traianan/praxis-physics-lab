@@ -490,7 +490,7 @@ export function CalculatorSection() {
               <span className="calc-step-num">06</span>
               <div>
                 <strong>Căldura și căldura molară</strong>
-                <Formula block tex="Q=\Delta U+L,\qquad C=C_{V}+\dfrac{R}{1-n}" />
+                <Formula block tex="\begin{gathered}Q=\Delta U+L\\C=C_{V}+\dfrac{R}{1-n}\end{gathered}" />
                 <p>
                   Q = {Math.round(model.dU)} J + {Math.round(model.L)} J ={" "}
                   <b>{Math.round(model.Q)} J</b>; C = {fmt(gasData.cv, 2)} +{" "}
