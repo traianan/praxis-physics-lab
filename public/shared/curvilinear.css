@@ -1,12 +1,14 @@
 /* The curvilinear lesson follows the common Praxis presentation contract. */
 body[data-praxis-course=miscarea-curbilinie-plana]{--bg:var(--praxis-color-canvas);--bg2:var(--praxis-color-canvas);--card:var(--praxis-color-surface);--card2:var(--praxis-color-primary-soft);--line:var(--praxis-color-border);--line2:var(--praxis-color-border);--ink:var(--praxis-color-ink);--muted:var(--praxis-color-muted);--muted2:var(--praxis-color-muted);--gold:var(--praxis-color-primary);--gold2:var(--praxis-color-primary);--green:var(--praxis-science-green);--red:var(--praxis-science-red);--amber:var(--praxis-science-orange);--violet:var(--praxis-science-purple);--cyan:var(--praxis-science-blue);--sans:var(--praxis-font-ui);--serif:var(--praxis-font-formula);overflow-x:visible}
 body[data-praxis-course=miscarea-curbilinie-plana] :is(.bg-glow,.tabbar:empty,.praxis-course-nav-select,.rn,.no,.crumb){display:none!important}
-body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original{max-width:none;margin:0;padding:0}
-body[data-praxis-course=miscarea-curbilinie-plana] .wrap{max-width:88rem;padding:0 1.5rem}
+body[data-praxis-course=miscarea-curbilinie-plana]{--curvilinear-width:80rem;--curvilinear-gutter:1.5rem}
+body[data-praxis-course=miscarea-curbilinie-plana] :is(#praxis-original,.praxis-lab-nav){width:100%;max-width:var(--curvilinear-width);margin-inline:auto}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original{padding:0}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original>main.wrap{padding:0 var(--curvilinear-gutter)}
+:root:not([data-board=true]) body[data-praxis-course=miscarea-curbilinie-plana] .praxis-lab-intro{margin-inline:max(var(--curvilinear-gutter),calc((100% - var(--curvilinear-width)) / 2 + var(--curvilinear-gutter)))!important}
 body[data-praxis-course=miscarea-curbilinie-plana] .tabbar{display:none}
 body[data-praxis-course=miscarea-curbilinie-plana] .praxis-lab-nav .tabs{display:flex;flex-wrap:wrap;position:static;max-width:none;width:auto;padding:.25rem}
 body[data-praxis-course=miscarea-curbilinie-plana] .panel{padding:0 0 1rem}
-body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original>main.wrap{max-width:88rem;padding-top:0}
 body[data-praxis-course=miscarea-curbilinie-plana] .praxis-lab-nav .tab-btn{flex:none;white-space:nowrap}
 body[data-praxis-course=miscarea-curbilinie-plana] :is(p.txt,.sub,.def dd,.note p,.quiz .ans,.fcard .why){color:var(--praxis-color-ink);font-weight:400}
 body[data-praxis-course=miscarea-curbilinie-plana] .fcard .lbl{font:600 var(--praxis-text-label)/1.5 var(--praxis-font-ui);letter-spacing:normal;text-transform:none}
@@ -40,4 +42,4 @@ body[data-praxis-course=miscarea-curbilinie-plana] .tgl{flex-wrap:wrap}
 body[data-praxis-course=miscarea-curbilinie-plana] .tgl :is(vec,sub){flex:none}
 body[data-praxis-course=miscarea-curbilinie-plana] .math-symbol{display:inline-block;white-space:nowrap}
 @media(max-width:64rem){body[data-praxis-course=miscarea-curbilinie-plana] .lab{grid-template-columns:1fr}}
-@media(max-width:40rem){body[data-praxis-course=miscarea-curbilinie-plana] .wrap{padding:0 .75rem}body[data-praxis-course=miscarea-curbilinie-plana] .reads{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:40rem){body[data-praxis-course=miscarea-curbilinie-plana]{--curvilinear-gutter:.75rem}body[data-praxis-course=miscarea-curbilinie-plana] .reads{grid-template-columns:repeat(2,minmax(0,1fr))}}

@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-12T15:42:56.938Z",
+  "builtAt": "2026-11-12T18:03:07.476Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -81,7 +81,7 @@
     {
       "id": "miscarea-curbilinie-plana",
       "file": "public/simulari/miscarea-curbilinie-plana/miscarea-curbilinie-plana-offline.zip",
-      "sha256": "d92de65fb341890a5a2e227dc38618ce3a5de3d27290e70033fdffbf8846db79",
+      "sha256": "5a2a840b0fbbaba451ca5d9da9bc5beee07301282aa67a32c5041fd217500150",
       "languages": [
         "ro",
         "en"
