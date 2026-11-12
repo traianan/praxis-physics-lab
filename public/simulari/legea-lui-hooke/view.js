@@ -6,6 +6,13 @@ const line=(x1,y1,x2,y2,color,dash='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" 
 const svgIndices=value=>String(value).replace(/([FLW])_ap|Fₑ/g,token=>`${token[0]}<tspan dy="3" font-size="9">${token==='Fₑ'?'e':'ap'}</tspan><tspan dy="-3" font-size="13">&#8203;</tspan>`);
 const text=(x,y,value,anchor='start',color='currentColor')=>`<text x="${x}" y="${y}" text-anchor="${anchor}" style="fill:${color}" font-size="13">${svgIndices(value)}</text>`;
 const arrow=(x,y,dx,c)=>Math.abs(dx)<.1?'':line(x,y,x+dx,y,c)+`<path d="M${x+dx-Math.sign(dx)*7} ${y-5} L${x+dx} ${y} L${x+dx-Math.sign(dx)*7} ${y+5}" fill="none" stroke="${c}" stroke-width="2"/>`;
+function forceVector(x,y,dx,color,name,width){
+ if(Math.abs(dx)<.1)return '';
+ const labelX=Math.max(16,Math.min(width-26,x+dx+Math.sign(dx)*15));
+ const labelY=y===50?43:146;
+ return arrow(x,y,dx,color)+text(labelX,labelY,name,'middle',color)+
+  `<path data-vector-mark="" d="M${labelX-7} ${labelY-13}h8m-2.5 -2 2.5 2-2.5 2" fill="none" stroke="${color}"/>`;
+}
 const zoom=()=>parseFloat(getComputedStyle(document.documentElement).fontSize)/16;
 export function geometry(){const width=Math.max(280,$('scene').getBoundingClientRect().width/zoom());return {width,origin:width*.58,scale:(width-100)/1.05};}
 export function deformationAt(clientX){const g=geometry();return ((clientX-$('scene').getBoundingClientRect().left)/zoom()-g.origin)/g.scale;}
@@ -17,7 +24,7 @@ export function render(p,s){
  line(g.origin,42,g.origin,151,c.blue,'4 4')+text(g.origin,31,'x = 0','middle')+
  `<polyline points="${spring}" fill="none" stroke="${c.purple}" stroke-width="3"/>`+
  `<rect data-drag x="${x-25}" y="63" width="50" height="52" rx="8" fill="${c.orange}" stroke="currentColor"/>`+text(x,94,tr('Corp'),'middle')+
- arrow(x,50,s.force/40*65,c.red)+(!s.released?arrow(x,130,s.applied/40*65,c.blue):'')+
+ forceVector(x,50,s.force/40*65,c.red,'Fₑ',g.width)+(!s.released?forceVector(x,130,s.applied/40*65,c.blue,'F_ap',g.width):'')+
  text(12,18,tr('Trage corpul sau folosește săgețile ← →.'))+
  [-.2,0,.2].map(v=>line(g.origin+v*g.scale,145,g.origin+v*g.scale,151,'currentColor')+text(g.origin+v*g.scale,166,number(v,1),'middle')).join('')+text(g.width-8,166,'x (m)','end')+
  text(12,187,`Fₑ = ${number(s.force)} N    F_ap = ${number(s.applied)} N`);

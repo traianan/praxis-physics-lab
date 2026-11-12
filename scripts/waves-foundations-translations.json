@@ -50,5 +50,7 @@
   "). 2) Kundt: caută rezonanța și măsoară d=λ/2 pentru v. 3) Osciloscop: măsoară 440Hz cu autocorelare. 4) Seismic: declanșează cutremur, măsoară Δt pe seismogramă, estimează distanța cu d=Δt·vP·vS/(vP-vS), observă oprirea S la nucleu extern lichid (dovada lichidului) și triangulează cu 3 stații.": "). 2) Kundt: find resonance and measure d=λ/2 to obtain v. 3) Oscilloscope: measure 440Hz using autocorrelation. 4) Seismic: trigger an earthquake, measure Δt on the seismogram, estimate distance using d=Δt·vP·vS/(vP-vS), observe S waves stopping at the liquid outer core (evidence of liquid) and triangulate using 3 stations.",
   ", Δφ=0, R=+1. Pentru deplasare transversală pe coardă: R=(Z": ", Δφ=0, R=+1. For transverse displacement on a string: R=(Z",
   " |sin(2πx/λ)|=1 ⇒ x=(2n+1)·λ/4 – amplitudine maximă 2A.": " |sin(2πx/λ)|=1 ⇒ x=(2n+1)·λ/4 – maximum amplitude 2A.",
-  "|sin(2πx/λ)|=1 ⇒ x=(2n+1)·λ/4 – amplitudine maximă 2A.": "|sin(2πx/λ)|=1 ⇒ x=(2n+1)·λ/4 – maximum amplitude 2A."
+  "|sin(2πx/λ)|=1 ⇒ x=(2n+1)·λ/4 – amplitudine maximă 2A.": "|sin(2πx/λ)|=1 ⇒ x=(2n+1)·λ/4 – maximum amplitude 2A.",
+  "Elongația y₁ este proiecția deplasării pe Oy.": "Elongation y₁ is the projection of the displacement onto Oy.",
+  "Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y₁ este componenta sa pe Oy și se măsoară în metri.": "The displacement vector points from equilibrium to the particle. Elongation y₁ is its Oy component, measured in metres."
 }

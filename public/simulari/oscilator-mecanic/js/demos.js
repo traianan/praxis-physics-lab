@@ -683,8 +683,10 @@ App.register({
    const a=Math.atan2(fy-by,fx-bx);g.beginPath();g.moveTo(fx-9*Math.cos(a-.55),fy-9*Math.sin(a-.55));g.lineTo(fx,fy);g.lineTo(fx-9*Math.cos(a+.55),fy-9*Math.sin(a+.55));g.stroke();g.restore();
 
   }
-  if(length>1&&s.showVelocity!==false){arrow(g,bx,by,s.velocityVector.endX,s.velocityVector.endY,C.green,2.1);label(g,'v',s.velocityVector.endX-Math.sin(theta)*16,s.velocityVector.endY-Math.cos(theta)*16,C.green,12,'center');}
-  label(g,'Gt — '+PraxisI18n.tr('Forță: roșu întrerupt, vârf deschis'),w-26,65,C.ink,12,'right');
+  if(length>1&&s.showVelocity!==false){arrow(g,bx,by,s.velocityVector.endX,s.velocityVector.endY,C.green,2.1);g.save();g.fillStyle=C.green;g.font='12px Segoe UI';g.textAlign='center';PraxisVectorLabel(g,'v',s.velocityVector.endX-Math.sin(theta)*16,s.velocityVector.endY-Math.cos(theta)*16);g.restore();}
+  g.save();g.fillStyle=C.ink;g.font='12px Segoe UI';g.textAlign='right';
+  PraxisVectorLabel(g,'Gₜ — '+PraxisI18n.tr('Forță: roșu întrerupt, vârf deschis'),w-26,65);
+  g.restore();
   label(g,PraxisI18n.tr('Viteză: verde continuu, vârf plin'),w-26,87,C.ink,12,'right');
   label(g,PraxisI18n.tr('Ambii vectori pornesc din centrul bilei.'),cx,282,C.ink,12,'center');
   label(g,PraxisI18n.tr('Lungimile lor folosesc scări diferite.'),cx,305,C.muted,12,'center');

@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-12T15:34:25.080Z",
+  "builtAt": "2026-11-12T15:42:56.938Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -26,7 +26,7 @@
     {
       "id": "legea-lui-coulomb",
       "file": "public/simulari/legea-lui-coulomb/legea-lui-coulomb.zip",
-      "sha256": "1162b4f0ff127035309e577cb3c03daa7a71b91cde3b65394cd0a427b13646a3",
+      "sha256": "0a78e18798a6b11aca7e85b696cba20506a39c6397f393878766cf489e7c6912",
       "languages": [
         "ro",
         "en"
@@ -48,7 +48,7 @@
     {
       "id": "unde-mecanice",
       "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
-      "sha256": "e8fcfc155c0cbe88fce2cffd7afad36117821f778bb4c7f5bf937919c7514939",
+      "sha256": "c609e44422dbd55c3bd9f440ba9fec9220bff00bf90dbcc85b69d0443e020d21",
       "languages": [
         "ro",
         "en"
@@ -158,7 +158,7 @@
     {
       "id": "oscilator-mecanic",
       "file": "public/simulari/oscilator-mecanic/oscilator-mecanic.zip",
-      "sha256": "6061b56f015f0bab6a53b93800d3fe4877dc498910ba9bcf3945fcd99f709590",
+      "sha256": "b7ee465ea5119d00e58ac39ce932e095a533de4cee89f18444ce4586ee6096a8",
       "languages": [
         "ro",
         "en"
@@ -224,7 +224,7 @@
     {
       "id": "pendulul-gravitational",
       "file": "public/simulari/pendulul-gravitational/pendulul-gravitational.zip",
-      "sha256": "5d27f40772c918de68cb2cc57bd4f803aeb82dc57d2d137869f58d6ae722bd88",
+      "sha256": "ef77672a4ec97be534e884bfbcb75b22debd9317abb0047a8c15f96a25469f13",
       "languages": [
         "ro",
         "en"

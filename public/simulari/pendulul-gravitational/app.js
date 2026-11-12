@@ -224,8 +224,8 @@
       const lx = x2 + 8 * Math.cos(ang), ly = y2 + 8 * Math.sin(ang);
       ctx.fillStyle = 'rgba(5,8,15,.75)';
       const tw = ctx.measureText(label).width;
-      ctx.beginPath(); ctx.roundRect(lx - 3, ly - 8, tw + 7, 16, 5); ctx.fill();
-      ctx.fillStyle = color; ctx.fillText(label, lx + 1, ly);
+      ctx.beginPath(); ctx.roundRect(lx - 3, ly - 14, tw + 7, 22, 5); ctx.fill();
+      ctx.fillStyle = color; PraxisVectorLabel(ctx, label, lx + 1, ly);
     }
     ctx.restore();
   }
@@ -383,7 +383,7 @@
       const tang = { x: Math.cos(S.theta), y: -Math.sin(S.theta) };
       const ftLen = clamp(Math.abs(Ft) / (S.mass * S.g) * mgPx, 0, mgPx);
       if (ftLen > 5) {
-        arrow(bob.x, bob.y, bob.x + tang.x * Math.sign(Ft) * ftLen, bob.y + tang.y * Math.sign(Ft) * ftLen, '#fbbf24', 2.2, 'Ft');
+        arrow(bob.x, bob.y, bob.x + tang.x * Math.sign(Ft) * ftLen, bob.y + tang.y * Math.sign(Ft) * ftLen, '#fbbf24', 2.2, 'Fₜ');
       }
       // tensiune
       const Tn = S.mass * (S.g * Math.cos(S.theta) + S.len * S.omega * S.omega);

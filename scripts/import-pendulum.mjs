@@ -43,6 +43,9 @@ css=css.replace(':root{','#praxis-original{').replace(/html\{[^}]*\}/g,'').repla
 // Keep source styles scoped: the shared header and settings retain their own geometry.
 await write('public/shared/pendulum-source.css','@scope (#praxis-original) {\n'+css.replace(/[ \t]+$/gm,'')+'\n}\n');
 let js=raw.match(/<script>([\s\S]*?)<\/script>/)[1];
+js=js.replace('ctx.fillText(label, lx + 1, ly);','PraxisVectorLabel(ctx, label, lx + 1, ly);')
+ .replace(", 'Ft');",", 'Fₜ');")
+ .replace('ly - 8, tw + 7, 16','ly - 14, tw + 7, 22');
 // Results belong to this page only, including in the autonomous export.
 js=js.replace(/  const store = \{[\s\S]*?\n  \};/,`  const pageResults = new Map();
   const store = {
@@ -100,7 +103,7 @@ await write('public/simulari/'+id+'/app.js',js+'\n'+await read('scripts/adaptati
 const ns=await labNamespaces('pendulul-gravitational'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 const styles=['shared/pendulum-source.css','design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css','shared/pendulum.css'];
-const scripts=['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js'];
+const scripts=['sound.js','lab-header.js','canvas-typography.js','vector-label.js','scientific-colors.js','course-localization.js'];
 const head=styles.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded}).replaceAll('</script','<\\/script')+');</script>'+scripts.map(p=>'<script src="../../shared/'+p+'"></script>').join('');
 // Keep dialogs and source footer inside the lesson scope too.
 body=body.replace('</main>','')+'</main>';

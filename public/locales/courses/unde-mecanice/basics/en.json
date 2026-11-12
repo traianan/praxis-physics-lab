@@ -349,7 +349,7 @@
     "Poziția particulei": "Particle position",
     "Poziția de echilibru": "Equilibrium position",
     "Elongația y₁ este o deplasare.": "Elongation y₁ is a displacement.",
-    "Elongația y": "Displacement y",
+    "Elongația y": "Elongation y",
     "este o deplasare.": "is a displacement.",
     "Elongația y₁ este orientată de la echilibru spre particulă. Unitatea sa este metrul (m).": "Displacement y₁ points from equilibrium towards the particle. Its unit is the metre (m).",
     "este orientată de la echilibru spre particulă. Unitatea sa este metrul (m).": "points from equilibrium towards the particle. Its unit is the metre (m).",
@@ -620,6 +620,11 @@
     "Fantă mai lată: primul minim se apropie de axă, iar maximul central se îngustează.": "Wider slit: the first minimum moves towards the axis and the central maximum narrows.",
     "Model scalar bidimensional: fantă uniform iluminată, mediu omogen, surse coerente și suprapunere liniară. Semicercurile punctate arată prima emisie; sursele continuă să oscileze. Scara spațială este în λ, timpul în T; amplitudinea nu este reprezentată la scară absolută. Reflexia pe ecran și detaliile de la margini nu sunt calculate.": "Two-dimensional scalar model: uniformly illuminated slit, homogeneous medium, coherent sources and linear superposition. Dashed semicircles show the first emission; sources keep oscillating. Spatial units are λ and time units are T; amplitude is not shown on an absolute scale. Screen reflection and edge details are not calculated.",
     "Difracția: răspândirea undei dincolo de marginile unei fante.": "Diffraction: the wave spreads beyond the edges of a slit.",
-    "Ocru: unde secundare (prima emisie). Verde: fronturi rezultante.": "Ochre: secondary wavelets (first emission). Green: resultant wavefronts."
+    "Ocru: unde secundare (prima emisie). Verde: fronturi rezultante.": "Ochre: secondary wavelets (first emission). Green: resultant wavefronts.",
+    "Elongația y₁ este proiecția deplasării pe Oy.": "Elongation y₁ is the projection of the displacement onto Oy.",
+    "este proiecția deplasării pe Oy.": "is the projection of the displacement onto Oy.",
+    "Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y₁ este componenta sa pe Oy și se măsoară în metri.": "The displacement vector points from equilibrium to the particle. Elongation y₁ is its Oy component, measured in metres.",
+    "Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y": "The displacement vector points from equilibrium to the particle. Elongation y",
+    "este componenta sa pe Oy și se măsoară în metri.": "is its Oy component, measured in metres."
   }
 }

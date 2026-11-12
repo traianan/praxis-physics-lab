@@ -25,7 +25,7 @@ const underStart=body.indexOf('<div class="under">'),underEnd=body.indexOf('\n<a
 if(underStart<0||underEnd<underStart)throw new Error('Coulomb source layout changed');
 const under=body.slice(underStart,underEnd);
 body=body.replace(under,'').replace('</aside></div></section>','</aside></div>'+under+'</section>');
-body=body.replace('class="note">|F₁₂| = |F₂₁|','class="note" data-science-math="tex" data-science-source="|F_1|=|F_2|">');
+body=body.replace('class="note">|F₁₂| = |F₂₁|','class="note" data-science-math="tex" data-science-source="F_1=F_2">');
 body=body.replace(/class="([^"]*)"/g,(_,classes)=>'class="'+classes.split(' ').map(c=>c==='layout'?'coulomb-layout':c==='card'?'coulomb-card':c).join(' ')+'"');
 const tabs='<nav class="tabs" role="tablist" aria-label="Secțiunile lecției"><button role="tab" data-tab="lab" aria-selected="true" class="active">Laborator</button><button role="tab" data-tab="theory" aria-selected="false">Teorie</button></nav>';
 const footer='<footer class="footer"><a class="coulomb-download" href="legea-lui-coulomb.zip">Descarcă lecția offline</a><span>Inspirat de <a href="https://phet.colorado.edu/sims/html/coulombs-law/latest/coulombs-law_all.html">PhET: Coulomb’s Law</a></span></footer>';

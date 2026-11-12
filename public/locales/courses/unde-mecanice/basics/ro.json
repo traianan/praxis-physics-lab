@@ -620,6 +620,11 @@
     "Fantă mai lată: primul minim se apropie de axă, iar maximul central se îngustează.": "Fantă mai lată: primul minim se apropie de axă, iar maximul central se îngustează.",
     "Model scalar bidimensional: fantă uniform iluminată, mediu omogen, surse coerente și suprapunere liniară. Semicercurile punctate arată prima emisie; sursele continuă să oscileze. Scara spațială este în λ, timpul în T; amplitudinea nu este reprezentată la scară absolută. Reflexia pe ecran și detaliile de la margini nu sunt calculate.": "Model scalar bidimensional: fantă uniform iluminată, mediu omogen, surse coerente și suprapunere liniară. Semicercurile punctate arată prima emisie; sursele continuă să oscileze. Scara spațială este în λ, timpul în T; amplitudinea nu este reprezentată la scară absolută. Reflexia pe ecran și detaliile de la margini nu sunt calculate.",
     "Difracția: răspândirea undei dincolo de marginile unei fante.": "Difracția: răspândirea undei dincolo de marginile unei fante.",
-    "Ocru: unde secundare (prima emisie). Verde: fronturi rezultante.": "Ocru: unde secundare (prima emisie). Verde: fronturi rezultante."
+    "Ocru: unde secundare (prima emisie). Verde: fronturi rezultante.": "Ocru: unde secundare (prima emisie). Verde: fronturi rezultante.",
+    "Elongația y₁ este proiecția deplasării pe Oy.": "Elongația y₁ este proiecția deplasării pe Oy.",
+    "este proiecția deplasării pe Oy.": "este proiecția deplasării pe Oy.",
+    "Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y₁ este componenta sa pe Oy și se măsoară în metri.": "Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y₁ este componenta sa pe Oy și se măsoară în metri.",
+    "Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y": "Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y",
+    "este componenta sa pe Oy și se măsoară în metri.": "este componenta sa pe Oy și se măsoară în metri."
   }
 }

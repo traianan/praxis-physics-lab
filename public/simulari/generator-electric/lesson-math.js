@@ -2,7 +2,7 @@
 const tex=String.raw;
 const theory={
  'θ = θ_0 + ωt':tex`\theta=\theta_0+\omega t`,
- 'Φ = BA cos θ':tex`\Phi=BA\cos\theta`,
+ 'Φ = A B⃗·n⃗ = BA cos θ':tex`\Phi=A\vec{B}\cdot\hat{n}=BA\cos\theta`,
  'e = -d(NΦ)/dt = NBAω sin θ':tex`e=-\frac{\mathrm{d}(N\Phi)}{\mathrm{d}t}=NBA\omega\sin\theta`,
  'i = e/(R+r)':tex`i=\frac{e}{R+r}`,
  'u = Ri':tex`u=Ri`,

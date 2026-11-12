@@ -40,10 +40,11 @@ function LessonWaveFoundations({kind}){
   children.push(
    el('circle',{cx:x(u),cy:axisY,r:5,className:'foundation-equilibrium','data-foundation-equilibrium':''}),
    point(u,'P₁','foundation-blue'),line(x(u),axisY,x(u),y(u),{className:'foundation-displacement',markerEnd:'url(#'+prefix+'-displacement)','data-foundation-displacement':''}),
-   text(x(u)-13,y(u)-14,'P₁'),text(x(u)+18,(axisY+y(u))/2+6,'y₁',{'className':'foundation-blue'}),
+   text(x(u)-13,y(u)-14,'P₁'),text(x(u)+18,(axisY+y(u))/2+6,'Δr₁',{className:'foundation-blue'}),
+   el('path',{d:`M${x(u)+28} ${(axisY+y(u))/2-10}h9m-3 -2 3 2-3 2`,stroke:'var(--foundation-blue)',fill:'none','data-vector-mark':''}),
    el('polyline',{points:`${x(u)+7},${y(u)} 245,75 290,75`,className:'foundation-guide'}),text(300,81,tr('Poziția particulei')),
    el('polyline',{points:`${x(u)+7},${axisY+2} 245,220 290,220`,className:'foundation-guide'}),text(300,226,tr('Poziția de echilibru')),
-   text(325,248,tr('Elongația y₁ este o deplasare.'),{textAnchor:'middle'})
+   text(325,248,tr('Elongația y₁ este proiecția deplasării pe Oy.'),{textAnchor:'middle'})
   );
  }else if(kind==='phase'){
   const points=[[1/8,'P₁','x₁','foundation-blue'],[3/8,'P₂','x₂','foundation-amber'],[9/8,'P₃','x₃','foundation-blue'],[11/8,'P₄','x₄','foundation-amber']];
@@ -56,7 +57,7 @@ function LessonWaveFoundations({kind}){
   children.push(line(x(1.25)+23,axisY,x(1.25)+23,axisY-amplitude,{className:'foundation-displacement',markerEnd:'url(#'+prefix+'-displacement)','data-foundation-amplitude':''}),text(x(1.25)+37,axisY-amplitude/2+6,'A',{className:'foundation-blue'}));
  }
  const notes={
-  vector:['Elongația y₁ este orientată de la echilibru spre particulă. Unitatea sa este metrul (m).','Săgeata reprezintă deplasarea instantanee, nu viteza particulei și nu viteza de propagare.'],
+  vector:['Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y₁ este componenta sa pe Oy și se măsoară în metri.','Săgeata reprezintă deplasarea instantanee, nu viteza particulei și nu viteza de propagare.'],
   phase:['P₁ și P₃ sunt în fază; P₂ și P₄ sunt în fază. Fiecare pereche este separată prin λ.','P₁ și P₂ au aceeași elongație, dar nu aceeași fază: la acest moment y₁ scade, iar y₂ crește. La fel, y₃ scade și y₄ crește.'],
   wavelength:['λ este distanța, pe direcția propagării, dintre două puncte vecine de aceeași fază: două creste sau două depresiuni succesive.','A este amplitudinea: elongația maximă în modul, măsurată vertical de la echilibru. Atât λ, cât și A se măsoară în metri.']
  }[kind];

@@ -32,7 +32,7 @@
   if(direction&&$('showVectors').checked){
    [[x1,direction,'F₁'],[x2,-direction,'F₂']].forEach(([x,dir,label])=>{
     const start=x+dir*37,end=start+dir*length;
-    vectors+=`<line x1="${start}" y1="145" x2="${end}" y2="145" stroke="${palette.green}" stroke-width="3" marker-end="url(#arrow)"/><text x="${(start+end)/2}" y="123" text-anchor="middle" fill="#193d36" font-size="16" font-weight="600">${label}</text>`;
+    vectors+=`<line x1="${start}" y1="145" x2="${end}" y2="145" stroke="${palette.green}" stroke-width="3" marker-end="url(#arrow)"/><path data-vector-mark="" d="M${(start+end)/2-8} 104h10m-3 -2 3 2-3 2" stroke="#193d36" fill="none"/><text x="${(start+end)/2}" y="123" text-anchor="middle" fill="#193d36" font-size="16" font-weight="600">${label}</text>`;
    });
   }
   $('vectors').innerHTML=vectors;

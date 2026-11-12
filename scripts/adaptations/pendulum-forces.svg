@@ -21,6 +21,7 @@
   <text x="268" y="354" fill="#fda4af">G = mg</text>
   <text x="44" y="324" fill="#c4b5fd">Gᵣ = mg cosθ</text>
   <text x="309" y="289" fill="#fcd34d">Gₜ = mg sinθ</text>
+  <path data-vector-mark="" d="M327 159h10m-3 -2 3 2-3 2" stroke="#7dd3fc" fill="none"/>
   <text x="327" y="176" fill="#7dd3fc">T (tensiune)</text>
   <text x="402" y="77" fill="#cbd5e1">punct de suspensie</text>
  </g>
