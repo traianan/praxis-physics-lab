@@ -227,5 +227,10 @@
     "file": "js/plot.js",
     "before": "for (let i = 0; i <= 300; i++) {\r\n          const t = a + ((b - a) * i) / 300, y = se.fn(t);",
     "after": "const samples = Math.max(300, Math.min(8192, Math.ceil(this.c.width / 2)));\r\n        for (let i = 0; i <= samples; i++) {\r\n          const t = a + ((b - a) * i) / samples, y = se.fn(t);"
+  },
+  {
+    "file": "js/track.js",
+    "before": "ctx.beginPath(); ctx.moveTo(lx - 4, y - 10); ctx.lineTo(lx + 4, y - 10); ctx.lineTo(lx + 2, y - 12); ctx.stroke();",
+    "after": "ctx.beginPath();\n      ctx.moveTo(lx - 4, y - 10); ctx.lineTo(lx + 4, y - 10);\n      ctx.moveTo(lx + 1, y - 12); ctx.lineTo(lx + 4, y - 10); ctx.lineTo(lx + 1, y - 8);\n      ctx.stroke();"
   }
 ]

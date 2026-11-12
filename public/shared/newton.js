@@ -7,7 +7,7 @@
  let data,ui,last=null,lastDraw=0;
  const fmt=(n,d=2)=>Number(n===0?0:n).toLocaleString(I.locale,{minimumFractionDigits:d,maximumFractionDigits:d});
  const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const typeset=s=>s.replace(/([A-Za-z])⃗/g,'<span class="newton-vector">$1</span>');
+ const typeset=s=>s.replace(/([A-Za-z0])⃗/g,'<span class="newton-vector">$1</span>');
  const sub=s=>escape(s).replace(/₁/g,'<sub>1</sub>').replace(/₂/g,'<sub>2</sub>').replace(/ₛ/g,'<sub>s</sub>').replace(/ₖ/g,'<sub>k</sub>');
  const controlSymbol=key=>({F:'F',m:'m',m1:'m₁',m2:'m₂',f1:'F₁',f2:'F₂',angle:'α',muS:'μₛ',muK:'μₖ',k:'k',dv:'Δv',dt:'Δt',u:'u',v:'v',t:'t'}[key]||'');
  const controlPrefix=key=>controlSymbol(key)?controlSymbol(key)+' = ':'';
@@ -101,8 +101,8 @@
   let content=escape(s);
   const vector=/^[FGNavRpuf](?:[₀-₉ₛₖₑ]+(?:→[₀-₉]+)?|′)?$/u;
   if(vector.test(s))content=`<tspan data-vector-symbol>${escape(s[0])}</tspan>${escape(s.slice(1))}`;
-  else if(s.includes('F₂→₁'))content=content.replace(/F([₁₂]→[₁₂])/g,'<tspan data-vector-symbol>F</tspan>$1');
-  else if(s==='Σ p = 0')content='Σ <tspan data-vector-symbol>p</tspan> = 0';
+  else if(s==='F₂→₁ = F₁→₂ = 0')content='<tspan data-vector-symbol>F</tspan>₂→₁ = <tspan data-vector-symbol>F</tspan>₁→₂ = <tspan data-vector-symbol>0</tspan>';
+  else if(s==='Σ p = 0')content='Σ <tspan data-vector-symbol>p</tspan> = <tspan data-vector-symbol>0</tspan>';
   return `<text x="${x}" y="${y}" text-anchor="${anchor}">${content}</text>`;
  }
  function markVectors(svg){
@@ -126,7 +126,7 @@
   return line(35,contact,615,contact)+`<g data-newton-body>${rect(x,y,78,80,'#cce3eb')}</g>`+text('m = '+fmt(s.m,0)+' kg',Math.min(620,x+200),contact+30,'end')+`<g data-newton-force="normal">${arrow(nx,contact,0,-verticalLength,C.purple)}<circle cx="${nx}" cy="${contact}" r="3" fill="${C.purple}"/>${text('N = '+fmt(s.m*M.g,1)+' N',Math.max(145,nx-10),contact-verticalLength-26,'end')}</g><g data-newton-force="weight">${arrow(cx,cy,0,verticalLength,C.red)}<circle cx="${cx}" cy="${cy}" r="3" fill="${C.red}"/>${text('G = '+fmt(s.m*M.g,1)+' N',cx,cy+verticalLength+17,'middle')}</g>`+arrow(x+52,y+10,Math.min(85,s.F*1.1),0,C.red)+text('F = '+fmt(s.F,0)+' N',x+80,y-4,'middle')+arrow(x+52,y+42,Math.min(85,M.acceleration(s.F,s.m)*10),0,C.green,'a')+arrow(x+52,y+74,Math.min(85,(s.v||0)*7),0,C.blue,'v')+(s.end?text(ui.end,320,100,'middle'):'');
  }
  function action(C){const s=state.action,t=s.t,J=80*Math.min(t,.5),r=M.recoil(s.m1,s.m2,J);const distance=m=>t<=.5?.5*(80/m)*t*t: .5*(80/m)*.25+(40/m)*(t-.5);const x1=275-distance(s.m1)*8,x2=340+distance(s.m2)*8,contact=t<.5,peak=Math.max(Math.abs(r.v1),Math.abs(r.v2)),velocityScale=peak>0?144/peak:0;
-  return line(35,285,600,285)+rect(x1-60,225,60,60,'#f4d8cb')+rect(x2,225,60,60,'#cce3eb')+text('m₁ = '+fmt(s.m1,0)+' kg',x1-30,306,'middle')+text('m₂ = '+fmt(s.m2,0)+' kg',x2+30,306,'middle')+(contact?arrow(x1-30,245,-70,0,C.red,'F₂→₁')+arrow(x2+30,245,70,0,C.blue,'F₁→₂')+line(x1,245,x2,245,C.orange):arrow(x1-30,245,r.v1*velocityScale,0,C.red,'v₁')+arrow(x2+30,245,r.v2*velocityScale,0,C.blue,'v₂'))+text(contact?ui.contact:ui.free,320,160,'middle')+text(contact?'|F₂→₁| = |F₁→₂| = 80 N':'F₂→₁ = F₁→₂ = 0',320,200,'middle')+text('Σ p = 0',320,325,'middle');
+  return line(35,285,600,285)+rect(x1-60,225,60,60,'#f4d8cb')+rect(x2,225,60,60,'#cce3eb')+text('m₁ = '+fmt(s.m1,0)+' kg',x1-30,306,'middle')+text('m₂ = '+fmt(s.m2,0)+' kg',x2+30,306,'middle')+(contact?arrow(x1-30,245,-70,0,C.red,'F₂→₁')+arrow(x2+30,245,70,0,C.blue,'F₁→₂')+line(x1,245,x2,245,C.orange):arrow(x1-30,245,r.v1*velocityScale,0,C.red,'v₁')+arrow(x2+30,245,r.v2*velocityScale,0,C.blue,'v₂'))+text(contact?ui.contact:ui.free,320,160,'middle')+text(contact?'F₂→₁ = F₁→₂ = 80 N':'F₂→₁ = F₁→₂ = 0',320,200,'middle')+text('Σ p = 0',320,340,'middle');
  }
  function frames(C){const s=state.frames,O=150,Op=O+s.u*s.t*20,P=O+s.v*s.t*20,vp=s.v-s.u;return text('S',35,30)+text('S′',35,270)+arrow(O,100,435,0,C.teal,'x')+arrow(O,100,0,-60,C.teal,'y')+arrow(Op,225,570-Op,0,C.purple,'x′')+arrow(Op,225,0,-60,C.purple,'y′')+line(O,100,O,250,'#9eb4ad',true)+line(P,90,P,240,'#9eb4ad',true)+text('O',O-20,122)+text('O′',Op-22,247)+rect(P-10,80,20,20,'#cce3eb')+rect(P-10,205,20,20,'#cce3eb')+text('P',P-18,95,'end')+text('P',P-18,220,'end')+arrow(P,60,s.v*8,0,C.blue,'v')+arrow(P,185,vp*8,0,C.blue,'v′')+arrow(Op,165,s.u*12,0,C.orange,'u')+text('x = '+fmt(s.v*s.t)+' m',410,125)+text('x′ = '+fmt(vp*s.t)+' m',410,252);}
  function forces(C){const s=state.forces,a=s.angle*Math.PI/180,minY=Math.min(0,-s.f1,-Math.cos(a)*s.f2,-s.f1-Math.cos(a)*s.f2),maxY=Math.max(0,-s.f1,-Math.cos(a)*s.f2,-s.f1-Math.cos(a)*s.f2),scale=Math.min(2.2,210/Math.max(1,maxY-minY)),x=145,y=65-minY*scale,v1=[0,-s.f1*scale],v2=[Math.sin(a)*s.f2*scale,-Math.cos(a)*s.f2*scale],rx=v1[0]+v2[0],ry=v1[1]+v2[1];return line(x+v1[0],y+v1[1],x+rx,y+ry,'#9eb4ad',true)+line(x+v2[0],y+v2[1],x+rx,y+ry,'#9eb4ad',true)+arrow(x,y,...v1,C.blue)+text('F₁ = '+fmt(s.f1,0)+' N',x-18,y+v1[1]-8,'end')+arrow(x,y,...v2,C.orange,'F₂ = '+fmt(s.f2,0)+' N')+arrow(x,y,rx,ry,C.green)+text('R',x+rx+25,y+ry-18)+text('α = '+fmt(s.angle,0)+'°',440,315)+text('R = '+fmt(M.resultant(s.f1,s.f2,s.angle))+' N',400,340);}

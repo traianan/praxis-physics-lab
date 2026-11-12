@@ -41,7 +41,8 @@ js=js.replace('const dpr=devicePixelRatio||1,w=cv.clientWidth,hgt=cv.clientHeigh
 js=js.replace('for(let i=0;i<=200;i++){const q=arc(-1+2*i/200);','const samples=Math.max(200,Math.min(4096,Math.ceil(cv.width/2)));for(let i=0;i<=samples;i++){const q=arc(-1+2*i/samples);')
  .replace('for(let i=0;i<=240;i++){const p=geom(TMAX*i/240);','const samples=Math.max(240,Math.min(4096,Math.ceil(cv.width/2)));for(let i=0;i<=samples;i++){const p=geom(TMAX*i/samples);')
  .replace('for(let i=0;i<=200;i++){const q=point(2*Math.PI*i/200);','const samples=Math.max(200,Math.min(4096,Math.ceil(cv.width/2)));for(let i=0;i<=samples;i++){const q=point(2*Math.PI*i/samples);');
-js=colors(js).replaceAll('ctx.shadowBlur=16','ctx.shadowBlur=0');
+js=colors(js).replaceAll('ctx.shadowBlur=16','ctx.shadowBlur=0')
+ .replace("R*Math.sin(a),'#6d8478','R',1.8)","R*Math.sin(a),'#6d8478','r⃗',1.8)");
 let html=source.replace(/<style>[\s\S]*?<\/style>/,'<link rel="stylesheet" href="source.css">').replace(/<script>[\s\S]*?<\/script>/,'<script src="app.js"></script>')
  .replace(/<header id="top">[\s\S]*?<\/header>/,'')
  .replace(/<footer>[\s\S]*?<\/footer>/,'')

@@ -1,6 +1,7 @@
 /* Draw annotations after the geometry, keeping each label inside its own panel. */
 (() => {
  const frames=new WeakMap(),installed=new WeakSet();
+ const vectorSymbols=/Δ[rv]|[rva](?=[₀₁₂ₘₙₜ](?!ₓ)|\(| \([va]ₓ)|^[rva]$/g;
  const overlap=(a,b)=>Math.max(0,Math.min(a.x+a.w,b.x+b.w)-Math.max(a.x,b.x))*Math.max(0,Math.min(a.y+a.h,b.y+b.h)-Math.max(a.y,b.y));
  function crosses(box,line){
   let low=0,high=1;const [x,y,u,v]=line,dx=u-x,dy=v-y;
@@ -53,8 +54,7 @@
  function label(ctx,text,x,y,options={}){
   const frame=frames.get(ctx);if(!frame)return ctx.fillText(text,x,y);
   text=window.PraxisI18n?.tr(text)??String(text);
-  const vectorPattern=/Δ[rv]|[rva](?=[₀₁₂ₘₙₜ(])|^[rva]$/g;
-  const vectors=(ctx.canvas.id==='curv-canvas'||options.vectorNotation)?[...text.matchAll(vectorPattern)].map(match=>({start:match.index,text:match[0]})):[];
+  const vectors=(ctx.canvas.id==='curv-canvas'||options.vectorNotation)?[...text.matchAll(vectorSymbols)]:[];
   frame.labels.push({text,x,y,font:ctx.font,color:ctx.fillStyle,movable:!!options.movable,ignorePanels:!!options.ignorePanels,bounds:options.bounds||(options.anchorBounds&&(x<frame.bounds.x||y<frame.bounds.y||x>frame.bounds.x+frame.bounds.w||y>frame.bounds.y+frame.bounds.h)?frame.viewport:frame.bounds),anchor:options.anchor,vectors});
  }
  function flush(ctx){
@@ -78,7 +78,7 @@
    ctx.fillStyle=label.color;ctx.textAlign='left';ctx.textBaseline='top';
    lines.forEach((text,index)=>{
     const tx=box.x+padding,ty=box.y+padding+arrowSpace+index*(size+3);ctx.fillText(text,tx,ty);
-    if(label.vectors.length)for(const match of text.matchAll(/Δ[rv]|[rva](?=[₀₁₂ₘₙₜ(])|^[rva]$/g)){
+    if(label.vectors.length)for(const match of text.matchAll(vectorSymbols)){
      const start=tx+ctx.measureText(text.slice(0,match.index)).width,end=start+ctx.measureText(match[0].replace(/[ₘ₁₂]/g,'')).width;
      const y=ty-3;ctx.strokeStyle=label.color;ctx.lineWidth=.85;ctx.beginPath();ctx.moveTo(start,y);ctx.lineTo(end,y);ctx.moveTo(end-3,y-2);ctx.lineTo(end,y);ctx.lineTo(end-3,y+2);ctx.stroke();
     }

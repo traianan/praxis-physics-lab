@@ -185,7 +185,7 @@ function drawSim1(dt){
   dot(ctx,cx,cy,4,'#536e64');
   const a=S1.t*2*Math.PI/S1.T;
   const x=cx+R*Math.cos(a),y=cy+R*Math.sin(a);
-  if(showRad)arrow(ctx,cx,cy,R*Math.cos(a),R*Math.sin(a),'#6d8478','R',1.8);
+  if(showRad)arrow(ctx,cx,cy,R*Math.cos(a),R*Math.sin(a),'#6d8478','r⃗',1.8);
   if(showV)arrow(ctx,x,y,-Math.sin(a)*95,Math.cos(a)*95,'#43876f','v⃗');
   if(showA)arrow(ctx,x,y,-Math.cos(a)*60,-Math.sin(a)*60,'#83689e','a⃗');
   // trail

@@ -79,7 +79,7 @@ function drawArrow(ctx, x1, y1, x2, y2, color, width = 2.5, label = '', dashed =
     const lx = x2 + 6 * Math.cos(angle) + offsetX * 0.6;
     const ly = y2 + 6 * Math.sin(angle) + offsetY * 0.6;
     ctx.fillStyle = color;
-    window.PraxisVelocityLabels.label(ctx,label, lx, ly, {anchor:[x2,y2]});
+    window.PraxisVelocityLabels.label(ctx,label, lx, ly, {anchor:[x2,y2],vectorNotation:/^[va](?:ₘ)? \(/.test(label)});
   }
   ctx.restore();
 }
@@ -297,7 +297,7 @@ const rectLab = {
 
     ctx.fillStyle = '#216e61';
     ctx.font = 'bold 12px "Segoe UI", sans-serif';
-    window.PraxisVelocityLabels.label(ctx,'AXA MIȘCĂRII RECTILINII Ox (Poziția M, Vectorii Instantanei v(t), a(t) și Mărimile Medii pe [t₁, t₂])', 28, 32);
+    window.PraxisVelocityLabels.label(ctx,'AXA MIȘCĂRII RECTILINII Ox (Poziția M, Vectorii Instantanei v(t), a(t) și Mărimile Medii pe [t₁, t₂])', 28, 32, {vectorNotation:true});
 
     // Draw Ox Axis
     drawArrow(ctx, padX - 15, trackY, W - padX + 20, trackY, '#536e64', 2, 'Ox (m)');
@@ -352,7 +352,7 @@ const rectLab = {
     const velScale = 4.2;
     if (showVm && Math.abs(vm) > 0.1) {
       const midX = (sx1 + sx2) / 2;
-      drawArrow(ctx, midX, trackY - 46, midX + vm * velScale, trackY - 46, '#06b6d4', 2.5, `vₘ = ${vm.toFixed(1)} m/s`);
+      drawArrow(ctx, midX, trackY - 46, midX + vm * velScale, trackY - 46, '#06b6d4', 2.5, `vₘ (vₘₓ = ${vm.toFixed(1)} m/s)`);
     }
 
     // Current particle M(t)
@@ -378,12 +378,12 @@ const rectLab = {
 
     // Instantaneous velocity vector v(t)
     if (showV && Math.abs(curV) > 0.05) {
-      drawArrow(ctx, scX, trackY - 18, scX + curV * velScale, trackY - 18, '#43876f', 3, `v = ${curV.toFixed(1)} m/s`);
+      drawArrow(ctx, scX, trackY - 18, scX + curV * velScale, trackY - 18, '#43876f', 3, `v (vₓ = ${curV.toFixed(1)} m/s)`);
     }
 
     // Instantaneous acceleration vector a(t)
     if (showA && Math.abs(curA) > 0.05) {
-      drawArrow(ctx, scX, trackY + 20, scX + curA * 9.0, trackY + 20, '#ef4444', 3, `a = ${curA.toFixed(1)} m/s²`);
+      drawArrow(ctx, scX, trackY + 20, scX + curA * 9.0, trackY + 20, '#ef4444', 3, `a (aₓ = ${curA.toFixed(1)} m/s²)`);
     }
 
     // --- BOTTOM ZONE: 2 SYNCHRONIZED GRAPHS: x(t) with secant vs tangent, and v(t) with slope ---
@@ -1265,8 +1265,8 @@ const polyLab = {
     const curA = this.acc(this.t);
     const scX = toSx(curX);
 
-    drawArrow(ctx, scX, trackY - 16, scX + curV * 3.5, trackY - 16, '#43876f', 2.8, `v=${curV.toFixed(1)}`);
-    drawArrow(ctx, scX, trackY + 14, scX + curA * 3.5, trackY + 14, '#ef4444', 2.8, `a=${curA.toFixed(1)}`);
+    drawArrow(ctx, scX, trackY - 16, scX + curV * 3.5, trackY - 16, '#43876f', 2.8, `v (vₓ = ${curV.toFixed(1)} m/s)`);
+    drawArrow(ctx, scX, trackY + 14, scX + curA * 3.5, trackY + 14, '#ef4444', 2.8, `a (aₓ = ${curA.toFixed(1)} m/s²)`);
 
     ctx.fillStyle = '#a855f7';
     ctx.beginPath();

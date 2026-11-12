@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-12T15:12:01.809Z",
+  "builtAt": "2026-11-12T15:34:25.080Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -37,7 +37,7 @@
     {
       "id": "miscarea-rectilinie",
       "file": "public/simulari/miscarea-rectilinie/miscarea-rectilinie-offline.zip",
-      "sha256": "e5d6b00e5f4dd8419e43e76195d466bb0ab9345f9ce430764dce4afe72ec429a",
+      "sha256": "6463ca454cdf2c4e8fd3c92686eeec45939a9dfc4966a3efc7f9e3a17706b179",
       "languages": [
         "ro",
         "en"
@@ -59,7 +59,7 @@
     {
       "id": "calcul-vectorial",
       "file": "public/simulari/calcul-vectorial/calcul-vectorial.zip",
-      "sha256": "385cfedb31909c995faaee2f8dde7cd8702fc93afbcb08293333c54264303d0e",
+      "sha256": "f3606237f11a418c1e4df88925592b6f615646a855360d78ecbea0b5fa1968c4",
       "languages": [
         "ro",
         "en"
@@ -70,7 +70,7 @@
     {
       "id": "viteza-si-acceleratia",
       "file": "public/simulari/viteza-si-acceleratia/viteza-si-acceleratia-offline.zip",
-      "sha256": "99471286145724f5eab1b08b688cba89da757e7d008da3e23bc74ed07364ef7a",
+      "sha256": "4f38c24c254efe1a520502383962bd56b30321a830a6e77fae579d0c58515a7b",
       "languages": [
         "ro",
         "en"
@@ -81,7 +81,7 @@
     {
       "id": "miscarea-curbilinie-plana",
       "file": "public/simulari/miscarea-curbilinie-plana/miscarea-curbilinie-plana-offline.zip",
-      "sha256": "e6897add9f54c499d9bc0f72ca707bb807224cd2cd9ac0898e10e780d5a07dd2",
+      "sha256": "d92de65fb341890a5a2e227dc38618ce3a5de3d27290e70033fdffbf8846db79",
       "languages": [
         "ro",
         "en"
@@ -202,7 +202,7 @@
     {
       "id": "principiile-mecanicii-newtoniene",
       "file": "public/simulari/principiile-mecanicii-newtoniene/principiile-mecanicii-newtoniene.zip",
-      "sha256": "f6fde0fbcfe5bd8ad9ad51cc82ab19c23fa87363ffc86db1bc3a0c8a3ff0c911",
+      "sha256": "71b386d8bdf6ac65cfbc427e682bcf315d993c43c586ce086ae4c97f6090344d",
       "languages": [
         "ro",
         "en"

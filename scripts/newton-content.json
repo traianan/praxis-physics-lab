@@ -63,7 +63,7 @@
       },
       "inertia": {
         "title": "Principiul I · Inerția",
-        "html": "<div class='newton-note'><b>Într-un reper inerțial</b>, un punct material rămâne în repaus sau în mișcare rectilinie uniformă dacă rezultanta forțelor care acționează asupra lui este nulă.</div><div class='newton-formula'>Σ F⃗ = 0 &nbsp; ⇒ &nbsp; a⃗ = 0 &nbsp; ⇒ &nbsp; v⃗ = constant</div><p>Inerția este proprietatea corpurilor de a-și păstra viteza în absența unei rezultante nenule. Masa este măsura inerției: aceeași forță produce o accelerație mai mică unui corp cu masă mai mare. Inerția nu este o forță.</p><p>Echilibrul de translație include repausul și mișcarea rectilinie uniformă. Pentru corpuri extinse, echilibrul complet cere și echilibrul de rotație. Mișcarea circulară uniformă nu este echilibru de translație: direcția vitezei se schimbă.</p>",
+        "html": "<div class='newton-note'><b>Într-un reper inerțial</b>, un punct material rămâne în repaus sau în mișcare rectilinie uniformă dacă rezultanta forțelor care acționează asupra lui este nulă.</div><div class='newton-formula'>Σ F⃗ = 0⃗ &nbsp; ⇒ &nbsp; a⃗ = 0⃗ &nbsp; ⇒ &nbsp; v⃗ = constant</div><p>Inerția este proprietatea corpurilor de a-și păstra viteza în absența unei rezultante nenule. Masa este măsura inerției: aceeași forță produce o accelerație mai mică unui corp cu masă mai mare. Inerția nu este o forță.</p><p>Echilibrul de translație include repausul și mișcarea rectilinie uniformă. Pentru corpuri extinse, echilibrul complet cere și echilibrul de rotație. Mișcarea circulară uniformă nu este echilibru de translație: direcția vitezei se schimbă.</p>",
         "after": "<h3>Observă și explică</h3><p>Marginea exercită o forță spre centrul cercului. Când marginea dispare, bila pleacă pe tangenta din punctul desprinderii, cu viteza pe care o avea atunci. Neglijăm rezistențele; greutatea și reacțiunea verticală se compensează. O suliță aruncată pe Pământ își schimbă viteza din cauza gravitației și a aerului.</p>"
       },
       "newton2": {
@@ -208,7 +208,7 @@
           "își mărește viteza"
         ],
         1,
-        "a⃗ = 0: corpul rămâne în repaus sau în mișcare rectilinie uniformă."
+        "a⃗ = 0⃗: corpul rămâne în repaus sau în mișcare rectilinie uniformă."
       ],
       [
         "Ce mărime măsoară inerția?",
@@ -419,7 +419,7 @@
       },
       "inertia": {
         "title": "First law · Inertia",
-        "html": "<div class='newton-note'><b>In an inertial frame</b>, a particle remains at rest or moves in a straight line at constant velocity if the resultant force acting on it is zero.</div><div class='newton-formula'>Σ F⃗ = 0 &nbsp; ⇒ &nbsp; a⃗ = 0 &nbsp; ⇒ &nbsp; v⃗ = constant</div><p>Inertia is the property of bodies to maintain their velocity when the resultant force is zero. Mass measures inertia: the same force produces a smaller acceleration in a more massive body. Inertia is not a force.</p><p>Translational equilibrium includes rest and straight-line motion at constant velocity. For extended bodies, complete equilibrium also requires rotational equilibrium. Uniform circular motion is not translational equilibrium: the direction of velocity changes.</p>",
+        "html": "<div class='newton-note'><b>In an inertial frame</b>, a particle remains at rest or moves in a straight line at constant velocity if the resultant force acting on it is zero.</div><div class='newton-formula'>Σ F⃗ = 0⃗ &nbsp; ⇒ &nbsp; a⃗ = 0⃗ &nbsp; ⇒ &nbsp; v⃗ = constant</div><p>Inertia is the property of bodies to maintain their velocity when the resultant force is zero. Mass measures inertia: the same force produces a smaller acceleration in a more massive body. Inertia is not a force.</p><p>Translational equilibrium includes rest and straight-line motion at constant velocity. For extended bodies, complete equilibrium also requires rotational equilibrium. Uniform circular motion is not translational equilibrium: the direction of velocity changes.</p>",
         "after": "<h3>Observe and explain</h3><p>The rim exerts a force towards the centre. When the rim disappears, the ball leaves along the tangent at the release point, with its velocity at that instant. Resistance is neglected; weight and the vertical normal force balance. A javelin thrown on Earth changes velocity because of gravity and air resistance.</p>"
       },
       "newton2": {
@@ -564,7 +564,7 @@
           "increases its speed"
         ],
         1,
-        "a⃗ = 0: the body remains at rest or moves in a straight line at constant velocity."
+        "a⃗ = 0⃗: the body remains at rest or moves in a straight line at constant velocity."
       ],
       [
         "Which quantity measures inertia?",

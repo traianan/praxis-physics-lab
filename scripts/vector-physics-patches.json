@@ -171,5 +171,35 @@
     "id": "service-worker-fresh-registration",
     "before": "navigator.serviceWorker.register('./sw.js').then(reg=>{",
     "after": "navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(reg=>{\n      reg.update().catch(()=>{});"
+  },
+  {
+    "id": "vector-sum-diagram-equation",
+    "before": "p.text(st.comm?'a + b = b + a':'R = a + b',R,{dx:0,dy:-24,font:'italic 500 14px \"Source Serif 4\", serif'});",
+    "after": "{const [px,py]=p.P(...R);vecLabel(p.ctx,st.comm?'a + b = b + a':'R = a + b',px,py-24,COL.r,'arrow',14);}"
+  },
+  {
+    "id": "scalar-product-diagram-equation",
+    "before": "mc.font='italic 600 13px \"Source Serif 4\", serif';mc.fillStyle=COL.r;mc.textAlign='left';mc.fillText('a·b = ab cos θ',R-110,T+4);",
+    "after": "mc.__praxisLabels=[];vecLabel(mc,'a · b = ab cos θ',(L+R)/2,T+11,COL.r,'arrow',13);"
+  },
+  {
+    "id": "vector-quiz-notation-4",
+    "before": "  {q:'Produsul scalar a doi vectori nenuli este zero atunci când vectorii sunt:',o:['paraleli','perpendiculari','de sens opus','egali'],c:1,e:'a·b = ab cos 90° = 0 — aceasta este condiția de perpendicularitate.'},",
+    "after": "  {q:'Produsul scalar a doi vectori nenuli este zero atunci când vectorii sunt:',o:['paraleli','perpendiculari','de sens opus','egali'],c:1,e:'<span class=\"vec\">a</span> · <span class=\"vec\">b</span> = ab cos 90° = 0 — aceasta este condiția de perpendicularitate.'},"
+  },
+  {
+    "id": "vector-quiz-notation-5",
+    "before": "  {q:'Dacă k = −2, vectorul k·a are:',o:['modul dublu și același sens','modul înjumătățit și sens opus','modul dublu și sens opus','altă direcție'],c:2,e:'|k·a| = |k|·a = 2a, iar k < 0 inversează sensul. Direcția rămâne aceeași.'},",
+    "after": "  {q:'Dacă k = −2, vectorul k · <span class=\"vec\">a</span> are:',o:['modul dublu și același sens','modul înjumătățit și sens opus','modul dublu și sens opus','altă direcție'],c:2,e:'|k · <span class=\"vec\">a</span>| = |k|·a = 2a, iar k < 0 inversează sensul. Direcția rămâne aceeași.'},"
+  },
+  {
+    "id": "vector-quiz-notation-6",
+    "before": "  {q:'Produsul vectorial b × a este egal cu:',o:['a × b','−(a × b)','a · b','0'],c:1,e:'Produsul vectorial este anticomutativ: b × a = −(a × b).'},",
+    "after": "  {q:'Produsul vectorial <span class=\"vec\">b</span> × <span class=\"vec\">a</span> este egal cu:',o:['<span class=\"vec\">a</span> × <span class=\"vec\">b</span>','−(<span class=\"vec\">a</span> × <span class=\"vec\">b</span>)','<span class=\"vec\">a</span> · <span class=\"vec\">b</span>','0'],c:1,e:'Produsul vectorial este anticomutativ: <span class=\"vec\">b</span> × <span class=\"vec\">a</span> = −(<span class=\"vec\">a</span> × <span class=\"vec\">b</span>).'},"
+  },
+  {
+    "id": "vector-quiz-notation-7",
+    "before": "  {q:'Modulul |a × b| reprezintă geometric:',o:['proiecția lui a pe b','aria paralelogramului construit pe a și b','volumul unui paralelipiped','perimetrul triunghiului'],c:1,e:'|a × b| = ab sin θ = aria paralelogramului.'},",
+    "after": "  {q:'Modulul |<span class=\"vec\">a</span> × <span class=\"vec\">b</span>| reprezintă geometric:',o:['proiecția lui a pe b','aria paralelogramului construit pe a și b','volumul unui paralelipiped','perimetrul triunghiului'],c:1,e:'|<span class=\"vec\">a</span> × <span class=\"vec\">b</span>| = ab sin θ = aria paralelogramului.'},"
   }
 ]

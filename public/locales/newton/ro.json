@@ -63,7 +63,7 @@
     },
     "inertia": {
       "title": "Principiul I · Inerția",
-      "html": "<div class='newton-note'><b>Într-un reper inerțial</b>, un punct material rămâne în repaus sau în mișcare rectilinie uniformă dacă rezultanta forțelor care acționează asupra lui este nulă.</div><div class='newton-formula'>Σ F⃗ = 0 &nbsp; ⇒ &nbsp; a⃗ = 0 &nbsp; ⇒ &nbsp; v⃗ = constant</div><p>Inerția este proprietatea corpurilor de a-și păstra viteza în absența unei rezultante nenule. Masa este măsura inerției: aceeași forță produce o accelerație mai mică unui corp cu masă mai mare. Inerția nu este o forță.</p><p>Echilibrul de translație include repausul și mișcarea rectilinie uniformă. Pentru corpuri extinse, echilibrul complet cere și echilibrul de rotație. Mișcarea circulară uniformă nu este echilibru de translație: direcția vitezei se schimbă.</p>",
+      "html": "<div class='newton-note'><b>Într-un reper inerțial</b>, un punct material rămâne în repaus sau în mișcare rectilinie uniformă dacă rezultanta forțelor care acționează asupra lui este nulă.</div><div class='newton-formula'>Σ F⃗ = 0⃗ &nbsp; ⇒ &nbsp; a⃗ = 0⃗ &nbsp; ⇒ &nbsp; v⃗ = constant</div><p>Inerția este proprietatea corpurilor de a-și păstra viteza în absența unei rezultante nenule. Masa este măsura inerției: aceeași forță produce o accelerație mai mică unui corp cu masă mai mare. Inerția nu este o forță.</p><p>Echilibrul de translație include repausul și mișcarea rectilinie uniformă. Pentru corpuri extinse, echilibrul complet cere și echilibrul de rotație. Mișcarea circulară uniformă nu este echilibru de translație: direcția vitezei se schimbă.</p>",
       "after": "<h3>Observă și explică</h3><p>Marginea exercită o forță spre centrul cercului. Când marginea dispare, bila pleacă pe tangenta din punctul desprinderii, cu viteza pe care o avea atunci. Neglijăm rezistențele; greutatea și reacțiunea verticală se compensează. O suliță aruncată pe Pământ își schimbă viteza din cauza gravitației și a aerului.</p>"
     },
     "newton2": {
@@ -208,7 +208,7 @@
         "își mărește viteza"
       ],
       1,
-      "a⃗ = 0: corpul rămâne în repaus sau în mișcare rectilinie uniformă."
+      "a⃗ = 0⃗: corpul rămâne în repaus sau în mișcare rectilinie uniformă."
     ],
     [
       "Ce mărime măsoară inerția?",

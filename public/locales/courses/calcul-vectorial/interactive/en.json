@@ -124,6 +124,16 @@
     "perpendiculari": "perpendicular",
     "egali": "equal",
     "excelent!": "excellent!",
-    ".toc a": ".toc a"
+    ".toc a": ".toc a",
+    "= ab cos 90° = 0 — aceasta este condiția de perpendicularitate.": "= ab cos 90° = 0 — this is the condition for perpendicularity.",
+    "Dacă k = −2, vectorul k ·": "If k = −2, vector k ·",
+    "are:": "has:",
+    "| = |k|·a = 2a, iar k": "| = |k|·a = 2a, while k",
+    "Produsul vectorial": "The cross product",
+    "este egal cu:": "equals:",
+    "Produsul vectorial este anticomutativ:": "The cross product is anticommutative:",
+    "Modulul |": "Geometrically, the magnitude |",
+    "| reprezintă geometric:": "| represents:",
+    "| = ab sin θ = aria paralelogramului.": "| = ab sin θ = the parallelogram's area."
   }
 }

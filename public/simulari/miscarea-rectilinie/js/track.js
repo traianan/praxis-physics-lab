@@ -16,7 +16,10 @@
       ctx.fillText(label, lx, y + 6);
       // săgeata mică de vector deasupra literei
       ctx.lineWidth = 1.2;
-      ctx.beginPath(); ctx.moveTo(lx - 4, y - 10); ctx.lineTo(lx + 4, y - 10); ctx.lineTo(lx + 2, y - 12); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(lx - 4, y - 10); ctx.lineTo(lx + 4, y - 10);
+      ctx.moveTo(lx + 1, y - 12); ctx.lineTo(lx + 4, y - 10); ctx.lineTo(lx + 1, y - 8);
+      ctx.stroke();
     }
   }
 

@@ -38,5 +38,35 @@
     "file": "app.js",
     "before": "    if (showAtAn) {",
     "after": "    if (showAtAn && cur.frenetDefined) {"
+  },
+  {
+    "file": "app.js",
+    "before": "`v_m = ${vm.toFixed(1)} m/s`);",
+    "after": "`vₘ (vₘₓ = ${vm.toFixed(1)} m/s)`);"
+  },
+  {
+    "file": "app.js",
+    "before": "`v = ${curV.toFixed(1)} m/s`);",
+    "after": "`v (vₓ = ${curV.toFixed(1)} m/s)`);"
+  },
+  {
+    "file": "app.js",
+    "before": "`a = ${curA.toFixed(1)} m/s²`);",
+    "after": "`a (aₓ = ${curA.toFixed(1)} m/s²)`);"
+  },
+  {
+    "file": "app.js",
+    "before": "`v=${curV.toFixed(1)}`);",
+    "after": "`v (vₓ = ${curV.toFixed(1)} m/s)`);"
+  },
+  {
+    "file": "app.js",
+    "before": "`a=${curA.toFixed(1)}`);",
+    "after": "`a (aₓ = ${curA.toFixed(1)} m/s²)`);"
+  },
+  {
+    "file": "app.js",
+    "before": "    ctx.fillText('AXA MIȘCĂRII RECTILINII Ox (Poziția M, Vectorii Instantanei v(t), a(t) și Mărimile Medii pe [t₁, t₂])', 28, 32);",
+    "after": "    ctx.fillText('AXA MIȘCĂRII RECTILINII Ox (Poziția M, Vectorii Instantanei v(t), a(t) și Mărimile Medii pe [t₁, t₂])', 28, 32, {vectorNotation:true});"
   }
 ]

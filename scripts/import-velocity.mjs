@@ -43,7 +43,7 @@ await writeFile(new URL('style.css',target),await read('sources/'+id+'/style.css
 let js=adaptScience(await read('sources/'+id+'/app.js'),'app.js');
 // Queue every annotation until geometry is complete; remove the source's early label masks.
 js=js.replace(/    ctx.fillStyle = '#070b18';\n    const tw = ctx.measureText\(label\).width;\n    ctx.fillRect\(lx - 3, ly - 11, tw \+ 6, 15\);\n/,'')
- .replace('ctx.fillText(label, lx, ly);','ctx.fillText(label, lx, ly, {anchor:[x2,y2]});')
+ .replace('ctx.fillText(label, lx, ly);','ctx.fillText(label, lx, ly, {anchor:[x2,y2],vectorNotation:/^[va](?:ₘ)? \\(/.test(label)});')
  .replace('curPx + 8, curPy - 8);','curPx + 8, curPy - 8, {anchor:[curPx,curPy]});')
  .replace('sx1 - 30, sy1 - 10);','sx1 - 30, sy1 - 10, {anchor:[sx1,sy1]});')
  .replace('sx2 + 8, sy2 + 14);','sx2 + 8, sy2 + 14, {anchor:[sx2,sy2]});')
