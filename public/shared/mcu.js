@@ -31,8 +31,8 @@
    // Use the same measured subscript renderer as the other laboratories.
    const translated=tr(text);g.fillText(translated,x,y);
    // Draw the vector accent as geometry, not as an unsupported combining glyph.
-   // These are labels of drawn force arrows, not scalar numerical readouts.
-   for(const match of translated.matchAll(/(?:Σ)?(F(?:_(?:cp|cf|f))?|N|G)(?=\s|$)/g)){
+   // These label drawn vectors, never scalar numerical readouts.
+   for(const match of translated.matchAll(/(?:Σ)?(F(?:_(?:cp|cf|f))?|N|G|v|a_cp)(?=\s|$)/g)){
     const prefix=translated.slice(0,match.index)+(match[0].startsWith('Σ')?'Σ':'');
     const left=x+g.measureText(prefix).width,top=y-18,right=left+g.measureText(match[1][0]).width;
     g.strokeStyle=color;g.lineWidth=1.2;g.beginPath();g.moveTo(left,top);g.lineTo(right,top);g.lineTo(right-3,top-2.5);g.moveTo(right,top);g.lineTo(right-3,top+2.5);g.stroke();

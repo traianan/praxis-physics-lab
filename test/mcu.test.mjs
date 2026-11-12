@@ -72,3 +72,23 @@ test('force notation distinguishes vector identities from magnitudes and project
  for(const scalar of ['F_cp = m·a_cp = m·v²/R = m·ω²·R','F_cp = m·a_cp','m v²/r = N sinθ ± μ N cosθ','0 = N cosθ ∓ μ N sinθ - m g','Condiție: F_fmax = F_cp'])assert.equal(notation(scalar),scalar);
  assert.equal(notation('ΣF — rezultanta N + G + F_f'),'ΣF⃗ — rezultanta N⃗ + G⃗ + F⃗_f');
 });
+
+test('velocity and acceleration vectors stay distinct from scalar magnitudes in both languages',async()=>{
+ const context={};vm.createContext(context);vm.runInContext(await read('scripts/adaptations/mcu-jsx.js'),context);
+ const n=context.mcuNotation;
+ assert.equal(n('Δv = v₂ - v₁'),'Δv⃗ = v⃗₂ - v⃗₁');
+ assert.equal(n('v ⟂ R, |v|=const'),'v⃗ ⟂ R⃗, |v|=const');
+ assert.equal(n('Δv → 0 când Δt → 0'),'Δv⃗ → 0⃗ când Δt → 0');
+ assert.equal(n('Draw Δv from the tip of v₁ to the tip of v₂.'),'Draw Δv⃗ from the tip of v⃗₁ to the tip of v⃗₂.');
+ assert.equal(n('In vector form: a = −ω²R.'),'In vector form: a⃗ = −ω²R⃗.');
+ assert.equal(n(' a_cp'),' a⃗_cp');assert.equal(n(' v'),' v⃗');
+ for(const scalar of ['v = ωR','a_cp = ω²R','a_cp = v² / R = ω² R','v₁ = 15 m/s, v₂ = 10 m/s','Viteză test v','v_min','v_max','ω = 2π/T','v₀ = √(r g tgθ)','|v| = const'])assert.equal(n(scalar),scalar);
+});
+
+test('Canvas labels draw vector accents for velocity and acceleration, but not the radius length',async()=>{
+ const source=await read('public/shared/mcu.js'),body=source.slice(source.indexOf('  function label('),source.indexOf('  function arrow('));
+ for(const [text,count]of [['v',1],['a_cp',1],['F_cp',1],['ΣF',1],['R',0],['O',0]]){
+  let strokes=0;const g={praxisWidth:400,praxisHeight:300,praxisLabelBoxes:[],measureText:s=>({width:s.length*8}),fillText(){},beginPath(){},moveTo(){},lineTo(){},stroke(){strokes++;}};
+  vm.runInNewContext(body+'label(g,text,20,28,"blue");',{g,text,tr:s=>s,document:{documentElement:{}},getComputedStyle:()=>({getPropertyValue:()=> 'Arial'})});assert.equal(strokes,count,text);
+ }
+});

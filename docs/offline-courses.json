@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-12T15:06:15.570Z",
+  "builtAt": "2026-11-12T15:12:01.809Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -257,7 +257,7 @@
     {
       "id": "miscarea-circulara-uniforma",
       "file": "public/simulari/miscarea-circulara-uniforma/miscarea-circulara-uniforma.zip",
-      "sha256": "2f2187f24dc61850cfafceb239db24cb8c0f5eeee8a8b2a167331afaf0da372d",
+      "sha256": "1d6137aa17ef6fdfa2668777da5a39d6be46b46cf977e37d8fad29b668c26cff",
       "languages": [
         "ro",
         "en"

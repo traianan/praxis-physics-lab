@@ -28,6 +28,8 @@ try{
     const result=await page.evaluate(()=>({active:document.body.dataset.mcuActive,overflow:document.documentElement.scrollWidth>innerWidth+1,panels:[...document.querySelectorAll('[data-mcu-section]')].filter(x=>!x.hidden).map(x=>({id:x.id,width:x.getBoundingClientRect().width}))}));
     assert.equal(result.active,tab);assert.ok(result.panels.every(x=>x.width>0));assert.equal(result.overflow,false,JSON.stringify({width,lang,tab}));
     if(tab==='dinamica')assert.ok(await page.locator('#sri-srni .mcu-vector-symbol').count()>=12,'Missing force vector accents');
+    if(tab==='dinamica')assert.equal(await page.locator('#acceleratie [data-mcu-svg-vector]').count(),8,'Missing SVG velocity vector accents');
+    if(tab==='laborator')assert.equal(await page.locator('#sim-mcu .mcu-math-text .mcu-vector-symbol').count(),0,'Scalar readouts must not gain vector accents');
     if(tab==='viraj')assert.equal(await page.locator('.mcu-force-legend .mcu-vector-symbol').count(),8);
     if(width===1366&&lang==='ro')await page.screenshot({path:path.join(out,`tab-${tab}.png`),fullPage:true});
    }

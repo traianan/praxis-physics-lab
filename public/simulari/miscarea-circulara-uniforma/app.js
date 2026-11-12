@@ -16,6 +16,18 @@ function mcuNotation(value){
   .replace(/F_cp = -m ω² R⃗/g,'F⃗_cp = −m ω² R⃗')
   .replace(/a_cp = -ω²·R⃗/g,'a⃗_cp = −ω²·R⃗')
   .replace(/a₀/g,'a⃗₀');
+ // Δv and perpendicularity describe vectors; speeds and accelerations in
+ // numerical relations (v = ωR, a_cp = v²/R, etc.) remain scalar magnitudes.
+ value=value.replace(/Δv(?!⃗)/g,'Δv⃗')
+  .replace(/v ⟂ R/g,'v⃗ ⟂ R⃗')
+  .replace(/(⊥ pe |Perpendiculară pe |perpendicular to )v\b/g,'$1v⃗')
+  .replace(/\bv tangent/g,'v⃗ tangent')
+  .replace(/\bv este tangentă/g,'v⃗ este tangentă')
+  .replace(/a_cp(?= este radial| points radially| spre centru|: F_cp)/g,'a⃗_cp')
+  .replace(/a = -ω²·R\./g,'a⃗ = −ω²·R⃗.')
+  .replace(/a = −ω²R\./g,'a⃗ = −ω²R⃗.');
+ if(value.includes('Δv⃗'))value=value.replace(/v([₁₂])(?!⃗)/g,'v⃗$1').replace(/Δv⃗ → 0(?!⃗)/g,'Δv⃗ → 0⃗');
+ if(/^ (v|a_cp)$/.test(value))value=value.replace('v','v⃗').replace('a_cp','a⃗_cp');
  if(/^\s*F_cp$/.test(value)||/^F_cp = (frecare|forța|componenta|static|gravitational|horizontal)/.test(value))value=value.replace('F_cp','F⃗_cp');
  if(/^(N|G|F_f|ΣF|F_cp) —/.test(value)||/^(N, G și|N, G and)/.test(value)){
   value=value.replace('F_cp = mv²/r','|F_cp| = mv²/r').replace(/\b(F_(?:cp|f)|N|G)\b|ΣF/g,token=>token.replace(/^ΣF$/,'ΣF⃗').replace(/^F_/,'F⃗_').replace(/^[NG]$/,x=>x+'⃗'));
@@ -50,6 +62,7 @@ function mcuJsx(type,props,key){
  function formatted(value,svg=false){
   if(typeof value!=='string')return value;
   value=mcuNotation(tr(value));
+  if(svg)value=value.replace(/^v_([12])$/,'v⃗_$1');
   value=value.replace('R = const • |v| = const','R = const, |v| = const').replace(/\s*•\s*/g,' — ');
   value=value.replace(/(R\s*=\s*[\d.,]+\s*m)\s*[—–-]\s*(μ\s*=)/g,'$1, $2');
   if(window.PraxisI18n.language==='en')value=value.replace(/\btg(?=θ)/g,'tan');
@@ -60,7 +73,7 @@ function mcuJsx(type,props,key){
   while(match=pattern.exec(value)){
    parts.push(value.slice(last,match.index));
    const base=match[1]||match[4],sub=match[2]||(match[3]?{'₀':'0','₁':'1','₂':'2'}[match[3]]:match[5]);
-   const symbol=match[1]?Rc(svg?'tspan':'span',svg?{children:[Rc('tspan',{dy:'-.65em',children:'→'},'arrow'),Rc('tspan',{dx:'-1em',dy:'.65em',children:base},'base')]}:{className:'mcu-vector-symbol',children:base},'vector-'+match.index):base;
+   const symbol=match[1]?Rc(svg?'tspan':'span',svg?{'data-mcu-svg-vector':base,children:[Rc('tspan',{dy:'-.65em',textLength:'.85em',lengthAdjust:'spacingAndGlyphs',children:'→'},'arrow'),Rc('tspan',{dx:'-.85em',dy:'.65em',children:base},'base')]}:{className:'mcu-vector-symbol',children:base},'vector-'+match.index):base;
    parts.push(Rc(svg?'tspan':'span',{children:[symbol,...(sub?[Rc(svg?'tspan':'sub',svg?{baselineShift:'sub',fontSize:'70%',children:sub}:{children:sub},'index')]:[])]},'mcu-sub-'+match.index));
    last=pattern.lastIndex;
   }
