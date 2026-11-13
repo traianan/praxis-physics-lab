@@ -35,7 +35,7 @@ core=core.replace("if (k === 'text') e.textContent = attrs[k];", "if (k === 'tex
 core=core.replace(/const Sound = \(\(\) => \{[\s\S]*?\}\)\(\);/,await read('scripts/adaptations/networks-sound.js'));
 core=core.replace("$$('.view').forEach(v => v.classList.remove('active'));",()=>"$$('.view').forEach(v => {v.classList.remove('active');v.hidden=true;});").replace("App.views[id].classList.add('active');","App.views[id].classList.add('active');App.views[id].hidden=false;");
 core=core.replace("current = id;","current = id;document.querySelectorAll('[data-tab]').forEach(b=>{const on=b.dataset.tab===id;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;});const sections=document.querySelector('.praxis-course-sections');if(sections)sections.value=id;");
-let js=core;
+let js=core+'\n'+await read('scripts/adaptations/networks-wire-currents.js');
 for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=await original('js/'+name+'.js');
  if(name==='kirchhoff'){
   const boundary=s.indexOf('const LabK =');let node=s.slice(0,boundary);
@@ -88,6 +88,17 @@ for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=
  if(name==='grouping')s=s.replace('const el = $(\'#sRload\'); el.value = v.Ropt.toFixed(1);',"const el = $('#sRload'); el.min=0; el.step=String(v.Ropt/Math.ceil(v.Ropt/.1)); el.value=String(v.Ropt);").replace("S.R.toFixed(1) + ' Ω'","fmt(S.R,3) + ' Ω'");
  if(name==='problems')s=s.replace('let i = 0, score = 0, answered = false;','let i = 0, score = 0, answered = false, timer;').replace('setTimeout(() => {','timer = setTimeout(() => {').replace('function restart() { i = 0;','function restart() { clearTimeout(timer); i = 0;').replace("Router.on('quiz', render);",'// Keep the current question and score when revisiting this section.');
  // The long battery plate is the positive terminal (right/bottom unless flipped).
+ if(name==='board'){
+  s=s.replace('<span class="mv">${v}</span>','<span class="mv">${v.split(" · ").map(value=>`<span>${value}</span>`).join("")}</span>');
+  s=s.replace('piese: ${S.pieces.length} · conductori: ${S.wires.length}<br>\n        Σ puteri debitate (surse): ${fmt(P, 2)} W<br>\n        noduri distincte: ${res ? res.nodeCount : 0}<br>', '<dl class="network-balance-list"><div><dt>piese</dt><dd>${S.pieces.length}</dd></div><div><dt>conductori</dt><dd>${S.wires.length}</dd></div><div><dt>Σ puteri debitate (surse)</dt><dd>${fmt(P, 2)} W</dd></div><div><dt>noduri distincte</dt><dd>${res ? res.nodeCount : 0}</dd></div></dl>');
+  s=s.replace('segs.push([prev, q.i])','segs.push([prev, q.i, wp.w.id])').replace('segs.push([prev, wp.b])','segs.push([prev, wp.b, wp.w.id])');
+  s=s.replace('out.nodeSums = [];','out.nodeSums = [];out.wireSegments=networkWireCurrents(pPos,segs,elParts,out.elements);');
+  s=s.replace(/    \/\/ fire „sub tensiune”[\s\S]*?    S.net = res;/,`    S.wires.forEach(w=>{w.flowSegments=res.wireSegments.filter(s=>s.wire===w.id).map(s=>({...s,id:w.id,live:Math.abs(s.I)>.005}));w.live=w.flowSegments.some(s=>s.live);});
+    S.net = res;`);
+  s=s.replace('function anyNear(w) { return true; }','function anyNear(w) { return !!w.live; }');
+  s=s.replaceAll('S.wires.forEach(w => {','S.wires.flatMap(w=>w.flowSegments||[w]).forEach(w => {');
+  s=s.replace('const I = S.pieces.reduce((m, p) => Math.max(m, Math.abs(p.I || 0)), 0);','const I = w.I || 0;');
+ }
  if(name==='board')s=s.replace("const gF = svgEl('g', {}, svg);", "const gF = svgEl('g', {}, svg);networkSourceGaps(svg,gF);");
  if(name==='board')s=s.replace('const a1 = p.flip ? n2 : n1, a2 = p.flip ? n1 : n2;','const a1 = p.flip ? n1 : n2, a2 = p.flip ? n2 : n1;').replace('return s + p.E * Math.abs(p.I || 0);','return s + p.E * (p.I || 0);').replace("if (p.type === 'resistor' || p.type === 'lamp') return s + (p.I || 0) ** 2 * p.R;",'// Count only signed power supplied by sources here.').replace('<span style="color:#86efac">✔ rețea conectată</span>', '<span>Curent calculat în rețea</span>');
  js+='\n'+s;

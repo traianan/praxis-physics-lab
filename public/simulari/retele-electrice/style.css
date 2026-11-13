@@ -74,3 +74,9 @@ body[data-praxis-course="retele-electrice"] .praxis-lab-nav .tab{padding-inline:
 .networks :is(.stat-v,.prob-stmt,.step-t .mono,.answer,.answer b,.verify .mono,.prob-no){color:var(--txt)}
 .networks .prob-tag{color:#805100}
 .networks .opt.correct{color:#176449}.networks .opt.wrong{color:#922e40}
+.networks .mrow{display:grid;grid-template-columns:minmax(0,1fr);gap:.4rem}
+.networks .mrow .mv{display:grid;gap:.2rem;text-align:left;font-variant-numeric:tabular-nums}
+.networks .mrow .mv>span{white-space:nowrap}
+.networks .network-balance-list{margin:.4rem 0 .75rem;font:inherit}
+.networks .network-balance-list>div{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:.75rem;padding:.35rem 0;border-bottom:1px solid var(--stroke)}
+.networks .network-balance-list dt{min-width:0}.networks .network-balance-list dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}

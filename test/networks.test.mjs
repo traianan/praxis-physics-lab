@@ -6,6 +6,22 @@ const source=await readFile(new URL('../public/simulari/retele-electrice/app.js'
 const scope={};vm.runInNewContext(source.slice(0,source.indexOf('// PRAXIS_INTEGRATION_START'))+'globalThis.model={solveNetlist,LabK,GenLab,PROBLEMS,QUIZ};})();',scope);
 const {solveNetlist,LabK,GenLab,PROBLEMS,QUIZ}=scope.model;
 const near=(a,b,t=1e-6)=>assert.ok(Math.abs(a-b)<t,`${a} != ${b}`);
+
+test('wire currents stop at dangling segments and disconnected components while other loops remain active',()=>{
+ const pieces=[{id:'b',type:'battery',x:40,y:40,rot:0,flip:false,E:12,r:2},{id:'r',type:'resistor',x:40,y:140,rot:0,R:4}];
+ const wires=[{id:'left',x1:0,y1:40,x2:0,y2:200},{id:'right',x1:80,y1:40,x2:80,y2:140},{id:'loose',x1:200,y1:200,x2:300,y2:200}];
+ let q=solveNetlist(pieces,wires);
+ near(q.elements.find(e=>e.piece==='r').I,-2);
+ near(q.wireSegments.find(s=>s.wire==='left'&&s.y2===140).I,-2);
+ near(q.wireSegments.find(s=>s.wire==='left'&&s.y1===140).I,0);
+ near(q.wireSegments.find(s=>s.wire==='loose').I,0);
+ pieces.push({id:'b2',type:'battery',x:240,y:300,rot:0,flip:false,E:10,r:1},{id:'r2',type:'resistor',x:240,y:400,rot:0,R:9});
+ wires.push({id:'left2',x1:200,y1:300,x2:200,y2:400},{id:'right2',x1:280,y1:300,x2:280,y2:400});
+ pieces[0].y+=20;pieces[1].y+=20;q=solveNetlist(pieces,wires);
+ for(const seg of q.wireSegments.filter(s=>['left','right','loose'].includes(s.wire)))near(seg.I,0);
+ near(Math.abs(q.wireSegments.find(s=>s.wire==='right2').I),1);
+ pieces[3].x+=20;q=solveNetlist(pieces,wires);for(const seg of q.wireSegments)near(seg.I,0);
+});
 test('Kirchhoff conserves charge and energy, including reverse current and open right branch',()=>{
  for(const closed of [true,false])for(const E1 of [1,22,30])for(const E2 of [1,19,30]){
   Object.assign(LabK.P,{E1,E2,closed});const q=LabK.solve(),p=LabK.P;

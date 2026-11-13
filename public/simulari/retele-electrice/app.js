@@ -149,6 +149,30 @@ function meterSymbol(g, x, y, r, letter, color = '#22d3ee') {
   return t;
 }
 
+// Recover conductor currents from terminal injections without changing the MNA
+// solution. Equal ideal parallel paths use the minimum-norm distribution.
+function networkWireCurrents(points,segments,parts,elements){
+ const n=points.length,adj=Array.from({length:n},()=>[]),injection=new Float64Array(n);
+ const currents=new Map(elements.map(e=>[e.piece,e.I]));
+ for(const {p,a,b} of parts){let i=currents.get(p.id)||0;if(p.type==='battery'&&p.flip)i=-i;injection[a]-=i;injection[b]+=i;}
+ segments.forEach(([a,b],i)=>{if(a!==b){adj[a].push([b,i]);adj[b].push([a,i]);}});
+ const seen=new Set(),potential=new Float64Array(n);
+ for(let start=0;start<n;start++){
+  if(seen.has(start))continue;const nodes=[start];seen.add(start);
+  for(let j=0;j<nodes.length;j++)for(const [v] of adj[nodes[j]])if(!seen.has(v)){seen.add(v);nodes.push(v);}
+  const free=nodes.slice(1),index=new Map(free.map((v,i)=>[v,i])),m=free.length;
+  const matrix=free.map(v=>{const row=new Float64Array(m+1);row[index.get(v)]=adj[v].length;for(const [w] of adj[v])if(index.has(w))row[index.get(w)]--;row[m]=injection[v];return row;});
+  for(let c=0;c<m;c++){
+   let pivot=c;for(let r=c+1;r<m;r++)if(Math.abs(matrix[r][c])>Math.abs(matrix[pivot][c]))pivot=r;
+   [matrix[c],matrix[pivot]]=[matrix[pivot],matrix[c]];const d=matrix[c][c];if(Math.abs(d)<1e-12)continue;
+   for(let k=c;k<=m;k++)matrix[c][k]/=d;
+   for(let r=0;r<m;r++)if(r!==c){const f=matrix[r][c];for(let k=c;k<=m;k++)matrix[r][k]-=f*matrix[c][k];}
+  }
+  free.forEach((v,i)=>potential[v]=matrix[i][m]);
+ }
+ return segments.map(([a,b,wire])=>({wire,x1:points[a].x,y1:points[a].y,x2:points[b].x,y2:points[b].y,I:potential[a]-potential[b]}));
+}
+
 /* ============================================================
    circuits.js — desene statice: hero, mini-art, scheme teoretice
    ============================================================ */
@@ -1592,8 +1616,8 @@ function solveNetlist(pieces, wires) {
     }
     on.sort((u, v) => u.t - v.t);
     let prev = wp.a;
-    for (const q of on) { segs.push([prev, q.i]); prev = q.i; }
-    segs.push([prev, wp.b]);
+    for (const q of on) { segs.push([prev, q.i, wp.w.id]); prev = q.i; }
+    segs.push([prev, wp.b, wp.w.id]);
   }
 
   // 3. union-find
@@ -1704,7 +1728,7 @@ function solveNetlist(pieces, wires) {
     }
   }
   // sume nodale (verificare legea I)
-  out.nodeSums = [];
+  out.nodeSums = [];out.wireSegments=networkWireCurrents(pPos,segs,elParts,out.elements);
   return out;
 }
 
@@ -1841,7 +1865,7 @@ const Board = (() => {
 
     // conductorii
     const gW = svgEl('g', {}, svg);
-    S.wires.forEach(w => {
+    S.wires.flatMap(w=>w.flowSegments||[w]).forEach(w => {
       const path = svgEl('path', {
         d: `M${w.x1} ${w.y1} L${w.x2} ${w.y2}`,
         class: 'wire' + (w.live ? ' hi' : ''), 'data-wire': w.id,
@@ -1864,9 +1888,9 @@ const Board = (() => {
       if (I < 0) l.style.animationDirection = 'reverse';
       return l;
     };
-    S.wires.forEach(w => {
+    S.wires.flatMap(w=>w.flowSegments||[w]).forEach(w => {
       if (!w.live) return;
-      const I = S.pieces.reduce((m, p) => Math.max(m, Math.abs(p.I || 0)), 0);
+      const I = w.I || 0;
       addFlow(w.x1, w.y1, w.x2, w.y2, I);
     });
     S.pieces.forEach(p => {
@@ -1927,10 +1951,7 @@ const Board = (() => {
       if (p.type === 'ammeter') p.readout = fmt(Math.abs(e.I), 2) + ' A';
       if (p.type === 'voltmeter') p.readout = fmt(Math.abs(e.U), 2) + ' V';
     });
-    // fire „sub tensiune”
-    const liveSet = new Set();
-    S.pieces.forEach(p => { if (Math.abs(p.I || 0) > 0.005) liveSet.add(p.id); });
-    S.wires.forEach(w => { w.live = liveSet.size > 0 && anyNear(w); });
+    S.wires.forEach(w=>{w.flowSegments=res.wireSegments.filter(s=>s.wire===w.id).map(s=>({...s,id:w.id,live:Math.abs(s.I)>.005}));w.live=w.flowSegments.some(s=>s.live);});
     S.net = res;
 
     // sunet la închiderea/deschiderea circuitului
@@ -1948,7 +1969,7 @@ const Board = (() => {
     setLedUI(nowClosed, res);
   }
 
-  function anyNear(w) { return true; } // toate firele primesc glow dacă există curent
+  function anyNear(w) { return !!w.live; } // toate firele primesc glow dacă există curent
 
   function setLedUI(on, res) {
     const led = $('#ledGlobal');
@@ -1975,7 +1996,7 @@ const Board = (() => {
       }
     });
     m.innerHTML = rows.length
-      ? rows.map(([l, v]) => `<div class="mrow"><span>${l}</span><span class="mv">${v}</span></div>`).join('')
+      ? rows.map(([l, v]) => `<div class="mrow"><span>${l}</span><span class="mv">${v.split(" · ").map(value=>`<span>${value}</span>`).join("")}</span></div>`).join('')
       : `<span class="muted">Adaugă piese pe tablou pentru a vedea măsurători.</span>`;
 
     const B = $('#balanceBox');
@@ -1988,9 +2009,7 @@ const Board = (() => {
         return s;
       }, 0);
       B.innerHTML = `
-        piese: ${S.pieces.length} · conductori: ${S.wires.length}<br>
-        Σ puteri debitate (surse): ${fmt(P, 2)} W<br>
-        noduri distincte: ${res ? res.nodeCount : 0}<br>
+        <dl class="network-balance-list"><div><dt>piese</dt><dd>${S.pieces.length}</dd></div><div><dt>conductori</dt><dd>${S.wires.length}</dd></div><div><dt>Σ puteri debitate (surse)</dt><dd>${fmt(P, 2)} W</dd></div><div><dt>noduri distincte</dt><dd>${res ? res.nodeCount : 0}</dd></div></dl>
         ${res && res.singular ? '<span style="color:#fda4af">⚠ rețea incompletă / flotantă</span>' : '<span>Curent calculat în rețea</span>'}`;
     }
   }
