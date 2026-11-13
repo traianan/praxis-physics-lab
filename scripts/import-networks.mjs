@@ -15,6 +15,7 @@ const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
 const hashes={};async function original(p){const s=await read(source+p);hashes[p]=createHash('sha256').update(s.replaceAll('\r\n','\n')).digest('hex');return s.replaceAll('\r\n','\n');}
 let html=await original('index.html');
+html=html.replace('Σ<sub>k=1..n</sub> I<sub>k</sub> = 0','<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>I</mi><mi>k</mi></msub><mo>=</mo><mn>0</mn></mrow></math>');
 html=html.replace('Valorile din manual','Resetare');
 html=html.replace('id="sI1" min="0"','id="sI1" min="-4"').replace('id="sI2" min="0"','id="sI2" min="-4"').replace('id="sI3" min="0"','id="sI3" min="-8"').replace('step="0.1" value="3.5"','step="0.1" value="-3.5"');
 html=html.replace('(latura de ieșire)','(latura AD)').replace('I<sub>1</sub> + I<sub>2</sub> − I<sub>3</sub> = 0','I<sub>1</sub> + I<sub>2</sub> + I<sub>3</sub> = 0').replace('<span id="sumLive">3.5</span> − I<sub>3</sub>','<span id="sumLive"></span>').replace('I<sub>3</sub> = <b id="i3Val">3.5 A</b>','Σ I = <b id="i3Val">0.0 A</b>');

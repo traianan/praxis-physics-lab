@@ -40,6 +40,16 @@ function networkDiagram(svg,w,h){
   const battery=(x,y,name='E, r')=>{wire(`M${x-24} ${y} H${x-6} M${x+6} ${y} H${x+24}`);for(const [dx,half] of [[-6,10],[6,17]])svgEl('path',{d:`M${x+dx} ${y-half} V${y+half}`,stroke:'#ffd45b','stroke-width':2},g);label(x,y-24,name,'#ffd45b');};
   return {wire,label,dot,resistor,meter,battery,g};
 }
+drawHeroK=function(svg){
+ const d=networkDiagram(svg,320,240);
+ d.wire('M35 60 H76 M124 60 H216 M264 60 H285 V190 H124 M76 190 H35 V132 M35 118 V60 M165 60 V106 M165 144 V190');
+ d.resistor(100,60,'R₁');d.resistor(240,60,'R₃');d.resistor(100,190,'R₂');
+ svgEl('rect',{x:157,y:106,width:16,height:38,rx:2,fill:'#182b43',stroke:'#9bb1c9','stroke-width':2},d.g);
+ d.label(190,130,'R₄');
+ svgEl('path',{d:'M18 118 H52 M25 132 H45',stroke:'#ffd45b','stroke-width':2},d.g);d.label(65,128,'E','#ffd45b');
+ for(const [x,y,name] of [[35,60,'F'],[165,60,'B'],[285,60,'D'],[35,190,'E'],[165,190,'A'],[285,190,'C']]){d.dot(x,y);d.label(x,y===60?32:216,name);}
+ d.label(105,150,'I');d.label(235,150,'II');
+};
 drawSchSeries=function(svg){
   const d=networkDiagram(svg,460,210);
   d.wire('M40 60 H116 M164 60 H266 M314 60 H420 V165 H254 M206 165 H40 V60');

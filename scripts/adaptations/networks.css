@@ -80,3 +80,5 @@ body[data-praxis-course="retele-electrice"] .praxis-lab-nav .tab{padding-inline:
 .networks .network-balance-list{margin:.4rem 0 .75rem;font:inherit}
 .networks .network-balance-list>div{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:.75rem;padding:.35rem 0;border-bottom:1px solid var(--stroke)}
 .networks .network-balance-list dt{min-width:0}.networks .network-balance-list dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.networks .mini-art text{fill:#205d64!important}
+.networks .card-ic{color:#205d64}
