@@ -2,6 +2,15 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {labNamespaces} from './lab-registry.mjs';
 const root=new URL('../',import.meta.url),id='retele-electrice',source='Retele electrice/app/';
+const standaloneText=s=>s.replaceAll(' (din manual)','').replaceAll(' (from the textbook)','')
+ .replaceAll(', exact ca în manual (§2.4.3, §2.4.4)','').replaceAll(', as in the textbook (§2.4.3, §2.4.4)','')
+ .replaceAll('Exerciții din manual','Exerciții').replaceAll('Textbook exercises','Exercises')
+ .replaceAll('Exemplul din manual:','Circuit inițial:').replaceAll('Textbook example:','Initial circuit:')
+ .replaceAll('exemplul din manual','circuitul inițial').replaceAll('the textbook example','the initial circuit')
+ .replaceAll('Exemplu manual','Circuit inițial').replaceAll('Textbook example','Initial circuit')
+ .replaceAll('exemplu din manual','circuit inițial').replaceAll('rețeaua din manual','rețeaua inițială')
+ .replaceAll('problema 2.3.1','problema 1').replaceAll('problem 2.3.1','problem 1')
+ .replace(/Ex\. (2\.3\.1|2\.3\.2|2\.4\.1\.1|2\.4\.2\.1|2\.4\.2\.2|2\.4\.3)(?= —)/g,(_,n)=>'Ex. '+(['2.3.1','2.3.2','2.4.1.1','2.4.2.1','2.4.2.2','2.4.3'].indexOf(n)+1));
 const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
 const hashes={};async function original(p){const s=await read(source+p);hashes[p]=createHash('sha256').update(s.replaceAll('\r\n','\n')).digest('hex');return s.replaceAll('\r\n','\n');}
@@ -19,6 +28,7 @@ html=html.replace('<main class="main">','<div class="network-main">').replace('<
 html=html.replace('Navighează din meniul din stânga:', 'Navighează din secțiunile lecției:');
 html=html.replace('<div class="modal" id="helpModal">','<div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="network-help-title">').replace('<h3>Cum folosești aplicația</h3>','<h3 id="network-help-title">Cum folosești aplicația</h3>');
 html=html.replace(/<section class="view" id="view-([^"]+)">/g,(_,key)=>`<section class="view" id="view-${key}" role="tabpanel" aria-labelledby="tab-${key}" hidden>`);
+html=standaloneText(html).replace(/<span class="badge badge-[kg]">2\.4\.[34]<\/span>/g,'');
 html='<nav class="tabs" role="tablist" aria-label="Secțiunea lecției">'+labels.map(([key,label])=>`<button class="tab" id="tab-${key}" data-tab="${key}" role="tab" aria-controls="view-${key}" aria-selected="false" tabindex="-1">${label}</button>`).join('')+'</nav><div class="network-extra"><button id="network-help">Ghidul lecției</button><label><input id="network-pause" type="checkbox"> Pauză animații</label></div>'+html+'<p><a data-offline-download href="retele-electrice.zip" download>Offline (ZIP)</a></p>';
 let core=await original('js/core.js');
 core=core.replace("if (k === 'text') e.textContent = attrs[k];", "if (k === 'text') networkSvgText(e,attrs[k]);");
@@ -83,12 +93,13 @@ for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=
  js+='\n'+s;
 }
 js+='\n'+await read('scripts/adaptations/networks-content.js');
+let problemNumber=0;js=standaloneText(js).replace(/no: '2\.[\d.]+'/g,()=>`no: '${++problemNumber}'`);
 js+='\n// PRAXIS_INTEGRATION_START\n'+await read('scripts/adaptations/networks-diagrams.js')+'\n'+await read('scripts/adaptations/networks-integration.js');
 await write('public/simulari/'+id+'/app.js','(()=>{\n'+js+'\n})();\n');
 // Preserve scientific case (r ≠ R, η ≠ Η); never uppercase UI labels.
 await write('public/simulari/'+id+'/source.css',(await original('css/style.css')).replaceAll('text-transform:uppercase','text-transform:none'));
 await write('public/simulari/'+id+'/style.css',await read('scripts/adaptations/networks.css'));
-const messages=JSON.parse(await read('scripts/adaptations/networks-en.json'));
+const messages=Object.fromEntries(Object.entries(JSON.parse(await read('scripts/adaptations/networks-en.json'))).map(([k,v])=>[standaloneText(k),standaloneText(v)]));
 for(const lang of ['ro','en'])await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?messages:Object.fromEntries(Object.keys(messages).map(k=>[k,k]))},null,2)+'\n');
 const ns=await labNamespaces(id),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));

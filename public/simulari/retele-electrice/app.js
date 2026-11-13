@@ -1240,7 +1240,7 @@ const InstrumentLab = (() => {
 
 const PROBLEMS = [
   {
-    no: '2.3.1',
+    no: '1',
     tag: 'Kirchhoff',
     title: 'Rețea cu două surse reale: aflarea curenților pe laturi',
     stmt: `În circuitul din figura din laborator se cunosc: E₁ = 22 V, r₁ = 1 Ω, E₂ = 19 V, r₂ = 1 Ω,
@@ -1272,7 +1272,7 @@ const PROBLEMS = [
     },
   },
   {
-    no: '2.3.2',
+    no: '2',
     tag: 'Kirchhoff',
     title: 'Două ecuații de ochi + diferența de potențial între două noduri',
     stmt: `În circuitul din laborator se cunosc: E₂ = 19 V, r₂ = 1 Ω, R₁ = 4 Ω, R₂ = R₃ = 2 Ω și I₁ = 2 A.
@@ -1292,7 +1292,7 @@ const PROBLEMS = [
       ochi drept: ${2 * 5 + 3 * 3} = 19 V ✔ · trasee: toate dau 10 V ✔`,
   },
   {
-    no: '2.4.1.1',
+    no: '3',
     tag: 'Grupare',
     title: 'Rezistența echivalentă a unui dipol (serie + paralel)',
     stmt: `Aflați rezistența echivalentă R a dipolului AB. Se dau: R₁ = R₂ = R₃ = 2 Ω, R₄ = 3 Ω.
@@ -1310,7 +1310,7 @@ const PROBLEMS = [
     },
   },
   {
-    no: '2.4.2.1',
+    no: '4',
     tag: 'Generatoare',
     title: 'Două surse reale în serie + consumator variabil',
     stmt: `Un circuit conține două surse E₁ = 4 V, E₂ = 3,2 V cu r₁ = 0,5 Ω, respectiv r₂ = 1,5 Ω, legate în
@@ -1339,7 +1339,7 @@ const PROBLEMS = [
     },
   },
   {
-    no: '2.4.2.2',
+    no: '5',
     tag: 'Generatoare',
     title: 'Trei surse reale în paralel (cu rezistențe interne diferite)',
     stmt: `Trei surse E₁ = 1 V, E₂ = 1,1 V, E₃ = 1,2 V cu r₁ = 2 Ω, r₂ = 3 Ω, r₃ = 1 Ω sunt conectate în paralel.
@@ -1369,7 +1369,7 @@ const PROBLEMS = [
     },
   },
   {
-    no: '2.4.3',
+    no: '6',
     tag: 'Instrumente',
     title: 'Șuntul ampermetrului',
     stmt: `Un ampermetru cu rezistența internă R_A = 2 Ω măsoară curenți până la I_A = 1 A.
@@ -2228,7 +2228,7 @@ const Board = (() => {
   }
   const msg = (t) => { const m = $('#boardMsg'); if (m) m.textContent = t; };
 
-  /* ---------- exemplu din manual ---------- */
+  /* ---------- circuit inițial ---------- */
   function loadExample() {
     S.pieces = []; S.wires = []; S.id = 1;
     const W = (x1, y1, x2, y2) => S.wires.push({ id: 'w' + (S.id++), x1, y1, x2, y2 });
@@ -2236,7 +2236,7 @@ const Board = (() => {
       const p = { id: 'p' + (S.id++), type, x, y, rot: 0, ...JSON.parse(JSON.stringify(PIECE_DEFS[type])), ...props };
       delete p.name; delete p.kind; S.pieces.push(p); return p;
     };
-    // ---- rețeaua din manual: 2 noduri (B sus, A jos), 3 laturi, 2 surse reale
+    // ---- rețeaua inițială: 2 noduri (B sus, A jos), 3 laturi, 2 surse reale
     const TOP = 90, BOT = 390, L = 120, R = 660, MX = 380;
     // latura de sus, stânga: E₁ (+ spre dreapta) și R₁
     P('battery', 190, TOP, { E: 22, r: 1 });          // borna + spre dreapta
@@ -2266,7 +2266,7 @@ const Board = (() => {
     const gs = $('#gSwitch'); if (gs) gs.checked = true;
     Sound.connect();
     compute();
-    msg('Exemplul din manual: E₁ = 22 V, E₂ = 19 V, r = 1 Ω, R₁ = 4 Ω, R₂ = 6 Ω, R₃ = 4 Ω');
+    msg('Circuit inițial: E₁ = 22 V, E₂ = 19 V, r = 1 Ω, R₁ = 4 Ω, R₂ = 6 Ω, R₃ = 4 Ω');
   }
 
   function init() {
