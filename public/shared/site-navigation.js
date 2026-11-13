@@ -17,7 +17,7 @@
   toggle.addEventListener('click',()=>setOpen(!expanded));
   mobile.addEventListener('change',()=>{placeQuickControls();setOpen(false);});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&expanded){event.preventDefault();setOpen(false,true);}});
-  document.addEventListener('click',event=>{if(expanded&&!header.contains(event.target))setOpen(false);});
+  document.addEventListener('click',event=>{if(expanded&&!event.composedPath().includes(header))setOpen(false);});
   const hasLibrary=!!library;library ||= document.createElement('a');if(!hasLibrary)library.href=new URL('?home=1',base);library.classList.add('site-menu-control','site-library-link');
   if(location.pathname===base.pathname||location.pathname===new URL('index.html',base).pathname)library.setAttribute('aria-current','page');
   guide ||= document.createElement('button');guide.type='button';guide.className='site-menu-control site-guide-button';

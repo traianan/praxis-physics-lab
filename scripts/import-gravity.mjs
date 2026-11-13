@@ -52,6 +52,11 @@ line(c,-25,0,25,0,'#cbd5e1',2);
 for(const px of [-29,11]){c.fillStyle='#244f78';c.fillRect(px,-9,18,18);c.strokeStyle='#8dbedb';c.lineWidth=1;c.strokeRect(px,-9,18,18);for(const dx of [6,12])line(c,px+dx,-9,px+dx,9,'#8dbedb',.7);line(c,px,0,px+18,0,'#8dbedb',.7);}
 c.beginPath();c.moveTo(-7,-10);c.lineTo(7,-10);c.lineTo(9,7);c.lineTo(0,12);c.lineTo(-9,7);c.closePath();c.fillStyle='#e8d7a0';c.fill();c.strokeStyle='#fff3cb';c.lineWidth=1;c.stroke();
 line(c,0,-10,0,-17,'#fff3cb',1.5);c.beginPath();c.arc(0,-18,3,Math.PI,2*Math.PI);c.stroke();c.restore();`);
+// Reserve room for the satellite, vector arrowheads and the two caption rows.
+js=js.replace('cx=w/2,cy=h/2,er=Math.min(w,h)*.15,or=er+24+Math.min(w,h)*.22*(state.oh/40000)**.42',
+ 'cx=w/2,cy=h/2+4,maxOrbit=Math.max(24,Math.min(w/2-44,h/2-52)),er=Math.min(30,maxOrbit*.4),or=er+14+Math.max(0,maxOrbit-er-14)*(state.oh/40000)**.42');
+js=js.replace("vectorLabel(c,'v',x-63*Math.sin(angle),y+63*Math.cos(angle))","vectorLabel(c,'v',Math.max(12,Math.min(w-25,x-63*Math.sin(angle))),Math.max(52,Math.min(h-34,y+63*Math.cos(angle))))")
+ .replace("vectorLabel(c,'F',x-57*Math.cos(angle),y-57*Math.sin(angle))","vectorLabel(c,'F',Math.max(12,Math.min(w-25,x-57*Math.cos(angle))),Math.max(52,Math.min(h-34,y-57*Math.sin(angle))))");
 js=js.replace("c.textAlign='left';graph('forceChart'","if($('fVectors').checked){c.textAlign='left';c.fillStyle='#63e2da';vectorLabel(c,'F₁',x1+rad1+8,y-14);c.fillStyle='#bcabff';vectorLabel(c,'F₂',x2-rad2-35,y-14);}c.textAlign='left';graph('forceChart'");
 // The preference remains accessible alongside the orbital controls.
 body=body.replace('<button id="resetO">Reia orbita</button>','<button id="resetO">Reia orbita</button><label><input id="motion" type="checkbox"> Mișcare redusă / pauză globală</label>');

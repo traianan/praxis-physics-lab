@@ -4,6 +4,17 @@ import {readFile,stat} from 'node:fs/promises';
 import vm from 'node:vm';
 import {simulations,chapters} from '../public/catalog.js';
 const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8');
+test('mobile menu stays open when its tapped icon is replaced before the event reaches document',async()=>{
+ const source=await read('public/shared/site-navigation.js');
+ const listener=source.split('\n').find(line=>line.includes("document.addEventListener('click'"));
+ const header={contains:()=>false},detachedIcon={},outside={};let handler;
+ const env={header,expanded:true,setOpen(value){env.expanded=value;},document:{addEventListener(type,callback){handler=callback;}}};
+ vm.runInNewContext(listener,env);
+ handler({target:detachedIcon,composedPath:()=>[detachedIcon,header,env.document]});
+ assert.equal(env.expanded,true,'the original event path still belongs to the header');
+ handler({target:outside,composedPath:()=>[outside,env.document]});
+ assert.equal(env.expanded,false,'a genuine outside tap closes the menu');
+});
 class Element{
  constructor(tag){this.tagName=tag.toUpperCase();this.children=[];this.dataset={};this.style={};this.attributes={};}
  append(...nodes){this.children.push(...nodes);}
