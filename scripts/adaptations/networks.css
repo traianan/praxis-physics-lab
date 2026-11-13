@@ -1,0 +1,68 @@
+/* Source content is preserved; Praxis owns page chrome, scale and touch policy. */
+body[data-praxis-course="retele-electrice"]{--bg:var(--praxis-color-canvas);--bg2:var(--praxis-color-surface);--panel:var(--praxis-color-surface);--panel-solid:var(--praxis-color-surface);--stroke:var(--praxis-color-border);--stroke-hi:#82958a;--txt:var(--praxis-color-ink);--txt-dim:var(--praxis-color-muted);--txt-mute:var(--praxis-color-muted);--k:var(--praxis-color-primary);--k2:#49635d;--g:#8c5b12;--g2:#945070;--ok:#227855;--warn:#805b0f;--shadow:none;--sans:var(--praxis-font-ui);background:var(--praxis-color-canvas);color:var(--txt);overflow:auto;height:auto;font-family:var(--sans)}
+body[data-praxis-course="retele-electrice"] #praxis-original.networks{width:100%;max-width:80rem;padding:0 1rem 2rem;margin:auto;font-size:1rem}
+body[data-praxis-course="retele-electrice"] .praxis-lab-nav{box-sizing:border-box;width:100%;max-width:80rem;margin-inline:auto;padding-inline:1rem}
+:root:not([data-board=true]) body[data-praxis-course="retele-electrice"] .praxis-lab-intro{margin-inline:max(1rem,calc((100% - 80rem)/2 + 1rem))!important}
+.networks .app,.networks .network-main,.networks .scroll{display:block;height:auto;overflow:visible;padding:0;width:100%;min-width:0;max-width:100%}
+.networks [hidden],.networks #sidebar,.networks #scrim,.networks .topbar,.networks .eyebrow{display:none!important}
+.networks .view{padding:0;animation:none}.networks .view:not(.active){display:none}
+.networks .section-head{margin:.65rem 0}.networks .section-head h2{font-size:1.4rem;margin:.4rem 0}.networks .lead{font-size:1rem;max-width:65rem;margin:.5rem 0;line-height:1.6}
+.networks .card{background:var(--panel);box-shadow:none;border:1px solid var(--stroke);padding:1rem;min-width:0}
+.networks :is(p,li,label,button,input,select,textarea,.hint,.muted,.legend-inline,.switch-txt,.control label,.control output,.btn,.seg,.formula-small,.eq-stack,.step){font-size:1em}
+.networks :is(.result-val,.balance-val,.balance-target,.metric-val){font-size:1.1em}
+.networks :is(button,input,select){font:inherit;max-width:100%;min-height:44px}.networks :is(button,select,input[type=number]){color:var(--txt);background:var(--panel);border:1px solid var(--stroke);border-radius:10px}
+.networks :is(.btn-primary,.seg.on,.opt.correct){background:var(--praxis-color-primary);color:white}.networks .btn:hover{transform:none}.networks .control{margin-bottom:.6rem}
+.networks .split{grid-template-columns:minmax(0,1.25fr) minmax(20rem,1fr);gap:.8rem}.networks .split.wide-left{grid-template-columns:minmax(0,1.25fr) minmax(20rem,1fr)}
+.networks :is(.board,.chart,.sch,.hero-art){background:#0b192b;border-radius:10px;color:#e8eefc;--k:#22d3ee;--k2:#818cf8;--g:#fbbf24;--g2:#fb7185;--ok:#34d399;--txt:#e8eefc;--txt-dim:#bac9df;--txt-mute:#a9bbd4}
+.networks svg.board{display:block;width:100%;max-height:24rem;height:auto;min-height:0;aspect-ratio:auto}.networks svg.chart{display:block;max-height:14rem}.networks svg.sch{max-height:13rem}
+.networks .canvas-card{align-self:start}.networks .legend-inline{flex-wrap:wrap;gap:.5rem}.networks .switch{min-height:44px}.networks .switch input{display:inline-block;min-height:0;width:1.15em;height:1.15em;accent-color:var(--k)}.networks .switch .track{display:none}
+.networks .lab-layout{display:grid;grid-template-columns:11rem minmax(0,1fr) 16rem;gap:.7rem}.networks .board-wrap{overflow:auto;max-width:100%;touch-action:pan-x pan-y}.networks #gCanvas{min-width:600px;max-height:none;touch-action:none}.networks .piece{touch-action:none;min-height:44px}.networks .piece svg{background:#0b192b;border-radius:4px}
+.networks :is(.formula,.formula-box,.eq-stack,.path-out){overflow-x:auto;max-width:100%}.networks .formula{white-space:normal}.networks .hero{min-height:0;padding:1rem;background:var(--panel)}.networks .hero h1{font-size:1.5em}.networks .hero-grid{gap:1rem}
+.networks .network-details{border:1px solid var(--stroke);background:var(--panel);border-radius:12px;margin:1rem 0;padding:.8rem}.networks .network-details>summary{cursor:pointer;min-height:44px;font-weight:600}
+.network-extra{display:flex;align-items:center;flex-wrap:wrap;gap:1rem}.network-extra :is(button,label){min-height:44px}.network-extra button{font:inherit;color:inherit;border:1px solid var(--praxis-color-border);border-radius:8px;padding:.5rem;background:var(--praxis-color-surface)}
+.networks .modal{z-index:600}.networks .modal-card{background:var(--panel);color:var(--txt);max-height:85vh;overflow:auto}.networks .foot{font-size:.875em;flex-wrap:wrap;gap:.5rem}
+body[data-praxis-course="retele-electrice"] .site-info-links{box-sizing:border-box}
+@media(max-width:1100px){.networks .lab-layout{grid-template-columns:1fr}.networks .palette{display:flex;flex-wrap:wrap}.networks .palette-card .tool-row{display:inline-flex}.networks .piece{min-width:7rem}.networks .board-card{min-width:0}}
+@media(max-width:900px){.networks .split,.networks .split.wide-left,.networks .grid-2,.networks .hero-grid{grid-template-columns:1fr}.networks svg.board:not(#gCanvas){min-width:440px;max-height:none}.networks .canvas-card{overflow-x:auto}.networks svg.chart{min-width:440px;max-height:none}.networks .section-head h2{font-size:1.3em}}
+@media(max-width:500px){body[data-praxis-course="retele-electrice"] #praxis-original.networks{padding-inline:.6rem}.networks .card{padding:.65rem}}
+@media(prefers-reduced-motion:reduce){.networks *{animation:none!important;transition:none!important}}
+
+.networks :is(.balance-eq,.balance-val,.balance-target,.eq-row,.eq-row.sum,.steps .mono,.path-out,.res .rv){color:var(--txt)}
+.networks .res.pos .rv{color:#176449}.networks .res.neg .rv{color:#a23444}
+.networks .balance{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem;padding:.6rem;margin:.5rem 0}.networks .balance-val{margin:0}
+.networks .control-card>h3{margin:0 0 .5rem}.networks .control-card .control{margin:0 0 .35rem}.networks .control label{margin-bottom:0}
+.networks .control-card>details{margin-top:.5rem}.networks .control-card>details>summary{min-height:44px;cursor:pointer}
+.network-extra .control{width:18rem;max-width:100%;margin:0}
+
+.networks .mrow .mv{color:var(--praxis-color-primary)}.networks .bilanț span{color:var(--praxis-color-primary)!important}
+.networks .tool-row{display:flex;flex-wrap:wrap}.networks .tool-row button{flex:1 1 100%;white-space:normal;word-break:normal;padding:.5rem}
+.networks #gCanvas{max-height:24rem}.networks .board-msg{white-space:normal}
+.networks #view-k-lab .control-card{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.networks #view-k-lab .control-card>:is(h3,hr,.btn-row){grid-column:1/-1}
+.networks #view-k-lab .control-card hr{margin:0}
+.networks .palette-card>.hint{margin:.5rem 0;font-size:.875rem}
+@media(max-width:600px){.networks #view-k-lab .control-card{grid-template-columns:1fr}.networks .tool-row button{flex:1 1 7rem}.networks #gCanvas{max-height:none}}
+
+body[data-praxis-course="retele-electrice"] .praxis-lab-nav .tabs{gap:2px}
+body[data-praxis-course="retele-electrice"] .praxis-lab-nav .tab{padding-inline:8px}
+.networks :is(.prob-stmt,.step-t,.prob-title,.quiz-fb,.mrow,.inspector,.node-eq,.eq-tag){font-size:1em}
+.networks .quiz-q{font-size:1.1em}.networks .res .rv{font-size:1.1em}.networks .res .rl{font-size:.85em}
+
+body[data-praxis-course="retele-electrice"] .praxis-lab-nav .tabs{gap:2px!important}
+body[data-praxis-course="retele-electrice"] .praxis-lab-nav .tab{padding-inline:6px!important}
+.networks .inspector label{flex:1 1 19rem;min-width:0;white-space:normal}
+.networks .inspector .praxis-range-stepper{flex:1 1 12rem;width:auto!important;min-width:10rem}
+.networks .inspector .praxis-range-stepper input[type=range]{width:0!important;min-width:2rem}
+.networks .palette{grid-template-columns:repeat(2,minmax(0,1fr))}.networks .piece{min-width:0}
+.networks .piece svg{max-width:100%}
+
+.networks .lab-layout{grid-template-columns:14rem minmax(0,1fr) 16rem}.networks .tool-row button{flex:1 1 5.5rem}
+.networks .inspector{padding:.5rem;margin:0 0 .6rem}.networks .inspector label{flex-wrap:wrap}.networks .inspector .praxis-range-stepper{flex-basis:100%;width:100%!important}
+.networks .network-currents{margin:.5rem 0 0;color:var(--praxis-color-primary);font-weight:600}
+.networks svg.board :is(.i-label,.e-label,.node-label,.note){font-size:16px}
+@media(max-width:1100px){.networks .lab-layout{grid-template-columns:1fr}}
+@media(max-width:900px){.networks svg.board:not(#gCanvas),.networks svg.chart{min-width:0;width:100%}.networks .canvas-card{overflow:visible}}
+
+.networks .network-meter-panel details>h3:first-of-type{display:none}
+.networks .tool-row button{overflow-wrap:normal!important;padding-inline:3px}
+@media(min-width:1101px){.networks #gCanvas{max-height:22rem}}

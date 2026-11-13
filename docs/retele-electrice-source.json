@@ -1,0 +1,14 @@
+{
+  "source": "Retele electrice/app/",
+  "normalization": "LF",
+  "files": {
+    "index.html": "6ecd88a3e7d8781a869a279cb2e78d5e9132bab2413538c97e83c6674755b618",
+    "js/core.js": "2db1a91548eac5f89016e161335036b631ee7b09972a4a460b8fd34d4da6fc58",
+    "js/circuits.js": "5923946d16e882315d45fe08265ae7cb2ad4daedbaa68a30045790253b5e91d7",
+    "js/kirchhoff.js": "e3eb54eaeae065fbd7fec1698079e667eb7960b854c4df1337576969b8c42684",
+    "js/grouping.js": "bd398c012ddfd35adbf20d6eff6d695cd287906f3ce417a3b71990c028a31a02",
+    "js/problems.js": "c1d6d8a1b7530db5bebd4d49c26fad71dc06bdf7bd665e472214a3bc13099442",
+    "js/board.js": "d490034f0153822d3cf8bae2c0d18f894adf80637eeaebf3787dbed8486521e1",
+    "css/style.css": "5a49f21ed85d845c1d709dd5a94d79c12670e45f801c2387d0ecde9020bea3ea"
+  }
+}

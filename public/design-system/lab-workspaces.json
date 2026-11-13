@@ -460,5 +460,33 @@
         "layout": "native"
       }
     ]
+  },
+  "retele-electrice": {
+    "workspaces": [
+      {
+        "selector": "#view-k-anim .split",
+        "scene": "#animNode",
+        "controls": ".control-card",
+        "layout": "native"
+      },
+      {
+        "selector": "#view-k-lab .split",
+        "scene": "#labK",
+        "controls": ".control-card",
+        "layout": "native"
+      },
+      {
+        "selector": "#view-g-gen .split",
+        "scene": "#genCanvas",
+        "controls": ".control-card",
+        "layout": "native"
+      },
+      {
+        "selector": "#view-g-lab .lab-layout",
+        "scene": ".board-card",
+        "controls": ".palette-card",
+        "layout": "native"
+      }
+    ]
   }
 }

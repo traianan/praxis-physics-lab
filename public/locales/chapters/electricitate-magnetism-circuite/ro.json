@@ -10,7 +10,8 @@
     "Pila Daniell": "Pila Daniell",
     "Legea lui Coulomb": "Legea lui Coulomb",
     "Condensatorul": "Condensatorul",
-    "Rezistența unui fir": "Rezistența unui fir"
+    "Rezistența unui fir": "Rezistența unui fir",
+    "Rețele electrice": "Rețele electrice"
   },
   "simulations": {
     "generator-electric": {
@@ -87,6 +88,18 @@
         "Offline"
       ],
       "keywords": "rezistenta fir conductor rezistivitate lungime sectiune diametru temperatura Ohm"
+    },
+    "retele-electrice": {
+      "title": "Rețele electrice",
+      "description": "Legile lui Kirchhoff, grupări de rezistoare și generatoare, tablou de circuite și instrumente de măsură.",
+      "alt": "Rețea cu două surse și trei ramuri, pentru aplicarea legilor lui Kirchhoff",
+      "tags": [
+        "Circuite",
+        "Kirchhoff",
+        "Experimente",
+        "Offline"
+      ],
+      "keywords": "retele electrice kirchhoff nod latura ochi serie paralel generator rezistor sunt ampermetru voltmetru"
     }
   }
 }

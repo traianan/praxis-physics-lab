@@ -1,0 +1,2 @@
+const playSound=name=>{if(!document.hidden)PraxisSound.play(name);};
+const Sound={setEnabled:v=>PraxisSound.setEnabled(v),isEnabled:()=>PraxisSound.enabled,click:()=>playSound('click'),tick:()=>playSound('select'),switchOn:()=>playSound('switch'),switchOff:()=>playSound('switch'),ok:()=>playSound('event'),err:()=>playSound('reset'),drop:()=>playSound('move'),connect:()=>playSound('select'),del:()=>playSound('reset'),slide:()=>playSound('move'),alarm:()=>playSound('event'),win:()=>playSound('event')};

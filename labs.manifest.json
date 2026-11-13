@@ -1526,6 +1526,65 @@
         "kind": "archive",
         "file": "mecanica-cereasca.zip"
       }
+    },
+    {
+      "metadata": {
+        "id": "retele-electrice",
+        "chapter": "electricitate-magnetism-circuite",
+        "title": "Rețele electrice",
+        "description": "Legile lui Kirchhoff, grupări de rezistoare și generatoare, tablou de circuite și instrumente de măsură.",
+        "addedOn": "2026-11-13",
+        "addedOrder": 3,
+        "href": "./simulari/retele-electrice/index.html",
+        "image": "./assets/retele-electrice.svg",
+        "alt": "Rețea cu două surse și trei ramuri, pentru aplicarea legilor lui Kirchhoff",
+        "tags": [
+          "Circuite",
+          "Kirchhoff",
+          "Experimente",
+          "Offline"
+        ],
+        "keywords": "retele electrice kirchhoff nod latura ochi serie paralel generator rezistor sunt ampermetru voltmetru",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {
+            "selector": "#view-k-anim .split",
+            "scene": "#animNode",
+            "controls": ".control-card",
+            "layout": "native"
+          },
+          {
+            "selector": "#view-k-lab .split",
+            "scene": "#labK",
+            "controls": ".control-card",
+            "layout": "native"
+          },
+          {
+            "selector": "#view-g-gen .split",
+            "scene": "#genCanvas",
+            "controls": ".control-card",
+            "layout": "native"
+          },
+          {
+            "selector": "#view-g-lab .lab-layout",
+            "scene": ".board-card",
+            "controls": ".palette-card",
+            "layout": "native"
+          }
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/electricitate-magnetism-circuite",
+        "courses/shared",
+        "courses/retele-electrice/ui"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "retele-electrice.zip"
+      }
     }
   ]
 }

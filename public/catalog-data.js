@@ -669,5 +669,24 @@ export const simulations = [
     ],
     "keywords": "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar",
     "status": "available"
+  },
+  {
+    "id": "retele-electrice",
+    "chapter": "electricitate-magnetism-circuite",
+    "title": "Rețele electrice",
+    "description": "Legile lui Kirchhoff, grupări de rezistoare și generatoare, tablou de circuite și instrumente de măsură.",
+    "addedOn": "2026-11-13",
+    "addedOrder": 3,
+    "href": "./simulari/retele-electrice/index.html",
+    "image": "./assets/retele-electrice.svg",
+    "alt": "Rețea cu două surse și trei ramuri, pentru aplicarea legilor lui Kirchhoff",
+    "tags": [
+      "Circuite",
+      "Kirchhoff",
+      "Experimente",
+      "Offline"
+    ],
+    "keywords": "retele electrice kirchhoff nod latura ochi serie paralel generator rezistor sunt ampermetru voltmetru",
+    "status": "available"
   }
 ];

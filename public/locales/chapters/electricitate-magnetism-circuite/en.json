@@ -10,7 +10,8 @@
     "Pila Daniell": "Daniell cell",
     "Legea lui Coulomb": "Coulomb’s law",
     "Condensatorul": "Capacitor",
-    "Rezistența unui fir": "Resistance of a wire"
+    "Rezistența unui fir": "Resistance of a wire",
+    "Rețele electrice": "Electrical networks"
   },
   "simulations": {
     "generator-electric": {
@@ -100,6 +101,18 @@
         "Problems"
       ],
       "keywords": "Ohm law voltage current resistance complete circuit rheostat measurements ammeter voltmeter"
+    },
+    "retele-electrice": {
+      "title": "Electrical networks",
+      "description": "Kirchhoff’s laws, resistor and source combinations, a circuit board and measuring instruments.",
+      "alt": "Network with two sources and three branches for Kirchhoff’s laws",
+      "tags": [
+        "Circuits",
+        "Kirchhoff",
+        "Experiments",
+        "Offline"
+      ],
+      "keywords": "electrical networks kirchhoff junction branch loop series parallel generator resistor shunt ammeter voltmeter"
     }
   }
 }

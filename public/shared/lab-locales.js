@@ -227,5 +227,11 @@ export const labNamespaces = {
     "chapters/miscare",
     "courses/shared",
     "labs/mecanica-cereasca/ui"
+  ],
+  "retele-electrice": [
+    "common",
+    "chapters/electricitate-magnetism-circuite",
+    "courses/shared",
+    "courses/retele-electrice/ui"
   ]
 };

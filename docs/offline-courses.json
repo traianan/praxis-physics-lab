@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-13T16:53:46.898Z",
+  "builtAt": "2026-11-13T17:51:52.279Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -346,6 +346,17 @@
       "id": "mecanica-cereasca",
       "file": "public/simulari/mecanica-cereasca/mecanica-cereasca.zip",
       "sha256": "5a4452f95163bc53f7f647bc427e6e1f1190d2952a79d5853104750a9ee0c2a6",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "retele-electrice",
+      "file": "public/simulari/retele-electrice/retele-electrice.zip",
+      "sha256": "94685785d96e56a812247009eaa4c39861b8fcf82ff2f5a3071e1174b4275676",
       "languages": [
         "ro",
         "en"

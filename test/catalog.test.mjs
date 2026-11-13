@@ -5,9 +5,9 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
- assert.deepEqual(latest.map(sim=>sim.id),['mecanica-cereasca','interactiunea-gravitationala','unde-seismice']);
- assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-13','2026-11-13','2026-11-11']);
- assert.equal(getLatestSimulations(1)[0].id,'mecanica-cereasca');
+ assert.deepEqual(latest.map(sim=>sim.id),['retele-electrice','mecanica-cereasca','interactiunea-gravitationala']);
+ assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-13','2026-11-13','2026-11-13']);
+ assert.equal(getLatestSimulations(1)[0].id,'retele-electrice');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
@@ -25,8 +25,8 @@ test('exactly the seven physics chapters, with unique stable ids', () => {
  assert.equal(chapters.length,7); assert.equal(new Set(chapters.map(c=>c.id)).size,7);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite']);
 });
-test('thirty-three real local laboratories are available, including Ohm, optics and seismic waves', async () => {
- assert.equal(simulations.length,33);
+test('thirty-four real local laboratories are available, including Ohm, optics and seismic waves', async () => {
+ assert.equal(simulations.length,34);
  const seismic=simulations.find(s=>s.id==='unde-seismice');
  assert.equal(seismic.chapter,'sunete-si-unde');assert.equal(seismic.status,'available');
  assert.ok((await stat(new URL('../public/'+seismic.image,import.meta.url))).size>0);
