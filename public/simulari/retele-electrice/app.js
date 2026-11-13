@@ -875,8 +875,8 @@ const LabK = (() => {
     }
 
     if (refs.vA && refs.vB) {
-      refs.vA.textContent = 'V_A = 0 V (referință)';
-      refs.vB.textContent = `V_B − V_A = ${fmt(-sol.I3 * P.R3, 2)} V`;
+      networkSvgText(refs.vA,'V_A = 0 V (referință)');
+      networkSvgText(refs.vB,`V_B − V_A = ${fmt(-sol.I3 * P.R3, 2)} V`);
     }
 
     const led = $('#ledGlobal');
@@ -903,7 +903,7 @@ const LabK = (() => {
     if(!P.closed)rows[1][1]=`V_A − V_B = E₂ − U_K = ${fmt(E2,2)} − (${fmt(E2-dAB,2)})`;
     const r = rows[pathIdx];
     out.innerHTML = `<div class="eq-row"><span>${r[0]}</span><b>${fmt(r[2], 2)} V</b></div>
-      <div class="muted" style="margin-top:8px">${r[1]} = <b>${fmt(r[2], 2)} V</b></div>
+      <div class="muted" style="margin-top:8px">${r[1].replace(/V_([AB])/g,"V<sub>$1</sub>")} = <b>${fmt(r[2], 2)} V</b></div>
       <div class="hint">Toate cele trei trasee dau <b>același</b> rezultat: tensiunea între două puncte nu depinde de drum.
       Diferența maximă între metode: <b>${fmt(Math.max(Math.abs(dAB - p1), Math.abs(dAB - p2), Math.abs(p1 - p2)), 6)} V</b>.</div>`;
   }

@@ -1,5 +1,7 @@
 # PROGRESS
 
+- 2026-11-13: Corectați indicii potențialelor V_A/V_B din „Ochiuri de rețea”: actualizările dinamice SVG folosesc tspan cu indice inferior, iar formulele celor trei trasee folosesc subscript HTML. Corectat contrastul rezultatului nodal `.eq-row b.sum` și al rezultatelor negative pe fundal deschis. Lecția și ZIP-ul regenerate pentru publicare.
+
 - 2026-11-13: Eliminat exercițiul separat cu patru curenți („Ecuațiile nodurilor”) din „Nodul electric”, deoarece nu era conectat la simularea cu trei curenți. Păstrate simularea, sliderele, echilibrarea și explicația pliabilă „Interpretarea modelului”. Eliminată inițializarea exercițiului; Web și ZIP regenerate pentru publicare.
 
 - 2026-11-13: Corectată secțiunea teoretică „Legile lui Kirchhoff”: schema introductivă redesenată cu sursa conectată și ambele ochiuri închise, rezistoare și etichete în cadru. Legea I folosește MathML cu limita k=1 sub semnul sumei și n deasupra, iar k este indicele curentului. Etichetele SVG și pictogramele cardurilor pe fundal deschis folosesc culoare închisă pentru contrast. Web/ZIP regenerate, build reușit, audit 36 stări (9 secțiuni × RO/EN × desktop/mobil emulat), fără overflow sau transformări uppercase; verificată prezența schemei și a notației MathML. Capturi și raport în `outputs/theory-*.png`, `outputs/networks-theory-report.json`. Publicare pe GitHub autorizată de utilizator.

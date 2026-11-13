@@ -40,6 +40,8 @@ core=core.replace("current = id;","current = id;document.querySelectorAll('[data
 let js=core+'\n'+await read('scripts/adaptations/networks-wire-currents.js');
 for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=await original('js/'+name+'.js');
  if(name==='kirchhoff'){
+  s=s.replace("refs.vA.textContent = 'V_A = 0 V (referință)';","networkSvgText(refs.vA,'V_A = 0 V (referință)');").replace('refs.vB.textContent = `V_B − V_A = ${fmt(-sol.I3 * P.R3, 2)} V`;','networkSvgText(refs.vB,`V_B − V_A = ${fmt(-sol.I3 * P.R3, 2)} V`);');
+  s=s.replace('${r[1]} = <b>', '${r[1].replace(/V_([AB])/g,"V<sub>$1</sub>")} = <b>');
   s=s.replace('  NodeBuilder.init();','');
   const boundary=s.indexOf('const LabK =');let node=s.slice(0,boundary);
   node=node.replace('I3: 3.5','I3: -3.5').replaceAll('S.I1 + S.I2 - S.I3','S.I1 + S.I2 + S.I3').replace('const target = +(S.I1 + S.I2).toFixed(1);','const target = -(+(S.I1 + S.I2).toFixed(1));');
