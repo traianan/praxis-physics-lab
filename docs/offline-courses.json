@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-13T16:21:13.775Z",
+  "builtAt": "2026-11-13T16:53:46.898Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -335,6 +335,17 @@
       "id": "interactiunea-gravitationala",
       "file": "public/simulari/interactiunea-gravitationala/interactiunea-gravitationala.zip",
       "sha256": "1e46b745907405434dde93897d17a4cf3d62fba218a364c8c001e6526ae2bc9c",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "mecanica-cereasca",
+      "file": "public/simulari/mecanica-cereasca/mecanica-cereasca.zip",
+      "sha256": "5a4452f95163bc53f7f647bc427e6e1f1190d2952a79d5853104750a9ee0c2a6",
       "languages": [
         "ro",
         "en"

@@ -221,5 +221,11 @@ export const labNamespaces = {
     "chapters/miscare",
     "courses/shared",
     "courses/interactiunea-gravitationala/ui"
+  ],
+  "mecanica-cereasca": [
+    "common",
+    "chapters/miscare",
+    "courses/shared",
+    "labs/mecanica-cereasca/ui"
   ]
 };

@@ -1,0 +1,56 @@
+/* Native Praxis lesson; scene size and typography stay independent of screen DPR. */
+#praxis-original.celestial{max-width:80rem;margin-inline:auto;padding:0 1rem 2rem;min-width:0}
+.celestial [hidden]{display:none!important}
+.celestial .tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin:.6rem 0}
+.celestial :is(button,select,input,textarea){font:inherit;color:inherit;max-width:100%;box-sizing:border-box}
+.celestial :is(button,select,input[type=number]){min-height:44px;border:1px solid var(--praxis-color-border,#cfd8cb);border-radius:10px;background:var(--praxis-color-surface,#fffefa);padding:.45rem .7rem}
+.celestial button{cursor:pointer;touch-action:manipulation}
+.celestial .tab[aria-selected=true]{background:#e4eeea;color:#17685f;border-color:#17685f}
+.celestial button:disabled{opacity:.55;cursor:default}
+.celestial h2{font-size:1.35rem;line-height:1.3;margin:.7rem 0}
+.celestial h3{font-size:1.1rem;line-height:1.4;margin:0 0 .6rem}
+.celestial p{line-height:1.65;margin:.55rem 0}
+.celestial-workspace{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(19rem,.8fr);gap:.8rem;align-items:start}
+.celestial-card{min-width:0;background:var(--praxis-color-surface,#fffefa);border:1px solid var(--praxis-color-border,#d2dbce);border-radius:14px;padding:1rem;margin-bottom:.8rem}
+.celestial canvas{display:block;width:100%;height:20rem;max-height:390px;border-radius:12px;background:#0d2131;touch-action:pan-y}
+.celestial-actions,.celestial-options,.celestial-preferences{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;margin:.65rem 0}
+.celestial-preferences{justify-content:flex-end;font-size:.875rem}
+.celestial-preferences label,.celestial-check{display:flex;align-items:center;gap:.45rem;min-height:44px}
+.celestial input[type=checkbox],.celestial input[type=radio]{width:18px;height:18px;flex:none;accent-color:#17685f}
+.celestial-control{display:grid;grid-template-columns:minmax(0,1fr) 6.5rem;gap:.3rem .6rem;align-items:center;margin:.65rem 0}
+.celestial-control label{font-size:.875rem;line-height:1.45}
+.celestial-control small{white-space:nowrap}
+.celestial .celestial-slider{grid-column:1/-1;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:.5rem;align-items:center}
+.celestial input[type=range]{min-width:0;width:100%;height:44px;accent-color:#17685f;touch-action:pan-y}
+.celestial-readouts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.7rem 0}
+.celestial-readouts>div{border:1px solid var(--praxis-color-border,#d2dbce);padding:.55rem;border-radius:10px;min-width:0}
+.celestial-readouts dt{font-size:.8rem;color:var(--praxis-color-muted,#526c60);line-height:1.35}
+.celestial-readouts dd{margin:.25rem 0 0;font-size:1.1rem;line-height:1.4;color:var(--praxis-color-primary,#17685f);overflow-wrap:anywhere}
+.celestial-readouts small{font-size:.75rem;white-space:nowrap}
+.celestial-caption{font-size:.875rem;color:var(--praxis-color-muted,#526c60)}
+.celestial-note{border:1px solid var(--praxis-color-border,#d2dbce);padding:.6rem .9rem;border-radius:12px;margin:.65rem 0;background:var(--praxis-color-surface,#fffefa)}
+.celestial summary{cursor:pointer;min-height:44px;align-content:center;font-weight:600}
+.celestial-formula{max-width:100%;overflow-x:auto;padding:.65rem .2rem;line-height:1.8}
+.celestial-reading{max-width:64rem;margin:auto}
+.celestial-problems,.celestial-quiz{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.celestial-quiz fieldset{margin:0;border:1px solid var(--praxis-color-border,#d2dbce)}
+.celestial-quiz legend{font-weight:600;max-width:100%;padding:.2rem}
+.celestial-quiz label{display:flex;align-items:center;gap:.6rem;min-height:44px;padding:.35rem 0}
+.celestial-table-wrap{max-width:100%;overflow:auto;touch-action:pan-x pan-y}
+.celestial table{border-collapse:collapse;width:100%;font-size:.875rem}
+.celestial :is(th,td){padding:.5rem;text-align:left;border-bottom:1px solid var(--praxis-color-border,#d2dbce);white-space:nowrap}
+.celestial textarea{display:block;width:100%;min-height:8rem;padding:.7rem;border:1px solid var(--praxis-color-border,#d2dbce);border-radius:10px;background:#fffefa;resize:vertical}
+.celestial-map li{padding:.5rem 0;line-height:1.6}
+.celestial .correct{color:#17685f}.celestial .incorrect{color:#a23c33}
+@media(max-width:900px){.celestial-workspace{grid-template-columns:1fr}.celestial canvas{height:18rem;max-height:none}.celestial-problems,.celestial-quiz{grid-template-columns:1fr}}
+@media(max-width:500px){#praxis-original.celestial{padding-inline:.6rem}.celestial-card{padding:.65rem}.celestial canvas{height:17rem}.celestial-preferences{justify-content:flex-start}}
+@media(prefers-reduced-motion:reduce){.celestial *{scroll-behavior:auto}}
+
+.celestial .celestial-slider input[type=range]{width:100%}
+
+body[data-praxis-course="mecanica-cereasca"] :is(.praxis-lab-nav,.site-info-links){box-sizing:border-box}
+/* Match the centered reading frame used by the other mechanics lessons. */
+body[data-praxis-course="mecanica-cereasca"] #praxis-original.celestial{width:100%;max-width:80rem;box-sizing:border-box;margin-inline:auto}
+body[data-praxis-course="mecanica-cereasca"] .praxis-lab-nav{width:100%;max-width:80rem;margin-inline:auto;box-sizing:border-box;padding-inline:1rem}
+:root:not([data-board=true]) body[data-praxis-course="mecanica-cereasca"] .praxis-lab-intro{margin-inline:max(1rem,calc((100% - 80rem)/2 + 1rem))!important}
+@media(max-width:500px){body[data-praxis-course="mecanica-cereasca"] .praxis-lab-nav{padding-inline:.6rem}:root:not([data-board=true]) body[data-praxis-course="mecanica-cereasca"] .praxis-lab-intro{margin-inline:.6rem!important}}

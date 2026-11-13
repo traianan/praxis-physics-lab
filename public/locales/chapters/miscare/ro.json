@@ -9,7 +9,15 @@
     "Calcul vectorial": "Calcul vectorial",
     "Viteza și accelerația": "Viteza și accelerația",
     "Mișcarea curbilinie plană": "Mișcarea curbilinie plană",
-    "Interacțiunea gravitațională": "Interacțiunea gravitațională"
+    "Interacțiunea gravitațională": "Interacțiunea gravitațională",
+    "Mecanica cerească": "Mecanica cerească",
+    "De la arii egale la orbite și sateliți.": "De la arii egale la orbite și sateliți.",
+    "Explorează legile lui Kepler, momentul cinetic, perioadele orbitale și condițiile unei orbite geostaționare.": "Explorează legile lui Kepler, momentul cinetic, perioadele orbitale și condițiile unei orbite geostaționare.",
+    "Orbită eliptică, stea într-un focar și sectoare de arii egale": "Orbită eliptică, stea într-un focar și sectoare de arii egale",
+    "Kepler": "Kepler",
+    "Orbite": "Orbite",
+    "Sateliți": "Sateliți",
+    "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar": "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar"
   },
   "simulations": {
     "miscarea-rectilinie": {

@@ -5,15 +5,15 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
- assert.deepEqual(latest.map(sim=>sim.id),['interactiunea-gravitationala','unde-seismice','reflexia-refractia']);
- assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-13','2026-11-11','2026-11-10']);
- assert.equal(getLatestSimulations(1)[0].id,'interactiunea-gravitationala');
+ assert.deepEqual(latest.map(sim=>sim.id),['mecanica-cereasca','interactiunea-gravitationala','unde-seismice']);
+ assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-13','2026-11-13','2026-11-11']);
+ assert.equal(getLatestSimulations(1)[0].id,'mecanica-cereasca');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
  const home=getHomeSimulations();assert.equal(home.length,10);
  for(const chapter of chapters)assert.ok(home.filter(sim=>sim.chapter===chapter.id).length<=2);
- assert.equal(findSimulations('miscare').length,7);assert.equal(findSimulations('','curbilinie osculator').length,1);
+ assert.equal(findSimulations('miscare').length,8);assert.equal(findSimulations('','curbilinie osculator').length,1);
 });
 
 test('Home previews select the latest two laboratories in each chapter',()=>{
@@ -25,8 +25,8 @@ test('exactly the seven physics chapters, with unique stable ids', () => {
  assert.equal(chapters.length,7); assert.equal(new Set(chapters.map(c=>c.id)).size,7);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite']);
 });
-test('thirty-two real local laboratories are available, including Ohm, optics and seismic waves', async () => {
- assert.equal(simulations.length,32);
+test('thirty-three real local laboratories are available, including Ohm, optics and seismic waves', async () => {
+ assert.equal(simulations.length,33);
  const seismic=simulations.find(s=>s.id==='unde-seismice');
  assert.equal(seismic.chapter,'sunete-si-unde');assert.equal(seismic.status,'available');
  assert.ok((await stat(new URL('../public/'+seismic.image,import.meta.url))).size>0);
@@ -54,7 +54,7 @@ test('search is accent-insensitive and combines chapter and all search words',()
  assert.equal(findSimulations('','sunet').length,2);
 });
 test('empty chapters remain empty instead of containing invented simulations',()=>{
- assert.equal(findSimulations('miscare').length,7);
+ assert.equal(findSimulations('miscare').length,8);
  assert.deepEqual(findSimulations('lucru-energie-putere').map(s=>s.id),['legea-lui-hooke']);
  assert.equal(findSimulations('fenomene-cuantice').length,0);
 });

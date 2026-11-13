@@ -438,5 +438,27 @@
         "layout": "native"
       }
     ]
+  },
+  "mecanica-cereasca": {
+    "workspaces": [
+      {
+        "selector": "#kepler .celestial-workspace",
+        "scene": ".celestial-visual",
+        "controls": "aside",
+        "layout": "native"
+      },
+      {
+        "selector": "#periods .celestial-workspace",
+        "scene": ".celestial-visual",
+        "controls": "aside",
+        "layout": "native"
+      },
+      {
+        "selector": "#satellites .celestial-workspace",
+        "scene": ".celestial-visual",
+        "controls": "aside",
+        "layout": "native"
+      }
+    ]
   }
 }

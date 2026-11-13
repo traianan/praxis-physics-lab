@@ -650,5 +650,24 @@ export const simulations = [
     ],
     "keywords": "gravitatie gravitationala newton atractie universala camp greutate masa orbita sateliti ISS GPS geostationar",
     "status": "available"
+  },
+  {
+    "id": "mecanica-cereasca",
+    "addedOn": "2026-11-13",
+    "addedOrder": 2,
+    "chapter": "miscare",
+    "title": "Mecanica cerească",
+    "subtitle": "De la arii egale la orbite și sateliți.",
+    "description": "Explorează legile lui Kepler, momentul cinetic, perioadele orbitale și condițiile unei orbite geostaționare.",
+    "href": "./simulari/mecanica-cereasca/index.html",
+    "image": "./assets/mecanica-cereasca.svg",
+    "alt": "Orbită eliptică, stea într-un focar și sectoare de arii egale",
+    "tags": [
+      "Kepler",
+      "Orbite",
+      "Sateliți"
+    ],
+    "keywords": "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar",
+    "status": "available"
   }
 ];
