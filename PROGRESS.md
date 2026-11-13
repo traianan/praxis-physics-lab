@@ -1,5 +1,7 @@
 # PROGRESS
 
+- 2026-11-13: Publicată stabilizarea grilei în `43baf26f93e9bb8baa2b0059ed845c040aa92ce2`; Vercel `success`: https://vercel.com/traians-projects-cnni/physicslab/21YW88vyaYutKwoUFqxuGpbFAYhn. Verificat direct pe site la 1366/1024/390px și text 100%/200%: poziția grilei rămâne constantă (diferență sub 1px) la Mută → Conductor → Șterge → Mută. CSS publicat identic cu buildul după normalizarea CRLF/LF; ZIP identic binar, ambele HTTP 200. Mobil emulat.
+
 - 2026-11-13: Stabilizată bara editorului de circuite: mesajele uneltelor ocupă un rând separat, cu înălțime rezervată, astfel încât schimbarea Mută/Conductor/Șterge nu deplasează grila. Textul rămâne accesibil prin derulare locală dacă depășește spațiul rezervat. Build și ZIP regenerate. Verificate pozițiile grilei la 1366/1024/390px, text 100%/200%, build Web și arhivă offline cu HTTP blocat: deplasare sub 1px în toate cazurile. Publicare pe GitHub autorizată de utilizator.
 
 - 2026-11-13: Publicată mutarea conductorilor în `5a1cf9f4735bbc8bf13062040e21d38ac755f7ba`; Vercel `success`: https://vercel.com/traians-projects-cnni/physicslab/HzSEQQmLmQ2SDuTHkk6awafQpHSu. Verificat direct pe site la 1366/390px, mouse/touch emulat: deplasare conductor vertical și diagonal, ambele capete pe grilă, revenire pe conexiunile inițiale și restabilirea curentului ~2 A; regresii mutare/rotire piese trecute, fără erori JavaScript. app.js, HTML și ZIP servite HTTP 200, identice cu buildul verificat. Rapoarte/capturi: `outputs/networks-wire-move-live-5a1cf9f/`.
