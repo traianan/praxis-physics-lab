@@ -1,0 +1,11 @@
+{
+  "id": "interactiunea-gravitationala",
+  "source": "Interactiunea-gravitationala.html",
+  "sha256": "93b0a473c80024b68b199f951c681b228f849d76ef9a4042385d163967d97eb6",
+  "adaptations": [
+    "Shared navigation, presentation, bilingual content and offline export",
+    "Scoped Praxis palette and keyboard-accessible activity tabs",
+    "Shared Canvas sampling and suspended hidden orbital animation",
+    "Removed external tracking, session-only source link and unrelated branding; quiz does not persist without consent"
+  ]
+}

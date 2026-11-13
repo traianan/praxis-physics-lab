@@ -8,7 +8,8 @@
     "Mișcarea rectilinie": "Mișcarea rectilinie",
     "Calcul vectorial": "Calcul vectorial",
     "Viteza și accelerația": "Viteza și accelerația",
-    "Mișcarea curbilinie plană": "Mișcarea curbilinie plană"
+    "Mișcarea curbilinie plană": "Mișcarea curbilinie plană",
+    "Interacțiunea gravitațională": "Interacțiunea gravitațională"
   },
   "simulations": {
     "miscarea-rectilinie": {
@@ -84,6 +85,18 @@
         "Dinamică",
         "Experimente",
         "Test",
+        "Offline"
+      ]
+    },
+    "interactiunea-gravitationala": {
+      "title": "Interacțiunea gravitațională",
+      "subtitle": "Gravitație, câmp și orbite circulare",
+      "description": "Trei laboratoare despre atracția universală, câmpul gravitațional și sateliți, șapte probleme rezolvate și zece întrebări.",
+      "alt": "Două corpuri care se atrag și un satelit pe orbită circulară",
+      "tags": [
+        "Gravitație",
+        "Dinamică",
+        "Sateliți",
         "Offline"
       ]
     }

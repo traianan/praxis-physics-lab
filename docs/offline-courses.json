@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-12T19:51:04.356Z",
+  "builtAt": "2026-11-13T15:41:35.777Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -324,6 +324,17 @@
       "id": "unde-seismice",
       "file": "public/simulari/unde-seismice/unde-seismice.zip",
       "sha256": "2e20864a617ea6a42c4df7f412411966f7da7a6472b915828e71eaa36c04930a",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "interactiunea-gravitationala",
+      "file": "public/simulari/interactiunea-gravitationala/interactiunea-gravitationala.zip",
+      "sha256": "31cc6c7570e939e8d089fce8f3c45c7aa81f21c4706ba12dc3764001f2e09159",
       "languages": [
         "ro",
         "en"

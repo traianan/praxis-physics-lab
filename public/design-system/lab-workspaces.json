@@ -418,5 +418,25 @@
         "scene": ".lab-main"
       }
     ]
+  },
+  "interactiunea-gravitationala": {
+    "workspaces": [
+      {
+        "selector": "#newton .lab",
+        "scene": ".card:first-child",
+        "controls": ".card:last-child",
+        "layout": "native"
+      },
+      {
+        "selector": "#camp .two",
+        "layout": "native"
+      },
+      {
+        "selector": "#sateliti .lab",
+        "scene": ".card:first-child",
+        "controls": ".card:last-child",
+        "layout": "native"
+      }
+    ]
   }
 }

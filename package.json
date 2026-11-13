@@ -44,7 +44,8 @@
     "import:wire": "node scripts/import-wire.mjs",
     "import:ohm": "node scripts/import-ohm.mjs",
     "import:reflexia-refractia": "node scripts/import-reflexia-refractia.mjs",
-    "offline:reflexia-refractia": "node scripts/build-courses-offline.mjs --course=reflexia-refractia"
+    "offline:reflexia-refractia": "node scripts/build-courses-offline.mjs --course=reflexia-refractia",
+    "import:gravity": "node scripts/import-gravity.mjs"
   },
   "devDependencies": {
     "@xyflow/react": "^12.12.1",

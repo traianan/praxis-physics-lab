@@ -630,5 +630,25 @@ export const simulations = [
     ],
     "keywords": "politropa politropic presiune volum temperatura gaz ideal izoterma adiabata izobara izocora caldura lucru mecanic energie",
     "status": "available"
+  },
+  {
+    "id": "interactiunea-gravitationala",
+    "addedOn": "2026-11-13",
+    "addedOrder": 1,
+    "chapter": "miscare",
+    "title": "Interacțiunea gravitațională",
+    "subtitle": "Gravitație, câmp și orbite circulare",
+    "description": "Trei laboratoare despre atracția universală, câmpul gravitațional și sateliți, șapte probleme rezolvate și zece întrebări.",
+    "href": "./simulari/interactiunea-gravitationala/index.html",
+    "image": "./assets/interactiunea-gravitationala.svg",
+    "alt": "Două corpuri care se atrag și un satelit pe orbită circulară",
+    "tags": [
+      "Gravitație",
+      "Dinamică",
+      "Sateliți",
+      "Offline"
+    ],
+    "keywords": "gravitatie gravitationala newton atractie universala camp greutate masa orbita sateliti ISS GPS geostationar",
+    "status": "available"
   }
 ];

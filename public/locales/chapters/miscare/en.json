@@ -8,7 +8,8 @@
     "Mișcarea rectilinie": "Rectilinear motion",
     "Calcul vectorial": "Vector algebra",
     "Viteza și accelerația": "Velocity and acceleration",
-    "Mișcarea curbilinie plană": "Planar curvilinear motion"
+    "Mișcarea curbilinie plană": "Planar curvilinear motion",
+    "Interacțiunea gravitațională": "Gravitational interaction"
   },
   "simulations": {
     "miscarea-rectilinie": {
@@ -84,6 +85,18 @@
         "Dynamics",
         "Experiments",
         "Quiz",
+        "Offline"
+      ]
+    },
+    "interactiunea-gravitationala": {
+      "title": "Gravitational interaction",
+      "subtitle": "Gravity, fields and circular orbits",
+      "description": "Three laboratories on universal gravitation, gravitational fields and satellites, seven solved problems and ten questions.",
+      "alt": "Two attracting bodies and a satellite in a circular orbit",
+      "tags": [
+        "Gravity",
+        "Dynamics",
+        "Satellites",
         "Offline"
       ]
     }

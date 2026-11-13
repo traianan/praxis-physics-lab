@@ -1,0 +1,15 @@
+:scope{--bg:var(--praxis-color-canvas);--panel:var(--praxis-color-surface);--text:var(--praxis-color-ink);--muted:var(--praxis-color-muted);--line:var(--praxis-color-border);--cyan:var(--praxis-color-primary);--purple:var(--praxis-color-petrol);--gold:var(--praxis-color-error);--shadow:none;color:var(--text);color-scheme:light;width:100%;max-width:80rem;margin:auto;min-width:0}
+[hidden]{display:none!important}
+section{padding:.5rem 0;border:0;min-width:0;width:100%;max-width:100%}
+h2{font-size:1.4rem;margin:.25rem 0 .75rem;letter-spacing:normal}h3{font-size:1.05rem}p{margin:.5rem 0}.eyebrow{display:none}
+.card{padding:1rem;border-radius:var(--praxis-radius-card,14px);min-width:0}.grid,.two,.lab{gap:.75rem;min-width:0}.lab{grid-template-columns:minmax(0,1.2fr) minmax(19rem,1fr)}
+.canvas{height:180px;max-width:100%;min-width:0}.chart{height:120px;margin-top:.5rem}#orbitCanvas{height:230px}
+#gChart{height:230px}
+#forceResult{font-size:1.1rem;font-weight:600;line-height:1.4;margin:.25rem 0}
+.formula{font-size:1.3rem;padding:.3rem 0;overflow-wrap:anywhere}.number{font-size:1.7rem}.small,.checks label{font-size:.85rem}.note{margin-top:.5rem;padding:.5rem .75rem}.actions,.checks{margin-top:.5rem;gap:.5rem}
+.metrics{margin:.5rem 0;grid-template-columns:repeat(3,minmax(0,1fr))}.metric b{font-size:1.1rem;overflow-wrap:anywhere}.metric span{font-size:.8rem}.metric{min-width:0;padding:.5rem}
+label.control{margin:.25rem 0}label.control>span{gap:.5rem;flex-wrap:wrap;margin-bottom:0}input[type=range]{min-height:44px;margin:0}button,select,input[type=number],input[type=text],summary,.checks label,.options label{min-height:44px}.checks label,.options label{display:inline-flex;align-items:center;gap:.4rem}.result:empty{display:none}.result{min-height:0}.number{line-height:1.25}
+details{padding:.5rem .75rem;margin:.5rem 0}summary{display:list-item;align-content:center}.orbit-theory{margin-bottom:.5rem}
+@media(max-width:850px){.lab,.two{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.card{padding:.75rem}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.canvas{height:230px}section{padding:.5rem 0}}
+@media print{section[hidden]{display:block!important}.lab{display:grid!important}.actions,.checks{display:none!important}details>*{display:block!important}}

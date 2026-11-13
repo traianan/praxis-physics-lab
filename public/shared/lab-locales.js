@@ -215,5 +215,11 @@ export const labNamespaces = {
     "chapters/caldura-termodinamica",
     "courses/shared",
     "courses/transformarea-politropa/ui"
+  ],
+  "interactiunea-gravitationala": [
+    "common",
+    "chapters/miscare",
+    "courses/shared",
+    "courses/interactiunea-gravitationala/ui"
   ]
 };
