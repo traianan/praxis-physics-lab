@@ -96,6 +96,25 @@ for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=
  if(name==='problems')s=s.replace('let i = 0, score = 0, answered = false;','let i = 0, score = 0, answered = false, timer;').replace('setTimeout(() => {','timer = setTimeout(() => {').replace('function restart() { i = 0;','function restart() { clearTimeout(timer); i = 0;').replace("Router.on('quiz', render);",'// Keep the current question and score when revisiting this section.');
  // The long battery plate is the positive terminal (right/bottom unless flipped).
  if(name==='board'){
+  s=s.replace('    // mod mutare\n    if (hit) {',`    // Move an entire conductor without changing its length or direction.
+    if(!hit&&wire){
+      selected=null;
+      drag={wire,startX:pt.x,startY:pt.y,x1:wire.x1,y1:wire.y1,x2:wire.x2,y2:wire.y2,moved:false};
+      svg.setPointerCapture(e.pointerId);render();e.preventDefault();return;
+    }
+    // mod mutare
+    if (hit) {`);
+  s=s.replace('    const p = drag.p;',`    if(drag.wire){
+      const dx=clamp(snap(pt.x-drag.startX),-Math.min(drag.x1,drag.x2),760-Math.max(drag.x1,drag.x2));
+      const dy=clamp(snap(pt.y-drag.startY),-Math.min(drag.y1,drag.y2),460-Math.max(drag.y1,drag.y2));
+      const w=drag.wire;
+      if(w.x1!==drag.x1+dx||w.y1!==drag.y1+dy){Object.assign(w,{x1:drag.x1+dx,y1:drag.y1+dy,x2:drag.x2+dx,y2:drag.y2+dy});drag.moved=true;Sound.slide();compute();}
+      return;
+    }
+    const p = drag.p;`);
+  s=s.replace('    if (drag) {\n      if (drag.moved)', '    if (drag) {\n      if(drag.wire)inspector(null);\n      if (drag.moved)');
+  s=s.replace("S.mode === 'del' ? 'pointer' : 'default'","S.mode === 'del' ? 'pointer' : S.mode === 'move' ? 'grab' : 'default'");
+  s=s.replaceAll('Mută: trage piesele; click = selectare.','Mută: trage piesele sau conductorii; click pe piesă = selectare.');
   s=s.replace('      wireDrag = null;\n      compute();','      wireDrag = null;\n      $(\'#gMode .seg[data-mode="move"]\').click();\n      compute();');
   s=s.replace("svg.addEventListener('pointercancel', pointerUp);",`svg.addEventListener('pointercancel', e=>{if(wireDrag){wireDrag=null;$('#gMode .seg[data-mode="move"]').click();}else pointerUp(e);});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&svg.closest('.view')?.classList.contains('active')&&S.mode==='wire'){wireDrag=null;$('#gMode .seg[data-mode="move"]').click();e.preventDefault();}});`);

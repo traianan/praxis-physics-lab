@@ -1865,7 +1865,7 @@ const Board = (() => {
         class: 'wire' + (w.live ? ' hi' : ''), 'data-wire': w.id,
         'stroke-width': w.live ? 3 : 2.4,
       }, gW);
-      path.style.cursor = S.mode === 'del' ? 'pointer' : 'default';
+      path.style.cursor = S.mode === 'del' ? 'pointer' : S.mode === 'move' ? 'grab' : 'default';
       if (w.live) path.setAttribute('filter', 'url(#glowC)');
     });
 
@@ -2064,6 +2064,12 @@ const Board = (() => {
       e.preventDefault();
       return;
     }
+    // Move an entire conductor without changing its length or direction.
+    if(!hit&&wire){
+      selected=null;
+      drag={wire,startX:pt.x,startY:pt.y,x1:wire.x1,y1:wire.y1,x2:wire.x2,y2:wire.y2,moved:false};
+      svg.setPointerCapture(e.pointerId);render();e.preventDefault();return;
+    }
     // mod mutare
     if (hit) {
       selected = hit.id;
@@ -2085,6 +2091,13 @@ const Board = (() => {
       return;
     }
     if (!drag) return;
+    if(drag.wire){
+      const dx=clamp(snap(pt.x-drag.startX),-Math.min(drag.x1,drag.x2),760-Math.max(drag.x1,drag.x2));
+      const dy=clamp(snap(pt.y-drag.startY),-Math.min(drag.y1,drag.y2),460-Math.max(drag.y1,drag.y2));
+      const w=drag.wire;
+      if(w.x1!==drag.x1+dx||w.y1!==drag.y1+dy){Object.assign(w,{x1:drag.x1+dx,y1:drag.y1+dy,x2:drag.x2+dx,y2:drag.y2+dy});drag.moved=true;Sound.slide();compute();}
+      return;
+    }
     const p = drag.p;
     const nx = clamp(snap(pt.x - drag.dx), LEN + 0, 760 - LEN);
     const ny = clamp(snap(pt.y - drag.dy), LEN, 460-LEN);
@@ -2111,6 +2124,7 @@ const Board = (() => {
       return;
     }
     if (drag) {
+      if(drag.wire)inspector(null);
       if (drag.moved) { Sound.drop(); compute(); }
       drag = null;
     }
@@ -2304,7 +2318,7 @@ const Board = (() => {
       Sound.click();
       msg(S.mode === 'wire' ? 'Conductor: trage de la o bornă la alta.'
         : S.mode === 'del' ? 'Ștergere: click pe o piesă sau pe un conductor.'
-          : 'Mută: trage piesele; click = selectare.');
+          : 'Mută: trage piesele sau conductorii; click pe piesă = selectare.');
       render();
     }));
     const gWire = $('#gWire'), gDel = $('#gDelete');

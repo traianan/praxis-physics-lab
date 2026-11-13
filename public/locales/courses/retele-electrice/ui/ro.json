@@ -458,6 +458,7 @@
     "conductori": "conductori",
     "Σ puteri debitate (surse)": "Σ puteri debitate (surse)",
     "noduri distincte": "noduri distincte",
-    "Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor.": "Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor."
+    "Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor.": "Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor.",
+    "Mută: trage piesele sau conductorii; click pe piesă = selectare.": "Mută: trage piesele sau conductorii; click pe piesă = selectare."
   }
 }
