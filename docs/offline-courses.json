@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-13T18:18:34.973Z",
+  "builtAt": "2026-11-13T18:29:43.853Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -356,7 +356,7 @@
     {
       "id": "retele-electrice",
       "file": "public/simulari/retele-electrice/retele-electrice.zip",
-      "sha256": "785bbb6307cc211805b5ac267cc04ea93bc101f391275591ca08d6f10ea191b1",
+      "sha256": "32e1ac08d3cfacd3cbddd71a5b5861a3cb054331838cf203e7f3024ed02d26a5",
       "languages": [
         "ro",
         "en"

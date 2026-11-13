@@ -47,13 +47,13 @@ body{
 .brand{display:flex;align-items:center;gap:11px;padding:4px 6px 8px}
 .brand-mark{filter:drop-shadow(0 0 14px rgba(34,211,238,.35))}
 .brand-title{font-weight:800;letter-spacing:.2px;font-size:16px}
-.brand-sub{font-size:11px;color:var(--txt-mute);letter-spacing:.4px;text-transform:uppercase}
+.brand-sub{font-size:11px;color:var(--txt-mute);letter-spacing:.4px;text-transform:none}
 .nav{display:flex;flex-direction:column;gap:16px;overflow-y:auto;padding-right:4px;flex:1}
 .nav::-webkit-scrollbar{width:7px}
 .nav::-webkit-scrollbar-thumb{background:rgba(148,163,184,.24);border-radius:99px}
 .nav-group{display:flex;flex-direction:column;gap:4px}
 .nav-group-label{
-  font-size:10.5px;text-transform:uppercase;letter-spacing:.9px;color:var(--txt-mute);
+  font-size:10.5px;text-transform:none;letter-spacing:.9px;color:var(--txt-mute);
   display:flex;align-items:center;gap:7px;padding:2px 10px 6px;font-weight:700;
 }
 .dotK,.dotG,.dotP{width:7px;height:7px;border-radius:50%;display:inline-block}
@@ -114,7 +114,7 @@ body{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(600px 240px at 82% 0%,rgba(255,255,255,.07),transparent 70%);
 }
-.eyebrow{font-size:10.6px;letter-spacing:1.4px;text-transform:uppercase;color:var(--txt-mute);font-weight:700;margin-bottom:9px}
+.eyebrow{font-size:10.6px;letter-spacing:1.4px;text-transform:none;color:var(--txt-mute);font-weight:700;margin-bottom:9px}
 .hero h1{margin:0 0 12px;font-size:clamp(26px,3.1vw,38px);line-height:1.1;letter-spacing:-.6px}
 .hero p{margin:0;color:var(--txt-dim);font-size:14.4px;line-height:1.65;max-width:70ch}
 .hero-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
@@ -140,7 +140,7 @@ body{
   padding:20px 22px;box-shadow:var(--shadow);backdrop-filter:blur(12px);position:relative;
 }
 .card h3{margin:0 0 10px;font-size:16px;letter-spacing:-.2px}
-.card h4{margin:14px 0 8px;font-size:12.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--txt-mute)}
+.card h4{margin:14px 0 8px;font-size:12.5px;text-transform:none;letter-spacing:.7px;color:var(--txt-mute)}
 .card p{margin:0 0 10px;color:var(--txt-dim);font-size:13.6px;line-height:1.65}
 .card-ic{
   width:34px;height:34px;display:grid;place-items:center;border-radius:10px;margin-bottom:10px;
@@ -158,7 +158,7 @@ body{
 .formula-head{display:flex;align-items:center;gap:11px;margin-bottom:10px;flex-wrap:wrap}
 .formula-head h3{margin:0}
 .badge{
-  font-size:10.4px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;
+  font-size:10.4px;font-weight:800;letter-spacing:.8px;text-transform:none;
   padding:5px 11px;border-radius:8px;
 }
 .badge-k{background:rgba(34,211,238,.16);color:#a5f3fc;border:1px solid rgba(34,211,238,.4)}
@@ -184,7 +184,7 @@ body{
 .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
 .stat{display:flex;flex-direction:column;gap:3px;padding:9px 12px;border-radius:10px;
   background:rgba(148,163,184,.07);border:1px solid var(--stroke)}
-.stat-l{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--txt-mute)}
+.stat-l{font-size:10.5px;text-transform:none;letter-spacing:.6px;color:var(--txt-mute)}
 .stat-v{font-family:var(--mono);font-size:13px;color:#bff3ff;font-weight:700}
 #soundLabel{display:inline}
 .switch.row{display:inline-flex}
@@ -312,7 +312,7 @@ hr.rule{border:none;border-top:1px solid var(--stroke);margin:16px 0}
 .res{
   padding:11px 13px;border-radius:11px;background:rgba(148,163,184,.07);border:1px solid var(--stroke);
 }
-.res .rl{font-size:10.4px;text-transform:uppercase;letter-spacing:.7px;color:var(--txt-mute);display:block;margin-bottom:4px}
+.res .rl{font-size:10.4px;text-transform:none;letter-spacing:.7px;color:var(--txt-mute);display:block;margin-bottom:4px}
 .res .rv{font-family:var(--mono);font-size:15px;color:#e8f6ff;font-weight:700}
 .res.neg .rv{color:#fda4af}
 .res.pos .rv{color:#86efac}
@@ -324,7 +324,7 @@ hr.rule{border:none;border-top:1px solid var(--stroke);margin:16px 0}
 .eq-row b{color:var(--k)}
 .eq-row .sum{color:#cfe3ff;font-weight:600}
 .eq-row.neg b{color:#fda4af}
-.eq-row .eq-tag{font-size:10px;color:var(--txt-mute);text-transform:uppercase;letter-spacing:.7px}
+.eq-row .eq-tag{font-size:10px;color:var(--txt-mute);text-transform:none;letter-spacing:.7px}
 .steps{margin-top:12px;border-top:1px dashed var(--stroke);padding-top:12px}
 .steps ol{margin:0;padding-left:18px;color:var(--txt-dim);font-size:12.8px;line-height:1.75}
 .steps .mono{font-family:var(--mono);color:#cfe3ff}
@@ -343,7 +343,7 @@ hr.rule{border:none;border-top:1px solid var(--stroke);margin:16px 0}
   padding:14px;border-radius:14px;background:rgba(148,163,184,.06);border:1px solid var(--stroke);
 }
 .gcard-head{
-  font-size:11px;text-transform:uppercase;letter-spacing:.9px;color:var(--g);font-weight:800;margin-bottom:6px;
+  font-size:11px;text-transform:none;letter-spacing:.9px;color:var(--g);font-weight:800;margin-bottom:6px;
 }
 
 /* ---------------- LAB (board) ---------------- */
@@ -401,7 +401,7 @@ hr.rule{border:none;border-top:1px solid var(--stroke);margin:16px 0}
 }
 .prob-title{font-size:14px;font-weight:700;flex:1}
 .prob-tag{
-  font-size:9.8px;text-transform:uppercase;letter-spacing:.7px;padding:4px 9px;border-radius:7px;
+  font-size:9.8px;text-transform:none;letter-spacing:.7px;padding:4px 9px;border-radius:7px;
   background:rgba(245,158,11,.14);color:#fde68a;border:1px solid rgba(245,158,11,.3);
 }
 .prob-body{display:none;padding:0 20px 20px}
@@ -410,7 +410,7 @@ hr.rule{border:none;border-top:1px solid var(--stroke);margin:16px 0}
   padding:13px 16px;border-radius:12px;background:rgba(148,163,184,.06);border-left:3px solid var(--k2);
   font-size:13.2px;color:#dbe7fb;line-height:1.7;margin-bottom:14px;
 }
-.prob-body h4{color:var(--k);font-size:11px;letter-spacing:1px;text-transform:uppercase;margin:16px 0 8px}
+.prob-body h4{color:var(--k);font-size:11px;letter-spacing:1px;text-transform:none;margin:16px 0 8px}
 .step{
   display:flex;gap:12px;margin-bottom:11px;padding:11px 14px;border-radius:11px;
   background:rgba(148,163,184,.05);border:1px solid var(--stroke);

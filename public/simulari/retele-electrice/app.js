@@ -1131,7 +1131,7 @@ const GenLab = (() => {
       svgEl('path', { d: `M${Lx + 60} ${By} H${Lx + 42}`, stroke: '#7dd3fc', 'stroke-width': 2.2, markerEnd: 'url(#arrC)' }, g);
     }
 
-    svgEl('text', { x: 24, y: 26, class: 'note', text: S.mode === 'serie' ? `${n} generatoare în SERIE` : `${n} generatoare în PARALEL` }, g);
+    svgEl('text', { x: 24, y: 26, class: 'note', text: S.mode === 'serie' ? `${n} generatoare în serie` : `${n} generatoare în paralel` }, g);
     svgEl('text', { x: 24, y: 44, class: 'e-label', text: `E_grup = ${fmt(v.Eg, 2)} V   ·   r_grup = ${fmt(v.rg, 3)} Ω` }, g);
 
     flow = new Flow(svg, {});

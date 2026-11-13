@@ -67,7 +67,7 @@ for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=
   s=s.replace('return { init, update, P, get sol()', 'return { init, update, solve, P, get sol()');
  }
  // Instrument sliders are mounted once. Revisiting a tab must not duplicate listeners.
- if(name==='grouping')s=s.replace("    svg.innerHTML = SVG_DEFS;", "    if(flow)flow.stop();\n    svg.innerHTML = SVG_DEFS;")
+ if(name==='grouping')s=s.replaceAll('generatoare în SERIE','generatoare în serie').replaceAll('generatoare în PARALEL','generatoare în paralel').replace("    svg.innerHTML = SVG_DEFS;", "    if(flow)flow.stop();\n    svg.innerHTML = SVG_DEFS;")
   .replace('Ty = 78','Ty = 100')
   .replace("svgEl('path', { d: `M${Lx} ${Ty} H${Rx}`, class: 'wire' }, g);", "// No conductor across the generator bank: it would short the sources.")
   .replace('H${Lx + 110}', 'H${Lx + 122}').replace('M${Lx + 158}', 'M${Lx + 146}')
@@ -85,7 +85,8 @@ for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=
 js+='\n'+await read('scripts/adaptations/networks-content.js');
 js+='\n// PRAXIS_INTEGRATION_START\n'+await read('scripts/adaptations/networks-diagrams.js')+'\n'+await read('scripts/adaptations/networks-integration.js');
 await write('public/simulari/'+id+'/app.js','(()=>{\n'+js+'\n})();\n');
-await write('public/simulari/'+id+'/source.css',await original('css/style.css'));
+// Preserve scientific case (r ≠ R, η ≠ Η); never uppercase UI labels.
+await write('public/simulari/'+id+'/source.css',(await original('css/style.css')).replaceAll('text-transform:uppercase','text-transform:none'));
 await write('public/simulari/'+id+'/style.css',await read('scripts/adaptations/networks.css'));
 const messages=JSON.parse(await read('scripts/adaptations/networks-en.json'));
 for(const lang of ['ro','en'])await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?messages:Object.fromEntries(Object.keys(messages).map(k=>[k,k]))},null,2)+'\n');
