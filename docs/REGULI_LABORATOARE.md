@@ -87,6 +87,9 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 - Verifică efectiv schimbarea RO → EN → RO. Lungimea textului tradus nu trebuie să ascundă controale ori să schimbe starea experimentului.
 - Păstrează ținte interactive de minimum 44 px și comportamentul tactil comun; pentru modul tactil folosește dimensiunile prevăzute de sistemul vizual.
 - Asigură acces cu tastatura, focus vizibil, etichete textuale și stări ARIA coerente pentru taburi, meniuri și secțiuni pliabile.
+- Pentru deget/stylus, reutilizează `public/shared/touch-interaction.js`, inclus automat în antet și exporturi: fără selecție accidentală a textului, evidențiere nativă colorată sau meniu la apăsare lungă pe conținutul ne-editabil. Nu bloca global `touchstart`, `touchmove`, `pointerdown`, clickul, drag-and-drop-ul sau zoomul.
+- Păstrează selecția, copierea/lipirea și meniurile native în câmpuri, `textarea` și `contenteditable`, inclusiv jurnale. Marchează `data-praxis-selectable` numai zonele care necesită explicit selectare tactilă. Mouse-ul și tastatura reactivează comportamentul normal; nu elimina focusul vizibil.
+- La modificări tactile comune, verifică fiecare laborator: apăsare lungă pe text/link, editare, slidere, taburi, derulare și manipularea scenelor. Regenerează și verifică toate arhivele autonome; pentru optica încorporată rulează și `sync:optics`.
 - Respectă textele și punctuația aprobate. Titlul Home în română este pe două rânduri: „Fizica are sens” / „Când o explorezi”, fără puncte. Nu îl rescrie incidental la adăugarea unui laborator.
 
 ## 9. Aceeași implementare în distribuții
