@@ -36,7 +36,9 @@ body[data-praxis-course="retele-electrice"] .site-info-links{box-sizing:border-b
 
 .networks .mrow .mv{color:var(--praxis-color-primary)}.networks .bilanț span{color:var(--praxis-color-primary)!important}
 .networks .tool-row{display:flex;flex-wrap:wrap}.networks .tool-row button{flex:1 1 100%;white-space:normal;word-break:normal;padding:.5rem}
-.networks #gCanvas{max-height:24rem}.networks .board-msg{white-space:normal}
+.networks #gCanvas{max-height:24rem}/* Reserve a separate instruction row so tool changes never move the grid. */
+.networks .board-msg{flex:0 0 100%;box-sizing:border-box;min-width:0;margin-left:0;white-space:normal;font-size:.875rem;line-height:1.5;height:3em;overflow:auto;text-align:left}
+@media(max-width:600px){.networks .board-msg{height:4.5em}}
 .networks #view-k-lab .control-card{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
 .networks #view-k-lab .control-card>:is(h3,hr,.btn-row){grid-column:1/-1}
 .networks #view-k-lab .control-card hr{margin:0}
