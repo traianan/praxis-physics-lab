@@ -1854,15 +1854,9 @@ const Board = (() => {
   /* ---------- randare completă ---------- */
   function render() {
     svg.innerHTML = SVG_DEFS;
-    // grilă
-    const gGrid = svgEl('g', { opacity: .55 }, svg);
-    for (let x = 0; x <= 760; x += GRID) {
-      svgEl('line', { x1: x, y1: 0, x2: x, y2: 460, stroke: 'rgba(148,163,184,.055)', 'stroke-width': .7 }, gGrid);
-    }
-    for (let y = 0; y <= 460; y += GRID) {
-      svgEl('line', { x1: 0, y1: y, x2: 760, y2: y, stroke: 'rgba(148,163,184,.055)', 'stroke-width': .7 }, gGrid);
-    }
-
+    // Visible connection lattice, shared with every terminal and wire endpoint.
+    const gGrid=svgEl('g', {class:'network-grid','pointer-events':'none'},svg);
+    for(let x=0;x<=760;x+=GRID)for(let y=0;y<=460;y+=GRID)svgEl('circle',{cx:x,cy:y,r:1.25,fill:'#7594ac',opacity:.65},gGrid);
     // conductorii
     const gW = svgEl('g', {}, svg);
     S.wires.flatMap(w=>w.flowSegments||[w]).forEach(w => {
@@ -2063,7 +2057,7 @@ const Board = (() => {
     }
     if (S.mode === 'wire') {
       const t = findTerminal(pt);
-      const anchor = t ? { x: t.x, y: t.y, p: t.p, i: t.i } : { x: snap(pt.x), y: snap(pt.y) };
+      const anchor = t ? { x: t.x, y: t.y, p: t.p, i: t.i } : { x: clamp(snap(pt.x),0,760), y: clamp(snap(pt.y),0,460) };
       wireDrag = { x1: anchor.x, y1: anchor.y, from: anchor };
       render();
       svg.setPointerCapture(e.pointerId);
@@ -2086,18 +2080,18 @@ const Board = (() => {
   function pointerMove(e) {
     const pt = toSvg(e);
     if (wireDrag) {
-      wireDrag.x2 = pt.x; wireDrag.y2 = pt.y;
+      wireDrag.x2 = clamp(snap(pt.x),0,760); wireDrag.y2 = clamp(snap(pt.y),0,460);
       render();
       return;
     }
     if (!drag) return;
     const p = drag.p;
     const nx = clamp(snap(pt.x - drag.dx), LEN + 0, 760 - LEN);
-    const ny = clamp(snap(pt.y - drag.dy), 30, 430);
+    const ny = clamp(snap(pt.y - drag.dy), LEN, 460-LEN);
     if (nx !== p.x || ny !== p.y) {
       p.x = nx; p.y = ny; drag.moved = true;
       Sound.slide();
-      render();
+      compute();
     }
   }
 
@@ -2105,7 +2099,7 @@ const Board = (() => {
     if (wireDrag) {
       const pt = toSvg(e);
       const t = findTerminal(pt);
-      const ex = t ? t.x : snap(pt.x), ey = t ? t.y : snap(pt.y);
+      const ex = t ? t.x : clamp(snap(pt.x),0,760), ey = t ? t.y : clamp(snap(pt.y),0,460);
       const sameAsStart = Math.abs(ex - wireDrag.x1) < 1 && Math.abs(ey - wireDrag.y1) < 1;
       if (!sameAsStart) {
         S.wires.push({ id: 'w' + (S.id++), x1: wireDrag.x1, y1: wireDrag.y1, x2: ex, y2: ey });
@@ -2131,7 +2125,7 @@ const Board = (() => {
   function addPiece(type, x, y, props = {}) {
     const def = PIECE_DEFS[type];
     const p = {
-      id: 'p' + (S.id++), type, x: snap(x), y: snap(y), rot: 0, ...JSON.parse(JSON.stringify(def)), ...props,
+      id: 'p' + (S.id++), type, x: clamp(snap(x),LEN,760-LEN), y: clamp(snap(y),LEN,460-LEN), rot: 0, ...JSON.parse(JSON.stringify(def)), ...props,
     };
     delete p.name; delete p.kind;
     S.pieces.push(p);
@@ -2250,9 +2244,9 @@ const Board = (() => {
   /* ---------- circuit inițial ---------- */
   function loadExample() {
     S.pieces = []; S.wires = []; S.id = 1;
-    const W = (x1, y1, x2, y2) => S.wires.push({ id: 'w' + (S.id++), x1, y1, x2, y2 });
+    const W = (x1, y1, x2, y2) => S.wires.push({ id: 'w' + (S.id++), x1:snap(x1), y1:snap(y1), x2:snap(x2), y2:snap(y2) });
     const P = (type, x, y, props = {}) => {
-      const p = { id: 'p' + (S.id++), type, x, y, rot: 0, ...JSON.parse(JSON.stringify(PIECE_DEFS[type])), ...props };
+      const p = { id: 'p' + (S.id++), type, x: snap(x), y: snap(y), rot: 0, ...JSON.parse(JSON.stringify(PIECE_DEFS[type])), ...props };
       delete p.name; delete p.kind; S.pieces.push(p); return p;
     };
     // ---- rețeaua inițială: 2 noduri (B sus, A jos), 3 laturi, 2 surse reale

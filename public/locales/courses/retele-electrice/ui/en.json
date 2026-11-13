@@ -457,6 +457,7 @@
     "piese": "components",
     "conductori": "wires",
     "Σ puteri debitate (surse)": "Σ supplied power (sources)",
-    "noduri distincte": "distinct nodes"
+    "noduri distincte": "distinct nodes",
+    "Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor.": "Drag components from the palette to the board. Both terminals snap to visible grid points. To reconnect, place the terminals on the wire endpoints."
   }
 }
