@@ -109,7 +109,7 @@
   "— t.e.m. sursa 1": "— source 1 emf",
   "— rezistență internă": "— internal resistance",
   "— t.e.m. sursa 2": "— source 2 emf",
-  "↺ Valorile din manual": "↺ Textbook values",
+  "↺ Resetare": "↺ Reset",
   "K închis": "K closed",
   "Ecuații, rezultate și trasee": "Equations, results and paths",
   "Sistemul de ecuații": "System of equations",
@@ -448,5 +448,7 @@
   "Cu R_s = {r} Ω: la I = {i} A, prin ampermetru trec {a} A · prin șunt {s} A ✔": "With R_s = {r} Ω and I = {i} A: ammeter current {a} A · shunt current {s} A ✔",
   "Fără curent: verifică legăturile și întrerupătoarele.": "No current: check connections and switches.",
   "Curent calculat în rețea": "Calculated current in the network",
-  "Măsurători și bilanț": "Measurements and power balance"
+  "Măsurători și bilanț": "Measurements and power balance",
+  "(latura AD)": "(branch AD)",
+  "I3 (latura AD)": "I3 (branch AD)"
 }

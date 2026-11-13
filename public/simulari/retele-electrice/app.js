@@ -81,7 +81,7 @@ const NS = 'http://www.w3.org/2000/svg';
 function svgEl(tag, attrs = {}, parent = null) {
   const e = document.createElementNS(NS, tag);
   for (const k in attrs) {
-    if (k === 'text') e.textContent = attrs[k];
+    if (k === 'text') networkSvgText(e,attrs[k]);
     else e.setAttribute(k, attrs[k]);
   }
   if (parent) parent.appendChild(e);
@@ -446,7 +446,7 @@ class Flow {
     this.t = 0;
     this._raf = null;
     this._last = 0;
-    this._layer = svgEl('g', { class: 'flow-layer' }, svg);
+    this._layer = svgEl('g', { class: 'flow-layer' }, svg);networkSourceGaps(svg,this._layer);
   }
   /** path: element SVG; getI: () => amperaj; dir: +1 / -1 (sensul considerat pozitiv) */
   add(path, { getI, color = '#7dd3fc', spacing = 34, r = 3.1, showNeg = '#fda4af' }) {
@@ -498,7 +498,7 @@ class Flow {
    ============================================================ */
 const NodeAnim = (() => {
   let flow = null, built = false;
-  const S = { I1: 2, I2: 1.5, I3: 3.5, speed: 1, closed: true };
+  const S = { I1: 2, I2: 1.5, I3: -3.5, speed: 1, closed: true };
 
   function build() {
     const svg = $('#animNode');
@@ -511,7 +511,7 @@ const NodeAnim = (() => {
     const P1 = [70, 76], P2 = [70, 360], P3 = [548, 218];
     const pIn1 = svgEl('path', { d: `M${P1[0]} ${P1[1]} L${A[0]} ${A[1]}`, class: 'wire' }, g);
     const pIn2 = svgEl('path', { d: `M${P2[0]} ${P2[1]} L${A[0]} ${A[1]}`, class: 'wire' }, g);
-    const pOut = svgEl('path', { d: `M${A[0]} ${A[1]} L${P3[0]} ${P3[1]}`, class: 'wire' }, g);
+    const pOut = svgEl('path', { d: `M${P3[0]} ${P3[1]} L${A[0]} ${A[1]}`, class: 'wire' }, g);
 
     const angle = (p, q) => Math.atan2(q[1] - p[1], q[0] - p[0]) * 180 / Math.PI;
     const resAlong = (p, q, frac, label) => {
@@ -534,8 +534,8 @@ const NodeAnim = (() => {
     svgEl('text', { x: 0, y: -20, class: 'i-label', text: 'R₃', 'text-anchor': 'middle' }, g3);
 
     // sursa + întrerupătorul
-    battSymbol(g, 470, 218, false);
-    svgEl('text', { x: 470, y: 196, class: 'e-label', text: 'E, r', 'text-anchor': 'middle' }, g);
+
+
     const sw = svgEl('g', { transform: 'translate(522,218)' }, g);
     svgEl('circle', { cx: 0, cy: 0, r: 3.4, fill: '#93a8c9' }, sw);
     const swLever = svgEl('line', { x1: 0, y1: 0, x2: 13, y2: 0, stroke: '#fbbf24', 'stroke-width': 2.6, 'stroke-linecap': 'round' }, sw);
@@ -559,8 +559,8 @@ const NodeAnim = (() => {
     const a3 = arrow(432, 218, 0, 'I₃', 'out');
 
     // bare de bilanț
-    svgEl('text', { x: 56, y: 26, class: 'note', text: 'sarcina care intră' }, g);
-    svgEl('text', { x: 540, y: 26, class: 'note', text: 'sarcina care iese', 'text-anchor': 'end' }, g);
+    svgEl('text', { x: 56, y: 26, class: 'note', text: 'curent care intră (+)' }, g);
+    svgEl('text', { x: 540, y: 26, class: 'note', text: 'curent care iese (−)', 'text-anchor': 'end' }, g);
 
     // trasee de flux (electronii)
     flow = new Flow(svg);
@@ -575,12 +575,12 @@ const NodeAnim = (() => {
   }
 
   function update() {
-    const sum = S.I1 + S.I2 - S.I3;
+    const sum = S.I1 + S.I2 + S.I3;
     $('#oI1').textContent = S.I1.toFixed(1) + ' A';
     $('#oI2').textContent = S.I2.toFixed(1) + ' A';
     const o3 = $('#oI3'); if (o3) o3.textContent = S.I3.toFixed(1) + ' A';
-    $('#i3Val').textContent = S.I3.toFixed(1) + ' A';
-    $('#sumLive').textContent = (S.I1 + S.I2).toFixed(1);
+    $('#i3Val').textContent = (S.closed ? sum : 0).toFixed(1) + ' A';
+    $('#sumLive').textContent = [S.I1,S.I2,S.I3].map(v=>{v=S.closed?v:0;return v<0?'('+v.toFixed(1)+')':v.toFixed(1);}).join(' + ');
     const liveEl = $('#sumLive').parentElement;
     liveEl.style.color = Math.abs(sum) < 0.001 ? '#176449' : '#a23444';
     const target = $('#i3Val');
@@ -588,11 +588,18 @@ const NodeAnim = (() => {
 
     $('#animHint').innerHTML = S.closed
       ? (Math.abs(sum) < 0.001
-        ? '✔ Nod echilibrat: <b>I₁ + I₂ − I₃ = 0</b>. Sarcina care intră = sarcina care iese.'
-        : `✖ Nodul nu este echilibrat: suma algebrică este <b>${SIGNED(sum, 1)} A</b>. Ajustează până când I₃ = I₁ + I₂.`)
+        ? '✔ Nod echilibrat: <b>I₁ + I₂ + I₃ = 0</b>. Sarcina care intră = sarcina care iese.'
+        : `✖ Nodul nu este echilibrat: suma algebrică este <b>${SIGNED(sum, 1)} A</b>. Ajustează până când I₃ = −(I₁ + I₂).`)
       : 'Întrerupătorul K este deschis → prin nici o latură nu circulă curent.';
 
     if (S.refs) {
+      [[S.refs.a1,S.I1,false],[S.refs.a2,S.I2,false],[S.refs.a3,S.I3,true]].forEach(([arrow,current,right])=>{
+        const path=arrow.querySelector('path'),reverse=right?current>0:current<0;
+        path.setAttribute('transform',reverse?'rotate(180)':'rotate(0)');
+        path.setAttribute('fill',current<0?'#fda4af':'#7dd3fc');
+        arrow.style.opacity=S.closed&&Math.abs(current)>.001?'1':'0.25';
+        arrow.querySelector('text').style.fill=current<0?'#fda4af':'#7dd3fc';
+      });
       S.refs.swLever.setAttribute('transform', S.closed ? 'rotate(0)' : 'rotate(-38)');
       S.refs.pIn1.classList.toggle('hi', S.closed);
       S.refs.pOut.classList.toggle('hi', S.closed);
@@ -603,7 +610,7 @@ const NodeAnim = (() => {
   function setLed(on) {
     const led = $('#ledGlobal');
     led.className = 'led ' + (on ? 'on' : 'off');
-    $('#pillText').textContent = on ? 'circuit închis · ' + (S.I1 + S.I2).toFixed(1) + ' A în nod' : 'circuit deschis';
+    $('#pillText').textContent = on ? 'circuit închis · ' + [S.I1,S.I2,S.I3].filter(i=>i>0).reduce((a,b)=>a+b,0).toFixed(1) + ' A în nod' : 'circuit deschis';
   }
 
   function init() {
@@ -635,7 +642,7 @@ const NodeAnim = (() => {
       update();
     });
     $('#btnBalance').addEventListener('click', () => {
-      const target = +(S.I1 + S.I2).toFixed(1);
+      const target = -(+(S.I1 + S.I2).toFixed(1));
       const el = $('#sI3');
       if (el) { el.value = target; S.I3 = target; }
       Sound.ok();
@@ -961,9 +968,9 @@ const NodeBuilder = (() => {
   }
   function calc() {
     const pos = currents.filter(c => c.dir === 1), neg = currents.filter(c => c.dir === -1);
-    const lhs = currents.map(c => (c.dir === 1 ? '+' : '−') + c.name).join(' ').replace(/^\+/, '');
+    const lhs = currents.map(c => c.name).join(' + ');
     $('#nbEq').innerHTML = `
-      <div class="formula-small" style="text-align:left">Σ I = ${lhs} = 0</div>
+      <div class="formula-small" style="text-align:left">Σ I = ${lhs} = 0</div><div class="formula-small">${currents.map(c=>c.name+(c.dir===1?" &gt; 0":" &lt; 0")).join(" · ")}</div>
       <p class="hint">Sensul ales este <b>arbitrar</b>: ${pos.length ? pos.map(c => c.name).join(', ') : '—'}
         intră în nod, ${neg.length ? neg.map(c => c.name).join(', ') : '—'} iese din nod.
         Dacă suma nu se închide cu datele reale, înseamnă că un sens ales este greșit — nu legea.</p>`;
@@ -1063,6 +1070,7 @@ const GenLab = (() => {
 
   function drawGenerators(v) {
     const svg = $('#genCanvas');
+    if(flow)flow.stop();
     svg.innerHTML = SVG_DEFS;
     const g = svgEl('g', {}, svg);
     const n = S.n;
@@ -1070,7 +1078,7 @@ const GenLab = (() => {
 
     if (S.mode === 'serie') {
       // buclă dreptunghiulară, generatoare pe latura de sus
-      const L = 90, Rt = 520, Ty = 78, By = 300;
+      const L = 90, Rt = 520, Ty = 100, By = 300;
       const slot = (Rt - L) / n;
       svgEl('path', { d: `M${L} ${Ty} H${Rt} V${By} H${L} Z`, class: 'wire' }, g);
       for (let i = 0; i < n; i++) {
@@ -1095,12 +1103,12 @@ const GenLab = (() => {
       const y0 = Ty + 46, y1 = By - 66;
       svgEl('path', { d: `M${Lx} ${Ty} V${By}`, class: 'wire' }, g);   // șina A (+)
       svgEl('path', { d: `M${Rx} ${Ty} V${By}`, class: 'wire' }, g);   // șina B (−)
-      svgEl('path', { d: `M${Lx} ${Ty} H${Rx}`, class: 'wire' }, g);   // legătura de sus
+      // No conductor across the generator bank: it would short the sources.   // legătura de sus
       const slot = n > 1 ? (y1 - y0) / (n - 1) : 0;
       for (let i = 0; i < n; i++) {
         const y = n > 1 ? y0 + slot * i : (y0 + y1) / 2;
-        svgEl('path', { d: `M${Lx} ${y} H${Lx + 110}`, class: 'wire' }, g);
-        svgEl('path', { d: `M${Lx + 158} ${y} H${Rx}`, class: 'wire' }, g);
+        svgEl('path', { d: `M${Lx} ${y} H${Lx + 122}`, class: 'wire' }, g);
+        svgEl('path', { d: `M${Lx + 146} ${y} H${Rx}`, class: 'wire' }, g);
         const gg = svgEl('g', { transform: `translate(${Lx + 134},${y})` }, g);
         svgEl('line', { x1: -12, y1: -13, x2: -12, y2: 13, class: 'batt-plate' }, gg);
         svgEl('line', { x1: 12, y1: -7, x2: 12, y2: 7, class: 'batt-thin' }, gg);
@@ -1109,14 +1117,14 @@ const GenLab = (() => {
         svgEl('text', { x: 0, y: 28, class: 'note', text: 'E, r', 'text-anchor': 'middle' }, gg);
       }
       // consumatorul, pe ramura de jos a scării
-      svgEl('path', { d: `M${Lx} ${By} H${Lx + 150}`, class: 'wire' }, g);
+      svgEl('path', { d: `M${Lx} ${By} H${Lx + 152}`, class: 'wire' }, g);
       svgEl('rect', { x: Lx + 152, y: By - 11, width: 62, height: 22, rx: 4, class: 'res-box' }, g);
       svgEl('text', { x: Lx + 183, y: By + 30, class: 'i-label', text: `R = ${fmt(S.R, 1)} Ω`, 'text-anchor': 'middle' }, g);
       svgEl('path', { d: `M${Lx + 214} ${By} H${Rx}`, class: 'wire' }, g);
       svgEl('text', { x: Lx - 14, y: Ty - 8, class: 'node-label', text: 'A' }, g);
       svgEl('text', { x: Rx + 8, y: Ty - 8, class: 'node-label', text: 'B' }, g);
       pIn = svgEl('path', {
-        d: `M${Lx} ${By} V${Ty} H${Rx} V${By} H${Lx}`,
+        d: `M${Lx} ${By} V${n > 1 ? y0 : (y0+y1)/2} H${Rx} V${By} H${Lx}`,
         fill: 'none', stroke: 'none',
       }, g);
       pLoad = pIn;
@@ -1848,7 +1856,7 @@ const Board = (() => {
     S.pieces.forEach(p => gP.appendChild(pieceSVG(p)));
 
     // animație de curent (dash-uri care alunecă pe ramurile sub curent)
-    const gF = svgEl('g', {}, svg);
+    const gF = svgEl('g', {}, svg);networkSourceGaps(svg,gF);
     const addFlow = (x1, y1, x2, y2, I) => {
       const l = svgEl('line', { x1, y1, x2, y2, class: 'fwire' }, gF);
       const dur = clamp(1.6 / Math.max(0.25, Math.abs(I)), 0.35, 3);
@@ -2317,6 +2325,98 @@ PROBLEMS[4].answer='a) I ≈ 54,9 mA; b) I′ ≈ 49,057 mA, I₁ ≈ 9,434 mA, 
 PROBLEMS[4].verify=()=>{const R=20,RV=2000,g=1/2+1/3,j=1/2+1.1/3,U=j/(g+1/R),Uv=j/(g+1/R+1/RV);return `R ∥ R_V = ${fmt(1/(1/R+1/RV),4)} Ω; U′ = ${fmt(U,6)} V; U = ${fmt(Uv,6)} V; ΔU = ${fmt((U-Uv)*1000,3)} mV`;};
 
 // PRAXIS_INTEGRATION_START
+// Clean theoretical diagrams. Wires stop exactly at component terminals;
+// branch junctions sit outside symbols, and labels stay inside the viewBox.
+function networkSvgText(el,value){
+  const text=String(value);el.textContent='';
+  // SVG has no HTML <sub>; use explicit baseline shifts, including word indices.
+  const pattern=/_([A-Za-z]+)/g;let start=0,match;
+  while((match=pattern.exec(text))){el.append(document.createTextNode(text.slice(start,match.index)));const sub=document.createElementNS(NS,'tspan');sub.setAttribute('baseline-shift','sub');sub.setAttribute('font-size','75%');sub.textContent=match[1];el.append(sub);start=pattern.lastIndex;}
+  el.append(document.createTextNode(text.slice(start)));
+}
+function networkSourceGaps(svg,flowLayer){
+  const id=svg.id+'-source-gaps';svg.querySelector('#'+id)?.remove();
+  const mask=svgEl('mask',{id,maskUnits:'userSpaceOnUse',x:-1000,y:-1000,width:4000,height:4000},svg);
+  svgEl('rect',{x:-1000,y:-1000,width:4000,height:4000,fill:'white'},mask);
+  svg.querySelectorAll('.batt-plate').forEach(plate=>{
+    const group=plate.parentElement,thin=group.querySelector('.batt-thin');if(!thin)return;
+    const x=Math.min(+plate.getAttribute('x1'),+thin.getAttribute('x1'));
+    const y=Math.min(+plate.getAttribute('y1'),+thin.getAttribute('y1'));
+    const right=Math.max(+plate.getAttribute('x2'),+thin.getAttribute('x2'));
+    const bottom=Math.max(+plate.getAttribute('y2'),+thin.getAttribute('y2'));
+    const horizontal=plate.getAttribute('x1')===plate.getAttribute('x2');
+    const box=horizontal?{x:x+1,y:y-2,width:right-x-2,height:bottom-y+4}:{x:x-2,y:y+1,width:right-x+4,height:bottom-y-2};
+    // Cover the underlying wire only between plates; keep all source terminals.
+    group.querySelectorAll(':scope > .network-source-gap').forEach(e=>e.remove());
+    const cover=svgEl('rect',{...box,fill:'#0b192b',class:'network-source-gap'});group.insertBefore(cover,plate);
+    let matrix=new DOMMatrix();const chain=[];for(let p=group;p&&p!==svg;p=p.parentElement)chain.unshift(p);
+    for(const p of chain){const t=p.transform?.baseVal.consolidate();if(t)matrix=matrix.multiply(t.matrix);}
+    svgEl('rect',{...box,fill:'black',transform:`matrix(${matrix.a} ${matrix.b} ${matrix.c} ${matrix.d} ${matrix.e} ${matrix.f})`},mask);
+  });
+  flowLayer.setAttribute('mask',`url(#${id})`);
+}
+function networkDiagram(svg,w,h){
+  svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML='';
+  const g=svgEl('g',{'class':'network-schematic'},svg);
+  const wire=d=>svgEl('path',{d,fill:'none',stroke:'#9bb1c9','stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'},g);
+  const label=(x,y,text,color='#bceaff')=>svgEl('text',{x,y,text,fill:color,'font-size':14,'text-anchor':'middle'},g);
+  const dot=(x,y)=>svgEl('circle',{cx:x,cy:y,r:3,fill:'#67dbe9'},g);
+  const resistor=(x,y,name)=>{svgEl('rect',{x:x-24,y:y-9,width:48,height:18,rx:2,fill:'#182b43',stroke:'#9bb1c9','stroke-width':2},g);label(x,y-17,name);};
+  const meter=(x,y,name)=>{svgEl('circle',{cx:x,cy:y,r:13,fill:'#0b192b',stroke:'#67dbe9','stroke-width':2},g);label(x,y+5,name);};
+  // Horizontal source: terminal plates at x−6 and x+6, positive on right.
+  const battery=(x,y,name='E, r')=>{wire(`M${x-24} ${y} H${x-6} M${x+6} ${y} H${x+24}`);for(const [dx,half] of [[-6,10],[6,17]])svgEl('path',{d:`M${x+dx} ${y-half} V${y+half}`,stroke:'#ffd45b','stroke-width':2},g);label(x,y-24,name,'#ffd45b');};
+  return {wire,label,dot,resistor,meter,battery,g};
+}
+drawSchSeries=function(svg){
+  const d=networkDiagram(svg,460,210);
+  d.wire('M40 60 H116 M164 60 H266 M314 60 H420 V165 H254 M206 165 H40 V60');
+  d.resistor(140,60,'R₁');d.resistor(290,60,'R₂');d.battery(230,165);
+  for(const [x,u] of [[140,'U₁'],[290,'U₂']]){
+    d.wire(`M${x-38} 60 V105 H${x-13} M${x+13} 105 H${x+38} V60`);
+    d.dot(x-38,60);d.dot(x+38,60);d.meter(x,105,'V');d.label(x,133,u);
+  }
+  d.label(105,190,'I = I₁ = I₂');
+};
+drawSchParallel=function(svg){
+  const d=networkDiagram(svg,460,230);
+  d.wire('M45 55 H176 M224 55 H302 M328 55 H410 V185 H334 M286 185 H193 M167 185 H45 V55 M45 115 H176 M224 115 H302 M328 115 H410');
+  d.resistor(200,55,'R₁');d.resistor(200,115,'R₂');d.meter(315,55,'A₁');d.meter(315,115,'A₂');d.meter(180,185,'A');d.battery(310,185,'E');
+  d.dot(45,115);d.dot(410,115);d.label(28,105,'M');d.label(430,105,'N');d.label(100,215,'I = I₁ + I₂');
+};
+drawSchGenSer=function(svg){
+  const d=networkDiagram(svg,300,150);
+  d.wire('M30 55 H76 M124 55 H176 M224 55 H270 V110 H174 M126 110 H30 V55');
+  d.battery(100,55);d.battery(200,55);d.resistor(150,110,'R');
+};
+drawSchGenPar=function(svg){
+  const d=networkDiagram(svg,300,200);
+  d.wire('M35 50 H126 M174 50 H265 V160 H174 M126 160 H35 V50 M35 105 H126 M174 105 H265');
+  d.battery(150,50);d.battery(150,105);d.resistor(150,160,'R');
+  d.dot(35,105);d.dot(265,105);d.label(18,96,'A');d.label(282,96,'B');
+};
+drawHeroG=function(svg){
+  const d=networkDiagram(svg,320,330);
+  d.label(45,25,'serie');
+  d.wire('M30 65 H76 M124 65 H196 M244 65 H290 V120 H184 M136 120 H30 V65');
+  d.resistor(100,65,'R₁');d.resistor(220,65,'R₂');d.battery(160,120);
+  d.label(50,175,'paralel');
+  d.wire('M30 210 H136 M184 210 H290 V295 H184 M136 295 H30 V210 M30 250 H136 M184 250 H290');
+  d.resistor(160,210,'R₁');d.resistor(160,250,'R₂');d.battery(160,295);
+  d.dot(30,250);d.dot(290,250);
+};
+drawSchSunt=function(svg){
+  const d=networkDiagram(svg,440,180);
+  d.wire('M30 60 H207 M233 60 H410 M95 60 V125 H196 M244 125 H345 V60');
+  d.meter(220,60,'A');d.resistor(220,125,'Rₛ');d.dot(95,60);d.dot(345,60);
+  d.label(95,40,'B');d.label(345,40,'C');d.label(220,32,'I_A');d.label(220,89,'R_A');d.label(65,45,'I');d.label(125,110,'Iₛ');
+};
+drawSchAdd=function(svg){
+  const d=networkDiagram(svg,440,180);
+  d.wire('M40 120 V55 H127 M153 55 H256 M304 55 H400 V120 H244 M196 120 H40');
+  d.meter(140,55,'V');d.resistor(280,55,'Rₐ');d.resistor(220,120,'R');
+  d.dot(40,120);d.dot(400,120);d.label(23,114,'A');d.label(417,114,'B');d.label(140,85,'U_V');d.label(280,85,'U_a');d.label(220,161,'U = U_V + U_a');
+};
+
 document.getElementById('network-pause').checked=matchMedia('(prefers-reduced-motion: reduce)').matches;
 Router.init();initStaticCircuits();initKirchhoff();InstrumentLab.init();initProblems();Quiz.init();Board.init();
 Router.on('g-gen',()=>GenLab.init());Router.on('g-lab',()=>{Board.init();Board.compute();});

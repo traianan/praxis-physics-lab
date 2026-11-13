@@ -66,3 +66,11 @@ body[data-praxis-course="retele-electrice"] .praxis-lab-nav .tab{padding-inline:
 .networks .network-meter-panel details>h3:first-of-type{display:none}
 .networks .tool-row button{overflow-wrap:normal!important;padding-inline:3px}
 @media(min-width:1101px){.networks #gCanvas{max-height:22rem}}
+.networks :is(.formula-big,.formula-mid,.formula-small){color:var(--text,#173c38)}
+.networks .badge-k{color:#006170}.networks .badge-g{color:#805100}
+.networks #heroArt2{height:auto;align-self:center}.networks #heroArt2 svg{display:block;width:100%;height:auto;aspect-ratio:320/330}
+.networks svg.sch{height:auto;max-height:none;aspect-ratio:auto}
+.networks .def{color:var(--txt)!important}
+.networks :is(.stat-v,.prob-stmt,.step-t .mono,.answer,.answer b,.verify .mono,.prob-no){color:var(--txt)}
+.networks .prob-tag{color:#805100}
+.networks .opt.correct{color:#176449}.networks .opt.wrong{color:#922e40}

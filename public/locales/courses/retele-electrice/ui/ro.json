@@ -112,7 +112,7 @@
     "— t.e.m. sursa 1": "— t.e.m. sursa 1",
     "— rezistență internă": "— rezistență internă",
     "— t.e.m. sursa 2": "— t.e.m. sursa 2",
-    "↺ Valorile din manual": "↺ Valorile din manual",
+    "↺ Resetare": "↺ Resetare",
     "K închis": "K închis",
     "Ecuații, rezultate și trasee": "Ecuații, rezultate și trasee",
     "Sistemul de ecuații": "Sistemul de ecuații",
@@ -451,6 +451,8 @@
     "Cu R_s = {r} Ω: la I = {i} A, prin ampermetru trec {a} A · prin șunt {s} A ✔": "Cu R_s = {r} Ω: la I = {i} A, prin ampermetru trec {a} A · prin șunt {s} A ✔",
     "Fără curent: verifică legăturile și întrerupătoarele.": "Fără curent: verifică legăturile și întrerupătoarele.",
     "Curent calculat în rețea": "Curent calculat în rețea",
-    "Măsurători și bilanț": "Măsurători și bilanț"
+    "Măsurători și bilanț": "Măsurători și bilanț",
+    "(latura AD)": "(latura AD)",
+    "I3 (latura AD)": "I3 (latura AD)"
   }
 }
