@@ -89,6 +89,7 @@ for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=
  if(name==='problems')s=s.replace('let i = 0, score = 0, answered = false;','let i = 0, score = 0, answered = false, timer;').replace('setTimeout(() => {','timer = setTimeout(() => {').replace('function restart() { i = 0;','function restart() { clearTimeout(timer); i = 0;').replace("Router.on('quiz', render);",'// Keep the current question and score when revisiting this section.');
  // The long battery plate is the positive terminal (right/bottom unless flipped).
  if(name==='board'){
+  s=s.replaceAll('Inversă polaritatea','Inversează polaritatea');
   s=s.replace('<span class="mv">${v}</span>','<span class="mv">${v.split(" · ").map(value=>`<span>${value}</span>`).join("")}</span>');
   s=s.replace('piese: ${S.pieces.length} · conductori: ${S.wires.length}<br>\n        Σ puteri debitate (surse): ${fmt(P, 2)} W<br>\n        noduri distincte: ${res ? res.nodeCount : 0}<br>', '<dl class="network-balance-list"><div><dt>piese</dt><dd>${S.pieces.length}</dd></div><div><dt>conductori</dt><dd>${S.wires.length}</dd></div><div><dt>Σ puteri debitate (surse)</dt><dd>${fmt(P, 2)} W</dd></div><div><dt>noduri distincte</dt><dd>${res ? res.nodeCount : 0}</dd></div></dl>');
   s=s.replace('segs.push([prev, q.i])','segs.push([prev, q.i, wp.w.id])').replace('segs.push([prev, wp.b])','segs.push([prev, wp.b, wp.w.id])');

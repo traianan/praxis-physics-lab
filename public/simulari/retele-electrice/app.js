@@ -2150,7 +2150,7 @@ const Board = (() => {
     }
     const rotBtn = `<button class="btn btn-sm btn-ghost" data-act="rot">⟳ Rotește</button>`;
     const delBtn = `<button class="btn btn-sm btn-ghost" data-act="del">🗑 Șterge</button>`;
-    const flipBtn = `<button class="btn btn-sm btn-ghost" data-act="flip">⇄ Inversă polaritatea</button>`;
+    const flipBtn = `<button class="btn btn-sm btn-ghost" data-act="flip">⇄ Inversează polaritatea</button>`;
     if (p.type === 'battery') {
       host.innerHTML = `
         <b style="font-size:12.5px">Sursă reală</b>

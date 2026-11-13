@@ -1,5 +1,7 @@
 # PROGRESS
 
+- 2026-11-13: Corectată eticheta butonului sursei din „Tablou de circuite” în „Inversează polaritatea”, păstrând acțiunea și traducerea EN „Reverse polarity”. Actualizate importatorul, localizările și arhiva offline.
+
 - 2026-11-13: Publicate corecțiile firelor și bilanțului în `8b2bdf68242f5c01ffd9fcba08c1b27db0b387d8`; Vercel `success`: https://vercel.com/traians-projects-cnni/physicslab/2X27scWZ4dN87C5kjFbHkosmjQQ8. Verificat direct pe site la 1366/390px: după mutarea celor două piese, ramura stângă are curent nul și ochiul drept ~1,73 A; deschiderea K elimină animațiile și evidențierea firelor. Bilanțul are patru rânduri aliniate și I/U separate; RO/EN și text 100/200% fără overflow sau erori JavaScript. Mobil emulat. Rapoarte/capturi: `outputs/networks-wire-live-8b2bdf6/`. Fișierele app.js, index.html, style.css și ZIP-ul publicat au răspuns HTTP 200 și corespund buildului verificat.
 
 - 2026-11-13: Corectat editorul „Tablou de circuite”: anterior toate firele primeau animație dacă exista curent prin orice piesă (`anyNear` întorcea mereu true). Curentul se reconstruiește acum pe segmentele conductorilor, inclusiv joncțiuni în T, din curenții bornelor și legea I; firele deconectate nu mai primesc glow/animație. Pentru trasee ideale paralele se folosește distribuția de normă minimă, fără modificarea soluției MNA a pieselor. Viteza/sensul animației folosesc curentul segmentului, nu maximul din rețea.
