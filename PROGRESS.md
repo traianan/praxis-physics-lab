@@ -1,5 +1,7 @@
 # PROGRESS
 
+- 2026-11-13: Confirmată publicarea Vercel `success` pentru commitul `8f9eb00a6dc703b3e43c2000c3cb937439dd4185`: https://vercel.com/traians-projects-cnni/physicslab/DZSyLHh82fz8qH4JTVVbmXJeHabo. Testat site-ul de producție la 1366/390px: 12 cazuri de curenți algebrici (semne mixte, limite, zero, dezechilibru), sumă numerică, sensuri săgeți, echilibrare și întrerupător; resetare, lipsa butonului Exemplu manual, indici SVG și măști surse. Schemele verificate în RO/EN și la text 100/200%, fără overflow ori erori JavaScript. Rapoarte/capturi în `outputs/networks-live-8f9eb00/`; verificarea mobilă este emulată, nu pe telefon fizic. app.js identic cu commitul după normalizarea LF; HTML/CSS/ZIP servite cu HTTP 200, identice cu buildul local (HTML este procesat la build).
+
 - 2026-11-13: „Nodul electric” folosește curenți algebrici: I₁/I₂ între −4 și +4 A, I₃ între −8 și +8 A; pozitiv spre nod, negativ dinspre nod. Suma afișată este I₁ + I₂ + I₃, cu termenii negativi între paranteze și rezultat Σ I; echilibrarea setează I₃ = −(I₁ + I₂). Sensul săgeților, culorile și particulele urmează semnul fiecărui curent; valorile zero și circuitul deschis au indicatoare inactive. I₃ pornește la −3,5 A; eticheta laturii este neutră (AD).
   - Teste punctuale desktop/mobil emulat: semne mixte, toate pozitive, zero, limite ±4/±8, sumă, săgeți, echilibrare și întrerupător. Web/ZIP regenerate; sunt incluse și cele două seturi de corecții vizuale locale descrise mai jos. Publicarea pe GitHub este autorizată de utilizator pentru acest set cumulat.
 
