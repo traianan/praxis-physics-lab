@@ -29,4 +29,7 @@ const paletteHint=document.querySelector('.palette-card>.hint');if(paletteHint)d
 const currentReadout=document.createElement('p');currentReadout.className='network-currents';document.querySelector('#view-k-lab .canvas-card').append(currentReadout);
 const updateCurrents=()=>{const q=LabK.sol;currentReadout.textContent=`I₁ = ${fmt(q.I1,2)} A · I₂ = ${fmt(q.I2,2)} A · I₃ = ${fmt(q.I3,2)} A`;};new MutationObserver(updateCurrents).observe(document.getElementById('kResults'),{childList:true});updateCurrents();
 Router.go('k-anim');PraxisI18n.apply(document);
+// The common mobile select is mounted after this adapter has selected the initial scene.
+const syncInitialSection=()=>{const select=document.querySelector('.praxis-course-sections');if(!select)return false;select.value=Router.current;return true;};
+if(!syncInitialSection()){const navigationObserver=new MutationObserver(()=>{if(syncInitialSection())navigationObserver.disconnect();});navigationObserver.observe(document.body,{childList:true,subtree:true});}
 window.PraxisNetworks={Router,NodeAnim,LabK,GenLab,InstrumentLab,Board,Quiz,solveNetlist,PROBLEMS,QUIZ,Flow,snapshot:()=>({active:Router.current,node:{...NodeAnim.S},kirchhoff:{...LabK.sol},board:structuredClone(Board.S),generators:{...GenLab.S}})};
