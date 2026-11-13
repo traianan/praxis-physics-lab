@@ -15,6 +15,7 @@ const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
 const hashes={};async function original(p){const s=await read(source+p);hashes[p]=createHash('sha256').update(s.replaceAll('\r\n','\n')).digest('hex');return s.replaceAll('\r\n','\n');}
 let html=await original('index.html');
+html=html.replace(/^[ \t]*<button[^>]*id="gDelete"[^>]*>[^\n]*<\/button>\n/m,'');
 html=html.replace('Trage piesele din bibliotecă pe tablou. Piesele fac <b>snap</b> pe grilă și global pe terminale.','Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor.');
 html=html.replace(/^[ \t]*<div class="card">\s*<h3>Citește ecuația pentru fiecare nod<\/h3>[\s\S]*?<div class="node-builder" id="nodeBuilder"><\/div>\s*<\/div>/m,'');
 html=html.replace('Σ<sub>k=1..n</sub> I<sub>k</sub> = 0','<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>I</mi><mi>k</mi></msub><mo>=</mo><mn>0</mn></mrow></math>');
@@ -95,6 +96,10 @@ for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=
  if(name==='problems')s=s.replace('let i = 0, score = 0, answered = false;','let i = 0, score = 0, answered = false, timer;').replace('setTimeout(() => {','timer = setTimeout(() => {').replace('function restart() { i = 0;','function restart() { clearTimeout(timer); i = 0;').replace("Router.on('quiz', render);",'// Keep the current question and score when revisiting this section.');
  // The long battery plate is the positive terminal (right/bottom unless flipped).
  if(name==='board'){
+  s=s.replace('      wireDrag = null;\n      compute();','      wireDrag = null;\n      $(\'#gMode .seg[data-mode="move"]\').click();\n      compute();');
+  s=s.replace("svg.addEventListener('pointercancel', pointerUp);",`svg.addEventListener('pointercancel', e=>{if(wireDrag){wireDrag=null;$('#gMode .seg[data-mode="move"]').click();}else pointerUp(e);});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&svg.closest('.view')?.classList.contains('active')&&S.mode==='wire'){wireDrag=null;$('#gMode .seg[data-mode="move"]').click();e.preventDefault();}});`);
+  s=s.replace('      S.mode = b.dataset.mode;','      wireDrag = null;\n      S.mode = b.dataset.mode;');
   s=s.replace(/    \/\/ grilă[\s\S]*?    \/\/ conductorii/,`    // Visible connection lattice, shared with every terminal and wire endpoint.
     const gGrid=svgEl('g', {class:'network-grid','pointer-events':'none'},svg);
     for(let x=0;x<=760;x+=GRID)for(let y=0;y<=460;y+=GRID)svgEl('circle',{cx:x,cy:y,r:1.25,fill:'#7594ac',opacity:.65},gGrid);

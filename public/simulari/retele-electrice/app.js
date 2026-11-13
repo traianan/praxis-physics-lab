@@ -2106,6 +2106,7 @@ const Board = (() => {
         Sound.connect();
       }
       wireDrag = null;
+      $('#gMode .seg[data-mode="move"]').click();
       compute();
       return;
     }
@@ -2292,11 +2293,13 @@ const Board = (() => {
     svg.addEventListener('pointerdown', pointerDown);
     svg.addEventListener('pointermove', pointerMove);
     svg.addEventListener('pointerup', pointerUp);
-    svg.addEventListener('pointercancel', pointerUp);
+    svg.addEventListener('pointercancel', e=>{if(wireDrag){wireDrag=null;$('#gMode .seg[data-mode="move"]').click();}else pointerUp(e);});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&svg.closest('.view')?.classList.contains('active')&&S.mode==='wire'){wireDrag=null;$('#gMode .seg[data-mode="move"]').click();e.preventDefault();}});
 
     $$('#gMode .seg').forEach(b => b.addEventListener('click', () => {
       $$('#gMode .seg').forEach(x => x.classList.remove('on'));
       b.classList.add('on');
+      wireDrag = null;
       S.mode = b.dataset.mode;
       Sound.click();
       msg(S.mode === 'wire' ? 'Conductor: trage de la o bornă la alta.'
