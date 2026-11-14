@@ -52,11 +52,17 @@ function graph(hostId='plot',forcedMode=null){
   else{xs=Array.from({length:101},(_,i)=>100+i*21);xs.push(s.thresholdFrequency/1e12);xs.sort((a,b)=>a-b);data=[xs,xs.map(v=>v<s.thresholdFrequency/1e12?null:Math.max(0,H*v*1e12/E-s.work))];xLabel='ν (THz)';yLabel='E (eV)';}
   host.style.height=height+'px';
   const plot=new PraxisUPlot.default({width:Math.round(width*factor),height:Math.round(height*factor),legend:{show:false},cursor:{show:true,drag:{x:false,y:false},points:{show:false}},select:{show:false},scales:{x:{time:false,range:()=>[xmin,xmax]},y:{range:(u,min,max)=>[0,Math.max(currentMode?.1:1,max*1.25)]}},axes:[{label:xLabel,font,labelFont:font,size:rootSize*1.8*factor,labelSize:rootSize*1.25*factor,space:Math.max(45,rootSize*1.5)*factor,values:(u,ticks)=>ticks.map(v=>num(v,1))},{label:yLabel,font,labelFont:font,size:rootSize*2.9*factor,labelSize:rootSize*1.2*factor,space:rootSize*2.4*factor,values:(u,ticks)=>ticks.map(v=>num(v,2))}],series:[{},...colors.map((stroke,i)=>({label:mode==='flux'?(i?`${i+1}Φ`:'Φ'):yLabel,stroke,width:2*factor}))]},data,host);
-  plot.root.style.transform=`scale(${1/factor})`;plot.root.style.transformOrigin='top left';plot.root.style.pointerEvents='none';entry={plot,key,factor,colors};plots.set(hostId,entry);
+  plot.root.style.transform=`scale(${1/factor})`;plot.root.style.transformOrigin='top left';plot.root.style.pointerEvents='none';entry={plot,key,factor,colors,ready:false};plots.set(hostId,entry);
+  // uPlot initializes scales and geometry in a queued microtask. Reading them
+  // in the constructor turn yields NaN/Infinity after parameter changes.
+  queueMicrotask(()=>{if(plots.get(hostId)===entry){entry.ready=true;graph(hostId,forcedMode);}});
+  return;
  }
+ if(!entry.ready)return;
  const {plot,factor,colors}=entry;plot.setCursor({left:plot.valToPos(currentMode?s.voltage:s.frequency/1e12,'x'),top:-10});
  let overlay=host.querySelector('svg');if(!overlay){overlay=document.createElementNS('http://www.w3.org/2000/svg','svg');overlay.classList.add('pe-graph-marks');overlay.setAttribute('aria-hidden','true');host.append(overlay);}overlay.setAttribute('viewBox',`0 0 ${width} ${height}`);
  const box=plot.over.getBoundingClientRect(),parent=host.getBoundingClientRect(),left=box.left-parent.left,top=box.top-parent.top,x=v=>left+plot.valToPos(v,'x')/factor,y=v=>top+plot.valToPos(v,'y')/factor;
+ if(box.width<=0||box.height<=0||![x(0),y(0)].every(Number.isFinite)){overlay.innerHTML='';return;}
  const lab=(xx,yy,main,index,color='#254c45',anchor='start')=>`<text x="${xx}" y="${yy}" fill="${color}" font-family="Segoe UI,Arial,sans-serif" font-size="${Math.max(11,rootSize*.7)}" text-anchor="${anchor}">${main}<tspan dy=".25em" font-size=".7em">${index}</tspan></text>`;
  let marks=currentMode?line(x(0),y(0),x(0),top,'#536f66','style="stroke-width:1"'):'';if(currentMode&&s.emitted>0){
   const max=mode==='flux'?3:1;marks+=line(x(2),y(0),x(2),y(s.saturation*max),'#84958f','stroke-dasharray="4 4"')+lab(x(2)+4,y(0)-6,'U','s');
@@ -74,6 +80,8 @@ function reserveMessage(el,value,examples){
  const nodes=[value,...examples].map((text,i)=>{const span=document.createElement('span');span.textContent=text;span.style.gridArea='1 / 1';if(i){span.style.visibility='hidden';span.setAttribute('aria-hidden','true');}return span;});el.style.display='grid';el.replaceChildren(...nodes);
 }
 function refresh(){
+ for(const key of ['wavelength','work','power']){const el=$('#measure-'+key);el.value=state.settings[key];$('#measure-'+key+'-value').textContent=num(state.settings[key],key==='work'?3:2);}
+ const measured=photo(state.settings);$('#measurement-live').textContent=`ν = ${num(measured.frequency/1e12,3)} THz; λ₀ = ${num(measured.threshold)} nm. `+tr(!measured.power?'Lumina este stinsă':!measured.efficiency?'Randament nul: nu sunt emiși electroni':!measured.allowed?'Fără emisie: energia fotonului nu depășește pragul':'');
  const s=photo(state.settings);for(const [id,v]of Object.entries(state.settings))$('#'+id+'-value').textContent=num(v,id==='work'?3:2);
  $('#current').textContent=num(s.current,3)+' µA';$('#kinetic').textContent=num(s.kinetic,3)+' eV';$('#stop').textContent=s.emitted>0?num(s.stop,3):'—';
  $('#status').textContent=tr(!s.power?'Lumina este stinsă':!s.efficiency?'Randament nul: nu sunt emiși electroni':Math.abs(s.photon-s.work)<1e-10?'La prag: energie cinetică nulă':!s.allowed?'Fără emisie: energia fotonului nu depășește pragul':s.current===0?'Electroni emiși, dar opriți de câmp':'Emisie și colectare');
@@ -90,6 +98,7 @@ function schedule(){if(frame===null&&!document.hidden&&inView&&state.running&&st
 function changed(){state.running=false;state.time=0;cancel();refresh();}
 function setTab(id,{hash=true,focus=false}={}){if(!tabs.some(([key])=>id===key))return;cancel();state.active=id;for(const[key]of tabs){$('#'+key).hidden=key!==id;$('#tab-'+key).setAttribute('aria-selected',String(key===id));$('#tab-'+key).tabIndex=key===id?0:-1;}const picker=$('.praxis-course-sections');if(picker)picker.value=id;if(hash)history.replaceState(null,'','#'+id);if(focus)$('#tab-'+id).focus();inView=true;refresh();schedule();}
 for(const id of Object.keys(defaults))$('#'+id).oninput=()=>{state.settings[id]=Number($('#'+id).value);if(id==='work')$('#material').value='custom';changed();};
+for(const key of ['wavelength','work','power'])$('#measure-'+key).oninput=()=>{state.settings[key]=Number($('#measure-'+key).value);syncControls();changed();};
 $('#material').onchange=()=>{const val={manual:defaults.work,sodium:2.28,zinc:4.3}[$('#material').value];if(val!==undefined){state.settings.work=val;$('#work').value=val;}changed();};
 $('#stop-preset').onclick=()=>{state.settings.voltage=-photo(state.settings).stop;$('#voltage').value=state.settings.voltage;changed();};
 $('#threshold-preset').onclick=()=>{state.settings.wavelength=Math.min(900,Math.ceil(photo(state.settings).threshold+10));$('#wavelength').value=state.settings.wavelength;changed();};
@@ -101,7 +110,7 @@ $('.tabs').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','
 function records(){ $('#records').innerHTML=state.measurements.map(params=>{const s=photo(params);return `<tr>${[num(s.wavelength),num(s.frequency/1e12,3),num(s.work,3),s.emitted>0?num(s.stop,4):'—',num(s.saturation,4)].map(v=>`<td>${v}</td>`).join('')}</tr>`;}).join('');}
 $('#record').onclick=()=>{if(state.measurements.length>=12){$('#record-status').textContent=tr('Maximum 12 măsurări.');return;}state.measurements.push({...state.settings});records();$('#record-status').textContent=tr('Stare înregistrată.');PraxisSound.play('event');};
 $('#clear').onclick=()=>{state.measurements=[];records();$('#record-status').textContent='';$('#estimate-result').textContent='';};
-$('#estimate').onclick=()=>{try{const [a,b]=state.measurements;if(!a||!b||!photo(a).emitted||!photo(b).emitted)throw Error();const r=estimateH(a,b);$('#estimate-result').textContent=`h = ${r.h.toExponential(6)} J·s; Lₑ = ${num(r.workEV,4)} eV.`;}catch{$('#estimate-result').textContent=tr('Alege primele două măsurări la frecvențe distincte peste prag, același material și lumină nenulă.');}};
+$('#estimate').onclick=()=>{try{const [a,b]=state.measurements;if(!a||!b||!photo(a).emitted||!photo(b).emitted)throw Error();if(a.wavelength===b.wavelength){$('#estimate-result').textContent=tr('Primele două înregistrări au aceeași frecvență. Șterge măsurările și înregistrează două lungimi de undă diferite, sub prag.');return;}const r=estimateH(a,b);$('#estimate-result').textContent=`h = ${r.h.toExponential(6)} J·s; Lₑ = ${num(r.workEV,4)} eV.`;}catch{$('#estimate-result').textContent=tr('Alege primele două măsurări la frecvențe distincte peste prag, același material și lumină nenulă.');}};
 function download(content,type,name){const url=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 $('#csv').onclick=()=>{if(!state.measurements.length){$('#record-status').textContent=tr('Jurnal gol.');return;}download('wavelength_nm,frequency_Hz,work_eV,stopping_V,saturation_uA,power_uW,efficiency_percent\n'+state.measurements.map(p=>{const s=photo(p);return [s.wavelength,s.frequency,s.work,s.emitted>0?s.stop:'',s.saturation,s.power,s.efficiency].join(',');}).join('\n'),'text/csv;charset=utf-8','fotoelectric-masuratori.csv');};
 $('#save').onclick=()=>download(JSON.stringify({version:1,lesson:'efectul-fotoelectric-extern',settings:state.settings,measurements:state.measurements},null,2),'application/json','fotoelectric-experiment.json');

@@ -80,3 +80,6 @@ body #praxis-original .pe-visual{align-items:start}
 body #praxis-original .pe-readings{margin-top:0}
 
 #plot>svg.pe-graph-marks,#law-plot>svg.pe-graph-marks{height:100%;width:100%;max-height:none;position:absolute;inset:0}
+
+.pe-laws-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem;align-items:stretch}.pe-law{background:var(--praxis-color-canvas)}
+@container(max-width:38rem){.pe-laws-grid{grid-template-columns:1fr}}
