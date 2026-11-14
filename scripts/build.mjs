@@ -7,6 +7,7 @@ import {cp,mkdir,stat,readFile,writeFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';import {fileURLToPath} from 'node:url';
 const root=fileURLToPath(new URL('../',import.meta.url));
+await import('./build-lab-libraries.mjs');
 await import('./generate-lab-registry.mjs');
 await generateSitePages();await preparePresentation();await normalizePublicFavicons();await normalizePublicLinks();
 await stat(path.join(root,'public/simulari/oglinzi-si-lentile/index.html'));

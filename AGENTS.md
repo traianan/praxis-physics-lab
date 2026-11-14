@@ -11,3 +11,8 @@ Instrucțiunile ulterioare explicite ale utilizatorului au prioritate.
 Păstrează regulile reutilizabile în acest ghid, iar rezultatele verificărilor și
 particularitățile fiecărui laborator în documentația sa. Nu transforma exemplele
 de dimensiuni sau numărul actual de teste în cerințe universale.
+
+Pentru alegerea bibliotecilor în laboratoare noi, consultă
+[analiza și inventarul bibliotecilor instalate](docs/BIBLIOTECI_SIMULARI_2026-11-14.md).
+Reutilizează infrastructura existentă și încarcă bibliotecile opționale numai în
+lecțiile care le folosesc; validează separat modelul fizic și exportul offline.

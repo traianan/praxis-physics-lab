@@ -52,8 +52,13 @@
     "@xyflow/react": "^12.12.1",
     "axe-core": "4.14.0",
     "esbuild": "0.28.0",
+    "konva": "10.9.1",
+    "mathjs": "15.2.0",
+    "planck": "1.5.1",
     "playwright-core": "1.65.0",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "uplot": "1.6.32",
+    "zod": "4.6.7"
   }
 }

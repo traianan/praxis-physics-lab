@@ -1,0 +1,106 @@
+{
+  "libraries": [
+    {
+      "name": "konva",
+      "version": "10.9.1",
+      "license": "MIT",
+      "globalName": "PraxisKonva",
+      "file": "konva.min.js",
+      "bytes": 194956,
+      "gzipBytes": 59645
+    },
+    {
+      "name": "planck",
+      "version": "1.5.1",
+      "license": "MIT",
+      "globalName": "PraxisPlanck",
+      "file": "planck.min.js",
+      "bytes": 212307,
+      "gzipBytes": 46982
+    },
+    {
+      "name": "mathjs",
+      "version": "15.2.0",
+      "license": "Apache-2.0",
+      "globalName": "PraxisNumerics",
+      "file": "mathjs.min.js",
+      "bytes": 258363,
+      "gzipBytes": 77972
+    },
+    {
+      "name": "uplot",
+      "version": "1.6.32",
+      "license": "MIT",
+      "globalName": "PraxisUPlot",
+      "file": "uplot.min.js",
+      "bytes": 52502,
+      "gzipBytes": 23435
+    },
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "license": "MIT",
+      "globalName": "PraxisValidation",
+      "file": "zod.min.js",
+      "bytes": 454268,
+      "gzipBytes": 93550
+    }
+  ],
+  "licenses": [
+    {
+      "package": "@babel/runtime",
+      "version": "7.29.14",
+      "file": "licenses/@babel__runtime-LICENSE"
+    },
+    {
+      "package": "complex.js",
+      "version": "2.4.3",
+      "file": "licenses/complex.js-LICENSE"
+    },
+    {
+      "package": "decimal.js",
+      "version": "10.6.0",
+      "file": "licenses/decimal.js-LICENCE.md"
+    },
+    {
+      "package": "fraction.js",
+      "version": "5.3.4",
+      "file": "licenses/fraction.js-LICENSE"
+    },
+    {
+      "package": "konva",
+      "version": "10.9.1",
+      "file": "licenses/konva-LICENSE"
+    },
+    {
+      "package": "mathjs",
+      "version": "15.2.0",
+      "file": "licenses/mathjs-LICENSE"
+    },
+    {
+      "package": "mathjs",
+      "version": "15.2.0",
+      "file": "licenses/mathjs-NOTICE"
+    },
+    {
+      "package": "planck",
+      "version": "1.5.1",
+      "file": "licenses/planck-LICENSE.txt"
+    },
+    {
+      "package": "typed-function",
+      "version": "4.2.2",
+      "file": "licenses/typed-function-LICENSE"
+    },
+    {
+      "package": "uplot",
+      "version": "1.6.32",
+      "file": "licenses/uplot-LICENSE"
+    },
+    {
+      "package": "zod",
+      "version": "4.6.7",
+      "file": "licenses/zod-LICENSE"
+    }
+  ]
+}
