@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-14T08:08:04.635Z",
+  "builtAt": "2026-11-14T14:29:53.235Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -368,6 +368,17 @@
       "id": "polarizarea-luminii",
       "file": "public/simulari/polarizarea-luminii/polarizarea-luminii.zip",
       "sha256": "ded5994adcbd17c05d037b0c43f80277e29ab8cb131d3149c5dfe4fab9620839",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "miscarea-in-camp-gravitational",
+      "file": "public/simulari/miscarea-in-camp-gravitational/miscarea-in-camp-gravitational.zip",
+      "sha256": "75a67f26d2ba51280b264c71f6a05c01014f564e01d94eccb9603faec7621fe5",
       "languages": [
         "ro",
         "en"

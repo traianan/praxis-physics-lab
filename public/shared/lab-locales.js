@@ -239,5 +239,11 @@ export const labNamespaces = {
     "chapters/lumina-si-radiatii",
     "courses/shared",
     "labs/polarizarea-luminii/ui"
+  ],
+  "miscarea-in-camp-gravitational": [
+    "common",
+    "chapters/miscare",
+    "courses/shared",
+    "labs/miscarea-in-camp-gravitational/ui"
   ]
 };

@@ -17,7 +17,14 @@
     "Kepler": "Kepler",
     "Orbite": "Orbits",
     "Sateliți": "Satellites",
-    "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar": "celestial mechanics kepler ellipse eccentricity angular momentum equal areas cosmic speeds geostationary"
+    "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar": "celestial mechanics kepler ellipse eccentricity angular momentum equal areas cosmic speeds geostationary",
+    "Mișcarea în câmp gravitațional": "Motion in a gravitational field",
+    "Cădere, aruncări și parabola de siguranță": "Free fall, launches and the safety parabola",
+    "Explorează căderea liberă, aruncările verticale, orizontale și oblice, anvelopa traiectoriilor, energia și măsurătorile.": "Explore free fall, vertical, horizontal and oblique launches, the trajectory envelope, energy and measurements.",
+    "Familie de traiectorii parabolice sub parabola de siguranță, cu vectorul vitezei": "A family of parabolic trajectories below the safety parabola, with a velocity vector",
+    "Gravitație": "Gravity",
+    "Traiectorii": "Trajectories",
+    "gravitatie cadere libera aruncare verticala orizontala oblica parabola siguranta bataie energie": "gravity free fall vertical horizontal oblique launch safety parabola range energy"
   },
   "simulations": {
     "miscarea-rectilinie": {
@@ -105,6 +112,18 @@
         "Gravity",
         "Dynamics",
         "Satellites",
+        "Offline"
+      ]
+    },
+    "miscarea-in-camp-gravitational": {
+      "title": "Motion in a gravitational field",
+      "subtitle": "Free fall, launches and the safety parabola",
+      "description": "Explore free fall, vertical, horizontal and oblique launches, the trajectory envelope, energy and measurements.",
+      "alt": "A family of parabolic trajectories below the safety parabola, with a velocity vector",
+      "tags": [
+        "Gravity",
+        "Trajectories",
+        "Experiments",
         "Offline"
       ]
     }

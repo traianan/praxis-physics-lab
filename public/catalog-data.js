@@ -708,5 +708,25 @@ export const simulations = [
     ],
     "keywords": "polarizare lumina malus brewster polarizor analizor circulara eliptica filtre intensitate",
     "status": "available"
+  },
+  {
+    "id": "miscarea-in-camp-gravitational",
+    "addedOn": "2026-11-14",
+    "addedOrder": 2,
+    "chapter": "miscare",
+    "title": "Mișcarea în câmp gravitațional",
+    "subtitle": "Cădere, aruncări și parabola de siguranță",
+    "description": "Explorează căderea liberă, aruncările verticale, orizontale și oblice, anvelopa traiectoriilor, energia și măsurătorile.",
+    "href": "./simulari/miscarea-in-camp-gravitational/index.html",
+    "image": "./assets/miscarea-in-camp-gravitational.svg",
+    "alt": "Familie de traiectorii parabolice sub parabola de siguranță, cu vectorul vitezei",
+    "tags": [
+      "Gravitație",
+      "Traiectorii",
+      "Experimente",
+      "Offline"
+    ],
+    "keywords": "gravitatie cadere libera aruncare verticala orizontala oblica parabola siguranta bataie energie",
+    "status": "available"
   }
 ];

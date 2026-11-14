@@ -510,5 +510,21 @@
         "scene": ".pol-stage"
       }
     ]
+  },
+  "miscarea-in-camp-gravitational": {
+    "workspaces": [
+      {
+        "selector": "#lab .gm-workspace",
+        "layout": "native",
+        "controls": ".gm-controls",
+        "scene": "#bench"
+      },
+      {
+        "selector": "#compare .gm-workspace",
+        "layout": "native",
+        "controls": ".gm-controls",
+        "scene": "#compare-stage"
+      }
+    ]
   }
 }

@@ -17,7 +17,14 @@
     "Kepler": "Kepler",
     "Orbite": "Orbite",
     "Sateliți": "Sateliți",
-    "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar": "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar"
+    "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar": "mecanica cereasca kepler elipsa excentricitate moment cinetic arii egale viteze cosmice geostationar",
+    "Mișcarea în câmp gravitațional": "Mișcarea în câmp gravitațional",
+    "Cădere, aruncări și parabola de siguranță": "Cădere, aruncări și parabola de siguranță",
+    "Explorează căderea liberă, aruncările verticale, orizontale și oblice, anvelopa traiectoriilor, energia și măsurătorile.": "Explorează căderea liberă, aruncările verticale, orizontale și oblice, anvelopa traiectoriilor, energia și măsurătorile.",
+    "Familie de traiectorii parabolice sub parabola de siguranță, cu vectorul vitezei": "Familie de traiectorii parabolice sub parabola de siguranță, cu vectorul vitezei",
+    "Gravitație": "Gravitație",
+    "Traiectorii": "Traiectorii",
+    "gravitatie cadere libera aruncare verticala orizontala oblica parabola siguranta bataie energie": "gravitatie cadere libera aruncare verticala orizontala oblica parabola siguranta bataie energie"
   },
   "simulations": {
     "miscarea-rectilinie": {
@@ -105,6 +112,18 @@
         "Gravitație",
         "Dinamică",
         "Sateliți",
+        "Offline"
+      ]
+    },
+    "miscarea-in-camp-gravitational": {
+      "title": "Mișcarea în câmp gravitațional",
+      "subtitle": "Cădere, aruncări și parabola de siguranță",
+      "description": "Explorează căderea liberă, aruncările verticale, orizontale și oblice, anvelopa traiectoriilor, energia și măsurătorile.",
+      "alt": "Familie de traiectorii parabolice sub parabola de siguranță, cu vectorul vitezei",
+      "tags": [
+        "Gravitație",
+        "Traiectorii",
+        "Experimente",
         "Offline"
       ]
     }

@@ -14,6 +14,7 @@ if(requested==='laboratorul-electromagnetic-faraday')process.exit(0);
 if(requested&&!courses.some(lab=>lab.metadata.id===requested))throw new Error('Unknown offline course: '+requested);
 const selected=courses.filter(lab=>!requested||lab.metadata.id===requested);
 const moduleStyles=new Map([
+ ['miscarea-in-camp-gravitational','style.css'],
  ['polarizarea-luminii','style.css'],
  ['mecanica-cereasca','style.css'],
  ['legea-lui-hooke','style.css'],
@@ -37,6 +38,7 @@ for(const {metadata:{id},offline:{file:zipName},locales,inlineLocales}of selecte
  html=html.replace('href="../../assets/favicon.svg"','href="./assets/favicon.svg"');
  html=html.replace('<head>','<head><script>document.documentElement.dataset.praxisStandalone="true";</script>');
  if(id==='generator-electric')await cp(path.join(root,'public/vendor/three/LICENSE'),path.join(target,'THREE-LICENSE.txt'));
+ if(id==='miscarea-in-camp-gravitational')await cp(path.join(root,'public/vendor/lab-libraries/licenses/uplot-LICENSE'),path.join(target,'UPLOT-LICENSE.txt'));
  await mkdir(path.join(target,'assets'),{recursive:true});await cp(path.join(root,'public/assets/favicon.svg'),path.join(target,'assets/favicon.svg'));
  await writeFile(path.join(target,'index.html'),html,'utf8');
  if(id==='calcul-vectorial'){
