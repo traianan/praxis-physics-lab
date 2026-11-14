@@ -459,6 +459,18 @@
     "Σ puteri debitate (surse)": "Σ puteri debitate (surse)",
     "noduri distincte": "noduri distincte",
     "Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor.": "Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor.",
-    "Mută: trage piesele sau conductorii; click pe piesă = selectare.": "Mută: trage piesele sau conductorii; click pe piesă = selectare."
+    "Mută: trage piesele sau conductorii; click pe piesă = selectare.": "Mută: trage piesele sau conductorii; click pe piesă = selectare.",
+    "Înlocuim I₃ = −(I₁ + I₂) și rezolvăm sistemul.": "Înlocuim I₃ = −(I₁ + I₂) și rezolvăm sistemul.",
+    "Înlocuim I₃ = −(2 + I₂) în ecuația ochiului drept.": "Înlocuim I₃ = −(2 + I₂) în ecuația ochiului drept.",
+    "d) La nodul de ramificare, I intră, iar I₁ și I₂ ies.": "d) La nodul de ramificare, I intră, iar I₁ și I₂ ies.",
+    "Din I₂ = 2I₁ rezultă I = −3I₁.": "Din I₂ = 2I₁ rezultă I = −3I₁.",
+    "Exprimăm I₃ = 1,2 + 20I și reducem sistemul.": "Exprimăm I₃ = 1,2 + 20I și reducem sistemul.",
+    "Curenții prin surse intră în nodul A, iar cel prin consumator iese.": "Curenții prin surse intră în nodul A, iar cel prin consumator iese.",
+    "Verificăm legea nodului A.": "Verificăm legea nodului A.",
+    "La nodul A, curenții pozitivi intră, iar cei negativi ies.": "La nodul A, curenții pozitivi intră, iar cei negativi ies.",
+    "La nodul de ramificare, I intră, iar I₁ și I₂ ies. Cu valori algebrice:": "La nodul de ramificare, I intră, iar I₁ și I₂ ies. Cu valori algebrice:",
+    "Nodul A: I₁ + I₂ + I₃ = 0 · Ochiul stâng: E₁ = I₁R₁ − I₃R₃ + I₁r₁ · Ochiul drept: E₂ = I₂R₂ − I₃R₃ + I₂r₂": "Nodul A: I₁ + I₂ + I₃ = 0 · Ochiul stâng: E₁ = I₁R₁ − I₃R₃ + I₁r₁ · Ochiul drept: E₂ = I₂R₂ − I₃R₃ + I₂r₂",
+    "Adunăm toți curenții cu semnul lor: 5 A + (−2 A) + (−3 A) = 0 A.": "Adunăm toți curenții cu semnul lor: 5 A + (−2 A) + (−3 A) = 0 A.",
+    "La nodul de ramificare, I intră, iar I_A și I_s ies.": "La nodul de ramificare, I intră, iar I_A și I_s ies."
   }
 }

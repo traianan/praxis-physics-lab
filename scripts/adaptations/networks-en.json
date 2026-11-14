@@ -456,5 +456,17 @@
   "Σ puteri debitate (surse)": "Σ supplied power (sources)",
   "noduri distincte": "distinct nodes",
   "Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor.": "Drag components from the palette to the board. Both terminals snap to visible grid points. To reconnect, place the terminals on the wire endpoints.",
-  "Mută: trage piesele sau conductorii; click pe piesă = selectare.": "Move: drag components or wires; click a component to select it."
+  "Mută: trage piesele sau conductorii; click pe piesă = selectare.": "Move: drag components or wires; click a component to select it.",
+  "Înlocuim I₃ = −(I₁ + I₂) și rezolvăm sistemul.": "Substitute I₃ = −(I₁ + I₂) and solve the system.",
+  "Înlocuim I₃ = −(2 + I₂) în ecuația ochiului drept.": "Substitute I₃ = −(2 + I₂) into the right loop equation.",
+  "d) La nodul de ramificare, I intră, iar I₁ și I₂ ies.": "d) At the junction, I enters while I₁ and I₂ leave.",
+  "Din I₂ = 2I₁ rezultă I = −3I₁.": "Substitute I₂ = 2I₁ to get I = −3I₁.",
+  "Exprimăm I₃ = 1,2 + 20I și reducem sistemul.": "Write I₃ = 1.2 + 20I and reduce the system.",
+  "Curenții prin surse intră în nodul A, iar cel prin consumator iese.": "The source currents enter node A and the load current leaves.",
+  "Verificăm legea nodului A.": "Check the current law at node A.",
+  "La nodul A, curenții pozitivi intră, iar cei negativi ies.": "At node A, positive currents enter and negative currents leave.",
+  "La nodul de ramificare, I intră, iar I₁ și I₂ ies. Cu valori algebrice:": "At the junction, I enters while I₁ and I₂ leave. With signed values:",
+  "Nodul A: I₁ + I₂ + I₃ = 0 · Ochiul stâng: E₁ = I₁R₁ − I₃R₃ + I₁r₁ · Ochiul drept: E₂ = I₂R₂ − I₃R₃ + I₂r₂": "Node A: I₁ + I₂ + I₃ = 0 · Left loop: E₁ = I₁R₁ − I₃R₃ + I₁r₁ · Right loop: E₂ = I₂R₂ − I₃R₃ + I₂r₂",
+  "Adunăm toți curenții cu semnul lor: 5 A + (−2 A) + (−3 A) = 0 A.": "Add all currents with their signs: 5 A + (−2 A) + (−3 A) = 0 A.",
+  "La nodul de ramificare, I intră, iar I_A și I_s ies.": "At the junction, I enters while I_A and I_s leave."
 }

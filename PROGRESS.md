@@ -1,5 +1,7 @@
 # PROGRESS
 
+- 2026-11-14: Unificată convenția algebrică pentru legea nodurilor în „Rețele electrice”. Toți termenii se adună. Curenții care intră sunt pozitivi, cei care ies sunt negativi. Actualizate teoria, ochiurile și traseele de potențial, grupările și exercițiile cu ramificații. Exemplu: 2 A + 3 A + (−5 A) = 0 A. Trecute cele cinci teste de model și verificarea în Chrome a ecuațiilor afișate în buildul Web și offline.
+
 - 2026-11-13: Publicată stabilizarea grilei în `43baf26f93e9bb8baa2b0059ed845c040aa92ce2`; Vercel `success`: https://vercel.com/traians-projects-cnni/physicslab/21YW88vyaYutKwoUFqxuGpbFAYhn. Verificat direct pe site la 1366/1024/390px și text 100%/200%: poziția grilei rămâne constantă (diferență sub 1px) la Mută → Conductor → Șterge → Mută. CSS publicat identic cu buildul după normalizarea CRLF/LF; ZIP identic binar, ambele HTTP 200. Mobil emulat.
 
 - 2026-11-13: Stabilizată bara editorului de circuite: mesajele uneltelor ocupă un rând separat, cu înălțime rezervată, astfel încât schimbarea Mută/Conductor/Șterge nu deplasează grila. Textul rămâne accesibil prin derulare locală dacă depășește spațiul rezervat. Build și ZIP regenerate. Verificate pozițiile grilei la 1366/1024/390px, text 100%/200%, build Web și arhivă offline cu HTTP blocat: deplasare sub 1px în toate cazurile. Publicare pe GitHub autorizată de utilizator.

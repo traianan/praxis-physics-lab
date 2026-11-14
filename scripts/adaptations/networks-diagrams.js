@@ -64,7 +64,7 @@ drawSchParallel=function(svg){
   const d=networkDiagram(svg,460,230);
   d.wire('M45 55 H176 M224 55 H302 M328 55 H410 V185 H334 M286 185 H193 M167 185 H45 V55 M45 115 H176 M224 115 H302 M328 115 H410');
   d.resistor(200,55,'R₁');d.resistor(200,115,'R₂');d.meter(315,55,'A₁');d.meter(315,115,'A₂');d.meter(180,185,'A');d.battery(310,185,'E');
-  d.dot(45,115);d.dot(410,115);d.label(28,105,'M');d.label(430,105,'N');d.label(100,215,'I = I₁ + I₂');
+  d.dot(45,115);d.dot(410,115);d.label(28,105,'M');d.label(430,105,'N');d.label(100,215,'I + I₁ + I₂ = 0');
 };
 drawSchGenSer=function(svg){
   const d=networkDiagram(svg,300,150);

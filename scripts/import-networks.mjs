@@ -15,6 +15,12 @@ const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
 const hashes={};async function original(p){const s=await read(source+p);hashes[p]=createHash('sha256').update(s.replaceAll('\r\n','\n')).digest('hex');return s.replaceAll('\r\n','\n');}
 let html=await original('index.html');
+html=html.replace('I₃ = 3 A','I₃ = −3 A')
+ .replace('sens ales (+)', 'curent care intră (+)').replace('sens real (invers)', 'curent care iese (−)')
+ .replace('</ul>\n              <p class="muted">Este expresia', '</ul>\n              <p>Adunăm toți curenții cu semnul lor: 5 A + (−2 A) + (−3 A) = 0 A.</p>\n              <p class="muted">Este expresia')
+ .replace('Nodul A: I₁ + I₂ − I₃ = 0 · Ochiul stâng: E₁ = I₁R₁ + I₃R₃ + I₁r₁ ·\n               Ochiul drept: E₂ = I₂R₂ + I₃R₃ + I₂r₂',
+ 'Nodul A: I₁ + I₂ + I₃ = 0 · Ochiul stâng: E₁ = I₁R₁ − I₃R₃ + I₁r₁ · Ochiul drept: E₂ = I₂R₂ − I₃R₃ + I₂r₂')
+ .replace('Curenții se adună: <b>I = I₁ + I₂</b>.','La nodul de ramificare, I intră, iar I₁ și I₂ ies. Cu valori algebrice: <b>I + I₁ + I₂ = 0</b>.');
 html=html.replace(/^[ \t]*<button[^>]*id="gDelete"[^>]*>[^\n]*<\/button>\n/m,'');
 html=html.replace('Trage piesele din bibliotecă pe tablou. Piesele fac <b>snap</b> pe grilă și global pe terminale.','Trage piesele din bibliotecă pe tablou. Cele două borne se fixează pe punctele grilei vizibile. Pentru reconectare, așază bornele peste capetele conductorilor.');
 html=html.replace(/^[ \t]*<div class="card">\s*<h3>Citește ecuația pentru fiecare nod<\/h3>[\s\S]*?<div class="node-builder" id="nodeBuilder"><\/div>\s*<\/div>/m,'');
@@ -76,14 +82,33 @@ for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=
   s=s.replace("const pRight = wire(`M${G.TR} L${G.BR}`);","const pRight = wire('M570 90 L570 221 M570 249 L570 380');");
   s=s.replace("refs.ar3.setAttribute('transform', `translate(240,240) rotate(0)${dir(sol.I3)}`);","refs.ar3.setAttribute('transform', `translate(320,240) rotate(-90)${dir(sol.I3)}`);");
   s=s.replace("x: 214, y: 232, class: 'i-label', text: 'I₃'","x: 290, y: 232, class: 'i-label', text: 'I₃'");
+  // LabK keeps its internal branch orientation. Display currents relative to node A.
+  s=s.replace('const nodal = Math.abs(sol.I1 + sol.I2 - sol.I3);',`const currents = [sol.I1, sol.I2, -sol.I3];
+      const nodal = currents.reduce((sum, current) => sum + current, 0);
+      const terms = currents.map(current => current < 0 ? '(' + fmt(current, 2) + ')' : fmt(current, 2));`)
+    .replace(' I₁ + I₂ − I₃ = 0</span>', ' I₁ + I₂ + I₃ = 0</span>')
+    .replace('${fmt(sol.I1, 2)} + ${fmt(sol.I2, 2)} − ${fmt(sol.I3, 2)}', "${terms.join(' + ')}")
+    .replace("nodal < 1e-6", "Math.abs(nodal) < 1e-6")
+    .replace("refs.ar3.setAttribute('stroke', sol.I3 >= 0", "refs.ar3.setAttribute('stroke', sol.I3 <= 0")
+    .replace("['I₃', fmt(sol.I3, 2) + ' A', sol.I3]", "['I₃', fmt(-sol.I3, 2) + ' A', -sol.I3]")
+    .replaceAll(' + R₃·I₃</span>', ' − R₃·I₃</span>')
+    .replaceAll('${fmt(P.R3, 1)}·${fmt(sol.I3, 2)}','${fmt(P.R3, 1)}·(${fmt(-sol.I3, 2)})')
+    .replaceAll(' + ${fmt(P.R3, 1)}', ' − ${fmt(P.R3, 1)}')
+    .replace('V_A − V_B = I₃·R₃ = ${fmt(I3, 2)}', 'V_A − V_B = −I₃·R₃ = −(${fmt(-I3, 2)})')
+    .replace('I₃ = ${fmt(sol.I3, 2)} A','I₃ = ${fmt(-sol.I3, 2)} A')
+    .replace('I₃ = I₁ + I₂</span>', 'I₁ + I₂ + I₃ = 0 ⇒ I₃ = −(I₁ + I₂)</span>')
+    .replaceAll(' + R₃I₃ =', ' − R₃I₃ =')
+    .replace('I₃ = I₁ + I₂ = ${fmt(sol.I3, 3)}', 'I₃ = −(I₁ + I₂) = ${fmt(-sol.I3, 3)}')
+    .replace('Un rezultat <b>negativ</b> înseamnă că sensul real al curentului este invers celui ales inițial.', 'La nodul A, curenții pozitivi intră, iar cei negativi ies.');
   s=s.replace('const p1 = E2 - I2 * (R2 + r2);','const p1 = P.closed ? E2 - I2 * (R2 + r2) : dAB;');
   s=s.replace('const r = rows[pathIdx];',"if(!P.closed)rows[1][1]=`V_A − V_B = E₂ − U_K = ${fmt(E2,2)} − (${fmt(E2-dAB,2)})`;\n    const r = rows[pathIdx];");
-  s=s.replace('    // bara de putere',"    if(open&&E)E.children[2].innerHTML='<span>K deschis: I₂ = 0; U_K = E₂ − R₃I₃</span><b>'+fmt(P.E2-P.R3*sol.I3,2)+' V</b>';\n    if(!$('#kSteps').hidden)$('#kSteps').hidden=true;\n    // bara de putere");
-  s=s.replace("      box.innerHTML = `<ol>","      if(!P.closed){box.innerHTML='<p>K deschis: latura 2 este întreruptă. Ochiul stâng rămâne închis.</p><p>I₂ = 0; I₁ = I₃ = E₁/(R₁+r₁+R₃) = '+fmt(sol.I1,3)+' A</p>';return;}\n      box.innerHTML = `<ol>");
+  s=s.replace('    // bara de putere',"    if(open&&E)E.children[2].innerHTML='<span>K deschis: I₂ = 0; U_K = E₂ + R₃I₃</span><b>'+fmt(P.E2-P.R3*sol.I3,2)+' V</b>';\n    if(!$('#kSteps').hidden)$('#kSteps').hidden=true;\n    // bara de putere");
+  s=s.replace("      box.innerHTML = `<ol>","      if(!P.closed){box.innerHTML='<p>K deschis: latura 2 este întreruptă. Ochiul stâng rămâne închis.</p><p>I₁ + I₂ + I₃ = 0; I₂ = 0; I₁ = −I₃ = E₁/(R₁+r₁+R₃) = '+fmt(sol.I1,3)+' A</p>';return;}\n      box.innerHTML = `<ol>");
   s=s.replace("open ? 'circuit deschis' : `K închis", "open ? 'K deschis · ochiul stâng activ' : `K închis");
   s=s.replace('return { init, update, P, get sol()', 'return { init, update, solve, P, get sol()');
  }
  // Instrument sliders are mounted once. Revisiting a tab must not duplicate listeners.
+ if(name==='circuits')s=s.replace('I = I₁ + I₂', 'I + I₁ + I₂ = 0');
  if(name==='grouping')s=s.replaceAll('generatoare în SERIE','generatoare în serie').replaceAll('generatoare în PARALEL','generatoare în paralel').replace("    svg.innerHTML = SVG_DEFS;", "    if(flow)flow.stop();\n    svg.innerHTML = SVG_DEFS;")
   .replace('Ty = 78','Ty = 100')
   .replace("svgEl('path', { d: `M${Lx} ${Ty} H${Rx}`, class: 'wire' }, g);", "// No conductor across the generator bank: it would short the sources.")

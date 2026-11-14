@@ -27,7 +27,7 @@ const meterHint=measureDetails.querySelector('.hint');if(meterHint)document.quer
 new MutationObserver(()=>{if(inspector.querySelector('input'))measureDetails.open=false;}).observe(inspector,{childList:true});
 const paletteHint=document.querySelector('.palette-card>.hint');if(paletteHint)document.querySelector('#view-g-lab .network-details').append(paletteHint);
 const currentReadout=document.createElement('p');currentReadout.className='network-currents';document.querySelector('#view-k-lab .canvas-card').append(currentReadout);
-const updateCurrents=()=>{const q=LabK.sol;currentReadout.textContent=`I₁ = ${fmt(q.I1,2)} A · I₂ = ${fmt(q.I2,2)} A · I₃ = ${fmt(q.I3,2)} A`;};new MutationObserver(updateCurrents).observe(document.getElementById('kResults'),{childList:true});updateCurrents();
+const updateCurrents=()=>{const q=LabK.sol;currentReadout.textContent=`I₁ = ${fmt(q.I1,2)} A · I₂ = ${fmt(q.I2,2)} A · I₃ = ${fmt(-q.I3,2)} A`;};new MutationObserver(updateCurrents).observe(document.getElementById('kResults'),{childList:true});updateCurrents();
 Router.go('k-anim');PraxisI18n.apply(document);
 // The common mobile select is mounted after this adapter has selected the initial scene.
 const syncInitialSection=()=>{const select=document.querySelector('.praxis-course-sections');if(!select)return false;select.value=Router.current;return true;};
