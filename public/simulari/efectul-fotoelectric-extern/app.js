@@ -19,7 +19,7 @@ function scene(){
  const s=photo(state.settings),W=400,Hh=325,ink='#254c45',ray='#d22282',mint='#168478',wiper=130+170*Math.abs(s.voltage)/9;
  const label=(x,y,v,size=15,anchor='middle')=>`<text x="${x}" y="${y}" fill="${ink}" font-family="Segoe UI,Arial,sans-serif" font-size="${size}" text-anchor="${anchor}">${v}</text>`;
  const wire=(x,y,xx,yy)=>line(x,y,xx,yy,ink);
- let out=`<rect width="400" height="325" rx="12" fill="#fffefa"/><path d="M70 85 H150 L225 48 L231 60 L178 85 H310 V165 H70 Z" fill="#eef6f1" stroke="${ink}" stroke-width="2"/>`;
+ let out=`<rect width="400" height="325" rx="12" fill="#fffefa"/><path d="M70 85 H151 L225 48 L231 60 L181 85 H310 V165 H70 Z" fill="#eef6f1" stroke="${ink}" stroke-width="2"/>`;
  out+=wire(105,106,105,150)+wire(280,106,280,150)+label(90,151,'C')+label(294,151,'A')+label(73,77,'T')+label(245,65,'Q');
  out+=wire(105,132,40,132)+wire(40,132,40,298)+wire(280,132,350,132)+wire(350,132,350,151)+wire(350,179,350,220)+wire(350,220,wiper,220)+wire(wiper,220,wiper,246);
  out+=`<path d="M${wiper-5} 237 L${wiper} 247 L${wiper+5} 237" fill="none" stroke="${ink}" stroke-width="2"/>`;
@@ -28,9 +28,12 @@ function scene(){
  out+=label(155,304,s.voltage<0?'+':'−',17)+label(231,304,s.voltage<0?'−':'+',17)+label(280,284,'R');
  for(const [x,y,name]of [[200,198,'V'],[350,165,'G']])out+=`<circle cx="${x}" cy="${y}" r="17" fill="#fffefa" stroke="${ray}" stroke-width="1.7"/>`+label(x,y+5,name,15);
  out+=label(200,232,num(s.voltage,2)+' V',13)+label(371,189,'µA',12);
- for(let i=0;i<3;i++){const dx=i*9;out+=line(263+dx,12+dx,105+dx,108+dx,ray,'opacity="'+(s.power>0?1:.15)+'"');out+=`<path d="M${105+dx} ${108+dx} l10 -2 l-5 -8 Z" fill="${ray}" opacity="${s.power>0?1:.15}"/>`;}
+ // The inlet walls and every ray share slope -1/2. Offsets are normal to
+ // that axis, so the entire bundle fits inside the quartz aperture.
+ const beam=offset=>({sx:282+offset/Math.sqrt(5),sy:27+2*offset/Math.sqrt(5),ex:105,ey:115.5+offset*Math.sqrt(5)/2});
+ for(const offset of [-4,0,4]){const {sx,sy,ex,ey}=beam(offset),opacity=s.power>0?1:.15;out+=line(sx,sy,ex,ey,ray,`data-light-ray="" opacity="${opacity}"`);out+=`<path d="M${ex} ${ey} l8 -1 l-3 -6 Z" fill="${ray}" opacity="${opacity}"/>`;}
  out+=label(330,26,'hν',19)+label(330,46,num(s.wavelength)+' nm',13);
- if(s.power>0)for(let i=0;i<5;i++){const q=(state.time*.5+i/5)%1;out+=`<circle cx="${263-150*q}" cy="${12+96*q}" r="3" fill="${ray}"/>`;}
+ if(s.power>0)for(let i=0;i<5;i++){const q=(state.time*.5+i/5)%1,{sx,sy,ex,ey}=beam(0);out+=`<circle data-photon="" cx="${sx+(ex-sx)*q}" cy="${sy+(ey-sy)*q}" r="2.5" fill="${ray}"/>`;}
  out+=label(191,115,'e⁻ →',15);
  if(s.emitted>0)for(let i=0;i<8;i++){const q=(state.time*.32+i/8)%1,energy=s.kinetic*(i+.5)/8,passes=s.voltage>=0||energy>-s.voltage,distance=passes?173:173*Math.min(.9,energy/Math.max(.001,-s.voltage));out+=`<circle cx="${107+distance*(passes?q:Math.sin(Math.PI*q))}" cy="${124+(i%3)*9}" r="3" fill="${mint}"/>`;}
  svg('scene',W,Hh,out);

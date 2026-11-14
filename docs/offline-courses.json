@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-14T16:30:40.364Z",
+  "builtAt": "2026-11-14T16:33:52.305Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -389,7 +389,7 @@
     {
       "id": "efectul-fotoelectric-extern",
       "file": "public/simulari/efectul-fotoelectric-extern/efectul-fotoelectric-extern.zip",
-      "sha256": "556f8aefeed13960596b8c43454de95fcecd768953d030914dd8c5547136f37d",
+      "sha256": "95aaa5981d84fe25cfc5b55de18896eb83f5404ebb33db2ddc5d274c25ca2f49",
       "languages": [
         "ro",
         "en"
