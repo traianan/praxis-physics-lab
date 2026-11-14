@@ -14,6 +14,7 @@ if(requested==='laboratorul-electromagnetic-faraday')process.exit(0);
 if(requested&&!courses.some(lab=>lab.metadata.id===requested))throw new Error('Unknown offline course: '+requested);
 const selected=courses.filter(lab=>!requested||lab.metadata.id===requested);
 const moduleStyles=new Map([
+ ['polarizarea-luminii','style.css'],
  ['mecanica-cereasca','style.css'],
  ['legea-lui-hooke','style.css'],
  ['generator-electric','style.css'],

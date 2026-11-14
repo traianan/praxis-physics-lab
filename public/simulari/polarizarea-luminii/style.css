@@ -1,0 +1,39 @@
+body[data-praxis-course="polarizarea-luminii"]{margin:0;background:var(--praxis-color-canvas);color:var(--praxis-color-ink)}
+body[data-praxis-course="polarizarea-luminii"] .praxis-lab-intro{max-width:80rem;margin-inline:auto!important;padding-inline:1rem}
+body[data-praxis-course="polarizarea-luminii"] :is(.praxis-lab-nav,.site-info-links,.praxis-lab-intro){box-sizing:border-box}
+body[data-praxis-course="polarizarea-luminii"] .praxis-lab-nav{padding-inline:max(1rem,calc((100% - 78rem)/2))}
+body #praxis-original.polarization{box-sizing:border-box;width:100%;max-width:80rem;margin:0 auto;padding:0 1rem 2rem;container-type:inline-size}
+.polarization *{box-sizing:border-box}.polarization [hidden]{display:none!important}
+.polarization .tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin:.35rem 0 1rem;padding:0;border-bottom:1px solid var(--praxis-color-border)}
+.polarization button,.polarization select,.polarization input[type=number]{font:inherit;min-height:44px;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control);padding:.55rem .8rem;background:var(--praxis-color-surface);color:var(--praxis-color-ink)}
+.polarization button{cursor:pointer;transition:background .15s,transform .15s}.polarization button:hover{background:var(--praxis-color-primary-soft)}.polarization button:active{transform:translateY(1px)}
+.polarization button[aria-selected=true],.polarization .primary{background:var(--praxis-color-primary);color:white;border-color:var(--praxis-color-primary)}
+.polarization :focus-visible{outline:3px solid var(--praxis-color-focus);outline-offset:3px}
+.polarization h2{font-size:1.2rem;margin:0 0 .6rem}.polarization h3{font-size:1.05rem;margin:.25rem 0 .6rem}.polarization p{line-height:1.55;margin:.55rem 0}.polarization .muted{color:var(--praxis-color-muted);font-size:.9rem}
+.pol-workspace{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(17rem,1fr);gap:1rem;align-items:start}.pol-card{border:1px solid var(--praxis-color-border);background:var(--praxis-color-surface);border-radius:var(--praxis-radius-card);padding:1rem;min-width:0}
+.pol-stage{background:var(--praxis-color-petrol);color:#fffefa;border-radius:var(--praxis-radius-card);padding:1rem;min-width:0}.pol-stage h2{color:inherit}.pol-stage svg{display:block;width:100%;max-height:17rem;overflow:visible}.pol-stage .muted{color:#c6ddd5}
+body #praxis-original .pol-stage h2{color:#fffefa!important;font-size:1.2rem}
+body #praxis-original #beam{height:10rem;margin:auto}
+body #praxis-original #curve{height:7rem}
+body #praxis-original .pol-controls label{margin-top:.45rem}
+body #praxis-original .pol-controls .formula{margin:.5rem 0;padding:.5rem}
+body #praxis-original .pol-controls .muted{font-size:.85rem;line-height:1.4}
+body #praxis-original .pol-stage{padding:.8rem}
+body #praxis-original .pol-stage .muted{margin:.25rem 0 0;font-size:.85rem;line-height:1.4}
+body #praxis-original .pol-toolbar{margin-bottom:0}
+body #praxis-original .pol-chart{padding:.7rem .8rem}
+body #praxis-original .pol-chart h3{margin:0 0 .25rem;font-size:1rem}
+body #praxis-original .pol-readings{margin:.5rem 0 0}
+body #praxis-original .pol-readings div{padding:.5rem}
+body #praxis-original .pol-readings dd{margin:.15rem 0 0}
+body #praxis-original #measurement-status:empty{display:none}
+.pol-preferences label{display:flex;gap:.5rem;align-items:center;min-height:44px}.pol-preferences input{width:20px;height:20px;accent-color:var(--praxis-color-primary)}
+.polarization button:disabled{opacity:.5;cursor:not-allowed}
+.pol-toolbar{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:.7rem}.pol-actions{display:flex;gap:.4rem;flex-wrap:wrap}
+.pol-controls label{display:block;margin:.9rem 0 .25rem}.pol-controls input[type=range]{width:100%;min-height:32px;accent-color:var(--praxis-color-primary)}.pol-controls select{width:100%}.pol-controls output{float:right;font-variant-numeric:tabular-nums}.pol-controls label.check{display:flex;gap:.6rem;align-items:center;min-height:44px}.pol-controls input[type=checkbox]{width:20px;height:20px;accent-color:var(--praxis-color-primary)}
+.pol-readings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;margin:.8rem 0 0}.pol-readings div{border:1px solid var(--praxis-color-border);border-radius:10px;padding:.65rem}.pol-readings dt{font-size:.85rem;color:var(--praxis-color-muted)}.pol-readings dd{margin:.25rem 0 0;font-size:1.3rem;font-weight:600;font-variant-numeric:tabular-nums}.pol-readings small{font-size:.8rem;font-weight:400}
+.pol-chart{margin-top:.8rem}.pol-chart svg{width:100%;height:9rem;display:block}.pol-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.pol-grid article{min-width:0}.polarization details{margin-top:.8rem}.polarization summary{cursor:pointer;min-height:44px;padding:.5rem 0;font-weight:600}.polarization .formula{font-size:1.2rem;padding:.7rem;background:var(--praxis-color-primary-soft);border-radius:8px;overflow-wrap:anywhere}.polarization a{font-weight:600;text-underline-offset:3px}.pol-table-wrap{overflow:auto}.polarization table{border-collapse:collapse;width:100%;font-size:.95rem}.polarization th,.polarization td{text-align:left;padding:.6rem;border-bottom:1px solid var(--praxis-color-border)}
+.pol-problem input{width:9rem;max-width:100%}.pol-problem .feedback{min-height:1.5rem}.polarization fieldset{margin:0 0 .8rem;border:1px solid var(--praxis-color-border);border-radius:12px;padding:1rem;min-width:0}.polarization legend{font-weight:600;padding:0 .4rem}.pol-option{display:flex;gap:.6rem;align-items:center;min-height:44px;padding:.4rem}.pol-option input{width:18px;height:18px;flex-shrink:0}.pol-score{font-size:1.2rem;font-weight:600}.pol-concepts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-bottom:1rem}.pol-concepts button{padding:1rem;text-align:left}.pol-concepts span{display:block;font-size:.85rem;color:var(--praxis-color-muted);margin-top:.4rem}.pol-reading{max-width:65ch}.pol-state-svg{max-width:23rem;margin:auto}.pol-spectrum{height:.6rem;border-radius:5px;background:linear-gradient(90deg,#17685f,#a6d5be);margin-top:.6rem}
+@container (max-width:55rem){.pol-workspace,.pol-grid{grid-template-columns:1fr}.pol-concepts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){body #praxis-original.polarization{padding-inline:.65rem}.pol-card,.pol-stage{padding:.8rem}.pol-readings{gap:.3rem}.pol-readings div{padding:.5rem}.pol-readings dd{font-size:1.05rem}.polarization .tabs{gap:.25rem}.polarization .tab{flex:1 1 auto}.pol-concepts{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.polarization button{transition:none}}

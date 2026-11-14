@@ -5,13 +5,13 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
- assert.deepEqual(latest.map(sim=>sim.id),['retele-electrice','mecanica-cereasca','interactiunea-gravitationala']);
- assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-13','2026-11-13','2026-11-13']);
- assert.equal(getLatestSimulations(1)[0].id,'retele-electrice');
+ assert.deepEqual(latest.map(sim=>sim.id),['polarizarea-luminii','retele-electrice','mecanica-cereasca']);
+ assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-14','2026-11-13','2026-11-13']);
+ assert.equal(getLatestSimulations(1)[0].id,'polarizarea-luminii');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
- const home=getHomeSimulations();assert.equal(home.length,10);
+ const home=getHomeSimulations();assert.equal(home.length,11);
  for(const chapter of chapters)assert.ok(home.filter(sim=>sim.chapter===chapter.id).length<=2);
  assert.equal(findSimulations('miscare').length,8);assert.equal(findSimulations('','curbilinie osculator').length,1);
 });
@@ -25,8 +25,9 @@ test('exactly the seven physics chapters, with unique stable ids', () => {
  assert.equal(chapters.length,7); assert.equal(new Set(chapters.map(c=>c.id)).size,7);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite']);
 });
-test('thirty-four real local laboratories are available, including Ohm, optics and seismic waves', async () => {
- assert.equal(simulations.length,34);
+test('thirty-five real local laboratories are available, including polarization, Ohm, optics and seismic waves', async () => {
+ assert.equal(simulations.length,35);
+ assert.equal(simulations.find(s=>s.id==='polarizarea-luminii').chapter,'lumina-si-radiatii');
  const seismic=simulations.find(s=>s.id==='unde-seismice');
  assert.equal(seismic.chapter,'sunete-si-unde');assert.equal(seismic.status,'available');
  assert.ok((await stat(new URL('../public/'+seismic.image,import.meta.url))).size>0);

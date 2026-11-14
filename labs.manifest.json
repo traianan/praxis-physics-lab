@@ -1585,6 +1585,63 @@
         "kind": "archive",
         "file": "retele-electrice.zip"
       }
+    },
+    {
+      "metadata": {
+        "id": "polarizarea-luminii",
+        "addedOn": "2026-11-14",
+        "addedOrder": 1,
+        "chapter": "lumina-si-radiatii",
+        "title": "Polarizarea luminii",
+        "subtitle": "Filtre, câmp electric și legea lui Malus",
+        "description": "Explorează polarizarea prin filtre rotative, stări ale câmpului electric, reflexie Brewster, măsurători și probleme interactive.",
+        "href": "./simulari/polarizarea-luminii/index.html",
+        "image": "./assets/polarizarea-luminii.svg",
+        "alt": "Două polarizoare cu axe de transmisie și proiecții ale câmpului electric",
+        "tags": [
+          "Polarizare",
+          "Malus",
+          "Experimente",
+          "Offline"
+        ],
+        "keywords": "polarizare lumina malus brewster polarizor analizor circulara eliptica filtre intensitate",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {
+            "selector": "#lab .pol-workspace",
+            "layout": "native",
+            "controls": ".pol-controls",
+            "scene": "#bench"
+          },
+          {
+            "selector": "#states .pol-workspace",
+            "layout": "native",
+            "controls": ".pol-controls",
+            "scene": "#field-stage"
+          },
+          {
+            "selector": "#brewster .pol-workspace",
+            "layout": "native",
+            "controls": ".pol-controls",
+            "scene": ".pol-stage"
+          }
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/lumina-si-radiatii",
+        "courses/shared",
+        "labs/polarizarea-luminii/ui"
+      ],
+      "inlineLocales": [
+        "labs/polarizarea-luminii/ui"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "polarizarea-luminii.zip"
+      }
     }
   ]
 }

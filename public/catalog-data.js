@@ -688,5 +688,25 @@ export const simulations = [
     ],
     "keywords": "retele electrice kirchhoff nod latura ochi serie paralel generator rezistor sunt ampermetru voltmetru",
     "status": "available"
+  },
+  {
+    "id": "polarizarea-luminii",
+    "addedOn": "2026-11-14",
+    "addedOrder": 1,
+    "chapter": "lumina-si-radiatii",
+    "title": "Polarizarea luminii",
+    "subtitle": "Filtre, câmp electric și legea lui Malus",
+    "description": "Explorează polarizarea prin filtre rotative, stări ale câmpului electric, reflexie Brewster, măsurători și probleme interactive.",
+    "href": "./simulari/polarizarea-luminii/index.html",
+    "image": "./assets/polarizarea-luminii.svg",
+    "alt": "Două polarizoare cu axe de transmisie și proiecții ale câmpului electric",
+    "tags": [
+      "Polarizare",
+      "Malus",
+      "Experimente",
+      "Offline"
+    ],
+    "keywords": "polarizare lumina malus brewster polarizor analizor circulara eliptica filtre intensitate",
+    "status": "available"
   }
 ];

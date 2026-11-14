@@ -488,5 +488,27 @@
         "layout": "native"
       }
     ]
+  },
+  "polarizarea-luminii": {
+    "workspaces": [
+      {
+        "selector": "#lab .pol-workspace",
+        "layout": "native",
+        "controls": ".pol-controls",
+        "scene": "#bench"
+      },
+      {
+        "selector": "#states .pol-workspace",
+        "layout": "native",
+        "controls": ".pol-controls",
+        "scene": "#field-stage"
+      },
+      {
+        "selector": "#brewster .pol-workspace",
+        "layout": "native",
+        "controls": ".pol-controls",
+        "scene": ".pol-stage"
+      }
+    ]
   }
 }

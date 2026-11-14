@@ -233,5 +233,11 @@ export const labNamespaces = {
     "chapters/electricitate-magnetism-circuite",
     "courses/shared",
     "courses/retele-electrice/ui"
+  ],
+  "polarizarea-luminii": [
+    "common",
+    "chapters/lumina-si-radiatii",
+    "courses/shared",
+    "labs/polarizarea-luminii/ui"
   ]
 };

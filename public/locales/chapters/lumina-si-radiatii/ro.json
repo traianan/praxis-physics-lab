@@ -10,7 +10,11 @@
     "Laborator de optică geometrică": "Laborator de optică geometrică",
     "Mută obiectul, urmărește razele și descoperă cum se formează imaginea prin lentile și oglinzi.": "Mută obiectul, urmărește razele și descoperă cum se formează imaginea prin lentile și oglinzi.",
     "Construcția imaginii printr-o lentilă convergentă, cu obiect, raze și imagine inversată": "Construcția imaginii printr-o lentilă convergentă, cu obiect, raze și imagine inversată",
-    "Lentilă și traseul razelor": "Lentilă și traseul razelor"
+    "Lentilă și traseul razelor": "Lentilă și traseul razelor",
+    "Polarizarea luminii": "Polarizarea luminii",
+    "Filtre, câmp electric și legea lui Malus": "Filtre, câmp electric și legea lui Malus",
+    "Explorează polarizarea prin filtre rotative, stări ale câmpului electric, reflexie Brewster, măsurători și probleme interactive.": "Explorează polarizarea prin filtre rotative, stări ale câmpului electric, reflexie Brewster, măsurători și probleme interactive.",
+    "Două polarizoare cu axe de transmisie și proiecții ale câmpului electric": "Două polarizoare cu axe de transmisie și proiecții ale câmpului electric"
   },
   "simulations": {
     "oglinzi-si-lentile": {
@@ -24,6 +28,18 @@
         "Offline"
       ],
       "keywords": "lentile oglinzi optica lumina focar curbura reflexie refractie aberatii imagine lenses mirrors optics light focus curvature reflection refraction aberrations image"
+    },
+    "polarizarea-luminii": {
+      "title": "Polarizarea luminii",
+      "subtitle": "Filtre, câmp electric și legea lui Malus",
+      "description": "Explorează polarizarea prin filtre rotative, stări ale câmpului electric, reflexie Brewster, măsurători și probleme interactive.",
+      "tags": [
+        "Polarizare",
+        "Malus",
+        "Experimente",
+        "Offline"
+      ],
+      "keywords": "polarizare lumina malus brewster polarizor analizor circulara eliptica filtre intensitate"
     }
   }
 }

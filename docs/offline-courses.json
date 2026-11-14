@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-14T06:56:56.969Z",
+  "builtAt": "2026-11-14T08:08:04.635Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -357,6 +357,17 @@
       "id": "retele-electrice",
       "file": "public/simulari/retele-electrice/retele-electrice.zip",
       "sha256": "2b68bdf13ce78ca7b6f4599a4000e74b20db09ae8408b6a46f21713a5c52da2a",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "polarizarea-luminii",
+      "file": "public/simulari/polarizarea-luminii/polarizarea-luminii.zip",
+      "sha256": "ded5994adcbd17c05d037b0c43f80277e29ab8cb131d3149c5dfe4fab9620839",
       "languages": [
         "ro",
         "en"
