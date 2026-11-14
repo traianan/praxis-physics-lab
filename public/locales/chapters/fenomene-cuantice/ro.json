@@ -6,5 +6,18 @@
     "Fenomene cuantice": "Fenomene cuantice",
     "FENOMENE CUANTICE": "FENOMENE CUANTICE"
   },
-  "simulations": {}
+  "simulations": {
+    "efectul-fotoelectric-extern": {
+      "title": "Efectul fotoelectric extern",
+      "subtitle": "Fotoni, prag și ecuația lui Einstein",
+      "description": "Explorează emisia fotoelectronilor, tensiunea de oprire, cele patru legi și estimarea constantei lui Planck; probleme, verificare și experimente salvate.",
+      "alt": "Fotoni incidenți pe un catod și electroni colectați într-o fotocelulă cu vid",
+      "tags": [
+        "Fotoni",
+        "Einstein",
+        "Experimente",
+        "Offline"
+      ]
+    }
+  }
 }

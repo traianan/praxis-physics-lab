@@ -526,5 +526,15 @@
         "scene": "#compare-stage"
       }
     ]
+  },
+  "efectul-fotoelectric-extern": {
+    "workspaces": [
+      {
+        "selector": "#lab .pe-workspace",
+        "layout": "native",
+        "controls": ".pe-controls",
+        "scene": "#bench"
+      }
+    ]
   }
 }

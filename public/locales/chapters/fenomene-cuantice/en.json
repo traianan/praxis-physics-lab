@@ -6,5 +6,18 @@
     "Fenomene cuantice": "Quantum phenomena",
     "FENOMENE CUANTICE": "QUANTUM PHENOMENA"
   },
-  "simulations": {}
+  "simulations": {
+    "efectul-fotoelectric-extern": {
+      "title": "The external photoelectric effect",
+      "subtitle": "Photons, threshold and Einstein’s equation",
+      "description": "Explore photoelectron emission, stopping voltage, four experimental laws and estimating Planck’s constant; problems, self-check and saved experiments.",
+      "alt": "Photons reaching a cathode and electrons collected in a vacuum photocell",
+      "tags": [
+        "Photons",
+        "Einstein",
+        "Experiments",
+        "Offline"
+      ]
+    }
+  }
 }

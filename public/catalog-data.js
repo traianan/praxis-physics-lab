@@ -728,5 +728,25 @@ export const simulations = [
     ],
     "keywords": "gravitatie cadere libera aruncare verticala orizontala oblica parabola siguranta bataie energie",
     "status": "available"
+  },
+  {
+    "id": "efectul-fotoelectric-extern",
+    "addedOn": "2026-11-14",
+    "addedOrder": 3,
+    "chapter": "fenomene-cuantice",
+    "title": "Efectul fotoelectric extern",
+    "subtitle": "Fotoni, prag și ecuația lui Einstein",
+    "description": "Explorează emisia fotoelectronilor, tensiunea de oprire, cele patru legi și estimarea constantei lui Planck; probleme, verificare și experimente salvate.",
+    "href": "./simulari/efectul-fotoelectric-extern/index.html",
+    "image": "./assets/efectul-fotoelectric-extern.svg",
+    "alt": "Fotoni incidenți pe un catod și electroni colectați într-o fotocelulă cu vid",
+    "tags": [
+      "Fotoni",
+      "Einstein",
+      "Experimente",
+      "Offline"
+    ],
+    "keywords": "fotoelectric extern fotoni einstein planck prag frecventa catod tensiune oprire hallwachs",
+    "status": "available"
   }
 ];

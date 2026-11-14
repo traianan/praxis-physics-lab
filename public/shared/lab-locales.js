@@ -245,5 +245,11 @@ export const labNamespaces = {
     "chapters/miscare",
     "courses/shared",
     "labs/miscarea-in-camp-gravitational/ui"
+  ],
+  "efectul-fotoelectric-extern": [
+    "common",
+    "chapters/fenomene-cuantice",
+    "courses/shared",
+    "labs/efectul-fotoelectric-extern/ui"
   ]
 };

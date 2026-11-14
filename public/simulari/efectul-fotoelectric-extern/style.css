@@ -1,0 +1,82 @@
+body[data-praxis-course="efectul-fotoelectric-extern"]{margin:0;background:var(--praxis-color-canvas);color:var(--praxis-color-ink)}
+body[data-praxis-course="efectul-fotoelectric-extern"] .praxis-lab-intro{max-width:80rem;margin-inline:auto!important;padding-inline:1rem}
+body[data-praxis-course="efectul-fotoelectric-extern"] :is(.praxis-lab-nav,.site-info-links,.praxis-lab-intro){box-sizing:border-box}
+body[data-praxis-course="efectul-fotoelectric-extern"] .praxis-lab-nav{padding-inline:max(1rem,calc((100% - 78rem)/2))}
+body #praxis-original.photoelectric{box-sizing:border-box;width:100%;max-width:80rem;margin:0 auto;padding:0 1rem 2rem;container-type:inline-size}
+.photoelectric *{box-sizing:border-box}.photoelectric [hidden]{display:none!important}
+.photoelectric .tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin:.35rem 0 1rem;padding:0;border-bottom:1px solid var(--praxis-color-border)}
+.photoelectric button,.photoelectric select,.photoelectric input[type=text]{font:inherit;min-height:44px;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-control);padding:.55rem .8rem;background:var(--praxis-color-surface);color:var(--praxis-color-ink)}
+.photoelectric button{cursor:pointer;transition:background .15s,transform .15s}.photoelectric button:hover{background:var(--praxis-color-primary-soft)}.photoelectric button:active{transform:translateY(1px)}
+.photoelectric button[aria-selected=true],.photoelectric .primary{background:var(--praxis-color-primary);color:white;border-color:var(--praxis-color-primary)}
+.photoelectric :focus-visible{outline:3px solid var(--praxis-color-focus);outline-offset:3px}
+.photoelectric h2{font-size:1.2rem;margin:0 0 .6rem}.photoelectric h3{font-size:1.05rem;margin:.25rem 0 .6rem}.photoelectric p{line-height:1.55;margin:.55rem 0}.photoelectric .muted{color:var(--praxis-color-muted);font-size:.9rem}
+.pe-workspace{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(17rem,1fr);gap:1rem;align-items:start}.pe-card{border:1px solid var(--praxis-color-border);background:var(--praxis-color-surface);border-radius:var(--praxis-radius-card);padding:1rem;min-width:0}
+.pe-stage{background:var(--praxis-color-petrol);color:#fffefa;border-radius:var(--praxis-radius-card);padding:1rem;min-width:0}.pe-stage h2{color:inherit}.pe-stage svg{display:block;width:100%;max-height:17rem;overflow:visible}.pe-stage .muted{color:#c6ddd5}
+body #praxis-original .pe-stage h2{color:#fffefa!important;font-size:1.2rem}
+body #praxis-original #beam{height:10rem;margin:auto}
+body #praxis-original #curve{height:7rem}
+body #praxis-original .pe-controls label{margin-top:.45rem}
+body #praxis-original .pe-controls .formula{margin:.5rem 0;padding:.5rem}
+body #praxis-original .pe-controls .muted{font-size:.85rem;line-height:1.4}
+body #praxis-original .pe-stage{padding:.8rem}
+body #praxis-original .pe-stage .muted{margin:.25rem 0 0;font-size:.85rem;line-height:1.4}
+body #praxis-original .pe-toolbar{margin-bottom:0}
+body #praxis-original .pe-chart{padding:.7rem .8rem}
+body #praxis-original .pe-chart h3{margin:0 0 .25rem;font-size:1rem}
+body #praxis-original .pe-readings{margin:.5rem 0 0}
+body #praxis-original .pe-readings div{padding:.5rem}
+body #praxis-original .pe-readings dd{margin:.15rem 0 0}
+body #praxis-original #measurement-status:empty{display:none}
+.pe-preferences label{display:flex;gap:.5rem;align-items:center;min-height:44px}.pe-preferences input{width:20px;height:20px;accent-color:var(--praxis-color-primary)}
+.photoelectric button:disabled{opacity:.5;cursor:not-allowed}
+.pe-toolbar{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:.7rem}.pe-actions{display:flex;gap:.4rem;flex-wrap:wrap}
+.pe-controls label{display:block;margin:.9rem 0 .25rem}.pe-controls input[type=range]{width:100%;min-height:32px;accent-color:var(--praxis-color-primary)}.pe-controls select{width:100%}.pe-controls output{float:right;font-variant-numeric:tabular-nums}.pe-controls label.check{display:flex;gap:.6rem;align-items:center;min-height:44px}.pe-controls input[type=checkbox]{width:20px;height:20px;accent-color:var(--praxis-color-primary)}
+.pe-readings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;margin:.8rem 0 0}.pe-readings div{border:1px solid var(--praxis-color-border);border-radius:10px;padding:.65rem}.pe-readings dt{font-size:.85rem;color:var(--praxis-color-muted)}.pe-readings dd{margin:.25rem 0 0;font-size:1.3rem;font-weight:600;font-variant-numeric:tabular-nums}.pe-readings small{font-size:.8rem;font-weight:400}
+.pe-chart{margin-top:.8rem}.pe-chart svg{width:100%;height:9rem;display:block}.pe-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.pe-grid article{min-width:0}.photoelectric details{margin-top:.8rem}.photoelectric summary{cursor:pointer;min-height:44px;padding:.5rem 0;font-weight:600}.photoelectric .formula{font-size:1.2rem;padding:.7rem;background:var(--praxis-color-primary-soft);border-radius:8px;overflow-wrap:anywhere}.photoelectric a{font-weight:600;text-underline-offset:3px}.pe-table-wrap{overflow:auto}.photoelectric table{border-collapse:collapse;width:100%;font-size:.95rem}.photoelectric th,.photoelectric td{text-align:left;padding:.6rem;border-bottom:1px solid var(--praxis-color-border)}
+.pe-problem input{width:9rem;max-width:100%}.pe-problem .feedback{min-height:1.5rem}.photoelectric fieldset{margin:0 0 .8rem;border:1px solid var(--praxis-color-border);border-radius:12px;padding:1rem;min-width:0}.photoelectric legend{font-weight:600;padding:0 .4rem}.pe-option{display:flex;gap:.6rem;align-items:center;min-height:44px;padding:.4rem}.pe-option input{width:18px;height:18px;flex-shrink:0}.pe-score{font-size:1.2rem;font-weight:600}.pe-concepts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-bottom:1rem}.pe-concepts button{padding:1rem;text-align:left}.pe-concepts span{display:block;font-size:.85rem;color:var(--praxis-color-muted);margin-top:.4rem}.pe-reading{max-width:65ch}.pe-state-svg{max-width:23rem;margin:auto}.pe-spectrum{height:.6rem;border-radius:5px;background:linear-gradient(90deg,#17685f,#a6d5be);margin-top:.6rem}
+@container (max-width:55rem){.pe-workspace,.pe-grid{grid-template-columns:1fr}.pe-concepts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){body #praxis-original.photoelectric{padding-inline:.65rem}.pe-card,.pe-stage{padding:.8rem}.pe-readings{gap:.3rem}.pe-readings div{padding:.5rem}.pe-readings dd{font-size:1.05rem}.photoelectric .tabs{gap:.25rem}.photoelectric .tab{flex:1 1 auto}.pe-concepts{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.photoelectric button{transition:none}}
+
+/* Native experiment layout follows the shared controls, typography and presentation modes. */
+.pe-workspace{grid-template-columns:minmax(0,1.8fr) minmax(18rem,1fr);align-items:start}
+.pe-visual{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:.65rem;min-width:0}
+.pe-readings{grid-column:1/-1}.pe-chart{margin:0!important}
+body #praxis-original #scene{width:100%;height:250px;max-height:none;display:block}
+body #praxis-original #energy-budget{width:100%;height:160px;display:block}
+.pe-stage .scene-key{font-size:.8rem;color:#c6ddd5;line-height:1.4}
+#plot{width:100%;min-width:0;overflow:hidden}.pe-chart select{max-width:100%;min-width:0}
+.pe-controls label{display:grid;grid-template-columns:minmax(0,1fr) 6ch;gap:.5rem;font-size:.9rem;margin:.4rem 0 .15rem}
+.pe-controls output{float:none;text-align:right;font-variant-numeric:tabular-nums}
+.pe-controls input[type=range]{margin:0}.pe-controls label[for=material]{display:block}
+#status{min-height:4.5em;line-height:1.5;font-size:.9rem;font-weight:600}
+#summary{min-height:4.5em;line-height:1.5;font-size:.85rem}
+.pe-status{min-height:3em}#estimate-result{min-height:4.5em;overflow-wrap:anywhere}
+.pe-controls .pe-actions{margin-top:.6rem}.pe-file{display:inline-flex;align-items:center;gap:.5rem;flex-wrap:wrap;min-height:44px}
+.pe-file input{max-width:100%;font:inherit}.pe-actions{align-items:center}.pe-problem input{margin:.4rem}
+#quiz-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;align-items:stretch}
+#quiz-form fieldset{margin:0;background:var(--praxis-color-surface)}#quiz-form>.pe-actions,#quiz-score{grid-column:1/-1}
+.pe-concepts button[aria-pressed=true]{background:var(--praxis-color-primary-soft)}
+#law-cards{margin-top:1rem}#law-cards dl>div{display:flex;justify-content:space-between;gap:1rem;padding:.4rem 0;border-bottom:1px solid var(--praxis-color-border)}
+#law-cards dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}#law-conclusion{min-height:4.5em}
+body #praxis-original .pe-stage h2{color:#fffefa!important}.pe-preferences label{display:flex;gap:.5rem;align-items:center}
+@container(max-width:55rem){.pe-workspace{grid-template-columns:minmax(0,1.5fr) minmax(17rem,1fr)}.pe-visual{grid-template-columns:1fr}.pe-chart{margin-top:0!important}body #praxis-original #scene{height:210px}}
+@container(max-width:48rem){.pe-workspace,.pe-grid,#quiz-form{grid-template-columns:1fr}.pe-concepts{grid-template-columns:repeat(2,minmax(0,1fr))}.pe-readings dd{font-size:1rem}}
+@container(max-width:26rem){.pe-concepts{grid-template-columns:1fr}.pe-readings{grid-template-columns:1fr}.pe-readings div{display:flex;justify-content:space-between;gap:.5rem}.pe-readings dd{margin:0}.pe-controls label{font-size:1rem}.pe-toolbar{align-items:flex-start}#plot{min-width:0}}
+
+body #praxis-original .pe-stage .scene-key{font-size:.8rem;line-height:1.4}
+body #praxis-original #status,body #praxis-original #summary{font-size:.85rem;line-height:1.35;min-height:4.05em;margin:.4rem 0}
+body #praxis-original .pe-controls label{margin-top:.2rem}
+body #praxis-original .pe-readings dd{font-size:1.15rem}
+.pe-file{min-width:0;width:100%;max-width:100%}.pe-file input{min-width:0;width:100%;max-width:100%}
+
+body #praxis-original #scene{height:210px}
+
+#plot,.pe-law-plot{position:relative;min-width:0;overflow:hidden;width:100%}
+.pe-graph-marks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+body #praxis-original #scene{height:240px;background:#fffefa;border-radius:8px}
+body #praxis-original .pe-stage .scene-key{font-size:.8rem;line-height:1.4}
+body #praxis-original .pe-visual{align-items:start}
+body #praxis-original .pe-readings{margin-top:0}
+
+#plot>svg.pe-graph-marks,#law-plot>svg.pe-graph-marks{height:100%;width:100%;max-height:none;position:absolute;inset:0}
