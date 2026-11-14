@@ -1,5 +1,7 @@
 # PROGRESS
 
+- 2026-11-14: Confirmată [publicarea Vercel](https://vercel.com/traians-projects-cnni/physicslab/8juPaE7eU9gJJSVjtkD9WTRZVNd9) pentru commitul `2878374`, cu status `success`. Verificat vizual în Chrome, direct în catalog, că formula `ΔA₁ = ΔA₂ ⇔ Δt₁ = Δt₂` din ilustrația lecției „Mecanica cerească” se vede integral deasupra orbitei la 1440 px pe desktop și la 390 px pe mobil emulat.
+
 - 2026-11-14: Auditate imaginile tuturor celor 34 de lecții din catalog. Corectate 22 de ilustrații: circuitele Ohm, RC, Daniell și Kirchhoff; inducția Faraday; graficele Hooke, mișcare rectilinie, oscilații, termodinamică și potențial Lennard-Jones; vectorii cinematici, ai pendulului și ai gravitației; fronturile la reflexie și refracție; orbita cu arii egale și ciclurile Otto/Diesel. Actualizate descrierile alternative RO/EN unde se impunea. Build reușit și toate cele 34 de imagini randate în Chrome înainte și după corecții.
 
 - 2026-11-14: Confirmată [publicarea Vercel](https://vercel.com/traians-projects-cnni/physicslab/7GtyE1pnNZwzLtm7Q6oWRcYPurLA) cu status `success` pentru commitul `1f5a210`, care documentează verificarea convenției de semne pe site.
