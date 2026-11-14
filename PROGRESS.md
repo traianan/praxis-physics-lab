@@ -1,5 +1,7 @@
 # PROGRESS
 
+- 2026-11-14: Confirmată [publicarea Vercel](https://vercel.com/traians-projects-cnni/physicslab/7GtyE1pnNZwzLtm7Q6oWRcYPurLA) cu status `success` pentru commitul `1f5a210`, care documentează verificarea convenției de semne pe site.
+
 - 2026-11-14: Confirmată [publicarea Vercel](https://vercel.com/traians-projects-cnni/physicslab/pssdRRv6ke6AC5AC6s9ZfpCaZW7o) cu status `success` pentru commitul `7c2c7fc`. Verificat în Chrome direct pe site că în legea I toți termenii se adună, cu valori pozitive pentru curenții care intră în nod și negative pentru cei care ies. Convenția apare corect în simulare, în rezolvarea pas cu pas și în problemele rezolvate. Problema a doua afișează `2 A + 3 A + (−5 A) = 0 A`. Verificarea a trecut fără erori JavaScript.
 
 - 2026-11-14: Unificată convenția algebrică pentru legea nodurilor în „Rețele electrice”. Toți termenii se adună. Curenții care intră sunt pozitivi, cei care ies sunt negativi. Actualizate teoria, ochiurile și traseele de potențial, grupările și exercițiile cu ramificații. Exemplu: 2 A + 3 A + (−5 A) = 0 A. Trecute cele cinci teste de model și verificarea în Chrome a ecuațiilor afișate în buildul Web și offline.
