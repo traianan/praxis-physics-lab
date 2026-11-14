@@ -47,7 +47,7 @@
       "title": "Interacții atomice",
       "subtitle": "Atracție, respingere și potențial Lennard-Jones",
       "description": "Șapte perechi de atomi, forțe și energie potențială, parametri personalizabili, explicații și șase întrebări de verificare.",
-      "alt": "Doi atomi cu forțe de atracție și respingere pe curba potențialului Lennard-Jones",
+      "alt": "Potențial Lennard-Jones și forțele de atracție dintre doi atomi dincolo de distanța de echilibru",
       "tags": [
         "Termodinamică",
         "Atomi",
@@ -71,7 +71,7 @@
       "title": "Transformări de stare de agregare",
       "subtitle": "Topire, vaporizare, lichefiere și diagrama de faze",
       "description": "12 secțiuni, 11 demonstrații despre transformările de stare, lichefierea gazelor, izotermele lui Andrews și punctul critic, două probleme rezolvate și 15 întrebări.",
-      "alt": "Gheață, apă și vapori, cu o curbă de încălzire și punctul triplu",
+      "alt": "Curba de încălzire a apei la presiune constantă, cu paliere la topire și fierbere",
       "tags": [
         "Termodinamică",
         "Schimbări de fază",

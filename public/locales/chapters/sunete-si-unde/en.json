@@ -48,7 +48,7 @@
       "title": "Superposition of oscillations",
       "subtitle": "Perpendicular oscillations and Lissajous figures",
       "description": "Equal and different angular frequencies, 12 presets, nine quick ratios, contacts, symmetries, pauses at extrema, sound and PNG export, with seven theory topics.",
-      "alt": "Lissajous figure and its component oscillations along perpendicular axes",
+      "alt": "Lissajous figure for perpendicular oscillations with a 1:2 frequency ratio",
       "tags": [
         "Oscillations",
         "Lissajous",
@@ -84,7 +84,7 @@
       "title": "Seismic waves",
       "subtitle": "From the focus to the seismogram",
       "description": "Simulate P, S and surface arrivals, compare Richter, Mw, Mercalli and MSK-64, and explore real earthquakes.",
-      "alt": "Seismic wavefronts and a seismogram",
+      "alt": "Focus, epicentre, station and seismogram with P, S and surface-wave arrivals",
       "tags": ["Waves", "Seismology", "Experiments"],
       "keywords": "seismic waves earthquake vrancea focus epicentre richter mercalli msk mks love rayleigh seismogram"
     },

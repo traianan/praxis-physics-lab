@@ -48,7 +48,7 @@
       "title": "Compunerea oscilațiilor",
       "subtitle": "Oscilații perpendiculare și figuri Lissajous",
       "description": "Pulsații egale și diferite, 12 situații particulare, nouă rapoarte rapide, contacte, simetrii, opriri la extreme, sunet și export PNG, cu șapte teme teoretice.",
-      "alt": "Figură Lissajous și oscilațiile componente pe două axe perpendiculare",
+      "alt": "Figură Lissajous pentru două oscilații perpendiculare cu raportul frecvențelor 1:2",
       "tags": [
         "Oscilații",
         "Lissajous",
@@ -84,7 +84,7 @@
       "title": "Unde seismice",
       "subtitle": "De la focar la seismogramă",
       "description": "Simulează sosirea undelor P, S și de suprafață, compară Richter, Mw, Mercalli și MSK-64 și explorează cutremure reale.",
-      "alt": "Fronturi de undă seismică și o seismogramă",
+      "alt": "Focar, epicentru, stație și seismogramă cu sosirile undelor P, S și de suprafață",
       "tags": ["Unde", "Seismologie", "Experimente"],
       "keywords": "unde seismice seism cutremure vrancea focar epicentru richter mercalli msk mks love rayleigh seismograma"
     },

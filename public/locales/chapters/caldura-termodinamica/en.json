@@ -47,7 +47,7 @@
       "title": "Atomic interactions",
       "subtitle": "Attraction, repulsion and the Lennard-Jones potential",
       "description": "Seven atom pairs, forces and potential energy, customizable parameters, explanations and six quiz questions.",
-      "alt": "Two atoms with attractive and repulsive forces on a Lennard-Jones potential curve",
+      "alt": "Lennard-Jones potential and the attractive forces between two atoms beyond their equilibrium separation",
       "tags": [
         "Thermodynamics",
         "Atoms",
@@ -71,7 +71,7 @@
       "title": "Phase changes",
       "subtitle": "Melting, vaporisation, liquefaction and phase diagrams",
       "description": "12 topics, 11 demonstrations about phase changes, gas liquefaction, Andrews isotherms and the critical point, two worked problems and 15 questions.",
-      "alt": "Ice, liquid water and vapour with a heating curve and triple point",
+      "alt": "Heating curve of water at constant pressure, with plateaus for melting and boiling",
       "tags": [
         "Thermodynamics",
         "Phase changes",

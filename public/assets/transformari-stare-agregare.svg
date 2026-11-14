@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380"><rect width="640" height="380" fill="#edf2ee"/><g fill="none" stroke="#17685f" stroke-width="3"><path d="M70 265h480M85 285V70"/><path d="m100 250 75-65h110l90-65h125" stroke="#b17b26" stroke-width="6"/></g><g fill="#b6d5e3" stroke="#3879ac" stroke-width="3"><path d="m135 90 35-20 35 20v40l-35 20-35-20zM170 70v40l35 20M135 90l35 20v40"/></g><path d="M320 220v80q45 30 90 0v-80" fill="#d4e9ef" stroke="#3879ac" stroke-width="3"/><g fill="none" stroke="#7762af" stroke-width="4" stroke-linecap="round"><path d="M470 70q-25 20 0 40t0 40M505 60q-25 20 0 40t0 40M540 80q-25 20 0 40t0 40"/></g><circle cx="285" cy="185" r="7" fill="#17685f"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <rect width="640" height="360" rx="18" fill="#eef5f1"/>
+<path d="M65 265H590M85 280V46" fill="none" stroke="#17685f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M95 250l65-45h95l100-85h108l70-54" fill="none" stroke="#b17b26" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="48" y="50" fill="#103f3b" font-family="Arial,sans-serif" font-size="23">T</text>
+<text x="590" y="286" fill="#103f3b" font-family="Arial,sans-serif" font-size="23">Q</text>
+<text x="150" y="193" fill="#103f3b" font-family="Arial,sans-serif" font-size="23">T<tspan baseline-shift="sub" font-size="15">top</tspan></text>
+<text x="365" y="107" fill="#103f3b" font-family="Arial,sans-serif" font-size="23">T<tspan baseline-shift="sub" font-size="15">fierb</tspan></text>
+<text x="139" y="326" fill="#103f3b" font-family="Arial,sans-serif" font-size="23">p = 1 atm · H₂O</text>
+
+</svg>

@@ -1,9 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
- <rect width="640" height="360" rx="18" fill="#080e18"/>
- <path d="M80 280 284 76M284 76l242 204" stroke="#ffb469" stroke-width="4"/>
- <path d="M80 240 244 76M104 280 308 76M136 280 340 76" stroke="#ffb469" stroke-opacity=".46" stroke-width="2"/>
- <path d="M356 76 560 280M388 76 592 280M420 76 560 216" stroke="#5fe3c0" stroke-opacity=".82" stroke-width="2"/>
- <path d="M284 76V286" stroke="#93a7ff" stroke-width="2" stroke-dasharray="6 7"/>
- <path d="M78 300h484" stroke="#93a1b5" stroke-opacity=".48"/>
- <circle cx="284" cy="76" r="6" fill="#e8edf5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <rect width="640" height="360" rx="18" fill="#080e18"/>
+<path d="M0 170H640V360H0Z" fill="#142e3c"/>
+<path d="M30 170H610" fill="none" stroke="#86a9b9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320 27V332" stroke="#a5b8cc" stroke-width="2" stroke-dasharray="7 7"/>
+<path d="M200 50L320 170M307.53 166.34L320 170 316.34 157.53" fill="none" stroke="#ffb469" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320 170L440 50M436.34 62.47L440 50 427.53 53.66" fill="none" stroke="#ffb469" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320 170L385 320M374.75 312.01L385 320 386.18 307.05" fill="none" stroke="#5fe3c0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M271.21 150.91L300.91 121.21M242.93 122.62L272.62 92.93M214.64 94.34L244.34 64.64M339.09 121.21L368.79 150.91M367.38 92.93L397.07 122.62M395.66 64.64L425.36 94.34" fill="none" stroke="#ffb469" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M347.22 180.00L308.68 196.70M356.37 201.11L317.83 217.80M365.51 222.21L326.97 238.91M374.66 243.31L336.12 260.01M383.80 264.42L345.26 281.12M392.95 285.52L354.41 302.22" fill="none" stroke="#5fe3c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="48" y="75" fill="#dcebf3" font-family="Arial,sans-serif" font-size="23">v₁</text>
+<text x="48" y="230" fill="#dcebf3" font-family="Arial,sans-serif" font-size="23">v₂ &lt; v₁</text>
+
 </svg>

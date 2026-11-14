@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect width="640" height="360" rx="24" fill="#103f3b"/><ellipse cx="320" cy="180" rx="218" ry="116" fill="none" stroke="#c5e8a5" stroke-width="3" stroke-dasharray="8 10" transform="rotate(-15 320 180)"/><circle cx="320" cy="180" r="68" fill="#297f75" stroke="#c5e8a5" stroke-width="3"/><path d="M272 160q48-48 96 0M260 186q60 45 120 0M320 112q-55 68 0 136q55-68 0-136" fill="none" stroke="#c5e8a5" stroke-width="2"/><circle cx="522" cy="103" r="13" fill="#e8b85c"/><path d="M510 108l-90 35m0 0 14-18m-14 18 23 3M522 90l-35-53m0 0 0 22m0-22 21 9" fill="none" stroke="#e8b85c" stroke-width="5" stroke-linejoin="round"/><circle cx="112" cy="245" r="20" fill="#c5e8a5"/><path d="M139 237l87-30m0 0-15 18m15-18-23-4" fill="none" stroke="#c5e8a5" stroke-width="5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <rect width="640" height="360" rx="18" fill="#103f3b"/>
+<circle cx="440" cy="181" r="130" fill="none" stroke="#a6c8b9" stroke-width="2" stroke-dasharray="8 8"/>
+<circle cx="440" cy="181" r="54" fill="#297f75"/>
+<circle cx="570" cy="181" r="12" fill="#e8b85c"/>
+<circle cx="64" cy="181" r="23" fill="#297f75"/>
+<circle cx="240" cy="181" r="15" fill="#e8b85c"/>
+<path d="M88 181L141 181M129.59 187.23L141 181 129.59 174.77" fill="none" stroke="#c5e8a5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M224 181L171 181M182.41 174.77L171 181 182.41 187.23" fill="none" stroke="#c5e8a5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M557 181L500 181M511.41 174.77L500 181 511.41 187.23" fill="none" stroke="#c5e8a5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M570 168L570 99M576.23 110.41L570 99 563.77 110.41" fill="none" stroke="#e8b85c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="510" y="213" fill="#c5e8a5" font-family="Arial,sans-serif" font-size="23">F</text>
+<text x="587" y="112" fill="#e8b85c" font-family="Arial,sans-serif" font-size="23">v</text>
+
+</svg>

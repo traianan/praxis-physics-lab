@@ -1,5 +1,7 @@
 # PROGRESS
 
+- 2026-11-14: Auditate imaginile tuturor celor 34 de lecții din catalog. Corectate 22 de ilustrații: circuitele Ohm, RC, Daniell și Kirchhoff; inducția Faraday; graficele Hooke, mișcare rectilinie, oscilații, termodinamică și potențial Lennard-Jones; vectorii cinematici, ai pendulului și ai gravitației; fronturile la reflexie și refracție; orbita cu arii egale și ciclurile Otto/Diesel. Actualizate descrierile alternative RO/EN unde se impunea. Build reușit și toate cele 34 de imagini randate în Chrome înainte și după corecții.
+
 - 2026-11-14: Confirmată [publicarea Vercel](https://vercel.com/traians-projects-cnni/physicslab/7GtyE1pnNZwzLtm7Q6oWRcYPurLA) cu status `success` pentru commitul `1f5a210`, care documentează verificarea convenției de semne pe site.
 
 - 2026-11-14: Confirmată [publicarea Vercel](https://vercel.com/traians-projects-cnni/physicslab/pssdRRv6ke6AC5AC6s9ZfpCaZW7o) cu status `success` pentru commitul `7c2c7fc`. Verificat în Chrome direct pe site că în legea I toți termenii se adună, cu valori pozitive pentru curenții care intră în nod și negative pentru cei care ies. Convenția apare corect în simulare, în rezolvarea pas cu pas și în problemele rezolvate. Problema a doua afișează `2 A + 3 A + (−5 A) = 0 A`. Verificarea a trecut fără erori JavaScript.
