@@ -67,10 +67,14 @@ function graph(){
   const ratio=window.PraxisCanvasResolution?.ratio(cssWidth,cssHeight)||Math.max(2,devicePixelRatio*1.5),factor=ratio/devicePixelRatio;
   const font=`${Math.round(rootSize*.8*factor)}px Segoe UI`;
   $('#plot').style.height=cssHeight+'px';
-  plot=new PraxisUPlot.default({width:Math.round(cssWidth*factor),height:Math.round(cssHeight*factor),legend:{show:false},cursor:{show:true,drag:{x:false,y:false},points:{show:false}},select:{show:false},scales:{x:{time:false}},axes:[{label:'t (s)',font,labelFont:font,size:28*factor,labelSize:16*factor,values:(u,ticks)=>ticks.map(v=>num(v,1))},{label,font,labelFont:font,size:48*factor,labelSize:18*factor,values:(u,ticks)=>ticks.map(v=>num(v,1))}],series:[{}, {label,stroke:document.documentElement.dataset.courseColors==='vivid'?'#0d6179':'#17685f',width:2*factor}]},[time,values],$('#plot'));
+  plot=new PraxisUPlot.default({width:Math.round(cssWidth*factor),height:Math.round(cssHeight*factor),legend:{show:false},cursor:{show:true,drag:{x:false,y:false},points:{show:false}},select:{show:false},scales:{x:{time:false,range:()=>[0,f.duration||.001]}},axes:[{label:'t (s)',font,labelFont:font,size:28*factor,labelSize:16*factor,values:(u,ticks)=>ticks.map(v=>num(v,1))},{label,font,labelFont:font,size:48*factor,labelSize:18*factor,values:(u,ticks)=>ticks.map(v=>num(v,1))}],series:[{}, {label,stroke:document.documentElement.dataset.courseColors==='vivid'?'#0d6179':'#17685f',width:2*factor}]},[time,values],$('#plot'));
   plot.root.style.transform=`scale(${1/factor})`;plot.root.style.transformOrigin='top left';plot.root.style.pointerEvents='none';plotKey=key;
  }
  plot.setCursor({left:plot.valToPos(state.time,'x'),top:-10});
+ // Match the slider thumb travel to the actual chart time axis (not the card width).
+ const area=plot.over.getBoundingClientRect(),scrub=$('.gm-scrub').getBoundingClientRect(),thumb=parseFloat(getComputedStyle($('#timeline')).getPropertyValue('--praxis-slider-thumb'))||26;
+ $('#timeline').style.marginLeft=(area.left-scrub.left-thumb/2)+'px';
+ $('#timeline').style.width=(area.width+thumb)+'px';
 }
 function drawEnergy(){const f=flight(settings()),s=sample(f,state.time),W=Math.max(300,$('#energy-bars').clientWidth),max=Math.max(1,s.energy),right=W-80;let html='';
  [['E_c',s.kinetic,'#17685f'],['E_p',s.potential,'#9c691a'],['E',s.energy,'#546c91']].forEach(([name,value,c],i)=>{const yy=10+i*40;html+=text(5,yy+15,name,'#18332f',16,'start')+`<rect x="48" y="${yy}" width="${Math.max(0,(right-48)*value/max)}" height="24" rx="3" fill="${c}"/>`+text(W-5,yy+17,num(value,1)+' J','#18332f',14,'end');});svg('energy-bars',W,140,html);$('#energy-values').textContent=`t = ${num(s.t)} s; E = ${num(s.energy)} J; vₓ = ${num(s.vx)} m/s; vᵧ = ${num(s.vy)} m/s.`;}

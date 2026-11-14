@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-14T14:29:53.235Z",
+  "builtAt": "2026-11-14T14:40:11.924Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -378,7 +378,7 @@
     {
       "id": "miscarea-in-camp-gravitational",
       "file": "public/simulari/miscarea-in-camp-gravitational/miscarea-in-camp-gravitational.zip",
-      "sha256": "75a67f26d2ba51280b264c71f6a05c01014f564e01d94eccb9603faec7621fe5",
+      "sha256": "8e9b690b400d48e931395769d209b25ab948b2c106b1fc1a1bffe2b955feb81b",
       "languages": [
         "ro",
         "en"

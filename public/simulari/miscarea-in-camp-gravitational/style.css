@@ -80,6 +80,10 @@ body #praxis-original .gm-chart .gm-toolbar{display:flex;justify-content:space-b
  #lab .gm-stage .scene-key{min-height:2.8rem}
 }
 .gm-workspace>div{min-width:0;max-width:100%}
+#quiz-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+#quiz-form fieldset{margin:0;background:var(--praxis-color-surface,#fff)}
+#quiz-form>.gm-actions,#quiz-score{grid-column:1 / -1}
+@container (max-width:48rem){#quiz-form{grid-template-columns:minmax(0,1fr)}}
 /* Keep the activity below stationary as live values wrap onto new lines. */
 body #praxis-original #compare-result{block-size:4lh;overflow:auto;scrollbar-gutter:stable;font-variant-numeric:tabular-nums}
 
@@ -87,3 +91,11 @@ body #praxis-original #compare-result{block-size:4lh;overflow:auto;scrollbar-gut
 #theory .gm-grid{display:block}#theory article{max-width:65rem;margin:auto}
 body #praxis-original #energy-bars{height:140px}
 body #praxis-original #energy .gm-controls>p:first-of-type{margin:.2rem 0;line-height:1.4}
+/* The time rail shares the plot axis; step buttons occupy the label row. */
+.gm-scrub{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:0 .35rem}
+.gm-scrub>label{grid-column:1;grid-row:1}
+.gm-scrub .praxis-range-stepper{display:contents}
+.gm-scrub .praxis-range-stepper button{grid-row:1;min-width:44px}
+.gm-scrub .praxis-range-stepper button:first-child{grid-column:2}
+.gm-scrub .praxis-range-stepper button:last-child{grid-column:3}
+body #praxis-original #timeline{grid-column:1 / -1;grid-row:2;max-width:none;margin-block:0;margin-right:0}
