@@ -77,7 +77,7 @@ function graph(){
  $('#timeline').style.width=(area.width+thumb)+'px';
 }
 function drawEnergy(){const f=flight(settings()),s=sample(f,state.time),W=Math.max(300,$('#energy-bars').clientWidth),max=Math.max(1,s.energy),right=W-80;let html='';
- [['E_c',s.kinetic,'#17685f'],['E_p',s.potential,'#9c691a'],['E',s.energy,'#546c91']].forEach(([name,value,c],i)=>{const yy=10+i*40;html+=text(5,yy+15,name,'#18332f',16,'start')+`<rect x="48" y="${yy}" width="${Math.max(0,(right-48)*value/max)}" height="24" rx="3" fill="${c}"/>`+text(W-5,yy+17,num(value,1)+' J','#18332f',14,'end');});svg('energy-bars',W,140,html);$('#energy-values').textContent=`t = ${num(s.t)} s; E = ${num(s.energy)} J; vₓ = ${num(s.vx)} m/s; vᵧ = ${num(s.vy)} m/s.`;}
+ [['c',s.kinetic,'#17685f'],['p',s.potential,'#9c691a'],['',s.energy,'#546c91']].forEach(([index,value,c],i)=>{const yy=10+i*40,label=index?`E<tspan dy="4" font-size="11">${index}</tspan>`:'E';html+=text(5,yy+15,label,'#18332f',16,'start')+`<rect x="48" y="${yy}" width="${Math.max(0,(right-48)*value/max)}" height="24" rx="3" fill="${c}"/>`+text(W-5,yy+17,num(value,1)+' J','#18332f',14,'end');});svg('energy-bars',W,140,html);$('#energy-values').textContent=`t = ${num(s.t)} s; E = ${num(s.energy)} J; vₓ = ${num(s.vx)} m/s; vᵧ = ${num(s.vy)} m/s.`;}
 function refresh(){
  const f=flight(settings()),s=sample(f,state.time),mode=$('#mode').value;
  $('#speed-control').hidden=mode==='fall';$('#angle-control').hidden=mode!=='oblique';$('#envelope-control').hidden=mode!=='oblique';
