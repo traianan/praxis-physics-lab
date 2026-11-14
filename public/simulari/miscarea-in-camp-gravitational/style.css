@@ -86,6 +86,8 @@ body #praxis-original .gm-chart .gm-toolbar{display:flex;justify-content:space-b
 @container (max-width:48rem){#quiz-form{grid-template-columns:minmax(0,1fr)}}
 /* Keep the activity below stationary as live values wrap onto new lines. */
 body #praxis-original #compare-result{block-size:4lh;overflow:auto;scrollbar-gutter:stable;font-variant-numeric:tabular-nums}
+#compare .gm-controls label:has(output){display:grid;grid-template-columns:minmax(0,1fr) 8ch;gap:.3rem}
+#compare .gm-controls output{float:none;text-align:right;white-space:nowrap}
 
 .gm-topic-picker{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;margin:0 0 .7rem}.gm-topic-picker select{max-width:100%}
 #theory .gm-grid{display:block}#theory article{max-width:65rem;margin:auto}
