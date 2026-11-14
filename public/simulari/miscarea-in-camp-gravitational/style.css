@@ -88,6 +88,8 @@ body #praxis-original .gm-chart .gm-toolbar{display:flex;justify-content:space-b
 body #praxis-original #compare-result{block-size:4lh;overflow:auto;scrollbar-gutter:stable;font-variant-numeric:tabular-nums}
 #compare .gm-controls label:has(output){display:grid;grid-template-columns:minmax(0,1fr) 8ch;gap:.3rem}
 #compare .gm-controls output{float:none;text-align:right;white-space:nowrap}
+/* Preserve the angle row's geometry when switching comparison modes. */
+body #praxis-original #compare-angle-control[hidden]{display:block!important;visibility:hidden;pointer-events:none}
 
 .gm-topic-picker{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;margin:0 0 .7rem}.gm-topic-picker select{max-width:100%}
 #theory .gm-grid{display:block}#theory article{max-width:65rem;margin:auto}
