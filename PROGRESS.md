@@ -1,5 +1,25 @@
 # PROGRESS
 
+## Biblioteci disponibile pentru dezvoltările viitoare
+
+Actualizat la 2026-11-14. Bibliotecile de mai jos sunt deja instalate în proiect și pot fi reutilizate în laboratoarele noi sau existente, când cerințele experimentului justifică folosirea lor. Nu este necesară reinstalarea lor pentru fiecare lecție.
+
+| Bibliotecă | Versiune instalată | Utilizare |
+| --- | --- | --- |
+| Konva | 10.9.1 | Scene 2D editabile: selecție, tragere, rotire și straturi pentru mecanică sau optică. |
+| Planck | 1.5.1 | Corpuri rigide 2D, ciocniri, articulații și scripeți; rezultatele se verifică față de modelele fizice relevante. |
+| math.js | 15.2.0 | Calcule numerice, sisteme liniare, unități și numere complexe, inclusiv pentru circuite. |
+| uPlot | 1.6.32 | Grafice temporale și măsurători; utilizat deja în „Mișcarea în câmp gravitațional”. |
+| Zod | 4.6.7 | Validarea configurațiilor, presetărilor și experimentelor importate. |
+
+Versiunile sunt fixate în `package.json` și `package-lock.json`. Bundle-urile locale se află în `public/vendor/lab-libraries/`, împreună cu `manifest.json`, CSS-ul uPlot și licențele. `scripts/build-lab-libraries.mjs` le pregătește automat la build; distribuția Web le primește în `dist/vendor/lab-libraries/`.
+
+La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_SIMULARI_2026-11-14.md). Încarcă numai bibliotecile necesare lecției, nu întregul set în antetul comun. Reutilizează și infrastructura existentă: React Flow/React, PraxisMath/KaTeX și Three.js. Include resursele folosite și licențele lor în exportul offline și verifică funcționarea fără rețea. Pentru mișcări cu soluție analitică simplă, păstrează modelul analitic dacă nu este necesar un motor de fizică.
+
+## Jurnal de progres
+
+- 2026-11-14: Verificați indicii în întregul laborator gravitațional pe OPPO CPH2529 fizic (Android 15, Chrome 157, DPR3), online și offline, RO/EN, text 100/200%. Toate cele șapte secțiuni, șase subiecte teoretice și explicațiile pliabile: 48 stări detaliate în fiecare distribuție, plus navigarea online în peisaj. Fără underscore vizibil, erori matematice/JS sau depășiri orizontale; c/p din SVG măsurați sub linia de bază și cu font mai mic, inclusiv după schimbarea masei. Capturi la text 200% inspectate pentru energie și hartă. ZIP publicat transferat USB cu SHA-256 identic 0bf40e4610828e739cb9a07ab81773c63184459439e93c7aa61c9814ca8e8c16, importat prin selector Android; test fără Wi-Fi/date/rețea implicită, navigator.onLine=false și cerere de control eșuată. Reîncărcare offline trecută, conexiuni restaurate. Nu au fost necesare corecții. Dovezi: outputs/gravity-phone/subscripts-online.json, subscripts-offline.json și capturi.
+
 - 2026-11-14: Confirmată pe OPPO CPH2529 fizic stabilitatea panoului la comutarea repetată între comparații: deplasare 0px, RO/EN, text 100/200%, online și offline. Arhiva publicată transferată prin USB și verificată SHA-256 2a8bb77489be76b9f2dceea86f8c3e2866f85a9a5ab1a768356319634376a9fd; import prin selector Android, Wi-Fi/date 0/0, fără rețea implicită și cerere de control eșuată; reîncărcare offline trecută. Rețeaua restaurată. Dovezi: outputs/gravity-phone/switch-online.json și switch-offline.json.
 - 2026-11-14: Corectați indicii energiei în desenul SVG (E cu tspan mic și coborât pentru c/p) și în harta conceptelor (gazdă explicită PraxisMath). Auditate toate cele șapte secțiuni, șase subiecte teoretice și explicațiile pliabile în RO/EN, Web și offline: niciun E_c/E_p sau alt indice cu underscore vizibil; indicii SVG rămân coborâți după schimbarea masei. Build și ZIP regenerate, capturi inspectate. Dovezi: outputs/gravity-motion/subscripts-report.json.
 
