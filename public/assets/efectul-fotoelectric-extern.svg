@@ -1,1 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect width="640" height="360" rx="24" fill="#123f39"/><rect x="175" y="60" width="370" height="210" rx="85" fill="#ffffff08" stroke="#8ab8ac" stroke-width="3"/><path d="M235 95 Q185 165 235 235" fill="none" stroke="#9ad7ce" stroke-width="9"/><path d="M500 100V230M220 235V300H500V230" fill="none" stroke="#e6eee0" stroke-width="3"/><path d="M30 85L220 145M30 130L215 170M30 175L220 200" stroke="#e8b85c" stroke-width="3" stroke-dasharray="12 8"/><g fill="#9ad7ce"><circle cx="275" cy="155" r="7"/><circle cx="335" cy="190" r="7"/><circle cx="405" cy="140" r="7"/><circle cx="465" cy="180" r="7"/></g><rect x="320" y="278" width="78" height="44" rx="9" fill="#f8f6ee"/><text x="359" y="308" fill="#123f39" font-family="sans-serif" font-size="25" text-anchor="middle">U</text><text x="330" y="38" fill="#f8f6ee" font-family="sans-serif" font-size="24" text-anchor="middle">hν = Lₑ + E<tspan dy="5" font-size="16">c,max</tspan></text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Efectul fotoelectric extern</title>
+  <desc id="desc">Lumina intră prin cuarțul Q și lovește fața catodului C orientată spre anodul A. Electronii sunt colectați de anodul conectat la borna pozitivă; catodul este conectat la borna negativă.</desc>
+  <defs>
+    <marker id="light" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#e8b85c"/></marker>
+    <marker id="electron" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#9ad7ce"/></marker>
+  </defs>
+  <rect width="640" height="360" rx="24" fill="#123f39"/>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="24" fill="#f8f6ee">
+    <text x="30" y="43">hν = L<tspan dy="6" font-size="16">e</tspan><tspan dy="-6"> + E</tspan><tspan dy="6" font-size="16">c,max</tspan></text>
+    <text x="507" y="33" fill="#e8b85c">hν</text>
+  </g>
+  <!-- Parallel inlet walls: y = -x/2 + 250 and y = -x/2 + 270. -->
+  <path d="M140 100H300L420 40L428 56L340 100H540V240H140Z" fill="#ffffff08" stroke="#8ab8ac" stroke-width="3"/>
+  <path d="M420 40L428 56" stroke="#f8f6ee" stroke-width="5"/>
+  <!-- Rays enter through Q and terminate on the inner face of C. -->
+  <g fill="none" stroke="#e8b85c" stroke-width="2.5" marker-end="url(#light)">
+    <path d="M480 14L200 154"/>
+    <path d="M480 20L200 160"/>
+    <path d="M480 26L200 166"/>
+  </g>
+  <!-- Continuous leads, with the anode positive relative to the photocathode. -->
+  <path d="M200 210H110V305H308M326 305H570V210H480" fill="none" stroke="#e6eee0" stroke-width="3"/>
+  <path d="M200 140V220" stroke="#9ad7ce" stroke-width="8"/>
+  <path d="M480 140V220" stroke="#e6eee0" stroke-width="5"/>
+  <path d="M308 294V316M326 284V326" stroke="#e6eee0" stroke-width="4"/>
+  <g fill="#9ad7ce"><circle cx="239" cy="183" r="5"/><circle cx="325" cy="198" r="5"/><circle cx="410" cy="183" r="5"/></g>
+  <g stroke="#9ad7ce" stroke-width="2" marker-end="url(#electron)"><path d="M246 183H279"/><path d="M332 198H365"/><path d="M417 183H450"/></g>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="24" fill="#f8f6ee">
+    <text x="171" y="231">C</text><text x="493" y="231">A</text>
+    <text x="437" y="79">Q</text><text x="150" y="128">T</text>
+    <text x="330" y="160" fill="#9ad7ce">e⁻</text>
+    <text x="278" y="293">−</text><text x="339" y="293">+</text>
+    <text x="372" y="338">U &gt; 0</text>
+  </g>
+</svg>
