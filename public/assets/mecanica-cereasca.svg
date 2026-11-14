@@ -7,6 +7,6 @@
 <circle cx="503.123" cy="107.371" r="9" fill="#80c9c4"/>
 <path d="M503.1226527490701 107.37060493283687L554.4203425728531 147.28986117268875M541.59 145.20L554.4203425728531 147.28986117268875 549.24 135.36" fill="none" stroke="#e5b967" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M503.1226527490701 107.37060493283687L505.3007718733649 147.3167722197766M498.46 136.26L505.3007718733649 147.3167722197766 510.90 135.59" fill="none" stroke="#7cc4a7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="320" y="335" text-anchor="middle" fill="#e8f3ed" font-family="Arial,sans-serif" font-size="23">ΔA₁ = ΔA₂ ⇔ Δt₁ = Δt₂</text>
+<text x="320" y="35" text-anchor="middle" fill="#e8f3ed" font-family="Arial,sans-serif" font-size="23">ΔA₁ = ΔA₂ ⇔ Δt₁ = Δt₂</text>
 
 </svg>
