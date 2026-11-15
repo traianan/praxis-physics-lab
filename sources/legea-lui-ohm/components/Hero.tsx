@@ -7,7 +7,6 @@ export function Hero() {
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-orb hero-orb-copper" />
         <div className="hero-orb hero-orb-cyan" />
-        <div className="hero-grid-overlay" />
         <div className="hero-scanline" />
       </div>
       <div className="container hero-inner">

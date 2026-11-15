@@ -28,7 +28,10 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
   </section>
   <section aria-labelledby="saved-title">
    <h2 id="saved-title">Lecții salvate</h2>
-   <p id="empty">Nu ai importat încă nicio lecție.</p>
+   <div id="empty">
+    <p>Nu ai importat încă nicio lecție.</p>
+    <a id="show-downloads" href="#downloads" hidden>Vezi arhivele de descărcat</a>
+   </div>
    <ul id="saved"></ul>
   </section>
   <details id="downloads" hidden>

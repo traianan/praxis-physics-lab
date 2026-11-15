@@ -1172,16 +1172,6 @@ input[type="range"]:disabled {
   }
 }
 
-.hero-grid-overlay {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 78%);
-}
-
 .hero-scanline {
   position: absolute;
   inset: 0;
@@ -1592,13 +1582,50 @@ input[type="range"]:disabled {
   }
 
   .hero {
-    padding-top: calc(var(--header-h) + 2rem);
+    padding-block: 1rem 1.25rem;
     min-height: auto;
   }
 
+  .hero-inner {
+    gap: 1rem;
+  }
+
+  .hero-copy {
+    gap: .65rem;
+  }
+
+  .hero h1 {
+    display: block;
+    margin: 0;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.1;
+  }
+
+  .hero-title-accent {
+    display: inline;
+    margin-inline-start: .25em;
+  }
+
+  .hero-title-accent::after {
+    display: none;
+  }
+
+  .hero-actions {
+    gap: .5rem;
+  }
+
+  .hero-actions .button {
+    min-height: 44px;
+  }
+
   .hero-stats {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr));
+    padding-top: .75rem;
+    gap: .75rem;
+  }
+
+  .hero-stat {
+    gap: .4rem;
   }
 
   .hero-scroll {
@@ -2762,7 +2789,7 @@ input[type="range"]:disabled {
 
 .lab-controls {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
   gap: 1rem 1.35rem;
   padding: clamp(1rem, 2vw, 1.5rem);
   border-top: 1px solid var(--line);
@@ -2773,6 +2800,42 @@ input[type="range"]:disabled {
   display: grid;
   align-content: start;
   gap: 0.42rem;
+  min-width: 0;
+}
+
+.lab-shell :is(.lab-preset, .lab-playback button, .lab-control-actions button, .lab-controls .segmented button, .lab-actions-inline button) {
+  min-height: 44px;
+}
+
+.lab-shell :is(button, input):focus-visible {
+  outline: 2px solid var(--copper-strong);
+  outline-offset: 2px;
+}
+
+.lab-shell button:disabled {
+  cursor: not-allowed;
+  opacity: .65;
+}
+
+@media (min-width: 1181px) and (max-height: 900px) {
+  .lab-toolbar,
+  .lab-chart-card,
+  .lab-side {
+    padding: .75rem 1rem;
+    gap: .65rem;
+  }
+
+  .ui-canvas {
+    height: clamp(210px, 31vh, 275px);
+  }
+
+  .conductor-canvas {
+    height: clamp(150px, 21vh, 190px);
+  }
+
+  .readout-row {
+    padding-block: .35rem;
+  }
 }
 
 .lab-field.is-disabled {
@@ -2981,19 +3044,11 @@ input[type="range"]:disabled {
   .cylinder-card {
     grid-column: span 2;
   }
-
-  .lab-controls {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 900px) {
   .lab-cards {
     grid-template-columns: 1fr;
-  }
-
-  .lab-controls {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lab-status {

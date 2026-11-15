@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-15T15:54:54.194Z",
+  "builtAt": "2026-11-15T17:16:32.066Z",
   "courses": [
     {
       "id": "legea-lui-coulomb",
@@ -354,17 +354,6 @@
       "localResources": true
     },
     {
-      "id": "legea-lui-ohm",
-      "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
-      "sha256": "a77366be47b0910facf94407e2247517f1391d549b27737aa9cedb434d13ee20",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
       "id": "rezistenta-unui-fir",
       "file": "public/simulari/rezistenta-unui-fir/rezistenta-unui-fir.zip",
       "sha256": "d6fb27e5481c2e4e89ddf49075ab5ec230c3b819da19e5980aa5784c66c3a832",
@@ -412,6 +401,17 @@
       "id": "transformarea-politropa",
       "file": "public/simulari/transformarea-politropa/transformarea-politropa.zip",
       "sha256": "ffa146c88dd87a2b5fec6139f34775bfc50af1d22af1f551912c4d8864fb6f70",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "legea-lui-ohm",
+      "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
+      "sha256": "10a82bde78c64fa8e663e569ff98dec95c2ca0e2273bcc9e8ef2b9d4f2545497",
       "languages": [
         "ro",
         "en"

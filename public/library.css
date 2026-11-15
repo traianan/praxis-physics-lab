@@ -114,6 +114,9 @@ body.praxis-library {
 .praxis-library .view-switch { border-radius: 10px; padding: 3px; gap: 3px; background: #fffefa; }
 .praxis-library .view-switch button { width: 44px; height: 44px; border-radius: 7px; color: #586d63; }
 .praxis-library .view-switch button[aria-pressed="true"] { color: #fffefa; background: #103f3b; }
+.praxis-library .view-switch button[aria-pressed="false"]:hover { background: var(--praxis-color-primary-soft); }
+.praxis-library .view-switch button:focus-visible,
+.praxis-library .search-box:focus-within { outline: 2px solid var(--praxis-color-primary); outline-offset: 2px; }
 .praxis-library #simulations.simulation-grid, .praxis-library .simulation-chapter-grid { gap: 20px; }
 .praxis-library .simulation-card { border-radius: 17px; border: 1px solid #d0dace; background: #fffefa; box-shadow: 0 4px 12px -8px #18332f25; }
 .praxis-library .simulation-card:hover { border-color: #8aa58a; box-shadow: 0 10px 28px -16px #18332f3b; }
@@ -136,7 +139,8 @@ body.praxis-library {
 .praxis-library .simulation-action > span { font-size: 12px; color: #586d63; }
 .praxis-library .home-more { gap: 10px; margin-top: 22px; }
 .praxis-library .home-more .button { white-space: normal; text-align: left; font-size: 14px; border-radius: 10px; background: #fffefa; }
-.praxis-library .empty-state { background: #fffefa; border-color: #97ae96; border-radius: 17px; padding: 36px 24px; }
+.praxis-library .empty-state { background: var(--praxis-color-surface); border: 1px solid var(--praxis-color-border); border-radius: 12px; min-height: 0; padding: 24px 16px; }
+.praxis-library .empty-state .button { white-space: normal; }
 .praxis-library .empty-state p { color: #586d63; font-size: 14px; }
 .praxis-library .page-footer { display: flex; margin-top: 32px; padding-top: 20px; font-size: 13px; color: #586d63; }
 .praxis-library .page-footer > span:first-child { color: #32624e; font-weight: 600; }
@@ -208,20 +212,20 @@ body.praxis-library {
 @media (max-width: 600px) {
   .praxis-library main { padding: 18px 16px 24px; }
   .praxis-library .breadcrumb { font-size: 9px; margin-bottom: 14px; }
-  .praxis-library .intro { padding: 27px 23px; min-height: 0; border-radius: 18px; }
+  .praxis-library .intro { padding: 18px 20px; min-height: 0; border-radius: 18px; margin-bottom: 14px; }
   .praxis-library .intro-copy { max-width: none; }
   .praxis-library .intro .eyebrow { font-size: 10px; letter-spacing: 1.5px; }
-  .praxis-library .intro h1 { font-size: clamp(30px, 7.8vw, 42px); letter-spacing: -1.2px; margin-top: 20px; }
+  .praxis-library .intro h1 { font-size: clamp(28px, 7vw, 36px); letter-spacing: -.025em; margin-block: 8px; }
   .praxis-library .intro p { font-size: 15px; line-height: 1.6; max-width: 330px; }
   .praxis-library .intro-art { display: none; }
-  .praxis-library .discovery-entry { margin-top: 22px; gap: 10px 14px; }
+  .praxis-library .discovery-entry { margin-top: 12px; gap: 8px 12px; }
   .praxis-library .intro .discovery-start { font-size: 14px; min-height: 48px; }
   .praxis-library .discovery-caption { font-size: 13px; }
-  .praxis-library[data-library-view="chapter"] .intro, .praxis-library[data-library-view="search"] .intro { min-height: 180px; padding: 25px 22px; }
+  .praxis-library[data-library-view="chapter"] .intro, .praxis-library[data-library-view="search"] .intro { min-height: 0; padding: 16px 20px; }
   .praxis-library[data-library-view="chapter"] .intro h1, .praxis-library[data-library-view="search"] .intro h1 { font-size: 30px; }
   .praxis-library .catalog-tools { gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
   .praxis-library .chapters-button { font-size: 14px; padding-inline: 12px; }
-  .praxis-library .search-box { padding-inline: 11px; }
+  .praxis-library .search-box { flex: 0 0 100%; padding-inline: 11px; }
   .praxis-library .search-box input { font-size: 16px; }
   .praxis-library .search-box svg { width: 17px; flex-basis: 17px; }
   .praxis-library .chapter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }

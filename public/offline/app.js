@@ -3,15 +3,17 @@ import {readPraxisZip} from './zip.js';
 const $=id=>document.getElementById(id);
 const archive=$('archive');
 const status=$('status');
+const downloads=$('downloads');
+const showDownloads=$('show-downloads');
 const cachePrefix='praxis-offline-lesson:';
 const types={html:'text/html; charset=utf-8',js:'text/javascript; charset=utf-8',mjs:'text/javascript; charset=utf-8',
  css:'text/css; charset=utf-8',json:'application/json',webmanifest:'application/manifest+json',svg:'image/svg+xml',
  png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',webp:'image/webp',gif:'image/gif',ico:'image/x-icon',
  woff:'font/woff',woff2:'font/woff2',ttf:'font/ttf',mp3:'audio/mpeg',wav:'audio/wav',txt:'text/plain; charset=utf-8'};
 const localUrl=(id,hash,file='index.html')=>new URL('imported/'+id+'/'+hash+'/'+file,location.href).href;
-function message(text,error=false){
+function message(text,state='ready'){
+ status.dataset.state=state;
  status.textContent=text;
- status.toggleAttribute('data-error',error);
 }
 function link(title,href){
  const a=document.createElement('a');
@@ -37,7 +39,13 @@ async function start(){
   li.append(download);
   $('available').append(li);
  }
- $('downloads').hidden=false;
+ downloads.hidden=false;
+ showDownloads.hidden=false;
+ showDownloads.addEventListener('click',event=>{
+  event.preventDefault();
+  downloads.open=true;
+  downloads.querySelector('summary').focus();
+ });
  async function showSaved(){
   const entries=new Map();
   for(const name of await caches.keys()){
@@ -59,7 +67,7 @@ async function start(){
      for(const key of await caches.keys())if(key.startsWith(cachePrefix+id+':'))await caches.delete(key);
      await showSaved();
      message('Lecția a fost ștearsă din Chrome.');
-    }catch{message('Lecția nu a putut fi ștearsă.',true);}
+    }catch{message('Lecția nu a putut fi ștearsă. Încearcă din nou din lista de lecții salvate.','error');}
    });
    li.append(link(lesson.title,href),remove);
    $('saved').append(li);
@@ -69,9 +77,9 @@ async function start(){
   const file=archive.files[0];
   if(!file)return;
   archive.disabled=true;
-  message('Se verifică arhiva…');
+  message('Se verifică arhiva…','pending');
   try{
-   if(file.size>20*1024*1024)throw Error('Arhiva depășește 20 MB.');
+   if(file.size>20*1024*1024)throw Error('Arhiva depășește 20 MB. Alege un ZIP Praxis de cel mult 20 MB.');
    const buffer=await file.arrayBuffer();
    const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',buffer));
    const hash=Array.from(digest,byte=>byte.toString(16).padStart(2,'0')).join('');
@@ -92,11 +100,11 @@ async function start(){
    }
    await showSaved();
    message(lessons.get(id).title+' este gata. Deschide lecția din lista „Lecții salvate”.');
-  }catch(error){message(error.name==='QuotaExceededError'?'Nu este suficient spațiu în Chrome pentru această lecție.':error.message,true);}
+  }catch(error){message(error.name==='QuotaExceededError'? 'Nu este suficient spațiu în Chrome pentru această lecție. Eliberează spațiu și încearcă din nou.':error.message,'error');}
   finally{archive.value='';archive.disabled=false;}
  });
  await showSaved();
  message('Pagina este gata pentru utilizare fără internet.');
  archive.disabled=false;
 }
-start().catch(error=>message(error.message,true));
+start().catch(error=>message(error.message,'error'));
