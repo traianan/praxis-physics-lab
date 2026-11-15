@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-15T12:19:51.587Z",
+  "builtAt": "2026-11-15T12:31:25.262Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -411,7 +411,7 @@
     {
       "id": "dualismul-unda-corpuscul",
       "file": "public/simulari/dualismul-unda-corpuscul/dualismul-unda-corpuscul.zip",
-      "sha256": "9a583aa38e4e82be551f50e87f3fe6df2f92f8e933fba33e87eddb205e084739",
+      "sha256": "260cc87b5adf98d6464d4bb6e597f8ee5e6a6015e703bb073a16d6fb511883cd",
       "languages": [
         "ro",
         "en"

@@ -14,6 +14,8 @@ const soft = t('Maxime care se suprapun', 'Overlapping peaks');
 const equation = String.raw`\lambda=\frac{hc}{\sqrt{E_c(E_c+2m_ec^2)}}\,,\qquad E_c=eU`;
 const englishEquation = String.raw`\lambda=\frac{hc}{\sqrt{K(K+2m_ec^2)}}\,,\qquad K=eU`;
 const source = t(equation, englishEquation);
+const rayleigh = t(String.raw`d_R=\frac{0{,}61\,\lambda}{\sin\alpha}`, String.raw`d_R=\frac{0.61\,\lambda}{\sin\alpha}`);
+const exampleSemiAngle = .015;
 
 export function microscopePanel(range) {
   return `
@@ -47,6 +49,12 @@ export function microscopePanel(range) {
     <p class="duality-equation"><span data-science-math="tex" data-science-source="${source}">${source}</span></p>
     <p>${t('Imaginea este o demonstrație de defocalizare. Cele două pete sunt aproximări gaussiene, iar scala focalizării este convențională. Tensiunea schimbă citirea lui λ. Defocalizarea schimbă lățimea petelor.', 'The image demonstrates defocus. The two spots are Gaussian approximations, and the focus scale is arbitrary. Voltage changes the wavelength reading. Defocus changes the spot widths.')}</p>
     <p>${t('Rezoluția este distanța minimă la care două detalii pot fi deosebite. Ea depinde și de lentile, apertură, stabilitatea instrumentului și probă. O imagine mai mare poate păstra același nivel de detaliu.', 'Resolution is the minimum separation at which two details can be distinguished. It also depends on the lenses, aperture, instrument stability and specimen. A larger image can retain the same level of detail.')}</p>
+    <h3>${t('Criteriul Rayleigh', 'The Rayleigh criterion')}</h3>
+    <p>${t('Pentru o apertură circulară ideală și două puncte incoerente, maximul discului Airy al unui punct cade în primul minim al celuilalt la limita Rayleigh. În vid, α este semiunghiul aperturii.', 'For an ideal circular aperture and two incoherent points, the peak of one Airy pattern lies at the first minimum of the other at the Rayleigh limit. In vacuum, α is the aperture semi-angle.')}</p>
+    <p class="duality-equation"><span data-science-math="tex" data-science-source="${rayleigh}">${rayleigh}</span></p>
+    <p data-no-science-math>${t('Distanța minimă pentru α = 15 mrad, la tensiunea selectată', 'Minimum separation for α = 15 mrad at the selected voltage')}
+      <strong id="tem-rayleigh"></strong>.
+      ${t('Aceasta este o limită ideală de difracție. În TEM, rezoluția depinde și de coerență, aberații și mecanismul de contrast.', 'This is an ideal diffraction limit. In TEM, resolution also depends on coherence, aberrations and the contrast mechanism.')}</p>
     <p>${t('Compară mai întâi 80 și 200 kV. Apoi fixează tensiunea și deplasează focalizarea de la 0 la +75%. Urmărește cum se apropie maximele din profil, deși pozițiile celor două puncte rămân fixe.', 'First compare 80 and 200 kV. Then hold the voltage fixed and move defocus from 0 to +75%. Watch the peaks merge even though the two point positions stay fixed.')}</p>
   </details>`;
 }
@@ -143,7 +151,9 @@ export function mountMicroscope(root, tr, format) {
     if (root.hidden) return;
     root.querySelector('#tem-voltage-value').value = voltage.value + ' kV';
     root.querySelector('#tem-focus-value').value = focus.value + '%';
-    root.querySelector('#tem-lambda').textContent = format(temWavelength(Number(voltage.value)), 3);
+    const wavelength = temWavelength(Number(voltage.value));
+    root.querySelector('#tem-lambda').textContent = format(wavelength, 3);
+    root.querySelector('#tem-rayleigh').textContent = format(.61 * wavelength / Math.sin(exampleSemiAngle), 1) + ' pm';
     root.querySelector('#tem-stage-description').textContent = tr(stages[selected][1]);
     root.querySelector('#tem-image-status').textContent = tr(Math.abs(Number(focus.value)) < 71 ? clear : soft);
     buttons.forEach((button,i) => button.setAttribute('aria-pressed', String(i===selected)));
