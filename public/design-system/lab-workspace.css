@@ -16,6 +16,7 @@ body[data-praxis-workspace] .praxis-lab-nav{padding-bottom:8px!important}
 body[data-praxis-workspace] .praxis-workspace-disclosure{margin:8px 0;border:1px solid var(--praxis-color-border);border-radius:10px;background:var(--praxis-color-surface);min-width:0;grid-column:1/-1}
 body[data-praxis-workspace] .praxis-workspace-disclosure>summary{min-height:44px;box-sizing:border-box;padding:10px 16px;cursor:pointer;color:var(--praxis-color-primary);font:600 var(--praxis-text-label)/1.5 var(--praxis-font-ui);overflow-wrap:anywhere}
 body[data-praxis-workspace] .praxis-workspace-disclosure>summary:focus-visible,body[data-praxis-workspace] .praxis-workspace-activities button:focus-visible{outline:3px solid var(--praxis-color-primary);outline-offset:2px}
+body[data-praxis-workspace] :where([data-workspace-role=controls],[data-workspace-layout]) :where(button,select,input):focus-visible{outline:2px solid var(--praxis-color-focus);outline-offset:2px}
 body[data-praxis-workspace] .praxis-workspace-disclosure>.praxis-course-tools{margin:0;border:0}
 body[data-praxis-workspace] .praxis-workspace-disclosure:has(>.praxis-course-tools){margin:0 0 0 auto;position:relative}
 body[data-praxis-workspace] .praxis-workspace-disclosure:has(>.praxis-course-tools)[open]{flex:0 0 100%}
