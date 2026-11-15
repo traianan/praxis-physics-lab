@@ -456,6 +456,187 @@ html[data-praxis-whiteboard] body [data-wb-stage] {
 }
 .praxis-whiteboard-dialog::backdrop {background:#103f3b66;}
 .praxis-whiteboard-dialog>div>* {margin-block:.75rem;}
+[data-wb-secondary]:popover-open {
+  box-sizing:border-box;
+  inset:0;
+  width:min(64rem,calc(100% - 2rem));
+  max-height:85dvh;
+  overflow:auto;
+  margin:auto;
+  padding:1rem;
+  border:1px solid var(--praxis-color-border);
+  border-radius:12px;
+  background:var(--praxis-color-surface);
+  color:var(--praxis-color-ink);
+}
+[data-wb-secondary]::backdrop {background:#103f3b66;}
+
+/* Keep operable text at about 12 CSS px or more on a 1280 × 720 board. */
+html[data-praxis-whiteboard] body #praxis-original [data-wb-stage]
+  :where(button,select,label,textarea,input:not([type=checkbox],[type=radio],[type=range]),summary,[role=button],[role=slider],a[href]) {
+  font-size:17px!important;
+}
+html[data-praxis-whiteboard] body [data-wb-stage] :where(button,select,summary) {
+  min-block-size:40px;
+}
+html[data-praxis-whiteboard] body [data-wb-stage] :where(input[type=range]) {
+  min-inline-size:0;
+}
+
+/* Reading activities use a wide diagram and a separate instrument column. */
+html[data-praxis-whiteboard] body :is([data-wb-stage] [data-workspace-figure],[data-wb-stage][data-workspace-figure]) {
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,560px);
+  gap:16px;
+  align-items:start;
+}
+[data-wb-stage] .praxis-workspace-figure-heading {grid-column:1/-1;}
+html[data-praxis-whiteboard] body :is([data-wb-stage] [data-workspace-figure],[data-wb-stage][data-workspace-figure])>canvas {
+  grid-column:1;
+  width:100%;
+  height:520px;
+  min-height:0;
+}
+html[data-praxis-whiteboard] body :is([data-wb-stage] [data-workspace-figure],[data-wb-stage][data-workspace-figure])>canvas.mini {height:150px;}
+html[data-praxis-whiteboard] body :is([data-wb-stage] [data-workspace-figure],[data-wb-stage][data-workspace-figure])>.praxis-workspace-figure-controls {grid-column:2;grid-row:2/span 2;}
+html[data-praxis-whiteboard] body [data-wb-stage] .praxis-workspace-figure-controls .sliders {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+html[data-praxis-whiteboard] body [data-wb-stage] .praxis-workspace-figure-controls .ro {
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] .lab-main {
+  grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);
+}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] .lab-preset>span:not(.lab-preset-dot) {font-size:17px;}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] .lab-controls {
+  grid-template-columns:1fr 1fr 2fr auto;
+  align-items:start;
+}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] .lab-controls[data-wb-secondary]:not(:popover-open) {display:none!important;}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] .lab-material-toggle {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] .ui-canvas {height:240px;}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] .conductor-canvas {height:150px;}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] .lab-side {
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] .cylinder-card {grid-column:1/-1;}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] :is(.circuit-body,.rheostat-body) {
+  grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+}
+html[data-praxis-whiteboard] body #ohm-root [data-wb-stage] :is(.circuit-canvas,.rheostat-canvas) {max-height:350px;}
+
+html[data-praxis-whiteboard] body #praxis-original [data-wb-stage="interactii-atomice"] {
+  grid-template-columns:minmax(0,1fr) 620px!important;
+  gap:16px!important;
+}
+html[data-praxis-whiteboard] body #praxis-original [data-wb-stage="interactii-atomice"]>.stage {grid-column:1;}
+html[data-praxis-whiteboard] body #praxis-original [data-wb-stage="interactii-atomice"]>aside {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-column:2;
+  grid-row:1;
+  gap:12px;
+  align-items:start;
+}
+[data-wb-stage="interactii-atomice"]>aside :is(#pairs,.panel:has(#distance)) {grid-column:1/-1;}
+[data-wb-stage="interactii-atomice"]>aside>.panel {margin-block:0;}
+html[data-praxis-whiteboard] body [data-wb-stage="interactii-atomice"] #cv {
+  height:530px!important;
+  min-height:0!important;
+}
+html[data-praxis-whiteboard] body [data-wb-stage]:is(
+  [data-wb-stage="principiul-i-aplicatii"],
+  [data-wb-stage="transformari-stare-agregare"]
+) .demo canvas {
+  min-width:0!important;
+  max-height:520px;
+  width:auto;
+  margin-inline:auto;
+}
+html[data-praxis-whiteboard] body [data-wb-stage="transformari-stare-agregare"] .demo:has(>.phase-experiment) {
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+  gap:24px;
+}
+html[data-praxis-whiteboard] body #praxis-original [data-wb-stage]:is(
+  [data-wb-stage="principiul-i-aplicatii"],
+  [data-wb-stage="transformari-stare-agregare"]
+) .demo {max-width:none;}
+[data-wb-stage="transformari-stare-agregare"] .phase-experiment {
+  display:block;
+  min-width:0;
+}
+html[data-praxis-whiteboard] body [data-wb-stage="transformari-stare-agregare"] .phase-experiment:has(#fierbCanvas) {
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1fr);
+  gap:10px;
+  align-content:start;
+}
+[data-wb-stage="transformari-stare-agregare"] .phase-experiment:has(#fierbCanvas)>* {grid-column:2;}
+[data-wb-stage="transformari-stare-agregare"] .phase-experiment:has(#fierbCanvas)>:is(h3,.readout,.btn-row) {grid-column:1/-1;}
+[data-wb-stage="transformari-stare-agregare"] .phase-experiment:has(#fierbCanvas)>.sim-frame {grid-column:1;grid-row:2/span 3;}
+html[data-praxis-whiteboard] body [data-wb-stage="transformari-stare-agregare"] .demo #fierbCanvas {max-height:490px;}
+html[data-praxis-whiteboard] body [data-wb-stage]:is(
+  [data-wb-stage="principiul-i-aplicatii"],
+  [data-wb-stage="transformari-stare-agregare"]
+) .demo:has(>.sim-frame):not(:has(>.sim-frame~.sim-frame)) {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,520px);
+  align-items:start;
+  gap:10px 20px;
+}
+[data-wb-stage]:is([data-wb-stage="principiul-i-aplicatii"],[data-wb-stage="transformari-stare-agregare"])
+  .demo:has(>.sim-frame):not(:has(>.sim-frame~.sim-frame))>* {grid-column:2;}
+[data-wb-stage]:is([data-wb-stage="principiul-i-aplicatii"],[data-wb-stage="transformari-stare-agregare"])
+  .demo:has(>.sim-frame):not(:has(>.sim-frame~.sim-frame))>h3:first-child {grid-column:1/-1;}
+[data-wb-stage]:is([data-wb-stage="principiul-i-aplicatii"],[data-wb-stage="transformari-stare-agregare"])
+  .demo:has(>.sim-frame):not(:has(>.sim-frame~.sim-frame))>.sim-frame {grid-column:1;grid-row:2/span 10;}
+html[data-praxis-whiteboard] body [data-wb-stage="principiul-i-aplicatii"] .demo:has(>.mol-viz) {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 560px;
+  gap:12px;
+  align-items:start;
+}
+[data-wb-stage="principiul-i-aplicatii"] .demo:has(>.mol-viz)>* {grid-column:2;}
+[data-wb-stage="principiul-i-aplicatii"] .demo:has(>.mol-viz)>h3 {grid-column:1/-1;}
+[data-wb-stage="principiul-i-aplicatii"] .demo>.mol-viz {grid-column:1;grid-row:2/span 6;}
+[data-wb-stage="principiul-i-aplicatii"] .demo>.mol-viz canvas {width:100%;max-height:none;}
+
+html[data-praxis-whiteboard] body #praxis-original [data-wb-stage="miscarea-circulara-uniforma"]>.grid {
+  grid-template-columns:minmax(0,560px) minmax(0,1fr);
+}
+html[data-praxis-whiteboard] body #praxis-original [data-wb-stage="miscarea-circulara-uniforma"]>.grid>div:has(>.mcu-canvas) {
+  width:100%;
+  max-width:560px;
+}
+html[data-praxis-whiteboard] body #praxis-original [data-wb-stage="miscarea-circulara-uniforma"]>.grid>.space-y-4>.space-y-4 {
+  margin-block:0;
+}
+html[data-praxis-whiteboard] body [data-wb-stage="transformarea-politropa"] .lab-chart-wrap {height:360px;}
+html[data-praxis-whiteboard] body [data-wb-stage="transformarea-politropa"] .lab-side {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+html[data-praxis-whiteboard] body [data-wb-stage="transformarea-politropa"] .cylinder-card {grid-column:1/-1;}
+
+/* Dense instruments need larger captions even when the reference scene is taller. */
+html[data-praxis-whiteboard] body #praxis-original :is(
+  [data-wb-stage="miscarea-circulara-uniforma"],
+  [data-wb-stage="transformarea-politropa"],
+  [data-wb-stage="transformari-stare-agregare"]:has(#fierbCanvas)
+) :is(button,select,label,summary) {font-size:20px!important;}
+html[data-praxis-whiteboard] body #praxis-original #sim-curba[data-wb-stage="miscarea-circulara-uniforma"]
+  :is(button,select,label,summary) {font-size:22px!important;}
+html[data-praxis-whiteboard] body #praxis-original :is(
+  [data-wb-stage="calorimetrie"]:has(#fig2),
+  .rheostat-shell[data-wb-stage="legea-lui-ohm"]
+) :is(button,select,label,summary) {font-size:19px!important;}
 
 html[data-praxis-whiteboard] body [data-wb-stage="compunerea-oscilatiilor"].layout {
   display:grid!important;
@@ -482,6 +663,62 @@ html[data-praxis-whiteboard] body [data-wb-stage="oglinzi-si-lentile"] {
 [data-wb-stage="oglinzi-si-lentile"] :is(.control-panel,.panel-body,.experiment-column) {max-height:none!important;overflow:visible!important;}
 [data-wb-stage="oglinzi-si-lentile"] > .module-tabs {grid-column:1/-1;}
 [data-wb-stage="oglinzi-si-lentile"] #scene-wrap {height:515px!important;min-height:0!important;max-height:none!important;}
+
+/* The four wave stands keep their HUD, sliders and transport beside the diagram. */
+html[data-praxis-whiteboard] body [data-wb-stage="reflexia-refractia"] .rr-stage {
+  height:620px;
+  min-height:0;
+  max-height:none;
+  aspect-ratio:auto;
+}
+[data-wb-stage="reflexia-refractia"] .rr-btn {min-height:44px;}
+
+/* The coupled oscillator graphs stay side by side below the scene. */
+html[data-praxis-whiteboard] body [data-wb-stage="oscilatori-mecanici-cuplati"] .sim-row {
+  grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,440px);
+  gap:12px;
+}
+[data-wb-stage="oscilatori-mecanici-cuplati"] .sim-row>div {display:contents;}
+[data-wb-stage="oscilatori-mecanici-cuplati"] .canvas-wrap {min-width:0;grid-row:3;}
+html[data-praxis-whiteboard] body [data-wb-stage="oscilatori-mecanici-cuplati"] canvas {min-width:0;}
+[data-wb-stage="oscilatori-mecanici-cuplati"] .sim-row>div:first-child>.canvas-wrap:first-child {grid-column:1/4;grid-row:1;max-width:900px;width:100%;justify-self:center;}
+[data-wb-stage="oscilatori-mecanici-cuplati"] .sim-row .btn-row {grid-column:1/4;grid-row:2;margin-block:0;}
+[data-wb-stage="oscilatori-mecanici-cuplati"] .sim-row .controls {grid-column:4;grid-row:1;gap:8px;}
+[data-wb-stage="oscilatori-mecanici-cuplati"] .sim-row .coupled-readout {grid-column:4;grid-row:2/span 2;}
+
+html[data-praxis-whiteboard] body [data-wb-stage="figuri-chladni"].grid {
+  grid-template-columns:minmax(0,820px) minmax(0,460px);
+  gap:24px;
+}
+html[data-praxis-whiteboard] #praxis-original [data-wb-stage="figuri-chladni"] .stage {max-width:490px;}
+
+html[data-praxis-whiteboard] body [data-wb-stage="viteza-si-acceleratia"].lab-layout {
+  grid-template-columns:minmax(0,1fr) minmax(0,600px)!important;
+  gap:16px!important;
+}
+[data-wb-stage="viteza-si-acceleratia"]>.canvas-workspace {grid-column:1!important;grid-row:1;}
+html[data-praxis-whiteboard] body [data-wb-stage="viteza-si-acceleratia"]>.control-panel {
+  grid-column:2!important;
+  grid-row:1;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  align-content:start;
+}
+[data-wb-stage="viteza-si-acceleratia"] .control-panel .control-group:has(.transport-bar) {grid-column:1/-1;}
+html[data-praxis-whiteboard] body [data-wb-stage="viteza-si-acceleratia"] .transport-bar {grid-template-columns:repeat(4,minmax(0,1fr));}
+html[data-praxis-whiteboard] body #tab-curbiliniu [data-wb-stage] .control-group:has(#curv-mode-select) {grid-column:1/-1;}
+html[data-praxis-whiteboard] body #tab-curbiliniu [data-wb-stage] .telemetry-bar {grid-template-columns:repeat(3,minmax(0,1fr));}
+html[data-praxis-whiteboard] body #tab-curbiliniu [data-wb-stage] .canvas-wrapper {max-width:870px;margin-inline:auto;}
+html[data-praxis-whiteboard] body [data-wb-stage="viteza-si-acceleratia"] .slider-header>span {font-size:17px;}
+html[data-praxis-whiteboard] body [data-wb-stage="viteza-si-acceleratia"] canvas {min-width:0!important;}
+
+html[data-praxis-whiteboard] body #praxis-original [data-wb-stage]:is(
+  [data-wb-stage="reflexia-refractia"],
+  [data-wb-stage="oscilatori-mecanici-cuplati"],
+  [data-wb-stage="figuri-chladni"],
+  [data-wb-stage="viteza-si-acceleratia"]
+) :is(button,select,label) {font-size:17px!important;}
 
 /* /praxis:workspace */
 

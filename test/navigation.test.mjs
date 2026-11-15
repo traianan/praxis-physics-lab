@@ -23,9 +23,12 @@ class Element{
 }
 async function headerFor(sim,{standalone=false}={}){
  const document={documentElement:{dataset:{praxisStandalone:String(standalone)},style:{setProperty(){}}},body:{dataset:{praxisCourse:sim.id},firstChild:new Element('main')},createElement:tag=>new Element(tag),querySelector:()=>null};
- const window={PraxisLessonChapters:Object.fromEntries(simulations.map(s=>[s.id,chapters.find(c=>c.id===s.chapter)])),PraxisI18n:{apply(){},createSelector:()=>new Element('select')},PraxisSound:{createToggle:()=>new Element('button')},addEventListener(){}};
- vm.runInNewContext((await read('public/shared/lab-header.js')).split('/* praxis:content-types */')[0],{window,document,location:new URL('https://example.test/physics/'+sim.href),URL,queueMicrotask,ResizeObserver:class{observe(){}}});
- return window.PraxisLabHeader.mount({title:sim.title,courseId:sim.id});
+ const window=Object.assign(new EventTarget(),{PraxisLessonChapters:Object.fromEntries(simulations.map(s=>[s.id,chapters.find(c=>c.id===s.chapter)])),PraxisI18n:{apply(){},createSelector:()=>new Element('select')},PraxisSound:{createToggle:()=>new Element('button')}});
+ vm.runInNewContext((await read('public/shared/lab-header.js')).split('/* praxis:content-types */')[0],{window,document,location:new URL('https://example.test/physics/'+sim.href),Event,URL,queueMicrotask,ResizeObserver:class{observe(){}}});
+ let ready=false;
+ window.addEventListener('praxis-lab-header-ready',()=>{ready=true;},{once:true});
+ const mounted=window.PraxisLabHeader.mount({title:sim.title,courseId:sim.id});
+ return {...mounted,ready};
 }
 test('every laboratory opened directly has canonical links to its parent chapter and library',async()=>{
  for(const sim of simulations){const {header}=await headerFor(sim),path=header.children.find(e=>e.tagName==='NAV');
@@ -37,7 +40,8 @@ test('every laboratory opened directly has canonical links to its parent chapter
  }
 });
 test('standalone lessons show their hierarchy without linking to a nonexistent library',async()=>{
- const {header,logo}=await headerFor(simulations[0],{standalone:true});
+ const {header,logo,ready}=await headerFor(simulations[0],{standalone:true});
+ assert.ok(ready,'standalone tools can attach after the header mounts');
  const path=header.children.find(e=>e.tagName==='NAV');assert.ok(path.children.every(e=>e.tagName!=='A'));
  assert.ok(logo.href.endsWith('/index.html'));
 });

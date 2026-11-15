@@ -97,9 +97,8 @@ function advance(T) {
 const cv = $('#cv'), ctx = cv.getContext('2d');
 let W = 0, H = 0, L = {};
 function resize() {
-  const b = cv.getBoundingClientRect();
-  W = b.width; H = b.height;
-  const dpr = window.PraxisCanvasResolution?.forCanvas(cv) ?? (devicePixelRatio || 1);
+  W = cv.clientWidth; H = cv.clientHeight;
+  const dpr = (window.PraxisCanvasResolution?.forCanvas(cv) ?? (devicePixelRatio || 1)) * (window.PraxisWhiteboard?.scale || 1);
   cv.width = Math.max(1, Math.round(W * dpr)); cv.height = Math.max(1, Math.round(H * dpr));
   ctx.setTransform(cv.width / Math.max(1, W), 0, 0, cv.height / Math.max(1, H), 0, 0);
   const s = Math.min(.6, (W - 60) / 1000);       // px / pm
@@ -215,7 +214,11 @@ function draw() {
 }
 
 /* ---------- tragere ---------- */
-function pos(e) { const b = cv.getBoundingClientRect(); return { x: e.clientX - b.left, y: e.clientY - b.top }; }
+function pos(e) {
+  if (window.PraxisWhiteboard) return PraxisWhiteboard.clientToLocal(cv, e.clientX, e.clientY, W, H);
+  const b = cv.getBoundingClientRect();
+  return { x: e.clientX - b.left, y: e.clientY - b.top };
+}
 cv.addEventListener('pointerdown', e => {
   const p = pos(e), xb = X(st.r), RB = .3 * st.B.s * L.s;
   const r0 = Math.pow(2, 1 / 6) * st.sigma, near = (x, y, d = window.PraxisCourseLocalization.touch ? 34 : 16) => Math.hypot(p.x - x, p.y - y) < d;

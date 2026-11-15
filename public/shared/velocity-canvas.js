@@ -8,7 +8,8 @@
   const context=canvas.getContext('2d');
   if(displayedWidth>0){
    const displayedHeight=displayedWidth*height/width;
-   const cssHeight=displayedHeight+'px';if(canvas.style.height!==cssHeight)canvas.style.height=cssHeight;
+   // CSS height is in local coordinates. The transformed width is used only for buffer density.
+   const cssHeight=canvas.clientWidth*height/width+'px';if(canvas.style.height!==cssHeight)canvas.style.height=cssHeight;
    const nativeRatio=Math.max(.5,window.devicePixelRatio||1);
    // Reserve extra samples for thin curves, subscripts and screen scaling.
    // Bound supersampling to 8 MP, while retaining native density when it already

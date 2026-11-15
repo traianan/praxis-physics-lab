@@ -350,6 +350,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
     </div>
 
     <aside class="demo">
+      <div class="phase-experiment">
       <h3 data-i18n="vid.demo.title">Demo · tuburile Torricelli cu eter</h3>
       <label class="slider-row"><span data-i18n="vid.demo.d">Cantitatea de eter injectată</span><input type="range" id="tubD" min="0" max="100" step="1" value="18" /><output id="tubDOut">18 %</output></label>
       <label class="slider-row"><span data-i18n="vid.demo.t">Temperatura</span><input type="range" id="tubT" min="260" max="320" step="1" value="293" /><output id="tubTOut">20 °C</output></label>
@@ -361,6 +362,8 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
       </dl>
       <p class="demo-hint" data-i18n="vid.demo.hint">Treci de doza care umple tubul: presiunea se blochează la p_m și lichidul rămâne neevaporizat.</p>
 
+      </div>
+      <div class="phase-experiment">
       <h3 data-i18n="vid.echi.title" style="margin-top:1rem">Demo · echilibrul dinamic</h3>
       <label class="slider-row"><span data-i18n="vid.echi.t">Temperatura</span><input type="range" id="echiT" min="260" max="380" step="1" value="300" /><output id="echiTOut">300 K</output></label>
       <label class="slider-row"><span data-i18n="vid.echi.v">Volumul de deasupra</span><input type="range" id="echiV" min="30" max="100" step="1" value="70" /><output id="echiVOut">70 %</output></label>
@@ -370,6 +373,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
         <div><dt data-i18n="vid.echi.back">Sosiri/s</dt><dd id="echiBack">0</dd></div>
         <div class="accent"><dt>p / p_m</dt><dd id="echiRatio">0,00</dd></div>
       </dl>
+      </div>
     </aside>
   </div>
 </section>
@@ -450,6 +454,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
     </div>
 
     <aside class="demo">
+      <div class="phase-experiment">
       <h3 data-i18n="fie.demo.title">Demo · încălzire și fierbere în seringă</h3><div class="seg" id="boilModes"><button type="button" class="on" data-boil-mode="heat" aria-pressed="true" data-i18n="boil.mode.heat">Încălzire</button><button type="button" data-boil-mode="syringe" aria-pressed="false" data-i18n="boil.mode.syringe">Pregătește seringa</button></div><div id="boilHeatingControls">
       <label class="slider-row"><span data-i18n="fie.demo.p">Presiunea de deasupra</span><input type="range" id="fieP" min="5" max="1200" step="1" value="760" /><output id="fiePOut">760 tori</output></label>
       <label class="slider-row"><span data-i18n="fie.demo.q">Puterea arzătorului</span><input type="range" id="fieQ" min="0" max="100" step="1" value="60" /><output id="fieQOut">60 %</output></label>
@@ -466,6 +471,8 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
       </div>
       <p class="demo-hint" data-i18n="fie.demo.hint">Alege experimentul de mai sus. În modul Încălzire, pornește arzătorul și observă creșterea temperaturii, apoi platoul. În modul Seringă, trage pistonul și observă scăderea presiunii și apariția temporară a bulelor; împinge-l înapoi pentru a opri fierberea.</p><p class="model-note" data-i18n="boil.scale.note">Graficul arată valori calculate; pentru seringă, scara verticală este detaliată deoarece răcirea poate fi mică.</p><details class="boil-model-details"><summary data-i18n="boil.model.details">Ipotezele modelului</summary><p class="model-note" data-i18n="boil.note">Model orientativ: apă pură, gaz ideal în spațiul de deasupra și schimb de căldură latentă. În seringă: 5 mL apă la 25 °C; spațiul gazos crește de la 0,2 la 20 mL, apoi presiunea se recalculează pe măsură ce apar vapori. Răcirea poate fi mică; graficul folosește o scară detaliată. Valorile sunt calculate, nu măsurate. Încălzirea rulează de 4 ori mai repede; experimentul cu seringa rulează în timp simulat 1:1. Vasul conține 100 g de apă, iar puterea maximă este 800 W. Pentru seringă neglijăm lucrul mecanic al pistonului și schimbul de căldură cu pereții.</p></details>
 
+      </div>
+      <div class="phase-experiment">
       <h3 data-i18n="psat.demo.title" style="margin-top:1rem">Demo · p_sat(T) pentru apă</h3>
       <label class="slider-row"><span data-i18n="psat.demo.t">Temperatura</span><input type="range" id="psatT" min="0" max="200" step="1" value="100" /><output id="psatTOut">100 °C</output></label>
       <div class="sim-frame"><canvas style="min-width:440px" id="psatCanvas" width="440" height="260" role="img" aria-label="Curba presiunii vaporilor saturanți ai apei în funcție de temperatură"></canvas></div>
@@ -475,6 +482,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
         <div><dt data-i18n="psat.demo.ref">Punct de referință</dt><dd id="psatRef">1 atm · 100 °C</dd></div>
       </dl>
       <p class="demo-hint" data-i18n="psat.demo.hint">Repere: aproximativ 4,6 torr la 0 °C, 760 torr la 100 °C și 10 atm la 180 °C. Curba Antoine este o aproximație.</p>
+      </div>
     </aside>
   </div>
 </section>

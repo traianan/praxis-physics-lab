@@ -1,5 +1,5 @@
 body[data-praxis-course=motoare-termice] .layout{display:block;max-width:110rem;margin:auto;padding:0 1rem}
-body[data-praxis-course=motoare-termice] :is(.toc,.topbar,.float-tools,.progress,.hero-meta){display:none!important}
+body[data-praxis-course=motoare-termice] :is(.toc,.topbar:not(.praxis-lab-header),.float-tools,.progress,.hero-meta){display:none!important}
 body[data-praxis-course=motoare-termice] #praxis-original .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:1.5rem;min-height:0;margin-bottom:1rem;padding:1.5rem;border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);overflow:visible}
 body[data-praxis-course=motoare-termice] #praxis-original .hero-inner{position:static;min-width:0;width:100%;max-width:none;margin:0;padding:1rem}
 body[data-praxis-course=motoare-termice] .hero .lede{font-size:1rem}

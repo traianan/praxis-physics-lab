@@ -7,6 +7,18 @@
         "layout": "native",
         "controls": ".lab-controls",
         "scene": ".lab-main"
+      },
+      {
+        "selector": "#ohm-root .circuit-shell",
+        "layout": "native",
+        "controls": ".circuit-controls",
+        "scene": ".circuit-body"
+      },
+      {
+        "selector": "#ohm-root .rheostat-shell",
+        "layout": "native",
+        "controls": ".rheostat-controls",
+        "scene": ".rheostat-body"
       }
     ]
   },

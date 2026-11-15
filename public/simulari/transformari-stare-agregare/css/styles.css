@@ -148,6 +148,7 @@ main{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:clamp(1.
   border-radius:var(--radius);padding:1.1rem;box-shadow:var(--shadow);position:sticky;top:calc(var(--header-h) + 12px);
 }
 .demo h3{margin-bottom:.35rem}
+.phase-experiment{display:contents}
 .demo-hint{font-size:.85rem;color:var(--text-muted);margin-bottom:.8rem}
 .sim-frame{
   background:var(--bg-inset);border:1px solid var(--border-soft);border-radius:var(--radius-sm);
@@ -267,6 +268,12 @@ main{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:clamp(1.
 .btn.small{padding:.4rem .8rem;font-size:.82rem;border-radius:9px}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .btn-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+html[data-praxis-whiteboard] [data-wb-stage] .phase-experiment:has(#fierbCanvas)>.btn-row{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  min-width:0;
+}
+html[data-praxis-whiteboard] [data-wb-stage] .phase-experiment>.btn-row>button{white-space:normal}
 .seg{display:flex;flex-wrap:wrap;gap:.3rem;background:var(--bg-inset);padding:.3rem;border-radius:11px;border:1px solid var(--border-soft);margin-bottom:.8rem}
 .seg button{
   flex:1 1 auto;background:transparent;border:0;color:var(--text-muted);padding:.42rem .7rem;border-radius:8px;

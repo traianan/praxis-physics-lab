@@ -9,9 +9,19 @@
  };
  const language=()=>window.PraxisI18n?.language==='en'?'en':'ro';
  const visible=element=>element.getClientRects().length>0&&getComputedStyle(element).visibility!=='hidden';
- const pilots={
+ const boardLayouts={
   'compunerea-oscilatiilor':{select:'[data-composition-section=laborator]>.layout',move:['[data-composition-section=laborator]>.mode-tabs','.composition-control-body'],extras:['#amplitudeHint','#presetDescription','#ratioPresets','.sound-panel','.switches','#nextExtreme','#eventInfo','#save','.results']},
-  'oglinzi-si-lentile':{select:'.workspace',move:['.workspace-top>.module-tabs'],extras:['.curvature-summary','.insight','.display-options']}
+  'oglinzi-si-lentile':{select:'.workspace',move:['.workspace-top>.module-tabs'],extras:['.curvature-summary','.insight','.display-options']},
+  'legea-lui-ohm':{popover:'.lab-controls'},
+  'motoare-termice':{select:'[data-workspace-figure]',extras:['.praxis-workspace-figure-controls>.hint']},
+  'calcul-vectorial':{extras:[':scope>.praxis-workspace-disclosure']},
+  'notiuni-termodinamice':{extras:[':scope>.praxis-workspace-disclosure']},
+  'calorimetrie':{extras:[':scope>.praxis-workspace-disclosure']},
+  'principiul-i-aplicatii':{extras:[':scope>.praxis-workspace-disclosure','.demo-hint','.molecule-hint','#degreesExplanation','#gammaFormula']},
+  'transformari-stare-agregare':{extras:[':scope>.praxis-workspace-disclosure','.demo-hint','.boil-model-details','.model-note:not(.boil-model-details *)','#boilEvents']},
+  'oscilatori-mecanici-cuplati':{extras:[':scope>p','.sim-row>div>p.muted','#f1out',':scope#lab1 .btn-row + .btn-row']},
+  'figuri-chladni':{extras:['.calc','#driveHint','#settlingInfo','#driveOut','aside.panel>div:has(:is(#vol,#sp,#cnt))']},
+  'viteza-si-acceleratia':{extras:['#poly-events-analysis','.poly-equations-banner','.control-group:has(#curv-chk-hodograph)','.control-group:has(#curv-slider-dt)>p','#curv-desc-text']}
  };
  const experimentTabs={
   'legea-lui-ohm':'#lesson-tab-laborator',
@@ -79,6 +89,13 @@
  }
  function clearTarget(){
   board.observer.disconnect();
+  if(board.secondary){
+   board.secondary.hidePopover();
+   board.secondary.removeAttribute('popover');
+   board.secondary.removeAttribute('data-wb-secondary');
+   board.options.popoverTargetElement=null;
+   board.secondary=null;
+  }
   for(const {node,anchor} of board.parked)anchor.replaceWith(node);
   board.parked=[];
   if(board.originalDisclosure)board.originalDisclosure.element.open=board.originalDisclosure.open;
@@ -100,22 +117,31 @@
    target.setAttribute('popover','manual');target.showPopover();board.stagePopover=true;
   }
   target.append(board.dialog);
+  const secondarySelector=boardLayouts[board.id]?.popover;
+  const secondary=secondarySelector&&target.querySelector(secondarySelector);
+  if(secondary&&typeof secondary.showPopover==='function'&&!secondary.hasAttribute('popover')){
+   // React owns these controls. A top-layer panel keeps their parent and events.
+   secondary.setAttribute('popover','auto');
+   secondary.setAttribute('data-wb-secondary','');
+   board.options.popoverTargetElement=secondary;
+   board.secondary=secondary;
+  }
   const disclosure=target.querySelector(':scope>details.controls');
   if(disclosure){board.originalDisclosure={element:disclosure,open:disclosure.open};disclosure.open=true;}
-  const [source,destination]=pilots[board.id]?.move||[];
+  const [source,destination]=boardLayouts[board.id]?.move||[];
   const node=source&&document.querySelector(source);
   if(node){
    const anchor=document.createComment('whiteboard controls');node.before(anchor);
    (destination?target.querySelector(destination):target).prepend(node);board.parked.push({node,anchor});
   }
   const optionsStart=board.parked.length;
-  for(const selector of pilots[board.id]?.extras||[]){
+  for(const selector of boardLayouts[board.id]?.extras||[]){
    for(const node of target.querySelectorAll(selector)){
     const anchor=document.createComment('whiteboard panel');node.before(anchor);board.dialogBody.append(node);
     board.parked.push({node,anchor});
    }
   }
-  board.options.hidden=board.parked.length===optionsStart;
+  board.options.hidden=!board.secondary&&board.parked.length===optionsStart;
   board.observer.observe(target);board.observer.observe(board.space);
   layout();schedule();
  }
@@ -141,8 +167,7 @@
   if(board){close();return true;}
   window.PraxisLabWorkspace?.mount();
   const id=document.body.dataset.praxisCourse||document.body.dataset.praxisWorkspace||(document.querySelector('#scene-wrap #scene')?'oglinzi-si-lentile':location.pathname.split('/').filter(Boolean).at(-2));
-  const pilot=pilots[id];
-  const selector=pilot?.select||'[data-workspace-layout]';
+  const selector=boardLayouts[id]?.select||'[data-workspace-layout]';
   let targets=[...document.querySelectorAll(selector)].filter(visible);
   if(!targets.length&&!retrying){
    const tab=experimentTabs[id]&&document.querySelector(experimentTabs[id]);
@@ -161,7 +186,7 @@
   const title=document.createElement('strong');title.textContent=document.querySelector('.praxis-lab-intro h1,h1')?.textContent.trim()||document.title;toolbar.append(title);
   const switcher=document.createElement('select');targets.forEach((_,index)=>switcher.add(new Option('',String(index))));switcher.hidden=targets.length<2;
   switcher.addEventListener('change',()=>setTarget(targets[Number(switcher.value)]));toolbar.append(switcher);
-  const options=button(toolbar,()=>dialog.showModal());
+  const options=button(toolbar,()=>{if(!board.secondary)dialog.showModal();});
   const full=button(toolbar,toggleFullscreen);full.hidden=!document.fullscreenEnabled;
   const exit=button(toolbar,close);
   shell.append(toolbar,space,dialog);document.body.append(shell);
@@ -171,24 +196,25 @@
   switcher.value=String(targets.indexOf(board.target));exit.focus({preventScroll:true});
   return true;
  }
+ function mountStandaloneEntry(){
+  if(window.PraxisNavigation||!document.body?.hasAttribute('data-praxis-laboratory'))return;
+  const tools=document.querySelector('.praxis-lab-actions');
+  if(!tools||tools.querySelector('#board-mode,.praxis-whiteboard-entry'))return;
+  const entry=button(tools,()=>open(entry));
+  entry.classList.add('praxis-whiteboard-entry');entry.setAttribute('aria-pressed','false');
+  const translate=()=>{entry.textContent=words[language()].enter;};translate();
+  window.addEventListener('praxis-language-change',translate);
+ }
  function start(){
   if(!document.body.hasAttribute('data-praxis-laboratory'))return;
-  // Standalone exports have the common lab header without the online menu.
-  if(!window.PraxisNavigation){
-   const tools=document.querySelector('.praxis-lab-actions');
-   if(tools&&!tools.querySelector('#board-mode')){
-    const entry=button(tools,()=>open(entry));
-    entry.classList.add('praxis-whiteboard-entry');entry.setAttribute('aria-pressed','false');
-    const translate=()=>{entry.textContent=words[language()].enter;};translate();
-    window.addEventListener('praxis-language-change',translate);
-   }
-  }
+  mountStandaloneEntry();
   document.addEventListener('click',event=>{
    const trigger=event.target.closest?.('.site-board-button,#board-mode');
    if(!trigger||!open(trigger))return;
    event.preventDefault();event.stopImmediatePropagation();
   },true);
   document.addEventListener('keydown',event=>{
+   if(board?.secondary?.matches(':popover-open')&&event.key==='Escape')return;
    if(board&&event.key==='Escape'&&!board.dialog.open&&!document.fullscreenElement){event.preventDefault();close();}
   });
  }
@@ -200,5 +226,8 @@
   labels();schedule();
  });
  window.addEventListener('praxis-language-change',()=>{labels();schedule();});
+ window.addEventListener('praxis-lab-header-ready',()=>{
+  if(root.dataset.praxisStandalone==='true')mountStandaloneEntry();
+ });
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();
