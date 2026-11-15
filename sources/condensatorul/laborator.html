@@ -103,7 +103,7 @@
             <!-- GRAFIC -->
             <div class="card graph-card" style="margin-top:16px">
               <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px">
-                <h3 data-content-type="diagram" style="margin:0;font-size:.95rem">Evoluția în timp</h3><span>I = <b id="roI">0 A</b></span>
+                <h3 data-content-type="diagram" style="margin:0;font-size:.95rem">Evoluția în timp</h3><span class="graph-current">I = <b id="roI">0 A</b></span>
                 <div class="graph-legend" style="margin:0">
                   <span><i style="background:#3ee6d2"></i>U<sub>C</sub> / 24 V</span>
                   <span><i style="background:#ffb64d"></i>I / 24 µA</span>
@@ -219,27 +219,24 @@
     </section>
 
     <!-- EXPLICAȚII -->
-    <section class="section section--tight" style="padding-bottom:70px">
+    <section class="section section--tight observation-section" style="padding-bottom:70px">
       <div class="wrap">
-        <h2 class="h2" style="font-size:clamp(1.3rem,2.6vw,1.8rem)">Ce să observi</h2><p>Model ideal: dielectric liniar, fără pierderi, fără străpungere și fără efecte de margine. Materialul umple complet spațiul dintre plăci. Desenul este schematic; apa și ceramica au permitivități orientative.</p>
+        <h2 class="h2" style="font-size:clamp(1.3rem,2.6vw,1.8rem)">Ce să observi</h2><p class="observation-note">Model ideal: dielectric liniar, fără pierderi, fără străpungere și fără efecte de margine. Materialul umple complet spațiul dintre plăci. Desenul este schematic; apa și ceramica au permitivități orientative.</p>
         <div class="grid grid-3" style="margin-top:20px">
           <div class="card reveal">
-            <div class="feature-icon">⚡</div>
-            <h3 style="font-size:1rem">Sarcinile se adună</h3>
-            <p style="color:var(--muted);font-size:.88rem;margin:0">La încărcare, sarcinile + apar pe armătura legată la borna pozitivă, iar cele − pe cealaltă. Sarcina tinde exponențial spre C·E. La echilibru, U ≈ E (U/E ≈ 100 %). Semnele reprezintă schematic sarcini distribuite pe întreaga suprafață; numărul lor nu indică o porțiune umplută a plăcii.</p>
+            <h3 class="observation-title"><span aria-hidden="true">⚡</span> Sarcinile se adună</h3>
+            <p style="font-size:.88rem;margin:0">La încărcare, sarcinile + apar pe armătura legată la borna pozitivă, iar cele − pe cealaltă. Sarcina tinde exponențial spre C·E. La echilibru, U ≈ E (U/E ≈ 100 %). Semnele reprezintă schematic sarcini distribuite pe întreaga suprafață; numărul lor nu indică o porțiune umplută a plăcii.</p>
           </div>
           <div class="card reveal">
-            <div class="feature-icon violet">📐</div>
-            <h3 style="font-size:1rem">Geometria schimbă totul</h3>
-            <p style="color:var(--muted);font-size:.88rem;margin:0">Armăturile mai mari și mai apropiate încap mai multă sarcină. Modifică sliderele și urmărește cum se schimbă C în panoul de măsurători.</p>
+            <h3 class="observation-title"><span aria-hidden="true">📐</span> Geometria schimbă totul</h3>
+            <p style="font-size:.88rem;margin:0">Armăturile mai mari și mai apropiate încap mai multă sarcină. Modifică sliderele și urmărește cum se schimbă C în panoul de măsurători.</p>
           </div>
           <div class="card reveal">
-            <div class="feature-icon amber">🕒</div>
-            <h3 style="font-size:1rem">Timpul nu e instantaneu</h3>
-            <p style="color:var(--muted);font-size:.88rem;margin:0">Graficul arată clar exponențiala: curentul e maxim la început și scade spre zero, iar tensiunea urcă spre E.</p>
+            <h3 class="observation-title"><span aria-hidden="true">🕒</span> Timpul nu e instantaneu</h3>
+            <p style="font-size:.88rem;margin:0">Graficul arată clar exponențiala: curentul e maxim la început și scade spre zero, iar tensiunea urcă spre E.</p>
           </div>
         </div>
-        <p style="margin-top:26px;font-size:.9rem;color:var(--muted)">
+        <p style="margin-top:26px;font-size:.9rem">
           Vrei formulele complete? <a href="teorie.html#rc">Citește capitolul despre încărcare și descărcare</a> sau <a href="teorie.html#plan">despre condensatorul plan</a>.
         </p>
       </div>

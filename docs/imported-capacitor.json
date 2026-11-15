@@ -3,7 +3,7 @@
   "sources": [
     {
       "file": "sources/condensatorul/laborator.html",
-      "sha256": "d5973a611fae84e123423ad156acdc8ee0f0c4bcba8506b7a6f25db987d0a574"
+      "sha256": "f0bfa71d0eb2c6b46e0f3b42da48afec9dd1afcb1073cbf95b1deaa633eb3ca6"
     },
     {
       "file": "sources/condensatorul/teorie.html",
@@ -19,7 +19,7 @@
     },
     {
       "file": "sources/condensatorul/css/praxis.css",
-      "sha256": "8c24688901f584e902a279b8d03e7408ebc7ed9ca12cb34c1a9614d944244e33"
+      "sha256": "8b0a73dad8cc1b17ffedcaa3dcbb9dfef81985baa8506b3391dc7c0b13c27cf3"
     },
     {
       "file": "sources/condensatorul/js/model.js",

@@ -31,6 +31,8 @@
 .cond-course details{border:1px solid #cdd8ce;border-radius:10px;padding:.3rem .65rem;background:#fffefa}
 .cond-course summary{display:flex;align-items:center;font-weight:600}
 .cond-course .side-stack > details > summary{color:var(--praxis-color-ink,#18332f)}
+.cond-course :is(.graph-current,.graph-legend,.observation-section p){color:var(--praxis-color-ink,#18332f)}
+.cond-course .observation-title{display:flex;align-items:baseline;gap:.5rem;font-size:1rem}
 .cond-course .msg{font-size:.88rem;background:#eef2e9}
 .cond-course .badge{color:#18332f!important}
 .cond-course .grad-text{background:none;color:#103f3b;-webkit-text-fill-color:currentColor}
