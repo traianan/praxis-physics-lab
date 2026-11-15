@@ -18,6 +18,8 @@ La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_S
 
 ## Jurnal de progres
 
+- 2026-11-15: Confirmat deploy-ul Vercel pentru `6516923baf49adca5e5f6f5d79b085811a014015` cu status `success` ([deploy](https://vercel.com/traians-projects-cnni/physicslab/J5gmHaTw4GAbq62betQ4dfP6qRiU)). Formula Rayleigh și valoarea de 102 pm la 200 kV au fost verificate în „Microscopul electronic” → „Ce determină rezoluția?”, pe site în Chrome la 1366 și 390 px și din ZIP-ul publicat, extras și deschis cu accesul la rețea blocat. Arhiva a trecut verificarea CRC și are aceeași amprentă SHA-256 ca arhiva din proiect, `260cc87b5adf98d6464d4bb6e597f8ee5e6a6015e703bb073a16d6fb511883cd`.
+
 - 2026-11-15: Confirmate pe OPPO CPH2529 fizic, Chrome 157, formula Rayleigh și valoarea de 102 pm la 200 kV în „Microscopul electronic”, pentru versiunea publicată în `d4f54be`. Verificate în RO/EN pe site și din ZIP-ul publicat cu amprentă identică, inclusiv după reîncărcare cu Wi-Fi și datele mobile oprite, fără rețea implicită. Setările telefonului au fost restaurate. Rapoarte și capturi în `outputs/rayleigh-phone/`.
 
 - 2026-11-15: Verificată pe OPPO CPH2529 fizic, Chrome 157, lecția „Dualismul undă–corpuscul” din `f875a77`, pe site și din ZIP-ul publicat cu SHA-256 identic. Glisările Android au actualizat tensiunea, unghiul, maximul și semnalul Davisson–Germer. În TEM au funcționat selecția obiectivului și detectorului, tensiunea și defocalizarea. ZIP-ul a fost importat și lecția reîncărcată cu Wi-Fi și datele oprite, fără rețea implicită. Setările telefonului au fost restaurate. Rapoarte și capturi în `outputs/duality-phone/`.
