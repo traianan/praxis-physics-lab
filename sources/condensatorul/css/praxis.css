@@ -49,7 +49,7 @@
 @media(max-width:1050px){.cond-course .lab-shell{grid-template-columns:minmax(0,1fr)}.cond-course .side-stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))}.cond-course .theory-layout{display:block}}
 @media(max-width:600px){.cond-course .grid{grid-template-columns:1fr}.cond-course .stage-bar{flex-wrap:wrap}.cond-course .stage-readout{grid-template-columns:1fr 1fr}.cond-course .graph-legend{font-size:.85rem}.cond-course .theory-layout .toc{position:static;display:block}.cond-course .card{padding:.65rem}}
 
-body[data-praxis-course="condensatorul"] .praxis-lab-nav{box-sizing:border-box;width:auto;max-width:calc(100% - 2rem);flex-wrap:wrap}
+body[data-praxis-course="condensatorul"] .praxis-lab-nav{width:calc(100% - 2rem);flex-wrap:wrap}
 body[data-praxis-course="condensatorul"] .site-info-links{box-sizing:border-box;max-width:100%;flex-wrap:wrap}
 .cond-course{padding:0 1rem;box-sizing:border-box}
 .cond-course .toc a{min-height:44px;display:flex;align-items:center}
@@ -92,8 +92,8 @@ body[data-praxis-course="condensatorul"],body[data-praxis-course="condensatorul"
 #praxis-original.cond-course .toc{background:var(--praxis-color-surface,#fffefa);border:1px solid #bdcdc1;border-radius:14px;padding:1rem}
 #praxis-original.cond-course .toc a{color:#245e52}
 #praxis-original.cond-course .toc a:is(.active,[aria-current=true]){background:#dcebd4;color:#103f3b;border-left-color:#17685d;font-weight:650}
-#praxis-original.cond-course .callout{background:#e5eee1;color:#18332f}
-#praxis-original.cond-course .callout.warn{background:#f6ecd4;color:#493a20}
+#praxis-original.cond-course .callout{border-color:#afc6b2;background:#e5eee1;color:#18332f}
+#praxis-original.cond-course .callout.warn{border-color:#d8bf88;background:#f6ecd4;color:#493a20}
 #praxis-original.cond-course table{background:#fffefa}
 #praxis-original.cond-course th{background:#e9eee4;color:#385347}
 #praxis-original.cond-course .quiz-opt:hover:not(.locked),

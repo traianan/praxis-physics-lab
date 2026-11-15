@@ -1,7 +1,7 @@
 body[data-praxis-course=principiul-i-al-termodinamicii]{margin:0}
 body[data-praxis-course=principiul-i-al-termodinamicii],body[data-praxis-course=principiul-i-al-termodinamicii] *,body[data-praxis-course=principiul-i-al-termodinamicii] *::before,body[data-praxis-course=principiul-i-al-termodinamicii] *::after{box-sizing:border-box}
 body[data-praxis-course=principiul-i-al-termodinamicii]{background:var(--praxis-color-canvas);color:var(--praxis-color-ink)}
-body[data-praxis-course=principiul-i-al-termodinamicii] #praxis-original{--bg-deep:var(--praxis-color-canvas);--text-muted:var(--praxis-color-muted);--text-dim:var(--praxis-color-muted);--accent:var(--praxis-color-primary);--border:var(--praxis-color-border);padding:0 24px 24px;max-width:1680px;margin:auto;font-family:var(--praxis-font-ui)}
+body[data-praxis-course=principiul-i-al-termodinamicii] #praxis-original{--bg-deep:var(--praxis-color-canvas);--text-muted:var(--praxis-color-muted);--text-dim:var(--praxis-color-muted);--accent:var(--praxis-color-primary);--border:var(--praxis-color-border);padding:0 24px 24px;font-family:var(--praxis-font-ui)}
 #praxis-original .app{min-width:0}
 body[data-praxis-course=principiul-i-al-termodinamicii] .praxis-course-nav-select{display:none}
 body[data-praxis-course=principiul-i-al-termodinamicii] .praxis-lab-nav .tabs{display:flex;flex-wrap:wrap;gap:6px;width:100%;padding:4px;background:var(--praxis-color-primary-soft);border-radius:9px}

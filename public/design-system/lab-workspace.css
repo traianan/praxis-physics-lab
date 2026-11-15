@@ -7,7 +7,7 @@ html body[data-praxis-workspace] .praxis-site-row{min-height:64px;padding-block:
 body[data-praxis-workspace] .praxis-site-row>.praxis-site-menu{flex:0 1 auto}
 @media(min-width:1141px) and (max-width:1600px){body[data-praxis-workspace] .praxis-site-row{flex-wrap:wrap}body[data-praxis-workspace] .praxis-site-row>.praxis-site-menu{flex:1;flex-wrap:wrap}}
 @media(max-width:1140px){body[data-praxis-workspace] .praxis-site-row>.praxis-site-menu{flex:0 0 100%}}
-body[data-praxis-workspace] .praxis-lab-intro{width:auto!important;min-height:0!important;margin:8px 24px!important;padding:10px 16px!important;border-radius:12px!important;box-shadow:none!important}
+body[data-praxis-workspace] .praxis-lab-intro{width:auto!important;min-height:0!important;margin-block:8px!important;margin-inline:max(24px,calc((100% - var(--praxis-lesson-max-width)) / 2 + 24px))!important;padding:10px 16px!important;border-radius:12px!important;box-shadow:none!important}
 body[data-praxis-workspace] .praxis-lab-intro::after{display:none}
 body[data-praxis-workspace] .praxis-lab-intro>div{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-left:10px!important}
 body[data-praxis-workspace] .praxis-lab-intro h1{font-size:var(--praxis-text-heading)!important;letter-spacing:normal}

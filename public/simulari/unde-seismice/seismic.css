@@ -21,12 +21,14 @@ body[data-praxis-course="unde-seismice"] :is(.praxis-lab-nav, .site-info-links) 
   box-sizing: border-box;
 }
 body[data-praxis-course="unde-seismice"] .praxis-lab-nav {
-  padding-inline: var(--seismic-gutter);
+  max-width: 1472px;
+  padding-inline: 16px;
 }
-.seismic {
+body[data-praxis-course="unde-seismice"] #praxis-original {
   width: 100%;
   min-width: 0;
-  padding: 0 var(--seismic-gutter) 1rem;
+  max-width: 1472px;
+  padding: 0 16px 1rem;
   container-type: inline-size;
 }
 .seismic [role="tabpanel"][hidden] {

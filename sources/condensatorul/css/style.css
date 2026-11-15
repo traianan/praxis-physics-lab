@@ -835,15 +835,15 @@ input[type="range"].violet::-moz-range-progress { background: linear-gradient(90
 .theory-body b, .theory-body strong { color: #eaf1ff; }
 
 .callout {
-  border-left: 2px solid var(--cyan);
+  border: 1px solid rgba(62, 230, 210, 0.24);
   background: linear-gradient(90deg, rgba(62, 230, 210, 0.08), transparent);
   padding: 14px 18px;
-  border-radius: 0 12px 12px 0;
+  border-radius: 12px;
   margin: 20px 0;
   font-size: 0.92rem;
   color: #c6d4ee;
 }
-.callout.warn { border-left-color: var(--amber); background: linear-gradient(90deg, rgba(255, 182, 77, 0.09), transparent); }
+.callout.warn { border-color: rgba(255, 182, 77, 0.3); background: linear-gradient(90deg, rgba(255, 182, 77, 0.09), transparent); }
 .callout b { color: var(--text); }
 
 .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 12px; border: 1px solid var(--stroke); }

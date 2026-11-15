@@ -1,7 +1,7 @@
 /* Presentation adapter for the imported velocity laboratory. */
 body[data-praxis-course=viteza-si-acceleratia]{--vec-pos:var(--praxis-science-purple);--vec-vel:var(--praxis-science-green);--vec-vel-avg:var(--praxis-science-teal);--vec-acc:var(--praxis-science-red);--vec-acc-t:var(--praxis-science-orange);--vec-acc-n:var(--praxis-science-purple)}
 body[data-praxis-course=viteza-si-acceleratia]{--bg-dark:var(--praxis-color-canvas);--bg-card:var(--praxis-color-surface);--bg-card-alt:var(--praxis-color-primary-soft);--bg-surface:var(--praxis-color-canvas);--text-main:var(--praxis-color-ink);--text-muted:var(--praxis-color-muted);--border-color:var(--praxis-color-border);--shadow:none;display:block}
-body[data-praxis-course=viteza-si-acceleratia] #praxis-original{max-width:none;margin:0;padding:0}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original{padding:0}
 body[data-praxis-course=viteza-si-acceleratia] .velocity-navigation:empty{display:none}
 body[data-praxis-course=viteza-si-acceleratia] .praxis-course-nav-select{display:none}
 body[data-praxis-course=viteza-si-acceleratia] .tabs{display:flex;flex-wrap:wrap;gap:.5rem}

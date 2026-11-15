@@ -38,6 +38,12 @@
         ],
         "createdAt": "2026-11-11T16:36:38.760Z",
         "reason": "Alegere documentată în DESIGN_SYSTEM.md: paleta Praxis rafinat, varianta A, aprobată la 1 noiembrie 2026, include fundalul ivory #F7F5EE pentru laboratoare."
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-11-15T06:23:18.876Z",
+        "reason": "Agent: the flagged Inter import is in the original Condensatorul source. The importer strips this import and the Praxis adapter uses the shared UI font in the web and offline lesson."
       }
     ]
   }

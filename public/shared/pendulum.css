@@ -1,7 +1,7 @@
 /* Shared Praxis surfaces; scientific canvases retain their dark observation field. */
 body[data-praxis-course="pendulul-gravitational"]{background:var(--praxis-color-background,#F7F5EE)}
 body[data-praxis-course="pendulul-gravitational"] *,body[data-praxis-course="pendulul-gravitational"] *::before,body[data-praxis-course="pendulul-gravitational"] *::after{box-sizing:border-box}
-body[data-praxis-course="pendulul-gravitational"] .praxis-lab-nav{margin-inline:0!important;width:100%;flex-wrap:wrap}
+body[data-praxis-course="pendulul-gravitational"] .praxis-lab-nav{width:100%;flex-wrap:wrap}
 body[data-praxis-course="pendulul-gravitational"] .praxis-lab-nav svg{width:18px;height:18px;flex:none}
 body[data-praxis-course="pendulul-gravitational"] .praxis-lab-nav .tab-btn{display:inline-flex;align-items:center;gap:8px}
 #praxis-original{--bg-0:#F7F5EE;--bg-1:#FFFEFA;--panel:#FFFEFA;--panel-solid:#FFFEFA;--panel-2:#edf3e9;--line:#d2ded2;--line-strong:#a6bcae;--text:#18332F;--muted:#586D63;--dim:#586D63;--cyan:#176c7b;--violet:#7156a5;--teal:#237c63;--amber:#9b660b;--rose:#ae4556;--green:#28774d;--grad:linear-gradient(135deg,#C5E8A5,#d9edc5);--grad-soft:#edf3e9;--shadow:0 4px 18px #18332f0a;--radius:14px;--radius-sm:10px;max-width:1800px;margin:auto;padding:8px 16px 24px;font-size:1rem;color:var(--text)}

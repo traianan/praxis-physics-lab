@@ -1,7 +1,7 @@
 body[data-praxis-course="miscarea-in-camp-gravitational"]{margin:0;background:var(--praxis-color-canvas);color:var(--praxis-color-ink)}
-body[data-praxis-course="miscarea-in-camp-gravitational"] .praxis-lab-intro{max-width:80rem;margin-inline:auto!important;padding-inline:1rem}
+:root body[data-praxis-course="miscarea-in-camp-gravitational"] .praxis-lab-intro{max-width:80rem;margin-inline:auto!important;padding-inline:1rem}
 body[data-praxis-course="miscarea-in-camp-gravitational"] :is(.praxis-lab-nav,.site-info-links,.praxis-lab-intro){box-sizing:border-box}
-body[data-praxis-course="miscarea-in-camp-gravitational"] .praxis-lab-nav{padding-inline:max(1rem,calc((100% - 78rem)/2))}
+body[data-praxis-course="miscarea-in-camp-gravitational"] .praxis-lab-nav{max-width:80rem;padding-inline:1rem}
 body #praxis-original.gravity-motion{box-sizing:border-box;width:100%;max-width:80rem;margin:0 auto;padding:0 1rem 2rem;container-type:inline-size}
 .gravity-motion *{box-sizing:border-box}.gravity-motion [hidden]{display:none!important}
 .gravity-motion .tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin:.35rem 0 1rem;padding:0;border-bottom:1px solid var(--praxis-color-border)}

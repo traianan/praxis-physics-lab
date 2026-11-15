@@ -1,4 +1,4 @@
-.site-info-links{display:flex;gap:12px 24px;align-items:center;justify-content:center;flex-wrap:wrap;width:100%;padding:20px 16px;font:14px/1.5 var(--praxis-font-ui,Segoe UI,Arial,sans-serif);color:var(--praxis-color-muted,#526970)}
+.site-info-links{display:flex;gap:12px 24px;align-items:center;justify-content:center;flex-wrap:wrap;box-sizing:border-box;width:100%;padding:20px 16px;font:14px/1.5 var(--praxis-font-ui,Segoe UI,Arial,sans-serif);color:var(--praxis-color-muted,#526970)}
 .site-info-links a,.site-info-links button,.privacy-actions a{color:var(--praxis-color-primary,#17685f)!important;text-decoration:underline;text-underline-offset:3px}
 .site-info-links button{background:none;border:0;font:inherit;cursor:pointer;min-height:44px;padding:4px 8px}
 .page-footer:has(.site-info-links){display:flex!important;flex-wrap:wrap}
