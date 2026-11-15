@@ -536,5 +536,15 @@
         "scene": "#bench"
       }
     ]
+  },
+  "efectul-compton": {
+    "workspaces": [
+      {
+        "selector": "#lab .compton-workspace",
+        "layout": "native",
+        "controls": ".compton-controls",
+        "scene": ".compton-scene"
+      }
+    ]
   }
 }

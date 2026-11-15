@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-15T06:54:51.460Z",
+  "builtAt": "2026-11-15T11:43:26.571Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -390,6 +390,17 @@
       "id": "condensatorul",
       "file": "public/simulari/condensatorul/condensatorul.zip",
       "sha256": "a68622e028c3bcbf14e58bef4063984709fdce45034c9cf87ec8fab8fe512f08",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "efectul-compton",
+      "file": "public/simulari/efectul-compton/efectul-compton.zip",
+      "sha256": "57ae95be71137b6a76334e8368d99f54e6c437479ddb2f35a4458d0b8bea0e42",
       "languages": [
         "ro",
         "en"

@@ -748,5 +748,25 @@ export const simulations = [
     ],
     "keywords": "fotoelectric extern fotoni einstein planck prag frecventa catod tensiune oprire hallwachs",
     "status": "available"
+  },
+  {
+    "id": "efectul-compton",
+    "addedOn": "2026-11-15",
+    "addedOrder": 1,
+    "chapter": "fenomene-cuantice",
+    "title": "Efectul Compton",
+    "subtitle": "Împrăștierea fotonilor și reculul electronilor",
+    "description": "Controlează energia incidentă și unghiul detectorului. Compară liniile spectrale, calculează reculul și verifică rezultatele.",
+    "alt": "Rază X pe grafit, foton împrăștiat și electron de recul",
+    "tags": [
+      "Fotoni",
+      "Raze X",
+      "Experimente",
+      "Offline"
+    ],
+    "href": "./simulari/efectul-compton/index.html",
+    "image": "./assets/efectul-compton.png",
+    "keywords": "compton grafit deplasare recul foton electron raze x spectru",
+    "status": "available"
   }
 ];

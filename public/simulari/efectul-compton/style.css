@@ -1,0 +1,123 @@
+/* Hallmark · Praxis visual system · scattering path and paired spectral lines */
+/* The bench keeps the detector angle, wavelength shift and recoil energy in one view. */
+:root {
+  --compton-surface: var(--praxis-color-surface);
+  --compton-ink: var(--praxis-color-ink, var(--praxis-color-text));
+  --compton-edge: var(--praxis-color-border);
+  --compton-tint: var(--praxis-color-primary-soft);
+  --compton-focus: var(--praxis-color-primary);
+  --compton-incident: var(--praxis-science-teal);
+  --compton-scattered: var(--praxis-science-blue);
+  --compton-recoil: var(--praxis-science-orange);
+}
+html:has(.compton), body:has(.compton) { overflow-x: clip; }
+body #praxis-original.compton {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 0 1rem 1.5rem;
+  min-width: 0;
+}
+.compton [hidden] { display: none !important; }
+.compton .tabs { display: flex; flex-wrap: wrap; gap: .3rem; margin: .55rem 0; }
+.compton :is(button, input, summary, a, [tabindex]):focus-visible {
+  outline: 2px solid var(--compton-focus);
+  outline-offset: 3px;
+}
+.compton :is(h2,h3) { min-width: 0; overflow-wrap: break-word; line-height: 1.2; margin: 0 0 .55rem; }
+.compton h2 { font-size: 1.22rem; }
+.compton h3 { font-size: 1rem; }
+.compton p, .compton li { line-height: 1.5; }
+.compton-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: .75rem;
+  align-items: start;
+}
+.compton-scene, .compton-controls, .compton-exercise, .compton-reading article {
+  min-width: 0;
+  margin: 0;
+  padding: .85rem;
+  background: var(--compton-surface);
+  border: 1px solid var(--compton-edge);
+  border-radius: 14px;
+}
+.compton canvas {
+  display: block;
+  inline-size: 100%;
+  background: var(--compton-tint);
+  border-radius: 8px;
+  touch-action: pan-y;
+}
+.compton #collision { block-size: clamp(156px, 24vh, 225px); }
+.compton #spectrum { block-size: 80px; }
+.compton .compton-axis { margin: .25rem 0 0; text-align: center; font-size: .875rem; }
+.compton-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .15rem 1rem;
+  list-style: none;
+  margin: .4rem 0 .7rem;
+  padding: 0;
+  font-size: .875rem;
+}
+.compton-legend li { display: flex; gap: .4em; align-items: baseline; }
+.compton-legend li::before { content: ''; width: .8em; border-top: 3px solid var(--series); flex: none; }
+.compton .incident { --series: var(--compton-incident); }
+.compton :is(.scattered,.shift,.energy) { --series: var(--compton-scattered); }
+.compton .recoil { --series: var(--compton-recoil); }
+.compton-range {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 0 .4rem;
+  align-items: baseline;
+  margin-bottom: .45rem;
+}
+.compton-range output { font-variant-numeric: tabular-nums; font-weight: 700; }
+.compton-stepper { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: .55rem; align-items: center; }
+.compton input[type=range] { width: 100%; min-width: 0; min-height: 44px; margin: 0; accent-color: var(--compton-focus); }
+.compton :is(button,input[inputmode]) {
+  font: inherit;
+  color: inherit;
+  background: var(--compton-surface);
+  border: 1px solid var(--compton-edge);
+  border-radius: 10px;
+  min-height: 44px;
+  min-width: 44px;
+  max-width: 100%;
+  padding: .35rem .65rem;
+}
+.compton button { cursor: pointer; }
+.compton button:disabled { opacity: .55; cursor: default; }
+.compton button.primary { background: var(--praxis-color-petrol); color: var(--praxis-color-mint); }
+.compton-actions { display: flex; flex-wrap: wrap; gap: .35rem; margin-block: .45rem; }
+.compton-readings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(4.8rem,100%),1fr));
+  gap: .4rem;
+  margin: .65rem 0 .35rem;
+}
+.compton-readings div { min-width: 0; border-top: 2px solid var(--series); padding: .3rem 0; }
+.compton .compton-recoil-title { margin: .5rem 0 .15rem; }
+.compton .compton-recoil-results { grid-template-columns: minmax(0, .7fr) minmax(0,1fr); margin: 0; }
+.compton-readings dt { font-size: .875rem; }
+.compton-readings dd { font-size: 1.1rem; font-weight: 700; margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.compton details { margin-top: .4rem; }
+.compton summary { min-height: 44px; display: list-item; align-content: center; cursor: pointer; }
+.compton-reading, .compton-exercises { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .75rem; align-items: start; }
+.compton-equation { padding: .5rem .65rem; background: var(--compton-tint); border-radius: 8px; overflow-x: auto; }
+.compton-reading { grid-template-columns: repeat(auto-fit,minmax(min(100%,25rem),1fr)); overflow-wrap: anywhere; }
+.compton-reading h2:not(:first-child) { margin-top: 1.25rem; }
+.compton-exercise legend, .compton-exercise form > label { font-weight: 650; max-width: 100%; }
+.compton-exercise input[inputmode] { width: 8rem; }
+.compton-exercise p:empty, .compton #score:empty { display: none; }
+.compton-option { display: flex; align-items: center; gap: .5rem; min-height: 44px; cursor: pointer; }
+.compton-option input { margin: 0; accent-color: var(--compton-focus); }
+.compton-download { display: inline-flex; align-items: center; min-height: 44px; margin-top: .4rem; }
+@media (max-width: 50rem) {
+  .compton-workspace, .compton-reading, .compton-exercises { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 30rem) {
+  body #praxis-original.compton { padding-inline: .6rem; }
+  .compton-scene, .compton-controls, .compton-exercise, .compton-reading article { padding: .6rem; }
+}

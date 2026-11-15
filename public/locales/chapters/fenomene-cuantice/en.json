@@ -18,6 +18,18 @@
         "Experiments",
         "Offline"
       ]
+    },
+    "efectul-compton": {
+      "title": "The Compton effect",
+      "subtitle": "Photon scattering and electron recoil",
+      "description": "Control the incident energy and detector angle. Compare the spectral lines, calculate recoil and check your results.",
+      "alt": "X-ray reaching graphite, scattered photon and recoil electron",
+      "tags": [
+        "Photons",
+        "X-rays",
+        "Experiments",
+        "Offline"
+      ]
     }
   }
 }

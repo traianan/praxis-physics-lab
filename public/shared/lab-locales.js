@@ -251,5 +251,11 @@ export const labNamespaces = {
     "chapters/fenomene-cuantice",
     "courses/shared",
     "labs/efectul-fotoelectric-extern/ui"
+  ],
+  "efectul-compton": [
+    "common",
+    "chapters/fenomene-cuantice",
+    "courses/shared",
+    "labs/efectul-compton/ui"
   ]
 };
