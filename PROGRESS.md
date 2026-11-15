@@ -34,6 +34,9 @@ La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_S
 
 ## Jurnal de progres
 
+- 2026-11-15: Confirmată publicarea modificărilor de interfață din commitul `66744aa5af0baa12766b99aa873fe27abae1c78a` pe `main`. Workflow-ul GitHub Actions „Validate application”, declanșat de push, s-a încheiat cu `success`. [Rularea GitHub Actions](https://github.com/traianan/praxis-physics-lab/actions/runs/43740442755)
+  - Vercel a raportat `success` pentru același commit. În producție, la 390 și 1366 px, au fost verificate căutarea din catalog, introducerea Ohm fără grila decorativă, accesul la laborator și deschiderea listei de descărcări din Arhive offline. SHA-256 al ZIP-ului Ohm servit în producție a coincis cu cel al arhivei din commit. [Deploy Vercel](https://vercel.com/traians-projects-cnni/physicslab/F7Y2H1WeAYUtjmDGMmmMZaVmifi1)
+
 - 2026-11-15: Eliminată grila decorativă din fundalul introducerii „Legile lui Ohm”, din componenta React și CSS-ul sursă. Regenerate versiunea Web și ZIP-ul autonom, cu amprenta anterioară păstrată în lista importatorului. În Chrome la 1366 × 768 și 390 × 844 (mobil emulat), verificate aspectul introducerii, diagrama, comanda „Deschide laboratorul” și graficul, atât pe serverul local, cât și direct din arhiva extrasă. În cele două probe offline, rețeaua a fost dezactivată și nu s-a înregistrat nicio cerere HTTP. Build reușit, CRC valid, 3/3 teste ale cititorului offline trecute și scanare Impeccable fără constatări pentru cele două surse modificate. Capturi în `outputs/ohm-no-grid/`.
 
 - 2026-11-15: Implementate în ordine cele trei îmbunătățiri UI, cu componentele și tokenurile Praxis existente.
