@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-15T06:43:08.702Z",
+  "builtAt": "2026-11-15T06:47:14.919Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -389,7 +389,7 @@
     {
       "id": "condensatorul",
       "file": "public/simulari/condensatorul/condensatorul.zip",
-      "sha256": "a2a7ec68ea39b7c6766ca076d6bbdffda7accd160bf0390d655dfc5c66da57c6",
+      "sha256": "98d1af3272ff03958bf5cefbce65306b7b9019fa74f20b140f452564b2e48b13",
       "languages": [
         "ro",
         "en"

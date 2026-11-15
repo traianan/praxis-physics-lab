@@ -1170,6 +1170,7 @@ body[data-praxis-course="condensatorul"],body[data-praxis-course="condensatorul"
 #praxis-original.cond-course .score-ring::before{background:#fffefa}
 #praxis-original.cond-course #missions li{color:#385347!important}
 #praxis-original.cond-course .readout b{text-shadow:none}
+#praxis-original.cond-course .stage-readout .hl b{color:var(--praxis-color-primary,#17685d)}
 
 #praxis-original.cond-course .panel{background:#fffefa;border:1px solid #bdcdc1;border-radius:14px;box-shadow:none;color:#18332f}
 #praxis-original.cond-course #rc{container-type:inline-size;container-name:rc-topic}
