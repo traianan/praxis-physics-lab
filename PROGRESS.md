@@ -18,6 +18,10 @@ La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_S
 
 ## Jurnal de progres
 
+- 2026-11-15: Confirmate verificările pentru `03e70a3e9b955f3de63acce5c1f0bd85056fb2d5`, publicat pe `main`. Generatorul scrie licențele bibliotecilor cu finaluri de linie LF, astfel încât buildul Windows și cel Linux să reproducă același fișier pentru `decimal.js`.
+  - GitHub Actions a încheiat cu succes buildul, controlul fișierelor generate, validarea registrului și a sintaxei, suita CI și auditul axe în Chrome pentru 20 de stări inițiale Web (10 lecții, RO/EN). [Rularea CI](https://github.com/traianan/praxis-physics-lab/actions/runs/43732942655)
+  - Vercel a raportat `success` pentru același commit. La verificarea publicării remedierilor, cele șase lecții au răspuns HTTP 200, headerele de securitate și cache au fost confirmate, iar amprentele SHA-256 ale ZIP-urilor publicate au coincis cu cele locale. [Deploy Vercel](https://vercel.com/traians-projects-cnni/physicslab/Qjr58xNiimjKpko3JsZyA2EeHPMs)
+
 - 2026-11-15: Corectate constatările axe din cele șase lecții. La Ohm și Condensator au fost ajustate contrastele, iar descărcarea Ohm are o zonă de navigare cu nume. Rezistența unui fir și Transformarea politropă au titluri de nivel 2 pentru prima zonă experimentală. Calorimetria păstrează țintele de 44 px, iar navigarea importată respectă saltul comun la conținut, astfel încât antetul fix să nu acopere comenzile. La Reflexia și refracția, textul tradus furnizează direct numele butoanelor Redare/Pauză și Reset, iar etichetele au contrast îmbunătățit. Workflow-ul axe include acum și aceste șase lecții. Arhivele afectate au fost regenerate.
   - Verificare locală: axe fără constatări nerezolvate în 20 de stări inițiale Web (10 lecții, RO/EN). Cele șase arhive au trecut regulile axe verificate pentru remedieri în ambele limbi, deschise cu HTTP blocat. La Calorimetrie s-a verificat prin hit-test că butonul pentru aluminiu rămâne accesibil după salt. Raport Web în `outputs/accessibility-release.json`.
 
