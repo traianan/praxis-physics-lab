@@ -1,5 +1,7 @@
-import {chapters,simulations} from './catalog-data.js';
-export {chapters,simulations};
+import {chapters as baseChapters,simulations as baseSimulations} from './catalog-data.js';
+export const chapters=baseChapters.map(chapter=>({...chapter}));
+export const simulations=baseSimulations.map(sim=>({...sim}));
+const baseById=new Map(baseSimulations.map(sim=>[sim.id,sim]));
 export const normalize = text => String(text).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 // Publication date in this app; addedOrder resolves additions on the same day.
 export function getLatestSimulations(limit=3){
@@ -14,5 +16,18 @@ export function findSimulations(chapter='',query='') {
  return simulations.filter(s=>(!chapter||s.chapter===chapter)&&words.every(w=>normalize([s.title,s.subtitle,s.description,s.keywords,...s.tags].join(' ')).includes(w)));
 }
 export function localizeCatalog(getNamespace){
- for(const chapter of chapters){const content=getNamespace('chapters/'+chapter.id);if(content?.title)chapter.title=content.title;for(const sim of simulations.filter(s=>s.chapter===chapter.id)){const translated=content?.simulations?.[sim.id];if(translated)Object.assign(sim,translated);}}
+ for(const [index,chapter] of chapters.entries()){
+  const content=getNamespace('chapters/'+chapter.id);
+  chapter.title=content?.title||baseChapters[index].title;
+  for(const sim of simulations.filter(s=>s.chapter===chapter.id)){
+   const base=baseById.get(sim.id);
+   const translated=content?.simulations?.[sim.id];
+   // Resolve each localized field against the catalog, including optional fields.
+   for(const key of ['title','subtitle','description','tags','keywords','alt']){
+    const value=translated?.[key]??base[key];
+    if(value===undefined)delete sim[key];
+    else sim[key]=value;
+   }
+  }
+ }
 }

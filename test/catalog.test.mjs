@@ -60,3 +60,21 @@ test('chapter results contain their registered laboratories',()=>{
  assert.deepEqual(findSimulations('lucru-energie-putere').map(s=>s.id),['legea-lui-hooke']);
  assert.deepEqual(findSimulations('fenomene-cuantice').map(s=>s.id).sort(),['dualismul-unda-corpuscul','efectul-compton','efectul-fotoelectric-extern']);
 });
+
+test('Ohm returns to its Romanian title and search results after RO → EN → RO',async()=>{
+ const {simulations,localizeCatalog,findSimulations}=await import('../public/catalog.js?language-regression');
+ const chapter=simulations.find(s=>s.id==='legea-lui-ohm').chapter;
+ const namespace='chapters/'+chapter;
+ const load=async language=>JSON.parse(await readFile(new URL(`../public/locales/${namespace}/${language}.json`,import.meta.url),'utf8'));
+ const [ro,en]=await Promise.all([load('ro'),load('en')]);
+ const ohm=simulations.find(s=>s.id==='legea-lui-ohm');
+ const apply=locale=>localizeCatalog(name=>name===namespace?locale:undefined);
+
+ apply(ro);
+ assert.equal(ohm.title,'Legile lui Ohm');
+ apply(en);
+ assert.equal(ohm.title,'Ohm’s laws');
+ apply(ro);
+ assert.equal(ohm.title,'Legile lui Ohm');
+ assert.deepEqual(findSimulations('','legile lui ohm').map(s=>s.id),[ohm.id]);
+});

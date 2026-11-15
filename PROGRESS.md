@@ -34,6 +34,8 @@ La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_S
 
 ## Jurnal de progres
 
+- 2026-11-15: Remediat F1 în catalog. La fiecare schimbare de limbă, câmpurile localizabile sunt recalculate din traducerea curentă și valorile de bază ale catalogului. „Legile lui Ohm” revine în română după RO → EN → RO și este găsită din nou prin căutarea „legile lui ohm”. Testul de regresie folosește fișierele RO/EN reale și a eșuat înainte de corecție. După corecție au trecut toate cele 9 teste de catalog și buildul. Fluxul din interfață a fost verificat în Chrome pe serverul local, la 390 și 1366 px.
+
 - 2026-11-15: Publicată actualizarea lecțiilor din `c61c3c0`. Vercel a raportat `success`. În producție au fost verificate cinci lecții la 390 și 1366 px și egalitatea SHA-256 pentru toate cele 39 de ZIP-uri. [Deploy Vercel](https://vercel.com/traians-projects-cnni/physicslab/FpunqE4XjpqLFQySYbyD5vDy1Pgi)
   - Buildul și testele GitHub Actions au trecut. Auditul axe a sesizat două regiuni principale în Ohm (RO), când scriptul comun se inițializa înainte ca React să monteze lecția. Adaptorul Ohm montează sincron componenta înaintea scriptului comun. Regenerat ZIP-ul Ohm și păstrată compatibilitatea cu amprenta precedentă. Verificate local regiunea principală unică și linkul de salt în 12 încărcări Web și offline la 390 și 1366 px. [Rularea care a semnalat problema](https://github.com/traianan/praxis-physics-lab/actions/runs/43741283930)
 
