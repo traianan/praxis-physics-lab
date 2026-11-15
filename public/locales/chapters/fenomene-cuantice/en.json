@@ -30,6 +30,18 @@
         "Experiments",
         "Offline"
       ]
+    },
+    "dualismul-unda-corpuscul": {
+      "title": "Wave–particle duality",
+      "subtitle": "From photons to electron diffraction",
+      "description": "Explore the de Broglie hypothesis, adjust the Davisson–Germer voltage and detector, and check diffraction peak positions.",
+      "alt": "Electron gun, nickel crystal, detector and diffraction peak",
+      "tags": [
+        "Photons",
+        "Diffraction",
+        "de Broglie",
+        "Offline"
+      ]
     }
   }
 }

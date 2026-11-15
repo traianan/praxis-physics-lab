@@ -5,9 +5,9 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
- assert.deepEqual(latest.map(sim=>sim.id),['efectul-compton','efectul-fotoelectric-extern','miscarea-in-camp-gravitational']);
- assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-15','2026-11-14','2026-11-14']);
- assert.equal(getLatestSimulations(1)[0].id,'efectul-compton');
+ assert.deepEqual(latest.map(sim=>sim.id),['dualismul-unda-corpuscul','efectul-compton','efectul-fotoelectric-extern']);
+ assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-15','2026-11-15','2026-11-14']);
+ assert.equal(getLatestSimulations(1)[0].id,'dualismul-unda-corpuscul');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
@@ -25,8 +25,8 @@ test('exactly the seven physics chapters, with unique stable ids', () => {
  assert.equal(chapters.length,7); assert.equal(new Set(chapters.map(c=>c.id)).size,7);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite']);
 });
-test('thirty-eight real local laboratories are available, including the Compton effect', async () => {
- assert.equal(simulations.length,38);
+test('thirty-nine real local laboratories are available, including the Compton effect', async () => {
+ assert.equal(simulations.length,39);
  assert.equal(simulations.find(s=>s.id==='miscarea-in-camp-gravitational').chapter,'miscare');
  assert.equal(simulations.find(s=>s.id==='polarizarea-luminii').chapter,'lumina-si-radiatii');
  const seismic=simulations.find(s=>s.id==='unde-seismice');
@@ -58,5 +58,5 @@ test('search is accent-insensitive and combines chapter and all search words',()
 test('chapter results contain their registered laboratories',()=>{
  assert.equal(findSimulations('miscare').length,9);
  assert.deepEqual(findSimulations('lucru-energie-putere').map(s=>s.id),['legea-lui-hooke']);
- assert.deepEqual(findSimulations('fenomene-cuantice').map(s=>s.id).sort(),['efectul-compton','efectul-fotoelectric-extern']);
+ assert.deepEqual(findSimulations('fenomene-cuantice').map(s=>s.id).sort(),['dualismul-unda-corpuscul','efectul-compton','efectul-fotoelectric-extern']);
 });

@@ -1783,6 +1783,57 @@
         "kind": "archive",
         "file": "efectul-compton.zip"
       }
+    },
+    {
+      "metadata": {
+        "id": "dualismul-unda-corpuscul",
+        "addedOn": "2026-11-15",
+        "addedOrder": 2,
+        "chapter": "fenomene-cuantice",
+        "title": "Dualismul undă–corpuscul",
+        "subtitle": "De la foton la difracția electronilor",
+        "description": "Explorează ipoteza de Broglie, reglează tensiunea și detectorul Davisson–Germer și verifică poziția maximelor de difracție.",
+        "alt": "Tun cu electroni, cristal de nichel, detector și maxim de difracție",
+        "tags": [
+          "Fotoni",
+          "Difracție",
+          "de Broglie",
+          "Offline"
+        ],
+        "href": "./simulari/dualismul-unda-corpuscul/index.html",
+        "image": "./assets/dualismul-unda-corpuscul.png",
+        "keywords": "dualism unda corpuscul de broglie difractie electroni davisson germer microscop foton",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {
+            "selector": "#lab .duality-workspace",
+            "layout": "native",
+            "controls": ".duality-controls",
+            "scene": ".duality-scene"
+          },
+          {
+            "selector": "#microscope .tem-workspace",
+            "layout": "native",
+            "controls": ".tem-settings",
+            "scene": ".tem-column"
+          }
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/fenomene-cuantice",
+        "courses/shared",
+        "labs/dualismul-unda-corpuscul/ui"
+      ],
+      "inlineLocales": [
+        "labs/dualismul-unda-corpuscul/ui"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "dualismul-unda-corpuscul.zip"
+      }
     }
   ]
 }

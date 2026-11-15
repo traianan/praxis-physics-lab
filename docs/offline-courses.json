@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-15T11:53:15.976Z",
+  "builtAt": "2026-11-15T12:19:51.587Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -401,6 +401,17 @@
       "id": "efectul-compton",
       "file": "public/simulari/efectul-compton/efectul-compton.zip",
       "sha256": "cb27cad73bf53ecbac65361a6479426176b659461ceba2b1e9aa0bea5c88372c",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "dualismul-unda-corpuscul",
+      "file": "public/simulari/dualismul-unda-corpuscul/dualismul-unda-corpuscul.zip",
+      "sha256": "9a583aa38e4e82be551f50e87f3fe6df2f92f8e933fba33e87eddb205e084739",
       "languages": [
         "ro",
         "en"

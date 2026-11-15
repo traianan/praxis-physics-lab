@@ -546,5 +546,21 @@
         "scene": ".compton-scene"
       }
     ]
+  },
+  "dualismul-unda-corpuscul": {
+    "workspaces": [
+      {
+        "selector": "#lab .duality-workspace",
+        "layout": "native",
+        "controls": ".duality-controls",
+        "scene": ".duality-scene"
+      },
+      {
+        "selector": "#microscope .tem-workspace",
+        "layout": "native",
+        "controls": ".tem-settings",
+        "scene": ".tem-column"
+      }
+    ]
   }
 }

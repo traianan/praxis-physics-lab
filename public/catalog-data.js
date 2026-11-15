@@ -768,5 +768,25 @@ export const simulations = [
     "image": "./assets/efectul-compton.png",
     "keywords": "compton grafit deplasare recul foton electron raze x spectru",
     "status": "available"
+  },
+  {
+    "id": "dualismul-unda-corpuscul",
+    "addedOn": "2026-11-15",
+    "addedOrder": 2,
+    "chapter": "fenomene-cuantice",
+    "title": "Dualismul undă–corpuscul",
+    "subtitle": "De la foton la difracția electronilor",
+    "description": "Explorează ipoteza de Broglie, reglează tensiunea și detectorul Davisson–Germer și verifică poziția maximelor de difracție.",
+    "alt": "Tun cu electroni, cristal de nichel, detector și maxim de difracție",
+    "tags": [
+      "Fotoni",
+      "Difracție",
+      "de Broglie",
+      "Offline"
+    ],
+    "href": "./simulari/dualismul-unda-corpuscul/index.html",
+    "image": "./assets/dualismul-unda-corpuscul.png",
+    "keywords": "dualism unda corpuscul de broglie difractie electroni davisson germer microscop foton",
+    "status": "available"
   }
 ];

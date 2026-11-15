@@ -1,0 +1,162 @@
+:root {
+  --duality-surface: var(--praxis-color-surface);
+  --duality-ink: var(--praxis-color-ink, var(--praxis-color-text));
+  --duality-edge: var(--praxis-color-border);
+  --duality-tint: var(--praxis-color-primary-soft);
+  --duality-focus: var(--praxis-color-primary);
+  --duality-incident: var(--praxis-science-teal);
+  --duality-scattered: var(--praxis-science-blue);
+  --duality-recoil: var(--praxis-science-orange);
+}
+html:has(.duality), body:has(.duality) { overflow-x: clip; }
+body #praxis-original.duality {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 0 1rem 1.5rem;
+  min-width: 0;
+}
+.duality [hidden] { display: none !important; }
+.duality .tabs { display: flex; flex-wrap: wrap; gap: .3rem; margin: .55rem 0; }
+.duality :is(button, input, summary, a, [tabindex]):focus-visible {
+  outline: 2px solid var(--duality-focus);
+  outline-offset: 3px;
+}
+.duality :is(h2,h3) { min-width: 0; overflow-wrap: break-word; line-height: 1.2; margin: 0 0 .55rem; }
+.duality h2 { font-size: 1.22rem; }
+.duality h3 { font-size: 1rem; }
+.duality p, .duality li { line-height: 1.5; }
+.duality-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: .75rem;
+  align-items: start;
+}
+.duality-scene, .duality-controls, .duality-exercise, .duality-reading article {
+  min-width: 0;
+  margin: 0;
+  padding: .85rem;
+  background: var(--duality-surface);
+  border: 1px solid var(--duality-edge);
+  border-radius: 14px;
+}
+.duality canvas {
+  display: block;
+  inline-size: 100%;
+  background: var(--duality-tint);
+  border-radius: 8px;
+  touch-action: pan-y;
+}
+.duality #bench { block-size: clamp(180px, 28vh, 255px); }
+.duality-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .15rem 1rem;
+  list-style: none;
+  margin: .4rem 0 .7rem;
+  padding: 0;
+  font-size: .875rem;
+}
+.duality-legend li { display: flex; gap: .4em; align-items: baseline; }
+.duality-legend li::before { content: ''; width: .8em; border-top: 3px solid var(--series); flex: none; }
+.duality .incident { --series: var(--duality-incident); }
+.duality :is(.scattered,.shift,.energy) { --series: var(--duality-scattered); }
+.duality .recoil { --series: var(--duality-recoil); }
+.duality-range {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 0 .4rem;
+  align-items: baseline;
+  margin-bottom: .45rem;
+}
+.duality-range output { font-variant-numeric: tabular-nums; font-weight: 700; }
+.duality-stepper { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: .55rem; align-items: center; }
+.duality input[type=range] { width: 100%; min-width: 0; min-height: 44px; margin: 0; accent-color: var(--duality-focus); }
+.duality :is(button,input[inputmode]) {
+  font: inherit;
+  color: inherit;
+  background: var(--duality-surface);
+  border: 1px solid var(--duality-edge);
+  border-radius: 10px;
+  min-height: 44px;
+  min-width: 44px;
+  max-width: 100%;
+  padding: .35rem .65rem;
+}
+.duality button { cursor: pointer; }
+.duality button:disabled { opacity: .55; cursor: default; }
+.duality button.primary { background: var(--praxis-color-petrol); color: var(--praxis-color-mint); }
+.duality-actions { display: flex; flex-wrap: wrap; gap: .35rem; margin-block: .45rem; }
+.duality-readings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(4.8rem,100%),1fr));
+  gap: .4rem;
+  margin: .65rem 0 .35rem;
+}
+.duality-readings div { min-width: 0; border-top: 2px solid var(--series); padding: .3rem 0; }
+.duality-readings dt { font-size: .875rem; }
+.duality-readings dd { font-size: 1.1rem; font-weight: 700; margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.duality details { margin-top: .4rem; }
+.duality summary { min-height: 44px; display: list-item; align-content: center; cursor: pointer; }
+.duality-reading, .duality-exercises { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .75rem; align-items: start; }
+.duality-equation { padding: .5rem .65rem; background: var(--duality-tint); border-radius: 8px; overflow-x: auto; }
+.duality-reading { grid-template-columns: repeat(auto-fit,minmax(min(100%,25rem),1fr)); overflow-wrap: anywhere; }
+.duality-reading h2:not(:first-child) { margin-top: 1.25rem; }
+.duality-exercise legend, .duality-exercise form > label { font-weight: 650; max-width: 100%; }
+.duality-exercise input[inputmode] { width: 8rem; }
+.duality-exercise p:empty, .duality #score:empty { display: none; }
+.duality-option { display: flex; align-items: center; gap: .5rem; min-height: 44px; cursor: pointer; }
+.duality-option input { margin: 0; accent-color: var(--duality-focus); }
+.duality-download { display: inline-flex; align-items: center; min-height: 44px; margin-top: .4rem; }
+@media (max-width: 50rem) {
+  .duality-workspace, .duality-reading, .duality-exercises { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 30rem) {
+  body #praxis-original.duality { padding-inline: .6rem; }
+  .duality-scene, .duality-controls, .duality-exercise, .duality-reading article { padding: .6rem; }
+}
+
+#theory > .duality-controls { margin-block: .75rem; }
+
+.tem-workspace {
+  --tem-screen: #102a2b;
+  --tem-guide: #719692;
+  --tem-beam: #a8eec9;
+  --tem-active: #24494a;
+  --tem-highlight: #ffd186;
+  --tem-image-light: #d7f7ec;
+  --tem-image-clear: transparent;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: .75rem;
+  align-items: start;
+}
+.tem-column-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  gap: .7rem;
+  align-items: stretch;
+}
+.duality #tem-column, .duality #tem-image { background: var(--tem-screen); }
+.duality #tem-column { block-size: 17.25rem; }
+.tem-stages { display: grid; grid-template-rows: repeat(6,minmax(0,1fr)); gap: .2rem; min-width: 0; }
+.tem-stages button { text-align: start; overflow-wrap: anywhere; cursor: pointer; }
+.tem-stages button[aria-pressed=true] {
+  background: var(--praxis-color-primary-soft);
+  color: var(--praxis-color-primary);
+  border-color: var(--praxis-color-primary);
+  font-weight: 700;
+}
+.duality .tem-description { margin: .65rem 0 0; }
+.tem-image { margin: 0 0 .5rem; }
+.duality #tem-image { block-size: clamp(100px,17vh,150px); }
+.tem-image figcaption { padding: .3rem 0 0; font-size: .875rem; }
+.duality .tem-readings { grid-template-columns: minmax(0,1fr); }
+.tem-note { max-width: 65ch; margin-top: .5rem; }
+@media (max-width: 54rem) {
+  .tem-workspace { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 30rem) {
+  .tem-column-grid { gap: .4rem; }
+  .tem-stages button { padding-inline: .45rem; }
+}

@@ -257,5 +257,11 @@ export const labNamespaces = {
     "chapters/fenomene-cuantice",
     "courses/shared",
     "labs/efectul-compton/ui"
+  ],
+  "dualismul-unda-corpuscul": [
+    "common",
+    "chapters/fenomene-cuantice",
+    "courses/shared",
+    "labs/dualismul-unda-corpuscul/ui"
   ]
 };

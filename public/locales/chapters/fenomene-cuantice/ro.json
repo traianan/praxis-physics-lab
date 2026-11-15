@@ -30,6 +30,18 @@
         "Experimente",
         "Offline"
       ]
+    },
+    "dualismul-unda-corpuscul": {
+      "title": "Dualismul undă–corpuscul",
+      "subtitle": "De la foton la difracția electronilor",
+      "description": "Explorează ipoteza de Broglie, reglează tensiunea și detectorul Davisson–Germer și verifică poziția maximelor de difracție.",
+      "alt": "Tun cu electroni, cristal de nichel, detector și maxim de difracție",
+      "tags": [
+        "Fotoni",
+        "Difracție",
+        "de Broglie",
+        "Offline"
+      ]
     }
   }
 }
