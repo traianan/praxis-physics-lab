@@ -34,6 +34,20 @@ La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_S
 
 ## Jurnal de progres
 
+- 2026-11-15: GitHub Actions („Validate application”) și deploy-ul Vercel au trecut pentru adaptările Mod tablă din commitul `27af30657b656ec0f466af63dd2173d708102767`. [GitHub Actions](https://github.com/traianan/praxis-physics-lab/actions/runs/43753155873) · [Deploy Vercel](https://vercel.com/traians-projects-cnni/physicslab/HjPjrSRS2nTHAzRP4RiGJD8zNYwT)
+  - În producție au trecut toate cele 304 cazuri din cele 37 de lecții, în Chrome la 1280×720 și 1920×1080 CSS. Au fost verificate încadrarea fără derulare și interacțiunile cu comenzile prin tastatură sau pointer. Codul Mod tablă, stilurile și catalogul offline servite de site au corespuns fișierelor din commit. ZIP-urile descărcate pentru „Legile lui Ohm”, „Motoare termice”, „Transformări de stare de agregare” și „Viteza și accelerația” au avut amprentele SHA-256 din catalog. [Site-ul live](https://praxis-physics-lab.vercel.app/)
+  - Testul pe tabla fizică Horizon cu Android 13 rămâne de făcut.
+
+**Test pe tabla Horizon cu Android 13**
+
+Deschide site-ul în Chrome, cu tabla în poziție orizontală. Intră în **Mod tablă** din meniul fiecărei lecții și folosește degetul.
+
+1. **Oglinzi și lentile** — trage obiectul din diagramă. Imaginea și valoarea distanței trebuie să se actualizeze în timp ce tragi. Apasă **Ecran complet**, apoi **Ieși din ecran complet**. Scena și comenzile trebuie să rămână vizibile fără derulare, cu distanța păstrată.
+2. **Interacții atomice** — apasă **Pauză**, trage atomul din dreapta și urmărește valoarea distanței `r`. Atomul trebuie să urmeze degetul, fără să deplaseze pagina. Apasă **La echilibru** și verifică revenirea la distanța de echilibru.
+3. **Legile lui Ohm, offline** — cu internet, descarcă ZIP-ul lecției și importă-l în [Arhive offline](https://praxis-physics-lab.vercel.app/offline/index.html). Oprește Wi-Fi și deconectează cablul de rețea, dacă e folosit. Reîncarcă pagina, deschide lecția din **Lecții salvate**, apoi intră în **Mod tablă**. În **Laborator U–I**, trage cursorul de tensiune și verifică dacă se actualizează curentul afișat.
+
+Dacă un pas eșuează, notează lecția, comanda și ce s-a întâmplat. O fotografie a ecranului ajută la verificare.
+
 - 2026-11-15: Extindere locală Mod tablă pentru cele 33 de lecții rămase. Regulile comune măresc comenzile și așază instrumentele lângă grafice în activitățile ilustrate. Am adaptat separat scenele mai dense din „Calcul vectorial”, „Noțiuni termodinamice”, „Calorimetrie”, „Interacții atomice”, „Principiul I — aplicații”, „Transformări de stare de agregare”, „Motoare termice”, „Mișcarea circulară uniformă”, „Transformarea politropă” și „Legile lui Ohm”.
   - În Ohm sunt înregistrate trei scene: U–I, circuit complet și reostat. Opțiunile de materiale din U–I se deschid într-un popover nativ, cu aceeași ascendență React. În „Interacții atomice”, randarea folosește dimensiunile logice, iar tragerea folosește conversia din coordonate client. Un drag a modificat distanța cu 85 pm la ambele dimensiuni testate.
   - Auditul `node scripts/qa/whiteboard-catalog-activities.mjs` a acoperit 280 de stări în cele 33 de lecții la 1280×720 și 1920×1080 CSS. Scenele și comenzile active s-au încadrat fără derularea paginii, iar centrul comenzilor a rămas accesibil. Textul măsurat pentru butoane, linkuri, selectoare și câmpuri text/numerice a atins minimum 12 px CSS la 1280×720. În cele 272 de stări cu comenzi de lucru a fost verificată cel puțin o schimbare prin tastatură sau pointer. Cele opt stări de prezentare grafică au fost verificate pentru încadrare. Raportul agregat este în `outputs/whiteboard-catalog-final-report.json`. Unele scene extind înălțimea logică peste 900 px și rămân încadrate prin scalare uniformă. Testul pe tabla fizică Horizon rămâne deschis.
