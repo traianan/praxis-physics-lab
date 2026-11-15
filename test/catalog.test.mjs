@@ -77,4 +77,20 @@ test('Ohm returns to its Romanian title and search results after RO → EN → R
  apply(ro);
  assert.equal(ohm.title,'Legile lui Ohm');
  assert.deepEqual(findSimulations('','legile lui ohm').map(s=>s.id),[ohm.id]);
+
+ apply(en);
+ apply({...ro,simulations:{}});
+ assert.equal(ohm.title,'Legile lui Ohm');
+ assert.deepEqual(findSimulations('','legile lui ohm').map(s=>s.id),[ohm.id]);
+});
+
+test('chapter catalog translations have matching simulation ids and fields in RO and EN',async()=>{
+ for(const {id} of chapters){
+  const load=async lang=>JSON.parse(await readFile(new URL(`../public/locales/chapters/${id}/${lang}.json`,import.meta.url),'utf8')).simulations;
+  const [ro,en]=await Promise.all([load('ro'),load('en')]);
+  assert.deepEqual(Object.keys(ro).sort(),Object.keys(en).sort(),id);
+  for(const simulation of Object.keys(en)){
+   assert.deepEqual(Object.keys(ro[simulation]).sort(),Object.keys(en[simulation]).sort(),simulation);
+  }
+ }
 });

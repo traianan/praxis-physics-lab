@@ -54,7 +54,7 @@ const head='<link rel="icon" href="../../assets/favicon.svg">'+styles.map(path=>
  '<script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded})+');</script>'+
  ['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','animation-clock.js','velocity-labels.js'].map(name=>'<script src="../../shared/'+name+'"></script>').join('');
 html=html.replace('</head>',()=>head+'</head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">')
- .replace('</body>','</div><script src="../../shared/course.js" data-course="'+id+'" data-title="Mișcarea curbilinie plană" defer></script><script src="../../shared/curvilinear.js" defer></script></body>');
+ .replace('</body>','<nav class="lesson-download" aria-label="Offline (ZIP)"><a data-offline-download href="miscarea-curbilinie-plana-offline.zip" download>Offline (ZIP)</a></nav></div><script src="../../shared/course.js" data-course="'+id+'" data-title="Mișcarea curbilinie plană" defer></script><script src="../../shared/curvilinear.js" defer></script></body>');
 await writeFile(new URL('index.html',target),html);await writeFile(new URL('source.css',target),colors(css));await writeFile(new URL('app.js',target),js);
 await writeFile(new URL('docs/imported-curvilinear.json',root),JSON.stringify({id,source:'sources/'+id+'/index.html',sha256:createHash('sha256').update(source).digest('hex'),sections:['teorie','viteza','acceleratie'],canvas:['theoryCanvas','simEllipse','sim1','sim2'],duplicates:'Original lesson and repeated concepts preserved'},null,2)+'\n');
 console.log('Mișcarea curbilinie plană integrată, cu sursa originală păstrată.');

@@ -1,3 +1,4 @@
+importScripts('./shell-version.js');
 const prefix = 'praxis-offline-shell:';
 const shell = prefix+VERSION;
 const base = new URL(self.registration.scope);

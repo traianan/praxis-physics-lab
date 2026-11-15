@@ -37,7 +37,7 @@ const head='<link rel="icon" href="../../assets/favicon.svg">'+styles.map(p=>`<l
  '<script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded})+');</script>'+
  ['sound.js','lab-header.js','scientific-colors.js','course-localization.js','velocity-labels.js','velocity-canvas.js'].map(p=>`<script src="../../shared/${p}"></script>`).join('');
 html=html.replace('</head>',()=>head+'</head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">')
- .replace('</body>','</div><script src="../../shared/course.js" data-course="'+id+'" data-title="Viteza și accelerația" defer></script><script src="../../shared/velocity.js" defer></script></body>');
+ .replace('</body>','<nav class="lesson-download" aria-label="Offline (ZIP)"><a data-offline-download href="viteza-si-acceleratia-offline.zip" download>Offline (ZIP)</a></nav></div><script src="../../shared/course.js" data-course="'+id+'" data-title="Viteza și accelerația" defer></script><script src="../../shared/velocity.js" defer></script></body>');
 await writeFile(new URL('index.html',target),html);
 await writeFile(new URL('style.css',target),await read('sources/'+id+'/style.css'));
 let js=adaptScience(await read('sources/'+id+'/app.js'),'app.js');

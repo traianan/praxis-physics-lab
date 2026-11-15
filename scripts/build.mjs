@@ -3,7 +3,8 @@ import {generateSiteMetadata} from './site-metadata.mjs';
 import {normalizePublicLinks} from './link-presentation.mjs';
 import {preparePresentation} from './prepare-presentation.mjs';
 import {generateSitePages,integratePrivacyPages} from './site-pages.mjs';
-import {cp,mkdir,stat,readFile,writeFile,readdir} from 'node:fs/promises';
+import {cp,lstat,mkdir,realpath,rm,stat,readFile,writeFile,readdir} from 'node:fs/promises';
+import {buildOfflineReader} from './build-offline-reader.mjs';
 import {createHash} from 'node:crypto';
 import path from 'node:path';import {fileURLToPath} from 'node:url';
 const root=fileURLToPath(new URL('../',import.meta.url));
@@ -11,8 +12,20 @@ await import('./build-lab-libraries.mjs');
 await import('./generate-lab-registry.mjs');
 await generateSitePages();await preparePresentation();await normalizePublicFavicons();await normalizePublicLinks();
 await stat(path.join(root,'public/simulari/oglinzi-si-lentile/index.html'));
-await mkdir(path.join(root,'dist'),{recursive:true});
-await cp(path.join(root,'public'),path.join(root,'dist'),{recursive:true});
+const publicDir=new URL('../public/',import.meta.url);
+const distDir=new URL('../dist/',import.meta.url);
+const dist=path.resolve(fileURLToPath(distDir));
+await buildOfflineReader(publicDir);
+const existing=await lstat(dist).catch(error=>{if(error.code!=='ENOENT')throw error;});
+if(existing){
+ const expected=path.join(await realpath(root),'dist');
+ if(!existing.isDirectory()||existing.isSymbolicLink()||await realpath(dist)!==expected){
+  throw new Error('Refusing to replace output outside the project dist directory');
+ }
+ await rm(dist,{recursive:true});
+}
+await mkdir(dist,{recursive:true});
+await cp(fileURLToPath(publicDir),dist,{recursive:true});
 await integratePrivacyPages(path.join(root,'dist'));
 await generateSiteMetadata(new URL('../dist/',import.meta.url));
 // Refresh this lesson's cache when its worker, page or shared UI changes.
@@ -25,5 +38,5 @@ try{
  const hash=createHash('sha256');hash.update((await readFile(vectorSW,'utf8')).replaceAll('\r\n','\n'));for(const file of inputs)hash.update(file+'\0').update((await readFile(path.join(root,'dist',file),'utf8')).replaceAll('\r\n','\n'));
  const sw=(await readFile(vectorSW,'utf8')).replace('const PRECACHE = [',"const PRECACHE = [\n  "+mathAssets.map(file=>JSON.stringify('../../'+file)).join(',')+",\n  '../../shared/privacy.js','../../shared/site-info.css','../../shared/site-navigation.js','../../shared/site-navigation.css',");await writeFile(vectorSW,sw.replace(/const VERSION = 'praxis-vectori-[^']+';/,"const VERSION = 'praxis-vectori-"+hash.digest('hex').slice(0,12)+"';"));
 }catch(error){if(error.code!=='ENOENT')throw error;}
-await import('./build-offline-reader.mjs');
+await buildOfflineReader(distDir);
 console.log('Construit: dist/ — aceeași versiune pentru server local și Vercel.');

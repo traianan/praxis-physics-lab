@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-15T17:30:54.874Z",
+  "builtAt": "2026-11-15T17:43:49.383Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -79,42 +79,9 @@
       "localResources": true
     },
     {
-      "id": "unde-mecanice",
-      "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
-      "sha256": "176fc9f1b608e97a60982310600f1cd65d823efc154dee8fc6ca8a195099ddb5",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
       "id": "calcul-vectorial",
       "file": "public/simulari/calcul-vectorial/calcul-vectorial.zip",
       "sha256": "16516ff31d81f51a6c9d9f422fd0905a8e78be40723b8773f36342a841a6d41b",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
-      "id": "viteza-si-acceleratia",
-      "file": "public/simulari/viteza-si-acceleratia/viteza-si-acceleratia-offline.zip",
-      "sha256": "0b7afdce6af9d76db2e5ca3a2d933f3dfc676d73ce1856dc669b17669167e5e3",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
-      "id": "miscarea-curbilinie-plana",
-      "file": "public/simulari/miscarea-curbilinie-plana/miscarea-curbilinie-plana-offline.zip",
-      "sha256": "f4aea5176f0da7f884fc5cbf47045118f1cd9542d504558986c58f999b04a8a2",
       "languages": [
         "ro",
         "en"
@@ -412,6 +379,39 @@
       "id": "legea-lui-ohm",
       "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
       "sha256": "36a2f3270876fb6b6aabb3b21b0cb1664e9cc69819d2d7a008a3f555e8a1b049",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "unde-mecanice",
+      "file": "public/simulari/unde-mecanice/unde-mecanice-offline.zip",
+      "sha256": "88c59edd9ac0786e13699ad6c67f71ad14928118374cfbb3cb603031420c9427",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "viteza-si-acceleratia",
+      "file": "public/simulari/viteza-si-acceleratia/viteza-si-acceleratia-offline.zip",
+      "sha256": "e5f49baca601dcc2af493c437cb616dc7f779d4445a939f945f2b5bda7f6ec76",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "miscarea-curbilinie-plana",
+      "file": "public/simulari/miscarea-curbilinie-plana/miscarea-curbilinie-plana-offline.zip",
+      "sha256": "fc56234e2e3b129dee1cd36532e40355598c9b0e4f9a1d9a59214a926d007972",
       "languages": [
         "ro",
         "en"

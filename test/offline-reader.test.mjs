@@ -25,11 +25,21 @@ test('the Android reader rejects unsafe archive paths and truncated input',async
 });
 
 test('the published offline catalog identifies only the exact distributed archives',async()=>{
- const catalog=JSON.parse(await readFile(new URL('../dist/offline/archives.json',import.meta.url)));
+ const published=await readFile(new URL('../dist/offline/archives.json',import.meta.url));
+ assert.deepEqual(await readFile(new URL('../public/offline/archives.json',import.meta.url)),published);
+ const catalog=JSON.parse(published);
  const {labs}=await readManifest();
  assert.deepEqual(catalog.archives.map(x=>x.id),labs.map(x=>x.metadata.id));
  for(const {path,sha256} of catalog.archives){
   const body=await readFile(new URL('../dist/'+path,import.meta.url));
   assert.equal(sha256,createHash('sha256').update(body).digest('hex'),path);
+ }
+});
+
+test('wave and motion lessons link to their registered offline archives',async()=>{
+ const ids=['unde-mecanice','viteza-si-acceleratia','miscarea-curbilinie-plana'];
+ for(const {metadata,offline} of (await readManifest()).labs.filter(lab=>ids.includes(lab.metadata.id))){
+  const html=await readFile(new URL('../public/'+metadata.href,import.meta.url),'utf8');
+  assert.ok(html.includes('data-offline-download href="'+offline.file+'" download'),metadata.id);
  }
 });

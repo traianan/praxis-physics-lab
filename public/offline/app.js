@@ -23,7 +23,7 @@ function link(title,href){
 }
 async function start(){
  if(!navigator.serviceWorker||!globalThis.DecompressionStream||!globalThis.crypto?.subtle)throw Error('Deschide această pagină în Chrome pe Android.');
- const registration=await navigator.serviceWorker.register('./sw.js');
+ const registration=await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});
  await navigator.serviceWorker.ready;
  if(!registration.active)throw Error('Pagina offline nu s-a putut pregăti.');
  const response=await fetch('./archives.json');
