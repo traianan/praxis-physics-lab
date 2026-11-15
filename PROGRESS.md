@@ -18,6 +18,8 @@ La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_S
 
 ## Jurnal de progres
 
+- 2026-11-15: Lecția „Efectul Compton” a fost publicată în `351cd00` și verificată pe OPPO CPH2529 fizic, Android 15 și Chrome 157. Glisări prin intrări tactile Android pentru energie și unghi, pe site și din ZIP. Verificate ondulațiile și spectrul, ambele lungimi de undă, Δλ, unghiul și energia nerelativistă de recul, notația E indice c și cazul fără recul la 0°. ZIP-ul descărcat are amprenta distribuției. A fost selectat în fișierele Android și importat, deschis și reîncărcat din Arhive offline cu Wi-Fi/date oprite, fără rețea implicită și cu cerere de control eșuată. Restaurate preferințele telefonului. Rapoarte și capturi în `outputs/compton-phone/`.
+
 - 2026-11-15: În „Efectul Compton”, energia cinetică este notată cu E indice c în RO și K în EN. Formula θ = 0° are o gazdă matematică separată de cuvântul „La”. Buildul și ZIP-ul au fost regenerate. Auditul local Web și offline confirmă notația, mișcarea liniilor spectrale și valorile de recul la 60 și 131 keV, inclusiv cazul fără recul la 0°. Cele 20 de teste focalizate au trecut.
 
 - 2026-11-15 (local): Integrată lecția „Efectul Compton” în „Fenomene cuantice”, după §2.2, pp. 35–37 din manualul furnizat. Laborator cu energie și unghi reglabile, redare/pauză/pas/reset, ton opțional la detecție și spectru pe axă fixă în pm. Pasul ondulațiilor urmărește λ₀ și λ′. Unghiul și energia de recul folosesc conservarea energiei și impulsului cu K = pₑ²/(2mₑ), distinct de spectrul relativist. La θ = 0° energia de recul este zero și unghiul rămâne nedefinit.
