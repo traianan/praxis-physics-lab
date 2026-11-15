@@ -18,6 +18,8 @@ La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_S
 
 ## Jurnal de progres
 
+- 2026-11-15: Verificată pe OPPO CPH2529 fizic formula cu sin²(θ/2) din „Efectul Compton”, publicată în `4f50c3a`. În Teorie, exponentul și fracția θ/2 sunt afișate integral în RO/EN, pe site și din ZIP-ul publicat cu amprentă identică. ZIP-ul a fost importat și lecția reîncărcată cu Wi-Fi și datele mobile oprite, fără rețea implicită. Setările telefonului au fost restaurate. Capturi și rapoarte în `outputs/compton-formula-phone/`.
+
 - 2026-11-15: Lecția „Efectul Compton” a fost publicată în `351cd00` și verificată pe OPPO CPH2529 fizic, Android 15 și Chrome 157. Glisări prin intrări tactile Android pentru energie și unghi, pe site și din ZIP. Verificate ondulațiile și spectrul, ambele lungimi de undă, Δλ, unghiul și energia nerelativistă de recul, notația E indice c și cazul fără recul la 0°. ZIP-ul descărcat are amprenta distribuției. A fost selectat în fișierele Android și importat, deschis și reîncărcat din Arhive offline cu Wi-Fi/date oprite, fără rețea implicită și cu cerere de control eșuată. Restaurate preferințele telefonului. Rapoarte și capturi în `outputs/compton-phone/`.
 
 - 2026-11-15: În „Efectul Compton”, energia cinetică este notată cu E indice c în RO și K în EN. Formula θ = 0° are o gazdă matematică separată de cuvântul „La”. Buildul și ZIP-ul au fost regenerate. Auditul local Web și offline confirmă notația, mișcarea liniilor spectrale și valorile de recul la 60 și 131 keV, inclusiv cazul fără recul la 0°. Cele 20 de teste focalizate au trecut.
