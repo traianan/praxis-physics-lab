@@ -23,6 +23,7 @@ export const theory = `
       <a href="#lab">${t('Încearcă unghiurile în laborator', 'Try the angles in the lab')}</a>
       <h2 data-content-type="formula">${t('Legea deplasării Compton', 'The Compton shift equation')}</h2>
       <p class="compton-equation">${math(String.raw`\Delta\lambda = \lambda' - \lambda_0 = \frac{h}{m_e c}(1-\cos\theta)`)}</p>
+      <p class="compton-equation">${math(String.raw`\Delta\lambda = \frac{2h}{m_e c}\sin^2\!\left(\frac{\theta}{2}\right)`)}</p>
       <p>${t('Lungimea de undă Compton a electronului este aproximativ 2,426 pm. Deplasarea depinde numai de unghi în acest model: este nulă la 0°, egală cu 2,426 pm la 90° și maximă la 180° (aproximativ 4,853 pm).', 'The electron Compton wavelength is about 2.426 pm. In this model, the shift depends only on angle: zero at 0°, 2.426 pm at 90°, and a maximum of about 4.853 pm at 180°.')}</p>
     </article>
     <article>

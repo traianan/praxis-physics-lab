@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-15T11:43:26.571Z",
+  "builtAt": "2026-11-15T11:53:15.976Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -400,7 +400,7 @@
     {
       "id": "efectul-compton",
       "file": "public/simulari/efectul-compton/efectul-compton.zip",
-      "sha256": "57ae95be71137b6a76334e8368d99f54e6c437479ddb2f35a4458d0b8bea0e42",
+      "sha256": "cb27cad73bf53ecbac65361a6479426176b659461ceba2b1e9aa0bea5c88372c",
       "languages": [
         "ro",
         "en"
