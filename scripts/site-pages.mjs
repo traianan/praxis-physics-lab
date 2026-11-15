@@ -81,6 +81,7 @@ export async function integratePrivacyPages(directory){
   if(!html.includes('shared/site-info.css'))html=html.replace(/<\/head>/i,`<link rel="stylesheet" href="${relative}/shared/site-info.css"></head>`);
   if(!html.includes('shared/site-navigation.css'))html=html.replace(/<\/head>/i,`<link rel="stylesheet" href="${relative}/shared/site-navigation.css"></head>`);
   if(!html.includes('shared/site-navigation.js'))html=html.replace(/<head\b[^>]*>/i,head=>head+`<script src="${relative}/shared/site-navigation.js"></script>`);
+  if(/<body\b[^>]*\bdata-praxis-laboratory\b/i.test(html)&&!html.includes('shared/whiteboard.js'))html=html.replace(/<\/head>/i,`<script defer src="${relative}/shared/whiteboard.js"></script></head>`);
   // Move the guard before even inline legacy scripts that read storage.
   html=html.replace(/<script\b[^>]*src=["'][^"']*shared\/privacy\.js["'][^>]*><\/script>/gi,'');
   html=html.replace(/<head\b[^>]*>/i,head=>head+`<script src="${relative}/shared/privacy.js"></script>`);

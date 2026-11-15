@@ -53,11 +53,16 @@ test('symmetries distinguish a tilted ellipse, a circle, and a parabola',async()
 });
 test('display density changes preserve logical coordinates and avoid reallocating unchanged bitmaps',async()=>{
  const window={devicePixelRatio:1};vm.runInNewContext(await read('public/shared/first-law-applications-canvas.js'),{window});
- let width=308,allocations=0,pixelsW=760,pixelsH=600;const transforms=[];
- const canvas={dataset:{logicalWidth:'308',logicalHeight:'320'},style:{},getAttribute:k=>k==='width'?'760':'600',getBoundingClientRect:()=>({width}),getContext:()=>({setTransform:(...a)=>transforms.push(a),clearRect(){}}),get width(){return pixelsW;},set width(v){allocations++;pixelsW=v;},get height(){return pixelsH;},set height(v){allocations++;pixelsH=v;}};
+ let width=308,allocations=0,pixelsW=760,pixelsH=600,onBoard=false;const transforms=[];
+ const canvas={dataset:{logicalWidth:'308',logicalHeight:'320'},style:{},closest:selector=>onBoard&&selector==='[data-wb-stage]'?{}:null,offsetWidth:600,getAttribute:k=>k==='width'?'760':'600',getBoundingClientRect:()=>({width}),getContext:()=>({setTransform:(...a)=>transforms.push(a),clearRect(){}}),get width(){return pixelsW;},set width(v){allocations++;pixelsW=v;},get height(){return pixelsH;},set height(v){allocations++;pixelsH=v;}};
  for(const dpr of [1,1.5,2,3])for(const w of [308,600,1000]){
   width=w;window.devicePixelRatio=dpr;const state=window.PraxisApplicationsCanvas.prepare(canvas);
   assert.equal(state.w,308);assert.equal(state.h,320);assert.equal(canvas.width,Math.round(w*dpr));assert.equal(canvas.height,Math.round(w*320/308*dpr));
   const n=allocations;window.PraxisApplicationsCanvas.prepare(canvas);assert.equal(n,allocations);close(transforms.at(-1)[0],canvas.width/308);
  }
+ onBoard=true;width=450;window.devicePixelRatio=2;
+ window.PraxisApplicationsCanvas.prepare(canvas);
+ close(parseFloat(canvas.style.height),600*320/308);
+ assert.equal(canvas.width,900);
+ assert.equal(canvas.height,Math.round(450*320/308*2));
 });

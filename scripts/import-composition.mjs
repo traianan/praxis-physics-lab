@@ -10,7 +10,7 @@ for(const file of files)hashes[file]=createHash('sha256').update(await read(sour
 const main=html=>html.match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
 let lab=main(await read(source+'index.html')).replace('class="tabs"','class="mode-tabs"').replace('role="tablist"','role="group"');
 lab=lab.replace(/([12])\. (Pulsații)/g,'$2').replace('<footer>','<footer><a href="'+id+'.zip">Descarcă lecția offline</a><br>');
-lab=lab.replace('<aside class="panel controls">','<details class="panel controls" open><summary>Parametri și comenzi</summary>').replace('</aside>','</details>').replaceAll('class="fine-control"','class="fine-control praxis-range-stepper"');
+lab=lab.replace('<aside class="panel controls">','<details class="panel controls" open><summary>Parametri și comenzi</summary><div class="composition-control-body">').replace('</aside>','</div></details>').replaceAll('class="fine-control"','class="fine-control praxis-range-stepper"');
 lab=lab.replace('<div class="plotwrap">','<p class="hint" id="amplitudeHint">Trage colțurile violet ale dreptunghiului pentru a modifica amplitudinile, cu degetul sau mouse-ul. Cu graficul selectat, săgețile ←/→ modifică Aₓ, iar ↓/↑ modifică Aᵧ.</p><div class="plotwrap">').replace('id="plot" width=','id="plot" tabindex="0" aria-describedby="amplitudeHint" width=');
 lab=lab.replace(/(<canvas id="[xy]Wave"[^>]*><\/canvas>)/g,'<div class="wavewrap">$1</div>');
 const actions=lab.match(/<div class="actions">[\s\S]*?<\/div>/)[0];lab=lab.replace(actions,'').replace('<div class="plotwrap">',actions+'<div class="plotwrap">');
@@ -33,7 +33,7 @@ for(const sx of [-1,1])for(const sy of [-1,1]){const el=document.createElement('
 function prepare(canvas){
  const scale=(parseFloat(getComputedStyle(document.documentElement).fontSize)||16)/16;
  canvas.style.minWidth=(280*scale)+'px';
- const cssWidth=canvas.getBoundingClientRect().width||760;
+ const cssWidth=(canvas.closest('[data-wb-stage]')?canvas.offsetWidth:canvas.getBoundingClientRect().width)||760;
  const w=Math.max(280,cssWidth/scale),h=canvas.id==='plot'?Math.max(320,w*600/760):185;
  canvas.dataset.logicalWidth=String(w);canvas.dataset.logicalHeight=String(h);
  return PraxisApplicationsCanvas.prepare(canvas);
@@ -54,7 +54,7 @@ patch('soundOn&&running?',"soundOn&&running&&!document.hidden&&section==='labora
 patch('soundOn=!soundOn;if(soundOn)', 'soundOn=!soundOn;if(soundOn)PraxisSound.setEnabled(true);if(soundOn)');
 patch("document.addEventListener('visibilitychange',()=>{if(audioContext){if(document.hidden)audioContext.suspend();else if(soundOn)audioContext.resume();}});", "document.addEventListener('visibilitychange',()=>{prev=null;soundUpdate();if(audioContext){if(document.hidden)audioContext.suspend();else if(soundOn&&PraxisSound.enabled)audioContext.resume().catch(()=>{});}});\nwindow.addEventListener('praxis-sound-change',()=>{if(!PraxisSound.enabled){soundOn=false;$('soundToggle').textContent='♪ Activează';$('soundToggle').setAttribute('aria-pressed','false');}soundUpdate();});\nwindow.addEventListener('pagehide',()=>{if(audioContext)audioContext.suspend();});");
 patch('function draw(){plot();wave',"function draw(){dirty=true;if(section!=='laborator'||document.hidden)return;plot();wave");
-patch("wave('yWave','y');}",`wave('yWave','y');const w=+canvas.dataset.logicalWidth,h=+canvas.dataset.logicalHeight,s=Math.min((w-100)/12,(h-72)/12),scale=canvas.getBoundingClientRect().width/w;for(const {el,sx,sy}of handles){el.hidden=!$('showBox').checked;el.style.left=((w/2+sx*params.ax*s)*scale)+'px';el.style.top=((h/2+sy*params.ay*s)*scale)+'px';}dirty=false;}`);
+patch("wave('yWave','y');}",`wave('yWave','y');const w=+canvas.dataset.logicalWidth,h=+canvas.dataset.logicalHeight,s=Math.min((w-100)/12,(h-72)/12),scale=(canvas.closest('[data-wb-stage]')?canvas.offsetWidth:canvas.getBoundingClientRect().width)/w;for(const {el,sx,sy}of handles){el.hidden=!$('showBox').checked;el.style.left=((w/2+sx*params.ax*s)*scale)+'px';el.style.top=((h/2+sy*params.ay*s)*scale)+'px';}dirty=false;}`);
 const oldFrame=app.slice(app.indexOf('function animate('),app.indexOf('\nids.forEach'));
 patch(oldFrame,`function advance(target){const start=time,steps=Math.max(1,Math.ceil((target-start)*120));for(let i=1;i<=steps;i++){time=start+(target-start)*i/steps;capture();}}
 function animate(stamp){
@@ -74,7 +74,7 @@ window.addEventListener('praxis-language-change',()=>{updateLabels();updateInter
 new ResizeObserver(draw).observe($('plot').parentElement);
 if(matchMedia('(max-width:850px)').matches)document.querySelector('details.controls').open=false;
 let drag=null;
-function graphPosition(event){const rect=canvas.getBoundingClientRect(),w=+canvas.dataset.logicalWidth,h=+canvas.dataset.logicalHeight;return {x:(event.clientX-rect.left)*w/rect.width,y:(event.clientY-rect.top)*h/rect.height,w,h,s:Math.min((w-100)/12,(h-72)/12),scale:rect.width/w};}
+function graphPosition(event){const rect=canvas.getBoundingClientRect(),w=+canvas.dataset.logicalWidth,h=+canvas.dataset.logicalHeight;const point=window.PraxisWhiteboard?.clientToLocal(canvas,event.clientX,event.clientY,w,h)||{x:(event.clientX-rect.left)*w/rect.width,y:(event.clientY-rect.top)*h/rect.height};return {...point,w,h,s:Math.min((w-100)/12,(h-72)/12),scale:rect.width/w};}
 wrap.addEventListener('pointerdown',event=>{if(event.button!==0||!$('showBox').checked||drag!==null)return;const p=graphPosition(event),distance=Math.min(...[-1,1].flatMap(sx=>[-1,1].map(sy=>Math.hypot(p.x-p.w/2-sx*params.ax*p.s,p.y-p.h/2-sy*params.ay*p.s)*p.scale)));if(distance>34)return;drag=event.pointerId;wrap.setPointerCapture(event.pointerId);event.preventDefault();});
 wrap.addEventListener('pointermove',event=>{if(drag!==event.pointerId)return;const p=graphPosition(event);$('ax').value=String(Math.max(.2,Math.min(5,Math.abs(p.x-p.w/2)/p.s)));$('ay').value=String(Math.max(.2,Math.min(5,Math.abs(p.y-p.h/2)/p.s)));manualChanged();event.preventDefault();});
 canvas.addEventListener('keydown',event=>{const direction={ArrowLeft:['ax',-.1],ArrowRight:['ax',.1],ArrowDown:['ay',-.1],ArrowUp:['ay',.1]}[event.key];if(!direction)return;const [id,delta]=direction;$(id).value=String(Math.max(.2,Math.min(5,params[id]+delta)));manualChanged();event.preventDefault();});

@@ -34,6 +34,7 @@ for(const {metadata:{id},offline:{file:zipName},locales,inlineLocales}of selecte
  let html=withLinkPresentation(withFavicon(await readFile(path.join(source,'index.html'),'utf8')));
  if(id==='efectul-fotoelectric-extern')html=html.replace('</head>','<script src="../../vendor/lab-libraries/zod.min.js"></script></head>');
  if(moduleStyle)html=await inlineStandaloneModule(html,{id,source,root,namespaceList:locales,inlineLocales});
+ html=html.replace('</head>','<script src="../../shared/whiteboard.js"></script></head>');
  html=html.replace(/<a data-offline-download /g,'<a hidden ');
  for(const match of [...html.matchAll(/<link[^>]+href="\.\.\/\.\.\/([^"]+\.css)"[^>]*>/g)]){const css=await readFile(path.join(root,'public',match[1]),'utf8');html=html.replace(match[0],()=>'<style>'+css+'</style>');}
  for(const match of [...html.matchAll(/<script([^>]*?)src="\.\.\/\.\.\/([^"]+)"([^>]*)><\/script>/g)]){

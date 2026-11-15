@@ -10,6 +10,7 @@ body[data-praxis-course="compunerea-oscilatiilor"] *{box-sizing:border-box}
 #praxis-original .equation{flex-shrink:0}
 body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{display:grid;grid-template-columns:21rem minmax(0,1fr);gap:1rem;align-items:start;padding:0}
 #praxis-original .controls summary{cursor:pointer;min-height:44px;font-weight:650;color:var(--praxis-color-primary);margin-bottom:.5rem}
+#praxis-original .composition-control-body{display:contents}
 :root[data-course-touch=true] #praxis-original :is(.controls summary,.switches label){min-height:52px}
 #praxis-original .panel{background:var(--praxis-color-surface);border:1px solid var(--praxis-color-border);border-radius:var(--praxis-radius-card);padding:clamp(12px,1vw,16px);min-width:0}
 #praxis-original .sectiontop,#praxis-original .controlhead,#praxis-original .sound-top{display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap}

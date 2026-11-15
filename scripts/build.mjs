@@ -32,11 +32,12 @@ await generateSiteMetadata(new URL('../dist/',import.meta.url));
 const vectorSW=path.join(root,'dist/simulari/calcul-vectorial/sw.js');
 try{
  const inputs=['simulari/calcul-vectorial/index.html','shared/course.js','shared/vector-tabs.js','shared/vector-tabs.css','shared/course.css','shared/course-localization.js','shared/scientific-colors.js','shared/canvas-typography.js','shared/lab-header.js','shared/sound.js','shared/i18n.js','design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css'];
- inputs.push('shared/privacy.js','shared/site-info.css','shared/site-navigation.js','shared/site-navigation.css');
+ const shellAssets=['shared/privacy.js','shared/site-info.css','shared/site-navigation.js','shared/site-navigation.css','shared/whiteboard.js'];
+ inputs.push(...shellAssets);
  const mathAssets=['simulari/calorimetrie/vendor/katex/katex.min.js',...(await readdir(path.join(root,'dist/simulari/calorimetrie/vendor/katex/fonts'))).filter(file=>file.endsWith('.woff2')).map(file=>'simulari/calorimetrie/vendor/katex/fonts/'+file)];
  inputs.push(...mathAssets);
  const hash=createHash('sha256');hash.update((await readFile(vectorSW,'utf8')).replaceAll('\r\n','\n'));for(const file of inputs)hash.update(file+'\0').update((await readFile(path.join(root,'dist',file),'utf8')).replaceAll('\r\n','\n'));
- const sw=(await readFile(vectorSW,'utf8')).replace('const PRECACHE = [',"const PRECACHE = [\n  "+mathAssets.map(file=>JSON.stringify('../../'+file)).join(',')+",\n  '../../shared/privacy.js','../../shared/site-info.css','../../shared/site-navigation.js','../../shared/site-navigation.css',");await writeFile(vectorSW,sw.replace(/const VERSION = 'praxis-vectori-[^']+';/,"const VERSION = 'praxis-vectori-"+hash.digest('hex').slice(0,12)+"';"));
+ const sw=(await readFile(vectorSW,'utf8')).replace('const PRECACHE = [',"const PRECACHE = [\n  "+[...mathAssets,...shellAssets].map(file=>JSON.stringify('../../'+file)).join(',')+",");await writeFile(vectorSW,sw.replace(/const VERSION = 'praxis-vectori-[^']+';/,"const VERSION = 'praxis-vectori-"+hash.digest('hex').slice(0,12)+"';"));
 }catch(error){if(error.code!=='ENOENT')throw error;}
 await buildOfflineReader(distDir);
 console.log('Construit: dist/ — aceeași versiune pentru server local și Vercel.');

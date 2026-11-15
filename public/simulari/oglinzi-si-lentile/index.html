@@ -1944,6 +1944,121 @@ body[data-praxis-workspace] [data-workspace-layout=motion] .log:empty{display:no
  body[data-praxis-workspace] .praxis-workspace-disclosure>*{display:block!important}
 }
 
+/* The viewport and toolbar are measured in CSS pixels. Only the stage is transformed. */
+html[data-praxis-whiteboard],html[data-praxis-whiteboard] body {
+  overflow:hidden!important;
+  scrollbar-gutter:auto!important;
+  overscroll-behavior:none;
+  background:var(--praxis-color-canvas,#f7f5ee);
+}
+html[data-praxis-whiteboard] body {
+  position:fixed!important;
+  inset:0!important;
+  width:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0!important;
+}
+html[data-praxis-whiteboard] [data-wb-path]:not(body,[data-wb-stage]) {
+  position:static!important;
+  overflow:visible!important;
+  transform:none!important;
+  contain:none!important;
+  container-type:normal!important;
+  content-visibility:visible!important;
+  will-change:auto!important;
+  filter:none!important;
+  perspective:none!important;
+  translate:none!important;
+}
+html[data-praxis-whiteboard] [data-wb-path]:not([data-wb-stage]) > :not([data-wb-path],[data-wb-shell],dialog) {
+  display:none!important;
+}
+:where([data-wb-stage]:popover-open) {
+  padding:0;
+  border:0;
+  background:transparent;
+  color:inherit;
+}
+html[data-praxis-whiteboard] body [data-wb-stage] {
+  position:fixed!important;
+  inset:auto!important;
+  left:var(--wb-x,0px)!important;
+  top:var(--wb-y,0px)!important;
+  z-index:1001;
+  box-sizing:border-box!important;
+  width:1600px!important;
+  min-width:1600px!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:900px!important;
+  max-height:none!important;
+  margin:0!important;
+  transform:scale(var(--wb-scale,1))!important;
+  transform-origin:top left!important;
+  transition:none!important;
+  animation:none!important;
+}
+[data-wb-shell] {
+  position:fixed;
+  z-index:1000;
+  box-sizing:border-box;
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr);
+  gap:8px;
+  padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));
+  pointer-events:none;
+}
+.praxis-whiteboard-toolbar {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  justify-content:flex-end;
+  pointer-events:auto;
+}
+.praxis-whiteboard-toolbar strong {margin-inline-end:auto;color:var(--praxis-color-ink);}
+.praxis-whiteboard-toolbar :is(button,select) {min-height:44px;max-width:100%;white-space:normal;}
+.praxis-whiteboard-dialog {
+  box-sizing:border-box;
+  width:min(44rem,calc(100% - 2rem));
+  max-height:85dvh;
+  overflow:auto;
+  padding:1.25rem;
+  border:1px solid var(--praxis-color-border);
+  border-radius:12px;
+  background:var(--praxis-color-surface);
+  color:var(--praxis-color-ink);
+}
+.praxis-whiteboard-dialog::backdrop {background:#103f3b66;}
+.praxis-whiteboard-dialog>div>* {margin-block:.75rem;}
+
+html[data-praxis-whiteboard] body [data-wb-stage="compunerea-oscilatiilor"].layout {
+  display:grid!important;
+  grid-template-columns:510px minmax(0,1fr)!important;
+  gap:16px!important;
+  align-items:start;
+}
+html[data-praxis-whiteboard] #praxis-original [data-wb-stage="compunerea-oscilatiilor"] .composition-control-body {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:14px;
+}
+[data-wb-stage="compunerea-oscilatiilor"] .composition-control-body > :not(.controlgroup) {grid-column:1/-1;}
+[data-wb-stage="compunerea-oscilatiilor"] .visuals {grid-template-columns:minmax(0,1fr) 320px;align-items:start;}
+html[data-praxis-whiteboard] #praxis-original [data-wb-stage="compunerea-oscilatiilor"] .secondary {grid-template-columns:1fr;}
+[data-wb-stage="compunerea-oscilatiilor"] .secondary>article {min-width:0;}
+
+html[data-praxis-whiteboard] body [data-wb-stage="oglinzi-si-lentile"] {
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 470px!important;
+  gap:16px!important;
+  align-items:start;
+}
+[data-wb-stage="oglinzi-si-lentile"] :is(.control-panel,.panel-body,.experiment-column) {max-height:none!important;overflow:visible!important;}
+[data-wb-stage="oglinzi-si-lentile"] > .module-tabs {grid-column:1/-1;}
+[data-wb-stage="oglinzi-si-lentile"] #scene-wrap {height:515px!important;min-height:0!important;max-height:none!important;}
+
 /* /praxis:workspace */
 
 /* praxis:readability */

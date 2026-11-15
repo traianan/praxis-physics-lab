@@ -13,6 +13,7 @@ const read=p=>readFile(p,'utf8');
 let html=await inlineStandaloneModule(await read(path.join(source,'index.html')),{
  id,source,root,namespaceList:await labNamespaces(id)
 });
+html=html.replace('</head>','<script src="../../shared/whiteboard.js"></script></head>');
 for(const match of [...html.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"[^>]*>/g)]){const css=await read(path.resolve(source,match[1]));html=html.replace(match[0],()=>'<style>'+css+'</style>');}
 for(const match of [...html.matchAll(/<script src="([^"]+)"><\/script>/g)]){const js=await inlineMathFonts(await read(path.resolve(source,match[1])));html=html.replace(match[0],()=>'<script>'+js.replaceAll('</script','<\\/script')+'</script>');}
 html=html.replace('<head>','<head><script>document.documentElement.dataset.praxisStandalone="true";</script>').replace('../../assets/favicon.svg','assets/favicon.svg');
