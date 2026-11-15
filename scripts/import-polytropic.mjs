@@ -39,6 +39,7 @@ export function adaptPolytropic(code,name){
  }
  if(/(?:PolytropicLab|LinearLab|CalculatorSection)\.tsx$/.test(name))code=code.replaceAll('id={id}\n        type=', 'id={id}\n        aria-label={label}\n        type=');
  if(name.endsWith('PolytropicLab.tsx')){
+  code=replace(code,'<h3>{model.info.name}</h3>','<h2>{model.info.name}</h2>');
   code=replace(code,'const [playing, setPlaying] = useState(false);','const [playing, setPlaying] = useState(false);\n  const [rate,setRate]=useState(1);\n  useEffect(()=>{const stop=()=>{if(document.hidden)setPlaying(false);};const section=e=>{if(e.detail!=="laborator")setPlaying(false);};document.addEventListener("visibilitychange",stop);window.addEventListener("praxis-polytropic-section",section);return()=>{document.removeEventListener("visibilitychange",stop);window.removeEventListener("praxis-polytropic-section",section);};},[]);');
   code=replace(code,'Math.max(500, 2600 * (1 - from))','Math.max(1, 2600 * (1 - from)) / rate');
   code=replace(code,'}, [playing]);','}, [playing, rate]);');
@@ -80,6 +81,7 @@ let css='';for(const file of ['globals','theory','lab','linear','calculator','qu
 // Keep auxiliary UI text readable and scalable; math scripts retain their own sizes.
 css=css.replace(/font-size:\s*([\d.]+)rem/g,(match,size)=>Number(size)<.8125?'font-size: .8125rem':match);
 css=css.replace(/:root/g,':scope').replace(/\[data-theme="dark"\]/g,':scope:where([data-theme="dark"])').replace(/html\s*\{/g,':scope {').replace(/body\s*\{/g,':scope {');
+css=css.replaceAll('.lab-chart-head h3','.lab-chart-head h2');
 await write('public/shared/polytropic-source.css','@scope (#polytropic-root) {\n'+css+'\n}\n');
 await cp(path.join(root,'public/simulari/calorimetrie/vendor/katex'),path.join(output,'vendor/katex'),{recursive:true});
 const translations=JSON.parse(await read('scripts/adaptations/polytropic/translations.json'));

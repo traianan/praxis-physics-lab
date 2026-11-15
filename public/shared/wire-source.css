@@ -2591,7 +2591,7 @@ th.num {
   }
 }
 
-.lab-stage-head h3,
+.lab-stage-head h2,
 .lab-chart-head h3 {
   margin-top: 0.25rem;
   color: var(--ink-strong);

@@ -223,7 +223,6 @@
     var playBtn = RR.el('button', { class: 'rr-btn rr-btn--primary ap-play', type: 'button' });
     var resetBtn = RR.el('button', { class: 'rr-btn ap-reset', type: 'button' });
     resetBtn.innerHTML = ICON_RESET + '<span>Reset</span>';
-    resetBtn.setAttribute('aria-label', 'Resetează simularea la valorile inițiale');
     actions.appendChild(playBtn);
     actions.appendChild(resetBtn);
     bar.appendChild(fd.field);
@@ -327,9 +326,6 @@
     function updatePlayBtn() {
       playBtn.innerHTML = (state.playing ? ICON_PAUSE : ICON_PLAY) +
         '<span>' + (state.playing ? 'Pauză' : 'Redare') + '</span>';
-      playBtn.setAttribute('aria-label', state.playing
-        ? 'Pune simularea în pauză'
-        : 'Pornește simularea');
     }
 
     /* ------------------------------ desen ---------------------------------- */

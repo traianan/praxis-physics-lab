@@ -5,7 +5,7 @@ import {withLinkPresentation} from './link-presentation.mjs';
 import {preparePresentation} from './prepare-presentation.mjs';
 import {inlineStandaloneModule} from './standalone-module.mjs';
 await preparePresentation();
-import {cp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';import {zipDirectory} from './zip.mjs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';import vm from 'node:vm';
+import {cp,readFile,writeFile,mkdir} from 'node:fs/promises';import {zipDirectory} from './zip.mjs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';import vm from 'node:vm';
 const root=fileURLToPath(new URL('../',import.meta.url)),report=[];
 const courses=(await readManifest()).labs.filter(lab=>lab.offline.kind==='archive');
 const requested=process.argv.find(arg=>arg.startsWith('--course='))?.slice('--course='.length);
@@ -32,6 +32,7 @@ for(const {metadata:{id},offline:{file:zipName},locales,inlineLocales}of selecte
  if(moduleStyle)await cp(path.join(source,moduleStyle),path.join(target,moduleStyle));
  else await cp(source,target,{recursive:true,filter:file=>!file.toLowerCase().endsWith('.zip')});
  let html=withLinkPresentation(withFavicon(await readFile(path.join(source,'index.html'),'utf8')));
+ if(id==='efectul-fotoelectric-extern')html=html.replace('</head>','<script src="../../vendor/lab-libraries/zod.min.js"></script></head>');
  if(moduleStyle)html=await inlineStandaloneModule(html,{id,source,root,namespaceList:locales,inlineLocales});
  html=html.replace(/<a data-offline-download /g,'<a hidden ');
  for(const match of [...html.matchAll(/<link[^>]+href="\.\.\/\.\.\/([^"]+\.css)"[^>]*>/g)]){const css=await readFile(path.join(root,'public',match[1]),'utf8');html=html.replace(match[0],()=>'<style>'+css+'</style>');}

@@ -7,7 +7,7 @@ const read=path=>readFile(new URL('../'+path,import.meta.url),'utf8');
 const noop=()=>{};
 const context=()=>new Proxy({},{get:(obj,key)=>obj[key]??noop,set:(obj,key,value)=>(obj[key]=value,true)});
 
-test('calorimetry displayed internal energy follows heating and returns to zero after cooling',async()=>{
+test('calorimetry displayed internal energy follows heating and returns to zero after cooling',{skip:process.env.PRAXIS_CHECKOUT_ONLY==='1'&&'Requires local original'},async()=>{
  const source=thermoReadability('calorimetry','js/figuri-1.js',await read('sources/calorimetrie/site/js/figuri-1.js'));
  const block=source.slice(source.indexOf('(()=>{const S=new Sim(\'#fig2\''),source.indexOf('/* ---------- Fig. 3'));
  for(const mode of ['izo','bar']){

@@ -9,7 +9,23 @@ const namespace='labs/efectul-fotoelectric-extern/ui';
 await PraxisI18n.init({baseUrl:'../../locales/',namespaceList:labNamespaces['efectul-fotoelectric-extern'],embedded:{ro:{[namespace]:{messages:Object.fromEntries(pairs.map(([ro])=>[ro,ro]))}},en:{[namespace]:{messages:Object.fromEntries(pairs)}}}});
 const tr=s=>PraxisI18n.tr(s),num=(v,d=2)=>v.toLocaleString(PraxisI18n.locale,{maximumFractionDigits:d});
 const state={settings:{...defaults},active:'lab',time:0,running:false,measurements:[],quizChecked:false,concept:0};
-const schema=experimentSchema(PraxisValidation.z),motion=matchMedia('(prefers-reduced-motion: reduce)');
+const motion=matchMedia('(prefers-reduced-motion: reduce)');
+let schema;
+async function loadExperimentSchema(){
+ if(schema)return schema;
+ if(!window.PraxisValidation){
+  const script=document.createElement('script');
+  script.src=new URL('../../vendor/lab-libraries/zod.min.js',import.meta.url).href;
+  try{
+   await new Promise((resolve,reject)=>{
+    script.onload=resolve;script.onerror=reject;
+    document.head.append(script);
+   });
+  }catch(error){script.remove();throw error;}
+ }
+ schema=experimentSchema(window.PraxisValidation.z);
+ return schema;
+}
 $('#reduced').checked=motion.matches;
 function syncControls(){for(const [id,v]of Object.entries(state.settings))$('#'+id).value=v;const work=state.settings.work;$('#material').value=Math.abs(work-defaults.work)<1e-8?'manual':work===2.28?'sodium':work===4.3?'zinc':'custom';}
 const text=(x,y,v,color='#edf7f1',size=14,anchor='middle')=>`<text x="${x}" y="${y}" fill="${color}" font-family="Segoe UI,Arial,sans-serif" font-size="${size*Math.max(1,parseFloat(getComputedStyle(document.documentElement).fontSize)/16)}" text-anchor="${anchor}">${v}</text>`;
@@ -114,7 +130,20 @@ $('#estimate').onclick=()=>{try{const [a,b]=state.measurements;if(!a||!b||!photo
 function download(content,type,name){const url=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 $('#csv').onclick=()=>{if(!state.measurements.length){$('#record-status').textContent=tr('Jurnal gol.');return;}download('wavelength_nm,frequency_Hz,work_eV,stopping_V,saturation_uA,power_uW,efficiency_percent\n'+state.measurements.map(p=>{const s=photo(p);return [s.wavelength,s.frequency,s.work,s.emitted>0?s.stop:'',s.saturation,s.power,s.efficiency].join(',');}).join('\n'),'text/csv;charset=utf-8','fotoelectric-masuratori.csv');};
 $('#save').onclick=()=>download(JSON.stringify({version:1,lesson:'efectul-fotoelectric-extern',settings:state.settings,measurements:state.measurements},null,2),'application/json','fotoelectric-experiment.json');
-$('#import').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>65536)throw Error();const data=schema.parse(JSON.parse(await file.text()));state.settings={...data.settings};state.measurements=data.measurements.map(s=>({...s}));syncControls();changed();records();$('#estimate-result').textContent='';$('#record-status').textContent=tr('Experiment importat.');}catch{$('#record-status').textContent=tr('Fișier invalid; starea a rămas neschimbată.');}finally{e.target.value='';}};
+$('#import').onchange=async e=>{
+ const input=e.currentTarget,file=input.files[0];
+ if(!file||input.disabled)return;
+ input.disabled=true;
+ try{
+  if(file.size>65536)throw Error();
+  const payload=JSON.parse(await file.text());
+  const data=(await loadExperimentSchema()).parse(payload);
+  state.settings={...data.settings};state.measurements=data.measurements.map(s=>({...s}));
+  syncControls();changed();records();$('#estimate-result').textContent='';
+  $('#record-status').textContent=tr('Experiment importat.');
+ }catch{$('#record-status').textContent=tr('Fișier invalid; starea a rămas neschimbată.');}
+ finally{input.value='';input.disabled=false;}
+};
 const checked=new Set();function checkProblem(i){const raw=$('#answer-'+i).value.trim().replace(',','.'),v=Number(raw),valid=raw!==''&&Number.isFinite(v),correct=valid&&Math.abs(v-problems[i][2])<=Math.max(.005,problems[i][2]*.01);$('#feedback-'+i).textContent=tr(!valid?'Introdu un număr finit.':correct?'Corect.':'Mai încearcă.');checked.add(i);}
 problems.forEach((_,i)=>$('#check-'+i).onclick=()=>checkProblem(i));
 function quizFeedback(){let score=0;questions.forEach((q,i)=>{const chosen=$(`input[name=q${i}]:checked`),correct=chosen&&Number(chosen.value)===q[2];if(correct)score++;const el=$('#q-feedback-'+i);el.hidden=!state.quizChecked;el.textContent=state.quizChecked?tr(!chosen?'Alege un răspuns':correct?'Răspuns corect':'Revizuiește răspunsul')+'. '+tr(q[3]):'';});$('#quiz-score').textContent=state.quizChecked?`${score} / ${questions.length}`:'';}

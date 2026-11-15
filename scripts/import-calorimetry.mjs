@@ -74,6 +74,8 @@ for(const file of ['figuri-1.js','figuri-2.js']){
  await writeFile(new URL('js/'+file,target),code);
 }
 let lesson=await read('sources/'+id+'/site/js/lectie.js');
+// The shared skip link already handled focus and scroll.
+lesson=lesson.replace("document.addEventListener('click',e=>{const a=e.target.closest('a[href^=\"#\"]');","document.addEventListener('click',e=>{if(e.defaultPrevented)return;const a=e.target.closest('a[href^=\"#\"]');");
 lesson=lesson.replace(/\/\* ---------- Fundalul eroului:[\s\S]*?(?=\/\* ---------- Cuprins complet)/,'').replace(/\/\* PWA:[\s\S]*$/,'');
 lesson=lesson.replace("items.forEach(it=>it.n=norm([it.t,it.sub||'',it.full||''].join(' ')));",`function indexTerms(){items.forEach(it=>{const source=[it.t,it.sub||'',it.full||''];it.n=norm([...source,...source.map(value=>window.PraxisI18n.tr(value))].join(' '));});}indexTerms();window.addEventListener('load',()=>{indexTerms();render();});window.addEventListener('praxis-language-change',()=>{indexTerms();render();});`);
 lesson=lesson.replace("function go(id){const el=document.getElementById(id);if(!el)return;close();","function go(id){const el=document.getElementById(id);if(!el)return;window.PraxisCalorimetryTabs?.reveal(el);close();");

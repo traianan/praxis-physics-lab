@@ -2,7 +2,7 @@
 (() => {
  if(window.PraxisPrivacy)return;
  const key='praxis-privacy-choice-v1',duration=180*24*60*60*1000,memory=new Map();
- const preferenceKeys=new Set(['praxis-language','praxis-sound-enabled','praxis-sound','praxis-course-colors','praxis-course-text-size','praxis-course-touch','praxis-library-board','praxis-library-board-scale','praxis-optica-board-scale','praxis-waves-volume','mr-theme','mr-sound','stare15.sound','termo14.sound','unde-mecanice-dark']);
+ const preferenceKeys=new Set(['praxis-language','praxis-sound-enabled','praxis-sound','praxis-course-colors','praxis-course-text-size','praxis-course-touch','praxis-library-board','praxis-library-board-scale','praxis-optica-board-scale','praxis-waves-volume','mr-theme','mr-sound','stare15.sound','termo14.sound','unde-mecanice-dark','ohm-theme','ohm-board','cv-offline']);
  const root=new URL('../',document.currentScript.src),url=path=>new URL(path,root).href;
  let storage=null,choice=null,previousFocus=null;
  const native={get:Storage.prototype.getItem,set:Storage.prototype.setItem,remove:Storage.prototype.removeItem};

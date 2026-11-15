@@ -39,6 +39,12 @@ const html='<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta nam
 
 const target=new URL('public/simulari/'+id+'/',root);await mkdir(target,{recursive:true});
 for(const dir of ['css','js','fonts'])await cp(new URL(dir+'/',sourceRoot),new URL(dir+'/',target),{recursive:true});
+// The decorative SVG is hidden, so the localized text supplies the button names.
+const apertureScript=new URL('js/sim-aperture.js',target);
+const apertureCode=await readFile(apertureScript,'utf8');
+await writeFile(apertureScript,apertureCode
+ .replace(/^ *resetBtn\.setAttribute\('aria-label', [^\n]+\n/m,'')
+ .replace(/^ *playBtn\.setAttribute\('aria-label', state\.playing[\s\S]*?\);\r?\n/m,''));
 const reflectionScript=new URL('js/sim-reflectie.js',target),reflectionCode=await readFile(reflectionScript,'utf8');
 const oldReflectionReadout="html: 'i − r = <b>0,0°</b>'";
 if(reflectionCode.split(oldReflectionReadout).length!==2)throw new Error('The reflection-law readout changed; review the simulation before importing');

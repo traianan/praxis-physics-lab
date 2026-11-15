@@ -108,7 +108,7 @@
   $('#drawerClose').addEventListener('click',close);bg.addEventListener('click',close);
   q.addEventListener('input',render);
   // orice legătură internă de pe pagină (cuprins lateral, glosar, butoane rapide) folosește aceeași derulare + evidențiere
-  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);if(!id||!document.getElementById(id))return;e.preventDefault();go(id)});
+  document.addEventListener('click',e=>{if(e.defaultPrevented)return;const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);if(!id||!document.getElementById(id))return;e.preventDefault();go(id)});
   const kbSet=i=>{const as=$$('a',list);if(!as.length)return;kb=(i+as.length)%as.length;as.forEach((a,j)=>a.classList.toggle('kb',j===kb));as[kb].scrollIntoView({block:'nearest'})};
   q.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();kbSet(kb+1)}else if(e.key==='ArrowUp'){e.preventDefault();kbSet(kb-1)}
     else if(e.key==='Enter'){e.preventDefault();const as=$$('a',list);const a=as[kb>=0?kb:0];if(a)go(a.getAttribute('href').slice(1))}});

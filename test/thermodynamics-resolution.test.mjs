@@ -6,7 +6,7 @@ import {thermoReadability} from '../scripts/adaptations/thermodynamics-readabili
 const read=path=>readFile(new URL('../'+path,import.meta.url),'utf8');
 
 for(const [course,path] of [['calorimetry','sources/calorimetrie/site/js/baza.js'],['notions','sources/notiuni-termodinamice/site/js/baza.js'],['engines','sources/motoare-termice/js/baza.js']]){
- test(`${course}: each canvas uses its own density and DPR-only resize preserves the model`,async()=>{
+ test(`${course}: each canvas uses its own density and DPR-only resize preserves the model`,{skip:course!=='engines'&&process.env.PRAXIS_CHECKOUT_ONLY==='1'&&'Requires local original'},async()=>{
   const source=thermoReadability(course,'js/baza.js',await read(path));
   const method=source.slice(source.indexOf('  resize(){'),source.indexOf('\n  render(){'));
   const transforms=[];
@@ -23,7 +23,7 @@ for(const [course,path] of [['calorimetry','sources/calorimetrie/site/js/baza.js
  });
 }
 
-test('an early first animation timestamp cannot poison liquid particle geometry with a negative stochastic time step',async()=>{
+test('an early first animation timestamp cannot poison liquid particle geometry with a negative stochastic time step',{skip:process.env.PRAXIS_CHECKOUT_ONLY==='1'&&'Requires local original'},async()=>{
  const base=thermoReadability('notions','js/baza.js',await read('sources/notiuni-termodinamice/site/js/baza.js'));
  const start=base.indexOf('  loop(){'),end=base.indexOf('  // coordonate pointer',start),callbacks=[];
  const loop=vm.runInNewContext('({'+base.slice(start,end)+'}).loop',{performance:{now:()=>100},requestAnimationFrame:fn=>(callbacks.push(fn),callbacks.length),Math,document:{hidden:false}});

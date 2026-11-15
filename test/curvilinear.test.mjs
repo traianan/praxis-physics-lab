@@ -10,7 +10,7 @@ async function math(){
  const start=js.indexOf('const DEFAULT_POINTS='),end=js.indexOf('/* ============ Theory:',start);
  const context=vm.createContext({});vm.runInContext(js.slice(start,end)+'\nglobalThis.model={curve,customCurve,bezier,points:customPoints};',context);return context.model;
 }
-test('the curvilinear source is preserved and the complete lab is registered in mechanics',async()=>{
+test('the curvilinear source is preserved and the complete lab is registered in mechanics',{skip:process.env.PRAXIS_CHECKOUT_ONLY==='1'&&'Requires local original'},async()=>{
  const source=await read('sources/miscarea-curbilinie-plana/index.html'),original=await read('miscarea-curbilinie-plana.html').catch(error=>{if(error.code==='ENOENT')return null;throw error;});if(original!==null)assert.equal(source,original);
  const manifest=JSON.parse(await read('docs/imported-curvilinear.json'));assert.equal(manifest.sha256,createHash('sha256').update(source).digest('hex'));
  assert.ok(findSimulations('miscare','curbilinie osculator').some(s=>s.id==='miscarea-curbilinie-plana'));

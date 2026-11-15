@@ -19,7 +19,34 @@
   if(standalone){back.hidden=true;logo.title='Acasă — începutul lecției';logo.setAttribute('aria-label','praxis SCIENCE LAB — '+logo.title);}
   const translate=()=>window.PraxisI18n.apply(header);translate();window.addEventListener('praxis-language-change',translate);
   new ResizeObserver(()=>document.documentElement.style.setProperty('--praxis-header-height',header.getBoundingClientRect().height+'px')).observe(header);
+  queueMicrotask(()=>mountContentNavigation(title));
   return {header,logo,tools};
+ }
+ function mountContentNavigation(title){
+  const main=document.querySelector('main,[role="main"]');
+  if(!main||document.querySelector('.praxis-lab-skip'))return;
+  if(!main.id)main.id='praxis-lab-content';
+  if(!main.hasAttribute('tabindex'))main.tabIndex=-1;
+  const skip=document.querySelector('a.skip-link[href^="#"]')||document.createElement('a');
+  skip.className='praxis-lab-skip';skip.href='#'+main.id;
+  skip.textContent='Sari la conținut';
+  skip.addEventListener('click',event=>{
+   event.preventDefault();
+   main.focus({preventScroll:true});
+   main.scrollIntoView({block:'start',behavior:'instant'});
+  });
+  document.body.prepend(skip);
+  let heading;
+  if(!document.querySelector('h1')){
+   heading=document.createElement('h1');
+   heading.className='praxis-lab-accessible-title';heading.textContent=title;
+   main.prepend(heading);
+  }
+  const translate=()=>{
+   window.PraxisI18n.apply(skip);
+   if(heading)window.PraxisI18n.apply(heading);
+  };
+  translate();window.addEventListener('praxis-language-change',translate);
  }
  window.PraxisLabHeader={mount};
 })();

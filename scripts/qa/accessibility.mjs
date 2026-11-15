@@ -28,6 +28,16 @@ async function worker(){
    await page.waitForTimeout(400);
    const consent=page.getByRole('button',{name:'Doar necesare',exact:true});if(await consent.isVisible())await consent.click();
    await page.evaluate(async language=>{await window.PraxisI18n?.setLanguage(language);if(window.PraxisLoadMathEngine)await window.PraxisLoadMathEngine();},language);
+   if(route.startsWith('/simulari/')){
+    const skip=page.locator('.praxis-lab-skip');
+    await page.getByRole('heading',{level:1}).first().waitFor({state:'visible',timeout:5000});
+    await skip.focus({timeout:5000});
+    const label=language==='en'?'Skip to content':'Sari la conținut';
+    if(await skip.textContent()!==label)throw new Error('Skip link missing translation: '+language);
+    await page.keyboard.press('Enter');
+    if(!await skip.evaluate(link=>document.activeElement?.id===link.hash.slice(1)))throw new Error('Skip link did not focus the main content');
+    await page.evaluate(()=>document.activeElement?.blur());
+   }
    console.log(language,route,'ready');
    await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
    await page.exposeFunction('recordAccessibilityState',async state=>{

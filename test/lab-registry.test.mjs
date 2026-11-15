@@ -26,6 +26,19 @@ test('generated registry files exactly match the manifest',async()=>{
  for(const [file,expected]of Object.entries(registryOutputs(await readManifest())))assert.equal((await readFile(new URL('../'+file,import.meta.url),'utf8')).replaceAll('\r\n','\n'),expected,file);
 });
 
+test('registry validates card details and publication order within a day',async()=>{
+ const original=await readManifest();
+ for(const fields of [{status:'unknown'},{image:'./assets/../private.svg'},{alt:' '},{addedOn:'2026-02-30'},{addedOrder:0}]){
+  const manifest=structuredClone(original);
+  Object.assign(manifest.labs[0].metadata,fields);
+  assert.throws(()=>validateManifest(manifest));
+ }
+ const manifest=structuredClone(original);
+ const [{metadata:first},{metadata:second}]=manifest.labs;
+ Object.assign(second,{addedOn:first.addedOn,addedOrder:first.addedOrder});
+ assert.throws(()=>validateManifest(manifest),/duplicate addition order/);
+});
+
 test('distributed embedded lessons use namespace ordering from the manifest',async()=>{
  for(const lab of (await readManifest()).labs){
   const html=await readFile(new URL('../public/'+lab.metadata.href,import.meta.url),'utf8');

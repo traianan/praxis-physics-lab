@@ -10,7 +10,7 @@
   --text: var(--praxis-color-ink, #18332f);
   --text-soft: #304a43;
   --muted: var(--praxis-color-muted, #586d63);
-  --dim: #6d7e74;
+  --dim: #586d63;
   --incident: var(--praxis-science-orange, #87621f);
   --reflectat: var(--praxis-science-teal, #326f6c);
   --refractat: var(--praxis-science-blue, #356a91);

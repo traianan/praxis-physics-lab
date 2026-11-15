@@ -31,6 +31,7 @@ export function adaptWire(code,name){
   code='import {tr} from '+JSON.stringify(path.join(adapt,'runtime.jsx'))+';\n'+code;
  }
  if(name.endsWith('WireLab.tsx')){
+  code=replace(code,'<h3>{material.name}</h3>','<h2>{material.name}</h2>');
   code=replace(code,'              <div className="lab-legend">','              <div className="lab-legend"><span>A, B — contacte electrice</span>');
   code=replace(code,'        <Reveal>\n          <SectionHeading','        <Reveal><p className="wire-science-note">Deriva electronilor este mișcarea lor medie orientată sub acțiunea câmpului electric, opusă sensului convențional al curentului. Ea se suprapune peste mișcarea dezordonată. Barele A și B reprezintă contactele de conectare a firului la circuit. Animația este schematică: viteza electronilor este amplificată pentru vizibilitate.</p>\n          <SectionHeading');
 
@@ -85,6 +86,7 @@ await build({stdin:{contents:adaptWire((await readFile(path.join(source,'lib/res
 let css='';for(const file of ['globals','theory','lab','factor','comparison','calculator','quiz','resources'])css+='\n'+await readFile(path.join(source,'app',file+'.css'),'utf8');
 css=css.replace(/font-size:\s*(0?\.\d+)rem/g,(declaration,size)=>Number(size)<.8125?'font-size: .8125rem':declaration);
 css=css.replace(/:root/g,':scope').replace(/\[data-theme="dark"\]/g,':scope:where([data-theme="dark"])').replace(/html\s*\{/g,':scope {').replace(/body\s*\{/g,':scope {');
+css=css.replaceAll('.lab-stage-head h3','.lab-stage-head h2');
 await write('public/shared/wire-source.css','@scope (#wire-root) {\n'+css+'\n}\n');
 await cp(path.join(root,'public/simulari/calorimetrie/vendor/katex'),path.join(output,'vendor/katex'),{recursive:true});
 const translations=JSON.parse(await read('scripts/adaptations/wire/translations.json'));

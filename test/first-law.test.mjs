@@ -19,7 +19,7 @@ test('equation of state solves each missing variable and rejects unphysical or a
  for(const key of Object.keys(state)){const answer=m.solve({...state,[key]:null});assert.equal(answer.key,key);close(answer.value,state[key]);}
  for(const action of [()=>m.firstLaw(NaN,1),()=>m.general(1,0,300,2,2),()=>m.isothermal(-1),()=>m.isochoric(0),()=>m.openTube(2,24,22),()=>m.closedTube(60,10,25),()=>m.expansion(-273.15,20),()=>m.stopper(290,0,1,1),()=>m.stopper(290,3,-1,1),()=>m.state(1,1,0,1),()=>m.solve(state),()=>m.solve({...state,p:null,V:null}),()=>m.solve({...state,p:null,T:-1})])assert.throws(action);
 });
-test('the original first-law lesson is preserved and its six topics are registered under heat',async()=>{
+test('the original first-law lesson is preserved and its six topics are registered under heat',{skip:process.env.PRAXIS_CHECKOUT_ONLY==='1'&&'Requires local original'},async()=>{
  const manifest=JSON.parse(await read('docs/imported-first-law.json'));const original=await read('sources/principiul-i-al-termodinamicii/original.html');assert.equal(createHash('sha256').update(original).digest('hex'),manifest.sha256);
  const body=(await read('public/simulari/principiul-i-al-termodinamicii/index.html')).split('<body')[1];assert.equal((body.match(/<section /g)||[]).length,6);assert.equal((body.match(/<canvas /g)||[]).length,12);assert.doesNotMatch(body,/manual|Mantea|Garabet|1\.3\.\d|fonts\.googleapis/);
  assert.equal(findSimulations('caldura-termodinamica').length,8);assert.equal(findSimulations('caldura-termodinamica','principiul').length,2);assert.equal(getHomeSimulations().filter(s=>s.chapter==='caldura-termodinamica').length,2);

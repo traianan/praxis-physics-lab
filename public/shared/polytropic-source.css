@@ -2647,7 +2647,7 @@ th.num {
   }
 }
 
-.lab-chart-head h3 {
+.lab-chart-head h2 {
   margin-top: 0.25rem;
   color: var(--ink-strong);
   font-family: var(--font-serif);

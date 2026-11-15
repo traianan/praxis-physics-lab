@@ -7,7 +7,7 @@ const root=new URL('../',import.meta.url),manifest=JSON.parse(await readFile(new
 const sha=buffer=>createHash('sha256').update(buffer).digest('hex');
 // The shared favicon and link colours are presentation adaptations; all other bytes remain checked.
 const withoutIcons=html=>html.replaceAll('\r\n','\n').replace(/<link\b[^>]*>/gi,tag=>/\brel=["'](?:icon|shortcut icon|apple-touch-icon|apple-touch-icon-precomposed|mask-icon)["']/i.test(tag)?'':tag).replace(/<style id="praxis-link-colors">[\s\S]*?<\/style>/g,'');
-test('imports preserve every original asset, lesson paragraph and simulation script',async()=>{
+test('imports preserve every original asset, lesson paragraph and simulation script',{skip:process.env.PRAXIS_CHECKOUT_ONLY==='1'&&'Requires local original'},async()=>{
  for(const course of manifest.courses)for(const file of course.files){let content=await readFile(new URL('public/simulari/'+course.id+'/'+file.path,root));
   if(course.id==='miscarea-rectilinie'&&file.path.endsWith('.js'))content=Buffer.from(await adaptMotionPhysics(content.toString('utf8'),file.path,true));
   if(file.path==='index.html'&&course.id==='miscarea-rectilinie')content=Buffer.from(content.toString('utf8').replaceAll('\r\n','\n'));

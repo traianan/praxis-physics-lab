@@ -1,39 +1,14 @@
 # Praxis · Fizică interactivă
 
-**Adăugat la 7 noiembrie 2026:** [Rezistența unui fir](docs/REZISTENTA_UNUI_FIR_2026-11-07.md), în **Electricitate, magnetism și circuite**: laborator, factori, materiale, calculator, test, RO/EN și arhivă offline. [Deschide online](https://praxis-physics-lab.vercel.app/simulari/rezistenta-unui-fir/index.html).
+Bibliotecă de fizică în română și engleză, cu 39 de laboratoare în șapte capitole la 15 noiembrie 2026. Fiecare lecție are o arhivă offline. Catalogul este definit în [labs.manifest.json](labs.manifest.json), iar istoricul integrărilor și verificărilor se găsește în [PROGRESS.md](PROGRESS.md).
 
-**Adăugat la 5 noiembrie 2026:** [Pendulul gravitațional](docs/INTEGRARE_PENDUL_GRAVITATIONAL.md), în **Sunete și unde**: teorie, simulare neliniară, grafice, măsurători, RO/EN și arhivă offline. Catalogul actual este definit în `labs.manifest.json`.
-
-
-**Legea lui Hooke, 4 noiembrie 2026:** laborator RO/EN în capitolul **Lucru mecanic, energie și putere**, cu resort interactiv, constanta elastică, energie, grafice și viteză de animație reglabilă.  [Deschide laboratorul](https://praxis-physics-lab.vercel.app/simulari/legea-lui-hooke/index.html) · [Specificație și surse](docs/LEGEA_LUI_HOOKE.md) · [Verificări](docs/LEGEA_LUI_HOOKE_VALIDARE.md).
-
-**Pila Daniell, 4 noiembrie 2026:** laborator RO/EN cu model Nernst, animație, grafice și bilanțuri de sarcină/energie, integrat în biblioteca de **22 de laboratoare**. [Deschide online](https://praxis-physics-lab.vercel.app/simulari/pila-daniell/index.html) · [Publicare și verificări](docs/PILA_DANIELL_PUBLICARE.md).
-
-**Faraday, 4 noiembrie 2026:** cinci experimente 3D, modele SI independente de randare, RO/EN și arhivă autonomă. [Validare și limite](docs/FARADAY_VALIDARE_2026-11-04.md). Pentru regenerarea arhivei: `npm ci`, apoi `npm run offline:faraday` și `npm run build`.
-
-**Adăugat la 4 noiembrie 2026:** [Generatorul electric](docs/INTEGRARE_GENERATOR_ELECTRIC.md), în **Electricitate, magnetism și circuite**: alternator 3D HyperFrames cu zece repere numerotate, circuit complet, grafice și bilanț energetic, RO/EN, două probleme și șase întrebări.
-
-**Adăugat la 31 octombrie 2026:** [Motoare termice](docs/INTEGRARE_MOTOARE_TERMICE.md), în **Căldură și termodinamică**: nouă simulări și animația introductivă, motoare în patru timpi cu cicluri ideale Otto/Diesel, RO/EN, 12 întrebări, 14 probleme și arhivă offline. Biblioteca are **19 laboratoare**.
-
-**Adăugat la 30 octombrie 2026:** [Principiile mecanicii newtoniene](docs/INTEGRARE_PRINCIPII_NEWTON.md), în **Mișcare**: nouă taburi, șase experimente SVG, calculator de forță medie, patru probleme și 14 întrebări, RO/EN, culori deschise și versiune offline. Biblioteca are **18 laboratoare**.
-
-**Adăugat la 30 octombrie 2026:** [Mișcarea circulară uniformă](docs/INTEGRARE_MCU.md), în **Mișcare**: șapte taburi, două laboratoare, probleme și test, culori deschise, RO/EN și touch. Biblioteca cuprinde acum **18 laboratoare**.
-
-**Adăugat la 30 octombrie 2026:** [Figuri Chladni](docs/INTEGRARE_FIGURI_CHLADNI.md), în **Sunete și unde**: 19 familii modale, excitator mobil prin touch, teorie și activități, RO/EN și arhivă offline.
-
-**Adăugat la 30 octombrie 2026:** [Compunerea oscilațiilor](docs/INTEGRARE_COMPUNEREA_OSCILATIILOR.md), în **Sunete și unde**, cu întregul laborator și teoria, RO/EN, touch, export PNG și randare la rezoluția ecranului.
-
-**Adăugat la 29 octombrie 2026:** [Aplicații ale principiului I al termodinamicii](docs/INTEGRARE_PRINCIPIUL_I_APLICATII.md), în **Căldură și termodinamică**: 11 subiecte, nouă demonstrații, șase probleme rezolvate și 13 întrebări, cu interfața comună RO/EN și arhivă offline.
-
-Bibliotecă în română și engleză, cu șapte capitole de fizică. Sunt incluse **Oglinzi și lentile** în **Lumină și radiații**, plus **Mișcarea rectilinie**, **Calcul vectorial**, **Viteza și accelerația** și **Mișcarea curbilinie plană** în **Mișcare**, **Unde mecanice** în **Sunete și unde**, și **Noțiuni termodinamice de bază**, **Calorimetrie**, **Principiul I al termodinamicii** și **Interacții atomice** în **Căldură și termodinamică**. Conținutul celorlalte capitole va fi decis ulterior; nu au fost create simulări fictive. Cele două lecții importate păstrează integral conținutul și au traducere RO/EN pentru explicații, exerciții, teste și grafice.
-
-Integrarea și verificarea conținutului sunt documentate în [docs/INTEGRARE_LECTII.md](docs/INTEGRARE_LECTII.md).
+[Deschide biblioteca online](https://praxis-physics-lab.vercel.app/) · [Arhive offline](https://praxis-physics-lab.vercel.app/offline/) · [Ghid de integrare](docs/INTEGRARE_LECTII.md)
 
 ## Reguli comune pentru dezvoltare
 
 - [docs/REGULI_LABORATOARE.md](docs/REGULI_LABORATOARE.md): reguli obligatorii pentru adăugarea și modificarea laboratoarelor: structură compactă, claritate, stare, sunet, navigare, RO/EN și verificare. Consultarea ghidului este cerută și de [AGENTS.md](AGENTS.md).
 - [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md): tipurile de componente, culori, text, formule, slidere și atingere; stilurile comune se aplică în bibliotecă și în laborator.
-- [docs/LOCALIZARE.md](docs/LOCALIZARE.md): RO/EN în 98 de fișiere JSON, împărțite pe șapte capitole, interfață comună, optică și secțiunile celor două lecții importate. Selectorul memorează limba, iar laboratorul autonom de optică include ambele limbi.
+- [docs/LOCALIZARE.md](docs/LOCALIZARE.md): Namespace-uri RO/EN pentru interfața comună și laboratoare. Selectorul memorează limba, iar laboratorul autonom de optică include ambele limbi.
 - [docs/MONETIZARE.md](docs/MONETIZARE.md): decizia de monetizare numai prin reclame și punctele pregătite, inactive și fără spațiu gol.
 
 Volumul va fi adăugat atunci când implementăm un laborator în care sunetul face parte din fenomenul studiat.
@@ -49,11 +24,11 @@ Proiect: `D:/ProiecteAI/Praxis-Fizica`.
 - `public/simulari/oglinzi-si-lentile/index.html`: laboratorul existent, inclus integral; nu depinde de site-ul privat sau de un cont ChatGPT.
 - `scripts/`: construire, server local și sincronizarea opticii.
 - `dist/`: distribuția generată, identică pentru rulare locală și publicare statică.
-- `vercel.json`: configurarea pregătită pentru o publicare viitoare; nu a fost efectuată nicio publicare.
+- `vercel.json`: configurația publicării pe Vercel.
 
 ## Pornire locală, fără internet
 
-Este necesar Node.js 22 sau mai nou pe PC, instalat o singură dată. Nu sunt necesare `npm install`, chei, conturi sau servicii externe. Dublu clic pe **Porneste-local.cmd**, apoi deschide `http://127.0.0.1:4190`. Păstrează fereastra serverului deschisă; oprire prin Ctrl+C.
+Instalează Node.js 22 sau mai nou. După clonare, rulează `npm ci` din rădăcina proiectului cu acces la registrul npm. După instalarea dependențelor, construirea și rularea locală funcționează offline. Pe Windows, deschide **Porneste-local.cmd**, apoi `http://127.0.0.1:4190`. Oprește serverul cu Ctrl+C.
 
 Alternativ, în acest folder:
 
@@ -86,15 +61,13 @@ npm run build
 
 Sincronizarea generează fișierul autonom din sursa locală, apoi îl copiază în bibliotecă. `docs/optica-snapshot.json` înregistrează momentul sincronizării. Comanda de construire nu depinde de proiectul vecin, deci va funcționa ulterior și pe Vercel, folosind copia inclusă.
 
-## Publicare viitoare pe GitHub și Vercel
+## GitHub și Vercel
 
-Nu s-a creat niciun repository remote, proiect Vercel, workflow Actions sau site găzduit. La o solicitare ulterioară, folderul acesta poate deveni rădăcina repository-ului. Vercel va utiliza `npm run build`, iar directorul de ieșire este `dist`. Nu există dependențe npm sau CDN-uri. Configurarea urmează [documentația Vercel](https://vercel.com/docs/project-configuration).
-
-Nu este necesară păstrarea a două copii independente online/offline. Distribuția locală folosește exact aceleași fișiere ca varianta pregătită pentru Vercel. Nu sunt incluse artefacte PHET, sigle sau cod PHET; imaginea furnizată a fost folosită ca referință pentru organizarea catalogului.
+Codul este versionat pe [GitHub](https://github.com/traianan/praxis-physics-lab). Workflow-ul GitHub Actions validează schimbările. Vercel execută `npm run build` și publică `dist/`, aceeași distribuție pe care o servește serverul local. Resursele de rulare sunt servite local.
 
 ## Verificări
 
-`npm run check`: validarea sintaxei și testele registrului, căutării, legăturii către optică și serverului local. Testele de server deschid temporar un port numai pe loopback. Au fost verificate în browser cele șapte capitole, stările fără conținut, căutarea cu/fără diacritice, afișarea card/listă și deschiderea laboratorului local. Interfața nu utilizează resurse externe.
+`npm run check` validează registrul, sintaxa și toate testele, inclusiv verificările care folosesc surse păstrate pe stația de lucru. `node scripts/check-ci.mjs` rulează suita pentru un checkout GitHub. Pentru auditul browser, construiește aplicația, apoi rulează `npm run audit:a11y` cu Chrome instalat.
 
 Capitole: Mișcare; Sunete și unde; Lucru mecanic, energie și putere; Căldură și termodinamică; Fenomene cuantice; Lumină și radiații; Electricitate, magnetism și circuite.
 

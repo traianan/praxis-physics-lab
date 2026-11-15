@@ -49,7 +49,7 @@ body[data-praxis-course=rezistenta-unui-fir] #praxis-original{width:100%;max-wid
 #wire-root .lab-stage-card,#wire-root .lab-readout,#wire-root .lab-chart-card{padding:.5rem}
 #wire-root .lab-stage-head p{margin:.1rem 0}
 #wire-root .lab-readout-value{font-size:1.75rem}
-#wire-root .lab-stage-head h3,#wire-root .lab-chart-head h3{font-size:1.125rem}
+#wire-root .lab-stage-head h2,#wire-root .lab-chart-head h3{font-size:1.125rem}
 #wire-root .lab-toolbar{flex-wrap:wrap;margin-bottom:.5rem;gap:.5rem}
 #wire-root .lab-presets{flex-wrap:wrap}
 #wire-root .lab-preset{white-space:normal;flex:1 1 auto;font-size:.875rem}
@@ -84,7 +84,7 @@ body[data-praxis-course=rezistenta-unui-fir] #praxis-original{width:100%;max-wid
 #wire-root .lab-stage-badges{flex-direction:row;flex-wrap:wrap}
 #wire-root .lab-timeline>.praxis-range-stepper{min-width:12rem}
 #wire-root .lab-stage-head p{font-size:.8125rem}
-#wire-root .lab-stage-head h3{margin:.1rem 0}
+#wire-root .lab-stage-head h2{margin:.1rem 0}
 #wire-root .lab-legend{margin:.2rem 0}
 #wire-root .lab-chart-head{flex-wrap:wrap;gap:.2rem}
 #wire-root .iu-values{padding-top:.3rem;margin-top:.2rem}

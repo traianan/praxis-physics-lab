@@ -22,9 +22,9 @@ class Element{
  before(){}
 }
 async function headerFor(sim,{standalone=false}={}){
- const document={documentElement:{dataset:{praxisStandalone:String(standalone)},style:{setProperty(){}}},body:{dataset:{praxisCourse:sim.id},firstChild:new Element('main')},createElement:tag=>new Element(tag)};
+ const document={documentElement:{dataset:{praxisStandalone:String(standalone)},style:{setProperty(){}}},body:{dataset:{praxisCourse:sim.id},firstChild:new Element('main')},createElement:tag=>new Element(tag),querySelector:()=>null};
  const window={PraxisLessonChapters:Object.fromEntries(simulations.map(s=>[s.id,chapters.find(c=>c.id===s.chapter)])),PraxisI18n:{apply(){},createSelector:()=>new Element('select')},PraxisSound:{createToggle:()=>new Element('button')},addEventListener(){}};
- vm.runInNewContext((await read('public/shared/lab-header.js')).split('/* praxis:content-types */')[0],{window,document,location:new URL('https://example.test/physics/'+sim.href),URL,ResizeObserver:class{observe(){}}});
+ vm.runInNewContext((await read('public/shared/lab-header.js')).split('/* praxis:content-types */')[0],{window,document,location:new URL('https://example.test/physics/'+sim.href),URL,queueMicrotask,ResizeObserver:class{observe(){}}});
  return window.PraxisLabHeader.mount({title:sim.title,courseId:sim.id});
 }
 test('every laboratory opened directly has canonical links to its parent chapter and library',async()=>{

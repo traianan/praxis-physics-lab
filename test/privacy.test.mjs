@@ -38,3 +38,15 @@ test('consent expires after 180 days and does not expose old preferences before 
 test('the consent interface remains usable when the browser refuses local storage',()=>{
  const b=browser({},true);assert.equal(b.nodes.at(-1).hidden,false);b.choose('necessary');assert.equal(b.nodes.at(-1).hidden,true);assert.equal(b.window.PraxisPrivacy.preferencesAllowed,false);
 });
+
+test('lesson preferences survive a reload only with consent and are erased on withdrawal',()=>{
+ const preferences={'ohm-theme':'dark','ohm-board':'1','cv-offline':'1'};
+ const b=browser();
+ for(const [key,value] of Object.entries(preferences))b.storage.setItem(key,value);
+ assert.deepEqual([...b.values],[]);
+ b.choose('accepted');
+ const next=browser(Object.fromEntries(b.values));
+ for(const [key,value] of Object.entries(preferences))assert.equal(next.storage.getItem(key),value,key);
+ next.choose('necessary');
+ for(const key of Object.keys(preferences))assert.equal(next.values.has(key),false,key);
+});
