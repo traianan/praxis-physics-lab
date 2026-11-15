@@ -39,7 +39,8 @@ for(const name of [...packages].sort()){
   if(!files.length)throw new Error('Missing license: '+name);
   for(const file of files){
     const target=name.replaceAll('/','__')+'-'+file;
-    await copyFile(path.join(dir,file),path.join(output,'licenses',target));
+    const license=await readFile(path.join(dir,file),'utf8');
+    await writeFile(path.join(output,'licenses',target),license.replaceAll('\r\n','\n'));
     manifest.licenses.push({package:name,version:pkg.version,file:'licenses/'+target});
   }
 }
