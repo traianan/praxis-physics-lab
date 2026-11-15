@@ -1,4 +1,5 @@
 import React,{useEffect} from 'react';
+import {flushSync} from 'react-dom';
 import {createRoot} from 'react-dom/client';
 import Home from '@/app/page';
 import {ThemeProvider,useTheme} from '@/components/ThemeProvider';
@@ -13,4 +14,6 @@ function ThemeBridge(){
 }
 
 function App(){return <ThemeProvider><ThemeBridge/><Home/></ThemeProvider>;}
-createRoot(document.getElementById('ohm-root')).render(<App/>);
+const root=createRoot(document.getElementById('ohm-root'));
+// The following course script must see React's main landmark before it checks for a fallback.
+flushSync(()=>root.render(<App/>));

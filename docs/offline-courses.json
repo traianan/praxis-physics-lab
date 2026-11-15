@@ -1,17 +1,6 @@
 {
-  "builtAt": "2026-11-15T17:23:23.034Z",
+  "builtAt": "2026-11-15T17:30:54.874Z",
   "courses": [
-    {
-      "id": "legea-lui-ohm",
-      "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
-      "sha256": "6933c89b09cd942974689842eaadc01088715f186bd026c55f845a74f00d98a9",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
     {
       "id": "rezistenta-unui-fir",
       "file": "public/simulari/rezistenta-unui-fir/rezistenta-unui-fir.zip",
@@ -412,6 +401,17 @@
       "id": "dualismul-unda-corpuscul",
       "file": "public/simulari/dualismul-unda-corpuscul/dualismul-unda-corpuscul.zip",
       "sha256": "a0ac248c13273a58c790653bedd5f364d31b25375c20f1219ffa74b45718e3b8",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "legea-lui-ohm",
+      "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
+      "sha256": "36a2f3270876fb6b6aabb3b21b0cb1664e9cc69819d2d7a008a3f555e8a1b049",
       "languages": [
         "ro",
         "en"
