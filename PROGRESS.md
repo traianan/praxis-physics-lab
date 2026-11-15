@@ -18,6 +18,8 @@ La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_S
 
 ## Jurnal de progres
 
+- 2026-11-15: Confirmate pe OPPO CPH2529 fizic, Chrome 157, formula Rayleigh și valoarea de 102 pm la 200 kV în „Microscopul electronic”, pentru versiunea publicată în `d4f54be`. Verificate în RO/EN pe site și din ZIP-ul publicat cu amprentă identică, inclusiv după reîncărcare cu Wi-Fi și datele mobile oprite, fără rețea implicită. Setările telefonului au fost restaurate. Rapoarte și capturi în `outputs/rayleigh-phone/`.
+
 - 2026-11-15: Verificată pe OPPO CPH2529 fizic, Chrome 157, lecția „Dualismul undă–corpuscul” din `f875a77`, pe site și din ZIP-ul publicat cu SHA-256 identic. Glisările Android au actualizat tensiunea, unghiul, maximul și semnalul Davisson–Germer. În TEM au funcționat selecția obiectivului și detectorului, tensiunea și defocalizarea. ZIP-ul a fost importat și lecția reîncărcată cu Wi-Fi și datele oprite, fără rețea implicită. Setările telefonului au fost restaurate. Rapoarte și capturi în `outputs/duality-phone/`.
 - 2026-11-15 (local): Adăugat criteriul Rayleigh ca limită ideală de difracție pentru apertură circulară, în explicația „Ce determină rezoluția?” din TEM. Exemplul la semiunghiul de 15 mrad se actualizează cu tensiunea și dă 102 pm la 200 kV. Build și ZIP regenerate. Verificate formula și citirea în Chrome la 1366 și 390 px, plus 7/7 teste focalizate.
 
