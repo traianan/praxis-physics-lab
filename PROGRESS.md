@@ -1,5 +1,14 @@
 # PROGRESS
 
+## Aplicații animate ale unghiurilor — 2026-11-17
+
+- Fila „În fizică” oferă patru experimente selectabile: MCU (punct, arc, vector viteză și grafic θ–t), oscilație (fazor, proiecție, grafic x–t), flux luminos (con, Ω, A, Φᵥ, Iᵥ și iluminare, în regim de intensitate sau flux constant) și radiație izotropă (fracție solidă, putere selectată/rest, iradianță și bilanț). Exemplele rezolvate rămân pliabile.
+- Pornire/pauză, pas exact de 0,1 s, resetarea timpului, valorile de referință și viteze de redare explicite ¼×/½×/1×. Faza este continuă la schimbarea frecvenței; activitățile și documentele ascunse nu avansează timpul. Sonificarea opțională a rotațiilor folosește PraxisSound. Parametrii se păstrează la RO/EN și Mod tablă. Fără dependențe noi.
+- SymPy confirmă derivata oscilației, relația flux–arie–iluminare și bilanțul puterii izotrope. 38/38 teste focalizate, inclusiv 30/60/120 fps, cazuri f=0/P=0 și limite geometrice. agent-browser verifică redarea/pauza/pasul, suspendarea tabului, parametrii, ambele regimuri de lumină, RO/EN, Mod tablă, text 200%, desktop/tabletă/mobil/4K și aceleași operații din file://. La 1024×768, toate cele patru scene și reglaje încap; pe mobil graficele se așază sub desen.
+- Auditul profund: 26 de stări RO/EN, inclusiv cele patru activități și cele două regimuri ale sursei, fără încălcări. Arhiva offline a fost regenerată, iar amprentele celor două ZIP-uri deja publicate sunt păstrate pentru import. Surse native: physics.js, physics-model.js și physics-view.js. Scriptul QA funcțional și capturile sunt în outputs/angles-*.
+- Publicarea în GitHub/main este cerută explicit de utilizator pentru acest pachet; după verificarea GitHub Actions/Vercel și producției, lucrul se oprește pentru seară. Modificările locale fără legătură sunt păstrate.
+
+
 ## Exemple de utilizare în fizică — 2026-11-17
 
 - Adăugată fila bilingvă „În fizică”: MCU (f = 2 Hz, r = 0,25 m, ω = 4π rad/s, v = π m/s), faza oscilației (f = 0,5 Hz, t = 0,25 s, φ = π/4 rad, x ≈ 0,0707 m), fotometrie (Iᵥ = 10 cd, α = 30°, Ω ≈ 0,842 sr, Φᵥ ≈ 8,42 lm) și radiație izotropă (P = 12 W, Ω = π sr, P_con = 3 W). Condițiile de aplicare sunt explicate.

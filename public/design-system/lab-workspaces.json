@@ -588,6 +588,12 @@
         "layout": "native",
         "controls": ".angle-controls",
         "scene": ".angle-scene"
+      },
+      {
+        "selector": "#examples .physics-workspace",
+        "layout": "native",
+        "controls": ".physics-controls",
+        "scene": ".physics-scene"
       }
     ]
   }

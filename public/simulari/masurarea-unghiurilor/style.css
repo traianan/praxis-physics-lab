@@ -34,3 +34,30 @@
 #praxis-original .angle-examples h2{font-size:1em!important;margin:0 0 .65rem}
 .angle-examples .angle-formulas{font-size:1em;margin:.5rem 0;gap:.3rem}
 @media(max-width:760px){.angle-examples{grid-template-columns:1fr}}
+.physics-choices,.physics-actions{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.65rem}
+.physics-choices button[aria-pressed=true]{background:#123f39;color:#fff}
+.physics-workspace{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(19rem,1fr);gap:1rem;align-items:start}
+.physics-scene,.physics-controls{border:1px solid #d2ddd4;border-radius:12px;background:var(--praxis-color-surface,#fffefa);padding:.8rem;min-width:0}
+#praxis-original .physics-scene h2{font-size:1em!important;margin:0 0 .5rem}
+.physics-scene svg{display:block;width:100%;height:auto;max-height:340px;margin:auto;overflow:visible}
+.physics-scene svg text{font:20px system-ui;fill:#183e37}
+.physics-controls label{display:block;margin:.35rem 0 .1rem;line-height:1.4}
+.physics-controls select{font:inherit;min-height:44px;width:100%;border:1px solid #b9cbc3;border-radius:8px;background:#fffefa;color:inherit;padding:.4rem;margin-bottom:.4rem}
+.physics-field label{display:flex;justify-content:space-between;gap:.5rem}.physics-field output{font-weight:600;white-space:nowrap}
+.physics-controls input[type=range]{width:100%;min-height:44px;margin:0;accent-color:#17685f}
+.physics-actions button{flex:1 1 auto}.physics-actions #physics-play{background:#123f39;color:white}
+.physics-formulas{margin:.6rem 0;font-size:1em}.physics-formulas math{font-size:1em}
+.physics-controls details{margin-top:.4rem}.physics-controls details p{font-size:1em}
+#physics-readings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.45rem;margin:.5rem 0}
+#physics-readings div{background:#eef3ed;padding:.5rem .65rem;border-radius:8px;min-width:0}
+#physics-readings dt,#physics-readings dd{font-size:1em;line-height:1.4;margin:0;overflow-wrap:anywhere}
+#physics-readings dd{font-weight:600;margin-top:.2rem;font-variant-numeric:tabular-nums}
+#physics-caption{font-size:1em}.physics-worked{margin-top:.65rem}
+@media(min-width:761px) and (max-width:1150px){.physics-workspace{grid-template-columns:minmax(0,1.3fr) minmax(18rem,1fr)}.physics-scene svg{max-height:245px}.physics-scene,.physics-controls{padding:.6rem}#physics-readings div{padding:.4rem}.physics-field label{margin-top:.15rem}.physics-controls input[type=range]{min-height:38px}}
+@media(max-width:760px){.physics-workspace{grid-template-columns:1fr}.physics-scene svg{max-height:none}.physics-choices{display:grid;grid-template-columns:1fr 1fr}.physics-choices button{padding:.5rem}#physics-readings{grid-template-columns:1fr 1fr}.physics-controls input[type=range]{min-height:44px}}
+.physics-select-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.4rem}.physics-select-row label{flex:1;margin:0}.physics-select-row select{width:auto;min-width:8rem;flex:1;margin:0}
+.physics-more{display:flex;flex-wrap:wrap;gap:.5rem;align-items:flex-start}.physics-more>button{flex:0 1 auto}.physics-more>details{flex:1 1 10rem;margin:0}.physics-more>details[open]{flex-basis:100%}
+@media(min-width:761px) and (max-width:1150px){.physics-scene svg{max-height:210px}.physics-formulas{margin:.3rem 0}.physics-controls .physics-select-row label{margin:0}.physics-controls .physics-field label{margin:0}.physics-select-row{margin-bottom:.25rem}}
+#praxis-original .physics-choices button[aria-pressed=true],#physics-play[aria-pressed=true]{background:#123f39!important;color:#fff!important;border-color:#123f39!important}
+@media(min-width:761px) and (max-width:1150px){.physics-actions{margin-bottom:.35rem}}
+.physics-workspace{row-gap:.65rem}.physics-workspace>.physics-choices{grid-column:1/-1;margin-bottom:0}

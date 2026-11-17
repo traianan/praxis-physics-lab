@@ -1,6 +1,7 @@
 import {labNamespaces} from '../../shared/lab-locales.js';
 import {plane, solid, toDegrees, toDMS, drawingRadius} from './model.js';
 import {capViews} from './view.js';
+import {physicsMarkup,mountPhysics} from './physics.js';
 const pairs=[];
 const t=(ro,en)=>(pairs.push([ro,en]),ro);
 const title=t('Măsurarea unghiurilor','Measuring angles');
@@ -36,7 +37,7 @@ const theory=`<div class="angle-reading">
 <div class="angle-formulas angle-formulas-stack">${math(String.raw`\Omega=\frac{A}{r^2}`)}<span>${t('Emisferă','Hemisphere')} ${math(String.raw`2\pi\,\mathrm{sr}`)}</span><span>${t('Sferă completă','Full sphere')} ${math(String.raw`4\pi\,\mathrm{sr}`)}</span></div>
 <p class="math-prose">${t('Ω nu este α² în general. Pentru un con îngust, Ω ≈ πα², numai cu α în radiani. Unghiul solid se folosește la câmpul vizual, fluxul luminos și radiație.','Ω is not generally α². For a narrow cone, Ω ≈ πα², only with α in radians. Solid angle is used for fields of view, luminous flux and radiation.')}</p>
 </article></div>`;
-const examples=`<div class="angle-examples">
+const workedExamples=`<div class="angle-examples">
 <article><h2 data-content-type="theory">${t('Radianul în mișcarea circulară uniformă','Radians in uniform circular motion')}</h2>
 <p class="math-prose">${t('Un disc efectuează două rotații pe secundă: frecvența este f = 2 Hz. Un punct de pe disc se află la distanța r = 0,25 m de axă.','A disk makes two revolutions per second: its frequency is f = 2 Hz. A point on the disk is r = 0.25 m from the axis.')}</p>
 <div class="angle-formulas angle-formulas-stack">${math(String.raw`\omega=2\pi f=4\pi\,\mathrm{rad/s}`)}${math(String.raw`v=r\omega=\pi\,\mathrm{m/s}`)}</div>
@@ -59,6 +60,7 @@ const examples=`<div class="angle-examples">
 <p class="math-prose">${t('Conul cuprinde un sfert din direcțiile spațiului și primește un sfert din puterea totală. Presupunem că între sursă și suprafața de recepție nu există absorbție.','The cone covers one quarter of all directions and receives one quarter of the total power. We assume no absorption between the source and the receiving surface.')}</p>
 <p class="math-prose">${t('Pentru o sursă neuniformă, fluxul dintr-o direcție nu se poate deduce doar din fracția Ω/(4π).','For a nonuniform source, power within a set of directions cannot be inferred from Ω/(4π) alone.')}</p>
 </article></div>`;
+const examples=physicsMarkup(t,math)+`<details class="physics-worked"><summary>${t('Formule și exemple rezolvate','Formulas and worked examples')}</summary>${workedExamples}</details>`;
 const exercises=[
  [t('Transformă 120° în radiani (valoare numerică).','Convert 120° to radians (numerical value).'),2*Math.PI/3,t('120 × π/180 = 2π/3 rad ≈ 2,094 rad.','120 × π/180 = 2π/3 rad ≈ 2.094 rad.')],
  [t('Un arc are s = 3 m pe un cerc cu r = 2 m. Cât este θ în radiani?','An arc has s = 3 m on a circle with r = 2 m. Find θ in radians.'),1.5,t('θ = s/r = 3/2 = 1,5 rad.','θ = s/r = 3/2 = 1.5 rad.')],
@@ -71,6 +73,7 @@ document.querySelector('#praxis-original').insertAdjacentHTML('beforeend',`<div 
 const namespace='labs/masurarea-unghiurilor/ui';
 await PraxisI18n.init({baseUrl:'../../locales/',namespaceList:labNamespaces['masurarea-unghiurilor'],embedded:{ro:{[namespace]:{messages:Object.fromEntries(pairs.map(([ro])=>[ro,ro]))}},en:{[namespace]:{messages:Object.fromEntries(pairs)}}}});
 const $=id=>document.getElementById(id),tr=s=>PraxisI18n.tr(s),fmt=(n,d=3)=>n.toLocaleString(PraxisI18n.locale,{maximumFractionDigits:d});
+const physicsController=mountPhysics({tr,format:fmt});
 let planeExact=null,solidExact=null;
 const line=(x1,y1,x2,y2,color='#17685f',dash='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="2" ${dash?'stroke-dasharray="5 5"':''}/>`;
 function render(){
@@ -92,7 +95,7 @@ function render(){
  for(const [key,value] of Object.entries({omega:fmt(s.omega),area:fmt(s.area),fraction:fmt(100*s.fraction,2)+'%',alpha:fmt(alpha)}))$('solid-'+key).textContent=value;
  $('solid-angle-value').value=fmt(alpha)+'°';$('solid-radius-value').value=fmt(sr)+' m';
 }
-function showTab(id){if(!panel[id])id='plane';for(const [key] of tabs){$(key).hidden=key!==id;$('tab-'+key).setAttribute('aria-selected',String(key===id));$('tab-'+key).tabIndex=key===id?0:-1;}render();}
+function showTab(id){if(!panel[id])id='plane';for(const [key] of tabs){$(key).hidden=key!==id;$('tab-'+key).setAttribute('aria-selected',String(key===id));$('tab-'+key).tabIndex=key===id?0:-1;}render();physicsController.setVisible(id==='examples');}
 document.querySelectorAll('[data-tab]').forEach((button,i)=>{button.onclick=()=>{showTab(button.dataset.tab);history.replaceState(null,'','#'+button.dataset.tab);};button.onkeydown=e=>{const index=e.key==='Home'?0:e.key==='End'?tabs.length-1:e.key==='ArrowRight'?(i+1)%tabs.length:e.key==='ArrowLeft'?(i+tabs.length-1)%tabs.length:null;if(index!==null){e.preventDefault();$('tab-'+tabs[index][0]).click();$('tab-'+tabs[index][0]).focus();}};});
 for(const id of ['plane','solid']){
  $(id+'-angle').oninput=()=>{if(id==='plane')planeExact=null;else solidExact=null;render();};$(id+'-radius').oninput=render;
