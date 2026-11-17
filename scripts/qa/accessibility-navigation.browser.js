@@ -1,7 +1,7 @@
 /* Section/activity navigation only: never submit, export or start sound. */
 window.PraxisAccessibilityWalk=async(scan,{settleMs=550}={})=>{
  const groupSelector='[role="tablist"],.praxis-workspace-activities,.praxis-lab-nav .tabs,.praxis-lab-nav .module-tabs,#praxis-original .tabs,#praxis-original .mode-tabs,#praxis-original .lab-nav,#praxis-original .lesson-tabs,#praxis-original .lesson-topics,#praxis-original .lesson-parts,#optic-choices,#angle-physics .physics-choices';
- const selectSelector='.praxis-course-sections,select[data-workspace-activity],select[data-activity],.wave-group-choice select,.wave-part-choice select,#physics-light-mode';
+ const selectSelector='.praxis-course-sections,select[data-workspace-activity],select[data-activity],.wave-group-choice select,.wave-part-choice select,#physics-light-mode,#physics-rotation-graph';
  const visible=e=>e.isConnected&&e.checkVisibility()&&!e.closest('[hidden],[inert]');
  const label=e=>(e.textContent||e.id).replace(/\s+/g,' ').trim();
  const nodeKey=e=>{if(e.id)return '#'+e.id;const parts=[];for(let n=e;n&&n!==document.body;n=n.parentElement){if(n.id){parts.unshift('#'+n.id);break;}parts.unshift(n.tagName+':'+[...n.parentElement.children].indexOf(n));}return parts.join('/');};

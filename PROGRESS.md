@@ -1,5 +1,13 @@
 # PROGRESS
 
+## Uniformitatea emisiei și reprezentarea θ(t) — 2026-11-17
+
+- Înlocuite punctele decalate angular cu fronturi concentrice simultane în Radiație izotropă și arce simultane în Flux luminos. Eliminat efectul de spirală. Sunt proiecții schematice încetinite ale propagării, nu fotoni numărați și nu propagare la scara reală a vitezei luminii. La sursă zero nu se desenează fronturi.
+- MCU: axa orizontală este etichetată explicit „timp t (s)”, cu săgeți pe axe și gradații în π. Implicit, graficul unghiului total păstrează originea t=0, θ=0 și punctele exacte de schimbare a frecvenței. Alternativa 0–2π arată fiecare rotație pe o fereastră de patru secunde, fără linii false la resetul unghiului. Schimbarea vederii nu schimbă timpul, faza sau parametrii.
+- Teste de regresie pentru simetria fronturilor, sursă zero, originea și colțurile istoriei unghiulare, întreruperile și stabilitatea numerică ale unghiului modulo 2π. agent-browser confirmă cele două grafice, funcționarea/pauza/suspendarea, relațiile fotometrice și încadrarea pe tabletă. Amprenta ZIP-ului publicat în d4d91c3 este păstrată pentru import.
+- Publicarea animațiilor anterioare, d4d91c3, a trecut GitHub Actions (https://github.com/traianan/praxis-physics-lab/actions/runs/44150223349) și Vercel Axm4ibpyPqWpLzKeKMhmtkgicRzP. Verificarea online a confirmat zece resurse identice prin SHA-256 și toate scenariile funcționale. Corecțiile de față continuă aceeași solicitare de publicare.
+
+
 ## Aplicații animate ale unghiurilor — 2026-11-17
 
 - Fila „În fizică” oferă patru experimente selectabile: MCU (punct, arc, vector viteză și grafic θ–t), oscilație (fazor, proiecție, grafic x–t), flux luminos (con, Ω, A, Φᵥ, Iᵥ și iluminare, în regim de intensitate sau flux constant) și radiație izotropă (fracție solidă, putere selectată/rest, iradianță și bilanț). Exemplele rezolvate rămân pliabile.

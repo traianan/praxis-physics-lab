@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-17T18:37:28.101Z",
+  "builtAt": "2026-11-17T18:53:06.259Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -422,7 +422,7 @@
     {
       "id": "masurarea-unghiurilor",
       "file": "public/simulari/masurarea-unghiurilor/masurarea-unghiurilor.zip",
-      "sha256": "ff5dfd75552f042ca3e0cc20748613c6c9ce253f73774766b4752c71c509f7bf",
+      "sha256": "0f70024073005bfe954359093dc234893600fc85a6d8d35386401787b8dad063",
       "languages": [
         "ro",
         "en"
