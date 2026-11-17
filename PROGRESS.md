@@ -1,5 +1,20 @@
 # PROGRESS
 
+## Exemple de utilizare în fizică — 2026-11-17
+
+- Adăugată fila bilingvă „În fizică”: MCU (f = 2 Hz, r = 0,25 m, ω = 4π rad/s, v = π m/s), faza oscilației (f = 0,5 Hz, t = 0,25 s, φ = π/4 rad, x ≈ 0,0707 m), fotometrie (Iᵥ = 10 cd, α = 30°, Ω ≈ 0,842 sr, Φᵥ ≈ 8,42 lm) și radiație izotropă (P = 12 W, Ω = π sr, P_con = 3 W). Condițiile de aplicare sunt explicate.
+- Calcule verificate independent cu SymPy. agent-browser: RO/EN, cele patru exemple și formulele, layouturi 390, 1024, 1920 și 3840 px; fără overflow orizontal ori erori de randare matematică. La 1920×1080 toate cele patru fișe încap simultan. Export offline regenerat.
+- Actualizarea completă cu exemple, calotă/vedere de sus și corecțiile minime Ohm rămâne pregătită local; push-ul ulterior a fost respins de verificarea automată și necesită aprobarea explicită a pachetului final. Versiunea publicată anterior rămâne f48a2a3.
+
+
+## Calota sferică: două proiecții — 2026-11-17
+
+- Corectată umplerea: proiecția laterală folosește un segment de cerc complet, fără elipsa incompatibilă cu umplerea. Adăugată proiecția de sus, sincronizată cu unghiul și raza. Pentru α > 90°, întregul disc vizibil este colorat, iar limita ascunsă apare punctat până la 180°. Sfera completă este colorată integral în ambele vederi.
+- Explicată diferența dintre aria proiecției și aria sferică A. SymPy confirmă A = 2πr²(1 − cos α) și aria proiecției axiale πr² sin²α pentru α ≤ 90°. La 60°, acestea sunt πr², respectiv 3πr²/4.
+- Teste: 33/33 focalizate; proiecții 0°/60°/90°/120°/180°, raze 0,5–5 m, tastatură, RO/EN, 390×844, 1024×768, 1920×1080 și 3840×2160, export file://. Ambele scene și comenzile încap la 1024×768, inclusiv cazul de sferă completă.
+- Prima publicare este commitul f48a2a3, Vercel F8Q5JqswJ8at1oQhGwerJhQNEPyt; verificată în producție prin hashuri și browser. Auditul CI a detectat în pilotul Ohm contrast 4,36:1 și un salt h1→h3. Corecții minimale în sursa/adaptorul Ohm: etichete cu culoarea ink și titlu h2, păstrând stilul. Auditul focalizat RO/EN trece după corecții. Noua lecție intră și în filtrul CI de accesibilitate.
+
+
 ## Publicare Elemente de matematică — 2026-11-17
 
 - Publicarea pe GitHub/main și online este solicitată explicit. Pregătită într-un checkout izolat, incluzând adaptările Horizon deja publicate pe Vercel pentru a păstra MRU și Ohm. Configurările locale AGENTS/Impeccable și directoarele de cercetare rămân în afara publicării.

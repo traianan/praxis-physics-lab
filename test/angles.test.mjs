@@ -1,7 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {plane,solid,toDegrees,toRadians,toDMS,drawingRadius} from '../public/simulari/masurarea-unghiurilor/model.js';
+import {capProjection,capViews} from '../public/simulari/masurarea-unghiurilor/view.js';
 const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-10,`${a} != ${b}`);
+test('orthographic cap views distinguish the projected disk from the spherical area',()=>{
+ const r=5,R=drawingRadius(r);
+ const zero=capProjection(0,r),quarter=capProjection(60,r),half=capProjection(90,r),large=capProjection(120,r),full=capProjection(180,r);
+ near(zero.topRadius,0);near(zero.edgeY,150-R);
+ near(quarter.edgeY,150-R/2);near(quarter.topRadius,R*Math.sqrt(3)/2);
+ near(half.topRadius,R);near(half.edgeY,150);
+ near(large.topRadius,R);assert.equal(large.hiddenBoundary,true);
+ near(full.topRadius,R);near(full.edgeY,150+R);
+ assert.equal(quarter.hiddenBoundary,false);
+ // At alpha = 60°, top projection is 3/4 of the sphere's projected disk,
+ // while the spherical cap area is pi r². They must not be identified.
+ near(Math.PI*(quarter.topRadius/24)**2,3*Math.PI*r*r/4);
+ near(solid(60,r).area,Math.PI*r*r);
+ for(const degrees of [0,.01,32.77,60,90,120,179.99,180])for(const radius of [.5,2,5]){
+  const p=capProjection(degrees,radius);assert.ok(p.topRadius>=0&&p.topRadius<=p.R);
+  assert.ok(!/NaN|Infinity/.test(capViews(degrees,radius,'axis').side));
+ }
+ assert.match(capViews(180,r,'axis').side,/<circle data-cap-fill/);
+ assert.match(capViews(120,r,'axis').top,/data-cap-boundary[^>]*stroke-dasharray/);
+});
 test('sexagesimal conversion rounds seconds and carries into minutes and degrees',()=>{
  assert.deepEqual(toDMS(toDegrees(1)),{degrees:57,minutes:17,seconds:44.81});
  assert.deepEqual(toDMS(134.01),{degrees:134,minutes:0,seconds:36});

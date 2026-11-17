@@ -120,7 +120,7 @@
   color: var(--muted-2);
 }
 
-.lab-chart-head h3 {
+.lab-chart-head :is(h2,h3) {
   font-family: var(--font-serif);
   font-weight: 500;
   font-size: clamp(1.2rem, 1.9vw, 1.45rem);

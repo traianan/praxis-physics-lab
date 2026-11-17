@@ -263,7 +263,7 @@ export function OhmLab() {
                     <span className="live-dot" />
                     caracteristica dipolului
                   </div>
-                  <h3>{kind === "bulb" ? bulb.name : `Rezistor ${fmt(resistance, 0)} Ω`}</h3>
+                  <h2>{kind === "bulb" ? bulb.name : `Rezistor ${fmt(resistance, 0)} Ω`}</h2>
                   <p>{linearity}</p>
                 </div>
                 <div className="lab-chart-badges">

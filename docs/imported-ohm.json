@@ -20,7 +20,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/app/lab.css",
-      "sha256": "b8ef97b9970d55dc5e608d106d75b4d5a7e3d67329544ba28ad5038fc827bdcd"
+      "sha256": "a11c543fe4309c3f873542e97884a5e1bb283b40d5f3f0231d7047fb0a82a500"
     },
     {
       "path": "sources/legea-lui-ohm/app/layout.tsx",
@@ -116,7 +116,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/OhmLab.tsx",
-      "sha256": "ff794be16e24bd45bd4139184482afb36977f0d9992eb0af3a5121d94075ff1f"
+      "sha256": "d6e27b521e2be1d7adf5303a45a0a4c466a59e8d587baf9a1bd3a0dce5939c2a"
     },
     {
       "path": "sources/legea-lui-ohm/components/PrintSheet.tsx",
@@ -188,7 +188,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/README.md",
-      "sha256": "aab0082709537bb30a05d3a2faec65cdf0ffb3eb60e1e0984ba75d73f62bf59e"
+      "sha256": "d4aaa5b666cc69fb2a4b3d911dddff485cef2bff2f35c54199fae591e2331334"
     }
   ],
   "adaptations": [

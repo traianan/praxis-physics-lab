@@ -22,5 +22,5 @@ jobs:
       - run: node scripts/check-ci.mjs
       - name: Audit accessibility in Chrome
         env:
-          PRAXIS_A11Y_FILTER: /simulari/oglinzi-si-lentile/,/simulari/mecanica-cereasca/,/simulari/retele-electrice/,/simulari/efectul-fotoelectric-extern/,/simulari/legea-lui-ohm/,/simulari/rezistenta-unui-fir/,/simulari/condensatorul/,/simulari/calorimetrie/,/simulari/reflexia-refractia/,/simulari/transformarea-politropa/
+          PRAXIS_A11Y_FILTER: /simulari/oglinzi-si-lentile/,/simulari/mecanica-cereasca/,/simulari/retele-electrice/,/simulari/efectul-fotoelectric-extern/,/simulari/legea-lui-ohm/,/simulari/rezistenta-unui-fir/,/simulari/condensatorul/,/simulari/calorimetrie/,/simulari/reflexia-refractia/,/simulari/transformarea-politropa/,/simulari/masurarea-unghiurilor/
         run: npm run audit:a11y

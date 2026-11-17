@@ -2140,7 +2140,7 @@
   text-transform: uppercase;
   color: var(--muted-2);
 }
-:where(#ohm-root) .lab-chart-head h3 {
+:where(#ohm-root) .lab-chart-head :is(h2, h3) {
   font-family: var(--font-serif);
   font-weight: 500;
   font-size: clamp(1.2rem, 1.9vw, 1.45rem);
@@ -4972,7 +4972,7 @@
   :where(#ohm-root) .lesson-tab-panel .ui-canvas {
     height: 150px;
   }
-  :where(#ohm-root) .lesson-tab-panel .lab-chart-head h3 {
+  :where(#ohm-root) .lesson-tab-panel .lab-chart-head :is(h2, h3) {
     margin-block: .15rem;
   }
   :where(#ohm-root) .lesson-tab-panel .lab-chart-head p {
@@ -5011,6 +5011,9 @@
   :where(#ohm-root) .measure-controls .field-value {
     white-space: nowrap;
   }
+}
+:where(#ohm-root) .state-card-2 > :is(.state-title, span:last-child) {
+  color: var(--ink);
 }
 :where(#ohm-root) .ohm-section-anchor {
   display: block;

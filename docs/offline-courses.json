@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-17T17:45:54.378Z",
+  "builtAt": "2026-11-17T18:08:40.832Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -411,7 +411,7 @@
     {
       "id": "legea-lui-ohm",
       "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
-      "sha256": "c3d1db8e966e9cdfd5c6359965be9b55f387037fec07515a9601cfe8078d49e8",
+      "sha256": "c26abcc8d8b19e7f2fcf00c6941a729ca1059a4a11366fd90ea89b411c57ef60",
       "languages": [
         "ro",
         "en"
@@ -422,7 +422,7 @@
     {
       "id": "masurarea-unghiurilor",
       "file": "public/simulari/masurarea-unghiurilor/masurarea-unghiurilor.zip",
-      "sha256": "26ac2f9c2d3d8254b392c147a0c78a3be1ad8df6678b91ee2a67fb7d1624a4eb",
+      "sha256": "51a7560edf6ed42d5bdb0989c39cbf35e32456dea910d3e028271e17a3a02676",
       "languages": [
         "ro",
         "en"

@@ -179,7 +179,7 @@
     height: 150px;
   }
 
-  .lesson-tab-panel .lab-chart-head h3 {
+  .lesson-tab-panel .lab-chart-head :is(h2,h3) {
     margin-block: .15rem;
   }
 
@@ -229,3 +229,6 @@
     white-space: nowrap;
   }
 }
+
+/* Preserve readable labels against the current measurement card. */
+.state-card-2 > :is(.state-title,span:last-child) { color: var(--ink); }
