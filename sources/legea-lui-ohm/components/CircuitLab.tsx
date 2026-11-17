@@ -103,55 +103,6 @@ export function CircuitLab() {
   return (
     <section className="section section-circuit section-tint" id="circuit">
       <div className="container">
-        <Reveal>
-          <SectionHeading
-            index="03"
-            eyebrow="Circuit complet"
-            title="Legea lui Ohm pentru întreg circuitul"
-            lead="O sursă reală nu are doar tensiune electromotoare: are și rezistență internă. De aceea tensiunea la borne scade atunci când crește curentul. Reglează E, r și R și urmărește bilanțul energetic al circuitului."
-            action={
-              <span className="lab-head-chip">
-                <Battery size={16} />
-                sursă reală
-              </span>
-            }
-          />
-        </Reveal>
-
-        <Reveal className="circuit-law" delay={40}>
-          <div className="circuit-law-copy">
-            <span className="card-kicker">Relația sursei</span>
-            <p>
-              Tensiunea electromotoare se împarte între căderea de tensiune
-              exterioară <Formula tex="U=I\cdot R" /> și cea interioară{" "}
-              <Formula tex="u=I\cdot r" />:
-            </p>
-            <Formula block tex="E=U+u" label="E egal U plus u" />
-          </div>
-          <div className="circuit-law-arrow" aria-hidden="true">
-            <ArrowRight size={20} />
-          </div>
-          <div className="circuit-law-main">
-            <span className="card-kicker">de unde rezultă</span>
-            <Formula
-              block
-              tex="I=\dfrac{E}{R+r}"
-              label="I egal E supra R plus r"
-              className="circuit-law-formula"
-            />
-            <p>
-              Curentul depinde de <strong>suma</strong> rezistențelor, nu doar de
-              cea exterioară. Cu cât <Formula tex="r" /> este mai mică, cu atât
-              sursa se apropie de una ideală.
-            </p>
-          </div>
-          <div className="circuit-law-chips">
-            <span className="chip chip-amber">E = U + u</span>
-            <span className="chip chip-cyan">I = E / (R + r)</span>
-            <span className="chip">U = E − r·I</span>
-          </div>
-        </Reveal>
-
         <Reveal className="circuit-shell" delay={60}>
           <div className="circuit-top">
             <div className="circuit-presets" role="group" aria-label="Situații reale">
@@ -476,6 +427,57 @@ export function CircuitLab() {
             </p>
           </article>
         </Reveal>
+        <details className="ohm-experiment-notes">
+          <summary>Explicații și formule</summary>
+          <Reveal>
+            <SectionHeading
+              index="03"
+              eyebrow="Circuit complet"
+              title="Legea lui Ohm pentru întreg circuitul"
+              lead="O sursă reală nu are doar tensiune electromotoare: are și rezistență internă. De aceea tensiunea la borne scade atunci când crește curentul. Reglează E, r și R și urmărește bilanțul energetic al circuitului."
+              action={
+                <span className="lab-head-chip">
+                  <Battery size={16} />
+                  sursă reală
+                </span>
+              }
+            />
+          </Reveal>
+
+          <Reveal className="circuit-law" delay={40}>
+            <div className="circuit-law-copy">
+              <span className="card-kicker">Relația sursei</span>
+              <p>
+                Tensiunea electromotoare se împarte între căderea de tensiune
+                exterioară <Formula tex="U=I\cdot R" /> și cea interioară{" "}
+                <Formula tex="u=I\cdot r" />:
+              </p>
+              <Formula block tex="E=U+u" label="E egal U plus u" />
+            </div>
+            <div className="circuit-law-arrow" aria-hidden="true">
+              <ArrowRight size={20} />
+            </div>
+            <div className="circuit-law-main">
+              <span className="card-kicker">de unde rezultă</span>
+              <Formula
+                block
+                tex="I=\dfrac{E}{R+r}"
+                label="I egal E supra R plus r"
+                className="circuit-law-formula"
+              />
+              <p>
+                Curentul depinde de <strong>suma</strong> rezistențelor, nu doar de
+                cea exterioară. Cu cât <Formula tex="r" /> este mai mică, cu atât
+                sursa se apropie de una ideală.
+              </p>
+            </div>
+            <div className="circuit-law-chips">
+              <span className="chip chip-amber">E = U + u</span>
+              <span className="chip chip-cyan">I = E / (R + r)</span>
+              <span className="chip">U = E − r·I</span>
+            </div>
+          </Reveal>
+        </details>
       </div>
     </section>
   );

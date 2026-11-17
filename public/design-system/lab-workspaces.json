@@ -574,5 +574,21 @@
         "scene": ".tem-column"
       }
     ]
+  },
+  "masurarea-unghiurilor": {
+    "workspaces": [
+      {
+        "selector": "#plane .angle-workspace",
+        "layout": "native",
+        "controls": ".angle-controls",
+        "scene": ".angle-scene"
+      },
+      {
+        "selector": "#solid .angle-workspace",
+        "layout": "native",
+        "controls": ".angle-controls",
+        "scene": ".angle-scene"
+      }
+    ]
   }
 }

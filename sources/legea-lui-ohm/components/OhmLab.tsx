@@ -206,21 +206,6 @@ export function OhmLab() {
   return (
     <section className="section section-lab lab-section" id="laborator">
       <div className="container">
-        <Reveal>
-          <SectionHeading
-            index="02"
-            eyebrow="Laborator U–I"
-            title="Trasează caracteristica curent–tensiune"
-            lead="Crește tensiunea și urmărește curentul. La un rezistor obții o dreaptă; la un bec, filamentul se încălzește, rezistența crește, iar curba se apleacă. Trage direct pe grafic pentru a varia tensiunea."
-            action={
-              <span className="lab-head-chip">
-                <SlidersIcon size={16} />
-                măsurare interactivă
-              </span>
-            }
-          />
-        </Reveal>
-
         <Reveal className="lab-shell" delay={50}>
           <div className="lab-toolbar">
             <div className="lab-presets" role="group" aria-label="Tipuri de dipol">
@@ -433,157 +418,160 @@ export function OhmLab() {
             </aside>
           </div>
 
-          <div className="lab-controls">
-            <div className="lab-field lab-gas-field">
-              <span className="field-label">
-                <span>Tipul dipolului</span>
-                <span className="field-value">{isOhmic ? "ohmic" : "neliniar"}</span>
-              </span>
-              <div className="segmented">
-                <button
-                  type="button"
-                  className={kind === "bulb" ? "is-active" : ""}
-                  onClick={() => {
-                    setKind("bulb");
-                    setPresetId(bulbId.replace("bulb-", ""));
-                  }}
-                >
-                  Bec
-                </button>
-                <button
-                  type="button"
-                  className={kind === "resistor" ? "is-active" : ""}
-                  onClick={() => {
-                    setKind("resistor");
-                    setPresetId("resistor");
-                  }}
-                >
-                  Rezistor
-                </button>
+          <details className="ohm-experiment-notes">
+            <summary>Parametrii dipolului</summary>
+            <div className="lab-controls">
+              <div className="lab-field lab-gas-field">
+                <span className="field-label">
+                  <span>Tipul dipolului</span>
+                  <span className="field-value">{isOhmic ? "ohmic" : "neliniar"}</span>
+                </span>
+                <div className="segmented">
+                  <button
+                    type="button"
+                    className={kind === "bulb" ? "is-active" : ""}
+                    onClick={() => {
+                      setKind("bulb");
+                      setPresetId(bulbId.replace("bulb-", ""));
+                    }}
+                  >
+                    Bec
+                  </button>
+                  <button
+                    type="button"
+                    className={kind === "resistor" ? "is-active" : ""}
+                    onClick={() => {
+                      setKind("resistor");
+                      setPresetId("resistor");
+                    }}
+                  >
+                    Rezistor
+                  </button>
+                </div>
+                <span className="field-hint">
+                  {isOhmic
+                    ? "R constant → caracteristică liniară"
+                    : "filament de wolfram → R crește cu T"}
+                </span>
               </div>
-              <span className="field-hint">
-                {isOhmic
-                  ? "R constant → caracteristică liniară"
-                  : "filament de wolfram → R crește cu T"}
-              </span>
-            </div>
 
-            <LabSlider
-              label="Tensiunea U"
-              value={voltage}
-              min={0}
-              max={uMax}
-              step={0.01}
-              display={fmtVoltage(voltage)}
-              hint={`până la ${fmt(uMax, 1)} V`}
-              onChange={(value) => {
-                setPlaying(false);
-                setVoltage(value);
-              }}
-            />
-
-            {isOhmic ? (
               <LabSlider
-                label="Rezistența R"
-                value={resistance}
-                min={2}
-                max={400}
-                step={1}
-                display={fmtResistance(resistance)}
-                hint={`panta = 1/R = ${fmt(1 / resistance, 5)} S`}
-                onChange={setResistance}
+                label="Tensiunea U"
+                value={voltage}
+                min={0}
+                max={uMax}
+                step={0.01}
+                display={fmtVoltage(voltage)}
+                hint={`până la ${fmt(uMax, 1)} V`}
+                onChange={(value) => {
+                  setPlaying(false);
+                  setVoltage(value);
+                }}
               />
-            ) : (
+
+              {isOhmic ? (
+                <LabSlider
+                  label="Rezistența R"
+                  value={resistance}
+                  min={2}
+                  max={400}
+                  step={1}
+                  display={fmtResistance(resistance)}
+                  hint={`panta = 1/R = ${fmt(1 / resistance, 5)} S`}
+                  onChange={setResistance}
+                />
+              ) : (
+                <div className="lab-field">
+                  <span className="field-label">
+                    <span>Becul</span>
+                    <span className="field-value">{fmt(bulb.ratedPower, 0)} W</span>
+                  </span>
+                  <div className="segmented lab-bulb-toggle">
+                    {BULBS.map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        className={bulbId === item.id ? "is-active" : ""}
+                        onClick={() => {
+                          setBulbId(item.id);
+                          setVoltage(0);
+                        }}
+                      >
+                        {item.ratedVoltage} V
+                      </button>
+                    ))}
+                  </div>
+                  <span className="field-hint">{bulb.note}</span>
+                </div>
+              )}
+
               <div className="lab-field">
                 <span className="field-label">
-                  <span>Becul</span>
-                  <span className="field-value">{fmt(bulb.ratedPower, 0)} W</span>
+                  <span>Materialul conductorului</span>
+                  <span className="field-value">{material.symbol}</span>
                 </span>
-                <div className="segmented lab-bulb-toggle">
-                  {BULBS.map((item) => (
+                <div className="segmented lab-gas-toggle lab-material-toggle">
+                  {MATERIAL_PRESETS.map((item) => (
                     <button
-                      key={item.id}
+                      key={item.materialId}
                       type="button"
-                      className={bulbId === item.id ? "is-active" : ""}
-                      onClick={() => {
-                        setBulbId(item.id);
-                        setVoltage(0);
-                      }}
+                      className={materialId === item.materialId ? "is-active" : ""}
+                      onClick={() => applyMaterialPreset(item.materialId)}
                     >
-                      {item.ratedVoltage} V
+                      {item.label}
                     </button>
                   ))}
                 </div>
-                <span className="field-hint">{bulb.note}</span>
+                <span className="field-hint">
+                  ρ(20 °C) = {fmt(material.rho20 * 1e8, 2)}·10⁻⁸ Ω·m
+                </span>
               </div>
-            )}
 
-            <div className="lab-field">
-              <span className="field-label">
-                <span>Materialul conductorului</span>
-                <span className="field-value">{material.symbol}</span>
-              </span>
-              <div className="segmented lab-gas-toggle lab-material-toggle">
-                {MATERIAL_PRESETS.map((item) => (
-                  <button
-                    key={item.materialId}
-                    type="button"
-                    className={materialId === item.materialId ? "is-active" : ""}
-                    onClick={() => applyMaterialPreset(item.materialId)}
-                  >
-                    {item.label}
-                  </button>
-                ))}
+              <LabSlider
+                label="Lungimea firului"
+                value={length}
+                min={0.05}
+                max={5}
+                step={0.05}
+                display={fmtLength(length)}
+                hint={`R fir = ${fmtResistance(wireResistance)}`}
+                onChange={setLength}
+              />
+
+              <LabSlider
+                label="Diametrul firului"
+                value={diameter}
+                min={0.02}
+                max={2}
+                step={0.01}
+                display={`${fmt(diameter, 2)} mm`}
+                hint={`A = ${fmt(Math.PI * diameter * diameter * 0.25, 3)} mm²`}
+                onChange={setDiameter}
+              />
+
+              <LabSlider
+                label="Temperatura"
+                value={temperature}
+                min={-50}
+                max={900}
+                step={5}
+                display={`${fmt(temperature, 0)} °C`}
+                hint={`ρ = ${fmt(resistivityAt(material, temperature) * 1e8, 2)}·10⁻⁸ Ω·m`}
+                onChange={setTemperature}
+              />
+
+              <div className="lab-control-actions">
+                <button type="button" className="button button-secondary button-small" onClick={reset}>
+                  <Reset size={15} />
+                  Reinițializează
+                </button>
+                <a className="lab-calc-link" href="#circuit">
+                  Circuitul complet
+                  <ArrowRight size={15} />
+                </a>
               </div>
-              <span className="field-hint">
-                ρ(20 °C) = {fmt(material.rho20 * 1e8, 2)}·10⁻⁸ Ω·m
-              </span>
             </div>
-
-            <LabSlider
-              label="Lungimea firului"
-              value={length}
-              min={0.05}
-              max={5}
-              step={0.05}
-              display={fmtLength(length)}
-              hint={`R fir = ${fmtResistance(wireResistance)}`}
-              onChange={setLength}
-            />
-
-            <LabSlider
-              label="Diametrul firului"
-              value={diameter}
-              min={0.02}
-              max={2}
-              step={0.01}
-              display={`${fmt(diameter, 2)} mm`}
-              hint={`A = ${fmt(Math.PI * diameter * diameter * 0.25, 3)} mm²`}
-              onChange={setDiameter}
-            />
-
-            <LabSlider
-              label="Temperatura"
-              value={temperature}
-              min={-50}
-              max={900}
-              step={5}
-              display={`${fmt(temperature, 0)} °C`}
-              hint={`ρ = ${fmt(resistivityAt(material, temperature) * 1e8, 2)}·10⁻⁸ Ω·m`}
-              onChange={setTemperature}
-            />
-
-            <div className="lab-control-actions">
-              <button type="button" className="button button-secondary button-small" onClick={reset}>
-                <Reset size={15} />
-                Reinițializează
-              </button>
-              <a className="lab-calc-link" href="#circuit">
-                Circuitul complet
-                <ArrowRight size={15} />
-              </a>
-            </div>
-          </div>
+          </details>
 
           <div className="lab-status" aria-live="polite">
             <div className="lab-status-item">
@@ -709,6 +697,23 @@ export function OhmLab() {
             </div>
           ) : null}
         </Reveal>
+        <details className="ohm-experiment-notes">
+          <summary>Explicații și formule</summary>
+          <Reveal>
+            <SectionHeading
+              index="02"
+              eyebrow="Laborator U–I"
+              title="Trasează caracteristica curent–tensiune"
+              lead="Crește tensiunea și urmărește curentul. La un rezistor obții o dreaptă; la un bec, filamentul se încălzește, rezistența crește, iar curba se apleacă. Trage direct pe grafic pentru a varia tensiunea."
+              action={
+                <span className="lab-head-chip">
+                  <SlidersIcon size={16} />
+                  măsurare interactivă
+                </span>
+              }
+            />
+          </Reveal>
+        </details>
       </div>
     </section>
   );

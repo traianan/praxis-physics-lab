@@ -99,7 +99,7 @@
         ctx.fillStyle = col.muted;
         ctx.fillText(MR.fmt(y, this.step < 1 ? 1 : 0), P.l - 7, py);
       }
-      const ts = MR.niceStep(s.t1 - s.t0, 8);
+      const ts = MR.niceStep(s.t1 - s.t0, this.c.closest('#mru') ? Math.max(2, Math.min(8, Math.floor((W - P.l - P.r) / 52))) : 8);
       ctx.textAlign = 'center'; ctx.textBaseline = 'top';
       for (let t = Math.ceil(s.t0 / ts) * ts; t <= s.t1 + 1e-9; t += ts) {
         const px = Math.round(X(t)) + 0.5;

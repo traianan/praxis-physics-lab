@@ -31,7 +31,8 @@
   if(fallbackBoard){board.setAttribute('aria-pressed','false');board.addEventListener('click',()=>{const enabled=document.documentElement.dataset.siteBoard!=='true';document.documentElement.dataset.siteBoard=String(enabled);board.setAttribute('aria-pressed',String(enabled));window.dispatchEvent(new Event('resize'));});}
   sound ||= window.PraxisSound.createToggle();sound.classList.add('site-menu-control','site-sound-button');
   language ||= window.PraxisI18n.createSelector();language.classList.add('site-menu-control','site-language');
-  menu.append(library,guide,board,sound,language);row.append(logo,quickLanguage,toggle,menu);
+  const adaptive=document.body.hasAttribute('data-praxis-adaptive-lab');
+  menu.append(library,guide,...(adaptive?[]:[board]),sound,language);row.append(logo,quickLanguage,toggle,menu);
   function placeQuickControls(){(mobile.matches?quickLanguage:menu).append(sound,language);}
   placeQuickControls();
   menu.addEventListener('click',event=>{if(event.target.closest('.site-library-link,.site-guide-button,.site-board-button'))setOpen(false);});
@@ -51,7 +52,7 @@
    extra?.remove();
   }
   header.replaceChildren(row);if(detail.childNodes.length)header.append(detail);
-  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;guide.textContent=t.guide;board.textContent=t.board;if(infoCurrent)infoCurrent.textContent=infoHeading.textContent;if(context)window.PraxisI18n.apply(context);if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.map(step=>`<li>${step}</li>`).join('')}</ol>`;}
+  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;guide.textContent=t.guide;board.textContent=t.board;if(infoCurrent)infoCurrent.textContent=infoHeading.textContent;if(context)window.PraxisI18n.apply(context);if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.filter((_,index)=>!adaptive||index!==2).map(step=>`<li>${step}</li>`).join('')}</ol>`;}
   render();setOpen(false);window.addEventListener('praxis-language-change',()=>{render();setOpen(expanded);});
   new ResizeObserver(()=>document.documentElement.style.setProperty('--praxis-header-height',header.getBoundingClientRect().height+'px')).observe(header);
   return header;

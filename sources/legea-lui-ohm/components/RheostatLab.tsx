@@ -63,39 +63,6 @@ export function RheostatLab() {
   return (
     <section className="section section-rheostat" id="reostat">
       <div className="container">
-        <Reveal>
-          <SectionHeading
-            index="04"
-            eyebrow="Reostat"
-            title="Reostatul și montajul potențiometric"
-            lead="Rezistența unui fir este proporțională cu lungimea lui. Pe această proprietate se bazează reostatul: un cursor care ia mai mult sau mai puțin fir în circuit. În serie reglează curentul; ca divizor de tensiune reglează tensiunea."
-            action={
-              <span className="lab-head-chip">
-                <SlidersIcon size={16} />
-                cursor glisant
-              </span>
-            }
-          />
-        </Reveal>
-
-        <Reveal className="rheostat-law" delay={40}>
-          <div className="rheostat-law-item">
-            <span className="card-kicker">principiul</span>
-            <Formula tex="R_{AC}=\rho\dfrac{l_{AC}}{S}=k\cdot l_{AC}" />
-            <p>Rezistența porțiunii de fir crește liniar cu lungimea utilizată.</p>
-          </div>
-          <div className="rheostat-law-item">
-            <span className="card-kicker">în serie</span>
-            <Formula tex="I=\dfrac{E}{R_{AC}+\ldots+r}" />
-            <p>Cu cât lungimea <Formula tex="l_{AC}" /> este mai mare, cu atât curentul scade.</p>
-          </div>
-          <div className="rheostat-law-item">
-            <span className="card-kicker">ca divizor</span>
-            <Formula tex="U_{AC}=k\cdot I\cdot l_{AC}" />
-            <p>Cu cât lungimea <Formula tex="l_{AC}" /> este mai mare, cu atât tensiunea crește.</p>
-          </div>
-        </Reveal>
-
         <Reveal className="rheostat-shell" delay={60}>
           <div className="rheostat-toolbar">
             <div className="segmented rheostat-mode">
@@ -261,7 +228,6 @@ export function RheostatLab() {
                 onChange={(event) => setEmf(Number(event.target.value))}
                 style={{ "--fill": `${((emf - 2) / 22) * 100}%` } as CSSProperties}
               />
-              <span className="field-hint">sursa care alimentează montajul</span>
             </div>
             <div className="lab-field">
               <label className="field-label">
@@ -278,7 +244,6 @@ export function RheostatLab() {
                 onChange={(event) => setWireResistance(Number(event.target.value))}
                 style={{ "--fill": `${((wireResistance - 2) / 58) * 100}%` } as CSSProperties}
               />
-              <span className="field-hint">fir de nicrom înfășurat pe suport izolator</span>
             </div>
             <div className="lab-field">
               <label className="field-label">
@@ -295,9 +260,6 @@ export function RheostatLab() {
                 onChange={(event) => setLoad(Number(event.target.value))}
                 style={{ "--fill": `${((load - 1) / 39) * 100}%` } as CSSProperties}
               />
-              <span className="field-hint">
-                {mode === "series" ? "în serie cu reostatul" : "doar pentru montajul serie"}
-              </span>
             </div>
             <div className="lab-field">
               <label className="field-label">
@@ -314,7 +276,6 @@ export function RheostatLab() {
                 onChange={(event) => setInternal(Number(event.target.value))}
                 style={{ "--fill": `${((internal - 0.05) / 2.95) * 100}%` } as CSSProperties}
               />
-              <span className="field-hint">influențează curentul maxim posibil</span>
             </div>
           </div>
         </Reveal>
@@ -448,6 +409,47 @@ export function RheostatLab() {
             </p>
           </article>
         </Reveal>
+        <details className="ohm-experiment-notes">
+          <summary>Explicații și formule</summary>
+          <Reveal>
+            <SectionHeading
+              index="04"
+              eyebrow="Reostat"
+              title="Reostatul și montajul potențiometric"
+              lead="Rezistența unui fir este proporțională cu lungimea lui. Pe această proprietate se bazează reostatul: un cursor care ia mai mult sau mai puțin fir în circuit. În serie reglează curentul; ca divizor de tensiune reglează tensiunea."
+              action={
+                <span className="lab-head-chip">
+                  <SlidersIcon size={16} />
+                  cursor glisant
+                </span>
+              }
+            />
+          </Reveal>
+
+          <Reveal className="rheostat-law" delay={40}>
+            <div className="rheostat-law-item">
+              <span className="card-kicker">principiul</span>
+              <Formula tex="R_{AC}=\rho\dfrac{l_{AC}}{S}=k\cdot l_{AC}" />
+              <p>Rezistența porțiunii de fir crește liniar cu lungimea utilizată.</p>
+            </div>
+            <div className="rheostat-law-item">
+              <span className="card-kicker">în serie</span>
+              <Formula tex="I=\dfrac{E}{R_{AC}+\ldots+r}" />
+              <p>Cu cât lungimea <Formula tex="l_{AC}" /> este mai mare, cu atât curentul scade.</p>
+            </div>
+            <div className="rheostat-law-item">
+              <span className="card-kicker">ca divizor</span>
+              <Formula tex="U_{AC}=k\cdot I\cdot l_{AC}" />
+              <p>Cu cât lungimea <Formula tex="l_{AC}" /> este mai mare, cu atât tensiunea crește.</p>
+            </div>
+          </Reveal>
+          <ul>
+            <li>sursa care alimentează montajul</li>
+            <li>fir de nicrom înfășurat pe suport izolator</li>
+            <li>{mode === "series" ? "în serie cu reostatul" : "doar pentru montajul serie"}</li>
+            <li>influențează curentul maxim posibil</li>
+          </ul>
+        </details>
       </div>
     </section>
   );

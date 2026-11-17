@@ -164,6 +164,7 @@
   }catch{schedule();}
  }
  function open(trigger,retrying=false){
+  if(document.body.hasAttribute('data-praxis-adaptive-lab'))return false;
   if(board){close();return true;}
   window.PraxisLabWorkspace?.mount();
   const id=document.body.dataset.praxisCourse||document.body.dataset.praxisWorkspace||(document.querySelector('#scene-wrap #scene')?'oglinzi-si-lentile':location.pathname.split('/').filter(Boolean).at(-2));
@@ -197,7 +198,7 @@
   return true;
  }
  function mountStandaloneEntry(){
-  if(window.PraxisNavigation||!document.body?.hasAttribute('data-praxis-laboratory'))return;
+  if(window.PraxisNavigation||!document.body?.hasAttribute('data-praxis-laboratory')||document.body.hasAttribute('data-praxis-adaptive-lab'))return;
   const tools=document.querySelector('.praxis-lab-actions');
   if(!tools||tools.querySelector('#board-mode,.praxis-whiteboard-entry'))return;
   const entry=button(tools,()=>open(entry));
@@ -206,7 +207,7 @@
   window.addEventListener('praxis-language-change',translate);
  }
  function start(){
-  if(!document.body.hasAttribute('data-praxis-laboratory'))return;
+  if(!document.body.hasAttribute('data-praxis-laboratory')||document.body.hasAttribute('data-praxis-adaptive-lab'))return;
   mountStandaloneEntry();
   document.addEventListener('click',event=>{
    const trigger=event.target.closest?.('.site-board-button,#board-mode');

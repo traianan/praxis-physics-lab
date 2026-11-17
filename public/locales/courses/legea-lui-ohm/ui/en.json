@@ -2,6 +2,8 @@
   "locale": "en",
   "namespace": "courses/legea-lui-ohm/ui",
   "messages": {
+    "Parametrii dipolului": "Dipole parameters",
+    "Explicații și formule": "Explanations and formulas",
     "Sari la conținut": "Skip to content",
     "Un singur raport —": "One simple ratio —",
     "— leagă tensiunea, curentul și rezistența. De la caracteristica unui fir, la circuitul complet cu sursă reală, reostat și măsurători de laborator.": "— connects voltage, current and resistance. Explore a wire’s characteristic, a complete circuit with a real source, a rheostat and laboratory measurements.",

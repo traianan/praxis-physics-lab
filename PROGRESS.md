@@ -1,5 +1,49 @@
 # PROGRESS
 
+## Publicare Elemente de matematică — 2026-11-17
+
+- Publicarea pe GitHub/main și online este solicitată explicit. Pregătită într-un checkout izolat, incluzând adaptările Horizon deja publicate pe Vercel pentru a păstra MRU și Ohm. Configurările locale AGENTS/Impeccable și directoarele de cercetare rămân în afara publicării.
+- Corecții suplimentare cerute înainte de publicare: pas 0,01° și 0,01 m în ambele explorări; verificat prin butoanele + (60 → 60,01°, 2 → 2,01 m), inclusiv la steradiani. La 60,01°, citirea sexagesimală este 60° 0′ 36″. Dimensiune egală a textului, formulelor, titlurilor și tabelului în cele trei panouri de repere; grosimea păstrează ierarhia titlurilor.
+- Verificarea de checkout CI: 484 teste, 477 trecute, 7 omise pentru surse originale locale absente, zero eșecuri; sintaxă 385 fișiere fără erori. Testele focalizate 26/26. Build și arhiva offline regenerate.
+
+
+## Măsurarea unghiurilor — corecții solicitate, 2026-11-17
+
+- Adăugat 1 rad ≈ 57° 17′ 44,81″ și conversia sexagesimală dinamică în spațiul de sub cerc; explicația conversiei ocupă spațiul liber din primul panou teoretic. Rotunjirea secundelor include transferul corect la minute/grade.
+- Raza cercului și sferei urmărește efectiv sliderul, la o scară fixă de 24 unități SVG/m; etichetele arcului și ariei urmăresc desenul. Unghiurile rămân constante când raza se modifică.
+- Eliminat separatorul punct din formule și titluri, înlocuit „tur complet” cu „cerc complet”. Corectat panoul Radianul prin proză exclusă explicit din conversia automată în formule și expresii TeX delimitate, pe rânduri separate. Fără modificări ale runtimeului matematic comun.
+- SymPy confirmă 57° 17′ 44,806247…″. Build și 26/26 teste focalizate trecute. agent-browser: slider prin tastatură, r = 2 → 2,5 m, sfere până la r = 5 m, RO/EN, text/formule și export file://; fără erori JS observate. Mobil 390×844, tabletă 1024×768, desktop 1920×1080, 4K 3840×2160; fără overflow orizontal. Cele două explorări încap la 1024×768. Arhiva offline regenerată. Capturi `outputs/angles-corrected-*.png`. Modificări locale, fără publicare.
+
+
+## Elemente de matematică — 2026-11-17
+
+- Adăugat al optulea capitol, „Elemente de matematică”, cu prima lecție „Măsurarea unghiurilor”. Calcul vectorial rămâne în Mișcare. Catalogul are 40 de lecții.
+- Lecție nativă în `public/simulari/masurarea-unghiurilor/`: grade/radiani cu arc reglabil, steradiani prin aria calotei sferice, raze reglabile, preseturi 1 rad/1 sr, definiții, minute/secunde de arc, conversii și trei exerciții cu feedback și rezolvări. RO/EN, antet/navigare/preferințe comune și ZIP autonom. Diagrama sferei este o proiecție schematică, nu o scenă WebGL rotativă.
+- SymPy 1.14 verifică integrarea ariei calotei, limitele 0/π/2π/4π și aproximația conului îngust. Modelul testează conversii, invarianta la rază și monotonia unghiului solid. Build și 24/24 teste focalizate trecute. Suita generală: 486/488; testul serverului blocat EACCES a trecut separat cu loopback permis. Rămâne eșecul preexistent al importului Mișcării rectilinii, documentat înaintea intervenției.
+- agent-browser: preseturi, rază/resetare, toate filele, exerciții, feedback RO/EN, revenire la capitol și export file://. Fără erori JS observate. Layouturi 390×844, 1024×768, 1920×1080 și 3840×2160; fără overflow orizontal. Cele două explorări încap pe tabletă și desktop; teoria poate necesita derulare pe tabletă, iar telefonul folosește derulare verticală. Capturi în `outputs/angles-*.png`. Nu este verificare pe dispozitive fizice.
+- Modificări locale, fără publicare și fără instalări. Păstrate modificările preexistente din proiect.
+
+
+## Corecții de layout la Legile lui Ohm — 2026-11-17
+
+- La 1024×600, fila Măsurări afișează cele patru reglaje în două coloane, lângă schemă și citiri. În agent-browser, cursorul tensiunii a răspuns la tragere fără derularea paginii.
+- La 390×844, toate cele opt file sunt vizibile în două coloane, cu etichetele întregi în română și engleză. Verificate selecția prin clic și navigarea cu tasta Home.
+- Buildul și cele șapte teste de prezentare și distribuție offline au trecut. Arhiva Ohm a fost regenerată. Testul separat de import semnalează o diferență în fișierul existent al Mișcării rectilinii.
+
+## Retestare pilot Horizon — 2026-11-17
+
+- Fotografiile de pe Horizon arată că reglajele MRU se întindeau pe două ecrane, iar Ohm putea apărea parțial și cu stilurile locale lipsă. Pe PC, introducerea Ohm apărea după fiecare filă.
+- MRU folosește marcaje explicite pentru grila scenei și controalelor. În ferestrele landscape scunde scurtează antetul și prezintă navigarea prin selectorul existent. În Chrome cu atingere emulată la 1024×600, scena, comenzile esențiale și citirile încap pe Ecranul Experiment, iar ambele grafice și citirile încap pe ecranul Grafice. Opțiunile secundare sunt sub reglaje.
+- Ohm generează selectori CSS obișnuiți limitați la rădăcina lecției, compatibili cu Chromium 109, fără dependență de at-rule scope. Introducerea se montează doar în Teorie. În Chrome la 1024×600, partea de jos a rândului de tensiune în U–I poate depăși fereastra cu câțiva pixeli. Zona desktopului vizibilă în fotografia Horizon trebuie verificată din nou pe dispozitiv.
+- Build, 26 de teste țintite și regresii Chrome la 1024×600, 1280×720, 1536×864 și 390×844 trecute. Regenerate arhivele celor două lecții. Publicat pe Vercel BHQXSj4zeMBno9yksKVbAhYQaDfu peste versiunea publică anterioară, cu nouă fișiere actualizate. Paginile și resursele verificate în producție au răspuns 200 cu SHA-256 conform pachetului. Retestarea pe Horizon fizic este următorul pas.
+
+## Pilot Horizon — 2026-11-16
+
+- Publicat direct pe Vercel în producție, deploy A5Y7NZbj1NCD4wPpg8bAAng9puLE. Pachetul folosește buildul de bază d3b9c81 cu 19 fișiere suprapuse pentru cele două lecții și resursele necesare. Ambele pagini și resursele adaptive au răspuns HTTP 200 cu SHA-256 identic cu pachetul. Testul pe Horizon fizic rămâne deschis.
+- MRU și Legile lui Ohm pornesc direct în experiment și folosesc layoutul adaptiv implicit. Mod tablă este dezactivat pentru aceste două lecții online și offline. MRU păstrează timpul și parametrii între scenă și grafice și adaptează axa la traseul complet. La Ohm, reglajele, schemele și măsurătorile sunt reorganizate în filele existente.
+- Versiunea de test este disponibilă ca două fișiere HTML cu resurse încorporate în `outputs/horizon-pilot/`. Au fost verificate în Chrome cu rețeaua oprită și atingere emulată. Arhivele ZIP au fost regenerate pentru distribuția proiectului. Importatorul public acceptă numai ZIP-uri publicate, verificate prin SHA-256.
+- Build reușit și 26 de teste țintite trecute. Au fost exercitate Start/Pauză/Reset și păstrarea stării la MRU, precum și câte un reglaj în fiecare dintre cele patru file experimentale la Ohm. Confirmarea lizibilității și a zonei de browser pe Horizon fizic rămâne deschisă. Extinderea la celelalte laboratoare este condiționată de testul pe tablă.
+
 ## Plan de îmbunătățire incrementală a interfeței Web — 2026-11-15
 
 Propunere pentru următoarea intervenție UI. Din „Biblioteci UI Web Gratis.pdf” (4 pagini) reținem consecvența componentelor, feedbackul subtil și verificarea accesibilității, a performanței și a licențelor. Promptul și comenzile de instalare din PDF sunt exemple. Baza implementării rămâne `DESIGN_SYSTEM.md`, cu tokenurile Praxis, HTML/CSS/JS în catalog și React în laboratoarele care îl folosesc deja. Păstrăm navigarea, rutele, modelele fizice, starea, culorile științifice și distribuția offline.
@@ -33,6 +77,8 @@ Versiunile sunt fixate în `package.json` și `package-lock.json`. Bundle-urile 
 La continuarea dezvoltării, consultă [analiza bibliotecilor](docs/BIBLIOTECI_SIMULARI_2026-11-14.md). Încarcă numai bibliotecile necesare lecției, nu întregul set în antetul comun. Reutilizează și infrastructura existentă: React Flow/React, PraxisMath/KaTeX și Three.js. Include resursele folosite și licențele lor în exportul offline și verifică funcționarea fără rețea. Pentru mișcări cu soluție analitică simplă, păstrează modelul analitic dacă nu este necesar un motor de fizică.
 
 ## Jurnal de progres
+
+- 2026-11-15: GitHub Actions („Validate application”) și deploy-ul Vercel au trecut pentru commitul `d3b9c816e50404f646164994b3253e3c2172269f`. Pe site-ul public, în Chrome la 1280×720 CSS, Mod tablă a trecut verificările de încadrare fără derulare și de interacțiune în „Legile lui Ohm” (trei scene) și „Interacții atomice” (o scenă). Testul pe tabla fizică Horizon cu Android 13 rămâne de făcut. [GitHub Actions](https://github.com/traianan/praxis-physics-lab/actions/runs/43753886509) · [Deploy Vercel](https://vercel.com/traians-projects-cnni/physicslab/3duBnheqKNGxspvGqSJgkAgzrsDv)
 
 - 2026-11-15: GitHub Actions („Validate application”) și deploy-ul Vercel au trecut pentru adaptările Mod tablă din commitul `27af30657b656ec0f466af63dd2173d708102767`. [GitHub Actions](https://github.com/traianan/praxis-physics-lab/actions/runs/43753155873) · [Deploy Vercel](https://vercel.com/traians-projects-cnni/physicslab/HjPjrSRS2nTHAzRP4RiGJD8zNYwT)
   - În producție au trecut toate cele 304 cazuri din cele 37 de lecții, în Chrome la 1280×720 și 1920×1080 CSS. Au fost verificate încadrarea fără derulare și interacțiunile cu comenzile prin tastatură sau pointer. Codul Mod tablă, stilurile și catalogul offline servite de site au corespuns fișierelor din commit. ZIP-urile descărcate pentru „Legile lui Ohm”, „Motoare termice”, „Transformări de stare de agregare” și „Viteza și accelerația” au avut amprentele SHA-256 din catalog. [Site-ul live](https://praxis-physics-lab.vercel.app/)

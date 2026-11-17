@@ -2,6 +2,8 @@
   "locale": "ro",
   "namespace": "courses/legea-lui-ohm/ui",
   "messages": {
+    "Parametrii dipolului": "Parametrii dipolului",
+    "Explicații și formule": "Explicații și formule",
     "Sari la conținut": "Sari la conținut",
     "Un singur raport —": "Un singur raport —",
     "— leagă tensiunea, curentul și rezistența. De la caracteristica unui fir, la circuitul complet cu sursă reală, reostat și măsurători de laborator.": "— leagă tensiunea, curentul și rezistența. De la caracteristica unui fir, la circuitul complet cu sursă reală, reostat și măsurători de laborator.",

@@ -1,0 +1,24 @@
+{
+  "locale": "ro",
+  "namespace": "chapters/elemente-de-matematica",
+  "title": "Elemente de matematică",
+  "messages": {
+    "Elemente de matematică": "Elemente de matematică",
+    "ELEMENTE DE MATEMATICĂ": "ELEMENTE DE MATEMATICĂ"
+  },
+  "simulations": {
+    "masurarea-unghiurilor": {
+      "title": "Măsurarea unghiurilor",
+      "subtitle": "Grade, radiani și steradiani",
+      "description": "Explorează unghiurile plane pe cerc și unghiurile solide pe sferă. Compară gradele, radianii și steradianii, apoi exersează conversiile.",
+      "alt": "Cerc cu arc și sferă cu o calotă evidențiată",
+      "tags": [
+        "Unghiuri",
+        "Radiani",
+        "Steradiani",
+        "Offline"
+      ],
+      "keywords": "matematica unghi grade radiani steradiani cerc sfera conversie"
+    }
+  }
+}

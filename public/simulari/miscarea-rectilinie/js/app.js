@@ -16,7 +16,7 @@
   }
   $$('.tab').forEach((t) => t.addEventListener('click', () => { MR.sound.click(); show(t.dataset.tab); window.scrollTo({ top: 0 }); }));
   window.addEventListener('hashchange', () => show(location.hash.replace(/^#\/?/, '')));
-  show(location.hash.replace(/^#\/?/, ''));
+  show(location.hash.replace(/^#\/?/, '') || 'mru');
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
   window.addEventListener('load', () => window.scrollTo(0, 0));

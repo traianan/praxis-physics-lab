@@ -1,17 +1,6 @@
 {
-  "builtAt": "2026-11-15T19:29:11.245Z",
+  "builtAt": "2026-11-17T17:45:54.378Z",
   "courses": [
-    {
-      "id": "legea-lui-ohm",
-      "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
-      "sha256": "1e4492099bccc01cc2ffb29ed0c81282366a60038793cf71940d179b0886e9e5",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
     {
       "id": "rezistenta-unui-fir",
       "file": "public/simulari/rezistenta-unui-fir/rezistenta-unui-fir.zip",
@@ -71,17 +60,6 @@
       "id": "oglinzi-si-lentile",
       "file": "public/simulari/oglinzi-si-lentile/oglinzi-si-lentile.zip",
       "sha256": "92e75dfefedbedfb3858165098fced08a016a099a44e093ff85b0697386ede54",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
-      "id": "miscarea-rectilinie",
-      "file": "public/simulari/miscarea-rectilinie/miscarea-rectilinie-offline.zip",
-      "sha256": "afac30c4f16abfbc997f327f561cc01cf5afb2adf376a0c81504a8b2b89811a9",
       "languages": [
         "ro",
         "en"
@@ -412,6 +390,39 @@
       "id": "dualismul-unda-corpuscul",
       "file": "public/simulari/dualismul-unda-corpuscul/dualismul-unda-corpuscul.zip",
       "sha256": "5a3c27009d64a7040497080d5f6c72288950a20d2a50cb621a777932fb5812db",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "miscarea-rectilinie",
+      "file": "public/simulari/miscarea-rectilinie/miscarea-rectilinie-offline.zip",
+      "sha256": "8720239931fbca8ad61e7e9f34ecd4a3586e88b9c86f035616c6a99c22f89950",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "legea-lui-ohm",
+      "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
+      "sha256": "c3d1db8e966e9cdfd5c6359965be9b55f387037fec07515a9601cfe8078d49e8",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "masurarea-unghiurilor",
+      "file": "public/simulari/masurarea-unghiurilor/masurarea-unghiurilor.zip",
+      "sha256": "26ac2f9c2d3d8254b392c147a0c78a3be1ad8df6678b91ee2a67fb7d1624a4eb",
       "languages": [
         "ro",
         "en"

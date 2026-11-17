@@ -14,10 +14,10 @@ export function Hero() {
           <div className="hero-kicker">
             <span>Fizică · curent continuu</span>
           </div>
-          <h1>
+          <h2 className="hero-title">
             Legea
             <span className="hero-title-accent">lui Ohm</span>
-          </h1>
+          </h2>
           <p className="hero-lead">
             Un singur raport — <strong>I = U / R</strong> — leagă tensiunea,
             curentul și rezistența. De la caracteristica unui fir, la circuitul
@@ -28,7 +28,7 @@ export function Hero() {
               Deschide laboratorul
               <ArrowRight size={18} />
             </a>
-            <a className="button button-ghost-light" href="#lesson-tab-teorie">
+            <a className="button button-ghost-light" href="#teorie">
               De la definiție
             </a>
           </div>

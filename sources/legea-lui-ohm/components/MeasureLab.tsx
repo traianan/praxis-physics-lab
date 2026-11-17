@@ -69,21 +69,6 @@ export function MeasureLab() {
   return (
     <section className="section section-measure" id="masurare">
       <div className="container">
-        <Reveal>
-          <SectionHeading
-            index="05"
-            eyebrow="Lucrare de laborator"
-            title="Măsurarea rezistenței cu voltmetrul și ampermetrul"
-            lead="Din legea lui Ohm, R = U/I. Dar instrumentele reale nu sunt ideale: voltmetrul consumă un curent mic, ampermetrul are o rezistență proprie. Alege montajul și vezi imediat cât de mult contează."
-            action={
-              <span className="lab-head-chip">
-                <CalculatorIcon size={16} />
-                montaj amonte vs aval
-              </span>
-            }
-          />
-        </Reveal>
-
         <Reveal className="measure-shell" delay={50}>
           <div className="measure-toolbar">
             <div className="segmented measure-mode">
@@ -279,7 +264,6 @@ export function MeasureLab() {
                 }}
                 style={{ "--fill": `${(Math.log10(target) / 4) * 100}%` } as CSSProperties}
               />
-              <span className="field-hint">scară logaritmică, 1 Ω → 10 kΩ</span>
             </div>
             <div className="lab-field">
               <label className="field-label">
@@ -299,7 +283,6 @@ export function MeasureLab() {
                 }}
                 style={{ "--fill": `${(Math.log10(ammeter * 100) / Math.log10(5000)) * 100}%` } as CSSProperties}
               />
-              <span className="field-hint">ideal ar fi zero</span>
             </div>
             <div className="lab-field">
               <label className="field-label">
@@ -319,7 +302,6 @@ export function MeasureLab() {
                 }}
                 style={{ "--fill": `${(Math.log10(voltmeter / 1000) / Math.log10(2000)) * 100}%` } as CSSProperties}
               />
-              <span className="field-hint">ideal ar fi infinit</span>
             </div>
             <div className="lab-field">
               <label className="field-label">
@@ -336,7 +318,6 @@ export function MeasureLab() {
                 onChange={(event) => setEmf(Number(event.target.value))}
                 style={{ "--fill": `${((emf - 1) / 23) * 100}%` } as CSSProperties}
               />
-              <span className="field-hint">sursa montajului de laborator</span>
             </div>
           </div>
         </Reveal>
@@ -434,6 +415,29 @@ export function MeasureLab() {
             </p>
           </div>
         </Reveal>
+        <details className="ohm-experiment-notes">
+          <summary>Explicații și formule</summary>
+          <Reveal>
+            <SectionHeading
+              index="05"
+              eyebrow="Lucrare de laborator"
+              title="Măsurarea rezistenței cu voltmetrul și ampermetrul"
+              lead="Din legea lui Ohm, R = U/I. Dar instrumentele reale nu sunt ideale: voltmetrul consumă un curent mic, ampermetrul are o rezistență proprie. Alege montajul și vezi imediat cât de mult contează."
+              action={
+                <span className="lab-head-chip">
+                  <CalculatorIcon size={16} />
+                  montaj amonte vs aval
+                </span>
+              }
+            />
+          </Reveal>
+          <ul>
+            <li>scară logaritmică, 1 Ω → 10 kΩ</li>
+            <li>ideal ar fi zero</li>
+            <li>ideal ar fi infinit</li>
+            <li>sursa montajului de laborator</li>
+          </ul>
+        </details>
       </div>
     </section>
   );

@@ -1,0 +1,24 @@
+{
+  "locale": "en",
+  "namespace": "chapters/elemente-de-matematica",
+  "title": "Mathematical foundations",
+  "messages": {
+    "Elemente de matematică": "Mathematical foundations",
+    "ELEMENTE DE MATEMATICĂ": "MATHEMATICAL FOUNDATIONS"
+  },
+  "simulations": {
+    "masurarea-unghiurilor": {
+      "title": "Measuring angles",
+      "subtitle": "Degrees, radians and steradians",
+      "description": "Explore plane angles on a circle and solid angles on a sphere. Compare degrees, radians and steradians, then practise conversions.",
+      "alt": "Circle with an arc and sphere with a highlighted spherical cap",
+      "tags": [
+        "Angles",
+        "Radians",
+        "Steradians",
+        "Offline"
+      ],
+      "keywords": "mathematics angles degrees radians steradians circle sphere conversion"
+    }
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import { Hero } from "./Hero";
 import { TheorySection } from "./TheorySection";
 import { OhmLab } from "./OhmLab";
 import { CircuitLab } from "./CircuitLab";
@@ -24,7 +25,7 @@ const TABS = [
 ] as const;
 
 export function LessonTabs() {
-  const [active, setActive] = useState<(typeof TABS)[number]["id"]>("teorie");
+  const [active, setActive] = useState<(typeof TABS)[number]["id"]>("laborator");
   const buttons = useRef<Array<HTMLButtonElement | null>>([]);
   const { language } = useTheme();
 
@@ -73,7 +74,7 @@ export function LessonTabs() {
         ))}
       </div>
       <div id="lesson-tab-panel" className="lesson-tab-panel" role="tabpanel" aria-labelledby={`lesson-tab-${active}`} tabIndex={0}>
-        {active === "teorie" ? <TheorySection /> : null}
+        {active === "teorie" ? <><Hero /><TheorySection /></> : null}
         {active === "laborator" ? <OhmLab /> : null}
         {active === "circuit" ? <CircuitLab /> : null}
         {active === "reostat" ? <RheostatLab /> : null}

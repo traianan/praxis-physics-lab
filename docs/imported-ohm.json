@@ -16,7 +16,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/app/hero.css",
-      "sha256": "a86cdc9c5097e7708e7d44c63b5f3ad75ab56b4fb3bb84d1e186662988f2a6a7"
+      "sha256": "684df96962e0c2c5ab114015cef1cab77dd34e425efeb81e690f5144de940a0d"
     },
     {
       "path": "sources/legea-lui-ohm/app/lab.css",
@@ -32,7 +32,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/app/page.tsx",
-      "sha256": "0dfe60eccbf00ad80f0460d64f8c7a65cae4f579d04b2c42c4f14ea730f696e3"
+      "sha256": "fc338ec4f91cb0bdb24db855355b6adb3f022f3c8dc3312159c3deb0b9876a00"
     },
     {
       "path": "sources/legea-lui-ohm/app/problems.css",
@@ -60,7 +60,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/CircuitLab.tsx",
-      "sha256": "717dc0b4e843788ab2bfb29d9cdd974800712fe322098e94e1cf012e7b087323"
+      "sha256": "6f3f67e0cc8e6ee87c603f55f42465fa5f0d265fb2ca4332c14c7abce9d207e4"
     },
     {
       "path": "sources/legea-lui-ohm/components/CircuitSchematic.tsx",
@@ -88,7 +88,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/Hero.tsx",
-      "sha256": "c73e3b372e03d6ec2c7098d6855fd08c15de51f320e46167623404bfac51b5f6"
+      "sha256": "89deaaea4f865d04b97960cac10cf1278221143f23a1050ce1103d20b794d304"
     },
     {
       "path": "sources/legea-lui-ohm/components/HeroDiagram.tsx",
@@ -100,11 +100,11 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/LessonTabs.tsx",
-      "sha256": "1d81f84979996bb031f49954bbbb130f020b9726d6441117e46820b618447f33"
+      "sha256": "7c7fe38f3c375abf1257b54bd03a3cf491e94ab6dbbe335b2e9155f104a06a40"
     },
     {
       "path": "sources/legea-lui-ohm/components/MeasureLab.tsx",
-      "sha256": "8c9605b899e3a3725a060f5cb9788cafd3d5b909f664b23baff7408473bf086b"
+      "sha256": "c49e349bf60d60600be11053bc81c02d9cb8d73ba7f61b021cfa16a2b1d56831"
     },
     {
       "path": "sources/legea-lui-ohm/components/MeasureSchematic.tsx",
@@ -116,7 +116,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/OhmLab.tsx",
-      "sha256": "6684d536a070c75d0b329e2123401af3e60d1bc9b1bd382b26425ad50a54ad23"
+      "sha256": "ff794be16e24bd45bd4139184482afb36977f0d9992eb0af3a5121d94075ff1f"
     },
     {
       "path": "sources/legea-lui-ohm/components/PrintSheet.tsx",
@@ -140,7 +140,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/RheostatLab.tsx",
-      "sha256": "94a9526a653d8c68feb94c55adcce4508b3f5d2d9c2b540e4d3b62574704c168"
+      "sha256": "5199dbf99d70e54ab3a311b72995f1a434433f2715eaa521639b1d3229eec558"
     },
     {
       "path": "sources/legea-lui-ohm/components/RheostatSchematic.tsx",

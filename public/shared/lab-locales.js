@@ -263,5 +263,11 @@ export const labNamespaces = {
     "chapters/fenomene-cuantice",
     "courses/shared",
     "labs/dualismul-unda-corpuscul/ui"
+  ],
+  "masurarea-unghiurilor": [
+    "common",
+    "chapters/elemente-de-matematica",
+    "courses/shared",
+    "labs/masurarea-unghiurilor/ui"
   ]
 };

@@ -42,6 +42,12 @@
       "title": "Electricitate, magnetism și circuite",
       "color": "#4d8290",
       "icon": "circuit"
+    },
+    {
+      "id": "elemente-de-matematica",
+      "title": "Elemente de matematică",
+      "color": "#9a712e",
+      "icon": "angle"
     }
   ],
   "labs": [
@@ -317,7 +323,8 @@
         "labs/pila-daniell/ui"
       ],
       "offline": {
-        "kind": "archive", "file": "pila-daniell.zip"
+        "kind": "archive",
+        "file": "pila-daniell.zip"
       },
       "inlineLocales": [
         "labs/pila-daniell/ui"
@@ -400,7 +407,8 @@
         "labs/oglinzi-si-lentile/lessons"
       ],
       "offline": {
-        "kind": "archive", "file": "oglinzi-si-lentile.zip"
+        "kind": "archive",
+        "file": "oglinzi-si-lentile.zip"
       }
     },
     {
@@ -1081,19 +1089,44 @@
         "href": "./simulari/unde-seismice/index.html",
         "image": "./assets/unde-seismice.png",
         "alt": "Focar, epicentru, stație și seismogramă cu sosirile undelor P, S și de suprafață",
-        "tags": ["Unde", "Seismologie", "Experimente"],
+        "tags": [
+          "Unde",
+          "Seismologie",
+          "Experimente"
+        ],
         "keywords": "unde seismice seism cutremure vrancea focar epicentru richter mercalli msk mks love rayleigh seismograma",
         "status": "available"
       },
       "workspace": {
         "workspaces": [
-          {"selector": "#station .seismic-workspace", "scene": "#propagation", "graphs": "#seismogram", "controls": ".seismic-controls", "layout": "native"},
-          {"selector": "#waves .seismic-workspace", "scene": "#particles", "controls": ".seismic-controls", "layout": "native"}
+          {
+            "selector": "#station .seismic-workspace",
+            "scene": "#propagation",
+            "graphs": "#seismogram",
+            "controls": ".seismic-controls",
+            "layout": "native"
+          },
+          {
+            "selector": "#waves .seismic-workspace",
+            "scene": "#particles",
+            "controls": ".seismic-controls",
+            "layout": "native"
+          }
         ]
       },
-      "locales": ["common", "chapters/sunete-si-unde", "courses/shared", "labs/unde-seismice/ui"],
-      "inlineLocales": ["labs/unde-seismice/ui"],
-      "offline": {"kind": "archive", "file": "unde-seismice.zip"}
+      "locales": [
+        "common",
+        "chapters/sunete-si-unde",
+        "courses/shared",
+        "labs/unde-seismice/ui"
+      ],
+      "inlineLocales": [
+        "labs/unde-seismice/ui"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "unde-seismice.zip"
+      }
     },
     {
       "metadata": {
@@ -1107,16 +1140,37 @@
         "href": "./simulari/reflexia-refractia/index.html",
         "image": "./assets/reflexia-refractia.svg",
         "alt": "Front de undă incident, reflectat și refractat la o suprafață de separație",
-        "tags": ["Unde", "Huygens", "Experimente", "Offline"],
+        "tags": [
+          "Unde",
+          "Huygens",
+          "Experimente",
+          "Offline"
+        ],
         "keywords": "reflexia refractia unde mecanice huygens front unda incident reflectat refractat",
         "status": "available"
       },
       "workspace": {
         "workspaces": [
-          {"selector": "#sim-aperture", "scene": "canvas", "layout": "native"},
-          {"selector": "#sim-huygens", "scene": "canvas", "layout": "native"},
-          {"selector": "#sim-reflectie", "scene": "canvas", "layout": "native"},
-          {"selector": "#sim-refractie", "scene": "canvas", "layout": "native"}
+          {
+            "selector": "#sim-aperture",
+            "scene": "canvas",
+            "layout": "native"
+          },
+          {
+            "selector": "#sim-huygens",
+            "scene": "canvas",
+            "layout": "native"
+          },
+          {
+            "selector": "#sim-reflectie",
+            "scene": "canvas",
+            "layout": "native"
+          },
+          {
+            "selector": "#sim-refractie",
+            "scene": "canvas",
+            "layout": "native"
+          }
         ]
       },
       "locales": [
@@ -1126,7 +1180,9 @@
         "courses/unde-mecanice/basics",
         "courses/reflexia-refractia/ui"
       ],
-      "inlineLocales": ["courses/reflexia-refractia/ui"],
+      "inlineLocales": [
+        "courses/reflexia-refractia/ui"
+      ],
       "offline": {
         "kind": "archive",
         "file": "reflexia-refractia.zip"
@@ -1845,6 +1901,57 @@
       "offline": {
         "kind": "archive",
         "file": "dualismul-unda-corpuscul.zip"
+      }
+    },
+    {
+      "metadata": {
+        "id": "masurarea-unghiurilor",
+        "addedOn": "2026-11-17",
+        "addedOrder": 1,
+        "chapter": "elemente-de-matematica",
+        "title": "Măsurarea unghiurilor",
+        "subtitle": "Grade, radiani și steradiani",
+        "description": "Explorează unghiurile plane pe cerc și unghiurile solide pe sferă. Compară gradele, radianii și steradianii, apoi exersează conversiile.",
+        "alt": "Cerc cu arc și sferă cu o calotă evidențiată",
+        "tags": [
+          "Unghiuri",
+          "Radiani",
+          "Steradiani",
+          "Offline"
+        ],
+        "href": "./simulari/masurarea-unghiurilor/index.html",
+        "image": "./assets/masurarea-unghiurilor.svg",
+        "keywords": "matematica unghi grade radiani steradiani cerc sfera conversie",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {
+            "selector": "#plane .angle-workspace",
+            "layout": "native",
+            "controls": ".angle-controls",
+            "scene": ".angle-scene"
+          },
+          {
+            "selector": "#solid .angle-workspace",
+            "layout": "native",
+            "controls": ".angle-controls",
+            "scene": ".angle-scene"
+          }
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/elemente-de-matematica",
+        "courses/shared",
+        "labs/masurarea-unghiurilor/ui"
+      ],
+      "inlineLocales": [
+        "labs/masurarea-unghiurilor/ui"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "masurarea-unghiurilor.zip"
       }
     }
   ]

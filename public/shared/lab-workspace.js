@@ -58,7 +58,8 @@
      const controls=workspace.querySelector('.sim-side'),transport=workspace.querySelector('.transport');
      // acc-info is replaced by the native lesson on each motion selection.
      // Its transport must remain in the stable scene, outside that readout.
-     if(controls&&transport&&controls.id!=='acc-info')controls.prepend(transport);
+     const keepTransportInScene=body.dataset.praxisAdaptiveLab!==undefined&&controls?.id==='mru-ctl';
+     if(controls&&transport&&controls.id!=='acc-info'&&!keepTransportInScene)controls.prepend(transport);
      // Scientific derivations follow the working instrument; keep operating hints
      // beside it. Only this explicit, non-React lesson adapter moves these nodes.
      const block=workspace.parentElement;

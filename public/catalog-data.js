@@ -41,6 +41,12 @@ export const chapters = [
     "title": "Electricitate, magnetism și circuite",
     "color": "#4d8290",
     "icon": "circuit"
+  },
+  {
+    "id": "elemente-de-matematica",
+    "title": "Elemente de matematică",
+    "color": "#9a712e",
+    "icon": "angle"
   }
 ];
 export const simulations = [
@@ -787,6 +793,26 @@ export const simulations = [
     "href": "./simulari/dualismul-unda-corpuscul/index.html",
     "image": "./assets/dualismul-unda-corpuscul.png",
     "keywords": "dualism unda corpuscul de broglie difractie electroni davisson germer microscop foton",
+    "status": "available"
+  },
+  {
+    "id": "masurarea-unghiurilor",
+    "addedOn": "2026-11-17",
+    "addedOrder": 1,
+    "chapter": "elemente-de-matematica",
+    "title": "Măsurarea unghiurilor",
+    "subtitle": "Grade, radiani și steradiani",
+    "description": "Explorează unghiurile plane pe cerc și unghiurile solide pe sferă. Compară gradele, radianii și steradianii, apoi exersează conversiile.",
+    "alt": "Cerc cu arc și sferă cu o calotă evidențiată",
+    "tags": [
+      "Unghiuri",
+      "Radiani",
+      "Steradiani",
+      "Offline"
+    ],
+    "href": "./simulari/masurarea-unghiurilor/index.html",
+    "image": "./assets/masurarea-unghiurilor.svg",
+    "keywords": "matematica unghi grade radiani steradiani cerc sfera conversie",
     "status": "available"
   }
 ];

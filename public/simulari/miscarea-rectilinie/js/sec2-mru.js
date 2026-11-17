@@ -49,6 +49,7 @@
   function mSetup() {
     M.x0 = MR.val('mru-x0'); M.v = MR.val('mru-v'); M.T = MR.val('mru-T');
     mRun.T = M.T;
+    mTrack.setRange(Math.min(-100, Math.floor(xm(M.T) / 50) * 50), Math.max(100, Math.ceil(xm(M.T) / 50) * 50));
     const cx = MR.css('--c-x'), cv = MR.css('--c-v');
     const tO = M.v !== 0 ? -M.x0 / M.v : NaN;
     const pts = [{ t: 0, y: M.x0, color: cx, label: `x₀ = ${f(M.x0, 0)} m` }];

@@ -23,10 +23,13 @@ for(const course of courses){
  for(const lang of ['ro','en'])for(const group of ns)embedded[lang][group]=JSON.parse(await readFile(path.join(root,'public/locales',group,lang+'.json'),'utf8'));
  const head=`<!-- praxis:head --><link rel="stylesheet" href="../../design-system/tokens.css"><link rel="stylesheet" href="../../design-system/components.css"><link rel="stylesheet" href="../../shared/course.css"><link rel="stylesheet" href="../../design-system/lab-layout.css"><link rel="stylesheet" href="../../design-system/laboratory.css"><link rel="stylesheet" href="../../design-system/compact.css"><script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded(${JSON.stringify({namespaceList:ns,embedded})});</script><script src="../../shared/sound.js"></script><script src="../../shared/lab-header.js"></script><!-- /praxis:head -->`;
  const footer=`<!-- praxis:bridge --><script src="../../shared/course.js" data-course="${course.id}" data-title="${course.title}" defer></script>${course.id==='calcul-vectorial'?'<script src="../../shared/vector-tabs.js" defer></script>':''}<!-- /praxis:bridge -->`;
- const html=original.replace('</head>',()=>head+'</head>').replace('<body>',()=>'<body data-praxis-laboratory="true" data-praxis-course="'+course.id+'"><div id="praxis-original" lang="ro">').replace('</body>',()=>'</div>'+footer+'</body>');
+ const pilot=course.id==='miscarea-rectilinie'?' data-praxis-adaptive-lab=""':'';
+ const pilotAssets=pilot?'<link rel="stylesheet" href="../../shared/adaptive-motion.css"><script src="../../shared/adaptive-motion.js" defer></script>':'';
+ const html=original.replace('</head>',()=>head+pilotAssets+'</head>').replace('<body>',()=>'<body data-praxis-laboratory="true" data-praxis-course="'+course.id+'"'+pilot+'><div id="praxis-original" lang="ro">').replace('</body>',()=>'</div>'+footer+'</body>');
  await writeFile(path.join(target,'index.html'),html.replace('<!-- /praxis:head -->',(course.id==='calcul-vectorial'?'<link rel="stylesheet" href="../../shared/vector-tabs.css">':'')+'<script src="../../shared/canvas-typography.js"></script><script src="../../shared/scientific-colors.js"></script><script src="../../shared/course-localization.js"></script><!-- /praxis:head -->'),'utf8');
  if(course.id==='miscarea-rectilinie'){
   const file=path.join(target,'js/app.js');let js=await readFile(file,'utf8');
+  js=js.replace("show(location.hash.replace(/^#\\/?/, ''));", "show(location.hash.replace(/^#\\/?/, '') || 'mru');");
   js=js.replace("MR.sound.on = localStorage.getItem('mr-sound') !== 'off';","MR.sound.on = window.PraxisSound.enabled;");
   js=js.replace('MR.sound.on = !MR.sound.on;','MR.sound.on = window.PraxisSound.setEnabled(!window.PraxisSound.enabled);');await writeFile(file,js,'utf8');
   const core=path.join(target,'js/core.js');let code=await readFile(core,'utf8');code=code.replace('if (!S.on) return;','if (!S.on || !window.PraxisSound.enabled) return;');await writeFile(core,code,'utf8');
@@ -42,6 +45,20 @@ for(const course of courses){
  if(course.id==='calcul-vectorial'){const file=path.join(target,'sw.js'),sw=await readFile(file,'utf8');await writeFile(file,adaptVectorServiceWorker(sw.replace('const PRECACHE = [',"const PRECACHE = [\n  '../../shared/vector-tabs.js','../../shared/vector-tabs.css','../../shared/scientific-colors.js','../../shared/course-localization.js','../../shared/canvas-typography.js',")),'utf8');}
  if(course.id==='miscarea-rectilinie')for(const name of ['core.js','sec1-tipuri.js','sec2-mru.js','sec3-mruv.js']){const file=path.join(target,'js',name);await writeFile(file,await adaptMotionBehavior(await readFile(file,'utf8'),name),'utf8');}
  if(course.id==='miscarea-rectilinie')for(const name of ['core.js','sec1-tipuri.js','sec2-mru.js','sec3-mruv.js','plot.js','track.js','sec4-probleme.js']){const file=path.join(target,'js',name);await writeFile(file,await adaptMotionPhysics(await readFile(file,'utf8'),'js/'+name),'utf8');}
+ if(course.id==='miscarea-rectilinie'){
+  const plot=path.join(target,'js/plot.js');
+  const code=(await readFile(plot,'utf8')).replace(
+   'const ts = MR.niceStep(s.t1 - s.t0, 8);',
+   "const ts = MR.niceStep(s.t1 - s.t0, this.c.closest('#mru') ? Math.max(2, Math.min(8, Math.floor((W - P.l - P.r) / 52))) : 8);"
+  );
+  await writeFile(plot,code,'utf8');
+  const uniformMotion=path.join(target,'js/sec2-mru.js');
+  const motion=(await readFile(uniformMotion,'utf8')).replace(
+   '    mRun.T = M.T;',
+   '    mRun.T = M.T;\n    mTrack.setRange(Math.min(-100, Math.floor(xm(M.T) / 50) * 50), Math.max(100, Math.ceil(xm(M.T) / 50) * 50));'
+  );
+  await writeFile(uniformMotion,motion,'utf8');
+ }
  manifest.push({...course,url:'https://github.com/traianan/'+course.repo,commit:execFileSync('git',['rev-parse','HEAD'],{cwd:path.join(root,'sources',course.repo),encoding:'utf8'}).trim(),files:await hashes(source),adaptedFiles:course.id==='calcul-vectorial'?['index.html','sw.js']:['index.html','js/app.js','js/core.js','js/track.js','js/plot.js','js/sec1-tipuri.js','js/sec2-mru.js','js/sec3-mruv.js','js/sec4-probleme.js','js/sec4-test.js']});
 }
 await writeFile(path.join(root,'docs/imported-courses.json'),JSON.stringify({importedAt:new Date().toISOString(),courses:manifest},null,2)+'\n');

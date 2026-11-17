@@ -1,0 +1,24 @@
+.angles{max-width:80rem;width:100%;margin:auto;padding:1rem;box-sizing:border-box;color:var(--praxis-color-text,#183e37)}
+.angles *{box-sizing:border-box}.angles [hidden]{display:none!important}
+.angles .tabs,.angles .presets{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.8rem}
+.angles button,.angles input[type=number]{font:inherit;min-height:44px;border:1px solid #b9cbc3;border-radius:8px;background:var(--praxis-color-surface,#fffefa);color:inherit;padding:.5rem .8rem}
+.angles button{cursor:pointer}.angles button[aria-selected=true]{background:#123f39;color:white}.angles :focus-visible{outline:3px solid #b17b26;outline-offset:3px}
+.angle-workspace{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(18rem,1fr);gap:1rem;align-items:start}
+.angle-scene,.angle-controls,.angle-reading article,.angle-exercise{border:1px solid #d2ddd4;border-radius:12px;background:var(--praxis-color-surface,#fffefa);padding:1rem;min-width:0}
+.angle-scene h2,.angle-controls h2{margin:0 0 .5rem;font-size:1.2rem}.angle-scene svg{display:block;width:100%;max-height:340px;aspect-ratio:440/310;color:#17685f}.angle-scene svg text{font:17px system-ui;fill:#183e37}
+.angle-formulas{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.8rem;margin:.8rem 0;font-size:1.1em}
+.angle-formulas-stack{display:grid;justify-items:start;gap:.6rem}
+.angle-equivalence{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.2rem;padding:.65rem .8rem;border-radius:8px;background:#eef3ed}
+.angle-equivalence strong{font-size:1.15em}.angle-equivalence span{font-size:.9em}
+.angle-reading h3{font-size:1.05rem;margin:1.2rem 0 .5rem}.angle-reading .math-prose{text-align:start;word-spacing:normal}
+.angle-reading .science-math{max-width:100%}
+.angle-controls label{display:block;margin:.4rem 0}.angle-controls input[type=range]{width:100%;min-height:44px;accent-color:#17685f}.angle-controls output{font-weight:600}.angle-readings{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:.6rem 0}.angle-readings div{background:#eef3ed;border-radius:8px;padding:.6rem}.angle-readings dt{font-size:.9em}.angle-readings dd{margin:.2rem 0 0;font-size:1.2em;font-weight:600}.angles p{line-height:1.55;margin:.5rem 0}.angle-reading{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.angle-reading h2{font-size:1.2rem}.angle-reading table{border-collapse:collapse;width:100%}.angle-reading td,.angle-reading th{padding:.4rem;text-align:left;border-bottom:1px solid #d2ddd4}.angle-exercises{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.angle-exercise input{width:100%;margin:.6rem 0;min-height:44px;font:inherit;border:1px solid #b9cbc3;border-radius:8px;padding:.5rem}.angles .formula{font-size:1.2em;font-weight:600}.angles summary{cursor:pointer;min-height:44px;padding:.6rem 0}.angles .download{display:inline-block;margin-top:1rem}
+@media(max-width:760px){.angle-workspace,.angle-reading,.angle-exercises{grid-template-columns:1fr}.angles{padding:.6rem}.angles .tabs{display:grid;grid-template-columns:1fr 1fr}.angle-scene svg{max-height:300px}}
+@media(min-width:761px) and (max-height:700px){.angle-scene svg{max-height:240px}.angle-scene,.angle-controls{padding:.7rem}.angle-controls p{font-size:.95em}}
+@media(min-width:761px) and (max-width:1150px){.angle-readings{grid-template-columns:repeat(4,minmax(0,1fr))}.angle-readings dd{font-size:1.05em}.angle-workspace{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.angle-scene svg{max-height:280px}}
+@media(max-width:760px){.angle-scene svg text{font-size:22px}}
+
+/* One reading size throughout the reference panels; headings retain weight. */
+#praxis-original .angle-reading,
+#praxis-original .angle-reading article{font-size:1em}
+#praxis-original .angle-reading :is(h2,h3,p,table,thead,tbody,tr,th,td,.angle-formulas,span,strong,math){font-size:inherit!important}

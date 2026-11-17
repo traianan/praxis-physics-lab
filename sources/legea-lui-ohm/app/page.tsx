@@ -1,4 +1,3 @@
-import { Hero } from "@/components/Hero";
 import { LessonTabs } from "@/components/LessonTabs";
 import { Footer } from "@/components/Footer";
 import { PrintSheet } from "@/components/PrintSheet";
@@ -10,7 +9,6 @@ export default function Home() {
         Sari la conținut
       </a>
       <main id="continut">
-        <Hero />
         <LessonTabs />
       </main>
       <Footer />
