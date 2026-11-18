@@ -1,3 +1,5 @@
+import { Hero } from "./Hero";
+import { LessonPages } from "./LessonPages";
 import type { ReactNode } from "react";
 import { ArrowRight, BookOpen, Bolt, Ruler, Target } from "./Icons";
 import { Formula } from "./Formula";
@@ -97,6 +99,8 @@ export function TheorySection() {
           />
         </Reveal>
 
+        <LessonPages id="TheorySection" labels={["Legea și unitățile", "Mărimile legii", "Relații și grafice", "Idei esențiale", "Exemplu rezolvat", "Introducere"]}>
+          <div className="ohm-page">
         <div className="theory-top">
           <Reveal className="definition-panel" delay={40}>
             <div className="definition-quote">
@@ -171,6 +175,8 @@ export function TheorySection() {
           </Reveal>
         </div>
 
+          </div>
+          <div className="ohm-page">
         <Reveal delay={50}>
           <div className="quantity-strip">
             <span className="eyebrow">mărimile legii</span>
@@ -192,6 +198,8 @@ export function TheorySection() {
           </div>
         </Reveal>
 
+          </div>
+          <div className="ohm-page">
         <div className="theory-split">
           <Reveal delay={40}>
             <FormulaTriangle />
@@ -215,6 +223,8 @@ export function TheorySection() {
           </Reveal>
         </div>
 
+          </div>
+          <div className="ohm-page">
         <Reveal className="observations-card" delay={50}>
           <div className="observations-head">
             <div>
@@ -239,6 +249,8 @@ export function TheorySection() {
           </div>
         </Reveal>
 
+          </div>
+          <div className="ohm-page">
         <Reveal className="review-card" delay={40}>
           <div className="review-card-copy">
             <span className="eyebrow">Problemă rezolvată</span>
@@ -300,6 +312,11 @@ export function TheorySection() {
             </p>
           </div>
         </Reveal>
+          </div>
+          <div className="ohm-page">
+        <Hero />
+          </div>
+        </LessonPages>
       </div>
     </section>
   );

@@ -28,7 +28,7 @@ export function Hero() {
               Deschide laboratorul
               <ArrowRight size={18} />
             </a>
-            <a className="button button-ghost-light" href="#teorie">
+            <a className="button button-ghost-light" href="#TheorySection-page-tab-0">
               De la definiție
             </a>
           </div>

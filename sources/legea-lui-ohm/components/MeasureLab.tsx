@@ -1,5 +1,7 @@
 "use client";
 
+import { LessonPages } from "./LessonPages";
+
 import { useMemo, useState, type CSSProperties } from "react";
 import { clamp, computeMeasurement } from "@/lib/physics";
 import {
@@ -69,6 +71,8 @@ export function MeasureLab() {
   return (
     <section className="section section-measure" id="masurare">
       <div className="container">
+        <LessonPages id="MeasureLab" title="Măsurări" labels={["Experiment", "Compară montaje", "Tabel de laborator", "Concluzii și formule"]}>
+          <div className="ohm-page">
         <Reveal className="measure-shell" delay={50}>
           <div className="measure-toolbar">
             <div className="segmented measure-mode">
@@ -174,8 +178,8 @@ export function MeasureLab() {
                 </div>
               </div>
 
-              <div className="measure-correction">
-                <span className="card-kicker">corecția citirii</span>
+              <details className="measure-correction">
+                <summary>Corecția citirii</summary>
                 <p>
                   {amonte ? (
                     <>
@@ -199,51 +203,8 @@ export function MeasureLab() {
                   <span>R rămas</span>
                   <strong>{fmtResistance(Math.abs(corrected - target), 2)}</strong>
                 </div>
-              </div>
+              </details>
             </aside>
-          </div>
-
-          <div className="measure-methods">
-            <div className={`method-card ${amonte ? "is-active" : ""}`}>
-              <span className="method-tag">amonte</span>
-              <h3>Ampermetru înaintea rezistorului</h3>
-              <p>
-                Voltmetrul cuprinde și ampermetrul. Curentul este corect, tensiunea
-                este prea mare, deci <Formula tex="R" /> iese supraevaluat.
-              </p>
-              <Formula tex="R=\dfrac{U}{I}-R_A" />
-              <span className="method-use">
-                <Target size={14} />
-                pentru <Formula tex="R \gg R_A" />
-              </span>
-            </div>
-            <div className={`method-card ${!amonte ? "is-active" : ""}`}>
-              <span className="method-tag">aval</span>
-              <h3>Voltmetru doar pe rezistor</h3>
-              <p>
-                Ampermetrul măsoară și curentul voltmetrului. Tensiunea este
-                corectă, curentul este prea mare, deci <Formula tex="R" /> iese
-                subevaluat.
-              </p>
-              <Formula tex="R=\dfrac{U}{I-R_V^{-1}U}" />
-              <span className="method-use">
-                <Target size={14} />
-                pentru <Formula tex="R \ll R_V" />
-              </span>
-            </div>
-            <div className="method-card method-card-note">
-              <span className="method-tag">de ce doi pași</span>
-              <h3>O soluție practică</h3>
-              <p>
-                Dacă ambele rezistențe sunt mici sau ambele sunt comparabile cu
-                instrumentele, se măsoară de două ori — în amonte și în aval — și
-                se compară. Diferența arată care instrument deformează citirea.
-              </p>
-              <span className="method-use">
-                <CalculatorIcon size={14} />
-                media geometrică a montajelor
-              </span>
-            </div>
           </div>
 
           <div className="measure-controls">
@@ -323,6 +284,53 @@ export function MeasureLab() {
           </div>
         </Reveal>
 
+          </div>
+          <div className="ohm-page">
+          <div className="measure-methods">
+            <div className={`method-card ${amonte ? "is-active" : ""}`}>
+              <span className="method-tag">amonte</span>
+              <h3>Ampermetru înaintea rezistorului</h3>
+              <p>
+                Voltmetrul cuprinde și ampermetrul. Curentul este corect, tensiunea
+                este prea mare, deci <Formula tex="R" /> iese supraevaluat.
+              </p>
+              <Formula tex="R=\dfrac{U}{I}-R_A" />
+              <span className="method-use">
+                <Target size={14} />
+                pentru <Formula tex="R \gg R_A" />
+              </span>
+            </div>
+            <div className={`method-card ${!amonte ? "is-active" : ""}`}>
+              <span className="method-tag">aval</span>
+              <h3>Voltmetru doar pe rezistor</h3>
+              <p>
+                Ampermetrul măsoară și curentul voltmetrului. Tensiunea este
+                corectă, curentul este prea mare, deci <Formula tex="R" /> iese
+                subevaluat.
+              </p>
+              <Formula tex="R=\dfrac{U}{I-R_V^{-1}U}" />
+              <span className="method-use">
+                <Target size={14} />
+                pentru <Formula tex="R \ll R_V" />
+              </span>
+            </div>
+            <div className="method-card method-card-note">
+              <span className="method-tag">de ce doi pași</span>
+              <h3>O soluție practică</h3>
+              <p>
+                Dacă ambele rezistențe sunt mici sau ambele sunt comparabile cu
+                instrumentele, se măsoară de două ori — în amonte și în aval — și
+                se compară. Diferența arată care instrument deformează citirea.
+              </p>
+              <span className="method-use">
+                <CalculatorIcon size={14} />
+                media geometrică a montajelor
+              </span>
+            </div>
+          </div>
+
+          </div>
+          <div className="ohm-page">
         <Reveal className="measure-lab-table" delay={60}>
           <div className="data-table-head">
             <div>
@@ -393,6 +401,8 @@ export function MeasureLab() {
           </p>
         </Reveal>
 
+          </div>
+          <div className="ohm-page">
         <Reveal className="measure-callout" delay={50}>
           <div className="callout">
             <span className="callout-icon">!</span>
@@ -416,7 +426,7 @@ export function MeasureLab() {
             </p>
           </div>
         </Reveal>
-        <details className="ohm-experiment-notes">
+        <details className="ohm-experiment-notes" open>
           <summary>Explicații și formule</summary>
           <Reveal>
             <SectionHeading
@@ -439,6 +449,8 @@ export function MeasureLab() {
             <li>sursa montajului de laborator</li>
           </ul>
         </details>
+          </div>
+        </LessonPages>
       </div>
     </section>
   );

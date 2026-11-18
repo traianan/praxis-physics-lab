@@ -18,10 +18,6 @@ export function SectionHeading({
   return (
     <header className={`section-heading ${action ? "section-heading-row" : ""}`}>
       <div className="section-heading-copy">
-        <div className="section-eyebrow">
-          <span className="section-index">{index}</span>
-          <span>{eyebrow}</span>
-        </div>
         <h2>{title}</h2>
         {lead ? <p className="section-lead">{lead}</p> : null}
       </div>

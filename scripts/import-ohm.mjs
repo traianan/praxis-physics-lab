@@ -56,6 +56,7 @@ await build({entryPoints:[path.join(adapt,'entry.jsx')],outfile:path.join(output
 let css='',boardCss='',shellCss='';
 for(const file of ['globals','hero','theory','lab','circuit','rheostat','measure','problems','quiz','resources'])css+='\n'+await readFile(path.join(source,'app',file+'.css'),'utf8');
 css+='\n'+await read('scripts/adaptations/ohm/adaptive-layout.css');
+css+='\n'+await read('scripts/adaptations/ohm/board-layout.css');
 css=css.replace(/html\[data-board="true"\]\s*\{([^}]+)\}/g,(_,rules)=>{boardCss+=`html[data-board="true"]{${rules}}\n`;return '';});
 css=css.replace(/:root\b/g,':scope').replace(/(?<![\w-])html(?=[\s.#:[{])/g,':scope').replace(/(?<![\w-])body(?=[\s.#:[{])/g,':scope').replace(/\[data-theme="dark"\]/g,':scope[data-theme="dark"]');
 css+='\n.ohm-section-anchor{display:block;position:relative;top:calc(-1 * var(--course-header, 0px));visibility:hidden;height:0;scroll-margin-top:calc(var(--course-header, 0px) + 1rem)}\n.site-header{top:var(--course-header,0px)}\n';

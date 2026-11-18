@@ -322,7 +322,7 @@ const CALCULATORS = [
   },
 ];
 
-export function ProblemsSection() {
+export function ProblemsSection({ calculators = false }: { calculators?: boolean }) {
   const [openId, setOpenId] = useState<string>("p1");
   const [calcId, setCalcId] = useState("law");
   const [values, setValues] = useState<Record<string, Record<string, number>>>(() => {
@@ -344,8 +344,8 @@ export function ProblemsSection() {
           <SectionHeading
             index="06"
             eyebrow="Aplicații și calcul"
-            title="Șase probleme rezolvate, pas cu pas"
-            lead="De la legea pe o porțiune, la circuit complet, adaptare de putere, rezistența unui cablu și erorile de măsurare. Deschide fiecare problemă ca să vezi raționamentul complet."
+            title={calculators ? "Verifică-ți calculele" : "Șase probleme rezolvate, pas cu pas"}
+            lead={calculators ? "Alege tipul de calcul și modifică datele. Rezultatele se actualizează imediat." : "Alege o problemă pentru a urmări raționamentul și verificarea rezultatului."}
             action={
               <span className="lab-head-chip">
                 <Sparkles size={16} />
@@ -355,16 +355,20 @@ export function ProblemsSection() {
           />
         </Reveal>
 
-        <div className="problems-layout">
+        <div className={`problems-layout ${calculators ? "is-calculator" : "is-problem"}`}>
+          {!calculators ? <>
+          <div className="ohm-problem-choices" role="group" aria-label="Alege problema">
+            {PROBLEMS.map(problem => <button key={problem.id} type="button" aria-pressed={openId === problem.id} onClick={() => setOpenId(problem.id)}>{problem.number} · {problem.title}</button>)}
+          </div>
           <Reveal className="problems-list" delay={40}>
-            {PROBLEMS.map((problem) => {
+            {PROBLEMS.filter(problem => problem.id === openId).map((problem) => {
               const open = openId === problem.id;
               return (
                 <article className={`problem ${open ? "is-open" : ""}`} key={problem.id}>
                   <button
                     type="button"
                     className="problem-head"
-                    onClick={() => setOpenId(open ? "" : problem.id)}
+                    onClick={() => setOpenId(problem.id)}
                     aria-expanded={open}
                   >
                     <span className="problem-number">{problem.number}</span>
@@ -419,7 +423,8 @@ export function ProblemsSection() {
             })}
           </Reveal>
 
-          <Reveal className="calculator-card" delay={90}>
+          </> : null}
+          {calculators ? <Reveal className="calculator-card" delay={90}>
             <div className="calculator-head">
               <div>
                 <span className="card-kicker">calculator rapid</span>
@@ -487,7 +492,7 @@ export function ProblemsSection() {
               Valorile se recalculează instant. Păstrează două-trei cifre
               semnificative, ca în exemplele de mai sus.
             </p>
-          </Reveal>
+          </Reveal> : null}
         </div>
       </div>
     </section>

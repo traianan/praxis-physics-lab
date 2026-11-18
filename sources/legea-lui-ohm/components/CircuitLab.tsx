@@ -1,5 +1,7 @@
 "use client";
 
+import { LessonPages } from "./LessonPages";
+
 import { useMemo, useState, type CSSProperties } from "react";
 import { computeCircuit, clamp } from "@/lib/physics";
 import {
@@ -103,6 +105,8 @@ export function CircuitLab() {
   return (
     <section className="section section-circuit section-tint" id="circuit">
       <div className="container">
+        <LessonPages id="CircuitLab" title="Circuit complet" labels={["Experiment", "Bilanț și randament", "Exemple rezolvate", "Explicații și formule"]}>
+          <div className="ohm-page">
         <Reveal className="circuit-shell" delay={60}>
           <div className="circuit-top">
             <div className="circuit-presets" role="group" aria-label="Situații reale">
@@ -184,66 +188,6 @@ export function CircuitLab() {
                 panta <Formula tex="-r" />. Trage punctul pentru a modifica{" "}
                 <Formula tex="R" />.
               </p>
-            </div>
-          </div>
-
-          <div className="circuit-metrics">
-            <div className="metric-card metric-card-main">
-              <span className="card-kicker">curentul</span>
-              <strong>{fmtCurrent(model.current)}</strong>
-              <span className="metric-formula">I = E / (R + r)</span>
-            </div>
-            <div className="metric-card">
-              <span className="card-kicker">tensiunea la borne</span>
-              <strong>{fmtVoltage(model.terminal)}</strong>
-              <span className="metric-formula">U = I · R</span>
-            </div>
-            <div className="metric-card">
-              <span className="card-kicker">cădere internă</span>
-              <strong>{fmtVoltage(model.internalDrop)}</strong>
-              <span className="metric-formula">u = I · r</span>
-            </div>
-            <div className="metric-card">
-              <span className="card-kicker">putere totală</span>
-              <strong>{fmtPower(model.totalPower)}</strong>
-              <span className="metric-formula">P = E · I</span>
-            </div>
-            <div className="metric-card">
-              <span className="card-kicker">putere utilă</span>
-              <strong>{fmtPower(model.usefulPower)}</strong>
-              <span className="metric-formula"><Formula tex="P_u=U\cdot I" /></span>
-            </div>
-            <div className={`metric-card metric-card-${efficiencyTone}`}>
-              <span className="card-kicker">randament</span>
-              <strong>{fmtPercent(model.efficiency)}</strong>
-              <span className="metric-formula">η = U / E</span>
-            </div>
-          </div>
-
-          <div className="balance-bar" aria-label="Bilanțul puterilor">
-            <div className="balance-bar-head">
-              <span className="card-kicker">bilanțul puterilor</span>
-              <span>
-                {fmtPower(model.usefulPower)} util + {fmtPower(model.internalPower)} pierdut
-                = {fmtPower(model.totalPower)}
-              </span>
-            </div>
-            <div className="balance-track">
-              <span
-                className="balance-useful"
-                style={{ width: `${clamp(model.efficiency * 100, 0, 100)}%` }}
-              />
-              <span className="balance-internal" style={{ width: `${clamp((1 - model.efficiency) * 100, 0, 100)}%` }} />
-            </div>
-            <div className="balance-legend">
-              <span>
-                <i className="legend-dot legend-dot-cyan" />
-                putere utilă în circuitul exterior
-              </span>
-              <span>
-                <i className="legend-dot legend-dot-copper" />
-                pierderi pe rezistența internă
-              </span>
             </div>
           </div>
 
@@ -330,6 +274,70 @@ export function CircuitLab() {
           </div>
         </Reveal>
 
+          </div>
+          <div className="ohm-page ohm-balance-page">
+          <div className="circuit-metrics">
+            <div className="metric-card metric-card-main">
+              <span className="card-kicker">curentul</span>
+              <strong>{fmtCurrent(model.current)}</strong>
+              <span className="metric-formula">I = E / (R + r)</span>
+            </div>
+            <div className="metric-card">
+              <span className="card-kicker">tensiunea la borne</span>
+              <strong>{fmtVoltage(model.terminal)}</strong>
+              <span className="metric-formula">U = I · R</span>
+            </div>
+            <div className="metric-card">
+              <span className="card-kicker">cădere internă</span>
+              <strong>{fmtVoltage(model.internalDrop)}</strong>
+              <span className="metric-formula">u = I · r</span>
+            </div>
+            <div className="metric-card">
+              <span className="card-kicker">putere totală</span>
+              <strong>{fmtPower(model.totalPower)}</strong>
+              <span className="metric-formula">P = E · I</span>
+            </div>
+            <div className="metric-card">
+              <span className="card-kicker">putere utilă</span>
+              <strong>{fmtPower(model.usefulPower)}</strong>
+              <span className="metric-formula"><Formula tex="P_u=U\cdot I" /></span>
+            </div>
+            <div className={`metric-card metric-card-${efficiencyTone}`}>
+              <span className="card-kicker">randament</span>
+              <strong>{fmtPercent(model.efficiency)}</strong>
+              <span className="metric-formula">η = U / E</span>
+            </div>
+          </div>
+
+          <div className="balance-bar" aria-label="Bilanțul puterilor">
+            <div className="balance-bar-head">
+              <span className="card-kicker">bilanțul puterilor</span>
+              <span>
+                {fmtPower(model.usefulPower)} util + {fmtPower(model.internalPower)} pierdut
+                = {fmtPower(model.totalPower)}
+              </span>
+            </div>
+            <div className="balance-track">
+              <span
+                className="balance-useful"
+                style={{ width: `${clamp(model.efficiency * 100, 0, 100)}%` }}
+              />
+              <span className="balance-internal" style={{ width: `${clamp((1 - model.efficiency) * 100, 0, 100)}%` }} />
+            </div>
+            <div className="balance-legend">
+              <span>
+                <i className="legend-dot legend-dot-cyan" />
+                putere utilă în circuitul exterior
+              </span>
+              <span>
+                <i className="legend-dot legend-dot-copper" />
+                pierderi pe rezistența internă
+              </span>
+            </div>
+          </div>
+
+          </div>
+          <div className="ohm-page">
         <div className="circuit-explain">
           <Reveal className="explain-card" delay={40}>
             <span className="card-kicker">Problemă rezolvată</span>
@@ -392,6 +400,8 @@ export function CircuitLab() {
           </Reveal>
         </div>
 
+          </div>
+          <div className="ohm-page">
         <Reveal className="circuit-cards" delay={60}>
           <article className="lab-card">
             <span className="lab-card-icon lab-card-icon-amber">
@@ -428,7 +438,7 @@ export function CircuitLab() {
             </p>
           </article>
         </Reveal>
-        <details className="ohm-experiment-notes">
+        <details className="ohm-experiment-notes" open>
           <summary>Explicații și formule</summary>
           <Reveal>
             <SectionHeading
@@ -479,6 +489,8 @@ export function CircuitLab() {
             </div>
           </Reveal>
         </details>
+          </div>
+        </LessonPages>
       </div>
     </section>
   );

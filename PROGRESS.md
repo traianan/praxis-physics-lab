@@ -1,5 +1,16 @@
 # PROGRESS
 
+## Revizie integrală Ohm pentru tabla digitală — 2026-11-18
+
+- Eliminat paddingul de 120 px de sus/jos din Teorie, Probleme, Verificare și Resurse; lățimea disponibilă este folosită coerent. Panourile au margini interioare de 12–16 px. Figurile teoretice au înălțime naturală limitată, fără întinderea inutilă a panoului vecin.
+- Zece taburi principale: Probleme, Calculatoare și Verificare sunt independente. Activități secundare explicite în Teorie, U–I, Circuit, Reostat, Măsurări și Resurse. Exemplele, bilanțul, parametrii, tabelele și explicațiile sunt accesibile fără o pagină verticală lungă; explicațiile se deschid direct în activitatea lor. Starea experimentelor și punctele înregistrate se păstrează între subtaburi.
+- Corectată ierarhia titlurilor prin h2 înaintea cardurilor h3 din experimente. Contrastul a două etichete din bilanț este corectat; nu sunt adăugate suprimări. Păstrate ecuațiile și modelele electrice.
+- Audit agent-browser: 740 stări, RO/EN, text 100/200%, cinci dimensiuni (1920×1080 DPR2, 3840×2160, 1366×768, 1024×768, 390×844). Zero overflow orizontal, margini interioare insuficiente, salturi de titluri sau coliziuni ale nodurilor. La cele două dimensiuni pentru tablă, toate activitățile încap în viewport la text 100%; pe ecrane mici și la 200% se permite derularea. Capturi pentru toate cele 29 de activități principale/secundare în `outputs/ohm-layout/`.
+- Verificate tragerea tactilă pe grafic, subtaburile prin atingere/tastatură, păstrarea punctelor și a montajelor, șase probleme, patru calculatoare, toate zece întrebări și restartul, linkul Resurse→Verificare. 32 combinații tactile RO/EN/text/dimensiune: controalele încap la 100%, fără tăiere orizontală la 200%. Lecția folosește afișarea adaptivă nativă, nu transformarea separată a Modului tablă. Testele sunt în Chrome desktop cu atingere emulată, nu pe tabla fizică Android 13.
+- Regressii Canvas/hartă: 60 stări fără coliziuni sau erori JS. CI: 489 teste trecute, 7 omise, zero eșecuri. Arhiva autonomă regenerată și CRC valid; test file:// cu HTTP blocat: toate interacțiunile și cele 32 combinații tactile trecute, zero cereri HTTP sau erori JS.
+- Audituri reproductibile: `scripts/qa/ohm-layout.py`, `scripts/qa/ohm-layout-interactions.mjs`, `scripts/qa/ohm-board.py`. Scanarea mecanică Impeccable a fișierelor UI modificate: fără constatări.
+- Auditul final axe: 58/58 stări RO/EN, cu explicațiile deschise, fără încălcări; avertismentul `heading-order` și cele două constatări de contrast sunt rezolvate.
+
 ## Ohm pe tabla școlară — 2026-11-18
 
 - Publicat în `main`: `3bee37b`; GitHub Actions `44337298175` reușit, Vercel reușit. Verificarea online a repetat toate cele 60 stări și interacțiunile, fără coliziuni/overflow/erori JS. SHA-256 pentru app.js, app.css și ZIP coincide cu distribuția locală. Auditul focalizat RO/EN: harta fără încălcări; în circuit/măsurări rămâne numai ordinea titlurilor existente, fără suprimări.

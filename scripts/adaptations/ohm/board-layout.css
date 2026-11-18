@@ -1,0 +1,80 @@
+/* One working area below the lesson navigation; no landing-page section gutters. */
+.lesson-tabs { width:100%; max-width:100%; padding:0 .75rem .75rem; }
+.lesson-tab-panel { min-height:0; }
+.lesson-tablist { flex-wrap:wrap; gap:.35rem; margin-bottom:.5rem; }
+.lesson-tab-panel .section { padding:.5rem 0 .75rem; background:transparent; }
+.lesson-tab-panel .section > .container { width:100%; max-width:none; padding:0 .75rem; }
+.lesson-tab-panel .section-heading { margin:0 0 .75rem; gap:.5rem; align-items:start; }
+.lesson-tab-panel .section-heading-copy { max-width:80ch; gap:.4rem; }
+.lesson-tab-panel .section-heading h2, .ohm-panel-title { margin:0; font-size:1.35rem; line-height:1.25; }
+.lesson-tab-panel .section-lead { margin:0; font-size:1rem; line-height:1.5; }
+.lesson-tab-panel .section-heading-action { display:none; }
+.ohm-pages { display:grid; gap:.65rem; min-width:0; }
+.ohm-page-tabs, .ohm-problem-choices { display:flex; flex-wrap:wrap; gap:.4rem; }
+.ohm-page-tabs button, .ohm-problem-choices button { min-height:44px; padding:.55rem .8rem; }
+.ohm-page-tabs button[aria-selected="true"], .ohm-problem-choices button[aria-pressed="true"] {
+  background:var(--copper)!important; color:var(--button-primary-text)!important;
+}
+.ohm-page-panel, .ohm-page { min-width:0; }
+.ohm-page > :first-child { margin-top:0; }
+.ohm-page > :last-child { margin-bottom:0; }
+.lesson-tab-panel :is(.lab-chart-card,.lab-side,.circuit-controls,.rheostat-controls,.measure-controls) { padding:.75rem; }
+.lesson-tab-panel :is(.circuit-schematic-card,.circuit-chart-card,.measure-canvas-card,.measure-side) { padding:.875rem; }
+.lesson-tab-panel :is(.circuit-controls,.rheostat-controls,.measure-controls) .lab-field { padding:.4rem; }
+.lesson-tab-panel :is(.circuit-top,.measure-toolbar,.rheostat-toolbar,.lab-toolbar) { padding:.75rem; gap:.5rem; }
+.lesson-tab-panel :is(.circuit-cards,.rheostat-cards,.lab-cards,.measure-methods) { margin-block:0 .75rem; }
+.lesson-tab-panel :is(.circuit-explain,.rheostat-explain,.rheostat-problem,.measure-lab-table,.data-table-card) { margin-block:0; }
+.lesson-tab-panel :is(.explain-card,.method-card,.lab-card,.definition-panel,.unit-panel,.observations-card,.review-card,.recap-card,.lesson-plan,.links-panel) { padding:1rem; }
+.lesson-tab-panel .ohm-experiment-notes { margin:.5rem 0 0; }
+.lesson-tab-panel .ohm-experiment-notes > summary { padding:.75rem; }
+.lesson-tab-panel .ohm-experiment-notes[open] > .reveal { padding:.75rem; }
+.lesson-tab-panel .problems-layout { grid-template-columns:minmax(0,1fr); gap:.75rem; }
+.lesson-tab-panel .problems-list { min-width:0; }
+.lesson-tab-panel .problem-body { padding:1rem; gap:.65rem; }
+.lesson-tab-panel .problem-head { padding:.75rem 1rem; }
+.lesson-tab-panel .problem-steps .katex-display { margin:.25em 0; }
+.lesson-tab-panel .calculator-card { position:static; width:100%; max-width:none; padding:1rem; }
+.lesson-tab-panel .calculator-tabs { flex-wrap:wrap; }
+.lesson-tab-panel .calculator-tabs button { flex:1 1 auto; min-height:44px; }
+.lesson-tab-panel .calculator-formula { padding:.75rem; }
+.lesson-tab-panel .quiz-top, .lesson-tab-panel .quiz-body, .lesson-tab-panel .quiz-bottom { padding:1rem; }
+.ohm-balance-page { display:grid; gap:.75rem; }
+.ohm-balance-page .circuit-metrics { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+.ohm-balance-page .metric-card-main :is(.card-kicker,.metric-formula) { color:var(--ink-strong); }
+.lesson-tab-panel .measure-correction > summary { min-height:44px; padding:.5rem; cursor:pointer; }
+.lesson-tab-panel .quantity-strip { margin-top:0; }
+.lesson-tab-panel .theory-split { margin-top:.75rem; }
+.lesson-tab-panel .theory-split { align-items:start; }
+.lesson-tab-panel .triangle-card, .lesson-tab-panel .characteristic-card { height:auto; padding:1rem; }
+.lesson-tab-panel .triangle-svg { max-height:230px; }
+.lesson-tab-panel .char-svg { width:100%; height:300px; }
+.lesson-tab-panel .char-guide { margin:0; }
+.lesson-tab-panel .hero { margin:0; padding:1rem; min-height:0; }
+.lesson-tab-panel .hero-inner { padding:0; width:100%; gap:1.5rem; }
+.lesson-tab-panel .hero-copy { padding:0; }
+.lesson-tab-panel .hero-title { font-size:2rem; }
+.lesson-tab-panel .hero-kicker { display:none; }
+.lesson-tab-panel .concept-map { padding:.5rem .75rem; gap:.75rem; }
+.lesson-tab-panel .concept-map-header h2 { font-size:1.35rem; }
+.lesson-tab-panel .concept-map-header .section-eyebrow { display:none; }
+.lesson-tab-panel .concept-map-surface { min-height:460px; height:clamp(460px,calc(100vh - 440px),660px); }
+@media (min-width:1100px) {
+  .ohm-pages.has-title { grid-template-columns:auto minmax(0,1fr); align-items:center; column-gap:1rem; }
+  .ohm-pages > .ohm-panel-title { grid-column:1; grid-row:1; }
+  .ohm-pages > .ohm-panel-title + .ohm-page-tabs { grid-column:2; grid-row:1; }
+  .ohm-pages > .ohm-page-panel { grid-column:1/-1; }
+  .lesson-tab-panel .ui-canvas { height:clamp(165px,22vh,280px); }
+  .lesson-tab-panel .lab-status { padding-block:.5rem; }
+  .lesson-tab-panel .calculator-card { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:.75rem 1.5rem; }
+  .lesson-tab-panel .calculator-head, .lesson-tab-panel .calculator-tabs, .lesson-tab-panel .calculator-note { grid-column:1/-1; }
+  .lesson-tab-panel .calculator-formula { grid-row:3/5; margin:0; display:grid; align-content:center; }
+  .lesson-tab-panel .calculator-fields, .lesson-tab-panel .calculator-results { margin:0; }
+  .lesson-tab-panel .lesson-steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
+  .lesson-tab-panel .resource-links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
+}
+@media (max-width:680px) {
+  .lesson-tab-panel .section > .container, .lesson-tab-panel .concept-map { padding-inline:.5rem; }
+  .ohm-page-tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .ohm-page-tabs button { white-space:normal; }
+  .ohm-problem-choices { display:grid; grid-template-columns:1fr; }
+}

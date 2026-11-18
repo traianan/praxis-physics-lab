@@ -1,7 +1,6 @@
 "use client";
 
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
-import { Hero } from "./Hero";
 import { TheorySection } from "./TheorySection";
 import { OhmLab } from "./OhmLab";
 import { CircuitLab } from "./CircuitLab";
@@ -19,7 +18,9 @@ const TABS = [
   { id: "circuit", label: "Circuit complet" },
   { id: "reostat", label: "Reostat" },
   { id: "masurari", label: "Măsurări" },
-  { id: "evaluare", label: "Probleme și verificare" },
+  { id: "evaluare", label: "Probleme" },
+  { id: "calculatoare", label: "Calculatoare" },
+  { id: "verificare", label: "Verificare" },
   { id: "resurse", label: "Resurse" },
   { id: "harta", label: "Harta conceptelor" },
 ] as const;
@@ -31,7 +32,9 @@ export function LessonTabs() {
 
   useEffect(() => {
     const syncFromHash = () => {
-      const tab = TABS.find((item) => `lesson-tab-${item.id}` === window.location.hash.slice(1));
+      const hash = window.location.hash.slice(1);
+      const alias: Record<string, string> = { teorie: "teorie", laborator: "laborator", circuit: "circuit", reostat: "reostat", masurare: "masurari", probleme: "evaluare", verificare: "verificare", resurse: "resurse" };
+      const tab = TABS.find((item) => `lesson-tab-${item.id}` === hash || item.id === alias[hash]);
       if (tab) setActive(tab.id);
     };
     syncFromHash();
@@ -74,12 +77,14 @@ export function LessonTabs() {
         ))}
       </div>
       <div id="lesson-tab-panel" className="lesson-tab-panel" role="tabpanel" aria-labelledby={`lesson-tab-${active}`} tabIndex={0}>
-        {active === "teorie" ? <><Hero /><TheorySection /></> : null}
+        {active === "teorie" ? <TheorySection /> : null}
         {active === "laborator" ? <OhmLab /> : null}
         {active === "circuit" ? <CircuitLab /> : null}
         {active === "reostat" ? <RheostatLab /> : null}
         {active === "masurari" ? <MeasureLab /> : null}
-        {active === "evaluare" ? <><ProblemsSection /><Quiz /></> : null}
+        {active === "evaluare" ? <ProblemsSection /> : null}
+        {active === "calculatoare" ? <ProblemsSection calculators /> : null}
+        {active === "verificare" ? <Quiz /> : null}
         {active === "resurse" ? <ResourcesSection /> : null}
         {active === "harta" ? <ConceptMap onOpenTab={setActive} /> : null}
       </div>

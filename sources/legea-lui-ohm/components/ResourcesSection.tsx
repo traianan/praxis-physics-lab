@@ -1,5 +1,7 @@
 "use client";
 
+import { LessonPages } from "./LessonPages";
+
 import {
   ArrowRight,
   ExternalLink,
@@ -77,7 +79,8 @@ export function ResourcesSection() {
           />
         </Reveal>
 
-        <div className="resources-grid">
+        <LessonPages id="ResourcesSection" labels={["Scenariu de lecție", "Aprofundare", "Fișă de recapitulare"]}>
+          <div className="ohm-page">
           <Reveal className="lesson-plan" delay={40}>
             <div className="resources-card-head">
               <div>
@@ -112,6 +115,8 @@ export function ResourcesSection() {
             </div>
           </Reveal>
 
+          </div>
+          <div className="ohm-page">
           <Reveal className="links-panel" delay={90}>
             <div className="resources-card-head">
               <div>
@@ -143,8 +148,9 @@ export function ResourcesSection() {
               internet. Aplicația în sine funcționează local.
             </p>
           </Reveal>
-        </div>
 
+          </div>
+          <div className="ohm-page">
         <Reveal className="recap-card" delay={50}>
           <div className="recap-card-head">
             <div>
@@ -227,6 +233,8 @@ export function ResourcesSection() {
             </div>
           </div>
         </Reveal>
+          </div>
+        </LessonPages>
       </div>
     </section>
   );

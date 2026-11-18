@@ -1,5 +1,7 @@
 "use client";
 
+import { LessonPages } from "./LessonPages";
+
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import {
   BULBS,
@@ -206,6 +208,8 @@ export function OhmLab() {
   return (
     <section className="section section-lab lab-section" id="laborator">
       <div className="container">
+        <LessonPages id="OhmLab" title="Laborator U–I" labels={["Experiment", "Parametri și rezultate", "Puncte înregistrate", "Explicații și formule"]}>
+          <div className="ohm-page">
         <Reveal className="lab-shell" delay={50}>
           <div className="lab-toolbar">
             <div className="lab-presets" role="group" aria-label="Tipuri de dipol">
@@ -418,7 +422,11 @@ export function OhmLab() {
             </aside>
           </div>
 
-          <details className="ohm-experiment-notes">
+        </Reveal>
+
+          </div>
+          <div className="ohm-page">
+          <details className="ohm-experiment-notes" open>
             <summary>Parametrii dipolului</summary>
             <div className="lab-controls">
               <div className="lab-field lab-gas-field">
@@ -595,46 +603,8 @@ export function OhmLab() {
               <strong>{isOhmic ? "liniar" : load > 0.2 ? "se încălzește" : "aproape liniar"}</strong>
             </div>
           </div>
-        </Reveal>
-
-        <Reveal className="lab-cards" delay={70}>
-          <article className="lab-card">
-            <span className="lab-card-icon lab-card-icon-cyan">
-              <Bolt size={18} />
-            </span>
-            <h3>De ce becul nu respectă legea?</h3>
-            <p>
-              Legea lui Ohm presupune <Formula tex="R" /> constant. Filamentul se
-              încălzește până la 2 500 K, iar rezistivitatea wolframului crește de
-              peste 10 ori. Caracteristica rămâne o curbă, nu o dreaptă.
-            </p>
-          </article>
-          <article className="lab-card">
-            <span className="lab-card-icon lab-card-icon-amber">
-              <Ruler size={18} />
-            </span>
-            <h3>Cum citești panta</h3>
-            <p>
-              În graficul <Formula tex="I=f(U)" />, panta este{" "}
-              <Formula tex="1/R" />. O dreaptă mai aplecată înseamnă o rezistență
-              mai mare. În graficul <Formula tex="U=f(I)" />, panta este chiar{" "}
-              <Formula tex="R" />.
-            </p>
-          </article>
-          <article className="lab-card">
-            <span className="lab-card-icon lab-card-icon-copper">
-              <Target size={18} />
-            </span>
-            <h3>Metoda celor două puncte</h3>
-            <p>
-              Pentru un rezistor ohmic, măsoară{" "}
-              <Formula tex="(U_1,I_1)" /> și <Formula tex="(U_2,I_2)" />, apoi
-              calculează <Formula tex="R=(U_2-U_1)/(I_2-I_1)" />. Rezultatul nu
-              depinde de origine — semn că dipolul este liniar.
-            </p>
-          </article>
-        </Reveal>
-
+          </div>
+          <div className="ohm-page">
         <Reveal className="data-table-card" delay={60}>
           <div className="data-table-head">
             <div>
@@ -697,7 +667,47 @@ export function OhmLab() {
             </div>
           ) : null}
         </Reveal>
-        <details className="ohm-experiment-notes">
+          </div>
+          <div className="ohm-page">
+        <Reveal className="lab-cards" delay={70}>
+          <article className="lab-card">
+            <span className="lab-card-icon lab-card-icon-cyan">
+              <Bolt size={18} />
+            </span>
+            <h3>De ce becul nu respectă legea?</h3>
+            <p>
+              Legea lui Ohm presupune <Formula tex="R" /> constant. Filamentul se
+              încălzește până la 2 500 K, iar rezistivitatea wolframului crește de
+              peste 10 ori. Caracteristica rămâne o curbă, nu o dreaptă.
+            </p>
+          </article>
+          <article className="lab-card">
+            <span className="lab-card-icon lab-card-icon-amber">
+              <Ruler size={18} />
+            </span>
+            <h3>Cum citești panta</h3>
+            <p>
+              În graficul <Formula tex="I=f(U)" />, panta este{" "}
+              <Formula tex="1/R" />. O dreaptă mai aplecată înseamnă o rezistență
+              mai mare. În graficul <Formula tex="U=f(I)" />, panta este chiar{" "}
+              <Formula tex="R" />.
+            </p>
+          </article>
+          <article className="lab-card">
+            <span className="lab-card-icon lab-card-icon-copper">
+              <Target size={18} />
+            </span>
+            <h3>Metoda celor două puncte</h3>
+            <p>
+              Pentru un rezistor ohmic, măsoară{" "}
+              <Formula tex="(U_1,I_1)" /> și <Formula tex="(U_2,I_2)" />, apoi
+              calculează <Formula tex="R=(U_2-U_1)/(I_2-I_1)" />. Rezultatul nu
+              depinde de origine — semn că dipolul este liniar.
+            </p>
+          </article>
+        </Reveal>
+
+        <details className="ohm-experiment-notes" open>
           <summary>Explicații și formule</summary>
           <Reveal>
             <SectionHeading
@@ -714,6 +724,8 @@ export function OhmLab() {
             />
           </Reveal>
         </details>
+          </div>
+        </LessonPages>
       </div>
     </section>
   );

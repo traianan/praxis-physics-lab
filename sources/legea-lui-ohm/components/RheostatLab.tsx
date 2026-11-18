@@ -1,5 +1,7 @@
 "use client";
 
+import { LessonPages } from "./LessonPages";
+
 import { useMemo, useState, type CSSProperties } from "react";
 import { clamp, computeRheostat } from "@/lib/physics";
 import {
@@ -63,12 +65,15 @@ export function RheostatLab() {
   return (
     <section className="section section-rheostat" id="reostat">
       <div className="container">
+        <LessonPages id="RheostatLab" title="Reostat" labels={["Experiment", "Compară montaje", "Problemă aplicată", "Explicații și formule"]}>
+          <div className="ohm-page">
         <Reveal className="rheostat-shell" delay={60}>
           <div className="rheostat-toolbar">
             <div className="segmented rheostat-mode">
               <button
                 type="button"
                 className={mode === "series" ? "is-active" : ""}
+                aria-pressed={mode === "series"}
                 onClick={() => setMode("series")}
               >
                 Montaj serie
@@ -76,6 +81,7 @@ export function RheostatLab() {
               <button
                 type="button"
                 className={mode === "divider" ? "is-active" : ""}
+                aria-pressed={mode === "divider"}
                 onClick={() => setMode("divider")}
               >
                 Montaj potențiometric
@@ -280,6 +286,8 @@ export function RheostatLab() {
           </div>
         </Reveal>
 
+          </div>
+          <div className="ohm-page">
         <div className="rheostat-explain">
           <Reveal className="explain-card" delay={40}>
             <span className="card-kicker">Demonstrație · montaj serie</span>
@@ -337,6 +345,8 @@ export function RheostatLab() {
           </Reveal>
         </div>
 
+          </div>
+          <div className="ohm-page">
         <Reveal className="rheostat-problem" delay={50}>
           <div className="rheostat-problem-copy">
             <span className="eyebrow">Problemă aplicată</span>
@@ -375,6 +385,8 @@ export function RheostatLab() {
           </div>
         </Reveal>
 
+          </div>
+          <div className="ohm-page">
         <Reveal className="rheostat-cards" delay={60}>
           <article className="lab-card">
             <span className="lab-card-icon lab-card-icon-copper">
@@ -409,7 +421,7 @@ export function RheostatLab() {
             </p>
           </article>
         </Reveal>
-        <details className="ohm-experiment-notes">
+        <details className="ohm-experiment-notes" open>
           <summary>Explicații și formule</summary>
           <Reveal>
             <SectionHeading
@@ -450,6 +462,8 @@ export function RheostatLab() {
             <li>influențează curentul maxim posibil</li>
           </ul>
         </details>
+          </div>
+        </LessonPages>
       </div>
     </section>
   );

@@ -13,7 +13,7 @@ def js(s):return cmd('eval','-b',base64.b64encode(s.encode()).decode()).get('res
 report={'layouts':[]}
 def save():(OUT/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 cmd('errors','--clear');cmd('open',BASE+'/simulari/legea-lui-ohm/index.html')
-cmd('wait','--fn','document.querySelectorAll(".lesson-tab").length===8')
+cmd('wait','--fn','document.querySelectorAll(".lesson-tab").length===10')
 js('''(()=>{
  const p=CanvasRenderingContext2D.prototype,records=window.ohmDrawings=new Map();
  const take=ctx=>{if(!records.has(ctx.canvas))records.set(ctx.canvas,{labels:[],shapes:[]});return records.get(ctx.canvas);};
