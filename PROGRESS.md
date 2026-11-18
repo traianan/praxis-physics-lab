@@ -1,5 +1,12 @@
 # PROGRESS
 
+## Hărți pentru toate cele trei lecții de matematică — 2026-11-18
+
+- Adăugate hărți și la Funcția de gradul întâi și Măsurarea unghiurilor. Fiecare are șapte concepte, șase legături etichetate, explicații RO/EN, concepte asociate și acces la secțiunile lecției. Cele trei hărți folosesc același motor fără dependențe în public/shared/concept-map.js și aceeași foaie de stil. Configurațiile rămân specifice lecțiilor; importerele păstrează integrarea reproductibilă. Importul liniar permite PRAXIS_LINEAR_SOURCE pentru snapshotul nemodificat folosit în worktree.
+- Verificări native: trei hărți × 140 stări RO/EN/text 100/200%/cinci dimensiuni, fără overflow, suprapuneri de noduri sau ținte tactile sub 44 px. În Mod tablă, harta este înregistrată ca workspace: 16 combinații RO/EN/text/Full HD/4K, selecție funcțională și șapte noduri prezente. Schimbarea limbii păstrează scena; accesarea lecției închide corect modul. Conectorii folosesc coordonate logice și rămân aliniați la scalarea scenei.
+- Offline: cele trei arhive CRC valide, câte 28 stări și 89 verificări, fără cereri HTTP sau erori JS. Audit axe al celor două lecții noi: 46 stări fără încălcări. CI local: 503 teste trecute, 7 omise. SymPy confirmă zeroul funcției și conversiile/limitele calotei. Motorul comun și stilurile au trecut detectorul Impeccable fără constatări/suprimări. Instrumente folosite: diagram-design, Impeccable, agent-browser/Chrome, axe și SymPy. Tabla este emulată, nu dispozitiv fizic.
+- Harta quadratică inițială a fost publicată în 6d27b47; CI 44383367844 și Vercel au trecut, iar producția a trecut 140 stări/299 verificări. Hărțile suplimentare, motorul comun, actualizarea previzualizării locale și publicarea finală sunt continuate în aceeași sarcină. Sursele nepublicate ale checkoutului principal rămân păstrate.
+
 ## Hartă quadratică și diferența local/online — 2026-11-18
 
 - Cauză verificată: checkoutul principal din D:/ProiecteAI/Praxis-Fizica este pe 0f75cab și catalogul său local are numai două lecții de matematică. Versiunea publicată provine din worktree-ul separat și are trei. Checkoutul principal conține multe schimbări nepublicate; nu este resetat sau suprascris. Distribuția generată servită pe 4189 este actualizată separat, cu backup în outputs/local-preview-backups; o nouă construire din sursele vechi poate reintroduce catalogul vechi. Pentru dezvoltarea versiunii publicate se folosește acest worktree.

@@ -41,9 +41,9 @@ for(const lang of ['ro','en']){
  await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?en:Object.fromEntries(Object.keys(en).map(key=>[key,key]))},null,2)+'\n');
  for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
 }
-const head=['design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css'].map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+
+const head=['design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css','shared/concept-map.css'].map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+
  '<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded}).replaceAll('</script','<\\/script')+');</script>'+
- ['sound.js','lab-header.js','canvas-resolution.js','canvas-typography.js','scientific-colors.js','course-localization.js'].map(p=>'<script src="../../shared/'+p+'"></script>').join('');
+ ['sound.js','lab-header.js','canvas-resolution.js','canvas-typography.js','scientific-colors.js','course-localization.js','concept-map.js'].map(p=>'<script src="../../shared/'+p+'"></script>').join('');
 html=html.replace('<link rel="stylesheet" href="style.css">',head+'<link rel="stylesheet" href="style.css">')
  .replace('<script src="lesson.js">','<script id="quadratic-model">'+await read('scripts/adaptations/quadratic-function-model.js')+'</script><script src="lesson.js">')
  .replace('</body>','<script>'+await read('scripts/adaptations/quadratic-practice.js')+'</script><script>'+await read('scripts/adaptations/quadratic-concepts.js')+'</script><script src="../../shared/course.js" data-course="'+id+'" data-title="Funcția de gradul al doilea" data-subtitle="Coeficienți, vârf, rădăcini și modele în fizică"></script></body>');

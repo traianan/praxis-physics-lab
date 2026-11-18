@@ -5,7 +5,7 @@ import {labNamespaces} from './lab-registry.mjs';
 const root=new URL('../',import.meta.url), id='functia-gradul-intai';
 const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{const url=new URL(p,root);await mkdir(new URL('./',url),{recursive:true});await writeFile(url,s);};
-const source='../functia-gradul-intai/';
+const source=process.env.PRAXIS_LINEAR_SOURCE||'../functia-gradul-intai/';
 const messages=Object.fromEntries((await read('scripts/adaptations/linear-function-en.tsv')).trim().split(/\r?\n/).map(line=>line.split('\t')));
 for(const lang of ['ro','en'])await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?messages:Object.fromEntries(Object.keys(messages).map(k=>[k,k]))},null,2)+'\n');
 let html=await read(source+'index.html');
@@ -36,14 +36,16 @@ html=html.replace('<p data-no-science-math id="physExplain">','<p data-no-scienc
 html=html.replace(/<div class="prefs-wrap">\s*<button[\s\S]*?<\/button>/,'<div class="prefs-wrap">')
  .replace('<h3>Ce arătăm pe grafic?</h3>','<p class="linear-prefs-title"><strong>Ce arătăm pe grafic?</strong></p>')
  .replace('class="popover prefs-popover" id="prefsPopover" hidden','class="linear-prefs" id="prefsPopover" hidden');
-html=html.replace('<div class="tabbar">','<div class="tabbar" style="margin:0;padding:0">');
+html=html.replace('<div class="tabbar">','<div class="tabbar" style="margin:0;padding:0">')
+ .replace(/(<button[^>]+data-tab="exerseaza"[^>]*>Exersează<\/button>)/,'$1<button class="tab" type="button" role="tab" id="tab-harta" aria-controls="panel-harta" aria-selected="false" data-tab="harta" tabindex="-1">Harta conceptelor</button>')
+ .replace('<div class="download-row">','<section class="panel" id="panel-harta" role="tabpanel" aria-labelledby="tab-harta" hidden><div id="linear-concepts" data-no-science-math></div></section><div class="download-row">');
 const ns=await labNamespaces(id),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));
-const styles=['design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css'];
-const scripts=['sound.js','lab-header.js','canvas-resolution.js','canvas-typography.js','scientific-colors.js','course-localization.js'];
+const styles=['design-system/tokens.css','design-system/components.css','design-system/lab-layout.css','design-system/laboratory.css','design-system/compact.css','shared/course.css','shared/concept-map.css'];
+const scripts=['sound.js','lab-header.js','canvas-resolution.js','canvas-typography.js','scientific-colors.js','course-localization.js','concept-map.js'];
 const head=styles.map(p=>'<link rel="stylesheet" href="../../'+p+'">').join('')+'<script src="../../shared/i18n.js"></script><script>PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:ns,embedded}).replaceAll('</script','<\\/script')+');</script>'+scripts.map(p=>'<script src="../../shared/'+p+'"></script>').join('');
 html=html.replace('<link rel="stylesheet" href="style.css">',head+'<link rel="stylesheet" href="style.css">')
- .replace('</body>','<script src="../../shared/course.js" data-course="'+id+'" data-title="Funcția de gradul întâi" data-subtitle="Pantă, ordonată și modele liniare în fizică"></script></body>');
+ .replace('</body>','<script>'+await read('scripts/adaptations/linear-concepts.js')+'</script><script src="../../shared/course.js" data-course="'+id+'" data-title="Funcția de gradul întâi" data-subtitle="Pantă, ordonată și modele liniare în fizică"></script></body>');
 await write('public/simulari/'+id+'/index.html',html.replace(/^[ \t]+$/gm,''));
 let css=await read(source+'style.css');
 // Scope source styles so they cannot change the shared header or dialogs.

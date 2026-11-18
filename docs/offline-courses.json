@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-18T19:41:53.464Z",
+  "builtAt": "2026-11-18T19:59:33.625Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -409,28 +409,6 @@
       "localResources": true
     },
     {
-      "id": "masurarea-unghiurilor",
-      "file": "public/simulari/masurarea-unghiurilor/masurarea-unghiurilor.zip",
-      "sha256": "d120aa183ceaf9d133f1bd7472025eb20895bdb402349e76be0aa19edc847d3c",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
-      "id": "functia-gradul-intai",
-      "file": "public/simulari/functia-gradul-intai/functia-gradul-intai.zip",
-      "sha256": "07ec45f14cf968c14823f47ce55473bfbb35dbe7e7cd742d8b91828d4b0b3fd7",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
-    {
       "id": "rezistenta-unui-fir",
       "file": "public/simulari/rezistenta-unui-fir/rezistenta-unui-fir.zip",
       "sha256": "2216e027197f24912c293a317568f2ba0e495da1966a64156e018423e148ab63",
@@ -442,9 +420,31 @@
       "localResources": true
     },
     {
+      "id": "functia-gradul-intai",
+      "file": "public/simulari/functia-gradul-intai/functia-gradul-intai.zip",
+      "sha256": "defeba16377bc6be5d0cf4073ac3bb7785a68594f12bedc3bebbf519d655e705",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "masurarea-unghiurilor",
+      "file": "public/simulari/masurarea-unghiurilor/masurarea-unghiurilor.zip",
+      "sha256": "d9d59d8296a5f6c09aa0b979023f44fb45be1857b9232b8a6ff53ad01b864b88",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
       "id": "functia-gradul-al-doilea",
       "file": "public/simulari/functia-gradul-al-doilea/functia-gradul-al-doilea.zip",
-      "sha256": "2375968fffc0576c079bd12d5497a4f6e10993988a4f57aebd8d0688a563bd08",
+      "sha256": "9ade6a18e1159f3b04520c0700118c5d98aa63af99da23810c8455847b123eca",
       "languages": [
         "ro",
         "en"

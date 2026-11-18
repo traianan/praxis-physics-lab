@@ -12,26 +12,6 @@
  const edges=[['function','coefficients',['are','has']],['function','vertex',['are','has']],['function','delta',['se analizează prin','analysed using']],['coefficients','sign',['a influențează','a influences']],['vertex','physics',['interpretează','interprets']],['delta','roots',['stabilește numărul','determines count']]];
  global.QuadraticConcepts={nodes,edges};
  if(typeof document==='undefined')return;
- const root=document.getElementById('quadratic-concepts');if(!root)return;let selected='function';
- const lang=()=>global.PraxisI18n.language==='en'?1:0,tr=(ro,en)=>lang()?en:ro;
- const make=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
- function draw(){
-  const graph=root.querySelector('.concept-graph'),svg=graph?.querySelector('svg');if(!graph||!svg||!graph.getBoundingClientRect().width)return;
-  const box=graph.getBoundingClientRect(),ns='http://www.w3.org/2000/svg';svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${box.width} ${box.height}`);
-  for(const [from,to,label]of edges){const a=root.querySelector('[data-concept='+from+']').getBoundingClientRect(),b=root.querySelector('[data-concept='+to+']').getBoundingClientRect(),x1=a.left+a.width/2-box.left,x2=b.left+b.width/2-box.left,y1=a.bottom-box.top,y2=b.top-box.top,mid=(y1+y2)/2,p=document.createElementNS(ns,'path');p.setAttribute('d',`M${x1},${y1} V${mid} H${x2} V${y2}`);svg.append(p);const text=document.createElementNS(ns,'text');text.setAttribute('x',x2);text.setAttribute('y',y2-9);text.setAttribute('text-anchor','middle');text.textContent=label[lang()];svg.append(text);}
- }
- function detail(focus=false){
-  const n=nodes.find(n=>n.id===selected),l=lang(),aside=root.querySelector('.concept-detail');aside.replaceChildren();
-  for(const b of root.querySelectorAll('[data-concept]')){b.setAttribute('aria-pressed',String(b.dataset.concept===selected));b.classList.toggle('primary',b.dataset.concept===selected);}
-  const heading=make('h3',n.title[l]);heading.tabIndex=-1;aside.append(heading,make('p',n.formula,'concept-formula'),make('p',n.text[l]));
-  aside.append(make('p',tr('Concepte legate','Related concepts'),'concept-related-label'));const links=make('div',undefined,'concept-related');for(const id of n.related){const other=nodes.find(n=>n.id===id),button=make('button',other.title[l],'btn');button.type='button';button.onclick=()=>{selected=id;detail(true);};links.append(button);}aside.append(links);
-  const open=make('button',tr('Deschide secțiunea: ','Open section: ')+({teorie:tr('Teorie','Theory'),animatii:tr('Animații','Animations'),fizica:tr('Exemple în fizică','Physics examples'),exerseaza:tr('Exersează','Practice')}[n.tab]),'btn primary');open.type='button';open.onclick=()=>{document.querySelector('[data-tab='+n.tab+']').click();if(n.activity)document.querySelector('[data-anim='+n.activity+']')?.click();document.querySelector('#tab-'+n.tab).scrollIntoView({block:'start'});};aside.append(open);if(focus)heading.focus({preventScroll:true});
- }
- function render(){
-  const l=lang();root.replaceChildren();const heading=make('h2',tr('Harta conceptelor','Concept map'));heading.dataset.contentType='summary';root.append(heading,make('p',tr('Urmărește legăturile de sus în jos. Atinge un concept pentru explicații și acces la lecție.','Follow the links from top to bottom. Tap a concept for explanations and access to the lesson.'),'concept-intro'));
-  const layout=make('div',undefined,'concept-layout'),graph=make('div',undefined,'concept-graph');graph.setAttribute('role','group');graph.setAttribute('aria-label',tr('Conceptele și legăturile funcției de gradul al doilea','Quadratic function concepts and connections'));const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('aria-hidden','true');svg.classList.add('concept-links');graph.append(svg);
-  for(const [i,n]of nodes.entries()){const button=make('button',undefined,'btn concept-node');button.type='button';button.dataset.concept=n.id;button.style.gridArea=['1 / 2','2 / 1','2 / 2','2 / 3','3 / 1','3 / 2','3 / 3'][i];button.append(make('strong',n.title[l]),make('span',n.id==='function'?'a ≠ 0':n.id==='delta'?'Δ = b² − 4ac':n.id==='vertex'?'x = −b/(2a)':n.id==='roots'?'f(x) = 0':n.id==='physics'?'h(t), y(x)':n.id==='sign'?'f(x) ≷ 0':'a, b, c'));button.onclick=()=>{selected=n.id;detail();};graph.append(button);}
-  const aside=make('aside',undefined,'card concept-detail');aside.setAttribute('aria-label',tr('Explicația conceptului selectat','Selected concept explanation'));layout.append(graph,aside);root.append(layout);detail();requestAnimationFrame(draw);
- }
- render();global.addEventListener('praxis-language-change',render);global.addEventListener('resize',draw);new ResizeObserver(draw).observe(root);document.querySelector('[data-tab=harta]').addEventListener('click',()=>requestAnimationFrame(draw));
+ const short={function:'a ≠ 0',coefficients:'a, b, c',vertex:'x = −b/(2a)',delta:'Δ = b² − 4ac',sign:'f(x) ≷ 0',physics:'h(t), y(x)',roots:'f(x) = 0'};for(const n of nodes)n.short=short[n.id];
+ global.PraxisConceptMap.mount({root:document.getElementById('quadratic-concepts'),nodes,edges,tabButton:document.querySelector('[data-tab=harta]'),navigate(n){document.querySelector('[data-tab='+n.tab+']').click();if(n.activity)document.querySelector('[data-anim='+n.activity+']')?.click();document.querySelector('#tab-'+n.tab).scrollIntoView({block:'start'});}});
 })(globalThis);

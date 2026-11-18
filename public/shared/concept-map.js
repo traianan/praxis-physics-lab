@@ -1,0 +1,26 @@
+/* Shared, dependency-free concept maps for the mathematics lessons. */
+(function(global){'use strict';global.PraxisConceptMap={mount(options){const root=options.root;if(!root)return;const{nodes,edges}=options;let selected=nodes[0].id;root.classList.add('praxis-concept-map');
+ const lang=()=>global.PraxisI18n.language==='en'?1:0,tr=(ro,en)=>lang()?en:ro;
+ const make=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
+ function draw(){
+  const graph=root.querySelector('.concept-graph'),svg=graph?.querySelector('svg');if(!graph||!svg||!graph.getBoundingClientRect().width)return;
+  const box=graph.getBoundingClientRect(),ns='http://www.w3.org/2000/svg';svg.replaceChildren();const ratio=graph.clientWidth/box.width;svg.setAttribute('viewBox',`0 0 ${graph.clientWidth} ${graph.clientHeight}`);
+  for(const [from,to,label]of edges){const a=root.querySelector('[data-concept='+from+']').getBoundingClientRect(),b=root.querySelector('[data-concept='+to+']').getBoundingClientRect(),x1=(a.left+a.width/2-box.left)*ratio,x2=(b.left+b.width/2-box.left)*ratio,y1=(a.bottom-box.top)*ratio,y2=(b.top-box.top)*ratio,mid=(y1+y2)/2,p=document.createElementNS(ns,'path');p.setAttribute('d',`M${x1},${y1} V${mid} H${x2} V${y2}`);svg.append(p);const text=document.createElementNS(ns,'text');text.setAttribute('x',x2);text.setAttribute('y',y2-9);text.setAttribute('text-anchor','middle');text.textContent=label[lang()];svg.append(text);}
+ }
+ function detail(focus=false){
+  const n=nodes.find(n=>n.id===selected),l=lang(),aside=root.querySelector('.concept-detail');aside.replaceChildren();
+  for(const b of root.querySelectorAll('[data-concept]')){b.setAttribute('aria-pressed',String(b.dataset.concept===selected));b.classList.toggle('primary',b.dataset.concept===selected);}
+  const heading=make('h3',n.title[l]);heading.tabIndex=-1;aside.append(heading,make('p',l&&n.formulaEn?n.formulaEn:n.formula,'concept-formula'),make('p',n.text[l]));
+  aside.append(make('p',tr('Concepte legate','Related concepts'),'concept-related-label'));const links=make('div',undefined,'concept-related');for(const id of n.related){const other=nodes.find(n=>n.id===id),button=make('button',other.title[l],'btn');button.type='button';button.onclick=()=>{selected=id;detail(true);};links.append(button);}aside.append(links);
+  const open=make('button',tr('Deschide secțiunea: ','Open section: ')+(n.section?.[l]||({teorie:tr('Teorie','Theory'),animatii:tr('Animații','Animations'),fizica:tr('Exemple în fizică','Physics examples'),exerseaza:tr('Exersează','Practice')}[n.tab])),'btn primary');open.type='button';open.onclick=()=>{if(root.querySelector('[data-wb-stage]'))global.PraxisWhiteboard?.close();options.navigate(n);};aside.append(open);if(focus)heading.focus({preventScroll:true});
+ }
+ function render(){
+  const l=lang();root.replaceChildren();const heading=make('h2',tr('Harta conceptelor','Concept map'));heading.dataset.contentType='summary';root.append(heading,make('p',tr('Urmărește legăturile de sus în jos. Atinge un concept pentru explicații și acces la lecție.','Follow the links from top to bottom. Tap a concept for explanations and access to the lesson.'),'concept-intro'));
+  const layout=make('div',undefined,'concept-layout'),graph=make('div',undefined,'concept-graph');graph.setAttribute('role','group');graph.setAttribute('aria-label',tr('Conceptele și legăturile lecției','Lesson concepts and connections'));const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('aria-hidden','true');svg.classList.add('concept-links');graph.append(svg);
+  for(const [i,n]of nodes.entries()){const button=make('button',undefined,'btn concept-node');button.type='button';button.dataset.concept=n.id;button.style.gridArea=['1 / 2','2 / 1','2 / 2','2 / 3','3 / 1','3 / 2','3 / 3'][i];button.append(make('strong',n.title[l]),make('span',(l&&n.shortEn?n.shortEn:n.short)||n.formula));button.onclick=()=>{selected=n.id;detail();};graph.append(button);}
+  const aside=make('aside',undefined,'card concept-detail');aside.setAttribute('aria-label',tr('Explicația conceptului selectat','Selected concept explanation'));layout.dataset.workspaceLayout='concept-map';layout.append(graph,aside);root.append(layout);detail();requestAnimationFrame(draw);
+ }
+ function refreshLanguage(){if(!root.querySelector('[data-wb-stage]')){render();return;}const l=lang();root.querySelector('h2').textContent=tr('Harta conceptelor','Concept map');root.querySelector('.concept-intro').textContent=tr('Urmărește legăturile de sus în jos. Atinge un concept pentru explicații și acces la lecție.','Follow the links from top to bottom. Tap a concept for explanations and access to the lesson.');for(const n of nodes){const button=root.querySelector('[data-concept='+n.id+']');button.querySelector('strong').textContent=n.title[l];button.querySelector('span').textContent=(l&&n.shortEn?n.shortEn:n.short)||n.formula;}detail();draw();}
+ render();global.addEventListener('praxis-language-change',refreshLanguage);global.addEventListener('resize',draw);new ResizeObserver(draw).observe(root);options.tabButton.addEventListener('click',()=>requestAnimationFrame(draw));
+
+}};})(globalThis);
