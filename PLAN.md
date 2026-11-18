@@ -7,6 +7,8 @@
 3. Evaluează sursa `D:/ProiecteAI/functia-gradul-al-doilea/index.html`; integrează lecția în Elemente de matematică, completează funcțiile necesare și verifică formulele cu SymPy.
 4. Testează noua lecție, afișarea tactilă, traducerile, offline și CI; publică și verifică producția. Păstrează rezultatele în PROGRESS.md.
 
+Finalizat: auditul publicat în 19545dc, lecția nouă și compatibilitatea CSS în f397978. Ambele validări GitHub Actions au trecut; producția verificată, inclusiv 60 stări responsive ale lecției noi și navigarea publică. Rezultatele și limita emulării tablei sunt în PROGRESS.md.
+
 ## Revizie integrală după captura spațiului liber
 
 1. Măsoară toate cele opt taburi existente; identifică paddingul de 120 px, lățimile imbricate și conținutul excedentar.
