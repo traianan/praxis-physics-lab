@@ -34,7 +34,8 @@ export function LessonTabs() {
     const syncFromHash = () => {
       const hash = window.location.hash.slice(1);
       const alias: Record<string, string> = { teorie: "teorie", laborator: "laborator", circuit: "circuit", reostat: "reostat", masurare: "masurari", probleme: "evaluare", verificare: "verificare", resurse: "resurse" };
-      const tab = TABS.find((item) => `lesson-tab-${item.id}` === hash || item.id === alias[hash]);
+      const owners: Record<string, string> = { TheorySection: "teorie", OhmLab: "laborator", CircuitLab: "circuit", RheostatLab: "reostat", MeasureLab: "masurari", ResourcesSection: "resurse" };
+      const tab = TABS.find((item) => `lesson-tab-${item.id}` === hash || item.id === alias[hash] || item.id === owners[hash.split("-page-tab-")[0]]);
       if (tab) setActive(tab.id);
     };
     syncFromHash();

@@ -26,7 +26,13 @@ export function LessonPages({ id, title, labels, children }: {
     else return;
     event.preventDefault(); setActive(next); buttons.current[next]?.focus();
   };
-  return <div className={`ohm-pages${title ? " has-title" : ""}`}>
+  return <div className={`ohm-pages${title ? " has-title" : ""}`} onClick={event => {
+    const link = (event.target as Element).closest<HTMLAnchorElement>("a[href]");
+    const index = labels.findIndex((_, i) => link?.hash === `#${id}-page-tab-${i}`);
+    if (index < 0) return;
+    event.preventDefault(); setActive(index);
+    window.location.hash = `${id}-page-tab-${index}`;
+  }}>
     {title ? <h2 className="ohm-panel-title">{title}</h2> : null}
     <div className="ohm-page-tabs" role="tablist" aria-label={title ?? "Activități"}>
       {labels.map((label, index) => <button key={label} type="button" role="tab"

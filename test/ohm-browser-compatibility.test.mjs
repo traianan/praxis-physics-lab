@@ -9,6 +9,15 @@ test('Ohm concept map has usable styles on Chrome without CSS scope support',asy
  assert.match(css,/#ohm-root[^{}]*\.concept-map-surface\s*\{/);
 });
 
+test('Ohm canvases skip stale resize callbacks after their activity is removed',async()=>{
+ const source=await readFile(new URL('../sources/legea-lui-ohm/lib/canvas.ts',import.meta.url),'utf8');
+ const {code}=await transform(source,{loader:'ts',format:'esm'});
+ const {prepareCanvas}=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));
+ const getContext=()=>assert.fail('a hidden or detached canvas must not draw');
+ assert.equal(prepareCanvas({isConnected:false,getBoundingClientRect:()=>({width:500,height:300}),getContext}),null);
+ assert.equal(prepareCanvas({isConnected:true,getBoundingClientRect:()=>({width:0,height:0}),getContext}),null);
+});
+
 test('circuit balance and both measurement corrections stay valid at the classroom examples and limits',async()=>{
  const source=await readFile(new URL('../sources/legea-lui-ohm/lib/physics.ts',import.meta.url),'utf8');
  const {code}=await transform(source,{loader:'ts',format:'esm'});

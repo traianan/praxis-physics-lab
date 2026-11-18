@@ -11,6 +11,8 @@ export interface CanvasFrame {
  */
 export function prepareCanvas(canvas: HTMLCanvasElement): CanvasFrame | null {
   const rect = canvas.getBoundingClientRect();
+  // ResizeObserver can deliver one last callback after a tab has unmounted.
+  if (!canvas.isConnected || rect.width < 2 || rect.height < 2) return null;
   const width = Math.max(1, Math.round(rect.width));
   const height = Math.max(1, Math.round(rect.height));
   const dpr = Math.min(window.devicePixelRatio || 1, 2.5);

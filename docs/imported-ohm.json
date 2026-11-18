@@ -100,11 +100,11 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/LessonPages.tsx",
-      "sha256": "7172c12f727d418f979a647bf055b18134f6696b6a733ed800d7e3455bc053ea"
+      "sha256": "e441aaa239568adefc97ac15d70b8363138abf789dd2b135f20de873d67e6fd7"
     },
     {
       "path": "sources/legea-lui-ohm/components/LessonTabs.tsx",
-      "sha256": "61ebe31b3860f5b4c157b4ca877aa849de184e79edee1e751e3ffff25c0c11de"
+      "sha256": "b4f1f4c41f944c7cb53c75611a78f1155e21347f2886b84eb7865328223bb105"
     },
     {
       "path": "sources/legea-lui-ohm/components/MeasureLab.tsx",
@@ -172,7 +172,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/lib/canvas.ts",
-      "sha256": "ac90d908abf4f7c94ecbfd5225c8ecd197684407a67fb192ee34fd8a0e99de6c"
+      "sha256": "0f25b4a1cf87190a6588301c8b1eecb26d32536d785300258cfb1babcbc82b66"
     },
     {
       "path": "sources/legea-lui-ohm/lib/format.ts",

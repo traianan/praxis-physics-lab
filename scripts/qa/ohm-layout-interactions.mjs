@@ -5,9 +5,9 @@ import {writeFile} from 'node:fs/promises';
 const require=createRequire(import.meta.url),base=process.env.PRAXIS_QA_BASE||'http://127.0.0.1:4193';
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const page=await browser.newPage({viewport:{width:1920,height:1080},hasTouch:true});
-const report={accessibility:[],interactions:{},board:[],errors:[]};page.on('pageerror',e=>report.errors.push(e.message));
+const report={base,accessibility:[],interactions:{},board:[],errors:[]};page.on('pageerror',e=>report.errors.push(e.message));
 try {
-const wait=()=>page.waitForTimeout(140),tab=async id=>{await page.locator('#lesson-tab-'+id).click();await wait();await page.evaluate(()=>scrollTo(0,0));};
+const wait=()=>page.waitForTimeout(260),tab=async id=>{await page.locator('#lesson-tab-'+id).click();await wait();await page.evaluate(()=>scrollTo(0,0));};
 report.network=[];if(base.startsWith('file:'))await page.route(/^https?:/,r=>{report.network.push(r.request().url());return r.abort();});
 await page.goto(base.startsWith('file:')?base+'/index.html':base+'/simulari/legea-lui-ohm/');await page.getByRole('button',{name:'Doar necesare',exact:true}).click({timeout:800}).catch(()=>{});
 await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(300);
@@ -24,13 +24,14 @@ if(!process.env.PRAXIS_QA_INTERACTIONS_ONLY)for(const language of ['ro','en']){
   }
  }
 }
-await page.reload();await page.evaluate(()=>document.fonts.ready);await page.evaluate(()=>PraxisI18n.setLanguage('ro'));await page.waitForTimeout(300);
+await page.evaluate(()=>PraxisI18n.setLanguage('ro'));await tab('teorie');for(let repeat=0;repeat<2;repeat++){await page.locator('.ohm-page-tabs button').nth(5).click();await wait();await page.getByRole('link',{name:'De la definiție',exact:true}).click();await wait();assert.equal(await page.locator('.ohm-page-tabs button').first().getAttribute('aria-selected'),'true');}report.interactions.definitionLinkRepeated=true;
+await page.reload();await page.evaluate(()=>document.fonts.ready);await page.evaluate(()=>PraxisI18n.setLanguage('ro'));await tab('laborator');await page.waitForTimeout(300);
 const dragPage=await browser.newPage({viewport:{width:1920,height:1080},hasTouch:true});
 if(base.startsWith('file:'))await dragPage.route(/^https?:/,r=>{report.network.push(r.request().url());return r.abort();});
 await dragPage.goto(base.startsWith('file:')?base+'/index.html':base+'/simulari/legea-lui-ohm/');await dragPage.getByRole('button',{name:'Doar necesare',exact:true}).click({timeout:800}).catch(()=>{});await dragPage.evaluate(()=>document.fonts.ready);
 const canvas=dragPage.locator('.ui-canvas'),before=await canvas.getAttribute('aria-label'),box=await canvas.boundingBox(),cdp=await dragPage.context().newCDPSession(dragPage);
 await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:box.x+box.width*.25,y:box.y+box.height*.5}]});for(const fraction of [.35,.45,.55,.65])await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:box.x+box.width*fraction,y:box.y+box.height*.5}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await dragPage.waitForTimeout(300);assert.notEqual(await canvas.getAttribute('aria-label'),before);report.interactions.touchDrag=true;await dragPage.close();
-const record=page.getByRole('button',{name:'Înregistrează punctul',exact:true});await record.tap();await page.waitForFunction(()=>document.querySelector('.lab-link-button')?.textContent.includes('(1)'));await page.waitForTimeout(300); 
+const record=page.getByRole('button',{name:'Înregistrează punctul',exact:true});await record.tap();await page.waitForFunction(()=>document.querySelector('.lab-link-button')?.textContent.includes('(1)'));await page.waitForTimeout(300);
 await page.locator('.ohm-page-tabs button').nth(2).tap();await wait();await page.locator('.data-table-card tbody tr').first().waitFor();assert.equal(await page.locator('.data-table-card tbody tr').count(),1);await page.locator('.ohm-page-tabs button').nth(0).click();report.interactions.recordRetained=true;
 await page.locator('.ohm-page-tabs button').nth(0).focus();await page.keyboard.press('ArrowRight');await wait();assert.equal(await page.locator('.ohm-page-tabs button').nth(1).getAttribute('aria-selected'),'true');report.interactions.keyboard=true;
 await tab('circuit');await page.getByRole('button',{name:'Scurtcircuit',exact:true}).click();await page.locator('.ohm-page-tabs button').nth(1).click();await wait();assert.match(await page.locator('.circuit-metrics').textContent(),/tensiunea la borne0 mV/);await page.locator('.ohm-page-tabs button').nth(0).click();await wait();assert.match(await page.locator('.circuit-schematic-head').first().textContent(),/scurtcircuit/);report.interactions.circuitState=true;

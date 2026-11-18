@@ -7,7 +7,7 @@
 3. Verifică toate activitățile RO/EN, text 100/200%, Mod tablă, desktop/tabletă/mobil; testează interacțiunile și accesibilitatea, inclusiv titlurile.
 4. Regenerează arhiva, rulează CI, publică pe GitHub și verifică producția.
 
-Revizie implementată și verificată: 740 stări de layout, 58 stări axe fără încălcări, 32 combinații tactile, interacțiuni online locale/offline și CI 489/489 trecute (7 omise). În curs: publicare și confirmarea producției.
+Revizie implementată și publicată: 740 stări de layout, 58 stări axe fără încălcări, 32 combinații tactile, interacțiuni locale/offline și CI 490 teste trecute (7 omise). Incluse regresiile ancorelor repetate și ale Canvasului demontat. Confirmarea producției se rulează prin `PRAXIS_QA_BASE=https://praxis-physics-lab.vercel.app node scripts/qa/ohm-layout-interactions.mjs`; raportul este în `outputs/ohm-layout/online-final.log`.
 
 1. Reproduce suprapunerile în circuit și măsurări; verifică harta fără suport CSS @scope.
 2. Generează CSS compatibil cu Chrome Android mai vechi și rezervă spațiu separat pentru citiri, simboluri și explicații. Păstrează modelele electrice și starea React.

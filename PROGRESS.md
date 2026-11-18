@@ -10,6 +10,7 @@
 - Regressii Canvas/hartă: 60 stări fără coliziuni sau erori JS. CI: 489 teste trecute, 7 omise, zero eșecuri. Arhiva autonomă regenerată și CRC valid; test file:// cu HTTP blocat: toate interacțiunile și cele 32 combinații tactile trecute, zero cereri HTTP sau erori JS.
 - Audituri reproductibile: `scripts/qa/ohm-layout.py`, `scripts/qa/ohm-layout-interactions.mjs`, `scripts/qa/ohm-board.py`. Scanarea mecanică Impeccable a fișierelor UI modificate: fără constatări.
 - Auditul final axe: 58/58 stări RO/EN, cu explicațiile deschise, fără încălcări; avertismentul `heading-order` și cele două constatări de contrast sunt rezolvate.
+- Publicată revizia principală în `4e33988`, GitHub Actions `44346058525` și Vercel reușite. Verificarea online a identificat un caz de ancoră repetată și o actualizare Canvas după demontare: corectate, inclusiv deschiderea directă a subtabului din URL. Regresiile complete locale și offline trec, iar CI trece acum 490 teste (7 omise). Testul nou verifică explicit că un Canvas ascuns/demontat nu mai desenează. Raportul de producție este în `outputs/ohm-layout/online-final.log`; fișierele text sunt comparate și cu normalizarea CRLF/LF, ZIP-ul binar exact.
 
 ## Ohm pe tabla școlară — 2026-11-18
 
