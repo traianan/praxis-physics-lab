@@ -1,5 +1,11 @@
 # PROGRESS
 
+## Exersează — funcția de gradul al doilea, 2026-11-18
+
+- Adăugate 12 exerciții RO/EN: șase întrebări cu opțiuni și șase probleme numerice, inclusiv trei aplicații fizice. Afișare în șase perechi, verificare individuală/de pereche, explicații, punctaj și reluare. Răspunsurile și feedbackul se păstrează la schimbarea paginii, tabului și limbii; editarea invalidează verificarea anterioară. Sunt acceptate virgula zecimală, minusul Unicode și fracțiile simple; datele invalide nu sunt evaluate prin parsare parțială.
+- Rezultatele numerice verificate independent cu SymPy; două teste ale evaluatorului/parserului și suita CI: 502 trecute, 7 omise, zero eșecuri. agent-browser și Chrome tactil emulat: 120 stări responsive RO/EN, text 100/200%, cinci dimensiuni; 407 verificări. Întrebările și explicațiile încap pe tablă Full HD/4K la text normal, cu ținte tactile de minimum 44 px; pe ecrane mici/text 200% se permite derularea.
+- Audit axe al lecției: 12 stări fără încălcări, plus toate cele 12 combinații pereche/limbă cu explicații afișate. Control Impeccable fără constatări sau suprimări. Export autonom: 24 stări, HTTP blocat, fără erori JS/cereri HTTP; CRC valid. Cele 27 verificări existente ale modelelor, navigarea și metadatele RO/EN rămân valide. Publicarea și controlul producției sunt urmărite în această sarcină; verificarea tablei este emulată, nu efectuată pe dispozitivul fizic.
+
 ## Audit general și funcția de gradul al doilea — 2026-11-18
 
 - Auditul general publicat în `19545dc`: GitHub Actions 44365116261 trecut și Vercel activ. Control online: 181 stări de navigare fără erori JS sau overflow, 79 resurse identice cu sursele și amprentă derivată validă pentru shellul offline.

@@ -710,6 +710,7 @@ for(const button of tabButtons){button.addEventListener('click',updateTabs);butt
 updateTabs();
 for(const panel of $$('.panel')){
  const readouts=panel.querySelector('.quadratic-readouts'),controls=panel.querySelector('.quadratic-controls');
+ if(!controls||!readouts)continue;
  const tiles=controls.querySelector('.tiles');if(tiles)readouts.append(tiles);
  const equation=readouts.querySelector(':scope>.eq');
  if(equation){equation.classList.add('quadratic-equation');equation.tabIndex=0;panel.querySelector('.quadratic-scene-body').before(equation);}
@@ -732,7 +733,7 @@ window.addEventListener('load',()=>{
  const tools=document.querySelector('.praxis-course-tools'),preferences=$('#prefsPanel');
  const details=document.createElement('details'),summary=document.createElement('summary');details.className='quadratic-settings';summary.textContent='Repere pe grafic';details.append(summary,preferences);tools.append(details);
  document.querySelector('#btnPrefs')?.remove();document.querySelector('.tabbar')?.remove();
- for(const heading of $$('#praxis-original h2')){heading.dataset.contentType=heading.closest('.theory-grid')?'theory':heading.closest('.examples')?'problem':heading.closest('.quadratic-controls')?'controls':'simulation';heading.querySelector('.ico')?.remove();}
+ for(const heading of $$('#praxis-original h2')){heading.dataset.contentType=heading.closest('#quadratic-practice')?'assessment':heading.closest('.theory-grid')?'theory':heading.closest('.examples')?'problem':heading.closest('.quadratic-controls')?'controls':'simulation';heading.querySelector('.ico')?.remove();}
  for(const host of $$('.formula-box,.formulas .f'))PraxisMath.set(host,host.textContent);
  const download=$('#btnDownload');download.href='functia-gradul-al-doilea.zip';download.setAttribute('download','functia-gradul-al-doilea.zip');
  if(document.documentElement.dataset.praxisStandalone==='true')download.hidden=true;

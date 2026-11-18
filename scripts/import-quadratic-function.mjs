@@ -8,6 +8,7 @@ const source=await read('sources/'+id+'/index.html');
 let css=source.match(/<style>([\s\S]*?)<\/style>/)[1];
 let js=source.match(/<script>([\s\S]*?)<\/script>/)[1];
 let html=source.replace(/<style>[\s\S]*?<\/style>/,'<link rel="stylesheet" href="style.css">').replace(/<script>[\s\S]*?<\/script>/,'<script src="lesson.js"></script>');
+html=html.replace('<button class="tab" data-tab="fizica" role="tab">Exemple în fizică</button>','$&<button class="tab" data-tab="exerseaza" role="tab">Exersează</button>');
 html=html.replace(/<header class="topbar">[\s\S]*?<\/header>/,'').replace(/<footer>[\s\S]*?<\/footer>/,'')
  .replace(/<nav class="crumbs">[\s\S]*?<\/nav>/,'').replace(/<div class="banner">[\s\S]*?<\/div>/,'')
  .replace('<body>','<body data-praxis-course="'+id+'" data-praxis-laboratory="true" data-praxis-adaptive-lab="true">')
@@ -31,6 +32,7 @@ html=html.replace('bijiectivă pe fiecare interval de monotonie.','bijiectivă d
 html=html.replace(/<p class="hint" id="animHint">[\s\S]*?<\/p>/,'<p class="hint" id="animHint">Animația actualizează coeficienții; la a = 0 graficul este o dreaptă. Poți opri și prelua controlul manual.</p>');
 html=html.replace(/<li><b>Coeficientul a se schimbă:<\/b>[\s\S]*?<\/li>/,'<li><b>Coeficientul a se schimbă:</b> a parcurge intervalul [−1,6; 1,6]. La a = 0 funcția devine liniară.</li>');
 html=html.replace('Coeficientul b (deplasare laterală)','Coeficientul b (poziția axei de simetrie)').replaceAll('Traectoria','Traiectoria').replaceAll('Graviția','Gravitația');
+html=html.replace('<div class="download">','<section class="panel" id="tab-exerseaza"><div id="quadratic-practice" data-no-science-math></div></section><div class="download">');
 html=html.replace(/<(p|li)(\s[^>]*)?>/g,(all,tag,attrs='')=>'<'+tag+' data-no-science-math'+attrs+'>');
 const ns=['common','chapters/elemente-de-matematica','courses/shared','courses/'+id+'/ui'];
 const en=Object.fromEntries((await read('scripts/adaptations/quadratic-function-en.tsv')).trim().split(/\r?\n/).map(line=>line.split('\t')));
@@ -44,7 +46,7 @@ const head=['design-system/tokens.css','design-system/components.css','design-sy
  ['sound.js','lab-header.js','canvas-resolution.js','canvas-typography.js','scientific-colors.js','course-localization.js'].map(p=>'<script src="../../shared/'+p+'"></script>').join('');
 html=html.replace('<link rel="stylesheet" href="style.css">',head+'<link rel="stylesheet" href="style.css">')
  .replace('<script src="lesson.js">','<script id="quadratic-model">'+await read('scripts/adaptations/quadratic-function-model.js')+'</script><script src="lesson.js">')
- .replace('</body>','<script src="../../shared/course.js" data-course="'+id+'" data-title="Funcția de gradul al doilea" data-subtitle="Coeficienți, vârf, rădăcini și modele în fizică"></script></body>');
+ .replace('</body>','<script>'+await read('scripts/adaptations/quadratic-practice.js')+'</script><script src="../../shared/course.js" data-course="'+id+'" data-title="Funcția de gradul al doilea" data-subtitle="Coeficienți, vârf, rădăcini și modele în fizică"></script></body>');
 // School-board Chrome must not lose the lesson's layout when @scope is unsupported.
 const animations=[];
 for(let match;(match=/@keyframes\s+[\w-]+\s*\{/.exec(css));){

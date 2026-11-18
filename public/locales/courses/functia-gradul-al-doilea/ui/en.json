@@ -185,6 +185,7 @@
     "h(t) este o funcție de gradul al doilea în timp: a = −g/2 < 0, deci parabola este deschisă în jos și are un maxim în vârf.": "h(t) is quadratic in time: a = −g/2 < 0, so the parabola opens downward and its vertex is a maximum.",
     "Axa x este timpul (s), axa y este înălțimea (m). Curba este graficul h(t) = h₀ + v₀t − gt²/2 — o parabolă deschisă în jos. Vârful graficului dă înălțimea maximă și momentul în care mingea se oprește din urcare.": "The x-axis shows time (s), the y-axis height (m). The curve h(t) = h₀ + v₀t − gt²/2 is a downward-opening parabola. Its vertex gives the maximum height and the instant when the ball stops rising.",
     "Corpul pornește din repaus și accelerează constant; graficul h(t) este o parabolă deschisă în jos (a = −g/2).": "The body starts at rest with constant acceleration; h(t) is a downward-opening parabola (a = −g/2).",
-    "Axa x este timpul (s), axa y este înălțimea (m). Corpul pornește de la H cu viteză zero și accelerează datorită gravitației; graficul este o porțiune de parabolă deschisă în jos.": "The x-axis shows time (s), the y-axis height (m). The body starts at H with zero speed and accelerates under gravity; the graph is part of a downward-opening parabola."
+    "Axa x este timpul (s), axa y este înălțimea (m). Corpul pornește de la H cu viteză zero și accelerează datorită gravitației; graficul este o porțiune de parabolă deschisă în jos.": "The x-axis shows time (s), the y-axis height (m). The body starts at H with zero speed and accelerates under gravity; the graph is part of a downward-opening parabola.",
+    "Exersează": "Practice"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-18T19:17:17.587Z",
+  "builtAt": "2026-11-18T19:32:16.637Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -444,7 +444,7 @@
     {
       "id": "functia-gradul-al-doilea",
       "file": "public/simulari/functia-gradul-al-doilea/functia-gradul-al-doilea.zip",
-      "sha256": "1b832928d1b96cd159a5a8bb382bc0941cb757be2a9ea1c982b7a0996e7d2a53",
+      "sha256": "4a138742aee9ab6ae2ffe2d640978b107a7bcfa015887e1bb6c6be7b4c52dc6d",
       "languages": [
         "ro",
         "en"
