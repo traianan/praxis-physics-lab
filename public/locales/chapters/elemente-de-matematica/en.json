@@ -11,7 +11,11 @@
     "Dreaptă cu triunghiul pantei și intersecțiile cu axele": "Line with a slope triangle and axis intercepts",
     "Matematică": "Mathematics",
     "Funcții": "Functions",
-    "Grafice": "Graphs"
+    "Grafice": "Graphs",
+    "Funcția de gradul al doilea": "Quadratic function",
+    "Parabolă, rădăcini și modele fizice": "Parabola, roots and physical models",
+    "Explorează parabola și coeficienții, rădăcinile și vârful; urmărește animații și trei modele de mișcare.": "Explore the parabola and its coefficients, roots and vertex; follow animations and three motion models.",
+    "Graficul unei parabole pe un sistem de axe": "A parabola plotted on coordinate axes"
   },
   "simulations": {
     "masurarea-unghiurilor": {
@@ -33,6 +37,19 @@
       "description": "Explore the line, slope and intercept, follow animations and apply linear models in physics. Six exercises with feedback.",
       "alt": "Line with a slope triangle and axis intercepts",
       "keywords": "functie liniara gradul intai panta ordonata dreapta inversa monotonie",
+      "tags": [
+        "Mathematics",
+        "Functions",
+        "Graphs",
+        "Offline"
+      ]
+    },
+    "functia-gradul-al-doilea": {
+      "title": "Quadratic function",
+      "subtitle": "Parabola, roots and physical models",
+      "description": "Explore the parabola and its coefficients, roots and vertex; follow animations and three motion models.",
+      "alt": "A parabola plotted on coordinate axes",
+      "keywords": "quadratic function parabola roots discriminant vertex projectile free fall motion",
       "tags": [
         "Mathematics",
         "Functions",

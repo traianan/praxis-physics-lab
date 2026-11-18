@@ -1,0 +1,184 @@
+Funcția de gradul al doilea	Quadratic function
+Coeficienți, vârf, rădăcini și modele în fizică	Coefficients, vertex, roots and physics models
+Teorie	Theory
+Animații	Animations
+Exemple în fizică	Physics examples
+Parabola	The parabola
+Explorează funcția	Explore the function
+Rădăcinile ecuației:	Equation roots:
+Coeficientul a (curbură și sens)	Coefficient a (curvature and opening)
+Coeficientul b (poziția axei de simetrie)	Coefficient b (position of the symmetry axis)
+Coeficientul c (intersecția cu Oy)	Coefficient c (y-intercept)
+Rădăcini reale	Real roots
+Vârf V(h; k)	Vertex V(h; k)
+Cum interpretezi desenul?	How to read the diagram
+Axa orizontală	The horizontal axis
+este x,	is x,
+cea verticală	the vertical axis
+este y. Curba este parabola y = ax² + bx + c.	is y. The curve is the parabola y = ax² + bx + c.
+Punctele în care parabola atinge axa x sunt rădăcinile x₁ și x₂.	The points where the parabola meets the x-axis are the roots x₁ and x₂.
+Vârful V este cel mai jos (a > 0) sau cel mai înalt (a < 0) punct al curbei.	Vertex V is the lowest (a > 0) or highest (a < 0) point on the curve.
+Axa verticală punctată trece prin V și este axa de simetrie x = −b/2a.	The vertical dashed line passes through V and is the symmetry axis x = −b/2a.
+Punctul de pe axa y este (0; c), intersecția funcției cu axa Oy.	The point on the y-axis is (0; c), the y-intercept.
+1. Forma generală	1. General form
+sunt coeficienți reali, iar	are real coefficients, and
+nu poate fi zero: dacă a = 0 funcția devine liniară, nu mai este de gradul al doilea.	cannot be zero: if a = 0 the function becomes linear and is no longer quadratic.
+— parabola este deschisă în sus și are un minim.	— the parabola opens upward and has a minimum.
+— parabola este deschisă în jos și are un maxim.	— the parabola opens downward and has a maximum.
+| mai mare înseamnă o parabolă mai „îngustă”, mai puțin întinsă.	| makes the parabola narrower and less spread out.
+este ordonata intersecției cu axa Oy: P(0; c).	is the y-intercept: P(0; c).
+2. Discriminantul și rădăcinile	2. Discriminant and roots
+Două rădăcini reale distincte: x₁,₂ = (−b ± √Δ) / 2a. Parabola intersectează axa x în două puncte.	Two distinct real roots: x₁,₂ = (−b ± √Δ) / 2a. The parabola crosses the x-axis at two points.
+O rădăcină dublă: x₀ = −b / 2a. Vârful atinge axa x.	One double root: x₀ = −b / 2a. The vertex touches the x-axis.
+Nicio rădăcină reală. Parabola nu intersectează axa x (funcția nu se anulează).	No real roots. The parabola does not meet the x-axis (the function never equals zero).
+Din semnul lui a și al lui Δ rezultă sensul deschiderii și poziția relativă față de axa x.	The signs of a and Δ determine the opening and the position relative to the x-axis.
+3. Vârful, simetria și forma canonică	3. Vertex, symmetry and vertex form
+Prin completarea pătratului, forma generală se transformă în	Completing the square transforms the general form into
+forma canonică	vertex form
+. Coordonatele vârfului sunt V(h; k) = V(−b/2a ; c − b²/4a).	. The vertex coordinates are V(h; k) = V(−b/2a ; c − b²/4a).
+este axa de simetrie a parabolei (linia verticală prin V).	is the symmetry axis of the parabola (the vertical line through V).
+Punctele simetrice față de axă au aceeași ordonată: f(h − t) = f(h + t).	Points symmetric about the axis have the same ordinate: f(h − t) = f(h + t).
+k este valoarea extremă: minim dacă a > 0, maxim dacă a < 0.	k is the extreme value: a minimum if a > 0, a maximum if a < 0.
+4. Proprietăți și monotonie	4. Properties and monotonicity
+Pentru a ≠ 0, funcția y = ax² + bx + c are următoarele proprietăți:	For a ≠ 0, the function y = ax² + bx + c has the following properties:
+Este	It is
+continuă	continuous
+și	and
+diferențiabilă	differentiable
+pe ℝ; derivata este y′ = 2ax + b.	on ℝ; its derivative is y′ = 2ax + b.
+Monoton descrescătoare	Strictly decreasing
+pe (−∞; −b/2a] și	on (−∞; −b/2a] and
+monoton crescătoare	strictly increasing
+pe [−b/2a; ∞) dacă a > 0 (invers pentru a < 0).	on [−b/2a; ∞) if a > 0 (reversed for a < 0).
+Are un	It has an
+extrem	extremum
+în vârful V și este	at vertex V and is
+nebijectivă	not bijective
+pe ℝ, dar bijiectivă de pe fiecare interval de monotonie pe imaginea sa.	on ℝ, but is bijective from each monotonicity interval onto its image.
+Fiind de grad 2, are cel mult 2 rădăcini reale (teorema lui Euler–d’Alembert).	As a degree-2 polynomial, it has at most two real roots (the fundamental theorem of algebra).
+Prin punctele (h − t; y) și (h + t; y) trece aceeași orizontală — simetria parabolei.	The same horizontal line passes through (h − t; y) and (h + t; y): parabola symmetry.
+Animație pe grafic	Graph animation
+Comenzi de animație	Animation controls
+▶ Redă	▶ Play
+❚❚ Pauză	❚❚ Pause
+⟲ Repornește	⟲ Restart
+Tipul animației	Animation type
+Coeficientul a se schimbă	Changing coefficient a
+Punct mobil pe parabolă	Moving point on the parabola
+Rădăcinile apar	Roots appear
+Viteza animației	Animation speed
+Poziție în animație	Animation progress
+Coeficient a	Coefficient a
+Coeficient c	Coefficient c
+Punct x	Point x
+Deschidere	Opening
+Sens	Direction
+Rădăcini	Roots
+în sus	upward
+în jos	downward
+dreaptă	straight line
+Ce urmărești?	What to observe
+Coeficientul a se schimbă:	Changing coefficient a:
+a parcurge intervalul [−1,6; 1,6]. La a = 0 funcția devine liniară.	a ranges over [−1.6, 1.6]. At a = 0 the function becomes linear.
+Punct mobil:	Moving point:
+un punct P(x; f(x)) parcurge curba de la stânga la dreapta; liniile punctate arată proiecțiile sale pe axe.	a point P(x; f(x)) travels along the curve from left to right; dashed lines show its projections onto the axes.
+Rădăcinile apar:	Roots appear:
+c scade treptat, Δ crește de la valori negative la pozitive, iar punctele x₁ și x₂ „ies” din vârf pe axa x.	c gradually decreases, Δ changes from negative to positive, and roots x₁ and x₂ emerge from the vertex on the x-axis.
+Ce se schimbă vizual?	What changes visually
+Schimbarea semnului lui	Changing the sign of
+inversează deschiderea parabolei: dacă a trece prin 0, parabola se aplatizează într-o dreaptă (doar instantaneu — pentru a = 0 nu mai vorbim de funcție de gradul al doilea).	reverses the opening of the parabola: as a passes through 0, the graph becomes a straight line (at a = 0 the function is no longer quadratic).
+|a| crește → parabola se îngustează.	|a| increases → the parabola narrows.
+|a| scade → parabola se lărgește.	|a| decreases → the parabola widens.
+a > 0 → extrem minim; a < 0 → extrem maxim.	a > 0 → minimum; a < 0 → maximum.
+De ce contează Δ?	Why Δ matters
+Pe măsură ce c scade, graficul coboară. Momentul exact în care parabola atinge axa x corespunde lui	As c decreases, the graph moves down. The instant when the parabola touches the x-axis corresponds to
+; apoi, pentru Δ > 0, apar două rădăcini reale distincte.	; then, for Δ > 0, two distinct real roots appear.
+Aceasta este legătura directă între algebra (ecuația de gradul 2) și geometrie (intersectarea cu axa x).	This directly links algebra (the quadratic equation) and geometry (intersections with the x-axis).
+Traiectoria unui proiectil	Projectile trajectory
+Alege modelul	Choose a model
+Proiectil	Projectile
+Minge aruncată în sus	Ball thrown upward
+Cădere liberă	Free fall
+Viteza inițială v₀ (m/s)	Initial speed v₀ (m/s)
+Unghiul de lansare θ (°)	Launch angle θ (°)
+Înălțimea inițială h₀ (m)	Initial height h₀ (m)
+Înălțimea de cădere H (m)	Drop height H (m)
+Gravitația g (m/s²)	Gravity g (m/s²)
+Înălțimea maximă H	Maximum height H
+Înălțimea maximă	Maximum height
+Raza de cădere R	Horizontal range R
+Timp până la vârf	Time to highest point
+Timp de zbor	Flight time
+Timp până la sol	Time to ground
+Viteza la impact	Impact speed
+Timpul de cădere	Fall time
+Viteza inițială	Initial speed
+Înălțimea H	Height H
+Înălțimea unei mingi aruncate în sus	Height of a ball thrown upward
+Căderea liberă a unui corp	Free fall of a body
+distanța x (m)	distance x (m)
+înălțimea y (m)	height y (m)
+timpul t (s)	time t (s)
+înălțimea h (m)	height h (m)
+Proiectilul la momentul t =	Projectile at time t =
+Mingea la momentul t =	Ball at time t =
+Corpul la momentul t =	Body at time t =
+traiectoria	trajectory
+corpul în mișcare	moving body
+înălțimea maximă	maximum height
+parabola y = f(x)	parabola y = f(x)
+vârful / punctul mobil	vertex / moving point
+rădăcinile x₁, x₂	roots x₁, x₂
+Coeficientul a în timp:	Coefficient a over time:
+Punctul P:	Point P:
+Coeficientul c:	Coefficient c:
+Punctul mobil:	Moving point:
+x crește uniform de la −8 la 8, iar P(x; f(x)) parcurge parabola; liniile portocalii punctate sunt proiecțiile pe axe.	x increases uniformly from −8 to 8 and P(x; f(x)) follows the parabola; orange dashed lines show projections onto the axes.
+Se observă direct că y crește apoi scade (sau invers) — monotonie și extrem.	You can observe y decreasing then increasing (or the reverse): monotonicity and the extremum.
+Coeficientul a se schimbă / Rădăcinile apar	Changing coefficient a / Roots appear
+sunt celelalte două animații disponibile.	are the other two available animations.
+pornești de la c = 4 (Δ < 0, nicio intersecție cu axa x) și cobori până la c = −4 (Δ > 0, două rădăcini).	start at c = 4 (Δ < 0, no x-intercepts) and descend to c = −4 (Δ > 0, two roots).
+Momentul în care parabola atinge axa x corespunde exact lui Δ = 0.	The instant when the parabola touches the x-axis corresponds exactly to Δ = 0.
+Se vede legătura dintre algebra (ecuația de gradul 2) și geometrie (intersectarea curbei cu axa x).	This shows the connection between algebra (the quadratic equation) and geometry (x-intercepts).
+Animația actualizează coeficienții; la a = 0 graficul este o dreaptă. Poți opri și prelua controlul manual.	The animation updates the coefficients; at a = 0 the graph is a straight line. Pause at any time to take manual control.
+Parabola este {sense}. Coeficientul a = {a}, iar simetria este față de dreapta x = {h}. Intersecția cu axa Oy este (0; {c}).	The parabola {sense}. Coefficient a = {a}; its symmetry axis is x = {h}. The y-intercept is (0; {c}).
+deschisă în sus și are un minim	opens upward and has a minimum
+deschisă în jos și are un maxim	opens downward and has a maximum
+nicio rădăcină reală (Δ < 0)	no real roots (Δ < 0)
+Nicio rădăcină reală.	No real roots.
+Orice număr real este rădăcină.	Every real number is a root.
+a = 0: funcția este liniară, fără vârf sau axă de simetrie.	a = 0: the function is linear, with no vertex or symmetry axis.
+a = 0: funcția nu mai este de gradul al doilea; nu are vârf de parabolă.	a = 0: the function is no longer quadratic; it has no parabola vertex.
+Scade Coeficientul c (intersecția cu Oy)	Decrease coefficient c (y-intercept)
+Crește Coeficientul c (intersecția cu Oy)	Increase coefficient c (y-intercept)
+Graficul parabolei	Parabola graph
+Repere pe grafic	Graph guides
+Interpretarea graficului	Reading the graph
+Ce arătăm pe grafic?	What to show on the graph
+Grila și axele	Grid and axes
+Rădăcinile (x₁, x₂)	Roots (x₁, x₂)
+Vârful V și axa de simetrie	Vertex V and symmetry axis
+Intersecția cu axa Oy	Y-intercept
+Sunet la interacțiuni	Interaction sounds
+Resetează preferințele	Reset preferences
+Teorie și formule	Theory and formulas
+Exemple rezolvate	Worked examples
+Descarcă lecția (ZIP)	Download lesson (ZIP)
+Scade {label}	Decrease {label}
+Crește {label}	Increase {label}
+Proiectil: săritură la înălțime	Projectile: a high jump
+Un proiectil este lansat cu v₀ = 20 m/s la θ = 45°, cu g = 9,81 m/s².	A projectile is launched at v₀ = 20 m/s and θ = 45°, with g = 9.81 m/s².
+Traiectoria este o parabolă — chiar funcție de gradul al doilea a lui x.	The trajectory is a parabola: a quadratic function of x.
+O minge este aruncată în sus de la h₀ = 2 m, cu v₀ = 12 m/s.	A ball is thrown upward from h₀ = 2 m, with v₀ = 12 m/s.
+vârf	vertex
+max	max
+impact	impact
+Înălțimea în funcție de timp este exact o funcție de gradul al doilea: y = at² + bt + c.	Height as a function of time is exactly quadratic: y = at² + bt + c.
+Un corp este lăsat să cadă de la H = 45 m, fără viteză inițială.	A body is dropped from H = 45 m, with zero initial speed.
+a < 0 (a = −g/2), deci parabola este deschisă în jos — ca în cazul proiectilului.	a < 0 (a = −g/2), so the parabola opens downward, as for the projectile.
+Axa x este distanța parcursă (m), axa y este înălțimea (m). Traseul este o parabolă: componenta orizontală este uniformă, cea verticală este uniform accelerată.	The x-axis shows distance (m), the y-axis height (m). The trajectory is a parabola: horizontal velocity is constant and vertical acceleration is constant.
+Axa x este distanța parcursă (m), iar axa y este înălțimea (m). Curba este traiectoria proiectilului; punctul portocaliu arată poziția curentă, iar linia orizontală marchează înălțimea maximă atinsă. Ecuatia traiectoriei se elimină din t din ecuațiile parametrice — rezultă o funcție de gradul al doilea y(x).	The x-axis shows distance (m), the y-axis height (m). The curve is the projectile trajectory; the orange point is its current position and the horizontal line marks maximum height. Eliminating time from the parametric equations gives the quadratic function y(x).
+h(t) este o funcție de gradul al doilea în timp: a = −g/2 < 0, deci parabola este deschisă în jos și are un maxim în vârf.	h(t) is quadratic in time: a = −g/2 < 0, so the parabola opens downward and its vertex is a maximum.
+Axa x este timpul (s), axa y este înălțimea (m). Curba este graficul h(t) = h₀ + v₀t − gt²/2 — o parabolă deschisă în jos. Vârful graficului dă înălțimea maximă și momentul în care mingea se oprește din urcare.	The x-axis shows time (s), the y-axis height (m). The curve h(t) = h₀ + v₀t − gt²/2 is a downward-opening parabola. Its vertex gives the maximum height and the instant when the ball stops rising.
+Corpul pornește din repaus și accelerează constant; graficul h(t) este o parabolă deschisă în jos (a = −g/2).	The body starts at rest with constant acceleration; h(t) is a downward-opening parabola (a = −g/2).
+Axa x este timpul (s), axa y este înălțimea (m). Corpul pornește de la H cu viteză zero și accelerează datorită gravitației; graficul este o porțiune de parabolă deschisă în jos.	The x-axis shows time (s), the y-axis height (m). The body starts at H with zero speed and accelerates under gravity; the graph is part of a downward-opening parabola.

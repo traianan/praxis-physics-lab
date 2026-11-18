@@ -47,7 +47,8 @@
     "offline:reflexia-refractia": "node scripts/build-courses-offline.mjs --course=reflexia-refractia",
     "import:gravity": "node scripts/import-gravity.mjs",
     "import:networks": "node scripts/import-networks.mjs",
-    "import:linear-function": "node scripts/import-linear-function.mjs"
+    "import:linear-function": "node scripts/import-linear-function.mjs",
+    "import:quadratic-function": "node scripts/import-quadratic-function.mjs"
   },
   "devDependencies": {
     "@xyflow/react": "^12.12.1",

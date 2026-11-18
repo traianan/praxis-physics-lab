@@ -1,0 +1,790 @@
+:where(#praxis-original) {
+  --bg:#f7f7f2;
+  --card:#ffffff;
+  --ink:#16241d;
+  --muted:#5f6d65;
+  --green:#12432e;
+  --green-2:#1c5b3f;
+  --line:#e4e6e0;
+  --tile:#eef3ef;
+  --tile-2:#f2f5f1;
+  --amber:#e39b34;
+  --btn:#ffffff;
+  --btn-line:#dcdfd8;
+  --shadow:0 1px 2px rgba(18,67,46,.05);
+  --radius:12px;
+}
+:where(#praxis-original).board {
+  --bg:#0d2a1f;
+  --card:#123526;
+  --ink:#eef4ef;
+  --muted:#a9c3b6;
+  --line:#20493a;
+  --tile:#173f2e;
+  --tile-2:#153a2a;
+  --green:#0a1f16;
+  --green-2:#1c5b3f;
+  --btn:#173f2e;
+  --btn-line:#245744;
+  --amber:#f0b055;
+  --shadow:none;
+}
+:where(#praxis-original) * {
+  box-sizing: border-box;
+}
+:where(#praxis-original),
+:where(#praxis-original) {
+  margin: 0;
+  padding: 0;
+}
+:where(#praxis-original) {
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    "Segoe UI",
+    Roboto,
+    -apple-system,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+:where(#praxis-original).text-big {
+  font-size: 17.5px;
+}
+:where(#praxis-original) a {
+  color: var(--green-2);
+}
+:where(#praxis-original) button {
+  font-family: inherit;
+}
+:where(#praxis-original) .wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+:where(#praxis-original) .topbar {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+:where(#praxis-original) .topbar .wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 60px;
+  flex-wrap: wrap;
+}
+:where(#praxis-original) .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+:where(#praxis-original) .brand .mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  font-family: Georgia, serif;
+}
+:where(#praxis-original) .brand .name {
+  line-height: 1.05;
+}
+:where(#praxis-original) .brand .name b {
+  display: block;
+  font-size: 19px;
+  letter-spacing: .5px;
+  color: var(--green);
+}
+:where(#praxis-original).board .brand .name b {
+  color: #9fd8bd;
+}
+:where(#praxis-original) .brand .name span {
+  font-size: 9.5px;
+  letter-spacing: 3.4px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+:where(#praxis-original) .top-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+:where(#praxis-original) .pill {
+  background: var(--btn);
+  border: 1px solid var(--btn-line);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 13.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: var(--shadow);
+}
+:where(#praxis-original) .pill:hover {
+  border-color: var(--green-2);
+  color: var(--green-2);
+}
+:where(#praxis-original).board .pill:hover {
+  color: #9fd8bd;
+}
+:where(#praxis-original) .pill.on {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+:where(#praxis-original) .pill.on .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7ee0a8;
+}
+:where(#praxis-original) .lang {
+  position: relative;
+}
+:where(#praxis-original) .lang-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+  padding: 6px;
+  min-width: 150px;
+  display: none;
+  z-index: 40;
+}
+:where(#praxis-original) .lang-menu.open {
+  display: block;
+}
+:where(#praxis-original) .lang-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 13.5px;
+  color: var(--ink);
+  cursor: pointer;
+}
+:where(#praxis-original) .lang-menu button:hover {
+  background: var(--tile);
+}
+:where(#praxis-original) .lang-menu button[disabled] {
+  color: var(--muted);
+  cursor: default;
+}
+:where(#praxis-original) .lang-menu button[disabled]:hover {
+  background: none;
+}
+:where(#praxis-original) .crumbs {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 12px 0 4px;
+}
+:where(#praxis-original) .crumbs a {
+  color: var(--green-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+:where(#praxis-original) .crumbs span.sep {
+  margin: 0 7px;
+  opacity: .6;
+}
+:where(#praxis-original) .banner {
+  background: var(--green);
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px 26px;
+  margin-top: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+:where(#praxis-original) .banner .bar {
+  width: 5px;
+  height: 30px;
+  background: #fff;
+  border-radius: 2px;
+  align-self: center;
+}
+:where(#praxis-original) .banner h1 {
+  font-size: 29px;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+:where(#praxis-original) .banner .sub {
+  color: #a8c4b6;
+  font-size: 15.5px;
+}
+:where(#praxis-original).board .banner {
+  background: #0a1f16;
+  border: 1px solid var(--line);
+}
+:where(#praxis-original) .tabbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 16px 0 18px;
+  flex-wrap: wrap;
+}
+:where(#praxis-original) .tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+:where(#praxis-original) .tab {
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 9px 16px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+:where(#praxis-original) .tab:hover {
+  background: var(--tile);
+}
+:where(#praxis-original) .tab.active {
+  background: var(--green);
+  color: #fff;
+}
+:where(#praxis-original) .tab.active:hover {
+  background: var(--green);
+}
+:where(#praxis-original) .prefs-wrap {
+  margin-left: auto;
+  position: relative;
+}
+:where(#praxis-original) .panel {
+  display: none;
+}
+:where(#praxis-original) .panel.active {
+  display: block;
+  animation: fade .25s ease;
+}
+:where(#praxis-original) .grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+:where(#praxis-original) .card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  box-shadow: var(--shadow);
+}
+:where(#praxis-original) .card h2 {
+  font-size: 20px;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+:where(#praxis-original) .card h2 .ico {
+  font-size: 17px;
+}
+:where(#praxis-original) .card h3 {
+  font-size: 15.5px;
+  margin: 22px 0 8px;
+}
+:where(#praxis-original) .center {
+  text-align: center;
+}
+:where(#praxis-original) .eq {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 12px 0 4px;
+}
+:where(#praxis-original) .eq .amp {
+  color: var(--green-2);
+}
+:where(#praxis-original) .note {
+  background: var(--tile);
+  border-radius: 9px;
+  padding: 12px 16px;
+  margin-top: 14px;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 14.5px;
+}
+:where(#praxis-original) .note b {
+  font-size: 16.5px;
+}
+:where(#praxis-original) .hint {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 12px;
+}
+:where(#praxis-original) .ctl {
+  margin-bottom: 16px;
+}
+:where(#praxis-original) .ctl-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+:where(#praxis-original) .ctl-head b {
+  color: var(--ink);
+  font-size: 15px;
+}
+:where(#praxis-original) .ctl-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+:where(#praxis-original) .step {
+  width: 38px;
+  height: 34px;
+  border: 1px solid var(--btn-line);
+  background: var(--btn);
+  border-radius: 9px;
+  font-size: 17px;
+  color: var(--ink);
+  cursor: pointer;
+  line-height: 1;
+}
+:where(#praxis-original) .step:hover {
+  border-color: var(--green-2);
+}
+:where(#praxis-original) input[type=range] {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  background:
+    linear-gradient(
+      to right,
+      var(--green-2),
+      var(--green-2)) no-repeat,
+    var(--line);
+  outline: none;
+  cursor: pointer;
+}
+:where(#praxis-original) input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 3px solid var(--green-2);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+}
+:where(#praxis-original) input[type=range]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 3px solid var(--green-2);
+  cursor: pointer;
+}
+:where(#praxis-original) .presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 6px 0 18px;
+}
+:where(#praxis-original) .chip {
+  border: 1px solid var(--btn-line);
+  background: var(--btn);
+  color: var(--ink);
+  border-radius: 9px;
+  padding: 7px 13px;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+:where(#praxis-original) .chip:hover {
+  border-color: var(--green-2);
+  color: var(--green-2);
+}
+:where(#praxis-original) .chip.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+:where(#praxis-original) .tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+:where(#praxis-original) .tile {
+  background: var(--tile);
+  border-radius: 9px;
+  padding: 11px 14px;
+}
+:where(#praxis-original) .tile span {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+:where(#praxis-original) .tile b {
+  font-size: 17.5px;
+  font-weight: 650;
+}
+:where(#praxis-original) .formulas {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  font-size: 16px;
+  color: var(--ink);
+}
+:where(#praxis-original) .formulas .f {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+:where(#praxis-original) details.explain {
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+:where(#praxis-original) details.explain summary {
+  cursor: pointer;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--green-2);
+  list-style: none;
+}
+:where(#praxis-original).board details.explain summary {
+  color: #9fd8bd;
+}
+:where(#praxis-original) details.explain summary::before {
+  content: "\25b8  ";
+}
+:where(#praxis-original) details.explain[open] summary::before {
+  content: "\25be  ";
+}
+:where(#praxis-original) details.explain p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+:where(#praxis-original) details.explain ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--muted);
+}
+:where(#praxis-original) .theory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 22px;
+}
+:where(#praxis-original) .theory-grid .card h2 {
+  font-size: 17.5px;
+}
+:where(#praxis-original) .theory-grid p {
+  margin: 8px 0;
+  font-size: 14.5px;
+  color: var(--muted);
+}
+:where(#praxis-original) .theory-grid ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  font-size: 14.5px;
+  color: var(--muted);
+}
+:where(#praxis-original) .theory-grid li {
+  margin-bottom: 5px;
+}
+:where(#praxis-original) .formula-box {
+  background: var(--tile);
+  border-radius: 9px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-size: 17px;
+  text-align: center;
+  color: var(--ink);
+}
+:where(#praxis-original) .case {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 10px;
+  font-size: 14.5px;
+}
+:where(#praxis-original) .case .badge {
+  flex: 0 0 auto;
+  background: var(--green);
+  color: #fff;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 9px;
+  margin-top: 2px;
+}
+:where(#praxis-original) .case .badge.neg {
+  background: #a4462f;
+}
+:where(#praxis-original) .case .badge.zero {
+  background: #8a6a1f;
+}
+:where(#praxis-original) .case p {
+  margin: 0;
+  color: var(--muted);
+}
+:where(#praxis-original) .play-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+:where(#praxis-original) .btn {
+  border: 1px solid var(--btn-line);
+  background: var(--btn);
+  color: var(--ink);
+  border-radius: 9px;
+  padding: 9px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+:where(#praxis-original) .btn:hover {
+  border-color: var(--green-2);
+  color: var(--green-2);
+}
+:where(#praxis-original) .btn.primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+:where(#praxis-original) .btn.primary:hover {
+  background: var(--green-2);
+  color: #fff;
+  border-color: var(--green-2);
+}
+:where(#praxis-original) .status {
+  background: var(--tile);
+  border-radius: 9px;
+  padding: 12px 16px;
+  font-size: 14.5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+:where(#praxis-original) .status b {
+  font-weight: 650;
+}
+:where(#praxis-original) .legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+:where(#praxis-original) .legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+:where(#praxis-original) .examples {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 22px;
+}
+:where(#praxis-original) .examples .card h2 {
+  font-size: 16.5px;
+}
+:where(#praxis-original) .examples p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 8px 0;
+}
+:where(#praxis-original) .examples .sol {
+  background: var(--tile);
+  border-radius: 9px;
+  padding: 10px 14px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+:where(#praxis-original) .examples .sol b {
+  color: var(--ink);
+}
+:where(#praxis-original) .popover {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  width: 270px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .16);
+  padding: 16px 18px;
+  z-index: 50;
+  display: none;
+}
+:where(#praxis-original) .popover.open {
+  display: block;
+}
+:where(#praxis-original) .popover h4 {
+  margin: 0 0 10px;
+  font-size: 14.5px;
+}
+:where(#praxis-original) .popover label {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 14px;
+  padding: 5px 0;
+  color: var(--muted);
+  cursor: pointer;
+}
+:where(#praxis-original) .popover input[type=checkbox] {
+  accent-color: var(--green-2);
+  width: 15px;
+  height: 15px;
+}
+:where(#praxis-original) .popover .btn {
+  width: 100%;
+  margin-top: 10px;
+}
+:where(#praxis-original) .download {
+  margin: 34px 0 10px;
+}
+:where(#praxis-original) .download a {
+  font-size: 14.5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+:where(#praxis-original) footer {
+  border-top: 1px solid transparent;
+  padding: 26px 0 40px;
+}
+:where(#praxis-original) footer .row {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+:where(#praxis-original) footer a {
+  color: var(--green-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+:where(#praxis-original) footer .cookie {
+  border: 1px solid var(--btn-line);
+  background: var(--btn);
+  color: var(--ink);
+  border-radius: 8px;
+  padding: 6px 13px;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+:where(#praxis-original) svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+:where(#praxis-original) .svg-cap {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+@media (max-width: 960px) {
+  :where(#praxis-original) .grid2,
+  :where(#praxis-original) .theory-grid,
+  :where(#praxis-original) .examples {
+    grid-template-columns: 1fr;
+  }
+  :where(#praxis-original) .banner h1 {
+    font-size: 24px;
+  }
+  :where(#praxis-original) .top-actions {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+body[data-praxis-course=functia-gradul-al-doilea]{--praxis-lesson-max-width:110rem}
+#praxis-original{width:100%;max-width:110rem;margin-inline:auto;padding:0 16px 16px;--bg:var(--praxis-color-background,#f5f5ed);--card:var(--praxis-color-surface,#fdfef8);--ink:var(--praxis-color-text,#123f38);--green:var(--praxis-color-primary,#17685f);--green-2:var(--praxis-color-primary,#17685f)}
+#praxis-original *,#praxis-original *::before,#praxis-original *::after{box-sizing:border-box}
+#praxis-original [hidden]{display:none!important}
+#praxis-original :is(button,input,summary){min-height:44px}
+#praxis-original :is(button,input,a,summary):focus-visible{outline:3px solid var(--green);outline-offset:3px}
+#praxis-original .step{min-width:44px;min-height:44px}
+#praxis-original .ctl-row.praxis-range-stepper{display:flex}
+#praxis-original .panel{animation:none}
+#praxis-original .card{padding:14px;min-width:0}
+#praxis-original .grid2{grid-template-columns:minmax(0,1.8fr) minmax(340px,1fr);gap:14px}
+#praxis-original .quadratic-scene-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.46fr);gap:12px;align-items:center}
+#praxis-original .quadratic-scene-card{container-type:inline-size;align-self:start}
+#praxis-original .quadratic-visual,#praxis-original .quadratic-readouts{min-width:0}
+#praxis-original .quadratic-visual{overflow-x:auto}
+#praxis-original svg{max-height:26.875rem}
+#praxis-original .quadratic-equation{max-width:100%;overflow-x:auto;white-space:nowrap;text-align:center}
+#praxis-original .quadratic-readouts .note{flex-direction:column;align-items:flex-start;padding:10px;gap:4px}
+#praxis-original .quadratic-readouts .legend{flex-direction:column;gap:8px}
+#praxis-original .quadratic-readouts .tiles{grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr));margin-top:10px}
+#praxis-original .quadratic-readouts .tiles .tile{min-height:64px}
+#praxis-original .eq{font-size:1.0625rem;overflow-wrap:anywhere;min-height:2.4em}
+#praxis-original .card h2{font-size:1.125rem;margin-bottom:10px}
+#praxis-original .card h3{font-size:1rem;margin-top:10px}
+#praxis-original :is(.ctl-head,.hint,.note,.btn,.chip,.tile span,.legend,.theory-grid p,.theory-grid ul,.examples p,.examples .sol,details.explain p,details.explain ul){font-size:.9375rem}
+#praxis-original :is(.ctl-head b,.note b,.tile b){font-size:1rem}
+#praxis-original .ctl{margin-bottom:8px}
+#praxis-original .presets,#praxis-original .play-row{gap:6px;margin-bottom:10px}
+#praxis-original .tiles{gap:8px}
+#praxis-original .tile{padding:8px;overflow-wrap:anywhere}
+#praxis-original .formulas{font-size:1rem;gap:10px}
+#praxis-original .quadratic-reading{margin-top:12px}
+#praxis-original .quadratic-reading>summary,.quadratic-settings>summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+.quadratic-preferences{display:grid;gap:4px;padding:10px}
+.quadratic-preferences label{display:flex;gap:8px;align-items:center;min-height:44px}
+.quadratic-preferences input{min-height:0!important;width:18px;height:18px}
+.quadratic-preferences-heading{margin:4px 0;font-size:var(--praxis-text-minor-heading)!important;font-weight:600!important}
+.quadratic-settings{width:auto;font-size:1rem;margin-left:auto;position:relative}
+.quadratic-settings[open] .quadratic-preferences{position:absolute;right:0;top:100%;min-width:300px;background:var(--praxis-color-surface,#fff);border:1px solid #ccd8cb;border-radius:10px;box-shadow:0 8px 24px #123f3820;z-index:20}
+body[data-praxis-course=functia-gradul-al-doilea] .praxis-lab-intro{padding-block:12px!important;margin-block:10px!important}
+body[data-praxis-course=functia-gradul-al-doilea] .praxis-course-tools{padding-block:8px;min-height:60px}
+body[data-praxis-course=functia-gradul-al-doilea] .praxis-lab-nav{padding-block:4px}
+@media(max-width:500px){.quadratic-settings{margin-left:0}.quadratic-settings[open] .quadratic-preferences{position:static;min-width:0}}
+@container(max-width:560px){#praxis-original .quadratic-scene-body{grid-template-columns:1fr}#praxis-original .quadratic-readouts .legend{flex-direction:row;flex-wrap:wrap}}
+@media(max-width:1100px){#praxis-original .grid2{grid-template-columns:1fr 1fr}#praxis-original .quadratic-scene-body{grid-template-columns:1fr}}
+@media(max-width:850px){#praxis-original .grid2,#praxis-original .theory-grid,#praxis-original .examples{grid-template-columns:1fr}#praxis-original{padding-inline:10px}#praxis-original svg{min-height:0}}
+@media(max-width:850px){#praxis-original .card>h2{display:block}}
+@media(min-width:1700px){#praxis-original .quadratic-controls .tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:1000px) and (max-height:850px){body[data-praxis-course=functia-gradul-al-doilea] .praxis-lab-intro{padding-block:6px!important;margin-block:4px!important}body[data-praxis-course=functia-gradul-al-doilea] .praxis-lab-intro h1{font-size:1.5rem}body[data-praxis-course=functia-gradul-al-doilea] .praxis-lab-intro p{margin-block:4px}body[data-praxis-course=functia-gradul-al-doilea] .praxis-lab-nav{padding-block:0!important}body[data-praxis-course=functia-gradul-al-doilea] .praxis-course-tools{padding-block:2px!important;min-height:48px;margin-bottom:4px}#praxis-original .grid2{gap:10px}#praxis-original .card{padding:10px}#praxis-original svg{max-height:370px}}

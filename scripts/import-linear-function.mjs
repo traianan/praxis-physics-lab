@@ -1,3 +1,4 @@
+import {flattenScopedCSS} from './scoped-lesson-css.mjs';
 import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {labNamespaces} from './lab-registry.mjs';
@@ -48,7 +49,7 @@ let css=await read(source+'style.css');
 // Scope source styles so they cannot change the shared header or dialogs.
 css=css.replace(/:root\b|\bhtml\b|\bbody\b/g,':scope');
 css='@scope (#praxis-original) {\n'+css+'\n}\n'+await read('scripts/adaptations/linear-function.css');
-await write('public/simulari/'+id+'/style.css',css);
+await write('public/simulari/'+id+'/style.css',await flattenScopedCSS(css));
 for(const name of await readdir(new URL(source+'js/',root))){
  let js=await read(source+'js/'+name);
  if(name==='core.js'){

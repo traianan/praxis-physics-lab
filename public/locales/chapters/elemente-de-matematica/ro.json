@@ -11,7 +11,11 @@
     "Dreaptă cu triunghiul pantei și intersecțiile cu axele": "Dreaptă cu triunghiul pantei și intersecțiile cu axele",
     "Matematică": "Matematică",
     "Funcții": "Funcții",
-    "Grafice": "Grafice"
+    "Grafice": "Grafice",
+    "Funcția de gradul al doilea": "Funcția de gradul al doilea",
+    "Parabolă, rădăcini și modele fizice": "Parabolă, rădăcini și modele fizice",
+    "Explorează parabola și coeficienții, rădăcinile și vârful; urmărește animații și trei modele de mișcare.": "Explorează parabola și coeficienții, rădăcinile și vârful; urmărește animații și trei modele de mișcare.",
+    "Graficul unei parabole pe un sistem de axe": "Graficul unei parabole pe un sistem de axe"
   },
   "simulations": {
     "masurarea-unghiurilor": {
@@ -33,6 +37,19 @@
       "description": "Explorează dreapta, panta și ordonata, urmărește animațiile și aplică modelele liniare în fizică. Șase exerciții cu verificare.",
       "alt": "Dreaptă cu triunghiul pantei și intersecțiile cu axele",
       "keywords": "functie liniara gradul intai panta ordonata dreapta inversa monotonie",
+      "tags": [
+        "Matematică",
+        "Funcții",
+        "Grafice",
+        "Offline"
+      ]
+    },
+    "functia-gradul-al-doilea": {
+      "title": "Funcția de gradul al doilea",
+      "subtitle": "Parabolă, rădăcini și modele fizice",
+      "description": "Explorează parabola și coeficienții, rădăcinile și vârful; urmărește animații și trei modele de mișcare.",
+      "alt": "Graficul unei parabole pe un sistem de axe",
+      "keywords": "functie gradul al doilea parabola radacini discriminant varf quadratic projectile free fall",
       "tags": [
         "Matematică",
         "Funcții",

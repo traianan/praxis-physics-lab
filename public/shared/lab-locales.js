@@ -275,5 +275,11 @@ export const labNamespaces = {
     "chapters/elemente-de-matematica",
     "courses/shared",
     "courses/functia-gradul-intai/ui"
+  ],
+  "functia-gradul-al-doilea": [
+    "common",
+    "chapters/elemente-de-matematica",
+    "courses/shared",
+    "courses/functia-gradul-al-doilea/ui"
   ]
 };

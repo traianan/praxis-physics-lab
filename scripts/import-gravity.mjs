@@ -1,3 +1,4 @@
+import {flattenScopedCSS} from './scoped-lesson-css.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {labNamespaces} from './lab-registry.mjs';
@@ -31,7 +32,7 @@ body=body.replace('<div class="grid" style="margin-top:20px"><article','<details
 const tabs='<nav class="tabs" role="tablist" aria-label="Secțiunile lecției">'+sections.map(([section,label])=>'<button type="button" role="tab" id="tab-'+section+'" data-tab="'+section+'" aria-controls="'+section+'" aria-selected="'+(section==='newton')+'" tabindex="'+(section==='newton'?0:-1)+'">'+label+'</button>').join('')+'</nav>';
 let css=raw.match(/<style>([\s\S]*?)<\/style>/)[1].replace(/:root\b|\bhtml\b|\bbody\b/g,':scope');
 css='@scope (#gravity-root) {\n'+css+'\n'+await read('scripts/adaptations/gravity.css')+'\n}\nbody[data-praxis-course="'+id+'"] *,body[data-praxis-course="'+id+'"] *::before,body[data-praxis-course="'+id+'"] *::after{box-sizing:border-box}\n';
-await write('public/shared/gravity.css',css);
+await write('public/shared/gravity.css',await flattenScopedCSS(css));
 let js=raw.match(/<script>([\s\S]*?)<\/script>/)[1];
 js=js.replace("x.toLocaleString('ro-RO'","x.toLocaleString(PraxisI18n.locale")
  .replace(".replace('.',',').replace('e'",".replace('.',PraxisI18n.language==='en'?'.':',').replace('e'")

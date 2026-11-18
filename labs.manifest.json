@@ -2030,6 +2030,63 @@
         "kind": "archive",
         "file": "functia-gradul-intai.zip"
       }
+    },
+    {
+      "metadata": {
+        "id": "functia-gradul-al-doilea",
+        "addedOn": "2026-11-18",
+        "addedOrder": 2,
+        "chapter": "elemente-de-matematica",
+        "title": "Funcția de gradul al doilea",
+        "subtitle": "Parabolă, rădăcini și modele fizice",
+        "description": "Explorează parabola și coeficienții, rădăcinile și vârful; urmărește animații și trei modele de mișcare.",
+        "alt": "Graficul unei parabole pe un sistem de axe",
+        "tags": [
+          "Matematică",
+          "Funcții",
+          "Grafice",
+          "Offline"
+        ],
+        "href": "./simulari/functia-gradul-al-doilea/index.html",
+        "image": "./assets/functia-gradul-al-doilea.svg",
+        "keywords": "functie gradul al doilea parabola radacini discriminant varf quadratic projectile free fall",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {
+            "selector": "#tab-teorie .grid2",
+            "layout": "native",
+            "scene": ".quadratic-scene-card",
+            "controls": ".quadratic-controls"
+          },
+          {
+            "selector": "#tab-animatii .grid2",
+            "layout": "native",
+            "scene": ".quadratic-scene-card",
+            "controls": ".quadratic-controls"
+          },
+          {
+            "selector": "#tab-fizica .grid2",
+            "layout": "native",
+            "scene": ".quadratic-scene-card",
+            "controls": ".quadratic-controls"
+          }
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/elemente-de-matematica",
+        "courses/shared",
+        "courses/functia-gradul-al-doilea/ui"
+      ],
+      "inlineLocales": [
+        "courses/functia-gradul-al-doilea/ui"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "functia-gradul-al-doilea.zip"
+      }
     }
   ]
 }

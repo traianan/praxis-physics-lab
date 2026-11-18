@@ -1,6 +1,13 @@
 # PROGRESS
 
-## Audit general și funcția de gradul al doilea — în lucru, 2026-11-18
+## Audit general și funcția de gradul al doilea — 2026-11-18
+
+- Auditul general publicat în `19545dc`: GitHub Actions 44365116261 trecut și Vercel activ. Control online: 181 stări de navigare fără erori JS sau overflow, 79 resurse identice cu sursele și amprentă derivată validă pentru shellul offline.
+- Integrată funcția de gradul al doilea în Elemente de matematică, RO/EN, cu Teorie, Animații și trei modele fizice. Sursa originală este păstrată byte cu byte; SHA-256 `bbbc2ac7d26a15c435e12859fa99213806770007d4c402bdaac1f6e122c80f02`. Corectate rădăcinile duble, cazurile liniare/constante, stabilitatea numerică, pașii animației și oprirea timpului în secțiuni ascunse. Formulele și limitele modelelor sunt verificate independent cu SymPy.
+- Lecția nouă: 7 teste analitice, 27 verificări funcționale și 7 de integrare; 60 stări responsive RO/EN, cinci dimensiuni și text 100/200%; 28 verificări independente ale tuturor activităților pe cele două rezoluții de tablă. Zero overflow, erori JS sau formule tăiate; 10 stări axe fără încălcări. Etichetele apropiate și formula graficului au fost reașezate. Controlul file:// cu HTTP blocat: 27 verificări, zero cereri HTTP, erori ori linkuri locale lipsă; navigarea Bibliotecă→lecție→capitol și metadatele EN sunt valide.
+- Compilate stilurile @scope din șase laboratoare existente pentru Chrome 100, prin adaptor reutilizabil și importeri reproductibili. Matrice suplimentară: 120 stări responsive și 102 offline fără erori/overflow. Auditul profund în 102 stări a identificat semantica invalidă a tabelului Materiale: corectate butoanele native, selecția prin tastatură și contrastul densității; recontrolul RO/EN trece. Antetul matematic al pendulului este numit corect în arborele de accesibilitate și rămâne constatare revizuită, fără suprimare nouă.
+- Antetul compact păstrează markerii runtime-ului matematic necesari exportului offline; regresie verificată prin test dedicat. Cele 42 arhive au CRC valid, registrul este verificat; CI local: 500 teste trecute, 7 omise, zero eșecuri. Nicio dependență adăugată sau actualizată. Publicarea etapei a doua și controlul producției continuă în aceeași sarcină.
+- Instrumente folosite: Impeccable, agent-browser/Chrome cu atingere emulată, axe și SymPy. Testarea nu înlocuiește verificarea pe tabla fizică Android 13. Accentul lateral semnalat a fost eliminat; nu au fost adăugate suprimări Impeccable.
 
 - Auditate titlurile în 40 laboratoare, RO/EN: 1.028 stări de navigare; corectate mecanica cerească și rețelele electrice, recontrolate 46 stări fără salturi de nivel.
 - Audit geometric de bază la 1920×1080: verificare spațieri, contururi, grafice și comenzi. Corectate grila figurilor (comenzi în lateral, citiri/formule sub scenă), introducerea vectorilor, gruparea comenzilor atomice și explicațiile Newton/pendul. Fără schimbarea ecuațiilor.
@@ -10,7 +17,7 @@
 - Audit final: 40 laboratoare × RO/EN, 1.088 stări de navigare pentru titluri. Cele 12 rute curbilinii cu salturi au trecut recontrolul axe după corecție. Matricea responsive: 800 stări la cinci dimensiuni, text 100/200%, DPR verificat, zero overflow/erori JS; cazul de refracție mobilă a fost corectat și recontrolat separat.
 - Mod tablă în distribuție: 82 stări RO/EN în 41 laboratoare, fără comenzi ieșite din ecran sau erori JS; Ohm și MRUV folosesc organizarea adaptivă nativă. Verificare în Chrome emulat, nu pe tabla fizică Android 13.
 - Arhivele autonome ale tuturor celor 41 laboratoare sunt regenerate și CRC valide. Test file:// cu HTTP blocat: cinci familii reorganizate, RO/EN, 272 stări, zero cereri HTTP, erori JS sau overflow. Build-ul este idempotent; registrul și sintaxa sunt valide. Validarea CI locală: 497 teste trecute, 7 omise, zero eșecuri (include cele șapte teste ale lecției noi pregătite separat).
-- Lecția de gradul al doilea este pregătită separat; publicarea auditului precedă înregistrarea ei în catalog. Publicarea și verificarea producției sunt în curs.
+- Auditul a fost publicat înaintea înregistrării lecției noi în catalog; rezultatele etapei a doua sunt consemnate mai sus.
 
 
 ## Revizie integrală Ohm pentru tabla digitală — 2026-11-18

@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funcția de gradul al doilea · Praxis Science Lab</title>
+<meta name="description" content="Lecție interactivă: funcția de gradul al doilea — teorie, animații și exemple din fizică.">
+<style>
+  :root{
+    --bg:#f7f7f2;
+    --card:#ffffff;
+    --ink:#16241d;
+    --muted:#5f6d65;
+    --green:#12432e;
+    --green-2:#1c5b3f;
+    --line:#e4e6e0;
+    --tile:#eef3ef;
+    --tile-2:#f2f5f1;
+    --amber:#e39b34;
+    --btn:#ffffff;
+    --btn-line:#dcdfd8;
+    --shadow:0 1px 2px rgba(18,67,46,.05);
+    --radius:12px;
+  }
+  body.board{
+    --bg:#0d2a1f;
+    --card:#123526;
+    --ink:#eef4ef;
+    --muted:#a9c3b6;
+    --line:#20493a;
+    --tile:#173f2e;
+    --tile-2:#153a2a;
+    --green:#0a1f16;
+    --green-2:#1c5b3f;
+    --btn:#173f2e;
+    --btn-line:#245744;
+    --amber:#f0b055;
+    --shadow:none;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Segoe UI",Roboto,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  body.text-big{font-size:17.5px}
+  a{color:var(--green-2)}
+  button{font-family:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+  /* ---------- top bar ---------- */
+  .topbar{background:var(--card);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:16px;min-height:60px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+  .brand .mark{
+    width:34px;height:34px;border-radius:8px;background:var(--green);
+    color:#fff;font-weight:700;font-size:18px;display:grid;place-items:center;
+    font-family:Georgia,serif;
+  }
+  .brand .name{line-height:1.05}
+  .brand .name b{display:block;font-size:19px;letter-spacing:.5px;color:var(--green)}
+  body.board .brand .name b{color:#9fd8bd}
+  .brand .name span{font-size:9.5px;letter-spacing:3.4px;color:var(--muted);text-transform:uppercase}
+  .top-actions{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .pill{
+    background:var(--btn);border:1px solid var(--btn-line);color:var(--ink);
+    border-radius:999px;padding:7px 14px;font-size:13.5px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:7px;box-shadow:var(--shadow);
+  }
+  .pill:hover{border-color:var(--green-2);color:var(--green-2)}
+  body.board .pill:hover{color:#9fd8bd}
+  .pill.on{background:var(--green);border-color:var(--green);color:#fff}
+  .pill.on .dot{width:8px;height:8px;border-radius:50%;background:#7ee0a8}
+  .lang{position:relative}
+  .lang-menu{
+    position:absolute;right:0;top:calc(100% + 6px);background:var(--card);
+    border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);
+    padding:6px;min-width:150px;display:none;z-index:40;
+  }
+  .lang-menu.open{display:block}
+  .lang-menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:8px 10px;border-radius:7px;font-size:13.5px;color:var(--ink);cursor:pointer}
+  .lang-menu button:hover{background:var(--tile)}
+  .lang-menu button[disabled]{color:var(--muted);cursor:default}
+  .lang-menu button[disabled]:hover{background:none}
+
+  /* ---------- breadcrumb ---------- */
+  .crumbs{font-size:13px;color:var(--muted);padding:12px 0 4px}
+  .crumbs a{color:var(--green-2);text-decoration:underline;text-underline-offset:2px}
+  .crumbs span.sep{margin:0 7px;opacity:.6}
+
+  /* ---------- banner ---------- */
+  .banner{
+    background:var(--green);color:#fff;border-radius:10px;
+    padding:20px 26px;margin-top:8px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  }
+  .banner .bar{width:5px;height:30px;background:#fff;border-radius:2px;align-self:center}
+  .banner h1{font-size:29px;margin:0;font-weight:700;letter-spacing:.2px}
+  .banner .sub{color:#a8c4b6;font-size:15.5px}
+  body.board .banner{background:#0a1f16;border:1px solid var(--line)}
+
+  /* ---------- tabs ---------- */
+  .tabbar{display:flex;align-items:center;gap:14px;margin:16px 0 18px;flex-wrap:wrap}
+  .tabs{display:flex;gap:4px;flex-wrap:wrap}
+  .tab{
+    border:0;background:none;color:var(--ink);font-size:14.5px;font-weight:600;
+    padding:9px 16px;border-radius:9px;cursor:pointer;
+  }
+  .tab:hover{background:var(--tile)}
+  .tab.active{background:var(--green);color:#fff}
+  .tab.active:hover{background:var(--green)}
+  .prefs-wrap{margin-left:auto;position:relative}
+  .panel{display:none}
+  .panel.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  /* ---------- cards ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;box-shadow:var(--shadow);
+  }
+  .card h2{font-size:20px;margin:0 0 16px;display:flex;align-items:center;gap:10px}
+  .card h2 .ico{font-size:17px}
+  .card h3{font-size:15.5px;margin:22px 0 8px}
+  .center{text-align:center}
+  .eq{font-size:17px;font-weight:600;margin:12px 0 4px}
+  .eq .amp{color:var(--green-2)}
+  .note{
+    background:var(--tile);border-radius:9px;padding:12px 16px;margin-top:14px;
+    display:flex;gap:14px;align-items:baseline;justify-content:center;flex-wrap:wrap;font-size:14.5px;
+  }
+  .note b{font-size:16.5px}
+  .hint{color:var(--muted);font-size:14px;margin-top:12px}
+
+  /* ---------- controls ---------- */
+  .ctl{margin-bottom:16px}
+  .ctl-head{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:7px}
+  .ctl-head b{color:var(--ink);font-size:15px}
+  .ctl-row{display:flex;align-items:center;gap:10px}
+  .step{
+    width:38px;height:34px;border:1px solid var(--btn-line);background:var(--btn);
+    border-radius:9px;font-size:17px;color:var(--ink);cursor:pointer;line-height:1;
+  }
+  .step:hover{border-color:var(--green-2)}
+  input[type=range]{
+    flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;
+    background:linear-gradient(to right,var(--green-2),var(--green-2)) no-repeat, var(--line);
+    outline:none;cursor:pointer;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+    background:var(--card);border:3px solid var(--green-2);cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,.2);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:15px;height:15px;border-radius:50%;background:var(--card);
+    border:3px solid var(--green-2);cursor:pointer;
+  }
+  .presets{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}
+  .chip{
+    border:1px solid var(--btn-line);background:var(--btn);color:var(--ink);
+    border-radius:9px;padding:7px 13px;font-size:13.5px;cursor:pointer;
+  }
+  .chip:hover{border-color:var(--green-2);color:var(--green-2)}
+  .chip.active{background:var(--green);border-color:var(--green);color:#fff}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .tile{background:var(--tile);border-radius:9px;padding:11px 14px}
+  .tile span{display:block;font-size:12.5px;color:var(--muted);margin-bottom:2px}
+  .tile b{font-size:17.5px;font-weight:650}
+  .formulas{display:flex;gap:26px;flex-wrap:wrap;margin-top:16px;font-size:16px;color:var(--ink)}
+  .formulas .f{font-family:Georgia,"Times New Roman",serif}
+  details.explain{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+  details.explain summary{cursor:pointer;font-size:14.5px;font-weight:600;color:var(--green-2);list-style:none}
+  body.board details.explain summary{color:#9fd8bd}
+  details.explain summary::before{content:"▸ "; }
+  details.explain[open] summary::before{content:"▾ "; }
+  details.explain p{font-size:14px;color:var(--muted);margin:10px 0 0}
+  details.explain ul{margin:8px 0 0;padding-left:20px;font-size:14px;color:var(--muted)}
+
+  /* ---------- theory blocks ---------- */
+  .theory-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:22px}
+  .theory-grid .card h2{font-size:17.5px}
+  .theory-grid p{margin:8px 0;font-size:14.5px;color:var(--muted)}
+  .theory-grid ul{margin:8px 0 0;padding-left:20px;font-size:14.5px;color:var(--muted)}
+  .theory-grid li{margin-bottom:5px}
+  .formula-box{
+    background:var(--tile);border-radius:9px;padding:12px 16px;margin:12px 0;
+    font-family:Georgia,"Times New Roman",serif;font-size:17px;text-align:center;color:var(--ink);
+  }
+  .case{display:flex;gap:12px;align-items:flex-start;margin-top:10px;font-size:14.5px}
+  .case .badge{
+    flex:0 0 auto;background:var(--green);color:#fff;border-radius:7px;
+    font-size:13px;font-weight:700;padding:3px 9px;margin-top:2px;
+  }
+  .case .badge.neg{background:#a4462f}
+  .case .badge.zero{background:#8a6a1f}
+  .case p{margin:0;color:var(--muted)}
+
+  /* ---------- animation / physics ---------- */
+  .play-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .btn{
+    border:1px solid var(--btn-line);background:var(--btn);color:var(--ink);
+    border-radius:9px;padding:9px 16px;font-size:14px;cursor:pointer;font-weight:600;
+  }
+  .btn:hover{border-color:var(--green-2);color:var(--green-2)}
+  .btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+  .btn.primary:hover{background:var(--green-2);color:#fff;border-color:var(--green-2)}
+  .status{
+    background:var(--tile);border-radius:9px;padding:12px 16px;font-size:14.5px;
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .status b{font-weight:650}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-top:12px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .examples{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+  .examples .card h2{font-size:16.5px}
+  .examples p{font-size:14px;color:var(--muted);margin:8px 0}
+  .examples .sol{background:var(--tile);border-radius:9px;padding:10px 14px;font-size:14px;margin-top:10px}
+  .examples .sol b{color:var(--ink)}
+
+  /* ---------- prefs popover ---------- */
+  .popover{
+    position:absolute;right:0;top:calc(100% + 8px);width:270px;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.16);
+    padding:16px 18px;z-index:50;display:none;
+  }
+  .popover.open{display:block}
+  .popover h4{margin:0 0 10px;font-size:14.5px}
+  .popover label{display:flex;gap:9px;align-items:center;font-size:14px;padding:5px 0;color:var(--muted);cursor:pointer}
+  .popover input[type=checkbox]{accent-color:var(--green-2);width:15px;height:15px}
+  .popover .btn{width:100%;margin-top:10px}
+
+  /* ---------- download + footer ---------- */
+  .download{margin:34px 0 10px}
+  .download a{font-size:14.5px;text-decoration:underline;text-underline-offset:3px}
+  footer{border-top:1px solid transparent;padding:26px 0 40px}
+  footer .row{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-size:14px}
+  footer a{color:var(--green-2);text-decoration:underline;text-underline-offset:3px}
+  footer .cookie{
+    border:1px solid var(--btn-line);background:var(--btn);color:var(--ink);
+    border-radius:8px;padding:6px 13px;font-size:13.5px;cursor:pointer;
+  }
+
+  svg{width:100%;height:auto;display:block}
+  .svg-cap{text-align:center;font-size:13.5px;color:var(--muted);margin-top:6px}
+
+  @media (max-width:960px){
+    .grid2,.theory-grid,.examples{grid-template-columns:1fr}
+    .banner h1{font-size:24px}
+    .top-actions{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span class="mark">p</span>
+      <span class="name"><b>praxis</b><span>science lab</span></span>
+    </a>
+    <div class="top-actions">
+      <button class="pill" id="btnText" title="Text mărit">Text / afișare</button>
+      <button class="pill">Bibliotecă</button>
+      <button class="pill">Cum folosești laboratorul</button>
+      <button class="pill" id="btnBoard">Mod tablă</button>
+      <button class="pill on" id="btnSound"><span class="dot"></span> Sunet activ</button>
+      <div class="lang">
+        <button class="pill" id="btnLang">RO ▾</button>
+        <div class="lang-menu" id="langMenu">
+          <button>Română (RO)</button>
+          <button disabled>Engleză (EN) — în curând</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumbs">
+    <a href="#">Bibliotecă</a><span class="sep">/</span>
+    <a href="#">Elemente de matematică</a><span class="sep">/</span>
+    <span>Funcția de gradul al doilea</span>
+  </nav>
+
+  <div class="banner">
+    <span class="bar"></span>
+    <h1>Funcția de gradul al doilea</h1>
+    <span class="sub">De la coeficienți la vârf, rădăcini și parabolă</span>
+  </div>
+
+  <div class="tabbar">
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="teorie" role="tab">Teorie</button>
+      <button class="tab" data-tab="animatii" role="tab">Animații</button>
+      <button class="tab" data-tab="fizica" role="tab">Exemple în fizică</button>
+    </div>
+    <div class="prefs-wrap">
+      <button class="chip" id="btnPrefs">▶ Preferințe laborator</button>
+      <div class="popover" id="prefsPanel">
+        <h4>Ce arătăm pe grafic?</h4>
+        <label><input type="checkbox" id="optGrid" checked> Grila și axele</label>
+        <label><input type="checkbox" id="optRoots" checked> Rădăcinile (x₁, x₂)</label>
+        <label><input type="checkbox" id="optVertex" checked> Vârful V și axa de simetrie</label>
+        <label><input type="checkbox" id="optInter" checked> Intersecția cu axa Oy</label>
+        <label><input type="checkbox" id="optSound" checked> Sunet la interacțiuni</label>
+        <button class="btn" id="btnResetPrefs">Resetează preferințele</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TAB: TEORIE ============ -->
+  <section class="panel active" id="tab-teorie">
+    <div class="grid2">
+      <div class="card">
+        <h2><span class="ico">🧪</span> Parabola</h2>
+        <div id="svgTheory"></div>
+        <div class="eq center" id="eqTheory">y = x² − 2x − 3</div>
+        <div class="note">
+          <span>Rădăcinile ecuației:</span>
+          <b id="rootsNote">x₁ = −1, x₂ = 3</b>
+        </div>
+        <p class="hint" id="theoryHint">
+          Punctul marcat este vârful parabolei. Pentru a &gt; 0 parabola este deschisă în sus,
+          pentru a &lt; 0 în jos. Raza r și arcul nu au echivalent aici: reperele sunt x și y.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2><span class="ico">🎛</span> Explorează funcția</h2>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Coeficientul a (curbură și sens)</span><b id="valA">1</b></div>
+          <div class="ctl-row">
+            <button class="step" data-var="a" data-d="-1" aria-label="scade a">−</button>
+            <input type="range" id="slA" min="-3" max="3" step="0.05" value="1">
+            <button class="step" data-var="a" data-d="1" aria-label="crește a">+</button>
+          </div>
+        </div>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Coeficientul b (deplasare laterală)</span><b id="valB">−2</b></div>
+          <div class="ctl-row">
+            <button class="step" data-var="b" data-d="-1" aria-label="scade b">−</button>
+            <input type="range" id="slB" min="-6" max="6" step="0.1" value="-2">
+            <button class="step" data-var="b" data-d="1" aria-label="crește b">+</button>
+          </div>
+        </div>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Coeficientul c (intersecția cu Oy)</span><b id="valC">−3</b></div>
+          <div class="ctl-row">
+            <button class="step" data-var="c" data-d="-1" aria-label="scade c">−</button>
+            <input type="range" id="slC" min="-8" max="8" step="0.1" value="-3">
+            <button class="step" data-var="c" data-d="1" aria-label="crește c">+</button>
+          </div>
+        </div>
+
+        <div class="presets">
+          <button class="chip" data-preset="1,0,0">y = x²</button>
+          <button class="chip active" data-preset="1,-2,-3">x² − 2x − 3</button>
+          <button class="chip" data-preset="-1,0,4">−x² + 4</button>
+          <button class="chip" data-preset="0.5,-2,0">0,5x² − 2x</button>
+          <button class="chip" data-preset="1,0,-4">x² − 4</button>
+        </div>
+
+        <div class="tiles">
+          <div class="tile"><span>Δ = b² − 4ac</span><b id="tileDelta">16</b></div>
+          <div class="tile"><span>Rădăcini reale</span><b id="tileRoots">2</b></div>
+          <div class="tile"><span>Vârf V(h; k)</span><b id="tileVertex">(1; −4)</b></div>
+          <div class="tile"><span>f(0) = c</span><b id="tileF0">−3</b></div>
+        </div>
+
+        <div class="formulas">
+          <span class="f">x₁,₂ = (−b ± √Δ) / 2a</span>
+          <span class="f">V( −b/2a ; c − b²/4a )</span>
+        </div>
+
+        <details class="explain">
+          <summary>Cum interpretezi desenul?</summary>
+          <p>
+            <b>Axa orizontală</b> este x, <b>cea verticală</b> este y. Curba este parabola
+            y = ax² + bx + c.
+          </p>
+          <ul>
+            <li>Punctele în care parabola atinge axa x sunt rădăcinile x₁ și x₂.</li>
+            <li>Vârful V este cel mai jos (a &gt; 0) sau cel mai înalt (a &lt; 0) punct al curbei.</li>
+            <li>Axa verticală punctată trece prin V și este axa de simetrie x = −b/2a.</li>
+            <li>Punctul de pe axa y este (0; c), intersecția funcției cu axa Oy.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="theory-grid">
+      <div class="card">
+        <h2>1. Forma generală</h2>
+        <div class="formula-box">y = f(x) = ax² + bx + c,&nbsp; a ≠ 0</div>
+        <p>
+          <b>a</b>, <b>b</b>, <b>c</b> sunt coeficienți reali, iar <b>a</b> nu poate fi zero:
+          dacă a = 0 funcția devine liniară, nu mai este de gradul al doilea.
+        </p>
+        <ul>
+          <li><b>a &gt; 0</b> — parabola este deschisă în sus și are un minim.</li>
+          <li><b>a &lt; 0</b> — parabola este deschisă în jos și are un maxim.</li>
+          <li>|<b>a</b>| mai mare înseamnă o parabolă mai „îngustă”, mai puțin întinsă.</li>
+          <li><b>c</b> este ordonata intersecției cu axa Oy: P(0; c).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>2. Discriminantul și rădăcinile</h2>
+        <div class="formula-box">Δ = b² − 4ac</div>
+        <div class="case">
+          <span class="badge">Δ &gt; 0</span>
+          <p>Două rădăcini reale distincte: x₁,₂ = (−b ± √Δ) / 2a. Parabola intersectează axa x în două puncte.</p>
+        </div>
+        <div class="case">
+          <span class="badge zero">Δ = 0</span>
+          <p>O rădăcină dublă: x₀ = −b / 2a. Vârful atinge axa x.</p>
+        </div>
+        <div class="case">
+          <span class="badge neg">Δ &lt; 0</span>
+          <p>Nicio rădăcină reală. Parabola nu intersectează axa x (funcția nu se anulează).</p>
+        </div>
+        <p>Din semnul lui a și al lui Δ rezultă sensul deschiderii și poziția relativă față de axa x.</p>
+      </div>
+
+      <div class="card">
+        <h2>3. Vârful, simetria și forma canonică</h2>
+        <div class="formula-box">y = a(x − h)² + k,&nbsp; h = −b/2a,&nbsp; k = f(h)</div>
+        <p>
+          Prin completarea pătratului, forma generală se transformă în <b>forma canonică</b>.
+          Coordonatele vârfului sunt V(h; k) = V(−b/2a ; c − b²/4a).
+        </p>
+        <ul>
+          <li><b>x = −b/2a</b> este axa de simetrie a parabolei (linia verticală prin V).</li>
+          <li>Punctele simetrice față de axă au aceeași ordonată: f(h − t) = f(h + t).</li>
+          <li>k este valoarea extremă: minim dacă a &gt; 0, maxim dacă a &lt; 0.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>4. Proprietăți și monotonie</h2>
+        <p>Pentru a ≠ 0, funcția y = ax² + bx + c are următoarele proprietăți:</p>
+        <ul>
+          <li>Este <b>continuă</b> și <b>diferențiabilă</b> pe ℝ; derivata este y′ = 2ax + b.</li>
+          <li><b>Monoton descrescătoare</b> pe (−∞; −b/2a] și <b>monoton crescătoare</b> pe [−b/2a; ∞) dacă a &gt; 0 (invers pentru a &lt; 0).</li>
+          <li>Are un <b>extrem</b> în vârful V și este <b>nebijectivă</b> pe ℝ, dar bijiectivă pe fiecare interval de monotonie.</li>
+          <li>Fiind de grad 2, are cel mult 2 rădăcini reale (teorema lui Euler–d’Alembert).</li>
+          <li>Prin punctele (h − t; y) și (h + t; y) trece aceeași orizontală — simetria parabolei.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB: ANIMAȚII ============ -->
+  <section class="panel" id="tab-animatii">
+    <div class="grid2">
+      <div class="card">
+        <h2><span class="ico">🎬</span> Animație pe grafic</h2>
+        <div id="svgAnim"></div>
+        <div class="eq center" id="eqAnim">y = x² − 2x − 3</div>
+        <div class="note">
+          <span id="animLabel">Alege o animație și apasă Redă.</span>
+          <b id="animValue"></b>
+        </div>
+        <p class="hint" id="animHint">
+          Animația actualizează coeficienții în timp real; poți opri oricând și prelua controlul manual.
+        </p>
+        <div class="legend">
+          <span><i style="background:#1c5b3f"></i>parabola y = f(x)</span>
+          <span><i style="background:#e39b34"></i>vârful / punctul mobil</span>
+          <span><i style="background:#a4462f"></i>rădăcinile x₁, x₂</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="ico">⏯</span> Comenzi de animație</h2>
+
+        <div class="play-row">
+          <button class="btn primary" id="btnPlay">▶ Redă</button>
+          <button class="btn" id="btnRestart">⟲ Repornește</button>
+        </div>
+
+        <h3>Tipul animației</h3>
+        <div class="play-row">
+          <button class="chip active" data-anim="a">Coeficientul a se schimbă</button>
+          <button class="chip" data-anim="point">Punct mobil pe parabolă</button>
+          <button class="chip" data-anim="roots">Rădăcinile apar</button>
+        </div>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Viteza animației</span><b id="valSpeed">1×</b></div>
+          <div class="ctl-row">
+            <button class="step" id="spdDown">−</button>
+            <input type="range" id="slSpeed" min="0.25" max="3" step="0.25" value="1">
+            <button class="step" id="spdUp">+</button>
+          </div>
+        </div>
+
+        <div class="status">
+          <span>Poziție în animație</span>
+          <b id="animProgress">0%</b>
+        </div>
+
+        <div class="tiles" style="margin-top:14px">
+          <div class="tile"><span id="tileAName">Coeficient a</span><b id="tileA">1</b></div>
+          <div class="tile"><span id="tileBName">Punct x</span><b id="tileB">—</b></div>
+          <div class="tile"><span id="tileCName">f(x)</span><b id="tileC">—</b></div>
+          <div class="tile"><span>Δ</span><b id="tileD">16</b></div>
+        </div>
+
+        <details class="explain" open>
+          <summary>Ce urmărești?</summary>
+          <ul id="animExplain">
+            <li><b>Coeficientul a se schimbă:</b> a parcurge intervalul [−1,6 ; 1,6] — parabola se rotește, trece prin deschiderea în jos, se aplatizează la a ≈ 0 și se redeschide în sus.</li>
+            <li><b>Punct mobil:</b> un punct P(x; f(x)) parcurge curba de la stânga la dreapta; liniile punctate arată proiecțiile sale pe axe.</li>
+            <li><b>Rădăcinile apar:</b> c scade treptat, Δ crește de la valori negative la pozitive, iar punctele x₁ și x₂ „ies” din vârf pe axa x.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="theory-grid">
+      <div class="card">
+        <h2>Ce se schimbă vizual?</h2>
+        <p>
+          Schimbarea semnului lui <b>a</b> inversează deschideria parabolei: dacă a trece prin 0,
+          parabola se aplatizează într-o dreaptă (doar instantaneu — pentru a = 0 nu mai vorbim de
+          funcție de gradul al doilea).
+        </p>
+        <ul>
+          <li>|a| crește → parabola se îngustează.</li>
+          <li>|a| scade → parabola se lărgește.</li>
+          <li>a &gt; 0 → extrem minim; a &lt; 0 → extrem maxim.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>De ce contează Δ?</h2>
+        <p>
+          Pe măsură ce c scade, graficul coboară. Momentul exact în care parabola atinge axa x
+          corespunde lui <b>Δ = 0</b>; apoi, pentru Δ &gt; 0, apar două rădăcini reale distincte.
+        </p>
+        <div class="formula-box">Δ = b² − 4ac</div>
+        <p>Aceasta este legătura directă între algebra (ecuația de gradul 2) și geometrie (intersectarea cu axa x).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB: EXEMPLE ÎN FIZICĂ ============ -->
+  <section class="panel" id="tab-fizica">
+    <div class="grid2">
+      <div class="card">
+        <h2><span class="ico">🚀</span> <span id="physTitle">Traectoria unui proiectil</span></h2>
+        <div id="svgPhys"></div>
+        <div class="eq center" id="eqPhys">y = x·tan θ − g·x² / (2v₀²·cos²θ)</div>
+        <div class="note">
+          <span id="physNoteLabel">Punctul marcat este proiectilul la momentul t.</span>
+          <b id="physNoteValue">t = 0,00 s</b>
+        </div>
+        <p class="hint" id="physHint">
+          Traseul este o parabolă: componenta orizontală este uniformă, iar cea verticală este
+          uniform accelerată (g ≈ 9,81 m/s²).
+        </p>
+        <div class="legend">
+          <span><i style="background:#1c5b3f"></i>traiectoria</span>
+          <span><i style="background:#e39b34"></i>corpul în mișcare</span>
+          <span><i style="background:#8a6a1f"></i>înălțimea maximă</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="ico">⚖</span> Alege modelul</h2>
+        <div class="play-row">
+          <button class="chip active" data-phys="proj">Proiectil</button>
+          <button class="chip" data-phys="up">Minge aruncată în sus</button>
+          <button class="chip" data-phys="fall">Cădere liberă</button>
+        </div>
+
+        <div class="play-row">
+          <button class="btn primary" id="btnPhysPlay">▶ Redă</button>
+          <button class="btn" id="btnPhysReset">⟲ Repornește</button>
+        </div>
+
+        <!-- Proiectil -->
+        <div class="phys-ctl" id="ctl-proj">
+          <div class="ctl">
+            <div class="ctl-head"><span>Viteza inițială v₀ (m/s)</span><b id="valV0">20</b></div>
+            <div class="ctl-row">
+              <button class="step" data-phys-var="v0" data-d="-1">−</button>
+              <input type="range" id="slV0" min="5" max="60" step="1" value="20">
+              <button class="step" data-phys-var="v0" data-d="1">+</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><span>Unghiul de lansare θ (°)</span><b id="valTh">45</b></div>
+            <div class="ctl-row">
+              <button class="step" data-phys-var="th" data-d="-5">−</button>
+              <input type="range" id="slTh" min="5" max="85" step="5" value="45">
+              <button class="step" data-phys-var="th" data-d="5">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Minge în sus -->
+        <div class="phys-ctl" id="ctl-up" style="display:none">
+          <div class="ctl">
+            <div class="ctl-head"><span>Înălțimea inițială h₀ (m)</span><b id="valH0">2</b></div>
+            <div class="ctl-row">
+              <button class="step" data-phys-var="h0" data-d="-1">−</button>
+              <input type="range" id="slH0" min="0" max="40" step="1" value="2">
+              <button class="step" data-phys-var="h0" data-d="1">+</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><span>Viteza inițială v₀ (m/s)</span><b id="valVu">12</b></div>
+            <div class="ctl-row">
+              <button class="step" data-phys-var="vu" data-d="-1">−</button>
+              <input type="range" id="slVu" min="0" max="30" step="1" value="12">
+              <button class="step" data-phys-var="vu" data-d="1">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cădere -->
+        <div class="phys-ctl" id="ctl-fall" style="display:none">
+          <div class="ctl">
+            <div class="ctl-head"><span>Înălțimea de cădere H (m)</span><b id="valH">45</b></div>
+            <div class="ctl-row">
+              <button class="step" data-phys-var="H" data-d="-5">−</button>
+              <input type="range" id="slH" min="5" max="150" step="5" value="45">
+              <button class="step" data-phys-var="H" data-d="5">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Graviția g (m/s²)</span><b id="valG">9,81</b></div>
+          <div class="ctl-row">
+            <button class="step" data-phys-var="g" data-d="-0.5">−</button>
+            <input type="range" id="slG" min="1.5" max="25" step="0.01" value="9.81">
+            <button class="step" data-phys-var="g" data-d="0.5">+</button>
+          </div>
+        </div>
+
+        <div class="tiles" id="physTiles"></div>
+
+        <div class="formulas">
+          <span class="f" id="physF1">H = v₀²·sin²θ / 2g</span>
+          <span class="f" id="physF2">R = v₀²·sin2θ / g</span>
+        </div>
+
+        <details class="explain">
+          <summary>Cum interpretezi desenul?</summary>
+          <p id="physExplain">
+            Axa x este distanța parcursă (m), iar axa y este înălțimea (m). Curba este traiectoria
+            proiectilului; punctul portocaliu arată poziția curentă, iar linia orizontală marchează
+            înălțimea maximă atinsă.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <div class="examples">
+      <div class="card">
+        <h2>🚀 Proiectil: săritură la înălțime</h2>
+        <p>Un proiectil este lansat cu v₀ = 20 m/s la θ = 45°, cu g = 9,81 m/s².</p>
+        <div class="sol">
+          <b>H</b> = (20·sin45°)² / (2·9,81) = <b>10,2 m</b><br>
+          <b>R</b> = 20²·sin90° / 9,81 = <b>40,8 m</b><br>
+          <b>t</b> = 2·20·sin45° / 9,81 = <b>2,88 s</b>
+        </div>
+        <p>Traiectoria este o parabolă — chiar funcție de gradul al doilea a lui x.</p>
+      </div>
+
+      <div class="card">
+        <h2>⬆ Minge aruncată în sus</h2>
+        <p>O minge este aruncată în sus de la h₀ = 2 m, cu v₀ = 12 m/s.</p>
+        <div class="sol">
+          <b>h(t)</b> = 2 + 12t − 4,905t²<br>
+          <b>t</b><sub>vârf</sub> = 12 / 9,81 = <b>1,22 s</b><br>
+          <b>h</b><sub>max</sub> = 2 + 12²/(2·9,81) = <b>9,34 m</b><br>
+          <b>v</b><sub>impact</sub> = √(12² + 2·9,81·2) = <b>13,5 m/s</b>
+        </div>
+        <p>Înălțimea în funcție de timp este exact o funcție de gradul al doilea: y = at² + bt + c.</p>
+      </div>
+
+      <div class="card">
+        <h2>⬇ Cădere liberă</h2>
+        <p>Un corp este lăsat să cadă de la H = 45 m, fără viteză inițială.</p>
+        <div class="sol">
+          <b>h(t)</b> = 45 − 4,905t²<br>
+          <b>t</b> = √(2·45 / 9,81) = <b>3,03 s</b><br>
+          <b>v</b> = √(2·9,81·45) = <b>29,7 m/s</b>
+        </div>
+        <p>a &lt; 0 (a = −g/2), deci parabola este deschisă în jos — ca în cazul proiectilului.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="download">
+    <a href="#" id="btnDownload">Descarcă lecția (HTML)</a>
+  </div>
+</div>
+
+<footer>
+  <div class="row">
+    <a href="#">Despre</a>
+    <a href="#">Contact</a>
+    <a href="#">Termeni și condiții</a>
+    <a href="#">Confidențialitate și cookies</a>
+    <button class="cookie" id="btnCookies">Setări cookies</button>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const $  = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+/* ---------------- utilitare ---------------- */
+function fmt(n, d){
+  d = (d === undefined) ? 3 : d;
+  if (n === null || n === undefined || !isFinite(n)) return "—";
+  return Number(n).toLocaleString("ro-RO", {maximumFractionDigits:d, minimumFractionDigits:0});
+}
+function sgn(n){ return n < 0 ? "−" : ""; }
+function abs(n){ return Math.abs(n); }
+
+/* sunet */
+let soundOn = true;
+let actx = null;
+function beep(freq){
+  if (!soundOn) return;
+  try{
+    if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === "suspended") actx.resume();
+    const o = actx.createOscillator(), g = actx.createGain();
+    o.type = "sine"; o.frequency.value = freq || 640;
+    g.gain.setValueAtTime(0.0001, actx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.05, actx.currentTime + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.09);
+    o.connect(g); g.connect(actx.destination);
+    o.start(); o.stop(actx.currentTime + 0.1);
+  }catch(e){}
+}
+
+/* preferințe */
+const prefs = {grid:true, roots:true, vertex:true, inter:true};
+function loadPrefs(){
+  try{
+    const raw = localStorage.getItem("fg2_prefs");
+    if (raw) Object.assign(prefs, JSON.parse(raw));
+    const s = localStorage.getItem("fg2_sound");
+    if (s !== null) soundOn = (s === "1");
+  }catch(e){}
+}
+function savePrefs(){
+  try{
+    localStorage.setItem("fg2_prefs", JSON.stringify(prefs));
+    localStorage.setItem("fg2_sound", soundOn ? "1" : "0");
+  }catch(e){}
+}
+loadPrefs();
+
+/* ---------------- hartă grafic ---------------- */
+function makeMap(win, box){
+  return {
+    win:win, box:box,
+    X: v => box.x + (v - win.x0) / (win.x1 - win.x0) * box.w,
+    Y: v => box.y + box.h - (v - win.y0) / (win.y1 - win.y0) * box.h
+  };
+}
+function niceStep(range, target){
+  target = target || 10;
+  const raw = range / target;
+  const pow = Math.pow(10, Math.floor(Math.log10(raw)));
+  const n = raw / pow;
+  let m = 1;
+  if (n > 5) m = 10; else if (n > 2) m = 5; else if (n > 1) m = 2;
+  return m * pow;
+}
+function axesHTML(m, opt){
+  opt = opt || {};
+  const ink = "var(--muted)", line = "var(--line)", axis = getComputedStyle(document.body).getPropertyValue("--muted").trim() || "#5f6d65";
+  const gridStroke = getComputedStyle(document.body).getPropertyValue("--line").trim() || "#e4e6e0";
+  let s = "";
+  const stepX = niceStep(m.win.x1 - m.win.x0, 10);
+  const stepY = niceStep(m.win.y1 - m.win.y0, 8);
+
+  if (prefs.grid){
+    for (let v = Math.ceil(m.win.x0 / stepX) * stepX; v <= m.win.x1 + 1e-9; v += stepX){
+      const X = m.X(v);
+      s += `<line x1="${X.toFixed(1)}" y1="${m.box.y}" x2="${X.toFixed(1)}" y2="${m.box.y + m.box.h}" stroke="${gridStroke}" stroke-width="1"/>`;
+      if (Math.abs(v) > 1e-9)
+        s += `<text x="${X.toFixed(1)}" y="${(m.box.y + m.box.h + 15).toFixed(1)}" font-size="11" fill="${axis}" text-anchor="middle">${fmt(v,2)}</text>`;
+    }
+    for (let v = Math.ceil(m.win.y0 / stepY) * stepY; v <= m.win.y1 + 1e-9; v += stepY){
+      const Y = m.Y(v);
+      s += `<line x1="${m.box.x}" y1="${Y.toFixed(1)}" x2="${m.box.x + m.box.w}" y2="${Y.toFixed(1)}" stroke="${gridStroke}" stroke-width="1"/>`;
+      if (Math.abs(v) > 1e-9)
+        s += `<text x="${(m.box.x - 7).toFixed(1)}" y="${(Y + 3.5).toFixed(1)}" font-size="11" fill="${axis}" text-anchor="end">${fmt(v,2)}</text>`;
+    }
+  }
+  /* axe */
+  const y0 = m.Y(0), x0 = m.X(0);
+  if (y0 >= m.box.y && y0 <= m.box.y + m.box.h)
+    s += `<line x1="${m.box.x}" y1="${y0.toFixed(1)}" x2="${m.box.x + m.box.w}" y2="${y0.toFixed(1)}" stroke="${axis}" stroke-width="1.6"/>`;
+  if (x0 >= m.box.x && x0 <= m.box.x + m.box.w)
+    s += `<line x1="${x0.toFixed(1)}" y1="${m.box.y}" x2="${x0.toFixed(1)}" y2="${m.box.y + m.box.h}" stroke="${axis}" stroke-width="1.6"/>`;
+  s += `<text x="${m.box.x + m.box.w - 2}" y="${(y0 - 7).toFixed(1)}" font-size="12.5" fill="${axis}" text-anchor="end" font-style="italic">x</text>`;
+  s += `<text x="${(x0 + 8).toFixed(1)}" y="${m.box.y + 13}" font-size="12.5" fill="${axis}" font-style="italic">y</text>`;
+  if (opt.xLabel)
+    s += `<text x="${m.box.x + m.box.w}" y="${m.box.y + m.box.h + 30}" font-size="12" fill="${axis}" text-anchor="end">${opt.xLabel}</text>`;
+  if (opt.yLabel)
+    s += `<text x="${m.box.x}" y="${m.box.y - 8}" font-size="12" fill="${axis}" text-anchor="start">${opt.yLabel}</text>`;
+  return s;
+}
+function label(text, x, y, color, anchor, size){
+  return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="${size||12.5}" fill="${color}"
+    text-anchor="${anchor||"middle"}" font-weight="600" paint-order="stroke"
+    stroke="var(--card)" stroke-width="3.5" stroke-linejoin="round">${text}</text>`;
+}
+function dot(x, y, color, r){
+  return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r||5.5}" fill="${color}"
+    stroke="var(--card)" stroke-width="2"/>`;
+}
+
+/* ---------------- starea aplicației ---------------- */
+const S = {a:1, b:-2, c:-3};
+
+function f(x){ return S.a * x * x + S.b * x + S.c; }
+function delta(){ return S.b * S.b - 4 * S.a * S.c; }
+function vertex(){
+  const h = -S.b / (2 * S.a);
+  return {h:h, k:f(h)};
+}
+function roots(){
+  const d = delta();
+  if (d < -1e-9 || S.a === 0) return [];
+  const sq = Math.sqrt(Math.max(d, 0));
+  const x1 = (-S.b - sq) / (2 * S.a);
+  const x2 = (-S.b + sq) / (2 * S.a);
+  return x1 <= x2 ? [x1, x2] : [x2, x1];
+}
+
+function expr(a, b, c){
+  let out = "y = ";
+  function term(coef, pow){
+    if (Math.abs(coef) < 1e-9) return null;
+    const sign = coef < 0 ? "−" : "+";
+    const body = pow === 2 ? "x²" : pow === 1 ? "x" : "";
+    let num;
+    if (pow === 0) num = fmt(abs(coef), 2);
+    else num = (Math.abs(Math.abs(coef) - 1) < 1e-9) ? "" : fmt(abs(coef), 2);
+    return {sign:sign, body:num + body};
+  }
+  const parts = [term(a,2), term(b,1), term(c,0)].filter(Boolean);
+  if (!parts.length) return "y = 0";
+  parts.forEach((p, i) => {
+    out += (i === 0 ? (p.sign === "−" ? "−" : "") : " " + p.sign + " ") + p.body;
+  });
+  return out;
+}
+
+/* ---------------- view parabolă ---------------- */
+const TH_BOX = {x:46, y:18, w:578, h:384};
+const TH_WIN = {x0:-8, x1:8, y0:-10, y1:10};
+
+function parabolaPath(m){
+  const pts = [];
+  const N = 320;
+  let d = "", drawing = false;
+  for (let i = 0; i <= N; i++){
+    const x = m.win.x0 + (m.win.x1 - m.win.x0) * i / N;
+    const y = f(x);
+    const inside = y >= m.win.y0 - 1e-9 && y <= m.win.y1 + 1e-9;
+    if (inside){
+      const X = m.X(x), Y = m.Y(y);
+      d += (drawing ? "L" : "M") + X.toFixed(1) + " " + Y.toFixed(1) + " ";
+      drawing = true;
+    } else drawing = false;
+  }
+  return d;
+}
+
+function renderParabola(svgHost, opts){
+  opts = opts || {};
+  const m = makeMap(TH_WIN, TH_BOX);
+  let s = `<svg viewBox="0 0 640 430" role="img" aria-label="Graficul parabolei">`;
+  s += axesHTML(m, {});
+  s += `<clipPath id="clip-${opts.id||"x"}"><rect x="${TH_BOX.x}" y="${TH_BOX.y}" width="${TH_BOX.w}" height="${TH_BOX.h}"/></clipPath>`;
+  s += `<g clip-path="url(#clip-${opts.id||"x"})">`;
+
+  /* axa de simetrie */
+  const V = vertex();
+  if (prefs.vertex && V.h >= TH_WIN.x0 && V.h <= TH_WIN.x1){
+    s += `<line x1="${m.X(V.h).toFixed(1)}" y1="${TH_BOX.y}" x2="${m.X(V.h).toFixed(1)}" y2="${TH_BOX.y + TH_BOX.h}"
+      stroke="#8a6a1f" stroke-width="1.4" stroke-dasharray="6 5"/>`;
+  }
+  /* curba */
+  s += `<path d="${parabolaPath(m)}" fill="none" stroke="var(--green-2)" stroke-width="3" stroke-linecap="round"/>`;
+  s += `</g>`;
+
+  /* rădăcini */
+  if (prefs.roots){
+    roots().forEach((r, i) => {
+      if (r >= TH_WIN.x0 && r <= TH_WIN.x1){
+        const X = m.X(r);
+        s += dot(X, m.Y(0), "#a4462f", 6);
+        s += label((roots().length === 2 ? (i === 0 ? "x₁" : "x₂") : "x₀"), X, m.Y(0) + 20, "#a4462f");
+      }
+    });
+  }
+  /* vârf */
+  if (prefs.vertex && V.h >= TH_WIN.x0 && V.h <= TH_WIN.x1 && V.k >= TH_WIN.y0 && V.k <= TH_WIN.y1){
+    const X = m.X(V.h), Y = m.Y(V.k);
+    s += dot(X, Y, "#e39b34", 6.5);
+    s += label("V(" + fmt(V.h,2) + "; " + fmt(V.k,2) + ")", X + 12, Y + (S.a > 0 ? -12 : 22), "#b5761d", "start");
+  }
+  /* intersecția cu Oy */
+  if (prefs.inter && S.c >= TH_WIN.y0 && S.c <= TH_WIN.y1){
+    const X = m.X(0), Y = m.Y(S.c);
+    s += dot(X, Y, "#1c5b3f", 5);
+    s += label("(0; " + fmt(S.c,2) + ")", X + 10, Y - 10, "#1c5b3f", "start", 12);
+  }
+  /* punct mobil (animație) */
+  if (opts.point){
+    const px = opts.point.x, py = f(px);
+    if (py >= TH_WIN.y0 && py <= TH_WIN.y1){
+      const X = m.X(px), Y = m.Y(py);
+      s += `<line x1="${X.toFixed(1)}" y1="${Y.toFixed(1)}" x2="${X.toFixed(1)}" y2="${m.Y(0).toFixed(1)}" stroke="#e39b34" stroke-width="1.3" stroke-dasharray="5 4"/>`;
+      s += `<line x1="${X.toFixed(1)}" y1="${Y.toFixed(1)}" x2="${m.X(0).toFixed(1)}" y2="${Y.toFixed(1)}" stroke="#e39b34" stroke-width="1.3" stroke-dasharray="5 4"/>`;
+      s += dot(X, Y, "#e39b34", 7);
+      s += label("P(" + fmt(px,2) + "; " + fmt(py,2) + ")", X + 12, Y - 12, "#b5761d", "start");
+    }
+  }
+  s += `</svg>`;
+  svgHost.innerHTML = s;
+}
+
+/* ---------------- view animație ---------------- */
+const AN_BOX = {x:46, y:18, w:578, h:384};
+const AN_WIN = {x0:-9, x1:9, y0:-11, y1:11};
+
+function renderAnimView(){
+  const m = makeMap(AN_WIN, AN_BOX);
+  let s = `<svg viewBox="0 0 640 430" role="img" aria-label="Animație pe grafic">`;
+  s += axesHTML(m, {});
+  s += `<clipPath id="clip-an"><rect x="${AN_BOX.x}" y="${AN_BOX.y}" width="${AN_BOX.w}" height="${AN_BOX.h}"/></clipPath>`;
+  s += `<g clip-path="url(#clip-an)">`;
+  const V = vertex();
+  if (prefs.vertex && V.h >= AN_WIN.x0 && V.h <= AN_WIN.x1){
+    s += `<line x1="${m.X(V.h).toFixed(1)}" y1="${AN_BOX.y}" x2="${m.X(V.h).toFixed(1)}" y2="${AN_BOX.y + AN_BOX.h}"
+      stroke="#8a6a1f" stroke-width="1.4" stroke-dasharray="6 5"/>`;
+  }
+  /* curba cu interpolare */
+  let d = "", drawing = false;
+  const N = 340;
+  for (let i = 0; i <= N; i++){
+    const x = AN_WIN.x0 + (AN_WIN.x1 - AN_WIN.x0) * i / N;
+    const y = f(x);
+    if (y >= AN_WIN.y0 - 1e-9 && y <= AN_WIN.y1 + 1e-9){
+      d += (drawing ? "L" : "M") + m.X(x).toFixed(1) + " " + m.Y(y).toFixed(1) + " ";
+      drawing = true;
+    } else drawing = false;
+  }
+  s += `<path d="${d}" fill="none" stroke="var(--green-2)" stroke-width="3" stroke-linecap="round"/>`;
+  s += `</g>`;
+
+  if (prefs.roots){
+    roots().forEach((r, i) => {
+      if (r >= AN_WIN.x0 && r <= AN_WIN.x1){
+        s += dot(m.X(r), m.Y(0), "#a4462f", 6);
+        s += label((roots().length === 2 ? (i === 0 ? "x₁" : "x₂") : "x₀"), m.X(r), m.Y(0) + 20, "#a4462f");
+      }
+    });
+  }
+  if (prefs.vertex && V.h >= AN_WIN.x0 && V.h <= AN_WIN.x1 && V.k >= AN_WIN.y0 && V.k <= AN_WIN.y1){
+    s += dot(m.X(V.h), m.Y(V.k), "#e39b34", 6.5);
+    s += label("V(" + fmt(V.h,2) + "; " + fmt(V.k,2) + ")", m.X(V.h) + 12, m.Y(V.k) + (S.a > 0 ? -12 : 22), "#b5761d", "start");
+  }
+  if (prefs.inter && S.c >= AN_WIN.y0 && S.c <= AN_WIN.y1){
+    s += dot(m.X(0), m.Y(S.c), "#1c5b3f", 5);
+  }
+  if (anim.type === "point"){
+    const px = anim.px;
+    const py = f(px);
+    if (py >= AN_WIN.y0 && py <= AN_WIN.y1){
+      const X = m.X(px), Y = m.Y(py);
+      s += `<line x1="${X.toFixed(1)}" y1="${Y.toFixed(1)}" x2="${X.toFixed(1)}" y2="${m.Y(0).toFixed(1)}" stroke="#e39b34" stroke-width="1.3" stroke-dasharray="5 4"/>`;
+      s += `<line x1="${X.toFixed(1)}" y1="${Y.toFixed(1)}" x2="${m.X(0).toFixed(1)}" y2="${Y.toFixed(1)}" stroke="#e39b34" stroke-width="1.3" stroke-dasharray="5 4"/>`;
+      s += dot(X, Y, "#e39b34", 7);
+      s += label("P(" + fmt(px,2) + "; " + fmt(py,2) + ")", X + 12, Y - 12, "#b5761d", "start");
+    }
+  }
+  s += `</svg>`;
+  $("#svgAnim").innerHTML = s;
+}
+
+/* ---------------- sincronizare UI teorie ---------------- */
+function syncTheoryUI(){
+  $("#slA").value = S.a; $("#slB").value = S.b; $("#slC").value = S.c;
+  $("#valA").textContent = fmt(S.a, 2);
+  $("#valB").textContent = fmt(S.b, 2);
+  $("#valC").textContent = fmt(S.c, 2);
+  $("#eqTheory").textContent = expr(S.a, S.b, S.c);
+  $("#eqAnim").textContent = expr(S.a, S.b, S.c);
+
+  const d = delta(), rs = roots();
+  $("#tileDelta").textContent = fmt(d, 2);
+  $("#tileRoots").textContent = rs.length === 0 ? "0 (Δ < 0)" : (rs.length === 1 ? "1 (Δ = 0)" : "2");
+  const V = vertex();
+  $("#tileVertex").textContent = "(" + fmt(V.h,2) + "; " + fmt(V.k,2) + ")";
+  $("#tileF0").textContent = fmt(S.c, 2);
+
+  if (rs.length === 2)      $("#rootsNote").textContent = "x₁ = " + fmt(rs[0],2) + ", x₂ = " + fmt(rs[1],2);
+  else if (rs.length === 1) $("#rootsNote").textContent = "x₀ = " + fmt(rs[0],2) + " (Δ = 0)";
+  else                      $("#rootsNote").textContent = "nicio rădăcină reală (Δ < 0)";
+
+  const sens = S.a > 0 ? "deschisă în sus și are un minim" : "deschisă în jos și are un maxim";
+  $("#theoryHint").innerHTML =
+    "Parabola este " + sens + ". Coeficientul a = " + fmt(S.a,2) +
+    ", iar simetria este față de dreapta x = " + fmt(V.h,2) + ". Intersecția cu axa Oy este (0; " + fmt(S.c,2) + ").";
+
+  $$(".chip[data-preset]").forEach(ch => {
+    const p = ch.dataset.preset.split(",").map(Number);
+    ch.classList.toggle("active", Math.abs(p[0]-S.a) < 1e-9 && Math.abs(p[1]-S.b) < 1e-9 && Math.abs(p[2]-S.c) < 1e-9);
+  });
+
+  renderParabola($("#svgTheory"), {id:"th"});
+  renderAnimView();
+}
+
+function renderTheory(){ syncTheoryUI(); }
+
+/* citirile inițiale din tabul Animații (fără a modifica S) */
+function initAnimReadouts(){
+  if (anim.type === "a"){
+    $("#tileAName").textContent = "Coeficient a";
+    $("#tileBName").textContent = "Deschidere";
+    $("#tileCName").textContent = "Sens";
+    $("#tileA").textContent = fmt(S.a,2);
+    $("#tileB").textContent = fmt(Math.abs(S.a),2);
+    $("#tileC").textContent = S.a > 0 ? "în sus" : "în jos";
+    $("#animValue").textContent = "a = " + fmt(S.a,2);
+  }
+  $("#tileD").textContent = fmt(delta(),2);
+  $("#animProgress").textContent = "0%";
+}
+
+/* ---------------- animații ---------------- */
+const anim = {type:"a", playing:false, t:0, speed:1, px:0, last:0, raf:0};
+const DUR = {a:7000, point:6000, roots:8000};
+
+const ANIM_META = {
+  a:{
+    label:"Coeficientul a în timp:",
+    explain:["<li><b>Coeficientul a se schimbă:</b> a parcurge intervalul [−1,6 ; 1,6] — parabola se rotește, trece prin deschiderea în jos, se aplatizează la a ≈ 0 și se redeschide în sus.</li>",
+             "<li><b>Punct mobil:</b> un punct P(x; f(x)) parcurge curba de la stânga la dreapta; liniile punctate arată proiecțiile sale pe axe.</li>",
+             "<li><b>Rădăcinile apar:</b> c scade treptat, Δ crește de la valori negative la pozitive, iar punctele x₁ și x₂ „ies” din vârf pe axa x.</li>"]
+  },
+  point:{
+    label:"Punctul P:",
+    explain:["<li><b>Punctul mobil:</b> x crește uniform de la −8 la 8, iar P(x; f(x)) parcurge parabola; liniile portocalii punctate sunt proiecțiile pe axe.</li>",
+             "<li>Se observă direct că y crește apoi scade (sau invers) — monotonie și extrem.</li>",
+             "<li><li><b>Coeficientul a se schimbă / Rădăcinile apar</b> sunt celelalte două animații disponibile.</li>"]
+  },
+  roots:{
+    label:"Coeficientul c:",
+    explain:["<li><b>Rădăcinile apar:</b> pornești de la c = 4 (Δ &lt; 0, nicio intersecție cu axa x) și cobori până la c = −4 (Δ &gt; 0, două rădăcini).</li>",
+             "<li>Momentul în care parabola atinge axa x corespunde exact lui Δ = 0.</li>",
+             "<li>Se vede legătura dintre algebra (ecuația de gradul 2) și geometrie (intersectarea curbei cu axa x).</li>"]
+  }
+};
+
+function applyAnimFrame(p){
+  if (anim.type === "a"){
+    const a = 1.6 * Math.sin(2 * Math.PI * p);
+    S.a = Math.abs(a) < 0.06 ? (a < 0 ? -0.06 : 0.06) : a;
+    S.b = -2; S.c = -3;
+    $("#animValue").textContent = "a = " + fmt(S.a, 2);
+    $("#tileAName").textContent = "Coeficient a";
+    $("#tileBName").textContent = "Deschidere";
+    $("#tileCName").textContent = "Sens";
+    $("#tileA").textContent = fmt(S.a,2);
+    $("#tileB").textContent = fmt(Math.abs(S.a),2);
+    $("#tileC").textContent = S.a > 0 ? "în sus" : "în jos";
+  } else if (anim.type === "point"){
+    S.a = 1; S.b = -2; S.c = -3;
+    const x = -8 + 16 * p;
+    anim.px = x;
+    $("#animValue").textContent = "x = " + fmt(x,2);
+    $("#tileAName").textContent = "Punct x";
+    $("#tileBName").textContent = "f(x)";
+    $("#tileCName").textContent = "y";
+    $("#tileA").textContent = fmt(x,2);
+    $("#tileB").textContent = fmt(f(x),2);
+    $("#tileC").textContent = fmt(f(x),2);
+  } else {
+    S.a = 1; S.b = 0;
+    S.c = 4 - 8 * p;
+    $("#animValue").textContent = "c = " + fmt(S.c,2);
+    $("#tileAName").textContent = "Coeficient c";
+    $("#tileBName").textContent = "Δ";
+    $("#tileCName").textContent = "Rădăcini";
+    $("#tileA").textContent = fmt(S.c,2);
+    $("#tileB").textContent = fmt(delta(),2);
+    $("#tileC").textContent = roots().length === 0 ? "0" : (roots().length === 1 ? "1" : "2");
+  }
+  $("#tileD").textContent = fmt(delta(),2);
+  $("#animProgress").textContent = Math.round(p * 100) + "%";
+  syncTheoryUI();
+}
+
+function animLoop(ts){
+  if (!anim.playing) return;
+  if (!anim.last) anim.last = ts;
+  const dt = ts - anim.last;
+  anim.last = ts;
+  anim.t += dt * anim.speed;
+  const dur = DUR[anim.type];
+  let p = anim.t / dur;
+  if (p >= 1){
+    anim.t = 0; p = 0;
+    beep(760);
+  }
+  applyAnimFrame(p);
+  anim.raf = requestAnimationFrame(animLoop);
+}
+function playAnim(){
+  anim.playing = true; anim.last = 0;
+  $("#btnPlay").textContent = "❚❚ Pauză";
+  beep(680);
+  anim.raf = requestAnimationFrame(animLoop);
+}
+function pauseAnim(){
+  anim.playing = false;
+  cancelAnimationFrame(anim.raf);
+  $("#btnPlay").textContent = "▶ Redă";
+}
+function restartAnim(){
+  anim.t = 0; anim.last = 0;
+  applyAnimFrame(0);
+  beep(560);
+  if (!anim.playing) playAnim();
+}
+
+/* ---------------- fizică ---------------- */
+const P = {ex:"proj", v0:20, th:45, h0:2, vu:12, H:45, g:9.81, t:0, playing:false, last:0, raf:0};
+
+function physData(){
+  const g = P.g;
+  if (P.ex === "proj"){
+    const rad = P.th * Math.PI / 180;
+    const vy = P.v0 * Math.sin(rad), vx = P.v0 * Math.cos(rad);
+    const H = vy * vy / (2 * g);
+    const tz = 2 * vy / g;
+    const R = vx * tz;
+    return {
+      title:"Traectoria unui proiectil",
+      eq:"y = x·tan θ − g·x² / (2v₀²·cos²θ)",
+      xLabel:"distanța x (m)", yLabel:"înălțimea y (m)",
+      xMax:Math.max(R * 1.12, 5), yMax:Math.max(H * 1.3, 3),
+      tEnd:tz,
+      curve:X => X * Math.tan(rad) - g * X * X / (2 * P.v0 * P.v0 * Math.cos(rad) * Math.cos(rad)),
+      pos:t => ({x:vx * t, y:vy * t - 0.5 * g * t * t}),
+      tiles:[
+        ["Înălțimea maximă H", fmt(H,2) + " m"],
+        ["Raza de cădere R", fmt(R,2) + " m"],
+        ["Timp până la vârf", fmt(vy / g,2) + " s"],
+        ["Timp de zbor", fmt(tz,2) + " s"]
+      ],
+      f1:"H = v₀²·sin²θ / 2g", f2:"R = v₀²·sin2θ / g",
+      note:"Proiectilul la momentul t =",
+      hint:"Axa x este distanța parcursă (m), axa y este înălțimea (m). Traseul este o parabolă: componenta orizontală este uniformă, cea verticală este uniform accelerată.",
+      explain:"Axa x este distanța parcursă (m), iar axa y este înălțimea (m). Curba este traiectoria proiectilului; punctul portocaliu arată poziția curentă, iar linia orizontală marchează înălțimea maximă atinsă. Ecuatia traiectoriei se elimină din t din ecuațiile parametrice — rezultă o funcție de gradul al doilea y(x)."
+    };
+  }
+  if (P.ex === "up"){
+    const g2 = g;
+    const tv = P.vu / g2;
+    const hmax = P.h0 + P.vu * P.vu / (2 * g2);
+    const disc = P.vu * P.vu + 2 * g2 * P.h0;
+    const timp = (P.vu + Math.sqrt(disc)) / g2;
+    const vimp = Math.sqrt(disc);
+    return {
+      title:"Înălțimea unei mingi aruncate în sus",
+      eq:"h(t) = h₀ + v₀·t − g·t²/2",
+      xLabel:"timpul t (s)", yLabel:"înălțimea h (m)",
+      xMax:Math.max(timp * 1.1, 2), yMax:Math.max(hmax * 1.25, 3),
+      tEnd:timp,
+      curve:t => P.h0 + P.vu * t - 0.5 * g2 * t * t,
+      pos:t => ({x:t, y:P.h0 + P.vu * t - 0.5 * g2 * t * t}),
+      tiles:[
+        ["Înălțimea maximă", fmt(hmax,2) + " m"],
+        ["Timp până la vârf", fmt(tv,2) + " s"],
+        ["Timp până la sol", fmt(timp,2) + " s"],
+        ["Viteza la impact", fmt(vimp,2) + " m/s"]
+      ],
+      f1:"t(vârf) = v₀ / g", f2:"h(max) = h₀ + v₀² / 2g",
+      note:"Mingea la momentul t =",
+      hint:"h(t) este o funcție de gradul al doilea în timp: a = −g/2 < 0, deci parabola este deschisă în jos și are un maxim în vârf.",
+      explain:"Axa x este timpul (s), axa y este înălțimea (m). Curba este graficul h(t) = h₀ + v₀t − gt²/2 — o parabolă deschisă în jos. Vârful graficului dă înălțimea maximă și momentul în care mingea se oprește din urcare."
+    };
+  }
+  const timp = Math.sqrt(2 * P.H / g);
+  const vimp = Math.sqrt(2 * g * P.H);
+  return {
+    title:"Căderea liberă a unui corp",
+    eq:"h(t) = H − g·t²/2",
+    xLabel:"timpul t (s)", yLabel:"înălțimea h (m)",
+    xMax:Math.max(timp * 1.1, 2), yMax:Math.max(P.H * 1.15, 3),
+    tEnd:timp,
+    curve:t => P.H - 0.5 * g * t * t,
+    pos:t => ({x:t, y:P.H - 0.5 * g * t * t}),
+    tiles:[
+      ["Timpul de cădere", fmt(timp,2) + " s"],
+      ["Viteza la impact", fmt(vimp,2) + " m/s"],
+      ["Viteza inițială", "0 m/s"],
+      ["Înălțimea H", fmt(P.H,0) + " m"]
+    ],
+    f1:"t = √(2H / g)", f2:"v = √(2gH)",
+    note:"Corpul la momentul t =",
+    hint:"Corpul pornește din repaus și accelerează constant; graficul h(t) este o parabolă deschisă în jos (a = −g/2).",
+    explain:"Axa x este timpul (s), axa y este înălțimea (m). Corpul pornește de la H cu viteză zero și accelerează datorită graviției; graficul este o porțiune de parabolă deschisă în jos."
+  };
+}
+
+function renderPhys(){
+  const d = physData();
+  $("#physTitle").textContent = d.title;
+  $("#eqPhys").textContent = d.eq;
+  $("#physHint").textContent = d.hint;
+  $("#physExplain").textContent = d.explain;
+  $("#physF1").textContent = d.f1;
+  $("#physF2").textContent = d.f2;
+
+  const box = {x:52, y:22, w:572, h:378};
+  const m = makeMap({x0:0, x1:d.xMax, y0:0, y1:d.yMax}, box);
+  let s = `<svg viewBox="0 0 640 430" role="img" aria-label="${d.title}">`;
+  s += axesHTML(m, {xLabel:d.xLabel, yLabel:d.yLabel});
+
+  /* curbă */
+  let path = "", drawing = false;
+  const N = 260;
+  for (let i = 0; i <= N; i++){
+    const t = d.tEnd * i / N;
+    const pt = d.pos(t);
+    if (pt.y >= -1e-9 && pt.y <= d.yMax + 1e-9 && pt.x <= d.xMax + 1e-9){
+      path += (drawing ? "L" : "M") + m.X(pt.x).toFixed(1) + " " + m.Y(pt.y).toFixed(1) + " ";
+      drawing = true;
+    } else drawing = false;
+  }
+  s += `<path d="${path}" fill="none" stroke="var(--green-2)" stroke-width="3.2" stroke-linecap="round"/>`;
+
+  /* linia înălțimii maxime / linia zero */
+  let yTop = 0;
+  d.tiles.forEach(t => { const v = parseFloat(t[1]); if (/Înălțimea/.test(t[0]) && isFinite(v)) yTop = Math.max(yTop, v); });
+  if (P.ex === "proj" || P.ex === "up"){
+    const rad = P.th * Math.PI / 180;
+    let hmax = 0;
+    if (P.ex === "proj") hmax = (P.v0 * Math.sin(rad)) ** 2 / (2 * P.g);
+    else hmax = P.h0 + P.vu * P.vu / (2 * P.g);
+    const Y = m.Y(hmax);
+    s += `<line x1="${box.x}" y1="${Y.toFixed(1)}" x2="${box.x + box.w}" y2="${Y.toFixed(1)}" stroke="#8a6a1f" stroke-width="1.4" stroke-dasharray="7 6"/>`;
+    s += label("H = " + fmt(hmax,2) + " m", box.x + box.w - 4, Y - 7, "#8a6a1f", "end", 12);
+    /* punctul vârf */
+    const tV = (P.ex === "proj") ? (P.v0*Math.sin(rad)/P.g) : (P.vu/P.g);
+    const pv = d.pos(tV);
+    s += dot(m.X(pv.x), m.Y(pv.y), "#8a6a1f", 5);
+  }
+
+  /* corpul curent */
+  const cur = d.pos(Math.min(P.t, d.tEnd));
+  if (cur.y >= -1e-9){
+    const X = m.X(cur.x), Y = m.Y(cur.y);
+    if (P.ex === "proj"){
+      s += `<line x1="${X.toFixed(1)}" y1="${Y.toFixed(1)}" x2="${X.toFixed(1)}" y2="${m.Y(0).toFixed(1)}" stroke="#e39b34" stroke-width="1.2" stroke-dasharray="4 4"/>`;
+    } else {
+      s += `<line x1="${box.x}" y1="${Y.toFixed(1)}" x2="${X.toFixed(1)}" y2="${Y.toFixed(1)}" stroke="#e39b34" stroke-width="1.2" stroke-dasharray="4 4"/>`;
+      s += `<line x1="${X.toFixed(1)}" y1="${Y.toFixed(1)}" x2="${X.toFixed(1)}" y2="${m.Y(0).toFixed(1)}" stroke="#e39b34" stroke-width="1.2" stroke-dasharray="4 4"/>`;
+    }
+    s += dot(X, Y, "#e39b34", 7.5);
+  }
+  s += `</svg>`;
+  $("#svgPhys").innerHTML = s;
+
+  $("#physNoteLabel").textContent = d.note;
+  $("#physNoteValue").textContent = fmt(P.t,2) + " s";
+
+  const tw = $("#physTiles");
+  tw.innerHTML = d.tiles.map(t => `<div class="tile"><span>${t[0]}</span><b>${t[1]}</b></div>`).join("");
+}
+
+function physLoop(ts){
+  if (!P.playing) return;
+  if (!P.last) P.last = ts;
+  const dt = ts - P.last;
+  P.last = ts;
+  const d = physData();
+  P.t += (dt / 1000) * 0.55;
+  if (P.t > d.tEnd){ P.t = 0; beep(760); }
+  renderPhys();
+  P.raf = requestAnimationFrame(physLoop);
+}
+function physPlay(){
+  P.playing = true; P.last = 0;
+  $("#btnPhysPlay").textContent = "❚❚ Pauză";
+  beep(680);
+  P.raf = requestAnimationFrame(physLoop);
+}
+function physPause(){
+  P.playing = false;
+  cancelAnimationFrame(P.raf);
+  $("#btnPhysPlay").textContent = "▶ Redă";
+}
+
+function syncPhysUI(){
+  $("#valV0").textContent = fmt(P.v0,0);
+  $("#valTh").textContent = fmt(P.th,0);
+  $("#valH0").textContent = fmt(P.h0,0);
+  $("#valVu").textContent = fmt(P.vu,0);
+  $("#valH").textContent = fmt(P.H,0);
+  $("#valG").textContent = fmt(P.g,2);
+  $("#slV0").value = P.v0; $("#slTh").value = P.th; $("#slH0").value = P.h0;
+  $("#slVu").value = P.vu; $("#slH").value = P.H; $("#slG").value = P.g;
+  $$(".phys-ctl").forEach(el => el.style.display = "none");
+  $("#ctl-" + P.ex).style.display = "block";
+  renderPhys();
+}
+
+/* ---------------- evenimente ---------------- */
+/* taburi */
+$$(".tab").forEach(t => t.addEventListener("click", () => {
+  $$(".tab").forEach(x => x.classList.remove("active"));
+  t.classList.add("active");
+  $$(".panel").forEach(p => p.classList.remove("active"));
+  $("#tab-" + t.dataset.tab).classList.add("active");
+  if (t.dataset.tab !== "animatii") pauseAnim();
+  if (t.dataset.tab !== "fizica") physPause();
+  beep(700);
+  if (t.dataset.tab === "fizica") syncPhysUI();
+}));
+
+/* sliders teorie */
+["A","B","C"].forEach(k => {
+  const el = $("#sl" + k);
+  el.addEventListener("input", () => {
+    pauseAnim();
+    const key = k.toLowerCase();
+    let v = parseFloat(el.value);
+    if (key === "a" && Math.abs(v) < 0.05) v = v < 0 ? -0.05 : 0.05;
+    S[key] = v;
+    renderTheory();
+    beep(520);
+  });
+});
+$$(".step[data-var]").forEach(b => b.addEventListener("click", () => {
+  pauseAnim();
+  const key = b.dataset.var;
+  const step = key === "a" ? 0.1 : 0.2;
+  let v = S[key] + step * parseFloat(b.dataset.d);
+  const lim = {a:[-3,3], b:[-6,6], c:[-8,8]}[key];
+  v = Math.min(lim[1], Math.max(lim[0], v));
+  if (key === "a" && Math.abs(v) < 0.05) v = b.dataset.d > 0 ? 0.05 : -0.05;
+  S[key] = v;
+  renderTheory();
+  beep(600);
+}));
+$$(".chip[data-preset]").forEach(ch => ch.addEventListener("click", () => {
+  pauseAnim();
+  const p = ch.dataset.preset.split(",").map(Number);
+  S.a = p[0]; S.b = p[1]; S.c = p[2];
+  renderTheory();
+  beep(740);
+}));
+
+/* animație */
+$("#btnPlay").addEventListener("click", () => anim.playing ? pauseAnim() : playAnim());
+$("#btnRestart").addEventListener("click", restartAnim);
+$$(".chip[data-anim]").forEach(ch => ch.addEventListener("click", () => {
+  $$(".chip[data-anim]").forEach(x => x.classList.remove("active"));
+  ch.classList.add("active");
+  anim.type = ch.dataset.anim;
+  anim.t = 0;
+  $("#animLabel").textContent = ANIM_META[anim.type].label;
+  $("#animExplain").innerHTML = ANIM_META[anim.type].explain.join("");
+  applyAnimFrame(0);
+  beep(720);
+  if (!anim.playing) playAnim();
+}));
+$("#slSpeed").addEventListener("input", () => {
+  anim.speed = parseFloat($("#slSpeed").value);
+  $("#valSpeed").textContent = fmt(anim.speed,2) + "×";
+  beep(540);
+});
+function setSpeed(delta){
+  const el = $("#slSpeed");
+  let v = Math.min(3, Math.max(0.25, parseFloat(el.value) + delta));
+  el.value = v; anim.speed = v;
+  $("#valSpeed").textContent = fmt(v,2) + "×";
+  beep(540);
+}
+$("#spdDown").addEventListener("click", () => setSpeed(-0.25));
+$("#spdUp").addEventListener("click", () => setSpeed(0.25));
+
+/* fizică */
+$$(".chip[data-phys]").forEach(ch => ch.addEventListener("click", () => {
+  $$(".chip[data-phys]").forEach(x => x.classList.remove("active"));
+  ch.classList.add("active");
+  P.ex = ch.dataset.phys;
+  P.t = 0;
+  syncPhysUI();
+  beep(720);
+}));
+$("#slV0").addEventListener("input", e => { P.v0 = parseFloat(e.target.value); syncPhysUI(); beep(520); });
+$("#slTh").addEventListener("input", e => { P.th = parseFloat(e.target.value); syncPhysUI(); beep(520); });
+$("#slH0").addEventListener("input", e => { P.h0 = parseFloat(e.target.value); syncPhysUI(); beep(520); });
+$("#slVu").addEventListener("input", e => { P.vu = parseFloat(e.target.value); syncPhysUI(); beep(520); });
+$("#slH").addEventListener("input",  e => { P.H  = parseFloat(e.target.value); syncPhysUI(); beep(520); });
+$("#slG").addEventListener("input",  e => { P.g  = parseFloat(e.target.value); syncPhysUI(); beep(520); });
+$$(".step[data-phys-var]").forEach(b => b.addEventListener("click", () => {
+  const k = b.dataset.physVar, d = parseFloat(b.dataset.d);
+  const stepMap = {v0:1, th:5, h0:1, vu:1, H:5, g:0.5};
+  const limMap  = {v0:[5,60], th:[5,85], h0:[0,40], vu:[0,30], H:[5,150], g:[1.5,25]};
+  let v = P[k] + (stepMap[k] || 1) * d;
+  const lim = limMap[k];
+  v = Math.min(lim[1], Math.max(lim[0], v));
+  P[k] = v;
+  syncPhysUI();
+  beep(600);
+}));
+$("#btnPhysPlay").addEventListener("click", () => P.playing ? physPause() : physPlay());
+$("#btnPhysReset").addEventListener("click", () => { P.t = 0; renderPhys(); beep(560); if (!P.playing) physPlay(); });
+
+/* bară de sus */
+$("#btnBoard").addEventListener("click", function(){
+  document.body.classList.toggle("board");
+  this.classList.toggle("on");
+  beep(620);
+  renderTheory(); syncPhysUI();
+});
+$("#btnText").addEventListener("click", function(){
+  document.body.classList.toggle("text-big");
+  this.classList.toggle("on");
+  beep(620);
+});
+$("#btnSound").addEventListener("click", function(){
+  soundOn = !soundOn;
+  this.classList.toggle("on", soundOn);
+  this.innerHTML = (soundOn ? '<span class="dot"></span> Sunet activ' : 'Sunet oprit');
+  savePrefs();
+  if (soundOn) beep(700);
+});
+$("#btnLang").addEventListener("click", e => {
+  e.stopPropagation();
+  $("#langMenu").classList.toggle("open");
+  beep(600);
+});
+document.addEventListener("click", () => {
+  $("#langMenu").classList.remove("open");
+  $("#prefsPanel").classList.remove("open");
+});
+$("#prefsPanel").addEventListener("click", e => e.stopPropagation());
+$("#langMenu").addEventListener("click", e => e.stopPropagation());
+
+/* preferințe */
+$("#btnPrefs").addEventListener("click", e => {
+  e.stopPropagation();
+  $("#prefsPanel").classList.toggle("open");
+  beep(640);
+});
+function bindOpt(id, key){
+  $(id).checked = prefs[key];
+  $(id).addEventListener("change", () => {
+    prefs[key] = $(id).checked;
+    savePrefs();
+    renderTheory(); renderPhys();
+    beep(620);
+  });
+}
+bindOpt("#optGrid","grid"); bindOpt("#optRoots","roots");
+bindOpt("#optVertex","vertex"); bindOpt("#optInter","inter");
+$("#optSound").checked = soundOn;
+$("#optSound").addEventListener("change", () => {
+  soundOn = $("#optSound").checked;
+  $("#btnSound").classList.toggle("on", soundOn);
+  $("#btnSound").innerHTML = soundOn ? '<span class="dot"></span> Sunet activ' : 'Sunet oprit';
+  savePrefs();
+  if (soundOn) beep(700);
+});
+$("#btnResetPrefs").addEventListener("click", () => {
+  prefs.grid = prefs.roots = prefs.vertex = prefs.inter = true;
+  soundOn = true;
+  ["#optGrid","#optRoots","#optVertex","#optInter","#optSound"].forEach(id => $(id).checked = true);
+  $("#btnSound").classList.add("on");
+  $("#btnSound").innerHTML = '<span class="dot"></span> Sunet activ';
+  savePrefs(); renderTheory(); renderPhys();
+  beep(660);
+});
+
+$("#btnCookies").addEventListener("click", () => beep(600));
+
+/* descărcare lecție */
+$("#btnDownload").addEventListener("click", e => {
+  e.preventDefault();
+  const clone = document.documentElement.cloneNode(true);
+  clone.querySelectorAll(".popover,.lang-menu").forEach(el => el.classList.remove("open"));
+  const blob = new Blob(["<!DOCTYPE html>\n" + clone.outerHTML], {type:"text/html;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "functia-gradul-al-doilea.html";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+  beep(760);
+});
+
+/* ---------------- inițializare ---------------- */
+$("#btnSound").classList.toggle("on", soundOn);
+$("#btnSound").innerHTML = soundOn ? '<span class="dot"></span> Sunet activ' : 'Sunet oprit';
+$("#animLabel").textContent = ANIM_META.a.label;
+renderTheory();
+initAnimReadouts();
+syncPhysUI();
+})();
+</script>
+</body>
+</html>

@@ -23,8 +23,13 @@ export async function preparePresentation(){
  await write('public/design-system/components.css',css.trimEnd()+'\n/* praxis:presentation */\n'+iconCSS+'\n'+await read('public/design-system/premium.css')+'\n'+await read('public/shared/scientific-math.css')+'\n/* /praxis:presentation */\n');
  const header=(await read('public/shared/lab-header.js')).replace(/\n\/\* praxis:content-types \*\/[\s\S]*?\/\* \/praxis:content-types \*\//g,'');
  const workspace='window.PraxisLabWorkspaceConfig='+JSON.stringify(Object.fromEntries(manifest.labs.map(lab=>[lab.metadata.id,lab.workspace])))+';\n'+await read('public/shared/lab-workspace.js')+'\n'+await read('public/shared/lab-accessibility.js');
+ // Offline exports replace this exact marked region with an embedded engine.
+ // Keep its markers while compacting the other generated presentation code.
+ const mathStart=runtime.indexOf('/* praxis:math-runtime */');
+ if(mathStart<0)throw Error('Missing standalone mathematics boundary');
+ const compactPrefix=(await transform(runtime.slice(0,mathStart),{loader:'js',target:'chrome100',minifyWhitespace:true,legalComments:'none'})).code;
  const compactWorkspace=(await transform(workspace,{loader:'js',target:'chrome100',minifyWhitespace:true,legalComments:'none'})).code;
- await write('public/shared/lab-header.js',header.trimEnd()+'\n/* praxis:content-types */\n'+runtime+'\n'+compactWorkspace+'\n/* /praxis:content-types */\n');
+ await write('public/shared/lab-header.js',header.trimEnd()+'\n/* praxis:content-types */\n'+compactPrefix+'\n'+runtime.slice(mathStart)+'\n'+compactWorkspace+'\n/* /praxis:content-types */\n');
  let index=await read('public/index.html');if(!index.includes('shared/content-types.bundle.js'))index=index.replace('</head>','<script src="./shared/content-types.bundle.js" defer></script></head>');
  const escape=text=>String(text).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
  const fallback='<noscript><section aria-labelledby="static-library-title"><h2 id="static-library-title">Laboratoare / Laboratories</h2><p>Activează JavaScript pentru simulări interactive. / Enable JavaScript for interactive simulations.</p><ul>'+simulations.map(lab=>'<li><a href="'+escape(lab.href)+'">'+escape(lab.title)+'</a></li>').join('')+'</ul></section></noscript>';

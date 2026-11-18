@@ -11,6 +11,7 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 - Integrează configurația workspace, activitățile, namespace-urile și tipul de export în intrarea laboratorului din manifest. `public/design-system/lab-workspaces.json` este generat. Folosește marcajele și montarea comună din `public/shared/lab-workspace.js`. Detalii: [registrul laboratoarelor](REGISTRU_LABORATOARE.md).
 - Clasifică titlurile relevante prin `data-content-type`, potrivit [catalogului de conținut](CATALOG_CONTINUT.md). Păstrează textul lângă pictograme.
 - Modifică sursa autoritativă, adaptorul sau importatorul. Nu lăsa o corecție doar într-un fișier generat din `public/simulari/`, într-un bundle sau în `dist/`.
+- Nu publica blocuri CSS `@scope` necompilate: browserul tablei poate ignora întregul bloc. Pentru lecțiile importate, păstrează izolarea selectorilor prin `scripts/scoped-lesson-css.mjs` sau un adaptor echivalent care compilează stilurile înainte de publicare.
 - Pentru optică, respectă separarea dintre proiectul `Optica-Lab` și adaptarea lui în aplicație. Reguli comune de prezentare se pot implementa în stratul comun; schimbările motorului se fac în sursa autoritativă.
 
 ## 2. Experimentul trebuie să fie accesibil imediat
@@ -38,6 +39,7 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 - Evită separatorul punct între mărimi sau între o valoare și faza ei, când poate fi confundat cu înmulțirea. Folosește spațiere suficientă, o bară verticală sau rânduri distincte.
 - Nu introduce bare de derulare în formulele scurte afișate în text. Formulele bloc prea lungi și scenele care necesită o lățime minimă pot avea derulare locală, fără să lărgească pagina întreagă.
 - Pentru formule noi, reutilizează `PraxisMath` din antetul comun: notație simplă sau TeX, fracții suprapuse și indici structurali. Păstrează sistemele KaTeX, fracțiile CSS și indicii existenți când sunt corecți.
+- La compactarea antetului, păstrează marcajele `praxis:math-runtime`: exportul autonom le folosește pentru a include motorul matematic și fonturile. Verifică exportul din `file://` cu HTTP blocat, nu doar pagina servită local.
 - În DOM nativ folosește gazde explicite `data-science-math` / `data-science-source` sau `PraxisMath.set`. În React, randarea matematică aparține componentei; nu rescrie subarborele React cu un observator de document. Marchează proprietatea React prin `data-science-owner="react"` când nu există un adaptor dedicat.
 - Formatarea păstrează sursa pentru RO/EN și valorile numerice la actualizare. Nu transforma jurnalele editabile, codul, numele de fișiere sau datele de export în formule prin înlocuiri generale.
 - La text 200%, derularea suplimentară este acceptabilă; textul tăiat, comenzile inaccesibile și pierderea funcțiilor nu sunt.

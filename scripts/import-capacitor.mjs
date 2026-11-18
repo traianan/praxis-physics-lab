@@ -1,3 +1,4 @@
+import {flattenScopedCSS} from './scoped-lesson-css.mjs';
 import {labNamespaces} from './lab-registry.mjs';
 import {readFile,writeFile,mkdir,cp} from 'node:fs/promises';
 import {withFavicon} from './favicon.mjs';
@@ -29,7 +30,7 @@ await write(out+'index.html',withFavicon('<!doctype html><html lang="ro"><head><
 for(const name of ['main','model','lab','teorie','integration'])await write(out+'js/'+name+'.js',await read('sources/condensatorul/js/'+name+'.js'));
 let css=(await read('sources/condensatorul/css/style.css')).replace(/@import\s+url\([^\r\n]*?\)\s*;/,'').replace(':root {',':scope {').replace('--muted-2: #6c7c9e','--muted-2: #586d63');
 css=css.replace(/font-size:\s*([\d.]+)rem/g,(match,size)=>Number(size)<.8125?'font-size:.8125rem':match);
-await write(out+'style.css','@scope (.cond-course) {\n'+css+'\n}\n'+await read('sources/condensatorul/css/praxis.css'));
+await write(out+'style.css',await flattenScopedCSS('@scope (.cond-course) {\n'+css+'\n}\n'+await read('sources/condensatorul/css/praxis.css')));
 const sources=['laborator.html','teorie.html','resurse.html','css/style.css','css/praxis.css','js/model.js','js/lab.js','js/teorie.js','js/main.js','js/integration.js','translations.tsv'];
 await write('docs/imported-capacitor.json',JSON.stringify({id:'condensatorul',sources:await Promise.all(sources.map(async file=>({file:'sources/condensatorul/'+file,sha256:createHash('sha256').update((await read('sources/condensatorul/'+file)).replaceAll('\r\n','\n')).digest('hex')}))),adaptations:['Shared Praxis shell, catalog, workspaces, RO/EN and offline archive','Exact RC solution, signed current, explicit adaptive time scale and conservative isolation','Open switch gap and resistor in both closed circuit modes','Qualified linear dielectric and edge-effect assumptions']},null,2)+'\n');
 console.log('Integrat: Condensatorul');

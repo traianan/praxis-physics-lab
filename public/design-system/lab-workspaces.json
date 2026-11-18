@@ -632,5 +632,27 @@
         "scene": ".graph-box"
       }
     ]
+  },
+  "functia-gradul-al-doilea": {
+    "workspaces": [
+      {
+        "selector": "#tab-teorie .grid2",
+        "layout": "native",
+        "scene": ".quadratic-scene-card",
+        "controls": ".quadratic-controls"
+      },
+      {
+        "selector": "#tab-animatii .grid2",
+        "layout": "native",
+        "scene": ".quadratic-scene-card",
+        "controls": ".quadratic-controls"
+      },
+      {
+        "selector": "#tab-fizica .grid2",
+        "layout": "native",
+        "scene": ".quadratic-scene-card",
+        "controls": ".quadratic-controls"
+      }
+    ]
   }
 }

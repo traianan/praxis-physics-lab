@@ -1,3 +1,4 @@
+import {flattenScopedCSS} from './scoped-lesson-css.mjs';
 import {build} from 'esbuild';
 import {readFile,writeFile,mkdir,readdir,cp} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -82,7 +83,7 @@ let css='';for(const file of ['globals','theory','lab','linear','calculator','qu
 css=css.replace(/font-size:\s*([\d.]+)rem/g,(match,size)=>Number(size)<.8125?'font-size: .8125rem':match);
 css=css.replace(/:root/g,':scope').replace(/\[data-theme="dark"\]/g,':scope:where([data-theme="dark"])').replace(/html\s*\{/g,':scope {').replace(/body\s*\{/g,':scope {');
 css=css.replaceAll('.lab-chart-head h3','.lab-chart-head h2');
-await write('public/shared/polytropic-source.css','@scope (#polytropic-root) {\n'+css+'\n}\n');
+await write('public/shared/polytropic-source.css',await flattenScopedCSS('@scope (#polytropic-root) {\n'+css+'\n}\n'));
 await cp(path.join(root,'public/simulari/calorimetrie/vendor/katex'),path.join(output,'vendor/katex'),{recursive:true});
 const translations=JSON.parse(await read('scripts/adaptations/polytropic/translations.json'));
 for(const lang of ['ro','en'])await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?translations:Object.fromEntries(Object.keys(translations).map(key=>[key,key]))},null,2)+'\n');

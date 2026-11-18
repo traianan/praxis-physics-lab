@@ -834,5 +834,25 @@ export const simulations = [
     "image": "./assets/functia-gradul-intai.svg",
     "keywords": "functie liniara gradul intai panta ordonata dreapta inversa monotonie",
     "status": "available"
+  },
+  {
+    "id": "functia-gradul-al-doilea",
+    "addedOn": "2026-11-18",
+    "addedOrder": 2,
+    "chapter": "elemente-de-matematica",
+    "title": "Funcția de gradul al doilea",
+    "subtitle": "Parabolă, rădăcini și modele fizice",
+    "description": "Explorează parabola și coeficienții, rădăcinile și vârful; urmărește animații și trei modele de mișcare.",
+    "alt": "Graficul unei parabole pe un sistem de axe",
+    "tags": [
+      "Matematică",
+      "Funcții",
+      "Grafice",
+      "Offline"
+    ],
+    "href": "./simulari/functia-gradul-al-doilea/index.html",
+    "image": "./assets/functia-gradul-al-doilea.svg",
+    "keywords": "functie gradul al doilea parabola radacini discriminant varf quadratic projectile free fall",
+    "status": "available"
   }
 ];

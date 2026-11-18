@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile,readdir} from 'node:fs/promises';
 import vm from 'node:vm';
 import {simulations} from '../public/catalog.js';
+import {inlineMathFonts} from '../scripts/scientific-math-runtime.mjs';
 const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8');
 
 test('Home classification bundle stays below 25 KB without a mathematics runtime',async()=>{
@@ -17,6 +18,14 @@ test('shared web header stays below 100 KB without embedding the math engine or 
  assert.ok(Buffer.byteLength(header)<100*1024);
  assert.doesNotMatch(header,/data:font\/woff2;base64/);
  assert.match(header,/PraxisLoadMathEngine/);
+});
+
+test('shared header retains the offline mathematics replacement boundary',async()=>{
+ const header=await read('public/shared/lab-header.js');
+ assert.match(header,/\/\* praxis:math-runtime \*\//);
+ const offline=await inlineMathFonts(header);
+ assert.match(offline,/data:font\/woff2;base64/);
+ assert.doesNotMatch(offline,/__PRAXIS_MATH_FONTS__/);
 });
 
 test('Home provides every catalog link without JavaScript',async()=>{

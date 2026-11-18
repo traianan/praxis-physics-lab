@@ -1,3 +1,4 @@
+import {flattenScopedCSS} from './scoped-lesson-css.mjs';
 import {build} from 'esbuild';
 import {readFile,writeFile,mkdir,readdir,cp} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -19,6 +20,11 @@ export function adaptWire(code,name){
  if(name.endsWith('MaterialsSection.tsx')){
   code=replace(code,'title="Aceeași formă, materiale diferite"','title="Aceleași dimensiuni, materiale diferite"');
   code=replace(code,'          <div className="materials-table"','          <p className="materials-bar-note">Barele reprezintă rezistența electrică pe o scară logaritmică, nu lungimea firelor. Comparația folosește fire de 1 m, cu secțiunea de 1 mm², la 20 °C.</p><div className="materials-table"');
+  code=replace(code,'<button\n                  key={material.id}\n                  type="button"\n                  role="row"','<div\n                  key={material.id}\n                  role="row"');
+  code=replace(code,'                  aria-pressed={isActive}\n','');
+  code=replace(code,'<span className="materials-name" role="cell">','<span className="materials-name" role="cell"><button type="button" className="materials-choice" aria-pressed={isActive}>');
+  code=replace(code,'                  </span>\n                  <span className="materials-rho"','                  </button></span>\n                  <span className="materials-rho"');
+  code=replace(code,'                </button>\n              );\n            })}','                </div>\n              );\n            })}');
  }
  if(name.endsWith('resistance.ts'))code=replace(code,'ohmPerKm: resistance * 1000','ohmPerKm: resistance / length * 1000');
  if(name.endsWith('SectionHeading.tsx'))code=replace(code,'<h2>{title}</h2>','<h2 data-content-type={index==="02"||index==="03"?"simulation":index==="05"?"problem":index==="06"?"assessment":index==="07"?"resources":"theory"}>{title}</h2>');
@@ -87,7 +93,7 @@ let css='';for(const file of ['globals','theory','lab','factor','comparison','ca
 css=css.replace(/font-size:\s*(0?\.\d+)rem/g,(declaration,size)=>Number(size)<.8125?'font-size: .8125rem':declaration);
 css=css.replace(/:root/g,':scope').replace(/\[data-theme="dark"\]/g,':scope:where([data-theme="dark"])').replace(/html\s*\{/g,':scope {').replace(/body\s*\{/g,':scope {');
 css=css.replaceAll('.lab-stage-head h3','.lab-stage-head h2');
-await write('public/shared/wire-source.css','@scope (#wire-root) {\n'+css+'\n}\n');
+await write('public/shared/wire-source.css',await flattenScopedCSS('@scope (#wire-root) {\n'+css+'\n}\n'));
 await cp(path.join(root,'public/simulari/calorimetrie/vendor/katex'),path.join(output,'vendor/katex'),{recursive:true});
 const translations=JSON.parse(await read('scripts/adaptations/wire/translations.json'));
 for(const lang of ['ro','en'])await write('public/locales/courses/'+id+'/ui/'+lang+'.json',JSON.stringify({locale:lang,namespace:'courses/'+id+'/ui',messages:lang==='en'?translations:Object.fromEntries(Object.keys(translations).map(key=>[key,key]))},null,2)+'\n');

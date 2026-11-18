@@ -1,3 +1,4 @@
+import {flattenScopedCSS} from './scoped-lesson-css.mjs';
 import {labNamespaces} from './lab-registry.mjs';
 import {readFile, writeFile, mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -41,7 +42,7 @@ body=body.replace(/Pendulul gravitational/g,'Pendulul gravitațional');
 let css=raw.match(/<style>([\s\S]*?)<\/style>/)[1];
 css=css.replace(':root{','#praxis-original{').replace(/html\{[^}]*\}/g,'').replace(/body\{[\s\S]*?\}/g,'');
 // Keep source styles scoped: the shared header and settings retain their own geometry.
-await write('public/shared/pendulum-source.css','@scope (#praxis-original) {\n'+css.replace(/[ \t]+$/gm,'')+'\n}\n');
+await write('public/shared/pendulum-source.css',await flattenScopedCSS('@scope (#praxis-original) {\n'+css.replace(/[ \t]+$/gm,'')+'\n}\n'));
 let js=raw.match(/<script>([\s\S]*?)<\/script>/)[1];
 js=js.replace('ctx.fillText(label, lx + 1, ly);','PraxisVectorLabel(ctx, label, lx + 1, ly);')
  .replace(", 'Ft');",", 'Fₜ');")
