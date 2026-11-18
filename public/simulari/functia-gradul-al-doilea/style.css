@@ -804,3 +804,22 @@ body[data-praxis-course=functia-gradul-al-doilea] .praxis-lab-nav{padding-block:
 #praxis-original .practice-feedback p{margin:6px 0 0}
 #praxis-original .practice-actions p{margin:0 0 0 auto}
 @media(max-width:850px){#praxis-original .practice-grid{grid-template-columns:1fr}#praxis-original .practice-actions p{width:100%;margin:0}}
+#praxis-original .concept-intro{margin-block:8px 16px}
+#praxis-original .concept-layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(290px,1fr);gap:24px;align-items:start}
+#praxis-original .concept-graph{display:grid;position:relative;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(6rem,auto));gap:3rem 18px;min-width:0}
+#praxis-original .concept-node{position:relative;display:flex;flex-direction:column;justify-content:center;white-space:normal;gap:6px;text-align:center;padding:12px;min-width:0;overflow-wrap:anywhere}
+#praxis-original .concept-node strong{font-size:1rem;line-height:1.35}
+#praxis-original .concept-node span{font-size:.9375rem}
+#praxis-original .concept-links{position:absolute;width:100%;height:100%;max-height:none;min-height:0;pointer-events:none;overflow:visible}
+#praxis-original .concept-links path{stroke:var(--praxis-color-muted);stroke-width:1.5;fill:none}
+#praxis-original .concept-links text{font-size:.8125rem;fill:var(--praxis-color-ink);paint-order:stroke;stroke:var(--praxis-color-canvas);stroke-width:5px;stroke-linejoin:round}
+#praxis-original .concept-detail{padding:16px;box-shadow:none;min-width:0}
+#praxis-original .concept-detail h3{margin:0 0 12px;font-size:1.125rem}
+#praxis-original .concept-detail p{line-height:1.5;margin:10px 0;overflow-wrap:anywhere}
+#praxis-original .concept-formula{font-family:var(--praxis-font-formula);font-size:1.0625rem}
+#praxis-original .concept-related{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+#praxis-original .concept-related .btn{white-space:normal}
+#praxis-original .concept-related-label{font-weight:600}
+#praxis-original .concept-detail>.btn{white-space:normal}
+@media(max-width:1100px){#praxis-original .concept-layout{grid-template-columns:1fr}#praxis-original .concept-detail{max-width:none}}
+@media(max-width:650px){#praxis-original .concept-graph{grid-template-columns:1fr;gap:8px}#praxis-original .concept-node{grid-area:auto!important;min-height:64px;flex-direction:row;flex-wrap:wrap;gap:8px}#praxis-original .concept-links{display:none}}

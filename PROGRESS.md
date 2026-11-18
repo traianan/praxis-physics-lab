@@ -1,5 +1,11 @@
 # PROGRESS
 
+## Hartă quadratică și diferența local/online — 2026-11-18
+
+- Cauză verificată: checkoutul principal din D:/ProiecteAI/Praxis-Fizica este pe 0f75cab și catalogul său local are numai două lecții de matematică. Versiunea publicată provine din worktree-ul separat și are trei. Checkoutul principal conține multe schimbări nepublicate; nu este resetat sau suprascris. Distribuția generată servită pe 4189 este actualizată separat, cu backup în outputs/local-preview-backups; o nouă construire din sursele vechi poate reintroduce catalogul vechi. Pentru dezvoltarea versiunii publicate se folosește acest worktree.
+- Adăugată Harta conceptelor: șapte noduri și șase legături etichetate, explicații RO/EN, concepte asociate și acces direct la teorie/animații/fizică/exerciții. Controale HTML native, conectori SVG dimensionați după geometria efectivă, fără dependențe suplimentare sau @scope. Pe mobil se folosește o listă cu legături explicite în explicație; selecția persistă între limbă și taburi.
+- Verificări: 140 stări responsive RO/EN, cinci dimensiuni, text 100/200%, atingere emulată; 299 verificări. Fără overflow, suprapuneri de noduri sau ținte tactile sub 44 px; harta și toate explicațiile încap la Full HD/4K la text normal. Offline cu HTTP blocat: 28 stări/89 verificări, fără erori sau cereri HTTP, arhivă CRC validă. Axe: 14 stări ale lecției fără încălcări. CI local: 503 trecute, 7 omise. SymPy confirmă identitățile vârfului, discriminantului și rădăcinilor. Instrumente: diagram-design cu stilul Praxis, Impeccable (zero constatări/suprimări), agent-browser/Chrome și axe. Testarea tablei este emulată, nu fizică; publicarea și controlul producției sunt urmărite în aceeași sarcină.
+
 ## Exersează — funcția de gradul al doilea, 2026-11-18
 
 - Adăugate 12 exerciții RO/EN: șase întrebări cu opțiuni și șase probleme numerice, inclusiv trei aplicații fizice. Afișare în șase perechi, verificare individuală/de pereche, explicații, punctaj și reluare. Răspunsurile și feedbackul se păstrează la schimbarea paginii, tabului și limbii; editarea invalidează verificarea anterioară. Sunt acceptate virgula zecimală, minusul Unicode și fracțiile simple; datele invalide nu sunt evaluate prin parsare parțială.
