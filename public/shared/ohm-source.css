@@ -5061,6 +5061,9 @@
   gap: .35rem;
   margin-bottom: .5rem;
 }
+:where(#ohm-root) .lesson-tablist .lesson-tab {
+  transition: none;
+}
 :where(#ohm-root) .lesson-tab-panel .section {
   padding: .5rem 0 .75rem;
   background: transparent;

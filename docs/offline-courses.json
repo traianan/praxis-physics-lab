@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-18T16:27:07.612Z",
+  "builtAt": "2026-11-18T16:35:10.325Z",
   "courses": [
     {
       "id": "rezistenta-unui-fir",
@@ -433,7 +433,7 @@
     {
       "id": "legea-lui-ohm",
       "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
-      "sha256": "cb5d7bcfc444674f332fc4fe7cf9e787ccca8d2d3dfcb8e56ceb94a29bedf39c",
+      "sha256": "d948e015397dcf5a61e76c2b184a34f48cf7e27ec08e982d1899f81a0cbe11ca",
       "languages": [
         "ro",
         "en"

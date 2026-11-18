@@ -11,6 +11,7 @@
 - Audituri reproductibile: `scripts/qa/ohm-layout.py`, `scripts/qa/ohm-layout-interactions.mjs`, `scripts/qa/ohm-board.py`. Scanarea mecanică Impeccable a fișierelor UI modificate: fără constatări.
 - Auditul final axe: 58/58 stări RO/EN, cu explicațiile deschise, fără încălcări; avertismentul `heading-order` și cele două constatări de contrast sunt rezolvate.
 - Publicată revizia principală în `4e33988`, GitHub Actions `44346058525` și Vercel reușite. Verificarea online a identificat un caz de ancoră repetată și o actualizare Canvas după demontare: corectate, inclusiv deschiderea directă a subtabului din URL. Regresiile complete locale și offline trec, iar CI trece acum 490 teste (7 omise). Testul nou verifică explicit că un Canvas ascuns/demontat nu mai desenează. Raportul de producție este în `outputs/ohm-layout/online-final.log`; fișierele text sunt comparate și cu normalizarea CRLF/LF, ZIP-ul binar exact.
+- Eliminată tranziția culorilor din navigarea principală: contrastul rămâne constant și în timpul schimbării tabului. Culorile stabile au fost măsurate pe producție; auditul local ulterior trece toate cele 58 stări, fără suprimări.
 
 ## Ohm pe tabla școlară — 2026-11-18
 
