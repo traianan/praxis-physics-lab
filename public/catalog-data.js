@@ -814,5 +814,25 @@ export const simulations = [
     "image": "./assets/masurarea-unghiurilor.svg",
     "keywords": "matematica unghi grade radiani steradiani cerc sfera conversie",
     "status": "available"
+  },
+  {
+    "id": "functia-gradul-intai",
+    "addedOn": "2026-11-18",
+    "addedOrder": 1,
+    "chapter": "elemente-de-matematica",
+    "title": "Funcția de gradul întâi",
+    "subtitle": "Pantă, ordonată și modele liniare",
+    "description": "Explorează dreapta, panta și ordonata, urmărește animațiile și aplică modelele liniare în fizică. Șase exerciții cu verificare.",
+    "alt": "Dreaptă cu triunghiul pantei și intersecțiile cu axele",
+    "tags": [
+      "Matematică",
+      "Funcții",
+      "Grafice",
+      "Offline"
+    ],
+    "href": "./simulari/functia-gradul-intai/index.html",
+    "image": "./assets/functia-gradul-intai.svg",
+    "keywords": "functie liniara gradul intai panta ordonata dreapta inversa monotonie",
+    "status": "available"
   }
 ];

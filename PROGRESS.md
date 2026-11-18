@@ -1,5 +1,19 @@
 # PROGRESS
 
+## Funcția de gradul întâi și tipografia întrebărilor — 2026-11-18
+
+- Pregătire publicare: checkout izolat pe baza origin/main; lucrările locale fără legătură sunt excluse. Verificare CI locală: 487 teste trecute, 7 omise, zero eșecuri. Auditul profund al lecției: 12 stări RO/EN fără încălcări. Corectată semantica subtitlului din preferințe.
+
+- Integrată în „Elemente de matematică”, cu patru secțiuni, trei animații ale dreptei, trei exemple fizice și șase exerciții. Import reproductibil: `npm run import:linear-function`, sursă păstrată nemodificată în `../functia-gradul-intai`, proveniență în `docs/imported-linear-function.json`.
+- Antet, revenire Home/capitol, preferințe, RO/EN, sunet și Mod tablă comune. Opțiunile graficului sunt în singurul meniu de preferințe; fără meniul separat al sursei. Sunetul pornește inactiv. Cazul m=n=0 arată toate zerourile reale; m=0,n≠0 nu are zero. SymPy a verificat panta, inversa, zerourile și exemplele fizice.
+- Eliminată alternarea text/MathML din animații prin `PraxisMath.set`; șase moduri × 180 cadre, deplasare verticală măsurată 0 px. Grafice mai înalte, formula/citirile/explicația în dreapta scenei; explicații secundare pliabile. Sursa electrică are armături apropiate, fără conductor între ele, etichetă E, r; modelul ideal r=0 este explicat.
+- Rol comun `--praxis-text-question:1rem`, greutate 600, interlinie 1,5 pentru enunțurile evaluărilor. Audit agent-browser în toate cele 41 de lecții: 193 enunțuri detectate, 16 px la 100% și 32 px la 200%, fără abateri; titlurile secțiunilor își păstrează rolul. Regenerate și validate CRC toate cele 41 arhive; optica resincronizată.
+- Browser: navigare Home→lecție→capitol, test 0/6 și 6/6/reset, parametri/extreme Ohm, păstrarea stării RO/EN și suspendare în tab ascuns. 80 stări RO/EN/text 100–200% la 390, 1024, 1366, 1920 DPR2 și 3840 DPR1, fără overflow orizontal, comenzi tăiate lateral, erori JS sau matematice. La 1024×768 explicațiile secundare pot necesita o scurtă derulare; la text mărit și pe telefon se permite derularea.
+- Mod tablă: 24 stări RO/EN/text 100–200% pentru cele trei standuri, la 1920×1080 și 3840×2160, cu modul tactil activ; toate comenzile și Canvasurile rămân în viewport. Este emulare în browser, nu test pe tablă fizică. Arhiva nouă deschisă din file:// cu HTTP blocat: toate cele opt combinații secțiune/limbă, redare, Mod tablă, zero cereri HTTP și linkuri locale inexistente vizibile.
+- Build și registru valide; 22/22 teste focalizate. Suita generală: 499/500; singura eroare este comparația de proveniență preexistentă pentru `miscarea-rectilinie/index.html` (adaptarea `adaptive-motion` nu este inversată de test). Fișierul respectiv este identic cu HEAD și nu a fost modificat în această sarcină. `git diff --check` fără erori de whitespace.
+- Audituri reproductibile: `scripts/qa/linear-function.py`, `scripts/qa/question-typography.py`. Rapoarte/capturi: `outputs/linear-review/`, `outputs/question-typography/`, `outputs/linear-offline-report.json`, `outputs/linear-archives-validation.json`. Publicarea în GitHub/main și verificarea producției au fost autorizate la 2026-11-18. Lucrările preexistente au fost păstrate.
+
+
 ## Uniformitatea emisiei și reprezentarea θ(t) — 2026-11-17
 
 - Înlocuite punctele decalate angular cu fronturi concentrice simultane în Radiație izotropă și arce simultane în Flux luminos. Eliminat efectul de spirală. Sunt proiecții schematice încetinite ale propagării, nu fotoni numărați și nu propagare la scara reală a vitezei luminii. La sursă zero nu se desenează fronturi.

@@ -1,5 +1,17 @@
 /* Mandatory laboratory presentation; original scientific drawings keep their semantic colours. */
 :root{--praxis-text-body:1rem;--praxis-text-label:.875rem;--praxis-text-small:.8125rem;--praxis-control-height:44px;--praxis-slider-track:4px}
+:root{--praxis-text-question:1rem}
+/* Assessment prompts are reading text, even when the source uses h2/h3.
+   Keep section headings independent, and preserve the user's text scaling. */
+:root body[data-praxis-laboratory] :is(#praxis-original,[data-praxis-assessment]) :is(
+ .quiz-card .q-head h2,.quiz-card .q-head h3,.quiz-card>.quiz-q,.q>h2,.q>h3,.q>h4,
+ .newton-question>h3,.quiz>.q:not(:has(button,input,label)),form[data-exercise]>label,
+ .quiz :is(h3,h4):has(+.opts),.quiz-card>h2,.quiz-card>h3,
+ :is(h2,h3,h4):has(~:is(.opts,.answers,.q-opts,.choices)),
+ .q-text,.qtext,.question-text,.question-title,.question-prompt,.quiz-question,.quiz-prompt,
+ .quiz-q>p:first-child,.quiz-q:not(:has(p,button,input,label)),
+ fieldset:has(input[type=radio])>legend,[data-question-prompt]
+){font-family:var(--praxis-font-ui)!important;font-size:var(--praxis-text-question)!important;font-weight:600!important;line-height:1.5!important;letter-spacing:normal!important;overflow-wrap:break-word}
 :root:is([data-course-touch=true],[data-touch=true]){--praxis-control-height:52px;--praxis-slider-thumb:32px}
 :root:not([data-board=true]) body[data-praxis-laboratory]{font:400 var(--praxis-text-body)/1.6 var(--praxis-font-ui);color:var(--praxis-color-ink);background:var(--praxis-color-canvas)}
 :root:not([data-board=true]) body[data-praxis-laboratory] :is(h1,h2,h3,h4){font-family:var(--praxis-font-ui)!important;letter-spacing:normal!important;color:var(--praxis-color-ink);font-style:normal;line-height:1.3!important;max-width:100%;overflow-wrap:break-word}

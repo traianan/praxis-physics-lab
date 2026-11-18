@@ -4,7 +4,14 @@
   "title": "Mathematical foundations",
   "messages": {
     "Elemente de matematică": "Mathematical foundations",
-    "ELEMENTE DE MATEMATICĂ": "MATHEMATICAL FOUNDATIONS"
+    "ELEMENTE DE MATEMATICĂ": "MATHEMATICAL FOUNDATIONS",
+    "Funcția de gradul întâi": "Linear function",
+    "Pantă, ordonată și modele liniare": "Slope, intercept and linear models",
+    "Explorează dreapta, panta și ordonata, urmărește animațiile și aplică modelele liniare în fizică. Șase exerciții cu verificare.": "Explore the line, slope and intercept, follow animations and apply linear models in physics. Six exercises with feedback.",
+    "Dreaptă cu triunghiul pantei și intersecțiile cu axele": "Line with a slope triangle and axis intercepts",
+    "Matematică": "Mathematics",
+    "Funcții": "Functions",
+    "Grafice": "Graphs"
   },
   "simulations": {
     "masurarea-unghiurilor": {
@@ -19,6 +26,19 @@
         "Offline"
       ],
       "keywords": "mathematics angles degrees radians steradians circle sphere conversion"
+    },
+    "functia-gradul-intai": {
+      "title": "Linear function",
+      "subtitle": "Slope, intercept and linear models",
+      "description": "Explore the line, slope and intercept, follow animations and apply linear models in physics. Six exercises with feedback.",
+      "alt": "Line with a slope triangle and axis intercepts",
+      "keywords": "functie liniara gradul intai panta ordonata dreapta inversa monotonie",
+      "tags": [
+        "Mathematics",
+        "Functions",
+        "Graphs",
+        "Offline"
+      ]
     }
   }
 }

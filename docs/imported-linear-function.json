@@ -1,0 +1,14 @@
+{
+  "source": "../functia-gradul-intai",
+  "files": {
+    "index.html": "8c6f1e9df2daae900ecb150e080b0c8a37d1d43cb740b3ba15168af0ced7b401",
+    "style.css": "cf9a21b8d00945c0c1dc1823fc699a00029fad5c1c8c7ba2f700d7c902a61638",
+    "js/animations.js": "ff94abb3c796aef4be3887d297384a79e9deaaccf258305cb1375afac8b2a782",
+    "js/core.js": "cf41d50bdc003ef7a9795c3f0a396741132f189119a96e6002e221853542d6fd",
+    "js/graph.js": "2b0c187ea0908aeb80909e7dcb704488760df31ff540d577761af052926bc16b",
+    "js/main.js": "b842e6dbf365e028fa734d9f77bd289ecd90975eaed10ba48e8ea6a8f39534d8",
+    "js/physics.js": "9981c28e3576ddb9532be663a9cf5d280503d1c570fd4de8e628dc0e5600b4f4",
+    "js/quiz.js": "f5c21caeca8eb6897e20c4679b14dc05f238ff070b913468aed4fc256d024bd8",
+    "js/theory.js": "36421647424f1177cd41f39e500d056559c144ccc6f1d8b557b5b361af91f343"
+  }
+}

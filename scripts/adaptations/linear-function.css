@@ -1,0 +1,41 @@
+#praxis-original{width:100%;max-width:1600px;margin-inline:auto;padding:0 16px 16px;--bg:var(--praxis-color-background,#f5f5ed);--surface:var(--praxis-color-surface,#fdfef8);--ink:var(--praxis-color-text,#123f38);--brand:var(--praxis-color-primary,#17685f)}
+#praxis-original *,#praxis-original *::before,#praxis-original *::after{box-sizing:border-box}
+#praxis-original [hidden]{display:none!important}
+#praxis-original :is(button,.option){min-height:44px}
+#praxis-original .step-btn{min-width:44px;min-height:44px}
+#praxis-original .praxis-range-stepper{display:contents}
+#praxis-original .praxis-range-stepper>button{display:none}
+#praxis-original .tabbar{margin-top:0}
+#praxis-original .dot-sep{display:none}
+#praxis-original .note-strip{gap:10px}
+#praxis-original .panel{animation:none}
+#praxis-original .equation{height:2.4em;display:flex;align-items:center;justify-content:center;margin-block:8px;font-variant-numeric:tabular-nums}
+#praxis-original .note-strip{min-height:44px;font-variant-numeric:tabular-nums}
+#praxis-original .linear-reading{margin-top:12px}
+#praxis-original .linear-reading>summary{min-height:44px;cursor:pointer;font-weight:600}
+#praxis-original .linear-scene-card{container-type:inline-size;align-self:start}
+#praxis-original .linear-scene-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.48fr);gap:16px;align-items:center;min-width:0}
+#praxis-original .linear-visual,#praxis-original .linear-readouts{min-width:0}
+#praxis-original .linear-readouts .note-strip{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:10px}
+#praxis-original .linear-readouts .legend{flex-direction:column;align-items:flex-start;gap:10px}
+#praxis-original .linear-readouts .equation{margin:0 0 12px;min-height:2.4em;height:auto}
+#praxis-original .linear-readouts .hint{margin-block:14px}
+@container(max-width:460px){#praxis-original .linear-scene-body{grid-template-columns:1fr}#praxis-original .linear-readouts .legend{flex-direction:row;flex-wrap:wrap}#praxis-original .linear-readouts .note-strip{flex-direction:row;align-items:center}}
+#prefsPopover{display:flex;flex-direction:column;gap:6px;min-width:0;width:100%;border-top:1px solid #ccd8cb;padding-top:8px}
+#prefsPopover h3{font-size:1rem;margin:0}
+#prefsPopover label{display:flex;align-items:center;gap:8px;min-height:44px}
+#prefsPopover input{width:18px;height:18px}
+#praxis-original .controls-card .range-group{margin-bottom:10px}
+#praxis-original .control{margin-bottom:6px}
+#praxis-original .tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+#praxis-original .tile b{white-space:normal;overflow:visible;overflow-wrap:anywhere}
+#praxis-original .hint{min-height:3.1em}
+#praxis-original .options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+#praxis-original .quiz-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media(max-width:1100px){#praxis-original .quiz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){#praxis-original .quiz-grid{grid-template-columns:1fr}}
+#praxis-original .toast{position:fixed;z-index:1000}
+@media(min-width:1000px){#praxis-original .graph-box,#praxis-original .graph-box-tall{height:380px}#praxis-original .card{padding:14px}#praxis-original .lab-grid{grid-template-columns:minmax(0,1.65fr) minmax(310px,1fr);gap:14px}#praxis-original .model-chips{gap:6px}}
+@media(min-width:1000px) and (max-height:850px){#praxis-original .play-row{margin-block:6px}#praxis-original .controls-card .formulas-stack{gap:0}#praxis-original .controls-card .explain{padding-top:4px}}
+@media(min-width:1000px) and (max-width:1150px) and (max-height:850px){#praxis-original .panel{padding:0}body[data-praxis-course=functia-gradul-intai] .praxis-lab-intro{margin-block:4px!important;padding-block:8px!important}body[data-praxis-course=functia-gradul-intai] .praxis-lab-nav{padding-bottom:4px}}
+@media(max-width:760px){#praxis-original{padding-inline:10px}#praxis-original .tabbar{gap:8px}#praxis-original .tabs{width:100%}#praxis-original .prefs-wrap{margin-left:0}}

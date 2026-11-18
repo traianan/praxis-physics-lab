@@ -5,13 +5,13 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
- assert.deepEqual(latest.map(sim=>sim.id),['masurarea-unghiurilor','dualismul-unda-corpuscul','efectul-compton']);
- assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-17','2026-11-15','2026-11-15']);
- assert.equal(getLatestSimulations(1)[0].id,'masurarea-unghiurilor');
+ assert.deepEqual(latest.map(sim=>sim.id),['functia-gradul-intai','masurarea-unghiurilor','dualismul-unda-corpuscul']);
+ assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-18','2026-11-17','2026-11-15']);
+ assert.equal(getLatestSimulations(1)[0].id,'functia-gradul-intai');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
- const home=getHomeSimulations();assert.equal(home.length,14);
+ const home=getHomeSimulations();assert.equal(home.length,15);
  for(const chapter of chapters)assert.ok(home.filter(sim=>sim.chapter===chapter.id).length<=2);
  assert.equal(findSimulations('miscare').length,9);assert.equal(findSimulations('','curbilinie osculator').length,1);
 });
@@ -25,8 +25,8 @@ test('eight chapters including mathematical foundations, with unique stable ids'
  assert.equal(chapters.length,8); assert.equal(new Set(chapters.map(c=>c.id)).size,8);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite','elemente-de-matematica']);
 });
-test('forty real local laboratories are available, including the Compton effect', async () => {
- assert.equal(simulations.length,40);
+test('forty-one real local laboratories are available, including the Compton effect', async () => {
+ assert.equal(simulations.length,41);
  assert.equal(simulations.find(s=>s.id==='miscarea-in-camp-gravitational').chapter,'miscare');
  assert.equal(simulations.find(s=>s.id==='polarizarea-luminii').chapter,'lumina-si-radiatii');
  const seismic=simulations.find(s=>s.id==='unde-seismice');

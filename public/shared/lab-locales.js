@@ -269,5 +269,11 @@ export const labNamespaces = {
     "chapters/elemente-de-matematica",
     "courses/shared",
     "labs/masurarea-unghiurilor/ui"
+  ],
+  "functia-gradul-intai": [
+    "common",
+    "chapters/elemente-de-matematica",
+    "courses/shared",
+    "courses/functia-gradul-intai/ui"
   ]
 };

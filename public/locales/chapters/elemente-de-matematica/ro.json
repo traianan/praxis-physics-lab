@@ -4,7 +4,14 @@
   "title": "Elemente de matematică",
   "messages": {
     "Elemente de matematică": "Elemente de matematică",
-    "ELEMENTE DE MATEMATICĂ": "ELEMENTE DE MATEMATICĂ"
+    "ELEMENTE DE MATEMATICĂ": "ELEMENTE DE MATEMATICĂ",
+    "Funcția de gradul întâi": "Funcția de gradul întâi",
+    "Pantă, ordonată și modele liniare": "Pantă, ordonată și modele liniare",
+    "Explorează dreapta, panta și ordonata, urmărește animațiile și aplică modelele liniare în fizică. Șase exerciții cu verificare.": "Explorează dreapta, panta și ordonata, urmărește animațiile și aplică modelele liniare în fizică. Șase exerciții cu verificare.",
+    "Dreaptă cu triunghiul pantei și intersecțiile cu axele": "Dreaptă cu triunghiul pantei și intersecțiile cu axele",
+    "Matematică": "Matematică",
+    "Funcții": "Funcții",
+    "Grafice": "Grafice"
   },
   "simulations": {
     "masurarea-unghiurilor": {
@@ -19,6 +26,19 @@
         "Offline"
       ],
       "keywords": "matematica unghi grade radiani steradiani cerc sfera conversie"
+    },
+    "functia-gradul-intai": {
+      "title": "Funcția de gradul întâi",
+      "subtitle": "Pantă, ordonată și modele liniare",
+      "description": "Explorează dreapta, panta și ordonata, urmărește animațiile și aplică modelele liniare în fizică. Șase exerciții cu verificare.",
+      "alt": "Dreaptă cu triunghiul pantei și intersecțiile cu axele",
+      "keywords": "functie liniara gradul intai panta ordonata dreapta inversa monotonie",
+      "tags": [
+        "Matematică",
+        "Funcții",
+        "Grafice",
+        "Offline"
+      ]
     }
   }
 }

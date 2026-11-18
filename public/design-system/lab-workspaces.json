@@ -596,5 +596,27 @@
         "scene": ".physics-scene"
       }
     ]
+  },
+  "functia-gradul-intai": {
+    "workspaces": [
+      {
+        "selector": "#panel-teorie .lab-grid",
+        "layout": "native",
+        "controls": ".controls-card",
+        "scene": ".graph-box"
+      },
+      {
+        "selector": "#panel-animatii .lab-grid",
+        "layout": "native",
+        "controls": ".controls-card",
+        "scene": ".graph-box"
+      },
+      {
+        "selector": "#panel-fizica .lab-grid",
+        "layout": "native",
+        "controls": ".controls-card",
+        "scene": ".graph-box"
+      }
+    ]
   }
 }

@@ -44,6 +44,15 @@
         "value": "inter",
         "createdAt": "2026-11-15T06:23:18.876Z",
         "reason": "Agent: the flagged Inter import is in the original Condensatorul source. The importer strips this import and the Praxis adapter uses the shared UI font in the web and offline lesson."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "public/design-system/laboratory.css"
+        ],
+        "createdAt": "2026-11-18T14:44:04.097Z",
+        "reason": "Reviewed incumbent Praxis title-banner marker, already present in HEAD. docs/REGULI_LABORATOARE.md section 1 requires reuse of the shared visual system and header. This marker belongs to the common lesson title banner, not a newly decorated content card; preserve the incumbent design."
       }
     ]
   }

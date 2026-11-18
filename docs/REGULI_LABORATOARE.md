@@ -29,6 +29,8 @@ Obiectiv: elevul sau profesorul trebuie să poată controla experimentul, observ
 
 ## 3. Scară, text și spațiere
 
+- Întrebările evaluărilor folosesc rolul comun `--praxis-text-question` (1 rem la text 100%, greutate 600, interlinie 1,5), inclusiv când sursa le marchează h2/h3. Nu le trata drept titluri de secțiune. Păstrează scalarea aleasă de utilizator și verifică separat în Mod tablă.
+
 - Compactează prin structură și eliminarea spațiului inutil, nu prin text microscopic sau reducerea țintelor tactile.
 - Nu întinde o scenă doar pentru că există lățime liberă. Mărirea Canvasului mărește și etichetele desenate în el și poate produce exact aspectul de interfață supradimensionată semnalat de utilizator.
 - Folosește rolurile tipografice comune și unități relative unde interfața trebuie să urmeze preferința de text. Verifică separat antetul, care are geometrie comună și nu trebuie să se deformeze odată cu lecția.
