@@ -15,6 +15,7 @@ test('web fonts use local URLs under a subdirectory; autonomous export embeds th
  vm.runInNewContext(source,{window,document,URL,Set,WeakMap});
  assert.match(window.PraxisMathFallbackCSS,/https:\/\/example.test\/physics\/simulari\/calorimetrie\/vendor\/katex\/fonts\//);
  assert.match(window.PraxisMathFallbackCSS,/font-display:swap/);
+ assert.doesNotMatch(window.PraxisMathFallbackCSS,/\r/,'serialized math CSS uses LF on Windows and Linux');
  const standalone=await inlineMathFonts(source);
  assert.match(standalone,/data:font\/woff2;base64/);
  assert.doesNotMatch(standalone,/__PRAXIS_MATH_FONTS__/);

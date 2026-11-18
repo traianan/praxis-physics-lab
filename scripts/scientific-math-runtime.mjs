@@ -13,7 +13,8 @@ export async function scientificMathRuntime({embedFonts=true}={}){
  fallbackCSS+='\n.praxis-math-fallback .katex{font-size:1em}';
  if(!core.includes('window.PraxisWaveMath='))throw Error('Scientific math core export changed');
  // Lazy synchronous local engine: existing KaTeX installations remain in use.
- const cssExpression=JSON.stringify(fallbackCSS)+(embedFonts?'':'.replaceAll("__PRAXIS_MATH_FONTS__",new URL("../simulari/calorimetrie/vendor/katex",document.currentScript.src).href)');
+ // A Windows checkout must serialize the same CSS string as Linux CI.
+ const cssExpression=JSON.stringify(fallbackCSS.replace(/\r\n?/g,'\n'))+(embedFonts?'':'.replaceAll("__PRAXIS_MATH_FONTS__",new URL("../simulari/calorimetrie/vendor/katex",document.currentScript.src).href)');
  const engine=embedFonts?'window.PraxisEnsureMathEngine=function(){if(!window.katex){'+vendor+'}return window.katex;};':await read('public/shared/math-engine-loader.js');
  return '/* praxis:math-runtime */\n'+engine+'\nwindow.PraxisMathFallbackCSS='+cssExpression+';\n'+compatibility+'\n'+core.replace('window.PraxisWaveMath=','window.PraxisMath=')+'\n'+dom+'\n/* /praxis:math-runtime */';
 }
