@@ -2,6 +2,7 @@
 
 ## Ohm pe tabla școlară — 2026-11-18
 
+- Publicat în `main`: `3bee37b`; GitHub Actions `44337298175` reușit, Vercel reușit. Verificarea online a repetat toate cele 60 stări și interacțiunile, fără coliziuni/overflow/erori JS. SHA-256 pentru app.js, app.css și ZIP coincide cu distribuția locală. Auditul focalizat RO/EN: harta fără încălcări; în circuit/măsurări rămâne numai ordinea titlurilor existente, fără suprimări.
 - Dispozitiv raportat: Chrome pe Android 13; versiunea Chrome necunoscută. Reprodusă dispariția hărții prin eliminarea regulii CSS `@scope`: suprafața devenea 0 px. Importatorul generează acum selectori delimitați la rădăcina Ohm, fără `@scope` sau nesting incompatibil (target Chrome 100).
 - Schemele Circuit complet/Măsurări rezervă minimum 280 px și rânduri distincte pentru citiri. Explicațiile „circuit exterior” și „cuprinde…” sunt în legenda DOM, traduse RO/EN. Ecuațiile electrice nu sunt modificate.
 - Harta așază explicația în dreapta pe desktop și calculează distanțele din dimensiunile reale ale nodurilor, prevenind suprapunerile la text mărit. Căutarea, resetul, zoomul, selecția și saltul la lecție funcționează.
