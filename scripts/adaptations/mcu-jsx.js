@@ -37,6 +37,8 @@ function McuMathText({value}){
 }
 function mcuJsx(type,props,key){
  props={...props};
+ if(type==='div'&&props.className?.includes('tracking-widest')&&(window.PraxisMath?.flatten(props.children)||'').startsWith('LABORATOR 2'))return null;
+ const turnExplanation=type==='p'&&typeof props.children==='string'&&props.children.startsWith('N, G și');
  if(type==='svg'&&props['data-mcu-diagram']==='acceleration')return Rc(McuAccelerationFigure,{},key);
  if(props['data-mcu-phase']!==undefined)props.children='0°';
  if(typeof props.children==='string'&&/^(SIGUR|DERAPAJ|ALUNECARE)/.test(props.children))props['data-mcu-status']='';
@@ -98,6 +100,7 @@ function mcuJsx(type,props,key){
  if(type==='input'&&props.type==='range'&&!props.id){const name=/u\(|\.setter/.test(String(props.onChange))&&props.max===5&&props.min===.5?'radius':props.max===4?'omega':'mass';props.id='mcu-'+name;props['aria-label']=tr(name==='radius'?'Rază R':name==='omega'?'Viteză unghiulară ω':'Masă m');}
  if(type==='canvas'){props.className='mcu-canvas';props.tabIndex=0;props['aria-label']=tr('Diagramă interactivă de mișcare circulară.');}
  if(type==='canvas')return Rc(I.Fragment,{children:[Rc(type,props,'canvas'),...(props['data-mcu-canvas']==='bank'?[Rc(McuForceLegend,{},'forces')]:[]),Rc(McuVectorScale,{kind:props['data-mcu-canvas']},'scale')]},key);
+ if(turnExplanation)return Rc('details',{className:'praxis-workspace-disclosure mcu-turn-explanation',children:[Rc('summary',{children:tr('Explicații')},'summary'),Rc(type,props,'body')]},key);
  return Rc(type,props,key);
 }
 

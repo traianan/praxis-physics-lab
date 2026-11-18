@@ -20,9 +20,10 @@
   grouped.add(scope);
   const nav=document.createElement('nav');nav.className='praxis-workspace-activities';nav.setAttribute('aria-label',words[language()].activities);
   let selected=Math.min(config.default,items.length-1);
-  const buttons=items.map((item,index)=>{
+  const headings=[];const buttons=items.map((item,index)=>{
    item.dataset.workspaceActivity=String(index);
-   const heading=item.querySelector('h2,h3,h4');const button=document.createElement('button');button.type='button';
+   const heading=item.querySelector('h2,h3,h4')||(item.previousElementSibling?.matches('h2,h3,h4')?item.previousElementSibling:null);const button=document.createElement('button');button.type='button';
+   headings.push(heading);
    button.textContent=heading?.textContent.trim()||String(index+1);button.dataset.sound='none';
    const select=()=>{
     selected=index;items.forEach((el,i)=>{el.dataset.workspaceActive=String(i===index);buttons[i].setAttribute('aria-pressed',String(i===index));});
@@ -34,7 +35,7 @@
   items.forEach((item,index)=>{item.dataset.workspaceActive=String(index===selected);buttons[index].setAttribute('aria-pressed',String(index===selected));});
   items[0].before(nav);
   // Translate with the lesson's own renderer, rather than retain stale copies.
-  window.addEventListener('praxis-language-change',()=>{nav.setAttribute('aria-label',words[language()].activities);items.forEach((item,i)=>{const heading=item.querySelector('h2,h3,h4');if(heading)buttons[i].textContent=heading.textContent.trim();});});
+  window.addEventListener('praxis-language-change',()=>{nav.setAttribute('aria-label',words[language()].activities);headings.forEach((heading,i)=>{if(heading)buttons[i].textContent=heading.textContent.trim();});});
  }
  function mount(root=document){
   const body=document.body;if(!body?.dataset.praxisLaboratory)return;
@@ -53,6 +54,21 @@
      const heading=document.createElement('div');heading.className='praxis-workspace-figure-heading';
      heading.append(...[...figure.children].filter(el=>el.matches('.fig-h,.tabs,.compression-intro')));
      figure.prepend(heading);panel.append(...controls);figure.append(panel);figure.dataset.workspaceFigure='';
+     for(const hint of panel.querySelectorAll(':scope>.hint'))disclosure(hint,'reading');
+     const results=document.createElement('div');results.className='praxis-workspace-figure-results';
+     results.append(...[...figure.querySelectorAll(':scope>.figure-math,:scope>.praxis-workspace-figure-controls>.ro')]);
+     if(results.children.length)figure.append(results);
+    }
+    if(entry.layout==='reading')for(const demo of workspace.querySelectorAll(':scope>.demo')){
+     const scenes=[...demo.children].filter(el=>el.matches('.sim-frame,.mol-viz'));
+     if(scenes.length!==1)continue;
+     const controls=document.createElement('div');controls.className='praxis-workspace-demo-controls';
+     const notes=[...demo.children].filter(el=>el.matches('.demo-hint,.model-note,.molecule-hint,.degrees-explanation'));
+     if(notes.length){const details=disclosure(notes[0],'reading');details.append(...notes);demo.append(details);}
+     const legend=demo.querySelector(':scope>.phase-legend');
+     controls.append(...[...demo.children].filter(el=>!el.matches('h2,h3,.sim-frame,.mol-viz,.praxis-workspace-disclosure,details')));
+     if(legend)demo.append(legend);
+     demo.append(controls);demo.dataset.workspaceDemo='';
     }
     if(entry.layout==='motion'){
      const controls=workspace.querySelector('.sim-side'),transport=workspace.querySelector('.transport');

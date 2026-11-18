@@ -21,7 +21,7 @@
   z-index: 1;
   min-width: 0;
   padding-left: 16px;
-  border-left: 3px solid var(--praxis-color-mint);
+  border-left: 0;
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro::after {
   content: '';

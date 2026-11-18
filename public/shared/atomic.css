@@ -30,3 +30,14 @@ body[data-praxis-course=interactii-atomice] [hidden]{display:none!important}
 :root[data-course-touch=true] #praxis-original .panel label,:root[data-course-touch=true] #praxis-original .bar label{min-height:52px}
 @media(max-width:1000px){#praxis-original .sim{grid-template-columns:1fr}#praxis-original .cols{grid-template-columns:1fr}#praxis-original .quiz{grid-template-columns:1fr}}
 @media(max-width:520px){#praxis-original #cv{height:28rem}#praxis-original .ro div{padding:.5rem}#praxis-original .panel{padding:.75rem}}
+@media(min-width:1050px){
+ body[data-praxis-workspace=interactii-atomice]{--workspace-control-width:600px}
+ #praxis-original .sim>aside{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+ #praxis-original .sim>aside>.panel{margin:0;padding:12px;min-width:0}
+ #praxis-original #pairs{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px}
+ #praxis-original #pairs>:is(h3,.hd){grid-column:1/-1}
+ #praxis-original #pairs .hd{display:flex;gap:1rem;justify-content:flex-start}
+ #praxis-original #custom{grid-column:2;grid-row:2/span 2}
+ #praxis-original .sim>aside>.panel:last-child{grid-column:1;grid-row:3}
+ #praxis-original #cv{height:400px}
+}

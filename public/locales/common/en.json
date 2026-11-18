@@ -158,6 +158,7 @@
     "Laboratorul se deschide în aceeași filă. Traseul Bibliotecă / Capitol / Laborator rămâne vizibil în antet. Apasă pe numele capitolului pentru celelalte laboratoare sau pe Bibliotecă pentru pagina de pornire. Meniul Bibliotecă păstrează căutarea și modul de afișare alese.": "The laboratory opens in the same tab. Library / Chapter / Laboratory stays visible in the header. Select the chapter name for its other laboratories, or Library in the breadcrumb for the home page. Library in the menu preserves your search and display settings.",
     "Navigare între secțiuni": "Navigate between sections",
     "Direcții de explorare": "Areas to explore",
-    "Capitolele organizează biblioteca. Mișcarea rectilinie și Calcul vectorial sunt în Mișcare; Oglinzi și lentile este în Lumină și radiații.": "Chapters organise the library. Rectilinear motion and Vector algebra are under Motion; Mirrors and lenses is under Light and radiation."
+    "Capitolele organizează biblioteca. Mișcarea rectilinie și Calcul vectorial sunt în Mișcare; Oglinzi și lentile este în Lumină și radiații.": "Chapters organise the library. Rectilinear motion and Vector algebra are under Motion; Mirrors and lenses is under Light and radiation.",
+    "Laborator interactiv de calcul vectorial": "Interactive vector algebra laboratory"
   }
 }

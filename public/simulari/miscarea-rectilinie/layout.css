@@ -1,0 +1,11 @@
+@media(min-width:90rem){
+body[data-praxis-course=miscarea-rectilinie] #mruv .sim{--workspace-control-width:25rem}
+body[data-praxis-course=miscarea-rectilinie] #mruv .sim-side{gap:.5rem;padding:.75rem!important}
+body[data-praxis-course=miscarea-rectilinie] #mruv .sim-main{padding:.75rem!important;gap:.25rem!important}
+body[data-praxis-course=miscarea-rectilinie] #mruv .sim-side .transport{gap:.5rem;grid-template-columns:minmax(0,1fr) 3rem 3rem 6rem}
+body[data-praxis-course=miscarea-rectilinie] #mruv .transport>select{grid-column:4!important}
+body[data-praxis-course=miscarea-rectilinie] #mruv .ctl{grid-template-columns:minmax(0,1fr) 4.2rem;gap:0 .35rem}
+body[data-praxis-course=miscarea-rectilinie] #mruv .ctl-name{grid-column:1/-1}
+body[data-praxis-course=miscarea-rectilinie] #mruv .ctl>input[type=number]{grid-area:2/2;width:100%}
+body[data-praxis-course=miscarea-rectilinie] #mruv .ctl>.praxis-range-stepper{grid-area:2/1}
+}

@@ -6,7 +6,7 @@ window.PraxisAccessibilityWalk=async(scan,{settleMs=550}={})=>{
  const label=e=>(e.textContent||e.id).replace(/\s+/g,' ').trim();
  const nodeKey=e=>{if(e.id)return '#'+e.id;const parts=[];for(let n=e;n&&n!==document.body;n=n.parentElement){if(n.id){parts.unshift('#'+n.id);break;}parts.unshift(n.tagName+':'+[...n.parentElement.children].indexOf(n));}return parts.join('/');};
  const groups=()=>[...document.querySelectorAll(groupSelector)].filter(visible);
- const buttons=g=>[...g.querySelectorAll('button,[role="tab"],a[data-tab]')].filter(e=>visible(e)&&!e.disabled&&e.closest(groupSelector)===g&&(e.tagName!=='A'||e.getAttribute('href')?.startsWith('#')));
+ const buttons=g=>[...g.querySelectorAll('button,[role="tab"],a[data-tab]')].filter(e=>visible(e)&&!e.disabled&&(!g.matches('.lesson-tabs')||e.parentElement===g)&&!e.closest('.quiz-options,.answers,.answer-options,.question-options,[data-quiz-question]')&&e.closest(groupSelector)===g&&(e.tagName!=='A'||e.getAttribute('href')?.startsWith('#')));
  const signature=g=>nodeKey(g)+'|'+buttons(g).map(e=>e.id||label(e)).join('~');
  const selectKey=e=>nodeKey(e)+'|'+[...e.options].map(o=>o.value).join('~');
  const visited=new Set(),pending=new Map(),errors=[];let states=0;

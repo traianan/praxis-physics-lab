@@ -78,7 +78,7 @@ body[data-praxis-laboratory] option{font-family:var(--praxis-font-ui)!important;
   z-index: 1;
   min-width: 0;
   padding-left: 16px;
-  border-left: 3px solid var(--praxis-color-mint);
+  border-left: 0;
 }
 :root:not([data-board=true]) body[data-praxis-laboratory] .praxis-lab-intro::after {
   content: '';
@@ -344,9 +344,31 @@ body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main{gap:8px}
 body[data-praxis-workspace] [data-workspace-layout=motion]>.sim-main>.grid-2{margin:0!important;width:100%}
 body[data-praxis-workspace] [data-workspace-layout=motion] .log:empty{display:none}
 @media(min-width:1050px){
+ body[data-praxis-workspace] [data-workspace-demo]{display:grid;grid-template-columns:minmax(340px,.8fr) minmax(0,1.2fr);gap:12px;align-items:start;position:static}
+ body[data-praxis-workspace] [data-workspace-demo]>h3{grid-column:1/-1;margin:0}
+ body[data-praxis-workspace] [data-workspace-demo]>.praxis-workspace-demo-controls{grid-column:1;grid-row:2;min-width:0}
+ body[data-praxis-workspace] [data-workspace-demo]>:is(.sim-frame,.mol-viz){grid-column:2;grid-row:2;margin:0;min-width:0}
+ body[data-praxis-workspace] [data-workspace-demo]>:is(details,.praxis-workspace-disclosure){grid-column:1/-1}
+ body[data-praxis-workspace] [data-workspace-demo] canvas{width:100%;height:360px!important;max-width:100%}
+ body[data-praxis-workspace=calorimetrie],body[data-praxis-workspace=notiuni-termodinamice],body[data-praxis-workspace=motoare-termice]{--workspace-control-width:400px}
+ body[data-praxis-workspace=calcul-vectorial]{--workspace-control-width:480px}
+ body[data-praxis-workspace=calcul-vectorial] [data-workspace-figure]>canvas.h3d{height:420px!important}
+ body[data-praxis-workspace=calcul-vectorial] .praxis-workspace-figure-controls .sliders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ body[data-praxis-workspace=calcul-vectorial] .praxis-workspace-figure-controls .ro{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ body[data-praxis-workspace] [data-workspace-demo] .readout{align-items:start;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body[data-praxis-workspace] [data-workspace-demo] .readout>div{min-width:0;align-self:start}
+ body[data-praxis-workspace] [data-workspace-demo] .slider-row{grid-template-columns:1fr;gap:4px}
+ body[data-praxis-workspace] [data-workspace-demo] .phase-legend{grid-column:2;grid-row:3;margin:0}
+ body[data-praxis-workspace] [data-workspace-demo] .formula-live{overflow-wrap:anywhere}
  body[data-praxis-workspace] [data-workspace-figure]{display:grid!important;grid-template-columns:var(--workspace-control-width) minmax(0,1fr);align-items:start}
  body[data-praxis-workspace] [data-workspace-figure]>:not(canvas):not(.praxis-workspace-figure-controls){grid-column:1/-1}
  body[data-praxis-workspace] [data-workspace-figure]>canvas{grid-column:2;width:100%;min-width:0}
+ body[data-praxis-workspace] [data-workspace-figure]>canvas:not(.mini){grid-row:2}
+ body[data-praxis-workspace] [data-workspace-figure]>canvas.mini{grid-row:3}
+ body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-results{grid-column:2;min-width:0;align-self:start}
+ body[data-praxis-workspace] .praxis-workspace-figure-results .figure-math:empty{display:none}
+ body[data-praxis-workspace] .praxis-workspace-figure-results .ro{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))!important}
+ body[data-praxis-workspace] .praxis-workspace-figure-results .ro dd{white-space:normal;overflow:visible;text-overflow:clip}
  body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-heading{grid-row:1}
  body[data-praxis-workspace] [data-workspace-figure]>.praxis-workspace-figure-controls{grid-column:1;grid-row:2/span 2;min-width:0}
  body[data-praxis-workspace] .praxis-workspace-figure-controls .sliders{display:flex;flex-direction:column}

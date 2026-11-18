@@ -625,6 +625,10 @@
     "este proiecția deplasării pe Oy.": "is the projection of the displacement onto Oy.",
     "Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y₁ este componenta sa pe Oy și se măsoară în metri.": "The displacement vector points from equilibrium to the particle. Elongation y₁ is its Oy component, measured in metres.",
     "Vectorul deplasare este orientat de la echilibru spre particulă. Elongația y": "The displacement vector points from equilibrium to the particle. Elongation y",
-    "este componenta sa pe Oy și se măsoară în metri.": "is its Oy component, measured in metres."
+    "este componenta sa pe Oy și se măsoară în metri.": "is its Oy component, measured in metres.",
+    "Propagare și seismogramă": "Propagation and seismogram",
+    "Love și Rayleigh": "Love and Rayleigh",
+    "Stații și triangulație": "Stations and triangulation",
+    "Activități seismice": "Seismic activities"
   }
 }

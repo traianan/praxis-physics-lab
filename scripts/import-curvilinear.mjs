@@ -53,8 +53,44 @@ const styles=['design-system/tokens.css','design-system/components.css','shared/
 const head='<link rel="icon" href="../../assets/favicon.svg">'+styles.map(path=>'<link rel="stylesheet" href="../../'+path+'">').join('')+
  '<script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded})+');</script>'+
  ['sound.js','lab-header.js','canvas-typography.js','scientific-colors.js','course-localization.js','animation-clock.js','velocity-labels.js'].map(name=>'<script src="../../shared/'+name+'"></script>').join('');
-html=html.replace('</head>',()=>head+'</head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">')
- .replace('</body>','<nav class="lesson-download" aria-label="Offline (ZIP)"><a data-offline-download href="miscarea-curbilinie-plana-offline.zip" download>Offline (ZIP)</a></nav></div><script src="../../shared/course.js" data-course="'+id+'" data-title="Mișcarea curbilinie plană" defer></script><script src="../../shared/curvilinear.js" defer></script></body>');
+html=html.replace('</head>',()=>head+'<link rel="stylesheet" href="layout.css"></head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">')
+ .replace('</body>','<nav class="lesson-download" aria-label="Offline (ZIP)"><a data-offline-download href="miscarea-curbilinie-plana-offline.zip" download>Offline (ZIP)</a></nav></div><script src="../../shared/course.js" data-course="'+id+'" data-title="Mișcarea curbilinie plană" defer></script><script src="../../shared/curvilinear.js" defer></script><script src="layout.js" defer></script></body>');
 await writeFile(new URL('index.html',target),html);await writeFile(new URL('source.css',target),colors(css));await writeFile(new URL('app.js',target),js);
 await writeFile(new URL('docs/imported-curvilinear.json',root),JSON.stringify({id,source:'sources/'+id+'/index.html',sha256:createHash('sha256').update(source).digest('hex'),sections:['teorie','viteza','acceleratie'],canvas:['theoryCanvas','simEllipse','sim1','sim2'],duplicates:'Original lesson and repeated concepts preserved'},null,2)+'\n');
 console.log('Mișcarea curbilinie plană integrată, cu sursa originală păstrată.');
+
+// Present the original sections as explicit activities; move, never clone, live nodes.
+await writeFile(new URL('layout.js',target),`(() => {
+ for(const h of document.querySelectorAll('.panel h4')){const minor=document.createElement('h3');for(const a of h.attributes)minor.setAttribute(a.name,a.value);minor.classList.add('curvilinear-minor-heading');minor.append(...h.childNodes);h.replaceWith(minor);}
+ function title(g){const h=g.querySelector('h2,h3')?.cloneNode(true);h?.querySelectorAll('.no,.rn').forEach(n=>n.remove());return h?.textContent.trim()||'';}
+ for(const group of document.querySelectorAll('.controls>.ctrl')){
+  if(!group.querySelector('input[type=checkbox]'))continue;
+  const d=document.createElement('details'),s=document.createElement('summary');d.className='praxis-workspace-disclosure';const h=group.querySelector('h3,h4');if(h)s.append(h);else s.textContent='Opțiuni';group.before(d);d.append(s,group);
+ }
+ for(const panel of document.querySelectorAll('.panel')){
+  const nodes=[...panel.children].filter(n=>!n.matches('.crumb,.pn'));
+  const groups=[];let group;
+  for(const node of nodes){if(!group||node.matches('h3')){group=document.createElement('section');group.className='curvilinear-activity';node.before(group);groups.push(group);}group.append(node);}
+  if(groups.length<2)continue;
+  for(const g of groups){const h=g.querySelector(':scope>h3');if(h){const title=document.createElement('h2');for(const a of h.attributes)title.setAttribute(a.name,a.value);title.classList.add('curvilinear-activity-heading');title.append(...h.childNodes);h.replaceWith(title);}}
+
+  const nav=document.createElement('nav');nav.className='praxis-workspace-activities';nav.setAttribute('aria-label','Activități');panel.prepend(nav);
+  const initial=Math.max(0,groups.findIndex(g=>g.querySelector('.lab')));
+  const buttons=groups.map((g,i)=>{const b=document.createElement('button');b.type='button';b.dataset.sound='none';b.textContent=title(g)||String(i+1);b.addEventListener('click',()=>{groups.forEach((el,j)=>{el.hidden=j!==i;buttons[j].setAttribute('aria-pressed',String(j===i));});TH.play=false;S1.paused=true;S2.paused=true;P.paused=true;window.dispatchEvent(new Event('resize'));});nav.append(b);return b;});
+  for(const g of groups){const lab=g.querySelector(':scope>.lab');if(lab){const paragraphs=[...g.querySelectorAll(':scope>p.txt')];if(paragraphs.length){const d=document.createElement('details'),s=document.createElement('summary');d.className='praxis-workspace-disclosure';s.textContent='Explicații';d.append(s,...paragraphs);lab.after(d);}}}
+  groups.forEach((g,i)=>{g.hidden=i!==initial;buttons[i].setAttribute('aria-pressed',String(i===initial));
+   for(const note of g.querySelectorAll(':scope>.note')){const d=document.createElement('details'),summary=document.createElement('summary');d.className='praxis-workspace-disclosure';summary.textContent='Observă';note.before(d);d.append(summary,note);}
+  });
+  window.addEventListener('praxis-language-change',()=>{nav.setAttribute('aria-label',window.PraxisI18n.language==='en'?'Activities':'Activități');groups.forEach((g,i)=>{buttons[i].textContent=title(g)||String(i+1);});});
+ }
+ window.dispatchEvent(new Event('resize'));
+})();`);
+await writeFile(new URL('layout.css',target),`body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original h3.curvilinear-minor-heading{font-size:var(--praxis-text-minor-heading)!important;font-weight:600!important;line-height:1.3!important;margin:0 0 .5rem;letter-spacing:normal;text-transform:none}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original h2.curvilinear-activity-heading{font-size:1.25rem;line-height:1.4;font-weight:600;margin:.75rem 0 .5rem}
+@media(min-width:90rem){body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .lab:has(#sim2){--workspace-control-width:25rem}}
+body[data-praxis-course=miscarea-curbilinie-plana]{--curvilinear-width:100rem}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .lab .stage{height:24rem;min-height:24rem}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .curvilinear-activity[hidden]{display:none!important}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .curvilinear-activity>h3:first-child{margin-top:.75rem}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .curvilinear-activity .lab{margin-block:.5rem}
+`);

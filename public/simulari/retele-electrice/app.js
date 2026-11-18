@@ -1427,7 +1427,7 @@ function initProblems() {
       </div>
       <div class="prob-body">
         <div class="prob-stmt">${p.stmt}</div>
-        <h4>Rezolvare</h4>
+        <h3 class="network-solution-title">Rezolvare</h3>
         ${p.steps.map(([t, m], k) => `
           <div class="step"><div class="step-n">${k + 1}</div>
           <div class="step-t">${t}${m ? `<span class="mono">${m}</span>` : ''}</div></div>`).join('')}

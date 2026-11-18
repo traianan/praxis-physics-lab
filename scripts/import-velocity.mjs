@@ -36,10 +36,28 @@ const styles=['design-system/tokens.css','design-system/components.css','shared/
 const head='<link rel="icon" href="../../assets/favicon.svg">'+styles.map(p=>`<link rel="stylesheet" href="../../${p}">`).join('')+
  '<script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded('+JSON.stringify({namespaceList:namespaces,embedded})+');</script>'+
  ['sound.js','lab-header.js','scientific-colors.js','course-localization.js','velocity-labels.js','velocity-canvas.js'].map(p=>`<script src="../../shared/${p}"></script>`).join('');
-html=html.replace('</head>',()=>head+'</head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">')
- .replace('</body>','<nav class="lesson-download" aria-label="Offline (ZIP)"><a data-offline-download href="viteza-si-acceleratia-offline.zip" download>Offline (ZIP)</a></nav></div><script src="../../shared/course.js" data-course="'+id+'" data-title="Viteza și accelerația" defer></script><script src="../../shared/velocity.js" defer></script></body>');
+html=html.replace('</head>',()=>head+'<link rel="stylesheet" href="layout.css"></head>').replace('<body>','<body data-praxis-laboratory="true" data-praxis-course="'+id+'"><div id="praxis-original" lang="ro">')
+ .replace('</body>','<nav class="lesson-download" aria-label="Offline (ZIP)"><a data-offline-download href="viteza-si-acceleratia-offline.zip" download>Offline (ZIP)</a></nav></div><script src="../../shared/course.js" data-course="'+id+'" data-title="Viteza și accelerația" defer></script><script src="../../shared/velocity.js" defer></script><script src="layout.js" defer></script></body>');
 await writeFile(new URL('index.html',target),html);
 await writeFile(new URL('style.css',target),await read('sources/'+id+'/style.css'));
+await writeFile(new URL('layout.css',target),`/* Keep controls and the synchronized drawing together on classroom displays. */
+@media(min-width:90rem){
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original{max-width:120rem!important;width:100%}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .main-container{max-width:none}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .canvas-wrapper canvas{max-width:1050px;margin-inline:auto}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original #poly-canvas{max-width:920px}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .poly-eq-item{padding:.5rem}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original #tab-polinom .telemetry-bar{grid-template-columns:repeat(5,minmax(0,1fr))}
+
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .lab-layout{grid-template-columns:minmax(0,1fr) minmax(35rem,40rem)!important;align-items:start}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .control-panel{order:2;grid-column:2!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;align-items:start}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .control-group{margin:0;padding:0 0 .5rem}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .canvas-workspace{order:1;grid-column:1!important}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .telemetry-bar{grid-template-columns:repeat(7,minmax(0,1fr))}
+body[data-praxis-course=viteza-si-acceleratia] #praxis-original .canvas-card{padding:.75rem}
+}
+`);
+
 let js=adaptScience(await read('sources/'+id+'/app.js'),'app.js');
 // Queue every annotation until geometry is complete; remove the source's early label masks.
 js=js.replace(/    ctx.fillStyle = '#070b18';\n    const tw = ctx.measureText\(label\).width;\n    ctx.fillRect\(lx - 3, ly - 11, tw \+ 6, 15\);\n/,'')
@@ -72,3 +90,9 @@ await writeFile(new URL('app.js',target),subscripts(js));
 const files=[];for(const file of ['index.html','app.js','style.css','README_INSTRUCTIUNI.txt','Viteza_si_acceleratia_SingleFile.html'])files.push({path:file,sha256:createHash('sha256').update(await read('sources/'+id+'/'+file)).digest('hex')});
 await writeFile(new URL('docs/imported-velocity.json',root),JSON.stringify({id,source:'sources/'+id,files,adaptedFiles:['index.html','app.js'],shared:['course.js','velocity.js','velocity-canvas.js','velocity-labels.js','velocity.css']},null,2)+'\n');
 console.log('Laborator integrat: '+fileURLToPath(target));
+
+await writeFile(new URL('layout.js',target),`for(const group of document.querySelectorAll('.control-group,.poly-events-box')){
+ if(!group.matches('.poly-events-box')&&!group.querySelector('input[type=checkbox]')&&!(group.closest('#tab-polinom')&&group.querySelector('.preset-chips')))continue;
+ const details=document.createElement('details'),summary=document.createElement('summary'),heading=group.querySelector('h3,h4');
+ details.className='control-group praxis-workspace-disclosure';if(heading)summary.append(heading);else summary.textContent='Explicații';group.before(details);details.append(summary);if(group.matches('.poly-events-box'))details.append(group);else{while(group.firstChild)details.append(group.firstChild);group.remove();}
+}`);

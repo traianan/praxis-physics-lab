@@ -24,9 +24,20 @@ for(const course of courses){
  const head=`<!-- praxis:head --><link rel="stylesheet" href="../../design-system/tokens.css"><link rel="stylesheet" href="../../design-system/components.css"><link rel="stylesheet" href="../../shared/course.css"><link rel="stylesheet" href="../../design-system/lab-layout.css"><link rel="stylesheet" href="../../design-system/laboratory.css"><link rel="stylesheet" href="../../design-system/compact.css"><script src="../../shared/i18n.js"></script><script>window.PraxisI18n.initEmbedded(${JSON.stringify({namespaceList:ns,embedded})});</script><script src="../../shared/sound.js"></script><script src="../../shared/lab-header.js"></script><!-- /praxis:head -->`;
  const footer=`<!-- praxis:bridge --><script src="../../shared/course.js" data-course="${course.id}" data-title="${course.title}" defer></script>${course.id==='calcul-vectorial'?'<script src="../../shared/vector-tabs.js" defer></script>':''}<!-- /praxis:bridge -->`;
  const pilot=course.id==='miscarea-rectilinie'?' data-praxis-adaptive-lab=""':'';
- const pilotAssets=pilot?'<link rel="stylesheet" href="../../shared/adaptive-motion.css"><script src="../../shared/adaptive-motion.js" defer></script>':'';
+ const pilotAssets=pilot?'<link rel="stylesheet" href="layout.css"><link rel="stylesheet" href="../../shared/adaptive-motion.css"><script src="../../shared/adaptive-motion.js" defer></script>':'';
  const html=original.replace('</head>',()=>head+pilotAssets+'</head>').replace('<body>',()=>'<body data-praxis-laboratory="true" data-praxis-course="'+course.id+'"'+pilot+'><div id="praxis-original" lang="ro">').replace('</body>',()=>'</div>'+footer+'</body>');
  await writeFile(path.join(target,'index.html'),html.replace('<!-- /praxis:head -->',(course.id==='calcul-vectorial'?'<link rel="stylesheet" href="../../shared/vector-tabs.css">':'')+'<script src="../../shared/canvas-typography.js"></script><script src="../../shared/scientific-colors.js"></script><script src="../../shared/course-localization.js"></script><!-- /praxis:head -->'),'utf8');
+ if(course.id==='miscarea-rectilinie')await writeFile(path.join(target,'layout.css'),`@media(min-width:90rem){
+body[data-praxis-course=miscarea-rectilinie] #mruv .sim{--workspace-control-width:25rem}
+body[data-praxis-course=miscarea-rectilinie] #mruv .sim-side{gap:.5rem;padding:.75rem!important}
+body[data-praxis-course=miscarea-rectilinie] #mruv .sim-main{padding:.75rem!important;gap:.25rem!important}
+body[data-praxis-course=miscarea-rectilinie] #mruv .sim-side .transport{gap:.5rem;grid-template-columns:minmax(0,1fr) 3rem 3rem 6rem}
+body[data-praxis-course=miscarea-rectilinie] #mruv .transport>select{grid-column:4!important}
+body[data-praxis-course=miscarea-rectilinie] #mruv .ctl{grid-template-columns:minmax(0,1fr) 4.2rem;gap:0 .35rem}
+body[data-praxis-course=miscarea-rectilinie] #mruv .ctl-name{grid-column:1/-1}
+body[data-praxis-course=miscarea-rectilinie] #mruv .ctl>input[type=number]{grid-area:2/2;width:100%}
+body[data-praxis-course=miscarea-rectilinie] #mruv .ctl>.praxis-range-stepper{grid-area:2/1}
+}`,'utf8');
  if(course.id==='miscarea-rectilinie'){
   const file=path.join(target,'js/app.js');let js=await readFile(file,'utf8');
   js=js.replace("show(location.hash.replace(/^#\\/?/, ''));", "show(location.hash.replace(/^#\\/?/, '') || 'mru');");

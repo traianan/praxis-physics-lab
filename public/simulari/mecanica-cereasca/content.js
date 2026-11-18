@@ -22,7 +22,7 @@ export const math=s=>`<span data-science-math="tex" data-science-source="${esc(t
 const formula=s=>`<div class="celestial-formula">${math(s)}</div>`;
 const p=(ro,en)=>`<p>${t(ro,en)}</p>`;
 const detail=(ro,en,body)=>`<details class="celestial-note"><summary>${t(ro,en)}</summary>${body}</details>`;
-const card=(ro,en,body)=>`<article class="celestial-card"><h3>${t(ro,en)}</h3>${body}</article>`;
+const card=(ro,en,body)=>`<article class="celestial-card"><h2 class="celestial-card-title">${t(ro,en)}</h2>${body}</article>`;
 const check=(id,ro,en,on=true)=>`<label class="celestial-check"><input type="checkbox" id="${id}" ${on?'checked':''}><span>${t(ro,en)}</span></label>`;
 const control=(id,ro,en,min,max,step,value,unit)=>`<div class="celestial-control"><label for="${id}-number">${t(ro,en)} <small>${unit}</small></label><input id="${id}-number" type="number" min="${min}" max="${max}" step="${step}" value="${value}" data-number="${id}"><div class="celestial-slider praxis-range-stepper"><button type="button" data-adjust="${id}:-1" aria-label="${t('Micșorează '+ro,'Decrease '+en)}">−</button><input id="${id}" type="range" min="${min}" max="${max}" step="${step}" value="${value}" aria-label="${ro}"><button type="button" data-adjust="${id}:1" aria-label="${t('Mărește '+ro,'Increase '+en)}">+</button></div></div>`;
 const read=(id,ro,en,unit='')=>`<div><dt>${t(ro,en)}</dt><dd><output id="${id}" data-no-i18n>—</output> <small>${unit}</small></dd></div>`;

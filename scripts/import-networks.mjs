@@ -15,6 +15,8 @@ const read=p=>readFile(new URL(p,root),'utf8');
 const write=async(p,s)=>{await mkdir(new URL('./',new URL(p,root)),{recursive:true});await writeFile(new URL(p,root),s);};
 const hashes={};async function original(p){const s=await read(source+p);hashes[p]=createHash('sha256').update(s.replaceAll('\r\n','\n')).digest('hex');return s.replaceAll('\r\n','\n');}
 let html=await original('index.html');
+// The shared shell owns h1; native hero headings introduce lesson sections.
+html=html.replaceAll('<h1>','<h2 class="network-hero-title">').replaceAll('</h1>','</h2>');
 html=html.replace('I₃ = 3 A','I₃ = −3 A')
  .replace('sens ales (+)', 'curent care intră (+)').replace('sens real (invers)', 'curent care iese (−)')
  .replace('</ul>\n              <p class="muted">Este expresia', '</ul>\n              <p>Adunăm toți curenții cu semnul lor: 5 A + (−2 A) + (−3 A) = 0 A.</p>\n              <p class="muted">Este expresia')
@@ -47,6 +49,7 @@ core=core.replace("$$('.view').forEach(v => v.classList.remove('active'));",()=>
 core=core.replace("current = id;","current = id;document.querySelectorAll('[data-tab]').forEach(b=>{const on=b.dataset.tab===id;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;});const sections=document.querySelector('.praxis-course-sections');if(sections)sections.value=id;");
 let js=core+'\n'+await read('scripts/adaptations/networks-wire-currents.js');
 for(const name of ['circuits','kirchhoff','grouping','problems','board']){let s=await original('js/'+name+'.js');
+ if(name==='problems')s=s.replace('<h4>Rezolvare</h4>','<h3 class="network-solution-title">Rezolvare</h3>');
  if(name==='kirchhoff'){
   s=s.replace("refs.vA.textContent = 'V_A = 0 V (referință)';","networkSvgText(refs.vA,'V_A = 0 V (referință)');").replace('refs.vB.textContent = `V_B − V_A = ${fmt(-sol.I3 * P.R3, 2)} V`;','networkSvgText(refs.vB,`V_B − V_A = ${fmt(-sol.I3 * P.R3, 2)} V`);');
   s=s.replace('${r[1]} = <b>', '${r[1].replace(/V_([AB])/g,"V<sub>$1</sub>")} = <b>');

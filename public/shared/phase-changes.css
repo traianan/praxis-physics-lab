@@ -72,3 +72,30 @@ body[data-praxis-course="transformari-stare-agregare"]::before{display:none}
 
 /* Keep the shortcut in the sticky header, clear of simulation controls. */
 .praxis-site-extra #toTop{position:static;opacity:1;pointer-events:auto;transform:none;flex:none}
+
+/* A full-width stand, with a persistent choice between the existing paired demos. */
+body[data-praxis-workspace=transformari-stare-agregare] #praxis-original .demo{max-width:none}
+body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment[hidden]{display:none!important}
+body[data-praxis-workspace=transformari-stare-agregare] [data-phase-stand][hidden]{display:none!important}
+body[data-praxis-workspace=transformari-stare-agregare] .phase-activities{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 .75rem}
+body[data-praxis-workspace=transformari-stare-agregare] #praxis-original .phase-activities{padding:0;border:0;background:transparent}
+body[data-praxis-workspace=transformari-stare-agregare] .phase-activities button{min-height:44px;white-space:normal;text-align:left}
+body[data-praxis-workspace=transformari-stare-agregare] .phase-activities button[aria-pressed=true]{background:var(--praxis-color-primary);color:white}
+body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment{display:block;min-width:0}
+body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment-notes{margin:.5rem 0;grid-column:1/-1}
+body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment-notes>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:600}
+body[data-praxis-workspace=transformari-stare-agregare] #praxis-original [data-workspace-demo] canvas{height:auto!important;aspect-ratio:auto}
+@media(min-width:1050px){
+ body[data-praxis-workspace=transformari-stare-agregare] #view-lichefiere [data-workspace-demo]{grid-template-columns:360px minmax(0,1fr)}
+ body[data-praxis-workspace=transformari-stare-agregare] #view-lichefiere .sim-frame{max-width:none;width:100%}
+ body[data-praxis-workspace=transformari-stare-agregare] #praxis-original #andrewsCanvas{max-width:1000px;min-width:0!important;width:100%;height:auto!important;aspect-ratio:5/3}
+ body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment[data-workspace-demo]{display:grid;grid-template-columns:minmax(340px,.8fr) minmax(0,1.2fr)}
+ /* The activity selector already carries this exact heading; retain its
+    semantic heading without repeating a second visible title above the scene. */
+ body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment>h3{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0}
+ body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment>.praxis-workspace-demo-controls,body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment>.sim-frame{grid-row:1}
+ body[data-praxis-workspace=transformari-stare-agregare] #praxis-original #fierbCanvas{width:100%;min-width:0!important;max-width:calc(33rem * 440 / 620);height:auto!important;aspect-ratio:440/620;margin-inline:auto}
+ body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment:has(#fierbCanvas) .readout{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ body[data-praxis-workspace=transformari-stare-agregare] #praxis-original .phase-experiment>.phase-experiment-notes{grid-column:1;grid-row:2}
+ body[data-praxis-workspace=transformari-stare-agregare] .phase-experiment:has(#fierbCanvas) .phase-legend{grid-column:2;grid-row:2}
+}

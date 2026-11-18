@@ -34,3 +34,15 @@ body[data-praxis-course="figuri-chladni"] *{box-sizing:border-box}
 :root[data-course-touch=true] #praxis-original label.nodal-toggle{min-height:52px}
 #praxis-original .stage:focus-within{outline:2px solid var(--praxis-color-focus);outline-offset:3px}
 @container(max-width:65rem){#praxis-original .grid{grid-template-columns:minmax(0,1fr)}}
+
+/* A fixed-size disc needs a readable parameter column, not a full-width bitmap. */
+#praxis-original .grid{grid-template-columns:minmax(0,34rem) minmax(0,46rem)}
+#praxis-original .stage{max-width:28rem}
+#praxis-original aside.panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem 1rem}
+#praxis-original aside.panel>*{min-width:0}
+#praxis-original aside.panel>.frequency-control,#praxis-original aside.panel>.row,#praxis-original aside.panel>div:has(#modePick),#praxis-original aside.panel>p{grid-column:1/-1}
+#praxis-original aside.panel .frequency-control{margin:0}
+#praxis-original .readout{margin:.4rem 0;gap:.3rem .7rem}
+#praxis-original .calc{padding:.65rem 1rem;margin-top:.5rem}
+@container(max-width:65rem){#praxis-original .grid{grid-template-columns:1fr}#praxis-original aside.panel{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container(max-width:35rem){#praxis-original aside.panel{grid-template-columns:1fr}}

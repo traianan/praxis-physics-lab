@@ -1,0 +1,8 @@
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original h3.curvilinear-minor-heading{font-size:var(--praxis-text-minor-heading)!important;font-weight:600!important;line-height:1.3!important;margin:0 0 .5rem;letter-spacing:normal;text-transform:none}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original h2.curvilinear-activity-heading{font-size:1.25rem;line-height:1.4;font-weight:600;margin:.75rem 0 .5rem}
+@media(min-width:90rem){body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .lab:has(#sim2){--workspace-control-width:25rem}}
+body[data-praxis-course=miscarea-curbilinie-plana]{--curvilinear-width:100rem}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .lab .stage{height:24rem;min-height:24rem}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .curvilinear-activity[hidden]{display:none!important}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .curvilinear-activity>h3:first-child{margin-top:.75rem}
+body[data-praxis-course=miscarea-curbilinie-plana] #praxis-original .curvilinear-activity .lab{margin-block:.5rem}

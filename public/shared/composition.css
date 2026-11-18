@@ -61,3 +61,31 @@ body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{disp
 @media(max-width:1150px){#praxis-original .secondary{grid-template-columns:1fr}body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{grid-template-columns:19rem minmax(0,1fr)}}
 @media(max-width:850px){body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{grid-template-columns:1fr}#praxis-original .intro{flex-direction:column;align-items:stretch}#praxis-original .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @container(max-width:65rem){body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{grid-template-columns:1fr}#praxis-original .intro{flex-direction:column;align-items:stretch}}
+
+/* Compare a bounded trajectory with its component traces, instead of scaling
+   the trajectory to every spare pixel of a classroom display. */
+body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{grid-template-columns:22rem minmax(0,1fr)}
+body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .visuals{grid-template-columns:minmax(0,1.25fr) minmax(15rem,1fr);align-items:start;gap:.75rem}
+#praxis-original .plotpanel{grid-column:1;grid-row:1}
+#praxis-original .secondary{grid-column:2;grid-row:1;grid-template-columns:1fr;gap:.75rem}
+#praxis-original .results{grid-column:1/-1}
+#praxis-original .plotwrap{max-width:34rem;margin-inline:auto}
+#praxis-original .composition-options>summary,#praxis-original .results>summary{cursor:pointer;min-height:44px;font-weight:650;padding:.4rem 0}
+#praxis-original .controls .controlgroup{padding:.3rem 0}
+#praxis-original .controls input[type=range]{margin:.3rem 0 .1rem}
+#praxis-original .controls .hint{margin:.35rem 0}
+@container(max-width:77rem){body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .visuals{grid-template-columns:1fr}#praxis-original .secondary{grid-column:1;grid-row:auto;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container(max-width:65rem){body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{grid-template-columns:1fr}#praxis-original .secondary{grid-template-columns:1fr}}
+#praxis-original .controls [hidden]{display:none!important}
+#praxis-original .composition-guide>summary{cursor:pointer;min-height:44px;font-weight:600}
+#praxis-original .ratio-presets>summary{cursor:pointer;min-height:44px;font-weight:600}
+#praxis-original .ratio-presets{margin:.4rem 0;padding:.4rem .6rem}
+body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original #ratioPresets[hidden],
+body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original #wyGroup[style*="display: none"]{display:none!important}
+@container(min-width:77rem){
+ body[data-praxis-course="compunerea-oscilatiilor"] #praxis-original .layout{grid-template-columns:26rem minmax(0,1fr)}
+ #praxis-original .composition-control-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem .75rem}
+ #praxis-original .composition-control-body>:not(.controlgroup),#praxis-original .composition-control-body>.controlgroup:has(#phase){grid-column:1/-1}
+ #praxis-original .controls .controlhead{grid-template-columns:1fr}
+ #praxis-original .controls .controlhead output{text-align:left}
+}

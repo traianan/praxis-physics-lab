@@ -1,4 +1,11 @@
-# Remedii Ohm pe tabla școlară — 2026-11-18
+# Revizie laboratoare și integrare funcție de gradul al doilea — 2026-11-18
+
+## Revizie toate laboratoarele și lecția de gradul al doilea
+
+1. Auditează toate laboratoarele existente: activități principale/secundare, spațiere, contururi, titluri, overflow și încadrare pe tablă. Separă constatările reale de cadre/scene intenționate fără padding.
+2. Aplică remedii în surse/adaptoare, validează laboratoarele afectate în RO/EN și la dimensiunile proiectului; regenerează arhivele, publică și verifică producția.
+3. Evaluează sursa `D:/ProiecteAI/functia-gradul-al-doilea/index.html`; integrează lecția în Elemente de matematică, completează funcțiile necesare și verifică formulele cu SymPy.
+4. Testează noua lecție, afișarea tactilă, traducerile, offline și CI; publică și verifică producția. Păstrează rezultatele în PROGRESS.md.
 
 ## Revizie integrală după captura spațiului liber
 

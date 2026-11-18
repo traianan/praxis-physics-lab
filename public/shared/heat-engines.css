@@ -22,3 +22,11 @@ body[data-praxis-course=motoare-termice] .tab[aria-selected=true]{background:var
 body[data-praxis-course=motoare-termice] :is(.engine-content,.sec,.fig,.text,.cols){min-width:0;max-width:100%}
 body[data-praxis-course=motoare-termice] .tbl{overflow-x:auto}
 @media(max-width:900px){body[data-praxis-course=motoare-termice] #praxis-original .hero{grid-template-columns:minmax(0,1fr);padding:1rem}body[data-praxis-course=motoare-termice] #praxis-original .hero-inner{padding:0}body[data-praxis-course=motoare-termice] #praxis-original #heroField{height:19rem}}
+
+body[data-praxis-course=motoare-termice] .engine-instrument-activities{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 .75rem}
+body[data-praxis-course=motoare-termice] .engine-instrument-activities button{min-height:44px;white-space:normal;text-align:left}
+body[data-praxis-course=motoare-termice] .engine-instrument-activities button[aria-pressed=true]{background:var(--praxis-color-primary);color:white}
+@media(min-width:1200px){
+ body[data-praxis-workspace=motoare-termice][data-praxis-course=motoare-termice]{--workspace-control-width:520px}
+ body[data-praxis-workspace=motoare-termice] #praxis-original .praxis-workspace-figure-controls .sliders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;padding:.5rem}
+}

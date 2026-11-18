@@ -189,3 +189,6 @@
   .praxis-lab-nav > .rr-tabs { gap: 2px; padding-inline: 0; }
   .praxis-lab-nav > .rr-tabs .tab { min-height: 40px; padding-inline: 10px; font-size: 13px; }
 }
+/* Let enlarged labels and their value/unit pair use separate lines. */
+body[data-praxis-course=reflexia-refractia] .rr-field-top{flex-wrap:wrap;min-width:0}
+body[data-praxis-course=reflexia-refractia] .rr-field-label{white-space:normal;overflow-wrap:anywhere}

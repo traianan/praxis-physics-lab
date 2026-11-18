@@ -24,6 +24,7 @@ body[data-praxis-course="principiile-mecanicii-newtoniene"] *,body[data-praxis-c
 #newton-content button:focus-visible,#newton-content input:focus-visible{outline:3px solid var(--praxis-color-focus);outline-offset:3px}.newton-controls button,.newton-problem summary{min-height:44px}.newton-controls input[type=checkbox]{width:1.25rem;height:1.25rem}.newton-problem summary{cursor:pointer;display:flex;align-items:center}
 .newton-download{max-width:88rem;margin:.75rem auto}.newton-section sub{font-size:.7em;vertical-align:sub;line-height:0}.newton-section sup{font-size:.7em;vertical-align:super;line-height:0}
 @media(max-width:850px){.newton-demo,.newton-grid{grid-template-columns:1fr}.newton-section{padding:.75rem}.newton-stage svg{min-height:0}}
+@media(min-width:1050px){body[data-praxis-workspace=principiile-mecanicii-newtoniene]{--workspace-control-width:520px}.newton-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.newton-controls{grid-template-columns:1fr}}
 @media(max-width:450px){.newton-stage text{font-size:24px}}
 @media(prefers-reduced-motion:reduce){#newton-content *{scroll-behavior:auto;transition:none}}

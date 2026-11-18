@@ -1,5 +1,18 @@
 # PROGRESS
 
+## Audit general și funcția de gradul al doilea — în lucru, 2026-11-18
+
+- Auditate titlurile în 40 laboratoare, RO/EN: 1.028 stări de navigare; corectate mecanica cerească și rețelele electrice, recontrolate 46 stări fără salturi de nivel.
+- Audit geometric de bază la 1920×1080: verificare spațieri, contururi, grafice și comenzi. Corectate grila figurilor (comenzi în lateral, citiri/formule sub scenă), introducerea vectorilor, gruparea comenzilor atomice și explicațiile Newton/pendul. Fără schimbarea ecuațiilor.
+- Patru laboratoare de mișcare: 400 stări inițiale, 140 stări responsive și 28 stări finale de tablă RO/EN, 1920×1080 DPR2 și 3840×2160 DPR1. În controlul final: zero erori JS, overflow orizontal sau standuri active ieșite din viewport.
+- Antetul comun păstrează bugetul sub 100 KB prin compactarea whitespace-ului în codul generat; 12 regresii focalizate trecute. Eliminat accentul lateral decorativ semnalat de Impeccable; fără suprimări.
+- Prima matrice generală pe serverul Python a fost întreruptă din cauza blocării răspunsurilor; nu este folosită ca dovadă finală. Verificarea finală folosește serverul Node silențios.
+- Audit final: 40 laboratoare × RO/EN, 1.088 stări de navigare pentru titluri. Cele 12 rute curbilinii cu salturi au trecut recontrolul axe după corecție. Matricea responsive: 800 stări la cinci dimensiuni, text 100/200%, DPR verificat, zero overflow/erori JS; cazul de refracție mobilă a fost corectat și recontrolat separat.
+- Mod tablă în distribuție: 82 stări RO/EN în 41 laboratoare, fără comenzi ieșite din ecran sau erori JS; Ohm și MRUV folosesc organizarea adaptivă nativă. Verificare în Chrome emulat, nu pe tabla fizică Android 13.
+- Arhivele autonome ale tuturor celor 41 laboratoare sunt regenerate și CRC valide. Test file:// cu HTTP blocat: cinci familii reorganizate, RO/EN, 272 stări, zero cereri HTTP, erori JS sau overflow. Build-ul este idempotent; registrul și sintaxa sunt valide. Validarea CI locală: 497 teste trecute, 7 omise, zero eșecuri (include cele șapte teste ale lecției noi pregătite separat).
+- Lecția de gradul al doilea este pregătită separat; publicarea auditului precedă înregistrarea ei în catalog. Publicarea și verificarea producției sunt în curs.
+
+
 ## Revizie integrală Ohm pentru tabla digitală — 2026-11-18
 
 - Eliminat paddingul de 120 px de sus/jos din Teorie, Probleme, Verificare și Resurse; lățimea disponibilă este folosită coerent. Panourile au margini interioare de 12–16 px. Figurile teoretice au înălțime naturală limitată, fără întinderea inutilă a panoului vecin.

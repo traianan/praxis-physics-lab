@@ -6,7 +6,7 @@ window.PraxisHeatEnginePhotos={fit(image){
  Object.assign(image.style,{width:'100%',maxWidth:image.naturalWidth/density+'px',height:'auto',aspectRatio:'auto',boxSizing:'border-box',marginInline:'auto'});
 }};
 /* Keep the lesson route and the shared four-stroke engine in the same mode. */
-window.PraxisHeatEngineNavigation={create({engine,compression,ottoHost,dieselHost,select}){
+window.PraxisHeatEngineNavigation={create({engine,compression,ottoHost,dieselHost,select,afterSync=()=>{}}){
  let synchronising=false;
  const changeMode=(sim,mode)=>{if(sim&&sim.mode!==mode)sim.fig.querySelector('[data-mode="'+mode+'"]')?.click();};
  for(const sim of [engine,compression]){const originalMode=sim.onMode;sim.onMode=function(mode){originalMode?.call(sim,mode);if(!synchronising)select(mode==='diesel'?'s4':'s3');};}
@@ -17,6 +17,7 @@ window.PraxisHeatEngineNavigation={create({engine,compression,ottoHost,dieselHos
   try{
    changeMode(engine,mode);changeMode(compression,mode);
    if(engine.fig.parentElement!==host||compression.fig.parentElement!==host||engine.fig.nextElementSibling!==compression.fig){host.prepend(compression.fig);host.prepend(engine.fig);}
+   afterSync(host);
   }
   finally{synchronising=false;}
  }};
@@ -33,7 +34,11 @@ window.PraxisHeatEngineNavigation={create({engine,compression,ottoHost,dieselHos
  const definitions=[['intro','Introducere',['top','s1','s2']],['engines','Motoare în patru timpi',['s3','s4']],['cooling','Mașini frigorifice',['s5']],['cycles','Cicluri ideale',['s6','s7','s8','s9']],['summary','Glosar',['s11']],['quiz','Test',['s12']],['problems','Probleme',['s13']],['resources','Resurse',['s14']]];
  const groups=[],topics=new Map();let active='';
  const engine=ALL.find(sim=>sim.fig.id==='fig3'),compression=ALL.find(sim=>sim.fig.id==='fig4');
- const engineNavigation=window.PraxisHeatEngineNavigation.create({engine,compression,ottoHost:engine.fig.parentElement,dieselHost:compression.fig.parentElement,select:id=>select(id)});
+ let selectedInstrument=0;const instruments=[engine,compression],instrumentNav=document.createElement('nav');instrumentNav.className='engine-instrument-activities praxis-workspace-activities';instrumentNav.setAttribute('aria-label','Activități');
+ const activityButtons=instruments.map((sim,index)=>{const button=document.createElement('button');button.type='button';button.className='btn sm';button.dataset.sound='none';button.textContent=sim.fig.querySelector('.fig-h b').textContent;button.addEventListener('click',()=>{selectedInstrument=index;syncInstrument();window.dispatchEvent(new Event('resize'));});instrumentNav.append(button);return button;});
+ function syncInstrument(){instruments.forEach((sim,index)=>{const on=index===selectedInstrument;sim.fig.hidden=!on;activityButtons[index].setAttribute('aria-pressed',String(on));if(!on){sim.vis=false;cancelAnimationFrame(sim.raf);sim.raf=null;}else sim.resize();});}
+ window.addEventListener('praxis-language-change',()=>queueMicrotask(()=>{instrumentNav.setAttribute('aria-label',PraxisI18n.tr('Activități'));instruments.forEach((sim,i)=>activityButtons[i].textContent=sim.fig.querySelector('.fig-h b').textContent);}));
+ const engineNavigation=window.PraxisHeatEngineNavigation.create({engine,compression,ottoHost:engine.fig.parentElement,dieselHost:compression.fig.parentElement,select:id=>select(id),afterSync:host=>{host.prepend(instrumentNav);syncInstrument();}});
  function makeTab(id,title,controls){const b=document.createElement('button');b.type='button';b.id=id;b.className='tab';b.setAttribute('role','tab');b.setAttribute('aria-controls',controls);b.textContent=title;return b;}
  for(const [id,title,ids]of definitions){
   const panel=document.createElement('div');panel.id='engine-panel-'+id;panel.setAttribute('role','tabpanel');

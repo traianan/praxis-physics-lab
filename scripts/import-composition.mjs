@@ -14,6 +14,15 @@ lab=lab.replace('<aside class="panel controls">','<details class="panel controls
 lab=lab.replace('<div class="plotwrap">','<p class="hint" id="amplitudeHint">Trage colțurile violet ale dreptunghiului pentru a modifica amplitudinile, cu degetul sau mouse-ul. Cu graficul selectat, săgețile ←/→ modifică Aₓ, iar ↓/↑ modifică Aᵧ.</p><div class="plotwrap">').replace('id="plot" width=','id="plot" tabindex="0" aria-describedby="amplitudeHint" width=');
 lab=lab.replace(/(<canvas id="[xy]Wave"[^>]*><\/canvas>)/g,'<div class="wavewrap">$1</div>');
 const actions=lab.match(/<div class="actions">[\s\S]*?<\/div>/)[0];lab=lab.replace(actions,'').replace('<div class="plotwrap">',actions+'<div class="plotwrap">');
+// Keep scientific parameters beside the scene; optional display/audio tools fold.
+lab=lab.replace('<div class="sound-panel">','<details class="composition-options"><summary>Preferințe laborator</summary><div class="sound-panel">').replace('<button id="save" class="export">↓ Salvează figura PNG</button>','<button id="save" class="export">↓ Salvează figura PNG</button></details>');
+lab=lab.replace('<article class="panel results"><h3>Interpretare fizică</h3>','<details class="panel results"><summary>Interpretare fizică</summary>').replace('</article></section></div>','</details></section></div>');
+lab=lab.replace('<div id="ratioPresets" class="ratio-presets" hidden><div class="ratio-title">Rapoarte rapide ωₓ : ωᵧ</div>','<details id="ratioPresets" class="ratio-presets" hidden><summary>Rapoarte rapide ωₓ : ωᵧ</summary>').replace('Selectarea unui raport aplică pulsații exacte. Defazajul și amplitudinile pot fi ajustate ulterior.</p></div>','Selectarea unui raport aplică pulsații exacte. Defazajul și amplitudinile pot fi ajustate ulterior.</p></details>');
+const playback=lab.match(/<div class="controlgroup"><div class="controlhead"><label for="speed">[\s\S]*?<\/output><\/div><input[^>]*><\/div>/)?.[0];
+if(!playback)throw Error('Composition playback layout changed');
+lab=lab.replace(playback,'').replace('<div class="sound-panel">',playback+'<div class="sound-panel">');
+lab=lab.replace('<p class="hint" id="presetDescription"></p>','').replace('<details class="composition-options"><summary>Preferințe laborator</summary>','<details class="composition-options"><summary>Preferințe laborator</summary><p class="hint" id="presetDescription"></p>');
+lab=lab.replace('<p class="hint" id="amplitudeHint">','<details class="composition-guide"><summary>Cum folosești laboratorul</summary><p class="hint" id="amplitudeHint">').replace('modifică Aᵧ.</p><div class="actions">','modifică Aᵧ.</p></details><div class="actions">');
 let theory=main(await read(source+'teorie.html')).replace(/<h3>(\d+)\. /g,'<h3>').replaceAll('într o','într-o').replaceAll('Într o','Într-o').replace('Punctul roz','Punctul roșu').replace('href="index.html"','href="#laborator"');
 theory=theory.replace('<article class="panel">',await read('scripts/adaptations/composition-history.html')+'<article class="panel">');
 // Mark only authored formula leaves; prose, controls and links retain their DOM.

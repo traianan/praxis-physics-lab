@@ -13,6 +13,11 @@ body=body.replace('<div class="stage">','<label class="nodal-toggle"><input id="
 body=body.replace('<h2>Frecvențe de rezonanță</h2>','<label for="modePick">Alege o rezonanță</label><select id="modePick"></select><p class="hint">Modurile neexcitate în punctul ales sunt dezactivate.</p><details><summary>Toate frecvențele de rezonanță</summary>').replace('<div class="row chips" id="chips"></div>','<div class="row chips" id="chips"></div></details>');
 body=body.replace('<aside class="panel">','<aside class="panel"><div><label for="vol">Volum audio <output id="volO"></output></label><input id="vol" type="range" min="0" max="50" step="1" value="12"><p id="audioInfo" class="hint"></p></div>');
 body=body.replace('<h2>Formula frecvențelor','<h2 data-content-type="formula">Formula frecvențelor').replace('</aside>','<p><a href="figuri-chladni.zip">Descarcă lecția offline</a></p></aside>');
+// Essential controls share a parameter column; formulas remain available below the disc.
+const driveControls=body.match(/<div class="frequency-control">[\s\S]*?<\/div>\s*<div class="row">[\s\S]*?<\/div>/)?.[0];
+if(!driveControls)throw Error('Chladni control layout changed');
+body=body.replace(driveControls,'').replace('<aside class="panel">','<aside class="panel">'+driveControls);
+body=body.replace('<div class="calc">','<details class="calc"><summary>Explicații și formule</summary>').replace(/(<p id="dims"><\/p>\s*)<\/div>/,'$1</details>');
 const content=(await read('scripts/adaptations/chladni-content.html')).replace(/<div class="formula">([\s\S]*?)<\/div>/g,(_,lines)=>'<div class="formula">'+lines.split(/<br\s*\/?>/i).map(source=>'<span data-science-math="plain" data-science-source="'+mathAttr(source)+'">'+source+'</span>').join('<br>')+'</div>');
 const ns=await labNamespaces('figuri-chladni'),embedded={ro:{},en:{}};
 for(const lang of ['ro','en'])for(const name of ns)embedded[lang][name]=JSON.parse(await read('public/locales/'+name+'/'+lang+'.json'));

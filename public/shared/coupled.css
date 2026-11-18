@@ -28,3 +28,24 @@ body[data-praxis-course="oscilatori-mecanici-cuplati"] .q.wrong{background:#fff0
 @media(max-width:1050px){body[data-praxis-course="oscilatori-mecanici-cuplati"] :is(.grid2,.sim-row){grid-template-columns:1fr}}
 
 body[data-praxis-course="oscilatori-mecanici-cuplati"] .tabs{flex-wrap:wrap}
+
+/* Preserve the original chart aspect ratios and show graphs beside controls. */
+body[data-praxis-course="oscilatori-mecanici-cuplati"] #lab>.card:first-child{padding:.65rem 1rem}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] #lab>.card:first-child>h2{margin:.2rem 0}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .coupled-guide>summary{cursor:pointer;min-height:44px}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel>h2{margin:.25rem 0 .6rem}
+body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .controls{grid-template-columns:1fr;margin:0}
+@media(min-width:1250px){
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .sim-row .canvas-wrap:has(:is(#c1res,#c2en,#c3time,#c4time)){grid-row:1}
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .sim-row .canvas-wrap:has(:is(#c1time,#c2time,#c3spec)){grid-row:2}
+}
+@media(min-width:1250px){
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .sim-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(16rem,.8fr);gap:.75rem}
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .sim-row>div{display:contents}
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .sim-row .canvas-wrap{grid-column:2;min-width:0}
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .sim-row .canvas-wrap:has(canvas[id$=main]){grid-column:1;grid-row:1/span 2}
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .sim-row .controls{grid-column:3;grid-row:1/span 3}
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .sim-row .btn-row{grid-column:1;margin:.2rem 0}
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel .sim-row :is(.coupled-readout,p){grid-column:1/3;margin:.3rem 0}
+ body[data-praxis-course="oscilatori-mecanici-cuplati"] .lab-panel canvas{min-width:0}
+}

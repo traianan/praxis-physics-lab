@@ -85,7 +85,11 @@
       "subtitle": "De la focar la seismogramă",
       "description": "Simulează sosirea undelor P, S și de suprafață, compară Richter, Mw, Mercalli și MSK-64 și explorează cutremure reale.",
       "alt": "Focar, epicentru, stație și seismogramă cu sosirile undelor P, S și de suprafață",
-      "tags": ["Unde", "Seismologie", "Experimente"],
+      "tags": [
+        "Unde",
+        "Seismologie",
+        "Experimente"
+      ],
       "keywords": "unde seismice seism cutremure vrancea focar epicentru richter mercalli msk mks love rayleigh seismograma"
     },
     "reflexia-refractia": {

@@ -293,7 +293,7 @@
     "secondaryGroups": [
       {
         "scope": ".chapter:has(.demo-shell)",
-        "items": ":scope>.story-card,:scope>p,:scope>blockquote,:scope>ol,:scope>ul,:scope>.defbox,:scope>h3"
+        "items": ":scope>.story-card,:scope>p,:scope>blockquote,:scope>ol,:scope>ul,:scope>.defbox,:scope>h3,:scope>.observ,:scope>.formula-card,:scope>.formula-box,:scope>.exercise,:scope>.fx,:scope>.labbox"
       }
     ]
   },
@@ -313,7 +313,7 @@
         "selector": "[data-composition-section=laborator]>.layout",
         "scene": ".visuals",
         "controls": ".controls",
-        "layout": "split"
+        "layout": "native"
       }
     ]
   },
@@ -386,6 +386,19 @@
         "controls": ".newton-controls",
         "layout": "split"
       }
+    ],
+    "activities": [
+      {
+        "scope": ".newton-section:has(.newton-demo)",
+        "items": ":scope>.newton-demo",
+        "default": 0
+      }
+    ],
+    "secondaryGroups": [
+      {
+        "scope": ".newton-section:has(.newton-demo)",
+        "items": ":scope>p,:scope>.newton-grid,:scope>.newton-note,:scope>h3"
+      }
     ]
   },
   "motoare-termice": {
@@ -418,7 +431,8 @@
         "graphs": ".data",
         "layout": "native"
       }
-    ]
+    ],
+    "reading": ".pendulum-command-legend"
   },
   "transformarea-politropa": {
     "react": true,

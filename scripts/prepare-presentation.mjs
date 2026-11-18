@@ -1,6 +1,7 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {readManifest} from './lab-registry.mjs';
 import {scientificMathRuntime} from './scientific-math-runtime.mjs';
+import {transform} from 'esbuild';
 const root=new URL('../',import.meta.url),read=p=>readFile(new URL(p,root),'utf8'),write=(p,s)=>writeFile(new URL(p,root),s);
 export async function preparePresentation(){
  const manifest=await readManifest(),chapters=manifest.chapters,simulations=manifest.labs.map(lab=>lab.metadata);
@@ -8,7 +9,7 @@ export async function preparePresentation(){
  const readable=laboratory.replace(/\n\/\* praxis:readability \*\/[\s\S]*?\/\* \/praxis:readability \*\//g,'');
  await write('public/design-system/laboratory.css',readable.trimEnd()+'\n/* praxis:lab-discovery */\n'+await read('public/design-system/laboratory-premium.css')+'\n/* /praxis:lab-discovery */\n\n/* praxis:workspace */\n'+await read('public/design-system/lab-workspace.css')+'\n'+await read('public/design-system/whiteboard.css')+'\n/* /praxis:workspace */\n\n/* praxis:readability */\n'+await read('public/design-system/lab-readability.css')+'\n/* /praxis:readability */\n');
  const catalog=JSON.parse(await read('public/design-system/content-types.json'));
- for(const lang of ['ro','en']){const path='public/locales/common/'+lang+'.json',data=JSON.parse(await read(path));for(const [ro,en]of Object.entries({'Reperele lecțiilor':'Lesson guide','Navigare în lecție':'Lesson navigation','Axa de rotație':'Rotation axis'}))data.messages[ro]=lang==='ro'?ro:en;for(const type of catalog.types)data.messages[type.ro]=lang==='ro'?type.ro:type.en;await write(path,JSON.stringify(data,null,2)+'\n');}
+ for(const lang of ['ro','en']){const path='public/locales/common/'+lang+'.json',data=JSON.parse(await read(path));for(const [ro,en]of Object.entries({'Reperele lecțiilor':'Lesson guide','Navigare în lecție':'Lesson navigation','Axa de rotație':'Rotation axis','Laborator interactiv de calcul vectorial':'Interactive vector algebra laboratory'}))data.messages[ro]=lang==='ro'?ro:en;for(const type of catalog.types)data.messages[type.ro]=lang==='ro'?type.ro:type.en;await write(path,JSON.stringify(data,null,2)+'\n');}
  const lessonChapters=Object.fromEntries(simulations.map(sim=>{const chapter=chapters.find(ch=>ch.id===sim.chapter);return [sim.id,{id:chapter.id,title:chapter.title}];}));
  const touch=await read('public/shared/touch-interaction.js');
  const runtime=touch+'\nwindow.PraxisLessonChapters='+JSON.stringify(lessonChapters)+';\nwindow.PraxisContentCatalog='+JSON.stringify(catalog)+';\n'+await read('public/shared/canvas-resolution.js')+'\n'+await read('public/shared/content-types.js')+'\n'+await read('public/shared/scientific-readouts.js')+'\n'+await read('public/shared/panel-layout.js')+'\n'+await scientificMathRuntime({embedFonts:false});
@@ -22,7 +23,8 @@ export async function preparePresentation(){
  await write('public/design-system/components.css',css.trimEnd()+'\n/* praxis:presentation */\n'+iconCSS+'\n'+await read('public/design-system/premium.css')+'\n'+await read('public/shared/scientific-math.css')+'\n/* /praxis:presentation */\n');
  const header=(await read('public/shared/lab-header.js')).replace(/\n\/\* praxis:content-types \*\/[\s\S]*?\/\* \/praxis:content-types \*\//g,'');
  const workspace='window.PraxisLabWorkspaceConfig='+JSON.stringify(Object.fromEntries(manifest.labs.map(lab=>[lab.metadata.id,lab.workspace])))+';\n'+await read('public/shared/lab-workspace.js')+'\n'+await read('public/shared/lab-accessibility.js');
- await write('public/shared/lab-header.js',header.trimEnd()+'\n/* praxis:content-types */\n'+runtime+'\n'+workspace+'\n/* /praxis:content-types */\n');
+ const compactWorkspace=(await transform(workspace,{loader:'js',target:'chrome100',minifyWhitespace:true,legalComments:'none'})).code;
+ await write('public/shared/lab-header.js',header.trimEnd()+'\n/* praxis:content-types */\n'+runtime+'\n'+compactWorkspace+'\n/* /praxis:content-types */\n');
  let index=await read('public/index.html');if(!index.includes('shared/content-types.bundle.js'))index=index.replace('</head>','<script src="./shared/content-types.bundle.js" defer></script></head>');
  const escape=text=>String(text).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
  const fallback='<noscript><section aria-labelledby="static-library-title"><h2 id="static-library-title">Laboratoare / Laboratories</h2><p>Activează JavaScript pentru simulări interactive. / Enable JavaScript for interactive simulations.</p><ul>'+simulations.map(lab=>'<li><a href="'+escape(lab.href)+'">'+escape(lab.title)+'</a></li>').join('')+'</ul></section></noscript>';

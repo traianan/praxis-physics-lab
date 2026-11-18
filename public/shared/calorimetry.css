@@ -83,3 +83,11 @@ html[data-praxis-standalone=true] body[data-praxis-course=calorimetrie] .other-l
 
 body[data-praxis-course=calorimetrie] #praxis-original .praxis-workspace-figure-heading > .tabs{display:flex;flex-wrap:wrap;gap:.375rem;overflow:visible}
 body[data-praxis-course=calorimetrie] #praxis-original .praxis-workspace-figure-heading > .tabs button{min-height:44px;scroll-margin-top:var(--course-header,0px)}
+
+/* Measurement stands have several paired inputs; use the available width
+   instead of stacking every slider above Start and Reset. */
+@media(min-width:1200px){
+ body[data-praxis-workspace=calorimetrie][data-praxis-course=calorimetrie]{--workspace-control-width:520px}
+ body[data-praxis-workspace=calorimetrie] #praxis-original .praxis-workspace-figure-controls .sliders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;padding:.5rem}
+ body[data-praxis-workspace=calorimetrie] #praxis-original .praxis-workspace-figure-controls .sl{margin:0;min-width:0}
+}

@@ -25,7 +25,7 @@
   s.report=function(){this.out={...state(this.T,this.v),T:this.T,v:this.v,...physical(this.T,this.v)};return this.out;};
   s.sync=function(){const out=this.report(),values={andrTOut:num(out.celsius,2)+' °C',andrVOut:num(out.litres,3)+' L',andrTemp:num(out.celsius,2)+' °C',andrPressure:num(out.MPa,2)+' MPa',andrState:tr(out.kind),andrLiquid:out.liquid===null?'—':num(out.liquid*100,1)+' %'};for(const [id,value]of Object.entries(values)){const el=document.getElementById(id);if(el&&el.textContent!==value)el.textContent=value;}for(const [id,value]of [['andrT',this.T],['andrV',this.v]]){const input=document.getElementById(id);if(input){input.setAttribute('aria-valuetext',id==='andrT'?values.andrTOut:values.andrVOut);if(+input.value!==value){input.value=value;window.Util.paint(input);}}}const pause=document.getElementById('andrPause');if(pause)pause.disabled=!this.direction;};
   s.init=function(){for(const [id,key]of [['andrT','T'],['andrV','v']])document.getElementById(id)?.addEventListener('input',event=>{this[key]=+event.target.value;this.direction=0;window.Util.paint(event.target);this.draw(0);});for(const [id,T,v]of [['andrBelow',.9,4.5],['andrCritical',1,1],['andrAbove',1.06,4.5],['andrReset',.94,4.5]])document.getElementById(id)?.addEventListener('click',()=>{this.T=T;this.v=v;this.direction=0;this.draw(0);});for(const [id,direction]of [['andrCompress',-1],['andrExpand',1],['andrPause',0]])document.getElementById(id)?.addEventListener('click',()=>{this.direction=direction;this.draw(0);});this.sync();};
-  s.draw=function(dt=0){this.v=Math.max(.55,Math.min(20,this.v+this.direction*dt*.8));if(this.v===.55||this.v===20)this.direction=0;const out=this.report(),canvas=document.getElementById('andrewsCanvas');if(!canvas)return out;const {g,w:W,h:H}=fit(canvas);const left=60,right=W-24,top=44,bottom=556,X=v=>left+Math.log(v/.34)/Math.log(20/.34)*(right-left),Y=p=>bottom-p/1.5*(bottom-top);
+  s.draw=function(dt=0){this.v=Math.max(.55,Math.min(20,this.v+this.direction*dt*.8));if(this.v===.55||this.v===20)this.direction=0;const out=this.report(),canvas=document.getElementById('andrewsCanvas');if(!canvas)return out;const {g,w:W,h:H}=fit(canvas),wide=W>=1000;const left=60,right=wide?W-290:W-24,top=44,bottom=556,X=v=>left+Math.log(v/.34)/Math.log(20/.34)*(right-left),Y=p=>bottom-p/1.5*(bottom-top);
    function label(text,x,y,opt={}){txt(g,text,x,y,{size:12,...opt});}
    function line(x1,y1,x2,y2,color=C.axis,width=1){g.strokeStyle=color;g.lineWidth=width;g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();}
    const boundary=binodal();
@@ -65,11 +65,11 @@
    label(lower('liq.region.mixture'),X(1.5),Y(.3)+12,{align:'center',bold:true,size:14});
    label(lower('liq.region.vapour'),X(8),Y(.225),{align:'center',bold:true,size:12,rot:.44,base:'middle'});
    label(lower('liq.region.gas'),X(8),Y(1.25),{align:'center',bold:true,size:14});
-   label(tr('liq.diagram.piston'),18,665,{bold:true});const x=48,y=690,width=100+Math.log(this.v/.55)/Math.log(20/.55)*(W-190),height=96;
+   const pistonLeft=wide?W-260:18;label(tr('liq.diagram.piston'),pistonLeft,wide?130:665,{bold:true});const x=wide?W-250:48,y=wide?170:690,width=(wide?80:100)+Math.log(this.v/.55)/Math.log(20/.55)*(wide?140:W-190),height=96;
    g.strokeStyle=C.axis;g.lineWidth=2;g.strokeRect(x,y,width,height);const fraction=out.volumeLiquid??(out.p>1?1:0);g.fillStyle=out.liquid===null?C.cyan+'35':C.accent+'60';g.fillRect(x+2,y+2,Math.max(0,(width-4)*fraction),height-4);
    if(out.liquid===null||out.liquid===0||out.liquid<1){const start=x+Math.max(0,width*fraction)+8,space=Math.max(0,width*(1-fraction)-16);for(let i=0;i<14&&space>2;i++){g.fillStyle=C.cyan;g.beginPath();g.arc(start+(i*47%100)/100*space,y+14+(i*23%70),2.8,0,Math.PI*2);g.fill();}}
    g.fillStyle=C.axis;g.fillRect(x+width-5,y-4,9,height+8);line(x+width+4,y+height/2,Math.min(W-14,x+width+45),y+height/2,C.axis,5);
-   label(tr('liq.diagram.constant'),18,H-20,{size:12});this.sync();return out;
+   if(wide){const words=tr('liq.diagram.constant').split(' ');let line='',row=0;for(const word of words){const next=line?line+' '+word:word;if(next.length>31&&line){label(line,pistonLeft,320+row++*20,{size:12});line=word;}else line=next;}if(line)label(line,pistonLeft,320+row*20,{size:12});}else label(tr('liq.diagram.constant'),18,H-20,{size:12});this.sync();return out;
   };return s;
  }
  window.PraxisAndrews={pressure,coexistence,state,create,binodal,physical,isotherms,constants:{TC,PC,VC}};

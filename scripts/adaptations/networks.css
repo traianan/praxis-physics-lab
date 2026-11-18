@@ -7,6 +7,10 @@ body[data-praxis-course="retele-electrice"] .praxis-lab-nav{box-sizing:border-bo
 .networks [hidden],.networks #sidebar,.networks #scrim,.networks .topbar,.networks .eyebrow{display:none!important}
 .networks .view{padding:0;animation:none}.networks .view:not(.active){display:none}
 .networks .section-head{margin:.65rem 0}.networks .section-head h2{font-size:1.4rem;margin:.4rem 0}.networks .lead{font-size:1rem;max-width:65rem;margin:.5rem 0;line-height:1.6}
+.networks .hero .network-hero-title{margin:0 0 12px;font-size:1.5em;line-height:1.1;letter-spacing:-.6px}
+.networks .prob-body .network-solution-title{color:var(--k);font-size:11px;letter-spacing:1px;margin:16px 0 8px}
+#praxis-original .network-hero-title{font-size:var(--praxis-text-title)!important;font-weight:650!important}
+#praxis-original .network-solution-title{font-size:var(--praxis-text-minor-heading)!important;font-weight:600!important}
 .networks .card{background:var(--panel);box-shadow:none;border:1px solid var(--stroke);padding:1rem;min-width:0}
 .networks :is(p,li,label,button,input,select,textarea,.hint,.muted,.legend-inline,.switch-txt,.control label,.control output,.btn,.seg,.formula-small,.eq-stack,.step){font-size:1em}
 .networks :is(.result-val,.balance-val,.balance-target,.metric-val){font-size:1.1em}

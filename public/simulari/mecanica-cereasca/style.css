@@ -10,7 +10,8 @@
 .celestial :is(button,select,input,summary):focus-visible{outline:2px solid var(--praxis-color-focus);outline-offset:2px}
 .celestial [data-play][aria-pressed=true]{border-color:var(--praxis-color-primary);box-shadow:inset 0 0 0 1px var(--praxis-color-primary)}
 .celestial h2{font-size:1.35rem;line-height:1.3;margin:.7rem 0}
-.celestial h3{font-size:1.1rem;line-height:1.4;margin:0 0 .6rem}
+.celestial :is(h3,.celestial-card-title){font-size:1.1rem;line-height:1.4;margin:0 0 .6rem}
+#praxis-original .celestial-card-title{font-size:var(--praxis-text-subheading)!important;font-weight:600!important}
 .celestial p{line-height:1.65;margin:.55rem 0}
 .celestial-workspace{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(19rem,.8fr);gap:.8rem;align-items:start}
 .celestial-card{min-width:0;background:var(--praxis-color-surface,#fffefa);border:1px solid var(--praxis-color-border,#d2dbce);border-radius:14px;padding:1rem;margin-bottom:.8rem}
