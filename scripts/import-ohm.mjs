@@ -12,6 +12,11 @@ const read=p=>readFile(path.join(root,p),'utf8');
 const write=async(p,text)=>{await mkdir(path.dirname(path.join(root,p)),{recursive:true});await writeFile(path.join(root,p),text);};
 
 const plugin={name:'ohm-adaptation',setup(b){
+ b.onLoad({filter:/[\\/]concepts\.css$/},async args=>{
+  // Older school-board Chrome drops an entire @scope block, including map height.
+  const css=(await readFile(args.path,'utf8')).replace('@scope (#ohm-root)',':where(#ohm-root)');
+  return {contents:css,loader:'css'};
+ });
  b.onResolve({filter:/^@\//},args=>({path:path.join(source,args.path.slice(2))+(/\.[a-z]+$/i.test(args.path)?'':args.path.includes('/components/')?'.tsx':args.path.startsWith('@/app/')?'.tsx':'.ts')}));
  b.onResolve({filter:/^katex$/},()=>({path:'katex-global',namespace:'praxis'}));
  b.onLoad({filter:/.*/,namespace:'praxis'},()=>({contents:'export default window.katex;',loader:'js'}));
@@ -46,7 +51,7 @@ export function Reveal({children,className="",as="div"}:RevealProps){const Tag=a
 }};
 
 await mkdir(output,{recursive:true});
-await build({entryPoints:[path.join(adapt,'entry.jsx')],outfile:path.join(output,'app.js'),bundle:true,minify:true,format:'iife',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},plugins:[plugin],legalComments:'eof'});
+await build({entryPoints:[path.join(adapt,'entry.jsx')],outfile:path.join(output,'app.js'),bundle:true,minify:true,target:'chrome100',format:'iife',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},plugins:[plugin],legalComments:'eof'});
 
 let css='',boardCss='',shellCss='';
 for(const file of ['globals','hero','theory','lab','circuit','rheostat','measure','problems','quiz','resources'])css+='\n'+await readFile(path.join(source,'app',file+'.css'),'utf8');

@@ -2,6 +2,11 @@
   "locale": "ro",
   "namespace": "courses/legea-lui-ohm/ui",
   "messages": {
+    "circuit exterior": "circuit exterior",
+    "cuprinde A și R": "cuprinde A și R",
+    "cuprinde doar R": "cuprinde doar R",
+    "montaj amonte — R mare": "montaj amonte — R mare",
+    "montaj aval — R mică": "montaj aval — R mică",
     "Parametrii dipolului": "Parametrii dipolului",
     "Explicații și formule": "Explicații și formule",
     "Sari la conținut": "Sari la conținut",

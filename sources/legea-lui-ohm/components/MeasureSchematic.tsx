@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { elapsedSeconds, prepareCanvas } from "@/lib/canvas";
-import { battery, drawSubscriptText, meter, schematicGrid, schematicPalette, tag, wire } from "@/lib/schematic";
+import { battery, drawSubscriptText, meter, schematicGrid, schematicPalette, wire } from "@/lib/schematic";
 import { useTheme } from "./ThemeProvider";
 
 interface MeasureSchematicProps {
@@ -65,12 +65,12 @@ export function MeasureSchematic({
 
       const left = w * 0.1;
       const right = w * 0.93;
-      const top = h * 0.42;
-      const bottom = h * 0.8;
+      const top = 120;
+      const bottom = h - 60;
       const ampX = w * 0.29;
       const resX = w * 0.64;
       const resLen = Math.min(112, w * 0.24);
-      const voltY = h * 0.17;
+      const voltY = 48;
 
       // ---------------- bucla ----------------
       wire(ctx, [[left, top], [ampX - 18, top]], palette.wire);
@@ -150,7 +150,7 @@ export function MeasureSchematic({
         // Ramura stângă: înainte de ampermetru (amonte) sau după el (aval).
         const leftTapX = state.amonte ? ampX - 42 : ampX + 42;
         const rightTapX = rX + rLength / 2 + 12;
-        const voltY = h * 0.17;
+        const voltY = 48;
 
         wire(
           ctx,
@@ -198,15 +198,6 @@ export function MeasureSchematic({
         drawSubscriptText(ctx, "R", "V", ` = ${voltmeterResistance}`, voltCenter, voltY + 25, "center");
         ctx.restore();
 
-        tag(
-          ctx,
-          state.amonte ? "cuprinde A și R" : "cuprinde doar R",
-          Math.min(rightTapX + 10, w - 10),
-          voltY + 30,
-          state.amonte ? palette.battery : palette.meter,
-          palette.surface,
-          "left",
-        );
       }
 
       // ---- bornele A / B ale rezistorului ----

@@ -59,17 +59,18 @@ export function CircuitSchematic({
       schematicGrid(ctx, w, h, dark ? "rgba(232,237,246,.035)" : "rgba(27,32,41,.035)", 24);
 
       const padX = w * 0.14;
-      const padY = h * 0.24;
+      // Reserve independent rows for the source, resistor and voltmeter readings.
       const left = padX;
       const right = w - padX;
-      const top = padY;
-      const bottom = h - padY;
+      const top = 48;
+      const bottom = h - 90;
+      const ampY = (top + bottom) / 2;
 
       // ---- bucla exterioară ----
       wire(ctx, [[left, top], [w / 2 - 34, top]], palette.wire);
       wire(ctx, [[w / 2 + 34, top], [right, top]], palette.wire);
-      wire(ctx, [[right, top], [right, h / 2 - 26]], palette.wire);
-      wire(ctx, [[right, h / 2 + 26], [right, bottom]], palette.wire);
+      wire(ctx, [[right, top], [right, ampY - 20]], palette.wire);
+      wire(ctx, [[right, ampY + 20], [right, bottom]], palette.wire);
       wire(ctx, [[right, bottom], [left, bottom]], palette.wire);
       wire(ctx, [[left, bottom], [left, top]], palette.wire);
 
@@ -97,15 +98,14 @@ export function CircuitSchematic({
       ctx.font = 'italic 14px Georgia, "Palatino Linotype", serif';
       ctx.fillStyle = palette.component;
       ctx.textAlign = "center";
-      ctx.textBaseline = "top";
-      ctx.fillText("R", resistorX, resY + 15);
+      ctx.textBaseline = "bottom";
+      ctx.fillText("R", resistorX, resY - 36);
       ctx.font = '600 10px "Cascadia Code", "Cascadia Mono", Consolas, monospace';
       ctx.fillStyle = palette.muted;
-      ctx.fillText(`${state.external.toFixed(1)} Ω`, resistorX, resY + 33);
+      ctx.fillText(`${state.external.toFixed(1)} Ω`, resistorX, resY - 18);
       ctx.restore();
 
       // ---- ampermetru pe latura dreaptă ----
-      const ampY = h / 2;
       ctx.save();
       ctx.fillStyle = palette.surfaceAlt;
       ctx.beginPath();
@@ -126,7 +126,7 @@ export function CircuitSchematic({
       ctx.restore();
 
       // ---- voltmetru în paralel pe R ----
-      const voltY = bottom + 34;
+      const voltY = bottom + 54;
       const voltLeft = resistorX - resLength / 2 - 6;
       const voltRight = resistorX + resLength / 2 + 6;
       wire(ctx, [[voltLeft, bottom], [voltLeft, voltY]], palette.wireHot, 1.6);
@@ -198,20 +198,11 @@ export function CircuitSchematic({
       ctx.save();
       ctx.font = '600 10px "Cascadia Code", "Cascadia Mono", Consolas, monospace';
       ctx.fillStyle = palette.component;
-      ctx.textAlign = "left";
+      ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       // căderea internă, lângă sursă
-      const dropY = top + 26;
-      ctx.fillText(`u = ${(state.internal * state.current).toFixed(2)} V`, 12, dropY);
-      ctx.restore();
-
-      // ---- etichete borne ----
-      ctx.save();
-      ctx.font = 'italic 11px Georgia, "Palatino Linotype", serif';
-      ctx.fillStyle = palette.muted;
-      ctx.textAlign = "left";
-      ctx.textBaseline = "top";
-      ctx.fillText("circuit exterior", left + 6, bottom + 54);
+      const dropY = top + 40;
+      ctx.fillText(`u = ${(state.internal * state.current).toFixed(2)} V`, w / 2, dropY);
       ctx.restore();
     };
 

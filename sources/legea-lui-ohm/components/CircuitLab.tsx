@@ -154,6 +154,7 @@ export function CircuitLab() {
                 shorted={shorted}
               />
               <div className="circuit-schematic-foot">
+                <span>circuit exterior</span>
                 <span>
                   <Battery size={14} /> E = {fmtVoltage(model.emf)}
                 </span>

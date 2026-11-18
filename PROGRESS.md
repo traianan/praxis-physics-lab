@@ -1,5 +1,14 @@
 # PROGRESS
 
+## Ohm pe tabla școlară — 2026-11-18
+
+- Dispozitiv raportat: Chrome pe Android 13; versiunea Chrome necunoscută. Reprodusă dispariția hărții prin eliminarea regulii CSS `@scope`: suprafața devenea 0 px. Importatorul generează acum selectori delimitați la rădăcina Ohm, fără `@scope` sau nesting incompatibil (target Chrome 100).
+- Schemele Circuit complet/Măsurări rezervă minimum 280 px și rânduri distincte pentru citiri. Explicațiile „circuit exterior” și „cuprinde…” sunt în legenda DOM, traduse RO/EN. Ecuațiile electrice nu sunt modificate.
+- Harta așază explicația în dreapta pe desktop și calculează distanțele din dimensiunile reale ale nodurilor, prevenind suprapunerile la text mărit. Căutarea, resetul, zoomul, selecția și saltul la lecție funcționează.
+- Verificare agent-browser: 60 stări (RO/EN, text 100/200%, trei secțiuni, cinci dimensiuni: 3840×2160, 1920×1080 DPR2, 1366×768, 1024×768, 390×844). Zero coliziuni etichete–instrumente/noduri, overflow orizontal sau erori JS. Ambele montaje și cele șase alegeri de preset verificate. Testele CI: 489 trecute, 7 omise, zero eșecuri; incluse bilanțul puterilor și formulele de corecție amonte/aval.
+- Arhiva autonomă regenerată, CRC valid. Test file:// cu rețeaua blocată: șapte noduri, selecție tactilă, salt la circuit, traducere EN; zero cereri HTTP și erori JS. Testare în Chrome desktop, nu pe tabla fizică sau în versiunea ei exactă de Chrome.
+- Auditul profund suplimentar a fost oprit după peste 330 stări per limbă din cauza explorării combinatorii a quizului; nu este raportat ca audit complet. Semnalarea `heading-order` din cardurile explicative existente rămâne în afara remediilor solicitate, fără suprimare.
+
 ## Funcția de gradul întâi și tipografia întrebărilor — 2026-11-18
 
 - Pregătire publicare: checkout izolat pe baza origin/main; lucrările locale fără legătură sunt excluse. Verificare CI locală: 487 teste trecute, 7 omise, zero eșecuri. Auditul profund al lecției: 12 stări RO/EN fără încălcări. Corectată semantica subtitlului din preferințe.

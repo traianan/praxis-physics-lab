@@ -1,17 +1,6 @@
 {
-  "builtAt": "2026-11-18T14:59:28.896Z",
+  "builtAt": "2026-11-18T15:30:49.445Z",
   "courses": [
-    {
-      "id": "legea-lui-ohm",
-      "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
-      "sha256": "d71d7ab4e97e310025c1f49c1dacbd8bcd893ac4615bf36e49d1cbc8d74314fb",
-      "languages": [
-        "ro",
-        "en"
-      ],
-      "sharedDependencies": "inlined",
-      "localResources": true
-    },
     {
       "id": "rezistenta-unui-fir",
       "file": "public/simulari/rezistenta-unui-fir/rezistenta-unui-fir.zip",
@@ -434,6 +423,17 @@
       "id": "functia-gradul-intai",
       "file": "public/simulari/functia-gradul-intai/functia-gradul-intai.zip",
       "sha256": "c8f5bfde1c4663560841dd304cb734383c40257c06106a1e693fd7e2bebef57e",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "legea-lui-ohm",
+      "file": "public/simulari/legea-lui-ohm/legea-lui-ohm.zip",
+      "sha256": "a67ccdaf6b9266a4d9804a98df7c58552e0b3b30a705f7cb4535a61af82aa9c0",
       "languages": [
         "ro",
         "en"

@@ -120,6 +120,35 @@
     padding: .35rem;
   }
 }
+
+/* Reading rows must fit even when the board presents a short CSS viewport. */
+.lesson-tab-panel :is(.circuit-canvas,.measure-canvas) {
+  min-height: 280px;
+}
+
+@media (min-width: 1000px) {
+  .lesson-tab-panel .concept-map {
+    grid-template-columns: minmax(0,1fr) minmax(240px,24%);
+    padding-block: 1rem .5rem;
+  }
+  .lesson-tab-panel .concept-map-header, .lesson-tab-panel .concept-map-legend, .lesson-tab-panel .concept-search-status, .lesson-tab-panel .concept-map-hint {
+    grid-column: 1 / -1;
+  }
+  .lesson-tab-panel .concept-map-surface {
+    grid-column: 1;
+    height: clamp(510px,calc(100vh - 470px),660px);
+    min-height: 510px;
+    background-color: var(--surface-2);
+  }
+  .lesson-tab-panel .concept-detail {
+    grid-column: 2;
+    align-self: stretch;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .lesson-tab-panel .concept-detail .concept-open { margin-top: auto; }
+}
 .lesson-tab-panel .lab-timeline {
   grid-template-columns: auto minmax(0, 1fr) auto auto;
 }

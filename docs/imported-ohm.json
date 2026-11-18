@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "sources/legea-lui-ohm/app/circuit.css",
-      "sha256": "6b1213afe463480f430fe41595892696d9bd75338a949f77ef9dfb76fe1856b4"
+      "sha256": "a31c2b03bbfae0e09c78f8956559a800e7dfbb822b352b51a5b99551fbdec244"
     },
     {
       "path": "sources/legea-lui-ohm/app/concepts.css",
@@ -28,7 +28,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/app/measure.css",
-      "sha256": "8503d382da114896f065d4bc9e7d46fef4c09ec0a3b517740e0b1a46bfe12e0d"
+      "sha256": "7601c3a5bf3c08249e2501682c2540ae2b5f08ed63825ea674b94dc930c99319"
     },
     {
       "path": "sources/legea-lui-ohm/app/page.tsx",
@@ -60,15 +60,15 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/CircuitLab.tsx",
-      "sha256": "6f3f67e0cc8e6ee87c603f55f42465fa5f0d265fb2ca4332c14c7abce9d207e4"
+      "sha256": "53cfeb0729ac0fc2140a6f9942260f2572409baa39d64bab1a0412edf29310c9"
     },
     {
       "path": "sources/legea-lui-ohm/components/CircuitSchematic.tsx",
-      "sha256": "73875c558ed19d00a5eb2931b218fa78547d6c00f023107e09883d150a8f685f"
+      "sha256": "499ec279cdabf721f0bdd0d47f230d8e35320843835f7cdbceda0defcb63c637"
     },
     {
       "path": "sources/legea-lui-ohm/components/ConceptMap.tsx",
-      "sha256": "e3b921dc45f85111525c3fd78bf048b7cc21c04a5c94e558b844b60f65fd140d"
+      "sha256": "78e283a27d60812ac76c6d33f54004f8f4bdf1b1c0b33eff2cec8c654257df59"
     },
     {
       "path": "sources/legea-lui-ohm/components/ConductorCanvas.tsx",
@@ -104,11 +104,11 @@
     },
     {
       "path": "sources/legea-lui-ohm/components/MeasureLab.tsx",
-      "sha256": "c49e349bf60d60600be11053bc81c02d9cb8d73ba7f61b021cfa16a2b1d56831"
+      "sha256": "644992ed2308ba2d2d86c32d36528a42c965ca107d8539e15c41b484912010ec"
     },
     {
       "path": "sources/legea-lui-ohm/components/MeasureSchematic.tsx",
-      "sha256": "006f5267abccf69396d06f20cc7179afb625719a96289e0440094a91983ef3b3"
+      "sha256": "8d78db91e57d60b45516094c606176a8e29dabe8aac8d82a3b5d06ed67e12add"
     },
     {
       "path": "sources/legea-lui-ohm/components/Nav.tsx",
@@ -188,7 +188,7 @@
     },
     {
       "path": "sources/legea-lui-ohm/README.md",
-      "sha256": "d4aaa5b666cc69fb2a4b3d911dddff485cef2bff2f35c54199fae591e2331334"
+      "sha256": "aab0082709537bb30a05d3a2faec65cdf0ffb3eb60e1e0984ba75d73f62bf59e"
     }
   ],
   "adaptations": [

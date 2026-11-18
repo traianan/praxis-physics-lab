@@ -122,6 +122,7 @@ export function MeasureLab() {
                 ammeterReading={model.ammeterReading}
               />
               <div className="measure-canvas-foot">
+                <span>{amonte ? "cuprinde A și R" : "cuprinde doar R"}</span>
                 <span>V: {fmtVoltage(model.voltmeterReading, 3)}</span>
                 <span>A: {fmtCurrent(model.ammeterReading, 2)}</span>
                 <span><Formula tex="R_A" /> = {fmtResistance(ammeter, 2)}</span>

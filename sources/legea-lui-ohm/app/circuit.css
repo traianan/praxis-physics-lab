@@ -177,6 +177,7 @@
 }
 
 .circuit-canvas {
+  min-height: 280px;
   width: 100%;
   height: clamp(190px, 21vw, 260px);
 }

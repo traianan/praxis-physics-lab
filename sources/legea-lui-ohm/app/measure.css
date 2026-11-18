@@ -57,6 +57,7 @@
 }
 
 .measure-canvas {
+  min-height: 280px;
   width: 100%;
   height: clamp(200px, 22vw, 280px);
   border: 1px solid var(--line);

@@ -147,6 +147,9 @@ function ConceptMapCanvas({ onOpenTab }: { onOpenTab: (tab: TabId) => void }) {
   const surfaceRef = useRef<HTMLDivElement>(null);
   const { fitView } = useReactFlow();
   const compact = width < 760;
+  const [cardSize, setCardSize] = useState({ width: 218, height: 104 });
+  const column = cardSize.width + (compact ? 45 : 115);
+  const row = cardSize.height + (compact ? 70 : 100);
   const activeConcept = concepts.find((concept) => concept.id === selectedId) ?? concepts[3];
   const normalizedQuery = query.trim().toLocaleLowerCase(english ? "en" : "ro");
 
@@ -158,14 +161,33 @@ function ConceptMapCanvas({ onOpenTab }: { onOpenTab: (tab: TabId) => void }) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const surface = surfaceRef.current;
+    if (!surface) return;
+    // Measure untransformed cards: zoom must not affect graph spacing.
+    const measure = () => {
+      const cards = [...surface.querySelectorAll<HTMLElement>(".concept-node")];
+      if (!cards.length) return;
+      const width = Math.max(...cards.map(card => card.offsetWidth));
+      const height = Math.max(...cards.map(card => card.offsetHeight));
+      setCardSize(previous => previous.width === width && previous.height === height ? previous : { width, height });
+    };
+    const resize = new ResizeObserver(measure);
+    const observe = () => { surface.querySelectorAll(".concept-node").forEach(card => resize.observe(card)); measure(); };
+    const mutations = new MutationObserver(observe);
+    mutations.observe(surface, { childList: true, subtree: true });
+    observe();
+    return () => { resize.disconnect(); mutations.disconnect(); };
+  }, []);
+
   const nodes = useMemo<ConceptFlowNode[]>(() => {
     const desktopPositions: Record<string, { x: number; y: number }> = {
-      voltage: { x: 25, y: 24 }, current: { x: 360, y: 24 }, resistance: { x: 695, y: 24 },
-      ohm: { x: 360, y: 205 }, resistor: { x: 25, y: 408 }, circuit: { x: 360, y: 408 }, source: { x: 695, y: 408 },
+      voltage: { x: 25, y: 24 }, current: { x: 25 + column, y: 24 }, resistance: { x: 25 + 2 * column, y: 24 },
+      ohm: { x: 25 + column, y: 24 + row }, resistor: { x: 25, y: 24 + 2 * row }, circuit: { x: 25 + column, y: 24 + 2 * row }, source: { x: 25 + 2 * column, y: 24 + 2 * row },
     };
     const compactPositions: Record<string, { x: number; y: number }> = {
-      voltage: { x: 12, y: 16 }, current: { x: 202, y: 16 }, resistance: { x: 12, y: 158 },
-      ohm: { x: 202, y: 158 }, resistor: { x: 12, y: 300 }, source: { x: 202, y: 300 }, circuit: { x: 107, y: 442 },
+      voltage: { x: 12, y: 16 }, current: { x: 12 + column, y: 16 }, resistance: { x: 12, y: 16 + row },
+      ohm: { x: 12 + column, y: 16 + row }, resistor: { x: 12, y: 16 + 2 * row }, source: { x: 12 + column, y: 16 + 2 * row }, circuit: { x: 12 + column / 2, y: 16 + 3 * row },
     };
     const positions = compact ? compactPositions : desktopPositions;
     return concepts.map((concept) => ({
@@ -176,7 +198,7 @@ function ConceptMapCanvas({ onOpenTab }: { onOpenTab: (tab: TabId) => void }) {
       style: { opacity: normalizedQuery && !`${concept.title.ro} ${concept.title.en} ${concept.symbol}`.toLocaleLowerCase().includes(normalizedQuery) ? 0.24 : 1 },
       ariaLabel: `${concept.title[english ? "en" : "ro"]}, ${concept.symbol}`,
     }));
-  }, [compact, english, normalizedQuery]);
+  }, [compact, english, normalizedQuery, column, row]);
 
   const edges = useMemo(() => initialEdges.map((edge) => ({
     ...edge,
@@ -202,7 +224,7 @@ function ConceptMapCanvas({ onOpenTab }: { onOpenTab: (tab: TabId) => void }) {
   useEffect(() => {
     const frame = requestAnimationFrame(() => fitView({ padding: compact ? 0.12 : 0.16, duration: 180, maxZoom: 1 }));
     return () => cancelAnimationFrame(frame);
-  }, [compact, fitView]);
+  }, [compact, fitView, column, row]);
 
   const searchMatch = concepts.find((concept) => `${concept.title.ro} ${concept.title.en} ${concept.symbol}`.toLocaleLowerCase().includes(normalizedQuery));
 
