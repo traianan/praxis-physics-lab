@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-18T19:59:33.625Z",
+  "builtAt": "2026-11-19T18:11:50.917Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -455,7 +455,7 @@
     {
       "id": "marimi-fizice-unitati",
       "file": "public/simulari/marimi-fizice-unitati/marimi-fizice-unitati.zip",
-      "sha256": "3913d0d19c558e3cf8aba34bc4a7743fd81efb7ab5f0efea8541c0a8be31e1ae",
+      "sha256": "0cfa2e81c82ff3a98b27b3bcf3123d04ddb69828f45caf1a2388c546c50695e9",
       "languages": [
         "ro",
         "en"

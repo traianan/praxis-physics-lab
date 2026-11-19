@@ -15,6 +15,7 @@
   'legea-lui-ohm':{popover:'.lab-controls'},
   'motoare-termice':{select:'[data-workspace-figure]',extras:['.praxis-workspace-figure-controls>.hint']},
   'calcul-vectorial':{extras:[':scope>.praxis-workspace-disclosure']},
+  'marimi-fizice-unitati':{select:'[data-workspace-layout]'},
   'notiuni-termodinamice':{extras:[':scope>.praxis-workspace-disclosure']},
   'calorimetrie':{extras:[':scope>.praxis-workspace-disclosure']},
   'principiul-i-aplicatii':{extras:[':scope>.praxis-workspace-disclosure','.demo-hint','.molecule-hint','#degreesExplanation','#gammaFormula']},
