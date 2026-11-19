@@ -50,7 +50,7 @@ test('canonical chapter and home links clear stale search, while contextual retu
  const app=await read('public/app.js'),initialization=app.slice(app.indexOf('const i18n='),app.indexOf('const homeLogo='));
  const saved={url:'/physics/#capitol/miscare',query:'vector',view:'list'};
  const storage=new Map([['praxis-library-return',JSON.stringify(saved)]]);
- async function enter(href){const location=new URL(href),env={URL,location,chapters,localizeCatalog(){},window:{PraxisI18n:{async init(){},getNamespace(){}}},sessionStorage:{getItem:k=>storage.get(k),removeItem:k=>storage.delete(k)},history:{replaceState(a,b,url){location.href=new URL(url,location).href;}}};
+  async function enter(href){const location=new URL(href),env={URL,location,chapters,simulations,document:{querySelector(){return null;}},localizeCatalog(){},window:{PraxisI18n:{async init(){},getNamespace(){}}},sessionStorage:{getItem:k=>storage.get(k),removeItem:k=>storage.delete(k),setItem(k,v){storage.set(k,v);}},history:{replaceState(a,b,url){location.href=new URL(url,location).href;}}};
   return vm.runInNewContext('(async()=>{'+initialization+';return {query,view,url:location.href};})()',env);
  }
  assert.equal((await enter('https://example.test/physics/#capitol/miscare')).query,'vector');
