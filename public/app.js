@@ -4,6 +4,18 @@ import {prepareAdvertising} from './advertising.js';
 const i18n=window.PraxisI18n;
 const homeRequested=new URL(location.href).searchParams.get('home')==='1';
 const chapterRequested=new URL(location.href).searchParams.get('chapter')==='1'&&chapters.some(c=>location.hash==='#capitol/'+c.id);
+let discoveryId='',wasHome=false;
+function chooseDiscovery(){
+ const candidates=simulations.filter(sim=>sim.id&&sim.href);
+ if(!candidates.length)return;
+ let previous='';try{previous=sessionStorage.getItem('praxis-home-discovery-target')||'';}catch{}
+ const choices=candidates.length>1?candidates.filter(sim=>sim.id!==previous):candidates;
+ const target=choices[Math.floor(Math.random()*choices.length)]||candidates[0];
+ discoveryId=target.id;
+ try{sessionStorage.setItem('praxis-home-discovery-target',discoveryId);}catch{}
+ const link=document.querySelector('.discovery-start');if(link)link.href=target.href;
+}
+if(!location.hash||homeRequested)chooseDiscovery();
 await i18n.init({namespaceList:['common',...chapters.map(c=>'chapters/'+c.id)]});
 localizeCatalog(ns=>i18n.getNamespace(ns));
 const $=id=>document.getElementById(id);
@@ -25,9 +37,12 @@ function renderChapters(){
 function render(){
  const c=chapters.find(c=>c.id===selected),found=findSimulations(selected,query);
  const home=!selected&&!query.trim(),visible=home?getHomeSimulations():found;
+ if(home&&!wasHome&&!discoveryId)chooseDiscovery();
+ if(home&&discoveryId){const destination=simulations.find(sim=>sim.id===discoveryId);if(destination){$('discovery-start').href=destination.href;$('discovery-caption').textContent=destination.title;}}
+ if(!home)discoveryId='';
+ wasHome=home;
  document.body.dataset.libraryView=selected?'chapter':query.trim()?'search':'home';
  $('discovery-entry').hidden=!home;
- $('discovery-caption').textContent=simulations.find(s=>s.id==='oglinzi-si-lentile').title;
  $('home-latest').hidden=!home;
  $('breadcrumb-title').textContent=c?c.title.toLocaleUpperCase(i18n.locale):query.trim()?'Rezultatele căutării':'FIZICĂ';
  $('page-title').innerHTML=c?c.title:'Fizica are sens<br><span>Când o explorezi</span>';
@@ -36,7 +51,9 @@ function render(){
  $('simulations-title').textContent=c?'Simulările capitolului':query.trim()?'Rezultatele căutării':'Începe cu un experiment';
  $('results-status').textContent=found.length===1?'1 laborator disponibil':found.length?`${found.length} laboratoare disponibile`:query.trim()?'Niciun rezultat pentru această căutare':'Conținutul va fi stabilit pe parcurs';
  if(home&&visible.length<found.length)$('results-status').textContent=i18n.tr('{shown} din {total} laboratoare afișate',{shown:visible.length,total:found.length});
- $('catalog-count').textContent=`${selected?'1 capitol':'7 capitole'} · ${found.length} ${found.length===1?'simulare':'simulări'}`;
+ $('catalog-count').textContent=selected
+  ?found.length===1?i18n.tr('1 capitol · 1 simulare'):i18n.tr('1 capitol · {total} simulări',{total:found.length})
+  :found.length===1?i18n.tr('{count} capitole · 1 simulare',{count:chapters.length}):i18n.tr('{count} capitole · {total} simulări',{count:chapters.length,total:found.length});
  $('simulations').className=`simulation-grid ${view==='list'?'list-view':''}`;
  const renderCard=s=>`<article class="simulation-card" data-chapter="${s.chapter}"><a href="${s.href}" class="simulation-image" aria-label="${i18n.tr('Laborator interactiv')}: ${s.title}"><img src="${s.image}" alt="${s.alt}" loading="lazy" decoding="async"><span class="image-pill"><i></i> Laborator interactiv</span></a><div class="simulation-body"><div class="card-eyebrow">${chapters.find(c=>c.id===s.chapter).title.toLocaleUpperCase(i18n.locale)} <span>${String(simulations.filter(item=>item.chapter===s.chapter).indexOf(s)+1).padStart(2,'0')}</span></div><h3><a href="${s.href}">${s.title}</a></h3><p>${s.description}</p><div class="tags">${s.tags.map(t=>`<span>${t}</span>`).join('')}</div></div><div class="simulation-action"><a class="button primary" href="${s.href}">Deschide laboratorul <span aria-hidden="true">→</span></a><span>Revino la capitol din antet</span></div></article>`;
  $('simulations').innerHTML=home?chapters.filter(ch=>visible.some(s=>s.chapter===ch.id)).map(ch=>`<section class="simulation-chapter" aria-label="${ch.title}"><h3 class="simulation-chapter-title">${ch.title}</h3><div class="simulation-chapter-grid">${visible.filter(s=>s.chapter===ch.id).map(renderCard).join('')}</div></section>`).join(''):visible.map(renderCard).join('');

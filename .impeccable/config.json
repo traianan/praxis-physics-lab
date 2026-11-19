@@ -53,6 +53,24 @@
         ],
         "createdAt": "2026-11-18T14:44:04.097Z",
         "reason": "Reviewed incumbent Praxis title-banner marker, already present in HEAD. docs/REGULI_LABORATOARE.md section 1 requires reuse of the shared visual system and header. This marker belongs to the common lesson title banner, not a newly decorated content card; preserve the incumbent design."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "public/index.html"
+        ],
+        "createdAt": "2026-11-19T13:55:29.917Z",
+        "reason": "Agent: DESIGN_SYSTEM.md section Praxis rafinat documents ivory #F7F5EE as the user-approved library canvas; this is a sanctioned palette, not an accidental cream default."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "public/index.html"
+        ],
+        "createdAt": "2026-11-19T13:55:30.120Z",
+        "reason": "Agent: #home-latest is hidden on desktop; on tablet/mobile its background and border are intentionally removed and it becomes a borderless list, so no visible edge is left without an inset."
       }
     ]
   }

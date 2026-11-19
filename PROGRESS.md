@@ -1,5 +1,13 @@
 # PROGRESS
 
+## Corecții Home — catalog, explorare și panou — 2026-11-19
+
+- Remediată valoarea hardcodată `7 capitole`; Home și numărătoarea din catalog folosesc acum datele reale, cu traduceri RO/EN actualizate pentru opt capitole.
+- Butonul „Începe explorarea” alege un laborator din catalog la fiecare încărcare Home, evită repetarea imediată în aceeași filă și afișează titlul destinației alese.
+- Înălțimea panoului verde a scăzut de la 312,5 px la 281 px la 1920 px (−10,1%). Build-ul a reușit. Browserul local a confirmat 8 carduri și „8 capitole · 42 simulări”, trei destinații diferite succesiv, navigarea butonului și fără overflow la 1024×768, 1920×1080 și 3840×2160.
+- Triage Impeccable: textul mic din antet, navigație, numere și date a fost mărit; contrastul numerelor și al explicațiilor din ghid a fost corectat; etichetele decorative au fost eliminate; paddingul controalelor a fost mărit. Detectorul final nu raportează alte probleme.
+- Excepții Impeccable limitate la `public/index.html`: paleta ivory `#F7F5EE` este aprobată în `DESIGN_SYSTEM.md`; `#home-latest` este ascuns pe desktop și devine o listă fără container vizual la lățimi mici.
+
 ## Hărți pentru toate cele trei lecții de matematică — 2026-11-18
 
 - Adăugate hărți și la Funcția de gradul întâi și Măsurarea unghiurilor. Fiecare are șapte concepte, șase legături etichetate, explicații RO/EN, concepte asociate și acces la secțiunile lecției. Cele trei hărți folosesc același motor fără dependențe în public/shared/concept-map.js și aceeași foaie de stil. Configurațiile rămân specifice lecțiilor; importerele păstrează integrarea reproductibilă. Importul liniar permite PRAXIS_LINEAR_SOURCE pentru snapshotul nemodificat folosit în worktree.
