@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mărimi fizice și unități de măsură — Laborator interactiv</title>
+<meta name="description" content="Laborator interactiv de fizică: mărimi fizice, Sistemul Internațional, multipli și submultipli, unități derivate, convertor de unități, analiză dimensională și test.">
+<meta name="theme-color" content="#0f3d36">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f3d36'/%3E%3Ctext x='16' y='23' font-family='Arial' font-weight='700' font-size='19' fill='white' text-anchor='middle'%3Ep.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Sari la conținut</a>
+
+<header class="topbar">
+  <a class="brand" href="./" aria-label="praxis science lab — acasă">
+    <span class="brand-mark">p.</span>
+    <span class="brand-text"><b>praxis</b><small>SCIENCE LAB</small></span>
+  </a>
+  <nav class="topnav" aria-label="Instrumente">
+    <div class="pop-wrap">
+      <button class="btn btn-outline" id="btnDisplay" aria-haspopup="true" aria-expanded="false">Text / afișare</button>
+      <div class="popover" id="displayPop" hidden>
+        <p class="pop-title">Mărime text</p>
+        <div class="seg" role="group" aria-label="Mărime text">
+          <button data-scale="0.92">A−</button>
+          <button data-scale="1">A</button>
+          <button data-scale="1.12">A+</button>
+          <button data-scale="1.25">A++</button>
+        </div>
+        <label class="switch"><input type="checkbox" id="optContrast"><span></span> Contrast ridicat</label>
+      </div>
+    </div>
+    <button class="btn btn-ghost" id="btnLibrary">Bibliotecă</button>
+    <button class="btn btn-ghost hide-sm" id="btnHelp">Cum folosești laboratorul</button>
+    <button class="btn btn-outline hide-sm" id="btnBoard" aria-pressed="false">Mod tablă</button>
+    <button class="btn btn-outline btn-sound" id="btnSound" aria-pressed="true">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="wave" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="mute" d="m16 9 6 6m0-6-6 6"/></svg>
+      <span>Sunet</span>
+    </button>
+  </nav>
+</header>
+
+<nav class="crumbs" aria-label="Navigare">
+  <a href="#" data-open="library">Bibliotecă</a><span>/</span>
+  <a href="#" data-goto-chapter="all">Fundamente</a><span>/</span>
+  <b>Mărimi fizice și unități de măsură</b>
+</nav>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <h1>Mărimi fizice și unități de măsură</h1>
+    <p>Laborator interactiv de metrologie</p>
+  </section>
+
+  <div class="tabbar">
+    <div class="tabs" role="tablist" aria-label="Secțiuni">
+      <button role="tab" id="tab-teorie" aria-controls="panel-teorie" aria-selected="true" data-tab="teorie">Teorie &amp; Formule</button>
+      <button role="tab" id="tab-convertor" aria-controls="panel-convertor" aria-selected="false" data-tab="convertor">Lab: Convertor de unități</button>
+      <button role="tab" id="tab-prefixe" aria-controls="panel-prefixe" aria-selected="false" data-tab="prefixe">Lab: Multipli &amp; Submultipli</button>
+      <button role="tab" id="tab-dimensiuni" aria-controls="panel-dimensiuni" aria-selected="false" data-tab="dimensiuni">Lab: Analiză Dimensională</button>
+      <button role="tab" id="tab-test" aria-controls="panel-test" aria-selected="false" data-tab="test">Test: Verifică-te</button>
+    </div>
+    <div class="pop-wrap">
+      <button class="btn btn-outline" id="btnPrefs" aria-expanded="false"><svg class="ico tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Preferințe laborator</button>
+      <div class="popover popover-right" id="prefsPop" hidden>
+        <p class="pop-title">Afișare numere</p>
+        <label class="field">Notație
+          <select id="prefNotation">
+            <option value="auto">Automată</option>
+            <option value="sci">Științifică (a·10ⁿ)</option>
+            <option value="dec">Zecimală</option>
+          </select>
+        </label>
+        <label class="field">Cifre semnificative <output id="prefDigitsOut">4</output>
+          <input type="range" id="prefDigits" min="2" max="8" value="4">
+        </label>
+        <label class="switch"><input type="checkbox" id="prefAnim" checked><span></span> Animații</label>
+        <button class="btn btn-ghost btn-sm" id="prefReset">Resetează progresul testului</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TEORIE ============ -->
+  <section class="panel is-active" role="tabpanel" id="panel-teorie" aria-labelledby="tab-teorie">
+    <div class="intro">
+      <div>
+        <h2>Breviar teoretic complet — Mărimi fizice și unități de măsură</h2>
+        <p>Ce înseamnă să <b>măsori</b>, care sunt cele <b>7 mărimi fundamentale</b> ale Sistemului Internațional (SI), cum folosești <b>multiplii și submultiplii</b>, cum se obțin <b>unitățile derivate</b> și cum exprimi corect un <b>rezultat experimental</b>.</p>
+      </div>
+      <div class="intro-actions">
+        <button class="btn btn-card" data-goto="convertor"><svg class="ico tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Deschide Convertorul</button>
+        <button class="btn btn-card" data-goto="prefixe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>Deschide Lab Prefixe</button>
+        <button class="btn btn-card" data-sheet><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>Fișă de lucru</button>
+      </div>
+    </div>
+
+    <div class="chips" role="group" aria-label="Capitole">
+      <button class="chip is-on" data-chapter="all">Toate capitolele</button>
+      <button class="chip" data-chapter="1">1. Mărimi fizice</button>
+      <button class="chip" data-chapter="2">2. Sistemul Internațional</button>
+      <button class="chip" data-chapter="3">3. Multipli &amp; Submultipli</button>
+      <button class="chip" data-chapter="4">4. Unități derivate</button>
+      <button class="chip" data-chapter="5">5. Scalari &amp; Vectori</button>
+      <button class="chip" data-chapter="6">6. Măsurare &amp; Erori</button>
+    </div>
+
+    <article class="card chapter" data-ch="1">
+      <h3><span class="tag">MĂRIMI</span> Ce este o mărime fizică?</h3>
+      <p><b>1. Mărimea fizică</b> este o proprietate a unui corp sau a unui fenomen care poate fi <b>măsurată</b> (lungimea unei mese, masa unui măr, durata unei mișcări, temperatura aerului).</p>
+      <p><b>2. A măsura</b> o mărime fizică înseamnă a o <b>compara</b> cu o mărime de aceeași natură, aleasă drept <b>unitate de măsură</b>. Rezultatul este un număr însoțit de unitate:</p>
+      <div class="formula">
+        <div class="f-main"><i>X</i> = {<i>X</i>} · [<i>X</i>]</div>
+        <div class="f-note">valoare numerică × unitate</div>
+      </div>
+      <ul class="bullets">
+        <li>Exemplu: <span class="m"><i>ℓ</i> = 2,5 m</span> — mărimea este lungimea, valoarea numerică 2,5, unitatea metrul.</li>
+        <li>Notația <span class="m">[<i>X</i>]<sub>SI</sub></span> se citește „unitatea de măsură a lui X în SI”.</li>
+        <li><b>Atenție!</b> Un rezultat fără unitate de măsură nu are sens fizic: „lungimea este 3” nu înseamnă nimic.</li>
+      </ul>
+      <div class="grid2">
+        <div class="mini"><h4>Mărimi fundamentale</h4><p>Se definesc independent, prin etaloane/constante: lungime, masă, timp, intensitatea curentului, temperatură, cantitate de substanță, intensitate luminoasă.</p></div>
+        <div class="mini"><h4>Mărimi derivate</h4><p>Se definesc prin <b>relații</b> (formule) cu alte mărimi: viteză, densitate, forță, presiune, energie, putere…</p></div>
+      </div>
+    </article>
+
+    <article class="card chapter" data-ch="2">
+      <h3><span class="tag">SI</span> Sistemul Internațional de Unități</h3>
+      <p>Adoptat în 1960 și redefinit în 2019 pe baza unor <b>constante ale naturii</b>, SI are <b>7 unități fundamentale</b>:</p>
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead><tr><th>Mărime fundamentală</th><th>Simbol</th><th>Unitate SI</th><th>Simbol unitate</th></tr></thead>
+          <tbody>
+            <tr><td>Lungime</td><td><i>ℓ</i>, <i>d</i></td><td>metru</td><td><b>m</b></td></tr>
+            <tr><td>Masă</td><td><i>m</i></td><td>kilogram</td><td><b>kg</b></td></tr>
+            <tr><td>Timp</td><td><i>t</i></td><td>secundă</td><td><b>s</b></td></tr>
+            <tr><td>Intensitatea curentului electric</td><td><i>I</i></td><td>amper</td><td><b>A</b></td></tr>
+            <tr><td>Temperatură termodinamică</td><td><i>T</i></td><td>kelvin</td><td><b>K</b></td></tr>
+            <tr><td>Cantitate de substanță</td><td><i>ν</i></td><td>mol</td><td><b>mol</b></td></tr>
+            <tr><td>Intensitate luminoasă</td><td><i>I</i><sub>v</sub></td><td>candelă</td><td><b>cd</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="bullets">
+        <li>Simbolurile unităților se scriu cu <b>literă mică</b>, cu excepția celor provenite din nume proprii: <b>A</b> (Ampère), <b>K</b> (Kelvin), <b>N</b> (Newton), <b>J</b> (Joule).</li>
+        <li>Simbolurile nu au punct și nu primesc „-uri” la plural: <span class="m">5 kg</span>, nu „5 kg.” sau „5 kgs”.</li>
+        <li><b>Kilogramul</b> este singura unitate fundamentală care conține deja un prefix (kilo-).</li>
+      </ul>
+    </article>
+
+    <article class="card chapter" data-ch="3">
+      <h3><span class="tag">PREFIXE</span> Multipli și submultipli. Notația științifică</h3>
+      <p><b>1. Prefixele SI</b> se pun în fața unității și o înmulțesc cu o putere a lui 10:</p>
+      <div class="prefix-strip" id="prefixStrip"></div>
+      <p><b>2. Notația științifică</b> scrie orice număr sub forma:</p>
+      <div class="formula">
+        <div class="f-main"><i>x</i> = <i>a</i> · 10<sup><i>n</i></sup>, &nbsp; 1 ≤ |<i>a</i>| &lt; 10, &nbsp;<i>n</i> ∈ ℤ</div>
+        <div class="f-note">ex.: 384 000 km = 3,84·10<sup>8</sup> m</div>
+      </div>
+      <ul class="bullets">
+        <li>Reguli de calcul: <span class="m">10<sup><i>a</i></sup>·10<sup><i>b</i></sup> = 10<sup><i>a</i>+<i>b</i></sup></span>, &nbsp; <span class="m">10<sup><i>a</i></sup> : 10<sup><i>b</i></sup> = 10<sup><i>a</i>−<i>b</i></sup></span>, &nbsp; <span class="m">(10<sup><i>a</i></sup>)<sup><i>b</i></sup> = 10<sup><i>a</i>·<i>b</i></sup></span>.</li>
+        <li><b>La puteri de unități, prefixul se ridică și el la putere:</b> <span class="m">1 cm² = (10<sup>−2</sup> m)² = 10<sup>−4</sup> m²</span>, &nbsp; <span class="m">1 cm³ = 10<sup>−6</sup> m³</span>.</li>
+        <li>Nu se folosesc prefixe duble: scriem <b>ns</b> (nanosecundă), nu „mµs”.</li>
+      </ul>
+      <button class="btn btn-card" data-goto="prefixe"><svg class="ico tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Explorează scara puterilor lui 10</button>
+    </article>
+
+    <article class="card chapter" data-ch="4">
+      <h3><span class="tag">DERIVATE</span> Unități de măsură derivate</h3>
+      <p>Unitatea unei mărimi derivate se obține <b>înlocuind în formula de definiție</b> fiecare mărime cu unitatea ei SI:</p>
+      <div class="formula">
+        <div class="f-main"><i>v</i> = <span class="frac"><span><i>d</i></span><span><i>t</i></span></span> &nbsp;⇒&nbsp; [<i>v</i>]<sub>SI</sub> = <span class="frac"><span>[<i>d</i>]<sub>SI</sub></span><span>[<i>t</i>]<sub>SI</sub></span></span> = <span class="frac"><span>m</span><span>s</span></span></div>
+        <div class="f-note">metoda generală</div>
+      </div>
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead><tr><th>Mărime</th><th>Formulă</th><th>Unitate SI</th><th>În unități fundamentale</th></tr></thead>
+          <tbody>
+            <tr><td>Arie</td><td><i>S</i> = <i>ℓ</i>·<i>L</i></td><td>m²</td><td>m²</td></tr>
+            <tr><td>Volum</td><td><i>V</i> = <i>ℓ</i>·<i>L</i>·<i>h</i></td><td>m³</td><td>m³</td></tr>
+            <tr><td>Viteză</td><td><i>v</i> = <i>d</i>/<i>t</i></td><td>m/s</td><td>m·s<sup>−1</sup></td></tr>
+            <tr><td>Accelerație</td><td><i>a</i> = Δ<i>v</i>/Δ<i>t</i></td><td>m/s²</td><td>m·s<sup>−2</sup></td></tr>
+            <tr><td>Densitate</td><td><i>ρ</i> = <i>m</i>/<i>V</i></td><td>kg/m³</td><td>kg·m<sup>−3</sup></td></tr>
+            <tr><td>Forță</td><td><i>F</i> = <i>m</i>·<i>a</i></td><td><b>N</b> (newton)</td><td>kg·m·s<sup>−2</sup></td></tr>
+            <tr><td>Presiune</td><td><i>p</i> = <i>F</i>/<i>S</i></td><td><b>Pa</b> (pascal)</td><td>kg·m<sup>−1</sup>·s<sup>−2</sup></td></tr>
+            <tr><td>Lucru mecanic, energie</td><td><i>L</i> = <i>F</i>·<i>d</i></td><td><b>J</b> (joule)</td><td>kg·m²·s<sup>−2</sup></td></tr>
+            <tr><td>Putere</td><td><i>P</i> = <i>L</i>/<i>t</i></td><td><b>W</b> (watt)</td><td>kg·m²·s<sup>−3</sup></td></tr>
+            <tr><td>Frecvență</td><td><i>ν</i> = <i>N</i>/<i>t</i></td><td><b>Hz</b> (hertz)</td><td>s<sup>−1</sup></td></tr>
+            <tr><td>Sarcină electrică</td><td><i>q</i> = <i>I</i>·<i>t</i></td><td><b>C</b> (coulomb)</td><td>A·s</td></tr>
+            <tr><td>Tensiune electrică</td><td><i>U</i> = <i>P</i>/<i>I</i></td><td><b>V</b> (volt)</td><td>kg·m²·s<sup>−3</sup>·A<sup>−1</sup></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-card" data-goto="dimensiuni"><svg class="ico tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Construiește unități în laborator</button>
+    </article>
+
+    <article class="card chapter" data-ch="5">
+      <h3><span class="tag">TIPURI</span> Mărimi scalare și mărimi vectoriale</h3>
+      <div class="grid2">
+        <div class="mini">
+          <h4>Mărimi scalare</h4>
+          <p>Complet determinate de <b>valoare numerică + unitate</b>.</p>
+          <p class="ex">masă, timp, temperatură, volum, densitate, energie, putere</p>
+        </div>
+        <div class="mini">
+          <h4>Mărimi vectoriale</h4>
+          <p>Au nevoie și de <b>direcție</b>, <b>sens</b> și <b>punct de aplicație</b>.</p>
+          <p class="ex">deplasare, viteză, accelerație, forță, greutate</p>
+        </div>
+      </div>
+      <div class="vector-demo" aria-hidden="true">
+        <svg viewBox="0 0 360 120">
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="currentColor"/></marker></defs>
+          <circle cx="60" cy="80" r="5" class="pt"/>
+          <line x1="60" y1="80" x2="250" y2="30" class="vec-line" marker-end="url(#ah)"/>
+          <line x1="20" y1="90.5" x2="320" y2="11.5" class="dir-line"/>
+          <text x="40" y="104" class="lbl">punct de aplicație</text>
+          <text x="160" y="40" class="lbl lbl-f"><tspan font-style="italic">F</tspan></text>
+          <text x="256" y="58" class="lbl">sens</text>
+          <text x="268" y="16" class="lbl lbl-muted">direcție (dreapta suport)</text>
+        </svg>
+      </div>
+      <ul class="bullets">
+        <li>Un vector se notează cu săgeată deasupra: <span class="m"><span class="vec">F</span></span>, iar <b>modulul</b> lui (lungimea) cu <span class="m">|<span class="vec">F</span>| = <i>F</i></span>.</li>
+        <li>Mărimile scalare se adună algebric; vectorii se adună după <b>regula paralelogramului</b>.</li>
+      </ul>
+    </article>
+
+    <article class="card chapter" data-ch="6">
+      <h3><span class="tag">ERORI</span> Măsurare, instrumente și erori de măsură</h3>
+      <p><b>1. Instrumente de măsură:</b> rigla și ruleta (lungime), șublerul și micrometrul (lungimi mici), balanța (masă), cronometrul (timp), termometrul (temperatură), dinamometrul (forță), cilindrul gradat (volum). <b>Precizia</b> unui instrument este cea mai mică diviziune a scalei sale.</p>
+      <p><b>2. Valoarea medie</b> a <i>n</i> determinări și <b>eroarea absolută</b> a fiecărei determinări:</p>
+      <div class="formula">
+        <div class="f-main"><span class="bar"><i>x</i></span> = <span class="frac"><span><i>x</i><sub>1</sub> + <i>x</i><sub>2</sub> + … + <i>x</i><sub>n</sub></span><span><i>n</i></span></span> &nbsp;&nbsp; Δ<i>x</i><sub>i</sub> = |<i>x</i><sub>i</sub> − <span class="bar"><i>x</i></span>|</div>
+        <div class="f-note">[Δx] = [x]</div>
+      </div>
+      <p><b>3. Eroarea absolută medie</b> și <b>eroarea relativă</b> (arată calitatea măsurării):</p>
+      <div class="formula">
+        <div class="f-main"><span class="bar">Δ<i>x</i></span> = <span class="frac"><span>ΣΔ<i>x</i><sub>i</sub></span><span><i>n</i></span></span> &nbsp;&nbsp; <i>ε</i> = <span class="frac"><span><span class="bar">Δ<i>x</i></span></span><span><span class="bar"><i>x</i></span></span></span> · 100%</div>
+        <div class="f-note">ε — adimensională</div>
+      </div>
+      <ul class="bullets">
+        <li>Rezultatul final se scrie: <span class="m"><i>x</i> = (<span class="bar"><i>x</i></span> ± <span class="bar">Δ<i>x</i></span>) unitate</span>, de ex. <span class="m"><i>ℓ</i> = (12,4 ± 0,1) cm</span>.</li>
+        <li><b>Erori sistematice</b> (instrument dereglat, metodă greșită) — mereu în același sens; <b>erori întâmplătoare</b> — se reduc prin repetarea măsurătorii.</li>
+        <li>Temperatura: <span class="m"><i>T</i>(K) = <i>t</i>(°C) + 273,15</span> — o <b>diferență</b> de 1 °C este egală cu o diferență de 1 K.</li>
+      </ul>
+      <div class="err-lab" id="errLab">
+        <h4>Mini-calculator de erori</h4>
+        <p class="muted">Introdu valorile măsurate, separate prin spațiu sau „;” (ex.: 12,3 12,5 12,4 12,6).</p>
+        <div class="row">
+          <input type="text" id="errInput" inputmode="decimal" value="12,3 12,5 12,4 12,6" aria-label="Valori măsurate">
+          <button class="btn btn-primary" id="errBtn">Calculează</button>
+        </div>
+        <div class="err-out" id="errOut" aria-live="polite"></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ LABS (populated lazily) ============ -->
+  <section class="panel" role="tabpanel" id="panel-convertor" aria-labelledby="tab-convertor" hidden></section>
+  <section class="panel" role="tabpanel" id="panel-prefixe" aria-labelledby="tab-prefixe" hidden></section>
+  <section class="panel" role="tabpanel" id="panel-dimensiuni" aria-labelledby="tab-dimensiuni" hidden></section>
+  <section class="panel" role="tabpanel" id="panel-test" aria-labelledby="tab-test" hidden></section>
+</main>
+
+<footer class="foot">
+  <div class="foot-note">Aplicație educațională HTML5 — <b>„Mărimi fizice și unități de măsură”</b> (Fizică, gimnaziu și clasa a IX-a) • Funcționează pe calculator, tabletă și telefon.</div>
+  <nav class="foot-links" aria-label="Linkuri">
+    <a href="https://www.bipm.org/en/measurement-units" target="_blank" rel="noopener">Broșura SI (BIPM)</a>
+    <a href="https://ro.wikipedia.org/wiki/Sistemul_Interna%C8%9Bional_de_Unit%C4%83%C8%9Bi" target="_blank" rel="noopener">SI pe Wikipedia</a>
+    <a href="#" data-open="about">Despre</a>
+    <a href="#" data-open="help">Ajutor</a>
+  </nav>
+</footer>
+
+<!-- Dialogs -->
+<dialog class="dlg" id="dlgLibrary" aria-labelledby="libTitle">
+  <div class="dlg-head"><h2 id="libTitle">Bibliotecă de unități</h2><button class="x" data-close aria-label="Închide">×</button></div>
+  <input type="search" id="libSearch" placeholder="Caută: newton, presiune, kWh…" aria-label="Caută unitate">
+  <ul class="lib-list" id="libList"></ul>
+</dialog>
+
+<dialog class="dlg" id="dlgHelp" aria-labelledby="helpTitle">
+  <div class="dlg-head"><h2 id="helpTitle">Cum folosești laboratorul</h2><button class="x" data-close aria-label="Închide">×</button></div>
+  <ol class="steps">
+    <li><b>Teorie &amp; Formule</b> — citește breviarul; filtrează pe capitole cu butoanele rotunjite.</li>
+    <li><b>Convertor</b> — alege mărimea, unitățile și valoarea; vezi pașii transformării. Butonul ⇄ inversează unitățile.</li>
+    <li><b>Multipli &amp; Submultipli</b> — glisează pe scara puterilor lui 10 (merge și cu degetul sau cu săgețile).</li>
+    <li><b>Analiză dimensională</b> — construiește unitatea cerută din unități fundamentale cu butoanele + / −.</li>
+    <li><b>Test</b> — 10 întrebări aleatorii; cel mai bun scor se păstrează pe acest dispozitiv.</li>
+    <li><b>Mod tablă</b> — text mare și ecran complet, pentru proiectare în clasă. <b>Sunet</b> pornește/oprește efectele sonore.</li>
+  </ol>
+  <p class="muted">Scurtături: tastele <kbd>1</kbd>–<kbd>5</kbd> schimbă secțiunea, <kbd>B</kbd> mod tablă, <kbd>S</kbd> sunet.</p>
+</dialog>
+
+<dialog class="dlg" id="dlgAbout" aria-labelledby="aboutTitle">
+  <div class="dlg-head"><h2 id="aboutTitle">Despre</h2><button class="x" data-close aria-label="Închide">×</button></div>
+  <p>Laborator interactiv pentru studiul mărimilor fizice și al unităților de măsură în Sistemul Internațional. Valorile de conversie respectă definițiile SI (BIPM, 2019).</p>
+  <p class="muted">Setările și scorurile se salvează doar local, în browserul tău.</p>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

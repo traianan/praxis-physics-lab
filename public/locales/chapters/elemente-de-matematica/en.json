@@ -15,7 +15,14 @@
     "Funcția de gradul al doilea": "Quadratic function",
     "Parabolă, rădăcini și modele fizice": "Parabola, roots and physical models",
     "Explorează parabola și coeficienții, rădăcinile și vârful; urmărește animații și trei modele de mișcare.": "Explore the parabola and its coefficients, roots and vertex; follow animations and three motion models.",
-    "Graficul unei parabole pe un sistem de axe": "A parabola plotted on coordinate axes"
+    "Graficul unei parabole pe un sistem de axe": "A parabola plotted on coordinate axes",
+    "Mărimi fizice și unități de măsură": "Physical quantities and units of measurement",
+    "Măsurare și unități SI": "Measurement and SI units",
+    "Înțelege mărimile fizice și unitățile SI, explorează conversiile și prefixele, construiește unități derivate și verifică măsurările.": "Learn about physical quantities and SI units, explore conversions and prefixes, build derived units, and check your understanding of measurement.",
+    "Balanță, riglă și simbolurile celor șapte unități SI fundamentale": "A balance, ruler and symbols for the seven SI base units",
+    "Mărimi fizice": "Physical quantities",
+    "Unități SI": "SI units",
+    "Măsurare": "Measurement"
   },
   "simulations": {
     "masurarea-unghiurilor": {
@@ -54,6 +61,19 @@
         "Mathematics",
         "Functions",
         "Graphs",
+        "Offline"
+      ]
+    },
+    "marimi-fizice-unitati": {
+      "title": "Physical quantities and units of measurement",
+      "subtitle": "Measurement and SI units",
+      "description": "Learn about physical quantities and SI units, explore conversions and prefixes, build derived units, and check your understanding of measurement.",
+      "alt": "A balance, ruler and symbols for the seven SI base units",
+      "keywords": "physics physical quantities SI units measurement conversions prefixes dimensional analysis errors scalars vectors",
+      "tags": [
+        "Physical quantities",
+        "SI units",
+        "Measurement",
         "Offline"
       ]
     }

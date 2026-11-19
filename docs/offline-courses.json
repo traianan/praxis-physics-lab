@@ -451,6 +451,17 @@
       ],
       "sharedDependencies": "inlined",
       "localResources": true
+    },
+    {
+      "id": "marimi-fizice-unitati",
+      "file": "public/simulari/marimi-fizice-unitati/marimi-fizice-unitati.zip",
+      "sha256": "3913d0d19c558e3cf8aba34bc4a7743fd81efb7ab5f0efea8541c0a8be31e1ae",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
     }
   ]
 }

@@ -71,6 +71,15 @@
         ],
         "createdAt": "2026-11-19T13:55:30.120Z",
         "reason": "Agent: #home-latest is hidden on desktop; on tablet/mobile its background and border are intentionally removed and it becomes a borderless list, so no visible edge is left without an inset."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "sources/marimi-fizice-unitati/site/css/style.css"
+        ],
+        "createdAt": "2026-11-19T17:38:44.472Z",
+        "reason": "Agent: importer removes these accents from the integrated app; preserve standalone source styling"
       }
     ]
   }

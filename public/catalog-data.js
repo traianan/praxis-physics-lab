@@ -854,5 +854,25 @@ export const simulations = [
     "image": "./assets/functia-gradul-al-doilea.svg",
     "keywords": "functie gradul al doilea parabola radacini discriminant varf quadratic projectile free fall",
     "status": "available"
+  },
+  {
+    "id": "marimi-fizice-unitati",
+    "addedOn": "2026-11-19",
+    "addedOrder": 1,
+    "chapter": "elemente-de-matematica",
+    "title": "Mărimi fizice și unități de măsură",
+    "subtitle": "Măsurare și unități SI",
+    "description": "Înțelege mărimile fizice și unitățile SI, explorează conversiile și prefixele, construiește unități derivate și verifică măsurările.",
+    "alt": "Balanță, riglă și simbolurile celor șapte unități SI fundamentale",
+    "tags": [
+      "Mărimi fizice",
+      "Unități SI",
+      "Măsurare",
+      "Offline"
+    ],
+    "href": "./simulari/marimi-fizice-unitati/index.html",
+    "image": "./assets/marimi-fizice-unitati.svg",
+    "keywords": "fizica marimi fizice unitati masura SI conversii prefixe analiza dimensionala masurare erori scalari vectori",
+    "status": "available"
   }
 ];

@@ -1,0 +1,10 @@
+{
+  "id": "marimi-fizice-unitati",
+  "source": "sources/marimi-fizice-unitati/site",
+  "archive": "marimi-fizice-unitati.zip",
+  "languages": [
+    "ro",
+    "en"
+  ],
+  "boardWorkspaces": "Six theory chapters and four interactive panels"
+}

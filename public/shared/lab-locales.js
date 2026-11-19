@@ -281,5 +281,11 @@ export const labNamespaces = {
     "chapters/elemente-de-matematica",
     "courses/shared",
     "courses/functia-gradul-al-doilea/ui"
+  ],
+  "marimi-fizice-unitati": [
+    "common",
+    "chapters/elemente-de-matematica",
+    "courses/shared",
+    "labs/marimi-fizice-unitati/ui"
   ]
 };

@@ -15,7 +15,14 @@
     "Funcția de gradul al doilea": "Funcția de gradul al doilea",
     "Parabolă, rădăcini și modele fizice": "Parabolă, rădăcini și modele fizice",
     "Explorează parabola și coeficienții, rădăcinile și vârful; urmărește animații și trei modele de mișcare.": "Explorează parabola și coeficienții, rădăcinile și vârful; urmărește animații și trei modele de mișcare.",
-    "Graficul unei parabole pe un sistem de axe": "Graficul unei parabole pe un sistem de axe"
+    "Graficul unei parabole pe un sistem de axe": "Graficul unei parabole pe un sistem de axe",
+    "Mărimi fizice și unități de măsură": "Mărimi fizice și unități de măsură",
+    "Măsurare și unități SI": "Măsurare și unități SI",
+    "Înțelege mărimile fizice și unitățile SI, explorează conversiile și prefixele, construiește unități derivate și verifică măsurările.": "Înțelege mărimile fizice și unitățile SI, explorează conversiile și prefixele, construiește unități derivate și verifică măsurările.",
+    "Balanță, riglă și simbolurile celor șapte unități SI fundamentale": "Balanță, riglă și simbolurile celor șapte unități SI fundamentale",
+    "Mărimi fizice": "Mărimi fizice",
+    "Unități SI": "Unități SI",
+    "Măsurare": "Măsurare"
   },
   "simulations": {
     "masurarea-unghiurilor": {
@@ -56,6 +63,19 @@
         "Grafice",
         "Offline"
       ]
+    },
+    "marimi-fizice-unitati": {
+      "title": "Mărimi fizice și unități de măsură",
+      "subtitle": "Măsurare și unități SI",
+      "description": "Înțelege mărimile fizice și unitățile SI, explorează conversiile și prefixele, construiește unități derivate și verifică măsurările.",
+      "alt": "Balanță, riglă și simbolurile celor șapte unități SI fundamentale",
+      "tags": [
+        "Mărimi fizice",
+        "Unități SI",
+        "Măsurare",
+        "Offline"
+      ],
+      "keywords": "fizica marimi fizice unitati masura SI conversii prefixe analiza dimensionala masurare erori scalari vectori"
     }
   }
 }

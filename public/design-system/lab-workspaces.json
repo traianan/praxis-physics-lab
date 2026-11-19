@@ -654,5 +654,29 @@
         "controls": ".quadratic-controls"
       }
     ]
+  },
+  "marimi-fizice-unitati": {
+    "workspaces": [
+      {
+        "selector": "#panel-teorie .chapter",
+        "layout": "reading"
+      },
+      {
+        "selector": "#panel-convertor",
+        "layout": "native"
+      },
+      {
+        "selector": "#panel-prefixe",
+        "layout": "native"
+      },
+      {
+        "selector": "#panel-dimensiuni",
+        "layout": "native"
+      },
+      {
+        "selector": "#panel-test",
+        "layout": "native"
+      }
+    ]
   }
 }
