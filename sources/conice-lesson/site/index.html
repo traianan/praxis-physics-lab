@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conice · Praxis Science Lab</title>
+  <meta name="description" content="Lecție interactivă de matematică pentru liceu: cercul, elipsa, parabola și hiperbola, obținute prin intersecția unui plan cu un con dublu.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#continut">Sari la conținut</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Praxis Science Lab — acasă">
+      <span class="mark" aria-hidden="true">p</span>
+      <span class="name"><b>praxis</b><span>science lab</span></span>
+    </a>
+    <div class="top-actions">
+      <button class="pill" id="btnDisplay" type="button" title="Mărește textul lecției">Text / afișare</button>
+      <a class="pill" href="#biblioteca" title="Mergi la biblioteca de lecții">Bibliotecă</a>
+      <button class="pill" id="btnHelp" type="button">Cum folosești laboratorul</button>
+      <button class="pill" id="btnBoard" type="button" aria-pressed="false">Mod tablă</button>
+      <button class="pill on" id="btnSound" type="button" aria-pressed="true"><span class="dot" aria-hidden="true"></span><span id="soundLabel">Sunet activ</span></button>
+      <div class="lang">
+        <button class="pill" id="btnLang" type="button" aria-expanded="false" aria-controls="langMenu">RO ▾</button>
+        <div class="lang-menu" id="langMenu">
+          <button type="button">Română (RO)</button>
+          <button type="button" disabled>Engleză (EN) — în curând</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <nav class="crumbs" aria-label="Firimituri">
+    <a href="#biblioteca">Bibliotecă</a><span class="sep">/</span>
+    <a href="#biblioteca">Elemente de matematică</a><span class="sep">/</span>
+    <span aria-current="page">Conice</span>
+  </nav>
+
+  <section class="banner" aria-labelledby="lessonTitle">
+    <span class="bar" aria-hidden="true"></span>
+    <h1 id="lessonTitle">Conice</h1>
+    <span class="sub">O singură familie de curbe: cerc, elipsă, parabolă și hiperbolă</span>
+  </section>
+
+  <div class="tabbar">
+    <div class="tabs" role="tablist" aria-label="Secțiunile lecției">
+      <button class="tab active" id="tab-btn-teorie" data-tab="teorie" role="tab" aria-selected="true" aria-controls="tab-teorie">Teorie</button>
+      <button class="tab" id="tab-btn-animatii" data-tab="animatii" role="tab" aria-selected="false" aria-controls="tab-animatii" tabindex="-1">Animații</button>
+      <button class="tab" id="tab-btn-fizica" data-tab="fizica" role="tab" aria-selected="false" aria-controls="tab-fizica" tabindex="-1">Exemple în fizică</button>
+      <button class="tab" id="tab-btn-exerseaza" data-tab="exerseaza" role="tab" aria-selected="false" aria-controls="tab-exerseaza" tabindex="-1">Exersează</button>
+      <button class="tab" id="tab-btn-harta" data-tab="harta" role="tab" aria-selected="false" aria-controls="tab-harta" tabindex="-1">Hartă conceptuală</button>
+    </div>
+    <div class="prefs-wrap">
+      <button class="chip" id="btnPrefs" type="button" aria-expanded="false" aria-controls="prefsPanel">⚙ Preferințe laborator</button>
+      <div class="popover" id="prefsPanel" role="dialog" aria-label="Preferințe laborator">
+        <h2>Ce arătăm în laborator?</h2>
+        <label><input type="checkbox" id="prefGrid" checked> Grilă și axe carteziene</label>
+        <label><input type="checkbox" id="prefFoci" checked> Focare, directoare și etichete</label>
+        <label><input type="checkbox" id="prefAuto" checked> Pornește animația automat</label>
+        <label><input type="checkbox" id="prefSound" checked> Sunet la interacțiuni</label>
+        <button class="btn" id="btnResetPrefs" type="button">Resetează preferințele</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="panel active" id="tab-teorie" role="tabpanel" aria-labelledby="tab-btn-teorie">
+    <div class="lesson-grid">
+      <article class="card viz-card">
+        <div class="card-head">
+          <h2><span class="ico" aria-hidden="true">◔</span> Plan, con și conică</h2>
+          <span class="badge-live"><i aria-hidden="true"></i> Animație interactivă</span>
+        </div>
+        <div class="dual-viz">
+          <div class="viz-box cone-box">
+            <span class="viz-tag">Plan secant + con dublu</span>
+            <canvas id="coneCanvas" width="380" height="310" aria-label="Reprezentare schematică: un plan intersectează un con dublu și formează o conică"></canvas>
+          </div>
+          <div class="viz-box graph-box">
+            <span class="viz-tag" id="graphTag">Grafic cartezian</span>
+            <canvas id="graphCanvas" width="460" height="310" aria-label="Graficul conicei selectate, cu focare și punct mobil"></canvas>
+          </div>
+        </div>
+        <div class="stage-foot">
+          <span id="stageHint">Planul perpendicular pe axă taie un cerc.</span>
+          <span id="stageProgress" aria-live="polite">Poziție: 0%</span>
+        </div>
+        <div class="formula-strip">
+          <span class="main-eq" id="mainEquation">x² + y² = r²</span>
+          <span class="caption" id="mainCaption">Cerc · excentricitate e = 0</span>
+        </div>
+        <div class="legend">
+          <span><i class="plane" aria-hidden="true"></i> planul de tăiere</span>
+          <span><i class="cut" aria-hidden="true"></i> curba de intersecție</span>
+          <span><i class="focus" aria-hidden="true"></i> focar / punct de interes</span>
+        </div>
+      </article>
+
+      <aside class="card controls-card" aria-labelledby="controlsTitle">
+        <h2 id="controlsTitle"><span class="ico" aria-hidden="true">⚙</span> Comenzi de conică</h2>
+        <div class="play-row">
+          <button class="btn primary" id="btnPlay" type="button" aria-pressed="true">❚❚ Pauză</button>
+          <button class="btn" id="btnReset" type="button">↻ Repornește</button>
+        </div>
+        <div class="mini-title">Tipul conicei</div>
+        <div class="type-switch" role="radiogroup" aria-label="Alege conica">
+          <button class="chip active" type="button" data-conic="circle" role="radio" aria-checked="true"><span class="sym" aria-hidden="true">○</span> Cerc</button>
+          <button class="chip" type="button" data-conic="ellipse" role="radio" aria-checked="false"><span class="sym" aria-hidden="true">⬭</span> Elipsă</button>
+          <button class="chip" type="button" data-conic="parabola" role="radio" aria-checked="false"><span class="sym" aria-hidden="true">∪</span> Parabolă</button>
+          <button class="chip" type="button" data-conic="hyperbola" role="radio" aria-checked="false"><span class="sym" aria-hidden="true">⋈</span> Hiperbolă</button>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><span id="paramLabel">Raza r</span><b id="paramValue">2,00</b></div>
+          <div class="ctl-row">
+            <button class="step" type="button" data-step="param" data-dir="-1" aria-label="Micșorează parametrul">−</button>
+            <input type="range" id="paramRange" min="1" max="4" step="0.05" value="2" aria-labelledby="paramLabel">
+            <button class="step" type="button" data-step="param" data-dir="1" aria-label="Mărește parametrul">+</button>
+          </div>
+          <div class="range-note" id="paramNote">Distanța de la centru la orice punct al cercului.</div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><span id="eccLabel">Excentricitatea e</span><b id="eccValue">0,00</b></div>
+          <div class="ctl-row">
+            <button class="step" type="button" data-step="ecc" data-dir="-1" aria-label="Micșorează excentricitatea">−</button>
+            <input type="range" id="eccRange" min="0" max="2" step="0.01" value="0" aria-labelledby="eccLabel" disabled>
+            <button class="step" type="button" data-step="ecc" data-dir="1" aria-label="Mărește excentricitatea" disabled>+</button>
+          </div>
+          <div class="range-note" id="eccNote">Cercul are excentricitatea 0.</div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><span>Viteza animației</span><b id="speedValue">1,0×</b></div>
+          <div class="ctl-row"><input type="range" id="speedRange" min="0.4" max="2" step="0.1" value="1" aria-label="Viteza animației"></div>
+        </div>
+        <div class="status">
+          <div class="status-row"><span>Poziție în animație</span><b id="progressValue">0%</b></div>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+        <div class="tiles">
+          <div class="tile"><span>Ecuația conicei</span><b id="tileEquation">x² + y² = 4</b></div>
+          <div class="tile"><span>Excentricitate</span><b id="tileEcc">e = 0</b></div>
+          <div class="tile"><span>Focare</span><b id="tileFoci">F = O</b></div>
+          <div class="tile"><span>Element cheie</span><b id="tileKey">raza r = 2</b></div>
+        </div>
+        <details class="explain">
+          <summary>Ce urmărești în animație?</summary>
+          <p>Planul de tăiere traversează conul dublu. Forma curbei de intersecție depinde de unghiul planului față de axa conului.</p>
+          <ul>
+            <li><b>Plan perpendicular</b> pe axă → cerc.</li>
+            <li><b>Plan înclinat</b>, intersectând o singură pânză → elipsă.</li>
+            <li><b>Plan paralel</b> cu o generatoare → parabolă.</li>
+            <li><b>Plan care taie ambele pânze</b> → hiperbolă, cu două ramuri.</li>
+          </ul>
+        </details>
+      </aside>
+    </div>
+
+    <div class="section-heading">
+      <div>
+        <h2>Patru conice, o singură familie</h2>
+        <p>Alege o fișă pentru a o încărca în laboratorul de mai sus.</p>
+      </div>
+      <span class="tag">matematică · liceu</span>
+    </div>
+
+    <div class="conic-grid">
+      <button class="conic-card active" type="button" data-conic-card="circle" aria-pressed="true">
+        <div class="mini-shape" aria-hidden="true"><svg viewBox="0 0 78 52"><circle cx="39" cy="26" r="18" fill="none" stroke="#1c5b3f" stroke-width="2.2"/><circle cx="39" cy="26" r="2.6" fill="#e39b34"/></svg></div>
+        <h3>Cerc <span class="ecc">e = 0</span></h3>
+        <p>Mulțimea punctelor egal depărtate de un punct fix numit centru.</p>
+        <div class="eqline">x² + y² = r²</div>
+      </button>
+      <button class="conic-card" type="button" data-conic-card="ellipse" aria-pressed="false">
+        <div class="mini-shape" aria-hidden="true"><svg viewBox="0 0 78 52"><ellipse cx="39" cy="26" rx="30" ry="16" fill="none" stroke="#1c5b3f" stroke-width="2.2"/><circle cx="26" cy="26" r="2.6" fill="#e39b34"/><circle cx="52" cy="26" r="2.6" fill="#e39b34"/></svg></div>
+        <h3>Elipsă <span class="ecc">0 &lt; e &lt; 1</span></h3>
+        <p>Locul punctelor pentru care suma distanțelor la două focare este constantă.</p>
+        <div class="eqline">x²/a² + y²/b² = 1</div>
+      </button>
+      <button class="conic-card" type="button" data-conic-card="parabola" aria-pressed="false">
+        <div class="mini-shape" aria-hidden="true"><svg viewBox="0 0 78 52"><path d="M13 47 Q39 -8 65 47" fill="none" stroke="#1c5b3f" stroke-width="2.2"/><circle cx="39" cy="18" r="2.8" fill="#e39b34"/><path d="M5 40 H73" stroke="#b8c4ba" stroke-width="1.2" stroke-dasharray="3 3"/></svg></div>
+        <h3>Parabolă <span class="ecc">e = 1</span></h3>
+        <p>Punctele egal depărtate de un focar și de o dreaptă fixă numită directoare.</p>
+        <div class="eqline">y² = 2px</div>
+      </button>
+      <button class="conic-card" type="button" data-conic-card="hyperbola" aria-pressed="false">
+        <div class="mini-shape" aria-hidden="true"><svg viewBox="0 0 78 52"><path d="M10 5 Q39 26 10 47" fill="none" stroke="#1c5b3f" stroke-width="2.2"/><path d="M68 5 Q39 26 68 47" fill="none" stroke="#1c5b3f" stroke-width="2.2"/><circle cx="29" cy="26" r="2.6" fill="#e39b34"/><circle cx="49" cy="26" r="2.6" fill="#e39b34"/></svg></div>
+        <h3>Hiperbolă <span class="ecc">e &gt; 1</span></h3>
+        <p>Locul punctelor pentru care diferența distanțelor la două focare este constantă.</p>
+        <div class="eqline">x²/a² − y²/b² = 1</div>
+      </button>
+    </div>
+
+    <div class="theory-grid">
+      <article class="card">
+        <h2><span class="ico" aria-hidden="true">✦</span> Definiția unificată: focar și directoare</h2>
+        <p>Toate conicele pot fi descrise cu un focar <b>F</b>, o directoare <b>d</b> și un număr pozitiv <b>e</b>, numit excentricitate. Un punct <b>P</b> aparține conicei dacă:</p>
+        <div class="formula-box">PF / dist(P, d) = e</div>
+        <ul>
+          <li><b>e = 0</b> → cerc (caz particular de elipsă).</li>
+          <li><b>0 &lt; e &lt; 1</b> → elipsă.</li>
+          <li><b>e = 1</b> → parabolă.</li>
+          <li><b>e &gt; 1</b> → hiperbolă.</li>
+        </ul>
+        <div class="callout"><span class="cico" aria-hidden="true">✦</span><span>Excentricitatea măsoară cât de alungită este curba. Ea controlează forma, nu doar dimensiunea.</span></div>
+      </article>
+
+      <article class="card">
+        <h2><span class="ico" aria-hidden="true">∿</span> Cum recunoști conica dintr-o ecuație?</h2>
+        <p>Forma generală a unei conice este:</p>
+        <div class="formula-box">Ax² + Bxy + Cy² + Dx + Ey + F = 0</div>
+        <p>Discriminantul <b>Δ = B² − 4AC</b> ne spune tipul curbei (în cazul nedegenerat):</p>
+        <ul>
+          <li><b>Δ &lt; 0</b> → elipsă sau cerc;</li>
+          <li><b>Δ = 0</b> → parabolă;</li>
+          <li><b>Δ &gt; 0</b> → hiperbolă.</li>
+        </ul>
+        <p>Termenul <b>Bxy</b> apare când conica este rotită față de axele de coordonate. În lecție folosim forma canonică, cu axele paralele cu axele de coordonate.</p>
+      </article>
+
+      <article class="card">
+        <h2><span class="ico" aria-hidden="true">◎</span> Elementele principale</h2>
+        <div class="formula-box">Elipsă: c² = a² − b² · Hiperbolă: c² = a² + b²</div>
+        <p><b>a</b> și <b>b</b> sunt semiaxele, iar <b>c</b> este distanța de la centru la focare. La elipsă focarele sunt în interior; la hiperbolă sunt pe axa netraversată de ramuri.</p>
+        <p>La parabolă, distanța de la vârf la focar este <b>p/2</b>, iar directoarea este simetrică față de vârf.</p>
+      </article>
+
+      <article class="card">
+        <h2><span class="ico" aria-hidden="true">⌁</span> De ce "conice"?</h2>
+        <p>Numele vine din faptul că toate apar prin tăierea unui <b>con circular dublu</b> cu un plan. Un con dublu este format din două pânze care se întâlnesc în vârf.</p>
+        <ul>
+          <li>Unghiul planului față de axă schimbă tipul curbei.</li>
+          <li>Poziția planului schimbă dimensiunea și deschiderea ei.</li>
+          <li>Dacă planul trece prin vârf, putem obține cazuri degenerate: un punct, o dreaptă sau două drepte.</li>
+        </ul>
+        <div class="callout"><span class="cico" aria-hidden="true">↗</span><span>Încearcă să modifici parametrii din laborator și urmărește cum se schimbă simultan planul, curba și ecuația.</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-animatii" role="tabpanel" aria-labelledby="tab-btn-animatii" hidden>
+    <div class="section-heading" style="margin-top:0">
+      <div>
+        <h2>Construcția focală a conicei</h2>
+        <p>Un punct mobil P păstrează raportul dintre distanța la focar și distanța la directoare.</p>
+      </div>
+      <span class="tag">experiment interactiv</span>
+    </div>
+    <div class="anim-grid">
+      <article class="card">
+        <div class="focus-canvas-wrap">
+          <canvas id="focusCanvas" width="760" height="405" aria-label="Construcție focală animată: focar, directoare și punct mobil"></canvas>
+        </div>
+        <div class="focus-caption">
+          <span id="focusHint">Elipsă: punctul P se mișcă pe curbă, iar raportul PF / PD respectă excentricitatea.</span>
+          <span aria-live="polite" id="focusLive">e = 0,70</span>
+        </div>
+        <div class="focus-legend">
+          <span><i style="background:#e39b34"></i> focar F</span>
+          <span><i style="background:#a94f36;border-radius:2px"></i> directoare d</span>
+          <span><i style="background:#1c5b3f"></i> punct mobil P</span>
+        </div>
+      </article>
+
+      <aside class="card">
+        <h2><span class="ico" aria-hidden="true">✧</span> Controlează forma</h2>
+        <div class="anim-actions">
+          <button class="btn primary" id="btnFocusPlay" type="button" aria-pressed="true">❚❚ Pauză</button>
+          <button class="btn" id="btnFocusStep" type="button">Pas cu pas</button>
+          <button class="btn" id="btnFocusReset" type="button">↻ Reset</button>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><span>Excentricitatea e</span><b id="focusEccValue">0,70</b></div>
+          <input type="range" id="focusEccRange" min="0" max="2" step="0.01" value="0.7" aria-label="Excentricitatea construcției focale">
+        </div>
+        <div class="ecc-readout">
+          <div class="big" id="focusType">Elipsă</div>
+          <p id="focusDefinition">0 &lt; e &lt; 1: suma distanțelor la focare este constantă. Aici urmărim definiția echivalentă cu focar și directoare.</p>
+        </div>
+        <div class="formula-box" id="focusPolarBox" style="margin-top:14px"><span id="focusPolarFirst">r = e·d / (1 + e·cos θ)</span><br><span id="focusPolarSecond" hidden></span></div>
+        <p id="focusPolarNote" style="font-size:14px;color:var(--muted);margin:6px 0 0">Focarul este în origine, iar directoarea are ecuația x = d. Pentru hiperbolă, prima expresie descrie ramura x &lt; d, iar a doua ramura x &gt; d; pentru elipsă și parabolă se folosește prima expresie. Unghiul θ este măsurat față de axa focală.</p>
+        <details class="explain" open>
+          <summary>Citește construcția</summary>
+          <ul>
+            <li><b>F</b> este focarul, iar <b>d</b> este directoarea.</li>
+            <li>Segmentul <b>PF</b> este distanța de la punct la focar.</li>
+            <li>Segmentul <b>PD</b> este distanța perpendiculară de la P la directoare.</li>
+            <li>Raportul <b>PF / PD</b> rămâne egal cu excentricitatea.</li>
+          </ul>
+        </details>
+      </aside>
+    </div>
+
+    <div class="theory-grid">
+      <article class="card">
+        <h2><span class="ico" aria-hidden="true">♻</span> De ce aceeași definiție funcționează?</h2>
+        <p>Dacă pornești de la un focar și o directoare, mulțimea punctelor cu raport constant este exact o conică. Schimbând doar valoarea lui e, treci continuu de la cerc la elipsă, apoi la parabolă și hiperbolă.</p>
+        <div class="formula-box">cerc → elipsă → parabolă → hiperbolă</div>
+      </article>
+      <article class="card">
+        <h2><span class="ico" aria-hidden="true">🎚</span> Sugestii de explorare</h2>
+        <ul>
+          <li>Setează e = 0 și observă cercul.</li>
+          <li>Crește lent spre e = 1: elipsa devine tot mai alungită.</li>
+          <li>La e = 1, a doua ramură fuge la infinit și rămâne parabola.</li>
+          <li>Pentru e &gt; 1 apar două ramuri: hiperbola.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-fizica" role="tabpanel" aria-labelledby="tab-btn-fizica" hidden>
+    <div class="section-heading" style="margin-top:0">
+      <div>
+        <h2>Conicele în lumea reală</h2>
+        <p>De la orbitele planetelor la antene, GPS și traiectoria unei mingi.</p>
+      </div>
+      <span class="tag">aplicații</span>
+    </div>
+
+    <div class="physics-grid">
+      <article class="card physics-card">
+        <div class="phys-art orbit-art" aria-hidden="true">
+          <svg viewBox="80 0 360 160" role="presentation">
+            <ellipse cx="260" cy="80" rx="72" ry="71.98994" fill="none" stroke="var(--green-2)" stroke-width="2.4"/>
+            <path d="M261.203 80 L310.912 130.904" fill="none" stroke="var(--sky)" stroke-width="1.6" stroke-dasharray="4 4"/>
+            <circle cx="261.203" cy="80" r="7" fill="var(--amber)" stroke="var(--card)" stroke-width="2"/>
+            <circle cx="258.797" cy="80" r="3.2" fill="var(--amber)" stroke="var(--card)" stroke-width="1.4"/>
+            <circle cx="310.912" cy="130.904" r="7" fill="var(--green-2)" stroke="var(--card)" stroke-width="2"/>
+            <path d="M240 67 L257.4 78" fill="none" stroke="var(--rust)" stroke-width="1"/>
+            <text x="222" y="64" font-size="14" fill="var(--rust)">F₂</text>
+            <text x="271" y="64" font-size="14" fill="var(--rust)">F₁ · Soare</text>
+            <text x="292" y="149" font-size="14" fill="var(--green-2)">planetă</text>
+          </svg>
+        </div>
+        <div class="phys-body">
+          <span class="tag">mecanică cerească</span><span class="conic-pill">elipsă</span>
+          <h3>Orbita Pământului</h3>
+          <p>Excentricitatea orbitei Pământului este aproximativ 0,0167, deci traiectoria este aproape circulară. Soarele se află în focarul F₁, iar F₂ este foarte aproape de el.</p>
+          <a class="internal-link" href="../mecanica-cereasca/index.html">Explorează mecanica cerească →</a>
+          <div class="phys-formula">r(θ) = p / (1 + e·cos θ), 0 &lt; e &lt; 1</div>
+        </div>
+      </article>
+
+      <article class="card physics-card">
+        <div class="phys-art" aria-hidden="true">
+          <svg viewBox="0 0 520 160" role="presentation">
+            <defs>
+              <marker id="projectile-velocity-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" fill="var(--sky)"/>
+              </marker>
+            </defs>
+            <path d="M65 142 Q260 -20 455 142" fill="none" stroke="var(--green-2)" stroke-width="2.6"/>
+            <path d="M65 144 H455" stroke="var(--line)" stroke-width="1.4"/>
+            <circle cx="197.6" cy="69.3" r="7" fill="var(--green-2)" stroke="var(--card)" stroke-width="2"/>
+            <path d="M197.6 69.3 L225.6 61.9" fill="none" stroke="var(--sky)" stroke-width="2" marker-end="url(#projectile-velocity-arrow)"/>
+            <text x="184" y="60" font-size="12" fill="var(--green-2)">P</text>
+            <text x="229" y="59" font-size="12" fill="var(--sky)">v</text>
+            <text x="65" y="157" font-size="12" fill="var(--muted)">lansare</text>
+            <text x="407" y="157" font-size="12" fill="var(--muted)">aterizare</text>
+          </svg>
+        </div>
+        <div class="phys-body">
+          <span class="tag">cinematica</span><span class="conic-pill">parabolă</span>
+          <h3>Mișcarea proiectilului</h3>
+          <p>Fără rezistența aerului, traiectoria unui proiectil lansat oblic este o parabolă. Componenta orizontală a vitezei rămâne constantă.</p>
+          <div class="phys-formula">y = x·tan α − g·x² / (2v₀²·cos²α)</div>
+        </div>
+      </article>
+
+      <article class="card physics-card">
+        <div class="phys-art" aria-hidden="true">
+          <svg viewBox="0 0 520 160" role="presentation">
+            <path d="M179.8 120 L183.8 115.3 L187.3 110.8 L190.3 106.5 L193 102.4 L195.1 98.5 L196.9 94.6 L198.3 90.9 L199.2 87.2 L199.8 83.6 L200 80 L199.8 76.4 L199.2 72.8 L198.3 69.1 L196.9 65.4 L195.1 61.5 L193 57.6 L190.3 53.5 L187.3 49.2 L183.8 44.7 L179.8 40" fill="none" stroke="var(--green-2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M340.2 120 L336.2 115.3 L332.7 110.8 L329.7 106.5 L327 102.4 L324.9 98.5 L323.1 94.6 L321.7 90.9 L320.8 87.2 L320.2 83.6 L320 80 L320.2 76.4 L320.8 72.8 L321.7 69.1 L323.1 65.4 L324.9 61.5 L327 57.6 L329.7 53.5 L332.7 49.2 L336.2 44.7 L340.2 40" fill="none" stroke="var(--green-2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M185 80 L340.2 40 M335 80 L340.2 40" fill="none" stroke="var(--sky)" stroke-width="1.4" stroke-dasharray="4 4"/>
+            <circle cx="185" cy="80" r="6" fill="var(--amber)" stroke="var(--card)" stroke-width="2"/>
+            <circle cx="335" cy="80" r="6" fill="var(--amber)" stroke="var(--card)" stroke-width="2"/>
+            <circle cx="340.2" cy="40" r="7" fill="var(--green-2)" stroke="var(--card)" stroke-width="2"/>
+            <text x="151" y="101" font-size="12" fill="var(--rust)">stația A · F₁</text>
+            <text x="328" y="101" font-size="12" fill="var(--rust)">stația B · F₂</text>
+            <text x="348" y="36" font-size="12" fill="var(--green-2)">P</text>
+          </svg>
+        </div>
+        <div class="phys-body">
+          <span class="tag">navigație</span><span class="conic-pill">hiperbolă</span>
+          <h3>Localizare prin diferență de timp</h3>
+          <p>Sistemele de navigație compară momentele în care ajunge un semnal de la două stații. Locurile cu aceeași diferență de timp formează o hiperbolă.</p>
+          <div class="phys-formula">|PF₁ − PF₂| = 2a = constant</div>
+        </div>
+      </article>
+
+      <article class="card physics-card">
+        <div class="phys-art" aria-hidden="true">
+          <svg viewBox="0 0 520 160" role="presentation">
+            <defs>
+              <marker id="antenna-incoming-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" fill="var(--sky)"/>
+              </marker>
+              <marker id="antenna-reflected-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" fill="var(--sky)"/>
+              </marker>
+            </defs>
+            <path d="M152 78 Q260 186 368 78" fill="none" stroke="var(--green-2)" stroke-width="2.8"/>
+            <path d="M188 18 V108 M332 18 V108" fill="none" stroke="var(--sky)" stroke-width="1.6" marker-end="url(#antenna-incoming-arrow)"/>
+            <path d="M188 108 L260 78 M332 108 L260 78" fill="none" stroke="var(--sky)" stroke-width="1.8" marker-end="url(#antenna-reflected-arrow)"/>
+            <circle cx="260" cy="78" r="7" fill="var(--amber)" stroke="var(--card)" stroke-width="2"/>
+            <text x="272" y="74" font-size="12" fill="var(--rust)">F · focar</text>
+            <text x="22" y="27" font-size="12" fill="var(--sky)">raze paralele</text>
+          </svg>
+        </div>
+        <div class="phys-body">
+          <span class="tag">optică</span><span class="conic-pill">parabolă</span>
+          <h3>Antene și concentratoare solare</h3>
+          <p>Razele paralele cu axa unei parabole se reflectă spre focar. De aceea antenele satelit și concentratele solare au formă parabolică.</p>
+          <div class="phys-formula">d(P, F) = d(P, directoare)</div>
+        </div>
+      </article>
+
+      <article class="card physics-card">
+        <div class="phys-art" aria-hidden="true">
+          <svg viewBox="0 0 520 160" role="presentation">
+            <defs>
+              <marker id="circular-velocity-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" fill="var(--sky)"/>
+              </marker>
+            </defs>
+            <circle cx="260" cy="80" r="48" fill="none" stroke="var(--green-2)" stroke-width="2.5"/>
+            <path d="M260 80 L294 46" fill="none" stroke="var(--sky)" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <path d="M294 46 L272 24" fill="none" stroke="var(--sky)" stroke-width="2" marker-end="url(#circular-velocity-arrow)"/>
+            <circle cx="260" cy="80" r="6" fill="var(--amber)" stroke="var(--card)" stroke-width="2"/>
+            <circle cx="294" cy="46" r="7" fill="var(--green-2)" stroke="var(--card)" stroke-width="2"/>
+            <text x="272" y="94" font-size="12" fill="var(--rust)">O = F₁ = F₂</text>
+            <text x="301" y="42" font-size="12" fill="var(--green-2)">P</text>
+            <text x="264" y="20" font-size="12" fill="var(--sky)">v</text>
+          </svg>
+        </div>
+        <div class="phys-body">
+          <span class="tag">mișcare periodică</span><span class="conic-pill">cerc</span>
+          <h3>Mișcarea circulară uniformă</h3>
+          <p>Un corp care se mișcă pe un cerc cu modulul vitezei constant are accelerație orientată spre centru. Cercul este cazul particular al elipsei cu focarele confundate.</p>
+          <a class="internal-link" href="../miscarea-circulara-uniforma/index.html">Vezi laboratorul mișcării circulare →</a>
+          <div class="phys-formula">a = v² / r, x² + y² = r²</div>
+        </div>
+      </article>
+
+      <article class="card physics-card">
+        <div class="phys-art" aria-hidden="true">
+          <svg viewBox="0 0 520 160" role="presentation">
+            <defs>
+              <marker id="gallery-ray-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" fill="var(--sky)"/>
+              </marker>
+            </defs>
+            <ellipse cx="260" cy="80" rx="120" ry="68" fill="none" stroke="var(--green-2)" stroke-width="2.5"/>
+            <path d="M161.1 80 L260 8 L358.9 80" fill="none" stroke="var(--sky)" stroke-width="1.6" stroke-dasharray="4 4" marker-mid="url(#gallery-ray-arrow)" marker-end="url(#gallery-ray-arrow)"/>
+            <circle cx="161.1" cy="80" r="6" fill="var(--amber)" stroke="var(--card)" stroke-width="2"/>
+            <circle cx="358.9" cy="80" r="6" fill="var(--amber)" stroke="var(--card)" stroke-width="2"/>
+            <circle cx="260" cy="8" r="7" fill="var(--green-2)" stroke="var(--card)" stroke-width="2"/>
+            <text x="145" y="103" font-size="12" fill="var(--rust)">F₁ · sursă</text>
+            <text x="355" y="103" font-size="12" fill="var(--rust)">F₂</text>
+            <text x="265" y="22" font-size="12" fill="var(--green-2)">P</text>
+          </svg>
+        </div>
+        <div class="phys-body">
+          <span class="tag">acustică / optică</span><span class="conic-pill">elipsă</span>
+          <h3>Galerii de șoapte și unde</h3>
+          <p>Într-o încăpere eliptică, un sunet emis într-un focar se reflectă spre celălalt focar. Aceeași geometrie apare la lentile și oglinzi eliptice.</p>
+          <div class="phys-formula">PF₁ + PF₂ = 2a</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-exerseaza" role="tabpanel" aria-labelledby="tab-btn-exerseaza" hidden>
+    <div class="quiz-wrap">
+      <article class="card quiz-card">
+        <div class="quiz-top">
+          <div>
+            <h2 style="margin:0"><span class="ico" aria-hidden="true">✓</span> Verifică-ți înțelegerea</h2>
+            <p style="margin:2px 0 0;color:var(--muted);font-size:14px">Alege un răspuns pentru fiecare întrebare. Feedbackul apare imediat.</p>
+          </div>
+          <div class="quiz-score" id="quizScore" aria-live="polite">0 / 6 corecte</div>
+        </div>
+        <div class="quiz-progress" aria-hidden="true"><span id="quizProgress"></span></div>
+        <div id="quizQuestions"></div>
+      </article>
+
+      <aside class="quiz-side">
+        <div class="card">
+          <h2><span class="ico" aria-hidden="true">◎</span> Rezultatul tău</h2>
+          <div class="score-ring" id="scoreRing"><div><strong id="scoreNumber">0</strong><small>din 6</small></div></div>
+          <p id="scoreMessage">Începe cu prima întrebare. Fiecare răspuns corect te apropie de 6/6.</p>
+          <div class="quiz-actions">
+            <button class="btn primary" id="btnQuizReset" type="button">↻ Reîncepe testul</button>
+          </div>
+          <details class="explain">
+            <summary>Indiciu general</summary>
+            <p>Urmărește două lucruri: numărul de pânze ale conului pe care le taie planul și valoarea excentricității.</p>
+          </details>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-harta" role="tabpanel" aria-labelledby="tab-btn-harta" hidden>
+    <div class="section-heading" style="margin-top:0">
+      <div>
+        <h2>Harta conceptuală a conicelor</h2>
+        <p>Leagă definițiile, ecuațiile, excentricitatea și aplicațiile într-o singură imagine.</p>
+      </div>
+      <span class="tag">sinteză</span>
+    </div>
+
+    <article class="card map-card">
+      <svg class="concept-map" viewBox="0 0 1000 610" role="img" aria-labelledby="mapTitle mapDesc">
+        <title id="mapTitle">Harta conceptuală a conicelor</title>
+        <desc id="mapDesc">Centrul este familia conicelor. Ramurile sunt cercul, elipsa, parabola și hiperbola, fiecare cu excentricitate, ecuație și aplicație.</desc>
+        <defs><marker id="mapArrow" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c7d0c8"></path></marker></defs>
+        <path class="connector" d="M500 250 C500 300 129 285 129 345" marker-end="url(#mapArrow)"></path>
+        <path class="connector" d="M500 250 C500 300 375 285 375 345" marker-end="url(#mapArrow)"></path>
+        <path class="connector" d="M500 250 C500 300 621 285 621 345" marker-end="url(#mapArrow)"></path>
+        <path class="connector" d="M500 250 C500 300 867 285 867 345" marker-end="url(#mapArrow)"></path>
+        <path class="connector" d="M500 250 C500 330 500 310 500 405" marker-end="url(#mapArrow)"></path>
+        <rect class="node-main" x="382" y="128" width="236" height="122" rx="18"></rect>
+        <text class="main-title" x="500" y="184" text-anchor="middle">Conice</text>
+        <text class="main-sub" x="500" y="208" text-anchor="middle">intersecția plan-con</text>
+        <text class="node-text" x="500" y="229" text-anchor="middle" fill="#a8c4b6">o familie, patru forme</text>
+
+        <rect class="node" x="22" y="345" width="215" height="180" rx="15"></rect>
+        <text class="branch-title" x="129" y="379" text-anchor="middle">Cerc</text>
+        <path d="M42 410 H237" stroke="#e2e6df"></path>
+        <text class="tiny" x="129" y="438" text-anchor="middle">x² + y² = r²</text>
+        <text class="label" x="129" y="467" text-anchor="middle">e = 0</text>
+        <text class="node-text" x="129" y="493" text-anchor="middle">roți, mișcare circulară</text>
+
+        <rect class="node" x="268" y="345" width="215" height="180" rx="15"></rect>
+        <text class="branch-title" x="375" y="379" text-anchor="middle">Elipsă</text>
+        <path d="M288 410 H483" stroke="#e2e6df"></path>
+        <text class="tiny" x="375" y="438" text-anchor="middle">x²/a² + y²/b² = 1</text>
+        <text class="label" x="375" y="467" text-anchor="middle">0 &lt; e &lt; 1</text>
+        <text class="node-text" x="375" y="493" text-anchor="middle">orbite, galerii de șoapte</text>
+
+        <rect class="node" x="514" y="345" width="215" height="180" rx="15"></rect>
+        <text class="branch-title" x="621" y="379" text-anchor="middle">Parabolă</text>
+        <path d="M534 410 H729" stroke="#e2e6df"></path>
+        <text class="tiny" x="621" y="438" text-anchor="middle">y² = 2px</text>
+        <text class="label" x="621" y="467" text-anchor="middle">e = 1</text>
+        <text class="node-text" x="621" y="493" text-anchor="middle">proiectile, antene</text>
+
+        <rect class="node" x="760" y="345" width="215" height="180" rx="15"></rect>
+        <text class="branch-title" x="867" y="379" text-anchor="middle">Hiperbolă</text>
+        <path d="M780 410 H975" stroke="#e2e6df"></path>
+        <text class="tiny" x="867" y="438" text-anchor="middle">x²/a² − y²/b² = 1</text>
+        <text class="label" x="867" y="467" text-anchor="middle">e &gt; 1</text>
+        <text class="node-text" x="867" y="493" text-anchor="middle">GPS, navigație, unde</text>
+
+        <rect class="node" x="320" y="555" width="360" height="44" rx="12" style="fill:var(--amber-soft);stroke:#e8c388"></rect>
+        <text class="node-text" x="500" y="582" text-anchor="middle" fill="#a94f36">Definiție unificată: PF / dist(P, d) = e</text>
+      </svg>
+    </article>
+    <div class="map-legend">
+      <span><i style="background:#12432e"></i> concept central</span>
+      <span><i style="background:#eef3ef;border:1px solid #d8e0d8"></i> ramură</span>
+      <span><i style="background:#fbf0db;border:1px solid #e8c388"></i> definiție unificatoare</span>
+    </div>
+  </section>
+
+  <div class="download" id="biblioteca">
+    <button class="btn" id="btnDownload" type="button">⬇ Descarcă lecția (HTML)</button>
+    <a href="https://ro.wikipedia.org/wiki/Conic%C4%83" target="_blank" rel="noopener">Wikipedia · Conică</a>
+    <a href="https://www.geogebra.org/m/YCZa8TAH" target="_blank" rel="noopener">GeoGebra · conice</a>
+    <a href="https://ro.khanacademy.org/math/geometry" target="_blank" rel="noopener">Khan Academy</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>© 2026 Praxis Science Lab</span>
+    <a href="#top">Înapoi sus</a>
+    <a href="#biblioteca">Bibliotecă</a>
+    <a href="https://ro.wikipedia.org/wiki/Conic%C4%83" target="_blank" rel="noopener">Resurse</a>
+  </div>
+</footer>
+
+<dialog class="modal" id="helpDialog" aria-labelledby="helpTitle">
+  <div class="modal-inner">
+    <button class="modal-close" id="btnHelpClose" type="button" aria-label="Închide">✕</button>
+    <h2 id="helpTitle">Cum folosești laboratorul</h2>
+    <p>Această lecție are cinci secțiuni. Poți trece de la teorie la animații, aplicații, exerciții și harta conceptuală fără să reîncarci pagina.</p>
+    <ul>
+      <li><b>Teorie:</b> alege conica și mișcă sliders pentru a schimba forma. Graficul și planul de tăiere se actualizează împreună.</li>
+      <li><b>Animații:</b> modifică excentricitatea și urmărește construcția focar-directoare.</li>
+      <li><b>Exersează:</b> primești feedback imediat și un scor final.</li>
+      <li><b>Sunet:</b> butonul din bara de sus pornește sau oprește sunetele scurte de interacțiune.</li>
+    </ul>
+    <p style="margin-bottom:0">Sugestie: folosește tabul pentru navigare și tastele săgeți pentru a schimba sliders.</p>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>

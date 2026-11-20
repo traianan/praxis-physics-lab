@@ -874,5 +874,25 @@ export const simulations = [
     "image": "./assets/marimi-fizice-unitati.svg",
     "keywords": "fizica marimi fizice unitati masura SI conversii prefixe analiza dimensionala masurare erori scalari vectori",
     "status": "available"
+  },
+  {
+    "id": "conice",
+    "addedOn": "2026-11-20",
+    "addedOrder": 1,
+    "chapter": "elemente-de-matematica",
+    "title": "Conicele",
+    "subtitle": "Cerc, elipsă, parabolă și hiperbolă",
+    "description": "Înțelege cum apar conicele din secțiunile unui con dublu; explorează focarele, directoarele, animațiile, aplicațiile fizice și exersează.",
+    "alt": "Cerc, elipsă, parabolă și hiperbolă pe axe coordonate",
+    "tags": [
+      "Matematică",
+      "Geometrie analitică",
+      "Conice",
+      "Animații"
+    ],
+    "href": "./simulari/conice/index.html",
+    "image": "./assets/conice.svg",
+    "keywords": "conice cerc elipsa parabola hiperbola excentricitate focar directoare sectiune conica orbite proiectile GPS",
+    "status": "available"
   }
 ];

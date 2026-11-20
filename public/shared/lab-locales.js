@@ -287,5 +287,11 @@ export const labNamespaces = {
     "chapters/elemente-de-matematica",
     "courses/shared",
     "labs/marimi-fizice-unitati/ui"
+  ],
+  "conice": [
+    "common",
+    "chapters/elemente-de-matematica",
+    "courses/shared",
+    "courses/conice/ui"
   ]
 };

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Familia conicelor</title>
+  <desc id="desc">Cerc, elipsă, parabolă și hiperbolă desenate pe axe coordonate.</desc>
+  <rect width="640" height="400" rx="28" fill="#f7f5ee"/>
+  <g stroke="#d8dfd8" stroke-width="2"><path d="M80 200h480M320 50v300"/></g>
+  <g fill="none" stroke="#245b43" stroke-width="8" stroke-linecap="round">
+    <circle cx="155" cy="200" r="64"/><ellipse cx="320" cy="200" rx="90" ry="57"/>
+    <path d="M430 110q-85 90 0 180"/><path d="M520 110q85 90 0 180M520 110q-85 90 0 180M430 110q85 90 0 180"/>
+  </g>
+  <g fill="#d89839"><circle cx="320" cy="200" r="7"/><circle cx="476" cy="200" r="7"/><circle cx="364" cy="200" r="7"/></g>
+  <g fill="#17281e" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="650" text-anchor="middle">
+    <text x="155" y="330">Cerc</text><text x="320" y="330">Elipsă</text><text x="430" y="330">Parabolă</text><text x="520" y="330">Hiperbolă</text>
+  </g>
+</svg>

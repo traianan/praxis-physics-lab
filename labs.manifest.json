@@ -2146,6 +2146,61 @@
         "kind": "archive",
         "file": "marimi-fizice-unitati.zip"
       }
+    },
+    {
+      "metadata": {
+        "id": "conice",
+        "addedOn": "2026-11-20",
+        "addedOrder": 1,
+        "chapter": "elemente-de-matematica",
+        "title": "Conicele",
+        "subtitle": "Cerc, elipsă, parabolă și hiperbolă",
+        "description": "Înțelege cum apar conicele din secțiunile unui con dublu; explorează focarele, directoarele, animațiile, aplicațiile fizice și exersează.",
+        "alt": "Cerc, elipsă, parabolă și hiperbolă pe axe coordonate",
+        "tags": [
+          "Matematică",
+          "Geometrie analitică",
+          "Conice",
+          "Animații"
+        ],
+        "href": "./simulari/conice/index.html",
+        "image": "./assets/conice.svg",
+        "keywords": "conice cerc elipsa parabola hiperbola excentricitate focar directoare sectiune conica orbite proiectile GPS",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {
+            "selector": "#tab-teorie .lesson-grid",
+            "layout": "native",
+            "scene": ".viz-card",
+            "controls": ".controls-card"
+          },
+          {
+            "selector": "#tab-animatii .anim-grid",
+            "layout": "native",
+            "scene": ".anim-grid .card:first-child",
+            "controls": ".anim-grid .card:nth-child(2)"
+          },
+          {
+            "selector": "#tab-fizica .physics-grid",
+            "layout": "native"
+          }
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/elemente-de-matematica",
+        "courses/shared",
+        "courses/conice/ui"
+      ],
+      "inlineLocales": [
+        "courses/conice/ui"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "conice.zip"
+      }
     }
   ]
 }

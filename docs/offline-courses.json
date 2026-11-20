@@ -462,6 +462,17 @@
       ],
       "sharedDependencies": "inlined",
       "localResources": true
+    },
+    {
+      "id": "conice",
+      "file": "public/simulari/conice/conice.zip",
+      "sha256": "ed70a9cdf7ae6f4ed0558721b11f3034fa6cd76c76fb42f9aeb1df546c8ea489",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
     }
   ]
 }

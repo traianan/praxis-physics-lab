@@ -678,5 +678,25 @@
         "layout": "native"
       }
     ]
+  },
+  "conice": {
+    "workspaces": [
+      {
+        "selector": "#tab-teorie .lesson-grid",
+        "layout": "native",
+        "scene": ".viz-card",
+        "controls": ".controls-card"
+      },
+      {
+        "selector": "#tab-animatii .anim-grid",
+        "layout": "native",
+        "scene": ".anim-grid .card:first-child",
+        "controls": ".anim-grid .card:nth-child(2)"
+      },
+      {
+        "selector": "#tab-fizica .physics-grid",
+        "layout": "native"
+      }
+    ]
   }
 }

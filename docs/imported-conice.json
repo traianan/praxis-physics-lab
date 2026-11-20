@@ -1,0 +1,9 @@
+{
+  "id": "conice",
+  "source": "sources/conice-lesson/site/",
+  "files": {
+    "index.html": "24c21a502b9005c49bd3591b0a31c7a29040292393348a2b2fc02d483c693772",
+    "app.js": "be524c34596acc2ca5843d7ca7bf2c6e26ee55552da6a2fb390efa52ce92188b",
+    "styles.css": "8094005f3a209125dc33cf268a408cf8feaf949838cfd5b1ae3c63f14743ae2f"
+  }
+}

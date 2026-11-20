@@ -49,7 +49,8 @@
     "import:networks": "node scripts/import-networks.mjs",
     "import:linear-function": "node scripts/import-linear-function.mjs",
     "import:quadratic-function": "node scripts/import-quadratic-function.mjs",
-    "import:magnitudes": "node scripts/import-magnitudes.mjs"
+    "import:magnitudes": "node scripts/import-magnitudes.mjs",
+    "import:conics": "node scripts/import-conics.mjs"
   },
   "devDependencies": {
     "@xyflow/react": "^12.12.1",
