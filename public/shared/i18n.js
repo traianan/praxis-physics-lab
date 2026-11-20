@@ -2,8 +2,20 @@
 (() => {
  if(window.PraxisI18n)return;
  const supported=['ro','en'],cache=new Map(),sourceNodes=new WeakMap(),sourceAttrs=new WeakMap();
- let language='ro',messages={},patterns=[],namespaces=[],base='./locales/',revision=0,courseMode=false,fragments=null,contexts=[],memo=new Map();
- try{const saved=localStorage.getItem('praxis-language');if(supported.includes(saved))language=saved;}catch{}
+ const readSavedLanguage=()=>{try{const saved=localStorage.getItem('praxis-language');return supported.includes(saved)?saved:null;}catch{return null;}};
+ const saveLanguage=lang=>{try{localStorage.setItem('praxis-language',lang);}catch{}};
+ const browserRegionLanguage=()=>{try{return ['RO','MD'].includes(new Intl.Locale(navigator.language||'').region)?'ro':'en';}catch{return 'en';}};
+ async function detectInitialLanguage(){
+  if(!['http:','https:'].includes(location.protocol))return browserRegionLanguage();
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),2500);
+  try{const response=await fetch(new URL('/api/language',location.href),{headers:{Accept:'application/json'},cache:'no-store',credentials:'same-origin',signal:controller.signal});if(!response.ok)return browserRegionLanguage();const data=await response.json();return supported.includes(data.language)?data.language:browserRegionLanguage();}
+  catch{return browserRegionLanguage();}
+  finally{clearTimeout(timer);}
+ }
+ let language=readSavedLanguage()||browserRegionLanguage(),messages={},patterns=[],namespaces=[],base='./locales/',revision=0,courseMode=false,fragments=null,contexts=[],memo=new Map();
+ let userSelectedLanguage=Boolean(readSavedLanguage());
+ const initialLanguagePromise=userSelectedLanguage?Promise.resolve(language):detectInitialLanguage();
+ let initialResolution;
  const escape=s=>s.replace(/[.*+?^{}$()|[\]\\]/g,'\\$&');
  const normal=s=>String(s).replace(/\s+/g,' ').trim();
  const substitute=(text,values)=>text.replace(/\{([a-zA-Z][\w]*)\}/g,(all,key)=>String(values[key]??all));
@@ -61,11 +73,23 @@
   for(const select of document.querySelectorAll('[data-language-select]'))if(select.value!==language)select.value=language;
  }
  async function load(lang,ns){const key=lang+':'+ns;if(!cache.has(key)){const response=await fetch(new URL(ns+'/'+lang+'.json',new URL(base,location.href)));if(!response.ok)throw new Error('Missing translation: '+ns+'/'+lang);cache.set(key,await response.json());}return cache.get(key);}
- async function init({baseUrl='./locales/',namespaceList=['common'],embedded}={}){base=baseUrl;namespaces=namespaceList;if(embedded)for(const [lang,files]of Object.entries(embedded))for(const [ns,data]of Object.entries(files))cache.set(lang+':'+ns,data);await Promise.all(namespaces.map(ns=>load(language,ns)));compose();apply(document);return language;}
- function initEmbedded({namespaceList,embedded}){namespaces=namespaceList;for(const [lang,files]of Object.entries(embedded))for(const [ns,data]of Object.entries(files))cache.set(lang+':'+ns,data);compose();}
+ async function resolveInitialLanguage(){
+  if(userSelectedLanguage)return language;
+  if(!initialResolution)initialResolution=(async()=>{
+   const detected=await initialLanguagePromise;
+   if(userSelectedLanguage)return language;
+   const saved=readSavedLanguage();if(saved){language=saved;userSelectedLanguage=true;return language;}
+   if(detected!==language){await Promise.all(namespaces.map(ns=>load(detected,ns).catch(()=>undefined)));if(userSelectedLanguage)return language;language=detected;compose();apply(document);window.dispatchEvent(new CustomEvent('praxis-language-change',{detail:{language}}));}
+   saveLanguage(language);userSelectedLanguage=true;return language;
+  })();
+  return initialResolution;
+ }
+ async function init({baseUrl='./locales/',namespaceList=['common'],embedded}={}){base=baseUrl;namespaces=namespaceList;if(embedded)for(const [lang,files]of Object.entries(embedded))for(const [ns,data]of Object.entries(files))cache.set(lang+':'+ns,data);await resolveInitialLanguage();await Promise.all(namespaces.map(ns=>load(language,ns)));compose();apply(document);return language;}
+ function initEmbedded({namespaceList,embedded}){namespaces=namespaceList;for(const [lang,files]of Object.entries(embedded))for(const [ns,data]of Object.entries(files))cache.set(lang+':'+ns,data);compose();return resolveInitialLanguage().then(()=>{compose();apply(document);return language;});}
  async function setLanguage(lang){
-  if(!supported.includes(lang)||lang===language)return;const seq=++revision;for(const select of document.querySelectorAll('[data-language-select]'))select.disabled=true;
-  try{await Promise.all(namespaces.map(ns=>load(lang,ns)));if(seq!==revision)return;language=lang;try{localStorage.setItem('praxis-language',lang);}catch{}compose();apply(document);window.dispatchEvent(new CustomEvent('praxis-language-change',{detail:{language}}));apply(document);}
+  if(!supported.includes(lang)||lang===language)return;const seq=++revision,previousChoice=userSelectedLanguage;userSelectedLanguage=true;for(const select of document.querySelectorAll('[data-language-select]'))select.disabled=true;
+  try{await Promise.all(namespaces.map(ns=>load(lang,ns)));if(seq!==revision)return;language=lang;saveLanguage(lang);compose();apply(document);window.dispatchEvent(new CustomEvent('praxis-language-change',{detail:{language}}));apply(document);}
+  catch(error){if(seq===revision&&!readSavedLanguage())userSelectedLanguage=previousChoice;throw error;}
   finally{for(const select of document.querySelectorAll('[data-language-select]'))select.disabled=false;}
  }
  function createSelector(){const select=document.createElement('select');select.className='praxis-language';select.dataset.languageSelect='';select.setAttribute('aria-label','Limba interfeței');for(const lang of supported)select.add(new Option(lang.toUpperCase(),lang));select.value=language;select.addEventListener('change',()=>{setLanguage(select.value).catch(()=>{select.value=language;window.dispatchEvent(new CustomEvent('praxis-language-error'));});});return select;}

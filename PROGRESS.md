@@ -1,5 +1,10 @@
 # PROGRESS
 
+## Limbă inițială după țară — 2026-11-20
+
+- La prima vizită, `/api/language` folosește codul de țară Vercel (fără serviciu extern): RO și MD selectează româna, orice alt cod valid selectează engleza. Alegerea se salvează în `praxis-language`; vizitele următoare păstrează preferința, inclusiv după schimbarea manuală. Pentru `file://`, servere locale fără endpoint sau erori, se folosește regiunea browserului ca fallback.
+- Verificate RO/MD→RO, US→EN, țară necunoscută→fallback, metoda POST→405, prima vizită și revenirea cu alegere manuală. `node --check` pentru ambele fișiere modificate și `npm run build` au reușit. Verificarea completă `scripts/check-syntax.mjs` a depășit 60 s fără rezultat; testarea browserului local nu a fost posibilă în această sesiune.
+
 ## Corecții Home — catalog, explorare și panou — 2026-11-19
 
 - Remediată valoarea hardcodată `7 capitole`; Home și numărătoarea din catalog folosesc acum datele reale, cu traduceri RO/EN actualizate pentru opt capitole.
