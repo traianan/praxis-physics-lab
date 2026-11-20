@@ -95,3 +95,24 @@ test('chapter catalog translations have matching simulation ids and fields in RO
   }
  }
 });
+
+test('quadratic and conics cards switch all visible metadata and conics artwork in EN',async()=>{
+ const {simulations,localizeCatalog}=await import('../public/catalog.js?mathematics-cards-language');
+ const namespace='chapters/elemente-de-matematica';
+ const load=async language=>JSON.parse(await readFile(new URL(`../public/locales/${namespace}/${language}.json`,import.meta.url),'utf8'));
+ const [ro,en]=await Promise.all([load('ro'),load('en')]);
+ const apply=locale=>localizeCatalog(name=>name===namespace?locale:undefined);
+ const quadratic=simulations.find(sim=>sim.id==='functia-gradul-al-doilea');
+ const conics=simulations.find(sim=>sim.id==='conice');
+ apply(en);
+ assert.equal(quadratic.title,'Quadratic function');
+ assert.match(quadratic.description,/Explore parabolas/);
+ assert.deepEqual(quadratic.tags,['Mathematics','Functions','Graphs','Offline']);
+ assert.equal(conics.title,'Conic sections');
+ assert.deepEqual(conics.tags,['Mathematics','Analytic geometry','Conic sections','Animations']);
+ assert.equal(conics.image,'./assets/conice-cover-v2-en.svg');
+ apply(ro);
+ assert.equal(quadratic.title,'Funcția de gradul al doilea');
+ assert.equal(conics.title,'Conicele');
+ assert.equal(conics.image,'./assets/conice-cover-v2.svg');
+});

@@ -23,7 +23,7 @@ export function localizeCatalog(getNamespace){
    const base=baseById.get(sim.id);
    const translated=content?.simulations?.[sim.id];
    // Resolve each localized field against the catalog, including optional fields.
-   for(const key of ['title','subtitle','description','tags','keywords','alt']){
+   for(const key of ['title','subtitle','description','tags','keywords','alt','image']){
     const value=translated?.[key]??base[key];
     if(value===undefined)delete sim[key];
     else sim[key]=value;

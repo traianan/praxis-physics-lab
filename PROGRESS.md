@@ -523,3 +523,5 @@ Dacă un pas eșuează, notează lecția, comanda și ce s-a întâmplat. O foto
 - După hărțile individuale, creează câte o hartă transversală pentru fiecare capitol.
 - La final, unește hărțile într-o hartă globală pentru întreaga aplicație.
 - Ordinea este intenționată: lecții/laboratoare → capitole → aplicație. Începe la următoarea sesiune; etapele următoare nu au început.
+
+- 2026-11-20: Localizate complet cardurile funcției de gradul al doilea și conicelor: titlu, descriere, etichete, texte accesibile și imaginea conicelor RO/EN. Limba RO restabilește coperta română; EN folosește o variantă SVG cu etichete englezești. Verificare țintită browser și catalog/localizare 16/16.

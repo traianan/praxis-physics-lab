@@ -76,6 +76,20 @@
         "Offline"
       ],
       "keywords": "fizica marimi fizice unitati masura SI conversii prefixe analiza dimensionala masurare erori scalari vectori"
+    },
+    "conice": {
+      "title": "Conicele",
+      "subtitle": "Cerc, elipsă, parabolă și hiperbolă",
+      "description": "Înțelege cum apar conicele din secțiunile unui con dublu; explorează focarele, directoarele, animațiile, aplicațiile fizice și exersează.",
+      "alt": "Cerc, elipsă, parabolă și hiperbolă pe axe coordonate",
+      "keywords": "conice cerc elipsa parabola hiperbola excentricitate focar directoare sectiune conica orbite proiectile GPS",
+      "tags": [
+        "Matematică",
+        "Geometrie analitică",
+        "Conice",
+        "Animații"
+      ],
+      "image": "./assets/conice-cover-v2.svg"
     }
   }
 }

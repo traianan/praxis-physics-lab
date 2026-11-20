@@ -53,8 +53,8 @@
     },
     "functia-gradul-al-doilea": {
       "title": "Quadratic function",
-      "subtitle": "Parabola, roots and physical models",
-      "description": "Explore the parabola and its coefficients, roots and vertex; follow animations and three motion models.",
+      "subtitle": "Parabolas, roots and physical models",
+      "description": "Explore parabolas, coefficients, roots and vertices. Follow the animations and three models of motion.",
       "alt": "A parabola plotted on coordinate axes",
       "keywords": "quadratic function parabola roots discriminant vertex projectile free fall motion",
       "tags": [
@@ -76,6 +76,20 @@
         "Measurement",
         "Offline"
       ]
+    },
+    "conice": {
+      "title": "Conic sections",
+      "subtitle": "Circle, ellipse, parabola and hyperbola",
+      "description": "See how conic sections arise from a double cone. Explore foci, directrices, animations and real-world applications, then practise.",
+      "alt": "Circle, ellipse, parabola and hyperbola",
+      "keywords": "conic sections circle ellipse parabola hyperbola eccentricity focus directrix cone orbits projectiles GPS",
+      "tags": [
+        "Mathematics",
+        "Analytic geometry",
+        "Conic sections",
+        "Animations"
+      ],
+      "image": "./assets/conice-cover-v2-en.svg"
     }
   }
 }
