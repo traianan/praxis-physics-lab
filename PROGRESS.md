@@ -8,6 +8,7 @@
 ## Coperta conicelor și corecție CI — 2026-11-20
 
 - Refăcută ilustrația catalogului cu patru panouri separate: cerc, elipsă cu focare corecte, parabolă deschisă cu focar/directoare și hiperbolă cu două ramuri, focare și asimptote. Păstrate culorile Praxis și titlurile accesibile SVG.
+- Catalogul folosește o cale nouă, `conice-cover-v2.svg`, pentru invalidarea cache-ului imaginii. Sursa și dist-ul checkoutului local au fost sincronizate și verificate în pagina servită pe portul 4190.
 - SymPy a verificat elipsa, parabola Bézier exactă, ambele ramuri ale hiperbolei, focarele și asimptotele. Chrome DevTools: SVG-ul nu mai confundă formele la dimensiunea mică de 310×194.
 - Analiza run-ului GitHub `44801587070` a arătat șase eșecuri `NodeFilter is not defined`: `initEmbedded()` re-aplica traducerile asincron într-un harness fără DOM complet. Eliminată reaplicarea redundantă; testele i18n și locale au trecut 11/11. Rebuild/test CI GitHub pe commitul următor rămâne de confirmat.
 

@@ -891,7 +891,7 @@ export const simulations = [
       "Animații"
     ],
     "href": "./simulari/conice/index.html",
-    "image": "./assets/conice.svg",
+    "image": "./assets/conice-cover-v2.svg",
     "keywords": "conice cerc elipsa parabola hiperbola excentricitate focar directoare sectiune conica orbite proiectile GPS",
     "status": "available"
   }
