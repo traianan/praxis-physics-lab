@@ -85,7 +85,7 @@
   return initialResolution;
  }
  async function init({baseUrl='./locales/',namespaceList=['common'],embedded}={}){base=baseUrl;namespaces=namespaceList;if(embedded)for(const [lang,files]of Object.entries(embedded))for(const [ns,data]of Object.entries(files))cache.set(lang+':'+ns,data);await resolveInitialLanguage();await Promise.all(namespaces.map(ns=>load(language,ns)));compose();apply(document);return language;}
- function initEmbedded({namespaceList,embedded}){namespaces=namespaceList;for(const [lang,files]of Object.entries(embedded))for(const [ns,data]of Object.entries(files))cache.set(lang+':'+ns,data);compose();return resolveInitialLanguage().then(()=>{compose();apply(document);return language;});}
+ function initEmbedded({namespaceList,embedded}){namespaces=namespaceList;for(const [lang,files]of Object.entries(embedded))for(const [ns,data]of Object.entries(files))cache.set(lang+':'+ns,data);compose();return resolveInitialLanguage();}
  async function setLanguage(lang){
   if(!supported.includes(lang)||lang===language)return;const seq=++revision,previousChoice=userSelectedLanguage;userSelectedLanguage=true;for(const select of document.querySelectorAll('[data-language-select]'))select.disabled=true;
   try{await Promise.all(namespaces.map(ns=>load(lang,ns)));if(seq!==revision)return;language=lang;saveLanguage(lang);compose();apply(document);window.dispatchEvent(new CustomEvent('praxis-language-change',{detail:{language}}));apply(document);}

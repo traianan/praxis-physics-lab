@@ -5,6 +5,12 @@
 - La prima vizită, `/api/language` folosește codul de țară Vercel (fără serviciu extern): RO și MD selectează româna, orice alt cod valid selectează engleza. Alegerea se salvează în `praxis-language`; vizitele următoare păstrează preferința, inclusiv după schimbarea manuală. Pentru `file://`, servere locale fără endpoint sau erori, se folosește regiunea browserului ca fallback.
 - Verificate RO/MD→RO, US→EN, țară necunoscută→fallback, metoda POST→405, prima vizită și revenirea cu alegere manuală. `node --check` pentru ambele fișiere modificate și `npm run build` au reușit. Verificarea completă `scripts/check-syntax.mjs` a depășit 60 s fără rezultat; testarea browserului local nu a fost posibilă în această sesiune.
 
+## Coperta conicelor și corecție CI — 2026-11-20
+
+- Refăcută ilustrația catalogului cu patru panouri separate: cerc, elipsă cu focare corecte, parabolă deschisă cu focar/directoare și hiperbolă cu două ramuri, focare și asimptote. Păstrate culorile Praxis și titlurile accesibile SVG.
+- SymPy a verificat elipsa, parabola Bézier exactă, ambele ramuri ale hiperbolei, focarele și asimptotele. Chrome DevTools: SVG-ul nu mai confundă formele la dimensiunea mică de 310×194.
+- Analiza run-ului GitHub `44801587070` a arătat șase eșecuri `NodeFilter is not defined`: `initEmbedded()` re-aplica traducerile asincron într-un harness fără DOM complet. Eliminată reaplicarea redundantă; testele i18n și locale au trecut 11/11. Rebuild/test CI GitHub pe commitul următor rămâne de confirmat.
+
 ## Corecții Home — catalog, explorare și panou — 2026-11-19
 
 - Remediată valoarea hardcodată `7 capitole`; Home și numărătoarea din catalog folosesc acum datele reale, cu traduceri RO/EN actualizate pentru opt capitole.
