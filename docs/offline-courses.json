@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-19T18:11:50.917Z",
+  "builtAt": "2026-11-20T18:48:39.038Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -466,7 +466,7 @@
     {
       "id": "conice",
       "file": "public/simulari/conice/conice.zip",
-      "sha256": "ed70a9cdf7ae6f4ed0558721b11f3034fa6cd76c76fb42f9aeb1df546c8ea489",
+      "sha256": "8b3a434fd9094e9e47b2d5532ad24a83e06254a34c513f7001d11957ea98f16c",
       "languages": [
         "ro",
         "en"

@@ -5,9 +5,9 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
-  assert.deepEqual(latest.map(sim=>sim.id),['marimi-fizice-unitati','functia-gradul-al-doilea','functia-gradul-intai']);
-  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-19','2026-11-18','2026-11-18']);
-  assert.equal(getLatestSimulations(1)[0].id,'marimi-fizice-unitati');
+  assert.deepEqual(latest.map(sim=>sim.id),['conice','marimi-fizice-unitati','functia-gradul-al-doilea']);
+  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-20','2026-11-19','2026-11-18']);
+  assert.equal(getLatestSimulations(1)[0].id,'conice');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
@@ -25,8 +25,8 @@ test('eight chapters including mathematical foundations, with unique stable ids'
  assert.equal(chapters.length,8); assert.equal(new Set(chapters.map(c=>c.id)).size,8);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite','elemente-de-matematica']);
 });
-test('forty-three real local laboratories include quadratic functions and the Compton effect', async () => {
-  assert.equal(simulations.length,43);
+test('forty-four real local laboratories include conics, quadratic functions and the Compton effect', async () => {
+  assert.equal(simulations.length,44);
  assert.equal(simulations.find(s=>s.id==='functia-gradul-al-doilea').chapter,'elemente-de-matematica');
  assert.equal(simulations.find(s=>s.id==='miscarea-in-camp-gravitational').chapter,'miscare');
  assert.equal(simulations.find(s=>s.id==='polarizarea-luminii').chapter,'lumina-si-radiatii');
