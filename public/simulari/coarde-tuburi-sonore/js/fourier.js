@@ -242,8 +242,10 @@
       $('#decomp-pill').textContent = 'sunet misterios';
     }
     const kept = decomp.analysis.filter((a) => a.n <= decomp.N && a.amp > 0.02).length;
-    $('#decomp-caption').textContent = 'DFT a găsit 16 armonice. Păstrezi primele ' + decomp.N +
-      ' (' + kept + ' cu energie semnificativă). Eroarea RMS scade pe măsură ce adaugi componente.';
+    const caption = 'Sunt analizate 16 armonici. Reconstrucția păstrează primele {N}; {kept} au amplitudine semnificativă. Eroarea RMS măsoară diferența față de sunetul original.';
+    $('#decomp-caption').textContent = window.PraxisI18n
+      ? window.PraxisI18n.tr(caption, { N: decomp.N, kept })
+      : caption.replace('{N}', decomp.N).replace('{kept}', kept);
     App.redraw();
   }
 

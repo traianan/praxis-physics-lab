@@ -95,6 +95,7 @@
   if (fourier) {
     const compose = fourier.querySelector('#fourier-compose-card');
     const decompose = fourier.querySelector('#decomp-card');
+    const decompSpectrum = fourier.querySelector('#decomp-spectrum-card');
     const theorem = fourier.querySelector('.theorem-card');
     const liveNode = fourier.querySelector('.spectrum-live') || fourier.querySelector('#live-spectrum-fourier');
     const live = liveNode?.closest('.card') || liveNode?.parentElement;
@@ -103,7 +104,7 @@
       screen('Compunerea armonicelor', [compose], compose);
     }
     if (decompose && live) {
-      const second = document.createElement('div'); second.className = 'screen-content'; second.dataset.screenTitle = 'Descompunerea sunetului'; decompose.before(second); second.append(decompose);
+      const second = document.createElement('div'); second.className = 'screen-content'; second.dataset.screenTitle = 'Descompunerea sunetului'; decompose.before(second); second.append(decompose); if (decompSpectrum) second.append(decompSpectrum);
       const third = document.createElement('div'); third.className = 'screen-content'; third.dataset.screenTitle = 'Spectrul analizat'; live.before(third); third.append(live);
     }
     tabsFor(fourier, [...fourier.querySelectorAll(':scope > .screen-content')], 'Ecranele laboratorului Fourier', 'fourier-screen');
