@@ -4,6 +4,7 @@
 
 - Corectate graficele sinus și cosinus pe intervalul simetric [−π, π], cu originea comună x=0 și valorile sin(0)=0, cos(0)=1. Asseturile versionate invalidează cache-ul imaginii vechi.
 - Aliniată și imaginea din `labs.manifest.json` la numele nou; verificat că assetul folosit de registru există.
+- Înlocuite curbele Bézier aproximative cu 64 de eșantioane calculate din sin(x) și cos(x); unghiul lui P și valorile sale sunt marcate pe ambele grafice pentru legătura directă cu cercul unitate.
 
 ## Limbă inițială după țară — 2026-11-20
 

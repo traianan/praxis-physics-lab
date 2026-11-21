@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Funcții trigonometrice</title>
+  <desc id="desc">Cercul unitate și graficele sinusului și cosinusului</desc>
+  <rect width="640" height="420" rx="28" fill="#eff5f0"/>
+  <path d="M0 338H640" stroke="#d7e4da" stroke-width="2"/>
+  <circle cx="164" cy="190" r="96" fill="#fff" stroke="#216044" stroke-width="5"/>
+  <path d="M58 190h212M164 76v228" stroke="#9baba0" stroke-width="2"/>
+  <path d="M164 190 225 116" stroke="#ce8730" stroke-width="5" stroke-linecap="round"/>
+  <path d="M225 116v74M164 190h61" stroke="#36748e" stroke-width="4" stroke-dasharray="7 7"/>
+  <circle cx="225" cy="116" r="9" fill="#216044"/>
+  <text x="231" y="108" fill="#173d2c" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700">P</text>
+  <text x="194" y="160" fill="#a76a20" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700">sin θ</text>
+  <text x="178" y="216" fill="#31677d" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700">cos θ</text>
+  <rect x="328" y="68" width="272" height="245" rx="18" fill="#fff" stroke="#d5e2d8" stroke-width="2"/>
+  <path d="M356 190h218M465 91v195" stroke="#a8b8ad" stroke-width="2"/>
+  <path d="M356 124h218M356 256h218" stroke="#e7ede8" stroke-width="2"/>
+  <path d="M495.58 98V282" fill="none" stroke="#9baba0" stroke-width="2" stroke-dasharray="5 6"/>
+  <path d="M356 190L359.41 196.47L362.81 202.88L366.22 209.16L369.63 215.26L373.03 221.11L376.44 226.67L379.84 231.87L383.25 236.67L386.66 241.02L390.06 244.88L393.47 248.21L396.88 250.98L400.28 253.16L403.69 254.73L407.09 255.68L410.5 256L413.91 255.68L417.31 254.73L420.72 253.16L424.13 250.98L427.53 248.21L430.94 244.88L434.34 241.02L437.75 236.67L441.16 231.87L444.56 226.67L447.97 221.11L451.38 215.26L454.78 209.16L458.19 202.88L461.59 196.47L465 190L468.41 183.53L471.81 177.12L475.22 170.84L478.63 164.74L482.03 158.89L485.44 153.33L488.84 148.13L492.25 143.33L495.66 138.98L499.06 135.12L502.47 131.79L505.88 129.02L509.28 126.84L512.69 125.27L516.09 124.32L519.5 124L522.91 124.32L526.31 125.27L529.72 126.84L533.13 129.02L536.53 131.79L539.94 135.12L543.34 138.98L546.75 143.33L550.16 148.13L553.56 153.33L556.97 158.89L560.38 164.74L563.78 170.84L567.19 177.12L570.59 183.53L574 190" fill="none" stroke="#ce8730" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M356 256L359.41 255.68L362.81 254.73L366.22 253.16L369.63 250.98L373.03 248.21L376.44 244.88L379.84 241.02L383.25 236.67L386.66 231.87L390.06 226.67L393.47 221.11L396.88 215.26L400.28 209.16L403.69 202.88L407.09 196.47L410.5 190L413.91 183.53L417.31 177.12L420.72 170.84L424.13 164.74L427.53 158.89L430.94 153.33L434.34 148.13L437.75 143.33L441.16 138.98L444.56 135.12L447.97 131.79L451.38 129.02L454.78 126.84L458.19 125.27L461.59 124.32L465 124L468.41 124.32L471.81 125.27L475.22 126.84L478.63 129.02L482.03 131.79L485.44 135.12L488.84 138.98L492.25 143.33L495.66 148.13L499.06 153.33L502.47 158.89L505.88 164.74L509.28 170.84L512.69 177.12L516.09 183.53L519.5 190L522.91 196.47L526.31 202.88L529.72 209.16L533.13 215.26L536.53 221.11L539.94 226.67L543.34 231.87L546.75 236.67L550.16 241.02L553.56 244.88L556.97 248.21L560.38 250.98L563.78 253.16L567.19 254.73L570.59 255.68L574 256" fill="none" stroke="#36748e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="495.58" cy="139.07" r="7" fill="#ce8730" stroke="#fff" stroke-width="3"/>
+  <circle cx="495.58" cy="148.02" r="7" fill="#36748e" stroke="#fff" stroke-width="3"/>
+  <text x="352" y="348" fill="#173d2c" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700">sin θ</text>
+  <path d="M423 340h34" stroke="#ce8730" stroke-width="5" stroke-linecap="round"/>
+  <text x="477" y="348" fill="#173d2c" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700">cos θ</text>
+  <path d="M552 340h28" stroke="#36748e" stroke-width="5" stroke-linecap="round"/>
+</svg>
