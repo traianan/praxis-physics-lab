@@ -911,7 +911,7 @@ export const simulations = [
       "Grafice"
     ],
     "href": "./simulari/functii-trigonometrice/index.html",
-    "image": "./assets/functii-trigonometrice.svg",
+    "image": "./assets/functii-trigonometrice-cover-v2.svg",
     "keywords": "functii trigonometrice cerc unitate sinus cosinus tangenta cotangenta radiani grade grafice oscilatie armonica curent alternativ",
     "status": "available"
   }

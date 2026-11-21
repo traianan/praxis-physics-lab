@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
-  <title id="title">Trigonometric functions</title>
-  <desc id="desc">Unit circle and sine and cosine graphs</desc>
+  <title id="title">Funcții trigonometrice</title>
+  <desc id="desc">Cercul unitate și graficele sinusului și cosinusului</desc>
   <rect width="640" height="420" rx="28" fill="#eff5f0"/>
   <path d="M0 338H640" stroke="#d7e4da" stroke-width="2"/>
   <circle cx="164" cy="190" r="96" fill="#fff" stroke="#216044" stroke-width="5"/>
@@ -14,8 +14,8 @@
   <rect x="328" y="68" width="272" height="245" rx="18" fill="#fff" stroke="#d5e2d8" stroke-width="2"/>
   <path d="M356 190h218M465 91v195" stroke="#a8b8ad" stroke-width="2"/>
   <path d="M356 124h218M356 256h218" stroke="#e7ede8" stroke-width="2"/>
-  <path d="M357 190C384 190 394 124 411 124S438 190 465 190s38 66 54 66 28-66 55-66" fill="none" stroke="#ce8730" stroke-width="5" stroke-linecap="round"/>
-  <path d="M357 124C384 124 394 190 411 190s27-66 54-66 38 66 54 66 28-66 55-66" fill="none" stroke="#36748e" stroke-width="5" stroke-linecap="round"/>
+  <path d="M357 190C384 190 394 256 411 256S438 190 465 190 492 124 520 124 547 190 574 190" fill="none" stroke="#ce8730" stroke-width="5" stroke-linecap="round"/>
+  <path d="M357 256C384 256 394 190 411 190S438 124 465 124 492 190 520 190 547 256 574 256" fill="none" stroke="#36748e" stroke-width="5" stroke-linecap="round"/>
   <text x="352" y="348" fill="#173d2c" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700">sin θ</text>
   <path d="M423 340h34" stroke="#ce8730" stroke-width="5" stroke-linecap="round"/>
   <text x="477" y="348" fill="#173d2c" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700">cos θ</text>

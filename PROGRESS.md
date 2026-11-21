@@ -1,5 +1,9 @@
 # PROGRESS
 
+## Corecție copertă — Funcții trigonometrice — 2026-11-21
+
+- Corectate graficele sinus și cosinus pe intervalul simetric [−π, π], cu originea comună x=0 și valorile sin(0)=0, cos(0)=1. Asseturile versionate invalidează cache-ul imaginii vechi.
+
 ## Limbă inițială după țară — 2026-11-20
 
 - La prima vizită, `/api/language` folosește codul de țară Vercel (fără serviciu extern): RO și MD selectează româna, orice alt cod valid selectează engleza. Alegerea se salvează în `praxis-language`; vizitele următoare păstrează preferința, inclusiv după schimbarea manuală. Pentru `file://`, servere locale fără endpoint sau erori, se folosește regiunea browserului ca fallback.
