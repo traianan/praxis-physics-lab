@@ -1,4 +1,3 @@
-/* Native DOM integration. React laboratories use their own component adapters. */
 (()=>{
  const math=window.PraxisMath;if(!math||math.set)return;
  const coreRender=math.render,records=new WeakMap(),hosts=new Set();let paints=0;
@@ -45,8 +44,6 @@
   if(el.closest(excluded+', [data-praxis-panel-probe],[inert]')||el.matches('[data-no-science-math]'))return false;
   if(el.closest('.journal,.lab-journal,.log-table,[data-journal]')||el.closest('table')?.querySelector('[contenteditable],input,textarea'))return false;
   if(el.matches('.vec')||el.querySelector(excluded+', [id],.mcu-vector-symbol,.vec'))return false;
-  // A native formula can have its equation and explanatory caption in siblings.
-  // Keep that structure; the .eq child is enhanced independently.
   if(el.querySelector('.eq')&&el.querySelector('.what'))return false;
   if(el.closest('#root,[data-reactroot],[data-science-owner=react],#praxis-original [data-no-i18n]'))return false;
   return true;
@@ -56,7 +53,6 @@
   const selector='.formula,.newton-formula,.science-formula,.eq,.equation,p,li,td,th,output,.hint,.readout,.readouts,.out';
   const elements=[...(root.matches?.(selector)?[root]:[]),...root.querySelectorAll(selector)];
   for(const el of elements){if(!candidate(el))continue;
-   // Do not flatten nested layout, labels, controls, or named readout values.
    if([...el.children].some(c=>!['SPAN','B','STRONG','EM','I','SUB','SUP','BR'].includes(c.tagName)))continue;
    const source=serialize(el).trim();if(!source||source.length>2200||/[\\$]/.test(source))continue;
    if((math.formula(source)&&(/[\/√_^₀-₉⁰-⁹]/u.test(source)||el.matches('.formula,.newton-formula,.science-formula,.eq,.equation')))||math.bare(source))math.set(el,source);
@@ -66,7 +62,6 @@
  function start(){
   const root=document.getElementById('praxis-original');if(!root)return;
   const id=document.body.dataset.praxisCourse;
-  // These are React-owned; they call the API from their own render functions.
   if(['unde-mecanice','miscarea-circulara-uniforma'].includes(id)||document.body.dataset.scienceOwner==='react'||root.matches('[data-science-owner=react]'))return;
   math.enhance(root);let pending=false;const dirty=new Set(),added=new Set();
   const scan=()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{

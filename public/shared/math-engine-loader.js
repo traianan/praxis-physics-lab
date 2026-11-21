@@ -1,4 +1,3 @@
-/* Web only. Autonomous exports replace this loader with the embedded engine. */
 (()=>{
  const url=new URL('../simulari/calorimetrie/vendor/katex/katex.min.js',document.currentScript.src).href;
  let pending=null;

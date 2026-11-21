@@ -1,4 +1,3 @@
-/* Plain-notation core: first validated in waves, also reused by common presentation. */
 (()=>{
  const lower={'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','ₙ':'n','ₒ':'o','ₐ':'a','ₑ':'e','ₕ':'h','ᵢ':'i','ⱼ':'j','ₖ':'k','ₗ':'l','ₘ':'m','ₚ':'p','ᵣ':'r','ₛ':'s','ₜ':'t','ᵤ':'u','ᵥ':'v','ₓ':'x','ᵧ':'y'};
  const upper={'⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁻':'-','⁺':'+'};
@@ -105,8 +104,6 @@
   const final=source.slice(last).trim();if(final)parts.push(final);return parts;
  }
  function assignment(source){return source.match(/(?<![\p{L}\p{N}_])(?:(?:[ΔΣ]\s*)?[A-Za-zΑ-ω](?:\u20d7)?(?:_\{[^}]+\}|_[\p{L}\p{N}]+|[₀-₉ₙₒₐₑₕᵢⱼₖₗₘₚᵣₛₜᵤᵥₓᵧ]+)?(?:\([^)]{0,100}\))?['′]*)(?:\s*[/·*]\s*[A-Za-zΑ-ω])?\s*[=≈∝<>≤≥]/u);}
- // Find prose before the entire left side, not before the last symbol near '='.
- // In particular, sin(i)/sin(r) and m*x''+c*x'+k*x must stay intact.
  function expressionStart(part){
   const relation=part.search(/[=≈∝<>≤≥≠]/u);if(relation<0)return 0;
   const left=part.slice(0,relation),masked=left.replace(/_\{[^}]*\}|_[\p{L}\p{N}]+/gu,m=>' '.repeat(m.length));
@@ -123,8 +120,6 @@
    if(!assignment(part)&&/[A-Za-zÀ-žȘșȚț]{3,}/u.test(part.replace(/tanh|sinh|cosh|sin|cos|tan|exp|log|ln/g,'')))return '<span class="wave-math-prose">'+htmlProse(part)+'</span>';
    const start=expressionStart(part),prefix=start?part.slice(0,start):'';
    let expression=part.slice(start),suffix='';
-   // Prose following a short equation must wrap as ordinary text, not become
-   // an unbreakable mtext tail inside the mathematical expression.
    let depth=0;
    for(let i=0;i<expression.length;i++){
     if('([{'.includes(expression[i]))depth++;

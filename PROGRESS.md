@@ -1,5 +1,11 @@
 # PROGRESS
 
+## Spectru live și repararea CI — 2026-11-21
+
+- În fila „Spectrul analizat”, adăugat selector de instrument și notă La3 susținută 18 s, cu oprire manuală. Spectrul se urmărește în aceeași filă; schimbarea instrumentului modifică rețeta armonică. Localizare RO/EN și arhiva offline regenerate.
+- Jurnalele GitHub Actions pentru `acf49d5` și `fc0a7f2` arătau două probleme persistente: dicționarul RO al lecției folosește textul românesc sursă ca fallback, dar testul cerea egalitatea cheilor RO/EN; antetul comun depășea limita 100 KiB cu comentarii de implementare. Testul verifică acum cheile RO explicite și placeholder-ele, iar sursele antetului păstrează comentariile necesare fără text redundant.
+- Build reușit. Suita completă `scripts/check-ci.mjs`: 504 teste trecute, 7 omise, 0 eșecuri. Chrome DevTools la 1920×1080 a confirmat pornirea/oprirerea audio, dispariția mesajului gol și barele spectrale active; RO și EN verificate. Detectorul Impeccable nu a raportat probleme.
+
 ## Corecție copertă — Funcții trigonometrice — 2026-11-21
 
 - Corectate graficele sinus și cosinus pe intervalul simetric [−π, π], cu originea comună x=0 și valorile sin(0)=0, cos(0)=1. Asseturile versionate invalidează cache-ul imaginii vechi.

@@ -383,10 +383,66 @@
     App.animate(drawDecompBars);
   }
 
+  function initLiveSpectrumDemo() {
+    const play = $('#spectrum-demo-play');
+    const stop = $('#spectrum-demo-stop');
+    const instrument = $('#spectrum-demo-instrument');
+    const status = $('#spectrum-demo-status');
+    if (!play || !stop || !instrument || !status) return;
+
+    let voice = null;
+    let timer = 0;
+    const setStatus = (message) => {
+      status.textContent = window.PraxisI18n?.tr(message) || message;
+    };
+    const stopDemo = (announce = true) => {
+      window.clearTimeout(timer);
+      timer = 0;
+      if (voice) voice.stop();
+      voice = null;
+      play.disabled = false;
+      stop.disabled = true;
+      if (announce) setStatus('Redarea s-a oprit.');
+    };
+
+    play.addEventListener('click', () => {
+      stopDemo(false);
+      audio.stopAll();
+      const name = instrument.value;
+      voice = audio.playTone(220, audio.recipeFor(name), {
+        instrument: name,
+        duration: 18,
+        gain: 0.28,
+        attack: 0.06,
+        sustain: 0.8,
+        release: 0.2,
+        pluck: false,
+        vibrato: 0,
+        vibDepth: 0
+      });
+      if (!voice) {
+        setStatus('Sunetul nu a putut porni. Verifică dacă sunetul este activ.');
+        return;
+      }
+      play.disabled = true;
+      stop.disabled = false;
+      setStatus('Se redă La3 la 220 Hz. Urmărește spectrul sau oprește nota.');
+      timer = window.setTimeout(() => stopDemo(), 18400);
+    });
+    stop.addEventListener('click', () => stopDemo());
+    instrument.addEventListener('change', () => {
+      if (voice) stopDemo();
+    });
+    audio.onChange((enabled) => {
+      if (!enabled && voice) stopDemo();
+    });
+  }
+
   App.fourier = {
     init() {
       initCompose();
       initDecomp();
+      initLiveSpectrumDemo();
       App.spectrum.register($('#live-spectrum-fourier'), $('#spectrum-empty-fourier'));
     },
     setDecompSource(name) {

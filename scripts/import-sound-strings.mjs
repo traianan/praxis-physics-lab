@@ -45,7 +45,7 @@ html = html.replace(/<div class="progress-mini">[\s\S]*?<\/div>\s*(?=<details cl
 html = html.replace('</head>', sharedHead + '</head>');
 html = html.replace(/<script src="js\/(core|ui|labs|fourier|examples|quiz|main)\.js"><\/script>/g, (_, name) => `<script src="./js/${name}.js"></script>`);
 html = html.replace('</body>', '<script src="./integration.js"></script><script src="../../shared/course.js" data-course="coarde-tuburi-sonore" data-title="Coarde și tuburi sonore" data-subtitle="Laborator interactiv de unde și acustică" defer></script></body>');
-await writeFile(`${target}/index.html`, html, 'utf8');
+await writeFile(`${target}/index.html`, html.replace(/^[\t ]+$/gm, ''), 'utf8');
 
 const integration = `(() => {
   'use strict';

@@ -1,10 +1,8 @@
-/* Capability detection, not device sniffing: modern MathML output stays unchanged. */
 (()=>{
  let nativeSupport,stylesInstalled=false;
  const escape=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
  function supportsMathML(){
   if(nativeSupport!==undefined)return nativeSupport;
-  // Non-DOM consumers (build-time tests) keep the existing MathML serialization.
   if(!document.createElementNS||!document.documentElement)return true;
   const ns='http://www.w3.org/1998/Math/MathML';
   const probe=document.createElement('div'),math=document.createElementNS(ns,'math'),space=document.createElementNS(ns,'mspace');
@@ -22,12 +20,10 @@
    const style=document.createElement('style');style.id='praxis-math-compatibility';
    style.textContent=window.PraxisMathFallbackCSS;document.head.appendChild(style);stylesInstalled=true;
   }
-  // Keep MathML for assistive technology; KaTeX CSS hides it visually and shows HTML.
   return '<span class="praxis-math-fallback">'+engine.renderToString(source,{...options,output:'htmlAndMathml'})+'</span>';
  };
  window.PraxisMathCompatibility={supportsMathML};
  window.addEventListener('praxis-math-ready',()=>{
-  // Only hydrate our native placeholders. React adapters rerender their own components.
   for(const host of document.querySelectorAll('[data-praxis-math-pending]')){
    if(host.closest('#root,[data-reactroot],[data-science-owner="react"]'))continue;
    const {source,options}=JSON.parse(host.getAttribute('data-praxis-math-pending'));
