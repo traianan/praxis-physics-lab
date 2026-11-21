@@ -1,0 +1,17 @@
+{
+  "id": "functii-trigonometrice",
+  "source": "sources/functii-trigonometrice",
+  "sha256": "b73ecba6889042d3b0e9539ff420be50f274913f01ea706baf4f0996da6045a9",
+  "languages": [
+    "ro",
+    "en"
+  ],
+  "activities": [
+    "teorie",
+    "animatii",
+    "grafice",
+    "fizica",
+    "exerseaza"
+  ],
+  "boardWorkspaces": 5
+}

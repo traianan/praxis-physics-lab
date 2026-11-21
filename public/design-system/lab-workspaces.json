@@ -698,5 +698,33 @@
         "layout": "native"
       }
     ]
+  },
+  "functii-trigonometrice": {
+    "workspaces": [
+      {
+        "selector": "#tab-teorie .grid2",
+        "layout": "native",
+        "scene": ".card:first-child",
+        "controls": ".card:nth-child(2)"
+      },
+      {
+        "selector": "#tab-animatii .grid2",
+        "layout": "native",
+        "scene": ".card:first-child",
+        "controls": ".card:nth-child(2)"
+      },
+      {
+        "selector": "#tab-grafice",
+        "layout": "native"
+      },
+      {
+        "selector": "#tab-fizica .grid2",
+        "layout": "native"
+      },
+      {
+        "selector": "#tab-exerseaza .grid2",
+        "layout": "native"
+      }
+    ]
   }
 }

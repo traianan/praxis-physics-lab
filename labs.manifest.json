@@ -2201,6 +2201,69 @@
         "kind": "archive",
         "file": "conice.zip"
       }
+    },
+    {
+      "metadata": {
+        "id": "functii-trigonometrice",
+        "addedOn": "2026-11-21",
+        "addedOrder": 1,
+        "chapter": "elemente-de-matematica",
+        "title": "Funcții trigonometrice",
+        "subtitle": "Sinus, cosinus, tangentă și cotangentă",
+        "description": "Explorează cercul unitate și valorile funcțiilor trigonometrice, urmărește animații și grafice interactive și aplică trigonometria în fizică.",
+        "alt": "Cercul unitate și graficele sinusului și cosinusului",
+        "tags": [
+          "Matematică",
+          "Trigonometrie",
+          "Funcții",
+          "Grafice"
+        ],
+        "href": "./simulari/functii-trigonometrice/index.html",
+        "image": "./assets/functii-trigonometrice.svg",
+        "keywords": "functii trigonometrice cerc unitate sinus cosinus tangenta cotangenta radiani grade grafice oscilatie armonica curent alternativ",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {
+            "selector": "#tab-teorie .grid2",
+            "layout": "native",
+            "scene": ".card:first-child",
+            "controls": ".card:nth-child(2)"
+          },
+          {
+            "selector": "#tab-animatii .grid2",
+            "layout": "native",
+            "scene": ".card:first-child",
+            "controls": ".card:nth-child(2)"
+          },
+          {
+            "selector": "#tab-grafice",
+            "layout": "native"
+          },
+          {
+            "selector": "#tab-fizica .grid2",
+            "layout": "native"
+          },
+          {
+            "selector": "#tab-exerseaza .grid2",
+            "layout": "native"
+          }
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/elemente-de-matematica",
+        "courses/shared",
+        "courses/functii-trigonometrice/ui"
+      ],
+      "inlineLocales": [
+        "courses/functii-trigonometrice/ui"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "functii-trigonometrice.zip"
+      }
     }
   ]
 }

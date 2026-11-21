@@ -473,6 +473,17 @@
       ],
       "sharedDependencies": "inlined",
       "localResources": true
+    },
+    {
+      "id": "functii-trigonometrice",
+      "file": "public/simulari/functii-trigonometrice/functii-trigonometrice.zip",
+      "sha256": "6557a85c066defefa475c7dce77d16244b9a7a9819ffdc49812482f2c01b49fd",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
     }
   ]
 }

@@ -894,5 +894,25 @@ export const simulations = [
     "image": "./assets/conice-cover-v2.svg",
     "keywords": "conice cerc elipsa parabola hiperbola excentricitate focar directoare sectiune conica orbite proiectile GPS",
     "status": "available"
+  },
+  {
+    "id": "functii-trigonometrice",
+    "addedOn": "2026-11-21",
+    "addedOrder": 1,
+    "chapter": "elemente-de-matematica",
+    "title": "Funcții trigonometrice",
+    "subtitle": "Sinus, cosinus, tangentă și cotangentă",
+    "description": "Explorează cercul unitate și valorile funcțiilor trigonometrice, urmărește animații și grafice interactive și aplică trigonometria în fizică.",
+    "alt": "Cercul unitate și graficele sinusului și cosinusului",
+    "tags": [
+      "Matematică",
+      "Trigonometrie",
+      "Funcții",
+      "Grafice"
+    ],
+    "href": "./simulari/functii-trigonometrice/index.html",
+    "image": "./assets/functii-trigonometrice.svg",
+    "keywords": "functii trigonometrice cerc unitate sinus cosinus tangenta cotangenta radiani grade grafice oscilatie armonica curent alternativ",
+    "status": "available"
   }
 ];

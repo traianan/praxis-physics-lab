@@ -38,3 +38,6 @@ __pycache__/
 !sources/legea-lui-ohm/
 
 !sources/functia-gradul-al-doilea/
+
+!sources/functii-trigonometrice/
+!sources/functii-trigonometrice/**

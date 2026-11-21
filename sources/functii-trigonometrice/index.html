@@ -1,0 +1,2446 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funcții trigonometrice · Praxis Science Lab</title>
+<meta name="description" content="Lecție interactivă de trigonometrie pentru liceu: cercul unitate, sinus, cosinus, tangentă, cotangentă, grafice, animații și aplicații în fizică.">
+<style>
+  :root{
+    --bg:#f7f7f2;
+    --card:#ffffff;
+    --ink:#16241d;
+    --muted:#5f6d65;
+    --green:#12432e;
+    --green-2:#1c5b3f;
+    --line:#e4e6e0;
+    --tile:#eef3ef;
+    --tile-2:#f2f5f1;
+    --amber:#965200;
+    --blue:#2f6f8f;
+    --red:#a4462f;
+    --gold:#8a6a1f;
+    --btn:#ffffff;
+    --btn-line:#dcdfd8;
+    --shadow:0 1px 2px rgba(18,67,46,.05);
+    --radius:12px;
+  }
+  body.board{
+    --bg:#0d2a1f;
+    --card:#123526;
+    --ink:#eef4ef;
+    --muted:#a9c3b6;
+    --line:#20493a;
+    --tile:#173f2e;
+    --tile-2:#153a2a;
+    --green:#0a1f16;
+    --green-2:#1c5b3f;
+    --amber:#f0b055;
+    --blue:#7fb6d4;
+    --red:#e0856b;
+    --gold:#c9a24a;
+    --btn:#173f2e;
+    --btn-line:#245744;
+    --shadow:none;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Segoe UI",Roboto,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  body.text-big{font-size:17.5px}
+  a{color:var(--green-2)}
+  body.board a{color:#9fd8bd}
+  button{font-family:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+  /* ---------- top bar ---------- */
+  .topbar{background:var(--card);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:16px;min-height:60px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+  .brand .mark{
+    width:34px;height:34px;border-radius:8px;background:var(--green);
+    color:#fff;font-weight:700;font-size:18px;display:grid;place-items:center;
+    font-family:Georgia,serif;
+  }
+  .brand .name{line-height:1.05}
+  .brand .name b{display:block;font-size:19px;letter-spacing:.5px;color:var(--green)}
+  body.board .brand .name b{color:#9fd8bd}
+  .brand .name span{font-size:11px;letter-spacing:3.4px;color:var(--muted);text-transform:uppercase}
+  .top-actions{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .pill{
+    background:var(--btn);border:1px solid var(--btn-line);color:var(--ink);
+    border-radius:999px;padding:7px 14px;font-size:13.5px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:7px;box-shadow:var(--shadow);
+  }
+  .pill:hover{border-color:var(--green-2);color:var(--green-2)}
+  body.board .pill:hover{color:#9fd8bd}
+  .pill.on{background:var(--green);border-color:var(--green);color:#fff}
+  .pill.on .dot{width:8px;height:8px;border-radius:50%;background:#7ee0a8}
+  .lang{position:relative}
+  .lang-menu{
+    position:absolute;right:0;top:calc(100% + 6px);background:var(--card);
+    border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);
+    padding:6px;min-width:150px;display:none;z-index:40;
+  }
+  .lang-menu.open{display:block}
+  .lang-menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:8px 10px;border-radius:7px;font-size:13.5px;color:var(--ink);cursor:pointer}
+  .lang-menu button:hover{background:var(--tile)}
+  .lang-menu button[disabled]{color:var(--muted);cursor:default}
+  .lang-menu button[disabled]:hover{background:none}
+
+  /* ---------- breadcrumb ---------- */
+  .crumbs{font-size:13px;color:var(--muted);padding:12px 0 4px}
+  .crumbs a{color:var(--green-2);text-decoration:underline;text-underline-offset:2px}
+  .crumbs span.sep{margin:0 7px;opacity:.6}
+
+  /* ---------- banner ---------- */
+  .banner{
+    background:var(--green);color:#fff;border-radius:10px;
+    padding:20px 26px;margin-top:8px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  }
+  .banner .bar{width:5px;height:30px;background:#fff;border-radius:2px;align-self:center}
+  .banner h1{font-size:29px;margin:0;font-weight:700;letter-spacing:.2px}
+  .banner .sub{color:#a8c4b6;font-size:15.5px}
+  body.board .banner{background:#0a1f16;border:1px solid var(--line)}
+
+  /* ---------- tabs ---------- */
+  .tabbar{display:flex;align-items:center;gap:14px;margin:16px 0 18px;flex-wrap:wrap}
+  .tabs{display:flex;gap:4px;flex-wrap:wrap}
+  .tab{
+    border:0;background:none;color:var(--ink);font-size:14.5px;font-weight:600;
+    padding:9px 16px;border-radius:9px;cursor:pointer;
+  }
+  .tab:hover{background:var(--tile)}
+  .tab.active{background:var(--green);color:#fff}
+  .tab.active:hover{background:var(--green)}
+  .prefs-wrap{margin-left:auto;position:relative}
+  .panel{display:none}
+  .panel.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  /* ---------- cards ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;box-shadow:var(--shadow);
+  }
+  .card h2{font-size:20px;margin:0 0 16px;display:flex;align-items:center;gap:10px}
+  .card h2 .ico{font-size:17px}
+  .card h3{font-size:15.5px;margin:22px 0 8px}
+  .center{text-align:center}
+  .eq{font-size:17px;font-weight:600;margin:12px 0 4px}
+  .eq .amp{color:var(--green-2)}
+  .note{
+    background:var(--tile);border-radius:9px;padding:12px 16px;margin-top:14px;
+    display:flex;gap:12px;align-items:baseline;justify-content:center;flex-wrap:wrap;font-size:14.5px;
+  }
+  .note b{font-size:16.5px;font-weight:650}
+  .note .sep-dot{opacity:.5}
+  .hint{color:var(--muted);font-size:14px;margin-top:12px}
+
+  /* ---------- controls ---------- */
+  .ctl{margin-bottom:16px}
+  .ctl-head{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted);margin-bottom:7px}
+  .ctl-head b{color:var(--ink);font-size:15px;font-weight:650;white-space:nowrap}
+  .ctl-row{display:flex;align-items:center;gap:10px}
+  .step{
+    width:38px;height:34px;border:1px solid var(--btn-line);background:var(--btn);
+    border-radius:9px;font-size:17px;color:var(--ink);cursor:pointer;line-height:1;flex:0 0 auto;
+  }
+  .step:hover{border-color:var(--green-2)}
+  input[type=range]{
+    flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;
+    background:linear-gradient(to right,var(--green-2),var(--green-2)) no-repeat, var(--line);
+    outline:none;cursor:pointer;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+    background:var(--card);border:3px solid var(--green-2);cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,.2);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:15px;height:15px;border-radius:50%;background:var(--card);
+    border:3px solid var(--green-2);cursor:pointer;
+  }
+  .presets{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}
+  .chip{
+    border:1px solid var(--btn-line);background:var(--btn);color:var(--ink);
+    border-radius:9px;padding:7px 13px;font-size:13.5px;cursor:pointer;
+  }
+  .chip:hover{border-color:var(--green-2);color:var(--green-2)}
+  .chip.active{background:var(--green);border-color:var(--green);color:#fff}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .tile{background:var(--tile);border-radius:9px;padding:11px 14px;min-width:0}
+  .tile span{display:block;font-size:12.5px;color:var(--muted);margin-bottom:2px}
+  .tile b{font-size:17.5px;font-weight:650;display:block;overflow-wrap:anywhere}
+  .tile em{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:1px;font-family:Georgia,"Times New Roman",serif}
+  .formulas{display:flex;gap:26px;flex-wrap:wrap;margin-top:16px;font-size:15.5px;color:var(--ink)}
+  .formulas .f{font-family:Georgia,"Times New Roman",serif}
+  details.explain{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+  details.explain summary{cursor:pointer;font-size:14.5px;font-weight:600;color:var(--green-2);list-style:none}
+  body.board details.explain summary{color:#9fd8bd}
+  details.explain summary::before{content:"▸ "}
+  details.explain[open] summary::before{content:"▾ "}
+  details.explain p{font-size:14px;color:var(--muted);margin:10px 0 0}
+  details.explain ul{margin:8px 0 0;padding-left:20px;font-size:14px;color:var(--muted)}
+  details.explain li{margin-bottom:5px}
+
+  /* ---------- segmented control ---------- */
+  .seg{display:inline-flex;background:var(--tile);border-radius:9px;padding:3px;gap:2px;margin-bottom:14px}
+  .seg button{
+    border:0;background:none;color:var(--muted);font-size:13.5px;font-weight:600;
+    padding:7px 13px;border-radius:7px;cursor:pointer;
+  }
+  .seg button:hover{color:var(--ink)}
+  .seg button.active{background:var(--card);color:var(--green-2);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  body.board .seg button.active{color:#9fd8bd}
+
+  /* ---------- theory blocks ---------- */
+  .theory-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:22px}
+  .theory-grid .card h2{font-size:17.5px}
+  .theory-grid p{margin:8px 0;font-size:14.5px;color:var(--muted)}
+  .theory-grid ul{margin:8px 0 0;padding-left:20px;font-size:14.5px;color:var(--muted)}
+  .theory-grid li{margin-bottom:5px}
+  .theory-grid a{text-underline-offset:2px}
+  .formula-box{
+    background:var(--tile);border-radius:9px;padding:12px 16px;margin:12px 0;
+    font-family:Georgia,"Times New Roman",serif;font-size:17px;text-align:center;color:var(--ink);
+  }
+  .formula-box.small{font-size:15px}
+  .case{display:flex;gap:12px;align-items:flex-start;margin-top:10px;font-size:14.5px}
+  .case .badge{
+    flex:0 0 auto;background:var(--green);color:#fff;border-radius:7px;
+    font-size:13px;font-weight:700;padding:3px 9px;margin-top:2px;
+  }
+  .case .badge.neg{background:var(--red)}
+  .case .badge.zero{background:var(--gold)}
+  .case p{margin:0;color:var(--muted)}
+
+  /* ---------- tables ---------- */
+  table.vals{width:100%;border-collapse:collapse;font-size:12.8px;margin-top:10px}
+  table.vals th,table.vals td{border:1px solid var(--line);padding:6px 4px;text-align:center}
+  table.vals th{background:var(--tile);font-weight:600;color:var(--muted);font-size:11.5px}
+  table.vals td:first-child{background:var(--tile-2);font-weight:650;white-space:nowrap}
+  table.vals .fn{font-family:Georgia,"Times New Roman",serif;font-size:13.5px}
+
+  /* ---------- animation / physics ---------- */
+  .play-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+  .btn{
+    border:1px solid var(--btn-line);background:var(--btn);color:var(--ink);
+    border-radius:9px;padding:9px 16px;font-size:14px;cursor:pointer;font-weight:600;
+  }
+  .btn:hover{border-color:var(--green-2);color:var(--green-2)}
+  .btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+  .btn.primary:hover{background:var(--green-2);color:#fff;border-color:var(--green-2)}
+  .btn:disabled{opacity:.45;cursor:default}
+  .btn:disabled:hover{border-color:var(--btn-line);color:var(--ink)}
+  .status{
+    background:var(--tile);border-radius:9px;padding:12px 16px;font-size:14.5px;
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .status b{font-weight:650}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-top:12px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .examples{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+  .examples .card h2{font-size:16.5px}
+  .examples p{font-size:14px;color:var(--muted);margin:8px 0}
+  .examples .sol{background:var(--tile);border-radius:9px;padding:10px 14px;font-size:14px;margin-top:10px;line-height:1.7}
+  .examples .sol b{color:var(--ink)}
+  .examples .btn{margin-top:12px}
+  .graph-card{padding-bottom:14px}
+  .linkbtn{
+    background:none;border:0;padding:0;color:var(--green-2);cursor:pointer;
+    font-size:inherit;text-decoration:underline;text-underline-offset:2px;font-weight:600;
+  }
+  body.board .linkbtn{color:#9fd8bd}
+  .linkbtn:hover{opacity:.75}
+
+  /* ---------- progress ---------- */
+  .progress{height:7px;background:var(--line);border-radius:5px;overflow:hidden;margin:8px 0 16px}
+  .progress i{display:block;height:100%;width:0;background:var(--green-2);transition:width .3s ease}
+  .quiz-q{font-size:17px;font-weight:650;margin:6px 0 14px;line-height:1.45}
+  .opt{
+    display:block;width:100%;text-align:left;border:1px solid var(--btn-line);
+    background:var(--btn);color:var(--ink);border-radius:10px;padding:11px 15px;
+    margin-bottom:9px;cursor:pointer;font-size:14.5px;
+  }
+  .opt:hover:not(:disabled){border-color:var(--green-2)}
+  .opt:disabled{cursor:default}
+  .opt.correct{border-color:var(--green-2);background:rgba(46,125,80,.16);font-weight:650}
+  .opt.wrong{border-color:var(--red);background:rgba(164,70,47,.14)}
+  .feedback{font-size:14px;color:var(--muted);min-height:22px;margin:10px 0 14px}
+  .feedback b{color:var(--ink)}
+  .score{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--muted)}
+  .score b{font-size:17px;color:var(--ink)}
+  .result{background:var(--tile);border-radius:10px;padding:18px 20px;text-align:center;margin:8px 0 16px}
+  .result b{display:block;font-size:26px;margin-bottom:4px}
+  .kbd{
+    display:inline-block;border:1px solid var(--btn-line);border-bottom-width:2px;
+    border-radius:5px;padding:0 6px;font-size:12px;background:var(--btn);color:var(--ink);
+  }
+
+  /* ---------- prefs popover ---------- */
+  .popover{
+    position:absolute;right:0;top:calc(100% + 8px);width:280px;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.16);
+    padding:16px 18px;z-index:50;display:none;
+  }
+  .popover.open{display:block}
+  .popover h2{margin:0 0 10px;font-size:14.5px}
+  .popover label{display:flex;gap:9px;align-items:center;font-size:14px;padding:5px 0;color:var(--muted);cursor:pointer}
+  .popover input[type=checkbox]{accent-color:var(--green-2);width:15px;height:15px}
+  .popover .btn{width:100%;margin-top:10px}
+
+  /* ---------- download + footer ---------- */
+  .download{margin:34px 0 10px}
+  .download a{font-size:14.5px;text-decoration:underline;text-underline-offset:3px}
+  footer{border-top:1px solid transparent;padding:26px 0 40px}
+  footer .row{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-size:14px}
+  footer a{color:var(--green-2);text-decoration:underline;text-underline-offset:3px}
+  footer .cookie{
+    border:1px solid var(--btn-line);background:var(--btn);color:var(--ink);
+    border-radius:8px;padding:6px 13px;font-size:13.5px;cursor:pointer;
+  }
+
+  svg{width:100%;height:auto;display:block}
+  .svg-cap{text-align:center;font-size:13.5px;color:var(--muted);margin-top:6px}
+
+  @media (max-width:960px){
+    .grid2,.theory-grid,.examples{grid-template-columns:1fr}
+    .banner h1{font-size:24px}
+    .top-actions{margin-left:0;width:100%}
+    .graph-card{padding:16px 12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span class="mark">p</span>
+      <span class="name"><b>praxis</b><span>science lab</span></span>
+    </a>
+    <div class="top-actions">
+      <button class="pill" id="btnText" title="Text mărit">Text / afișare</button>
+      <button class="pill" data-goto="teorie">Bibliotecă</button>
+      <button class="pill" data-goto="teorie">Cum folosești laboratorul</button>
+      <button class="pill" id="btnBoard">Mod tablă</button>
+      <button class="pill on" id="btnSound"><span class="dot"></span> Sunet activ</button>
+      <div class="lang">
+        <button class="pill" id="btnLang">RO ▾</button>
+        <div class="lang-menu" id="langMenu">
+          <button>Română (RO)</button>
+          <button disabled>Engleză (EN) — în curând</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumbs">
+    <a href="#" data-goto="teorie">Bibliotecă</a><span class="sep">/</span>
+    <a href="#" data-goto="teorie">Elemente de matematică</a><span class="sep">/</span>
+    <span>Funcții trigonometrice</span>
+  </nav>
+
+  <div class="banner">
+    <span class="bar"></span>
+    <h1>Funcții trigonometrice</h1>
+    <span class="sub">Sinus, cosinus, tangentă și cotangentă — de la cercul unitate la grafic și fizică</span>
+  </div>
+
+  <div class="tabbar">
+    <div class="tabs" role="tablist" aria-label="Secțiunile lecției">
+      <button class="tab active" data-tab="teorie" role="tab" aria-selected="true">Teorie</button>
+      <button class="tab" data-tab="animatii" role="tab" aria-selected="false">Animații</button>
+      <button class="tab" data-tab="grafice" role="tab" aria-selected="false">Grafice</button>
+      <button class="tab" data-tab="fizica" role="tab" aria-selected="false">Exemple în fizică</button>
+      <button class="tab" data-tab="exerseaza" role="tab" aria-selected="false">Exersează</button>
+    </div>
+    <div class="prefs-wrap">
+      <button class="chip" id="btnPrefs">▶ Preferințe laborator</button>
+      <div class="popover" id="prefsPanel">
+        <h2>Ce arătăm pe desen?</h2>
+        <label><input type="checkbox" id="optGrid" checked> Grila și axele</label>
+        <label><input type="checkbox" id="optProj" checked> Proiecțiile sin și cos</label>
+        <label><input type="checkbox" id="optTan" checked> Tangenta pe cercul unitate</label>
+        <label><input type="checkbox" id="optCot" checked> Cotangenta pe cercul unitate</label>
+        <label><input type="checkbox" id="optSound" checked> Sunet la interacțiuni</label>
+        <button class="btn" id="btnResetPrefs">Resetează preferințele</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TAB: TEORIE ============ -->
+  <section class="panel active" id="tab-teorie">
+    <div class="grid2">
+      <div class="card">
+        <h2><span class="ico">🧭</span> Cercul trigonometric</h2>
+        <div id="svgTheory"></div>
+        <div class="note">
+          <span>Unghi:</span>
+          <b id="angDeg">30°</b>
+          <span>=</span>
+          <b id="angRad">π/6 rad</b>
+          <span class="sep-dot">·</span>
+          <span id="quadrant">cadranul I</span>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--amber)"></i>sin θ (proiecția pe Oy)</span>
+          <span><i style="background:var(--blue)"></i>cos θ (proiecția pe Ox)</span>
+          <span><i style="background:var(--red)"></i>tan θ</span>
+          <span><i style="background:var(--gold)"></i>cot θ</span>
+        </div>
+        <p class="hint" id="theoryHint">
+          Punctul P se mișcă pe cercul de rază 1. Coordonatele lui sunt chiar cos θ și sin θ.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2><span class="ico">🎛</span> Explorează unghiul</h2>
+
+        <div class="seg" role="group" aria-label="Unitate de măsură">
+          <button type="button" class="unit-btn active" data-unit="deg" aria-pressed="true">Grade (°)</button>
+          <button type="button" class="unit-btn" data-unit="rad" aria-pressed="false">Radiani (rad)</button>
+        </div>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Unghiul θ (sens trigonometric)</span><b id="valAngle">30°</b></div>
+          <div class="ctl-row">
+            <button class="step" data-ang-step="-5" aria-label="scade unghiul cu 5 grade">−</button>
+            <input type="range" id="slAngle" min="0" max="360" step="1" value="30" aria-label="Unghiul în grade">
+            <button class="step" data-ang-step="5" aria-label="crește unghiul cu 5 grade">+</button>
+          </div>
+        </div>
+
+        <div class="presets">
+          <button class="chip" data-angle="0">0°</button>
+          <button class="chip active" data-angle="30">30°</button>
+          <button class="chip" data-angle="45">45°</button>
+          <button class="chip" data-angle="60">60°</button>
+          <button class="chip" data-angle="90">90°</button>
+          <button class="chip" data-angle="120">120°</button>
+          <button class="chip" data-angle="180">180°</button>
+          <button class="chip" data-angle="270">270°</button>
+          <button class="chip" data-angle="360">360°</button>
+        </div>
+
+        <div class="tiles">
+          <div class="tile"><span>sin θ</span><b id="tSin">0,500</b><em id="tSinEx">1/2</em></div>
+          <div class="tile"><span>cos θ</span><b id="tCos">0,866</b><em id="tCosEx">√3/2</em></div>
+          <div class="tile"><span>tan θ</span><b id="tTan">0,577</b><em id="tTanEx">√3/3</em></div>
+          <div class="tile"><span>cot θ</span><b id="tCot">1,732</b><em id="tCotEx">√3</em></div>
+        </div>
+
+        <div class="formulas">
+          <span class="f">sin θ = y / r</span>
+          <span class="f">cos θ = x / r</span>
+          <span class="f">tan θ = y / x</span>
+          <span class="f">cot θ = x / y</span>
+        </div>
+
+        <div class="eq center" id="circleEq">P(cos 30°; sin 30°) = (0,866; 0,500)</div>
+
+        <details class="explain">
+          <summary>Cum citești desenul?</summary>
+          <p>
+            Unghiul θ se măsoară în sens trigonometric (invers acelor de ceasornic), pornind de la axa Ox pozitivă.
+            Punctul P are coordonatele (cos θ; sin θ) pentru că cercul are raza 1.
+          </p>
+          <ul>
+            <li><b>sin θ</b> este înălțimea punctului P față de axa Ox.</li>
+            <li><b>cos θ</b> este deplasarea orizontală a lui P față de axa Oy.</li>
+            <li><b>tan θ</b> se citește pe verticala x = 1, la intersecția cu prelungirea razei OP.</li>
+            <li><b>cot θ</b> se citește pe orizontala y = 1, la intersecția cu prelungirea razei OP.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <nav class="theory-pager" role="tablist" aria-label="Ecranele teoriei">
+      <button class="theory-screen-tab active" id="theory-tab-basics" type="button" role="tab" aria-selected="true" aria-controls="theory-screen-basics" data-theory-page="basics">Cerc, funcții și valori</button>
+      <button class="theory-screen-tab" id="theory-tab-applications" type="button" role="tab" aria-selected="false" aria-controls="theory-screen-applications" data-theory-page="applications" tabindex="-1">Relații, grafice și aplicații</button>
+    </nav>
+    <section class="theory-screen" id="theory-screen-basics" role="tabpanel" aria-labelledby="theory-tab-basics" data-theory-screen="basics">
+    <div class="theory-grid">
+      <div class="card">
+        <h2>1. Definiții</h2>
+        <p>
+          Într-un triunghi dreptunghic, pentru un unghi ascuțit θ, raporturile dintre laturi se numesc
+          funcții trigonometrice. Pe cercul unitate (r = 1) definițiile devin coordonate.
+        </p>
+        <div class="formula-box small">
+          sin θ = cateta opusă / ipotenuză = y / r<br>
+          cos θ = cateta alăturată / ipotenuză = x / r
+        </div>
+        <div class="formula-box small">
+          tan θ = sin θ / cos θ = y / x,&nbsp; cos θ ≠ 0<br>
+          cot θ = cos θ / sin θ = x / y,&nbsp; sin θ ≠ 0
+        </div>
+        <p>
+          Pe cercul unitate, P(cos θ; sin θ). Funcțiile sunt periodice și se pot extinde la orice unghi,
+          nu doar la cele ascuțite.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>2. Valori remarcabile</h2>
+        <p>Valori exacte pentru unghiurile care apar cel mai des în probleme:</p>
+        <table class="vals">
+          <thead><tr><th>θ</th><th>rad</th><th>sin</th><th>cos</th><th>tan</th><th>cot</th></tr></thead>
+          <tbody>
+            <tr><td>0°</td><td class="fn">0</td><td>0</td><td>1</td><td>0</td><td>—</td></tr>
+            <tr><td>30°</td><td class="fn">π/6</td><td>1/2</td><td>√3/2</td><td>√3/3</td><td>√3</td></tr>
+            <tr><td>45°</td><td class="fn">π/4</td><td>√2/2</td><td>√2/2</td><td>1</td><td>1</td></tr>
+            <tr><td>60°</td><td class="fn">π/3</td><td>√3/2</td><td>1/2</td><td>√3</td><td>√3/3</td></tr>
+            <tr><td>90°</td><td class="fn">π/2</td><td>1</td><td>0</td><td>—</td><td>0</td></tr>
+            <tr><td>180°</td><td class="fn">π</td><td>0</td><td>−1</td><td>0</td><td>—</td></tr>
+            <tr><td>270°</td><td class="fn">3π/2</td><td>−1</td><td>0</td><td>—</td><td>0</td></tr>
+            <tr><td>360°</td><td class="fn">2π</td><td>0</td><td>1</td><td>0</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p>„—” înseamnă că funcția nu este definită pentru acel unghi.</p>
+      </div>
+
+      <div class="card">
+        <h2>3. Relații fundamentale</h2>
+        <div class="formula-box">sin² θ + cos² θ = 1</div>
+        <div class="formula-box small">
+          tan θ = sin θ / cos θ,&nbsp; cot θ = 1 / tan θ<br>
+          1 + tan² θ = 1 / cos² θ<br>
+          1 + cot² θ = 1 / sin² θ
+        </div>
+        <p>
+          Prima relație este teorema lui Pitagora scrisă pe cercul unitate: catetele sunt |sin θ| și |cos θ|,
+          iar ipotenuza este raza 1.
+        </p>
+        <p>
+          Consecință: <b>−1 ≤ sin θ ≤ 1</b> și <b>−1 ≤ cos θ ≤ 1</b> pentru orice unghi.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>4. Semne, paritate și periodicitate</h2>
+        <ul>
+          <li><b>Cadranul I:</b> sin +, cos +, tan +, cot +.</li>
+          <li><b>Cadranul II:</b> sin +, cos −, tan −, cot −.</li>
+          <li><b>Cadranul III:</b> sin −, cos −, tan +, cot +.</li>
+          <li><b>Cadranul IV:</b> sin −, cos +, tan −, cot −.</li>
+        </ul>
+        <div class="formula-box small">
+          sin(θ + 360°) = sin θ,&nbsp; cos(θ + 360°) = cos θ<br>
+          tan(θ + 180°) = tan θ,&nbsp; cot(θ + 180°) = cot θ
+        </div>
+        <p>
+          Funcțiile sin și cos au perioada <b>2π</b> (360°), iar tan și cot au perioada <b>π</b> (180°).
+          sin este impară, cos este pară: sin(−θ) = −sin θ, cos(−θ) = cos θ.
+        </p>
+      </div>
+
+    </div>
+    </section>
+    <section class="theory-screen" id="theory-screen-applications" role="tabpanel" aria-labelledby="theory-tab-applications" data-theory-screen="applications" hidden>
+    <div class="theory-grid">
+      <div class="card">
+        <h2>5. Grade și radiani</h2>
+        <p>
+          Un unghi complet are 360° sau 2π radiani. Legătura dintre cele două unități:
+        </p>
+        <div class="formula-box">180° = π rad,&nbsp; 1 rad = 180°/π ≈ 57,3°</div>
+        <div class="formula-box small">
+          θ<sub>rad</sub> = θ° · π / 180<br>
+          θ° = θ<sub>rad</sub> · 180 / π
+        </div>
+        <p>
+          Exemplu: 30° = 30·π/180 = π/6 rad ≈ 0,524 rad. Un radian este unghiul la care arcul are
+          lungimea egală cu raza.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>6. De la cerc la grafic</h2>
+        <p>
+          Dacă desfășurăm cercul unitate pe o axă orizontală, obținem graficele funcțiilor.
+          Înălțimea punctului P devine ordonata curbei sinus, iar deplasarea orizontală devine cosinus.
+        </p>
+        <div class="formula-box small">
+          y = A·sin(ωx + φ)<br>
+          amplitudine |A|,&nbsp; perioadă 360°/ω
+        </div>
+        <p>
+          Graficul sinus este o undă care pornește din 0, iar cosinus este aceeași undă deplasată
+          cu 90°: cos x = sin(x + 90°).
+        </p>
+        <p>
+          <button class="linkbtn" data-goto="grafice">Vezi graficele interactive →</button>
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>7. Legături utile</h2>
+        <ul>
+          <li><a href="https://ro.wikipedia.org/wiki/Func%C8%9Bii_trigonometrice" target="_blank" rel="noopener">Wikipedia — funcții trigonometrice</a></li>
+          <li><a href="https://ro.wikipedia.org/wiki/Radian" target="_blank" rel="noopener">Wikipedia — radianul</a></li>
+          <li><a href="https://www.geogebra.org/search/trigonometry" target="_blank" rel="noopener">GeoGebra — aplicații cu trigonometrie</a></li>
+          <li><a href="https://www.khanacademy.org/math/trigonometry" target="_blank" rel="noopener">Khan Academy — curs de trigonometrie</a></li>
+          <li><a href="https://phet.colorado.edu/en/simulations/trig-tour" target="_blank" rel="noopener">PhET — Trig Tour</a></li>
+          <li><a href="https://www.mathsisfun.com/geometry/unit-circle.html" target="_blank" rel="noopener">Math is Fun — cercul unitate</a></li>
+        </ul>
+        <p>Deschide linkurile într-o filă nouă și revino la lecție pentru a compara.</p>
+      </div>
+
+      <div class="card">
+        <h2>8. Cum folosești laboratorul</h2>
+        <ul>
+          <li>Mișcă sliderul unghiului sau folosește tastele <span class="kbd">←</span> <span class="kbd">→</span>.</li>
+          <li>Comută între <b>grade</b> și <b>radiani</b> — valorile rămân aceleași, doar scrierea se schimbă.</li>
+          <li>În tabul <b>Animații</b> vezi cum se „desfășoară” cercul într-un grafic.</li>
+          <li>În tabul <b>Grafice</b> modifică amplitudinea, pulsația și faza.</li>
+          <li>În <b>Exemple în fizică</b> aplică trigonometria la oscilații, plan înclinat și curent alternativ.</li>
+          <li>În <b>Exersează</b> verifică-ți cunoștințele cu un test scurt.</li>
+        </ul>
+      </div>
+    </div>
+    </section>
+  </section>
+
+  <!-- ============ TAB: ANIMAȚII ============ -->
+  <section class="panel" id="tab-animatii">
+    <div class="grid2">
+      <div class="card">
+        <h2><span class="ico">🎬</span> Animație pe cerc și grafic</h2>
+        <div id="svgAnim2"></div>
+        <div class="note">
+          <span id="anNoteLabel">Unghiul curent:</span>
+          <b id="anNoteValue">0° = 0 rad</b>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--green-2)"></i>raza și punctul P</span>
+          <span><i style="background:var(--amber)"></i>sinus</span>
+          <span><i style="background:var(--blue)"></i>cosinus</span>
+          <span><i style="background:var(--red)"></i>tangentă</span>
+        </div>
+        <p class="hint" id="anHint">
+          Pornește animația și urmărește cum înălțimea punctului P desenează curba sinus.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2><span class="ico">⏯</span> Comenzi de animație</h2>
+
+        <div class="play-row">
+          <button class="btn primary" id="btnAnimPlay">▶ Redă</button>
+          <button class="btn" id="btnAnimRestart">⟲ Repornește</button>
+        </div>
+
+        <h3>Tipul animației</h3>
+        <div class="play-row">
+          <button class="chip active" data-atype="sin">Sinus desfășurat</button>
+          <button class="chip" data-atype="cos">Cosinus desfășurat</button>
+          <button class="chip" data-atype="both">Ambele funcții</button>
+          <button class="chip" data-atype="tan">Tangenta</button>
+        </div>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Viteza animației</span><b id="valAnimSpeed">1×</b></div>
+          <div class="ctl-row">
+            <button class="step" id="anSpdDown" aria-label="încetinește">−</button>
+            <input type="range" id="slAnimSpeed" min="0.25" max="3" step="0.25" value="1">
+            <button class="step" id="anSpdUp" aria-label="accelerează">+</button>
+          </div>
+        </div>
+
+        <div class="status">
+          <span>Poziție în animație</span>
+          <b id="anProgress">0%</b>
+        </div>
+        <div class="progress" style="margin-top:10px"><i id="anBar"></i></div>
+
+        <div class="tiles" style="margin-top:14px">
+          <div class="tile"><span>Unghi θ</span><b id="anAngle">0°</b><em id="anRad">0 rad</em></div>
+          <div class="tile"><span>sin θ</span><b id="anSin">0,000</b></div>
+          <div class="tile"><span>cos θ</span><b id="anCos">1,000</b></div>
+          <div class="tile"><span>tan θ</span><b id="anTan">0,000</b></div>
+        </div>
+
+        <details class="explain" open>
+          <summary>Ce urmărești?</summary>
+          <ul id="anExplain">
+            <li><b>Sinus:</b> înălțimea punctului P față de axa Ox se transformă direct în ordonata curbei sinus.</li>
+            <li><b>Cosinus:</b> deplasarea orizontală a lui P se transformă în ordonata curbei cosinus.</li>
+            <li><b>Ambele:</b> vezi cele două unde, deplasate una față de alta cu 90°.</li>
+            <li><b>Tangenta:</b> prelungirea razei intersectează verticala x = 1; acolo citim tan θ.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="theory-grid">
+      <div class="card">
+        <h2>De ce cercul unitate?</h2>
+        <p>
+          Pentru un cerc de rază 1, unghiul θ și arcul parcurs au aceeași măsură în radiani.
+          Coordonatele punctului P sunt exact (cos θ; sin θ), fără niciun factor de scară.
+        </p>
+        <div class="formula-box">P(cos θ; sin θ),&nbsp; OP = 1</div>
+        <p>
+          Când θ crește uniform, P se rotește uniform. Proiecția lui pe verticală oscilează între −1 și 1 —
+          aceasta este mișcarea armonică simplă.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Legătura cu fizica</h2>
+        <p>
+          Un punct care se mișcă uniform pe un cerc are proiecții care oscilează sinusoidal.
+          De aceea funcțiile trigonometrice descriu arcuri elastice, penduluri și undele.
+        </p>
+        <div class="formula-box small">x(t) = A·sin(ωt + φ)</div>
+        <p>
+          Amplitudinea A este raza cercului, pulsația ω este viteza unghiulară, iar faza φ este
+          unghiul inițial. <button class="linkbtn" data-goto="fizica">Vezi aplicațiile în fizică →</button>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB: GRAFICE ============ -->
+  <section class="panel" id="tab-grafice">
+    <div class="card graph-card">
+      <h2><span class="ico">📈</span> Graficele funcțiilor trigonometrice</h2>
+      <div id="svgGraph"></div>
+      <div class="legend">
+        <span><i style="background:var(--amber)"></i>sinus</span>
+        <span><i style="background:var(--blue)"></i>cosinus</span>
+        <span><i style="background:var(--red)"></i>tangentă</span>
+        <span><i style="background:var(--gold)"></i>cotangentă</span>
+        <span>liniile punctate verticale = asimptote</span>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:22px">
+      <div class="card">
+        <h2><span class="ico">🎛</span> Controlează unda</h2>
+
+        <h3>Funcția afișată</h3>
+        <div class="play-row">
+          <button class="chip active" data-fn="sin">sin x</button>
+          <button class="chip" data-fn="cos">cos x</button>
+          <button class="chip" data-fn="tan">tan x</button>
+          <button class="chip" data-fn="cot">cot x</button>
+        </div>
+
+        <div class="seg" role="group" aria-label="Unitatea axei orizontale">
+          <button type="button" class="unit-btn active" data-unit="deg" aria-pressed="true">Axa în grade</button>
+          <button type="button" class="unit-btn" data-unit="rad" aria-pressed="false">Axa în radiani</button>
+        </div>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Amplitudinea A</span><b id="valAmp">1</b></div>
+          <div class="ctl-row">
+            <button class="step" data-gstep="A" data-d="-0.1" aria-label="scade amplitudinea">−</button>
+            <input type="range" id="slAmp" min="0.25" max="2.5" step="0.05" value="1">
+            <button class="step" data-gstep="A" data-d="0.1" aria-label="crește amplitudinea">+</button>
+          </div>
+        </div>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Pulsația ω (perioada = 360°/ω)</span><b id="valOmega">1</b></div>
+          <div class="ctl-row">
+            <button class="step" data-gstep="w" data-d="-0.1" aria-label="scade pulsația">−</button>
+            <input type="range" id="slOmega" min="0.5" max="3" step="0.05" value="1">
+            <button class="step" data-gstep="w" data-d="0.1" aria-label="crește pulsația">+</button>
+          </div>
+        </div>
+
+        <div class="ctl">
+          <div class="ctl-head"><span>Faza φ</span><b id="valPhi">0°</b></div>
+          <div class="ctl-row">
+            <button class="step" data-gstep="phi" data-d="-5" aria-label="scade faza">−</button>
+            <input type="range" id="slPhi" min="-180" max="180" step="5" value="0">
+            <button class="step" data-gstep="phi" data-d="5" aria-label="crește faza">+</button>
+          </div>
+        </div>
+
+        <div class="play-row" style="margin-top:6px">
+          <button class="btn primary" id="btnWavePlay">▶ Animație undă</button>
+          <button class="btn" id="btnWaveReset">⟲ Resetează</button>
+          <button class="btn" id="btnTone">🔊 Ascultă unda</button>
+        </div>
+
+        <p class="hint">
+          Butonul de sunet redă un ton sinusoidal a cărui frecvență crește cu ω — aceeași formă de undă,
+          dar în domeniul audio.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2><span class="ico">🔎</span> Citește graficul</h2>
+        <div class="formula-box" id="gFormula">y = sin(x)</div>
+        <p class="hint" style="margin-top:-4px">Forma afișată folosește grade; în radiani perioada este 2π/ω.</p>
+
+        <div class="tiles">
+          <div class="tile"><span>Perioada T</span><b id="gPeriod">360°</b><em id="gPeriodRad">2π rad</em></div>
+          <div class="tile"><span>Amplitudinea |A|</span><b id="gAmp">1</b><em id="gAmpNote">max |y|</em></div>
+          <div class="tile"><span>Deplasarea de fază</span><b id="gShift">0°</b><em>−φ/ω</em></div>
+          <div class="tile"><span>Valori extreme</span><b id="gExtrem">±1</b><em id="gExtremNote">min și max</em></div>
+        </div>
+
+        <div class="formula-box small" id="gZero">Zerouri: ωx + φ = k·180°</div>
+        <div id="gDetails" class="hint"></div>
+
+        <details class="explain">
+          <summary>Tangenta și cotangenta</summary>
+          <p>
+            tan x = sin x / cos x nu este definită când cos x = 0, adică la 90°, 270° etc.
+            Graficul are asimptote verticale în aceste puncte și se repetă din 180° în 180°.
+          </p>
+          <p>
+            cot x = cos x / sin x nu este definită când sin x = 0, adică la 0°, 180°, 360°.
+            Are aceleași asimptote ca tan, dar deplasate cu 90°.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB: EXEMPLE ÎN FIZICĂ ============ -->
+  <section class="panel" id="tab-fizica">
+    <div class="grid2">
+      <div class="card">
+        <h2><span class="ico">🔬</span> <span id="physTitle">Oscilație armonică</span></h2>
+        <div id="svgPhys"></div>
+        <div class="note">
+          <span id="physNoteLabel">Timpul:</span>
+          <b id="physNoteValue">0,00 s</b>
+        </div>
+        <div class="legend" id="physLegend"></div>
+        <p class="hint" id="physHint"></p>
+      </div>
+
+      <div class="card">
+        <h2><span class="ico">⚖</span> Alege modelul</h2>
+        <div class="play-row">
+          <button class="chip active" data-model="osc">Oscilație armonică</button>
+          <button class="chip" data-model="ac">Curent alternativ</button>
+          <button class="chip" data-model="inc">Plan înclinat</button>
+        </div>
+
+        <div class="play-row">
+          <button class="btn primary" id="btnPhysPlay">▶ Redă</button>
+          <button class="btn" id="btnPhysReset">⟲ Repornește</button>
+        </div>
+
+        <div class="phys-ctl" id="ctl-osc">
+          <div class="ctl">
+            <div class="ctl-head"><span>Amplitudinea A (cm)</span><b id="valOscA">20</b></div>
+            <div class="ctl-row">
+              <button class="step" data-pvar="A" data-d="-1">−</button>
+              <input type="range" id="slOscA" min="5" max="40" step="1" value="20">
+              <button class="step" data-pvar="A" data-d="1">+</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><span>Perioada T (s)</span><b id="valOscT">1,50</b></div>
+            <div class="ctl-row">
+              <button class="step" data-pvar="T" data-d="-0.1">−</button>
+              <input type="range" id="slOscT" min="0.5" max="3" step="0.05" value="1.5">
+              <button class="step" data-pvar="T" data-d="0.1">+</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><span>Faza inițială φ (°)</span><b id="valOscPhi">0°</b></div>
+            <div class="ctl-row">
+              <button class="step" data-pvar="phi" data-d="-15">−</button>
+              <input type="range" id="slOscPhi" min="-180" max="180" step="15" value="0">
+              <button class="step" data-pvar="phi" data-d="15">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="phys-ctl" id="ctl-ac" style="display:none">
+          <div class="ctl">
+            <div class="ctl-head"><span>Tensiunea de vârf U₀ (V)</span><b id="valAcU">230</b></div>
+            <div class="ctl-row">
+              <button class="step" data-pvar="U0" data-d="-5">−</button>
+              <input type="range" id="slAcU" min="12" max="325" step="1" value="230">
+              <button class="step" data-pvar="U0" data-d="5">+</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><span>Frecvența f (Hz)</span><b id="valAcF">50</b></div>
+            <div class="ctl-row">
+              <button class="step" data-pvar="f" data-d="-1">−</button>
+              <input type="range" id="slAcF" min="10" max="60" step="1" value="50">
+              <button class="step" data-pvar="f" data-d="1">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="phys-ctl" id="ctl-inc" style="display:none">
+          <div class="ctl">
+            <div class="ctl-head"><span>Unghiul planului α (°)</span><b id="valIncAlpha">30°</b></div>
+            <div class="ctl-row">
+              <button class="step" data-pvar="alpha" data-d="-1">−</button>
+              <input type="range" id="slIncAlpha" min="5" max="60" step="1" value="30">
+              <button class="step" data-pvar="alpha" data-d="1">+</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><span>Masa corpului m (kg)</span><b id="valIncM">5,0</b></div>
+            <div class="ctl-row">
+              <button class="step" data-pvar="m" data-d="-0.5">−</button>
+              <input type="range" id="slIncM" min="1" max="20" step="0.5" value="5">
+              <button class="step" data-pvar="m" data-d="0.5">+</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><span>Coeficientul de frecare μ</span><b id="valIncMu">0,20</b></div>
+            <div class="ctl-row">
+              <button class="step" data-pvar="mu" data-d="-0.05">−</button>
+              <input type="range" id="slIncMu" min="0" max="0.6" step="0.01" value="0.2">
+              <button class="step" data-pvar="mu" data-d="0.05">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tiles" id="physTiles"></div>
+
+        <div class="formulas">
+          <span class="f" id="physF1">x(t) = A·sin(ωt + φ)</span>
+          <span class="f" id="physF2">v(t) = Aω·cos(ωt + φ)</span>
+        </div>
+
+        <details class="explain">
+          <summary>Cum interpretezi desenul?</summary>
+          <p id="physExplain"></p>
+        </details>
+      </div>
+    </div>
+
+    <div class="examples">
+      <div class="card">
+        <h2>🕰 Pendulul matematic</h2>
+        <p>Un pendul cu lungimea L = 1 m oscilează cu amplitudine mică. g = 9,81 m/s².</p>
+        <div class="sol">
+          <b>T</b> = 2π·√(L/g) = 2π·√(1/9,81) = <b>2,01 s</b><br>
+          <b>ω</b> = 2π/T = <b>3,13 rad/s</b><br>
+          <b>f</b> = 1/T = <b>0,50 Hz</b><br>
+          <b>θ(t)</b> = θ₀·sin(ωt + φ)
+        </div>
+        <p>Unghiul mic este o oscilație armonică descrisă de sinus.</p>
+        <button class="btn" data-model="osc">Încearcă modelul →</button>
+      </div>
+
+      <div class="card">
+        <h2>📐 Plan înclinat</h2>
+        <p>Un corp cu m = 10 kg coboară pe un plan cu α = 30° și μ = 0,2.</p>
+        <div class="sol">
+          <b>G</b> = m·g = <b>98,1 N</b><br>
+          <b>G∥</b> = m·g·sin 30° = <b>49,1 N</b><br>
+          <b>N</b> = m·g·cos 30° = <b>85,0 N</b><br>
+          <b>F<sub>f</sub></b> = μ·N = <b>17,0 N</b><br>
+          <b>a</b> = g(sin α − μ·cos α) = <b>3,21 m/s²</b>
+        </div>
+        <p>Descompunerea greutății folosește sinus și cosinus.</p>
+        <button class="btn" data-model="inc">Încearcă modelul →</button>
+      </div>
+
+      <div class="card">
+        <h2>⚡ Curent alternativ</h2>
+        <p>O rețea are tensiunea de vârf U₀ = 325 V și frecvența f = 50 Hz.</p>
+        <div class="sol">
+          <b>U<sub>ef</sub></b> = U₀/√2 = <b>229,8 V</b> ≈ 230 V<br>
+          <b>T</b> = 1/f = <b>0,02 s</b><br>
+          <b>ω</b> = 2πf = <b>314,16 rad/s</b><br>
+          <b>u(t)</b> = U₀·sin(ωt + φ)
+        </div>
+        <p>Tensiunea rețelei este o sinusoidă cu amplitudinea U₀.</p>
+        <button class="btn" data-model="ac">Încearcă modelul →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB: EXERSEAZĂ ============ -->
+  <section class="panel" id="tab-exerseaza">
+    <div class="grid2">
+      <div class="card">
+        <h2><span class="ico">✅</span> Test rapid</h2>
+        <div class="score">
+          <span id="qProgress">Întrebarea 1 din 10</span>
+          <b id="qScore">0 / 10 puncte</b>
+        </div>
+        <div class="progress"><i id="qBar"></i></div>
+        <p class="quiz-q" id="qText"></p>
+        <div id="qOptions"></div>
+        <div class="feedback" id="qFeedback"></div>
+        <div class="play-row">
+          <button class="btn primary" id="qNext" disabled>Următoarea →</button>
+          <button class="btn" id="qRestart">⟲ Reia testul</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="ico">💡</span> Sfaturi</h2>
+        <ul style="padding-left:20px;font-size:14.5px;color:var(--muted)">
+          <li>Desenează cercul unitate înainte să calculezi — semnele devin evidente.</li>
+          <li>Pentru valorile remarcabile, reține tabelul 0°, 30°, 45°, 60°, 90°.</li>
+          <li>Verifică întotdeauna cu identitatea sin²θ + cos²θ = 1.</li>
+          <li>tan și cot se calculează din sin și cos; ai grijă la numitorul zero.</li>
+          <li>În radiani, 180° = π; transformă înainte de a deriva sau integra.</li>
+        </ul>
+        <div class="formula-box small">sin² θ + cos² θ = 1</div>
+        <p class="hint">
+          Nu ești sigur de un răspuns? Deschide tabul <button class="linkbtn" data-goto="teorie">Teorie</button>
+          sau <button class="linkbtn" data-goto="animatii">Animații</button> și revino.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="download">
+    <a href="#" id="btnDownload">Descarcă lecția (HTML)</a>
+  </div>
+</div>
+
+<footer>
+  <div class="row">
+    <a href="#" data-goto="teorie">Despre</a>
+    <a href="#" data-goto="teorie">Contact</a>
+    <a href="#" data-goto="teorie">Termeni și condiții</a>
+    <a href="#" data-goto="teorie">Confidențialitate și cookies</a>
+    <button class="cookie" id="btnCookies">Setări cookies</button>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ================= utilitare ================= */
+const $  = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const D2R = Math.PI / 180;
+const TAU = Math.PI * 2;
+
+function fmt(n, d){
+  d = (d === undefined) ? 2 : d;
+  if (n === null || n === undefined || !isFinite(n)) return "—";
+  return Number(n).toLocaleString(window.PraxisI18n?.locale || "ro-RO", {maximumFractionDigits:d, minimumFractionDigits:0});
+}
+function fmt3(n){
+  if (n === null || n === undefined || !isFinite(n)) return "—";
+  return Number(n).toLocaleString(window.PraxisI18n?.locale || "ro-RO", {minimumFractionDigits:3, maximumFractionDigits:3});
+}
+function r1(n){ return Math.round(n * 10) / 10; }
+function clamp(v, a, b){ return Math.min(b, Math.max(a, v)); }
+function frameSeconds(ts, last, cap = 0.1){
+  if (document.hidden || !last) return 0;
+  return Math.min(cap, Math.max(0, (ts - last) / 1000));
+}
+function norm360(a){ return ((a % 360) + 360) % 360; }
+function sinD(a){ return Math.sin(a * D2R); }
+function cosD(a){ return Math.cos(a * D2R); }
+function tanD(a){ return Math.tan(a * D2R); }
+
+function clipSegmentEndToViewBox(start,end,width,height){
+  const dx=end.x-start.x,dy=end.y-start.y;
+  let t=1;
+  if(dx>0)t=Math.min(t,(width-start.x)/dx);
+  else if(dx<0)t=Math.min(t,(0-start.x)/dx);
+  if(dy>0)t=Math.min(t,(height-start.y)/dy);
+  else if(dy<0)t=Math.min(t,(0-start.y)/dy);
+  t=clamp(t,0,1);
+  return {x:start.x+dx*t,y:start.y+dy*t};
+}
+
+const PI_FRACS = {
+  0:"0", 30:"π/6", 45:"π/4", 60:"π/3", 90:"π/2",
+  120:"2π/3", 135:"3π/4", 150:"5π/6", 180:"π",
+  210:"7π/6", 225:"5π/4", 240:"4π/3", 270:"3π/2",
+  300:"5π/3", 315:"7π/4", 330:"11π/6", 360:"2π"
+};
+function radShort(deg){
+  const d = Math.round(deg);
+  if (PI_FRACS[d] !== undefined) return PI_FRACS[d];
+  return fmt(deg * D2R, 2);
+}
+function degTick(v){
+  const key = String(Math.round(v));
+  if (state.unit === "rad"){
+    const m = {"-360":"−2π","-270":"−3π/2","-180":"−π","-90":"−π/2",
+      "0":"0","90":"π/2","180":"π","270":"3π/2","360":"2π"};
+    return m[key] !== undefined ? m[key] : fmt(v * D2R, 2);
+  }
+  return (v < 0 ? "−" : "") + Math.abs(Math.round(v)) + "°";
+}
+function radTick(v){
+  const key = String(Math.round(v));
+  const m = {"0":"0","90":"π/2","180":"π","270":"3π/2","360":"2π"};
+  return m[key] !== undefined ? m[key] : fmt(v * D2R, 2);
+}
+function quadrant(deg){
+  const a = norm360(deg);
+  if (Math.abs(a) < 1e-9 || Math.abs(a - 90) < 1e-9 || Math.abs(a - 180) < 1e-9 || Math.abs(a - 270) < 1e-9)
+    return "pe axă";
+  if (a < 90) return "cadranul I";
+  if (a < 180) return "cadranul II";
+  if (a < 270) return "cadranul III";
+  return "cadranul IV";
+}
+function trig(deg){
+  const s = sinD(deg), c = cosD(deg);
+  const eps = 1e-9;
+  return {
+    s: s, c: c,
+    tan: Math.abs(c) < eps ? NaN : s / c,
+    cot: Math.abs(s) < eps ? NaN : c / s
+  };
+}
+const EXACT = {
+  0:["0","1","0","—"],
+  30:["1/2","√3/2","√3/3","√3"],
+  45:["√2/2","√2/2","1","1"],
+  60:["√3/2","1/2","√3","√3/3"],
+  90:["1","0","—","0"],
+  120:["√3/2","−1/2","−√3","−√3/3"],
+  135:["√2/2","−√2/2","−1","−1"],
+  150:["1/2","−√3/2","−√3/3","−√3"],
+  180:["0","−1","0","—"],
+  210:["−1/2","−√3/2","√3/3","√3"],
+  225:["−√2/2","−√2/2","1","1"],
+  240:["−√3/2","−1/2","√3","√3/3"],
+  270:["−1","0","—","0"],
+  300:["−√3/2","1/2","−√3","−√3/3"],
+  315:["−√2/2","√2/2","−1","−1"],
+  330:["−1/2","√3/2","−√3/3","−√3"],
+  360:["0","1","0","—"]
+};
+
+/* ================= sunet ================= */
+let soundOn = true, actx = null, lastBeep = 0;
+function playTone(freq, dur, vol, type, delay){
+  if (!soundOn) return;
+  try{
+    if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === "suspended") actx.resume();
+    const t0 = actx.currentTime + (delay || 0);
+    const o = actx.createOscillator(), g = actx.createGain();
+    o.type = type || "sine";
+    o.frequency.setValueAtTime(freq || 640, t0);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol || 0.05, t0 + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + (dur || 0.1));
+    o.connect(g); g.connect(actx.destination);
+    o.start(t0); o.stop(t0 + (dur || 0.1) + 0.03);
+  }catch(e){}
+}
+function beep(freq){
+  const now = performance.now();
+  if (now - lastBeep < 50) return;
+  lastBeep = now;
+  playTone(freq || 640, 0.1, 0.05, "sine");
+}
+function chord(freqs){
+  freqs.forEach((f, i) => playTone(f, 0.13, 0.04, "sine", i * 0.09));
+}
+function buzz(){
+  playTone(170, 0.18, 0.05, "sawtooth");
+}
+
+/* ================= preferințe ================= */
+const prefs = {grid:true, proj:true, tan:true, cot:true};
+function loadPrefs(){
+  try{
+    const raw = localStorage.getItem("ftg_prefs");
+    if (raw) Object.assign(prefs, JSON.parse(raw));
+    const s = localStorage.getItem("ftg_sound");
+    if (s !== null) soundOn = (s === "1");
+  }catch(e){}
+}
+function savePrefs(){
+  try{
+    localStorage.setItem("ftg_prefs", JSON.stringify(prefs));
+    localStorage.setItem("ftg_sound", soundOn ? "1" : "0");
+  }catch(e){}
+}
+loadPrefs();
+
+/* ================= stare globală ================= */
+const state = {unit:"deg", angle:30};
+
+/* ================= ajutoare SVG ================= */
+function cssVar(name){
+  return getComputedStyle(document.body).getPropertyValue(name).trim();
+}
+function pal(){
+  const dark = document.body.classList.contains("board");
+  return dark
+    ? {sin:"#f0b055", cos:"#7fb6d4", tan:"#e0856b", cot:"#c9a24a", main:"#9fd8bd", arc:"#a9c3b6"}
+    : {sin:"#965200", cos:"#2f6f8f", tan:"#a4462f", cot:"#8a6a1f", main:"#1c5b3f", arc:"#5f6d65"};
+}
+function makeMap(win, box){
+  return {
+    win:win, box:box,
+    X: v => box.x + (v - win.x0) / (win.x1 - win.x0) * box.w,
+    Y: v => box.y + box.h - (v - win.y0) / (win.y1 - win.y0) * box.h
+  };
+}
+function niceStep(range, target){
+  target = target || 10;
+  const raw = range / target;
+  const pow = Math.pow(10, Math.floor(Math.log10(raw)));
+  const n = raw / pow;
+  let m = 1;
+  if (n > 5) m = 10; else if (n > 2) m = 5; else if (n > 1) m = 2;
+  return m * pow;
+}
+function label(text, x, y, color, anchor, size, weight){
+  return `<text x="${r1(x)}" y="${r1(y)}" font-size="${size || 12.5}" fill="${color}"
+    text-anchor="${anchor || "middle"}" font-weight="${weight || 600}" paint-order="stroke"
+    stroke="var(--card)" stroke-width="3.5" stroke-linejoin="round">${text}</text>`;
+}
+function dot(x, y, color, r){
+  return `<circle cx="${r1(x)}" cy="${r1(y)}" r="${r || 5.5}" fill="${color}"
+    stroke="var(--card)" stroke-width="2"/>`;
+}
+function vec(x1, y1, x2, y2, color, w, head){
+  const ang = Math.atan2(y2 - y1, x2 - x1);
+  const h = head || 8;
+  const p1 = `${r1(x2)},${r1(y2)}`;
+  const p2 = `${r1(x2 - h * Math.cos(ang - 0.42))},${r1(y2 - h * Math.sin(ang - 0.42))}`;
+  const p3 = `${r1(x2 - h * Math.cos(ang + 0.42))},${r1(y2 - h * Math.sin(ang + 0.42))}`;
+  return `<line x1="${r1(x1)}" y1="${r1(y1)}" x2="${r1(x2)}" y2="${r1(y2)}"
+      stroke="${color}" stroke-width="${w || 2.4}" stroke-linecap="round"/>
+    <polygon points="${p1} ${p2} ${p3}" fill="${color}"/>`;
+}
+function graphAxes(m, opt){
+  opt = opt || {};
+  const win = m.win, box = m.box;
+  const ink = cssVar("--muted") || "#5f6d65";
+  const grid = cssVar("--line") || "#e4e6e0";
+  const stepX = opt.stepX || niceStep(win.x1 - win.x0, 8);
+  const stepY = opt.stepY || niceStep(win.y1 - win.y0, 6);
+  let s = "";
+  for (let v = Math.ceil(win.x0 / stepX) * stepX; v <= win.x1 + 1e-9; v += stepX){
+    const X = m.X(v);
+    s += `<line x1="${r1(X)}" y1="${box.y}" x2="${r1(X)}" y2="${box.y + box.h}" stroke="${grid}" stroke-width="1"/>`;
+    const lab = opt.labelX ? opt.labelX(v) : (Math.abs(v) > 1e-9 ? fmt(v, 2) : "");
+    if (lab) s += `<text x="${r1(X)}" y="${r1(box.y + box.h + 17)}" font-size="11" fill="${ink}" text-anchor="middle">${lab}</text>`;
+  }
+  for (let v = Math.ceil(win.y0 / stepY) * stepY; v <= win.y1 + 1e-9; v += stepY){
+    const Y = m.Y(v);
+    s += `<line x1="${box.x}" y1="${r1(Y)}" x2="${box.x + box.w}" y2="${r1(Y)}" stroke="${grid}" stroke-width="1"/>`;
+    if (Math.abs(v) > 1e-9 && opt.showY !== false)
+      s += `<text x="${box.x - 8}" y="${r1(Y + 3.5)}" font-size="11" fill="${ink}" text-anchor="end">${fmt(v, 2)}</text>`;
+  }
+  if (win.y0 <= 0 && win.y1 >= 0){
+    const Y = m.Y(0);
+    s += `<line x1="${box.x}" y1="${r1(Y)}" x2="${box.x + box.w}" y2="${r1(Y)}" stroke="${ink}" stroke-width="1.6"/>`;
+  }
+  if (win.x0 <= 0 && win.x1 >= 0){
+    const X = m.X(0);
+    s += `<line x1="${r1(X)}" y1="${box.y}" x2="${r1(X)}" y2="${box.y + box.h}" stroke="${ink}" stroke-width="1.6"/>`;
+  }
+  if (opt.xLabel) s += `<text x="${box.x + box.w}" y="${box.y + box.h + 34}" font-size="12" fill="${ink}" text-anchor="end">${opt.xLabel}</text>`;
+  if (opt.yLabel) s += `<text x="${box.x}" y="${box.y - 10}" font-size="12" fill="${ink}" text-anchor="start">${opt.yLabel}</text>`;
+  return s;
+}
+
+/* ================= cercul trigonometric ================= */
+const CC = {w:620, h:540, cx:300, cy:270, r:130};
+
+function renderCircle(host, angle){
+  const P = pal();
+  const cx = CC.cx, cy = CC.cy, R = CC.r;
+  const t = angle * D2R;
+  const co = Math.cos(t), si = Math.sin(t);
+  const px = cx + R * co, py = cy - R * si;
+  const X = u => cx + u * R;
+  const Y = u => cy - u * R;
+  let s = `<svg viewBox="0 0 ${CC.w} ${CC.h}" role="img" aria-label="Cercul trigonometric pentru unghiul de ${Math.round(angle)} grade">`;
+
+  if (prefs.grid){
+    for (let k = -1; k <= 1; k += 0.5){
+      if (Math.abs(k) < 1e-9) continue;
+      s += `<line x1="${r1(X(k))}" y1="${cy - R}" x2="${r1(X(k))}" y2="${cy + R}" stroke="var(--line)" stroke-width="1"/>`;
+      s += `<line x1="${cx - R}" y1="${r1(Y(k))}" x2="${cx + R}" y2="${r1(Y(k))}" stroke="var(--line)" stroke-width="1"/>`;
+    }
+  }
+  /* axe */
+  s += `<line x1="${cx - R - 40}" y1="${cy}" x2="${cx + R + 40}" y2="${cy}" stroke="var(--muted)" stroke-width="1.5"/>`;
+  s += `<line x1="${cx}" y1="${cy + R + 40}" x2="${cx}" y2="${cy - R - 40}" stroke="var(--muted)" stroke-width="1.5"/>`;
+  s += `<text x="${cx + R + 36}" y="${cy - 8}" font-size="13" fill="var(--muted)" text-anchor="end" font-style="italic">x</text>`;
+  s += `<text x="${cx + 9}" y="${cy - R - 32}" font-size="13" fill="var(--muted)" font-style="italic">y</text>`;
+  s += `<text x="${r1(X(1))}" y="${cy + 17}" font-size="11" fill="var(--muted)" text-anchor="middle">1</text>`;
+  s += `<text x="${cx - 8}" y="${r1(Y(1)) + 4}" font-size="11" fill="var(--muted)" text-anchor="end">1</text>`;
+  s += `<text x="${cx - 8}" y="${r1(Y(-1)) + 4}" font-size="11" fill="var(--muted)" text-anchor="end">−1</text>`;
+
+  /* cercul */
+  s += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--green-2)" stroke-width="2"/>`;
+  const qs = [[45,"I"],[135,"II"],[225,"III"],[315,"IV"]];
+  qs.forEach(q => {
+    s += `<text x="${r1(X(0.76 * Math.cos(q[0] * D2R)))}" y="${r1(Y(0.76 * Math.sin(q[0] * D2R))) + 4}"
+      font-size="12" fill="var(--muted)" text-anchor="middle" opacity=".65">${q[1]}</text>`;
+  });
+
+  /* ghidaje tangentă / cotangentă */
+  if (prefs.tan) s += `<line x1="${r1(X(1))}" y1="0" x2="${r1(X(1))}" y2="${CC.h}" stroke="${P.tan}" stroke-width="1.2" stroke-dasharray="5 5" opacity=".5"/>`;
+
+  /* tangenta */
+  const tv = Math.abs(co) < 1e-9 ? NaN : si / co;
+  if (prefs.tan && isFinite(tv)){
+    const tanY = Y(tv);
+    const tanLabelY = clamp(tanY + (tv >= 0 ? -9 : 18), 18, CC.h - 12);
+    s += `<line x1="${r1(X(1))}" y1="${cy}" x2="${r1(X(1))}" y2="${r1(tanY)}" stroke="${P.tan}" stroke-width="4" stroke-linecap="round"/>`;
+    s += label("tan θ", X(1) + 9, tanLabelY, P.tan, "start", 12);
+  }
+
+  /* cotangenta */
+  const cv = Math.abs(si) < 1e-9 ? NaN : co / si;
+  if (prefs.cot) s += `<line x1="0" y1="${r1(Y(1))}" x2="${CC.w}" y2="${r1(Y(1))}" stroke="${P.cot}" stroke-width="1.2" stroke-dasharray="5 5" opacity=".5"/>`;
+  if (prefs.cot && isFinite(cv)){
+    const cotX = X(cv);
+    const cotLabelX = clamp(cotX + (cv >= 0 ? -9 : 9), 12, CC.w - 12);
+    s += `<line x1="${cx}" y1="${r1(Y(1))}" x2="${r1(cotX)}" y2="${r1(Y(1))}" stroke="${P.cot}" stroke-width="4" stroke-linecap="round"/>`;
+    s += label("cot θ", cotLabelX, Y(1) - 9, P.cot, cv >= 0 ? "end" : "start", 12);
+  }
+
+  /* proiecții */
+  if (prefs.proj){
+    s += `<line x1="${cx}" y1="${cy}" x2="${r1(X(co))}" y2="${cy}" stroke="${P.cos}" stroke-width="5" stroke-linecap="round"/>`;
+    s += `<line x1="${cx}" y1="${cy}" x2="${cx}" y2="${r1(Y(si))}" stroke="${P.sin}" stroke-width="5" stroke-linecap="round"/>`;
+    s += `<line x1="${r1(px)}" y1="${r1(py)}" x2="${r1(px)}" y2="${cy}" stroke="${P.cos}" stroke-width="1.2" stroke-dasharray="4 4" opacity=".8"/>`;
+    s += `<line x1="${r1(px)}" y1="${r1(py)}" x2="${cx}" y2="${r1(py)}" stroke="${P.sin}" stroke-width="1.2" stroke-dasharray="4 4" opacity=".8"/>`;
+    if (Math.abs(co) > 0.09) s += label("cos θ", (cx + X(co)) / 2, cy + 19, P.cos, "middle", 12);
+    if (Math.abs(si) > 0.09) s += label("sin θ", cx - 11, (cy + Y(si)) / 2, P.sin, "end", 12);
+  }
+
+  /* raza și punctul */
+  s += `<line x1="${cx}" y1="${cy}" x2="${r1(px)}" y2="${r1(py)}" stroke="var(--green-2)" stroke-width="2.6"/>`;
+  if (prefs.tan || prefs.cot){
+    const lineParameters = [0, 1];
+    if (prefs.tan && isFinite(tv)) lineParameters.push(1 / co);
+    if (prefs.cot && isFinite(cv)) lineParameters.push(1 / si);
+    const lineMin = Math.min(...lineParameters);
+    const lineMax = Math.max(...lineParameters);
+    for (const parameter of [lineMin, lineMax]){
+      if (Math.abs(parameter - 1) < 1e-9) continue;
+      const endpoint = {x:cx + (px - cx) * parameter,y:cy + (py - cy) * parameter};
+      const clippedEndpoint = clipSegmentEndToViewBox({x:px,y:py},endpoint,CC.w,CC.h);
+      s += `<line x1="${px}" y1="${py}" x2="${clippedEndpoint.x}" y2="${clippedEndpoint.y}" stroke="${P.tan}" stroke-width="1.2" stroke-dasharray="5 4" opacity=".9"/>`;
+    }
+  }
+  s += dot(px, py, "var(--green-2)", 6);
+
+  /* arc */
+  const ar = 44;
+  if (angle > 0.4){
+    if (angle >= 359.6){
+      s += `<circle cx="${cx}" cy="${cy}" r="${ar}" fill="none" stroke="${P.arc}" stroke-width="2" opacity=".8"/>`;
+    }else{
+      const large = angle > 180 ? 1 : 0;
+      s += `<path d="M ${cx + ar} ${cy} A ${ar} ${ar} 0 ${large} 0 ${r1(cx + ar * co)} ${r1(cy - ar * si)}"
+        fill="none" stroke="${P.arc}" stroke-width="2" opacity=".9"/>`;
+    }
+    const mid = angle / 2 * D2R;
+    s += `<text x="${r1(cx + (ar + 19) * Math.cos(mid))}" y="${r1(cy - (ar + 19) * Math.sin(mid)) + 4}"
+      font-size="12.5" fill="var(--muted)" text-anchor="middle">θ</text>`;
+  }
+
+  /* eticheta P */
+  s += label("P", px + (co >= 0 ? 11 : -11), py + (si >= 0 ? -10 : 19), "var(--ink)", co >= 0 ? "start" : "end", 13, 650);
+
+  /* cadran */
+  s += `<text x="${CC.w - 12}" y="${CC.h - 12}" font-size="12" fill="var(--muted)" text-anchor="end">${quadrant(angle)}</text>`;
+  s += `</svg>`;
+  host.innerHTML = s;
+}
+
+/* ================= tab Teorie ================= */
+function setAngle(v){
+  state.angle = clamp(Math.round(v), 0, 360);
+  renderTheory();
+}
+function setUnit(u){
+  state.unit = u;
+  $$(".unit-btn").forEach(b => {
+    const active = b.dataset.unit === u;
+    b.classList.toggle("active", active);
+    b.setAttribute("aria-pressed", String(active));
+  });
+  renderTheory();
+  renderGraph();
+  beep(620);
+}
+function renderTheory(){
+  const a = state.angle;
+  renderCircle($("#svgTheory"), a);
+  const tr = trig(a);
+  const ex = EXACT[Math.round(a)] || ["—","—","—","—"];
+
+  $("#angDeg").textContent = fmt(a, 0) + "°";
+  $("#angRad").textContent = radShort(a) + " rad";
+  $("#quadrant").textContent = quadrant(a);
+  $("#valAngle").textContent = state.unit === "rad" ? radShort(a) + " rad" : fmt(a, 0) + "°";
+  $("#slAngle").value = a;
+  $("#slAngle").setAttribute("aria-valuetext", state.unit === "rad" ? radShort(a) + " rad (" + fmt(a, 0) + "°)" : fmt(a, 0) + "°");
+
+  $("#tSin").textContent = fmt3(tr.s);
+  $("#tCos").textContent = fmt3(tr.c);
+  $("#tTan").textContent = isFinite(tr.tan) ? fmt3(tr.tan) : "nu există";
+  $("#tCot").textContent = isFinite(tr.cot) ? fmt3(tr.cot) : "nu există";
+  $("#tSinEx").textContent = ex[0] === "—" ? "valoare inexactă" : ex[0];
+  $("#tCosEx").textContent = ex[1] === "—" ? "valoare inexactă" : ex[1];
+  $("#tTanEx").textContent = ex[2] === "—" ? "nedefinit" : ex[2];
+  $("#tCotEx").textContent = ex[3] === "—" ? "nedefinit" : ex[3];
+
+  $("#circleEq").textContent =
+    "P(cos " + fmt(a, 0) + "°; sin " + fmt(a, 0) + "°) = (" + fmt3(tr.c) + "; " + fmt3(tr.s) + ")";
+
+  const q = quadrant(a);
+  let hint = "Punctul P se mișcă pe cercul de rază 1. Coordonatele lui sunt chiar cos θ și sin θ.";
+  if (q === "pe axă") hint = "Unghiul se află pe una dintre axe: una dintre funcții este 0, iar alta poate fi nedefinită.";
+  else if (q === "cadranul II") hint = "În cadranul II sinusul este pozitiv, iar cosinusul, tangenta și cotangenta sunt negative.";
+  else if (q === "cadranul III") hint = "În cadranul III tangenta și cotangenta sunt pozitive; sinusul și cosinusul sunt negative.";
+  else if (q === "cadranul IV") hint = "În cadranul IV cosinusul este pozitiv; sinusul, tangenta și cotangenta sunt negative.";
+  else hint = "În cadranul I toate cele patru funcții sunt pozitive.";
+  $("#theoryHint").textContent = hint;
+
+  $$(".chip[data-angle]").forEach(ch => {
+    ch.classList.toggle("active", Math.round(a) === Number(ch.dataset.angle));
+  });
+}
+
+/* ================= tab Grafice ================= */
+const G = {fn:"sin", A:1, w:1, phi:0, playing:false, last:0, raf:0};
+const GB = {x:70, y:26, w:790, h:330};
+const GW = {x0:-360, x1:360, y0:-2.6, y1:2.6};
+
+function waveVal(xDeg){
+  const arg = (G.w * xDeg + G.phi) * D2R;
+  if (G.fn === "sin") return G.A * Math.sin(arg);
+  if (G.fn === "cos") return G.A * Math.cos(arg);
+  if (G.fn === "tan") return G.A * Math.tan(arg);
+  const sn = Math.sin(arg);
+  if (Math.abs(sn) < 1e-9) return NaN;
+  return G.A * Math.cos(arg) / sn;
+}
+function graphFormula(){
+  const names = {sin:"sin", cos:"cos", tan:"tan", cot:"cot"};
+  const a = Math.abs(G.A - 1) < 1e-9 ? "" : fmt(G.A, 2) + "·";
+  const w = Math.abs(G.w - 1) < 1e-9 ? "" : fmt(G.w, 2);
+  const arg = (w ? w + "·" : "") + "x" +
+    (G.phi === 0 ? "" : (G.phi > 0 ? " + " : " − ") + Math.abs(G.phi) + "°");
+  return "y = " + a + names[G.fn] + "(" + arg + ")";
+}
+function renderGraph(){
+  const P = pal();
+  const m = makeMap(GW, GB);
+  const fnColor = {sin:P.sin, cos:P.cos, tan:P.tan, cot:P.cot}[G.fn];
+  let s = `<svg viewBox="0 0 920 410" role="img" aria-label="Graficul funcției ${G.fn}">`;
+  s += graphAxes(m, {stepX:90, stepY:1, labelX:degTick, xLabel:"x", yLabel:"y"});
+
+  /* asimptote */
+  if (G.fn === "tan" || G.fn === "cot"){
+    const base = (G.fn === "tan") ? 90 : 0;
+    for (let k = -10; k <= 10; k++){
+      const x = (base + 180 * k - G.phi) / G.w;
+      if (x > GW.x0 && x < GW.x1){
+        const X = m.X(x);
+        s += `<line x1="${r1(X)}" y1="${GB.y}" x2="${r1(X)}" y2="${GB.y + GB.h}"
+          stroke="${P.tan}" stroke-width="1.2" stroke-dasharray="5 5" opacity=".55"/>`;
+      }
+    }
+  }
+
+  /* curba */
+  let d = "", pen = false, prev = null;
+  const N = 1600;
+  for (let i = 0; i <= N; i++){
+    const x = GW.x0 + (GW.x1 - GW.x0) * i / N;
+    const y = waveVal(x);
+    const inside = isFinite(y) && Math.abs(y) <= GW.y1;
+    const jump = prev !== null && Math.abs(y - prev) > 3.2;
+    if (inside && !jump){
+      d += (pen ? "L" : "M") + r1(m.X(x)) + " " + r1(m.Y(y)) + " ";
+      pen = true;
+    }else{
+      pen = false;
+    }
+    prev = y;
+  }
+  s += `<path d="${d}" fill="none" stroke="${fnColor}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+
+  /* marcaj pe axa Ox la origine */
+  s += `<circle cx="${r1(m.X(0))}" cy="${r1(m.Y(0))}" r="3.2" fill="${fnColor}"/>`;
+  s += `</svg>`;
+  $("#svgGraph").innerHTML = s;
+
+  /* citiri */
+  const T = 360 / G.w;
+  const shift = -G.phi / G.w;
+  const amp = (G.fn === "sin" || G.fn === "cos") ? Math.abs(G.A) : null;
+  $("#gFormula").textContent = graphFormula();
+  $("#gPeriod").textContent = fmt(T, 1) + "°";
+  $("#gPeriodRad").textContent = fmt(TAU / G.w, 2) + " rad";
+  $("#gAmp").textContent = amp === null ? "—" : fmt(amp, 2);
+  $("#gAmpNote").textContent = amp === null ? "tan și cot nu au amplitudine" : "valoarea maximă |y|";
+  $("#gShift").textContent = fmt(shift, 1) + "°";
+  $("#gExtrem").textContent = amp === null ? "±∞" : "±" + fmt(amp, 2);
+  $("#gExtremNote").textContent = amp === null ? "creștere nemărginită" : "minim și maxim";
+
+  if (G.fn === "sin" || G.fn === "cos"){
+    const off = (G.fn === "sin") ? 0 : 90;
+    $("#gZero").textContent = "Zerouri: ωx + φ = " + off + "° + k·180°";
+    $("#gDetails").innerHTML =
+      "Perioada este <b>" + fmt(T, 1) + "°</b> (" + fmt(TAU / G.w, 2) + " rad), deci graficul se repetă la fiecare " +
+      fmt(T, 1) + "°. Amplitudinea este <b>" + fmt(amp, 2) + "</b>, iar deplasarea de fază este <b>" +
+      fmt(shift, 1) + "°</b> față de unda de bază. Maximul este " + fmt(amp, 2) + ", minimul " + fmt(-amp, 2) + ".";
+  }else{
+    $("#gZero").textContent = (G.fn === "tan" ? "Zerouri: ωx + φ = k·180°" : "Zerouri: ωx + φ = 90° + k·180°");
+    $("#gDetails").innerHTML =
+      "Funcția " + G.fn + " are perioada <b>" + fmt(T, 1) + "°</b> (" + fmt(TAU / G.w, 2) +
+      " rad) și nu este definită în punctele în care numitorul se anulează. Acolo apar <b>asimptote verticale</b>, " +
+      "marcate cu linii punctate. Valorile cresc nemărginit lângă asimptote.";
+  }
+
+  $("#slAmp").value = G.A;
+  $("#slOmega").value = G.w;
+  $("#slPhi").value = G.phi;
+  $("#valAmp").textContent = fmt(G.A, 2);
+  $("#valOmega").textContent = fmt(G.w, 2);
+  $("#valPhi").textContent = fmt(G.phi, 0) + "°";
+}
+
+function waveLoop(ts){
+  if (!G.playing) return;
+  if (!G.last) G.last = ts;
+  const dt = frameSeconds(ts, G.last);
+  G.last = ts;
+  G.phi += dt * 55;
+  if (G.phi > 180) G.phi -= 360;
+  renderGraph();
+  G.raf = requestAnimationFrame(waveLoop);
+}
+function wavePlay(){
+  G.playing = true; G.last = 0;
+  $("#btnWavePlay").textContent = "❚❚ Pauză";
+  beep(680);
+  G.raf = requestAnimationFrame(waveLoop);
+}
+function wavePause(){
+  G.playing = false;
+  cancelAnimationFrame(G.raf);
+  $("#btnWavePlay").textContent = "▶ Animație undă";
+}
+
+/* ================= tab Animații ================= */
+const A2 = {type:"sin", playing:false, angle:0, speed:1, dur:8000, last:0, raf:0};
+const AN = {cx:190, cy:215, r:95, gx0:360, gw:520, gy:215, amp:95, w:900, h:430};
+
+function tracePath(kind, ang){
+  const X2 = a => AN.gx0 + (a / 360) * AN.gw;
+  const Y2 = v => AN.gy - v * AN.amp;
+  let d = "", pen = false, prev = null;
+  if (kind === "tan"){
+    for (let a = 0; a <= ang + 0.001; a += 1){
+      const c = Math.cos(a * D2R), v = Math.tan(a * D2R);
+      const ok = Math.abs(c) > 0.055 && Math.abs(v) <= 1.8;
+      if (ok){
+        d += (pen ? "L" : "M") + r1(X2(a)) + " " + r1(Y2(v)) + " ";
+        pen = true;
+      }else{
+        pen = false;
+      }
+    }
+    return d;
+  }
+  const step = 2;
+  for (let a = 0; a <= ang + 0.001; a += step){
+    const v = kind === "sin" ? Math.sin(a * D2R) : Math.cos(a * D2R);
+    d += (pen ? "L" : "M") + r1(X2(a)) + " " + r1(Y2(v)) + " ";
+    pen = true;
+  }
+  const vEnd = kind === "sin" ? Math.sin(ang * D2R) : Math.cos(ang * D2R);
+  d += "L" + r1(X2(ang)) + " " + r1(Y2(vEnd)) + " ";
+  return d;
+}
+
+function renderAnim2(){
+  const P = pal();
+  const ang = A2.angle;
+  const t = ang * D2R;
+  const cx = AN.cx, cy = AN.cy, R = AN.r;
+  const px = cx + R * Math.cos(t), py = cy - R * Math.sin(t);
+  const X2 = a => AN.gx0 + (a / 360) * AN.gw;
+  const Y2 = v => AN.gy - v * AN.amp;
+  let s = `<svg viewBox="0 0 ${AN.w} ${AN.h}" role="img" aria-label="Animație: unghiul pe cercul unitate și graficul funcției">`;
+
+  /* grilă grafic */
+  for (let a = 0; a <= 360; a += 90){
+    const X = X2(a);
+    s += `<line x1="${r1(X)}" y1="${AN.gy - AN.amp - 20}" x2="${r1(X)}" y2="${AN.gy + AN.amp + 20}" stroke="var(--line)" stroke-width="1"/>`;
+    s += `<text x="${r1(X)}" y="${AN.gy + AN.amp + 36}" font-size="11" fill="var(--muted)" text-anchor="middle">${state.unit === "rad" ? radTick(a) : a + "°"}</text>`;
+  }
+  for (let v = -1; v <= 1; v += 0.5){
+    if (Math.abs(v) < 1e-9) continue;
+    const Y = Y2(v);
+    s += `<line x1="${AN.gx0}" y1="${r1(Y)}" x2="${AN.gx0 + AN.gw}" y2="${r1(Y)}" stroke="var(--line)" stroke-width="1"/>`;
+    s += `<text x="${AN.gx0 - 9}" y="${r1(Y + 3.5)}" font-size="11" fill="var(--muted)" text-anchor="end">${fmt(v, 1)}</text>`;
+  }
+  /* axe grafic */
+  s += `<line x1="${AN.gx0}" y1="${AN.gy}" x2="${AN.gx0 + AN.gw + 8}" y2="${AN.gy}" stroke="var(--muted)" stroke-width="1.5"/>`;
+  s += `<line x1="${AN.gx0}" y1="${AN.gy - AN.amp - 26}" x2="${AN.gx0}" y2="${AN.gy + AN.amp + 26}" stroke="var(--muted)" stroke-width="1.5"/>`;
+  s += `<text x="${AN.gx0 + AN.gw}" y="${AN.gy - 9}" font-size="12" fill="var(--muted)" text-anchor="end" font-style="italic">θ</text>`;
+  s += `<text x="${AN.gx0 + 8}" y="${AN.gy - AN.amp - 30}" font-size="12" fill="var(--muted)" font-style="italic">y</text>`;
+
+  /* axe cerc */
+  s += `<line x1="${cx - R - 36}" y1="${cy}" x2="${cx + R + 36}" y2="${cy}" stroke="var(--muted)" stroke-width="1.4"/>`;
+  s += `<line x1="${cx}" y1="${cy + R + 36}" x2="${cx}" y2="${cy - R - 36}" stroke="var(--muted)" stroke-width="1.4"/>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--green-2)" stroke-width="2"/>`;
+  s += `<text x="${cx + R + 30}" y="${cy - 7}" font-size="11.5" fill="var(--muted)" text-anchor="end" font-style="italic">x</text>`;
+  s += `<text x="${cx + 8}" y="${cy - R - 28}" font-size="11.5" fill="var(--muted)" font-style="italic">y</text>`;
+
+  /* proiecții pe cerc */
+  if (prefs.proj){
+    s += `<line x1="${cx}" y1="${cy}" x2="${r1(px)}" y2="${cy}" stroke="${P.cos}" stroke-width="4.5" stroke-linecap="round"/>`;
+    s += `<line x1="${cx}" y1="${cy}" x2="${cx}" y2="${r1(py)}" stroke="${P.sin}" stroke-width="4.5" stroke-linecap="round"/>`;
+    s += `<line x1="${r1(px)}" y1="${r1(py)}" x2="${r1(px)}" y2="${cy}" stroke="${P.cos}" stroke-width="1.1" stroke-dasharray="4 4" opacity=".8"/>`;
+    s += `<line x1="${r1(px)}" y1="${r1(py)}" x2="${cx}" y2="${r1(py)}" stroke="${P.sin}" stroke-width="1.1" stroke-dasharray="4 4" opacity=".8"/>`;
+  }
+
+  /* tangentă pe cerc */
+  if (A2.type === "tan"){
+    s += `<line x1="${cx + R}" y1="${cy - R}" x2="${cx + R}" y2="${cy + R}" stroke="${P.tan}" stroke-width="1.1" stroke-dasharray="5 5" opacity=".5"/>`;
+    const tv = Math.tan(t);
+    if (isFinite(tv) && Math.abs(Math.cos(t)) > 0.02){
+      const cl = clamp(tv, -1.7, 1.7);
+      s += `<line x1="${cx + R}" y1="${cy}" x2="${cx + R}" y2="${r1(cy - cl * R)}" stroke="${P.tan}" stroke-width="4" stroke-linecap="round"/>`;
+    }
+  }
+
+  /* trasee */
+  if (A2.type === "sin" || A2.type === "both"){
+    s += `<path d="${tracePath("sin", ang)}" fill="none" stroke="${P.sin}" stroke-width="2.8" stroke-linecap="round"/>`;
+  }
+  if (A2.type === "cos" || A2.type === "both"){
+    s += `<path d="${tracePath("cos", ang)}" fill="none" stroke="${P.cos}" stroke-width="2.8" stroke-linecap="round"/>`;
+  }
+  if (A2.type === "tan"){
+    s += `<path d="${tracePath("tan", ang)}" fill="none" stroke="${P.tan}" stroke-width="2.8" stroke-linecap="round"/>`;
+  }
+
+  /* marcaj vertical pe grafic */
+  if (ang > 0.5){
+    s += `<line x1="${r1(X2(ang))}" y1="${AN.gy - AN.amp - 20}" x2="${r1(X2(ang))}" y2="${AN.gy + AN.amp + 20}"
+      stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 5" opacity=".6"/>`;
+  }
+
+  /* raza, punctul, arcul */
+  s += `<line x1="${cx}" y1="${cy}" x2="${r1(px)}" y2="${r1(py)}" stroke="var(--green-2)" stroke-width="2.4"/>`;
+  s += dot(px, py, "var(--green-2)", 6);
+  const ar = 30;
+  if (ang > 0.4){
+    if (ang >= 359.6){
+      s += `<circle cx="${cx}" cy="${cy}" r="${ar}" fill="none" stroke="${P.arc}" stroke-width="1.8" opacity=".8"/>`;
+    }else{
+      const large = ang > 180 ? 1 : 0;
+      s += `<path d="M ${cx + ar} ${cy} A ${ar} ${ar} 0 ${large} 0 ${r1(cx + ar * Math.cos(t))} ${r1(cy - ar * Math.sin(t))}"
+        fill="none" stroke="${P.arc}" stroke-width="1.8" opacity=".9"/>`;
+    }
+    const mid = ang / 2 * D2R;
+    s += `<text x="${r1(cx + (ar + 16) * Math.cos(mid))}" y="${r1(cy - (ar + 16) * Math.sin(mid)) + 4}"
+      font-size="12" fill="var(--muted)" text-anchor="middle">θ</text>`;
+  }
+
+  /* conectori și puncte pe grafic */
+  if (A2.type !== "tan"){
+    if (A2.type === "sin" || A2.type === "both"){
+      const gy = Y2(Math.sin(t));
+      s += `<line x1="${r1(px)}" y1="${r1(py)}" x2="${r1(X2(ang))}" y2="${r1(gy)}" stroke="${P.sin}" stroke-width="1.2" stroke-dasharray="5 4" opacity=".9"/>`;
+      s += dot(X2(ang), gy, P.sin, 5);
+    }
+    if (A2.type === "cos" || A2.type === "both"){
+      const gy = Y2(Math.cos(t));
+      s += `<line x1="${r1(px)}" y1="${r1(py)}" x2="${r1(X2(ang))}" y2="${r1(gy)}" stroke="${P.cos}" stroke-width="1.2" stroke-dasharray="5 4" opacity=".7"/>`;
+      s += dot(X2(ang), gy, P.cos, 5);
+    }
+  }else{
+    const tv = Math.tan(t);
+    if (isFinite(tv) && Math.abs(tv) <= 1.8) s += dot(X2(ang), Y2(tv), P.tan, 5);
+  }
+
+  /* etichete funcție */
+  const names = {sin:"sin θ", cos:"cos θ", both:"sin θ și cos θ", tan:"tan θ"};
+  s += `<text x="${AN.gx0 + AN.gw}" y="${AN.gy - AN.amp - 32}" font-size="13" fill="${P.main}" text-anchor="end" font-weight="600">${names[A2.type]}</text>`;
+
+  s += `</svg>`;
+  $("#svgAnim2").innerHTML = s;
+
+  /* citiri */
+  const tr = trig(ang);
+  $("#anNoteValue").textContent = fmt(ang, 0) + "° = " + radShort(ang) + " rad";
+  $("#anAngle").textContent = fmt(ang, 0) + "°";
+  $("#anRad").textContent = radShort(ang) + " rad";
+  $("#anSin").textContent = fmt3(tr.s);
+  $("#anCos").textContent = fmt3(tr.c);
+  $("#anTan").textContent = isFinite(tr.tan) ? fmt3(tr.tan) : "nu există";
+  const pct = Math.round(ang / 360 * 100);
+  $("#anProgress").textContent = pct + "%";
+  $("#anBar").style.width = pct + "%";
+}
+
+function animLoop2(ts){
+  if (!A2.playing) return;
+  if (!A2.last) A2.last = ts;
+  const dt = frameSeconds(ts, A2.last);
+  A2.last = ts;
+  A2.angle += (dt * A2.speed / (A2.dur / 1000)) * 360;
+  if (A2.angle >= 360){
+    A2.angle = 0;
+    beep(780);
+  }
+  renderAnim2();
+  A2.raf = requestAnimationFrame(animLoop2);
+}
+function animPlay2(){
+  A2.playing = true; A2.last = 0;
+  $("#btnAnimPlay").textContent = "❚❚ Pauză";
+  beep(680);
+  A2.raf = requestAnimationFrame(animLoop2);
+}
+function animPause2(){
+  A2.playing = false;
+  cancelAnimationFrame(A2.raf);
+  $("#btnAnimPlay").textContent = "▶ Redă";
+}
+
+/* ================= tab Fizică ================= */
+const Ph = {
+  model:"osc", playing:false, t:0, last:0, raf:0, speed:1,
+  A:20, T:1.5, phi:0,
+  U0:230, f:50,
+  alpha:30, m:5, mu:0.2, s:0, v:0
+};
+const INC = {A:{x:140, y:360}, L:380};
+const GRAV = 9.81;
+document.addEventListener("visibilitychange",()=>{G.last=A2.last=Ph.last=0;});
+
+function tilesHTML(arr){
+  return arr.map(t => `<div class="tile"><span>${t[0]}</span><b>${t[1]}</b>${t[2] ? `<em>${t[2]}</em>` : ""}</div>`).join("");
+}
+
+function renderOsc(){
+  const P = pal();
+  const A = Ph.A, T = Ph.T, phi = Ph.phi, om = TAU / T, t = Ph.t;
+  const x = A * Math.sin(om * t + phi * D2R);
+  const v = A * om * Math.cos(om * t + phi * D2R);
+  const cx = 240, ceilY = 46, eqY = 238, k = 1.6;
+  const blockTop = eqY - 27 - x * k;
+  let s = `<svg viewBox="0 0 900 430" role="img" aria-label="Oscilație armonică: masă pe arc elastic și graficul elongației">`;
+
+  /* tavan */
+  s += `<line x1="${cx - 100}" y1="${ceilY}" x2="${cx + 100}" y2="${ceilY}" stroke="var(--muted)" stroke-width="4" stroke-linecap="round"/>`;
+  for (let hx = cx - 90; hx <= cx + 90; hx += 20)
+    s += `<line x1="${hx}" y1="${ceilY}" x2="${hx - 8}" y2="${ceilY - 12}" stroke="var(--muted)" stroke-width="1.4" opacity=".55"/>`;
+
+  /* arc */
+  let pts = [];
+  const coils = 10, yTop = ceilY, yBot = blockTop;
+  for (let i = 0; i <= coils * 2; i++){
+    const yy = yTop + (yBot - yTop) * i / (coils * 2);
+    const xx = cx + (i === 0 || i === coils * 2 ? 0 : (i % 2 ? 16 : -16));
+    pts.push(r1(xx) + "," + r1(yy));
+  }
+  s += `<polyline points="${pts.join(" ")}" fill="none" stroke="var(--green-2)" stroke-width="2.2" stroke-linejoin="round"/>`;
+
+  /* corp */
+  s += `<rect x="${cx - 35}" y="${r1(blockTop)}" width="70" height="54" rx="7" fill="var(--tile)" stroke="var(--green-2)" stroke-width="2"/>`;
+  s += `<text x="${cx}" y="${r1(blockTop + 33)}" font-size="14" fill="var(--ink)" text-anchor="middle" font-weight="600">m</text>`;
+
+  /* echilibru */
+  s += `<line x1="${cx - 72}" y1="${eqY - 27}" x2="${cx + 72}" y2="${eqY - 27}" stroke="${P.sin}" stroke-width="1.2" stroke-dasharray="5 4"/>`;
+  s += `<text x="${cx + 78}" y="${eqY - 23}" font-size="11.5" fill="${P.sin}">x = 0</text>`;
+
+  /* săgeată elongație */
+  if (Math.abs(x) > 0.6){
+    s += vec(cx + 56, eqY - 27, cx + 56, eqY - 27 - x * k, P.sin, 2.2, 7);
+    s += `<text x="${cx + 64}" y="${r1(eqY - 27 - x * k / 2)}" font-size="11.5" fill="${P.sin}">x(t)</text>`;
+  }
+
+  /* grafic */
+  const box = {x:455, y:82, w:395, h:268};
+  const win = {x0:0, x1:2 * T, y0:-A * 1.25, y1:A * 1.25};
+  const m = makeMap(win, box);
+  s += graphAxes(m, {stepX:T / 2, stepY:A / 2, labelX:v => fmt(v, 2), xLabel:"t (s)", yLabel:"x (cm)"});
+  let d = "";
+  for (let i = 0; i <= 240; i++){
+    const tt = 2 * T * i / 240;
+    const xx = A * Math.sin(om * tt + phi * D2R);
+    d += (i ? "L" : "M") + r1(m.X(tt)) + " " + r1(m.Y(xx)) + " ";
+  }
+  s += `<path d="${d}" fill="none" stroke="${P.sin}" stroke-width="2.8" stroke-linecap="round"/>`;
+  const tv = t % (2 * T);
+  const xv = A * Math.sin(om * tv + phi * D2R);
+  s += `<line x1="${r1(m.X(tv))}" y1="${box.y}" x2="${r1(m.X(tv))}" y2="${box.y + box.h}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4" opacity=".6"/>`;
+  s += dot(m.X(tv), m.Y(xv), P.sin, 6);
+  s += `</svg>`;
+  $("#svgPhys").innerHTML = s;
+
+  $("#physTitle").textContent = "Oscilație armonică";
+  $("#physHint").textContent = "Un corp prins de un arc elastic oscilează sinusoidal. Graficul din dreapta arată elongația x(t) pe două perioade.";
+  $("#physExplain").textContent = "Poziția corpului față de echilibru este x(t) = A·sin(ωt + φ). Când faza crește, corpul urcă și coboară, iar graficul desenează o sinusoidă. Amplitudinea A este distanța maximă față de echilibru, iar perioada T este timpul unei oscilații complete.";
+  $("#physNoteLabel").textContent = "Timpul:";
+  $("#physNoteValue").textContent = fmt(t, 2) + " s";
+  $("#physF1").textContent = "x(t) = A·sin(ωt + φ)";
+  $("#physF2").textContent = "v(t) = Aω·cos(ωt + φ)";
+  $("#physLegend").innerHTML =
+    `<span><i style="background:${P.sin}"></i>elongația x(t)</span>` +
+    `<span><i style="background:var(--green-2)"></i>arcul și corpul</span>`;
+  $("#physTiles").innerHTML = tilesHTML([
+    ["Amplitudinea A", fmt(A, 1) + " cm", "elongația maximă"],
+    ["Perioada T", fmt(T, 2) + " s", "o oscilație completă"],
+    ["Frecvența f", fmt(1 / T, 2) + " Hz", "f = 1/T"],
+    ["Pulsația ω", fmt(om, 2) + " rad/s", "ω = 2π/T"],
+    ["Elongația x(t)", fmt(x, 1) + " cm", "la momentul curent"],
+    ["Viteza v(t)", fmt(v, 1) + " cm/s", "v = dx/dt"]
+  ]);
+}
+
+function renderAC(){
+  const P = pal();
+  const T = 1 / Ph.f, om = TAU * Ph.f;
+  const phase = Math.PI * Ph.t + Ph.phi * D2R;
+  const u = Ph.U0 * Math.sin(phase);
+  const uef = Ph.U0 / Math.SQRT2;
+  const cx = 205, cy = 215, R = 95;
+
+  let s = `<svg viewBox="0 0 900 430" role="img" aria-label="Curent alternativ: fazor rotitor și graficul tensiunii">`;
+
+  /* fazor */
+  s += `<line x1="${cx - R - 34}" y1="${cy}" x2="${cx + R + 34}" y2="${cy}" stroke="var(--muted)" stroke-width="1.3"/>`;
+  s += `<line x1="${cx}" y1="${cy + R + 34}" x2="${cx}" y2="${cy - R - 34}" stroke="var(--muted)" stroke-width="1.3"/>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--green-2)" stroke-width="2"/>`;
+  const vx = cx + R * Math.cos(phase), vy = cy - R * Math.sin(phase);
+  s += `<line x1="${cx}" y1="${cy}" x2="${r1(vx)}" y2="${r1(vy)}" stroke="${P.sin}" stroke-width="2.6"/>`;
+  s += `<line x1="${r1(vx)}" y1="${r1(vy)}" x2="${r1(vx)}" y2="${cy}" stroke="${P.sin}" stroke-width="1.1" stroke-dasharray="4 4" opacity=".8"/>`;
+  s += `<line x1="${r1(vx)}" y1="${r1(vy)}" x2="${cx}" y2="${r1(vy)}" stroke="${P.cos}" stroke-width="1.1" stroke-dasharray="4 4" opacity=".55"/>`;
+  s += dot(vx, vy, P.sin, 6);
+  s += `<text x="${cx}" y="${cy + R + 48}" font-size="12" fill="var(--muted)" text-anchor="middle">fazor rotitor</text>`;
+
+  /* grafic */
+  const box = {x:455, y:82, w:395, h:268};
+  const win = {x0:0, x1:2 * T, y0:-Ph.U0 * 1.22, y1:Ph.U0 * 1.22};
+  const m = makeMap(win, box);
+  s += graphAxes(m, {stepX:T / 2, stepY:Ph.U0 / 2, labelX:v => fmt(v, 3), xLabel:"t (s)", yLabel:"u (V)"});
+  let d = "";
+  for (let i = 0; i <= 240; i++){
+    const tt = 2 * T * i / 240;
+    const uu = Ph.U0 * Math.sin(TAU * Ph.f * tt + Ph.phi * D2R);
+    d += (i ? "L" : "M") + r1(m.X(tt)) + " " + r1(m.Y(uu)) + " ";
+  }
+  s += `<path d="${d}" fill="none" stroke="${P.sin}" stroke-width="2.8" stroke-linecap="round"/>`;
+  const tv = (Ph.t * T / 2) % (2 * T);
+  const uv = Ph.U0 * Math.sin(TAU * Ph.f * tv + Ph.phi * D2R);
+  s += `<line x1="${r1(m.X(tv))}" y1="${box.y}" x2="${r1(m.X(tv))}" y2="${box.y + box.h}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4" opacity=".6"/>`;
+  s += dot(m.X(tv), m.Y(uv), P.sin, 6);
+  s += `</svg>`;
+  $("#svgPhys").innerHTML = s;
+
+  $("#physTitle").textContent = "Curent alternativ";
+  $("#physHint").textContent = "Tensiunea rețelei este o sinusoidă. Fazorul din stânga se rotește, iar proiecția lui pe verticală dă valoarea instantanee.";
+  $("#physExplain").textContent = "Tensiunea alternativă se scrie u(t) = U₀·sin(ωt + φ), unde U₀ este valoarea de vârf, ω = 2πf este pulsația, iar φ este faza inițială. Valoarea efectivă este Uef = U₀/√2. Pentru rețeaua de 230 V, vârful este aproximativ 325 V.";
+  $("#physNoteLabel").textContent = "Tensiunea instantanee:";
+  $("#physNoteValue").textContent = fmt(u, 0) + " V";
+  $("#physF1").textContent = "u(t) = U₀·sin(ωt + φ)";
+  $("#physF2").textContent = "Uef = U₀ / √2";
+  $("#physLegend").innerHTML =
+    `<span><i style="background:${P.sin}"></i>tensiunea u(t)</span>` +
+    `<span><i style="background:${P.cos}"></i>proiecția orizontală (cos)</span>`;
+  $("#physTiles").innerHTML = tilesHTML([
+    ["Tensiunea de vârf U₀", fmt(Ph.U0, 0) + " V", "amplitudinea"],
+    ["Tensiunea efectivă", fmt(uef, 0) + " V", "U₀/√2"],
+    ["Frecvența f", fmt(Ph.f, 0) + " Hz", "cicluri pe secundă"],
+    ["Perioada T", fmt(T, 4) + " s", "T = 1/f"],
+    ["Pulsația ω", fmt(om, 1) + " rad/s", "ω = 2πf"],
+    ["u(t) acum", fmt(u, 0) + " V", "valoare instantanee"]
+  ]);
+}
+
+function renderInc(){
+  const P = pal();
+  const al = Ph.alpha * D2R;
+  const A = INC.A, L = INC.L;
+  const B = {x:A.x + L * Math.cos(al), y:A.y - L * Math.sin(al)};
+  const C = {x:B.x, y:A.y};
+  const g = GRAV;
+  const Gf = Ph.m * g;
+  const par = Gf * Math.sin(al), perp = Gf * Math.cos(al);
+  const Nf = perp, Ff = Ph.mu * Nf;
+  const acc = g * (Math.sin(al) - Ph.mu * Math.cos(al));
+
+  const sPos = clamp(Ph.s, 0, L);
+  const bx = B.x + (A.x - B.x) * (sPos / L);
+  const by = B.y + (A.y - B.y) * (sPos / L);
+  const nx = -Math.sin(al), ny = -Math.cos(al);
+  const bcx = bx + nx * 25, bcy = by + ny * 25;
+
+  let s = `<svg viewBox="0 0 900 430" role="img" aria-label="Corp pe plan înclinat și descompunerea greutății">`;
+
+  /* sol */
+  s += `<line x1="70" y1="${A.y}" x2="880" y2="${A.y}" stroke="var(--muted)" stroke-width="2"/>`;
+  for (let hx = 80; hx < 880; hx += 22)
+    s += `<line x1="${hx}" y1="${A.y}" x2="${hx - 9}" y2="${A.y + 11}" stroke="var(--muted)" stroke-width="1.1" opacity=".45"/>`;
+
+  /* plan */
+  s += `<polygon points="${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}" fill="var(--tile)" stroke="var(--green-2)" stroke-width="2"/>`;
+
+  /* unghi */
+  const ar = 62;
+  s += `<path d="M ${A.x + ar} ${A.y} A ${ar} ${ar} 0 0 0 ${r1(A.x + ar * Math.cos(al))} ${r1(A.y - ar * Math.sin(al))}" fill="none" stroke="${P.sin}" stroke-width="2"/>`;
+  s += `<text x="${r1(A.x + (ar + 20) * Math.cos(al / 2))}" y="${r1(A.y - (ar + 20) * Math.sin(al / 2)) + 4}" font-size="13" fill="${P.sin}" text-anchor="middle">α = ${fmt(Ph.alpha, 0)}°</text>`;
+
+  s += `<g data-incline-motion data-origin-s="${sPos}">`;
+  /* corp */
+  s += `<g transform="rotate(${r1(-Ph.alpha)} ${r1(bcx)} ${r1(bcy)})">
+      <rect x="${r1(bcx - 26)}" y="${r1(bcy - 18)}" width="52" height="36" rx="5" fill="var(--card)" stroke="var(--green-2)" stroke-width="2"/>
+      <text x="${r1(bcx)}" y="${r1(bcy + 5)}" font-size="13" fill="var(--ink)" text-anchor="middle" font-weight="600">m</text>
+    </g>`;
+
+  /* vectori */
+  const sc = 70 / Gf;
+  const gEnd = {x:bcx, y:bcy + Gf * sc};
+  const parEnd = {x:bcx - Math.cos(al) * par * sc, y:bcy + Math.sin(al) * par * sc};
+  const perpEnd = {x:bcx + Math.sin(al) * perp * sc, y:bcy + Math.cos(al) * perp * sc};
+  s += `<line x1="${r1(parEnd.x)}" y1="${r1(parEnd.y)}" x2="${r1(gEnd.x)}" y2="${r1(gEnd.y)}" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 5" opacity=".8"/>`;
+  s += `<line x1="${r1(perpEnd.x)}" y1="${r1(perpEnd.y)}" x2="${r1(gEnd.x)}" y2="${r1(gEnd.y)}" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 5" opacity=".8"/>`;
+  s += vec(bcx, bcy, gEnd.x, gEnd.y, P.tan, 2.6, 8);
+  s += label("G", gEnd.x + 8, gEnd.y + 4, P.tan, "start", 12);
+  s += vec(bcx, bcy, parEnd.x, parEnd.y, P.sin, 2.4, 7);
+  s += label("G∥", parEnd.x - 6, parEnd.y + 14, P.sin, "end", 12);
+  s += vec(bcx, bcy, perpEnd.x, perpEnd.y, P.cos, 2.2, 7);
+  s += label("G⊥", perpEnd.x + 6, perpEnd.y + 12, P.cos, "start", 12);
+  const nEnd = {x:bcx - Math.sin(al) * Nf * sc, y:bcy - Math.cos(al) * Nf * sc};
+  s += vec(bcx, bcy, nEnd.x, nEnd.y, P.main, 2.2, 7);
+  s += label("N", nEnd.x - 6, nEnd.y - 6, P.main, "end", 12);
+  if (Ff > 0.5){
+    const fStart = {x:bcx + Math.sin(al) * 19, y:bcy + Math.cos(al) * 19};
+    const fEnd = {x:fStart.x + Math.cos(al) * Ff * sc, y:fStart.y - Math.sin(al) * Ff * sc};
+    s += vec(fStart.x, fStart.y, fEnd.x, fEnd.y, P.cot, 2, 6);
+    s += label("Ff", fEnd.x + 6, fEnd.y - 6, P.cot, "start", 12);
+  }
+  s += `</g>`;
+
+  /* panou forțe */
+  const px = 575, pw = 270;
+  s += `<text x="${px}" y="70" font-size="13.5" fill="var(--ink)" font-weight="650">Descompunerea greutății (N)</text>`;
+  const bars = [
+    ["G = mg", Gf, P.tan],
+    ["G∥ = mg·sin α", par, P.sin],
+    ["G⊥ = mg·cos α", perp, P.cos],
+    ["N = G⊥", Nf, P.main],
+    ["Ff = μ·N", Ff, P.cot]
+  ];
+  bars.forEach((b, i) => {
+    const y = 96 + i * 38;
+    const w = Math.max(1, b[1] / Gf * (pw - 8));
+    s += `<text x="${px}" y="${y}" font-size="11.5" fill="var(--muted)">${b[0]}</text>`;
+    s += `<rect x="${px}" y="${y + 7}" width="${r1(w)}" height="9" rx="4" fill="${b[2]}" opacity=".85"/>`;
+    s += `<text x="${px + pw}" y="${y}" font-size="11.5" fill="var(--ink)" text-anchor="end">${fmt(b[1], 1)}</text>`;
+  });
+  s += `<text x="${px}" y="316" font-size="13" fill="var(--ink)" font-weight="650">Accelerația pe pantă</text>`;
+  s += `<text x="${px}" y="342" font-size="15" fill="${acc > 0 ? P.main : P.tan}" font-weight="650">a = ${fmt(acc, 2)} m/s²</text>`;
+  s += `<text x="${px}" y="366" font-size="11.5" fill="var(--muted)">${acc > 0 ? "corpul coboară accelerat" : "frecarea oprește alunecarea"}</text>`;
+
+  s += `</svg>`;
+  $("#svgPhys").innerHTML = s;
+
+  $("#physTitle").textContent = "Corp pe plan înclinat";
+  $("#physHint").textContent = "Greutatea se descompune în componenta paralelă cu planul (mg·sin α) și cea perpendiculară (mg·cos α).";
+  $("#physExplain").textContent = "Componenta paralelă trage corpul în jos pe pantă, iar cea perpendiculară apasă planul și generează reacțiunea normală N. Frecarea Ff = μ·N se opune mișcării. Dacă mg·sin α > μ·mg·cos α, corpul coboară cu accelerația a = g(sin α − μ·cos α).";
+  $("#physNoteLabel").textContent = "Unghiul planului:";
+  $("#physNoteValue").textContent = fmt(Ph.alpha, 0) + "°";
+  $("#physF1").textContent = "G∥ = m·g·sin α";
+  $("#physF2").textContent = "a = g(sin α − μ·cos α)";
+  $("#physLegend").innerHTML =
+    `<span><i style="background:${P.tan}"></i>greutatea G</span>` +
+    `<span><i style="background:${P.sin}"></i>G∥</span>` +
+    `<span><i style="background:${P.cos}"></i>G⊥</span>` +
+    `<span><i style="background:${P.main}"></i>reacțiunea N</span>` +
+    `<span><i style="background:${P.cot}"></i>frecarea Ff</span>`;
+  $("#physTiles").innerHTML = tilesHTML([
+    ["Greutatea G", fmt(Gf, 1) + " N", "G = m·g"],
+    ["Componenta G∥", fmt(par, 1) + " N", "mg·sin α"],
+    ["Componenta G⊥", fmt(perp, 1) + " N", "mg·cos α"],
+    ["Reacțiunea N", fmt(Nf, 1) + " N", "N = G⊥"],
+    ["Frecarea Ff", fmt(Ff, 1) + " N", "Ff = μ·N"],
+    ["Accelerația a", fmt(acc, 2) + " m/s²", acc > 0 ? "coboară" : "rămâne în repaus"]
+  ]);
+}
+
+function renderPhys(){
+  $$(".phys-ctl").forEach(el => el.style.display = "none");
+  const ctl = $("#ctl-" + Ph.model);
+  if (ctl) ctl.style.display = "block";
+  $$(".chip[data-model]").forEach(ch => ch.classList.toggle("active", ch.dataset.model === Ph.model));
+  if (Ph.model === "osc") renderOsc();
+  else if (Ph.model === "ac") renderAC();
+  else renderInc();
+  $("#btnPhysPlay").textContent = Ph.playing ? "❚❚ Pauză" : "▶ Redă";
+}
+
+function updateInclineMotion(){
+  const moving=$("#svgPhys [data-incline-motion]");
+  if(!moving){renderPhys();return;}
+  const al=Ph.alpha*D2R,delta=Ph.s-Number(moving.dataset.originS||0);
+  moving.setAttribute("transform",`translate(${r1(-Math.cos(al)*delta)} ${r1(Math.sin(al)*delta)})`);
+}
+
+function physLoop(ts){
+  if (!Ph.playing) return;
+  if (!Ph.last) Ph.last = ts;
+  const dt = frameSeconds(ts, Ph.last);
+  Ph.last = ts;
+
+  if (Ph.model === "inc"){
+    const al = Ph.alpha * D2R;
+    const acc = GRAV * (Math.sin(al) - Ph.mu * Math.cos(al));
+    if (acc > 0){
+      const simDt=dt*1.12;
+      Ph.s += Ph.v * simDt + 0.5 * acc * simDt * simDt;
+      Ph.v += acc * simDt;
+      if (Ph.s >= INC.L){
+        Ph.s = INC.L;
+        Ph.playing = false;
+        Ph.v = 0;
+        beep(520);
+      }
+    }else{
+      Ph.playing = false;
+    }
+  }else{
+    Ph.t += dt * Ph.speed;
+  }
+
+  if (Ph.model === "inc") updateInclineMotion();
+  else renderPhys();
+  if (Ph.playing) Ph.raf = requestAnimationFrame(physLoop);
+  else $("#btnPhysPlay").textContent = "▶ Redă";
+}
+function physPlay(){
+  if (Ph.model === "inc" && Ph.s >= INC.L){ Ph.s = 0; Ph.v = 0; updateInclineMotion(); }
+  Ph.playing = true; Ph.last = 0;
+  $("#btnPhysPlay").textContent = "❚❚ Pauză";
+  beep(680);
+  Ph.raf = requestAnimationFrame(physLoop);
+}
+function physPause(){
+  Ph.playing = false;
+  cancelAnimationFrame(Ph.raf);
+  $("#btnPhysPlay").textContent = "▶ Redă";
+}
+function physReset(){
+  Ph.t = 0; Ph.s = 0; Ph.v = 0;
+  renderPhys();
+  beep(560);
+}
+
+function syncPhysUI(){
+  $("#valOscA").textContent = fmt(Ph.A, 0);
+  $("#valOscT").textContent = fmt(Ph.T, 2);
+  $("#valOscPhi").textContent = fmt(Ph.phi, 0) + "°";
+  $("#valAcU").textContent = fmt(Ph.U0, 0);
+  $("#valAcF").textContent = fmt(Ph.f, 0);
+  $("#valIncAlpha").textContent = fmt(Ph.alpha, 0) + "°";
+  $("#valIncM").textContent = fmt(Ph.m, 1);
+  $("#valIncMu").textContent = fmt(Ph.mu, 2);
+  $("#slOscA").value = Ph.A; $("#slOscT").value = Ph.T; $("#slOscPhi").value = Ph.phi;
+  $("#slAcU").value = Ph.U0; $("#slAcF").value = Ph.f;
+  $("#slIncAlpha").value = Ph.alpha; $("#slIncM").value = Ph.m; $("#slIncMu").value = Ph.mu;
+  renderPhys();
+}
+
+/* ================= tab Exersează ================= */
+const QUESTIONS = [
+  {q:"sin 30° = ?", opts:["1/2","√3/2","√2/2","1"], a:0,
+   ex:"sin 30° = 1/2. În triunghiul dreptunghic cu unghi de 30°, cateta opusă este jumătate din ipotenuză."},
+  {q:"cos 60° = ?", opts:["√3/2","1/2","0","1"], a:1,
+   ex:"cos 60° = 1/2. Cosinusul este sinusul unghiului complementar: cos 60° = sin 30°."},
+  {q:"tan 45° = ?", opts:["0","√3/3","1","√3"], a:2,
+   ex:"tan 45° = sin 45° / cos 45° = (√2/2) / (√2/2) = 1."},
+  {q:"180° în radiani înseamnă…", opts:["π/2","π","2π","π/4"], a:1,
+   ex:"180° = π rad. Un unghi complet, 360°, este 2π rad."},
+  {q:"sin²x + cos²x = ?", opts:["0","1","2","sin 2x"], a:1,
+   ex:"Identitatea fundamentală: sin²x + cos²x = 1, pentru orice unghi x."},
+  {q:"În cadranul II, cosinusul este…", opts:["pozitiv","negativ","zero","depinde de unghi"], a:1,
+   ex:"În cadranul II, x < 0 și y > 0, deci cos x < 0, iar sin x > 0."},
+  {q:"Perioada funcției sin x este…", opts:["π","2π","π/2","4π"], a:1,
+   ex:"sin(x + 2π) = sin x, deci perioada este 2π (360°)."},
+  {q:"cot 90° = ?", opts:["0","1","nu există","−1"], a:0,
+   ex:"cot 90° = cos 90° / sin 90° = 0 / 1 = 0. Tangenta în schimb nu este definită la 90°."},
+  {q:"sin(90° − x) = ?", opts:["sin x","cos x","−cos x","tan x"], a:1,
+   ex:"sin(90° − x) = cos x. Funcțiile unghiurilor complementare se schimbă între ele."},
+  {q:"tan x este egal cu…", opts:["cos x / sin x","sin x / cos x","1 / sin x","sin x · cos x"], a:1,
+   ex:"tan x = sin x / cos x, definită când cos x ≠ 0. cot x este inversul: cos x / sin x."}
+];
+let qi = 0, score = 0, answered = false;
+
+function renderQuiz(){
+  const q = QUESTIONS[qi];
+  $("#qProgress").textContent = "Întrebarea " + (qi + 1) + " din " + QUESTIONS.length;
+  $("#qScore").textContent = score + " / " + QUESTIONS.length + " puncte";
+  $("#qBar").style.width = (qi / QUESTIONS.length * 100) + "%";
+  $("#qText").textContent = q.q;
+  $("#qOptions").innerHTML = q.opts.map((o, i) =>
+    `<button class="opt" data-opt="${i}">${String.fromCharCode(65 + i)}. ${o}</button>`).join("");
+  $("#qFeedback").textContent = "";
+  $("#qNext").disabled = true;
+  $("#qNext").textContent = (qi === QUESTIONS.length - 1) ? "Vezi rezultatul →" : "Următoarea →";
+  answered = false;
+  $$("#qOptions .opt").forEach(b => b.addEventListener("click", () => answerQuiz(Number(b.dataset.opt))));
+}
+function answerQuiz(i){
+  if (answered) return;
+  answered = true;
+  const q = QUESTIONS[qi];
+  $$("#qOptions .opt").forEach((b, j) => {
+    b.disabled = true;
+    if (j === q.a) b.classList.add("correct");
+  });
+  if (i === q.a){
+    score++;
+    chord([660, 880]);
+    $("#qFeedback").innerHTML = "<b>Corect!</b> " + q.ex;
+  }else{
+    const btn = $(`#qOptions .opt[data-opt="${i}"]`);
+    if (btn) btn.classList.add("wrong");
+    buzz();
+    $("#qFeedback").innerHTML = "<b>Nu chiar.</b> " + q.ex;
+  }
+  $("#qScore").textContent = score + " / " + QUESTIONS.length + " puncte";
+  $("#qBar").style.width = ((qi + 1) / QUESTIONS.length * 100) + "%";
+  $("#qNext").disabled = false;
+}
+function showQuizResult(){
+  const pct = Math.round(score / QUESTIONS.length * 100);
+  let msg = "Reia teoria și animațiile, apoi încearcă din nou.";
+  if (pct >= 90) msg = "Excelent! Stăpânești cercul trigonometric.";
+  else if (pct >= 70) msg = "Foarte bine! Reia doar valorile remarcabile.";
+  else if (pct >= 50) msg = "Bine — mai exersează semnele pe cadrane.";
+  $("#qProgress").textContent = "Test încheiat";
+  $("#qText").textContent = "Rezultat final";
+  $("#qOptions").innerHTML = `<div class="result"><b>${score} / ${QUESTIONS.length}</b>${pct}% răspunsuri corecte<br><span style="font-size:14px;color:var(--muted)">${msg}</span></div>`;
+  $("#qFeedback").textContent = "";
+  $("#qBar").style.width = "100%";
+  $("#qNext").disabled = true;
+  $("#qNext").textContent = "Test încheiat";
+  if (pct >= 70) chord([660, 880, 1040]); else beep(420);
+}
+function nextQuiz(){
+  if (qi < QUESTIONS.length - 1){
+    qi++;
+    renderQuiz();
+    beep(620);
+  }else{
+    showQuizResult();
+  }
+}
+function restartQuiz(){
+  qi = 0; score = 0;
+  renderQuiz();
+  beep(600);
+}
+
+/* ================= taburi ================= */
+function activateTab(name){
+  $$(".tab").forEach(t => {
+    const on = t.dataset.tab === name;
+    t.classList.toggle("active", on);
+    t.setAttribute("aria-selected", on ? "true" : "false");
+  });
+  $$(".panel").forEach(p => p.classList.toggle("active", p.id === "tab-" + name));
+  if (name !== "animatii") animPause2();
+  if (name !== "grafice") wavePause();
+  if (name !== "fizica") physPause();
+  if (name === "animatii") renderAnim2();
+  if (name === "grafice") renderGraph();
+  if (name === "fizica") syncPhysUI();
+  try{ if (location.hash !== "#" + name) history.replaceState(null, "", "#" + name); }catch(e){}
+  beep(700);
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+window.addEventListener("hashchange", () => {
+  const n = (location.hash || "").replace("#", "");
+  if (["teorie","animatii","grafice","fizica","exerseaza"].indexOf(n) >= 0) activateTab(n);
+});
+
+/* ================= evenimente ================= */
+$$(".tab").forEach(t => t.addEventListener("click", () => activateTab(t.dataset.tab)));
+$$("[data-goto]").forEach(el => el.addEventListener("click", e => {
+  e.preventDefault();
+  activateTab(el.dataset.goto);
+}));
+
+/* unghi */
+$("#slAngle").addEventListener("input", e => {
+  state.angle = Number(e.target.value);
+  renderTheory();
+  beep(500 + state.angle);
+});
+$$("[data-ang-step]").forEach(b => b.addEventListener("click", () => {
+  setAngle(state.angle + Number(b.dataset.angStep));
+  beep(580);
+}));
+$$(".chip[data-angle]").forEach(ch => ch.addEventListener("click", () => {
+  setAngle(Number(ch.dataset.angle));
+  beep(740);
+}));
+$$(".unit-btn").forEach(b => b.addEventListener("click", () => setUnit(b.dataset.unit)));
+
+/* grafice */
+$$(".chip[data-fn]").forEach(ch => ch.addEventListener("click", () => {
+  $$(".chip[data-fn]").forEach(x => x.classList.remove("active"));
+  ch.classList.add("active");
+  G.fn = ch.dataset.fn;
+  renderGraph();
+  beep(720);
+}));
+$("#slAmp").addEventListener("input", e => { G.A = Number(e.target.value); renderGraph(); beep(520); });
+$("#slOmega").addEventListener("input", e => { G.w = Number(e.target.value); renderGraph(); beep(540); });
+$("#slPhi").addEventListener("input", e => { G.phi = Number(e.target.value); renderGraph(); beep(560); });
+$$("[data-gstep]").forEach(b => b.addEventListener("click", () => {
+  const key = b.dataset.gstep, d = Number(b.dataset.d);
+  const lim = {A:[0.25, 2.5], w:[0.5, 3], phi:[-180, 180]}[key];
+  G[key] = clamp(G[key] + d, lim[0], lim[1]);
+  renderGraph();
+  beep(600);
+}));
+$("#btnWavePlay").addEventListener("click", () => G.playing ? wavePause() : wavePlay());
+$("#btnWaveReset").addEventListener("click", () => {
+  wavePause();
+  G.A = 1; G.w = 1; G.phi = 0;
+  renderGraph();
+  beep(560);
+});
+$("#btnTone").addEventListener("click", () => {
+  const f = 180 + G.w * 90;
+  playTone(f, 1.1, 0.06, "sine");
+  beep(f);
+});
+
+/* animații */
+$("#btnAnimPlay").addEventListener("click", () => A2.playing ? animPause2() : animPlay2());
+$("#btnAnimRestart").addEventListener("click", () => {
+  animPause2();
+  A2.angle = 0;
+  renderAnim2();
+  beep(560);
+  animPlay2();
+});
+$$(".chip[data-atype]").forEach(ch => ch.addEventListener("click", () => {
+  $$(".chip[data-atype]").forEach(x => x.classList.remove("active"));
+  ch.classList.add("active");
+  A2.type = ch.dataset.atype;
+  A2.angle = 0;
+  const hints = {
+    sin:"Înălțimea punctului P desenează curba sinus, de la 0° la 360°.",
+    cos:"Deplasarea orizontală a punctului P desenează curba cosinus — o sinusoidă deplasată cu 90°.",
+    both:"Urmărește ambele proiecții: sinus pornește din 0, cosinus pornește din 1.",
+    tan:"Prelungirea razei intersectează verticala x = 1; acolo citim tangenta. Aproape de 90° valoarea explodează."
+  };
+  $("#anHint").textContent = hints[A2.type];
+  renderAnim2();
+  beep(720);
+  if (!A2.playing) animPlay2();
+}));
+$("#slAnimSpeed").addEventListener("input", e => {
+  A2.speed = Number(e.target.value);
+  $("#valAnimSpeed").textContent = fmt(A2.speed, 2) + "×";
+  beep(540);
+});
+function setAnimSpeed(d){
+  A2.speed = clamp(Math.round((A2.speed + d) * 100) / 100, 0.25, 3);
+  $("#slAnimSpeed").value = A2.speed;
+  $("#valAnimSpeed").textContent = fmt(A2.speed, 2) + "×";
+  beep(540);
+}
+$("#anSpdDown").addEventListener("click", () => setAnimSpeed(-0.25));
+$("#anSpdUp").addEventListener("click", () => setAnimSpeed(0.25));
+
+/* fizică */
+$$(".chip[data-model]").forEach(ch => ch.addEventListener("click", () => {
+  Ph.model = ch.dataset.model;
+  Ph.playing = false;
+  Ph.t = 0; Ph.s = 0; Ph.v = 0;
+  syncPhysUI();
+  beep(720);
+}));
+$$(".btn[data-model]").forEach(b => b.addEventListener("click", () => {
+  Ph.model = b.dataset.model;
+  Ph.playing = false;
+  Ph.t = 0; Ph.s = 0; Ph.v = 0;
+  syncPhysUI();
+  beep(740);
+}));
+$("#btnPhysPlay").addEventListener("click", () => Ph.playing ? physPause() : physPlay());
+$("#btnPhysReset").addEventListener("click", physReset);
+
+const PSL = {
+  slOscA:{key:"A", step:1, lim:[5, 40], dec:0, suf:" cm"},
+  slOscT:{key:"T", step:0.1, lim:[0.5, 3], dec:2, suf:" s"},
+  slOscPhi:{key:"phi", step:15, lim:[-180, 180], dec:0, suf:"°"},
+  slAcU:{key:"U0", step:5, lim:[12, 325], dec:0, suf:" V"},
+  slAcF:{key:"f", step:1, lim:[10, 60], dec:0, suf:" Hz"},
+  slIncAlpha:{key:"alpha", step:1, lim:[5, 60], dec:0, suf:"°"},
+  slIncM:{key:"m", step:0.5, lim:[1, 20], dec:1, suf:" kg"},
+  slIncMu:{key:"mu", step:0.05, lim:[0, 0.6], dec:2, suf:""}
+};
+Object.keys(PSL).forEach(id => {
+  const cfg = PSL[id];
+  $("#" + id).addEventListener("input", e => {
+    Ph[cfg.key] = Number(e.target.value);
+    if (cfg.key === "alpha" || cfg.key === "m" || cfg.key === "mu"){ Ph.s = 0; Ph.v = 0; }
+    syncPhysUI();
+    beep(520);
+  });
+});
+$$("[data-pvar]").forEach(b => b.addEventListener("click", () => {
+  const key = b.dataset.pvar;
+  const cfg = Object.keys(PSL).map(k => PSL[k]).find(c => c.key === key);
+  if (!cfg) return;
+  Ph[key] = clamp(Ph[key] + Number(b.dataset.d), cfg.lim[0], cfg.lim[1]);
+  if (key === "alpha" || key === "m" || key === "mu"){ Ph.s = 0; Ph.v = 0; }
+  syncPhysUI();
+  beep(600);
+}));
+
+/* quiz */
+$("#qNext").addEventListener("click", nextQuiz);
+$("#qRestart").addEventListener("click", restartQuiz);
+
+/* bară de sus */
+$("#btnBoard").addEventListener("click", function(){
+  document.body.classList.toggle("board");
+  this.classList.toggle("on");
+  beep(620);
+  renderTheory(); renderGraph(); renderAnim2(); renderPhys();
+});
+$("#btnText").addEventListener("click", function(){
+  document.body.classList.toggle("text-big");
+  this.classList.toggle("on");
+  beep(620);
+});
+$("#btnSound").addEventListener("click", function(){
+  soundOn = !soundOn;
+  this.classList.toggle("on", soundOn);
+  this.innerHTML = soundOn ? '<span class="dot"></span> Sunet activ' : "Sunet oprit";
+  $("#optSound").checked = soundOn;
+  savePrefs();
+  if (soundOn) beep(700);
+});
+$("#btnLang").addEventListener("click", e => {
+  e.stopPropagation();
+  $("#langMenu").classList.toggle("open");
+  beep(600);
+});
+document.addEventListener("click", () => {
+  $("#langMenu").classList.remove("open");
+  $("#prefsPanel").classList.remove("open");
+});
+$("#prefsPanel").addEventListener("click", e => e.stopPropagation());
+$("#langMenu").addEventListener("click", e => e.stopPropagation());
+
+/* preferințe */
+$("#btnPrefs").addEventListener("click", e => {
+  e.stopPropagation();
+  $("#prefsPanel").classList.toggle("open");
+  beep(640);
+});
+function bindOpt(id, key){
+  $(id).checked = prefs[key];
+  $(id).addEventListener("change", () => {
+    prefs[key] = $(id).checked;
+    savePrefs();
+    renderTheory();
+    renderAnim2();
+    beep(620);
+  });
+}
+bindOpt("#optGrid", "grid");
+bindOpt("#optProj", "proj");
+bindOpt("#optTan", "tan");
+bindOpt("#optCot", "cot");
+$("#optSound").checked = soundOn;
+$("#optSound").addEventListener("change", () => {
+  soundOn = $("#optSound").checked;
+  $("#btnSound").classList.toggle("on", soundOn);
+  $("#btnSound").innerHTML = soundOn ? '<span class="dot"></span> Sunet activ' : "Sunet oprit";
+  savePrefs();
+  if (soundOn) beep(700);
+});
+$("#btnResetPrefs").addEventListener("click", () => {
+  prefs.grid = prefs.proj = prefs.tan = prefs.cot = true;
+  soundOn = true;
+  ["#optGrid","#optProj","#optTan","#optCot","#optSound"].forEach(id => $(id).checked = true);
+  $("#btnSound").classList.add("on");
+  $("#btnSound").innerHTML = '<span class="dot"></span> Sunet activ';
+  savePrefs();
+  renderTheory(); renderAnim2();
+  beep(660);
+});
+$("#btnCookies").addEventListener("click", () => beep(600));
+
+/* tastatură */
+document.addEventListener("keydown", e => {
+  if (e.target.matches("input,textarea,select")) return;
+  const active = $(".tab.active");
+  if (!active || active.dataset.tab !== "teorie") return;
+  if (e.key === "ArrowLeft" || e.key === "ArrowRight"){
+    const step = e.shiftKey ? 15 : 1;
+    setAngle(state.angle + (e.key === "ArrowRight" ? step : -step));
+    beep(520);
+    e.preventDefault();
+  }
+});
+
+/* descărcare */
+$("#btnDownload").addEventListener("click", e => {
+  e.preventDefault();
+  const clone = document.documentElement.cloneNode(true);
+  clone.querySelectorAll(".popover,.lang-menu").forEach(el => el.classList.remove("open"));
+  const blob = new Blob(["<!DOCTYPE html>\n" + clone.outerHTML], {type:"text/html;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "functii-trigonometrice.html";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+  beep(760);
+});
+
+/* ================= inițializare ================= */
+$("#btnSound").classList.toggle("on", soundOn);
+$("#btnSound").innerHTML = soundOn ? '<span class="dot"></span> Sunet activ' : "Sunet oprit";
+$("#valAnimSpeed").textContent = fmt(A2.speed, 2) + "×";
+renderTheory();
+renderGraph();
+renderAnim2();
+syncPhysUI();
+renderQuiz();
+const initialTab = (location.hash || "").replace("#", "");
+if (["teorie","animatii","grafice","fizica","exerseaza"].indexOf(initialTab) >= 0) activateTab(initialTab);
+})();
+</script>
+</body>
+</html>
