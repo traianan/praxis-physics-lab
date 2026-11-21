@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Coarde și tuburi sonore</title>
+  <desc id="desc">Coardă vibrantă și tuburi sonore reprezentate prin unde staționare.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#e8f1e8"/><stop offset="1" stop-color="#d5e6df"/></linearGradient>
+    <linearGradient id="tube" x2="0" y2="1"><stop stop-color="#33887c"/><stop offset="1" stop-color="#17685f"/></linearGradient>
+  </defs>
+  <rect width="640" height="400" rx="28" fill="url(#bg)"/>
+  <circle cx="510" cy="82" r="44" fill="#fff" opacity=".58"/>
+  <path d="M68 92H548M68 92v216M548 92v216" stroke="#668b7b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M68 200c80-150 130 150 210 0s130 150 210 0 40-70 60-65" fill="none" stroke="#17685f" stroke-width="8" stroke-linecap="round"/>
+  <path d="M96 236h164v112H96z" rx="14" fill="url(#tube)"/>
+  <path d="M292 236h164v112H292z" rx="14" fill="url(#tube)"/>
+  <path d="M100 292h152M296 292h152" stroke="#c5e8a5" stroke-width="4" stroke-dasharray="8 9"/>
+  <path d="M176 240c-34 26-34 76 0 104M376 240c35 27 35 76 0 104" fill="none" stroke="#efc875" stroke-width="7" stroke-linecap="round"/>
+  <path d="M84 165h456" stroke="#d5a64e" stroke-width="2" stroke-dasharray="3 10" opacity=".65"/>
+</svg>

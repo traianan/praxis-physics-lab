@@ -1,0 +1,14 @@
+{
+  "id": "coarde-tuburi-sonore",
+  "source": "sources/coarde-tuburi-sonore",
+  "sha256": "be20d7acd7cf41c5a77dec9d95b783a30d2ece9d8d9c26a2e873a482c5214bcd",
+  "chapters": 6,
+  "theoryScreens": 9,
+  "labStations": 3,
+  "languages": [
+    "ro",
+    "en-ui"
+  ],
+  "audio": "PraxisSound shared session state",
+  "offline": "archive"
+}

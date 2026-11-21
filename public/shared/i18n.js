@@ -87,9 +87,9 @@
  async function init({baseUrl='./locales/',namespaceList=['common'],embedded}={}){base=baseUrl;namespaces=namespaceList;if(embedded)for(const [lang,files]of Object.entries(embedded))for(const [ns,data]of Object.entries(files))cache.set(lang+':'+ns,data);await resolveInitialLanguage();await Promise.all(namespaces.map(ns=>load(language,ns)));compose();apply(document);return language;}
  function initEmbedded({namespaceList,embedded}){namespaces=namespaceList;for(const [lang,files]of Object.entries(embedded))for(const [ns,data]of Object.entries(files))cache.set(lang+':'+ns,data);compose();return resolveInitialLanguage();}
  async function setLanguage(lang){
-  if(!supported.includes(lang)||lang===language)return;const seq=++revision,previousChoice=userSelectedLanguage;userSelectedLanguage=true;for(const select of document.querySelectorAll('[data-language-select]'))select.disabled=true;
+  if(!supported.includes(lang)||lang===language)return;const seq=++revision,previousChoice=userSelectedLanguage,previousSaved=readSavedLanguage();userSelectedLanguage=true;saveLanguage(lang);for(const select of document.querySelectorAll('[data-language-select]'))select.disabled=true;
   try{await Promise.all(namespaces.map(ns=>load(lang,ns)));if(seq!==revision)return;language=lang;saveLanguage(lang);compose();apply(document);window.dispatchEvent(new CustomEvent('praxis-language-change',{detail:{language}}));apply(document);}
-  catch(error){if(seq===revision&&!readSavedLanguage())userSelectedLanguage=previousChoice;throw error;}
+  catch(error){if(seq===revision){try{if(previousSaved)localStorage.setItem('praxis-language',previousSaved);else localStorage.removeItem('praxis-language');}catch{}userSelectedLanguage=previousChoice;}throw error;}
   finally{for(const select of document.querySelectorAll('[data-language-select]'))select.disabled=false;}
  }
  function createSelector(){const select=document.createElement('select');select.className='praxis-language';select.dataset.languageSelect='';select.setAttribute('aria-label','Limba interfeței');for(const lang of supported)select.add(new Option(lang.toUpperCase(),lang));select.value=language;select.addEventListener('change',()=>{setLanguage(select.value).catch(()=>{select.value=language;window.dispatchEvent(new CustomEvent('praxis-language-error'));});});return select;}

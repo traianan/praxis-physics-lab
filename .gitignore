@@ -22,6 +22,8 @@ __pycache__/
 !sources/compunerea-oscilatiilor/
 !sources/condensatorul/
 !sources/figuri-chladni/
+!sources/functii-trigonometrice/
+!sources/functii-trigonometrice/**
 !sources/interactii-atomice/
 !sources/legea-lui-coulomb/
 !sources/miscarea-circulara-uniforma/

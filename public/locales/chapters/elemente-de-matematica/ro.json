@@ -25,6 +25,15 @@
     "Măsurare": "Măsurare"
   },
   "simulations": {
+    "functii-trigonometrice": {
+      "title": "Funcții trigonometrice",
+      "subtitle": "Sinus, cosinus, tangentă și cotangentă",
+      "description": "Explorează cercul unitate și valorile funcțiilor trigonometrice, urmărește animații și grafice interactive și aplică trigonometria în fizică.",
+      "alt": "Cercul unitate și graficele sinusului și cosinusului",
+      "keywords": "functii trigonometrice cerc unitate sinus cosinus tangenta cotangenta radiani grade grafice oscilatie armonica curent alternativ",
+      "tags": ["Matematică", "Trigonometrie", "Funcții", "Grafice"],
+      "image": "./assets/functii-trigonometrice-cover-v3.svg"
+    },
     "masurarea-unghiurilor": {
       "title": "Măsurarea unghiurilor",
       "subtitle": "Grade, radiani și steradiani",

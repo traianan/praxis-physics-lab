@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Retele electrice — Legile lui Kirchhoff &amp; Gruparea rezistoarelor și generatoarelor</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ======================= SIDEBAR ======================= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+          <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+          <circle cx="24" cy="24" r="21" fill="none" stroke="url(#bg1)" stroke-width="2.2" opacity=".55"/>
+          <path d="M24 7v9M24 32v9M7 24h9M32 24h9" stroke="url(#bg1)" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="6.5" fill="none" stroke="url(#bg1)" stroke-width="2.4"/>
+          <path d="M24 17.5v-1.2M24 31.7v-1.2M17.5 24h-1.2M31.7 24h-1.2" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">Rețele electrice</div>
+        <div class="brand-sub">Fizică · clasa a X-a · interactiv</div>
+      </div>
+      <button class="icon-btn only-mobile" id="sidebarClose" title="Închide meniul">✕</button>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-group">
+        <div class="nav-group-label"><span class="dotK"></span> I. Legile lui Kirchhoff</div>
+        <button class="nav-item" data-view="k-theory"><span class="ni-ic">◆</span> Teorie: nod, latură, ochi</button>
+        <button class="nav-item" data-view="k-anim"><span class="ni-ic">◉</span> Animație: legea I</button>
+        <button class="nav-item" data-view="k-lab"><span class="ni-ic">⚙</span> Laborator: ochi de rețea</button>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label"><span class="dotG"></span> II. Gruparea rezistoarelor și generatoarelor</div>
+        <button class="nav-item" data-view="g-theory"><span class="ni-ic">◆</span> Teorie: serie și paralel</button>
+        <button class="nav-item" data-view="g-lab"><span class="ni-ic">⚙</span> Laborator: rețea + instrumente</button>
+        <button class="nav-item" data-view="g-gen"><span class="ni-ic">🔋</span> Generatoare cu rezistență internă</button>
+        <button class="nav-item" data-view="g-sunt"><span class="ni-ic">⊸</span> Șunt și rezistență adițională</button>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label"><span class="dotP"></span> Exersare</div>
+        <button class="nav-item" data-view="problems"><span class="ni-ic">✎</span> Probleme rezolvate</button>
+        <button class="nav-item" data-view="quiz"><span class="ni-ic">☑</span> Test rapid</button>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="sound-row">
+        <button class="btn btn-ghost btn-sm" id="btnSound" title="Pornește / oprește sunetele">
+          <span id="soundIcon">🔊</span> <span id="soundLabel">Sunet activ</span>
+        </button>
+        <button class="btn btn-ghost btn-sm" id="btnHelp" title="Scurt ghid">?</button>
+      </div>
+      <p class="foot-note">Inspirat din manualul <em>Fizică, clasa a X-a</em> (§2.3–2.4).</p>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <!-- ======================= MAIN ======================= -->
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn only-mobile" id="menuBtn" title="Meniu">☰</button>
+      <div class="crumbs" id="crumbs">Legile lui Kirchhoff</div>
+      <div class="topbar-right">
+        <div class="pill" id="pillState"><span class="led" id="ledGlobal"></span><span id="pillText">circuit deschis</span></div>
+        <button class="btn btn-ghost btn-sm" id="btnSound2">🔊</button>
+      </div>
+    </header>
+
+    <div class="scroll" id="scroll">
+
+      <!-- ================= I. TEORIE KIRCHHOFF ================= -->
+      <section class="view" id="view-k-theory">
+        <div class="hero hero-k">
+          <div class="hero-txt">
+            <div class="eyebrow">Partea I · Capitolul 2.3</div>
+            <h1>Legile lui Kirchhoff</h1>
+            <p>Circuitele simple (neramificate) se rezolvă cu legea lui Ohm. Realitatea este însă plină de
+              <strong>rețele electrice</strong> — circuite cu mai multe ramificații. În 1847, Gustav Robert Kirchhoff
+              a formulat două legi care permit aflarea intensității curenților pe fiecare latură a rețelei.</p>
+            <div class="hero-chips">
+              <span class="chip">nod</span><span class="chip">latură</span><span class="chip">ochi de rețea</span>
+              <span class="chip chip-accent">Σ I = 0</span><span class="chip chip-accent">Σ E = Σ I·R</span>
+            </div>
+          </div>
+          <div class="hero-art" id="heroArt"></div>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-ic">◈</div>
+            <h3>Nodul de rețea</h3>
+            <p>Orice punct din rețea în care se întâlnesc <strong>minimum trei conductori</strong>. Exemple: A, B, C…</p>
+            <div class="mini-art" data-art="node"></div>
+          </article>
+          <article class="card">
+            <div class="card-ic">▬</div>
+            <h3>Latura de rețea</h3>
+            <p>Porțiunea de rețea cuprinsă între <strong>două noduri vecine</strong>. Exemple: AB, AC…</p>
+            <div class="mini-art" data-art="branch"></div>
+          </article>
+          <article class="card">
+            <div class="card-ic">◯</div>
+            <h3>Ochiul de rețea</h3>
+            <p>O succesiune de laturi care formează un <strong>contur poligonal închis</strong>. Exemple: ABCA, ACDA…</p>
+            <div class="mini-art" data-art="loop"></div>
+          </article>
+        </div>
+
+        <div class="card formula-card">
+          <div class="formula-head">
+            <span class="badge badge-k">Legea I</span>
+            <h3>Prima lege a lui Kirchhoff — legea nodurilor</h3>
+          </div>
+          <p class="def">„Suma algebrică a intensităților curenților electrici care se întâlnesc într-un nod de rețea
+            este egală cu zero.”</p>
+          <div class="formula-big">Σ<sub>k=1..n</sub> I<sub>k</sub> = 0</div>
+          <div class="two-col">
+            <div>
+              <h4>Convenție de semn</h4>
+              <ul class="tick">
+                <li><b>+</b> pentru curenții care <b>intră</b> în nod;</li>
+                <li><b>−</b> pentru curenții care <b>ies</b> din nod.</li>
+              </ul>
+              <p class="muted">Este expresia <b>conservării sarcinii electrice</b> într-un nod: sarcina nu se acumulează.</p>
+            </div>
+            <div>
+              <h4>Numărul de ecuații independente</h4>
+              <p>Pentru <b>n</b> noduri se pot scrie <b>n</b> ecuații, dar numai <b>n − 1</b> sunt independente.
+                 Ecuația pentru ultimul nod se obține algebric din celelalte <b>n − 1</b>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card formula-card">
+          <div class="formula-head">
+            <span class="badge badge-g">Legea II</span>
+            <h3>A doua lege a lui Kirchhoff — legea ochiurilor</h3>
+          </div>
+          <p class="def">„Suma algebrică a tensiunilor electromotoare ale surselor în lungul unui ochi de rețea este
+            egală cu suma algebrică a căderilor de tensiune de pe laturile ochiului.”</p>
+          <div class="formula-big">Σ<sub>k</sub> E<sub>k</sub> = Σ<sub>j</sub> I<sub>j</sub> · R<sub>j</sub></div>
+          <div class="two-col">
+            <div>
+              <h4>Convenții de semn</h4>
+              <ol class="tick">
+                <li><b>E</b> se ia cu <b>+</b> dacă sensul de parcurgere ales străbate sursa în sens direct
+                  (de la borna − la borna +); altfel cu <b>−</b>.</li>
+                <li>Produsul <b>I·R</b> se ia cu <b>+</b> dacă sensul ales de parcurgere coincide cu sensul curentului
+                  prin latură; altfel cu <b>−</b>.</li>
+              </ol>
+            </div>
+            <div>
+              <h4>Câte ochiuri independente?</h4>
+              <p>Dacă rețeaua are <b>n</b> noduri și <b>l</b> laturi, numărul de ochiuri independente este
+                 <b>o = l − n + 1</b> (teorema lui Euler).</p>
+              <div class="formula-small">(n − 1) + (l − n + 1) = l</div>
+              <p class="muted">adică exact numărul de necunoscute — câte o intensitate pe fiecare latură.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card callout-card">
+          <h3>⚑ Observații esențiale (din manual)</h3>
+          <div class="obs-grid">
+            <div class="obs"><span class="obs-n">1</span>
+              <p>Sensurile curenților se aleg <b>arbitrar, în prealabil</b>. Dacă la final valoarea obținută este
+                 <b>negativă</b>, sensul real al curentului este <b>invers</b> celui ales.</p></div>
+            <div class="obs"><span class="obs-n">2</span>
+              <p>Se presupune că pe fiecare latură există cel puțin un consumator sau o sursă.</p></div>
+            <div class="obs"><span class="obs-n">3</span>
+              <p>Numărul total de ecuații independente = numărul laturilor: câte una pentru fiecare intensitate.</p></div>
+          </div>
+          <div class="cta-row">
+            <button class="btn btn-primary" data-goto="k-anim">Mergi la animație →</button>
+            <button class="btn btn-ghost" data-goto="k-lab">Deschide laboratorul →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= I. ANIMATIE ================= -->
+      <section class="view" id="view-k-anim">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Partea I · animație interactivă</div>
+            <h2>Prima lege a lui Kirchhoff, pas cu pas</h2>
+            <p class="lead">Un nod A, trei laturi. Schimbă intensitățile și vezi de ce <b>Σ I = 0</b> nu poate fi încălcat.</p>
+          </div>
+        </div>
+        <div class="split">
+          <div class="card canvas-card">
+            <svg id="animNode" viewBox="0 0 560 380" class="board"></svg>
+            <div class="legend-inline">
+              <span><i class="lg lg-in"></i> curent care intră (+)</span>
+              <span><i class="lg lg-out"></i> curent care iese (−)</span>
+            </div>
+          </div>
+          <div class="card control-card">
+            <h3>Nodul A</h3>
+            <div class="control">
+              <label><span>I<sub>1</sub> (latura AB)</span> <output id="oI1">2.0 A</output></label>
+              <input type="range" id="sI1" min="0" max="4" step="0.1" value="2" />
+            </div>
+            <div class="control">
+              <label><span>I<sub>2</sub> (latura AC)</span> <output id="oI2">1.5 A</output></label>
+              <input type="range" id="sI2" min="0" max="4" step="0.1" value="1.5" />
+            </div>
+            <div class="control">
+              <label><span>I<sub>3</sub> (latura de ieșire)</span> <output id="oI3">3.5 A</output></label>
+              <input type="range" id="sI3" min="0" max="8" step="0.1" value="3.5" />
+            </div>
+            <div class="balance">
+              <div class="balance-eq">I<sub>1</sub> + I<sub>2</sub> − I<sub>3</sub> = 0</div>
+              <div class="balance-val"><span id="sumLive">3.5</span> − I<sub>3</sub></div>
+              <div class="balance-target">I<sub>3</sub> = <b id="i3Val">3.5 A</b></div>
+            </div>
+            <button class="btn btn-primary w100" id="btnBalance">⚖ Echilibrează nodul (Σ I = 0)</button>
+            <div class="control mt">
+              <label><span>Viteza electronilor</span> <output id="oSpeed">1.0×</output></label>
+              <input type="range" id="sSpeed" min="0.2" max="2.5" step="0.1" value="1" />
+            </div>
+            <label class="switch"><input type="checkbox" id="kSwitch" checked /> <span class="track"></span>
+              <span class="switch-txt">Circuit închis (întrerupător K)</span></label>
+            <p class="hint" id="animHint">Sarcina care intră în nod = sarcina care iese. Electronii „se înghesuie” în nod,
+              dar nu se acumulează: debitul se redistribuie.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Citește ecuația pentru fiecare nod</h3>
+          <p class="muted">Construiește-ți ecuația: alege sensul fiecărui curent (intră / iese) și verifică semnele.</p>
+          <div class="node-builder" id="nodeBuilder"></div>
+        </div>
+      </section>
+
+      <!-- ================= I. LABORATOR ================= -->
+      <section class="view" id="view-k-lab">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Partea I · laborator</div>
+            <h2>Laborator: ochiurile de rețea se rezolvă singure</h2>
+            <p class="lead">O rețea cu 2 noduri, 3 laturi și 2 surse <b>cu rezistență internă r</b>. Aplicația rezolvă
+              sistemul Kirchhoff în timp real; tu compari cu soluția clasică <b>I₁ = 2 A, I₂ = 1 A, I₃ = 3 A</b>.</p>
+          </div>
+        </div>
+        <div class="split wide-left">
+          <div class="card canvas-card">
+            <svg id="labK" viewBox="0 0 680 460" class="board"></svg>
+            <div class="legend-inline">
+              <span><i class="lg lg-in"></i> sens ales (+) </span>
+              <span><i class="lg lg-out"></i> sens real (invers)</span>
+            </div>
+          </div>
+          <div class="card control-card">
+            <h3>Parametrii rețelei</h3>
+            <div class="control"><label><span>E<sub>1</sub> — t.e.m. sursa 1</span> <output id="oE1">22 V</output></label>
+              <input type="range" id="sE1" min="6" max="30" step="1" value="22" /></div>
+            <div class="control"><label><span>r<sub>1</sub> — rezistență internă</span> <output id="oR1">1 Ω</output></label>
+              <input type="range" id="sR1" min="0.2" max="4" step="0.1" value="1" /></div>
+            <div class="control"><label><span>E<sub>2</sub> — t.e.m. sursa 2</span> <output id="oE2">19 V</output></label>
+              <input type="range" id="sE2" min="0" max="30" step="1" value="19" /></div>
+            <div class="control"><label><span>r<sub>2</sub> — rezistență internă</span> <output id="oR2">1 Ω</output></label>
+              <input type="range" id="sR2" min="0.2" max="4" step="0.1" value="1" /></div>
+            <hr class="rule">
+            <div class="control"><label><span>R<sub>1</sub></span> <output id="oRR1">4 Ω</output></label>
+              <input type="range" id="sRR1" min="1" max="16" step="1" value="4" /></div>
+            <div class="control"><label><span>R<sub>2</sub></span> <output id="oRR2">6 Ω</output></label>
+              <input type="range" id="sRR2" min="1" max="16" step="1" value="6" /></div>
+            <div class="control"><label><span>R<sub>3</sub></span> <output id="oRR3">4 Ω</output></label>
+              <input type="range" id="sRR3" min="1" max="16" step="1" value="4" /></div>
+            <div class="btn-row">
+              <button class="btn btn-ghost btn-sm" id="kReset">↺ Valorile din manual</button>
+              <label class="switch"><input type="checkbox" id="kSwitch2" checked /> <span class="track"></span>
+                <span class="switch-txt">K închis</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Sistemul de ecuații</h3>
+            <div class="eq-stack" id="kEqStack"></div>
+            <p class="hint">Nodul A: I₁ + I₂ − I₃ = 0 · Ochiul stâng: E₁ = I₁R₁ + I₃R₃ + I₁r₁ ·
+               Ochiul drept: E₂ = I₂R₂ + I₃R₃ + I₂r₂</p>
+          </div>
+          <div class="card">
+            <h3>Soluția numerică</h3>
+            <div class="result-grid" id="kResults"></div>
+            <div class="meter-wrap">
+              <div class="meter"><span id="kMeterBar"></span></div>
+              <p class="hint" id="kMeterHint">Puterea disipată pe R<sub>3</sub></p>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-ghost btn-sm" id="kShowSteps">Vezi rezolvarea pas cu pas</button>
+            </div>
+            <div class="steps" id="kSteps" hidden></div>
+            <button class="btn btn-ghost btn-sm" data-goto="problems" style="margin-top:10px">
+              ✎ Vezi problema 2.3.1 rezolvată pas cu pas
+            </button>
+          </div>
+        </div>
+
+        <div class="card mini-lab">
+          <h3>Micro-laborator: tensiunea între două puncte</h3>
+          <p class="muted">Alege traseul de la A la B și verifică faptul că diferența de potențial
+            <b>V<sub>A</sub> − V<sub>B</sub></b> nu depinde de drum.</p>
+          <div class="seg-tabs" id="pathTabs">
+            <button class="seg on" data-path="0">A → B direct (prin R₃)</button>
+            <button class="seg" data-path="1">A → C → D → B</button>
+            <button class="seg" data-path="2">A → E → F → B</button>
+          </div>
+          <div class="path-out" id="pathOut"></div>
+        </div>
+      </section>
+
+      <!-- ================= II. TEORIE GRUPARI ================= -->
+      <section class="view" id="view-g-theory">
+        <div class="hero hero-g">
+          <div class="hero-txt">
+            <div class="eyebrow">Partea II · Capitolul 2.4</div>
+            <h1>Gruparea rezistoarelor și a generatoarelor</h1>
+            <p>Două rezistoare pot fi înlocuite printr-unul singur — <strong>rezistența echivalentă</strong> — astfel încât
+              curentul din circuit și tensiunea între borne să rămână aceleași. La fel, mai multe generatoare
+              (fiecare cu <strong>t.e.m. E</strong> și <strong>rezistență internă r</strong>) se grupează serie sau paralel.</p>
+            <div class="hero-chips">
+              <span class="chip">R<sub>es</sub> = ΣR</span><span class="chip">1/R<sub>ep</sub> = Σ1/R</span>
+              <span class="chip chip-accent">I = nE/(R + nr)</span><span class="chip chip-accent">I = E/(R + r/n)</span>
+            </div>
+          </div>
+          <div class="hero-art" id="heroArt2"></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="formula-head"><span class="badge badge-g">Serie</span><h3>Rezistoare în serie</h3></div>
+            <svg class="sch" viewBox="0 0 460 150" id="schSeries"></svg>
+            <p>Același curent le străbate: <b>I = I₁ = I₂</b>. Tensiunile se adună: <b>U = U₁ + U₂</b>.</p>
+            <div class="formula-mid">R<sub>es</sub> = R₁ + R₂ + … + R<sub>n</sub></div>
+            <ul class="tick">
+              <li>rezistența echivalentă este <b>mai mare</b> decât oricare dintre rezistențe;</li>
+              <li>curentul scade → „frânare” a sarcinilor;</li>
+              <li>se folosește pentru a mări tensiunea la bornele grupării de generatoare.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="formula-head"><span class="badge badge-k">Paralel</span><h3>Rezistoare în paralel</h3></div>
+            <svg class="sch" viewBox="0 0 460 150" id="schParallel"></svg>
+            <p>Aceeași tensiune pe fiecare: <b>U = U₁ = U₂</b>. Curenții se adună: <b>I = I₁ + I₂</b>.</p>
+            <div class="formula-mid">1/R<sub>ep</sub> = 1/R₁ + 1/R₂ + … + 1/R<sub>n</sub></div>
+            <ul class="tick">
+              <li>rezistența echivalentă este <b>mai mică</b> decât cea mai mică rezistență;</li>
+              <li>fiecare consumator funcționează independent;</li>
+              <li>se folosește când se dorește un curent mai intens.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Generatorul real: t.e.m. și rezistență internă</h3>
+          <p>Sursa reală are <b>E</b> (tensiunea electromotoare) și <b>r</b> (rezistența internă). La bornele ei:
+            <b>U = E − I·r</b>. Curentul de scurtcircuit (R = 0) este <b>I<sub>sc</sub> = E/r</b>.</p>
+          <div class="group-cards">
+            <div class="gcard">
+              <div class="gcard-head">Serie</div>
+              <svg class="sch small" viewBox="0 0 300 120" id="schGenSer"></svg>
+              <div class="formula-small">E<sub>es</sub> = n·E &nbsp;·&nbsp; r<sub>es</sub> = n·r</div>
+              <div class="formula-small">I = nE / (R + n·r)</div>
+              <p class="muted">Crește tensiunea la borne: U = n(E − I·r).</p>
+            </div>
+            <div class="gcard">
+              <div class="gcard-head">Paralel</div>
+              <svg class="sch small" viewBox="0 0 300 120" id="schGenPar"></svg>
+              <div class="formula-small">E<sub>ep</sub> = E &nbsp;·&nbsp; r<sub>ep</sub> = r/n</div>
+              <div class="formula-small">I = E / (R + r/n)</div>
+              <p class="muted">Crește curentul disponibil în circuitul exterior.</p>
+            </div>
+            <div class="gcard">
+              <div class="gcard-head">Instrumente</div>
+              <div class="formula-small">Șunt ampermetru: R<sub>s</sub> = R<sub>A</sub>/(n−1)</div>
+              <div class="formula-small">Rezistență adițională: R<sub>a</sub> = (n−1)R<sub>V</sub></div>
+              <p class="muted">Extind domeniul de măsurare al aparatelor.</p>
+            </div>
+          </div>
+          <div class="cta-row">
+            <button class="btn btn-primary" data-goto="g-lab">Laborator: construiește rețeaua →</button>
+            <button class="btn btn-ghost" data-goto="g-gen">Vedeți generatoarele în acțiune →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= II. LABORATOR ================= -->
+      <section class="view" id="view-g-lab">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Partea II · laborator cu drag &amp; drop</div>
+            <h2>Laborator: tablou de circuite</h2>
+            <p class="lead">Trage piesele din bibliotecă pe tablou. Piesele fac <b>snap</b> pe grilă și global pe terminale.
+              Apoi închide întrerupătorul și măsoară. Fiecare sursă are rezistență internă <b>r</b>.</p>
+          </div>
+        </div>
+
+        <div class="lab-layout">
+          <div class="card palette-card">
+            <h3>Bibliotecă</h3>
+            <div class="palette" id="palette"></div>
+            <div class="tool-row">
+              <button class="btn btn-sm btn-ghost" id="gWire" title="Modul conductor">➖ Conductor</button>
+              <button class="btn btn-sm btn-ghost" id="gDelete" title="Modul ștergere">🗑 Șterge</button>
+            </div>
+            <div class="tool-row">
+              <button class="btn btn-sm btn-ghost" id="gLoadEx" title="Încarcă exemplul din manual">📄 Exemplu manual</button>
+              <button class="btn btn-sm btn-ghost" id="gClear">✕ Golește</button>
+            </div>
+            <p class="hint">Sfat: începe cu <b>Exemplu manual</b>, apoi mută sau înlocuiește piese.</p>
+          </div>
+
+          <div class="card board-card">
+            <div class="board-toolbar">
+              <label class="switch"><input type="checkbox" id="gSwitch" /> <span class="track"></span>
+                <span class="switch-txt">Întrerupător K</span></label>
+              <div class="mode-tabs" id="gMode">
+                <button class="seg on" data-mode="move">Mută</button>
+                <button class="seg" data-mode="wire">Conductor</button>
+                <button class="seg" data-mode="del">Șterge</button>
+              </div>
+              <span class="board-msg" id="boardMsg">Trage o piesă din bibliotecă →</span>
+            </div>
+            <div class="board-wrap" id="boardWrap">
+              <svg id="gCanvas" viewBox="0 0 760 460" class="board big"></svg>
+            </div>
+            <div class="inspector" id="inspector">
+              <span class="muted">Selectează o piesă pentru a-i modifica valoarea.</span>
+            </div>
+          </div>
+
+          <div class="card meter-card">
+            <h3>Măsurători</h3>
+            <div class="meters" id="meters"></div>
+            <hr class="rule">
+            <h4>Bilanț</h4>
+            <div class="bilanț" id="balanceBox"></div>
+            <p class="hint">Curenții afișați sunt valorile <b>reale</b> calculate prin metoda nodurilor, cu
+              <b>r</b> inclus în fiecare sursă.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= II. GENERATOARE ================= -->
+      <section class="view" id="view-g-gen">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Partea II · animație</div>
+            <h2>Generatoare identice: serie vs. paralel</h2>
+            <p class="lead">Aceeași sursă (E, r), grupate altfel. Ține cont: la borne <b>U = E − I·r</b>, iar
+              puterea utilă are un <b>maxim</b> când <b>R = r<sub>grupării</sub></b>.</p>
+          </div>
+        </div>
+        <div class="split">
+          <div class="card canvas-card">
+            <svg id="genCanvas" viewBox="0 0 640 380" class="board"></svg>
+            <svg id="genChart" viewBox="0 0 640 220" class="chart"></svg>
+          </div>
+          <div class="card control-card">
+            <div class="control"><label><span>Număr de generatoare n</span> <output id="oN">2</output></label>
+              <input type="range" id="sN" min="1" max="6" step="1" value="2" /></div>
+            <div class="control"><label><span>E (per generator)</span> <output id="oEg">6 V</output></label>
+              <input type="range" id="sEg" min="1" max="12" step="0.5" value="6" /></div>
+            <div class="control"><label><span>r (per generator)</span> <output id="oRg">1 Ω</output></label>
+              <input type="range" id="sRg" min="0.2" max="3" step="0.1" value="1" /></div>
+            <div class="control"><label><span>R (consumator)</span> <output id="oRload">8 Ω</output></label>
+              <input type="range" id="sRload" min="0.5" max="40" step="0.5" value="8" /></div>
+            <div class="seg-tabs" id="genMode">
+              <button class="seg on" data-mode="serie">Serie</button>
+              <button class="seg" data-mode="par">Paralel</button>
+            </div>
+            <div class="result-grid small" id="genResults"></div>
+            <button class="btn btn-primary w100" id="gMatch" title="Setează R pentru transfer maxim de putere">
+              ⚡ Potrivește R = r<sub>grupării</sub></button>
+            <div class="formula-small center" id="genFormula"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= II. SUNT / ADITIONALA ================= -->
+      <section class="view" id="view-g-sunt">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Partea II · extinderea domeniului de măsurare</div>
+            <h2>Șuntul ampermetrului &amp; rezistența adițională a voltmetrului</h2>
+            <p class="lead">Două aplicații directe ale grupurilor paralel / serie, exact ca în manual (§2.4.3, §2.4.4).</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="formula-head"><span class="badge badge-k">2.4.3</span><h3>Șuntul</h3></div>
+            <p class="def">Un rezistor legat în <b>paralel</b> la bornele ampermetrului pentru a-i mări domeniul de măsurare.</p>
+            <svg class="sch" viewBox="0 0 440 170" id="schSunt"></svg>
+            <div class="control"><label><span>R<sub>A</sub> (ampermetru)</span> <output id="oRA">2 Ω</output></label>
+              <input type="range" id="sRA" min="0.1" max="5" step="0.1" value="2" /></div>
+            <div class="control"><label><span>Factor de extindere n</span> <output id="oNs">5×</output></label>
+              <input type="range" id="sNs" min="2" max="20" step="1" value="5" /></div>
+            <div class="formula-mid">R<sub>s</sub> = R<sub>A</sub> / (n − 1) = <b id="suntVal">0.5 Ω</b></div>
+            <div class="stat-row">
+              <div class="stat"><span class="stat-l">I prin ampermetru</span><span class="stat-v" id="suntIa">—</span></div>
+              <div class="stat"><span class="stat-l">I prin șunt</span><span class="stat-v" id="suntIs">—</span></div>
+            </div>
+            <p class="hint">Curentul total măsurabil devine n·I<sub>A</sub>; doar I<sub>A</sub> trece prin aparat.</p>
+          </div>
+          <div class="card">
+            <div class="formula-head"><span class="badge badge-g">2.4.4</span><h3>Rezistența adițională</h3></div>
+            <p class="def">Un rezistor legat în <b>serie</b> cu voltmetrul pentru a-i mări domeniul de măsurare și a-l proteja.</p>
+            <svg class="sch" viewBox="0 0 440 170" id="schAdd"></svg>
+            <div class="control"><label><span>R<sub>V</sub> (voltmetru)</span> <output id="oRV">1000 Ω</output></label>
+              <input type="range" id="sRV" min="100" max="5000" step="100" value="1000" /></div>
+            <div class="control"><label><span>Factor de extindere n</span> <output id="oNa">5×</output></label>
+              <input type="range" id="sNa" min="2" max="20" step="1" value="5" /></div>
+            <div class="formula-mid">R<sub>a</sub> = (n − 1)·R<sub>V</sub> = <b id="addVal">4000 Ω</b></div>
+            <div class="stat-row">
+              <div class="stat"><span class="stat-l">U pe voltmetru</span><span class="stat-v" id="addUv">—</span></div>
+              <div class="stat"><span class="stat-l">U pe R<sub>a</sub></span><span class="stat-v" id="addUa">—</span></div>
+            </div>
+            <p class="hint">Tensiunea totală măsurabilă devine n·U<sub>V</sub>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PROBLEME ================= -->
+      <section class="view" id="view-problems">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Exersare</div>
+            <h2>Probleme rezolvate</h2>
+            <p class="lead">Exerciții din manual, cu rezolvare pas cu pas și verificare numerică live.</p>
+          </div>
+        </div>
+        <div class="prob-list" id="probList"></div>
+      </section>
+
+      <!-- ================= QUIZ ================= -->
+      <section class="view" id="view-quiz">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Exersare</div>
+            <h2>Test rapid</h2>
+            <p class="lead">8 întrebări cu feedback imediat. Sunetul îți spune dacă ai răspuns corect.</p>
+          </div>
+        </div>
+        <div class="card quiz-card">
+          <div class="quiz-top">
+            <div class="quiz-prog"><span id="quizIdx">1</span> / <span id="quizTotal">8</span></div>
+            <div class="quiz-bar"><span id="quizBarFill"></span></div>
+            <div class="quiz-score">Scor: <b id="quizScore">0</b></div>
+          </div>
+          <div class="quiz-q" id="quizQ">—</div>
+          <div class="quiz-opts" id="quizOpts"></div>
+          <div class="quiz-fb" id="quizFb"></div>
+          <div class="btn-row">
+            <button class="btn btn-ghost" id="quizRestart">↺ Reia testul</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <span>Rețele electrice · aplicație didactică interactivă</span>
+        <span>Surse reale: <b>U = E − I·r</b> · Kirchhoff: <b>Σ E = Σ I·R</b></span>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<!-- modal ajutor -->
+<div class="modal" id="helpModal">
+  <div class="modal-card">
+    <h3>Cum folosești aplicația</h3>
+    <ul class="tick">
+      <li>Navighează din meniul din stânga: <b>teorie</b>, <b>animații</b>, <b>laborator</b>, <b>probleme</b>, <b>test</b>.</li>
+      <li>În laboratorul din partea II: <b>trage</b> o piesă din bibliotecă pe tablou, apoi trage de ea ca s-o muți.</li>
+      <li>Pentru a lega două piese: modul <b>Conductor</b>, click pe borna 1, apoi click pe borna 2.</li>
+      <li>Închide întrerupătorul <b>K</b> — vei auzi sunetul de circuit și vei vedea electronii în mișcare.</li>
+      <li>Sunetele se pot opri din butonul <b>🔊</b>.</li>
+    </ul>
+    <button class="btn btn-primary" id="helpClose">Am înțeles</button>
+  </div>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/circuits.js"></script>
+<script src="js/kirchhoff.js"></script>
+<script src="js/grouping.js"></script>
+<script src="js/problems.js"></script>
+<script src="js/board.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

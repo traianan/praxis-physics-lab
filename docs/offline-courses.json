@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-20T18:48:39.038Z",
+  "builtAt": "2026-11-21T19:42:25.421Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -478,6 +478,17 @@
       "id": "functii-trigonometrice",
       "file": "public/simulari/functii-trigonometrice/functii-trigonometrice.zip",
       "sha256": "6557a85c066defefa475c7dce77d16244b9a7a9819ffdc49812482f2c01b49fd",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "coarde-tuburi-sonore",
+      "file": "public/simulari/coarde-tuburi-sonore/coarde-tuburi-sonore.zip",
+      "sha256": "a573ed74fabbc3f1e8aad27e8f4b2f54b67a5ca809a02c0690b1aed633ee78e9",
       "languages": [
         "ro",
         "en"

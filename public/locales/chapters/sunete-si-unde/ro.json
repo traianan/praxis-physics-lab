@@ -7,6 +7,13 @@
     "SUNETE ȘI UNDE": "SUNETE ȘI UNDE"
   },
   "simulations": {
+    "coarde-tuburi-sonore": {
+      "title": "Coarde și tuburi sonore",
+      "subtitle": "Unde staționare, armonice și timbru",
+      "description": "Explorează rezonanța pe coarde și în tuburi, compară armonicele instrumentelor și reconstruiește sunete cu laboratoare interactive și exerciții.",
+      "alt": "Coardă vibrantă și tub sonor cu reprezentări ale undelor staționare",
+      "tags": ["Sunet", "Acustică", "Laborator", "Touch"]
+    },
     "unde-mecanice": {
       "title": "Unde mecanice",
       "subtitle": "Unde, sunet și experimente",

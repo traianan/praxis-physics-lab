@@ -1,4 +1,26 @@
 {
+  "coarde-tuburi-sonore": {
+    "workspaces": [
+      {
+        "selector": "#lab-coarda .lab-grid",
+        "scene": "#string-canvas",
+        "controls": ".controls-card",
+        "layout": "native"
+      },
+      {
+        "selector": "#lab-tub .lab-grid",
+        "scene": "#pipe-canvas",
+        "controls": ".controls-card",
+        "layout": "native"
+      },
+      {
+        "selector": "#lab-timbru .lab-grid:not(.secondary)",
+        "scene": "#timbre-canvas",
+        "controls": ".controls-card",
+        "layout": "native"
+      }
+    ]
+  },
   "legea-lui-ohm": {
     "react": true,
     "workspaces": [

@@ -10,6 +10,7 @@
  const language=()=>window.PraxisI18n?.language==='en'?'en':'ro';
  const visible=element=>element.getClientRects().length>0&&getComputedStyle(element).visibility!=='hidden';
  const boardLayouts={
+  conice:{select:'.lesson-grid'},
   'compunerea-oscilatiilor':{select:'[data-composition-section=laborator]>.layout',move:['[data-composition-section=laborator]>.mode-tabs','.composition-control-body'],extras:['#amplitudeHint','#presetDescription','#ratioPresets','.sound-panel','.switches','#nextExtreme','#eventInfo','#save','.results']},
   'oglinzi-si-lentile':{select:'.workspace',move:['.workspace-top>.module-tabs'],extras:['.curvature-summary','.insight','.display-options']},
   'legea-lui-ohm':{popover:'.lab-controls'},
@@ -36,6 +37,7 @@
   'principiile-mecanicii-newtoniene':'[data-tab=newton2]',
   'miscarea-circulara-uniforma':'[data-tab=laborator]',
   'compunerea-oscilatiilor':'[data-tab=laborator]',
+  'coarde-tuburi-sonore':'#tab-laborator',
   'retele-electrice':'#tab-k-anim'
  };
  let board=null,frame=0;

@@ -531,3 +531,9 @@ Dacă un pas eșuează, notează lecția, comanda și ce s-a întâmplat. O foto
 - Ordinea este intenționată: lecții/laboratoare → capitole → aplicație. Începe la următoarea sesiune; etapele următoare nu au început.
 
 - 2026-11-20: Localizate complet cardurile funcției de gradul al doilea și conicelor: titlu, descriere, etichete, texte accesibile și imaginea conicelor RO/EN. Limba RO restabilește coperta română; EN folosește o variantă SVG cu etichete englezești. Verificare țintită browser și catalog/localizare 16/16.
+
+## Integrare lecție — Coarde și tuburi sonore — 2026-11-21
+
+- Lecția a fost integrată în catalogul Praxis, cu șase taburi, teorie fragmentată pentru ecran, trei standuri interactive, Fourier, opt instrumente, player, exerciții și quiz; controalele sunt adaptate pentru touch și modul tablă. Copertă, traduceri RO/EN, import reproductibil și arhivă offline incluse.
+- Verificate în Chrome la ecrane mari și mobile: taburi, audio, frecvențe, quiz, timbru, redarea la comutarea subtaburilor și dialogul „Dezvăluie sursa”.
+- Remediată persistența limbii: `praxis-language` este cheie esențială și se salvează fără consimțământ opțional. Teste privacy 6/6 și build reușite; Chrome confirmă selectare RO → click către lecție → Refresh cu `navigator.language=en-US` păstrează RO.

@@ -51,6 +51,26 @@ export const chapters = [
 ];
 export const simulations = [
   {
+    "id": "coarde-tuburi-sonore",
+    "addedOn": "2026-11-21",
+    "addedOrder": 2,
+    "chapter": "sunete-si-unde",
+    "title": "Coarde și tuburi sonore",
+    "subtitle": "Unde staționare, armonice și timbru",
+    "description": "Explorează rezonanța pe coarde și în tuburi, compară armonicele instrumentelor și reconstruiește sunete cu laboratoare interactive și exerciții.",
+    "href": "./simulari/coarde-tuburi-sonore/index.html",
+    "image": "./assets/coarde-tuburi-sonore.svg",
+    "alt": "Coardă vibrantă și tub sonor cu reprezentări ale undelor staționare",
+    "tags": [
+      "Sunet",
+      "Acustică",
+      "Laborator",
+      "Touch"
+    ],
+    "keywords": "coarde tuburi sonore acustica unda stationara armonice Fourier timbru rezonanta",
+    "status": "available"
+  },
+  {
     "id": "legea-lui-ohm",
     "addedOn": "2026-11-08",
     "addedOrder": 1,

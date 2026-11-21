@@ -51,7 +51,8 @@
     "import:quadratic-function": "node scripts/import-quadratic-function.mjs",
     "import:magnitudes": "node scripts/import-magnitudes.mjs",
     "import:conics": "node scripts/import-conics.mjs",
-    "import:trigonometry": "node scripts/import-trigonometry.mjs"
+    "import:trigonometry": "node scripts/import-trigonometry.mjs",
+    "import:sound-strings": "node scripts/import-sound-strings.mjs"
   },
   "devDependencies": {
     "@xyflow/react": "^12.12.1",

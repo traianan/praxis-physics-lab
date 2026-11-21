@@ -1,0 +1,38 @@
+#praxis-original{max-width:var(--praxis-lesson-max-width,1500px)!important;width:100%;min-width:0;margin:0 auto;padding:0;--lesson-board-gap:clamp(.55rem,1vw,1rem)}
+#praxis-original .shell{width:100%;max-width:none;margin:0;padding:0 clamp(.6rem,1.4vw,1.5rem)}
+#praxis-original [hidden]{display:none!important}
+#praxis-original .tabs{display:flex;gap:.35rem;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;margin:.5rem 0;padding:.25rem}
+#praxis-original .tabs .tab{flex:1 0 auto;min-width:max-content;min-height:52px;padding:.65rem .85rem;font-size:1rem;touch-action:manipulation}
+.praxis-lab-nav>.tabs{display:flex!important;flex-wrap:nowrap;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin}
+.praxis-lab-nav>.tabs>.tab{flex:1 0 auto;min-width:max-content;min-height:52px;padding:.65rem .85rem;white-space:nowrap;touch-action:manipulation}
+.praxis-lab-nav>.praxis-course-nav-select{display:none!important}
+#praxis-original .lesson-tools{display:flex;justify-content:flex-end;min-height:0;margin:0 0 .5rem}
+#praxis-original .lesson-screen-tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 .65rem;padding:.25rem;border:1px solid var(--praxis-color-border,#cbd8d0);border-radius:12px;background:var(--praxis-color-primary-soft,#edf4ee)}
+#praxis-original .lesson-screen-tab{min-height:48px;padding:.55rem .9rem;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--praxis-color-ink,#18332f);font:600 1rem/1.25 var(--praxis-font-ui,Segoe UI,Arial,sans-serif);touch-action:manipulation;cursor:pointer}
+#praxis-original .lesson-screen-tab[aria-selected=true]{background:var(--praxis-color-primary,#17685f);color:#fff}
+#praxis-original :is(button,a,input,summary):focus-visible{outline:3px solid #b46b12;outline-offset:3px}
+#praxis-original .panel{max-width:100%;min-width:0;margin:0 auto;padding:0;scroll-margin-block:1rem}
+#praxis-original .theory-layout{display:block}
+#praxis-original .theory-aside{display:none}
+#praxis-original .card,#praxis-original .instrument-card{min-width:0}
+#praxis-original .lab-grid{grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:var(--lesson-board-gap)}
+#praxis-original .range-wrap input[type=range]{grid-column:auto!important;height:42px;min-width:0}
+#praxis-original .range-wrap>.praxis-range-stepper{grid-column:2;display:flex;min-width:0}
+#praxis-original .range-wrap>.praxis-range-stepper>button{display:none}
+#praxis-original .range-wrap .step{width:52px;min-width:52px;height:52px}
+#praxis-original .canvas-wrap{min-height:clamp(170px,24vh,300px)}
+#praxis-original .canvas-wrap.short{min-height:150px}
+#praxis-original .screen-content{display:grid;gap:var(--lesson-board-gap);min-width:0}
+#praxis-original .theory-screen-content .diagram svg{max-height:clamp(360px,48vh,520px);width:100%;object-fit:contain}
+#praxis-original .screen-content>#fourier-compose-card,#praxis-original .screen-content>#decomp-card{margin:0}
+#praxis-original .problem-screen,#praxis-original .quiz-screen{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+#praxis-original .quiz-screen .question{min-width:0}
+#praxis-original .prefs{width:min(100%,30rem);margin:0}
+#praxis-original .prefs>summary{min-height:44px;display:flex;align-items:center}
+html[data-praxis-whiteboard] #praxis-original{max-width:none!important;padding:0 1rem}
+html[data-praxis-whiteboard] #praxis-original .tabs .tab{font-size:clamp(1rem,1.1vw,1.35rem)}
+html[data-praxis-whiteboard] #praxis-original .screen-content .card{padding:clamp(12px,1vw,22px)}
+html[data-course-touch=true] #praxis-original .lesson-screen-tab,html[data-course-touch=true] #praxis-original .tabs .tab{min-height:52px}
+@media(max-width:1100px){#praxis-original .lab-grid{grid-template-columns:minmax(0,1fr)}#praxis-original .problem-screen,#praxis-original .quiz-screen{grid-template-columns:minmax(0,1fr)}#praxis-original .tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}#praxis-original .tabs .tab{white-space:normal}}
+@media(max-width:800px){body[data-praxis-laboratory] .praxis-lab-nav>.tabs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:.35rem}body[data-praxis-laboratory] .praxis-lab-nav>.tabs>.tab{min-width:0;white-space:normal}}
+@media(max-width:720px){#praxis-original .shell{padding:0 .55rem}#praxis-original .tabs{grid-template-columns:repeat(2,minmax(0,1fr))}#praxis-original .lesson-screen-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}#praxis-original .lesson-screen-tab{padding:.55rem .5rem}#praxis-original .mini-grid.three{grid-template-columns:1fr}#praxis-original .grid2,#praxis-original .theory-grid{grid-template-columns:minmax(0,1fr)}}

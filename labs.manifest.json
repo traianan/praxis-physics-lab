@@ -53,6 +53,60 @@
   "labs": [
     {
       "metadata": {
+        "id": "coarde-tuburi-sonore",
+        "addedOn": "2026-11-21",
+        "addedOrder": 2,
+        "chapter": "sunete-si-unde",
+        "title": "Coarde și tuburi sonore",
+        "subtitle": "Unde staționare, armonice și timbru",
+        "description": "Explorează rezonanța pe coarde și în tuburi, compară armonicele instrumentelor și reconstruiește sunete cu laboratoare interactive și exerciții.",
+        "href": "./simulari/coarde-tuburi-sonore/index.html",
+        "image": "./assets/coarde-tuburi-sonore.svg",
+        "alt": "Coardă vibrantă și tub sonor cu reprezentări ale undelor staționare",
+        "tags": [
+          "Sunet",
+          "Acustică",
+          "Laborator",
+          "Touch"
+        ],
+        "keywords": "coarde tuburi sonore acustica unda stationara armonice Fourier timbru rezonanta",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {
+            "selector": "#lab-coarda .lab-grid",
+            "scene": "#string-canvas",
+            "controls": ".controls-card",
+            "layout": "native"
+          },
+          {
+            "selector": "#lab-tub .lab-grid",
+            "scene": "#pipe-canvas",
+            "controls": ".controls-card",
+            "layout": "native"
+          },
+          {
+            "selector": "#lab-timbru .lab-grid:not(.secondary)",
+            "scene": "#timbre-canvas",
+            "controls": ".controls-card",
+            "layout": "native"
+          }
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/sunete-si-unde",
+        "courses/shared",
+        "courses/coarde-tuburi-sonore/ui"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "coarde-tuburi-sonore.zip"
+      }
+    },
+    {
+      "metadata": {
         "id": "legea-lui-ohm",
         "addedOn": "2026-11-08",
         "addedOrder": 1,

@@ -28,7 +28,7 @@
           "sources/legea-lui-ohm/app/hero.css"
         ],
         "createdAt": "2026-11-08T16:38:55.818Z",
-        "reason": "False positive: the left border is the CSS triangle arrowhead for the current-direction legend icon, not a card accent."
+        "reason": "Triage Codex: .legend-arrow-current::after uses a zero-size pseudo-element and transparent top/bottom borders to draw the conventional-current arrowhead in the circuit legend."
       },
       {
         "rule": "cream-palette",
@@ -44,6 +44,132 @@
         "value": "inter",
         "createdAt": "2026-11-15T06:23:18.876Z",
         "reason": "Agent: the flagged Inter import is in the original Condensatorul source. The importer strips this import and the Praxis adapter uses the shared UI font in the web and offline lesson."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "public/offline/index.html"
+        ],
+        "createdAt": "2026-11-15T17:15:24.955Z",
+        "reason": "Praxis visual system: DESIGN_SYSTEM.md documents the approved ivory canvas #F7F5EE. Arhive offline uses the same shared canvas token to match the library."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "public/design-system/laboratory-premium.css"
+        ],
+        "createdAt": "2026-11-15T17:26:54.049Z",
+        "reason": "Praxis design system: DESIGN_SYSTEM.md and docs/UI_LABORATOARE_2026-10-31.md specify the intentional mint accent in the petrol laboratory introduction. The existing border predates the responsive update."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "public/design-system/laboratory.css"
+        ],
+        "createdAt": "2026-11-18T14:44:04.097Z",
+        "reason": "Reviewed incumbent Praxis title-banner marker, already present in HEAD. docs/REGULI_LABORATOARE.md section 1 requires reuse of the shared visual system and header. This marker belongs to the common lesson title banner, not a newly decorated content card; preserve the incumbent design."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "public/index.html"
+        ],
+        "createdAt": "2026-11-19T13:44:00.242Z",
+        "reason": "Agent: DESIGN_SYSTEM.md section Praxis rafinat documents ivory #F7F5EE as the user-approved library canvas; this is a sanctioned palette, not an accidental cream default."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "public/index.html"
+        ],
+        "createdAt": "2026-11-19T13:44:00.376Z",
+        "reason": "Agent: #home-latest is hidden on desktop; on tablet/mobile its background and border are intentionally removed and it becomes a borderless list, so no visible edge is left without an inset."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "sources/marimi-fizice-unitati/site/index.html"
+        ],
+        "createdAt": "2026-11-19T16:51:50.585Z",
+        "reason": "Agent: immutable archive source retained as provenance; the generated application copy was adapted independently."
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "sources/marimi-fizice-unitati/site/index.html"
+        ],
+        "createdAt": "2026-11-19T16:51:50.729Z",
+        "reason": "Agent: immutable archive source retained as provenance; the generated application copy was adapted independently."
+      },
+      {
+        "rule": "undersized-ui-text",
+        "value": "*",
+        "files": [
+          "sources/marimi-fizice-unitati/site/index.html"
+        ],
+        "createdAt": "2026-11-19T16:51:50.862Z",
+        "reason": "Agent: immutable archive source retained as provenance; the generated application copy was adapted independently."
+      },
+      {
+        "rule": "tiny-text",
+        "value": "*",
+        "files": [
+          "sources/marimi-fizice-unitati/site/index.html"
+        ],
+        "createdAt": "2026-11-19T16:51:50.995Z",
+        "reason": "Agent: immutable archive source retained as provenance; the generated application copy was adapted independently."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sources/marimi-fizice-unitati/site/index.html"
+        ],
+        "createdAt": "2026-11-19T16:51:51.128Z",
+        "reason": "Agent: immutable archive source retained as provenance; the generated application copy was adapted independently."
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "sources/marimi-fizice-unitati/site/index.html"
+        ],
+        "createdAt": "2026-11-19T16:51:51.251Z",
+        "reason": "Agent: immutable archive source retained as provenance; the generated application copy was adapted independently."
+      },
+      {
+        "rule": "em-dash-overuse",
+        "value": "*",
+        "files": [
+          "sources/marimi-fizice-unitati/site/index.html"
+        ],
+        "createdAt": "2026-11-19T16:51:51.386Z",
+        "reason": "Agent: immutable archive source retained as provenance; the generated application copy was adapted independently."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "public/simulari/marimi-fizice-unitati/index.html"
+        ],
+        "createdAt": "2026-11-19T16:51:51.530Z",
+        "reason": "Agent: approved Praxis ivory page background documented in DESIGN_SYSTEM.md."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/simulari/marimi-fizice-unitati/index.html"
+        ],
+        "createdAt": "2026-11-19T16:51:51.677Z",
+        "reason": "Agent: false positive; shadows are on white/pale surfaces, and detector misclassifies the page because of its dark green header."
       },
       {
         "rule": "side-tab",
@@ -80,6 +206,60 @@
         ],
         "createdAt": "2026-11-19T17:38:44.472Z",
         "reason": "Agent: importer removes these accents from the integrated app; preserve standalone source styling"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sources/conice-lesson/site/index.html"
+        ],
+        "createdAt": "2026-11-20T17:55:00.092Z",
+        "reason": "Agent: the six full-bleed SVG illustrations intentionally meet their colored canvas edges; all text, foci, and points remain inset within the SVG viewBox."
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "sources/functii-trigonometrice/index.html"
+        ],
+        "createdAt": "2026-11-21T08:03:08.626Z",
+        "reason": "Agent: .btn.primary:hover explicitly sets white text; the detector reports inherited default ink instead of the actual winning color"
+      },
+      {
+        "rule": "icon-tile-stack",
+        "value": "*",
+        "files": [
+          "sources/coarde-tuburi-sonore/index.html"
+        ],
+        "createdAt": "2026-11-21T17:44:13.332Z",
+        "reason": "False positive: .h-icon glyphs render inline beside heading text; styles remove the tile background, border and rounded container, confirmed in the paired stylesheet."
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "sources/coarde-tuburi-sonore/index.html"
+        ],
+        "createdAt": "2026-11-21T18:46:45.840Z",
+        "reason": "Agent: the current finding is a detector false positive; hero badge text #eaf4e8 sits on a dark green hero background, but the scanner samples the white page background behind the translucent badge."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sources/coarde-tuburi-sonore/index.html"
+        ],
+        "createdAt": "2026-11-21T18:46:59.119Z",
+        "reason": "Agent: the reported table-wrap wrappers surround .data-table elements whose cells already have 10px 12px padding; a wrapper inset would misalign full-width tables."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "sources/coarde-tuburi-sonore/index.html"
+        ],
+        "createdAt": "2026-11-21T18:47:13.285Z",
+        "reason": "Agent: the reported Praxis petrol shadow is the offset 0 18px 50px elevation shadow on the light hero, not a zero-offset glow; the detector flags the brand color."
       }
     ]
   }

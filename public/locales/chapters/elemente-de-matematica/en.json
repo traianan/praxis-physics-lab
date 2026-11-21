@@ -25,6 +25,15 @@
     "Măsurare": "Measurement"
   },
   "simulations": {
+    "functii-trigonometrice": {
+      "title": "Trigonometric functions",
+      "subtitle": "Sine, cosine, tangent and cotangent",
+      "description": "Explore the unit circle and trigonometric function values, follow interactive animations and graphs, and apply trigonometry in physics.",
+      "alt": "Unit circle and sine and cosine graphs",
+      "keywords": "trigonometric functions unit circle sine cosine tangent cotangent radians degrees graphs simple harmonic motion alternating current",
+      "tags": ["Mathematics", "Trigonometry", "Functions", "Graphs"],
+      "image": "./assets/functii-trigonometrice-cover-v3-en.svg"
+    },
     "masurarea-unghiurilor": {
       "title": "Measuring angles",
       "subtitle": "Degrees, radians and steradians",

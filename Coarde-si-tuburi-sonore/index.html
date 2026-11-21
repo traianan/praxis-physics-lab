@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="ro" data-board="false">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coarde și tuburi sonore — Praxis Science Lab</title>
+<meta name="description" content="Lecție interactivă de acustică: unde staționare pe coarde și în tuburi sonore, armonice, timbru, serii Fourier, piese celebre, probleme rezolvate și evaluare.">
+<meta name="theme-color" content="#103f3b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ── Iconițe SVG reutilizabile ─────────────────────────────────────────── -->
+<svg class="svg-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5V5.5Z"/><path d="M20 19H6.5A2.5 2.5 0 0 0 4 21.5"/><path d="M8 7h8M8 10.5h6"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v5.2L5.3 17a2 2 0 0 0 1.8 3h9.8a2 2 0 0 0 1.8-3L14 8.2V3"/><path d="M7.5 15h9"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 12c2.2-6 4.3-6 6.5 0s4.3 6 6.5 0 4.3-6 6.5 0"/></symbol>
+  <symbol id="i-sigma" viewBox="0 0 24 24"><path d="M18 4H6l6 8-6 8h12"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4V9Z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/></symbol>
+  <symbol id="i-muted" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4V9Z"/><path d="m16 9 5 6M21 9l-5 6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.2"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 2.3 7.2"/><path d="M4 5v5h5"/></symbol>
+  <symbol id="i-piano" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v9M11 5v9M15 5v9M19 5v9M7 14h12"/></symbol>
+  <symbol id="i-violin" viewBox="0 0 24 24"><path d="M9 4h3l1.2 5.2a4.5 4.5 0 1 1-5.4 5.6L6.5 12 9 9.2V4Z"/><path d="M12 4h6M18 4v7"/><path d="M14.5 7.5 20 2"/></symbol>
+  <symbol id="i-organ" viewBox="0 0 24 24"><path d="M4 20V10h3v10M9 20V5h3v15M14 20V8h3v12M19 20V12h2v8"/><path d="M3 20h19"/></symbol>
+  <symbol id="i-guitar" viewBox="0 0 24 24"><path d="M10 4h3l1 5.5a4.5 4.5 0 1 1-5 5.2L8 12l2-3V4Z"/><path d="M12 4h7M19 4v8"/><circle cx="11" cy="15" r="2.2"/></symbol>
+  <symbol id="i-clarinet" viewBox="0 0 24 24"><path d="M9 3h4l-1 12a3 3 0 1 1-4 2.6L9 15V3Z"/><path d="M11 8h2M10.5 11h2M10 14h2"/><path d="M13 3h5"/></symbol>
+  <symbol id="i-flute" viewBox="0 0 24 24"><path d="M3 10h17l1 4H4l-1-4Z"/><path d="M7 10v4M11 10v4M15 10v4M19 10v4"/><path d="M3 10 2 8h4"/></symbol>
+  <symbol id="i-trumpet" viewBox="0 0 24 24"><path d="M3 10h12l4-3v10l-4-3H3v-4Z"/><path d="M6 10v4M9 10v4M12 10v4"/><path d="M19 7v10"/></symbol>
+  <symbol id="i-bass" viewBox="0 0 24 24"><path d="M10 3h3l1 7a5 5 0 1 1-5.4 6.2L7 13l2-3V3Z"/><path d="M12 3h7M19 3v10"/><circle cx="10.5" cy="17" r="2.5"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.6 2.6 0 1 1 3.6 2.4c-.8.4-1.1 1-1.1 1.9M12 16.8v.2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></symbol>
+</svg>
+
+<!-- ── Antet ─────────────────────────────────────────────────────────────── -->
+<header class="topbar" id="topbar">
+  <a class="brand" href="#top" aria-label="Praxis Science Lab — începutul lecției">
+    <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+      <rect width="64" height="64" rx="16" fill="#216e61"/>
+      <text x="14" y="47" font-family="Arial, sans-serif" font-size="54" font-weight="bold" fill="white">p</text>
+      <circle cx="52" cy="47" r="5" fill="#e8b85c"/>
+    </svg>
+    <span class="brand-word">praxis<small>SCIENCE LAB</small></span>
+  </a>
+
+  <nav class="topnav" aria-label="Navigare principală">
+    <div class="font-control" role="group" aria-label="Mărimea textului">
+      <span class="font-label">Text / afișare</span>
+      <button class="font-btn" type="button" data-font="-1" aria-label="Micșorează textul">A−</button>
+      <button class="font-btn" type="button" data-font="1" aria-label="Mărește textul">A+</button>
+    </div>
+    <a class="nav-link" href="https://praxis-physics-lab.vercel.app/" target="_blank" rel="noopener">Bibliotecă</a>
+    <button class="nav-btn" type="button" data-dialog="help">Cum folosești laboratorul</button>
+    <button class="nav-btn" type="button" id="board-toggle" aria-pressed="false">
+      <svg class="icon" aria-hidden="true"><use href="#i-expand"/></svg><span>Mod tablă</span>
+    </button>
+    <button class="nav-btn sound-toggle" type="button" id="sound-toggle" aria-pressed="false">
+      <svg class="icon" aria-hidden="true"><use href="#i-muted"/></svg><span>Sunet oprit</span>
+    </button>
+  </nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Traseu">
+  <a href="https://praxis-physics-lab.vercel.app/" target="_blank" rel="noopener">Bibliotecă</a>
+  <span aria-hidden="true">/</span>
+  <span>Unde și sunete</span>
+  <span aria-hidden="true">/</span>
+  <strong>Coarde și tuburi sonore</strong>
+</nav>
+
+<main class="shell" id="top">
+
+  <!-- ── Introducere ─────────────────────────────────────────────────────── -->
+  <section class="hero" aria-labelledby="lesson-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Fizică · Clasa a XI-a · Acustică</p>
+      <h1 id="lesson-title">Coarde și tuburi sonore</h1>
+      <p class="lede">De ce o coardă de vioară și una de pian sună diferit la aceeași notă? Cum se naște o undă staționară într-un tub de orgă? Și cum poate o sumă de sinusoide să reconstruiască un sunet real?</p>
+      <div class="hero-badges">
+        <span><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>6 capitole</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg>laborator cu sunet</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>45–60 min</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>fără microfon</span>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 520 90" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="heroWaveGrad" x1="0" x2="1">
+              <stop offset="0" stop-color="#c5e8a5" stop-opacity="0"/>
+              <stop offset=".25" stop-color="#c5e8a5" stop-opacity=".9"/>
+              <stop offset=".7" stop-color="#e8b85c" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#e8b85c" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path class="hero-wave-path" d="M0 45 C 20 45 20 15 40 15 S 60 75 80 75 S 100 15 120 15 S 140 75 160 75 S 180 15 200 15 S 220 75 240 75 S 260 15 280 15 S 300 75 320 75 S 340 15 360 15 S 380 75 400 75 S 420 15 440 15 S 460 75 480 75 S 500 15 520 15" fill="none" stroke="url(#heroWaveGrad)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="hero-actions">
+        <button class="btn primary" type="button" data-goto="laborator">
+          Începe laboratorul <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </button>
+        <button class="btn ghost" type="button" data-goto="teorie">Citește teoria</button>
+      </div>
+      <p class="hero-note">Sunetele sunt sintetizate local, în browser. Lecția funcționează și offline.</p>
+    </div>
+  </section>
+
+  <!-- ── Capitole ────────────────────────────────────────────────────────── -->
+  <nav class="tabs" id="lesson-tabs" role="tablist" aria-label="Capitolele lecției">
+    <button class="tab active" type="button" role="tab" id="tab-teorie" aria-selected="true" aria-controls="panel-teorie" data-tab="teorie">Teorie</button>
+    <button class="tab" type="button" role="tab" id="tab-laborator" aria-selected="false" aria-controls="panel-laborator" data-tab="laborator" tabindex="-1">Laborator</button>
+    <button class="tab" type="button" role="tab" id="tab-fourier" aria-selected="false" aria-controls="panel-fourier" data-tab="fourier" tabindex="-1">Fourier</button>
+    <button class="tab" type="button" role="tab" id="tab-exemple" aria-selected="false" aria-controls="panel-exemple" data-tab="exemple" tabindex="-1">Exemple din practică</button>
+    <button class="tab" type="button" role="tab" id="tab-probleme" aria-selected="false" aria-controls="panel-probleme" data-tab="probleme" tabindex="-1">Probleme rezolvate</button>
+    <button class="tab" type="button" role="tab" id="tab-evaluare" aria-selected="false" aria-controls="panel-evaluare" data-tab="evaluare" tabindex="-1">Evaluare</button>
+  </nav>
+
+  <div class="lesson-tools">
+    <div class="progress-mini">
+      <span class="progress-label">Capitole parcurse</span>
+      <div class="progress-track" id="lesson-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="17" aria-label="Progresul lecției"><i></i></div>
+      <span class="progress-value" id="lesson-progress-value">1 / 6</span>
+    </div>
+    <details class="prefs">
+      <summary><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg> Preferințe laborator</summary>
+      <div class="prefs-body">
+        <label class="range-row" for="volume">
+          <span>Volum general</span>
+          <input type="range" id="volume" min="0" max="100" value="55" step="1">
+          <output id="volume-out">55%</output>
+        </label>
+        <label class="check-row"><input type="checkbox" id="pref-reduce"> Animații reduse</label>
+        <label class="check-row"><input type="checkbox" id="pref-ro-note" checked> Nume românești pentru note (Do, Re, Mi…)</label>
+        <button class="btn small secondary" type="button" id="reset-all">Resetează laboratorul</button>
+        <p class="muted small">Sunetul pornește oprit. Butoanele de redare îl activează automat. Nu se folosește microfonul.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       TEORIE
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-teorie" role="tabpanel" aria-labelledby="tab-teorie">
+    <div class="theory-layout">
+      <div class="theory-main">
+
+        <article class="card" id="teorie-sunet">
+          <h2><span class="h-icon"><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg></span>Sunetul începe cu o vibrație</h2>
+          <p class="lead">Lovește o coardă sau suflă într-un tub: materialul începe să oscileze, împinge aerul din jur, iar aerul împinge aerul următor. La ureche ajunge o succesiune de <strong>compresii</strong> și <strong>rarefieri</strong>. Sunetul este o <strong>undă mecanică longitudinală</strong>: particulele oscilează pe direcția de propagare, nu perpendicular pe ea.</p>
+
+          <div class="mini-grid three">
+            <div class="mini-card">
+              <span class="mini-kicker">Înălțimea</span>
+              <strong>Frecvența</strong>
+              <p>Un sunet grav are frecvență mică; unul acut, frecvență mare. La4 = 440 Hz.</p>
+            </div>
+            <div class="mini-card">
+              <span class="mini-kicker">Intensitatea</span>
+              <strong>Amplitudinea</strong>
+              <p>O oscilație mai mare produce o presiune mai mare și un sunet perceput mai tare.</p>
+            </div>
+            <div class="mini-card">
+              <span class="mini-kicker">Timbrul</span>
+              <strong>Spectrul</strong>
+              <p>Aceeași notă cântată la pian și la vioară are amestecuri diferite de armonice.</p>
+            </div>
+          </div>
+
+          <figure class="diagram">
+            <svg viewBox="0 0 680 150" role="img" aria-label="Undă longitudinală: zone de compresie și rarefacție">
+              <defs>
+                <linearGradient id="compGrad" x1="0" x2="1">
+                  <stop offset="0" stop-color="#e8b85c" stop-opacity=".15"/>
+                  <stop offset=".5" stop-color="#e8b85c" stop-opacity=".45"/>
+                  <stop offset="1" stop-color="#17685f" stop-opacity=".15"/>
+                </linearGradient>
+              </defs>
+              <rect x="20" y="42" width="640" height="52" rx="10" fill="url(#compGrad)" stroke="#d8ded3"/>
+              <g fill="#17685f">
+                <circle cx="38" cy="68" r="2.6"/><circle cx="48" cy="68" r="2.6"/><circle cx="58" cy="68" r="2.6"/><circle cx="68" cy="68" r="2.6"/><circle cx="78" cy="68" r="2.6"/><circle cx="88" cy="68" r="2.6"/><circle cx="98" cy="68" r="2.6"/><circle cx="110" cy="68" r="2.6"/><circle cx="124" cy="68" r="2.6"/><circle cx="140" cy="68" r="2.6"/><circle cx="158" cy="68" r="2.6"/><circle cx="178" cy="68" r="2.6"/><circle cx="200" cy="68" r="2.6"/><circle cx="224" cy="68" r="2.6"/><circle cx="250" cy="68" r="2.6"/><circle cx="278" cy="68" r="2.6"/><circle cx="308" cy="68" r="2.6"/><circle cx="340" cy="68" r="2.6"/><circle cx="374" cy="68" r="2.6"/><circle cx="410" cy="68" r="2.6"/><circle cx="446" cy="68" r="2.6"/><circle cx="480" cy="68" r="2.6"/><circle cx="512" cy="68" r="2.6"/><circle cx="540" cy="68" r="2.6"/><circle cx="564" cy="68" r="2.6"/><circle cx="586" cy="68" r="2.6"/><circle cx="606" cy="68" r="2.6"/><circle cx="624" cy="68" r="2.6"/><circle cx="640" cy="68" r="2.6"/><circle cx="654" cy="68" r="2.6"/>
+              </g>
+              <path d="M20 24h640" stroke="#c5e8a5" stroke-width="2" stroke-dasharray="4 5"/>
+              <text x="28" y="18" class="svg-label">compresie</text>
+              <text x="500" y="18" class="svg-label">rarefacție</text>
+              <path d="M28 122h624" stroke="#586d63" stroke-width="1.5" marker-end="url(#arrowEnd)"/>
+              <defs><marker id="arrowEnd" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0l8 4-8 4z" fill="#586d63"/></marker></defs>
+              <text x="300" y="140" class="svg-label" text-anchor="middle">direcția de propagare a sunetului</text>
+            </svg>
+            <figcaption>Particulele de aer nu călătoresc odată cu sunetul: oscilează local, iar energia se propagă prin compresii și rarefieri.</figcaption>
+          </figure>
+
+          <div class="callout">
+            <span class="callout-icon"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></span>
+            <div><strong>De reținut.</strong> Frecvența nu se schimbă când sunetul trece dintr-un mediu în altul; se schimbă viteza și lungimea de undă. În aer, la 20&nbsp;°C, sunetul are aproximativ <strong>343&nbsp;m/s</strong>.</div>
+          </div>
+        </article>
+
+        <article class="card" id="teorie-coarda">
+          <h2><span class="h-icon"><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg></span>Coarda fixată la capete</h2>
+          <p>O coardă de chitară este fixată la ambele capete. Unda care pleacă spre un capăt se reflectă, iar unda directă și cea reflectată se suprapun. Rezultatul este o <strong>undă staționară</strong>: unele puncte rămân nemișcate (<strong>noduri</strong>), altele oscilează cu amplitudine maximă (<strong>ventre</strong>).</p>
+          <p>Capetele fixe sunt noduri. Pentru ca unda staționară să încapă exact pe lungimea <var>L</var>, trebuie ca:</p>
+
+          <div class="formula">
+            L = n · <span class="frac"><span>λ</span><span>2</span></span>
+            <small>condiția de rezonanță pentru coarda fixată la ambele capete; n = 1, 2, 3, …</small>
+          </div>
+
+          <p>De aici obținem lungimea de undă și frecvența modului al <var>n</var>-lea:</p>
+
+          <div class="formula">
+            λ<sub>n</sub> = <span class="frac"><span>2L</span><span>n</span></span>
+            &nbsp;&nbsp;și&nbsp;&nbsp;
+            f<sub>n</sub> = <span class="frac"><span>n · v</span><span>2L</span></span>
+            <small>v este viteza undei pe coardă; f<sub>1</sub> = v/(2L) este fundamentala.</small>
+          </div>
+
+          <figure class="diagram">
+            <svg id="theory-modes-svg" viewBox="0 0 680 300" role="img" aria-label="Primele trei moduri de vibrație ale unei coarde fixate la capete">
+              <g id="theory-modes-paths"></g>
+            </svg>
+            <figcaption>Primele trei moduri: un mod cu <var>n</var> ventre are <var>n</var>+1 noduri (inclusiv capetele). Distanța dintre două noduri vecine este λ/2.</figcaption>
+          </figure>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Mod</th><th>Lungime de undă</th><th>Frecvență</th><th>Noduri</th><th>Ventre</th><th>Interval față de fundamentală</th></tr></thead>
+              <tbody>
+                <tr><td>n = 1 (fundamentala)</td><td>2L</td><td>f<sub>1</sub></td><td>2</td><td>1</td><td>unison</td></tr>
+                <tr><td>n = 2</td><td>L</td><td>2f<sub>1</sub></td><td>3</td><td>2</td><td>octavă</td></tr>
+                <tr><td>n = 3</td><td>2L/3</td><td>3f<sub>1</sub></td><td>4</td><td>3</td><td>octavă + cvintă</td></tr>
+                <tr><td>n = 4</td><td>L/2</td><td>4f<sub>1</sub></td><td>5</td><td>4</td><td>două octave</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="link-row"><a href="#laborator-coarda" data-goto="laborator" data-labtab="coarda">Vezi coarda în laborator <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        </article>
+
+        <article class="card" id="teorie-legea">
+          <h2><span class="h-icon"><svg class="icon" aria-hidden="true"><use href="#i-sigma"/></svg></span>Legea coardei: tensiune, lungime, densitate</h2>
+          <p>Viteza undei pe o coardă depinde de cât de întinsă este și de cât de grea este pe unitatea de lungime. Cu <var>T</var> tensiunea (în newtoni) și <var>μ</var> = <var>m</var>/<var>L</var> densitatea liniară (în kg/m):</p>
+
+          <div class="formula">
+            v = √(T / μ)
+            &nbsp;&nbsp;⇒&nbsp;&nbsp;
+            f<sub>n</sub> = <span class="frac"><span>n</span><span>2L</span></span> √(T / μ)
+            <small>Cu cât coarda este mai întinsă, cu atât sunetul este mai acut; cu cât este mai lungă sau mai groasă, cu atât este mai grav.</small>
+          </div>
+
+          <p><strong>Exemplu numeric — coarda La a viorii.</strong> L = 0,325&nbsp;m, μ = 0,6&nbsp;g/m = 6·10<sup>−4</sup>&nbsp;kg/m, T ≈ 49&nbsp;N. Atunci v = √(49 / 6·10<sup>−4</sup>) ≈ 286&nbsp;m/s, iar f<sub>1</sub> = 286 / (2·0,325) ≈ <strong>440&nbsp;Hz</strong>.</p>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Modificare</th><th>Efect asupra frecvenței</th><th>Explicație</th></tr></thead>
+              <tbody>
+                <tr><td>L se dublează</td><td>f se înjumătățește</td><td>f ∝ 1/L → coboară cu o octavă</td></tr>
+                <tr><td>T se mărește de 4 ori</td><td>f se dublează</td><td>f ∝ √T → urcă cu o octavă</td></tr>
+                <tr><td>μ se mărește de 4 ori</td><td>f se înjumătățește</td><td>f ∝ 1/√μ</td></tr>
+                <tr><td>n se dublează</td><td>f se dublează</td><td>treci la armonica următoare de același rang</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout gold">
+            <span class="callout-icon"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></span>
+            <div><strong>În practică.</strong> Când apeși pe tastiera unei chitare, nu schimbi tensiunea: <strong>scurtezi lungimea efectivă</strong> a coardei. La fretul 12 lungimea se înjumătățește, deci frecvența se dublează — exact o octavă.</div>
+          </div>
+        </article>
+
+        <article class="card" id="teorie-tuburi">
+          <h2><span class="h-icon"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></span>Tuburi sonore: coloana de aer</h2>
+          <p>Într-un tub, oscilează <strong>coloana de aer</strong>. La un capăt deschis, aerul este liber: avem un <strong>ventru de deplasare</strong> și un <strong>nod de presiune</strong>. La un capăt închis, aerul nu poate ieși: avem un <strong>nod de deplasare</strong> și un <strong>ventru de presiune</strong>.</p>
+
+          <div class="pipe-compare">
+            <figure class="diagram">
+              <svg viewBox="0 0 520 160" role="img" aria-label="Tub deschis la ambele capete">
+                <rect x="40" y="58" width="440" height="44" rx="6" fill="#f3f7ef" stroke="#d8ded3"/>
+                <path d="M40 44v72M480 44v72" stroke="#103f3b" stroke-width="5" stroke-linecap="round" stroke-dasharray="3 9"/>
+                <path d="M40 80h440" stroke="#c5e8a5" stroke-width="3" stroke-dasharray="5 6"/>
+                <circle cx="40" cy="80" r="7" fill="#e8b85c"/><circle cx="480" cy="80" r="7" fill="#e8b85c"/>
+                <text x="40" y="34" class="svg-label" text-anchor="middle">deschis</text>
+                <text x="480" y="34" class="svg-label" text-anchor="middle">deschis</text>
+                <text x="260" y="132" class="svg-label" text-anchor="middle">ventre de deplasare la ambele capete</text>
+                <text x="260" y="150" class="svg-label muted" text-anchor="middle">nod de presiune la ambele capete</text>
+              </svg>
+              <figcaption>Tub deschis–deschis: toate armonicele. L = nλ/2.</figcaption>
+            </figure>
+            <figure class="diagram">
+              <svg viewBox="0 0 520 160" role="img" aria-label="Tub închis la un capăt și deschis la celălalt">
+                <rect x="40" y="58" width="440" height="44" rx="6" fill="#f3f7ef" stroke="#d8ded3"/>
+                <path d="M40 42v76" stroke="#103f3b" stroke-width="7" stroke-linecap="round"/>
+                <path d="M40 44v72M480 44v72" stroke="#103f3b" stroke-width="5" stroke-linecap="round" stroke-dasharray="3 9" opacity=".35"/>
+                <path d="M40 80h440" stroke="#c5e8a5" stroke-width="3" stroke-dasharray="5 6"/>
+                <circle cx="40" cy="80" r="7" fill="#17685f"/><circle cx="480" cy="80" r="7" fill="#e8b85c"/>
+                <text x="40" y="34" class="svg-label" text-anchor="middle">închis</text>
+                <text x="480" y="34" class="svg-label" text-anchor="middle">deschis</text>
+                <text x="260" y="132" class="svg-label" text-anchor="middle">nod de deplasare la capătul închis</text>
+                <text x="260" y="150" class="svg-label muted" text-anchor="middle">ventru de deplasare la capătul deschis</text>
+              </svg>
+              <figcaption>Tub închis–deschis: doar armonice impare. L = (2n−1)λ/4.</figcaption>
+            </figure>
+          </div>
+
+          <div class="two-col-formulas">
+            <div class="formula">
+              <strong>Tub deschis–deschis</strong>
+              f<sub>n</sub> = <span class="frac"><span>n · v</span><span>2L</span></span>
+              <small>n = 1, 2, 3, … · toate armonicele</small>
+            </div>
+            <div class="formula">
+              <strong>Tub închis–deschis</strong>
+              f<sub>n</sub> = <span class="frac"><span>(2n − 1) · v</span><span>4L</span></span>
+              <small>n = 1, 2, 3, … · doar armonicele impare</small>
+            </div>
+          </div>
+
+          <p>Un tub închis la un capăt are fundamentala <strong>cu o octavă mai jos</strong> decât un tub deschis de aceeași lungime. A doua rezonanță a tubului închis este <strong>3f<sub>1</sub></strong>, nu 2f<sub>1</sub>; a treia este 5f<sub>1</sub>.</p>
+
+          <div class="mini-grid three">
+            <div class="mini-card"><span class="mini-kicker">Flaut, orgă</span><strong>Tub deschis</strong><p>Toate armonicele. Sunetul are mai multe componente înalte.</p></div>
+            <div class="mini-card"><span class="mini-kicker">Clarinet</span><strong>Tub închis</strong><p>Doar armonice impare. Timbrul este mai „gol”, mai clar.</p></div>
+            <div class="mini-card"><span class="mini-kicker">Trompetă</span><strong>Aproximativ deschis</strong><p>Buza vibrează și excită coloana de aer; spectrul este foarte bogat.</p></div>
+          </div>
+
+          <div class="callout">
+            <span class="callout-icon"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></span>
+            <div><strong>Corecția de capăt.</strong> Aerul nu se oprește exact la gura tubului. Pentru un capăt deschis se adaugă aproximativ <strong>0,6·r</strong> la lungimea efectivă, unde <var>r</var> este raza tubului. Pentru două capete deschise se adaugă circa <strong>1,2·r</strong>. De aceea formulele ideale dau frecvențe puțin prea mari.</div>
+          </div>
+
+          <div class="callout gold">
+            <span class="callout-icon"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></span>
+            <div><strong>Temperatura.</strong> Viteza sunetului în aer crește cu temperatura: <strong>v ≈ 331 + 0,6·t</strong> (t în °C). La 20&nbsp;°C, v ≈ 343&nbsp;m/s; la 30&nbsp;°C, v ≈ 349&nbsp;m/s. Instrumentele cu suflat urcă în înălțime când se încălzesc.</div>
+          </div>
+
+          <p class="link-row"><a href="#laborator-tub" data-goto="laborator" data-labtab="tub">Deschide laboratorul de tuburi <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        </article>
+
+        <article class="card" id="teorie-timbru">
+          <h2><span class="h-icon"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg></span>Armonice, spectru și timbru</h2>
+          <p>O coardă nu vibrează doar în modul fundamental. Ea vibrează simultan în mai multe moduri, cu amplitudini diferite. Un tub are și el mai multe moduri. Frecvențele sunt multipli ai fundamentalei (la coarde și tuburi ideale), iar <strong>amplitudinile relative</strong> formează <strong>spectrul</strong> sunetului.</p>
+
+          <p>Aceeași notă La4 (440&nbsp;Hz) cântată la pian, vioară și orgă are aceeași fundamentală, dar spectre diferite. De aceea recunoaștem instrumentul fără să vedem cine cântă: <strong>timbrul</strong> este amprenta spectrală a sunetului.</p>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Instrument</th><th>Ce vibrează</th><th>Spectru tipic</th><th>Particularitate</th></tr></thead>
+              <tbody>
+                <tr><td>Pian</td><td>coarde lovite de ciocănele</td><td>bogat, cu decay lung</td><td>parțiale ușor nearmonice din cauza rigidității corzii</td></tr>
+                <tr><td>Vioară</td><td>coarde frecate cu arcușul</td><td>foarte bogat, cu formanți ai corpului</td><td>vibrato și zgomot de arcuș</td></tr>
+                <tr><td>Orgă</td><td>coloane de aer în tuburi</td><td>relativ sărac, stabil</td><td>tuburi deschise și închise, registre diferite</td></tr>
+                <tr><td>Chitară</td><td>coarde ciupite</td><td>bogat, atac scurt</td><td>poziția ciupirii poate slăbi anumite armonice</td></tr>
+                <tr><td>Clarinet</td><td>coloană de aer în tub închis</td><td>doar armonice impare</td><td>sunet clar, „de lemn”</td></tr>
+                <tr><td>Flaut</td><td>jet de aer peste un tub deschis</td><td>sărac în armonice înalte</td><td>sunet aproape sinusoidal</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Timbrul nu este doar spectrul staționar. Contează și <strong>atacul</strong> (primul sfert de secundă), <strong>zgomotul</strong> (arcuș, suflu, ciupitură), <strong>vibrato-ul</strong>, <strong>decăderea</strong> și <strong>rezonanțele corpului</strong> instrumentului. De aceea două instrumente cu același spectru mediu pot suna totuși diferit.</p>
+
+          <div class="callout">
+            <span class="callout-icon"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></span>
+            <div><strong>Precizare.</strong> La pian, armonicele nu sunt exact multipli ai fundamentalei. Rigiditatea corzii produce parțiale ușor mai înalte: f<sub>n</sub> ≈ n·f<sub>1</sub>·√(1 + B·n²), cu B de ordinul 10<sup>−4</sup>…10<sup>−3</sup>. Acesta este motivul pentru care acordarea pianelor folosește octave ușor „lărgite”.</div>
+          </div>
+
+          <p class="link-row"><a href="#fourier" data-goto="fourier">Cum descompunem spectrul cu Fourier <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a> &nbsp;·&nbsp; <a href="#exemple" data-goto="exemple">Ascultă instrumentele <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        </article>
+
+        <article class="card" id="teorie-fourier">
+          <h2><span class="h-icon"><svg class="icon" aria-hidden="true"><use href="#i-sigma"/></svg></span>Fourier: compunere și descompunere</h2>
+          <p>Teorema lui Fourier spune că orice semnal periodic poate fi scris ca o sumă de sinusoide cu frecvențe multipli ai fundamentalei:</p>
+
+          <div class="formula">
+            x(t) = A<sub>0</sub> + Σ<sub>n≥1</sub> A<sub>n</sub> · cos(2π·n·f<sub>1</sub>·t + φ<sub>n</sub>)
+            <small>A<sub>n</sub> = amplitudinea armonicii n; φ<sub>n</sub> = faza; f<sub>1</sub> = fundamentala.</small>
+          </div>
+
+          <p><strong>Compunerea</strong> este adunarea armonicelor. <strong>Descompunerea</strong> este operația inversă: pornind de la un sunet, extragem amplitudinile și fazele fiecărei armonice. În practică se folosește <strong>DFT</strong> (transformata Fourier discretă) sau <strong>FFT</strong>, varianta ei rapidă.</p>
+
+          <div class="three-formulas">
+            <div class="formula small-formula">
+              <strong>Undă pătrată</strong>
+              <span class="formula-math">(4/π)(sin ωt + sin 3ωt/3 + sin 5ωt/5 + …)</span>
+              <small>doar armonice impare, amplitudini ∝ 1/n</small>
+            </div>
+            <div class="formula small-formula">
+              <strong>Dinte de ferăstrău</strong>
+              <span class="formula-math">−(2/π)(sin ωt + sin 2ωt/2 + sin 3ωt/3 + …)</span>
+              <small>toate armonicele, amplitudini ∝ 1/n</small>
+            </div>
+            <div class="formula small-formula">
+              <strong>Triunghi</strong>
+              <span class="formula-math">(8/π²)(sin ωt − sin 3ωt/9 + sin 5ωt/25 − …)</span>
+              <small>doar impare, amplitudini ∝ 1/n²</small>
+            </div>
+          </div>
+
+          <p>Cu cât păstrezi mai multe armonice, cu atât forma reconstruită seamănă mai bine cu originalul. Lângă un salt brusc apar însă oscilații care nu dispar complet: <strong>fenomenul Gibbs</strong>. El este o consecință matematică a aproximării unui salt cu un număr finit de sinusoide, nu un defect al aparatului.</p>
+
+          <div class="callout gold">
+            <span class="callout-icon"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></span>
+            <div><strong>De ce contează?</strong> Un sunet muzical este periodic doar aproximativ. Atacul și zgomotul nu sunt periodice, deci pentru ele folosim transformata Fourier, nu seria Fourier. În analiza spectrală reală, fereastra de timp și zgomotul fac spectrul să arate ca o „collină” de energii, nu ca niște linii perfecte.</div>
+          </div>
+
+          <p class="link-row"><a href="#fourier" data-goto="fourier">Intră în laboratorul Fourier <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        </article>
+
+        <article class="card" id="teorie-practica">
+          <h2><span class="h-icon"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span>Din practică: de ce sună așa?</h2>
+          <div class="instrument-mini-grid">
+            <div class="instrument-mini"><span class="mini-kicker">Pian</span><strong>Ciocănel + coardă</strong><p>Atac scurt, spectru bogat, decay lung. Corzile grave sunt mai nearmonice.</p></div>
+            <div class="instrument-mini"><span class="mini-kicker">Vioară</span><strong>Arcuș + coardă</strong><p>Frecarea întreține vibrația; corpul lemnos accentuează anumite benzi (formanți).</p></div>
+            <div class="instrument-mini"><span class="mini-kicker">Orgă</span><strong>Coloană de aer</strong><p>Tuburile deschise dau toate armonicele; cele închise doar pe cele impare.</p></div>
+            <div class="instrument-mini"><span class="mini-kicker">Chitară</span><strong>Coardă ciupită</strong><p>Poziția degetului sau a penei poate anula anumite armonice.</p></div>
+            <div class="instrument-mini"><span class="mini-kicker">Clarinet</span><strong>Tub închis</strong><p>Doar armonice impare; fundamentala este cu o octavă sub tubul deschis echivalent.</p></div>
+            <div class="instrument-mini"><span class="mini-kicker">Flaut</span><strong>Jet de aer</strong><p>Spectru sărac, sunet aproape sinusoidal, foarte controlabil.</p></div>
+          </div>
+
+          <div class="callout">
+            <span class="callout-icon"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></span>
+            <div><strong>Ce nu trebuie confundat.</strong> „Armonică” este o componentă cu frecvență multiplu întreg al fundamentalei. „Parțială” este termenul general, care include și componentele nearmonice (clopote, castroane, pian). „Rezonanță” este amplificarea unei vibrații când frecvența excitației se apropie de o frecvență proprie; nu este același lucru cu ecoul.</div>
+          </div>
+        </article>
+
+        <article class="card" id="teorie-fise">
+          <h2><span class="h-icon"><svg class="icon" aria-hidden="true"><use href="#i-sigma"/></svg></span>Fișa de formule</h2>
+          <div class="table-wrap">
+            <table class="data-table formulas-table">
+              <thead><tr><th>Situația</th><th>Relația</th><th>Observații</th></tr></thead>
+              <tbody>
+                <tr><td>Coardă fixată la ambele capete</td><td>f<sub>n</sub> = n·v/(2L)</td><td>toate armonicele; n = 1, 2, 3, …</td></tr>
+                <tr><td>Viteza pe coardă</td><td>v = √(T/μ)</td><td>μ = m/L (kg/m)</td></tr>
+                <tr><td>Legea completă a coardei</td><td>f<sub>n</sub> = (n/2L)·√(T/μ)</td><td>tensiune, lungime, densitate</td></tr>
+                <tr><td>Tub deschis–deschis</td><td>f<sub>n</sub> = n·v/(2L)</td><td>toate armonicele</td></tr>
+                <tr><td>Tub închis–deschis</td><td>f<sub>n</sub> = (2n−1)·v/(4L)</td><td>doar armonicele impare</td></tr>
+                <tr><td>Viteza sunetului în aer</td><td>v ≈ 331 + 0,6·t</td><td>t în °C; la 20 °C, v ≈ 343 m/s</td></tr>
+                <tr><td>Corecție de capăt</td><td>L<sub>ef</sub> ≈ L + 0,6r</td><td>un capăt deschis; 1,2r pentru două</td></tr>
+                <tr><td>Serie Fourier</td><td>x(t) = Σ A<sub>n</sub> cos(2πnf<sub>1</sub>t + φ<sub>n</sub>)</td><td>compunere / descompunere</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card" id="teorie-check">
+          <h2><span class="h-icon"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Verifică rapid</h2>
+          <p class="muted">Trei întrebări scurte înainte de laborator. Răspunsul apare imediat.</p>
+
+          <div class="quick-check" data-quick="1">
+            <p class="quick-q"><strong>1.</strong> O coardă fixată la ambele capete are lungimea L. Care este lungimea de undă a fundamentalei?</p>
+            <div class="quick-options">
+              <button type="button" data-answer="0">L</button>
+              <button type="button" data-answer="1">2L</button>
+              <button type="button" data-answer="0">4L</button>
+            </div>
+            <p class="quick-feedback" aria-live="polite"></p>
+          </div>
+
+          <div class="quick-check" data-quick="2">
+            <p class="quick-q"><strong>2.</strong> Dacă tensiunea unei coarde crește de 4 ori, frecvența fundamentală…</p>
+            <div class="quick-options">
+              <button type="button" data-answer="1">se dublează</button>
+              <button type="button" data-answer="0">se înjumătățește</button>
+              <button type="button" data-answer="0">crește de 4 ori</button>
+            </div>
+            <p class="quick-feedback" aria-live="polite"></p>
+          </div>
+
+          <div class="quick-check" data-quick="3">
+            <p class="quick-q"><strong>3.</strong> Un tub închis la un capăt are, față de un tub deschis de aceeași lungime…</p>
+            <div class="quick-options">
+              <button type="button" data-answer="0">toate armonicele</button>
+              <button type="button" data-answer="1">doar armonice impare</button>
+              <button type="button" data-answer="0">doar armonice pare</button>
+            </div>
+            <p class="quick-feedback" aria-live="polite"></p>
+          </div>
+        </article>
+
+      </div>
+
+      <aside class="theory-aside" aria-label="Cuprins și resurse">
+        <div class="card toc">
+          <h3>Cuprins</h3>
+          <a href="#teorie-sunet">Sunetul începe cu o vibrație</a>
+          <a href="#teorie-coarda">Coarda fixată la capete</a>
+          <a href="#teorie-legea">Legea coardei</a>
+          <a href="#teorie-tuburi">Tuburi sonore</a>
+          <a href="#teorie-timbru">Armonice și timbru</a>
+          <a href="#teorie-fourier">Fourier</a>
+          <a href="#teorie-practica">Din practică</a>
+          <a href="#teorie-fise">Fișa de formule</a>
+          <a href="#teorie-check">Verifică rapid</a>
+        </div>
+
+        <div class="card keywords">
+          <h3>Cuvinte-cheie</h3>
+          <div class="chips">
+            <span>undă staționară</span><span>nod</span><span>ventru</span><span>armonică</span><span>fundamentală</span><span>timbre</span><span>spectru</span><span>Fourier</span><span>rezonanță</span><span>corecție de capăt</span>
+          </div>
+        </div>
+
+        <div class="card aside-cta">
+          <h3>Laborator rapid</h3>
+          <p>Modifică lungimea, tensiunea și densitatea, apoi ascultă cum se schimbă nota.</p>
+          <button class="btn small primary" type="button" data-goto="laborator">Deschide laboratorul</button>
+        </div>
+
+        <div class="card aside-help">
+          <h3>Ai nevoie de ajutor?</h3>
+          <p>Butoanele de redare pornesc sunetul. Sliderele se pot modifica și cu tastele săgeți.</p>
+          <button class="btn small secondary" type="button" data-dialog="help">Cum folosești laboratorul</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       LABORATOR
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-laborator" role="tabpanel" aria-labelledby="tab-laborator" hidden>
+    <div class="lab-head">
+      <div>
+        <p class="eyebrow">Laborator interactiv</p>
+        <h2>Construiește sunetul, nu doar îl asculta</h2>
+        <p class="muted">Alege o coardă sau un tub, modifică parametrii și urmărește simultan unda staționară, frecvența și nota muzicală. Toate sunetele sunt generate local.</p>
+      </div>
+      <div class="lab-badge"><svg class="icon" aria-hidden="true"><use href="#i-speaker"/></svg> sunet sintetizat · fără microfon</div>
+    </div>
+
+    <div class="subtabs" role="tablist" aria-label="Standuri de laborator">
+      <button type="button" class="active" role="tab" aria-selected="true" aria-controls="lab-coarda" data-labtab="coarda">Coarda vibrantă</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="lab-tub" data-labtab="tub" tabindex="-1">Tubul sonor</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="lab-timbru" data-labtab="timbru" tabindex="-1">Constructor de timbru</button>
+    </div>
+
+    <!-- Stand 1: coarda -->
+    <div class="lab-panel" id="lab-coarda" role="tabpanel" aria-label="Coarda vibrantă">
+      <div class="lab-grid">
+        <div class="card scene-card">
+          <div class="scene-head">
+            <h3>Coarda vibrantă</h3>
+            <span class="pill">animație încetinită</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="string-canvas" role="img" aria-label="Undă staționară pe o coardă fixată la ambele capete"></canvas>
+          </div>
+          <div class="scene-legend">
+            <span><i class="swatch gold"></i>noduri</span>
+            <span><i class="swatch mint"></i>ventre</span>
+            <span><i class="swatch dashed"></i>anvelopă</span>
+            <span class="legend-note">Mișcarea reală este de sute de ori mai rapidă.</span>
+          </div>
+          <div class="scene-actions">
+            <button class="btn primary" type="button" id="string-play" aria-pressed="false">
+              <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span>Ascultă coarda</span>
+            </button>
+            <button class="btn secondary" type="button" id="string-reset"><svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg> Reset</button>
+            <label class="check-inline"><input type="checkbox" id="string-envelope" checked> Arată anvelopa</label>
+          </div>
+        </div>
+
+        <div class="card controls-card">
+          <div class="controls-head">
+            <h3>Parametri</h3>
+            <span class="pill soft">live</span>
+          </div>
+          <div class="preset-row" aria-label="Preseturi de instrumente">
+            <button type="button" class="preset" data-string-preset="chitara">Chitară</button>
+            <button type="button" class="preset" data-string-preset="vioara">Vioară</button>
+            <button type="button" class="preset" data-string-preset="pian">Pian</button>
+            <button type="button" class="preset" data-string-preset="contrabas">Contrabas</button>
+          </div>
+
+          <div class="control">
+            <div class="control-head"><label for="str-L">Lungimea coardei <var>L</var></label><output id="str-L-out">0,65 m</output></div>
+            <div class="range-wrap">
+              <button type="button" class="step" data-step="-1" data-target="str-L" aria-label="Micșorează lungimea">−</button>
+              <input type="range" id="str-L" min="0.25" max="1.20" step="0.005" value="0.65">
+              <button type="button" class="step" data-step="1" data-target="str-L" aria-label="Mărește lungimea">+</button>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="control-head"><label for="str-T">Tensiunea <var>T</var></label><output id="str-T-out">80 N</output></div>
+            <div class="range-wrap">
+              <button type="button" class="step" data-step="-1" data-target="str-T" aria-label="Micșorează tensiunea">−</button>
+              <input type="range" id="str-T" min="10" max="1200" step="1" value="80">
+              <button type="button" class="step" data-step="1" data-target="str-T" aria-label="Mărește tensiunea">+</button>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="control-head"><label for="str-mu">Densitatea liniară <var>μ</var></label><output id="str-mu-out">2,5 g/m</output></div>
+            <div class="range-wrap">
+              <button type="button" class="step" data-step="-1" data-target="str-mu" aria-label="Micșorează densitatea">−</button>
+              <input type="range" id="str-mu" min="0.2" max="8" step="0.05" value="2.5">
+              <button type="button" class="step" data-step="1" data-target="str-mu" aria-label="Mărește densitatea">+</button>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="control-head"><span>Armonica <var>n</var></span><output id="str-n-out">1</output></div>
+            <div class="segmented" id="str-n" role="group" aria-label="Numărul armonicii">
+              <button type="button" data-n="1" class="active">1</button><button type="button" data-n="2">2</button><button type="button" data-n="3">3</button><button type="button" data-n="4">4</button><button type="button" data-n="5">5</button><button type="button" data-n="6">6</button><button type="button" data-n="7">7</button><button type="button" data-n="8">8</button>
+            </div>
+          </div>
+
+          <div class="readouts">
+            <div class="readout"><span>Frecvența f<sub>n</sub></span><strong id="str-fn">137,6</strong><small>Hz</small></div>
+            <div class="readout"><span>Viteza undei</span><strong id="str-v">178,9</strong><small>m/s</small></div>
+            <div class="readout"><span>Lungimea de undă</span><strong id="str-lambda">1,30</strong><small>m</small></div>
+            <div class="readout"><span>Nota apropiată</span><strong id="str-note">Do#3</strong><small id="str-cents">+0 cenți</small></div>
+          </div>
+
+          <div class="observation" id="string-observation">Fundamentala: 2 noduri la capete și un ventru la mijloc.</div>
+        </div>
+      </div>
+
+      <div class="card explain-card">
+        <div>
+          <h3>Ce se întâmplă?</h3>
+          <p>Coarda este fixată la ambele capete, deci capetele sunt noduri. Când crești tensiunea, unda se propagă mai repede și frecvența crește. Când crești lungimea sau densitatea, frecvența scade. Armonica <var>n</var> are <var>n</var> ventre și <var>n</var>+1 noduri.</p>
+          <p class="muted small">Formula folosită: f<sub>n</sub> = (n / 2L) · √(T / μ). Animația este încetinită pentru a putea urmări nodurile.</p>
+          <p class="link-row"><a href="#teorie-legea" data-goto="teorie" data-anchor="teorie-legea">Recitește legea coardei <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        </div>
+        <div class="formula compact">
+          f<sub>n</sub> = <span class="frac"><span>n</span><span>2L</span></span> √(T / μ)
+          <small>L în metri, T în newtoni, μ în kg/m</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stand 2: tubul -->
+    <div class="lab-panel" id="lab-tub" role="tabpanel" aria-label="Tubul sonor" hidden>
+      <div class="lab-grid">
+        <div class="card scene-card">
+          <div class="scene-head">
+            <h3>Tubul sonor</h3>
+            <span class="pill">animație încetinită</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="pipe-canvas" role="img" aria-label="Undă staționară într-un tub sonor"></canvas>
+          </div>
+          <div class="scene-legend">
+            <span><i class="swatch red"></i>compresie</span>
+            <span><i class="swatch blue"></i>rarefacție</span>
+            <span><i class="swatch gold"></i>nod</span>
+            <span><i class="swatch mint"></i>ventru</span>
+          </div>
+          <div class="scene-actions">
+            <button class="btn primary" type="button" id="pipe-play" aria-pressed="false">
+              <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span>Ascultă tubul</span>
+            </button>
+            <button class="btn secondary" type="button" id="pipe-reset"><svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg> Reset</button>
+          </div>
+        </div>
+
+        <div class="card controls-card">
+          <div class="controls-head">
+            <h3>Parametri</h3>
+            <span class="pill soft">live</span>
+          </div>
+          <div class="preset-row" aria-label="Preseturi de instrumente">
+            <button type="button" class="preset" data-pipe-preset="orga">Orgă</button>
+            <button type="button" class="preset" data-pipe-preset="flaut">Flaut</button>
+            <button type="button" class="preset" data-pipe-preset="clarinet">Clarinet</button>
+            <button type="button" class="preset" data-pipe-preset="trompeta">Trompetă</button>
+          </div>
+
+          <div class="control">
+            <div class="control-head"><label for="pipe-L">Lungimea tubului <var>L</var></label><output id="pipe-L-out">0,50 m</output></div>
+            <div class="range-wrap">
+              <button type="button" class="step" data-step="-1" data-target="pipe-L" aria-label="Micșorează lungimea">−</button>
+              <input type="range" id="pipe-L" min="0.20" max="2.40" step="0.01" value="0.50">
+              <button type="button" class="step" data-step="1" data-target="pipe-L" aria-label="Mărește lungimea">+</button>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="control-head"><label for="pipe-temp">Temperatura aerului</label><output id="pipe-temp-out">20 °C</output></div>
+            <div class="range-wrap">
+              <button type="button" class="step" data-step="-1" data-target="pipe-temp" aria-label="Scade temperatura">−</button>
+              <input type="range" id="pipe-temp" min="0" max="40" step="1" value="20">
+              <button type="button" class="step" data-step="1" data-target="pipe-temp" aria-label="Crește temperatura">+</button>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="control-head"><span>Tipul tubului</span></div>
+            <div class="segmented wide" id="pipe-type" role="group" aria-label="Tipul tubului">
+              <button type="button" data-type="open" class="active">Deschis–deschis</button>
+              <button type="button" data-type="closed">Închis–deschis</button>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="control-head"><span>Mărimea afișată</span></div>
+            <div class="segmented wide" id="pipe-quantity" role="group" aria-label="Mărimea afișată">
+              <button type="button" data-quantity="displacement" class="active">Deplasare</button>
+              <button type="button" data-quantity="pressure">Presiune</button>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="control-head"><span id="pipe-n-label">Rezonanța <var>n</var></span><output id="pipe-n-out">1</output></div>
+            <div class="segmented" id="pipe-n" role="group" aria-label="Numărul rezonanței">
+              <button type="button" data-n="1" class="active">1</button><button type="button" data-n="2">2</button><button type="button" data-n="3">3</button><button type="button" data-n="4">4</button><button type="button" data-n="5">5</button>
+            </div>
+          </div>
+
+          <div class="readouts">
+            <div class="readout"><span>Frecvența f<sub>n</sub></span><strong id="pipe-fn">343,4</strong><small>Hz</small></div>
+            <div class="readout"><span>Viteza sunetului</span><strong id="pipe-v">343,4</strong><small>m/s</small></div>
+            <div class="readout"><span>Lungimea de undă</span><strong id="pipe-lambda">1,00</strong><small>m</small></div>
+            <div class="readout"><span>Nota apropiată</span><strong id="pipe-note">Fa4</strong><small id="pipe-cents">-28 cenți</small></div>
+          </div>
+
+          <div class="observation" id="pipe-observation">Tub deschis: toate armonicele. f₂ = 2f₁.</div>
+        </div>
+      </div>
+
+      <div class="card explain-card">
+        <div>
+          <h3>Ce se întâmplă?</h3>
+          <p>La capătul deschis, aerul este liber: deplasarea are ventru, iar presiunea are nod. La capătul închis, deplasarea are nod, iar presiunea are ventru. Tubul închis are doar armonice impare, deci sună „mai gol” decât un tub deschis de aceeași lungime.</p>
+          <p class="muted small">Formula folosită: tub deschis f<sub>n</sub> = n·v/(2L); tub închis f<sub>n</sub> = (2n−1)·v/(4L); v ≈ 331 + 0,6·t.</p>
+          <p class="link-row"><a href="#teorie-tuburi" data-goto="teorie" data-anchor="teorie-tuburi">Recitește teoria tuburilor <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        </div>
+        <div class="formula compact">
+          <span id="pipe-formula">f<sub>n</sub> = n·v/(2L)</span>
+          <small id="pipe-formula-note">tub deschis–deschis · toate armonicele</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stand 3: constructorul de timbru -->
+    <div class="lab-panel" id="lab-timbru" role="tabpanel" aria-label="Constructor de timbru" hidden>
+      <div class="lab-grid">
+        <div class="card scene-card">
+          <div class="scene-head">
+            <h3>Forma de undă</h3>
+            <span class="pill">sumă de armonice</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="timbre-wave" role="img" aria-label="Forma de undă rezultată din suma armonicelor"></canvas>
+          </div>
+          <div class="scene-legend">
+            <span><i class="swatch petrol"></i>suma</span>
+            <span><i class="swatch gold"></i>armonice individuale</span>
+            <span class="legend-note">f<sub>0</sub> = 220 Hz (La3)</span>
+          </div>
+          <div class="scene-actions">
+            <button class="btn primary" type="button" id="timbre-play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Ascultă timbrul</button>
+            <button class="btn secondary" type="button" id="timbre-compare">Compară pian / vioară / orgă</button>
+          </div>
+        </div>
+
+        <div class="card controls-card">
+          <div class="controls-head">
+            <h3>Rețeta de armonice</h3>
+            <span class="pill soft">0–100</span>
+          </div>
+          <div class="preset-row" aria-label="Preseturi de timbru">
+            <button type="button" class="preset" data-timbre-preset="pian">Pian</button>
+            <button type="button" class="preset" data-timbre-preset="vioara">Vioară</button>
+            <button type="button" class="preset" data-timbre-preset="orga">Orgă</button>
+            <button type="button" class="preset" data-timbre-preset="clarinet">Clarinet</button>
+            <button type="button" class="preset" data-timbre-preset="flaut">Flaut</button>
+            <button type="button" class="preset" data-timbre-preset="trompeta">Trompetă</button>
+          </div>
+
+          <div class="harmonic-sliders" id="harmonic-sliders">
+            <div class="control compact-control"><div class="control-head"><label for="h1">Armonica 1 · f<sub>0</sub></label><output id="h1-out">100</output></div><input type="range" id="h1" min="0" max="100" step="1" value="100"></div>
+            <div class="control compact-control"><div class="control-head"><label for="h2">Armonica 2 · 2f<sub>0</sub></label><output id="h2-out">60</output></div><input type="range" id="h2" min="0" max="100" step="1" value="60"></div>
+            <div class="control compact-control"><div class="control-head"><label for="h3">Armonica 3 · 3f<sub>0</sub></label><output id="h3-out">35</output></div><input type="range" id="h3" min="0" max="100" step="1" value="35"></div>
+            <div class="control compact-control"><div class="control-head"><label for="h4">Armonica 4 · 4f<sub>0</sub></label><output id="h4-out">22</output></div><input type="range" id="h4" min="0" max="100" step="1" value="22"></div>
+            <div class="control compact-control"><div class="control-head"><label for="h5">Armonica 5 · 5f<sub>0</sub></label><output id="h5-out">14</output></div><input type="range" id="h5" min="0" max="100" step="1" value="14"></div>
+            <div class="control compact-control"><div class="control-head"><label for="h6">Armonica 6 · 6f<sub>0</sub></label><output id="h6-out">9</output></div><input type="range" id="h6" min="0" max="100" step="1" value="9"></div>
+            <div class="control compact-control"><div class="control-head"><label for="h7">Armonica 7 · 7f<sub>0</sub></label><output id="h7-out">6</output></div><input type="range" id="h7" min="0" max="100" step="1" value="6"></div>
+            <div class="control compact-control"><div class="control-head"><label for="h8">Armonica 8 · 8f<sub>0</sub></label><output id="h8-out">4</output></div><input type="range" id="h8" min="0" max="100" step="1" value="4"></div>
+          </div>
+
+          <div class="harmonic-listen">
+            <span class="muted small">Ascultă separat:</span>
+            <div class="segmented tight" id="harmonic-buttons" role="group" aria-label="Ascultă o armonică separat">
+              <button type="button" data-harmonic="1">1</button><button type="button" data-harmonic="2">2</button><button type="button" data-harmonic="3">3</button><button type="button" data-harmonic="4">4</button><button type="button" data-harmonic="5">5</button><button type="button" data-harmonic="6">6</button><button type="button" data-harmonic="7">7</button><button type="button" data-harmonic="8">8</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-grid secondary">
+        <div class="card">
+          <div class="scene-head"><h3>Spectrul</h3><span class="pill soft">amplitudini relative</span></div>
+          <div class="canvas-wrap short"><canvas id="timbre-spectrum" role="img" aria-label="Spectrul de armonice al timbrului construit"></canvas></div>
+          <p class="muted small">Fiecare bară este o armonică. Înălțimea barei este amplitudinea relativă. Așa arată „amprenta” timbrului.</p>
+        </div>
+        <div class="card">
+          <h3>De ce sună diferit?</h3>
+          <p>Două instrumente pot cânta aceeași notă, dar cu <strong>rețete de armonice</strong> diferite. Pianul are un atac scurt și un decay lung; vioara are un atac mai lent, vibrato și multă energie în armonicele înalte; orga are un sunet stabil, cu puține armonice.</p>
+          <p>Mută sliderele și observă cum se schimbă forma de undă. O rețetă cu doar armonica 1 este o sinusoidă pură; una cu multe armonice are un sunet „strălucitor”.</p>
+          <div class="callout compact-callout">
+            <span class="callout-icon"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></span>
+            <div>Amplitudinile sunt normalizate la redare. Ce contează este <strong>raportul</strong> dintre ele, nu valoarea absolută.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOURIER
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-fourier" role="tabpanel" aria-labelledby="tab-fourier" hidden>
+    <div class="lab-head">
+      <div>
+        <p class="eyebrow">Fourier · compunere și descompunere</p>
+        <h2>Orice sunet este o sumă de sinusoide</h2>
+        <p class="muted">Compune o undă pătrată, un dinte de ferăstrău sau un triunghi din armonice. Apoi descompune un sunet „misterios” și reconstruiește-l cu un număr limitat de componente.</p>
+      </div>
+      <div class="lab-badge"><svg class="icon" aria-hidden="true"><use href="#i-sigma"/></svg> serie Fourier</div>
+    </div>
+
+    <div class="card theorem-card">
+      <div>
+        <h3>Teorema lui Fourier</h3>
+        <p>Orice semnal periodic cu frecvența <var>f</var><sub>1</sub> poate fi scris ca sumă de sinusoide cu frecvențele <var>f</var><sub>1</sub>, 2<var>f</var><sub>1</sub>, 3<var>f</var><sub>1</sub>, … Fiecare componentă are o amplitudine și o fază.</p>
+      </div>
+      <div class="formula compact">
+        x(t) = Σ A<sub>n</sub> cos(2πnf<sub>1</sub>t + φ<sub>n</sub>)
+        <small>compunere: adunăm armonicele · descompunere: le extragem</small>
+      </div>
+    </div>
+
+    <div class="lab-grid" id="fourier-compose-card">
+      <div class="card scene-card">
+        <div class="scene-head">
+          <h3>Compunerea</h3>
+          <span class="pill" id="fourier-pill">undă pătrată</span>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="fourier-canvas" role="img" aria-label="Suma primelor armonice față de forma de undă țintă"></canvas>
+        </div>
+        <div class="scene-legend">
+          <span><i class="swatch dashed"></i>ținta</span>
+          <span><i class="swatch petrol"></i>suma primelor N armonice</span>
+          <span><i class="swatch gold"></i>componente individuale</span>
+        </div>
+        <div class="scene-actions">
+          <button class="btn primary" type="button" id="fourier-play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Ascultă suma</button>
+          <button class="btn secondary" type="button" id="fourier-animate">Derulează armonicile</button>
+        </div>
+      </div>
+
+      <div class="card controls-card">
+        <div class="controls-head"><h3>Control</h3><span class="pill soft">N armonice</span></div>
+        <div class="segmented wide" id="fourier-wave" role="group" aria-label="Forma de undă țintă">
+          <button type="button" data-wave="square" class="active">Pătrată</button>
+          <button type="button" data-wave="saw">Ferăstrău</button>
+          <button type="button" data-wave="triangle">Triunghi</button>
+        </div>
+        <div class="control">
+          <div class="control-head"><label for="fourier-N">Numărul de armonice <var>N</var></label><output id="fourier-N-out">6</output></div>
+          <div class="range-wrap">
+            <button type="button" class="step" data-step="-1" data-target="fourier-N" aria-label="Micșorează numărul de armonice">−</button>
+            <input type="range" id="fourier-N" min="1" max="20" step="1" value="6">
+            <button type="button" class="step" data-step="1" data-target="fourier-N" aria-label="Mărește numărul de armonice">+</button>
+          </div>
+        </div>
+        <div class="formula compact" id="fourier-formula">
+          (4/π)(sin ωt + sin 3ωt/3 + sin 5ωt/5 + …)
+        </div>
+        <div class="readouts">
+          <div class="readout"><span>Eroare RMS</span><strong id="fourier-error">—</strong><small>față de țintă</small></div>
+          <div class="readout"><span>Armonice active</span><strong id="fourier-active">3</strong><small>din 20</small></div>
+        </div>
+        <p class="muted small" id="fourier-note">Undă pătrată: doar armonice impare, cu amplitudini care scad ca 1/n.</p>
+      </div>
+    </div>
+
+    <div class="lab-grid" id="decomp-card">
+      <div class="card scene-card">
+        <div class="scene-head">
+          <h3>Descompunerea</h3>
+          <span class="pill" id="decomp-pill">sunet misterios</span>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="decomp-canvas" role="img" aria-label="Originalul și reconstrucția unui sunet din armonicele găsite"></canvas>
+        </div>
+        <div class="scene-legend">
+          <span><i class="swatch dashed"></i>original</span>
+          <span><i class="swatch petrol"></i>reconstrucție</span>
+          <span><i class="swatch gold"></i>armonice găsite</span>
+        </div>
+        <div class="scene-actions">
+          <button class="btn primary" type="button" id="decomp-play-original"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Originalul</button>
+          <button class="btn secondary" type="button" id="decomp-play-recon"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Reconstrucția</button>
+          <button class="btn secondary" type="button" id="decomp-reveal">Dezvăluie sursa</button>
+        </div>
+      </div>
+
+      <div class="card controls-card">
+        <div class="controls-head"><h3>Analiză</h3><span class="pill soft">DFT</span></div>
+        <div class="segmented wide" id="decomp-preset" role="group" aria-label="Sunetul analizat">
+          <button type="button" data-decomp="clarinet" class="active">Clarinet</button>
+          <button type="button" data-decomp="piano">Pian</button>
+          <button type="button" data-decomp="violin">Vioară</button>
+          <button type="button" data-decomp="organ">Orgă</button>
+          <button type="button" data-decomp="guitar">Chitară</button>
+          <button type="button" data-decomp="flute">Flaut</button>
+          <button type="button" data-decomp="trumpet">Trompetă</button>
+          <button type="button" data-decomp="bass">Contrabas</button>
+          <button type="button" data-decomp="saw">Ferăstrău</button>
+          <button type="button" data-decomp="square">Pătrată</button>
+        </div>
+        <div class="control">
+          <div class="control-head"><label for="decomp-N">Armonice păstrate <var>N</var></label><output id="decomp-N-out">4</output></div>
+          <div class="range-wrap">
+            <button type="button" class="step" data-step="-1" data-target="decomp-N" aria-label="Micșorează numărul de armonice">−</button>
+            <input type="range" id="decomp-N" min="1" max="16" step="1" value="4">
+            <button type="button" class="step" data-step="1" data-target="decomp-N" aria-label="Mărește numărul de armonice">+</button>
+          </div>
+        </div>
+        <div class="readouts">
+          <div class="readout"><span>Eroare RMS</span><strong id="decomp-error">—</strong><small>reconstrucție</small></div>
+          <div class="readout"><span>Sursă</span><strong id="decomp-source" class="text-value">?</strong><small id="decomp-source-note">apasă „Dezvăluie”</small></div>
+        </div>
+        <p class="muted small">DFT-ul găsește amplitudinile și fazele armonicelor. Cu cât păstrezi mai multe, cu atât reconstrucția seamănă mai bine cu originalul.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="scene-head"><h3>Spectrul găsit</h3><span class="pill soft">amplitudini · 1–16</span></div>
+      <div class="canvas-wrap short"><canvas id="decomp-bars" role="img" aria-label="Spectrul de amplitudini găsit prin DFT"></canvas></div>
+      <p class="muted small" id="decomp-caption">Fiecare bară este o armonică găsită de analiză. Barele înalte poartă cea mai multă energie.</p>
+    </div>
+
+    <div class="card">
+      <h3>Spectru live</h3>
+      <p class="muted">Pornește un sunet din orice secțiune. Aici vezi energia pe frecvențe, exact ca pe un analizor de spectru.</p>
+      <div class="spectrum-dark">
+        <canvas id="live-spectrum-fourier" role="img" aria-label="Spectrul live al sunetului redat"></canvas>
+        <div class="spectrum-empty" id="spectrum-empty-fourier">Pornește un sunet pentru a vedea spectrul.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       EXEMPLE
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-exemple" role="tabpanel" aria-labelledby="tab-exemple" hidden>
+    <div class="lab-head">
+      <div>
+        <p class="eyebrow">Exemple din practică</p>
+        <h2>Aceeași notă, instrumente diferite</h2>
+        <p class="muted">Ascultă La4 sau alte note la opt instrumente. Fiecare card arată rețeta de armonice; butonul „Descompune” o trimite în laboratorul Fourier.</p>
+      </div>
+      <div class="lab-badge"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg> piese din domeniul public</div>
+    </div>
+
+    <div class="instrument-grid" id="instrument-grid">
+      <article class="instrument-card" data-instrument="piano" data-note="A4">
+        <div class="instrument-icon"><svg class="icon" aria-hidden="true"><use href="#i-piano"/></svg></div>
+        <h3>Pian</h3>
+        <p>Ciocănele lovesc cozi întinse. Atac scurt, spectru bogat, decay lung.</p>
+        <div class="recipe-bars" data-recipe="piano" aria-hidden="true"></div>
+        <div class="instrument-actions">
+          <button class="btn small primary" type="button" data-play-instrument="piano" data-play-note="A4">Ascultă La4</button>
+          <button class="btn small secondary" type="button" data-decompose="piano">Descompune</button>
+        </div>
+      </article>
+
+      <article class="instrument-card" data-instrument="violin" data-note="A4">
+        <div class="instrument-icon"><svg class="icon" aria-hidden="true"><use href="#i-violin"/></svg></div>
+        <h3>Vioară</h3>
+        <p>Arcușul întreține vibrația. Corpul lemnos accentuează formanți, iar vibrato-ul îmbogățește sunetul.</p>
+        <div class="recipe-bars" data-recipe="violin" aria-hidden="true"></div>
+        <div class="instrument-actions">
+          <button class="btn small primary" type="button" data-play-instrument="violin" data-play-note="A4">Ascultă La4</button>
+          <button class="btn small secondary" type="button" data-decompose="violin">Descompune</button>
+        </div>
+      </article>
+
+      <article class="instrument-card" data-instrument="organ" data-note="A4">
+        <div class="instrument-icon"><svg class="icon" aria-hidden="true"><use href="#i-organ"/></svg></div>
+        <h3>Orgă</h3>
+        <p>Tuburi de aer deschise și închise. Sunet stabil, cu registre care schimbă rețeta de armonice.</p>
+        <div class="recipe-bars" data-recipe="organ" aria-hidden="true"></div>
+        <div class="instrument-actions">
+          <button class="btn small primary" type="button" data-play-instrument="organ" data-play-note="A4">Ascultă La4</button>
+          <button class="btn small secondary" type="button" data-decompose="organ">Descompune</button>
+        </div>
+      </article>
+
+      <article class="instrument-card" data-instrument="guitar" data-note="A4">
+        <div class="instrument-icon"><svg class="icon" aria-hidden="true"><use href="#i-guitar"/></svg></div>
+        <h3>Chitară</h3>
+        <p>Coardă ciupită. Poziția ciupirii poate slăbi anumite armonice; corpul adaugă rezonanțe.</p>
+        <div class="recipe-bars" data-recipe="guitar" aria-hidden="true"></div>
+        <div class="instrument-actions">
+          <button class="btn small primary" type="button" data-play-instrument="guitar" data-play-note="A4">Ascultă La4</button>
+          <button class="btn small secondary" type="button" data-decompose="guitar">Descompune</button>
+        </div>
+      </article>
+
+      <article class="instrument-card" data-instrument="clarinet" data-note="A4">
+        <div class="instrument-icon"><svg class="icon" aria-hidden="true"><use href="#i-clarinet"/></svg></div>
+        <h3>Clarinet</h3>
+        <p>Tub închis–deschis: doar armonice impare. Sunetul este clar, cu o „gol” caracteristic.</p>
+        <div class="recipe-bars" data-recipe="clarinet" aria-hidden="true"></div>
+        <div class="instrument-actions">
+          <button class="btn small primary" type="button" data-play-instrument="clarinet" data-play-note="A4">Ascultă La4</button>
+          <button class="btn small secondary" type="button" data-decompose="clarinet">Descompune</button>
+        </div>
+      </article>
+
+      <article class="instrument-card" data-instrument="flute" data-note="A4">
+        <div class="instrument-icon"><svg class="icon" aria-hidden="true"><use href="#i-flute"/></svg></div>
+        <h3>Flaut</h3>
+        <p>Jet de aer peste un tub deschis. Spectru sărac, sunet aproape sinusoidal.</p>
+        <div class="recipe-bars" data-recipe="flute" aria-hidden="true"></div>
+        <div class="instrument-actions">
+          <button class="btn small primary" type="button" data-play-instrument="flute" data-play-note="A4">Ascultă La4</button>
+          <button class="btn small secondary" type="button" data-decompose="flute">Descompune</button>
+        </div>
+      </article>
+
+      <article class="instrument-card" data-instrument="trumpet" data-note="A4">
+        <div class="instrument-icon"><svg class="icon" aria-hidden="true"><use href="#i-trumpet"/></svg></div>
+        <h3>Trompetă</h3>
+        <p>Buza vibrează și excită coloana de aer. Spectru foarte bogat, cu multă energie în armonicele înalte.</p>
+        <div class="recipe-bars" data-recipe="trumpet" aria-hidden="true"></div>
+        <div class="instrument-actions">
+          <button class="btn small primary" type="button" data-play-instrument="trumpet" data-play-note="A4">Ascultă La4</button>
+          <button class="btn small secondary" type="button" data-decompose="trumpet">Descompune</button>
+        </div>
+      </article>
+
+      <article class="instrument-card" data-instrument="bass" data-note="A2">
+        <div class="instrument-icon"><svg class="icon" aria-hidden="true"><use href="#i-bass"/></svg></div>
+        <h3>Contrabas</h3>
+        <p>Coarde lungi și groase, tensiune mare. Fundamental profund și armonice care se sting repede.</p>
+        <div class="recipe-bars" data-recipe="bass" aria-hidden="true"></div>
+        <div class="instrument-actions">
+          <button class="btn small primary" type="button" data-play-instrument="bass" data-play-note="A2">Ascultă La2</button>
+          <button class="btn small secondary" type="button" data-decompose="bass">Descompune</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="card">
+      <div class="scene-head">
+        <h3>Compară timbrul aceleiași note</h3>
+        <span class="pill soft">La4 · 440 Hz</span>
+      </div>
+      <p class="muted">Aceeași înălțime, trei rețete diferite. Ascultă pe rând și urmărește spectrul.</p>
+      <div class="compare-actions">
+        <button class="btn primary" type="button" id="compare-timbres"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Pian → vioară → orgă</button>
+        <button class="btn secondary" type="button" id="compare-stop">Oprește</button>
+      </div>
+      <div class="spectrum-dark">
+        <canvas id="live-spectrum-examples" role="img" aria-label="Spectrul live al instrumentului redat"></canvas>
+        <div class="spectrum-empty" id="spectrum-empty-examples">Pornește un sunet pentru a vedea spectrul.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Piese celebre — fragmente</h3>
+      <p class="muted">Fragmente scurte, sintetizate local cu timbrul instrumentului. Nu sunt înregistrări reale; sunt reconstrucții didactice din domeniul public.</p>
+
+      <div class="pieces-grid">
+        <article class="piece-card" data-piece-card="fur-elise">
+          <div class="piece-top"><span class="piece-tag">Pian</span><span class="piece-year">1808</span></div>
+          <h4>Für Elise</h4>
+          <p class="piece-composer">Ludwig van Beethoven</p>
+          <p>Fragment din tema principală. Pianul are atac scurt și un spectru bogat, cu decay lung.</p>
+          <div class="piece-actions">
+            <button class="btn small primary" type="button" data-piece="fur-elise"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Redă</button>
+            <button class="btn small secondary" type="button" data-decompose="piano">Vezi Fourier</button>
+          </div>
+        </article>
+
+        <article class="piece-card" data-piece-card="ode">
+          <div class="piece-top"><span class="piece-tag">Vioară</span><span class="piece-year">1824</span></div>
+          <h4>Oda bucuriei</h4>
+          <p class="piece-composer">Ludwig van Beethoven</p>
+          <p>Tema din Simfonia a IX-a. Vioara are armonice înalte puternice și un sunet susținut.</p>
+          <div class="piece-actions">
+            <button class="btn small primary" type="button" data-piece="ode"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Redă</button>
+            <button class="btn small secondary" type="button" data-decompose="violin">Vezi Fourier</button>
+          </div>
+        </article>
+
+        <article class="piece-card" data-piece-card="minuet">
+          <div class="piece-top"><span class="piece-tag">Orgă</span><span class="piece-year">c. 1725</span></div>
+          <h4>Menuet în Sol major</h4>
+          <p class="piece-composer">Christian Petzold (atribuit cândva lui J. S. Bach)</p>
+          <p>Un menuet cunoscut, redat cu timbrul unei orgi: tuburi de aer, sunet stabil.</p>
+          <div class="piece-actions">
+            <button class="btn small primary" type="button" data-piece="minuet"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Redă</button>
+            <button class="btn small secondary" type="button" data-decompose="organ">Vezi Fourier</button>
+          </div>
+        </article>
+
+        <article class="piece-card" data-piece-card="nachtmusik">
+          <div class="piece-top"><span class="piece-tag">Coarde</span><span class="piece-year">1787</span></div>
+          <h4>Eine kleine Nachtmusik</h4>
+          <p class="piece-composer">Wolfgang Amadeus Mozart</p>
+          <p>Începutul Allegro-ului. Coardele au un atac mai moale și un spectru foarte bogat.</p>
+          <div class="piece-actions">
+            <button class="btn small primary" type="button" data-piece="nachtmusik"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Redă</button>
+            <button class="btn small secondary" type="button" data-decompose="violin">Vezi Fourier</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="player-card" id="piece-player">
+        <div class="player-head">
+          <div>
+            <span class="mini-kicker">Player didactic</span>
+            <h4 id="piece-now">Alege o piesă</h4>
+            <p class="muted small" id="piece-sub">Apasă „Redă” pe unul dintre carduri.</p>
+          </div>
+          <button class="btn secondary small" type="button" id="piece-stop">Oprește</button>
+        </div>
+        <div class="player-progress"><i id="piece-progress"></i></div>
+        <div class="player-meta"><span id="piece-time">0:00</span><span id="piece-note-label">—</span></div>
+        <div class="keyboard-wrap">
+          <div class="keyboard" id="keyboard" role="group" aria-label="Claviatură virtuală, două octave"></div>
+          <div class="keyboard-info"><span id="keyboard-note">—</span><label class="keyboard-select">Timbrul claviaturii
+            <select id="keyboard-instrument">
+              <option value="piano">Pian</option>
+              <option value="violin">Vioară</option>
+              <option value="organ">Orgă</option>
+              <option value="clarinet">Clarinet</option>
+              <option value="flute">Flaut</option>
+            </select>
+          </label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>De ce aceste piese sună diferit?</h3>
+      <div class="mini-grid three">
+        <div class="mini-card"><span class="mini-kicker">Pian</span><strong>Atac + decay</strong><p>Ciocănelul lovește, apoi sunetul se stinge. Spectrul este bogat, dar energia înaltă scade repede.</p></div>
+        <div class="mini-card"><span class="mini-kicker">Vioară</span><strong>Arc continuu</strong><p>Arcușul menține vibrația. Vibrato-ul și formanții corpului dau un sunet „viu”, cu multe armonice.</p></div>
+        <div class="mini-card"><span class="mini-kicker">Orgă</span><strong>Coloană de aer</strong><p>Sunetul este stabil cât timp suflă aerul. Tuburile închise aduc armonice impare; mixturele adaugă altele.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       PROBLEME
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-probleme" role="tabpanel" aria-labelledby="tab-probleme" hidden>
+    <div class="lab-head">
+      <div>
+        <p class="eyebrow">Probleme rezolvate</p>
+        <h2>De la formulă la răspuns</h2>
+        <p class="muted">Șase probleme cu rezolvare pas cu pas. Încearcă mai întâi singur, apoi deschide soluția.</p>
+      </div>
+      <div class="lab-badge"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> pas cu pas</div>
+    </div>
+
+    <div class="card method-card">
+      <h3>Metoda în cinci pași</h3>
+      <ol class="method-list">
+        <li><strong>Identifică modelul:</strong> coardă fixată la capete, tub deschis sau tub închis.</li>
+        <li><strong>Scrie formula:</strong> f<sub>n</sub> = n·v/(2L) sau f<sub>n</sub> = (2n−1)·v/(4L).</li>
+        <li><strong>Transformă unitățile:</strong> cm → m, g/m → kg/m, °C rămâne °C pentru formula vitezei.</li>
+        <li><strong>Calculează:</strong> înlocuiește numeric și păstrează unitatea.</li>
+        <li><strong>Verifică sensul:</strong> o coardă mai lungă trebuie să sune mai grav; un tub închis trebuie să aibă doar impare.</li>
+      </ol>
+    </div>
+
+    <div class="problem-grid">
+      <article class="card problem-card">
+        <div class="problem-head"><span class="problem-num">1</span><div><span class="mini-kicker">Coardă</span><h3>Frecvența fundamentală și a treia armonică</h3></div></div>
+        <p>O coardă de lungime <var>L</var> = 0,65&nbsp;m are densitatea liniară <var>μ</var> = 2,5&nbsp;g/m și este întinsă cu <var>T</var> = 100&nbsp;N. Calculează viteza undei, fundamentala și armonica a treia.</p>
+        <div class="numeric-check">
+          <label for="p1-answer">f<sub>1</sub> =</label>
+          <input type="number" id="p1-answer" step="0.1" placeholder="Hz">
+          <span class="unit">Hz</span>
+          <button class="btn small secondary" type="button" data-check="p1" data-expected="153.8" data-tol="0.02">Verifică</button>
+          <span class="numeric-feedback" id="p1-feedback" aria-live="polite"></span>
+        </div>
+        <details class="solution">
+          <summary>Arată rezolvarea</summary>
+          <ol>
+            <li>μ = 2,5&nbsp;g/m = 2,5·10<sup>−3</sup>&nbsp;kg/m.</li>
+            <li>v = √(T/μ) = √(100 / 2,5·10<sup>−3</sup>) = √40000 = <strong>200&nbsp;m/s</strong>.</li>
+            <li>f<sub>1</sub> = v/(2L) = 200 / 1,30 ≈ <strong>153,8&nbsp;Hz</strong>.</li>
+            <li>f<sub>3</sub> = 3f<sub>1</sub> ≈ <strong>461,5&nbsp;Hz</strong>.</li>
+          </ol>
+          <p class="answer">Răspuns: v = 200 m/s; f<sub>1</sub> ≈ 153,8 Hz; f<sub>3</sub> ≈ 461,5 Hz.</p>
+        </details>
+      </article>
+
+      <article class="card problem-card">
+        <div class="problem-head"><span class="problem-num">2</span><div><span class="mini-kicker">Coardă</span><h3>Tensiunea pentru un La4</h3></div></div>
+        <p>O coardă de vioară are <var>L</var> = 0,325&nbsp;m și <var>μ</var> = 0,6&nbsp;g/m. Ce tensiune este necesară pentru ca fundamentala să fie La4 = 440&nbsp;Hz?</p>
+        <details class="solution">
+          <summary>Arată rezolvarea</summary>
+          <ol>
+            <li>Din f = v/(2L) rezultă v = 2Lf = 2·0,325·440 = <strong>286&nbsp;m/s</strong>.</li>
+            <li>Din v = √(T/μ) rezultă T = μv².</li>
+            <li>μ = 0,6·10<sup>−3</sup>&nbsp;kg/m, deci T = 0,6·10<sup>−3</sup>·286² ≈ <strong>49&nbsp;N</strong>.</li>
+          </ol>
+          <p class="answer">Răspuns: T ≈ 49 N. Este o tensiune realistă pentru o coardă de vioară.</p>
+        </details>
+      </article>
+
+      <article class="card problem-card">
+        <div class="problem-head"><span class="problem-num">3</span><div><span class="mini-kicker">Tub deschis</span><h3>Primele trei rezonanțe</h3></div></div>
+        <p>Un tub deschis la ambele capete are lungimea <var>L</var> = 0,50&nbsp;m. Viteza sunetului este 343&nbsp;m/s. Calculează fundamentala și următoarele două rezonanțe.</p>
+        <div class="numeric-check">
+          <label for="p3-answer">f<sub>1</sub> =</label>
+          <input type="number" id="p3-answer" step="0.1" placeholder="Hz">
+          <span class="unit">Hz</span>
+          <button class="btn small secondary" type="button" data-check="p3" data-expected="343" data-tol="0.02">Verifică</button>
+          <span class="numeric-feedback" id="p3-feedback" aria-live="polite"></span>
+        </div>
+        <details class="solution">
+          <summary>Arată rezolvarea</summary>
+          <ol>
+            <li>f<sub>1</sub> = v/(2L) = 343 / 1,00 = <strong>343&nbsp;Hz</strong>.</li>
+            <li>f<sub>2</sub> = 2f<sub>1</sub> = <strong>686&nbsp;Hz</strong>.</li>
+            <li>f<sub>3</sub> = 3f<sub>1</sub> = <strong>1029&nbsp;Hz</strong>.</li>
+          </ol>
+          <p class="answer">Răspuns: 343 Hz; 686 Hz; 1029 Hz. Tubul deschis are toate armonicele.</p>
+        </details>
+      </article>
+
+      <article class="card problem-card">
+        <div class="problem-head"><span class="problem-num">4</span><div><span class="mini-kicker">Tub închis</span><h3>Aceeași lungime, altă serie</h3></div></div>
+        <p>Un tub închis la un capăt are aceeași lungime <var>L</var> = 0,50&nbsp;m și v = 343&nbsp;m/s. Calculează fundamentala și următoarea rezonanță. De ce nu apare 686&nbsp;Hz?</p>
+        <div class="numeric-check">
+          <label for="p4-answer">f<sub>1</sub> =</label>
+          <input type="number" id="p4-answer" step="0.1" placeholder="Hz">
+          <span class="unit">Hz</span>
+          <button class="btn small secondary" type="button" data-check="p4" data-expected="171.5" data-tol="0.02">Verifică</button>
+          <span class="numeric-feedback" id="p4-feedback" aria-live="polite"></span>
+        </div>
+        <details class="solution">
+          <summary>Arată rezolvarea</summary>
+          <ol>
+            <li>f<sub>1</sub> = v/(4L) = 343 / 2,00 = <strong>171,5&nbsp;Hz</strong>.</li>
+            <li>Următoarea rezonanță este 3f<sub>1</sub> = <strong>514,5&nbsp;Hz</strong>.</li>
+            <li>686&nbsp;Hz ar fi 4f<sub>1</sub> = 2·(2f<sub>1</sub>), adică o armonică pară. Tubul închis are doar armonice impare: 1, 3, 5, …</li>
+          </ol>
+          <p class="answer">Răspuns: f<sub>1</sub> ≈ 171,5 Hz; următoarea este 514,5 Hz. 686 Hz nu este permis.</p>
+        </details>
+      </article>
+
+      <article class="card problem-card">
+        <div class="problem-head"><span class="problem-num">5</span><div><span class="mini-kicker">Temperatură</span><h3>Cu cât urcă un tub când se încălzește?</h3></div></div>
+        <p>Un tub de orgă este acordat la 20&nbsp;°C pentru 440&nbsp;Hz. Ce frecvență are la 30&nbsp;°C? Exprimă variația și în cenți.</p>
+        <details class="solution">
+          <summary>Arată rezolvarea</summary>
+          <ol>
+            <li>v<sub>20</sub> ≈ 331 + 0,6·20 = <strong>343&nbsp;m/s</strong>; v<sub>30</sub> ≈ 331 + 0,6·30 = <strong>349&nbsp;m/s</strong>.</li>
+            <li>Frecvența este proporțională cu v: f<sub>30</sub> = 440·349/343 ≈ <strong>447,7&nbsp;Hz</strong>.</li>
+            <li>Variația în cenți: 1200·log<sub>2</sub>(447,7/440) ≈ <strong>30 de cenți</strong>.</li>
+          </ol>
+          <p class="answer">Răspuns: ≈ 447,7 Hz, adică aproximativ +30 de cenți. De aceea instrumentele cu suflat se acordează după temperatura sălii.</p>
+        </details>
+      </article>
+
+      <article class="card problem-card">
+        <div class="problem-head"><span class="problem-num">6</span><div><span class="mini-kicker">Fourier</span><h3>Amplitudinile unei unde pătrate</h3></div></div>
+        <p>O undă pătrată de amplitudine 1 este reconstruită cu primele trei armonice impare. Ce amplitudini au fundamentala, armonica a treia și a cincea? Ce valoare dă suma în vârf?</p>
+        <details class="solution">
+          <summary>Arată rezolvarea</summary>
+          <ol>
+            <li>Coeficienții undei pătrate sunt 4/(πn) pentru n impar.</li>
+            <li>A<sub>1</sub> = 4/π ≈ <strong>1,273</strong>; A<sub>3</sub> = 4/(3π) ≈ <strong>0,424</strong>; A<sub>5</sub> = 4/(5π) ≈ <strong>0,255</strong>.</li>
+            <li>În vârf, suma primelor trei este 1,273·(1 − 1/3 + 1/5) ≈ <strong>1,104</strong>; ea se apropie de 1 pe măsură ce adaugi armonici, cu oscilații Gibbs lângă salt.</li>
+          </ol>
+          <p class="answer">Răspuns: 1,273; 0,424; 0,255. Suma depășește ținta lângă salt — fenomenul Gibbs.</p>
+        </details>
+      </article>
+    </div>
+
+    <div class="card challenge-card">
+      <h3>Provocare: proiectează un instrument</h3>
+      <p>Vrei un tub deschis care să aibă fundamentala La3 = 220&nbsp;Hz la 20&nbsp;°C. Ce lungime îi trebuie? Dar dacă îl închizi la un capăt, ce frecvență obții cu aceeași lungime?</p>
+      <details class="solution">
+        <summary>Arată rezolvarea</summary>
+        <ol>
+          <li>L = v/(2f) = 343/(2·220) ≈ <strong>0,78&nbsp;m</strong>.</li>
+          <li>Dacă îl închizi, f<sub>1</sub> = v/(4L) = 343/(4·0,78) ≈ <strong>110&nbsp;Hz</strong>, cu o octavă mai jos.</li>
+          <li>Corecția de capăt ar mai scădea puțin frecvența; pentru o estimare didactică, 0,78 m este suficient.</li>
+        </ol>
+      </details>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       EVALUARE
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-evaluare" role="tabpanel" aria-labelledby="tab-evaluare" hidden>
+    <div class="lab-head">
+      <div>
+        <p class="eyebrow">Evaluare</p>
+        <h2>Verifică ce ai înțeles</h2>
+        <p class="muted">Zece întrebări cu răspuns imediat. Poți reîncerca oricând; scorul nu se salvează.</p>
+      </div>
+      <div class="lab-badge"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 10 întrebări</div>
+    </div>
+
+    <div class="card quiz-card">
+      <form id="quiz" novalidate>
+        <div id="quiz-questions"></div>
+        <div class="quiz-actions">
+          <button class="btn primary" type="submit" id="quiz-check">Verifică răspunsurile</button>
+          <button class="btn secondary" type="button" id="quiz-retry">Reîncearcă</button>
+        </div>
+      </form>
+      <div class="quiz-result" id="quiz-result" hidden>
+        <div class="score-ring"><span id="quiz-score">0</span><small>/ 10</small></div>
+        <div>
+          <h3 id="quiz-title">Rezultat</h3>
+          <p id="quiz-message" class="muted"></p>
+          <div class="progress-track large"><i id="quiz-bar"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Ce ar trebui să știi acum</h3>
+      <ul class="check-list">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> să explici nodurile și ventrele unei unde staționare;</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> să aplici f<sub>n</sub> = n·v/(2L) pentru coarde și tuburi deschise;</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> să aplici f<sub>n</sub> = (2n−1)·v/(4L) pentru tuburi închise;</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> să explici de ce aceeași notă sună diferit la pian, vioară și orgă;</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> să compui și să descompui un sunet cu seria Fourier.</li>
+      </ul>
+      <p class="link-row"><a href="#teorie-fise" data-goto="teorie" data-anchor="teorie-fise">Revezi fișa de formule <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a> &nbsp;·&nbsp; <a href="#laborator" data-goto="laborator">Reia laboratorul <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>
+    <strong>Coarde și tuburi sonore</strong> · lecție interactivă Praxis Science Lab
+    <p class="muted small">Sunete sintetizate cu Web Audio API. Fragmente muzicale din domeniul public, în scop didactic. Funcționează offline; nu trimite date.</p>
+  </div>
+  <div class="footer-links">
+    <a href="#top">Înapoi sus</a>
+    <a href="https://praxis-physics-lab.vercel.app/" target="_blank" rel="noopener">Bibliotecă</a>
+    <button class="link-button" type="button" data-dialog="help">Cum folosești laboratorul</button>
+  </div>
+</footer>
+
+<button class="board-exit" type="button" id="board-exit" hidden>Ieși din modul tablă <kbd>Esc</kbd></button>
+
+<dialog id="help-dialog" aria-labelledby="help-title">
+  <div class="dialog-head">
+    <h2 id="help-title">Cum folosești laboratorul</h2>
+    <button class="icon-btn" type="button" data-close aria-label="Închide"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="dialog-body">
+    <ol class="help-steps">
+      <li><strong>Alege un capitol</strong> din bara de sus: Teorie, Laborator, Fourier, Exemple, Probleme sau Evaluare.</li>
+      <li><strong>Modifică sliderele</strong> din laborator. Poți folosi și butoanele −/+ sau tastele săgeți pentru reglaj fin.</li>
+      <li><strong>Pornește sunetul</strong> cu butoanele de redare. Butonul „Sunet oprit” din antet oprește tot audio-ul.</li>
+      <li><strong>Compară</strong> aceeași notă la instrumente diferite și urmărește spectrul live.</li>
+      <li><strong>Verifică-te</strong> la final. Fiecare răspuns are o explicație.</li>
+    </ol>
+    <div class="shortcut-grid">
+      <span><kbd>S</kbd> pornește / oprește sunetul</span>
+      <span><kbd>B</kbd> mod tablă</span>
+      <span><kbd>?</kbd> acest ajutor</span>
+      <span><kbd>Esc</kbd> închide / ieși din modul tablă</span>
+    </div>
+    <p class="muted small">Sfat: dacă nu auzi nimic, verifică volumul sistemului și apasă din nou un buton de redare. Browserul cere o acțiune a utilizatorului înainte de a porni audio-ul.</p>
+    <button class="btn primary" type="button" data-close>Am înțeles</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<noscript>
+  <div class="noscript">Această lecție are nevoie de JavaScript pentru animații și sunet. Teoria poate fi citită și fără el, dar laboratorul nu va funcționa.</div>
+</noscript>
+
+<script src="js/core.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/labs.js"></script>
+<script src="js/fourier.js"></script>
+<script src="js/examples.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

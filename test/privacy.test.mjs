@@ -17,36 +17,38 @@ function browser(initial={},unavailable=false){
  const choose=value=>events.get('click')({target:{closest:selector=>selector==='[data-privacy-choice]'?{dataset:{privacyChoice:value}}:null}});
  return {window,storage,values,choose,nodes};
 }
-test('before consent, preferences and answers stay in memory rather than persistent storage',()=>{
+test('before consent, language persists as essential while optional preferences and answers stay in memory',()=>{
  const b=browser();b.storage.setItem('praxis-language','en');b.storage.setItem('mr-teste','[17]');
- assert.equal(b.storage.getItem('praxis-language'),'en');assert.equal(b.values.has('praxis-language'),false);assert.equal(b.values.has('mr-teste'),false);assert.equal(b.nodes.at(-1).hidden,false);
+ assert.equal(b.storage.getItem('praxis-language'),'en');assert.equal(b.values.get('praxis-language'),'en');assert.equal(b.values.has('mr-teste'),false);assert.equal(b.nodes.at(-1).hidden,false);
 });
 test('acceptance persists preferences but never the imported lesson answer history',()=>{
  const b=browser();b.storage.setItem('praxis-language','en');b.choose('accepted');b.storage.setItem('mr-teste','[17]');
  assert.equal(b.values.get('praxis-language'),'en');assert.equal(b.values.has('mr-teste'),false);assert.equal(b.window.PraxisPrivacy.preferencesAllowed,true);assert.equal(b.nodes.at(-1).hidden,true);
  const next=browser(Object.fromEntries(b.values));assert.equal(next.storage.getItem('praxis-language'),'en');assert.equal(next.nodes.at(-1).hidden,true);
 });
-test('withdrawal deletes saved preferences and legacy results while keeping the refusal',()=>{
+test('necessary-only choice retains language but deletes optional preferences and legacy results',()=>{
  const b=browser({[choiceKey]:JSON.stringify({version:1,value:'accepted',time:Date.now()}),'praxis-language':'en','mr-teste':'[17]'});
- b.choose('necessary');assert.equal(b.values.has('praxis-language'),false);assert.equal(b.values.has('mr-teste'),false);assert.equal(JSON.parse(b.values.get(choiceKey)).value,'necessary');
+ b.choose('necessary');assert.equal(b.values.get('praxis-language'),'en');assert.equal(b.values.has('mr-teste'),false);assert.equal(JSON.parse(b.values.get(choiceKey)).value,'necessary');
  b.storage.setItem('praxis-course-colors','vivid');assert.equal(b.values.has('praxis-course-colors'),false);
+ const next=browser(Object.fromEntries(b.values));assert.equal(next.storage.getItem('praxis-language'),'en');assert.equal(next.storage.getItem('praxis-course-colors'),null);
 });
 test('consent expires after 180 days and does not expose old preferences before a new choice',()=>{
  const b=browser({[choiceKey]:JSON.stringify({version:1,value:'accepted',time:Date.now()-181*86400000}),'praxis-language':'en'});
- assert.equal(b.window.PraxisPrivacy.preferencesAllowed,false);assert.equal(b.storage.getItem('praxis-language'),null);assert.equal(b.nodes.at(-1).hidden,false);
+ assert.equal(b.window.PraxisPrivacy.preferencesAllowed,false);assert.equal(b.storage.getItem('praxis-language'),'en');assert.equal(b.storage.getItem('ohm-theme'),null);assert.equal(b.nodes.at(-1).hidden,false);
 });
 test('the consent interface remains usable when the browser refuses local storage',()=>{
  const b=browser({},true);assert.equal(b.nodes.at(-1).hidden,false);b.choose('necessary');assert.equal(b.nodes.at(-1).hidden,true);assert.equal(b.window.PraxisPrivacy.preferencesAllowed,false);
 });
 
-test('lesson preferences survive a reload only with consent and are erased on withdrawal',()=>{
- const preferences={'ohm-theme':'dark','ohm-board':'1','cv-offline':'1'};
+test('lesson preferences survive a reload only with consent; language remains available after withdrawal',()=>{
+ const preferences={'praxis-language':'ro','ohm-theme':'dark','ohm-board':'1','cv-offline':'1'};
  const b=browser();
  for(const [key,value] of Object.entries(preferences))b.storage.setItem(key,value);
- assert.deepEqual([...b.values],[]);
+ assert.deepEqual([...b.values],[['praxis-language','ro']]);
  b.choose('accepted');
  const next=browser(Object.fromEntries(b.values));
  for(const [key,value] of Object.entries(preferences))assert.equal(next.storage.getItem(key),value,key);
  next.choose('necessary');
- for(const key of Object.keys(preferences))assert.equal(next.values.has(key),false,key);
+ assert.equal(next.values.get('praxis-language'),'ro');
+ for(const key of Object.keys(preferences).filter(key=>key!=='praxis-language'))assert.equal(next.values.has(key),false,key);
 });

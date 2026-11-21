@@ -7,6 +7,13 @@
     "SUNETE ȘI UNDE": "SOUND AND WAVES"
   },
   "simulations": {
+    "coarde-tuburi-sonore": {
+      "title": "Strings and air columns",
+      "subtitle": "Standing waves, harmonics and timbre",
+      "description": "Explore resonance in strings and air columns, compare the harmonics of musical instruments, and reconstruct sounds with interactive labs and exercises.",
+      "alt": "Vibrating string and sounding tube illustrating standing waves",
+      "tags": ["Sound", "Acoustics", "Lab", "Touch"]
+    },
     "unde-mecanice": {
       "title": "Mechanical waves",
       "subtitle": "Waves, sound and experiments",

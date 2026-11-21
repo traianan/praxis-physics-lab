@@ -1,5 +1,11 @@
 // Generated from labs.manifest.json; run npm run registry:generate.
 export const labNamespaces = {
+  "coarde-tuburi-sonore": [
+    "common",
+    "chapters/sunete-si-unde",
+    "courses/shared",
+    "courses/coarde-tuburi-sonore/ui"
+  ],
   "legea-lui-ohm": [
     "common",
     "chapters/electricitate-magnetism-circuite",
@@ -293,5 +299,11 @@ export const labNamespaces = {
     "chapters/elemente-de-matematica",
     "courses/shared",
     "courses/conice/ui"
+  ],
+  "functii-trigonometrice": [
+    "common",
+    "chapters/elemente-de-matematica",
+    "courses/shared",
+    "courses/functii-trigonometrice/ui"
   ]
 };
