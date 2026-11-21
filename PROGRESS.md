@@ -3,6 +3,7 @@
 ## Corecție copertă — Funcții trigonometrice — 2026-11-21
 
 - Corectate graficele sinus și cosinus pe intervalul simetric [−π, π], cu originea comună x=0 și valorile sin(0)=0, cos(0)=1. Asseturile versionate invalidează cache-ul imaginii vechi.
+- Aliniată și imaginea din `labs.manifest.json` la numele nou; verificat că assetul folosit de registru există.
 
 ## Limbă inițială după țară — 2026-11-20
 
