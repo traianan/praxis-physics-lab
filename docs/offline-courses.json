@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-21T20:23:08.146Z",
+  "builtAt": "2026-11-21T20:37:23.879Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -488,7 +488,7 @@
     {
       "id": "coarde-tuburi-sonore",
       "file": "public/simulari/coarde-tuburi-sonore/coarde-tuburi-sonore.zip",
-      "sha256": "4decdf3d59742661121996af20ee41cd39bf1064c774529500b3e34fbfb70e6a",
+      "sha256": "d34c14f17441a4e2db4f91a7b3e02cf2ef1072a0bbefc27ec5221ffa7cf98689",
       "languages": [
         "ro",
         "en"

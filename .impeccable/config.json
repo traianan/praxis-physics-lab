@@ -226,15 +226,6 @@
         "reason": "Agent: .btn.primary:hover explicitly sets white text; the detector reports inherited default ink instead of the actual winning color"
       },
       {
-        "rule": "icon-tile-stack",
-        "value": "*",
-        "files": [
-          "sources/coarde-tuburi-sonore/index.html"
-        ],
-        "createdAt": "2026-11-21T17:44:13.332Z",
-        "reason": "False positive: .h-icon glyphs render inline beside heading text; styles remove the tile background, border and rounded container, confirmed in the paired stylesheet."
-      },
-      {
         "rule": "low-contrast",
         "value": "*",
         "files": [

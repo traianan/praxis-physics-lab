@@ -1,4 +1,9 @@
 # PROGRESS
+## Revizie tipografie și pictograme — 2026-11-21
+
+- Revizuite avertizările icon-tile: cele opt pictograme din cardurile instrumentelor erau plăci decorative de 42 px deasupra titlurilor. Au fost mutate lângă titluri și eliminate plăcile; excepția Impeccable devenită inutilă a fost ștearsă.
+- Mărite la cel puțin 14 px textele auxiliare uzuale (descrieri, metadate audio, valori/unități și feedback); etichetele din diagrame au crescut de la 12 la 13 px. Culorile muted existente păstrează contrast bun pe suprafețele deschise.
+- Reimport, arhivă offline și build reușite. Detectorul Impeccable standard: index și CSS fără constatări. Chrome la 1920×1080, 3840×2160 și mobil 390×844: 8 carduri, 8 antete icon+titlu, descrieri 16 px în stilul curent, fără overflow orizontal sau erori JS; butoane de 52 px pe mobil.
 
 ## Spectru live și repararea CI — 2026-11-21
 
