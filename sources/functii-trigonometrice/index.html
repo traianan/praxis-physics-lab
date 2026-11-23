@@ -257,6 +257,17 @@
   .graph-selected-mark{background:var(--green-2);border-radius:50%!important}
   .graph-angle-step{width:auto;min-width:64px;height:44px;padding-inline:6px}
   .graph-value{font-weight:650;min-height:50px;overflow-wrap:anywhere}
+  .graph-value-expression{display:grid;grid-template-columns:auto 10ch auto 9ch;align-items:baseline;justify-content:center;gap:.35em;width:100%;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .graph-value-angle,.graph-value-result{display:inline-block;white-space:nowrap;text-align:left}
+  .graph-value-angle{width:9ch}
+  .graph-value-result{width:10ch}
+  .graph-speed-value{display:inline-block;min-width:8ch;text-align:right;font-variant-numeric:tabular-nums}
+  @media(max-width:420px){
+    .graph-value-expression{grid-template-columns:auto 12ch;column-gap:.35em;row-gap:.2em}
+    #gValueResult{grid-column:2;grid-row:1}
+    #gValueAngleLabel{grid-column:1;grid-row:2;text-align:right}
+    #gValueAngle{grid-column:2;grid-row:2}
+  }
   .graph-definition{font-weight:700;margin-bottom:8px}
   .graph-explanation{margin-top:0}
   .graph-actions{margin:12px 0 0}
@@ -759,7 +770,13 @@
             <button type="button" class="step graph-angle-step" data-xstep="10" aria-label="crește unghiul cu 10 grade">+10°</button>
           </div>
         </div>
-        <div class="formula-box graph-value" id="gValue" aria-live="polite">sin(30°) = 0,500</div>
+        <div class="ctl graph-speed-control">
+          <div class="ctl-head"><label for="slGraphSpeed">Viteza animației (°/s)</label><b class="graph-speed-value" id="valGraphSpeed">12,0°/s</b></div>
+          <div class="ctl-row">
+            <input type="range" id="slGraphSpeed" min="3" max="30" step="3" value="12" aria-label="Viteza animației graficului" aria-valuetext="12 grade pe secundă">
+          </div>
+        </div>
+        <div class="formula-box graph-value" id="gValue" aria-live="polite"><span class="graph-value-expression"><span id="gValueFn">sin(x) =</span><span class="graph-value-result" id="gValueResult">0,500</span><span id="gValueAngleLabel">x =</span><span class="graph-value-angle" id="gValueAngle">30°</span></span></div>
         <div class="play-row graph-actions">
           <button type="button" class="btn primary" id="btnGraphPlay">▶ Parcurge graficul</button>
           <button type="button" class="btn" id="btnGraphReset">⟲ Revino la x=0</button>
@@ -1393,7 +1410,7 @@ function renderTheory(){
 }
 
 /* ================= tab Grafice ================= */
-const G = {fn:"sin", x:30, playing:false, last:0, raf:0};
+const G = {fn:"sin", x:30, speed:12, playing:false, last:0, raf:0};
 const GB = {x:70, y:26, w:790, h:330};
 const GW = {x0:-360, x1:360, y0:-2.6, y1:2.6};
 const GRAPH_FN_INDEX = {sin:0, cos:1, tan:2, cot:3};
@@ -1408,6 +1425,9 @@ function graphAngleText(deg){
   const rounded=Math.round(abs);
   const exact=PI_FRACS[rounded];
   return exact!==undefined&&Math.abs(abs-rounded)<1e-7 ? sign+exact+" rad" : fmt(deg*D2R,2)+" rad";
+}
+function graphSpeedText(speed){
+  return Number(speed).toLocaleString(window.PraxisI18n?.locale||"ro-RO",{minimumFractionDigits:1,maximumFractionDigits:1});
 }
 function graphValueAt(deg){
   const values=trig(deg);
@@ -1492,18 +1512,14 @@ function renderGraph(){
   $("#valGraphX").textContent=graphAngleText(G.x);
   $("#slGraphX").value=G.x;
   $("#slGraphX").setAttribute("aria-valuetext",graphAngleText(G.x));
-  if(y===null){
-    $("#gValue").textContent=G.fn+"("+graphAngleText(G.x)+") = "+graphText("nedefinită");
-  }else{
-    const exactIndex=Math.round(norm360(G.x));
-    const exact=Math.abs(G.x-Math.round(G.x))<1e-6?(EXACT[exactIndex]||[])[GRAPH_FN_INDEX[G.fn]]:null;
-    const approx=fmt3(y);
-    $("#gValue").textContent=exact&&exact!=="—"&&["0","1","−1"].includes(exact)
-      ? G.fn+"("+graphAngleText(G.x)+") = "+exact
-      : exact&&exact!=="—"
-      ? G.fn+"("+graphAngleText(G.x)+") = "+exact+" ≈ "+approx
-      : G.fn+"("+graphAngleText(G.x)+") = "+approx;
-  }
+  const result=y===null?graphText("nedefinită"):fmt3(y);
+  $("#gValueFn").textContent=G.fn+"(x) =";
+  $("#gValueResult").textContent=result;
+  $("#gValueAngle").textContent=graphAngleText(G.x);
+  $("#gValue").setAttribute("aria-live",G.playing?"off":"polite");
+  $("#valGraphSpeed").textContent=graphSpeedText(G.speed)+"°/s";
+  $("#slGraphSpeed").value=G.speed;
+  $("#slGraphSpeed").setAttribute("aria-valuetext",graphSpeedText(G.speed)+" grade pe secundă");
   graphRenderProperties();
   $$(".chip[data-fn]").forEach(ch=>{
     const active=ch.dataset.fn===G.fn;
@@ -1518,7 +1534,7 @@ function graphLoop(ts){
   if(!G.last)G.last=ts;
   const dt=frameSeconds(ts,G.last);
   G.last=ts;
-  G.x+=dt*54;
+  G.x+=dt*G.speed;
   if(G.x>GW.x1)G.x=GW.x0;
   renderGraph();
   G.raf=requestAnimationFrame(graphLoop);
@@ -1533,6 +1549,7 @@ function graphPause(){
   G.playing=false;
   G.last=0;
   cancelAnimationFrame(G.raf);
+  $("#gValue").setAttribute("aria-live","polite");
   const button=$("#btnGraphPlay");
   if(button)button.textContent="▶ "+graphText("Parcurge graficul");
 }
@@ -2208,6 +2225,10 @@ $$(".chip[data-fn]").forEach(ch=>ch.addEventListener("click",()=>{
 }));
 $("#slGraphX").addEventListener("input",e=>{
   G.x=Number(e.target.value);
+  renderGraph();
+});
+$("#slGraphSpeed").addEventListener("input",e=>{
+  G.speed=Number(e.target.value);
   renderGraph();
 });
 $$("[data-xstep]").forEach(button=>button.addEventListener("click",()=>{

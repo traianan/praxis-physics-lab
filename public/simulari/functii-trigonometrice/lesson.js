@@ -378,7 +378,7 @@ function renderTheory(){
 }
 
 /* ================= tab Grafice ================= */
-const G = {fn:"sin", x:30, playing:false, last:0, raf:0};
+const G = {fn:"sin", x:30, speed:12, playing:false, last:0, raf:0};
 const GB = {x:70, y:26, w:790, h:330};
 const GW = {x0:-360, x1:360, y0:-2.6, y1:2.6};
 const GRAPH_FN_INDEX = {sin:0, cos:1, tan:2, cot:3};
@@ -393,6 +393,9 @@ function graphAngleText(deg){
   const rounded=Math.round(abs);
   const exact=PI_FRACS[rounded];
   return exact!==undefined&&Math.abs(abs-rounded)<1e-7 ? sign+exact+" rad" : fmt(deg*D2R,2)+" rad";
+}
+function graphSpeedText(speed){
+  return Number(speed).toLocaleString(window.PraxisI18n?.locale||"ro-RO",{minimumFractionDigits:1,maximumFractionDigits:1});
 }
 function graphValueAt(deg){
   const values=trig(deg);
@@ -477,18 +480,14 @@ function renderGraph(){
   $("#valGraphX").textContent=graphAngleText(G.x);
   $("#slGraphX").value=G.x;
   $("#slGraphX").setAttribute("aria-valuetext",graphAngleText(G.x));
-  if(y===null){
-    $("#gValue").textContent=G.fn+"("+graphAngleText(G.x)+") = "+graphText("nedefinită");
-  }else{
-    const exactIndex=Math.round(norm360(G.x));
-    const exact=Math.abs(G.x-Math.round(G.x))<1e-6?(EXACT[exactIndex]||[])[GRAPH_FN_INDEX[G.fn]]:null;
-    const approx=fmt3(y);
-    $("#gValue").textContent=exact&&exact!=="—"&&["0","1","−1"].includes(exact)
-      ? G.fn+"("+graphAngleText(G.x)+") = "+exact
-      : exact&&exact!=="—"
-      ? G.fn+"("+graphAngleText(G.x)+") = "+exact+" ≈ "+approx
-      : G.fn+"("+graphAngleText(G.x)+") = "+approx;
-  }
+  const result=y===null?graphText("nedefinită"):fmt3(y);
+  $("#gValueFn").textContent=G.fn+"(x) =";
+  $("#gValueResult").textContent=result;
+  $("#gValueAngle").textContent=graphAngleText(G.x);
+  $("#gValue").setAttribute("aria-live",G.playing?"off":"polite");
+  $("#valGraphSpeed").textContent=graphSpeedText(G.speed)+"°/s";
+  $("#slGraphSpeed").value=G.speed;
+  $("#slGraphSpeed").setAttribute("aria-valuetext",graphSpeedText(G.speed)+" grade pe secundă");
   graphRenderProperties();
   $$(".chip[data-fn]").forEach(ch=>{
     const active=ch.dataset.fn===G.fn;
@@ -503,7 +502,7 @@ function graphLoop(ts){
   if(!G.last)G.last=ts;
   const dt=frameSeconds(ts,G.last);
   G.last=ts;
-  G.x+=dt*54;
+  G.x+=dt*G.speed;
   if(G.x>GW.x1)G.x=GW.x0;
   renderGraph();
   G.raf=requestAnimationFrame(graphLoop);
@@ -518,6 +517,7 @@ function graphPause(){
   G.playing=false;
   G.last=0;
   cancelAnimationFrame(G.raf);
+  $("#gValue").setAttribute("aria-live","polite");
   const button=$("#btnGraphPlay");
   if(button)button.textContent="▶ "+graphText("Parcurge graficul");
 }
@@ -1221,6 +1221,10 @@ $$(".chip[data-fn]").forEach(ch=>ch.addEventListener("click",()=>{
 }));
 $("#slGraphX").addEventListener("input",e=>{
   G.x=Number(e.target.value);
+  renderGraph();
+});
+$("#slGraphSpeed").addEventListener("input",e=>{
+  G.speed=Number(e.target.value);
   renderGraph();
 });
 $$("[data-xstep]").forEach(button=>button.addEventListener("click",()=>{

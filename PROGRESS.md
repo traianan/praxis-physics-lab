@@ -1,4 +1,11 @@
 # PROGRESS
+
+## Reglaj animației graficelor trigonometrice — 2026-11-23
+
+- Viteza de parcurgere este reglabilă (3–30°/s), implicit 12°/s; unghiurile și valorile rezultate ocupă câmpuri cu lățime fixă, iar valorile sunt afișate la trei zecimale. Pe telefon formula trece pe două rânduri pentru a încăpea fără tăiere. Traduceri RO/EN, build-ul site-ului și arhiva offline au fost regenerate.
+- Chrome DevTools: viteza 3/30°/s, animația la 12°/s și pauza verificate; pozițiile câmpurilor rămân fixe la schimbarea unghiului. Fără overflow la 1920×1080, 3840×2160, 1024×768 touch și 390×844 touch/DPR 2; sliderul tactil are 52 px, formula încape pe mobil. `npm run build`, sintaxa JS și hash-urile arhivei verificate.
+
+
 ## Revizie tipografie și pictograme — 2026-11-21
 
 - Revizuite avertizările icon-tile: cele opt pictograme din cardurile instrumentelor erau plăci decorative de 42 px deasupra titlurilor. Au fost mutate lângă titluri și eliminate plăcile; excepția Impeccable devenită inutilă a fost ștearsă.

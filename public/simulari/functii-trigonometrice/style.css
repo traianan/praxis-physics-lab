@@ -251,6 +251,17 @@
   .graph-selected-mark{background:var(--green-2);border-radius:50%!important}
   .graph-angle-step{width:auto;min-width:64px;height:44px;padding-inline:6px}
   .graph-value{font-weight:650;min-height:50px;overflow-wrap:anywhere}
+  .graph-value-expression{display:grid;grid-template-columns:auto 10ch auto 9ch;align-items:baseline;justify-content:center;gap:.35em;width:100%;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .graph-value-angle,.graph-value-result{display:inline-block;white-space:nowrap;text-align:left}
+  .graph-value-angle{width:9ch}
+  .graph-value-result{width:10ch}
+  .graph-speed-value{display:inline-block;min-width:8ch;text-align:right;font-variant-numeric:tabular-nums}
+  @media(max-width:420px){
+    .graph-value-expression{grid-template-columns:auto 12ch;column-gap:.35em;row-gap:.2em}
+    #gValueResult{grid-column:2;grid-row:1}
+    #gValueAngleLabel{grid-column:1;grid-row:2;text-align:right}
+    #gValueAngle{grid-column:2;grid-row:2}
+  }
   .graph-definition{font-weight:700;margin-bottom:8px}
   .graph-explanation{margin-top:0}
   .graph-actions{margin:12px 0 0}
