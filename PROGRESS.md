@@ -1,5 +1,10 @@
 # PROGRESS
 
+## Caseta valorii graficului și CI — 2026-11-23
+
+- Formula valorii folosește grupuri flexibile care se împachetează după lățimea reală a casetei verzi. Funcția, rezultatul și unghiul rămân în interior pentru sin, cos, tan și cot, inclusiv valorile nedefinite.
+- Diagnosticul GitHub Actions pentru `0ae69e4`: build reușit; eșecul era verificarea de drift pentru `public/offline/shell-version.js`. Fișierul generat și CSS-ul lecției au fost actualizate.
+
 ## Reglaj animației graficelor trigonometrice — 2026-11-23
 
 - Viteza de parcurgere este reglabilă (3–30°/s), implicit 12°/s; unghiurile și valorile rezultate ocupă câmpuri cu lățime fixă, iar valorile sunt afișate la trei zecimale. Pe telefon formula trece pe două rânduri pentru a încăpea fără tăiere. Traduceri RO/EN, build-ul site-ului și arhiva offline au fost regenerate.

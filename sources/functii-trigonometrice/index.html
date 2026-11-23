@@ -256,18 +256,13 @@
   .graph-card{padding-bottom:14px}
   .graph-selected-mark{background:var(--green-2);border-radius:50%!important}
   .graph-angle-step{width:auto;min-width:64px;height:44px;padding-inline:6px}
-  .graph-value{font-weight:650;min-height:50px;overflow-wrap:anywhere}
-  .graph-value-expression{display:grid;grid-template-columns:auto 10ch auto 9ch;align-items:baseline;justify-content:center;gap:.35em;width:100%;white-space:nowrap;font-variant-numeric:tabular-nums}
-  .graph-value-angle,.graph-value-result{display:inline-block;white-space:nowrap;text-align:left}
-  .graph-value-angle{width:9ch}
-  .graph-value-result{width:10ch}
+  .graph-value{font-weight:650;min-height:50px;min-width:0;max-width:100%;box-sizing:border-box;overflow-wrap:anywhere}
+  .graph-value-expression{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;column-gap:.75em;row-gap:.2em;width:100%;min-width:0;max-width:100%;box-sizing:border-box;font-variant-numeric:tabular-nums}
+  .graph-value-function,.graph-value-angle-pair{display:inline-flex;align-items:baseline;gap:.25em;min-width:0;max-width:100%;white-space:nowrap}
+  .graph-value-angle,.graph-value-result{display:inline-block;flex:0 0 auto;white-space:nowrap;text-align:left}
+  .graph-value-angle{width:10ch}
+  .graph-value-result{width:11ch}
   .graph-speed-value{display:inline-block;min-width:8ch;text-align:right;font-variant-numeric:tabular-nums}
-  @media(max-width:420px){
-    .graph-value-expression{grid-template-columns:auto 12ch;column-gap:.35em;row-gap:.2em}
-    #gValueResult{grid-column:2;grid-row:1}
-    #gValueAngleLabel{grid-column:1;grid-row:2;text-align:right}
-    #gValueAngle{grid-column:2;grid-row:2}
-  }
   .graph-definition{font-weight:700;margin-bottom:8px}
   .graph-explanation{margin-top:0}
   .graph-actions{margin:12px 0 0}
@@ -776,7 +771,7 @@
             <input type="range" id="slGraphSpeed" min="3" max="30" step="3" value="12" aria-label="Viteza animației graficului" aria-valuetext="12 grade pe secundă">
           </div>
         </div>
-        <div class="formula-box graph-value" id="gValue" aria-live="polite"><span class="graph-value-expression"><span id="gValueFn">sin(x) =</span><span class="graph-value-result" id="gValueResult">0,500</span><span id="gValueAngleLabel">x =</span><span class="graph-value-angle" id="gValueAngle">30°</span></span></div>
+        <div class="formula-box graph-value" id="gValue" aria-live="polite"><span class="graph-value-expression"><span class="graph-value-function"><span id="gValueFn">sin(x) =</span><span class="graph-value-result" id="gValueResult">0,500</span></span><span class="graph-value-angle-pair"><span id="gValueAngleLabel">x =</span><span class="graph-value-angle" id="gValueAngle">30°</span></span></span></div>
         <div class="play-row graph-actions">
           <button type="button" class="btn primary" id="btnGraphPlay">▶ Parcurge graficul</button>
           <button type="button" class="btn" id="btnGraphReset">⟲ Revino la x=0</button>
