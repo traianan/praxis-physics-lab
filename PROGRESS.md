@@ -10,7 +10,7 @@
 ## Înălțime constantă pentru comenzile din Grafice — 2026-11-23
 
 - Butoanele „Parcurge graficul” și „Pauză” au înălțime fixă de 60 px și text centrat, inclusiv când eticheta se rupe pe două rânduri. Butonul de reset rămâne aliniat și la aceeași înălțime.
-- Actions a semnalat două fișiere generate după `bbc6d0c`: catalogul/hash-ul shellului offline după actualizarea ZIP-ului și normalizarea linkurilor în HTML-ul lecției. Am regenerat catalogul offline și shellul, apoi am aplicat și normalizarea HTML ca verificarea de drift să fie idempotentă.
+- Actions a expus drift succesiv în catalogul/hash-ul shellului offline, în normalizarea linkurilor și în faviconul inline. Faviconul este acum codificat cu newline-uri canonice, indiferent de platformă; arhiva și fișierele generate au fost sincronizate pentru ca buildul Linux să fie idempotent.
 - Importul lecției și build-ul aplicației reușesc. Chrome DevTools pe mobil touch 390×844 confirmă 60 px în ambele stări, revenire la `x = 0` și lipsa overflow-ului.
 
 ## Caseta valorii graficului și CI — 2026-11-23

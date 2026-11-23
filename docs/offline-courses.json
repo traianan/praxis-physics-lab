@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-23T17:29:32+02:00",
+  "builtAt": "2026-11-23T17:39:50+02:00",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -477,7 +477,7 @@
     {
       "id": "functii-trigonometrice",
       "file": "public/simulari/functii-trigonometrice/functii-trigonometrice.zip",
-      "sha256": "c1dd597f1f110874d3be45fb60b41d41db902bc5e12df8b51256607032fe05ff",
+      "sha256": "15e57737a3fcbdfa9dc4576774d0c8b1be92ebfcbd079454245ad08a21bc724d",
       "languages": [
         "ro",
         "en"

@@ -1,7 +1,7 @@
 import {readFile,readdir,writeFile} from 'node:fs/promises';
 // One embedded favicon also works when an individual laboratory is opened via file://.
-const svg=await readFile(new URL('../public/assets/favicon.svg',import.meta.url));
-export const faviconHref='data:image/svg+xml;base64,'+svg.toString('base64');
+const svg=(await readFile(new URL('../public/assets/favicon.svg',import.meta.url),'utf8')).replace(/\r\n?/g,'\n');
+export const faviconHref='data:image/svg+xml;base64,'+Buffer.from(svg,'utf8').toString('base64');
 export function withFavicon(html){
  const cleaned=html.replace(/<link\b[^>]*>/gi,tag=>{const rel=tag.match(/\brel\s*=\s*(["'])(.*?)\1/i)?.[2]?.toLowerCase().split(/\s+/)||[];return rel.some(value=>['icon','apple-touch-icon','apple-touch-icon-precomposed','mask-icon'].includes(value))?'':tag;});
  return cleaned.replace(/<head\b[^>]*>/i,head=>head+'<link rel="icon" type="image/svg+xml" href="'+faviconHref+'">');
