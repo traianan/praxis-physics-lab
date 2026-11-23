@@ -7,7 +7,7 @@ const root=new URL('../',import.meta.url),id='functii-trigonometrice',source='so
 const read=path=>readFile(new URL(path,root),'utf8');
 const write=async(path,value)=>{const url=new URL(path,root);await mkdir(new URL('./',url),{recursive:true});await writeFile(url,value,'utf8');};
 const original=await read(source+'index.html');
-let html=original.match(/<html lang="ro">[\s\S]*?<\/html>/)?.[0];
+let html=original.match(/(?:<!doctype html>\s*)?<html lang="ro">[\s\S]*?<\/html>/i)?.[0];
 let css=original.match(/<style>([\s\S]*?)<\/style>/)?.[1];
 let js=original.match(/<script>([\s\S]*?)<\/script>/)?.[1];
 if(!html||!css||!js)throw new Error('Expected one complete self-contained source lesson.');

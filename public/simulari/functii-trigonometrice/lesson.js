@@ -378,126 +378,148 @@ function renderTheory(){
 }
 
 /* ================= tab Grafice ================= */
-const G = {fn:"sin", A:1, w:1, phi:0, playing:false, last:0, raf:0};
+const G = {fn:"sin", x:30, playing:false, last:0, raf:0};
 const GB = {x:70, y:26, w:790, h:330};
 const GW = {x0:-360, x1:360, y0:-2.6, y1:2.6};
+const GRAPH_FN_INDEX = {sin:0, cos:1, tan:2, cot:3};
 
-function waveVal(xDeg){
-  const arg = (G.w * xDeg + G.phi) * D2R;
-  if (G.fn === "sin") return G.A * Math.sin(arg);
-  if (G.fn === "cos") return G.A * Math.cos(arg);
-  if (G.fn === "tan") return G.A * Math.tan(arg);
-  const sn = Math.sin(arg);
-  if (Math.abs(sn) < 1e-9) return NaN;
-  return G.A * Math.cos(arg) / sn;
+function graphText(key){
+  return window.PraxisI18n?.tr(key) || key;
 }
-function graphFormula(){
-  const names = {sin:"sin", cos:"cos", tan:"tan", cot:"cot"};
-  const a = Math.abs(G.A - 1) < 1e-9 ? "" : fmt(G.A, 2) + "·";
-  const w = Math.abs(G.w - 1) < 1e-9 ? "" : fmt(G.w, 2);
-  const arg = (w ? w + "·" : "") + "x" +
-    (G.phi === 0 ? "" : (G.phi > 0 ? " + " : " − ") + Math.abs(G.phi) + "°");
-  return "y = " + a + names[G.fn] + "(" + arg + ")";
+function graphAngleText(deg){
+  if(state.unit==="deg") return fmt(deg, Number.isInteger(deg)?0:1)+"°";
+  const sign=deg<0?"−":"";
+  const abs=Math.abs(deg);
+  const rounded=Math.round(abs);
+  const exact=PI_FRACS[rounded];
+  return exact!==undefined&&Math.abs(abs-rounded)<1e-7 ? sign+exact+" rad" : fmt(deg*D2R,2)+" rad";
+}
+function graphValueAt(deg){
+  const values=trig(deg);
+  const value=values[{sin:"s",cos:"c",tan:"tan",cot:"cot"}[G.fn]];
+  return Number.isFinite(value)?value:null;
+}
+function graphRenderProperties(){
+  const rad=state.unit==="rad";
+  const allReal="x ∈ ℝ";
+  const unrestricted="y ∈ ℝ";
+  const formulas={
+    sin:{
+      domain:allReal,range:"−1 ≤ y ≤ 1",periodDeg:360,zerosDeg:"x = k·180°",zerosRad:"x = kπ",
+      asymptotes:"Nu are",parity:"Impară: f(−x) = −f(x)",explanation:"Sinusul este coordonata verticală a punctului P pe cercul unitate."
+    },
+    cos:{
+      domain:allReal,range:"−1 ≤ y ≤ 1",periodDeg:360,zerosDeg:"x = 90° + k·180°",zerosRad:"x = π/2 + kπ",
+      asymptotes:"Nu are",parity:"Pară: f(−x) = f(x)",explanation:"Cosinusul este coordonata orizontală a punctului P pe cercul unitate."
+    },
+    tan:{
+      domain:rad?"x ≠ π/2 + kπ":"x ≠ 90° + 180°k",range:unrestricted,periodDeg:180,zerosDeg:"x = k·180°",zerosRad:"x = kπ",
+      asymptotes:rad?"x = π/2 + kπ":"x = 90° + 180°k",parity:"Impară: f(−x) = −f(x)",explanation:"Tangenta este raportul sin x / cos x; nu este definită când cos x = 0."
+    },
+    cot:{
+      domain:rad?"x ≠ kπ":"x ≠ 180°k",range:unrestricted,periodDeg:180,zerosDeg:"x = 90° + k·180°",zerosRad:"x = π/2 + kπ",
+      asymptotes:rad?"x = kπ":"x = 180°k",parity:"Impară: f(−x) = −f(x)",explanation:"Cotangenta este raportul cos x / sin x; nu este definită când sin x = 0."
+    }
+  }[G.fn];
+  const periodRad=formulas.periodDeg===360?"2π rad":"π rad";
+  $("#gDefinition").textContent=G.fn+" x";
+  $("#gExplanation").textContent=graphText(formulas.explanation);
+  $("#gDomain").textContent=graphText(formulas.domain);
+  $("#gRange").textContent=graphText(formulas.range);
+  $("#gRepeat").textContent=rad?periodRad:formulas.periodDeg+"°";
+  $("#gRepeatRad").textContent=rad?formulas.periodDeg+"°":periodRad;
+  $("#gZeros").textContent=rad?formulas.zerosRad:formulas.zerosDeg;
+  $("#gParity").textContent=graphText(formulas.parity);
+  $("#gAsymptotes").textContent=graphText(formulas.asymptotes);
 }
 function renderGraph(){
-  const P = pal();
-  const m = makeMap(GW, GB);
-  const fnColor = {sin:P.sin, cos:P.cos, tan:P.tan, cot:P.cot}[G.fn];
-  let s = `<svg viewBox="0 0 920 410" role="img" aria-label="Graficul funcției ${G.fn}">`;
-  s += graphAxes(m, {stepX:90, stepY:1, labelX:degTick, xLabel:"x", yLabel:"y"});
+  const P=pal(), m=makeMap(GW,GB);
+  const fnColor={sin:P.sin,cos:P.cos,tan:P.tan,cot:P.cot}[G.fn];
+  let s='<svg viewBox="0 0 920 410" role="img" aria-label="'+graphText("Graficul")+" "+G.fn+'">';
+  s+=graphAxes(m,{stepX:90,stepY:1,labelX:degTick,xLabel:"x",yLabel:"y"});
 
-  /* asimptote */
-  if (G.fn === "tan" || G.fn === "cot"){
-    const base = (G.fn === "tan") ? 90 : 0;
-    for (let k = -10; k <= 10; k++){
-      const x = (base + 180 * k - G.phi) / G.w;
-      if (x > GW.x0 && x < GW.x1){
-        const X = m.X(x);
-        s += `<line x1="${r1(X)}" y1="${GB.y}" x2="${r1(X)}" y2="${GB.y + GB.h}"
-          stroke="${P.tan}" stroke-width="1.2" stroke-dasharray="5 5" opacity=".55"/>`;
+  if(G.fn==="tan"||G.fn==="cot"){
+    const base=G.fn==="tan"?90:0;
+    for(let k=-10;k<=10;k++){
+      const x=base+180*k;
+      if(x>GW.x0&&x<GW.x1){
+        const X=m.X(x);
+        s+='<line x1="'+r1(X)+'" y1="'+GB.y+'" x2="'+r1(X)+'" y2="'+(GB.y+GB.h)+'" stroke="'+P.tan+'" stroke-width="1.2" stroke-dasharray="5 5" opacity=".55"/>';
       }
     }
   }
 
-  /* curba */
-  let d = "", pen = false, prev = null;
-  const N = 1600;
-  for (let i = 0; i <= N; i++){
-    const x = GW.x0 + (GW.x1 - GW.x0) * i / N;
-    const y = waveVal(x);
-    const inside = isFinite(y) && Math.abs(y) <= GW.y1;
-    const jump = prev !== null && Math.abs(y - prev) > 3.2;
-    if (inside && !jump){
-      d += (pen ? "L" : "M") + r1(m.X(x)) + " " + r1(m.Y(y)) + " ";
-      pen = true;
-    }else{
-      pen = false;
-    }
-    prev = y;
+  let d="",pen=false,prev=null;
+  const N=1600;
+  for(let i=0;i<=N;i++){
+    const x=GW.x0+(GW.x1-GW.x0)*i/N;
+    const y=graphValueAt(x);
+    const inside=y!==null&&Math.abs(y)<=GW.y1;
+    const jump=prev!==null&&y!==null&&Math.abs(y-prev)>3.2;
+    if(inside&&!jump){
+      d+=(pen?"L":"M")+r1(m.X(x))+" "+r1(m.Y(y))+" ";
+      pen=true;
+    }else pen=false;
+    prev=y;
   }
-  s += `<path d="${d}" fill="none" stroke="${fnColor}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+  s+='<path d="'+d+'" fill="none" stroke="'+fnColor+'" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>';
 
-  /* marcaj pe axa Ox la origine */
-  s += `<circle cx="${r1(m.X(0))}" cy="${r1(m.Y(0))}" r="3.2" fill="${fnColor}"/>`;
-  s += `</svg>`;
-  $("#svgGraph").innerHTML = s;
+  const xInView=G.x>=GW.x0&&G.x<=GW.x1;
+  const y=graphValueAt(G.x);
+  if(xInView){
+    const X=m.X(G.x);
+    s+='<line x1="'+r1(X)+'" y1="'+GB.y+'" x2="'+r1(X)+'" y2="'+(GB.y+GB.h)+'" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 5" opacity=".72"/>';
+    if(y!==null&&Math.abs(y)<=GW.y1)
+      s+='<circle cx="'+r1(X)+'" cy="'+r1(m.Y(y))+'" r="6" fill="'+fnColor+'" stroke="var(--card)" stroke-width="2.5"/>';
+  }
 
-  /* citiri */
-  const T = 360 / G.w;
-  const shift = -G.phi / G.w;
-  const amp = (G.fn === "sin" || G.fn === "cos") ? Math.abs(G.A) : null;
-  $("#gFormula").textContent = graphFormula();
-  $("#gPeriod").textContent = fmt(T, 1) + "°";
-  $("#gPeriodRad").textContent = fmt(TAU / G.w, 2) + " rad";
-  $("#gAmp").textContent = amp === null ? "—" : fmt(amp, 2);
-  $("#gAmpNote").textContent = amp === null ? "tan și cot nu au amplitudine" : "valoarea maximă |y|";
-  $("#gShift").textContent = fmt(shift, 1) + "°";
-  $("#gExtrem").textContent = amp === null ? "±∞" : "±" + fmt(amp, 2);
-  $("#gExtremNote").textContent = amp === null ? "creștere nemărginită" : "minim și maxim";
-
-  if (G.fn === "sin" || G.fn === "cos"){
-    const off = (G.fn === "sin") ? 0 : 90;
-    $("#gZero").textContent = "Zerouri: ωx + φ = " + off + "° + k·180°";
-    $("#gDetails").innerHTML =
-      "Perioada este <b>" + fmt(T, 1) + "°</b> (" + fmt(TAU / G.w, 2) + " rad), deci graficul se repetă la fiecare " +
-      fmt(T, 1) + "°. Amplitudinea este <b>" + fmt(amp, 2) + "</b>, iar deplasarea de fază este <b>" +
-      fmt(shift, 1) + "°</b> față de unda de bază. Maximul este " + fmt(amp, 2) + ", minimul " + fmt(-amp, 2) + ".";
+  $("#svgGraph").innerHTML=s+"</svg>";
+  $("#valGraphX").textContent=graphAngleText(G.x);
+  $("#slGraphX").value=G.x;
+  $("#slGraphX").setAttribute("aria-valuetext",graphAngleText(G.x));
+  if(y===null){
+    $("#gValue").textContent=G.fn+"("+graphAngleText(G.x)+") = "+graphText("nedefinită");
   }else{
-    $("#gZero").textContent = (G.fn === "tan" ? "Zerouri: ωx + φ = k·180°" : "Zerouri: ωx + φ = 90° + k·180°");
-    $("#gDetails").innerHTML =
-      "Funcția " + G.fn + " are perioada <b>" + fmt(T, 1) + "°</b> (" + fmt(TAU / G.w, 2) +
-      " rad) și nu este definită în punctele în care numitorul se anulează. Acolo apar <b>asimptote verticale</b>, " +
-      "marcate cu linii punctate. Valorile cresc nemărginit lângă asimptote.";
+    const exactIndex=Math.round(norm360(G.x));
+    const exact=Math.abs(G.x-Math.round(G.x))<1e-6?(EXACT[exactIndex]||[])[GRAPH_FN_INDEX[G.fn]]:null;
+    const approx=fmt3(y);
+    $("#gValue").textContent=exact&&exact!=="—"&&["0","1","−1"].includes(exact)
+      ? G.fn+"("+graphAngleText(G.x)+") = "+exact
+      : exact&&exact!=="—"
+      ? G.fn+"("+graphAngleText(G.x)+") = "+exact+" ≈ "+approx
+      : G.fn+"("+graphAngleText(G.x)+") = "+approx;
   }
-
-  $("#slAmp").value = G.A;
-  $("#slOmega").value = G.w;
-  $("#slPhi").value = G.phi;
-  $("#valAmp").textContent = fmt(G.A, 2);
-  $("#valOmega").textContent = fmt(G.w, 2);
-  $("#valPhi").textContent = fmt(G.phi, 0) + "°";
+  graphRenderProperties();
+  $$(".chip[data-fn]").forEach(ch=>{
+    const active=ch.dataset.fn===G.fn;
+    ch.classList.toggle("active",active);
+    ch.setAttribute("aria-pressed",String(active));
+  });
+  $("#btnGraphPlay").textContent=G.playing?"❚❚ "+graphText("Pauză"):"▶ "+graphText("Parcurge graficul");
 }
 
-function waveLoop(ts){
-  if (!G.playing) return;
-  if (!G.last) G.last = ts;
-  const dt = frameSeconds(ts, G.last);
-  G.last = ts;
-  G.phi += dt * 55;
-  if (G.phi > 180) G.phi -= 360;
+function graphLoop(ts){
+  if(!G.playing)return;
+  if(!G.last)G.last=ts;
+  const dt=frameSeconds(ts,G.last);
+  G.last=ts;
+  G.x+=dt*54;
+  if(G.x>GW.x1)G.x=GW.x0;
   renderGraph();
-  G.raf = requestAnimationFrame(waveLoop);
+  G.raf=requestAnimationFrame(graphLoop);
 }
-function wavePlay(){
-  G.playing = true; G.last = 0;
-  $("#btnWavePlay").textContent = "❚❚ Pauză";
-  beep(680);
-  G.raf = requestAnimationFrame(waveLoop);
+function graphPlay(){
+  if(G.playing)return;
+  G.playing=true;G.last=0;
+  renderGraph();
+  G.raf=requestAnimationFrame(graphLoop);
 }
-function wavePause(){
-  G.playing = false;
+function graphPause(){
+  G.playing=false;
+  G.last=0;
   cancelAnimationFrame(G.raf);
-  $("#btnWavePlay").textContent = "▶ Animație undă";
+  const button=$("#btnGraphPlay");
+  if(button)button.textContent="▶ "+graphText("Parcurge graficul");
 }
 
 /* ================= tab Animații ================= */
@@ -1127,7 +1149,7 @@ function activateTab(name){
   });
   $$(".panel").forEach(p => { const selected=p.id === "tab-" + name; p.classList.toggle("active",selected); p.hidden=!selected; });
   if (name !== "animatii") animPause2();
-  if (name !== "grafice") wavePause();
+  if (name !== "grafice") graphPause();
   if (name !== "fizica") physPause();
   if (name === "animatii") renderAnim2();
   if (name === "grafice") renderGraph();
@@ -1192,35 +1214,28 @@ $$(".chip[data-angle]").forEach(ch => ch.addEventListener("click", () => {
 $$(".unit-btn").forEach(b => b.addEventListener("click", () => setUnit(b.dataset.unit)));
 
 /* grafice */
-$$(".chip[data-fn]").forEach(ch => ch.addEventListener("click", () => {
-  $$(".chip[data-fn]").forEach(x => x.classList.remove("active"));
-  ch.classList.add("active");
-  G.fn = ch.dataset.fn;
+$$(".chip[data-fn]").forEach(ch=>ch.addEventListener("click",()=>{
+  G.fn=ch.dataset.fn;
   renderGraph();
   beep(720);
 }));
-$("#slAmp").addEventListener("input", e => { G.A = Number(e.target.value); renderGraph(); beep(520); });
-$("#slOmega").addEventListener("input", e => { G.w = Number(e.target.value); renderGraph(); beep(540); });
-$("#slPhi").addEventListener("input", e => { G.phi = Number(e.target.value); renderGraph(); beep(560); });
-$$("[data-gstep]").forEach(b => b.addEventListener("click", () => {
-  const key = b.dataset.gstep, d = Number(b.dataset.d);
-  const lim = {A:[0.25, 2.5], w:[0.5, 3], phi:[-180, 180]}[key];
-  G[key] = clamp(G[key] + d, lim[0], lim[1]);
+$("#slGraphX").addEventListener("input",e=>{
+  G.x=Number(e.target.value);
+  renderGraph();
+});
+$$("[data-xstep]").forEach(button=>button.addEventListener("click",()=>{
+  G.x=clamp(Math.round(G.x+Number(button.dataset.xstep)),-360,360);
   renderGraph();
   beep(600);
 }));
-$("#btnWavePlay").addEventListener("click", () => G.playing ? wavePause() : wavePlay());
-$("#btnWaveReset").addEventListener("click", () => {
-  wavePause();
-  G.A = 1; G.w = 1; G.phi = 0;
+$("#btnGraphPlay").addEventListener("click",()=>G.playing?graphPause():graphPlay());
+$("#btnGraphReset").addEventListener("click",()=>{
+  graphPause();
+  G.x=0;
   renderGraph();
   beep(560);
 });
-$("#btnTone").addEventListener("click", () => {
-  const f = 180 + G.w * 90;
-  playTone(f, 1.1, 0.06, "sine");
-  beep(f);
-});
+window.addEventListener("praxis-language-change",renderGraph);
 
 /* animații */
 $("#btnAnimPlay").addEventListener("click", () => A2.playing ? animPause2() : animPlay2());

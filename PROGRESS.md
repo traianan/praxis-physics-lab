@@ -11,6 +11,15 @@
 - Jurnalele GitHub Actions pentru `acf49d5` și `fc0a7f2` arătau două probleme persistente: dicționarul RO al lecției folosește textul românesc sursă ca fallback, dar testul cerea egalitatea cheilor RO/EN; antetul comun depășea limita 100 KiB cu comentarii de implementare. Testul verifică acum cheile RO explicite și placeholder-ele, iar sursele antetului păstrează comentariile necesare fără text redundant.
 - Build reușit. Suita completă `scripts/check-ci.mjs`: 504 teste trecute, 7 omise, 0 eșecuri. Chrome DevTools la 1920×1080 a confirmat pornirea/oprirerea audio, dispariția mesajului gol și barele spectrale active; RO și EN verificate. Detectorul Impeccable nu a raportat probleme.
 
+## Grafice dedicate pentru sin, cos, tan și cot — 2026-11-23
+
+- În „Grafice”, înlocuite perioada/amplitudinea/faza undei cu explorarea uneia dintre cele patru funcții: unghi reglabil, valoare curentă, marker pe curbă, proprietăți relevante (domeniu, valori, repetiție, zerouri, paritate și asimptote) și animație de urmărire. Păstrate axele în grade/radiani și țintele tactile.
+- Verificarea Chrome a găsit și corectat o mapare eronată care făcea funcția sin/cos să apară nedefinită. Tan la 90° și cot la 180° sunt nedefinite, fără marker; pentru toate funcțiile sunt afișate proprietățile distincte. Textul nou este localizat RO/EN.
+- Importerul păstrează acum `<!doctype html>`, eliminând Quirks Mode/Katex warning din pagina construită. Corectată explicit și culoarea hover a tabului activ după confirmarea utilizatorului.
+- SymPy 1.14 a verificat perioadele, familiile zerourilor și singularităților. `node --check`, JSON-urile, importul și arhiva offline reușesc. `npm run build` a reușit în checkoutul principal; în worktree-ul curat, buildul complet s-a oprit fiindcă lipsesc dependențe locale (esbuild/konva), fără a instala pachete. Chrome DevTools a verificat funcțiile, radianii, asimptotele, play/pause/reset și randarea la 1920×1080, 1024×768 și 390×844 cu touch/DPR2; fără overflow orizontal, butoane sub 52 px sau erori JS. Atingerea a fost emulată în Chrome, nu testată pe tabla fizică.
+- Detectorul Impeccable a continuat să raporteze 2:1, în timp ce Chrome măsoară 11,59:1 pe tabul activ. Constatat fals pozitiv de asociere a tokenurilor; ignorarea low-contrast este strict limitată la sursa acestei lecții.
+- Arhiva și hash-ul din registru au fost regenerate; commitul a fost rebazat peste actualizările recente de pe `main`, păstrând ordinea celorlalte cursuri.
+
 ## Corecție copertă — Funcții trigonometrice — 2026-11-21
 
 - Corectate graficele sinus și cosinus pe intervalul simetric [−π, π], cu originea comună x=0 și valorile sin(0)=0, cos(0)=1. Asseturile versionate invalidează cache-ul imaginii vechi.

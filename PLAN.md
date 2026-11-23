@@ -24,3 +24,11 @@ Revizie implementată și publicată: 740 stări de layout, 58 stări axe fără
 4. Regenerează distribuția și arhiva Ohm, rulează regresiile și verificările proiectului; consemnează ce a fost emulat și limitele testării pe tabla fizică.
 
 Finalizat: implementare, verificări locale/offline, publicare și repetarea celor 60 stări pe producție. Rezultate și limitări în PROGRESS.md.
+
+# Graficele funcțiilor trigonometrice — 2026-11-23
+
+1. Înlocuiește controalele de undă generalizată cu explorarea graficului funcției de bază selectate: sin, cos, tan sau cot.
+2. Arată unghiul curent și valoarea funcției; animația parcurge graficul, tratează corect punctele nedefinite și actualizează proprietățile specifice fiecărei funcții. Localizează complet RO/EN și păstrează țintele tactile.
+3. Verifică formulele și comportamentul la zerouri/asimptote, toate cele patru selecții, randarea desktop/tabletă/touch și arhiva offline; publică remedierea pe main.
+
+Finalizat: graficele au explorare dedicată, valori și proprietăți specifice pentru fiecare funcție; animație și radiani verificate, textul din panoul de proprietăți localizat, contrastul hover clarificat, arhiva offline și build regenerate. SymPy confirmă perioadele și familiile de zerouri/asimptote.
