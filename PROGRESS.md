@@ -7,6 +7,12 @@
 - Chrome DevTools a verificat revenirea la `x = 0` și poziția identică a resetului în ambele stări, la 1600×1000, mobil touch 390×844 și tablă 3840×2160; fără overflow orizontal sau erori în consolă.
 - Publicată pe `main` în commitul `e0aecaf`.
 
+## Înălțime constantă pentru comenzile din Grafice — 2026-11-23
+
+- Butoanele „Parcurge graficul” și „Pauză” au înălțime fixă de 60 px și text centrat, inclusiv când eticheta se rupe pe două rânduri. Butonul de reset rămâne aliniat și la aceeași înălțime.
+- Diagnosticul Actions pentru `bbc6d0c` a localizat driftul în `public/offline/archives.json`: hash-ul arhivei se schimbase fără regenerarea catalogului offline și a versiunii shell. Am sincronizat aceste fișiere după regenerarea ZIP-ului.
+- Importul lecției și build-ul aplicației reușesc. Chrome DevTools pe mobil touch 390×844 confirmă 60 px în ambele stări, revenire la `x = 0` și lipsa overflow-ului.
+
 ## Caseta valorii graficului și CI — 2026-11-23
 
 - Formula valorii folosește grupuri flexibile care se împachetează după lățimea reală a casetei verzi. Funcția, rezultatul și unghiul rămân în interior pentru sin, cos, tan și cot, inclusiv valorile nedefinite.

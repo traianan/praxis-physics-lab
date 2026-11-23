@@ -260,7 +260,7 @@
   .graph-definition{font-weight:700;margin-bottom:8px}
   .graph-explanation{margin-top:0}
   .graph-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:8px;margin:12px 0 0}
-  .graph-actions .btn{width:100%;min-width:0;text-wrap:balance}
+  .graph-actions .btn{display:flex;align-items:center;justify-content:center;width:100%;min-width:0;height:60px;padding:6px 8px;line-height:1.25;text-wrap:balance}
   .graph-instruction{margin-top:8px}
   .graph-facts{margin-top:12px;padding-top:8px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
   .graph-facts p{margin:5px 0;overflow-wrap:anywhere}
