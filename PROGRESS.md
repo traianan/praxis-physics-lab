@@ -4,6 +4,7 @@
 
 - Formula valorii folosește grupuri flexibile care se împachetează după lățimea reală a casetei verzi. Funcția, rezultatul și unghiul rămân în interior pentru sin, cos, tan și cot, inclusiv valorile nedefinite.
 - Diagnosticul GitHub Actions pentru `0ae69e4`: build reușit; eșecul era verificarea de drift pentru `public/offline/shell-version.js`. Fișierul generat și CSS-ul lecției au fost actualizate.
+- După regenerarea hash-ului shell-ului pentru noua arhivă offline, rularea GitHub Actions `151` a trecut complet: build, drift, registru, sintaxă, CI și auditul Chrome.
 
 ## Reglaj animației graficelor trigonometrice — 2026-11-23
 
