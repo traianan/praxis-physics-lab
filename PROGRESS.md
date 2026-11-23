@@ -1,5 +1,12 @@
 # PROGRESS
 
+## Stabilizarea comenzilor animației din Grafice — 2026-11-23
+
+- Rândul „Parcurge graficul” / „Revino la x=0” rămâne într-o grilă cu două coloane, aliniate sus; schimbarea etichetei play/pauză nu mai împinge butonul de reset în jos.
+- Importul lecției reușește; arhiva offline și hash-ul ei au fost sincronizate. Generatorul complet pentru arhiva offline nu a putut porni în checkoutul curat, deoarece lipsește `esbuild`; am actualizat direct fișierul `style.css` din ZIP și i-am verificat conținutul.
+- Chrome DevTools a verificat revenirea la `x = 0` și poziția identică a resetului în ambele stări, la 1600×1000, mobil touch 390×844 și tablă 3840×2160; fără overflow orizontal sau erori în consolă.
+- Păstrat local; nu a fost solicitată publicarea acestui reglaj.
+
 ## Caseta valorii graficului și CI — 2026-11-23
 
 - Formula valorii folosește grupuri flexibile care se împachetează după lățimea reală a casetei verzi. Funcția, rezultatul și unghiul rămân în interior pentru sin, cos, tan și cot, inclusiv valorile nedefinite.
