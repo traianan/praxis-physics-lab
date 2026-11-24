@@ -75,15 +75,12 @@
     const nearest = Math.round(m);
     return {
       midi: nearest,
-      name: midiName(nearest),
-      cents: Math.round((m - nearest) * 100),
-      exact: m
+      name: midiName(nearest)
     };
   }
 
   function noteLabel(freq) {
-    const n = freqToNote(freq);
-    return n.name + (n.cents >= 0 ? ' +' : ' ') + n.cents + (window.PraxisI18n?.language === 'en' ? ' cents' : ' cenți');
+    return freqToNote(freq).name;
   }
 
   /* ── Stare comună & preferințe ───────────────────────────────────────── */

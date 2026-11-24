@@ -52,7 +52,8 @@
     $('#str-lambda').textContent = fmt(lambda, 2);
     const note = App.freqToNote(f);
     $('#str-note').textContent = note.name;
-    $('#str-cents').textContent = (note.cents >= 0 ? '+' : '') + note.cents + (window.PraxisI18n?.language === 'en' ? ' cents' : ' cenți');
+    const noteDeviation = f - App.midiToFreq(note.midi);
+    $('#str-deviation').textContent = 'Δf ' + (noteDeviation >= 0 ? '+' : '−') + fmt(Math.abs(noteDeviation), 1) + ' Hz';
     const n = stringState.n;
     $('#string-observation').textContent = n === 1
       ? 'Fundamentala: 2 noduri la capete și un ventru la mijloc. Lungimea coardei este λ/2.'
@@ -179,6 +180,14 @@
     contrabas: { L: 1.05, mu: 6, f: 41.2, n: 1, label: 'Contrabas · Mi1' }
   };
 
+  function setStringInstrumentImage(name) {
+    const image = document.querySelector('[data-string-instrument-image]');
+    const preset = document.querySelector(`[data-string-preset="${name}"]`);
+    if (!image || !preset) return;
+    image.dataset.stringInstrumentImage = name;
+    image.setAttribute('aria-label', preset.textContent.trim());
+  }
+
   function applyStringPreset(name) {
     const p = stringPresets[name];
     if (!p) return;
@@ -187,6 +196,7 @@
     const T = clamp(muKg * Math.pow(2 * p.L * p.f / p.n, 2), 10, 1200);
     setStringInputs({ L: p.L, T: Math.round(T), mu: p.mu, n: p.n });
     $$('[data-string-preset]').forEach((b) => b.classList.toggle('active', b.dataset.stringPreset === name));
+    setStringInstrumentImage(name);
     updateString();
     App.ui.toast(p.label + ' — tensiunea a fost calculată din f = (n/2L)·√(T/μ).');
   }
@@ -196,6 +206,7 @@
     setStringInputs({ L: 0.65, T: 80, mu: 2.5, n: 1 });
     $('#string-envelope').checked = true;
     $$('[data-string-preset]').forEach((b) => b.classList.remove('active'));
+    setStringInstrumentImage('chitara');
     updateString();
   }
 
@@ -218,6 +229,10 @@
     $('#string-play').addEventListener('click', toggleString);
     $('#string-reset').addEventListener('click', resetString);
     $$('[data-string-preset]').forEach((btn) => btn.addEventListener('click', () => applyStringPreset(btn.dataset.stringPreset)));
+    setStringInstrumentImage('chitara');
+    window.addEventListener('praxis-language-change', () => {
+      setStringInstrumentImage(document.querySelector('[data-string-instrument-image]')?.dataset.stringInstrumentImage || 'chitara');
+    });
     window.addEventListener('app:prefs', updateString);
     window.addEventListener('app:reset', resetString);
     updateString();
@@ -255,7 +270,8 @@
     $('#pipe-lambda').textContent = fmt(lambda, 2);
     const note = App.freqToNote(f);
     $('#pipe-note').textContent = note.name;
-    $('#pipe-cents').textContent = (note.cents >= 0 ? '+' : '') + note.cents + (window.PraxisI18n?.language === 'en' ? ' cents' : ' cenți');
+    const noteDeviation = f - App.midiToFreq(note.midi);
+    $('#pipe-deviation').textContent = 'Δf ' + (noteDeviation >= 0 ? '+' : '−') + fmt(Math.abs(noteDeviation), 1) + ' Hz';
     $('#pipe-n-out').textContent = String(pipeState.n);
 
     const closed = pipeState.type === 'closed';
