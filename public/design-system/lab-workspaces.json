@@ -21,6 +21,16 @@
       }
     ]
   },
+  "fourier-instrumente": {
+    "workspaces": [
+      {
+        "selector": "#panel-analysis .workspace",
+        "scene": "#spectrumCanvas",
+        "controls": ".controls",
+        "layout": "native"
+      }
+    ]
+  },
   "legea-lui-ohm": {
     "react": true,
     "workspaces": [

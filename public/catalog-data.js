@@ -71,6 +71,26 @@ export const simulations = [
     "status": "available"
   },
   {
+    "id": "fourier-instrumente",
+    "addedOn": "2026-11-24",
+    "addedOrder": 1,
+    "chapter": "sunete-si-unde",
+    "title": "Analiza Fourier a instrumentelor",
+    "subtitle": "Fundamentală, armonice și timbru",
+    "description": "Ascultă demo-uri pentru corzi și suflat, selectează un fragment și compară fundamentala, armonicele și spectrograma. Poți încărca și o înregistrare proprie.",
+    "href": "./simulari/fourier-instrumente/index.html",
+    "image": "./assets/fourier-instrumente.svg",
+    "alt": "Spectru muzical cu frecvența fundamentală și armonicele ei",
+    "tags": [
+      "Sunet",
+      "Fourier",
+      "Armonice",
+      "Offline"
+    ],
+    "keywords": "fourier sunet spectru spectrograma armonice timbru instrumente muzicale coarde vioara violoncel flaut analiza audio",
+    "status": "available"
+  },
+  {
     "id": "legea-lui-ohm",
     "addedOn": "2026-11-08",
     "addedOrder": 1,

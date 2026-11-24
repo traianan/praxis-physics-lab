@@ -1,0 +1,99 @@
+:root {
+  --page: #f7f5ee;
+  --surface: #fffefa;
+  --surface-subtle: #edf3ed;
+  --ink: #18332f;
+  --muted: #586d63;
+  --faint: #586d63;
+  --line: #d9e2d8;
+  --grid: #e3e9e0;
+  --accent: #103f3b;
+  --accent-soft: #e2efd7;
+  --accent-ink: #103f3b;
+  --focus: #245f9e;
+  --shadow: 0 8px 24px rgba(16, 63, 59, .07), 0 2px 6px rgba(16, 63, 59, .04);
+}
+
+body[data-praxis-course="fourier-instrumente"] { background: var(--page); }
+#praxis-original { width: min(1480px, calc(100% - 48px)); margin: 0 auto; }
+#praxis-original > main { width: 100%; margin: 0; }
+#praxis-original .tabs { display: flex; gap: 8px; margin: 0 0 14px; padding: 0 2px; border-bottom: 1px solid var(--line); }
+#praxis-original .tabs .tab { min-height: 46px; padding: 8px 16px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--muted); font-weight: 650; }
+#praxis-original .tabs .tab[aria-selected="true"] { border-bottom-color: #c5e8a5; color: #103f3b; }
+#praxis-original .tab-panel[hidden], #praxis-original .result-view[hidden] { display: none !important; }
+#praxis-original .tab-panel { min-width: 0; }
+#praxis-original .workspace { gap: 16px; }
+#praxis-original .controls, #praxis-original .results { border-color: var(--line); box-shadow: var(--shadow); }
+#praxis-original .result-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 24px 16px; }
+#praxis-original .result-tabs button { min-height: 42px; padding: 8px 13px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--muted); font-weight: 600; }
+#praxis-original .result-tabs button[aria-selected="true"] { border-color: #c5e8a5; background: #eaf3df; color: #103f3b; }
+#praxis-original .result-view { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-width: 0; }
+#praxis-original .result-view .chart-panel { min-width: 0; }
+#praxis-original .result-view .chart-panel--wide { grid-column: 1 / -1; }
+#praxis-original .result-view .chart-panel--wide:not(:last-child) { border-right: 0; }
+#praxis-original .insight { margin-top: 14px; }
+#praxis-original .key-ideas { display: grid; gap: 18px; padding: 22px 26px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); }
+#praxis-original .key-ideas h2 { margin: 0; font-size: 23px; }
+#praxis-original .key-ideas > p { max-width: 80ch; margin: 0; }
+#praxis-original .guide-heading { display: grid; gap: 7px; }
+#praxis-original .guide-heading p { max-width: 82ch; margin: 0; color: var(--muted); line-height: 1.55; }
+#praxis-original .guide-tabs { display: flex; gap: 7px; overflow-x: auto; padding: 0 0 4px; border-bottom: 1px solid var(--line); scrollbar-width: thin; }
+#praxis-original .guide-tabs button { flex: 0 0 auto; min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px 9px 0 0; background: var(--surface-subtle); color: var(--muted); font: inherit; font-size: 13px; font-weight: 650; }
+#praxis-original .guide-tabs button[aria-selected="true"] { border-color: var(--line); border-bottom-color: var(--surface); background: var(--surface); color: var(--ink); box-shadow: 0 -2px 0 var(--accent) inset; }
+#praxis-original .guide-tabs button:focus-visible, #praxis-original .reset-lab-button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+#praxis-original .guide-panel[hidden] { display: none !important; }
+#praxis-original .guide-panel { min-width: 0; }
+#praxis-original .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+#praxis-original .guide-card { min-width: 0; padding: 15px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+#praxis-original .guide-card h3 { margin: 0 0 7px; color: var(--ink); font-size: 15px; line-height: 1.35; }
+#praxis-original .guide-card p { margin: 0 0 9px; color: var(--muted); font-size: 13px; line-height: 1.58; }
+#praxis-original .guide-card p:last-child { margin-bottom: 0; }
+#praxis-original .guide-card .guide-formula { padding: 10px 12px; border-left: 1px solid var(--accent); border-radius: 0 7px 7px 0; background: var(--surface-subtle); color: var(--ink); font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+#praxis-original .guide-formula-list { display: grid; gap: 7px; min-width: 0; margin: 0 0 9px; }
+#praxis-original .guide-formula-list > .guide-formula { min-width: 0; margin: 0; overflow-x: auto; overflow-y: hidden; }
+#praxis-original .guide-formula[data-science-math="tex"] { font-family: inherit; }
+#praxis-original .guide-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 24px; margin: 0; padding: 0; list-style: none; counter-reset: guide-step; }
+#praxis-original .guide-steps li { position: relative; min-width: 0; padding: 12px 13px 12px 42px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); font-size: 13px; line-height: 1.55; counter-increment: guide-step; }
+#praxis-original .guide-steps li::before { content: counter(guide-step); position: absolute; top: 11px; left: 12px; display: grid; width: 22px; height: 22px; place-items: center; border-radius: 50%; background: var(--accent-soft); color: var(--accent-ink); font-size: 12px; font-weight: 750; }
+#praxis-original .guide-steps strong { color: var(--ink); }
+#praxis-original .guide-note { margin: 12px 0 0; padding: 12px 14px; border-radius: 8px; background: var(--surface-subtle); color: var(--muted); font-size: 13px; line-height: 1.5; }
+#praxis-original .guide-note strong { color: var(--ink); }
+#praxis-original .guide-card details { margin-top: 9px; color: var(--muted); font-size: 13px; }
+#praxis-original .guide-card summary { min-height: 36px; display: flex; align-items: center; color: var(--accent-ink); font-weight: 700; cursor: pointer; }
+#praxis-original .player-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 12px; margin-top: 12px; }
+#praxis-original .volume-control { width: 100%; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; color: var(--muted); font-size: 12px; font-weight: 650; }
+#praxis-original .volume-control > span { display: flex; justify-content: space-between; gap: 8px; }
+#praxis-original .volume-control > .praxis-range-stepper { display: grid; grid-column: 1 / -1; grid-row: 2; grid-template-columns: 44px minmax(48px, 1fr) 44px; align-items: center; gap: 6px; width: 100%; min-width: 0; }
+#praxis-original .volume-control > .praxis-range-stepper > button { width: 44px; min-width: 44px; min-height: 44px; padding: 0; }
+#praxis-original .volume-control > .praxis-range-stepper > .range-control { width: 100%; min-width: 0; }
+#praxis-original .volume-control output { color: var(--ink); font-variant-numeric: tabular-nums; }
+#praxis-original .volume-control .range-control { min-height: 24px; }
+#praxis-original .reset-lab-button { min-height: 42px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; font-size: 12px; font-weight: 700; }
+#praxis-original .reset-lab-button:hover { border-color: var(--accent); background: var(--accent-soft); }
+#praxis-original .reset-lab-button:disabled { cursor: wait; opacity: .6; }
+#praxis-original .method-grid article { padding: 12px 0 0; border-top: 1px solid var(--line); }
+#praxis-original .method-grid h3 { margin: 0 0 7px; font-size: 15px; }
+#praxis-original .method-grid p { margin: 0; color: var(--muted); font-size: 13px; }
+#praxis-original .method-limit { grid-column: 1 / -1; margin: 0; padding: 13px 15px; border-radius: 9px; background: var(--surface-subtle); color: var(--muted); font-size: 13px; }
+#praxis-original .method-limit strong { color: var(--ink); }
+
+@media (max-width: 980px) {
+  #praxis-original { width: min(760px, calc(100% - 32px)); }
+}
+@media (max-width: 680px) {
+  #praxis-original { width: calc(100% - 24px); }
+  #praxis-original .tabs { overflow-x: auto; }
+  #praxis-original .tabs .tab { flex: 0 0 auto; }
+  #praxis-original .result-tabs { gap: 5px; padding-inline: 14px; }
+  #praxis-original .result-tabs button { flex: 1 1 auto; padding-inline: 9px; }
+  #praxis-original .result-view { grid-template-columns: 1fr; }
+  #praxis-original .result-view .chart-panel--wide { grid-column: auto; }
+  #praxis-original .key-ideas { padding: 18px; }
+  #praxis-original .guide-grid, #praxis-original .guide-steps { grid-template-columns: 1fr; }
+  #praxis-original .guide-tabs { margin-inline: -2px; }
+  #praxis-original .guide-tabs button { padding-inline: 10px; }
+  #praxis-original .guide-card .guide-formula { padding-inline: 4px; overflow-x: auto; }
+  #praxis-original .player-tools { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+  #praxis-original .reset-lab-button { padding-inline: 9px; }
+  #praxis-original .method-grid { grid-template-columns: 1fr; }
+}

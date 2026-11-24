@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-23T17:39:50+02:00",
+  "builtAt": "2026-11-24T13:02:15.364Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -489,6 +489,17 @@
       "id": "coarde-tuburi-sonore",
       "file": "public/simulari/coarde-tuburi-sonore/coarde-tuburi-sonore.zip",
       "sha256": "d34c14f17441a4e2db4f91a7b3e02cf2ef1072a0bbefc27ec5221ffa7cf98689",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "fourier-instrumente",
+      "file": "public/simulari/fourier-instrumente/fourier-instrumente.zip",
+      "sha256": "96e603aeb7c0d43b0084e68f3f4ddf6259f65f003a8368d961c56888737a661b",
       "languages": [
         "ro",
         "en"

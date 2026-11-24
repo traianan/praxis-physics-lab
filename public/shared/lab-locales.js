@@ -6,6 +6,12 @@ export const labNamespaces = {
     "courses/shared",
     "courses/coarde-tuburi-sonore/ui"
   ],
+  "fourier-instrumente": [
+    "common",
+    "chapters/sunete-si-unde",
+    "courses/shared",
+    "courses/fourier-instrumente/ui"
+  ],
   "legea-lui-ohm": [
     "common",
     "chapters/electricitate-magnetism-circuite",

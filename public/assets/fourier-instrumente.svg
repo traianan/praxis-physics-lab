@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Spectrul armonic al unei note muzicale</title>
+  <desc id="desc">Undă armonică verde petrol și componente spectrale pe un fond cald deschis.</desc>
+  <rect width="960" height="540" rx="28" fill="#f7f5ee"/>
+  <rect x="74" y="58" width="812" height="420" rx="22" fill="#fffefa" stroke="#d9e2d8" stroke-width="3"/>
+  <path d="M128 134H832M128 210H832M128 286H832M128 362H832M128 438H832" stroke="#e3e9e0" stroke-width="2"/>
+  <path d="M128 438H832M128 104V438" stroke="#586d63" stroke-width="3"/>
+  <path d="M130 286 C158 205 186 205 214 286 S270 367 298 286 S354 205 382 286 S438 367 466 286 S522 205 550 286 S606 367 634 286 S690 205 718 286 S774 367 802 286 S830 230 850 268" fill="none" stroke="#103f3b" stroke-width="8" stroke-linecap="round"/>
+  <g stroke="#b75b2c" stroke-width="12" stroke-linecap="round">
+    <path d="M230 438V206"/><path d="M320 438V298"/><path d="M410 438V342"/><path d="M500 438V374"/><path d="M590 438V394"/><path d="M680 438V408"/><path d="M770 438V418"/>
+  </g>
+  <path d="M230 188h16" stroke="#103f3b" stroke-width="4"/>
+  <text x="230" y="176" text-anchor="middle" fill="#18332f" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="700">f₀</text>
+  <text x="320" y="276" text-anchor="middle" fill="#586d63" font-family="Segoe UI,Arial,sans-serif" font-size="20">2f₀</text>
+  <text x="410" y="320" text-anchor="middle" fill="#586d63" font-family="Segoe UI,Arial,sans-serif" font-size="20">3f₀</text>
+  <text x="480" y="510" text-anchor="middle" fill="#586d63" font-family="Segoe UI,Arial,sans-serif" font-size="20">Frecvență</text>
+  <text x="94" y="282" text-anchor="middle" transform="rotate(-90 94 282)" fill="#586d63" font-family="Segoe UI,Arial,sans-serif" font-size="20">Amplitudine</text>
+</svg>
