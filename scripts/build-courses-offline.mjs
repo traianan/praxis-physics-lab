@@ -30,8 +30,10 @@ if(requested){try{report.push(...JSON.parse(await readFile(path.join(root,'docs/
 for(const {metadata:{id},offline:{file:zipName},locales,inlineLocales}of selected){
  const source=path.join(root,'public/simulari',id),target=path.join(root,'outputs/offline-lessons',id);await mkdir(target,{recursive:true});
  const moduleStyle=moduleStyles.get(id);
- if(moduleStyle)await cp(path.join(source,moduleStyle),path.join(target,moduleStyle));
- else await cp(source,target,{recursive:true,filter:file=>!file.toLowerCase().endsWith('.zip')});
+ if(moduleStyle){
+  await cp(path.join(source,moduleStyle),path.join(target,moduleStyle));
+  if(id==='fourier-instrumente')await cp(path.join(source,'audio'),path.join(target,'audio'),{recursive:true});
+ }else await cp(source,target,{recursive:true,filter:file=>!file.toLowerCase().endsWith('.zip')});
  let html=withLinkPresentation(withFavicon(await readFile(path.join(source,'index.html'),'utf8')));
  if(id==='efectul-fotoelectric-extern')html=html.replace('</head>','<script src="../../vendor/lab-libraries/zod.min.js"></script></head>');
  if(moduleStyle)html=await inlineStandaloneModule(html,{id,source,root,namespaceList:locales,inlineLocales});

@@ -1,14 +1,14 @@
 :root {
-  --page: #f7f5ee;
-  --surface: #fffefa;
-  --surface-subtle: #edf3ed;
-  --ink: #18332f;
-  --muted: #586d63;
-  --faint: #586d63;
-  --line: #d9e2d8;
-  --grid: #e3e9e0;
-  --accent: #103f3b;
-  --accent-soft: #e2efd7;
+  --page: #f1f5f3;
+  --surface: #ffffff;
+  --surface-subtle: #eaf2ee;
+  --ink: #173b36;
+  --muted: #526c64;
+  --faint: #526c64;
+  --line: #d5e2da;
+  --grid: #dfe9e3;
+  --accent: #104b45;
+  --accent-soft: #dceee6;
   --accent-ink: #103f3b;
   --focus: #245f9e;
   --shadow: 0 8px 24px rgba(16, 63, 59, .07), 0 2px 6px rgba(16, 63, 59, .04);
@@ -60,6 +60,9 @@ body[data-praxis-course="fourier-instrumente"] { background: var(--page); }
 #praxis-original .guide-note strong { color: var(--ink); }
 #praxis-original .guide-card details { margin-top: 9px; color: var(--muted); font-size: 13px; }
 #praxis-original .guide-card summary { min-height: 36px; display: flex; align-items: center; color: var(--accent-ink); font-weight: 700; cursor: pointer; }
+#praxis-original #guide-glossary .guide-card--glossary { grid-column: 1 / -1; }
+#praxis-original .glossary-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 28px; }
+#praxis-original .glossary-columns > div { min-width: 0; }
 #praxis-original .player-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 12px; margin-top: 12px; }
 #praxis-original .volume-control { width: 100%; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; color: var(--muted); font-size: 12px; font-weight: 650; }
 #praxis-original .volume-control > span { display: flex; justify-content: space-between; gap: 8px; }
@@ -90,6 +93,7 @@ body[data-praxis-course="fourier-instrumente"] { background: var(--page); }
   #praxis-original .result-view .chart-panel--wide { grid-column: auto; }
   #praxis-original .key-ideas { padding: 18px; }
   #praxis-original .guide-grid, #praxis-original .guide-steps { grid-template-columns: 1fr; }
+  #praxis-original .glossary-columns { grid-template-columns: 1fr; gap: 0; }
   #praxis-original .guide-tabs { margin-inline: -2px; }
   #praxis-original .guide-tabs button { padding-inline: 10px; }
   #praxis-original .guide-card .guide-formula { padding-inline: 4px; overflow-x: auto; }

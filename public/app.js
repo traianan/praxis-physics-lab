@@ -1,4 +1,4 @@
-import {chapters,simulations,findSimulations,getHomeSimulations,getLatestSimulations,localizeCatalog} from './catalog.js';
+import {chapters,simulations,findSimulations,getLatestSimulations,localizeCatalog} from './catalog.js';
 import {createBoardController} from './board.js';
 import {prepareAdvertising} from './advertising.js';
 const i18n=window.PraxisI18n;
@@ -30,24 +30,25 @@ const count=id=>simulations.filter(s=>s.chapter===id).length;
 function renderChapters(){
  const dates=new Intl.DateTimeFormat(i18n.locale,{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
  const latestLinks=getLatestSimulations().map(sim=>`<li><a href="${sim.href}" data-simulation><span>${sim.title}</span><time datetime="${sim.addedOn}">${dates.format(new Date(sim.addedOn+'T00:00:00Z'))}</time></a></li>`).join('');
- for(const id of ['sidebar-latest-list','home-latest-list'])$(id).innerHTML=latestLinks;
+ $('home-latest-list').innerHTML=latestLinks;
  $('chapter-nav').innerHTML=`<a href="#" class="chapter-link all ${!selected?'selected':''}" ${!selected?'aria-current="page"':''}><span class="all-icon">▦</span><span>Toate capitolele</span><span class="nav-count">${chapters.length}</span></a>`+chapters.map(c=>`<a href="#capitol/${c.id}" class="chapter-link ${selected===c.id?'selected':''}" style="--chapter:${c.color}" ${selected===c.id?'aria-current="page"':''}><span class="nav-icon">${icon(c)}</span><span>${c.title}</span>${count(c.id)?'<span class="available-dot" aria-label="Simulare disponibilă"></span>':''}</a>`).join('');
  $('chapter-grid').innerHTML=chapters.map((c,i)=>`<a class="chapter-card" href="#capitol/${c.id}" style="--chapter:${c.color}"><span class="chapter-art">${icon(c)}</span><div><h3>${c.title}</h3><span>${count(c.id)?(count(c.id)===1?'1 simulare disponibilă':count(c.id)+' simulări disponibile'):'În pregătire'}</span></div><span class="chapter-number">0${i+1}</span></a>`).join('');
 }
 function render(){
  const c=chapters.find(c=>c.id===selected),found=findSimulations(selected,query);
- const home=!selected&&!query.trim(),visible=home?getHomeSimulations():found;
+ const home=!selected&&!query.trim(),visible=home?[]:found;
  if(home&&!wasHome&&!discoveryId)chooseDiscovery();
  if(home&&discoveryId){const destination=simulations.find(sim=>sim.id===discoveryId);if(destination){$('discovery-start').href=destination.href;$('discovery-caption').textContent=destination.title;}}
  if(!home)discoveryId='';
  wasHome=home;
  document.body.dataset.libraryView=selected?'chapter':query.trim()?'search':'home';
  $('discovery-entry').hidden=!home;
+ $('home-overview').hidden=!home;
  $('home-latest').hidden=!home;
+ $('simulations-section').hidden=home;
  $('breadcrumb-title').textContent=c?c.title.toLocaleUpperCase(i18n.locale):query.trim()?'Rezultatele căutării':'FIZICĂ';
  $('page-title').innerHTML=c?c.title:'Fizica are sens<br><span>Când o explorezi</span>';
  $('page-description').textContent=c?'Experimentele acestui capitol, adunate într-un singur loc.':'Simulări interactive pentru întrebări, predicții și descoperiri la clasă.';
- $('chapters-section').hidden=!!selected||!!query.trim();
  $('simulations-title').textContent=c?'Simulările capitolului':query.trim()?'Rezultatele căutării':'Începe cu un experiment';
  $('results-status').textContent=found.length===1?'1 laborator disponibil':found.length?`${found.length} laboratoare disponibile`:query.trim()?'Niciun rezultat pentru această căutare':'Conținutul va fi stabilit pe parcurs';
  if(home&&visible.length<found.length)$('results-status').textContent=i18n.tr('{shown} din {total} laboratoare afișate',{shown:visible.length,total:found.length});
@@ -56,8 +57,7 @@ function render(){
   :found.length===1?i18n.tr('{count} capitole · 1 simulare',{count:chapters.length}):i18n.tr('{count} capitole · {total} simulări',{count:chapters.length,total:found.length});
  $('simulations').className=`simulation-grid ${view==='list'?'list-view':''}`;
  const renderCard=s=>`<article class="simulation-card" data-chapter="${s.chapter}"><a href="${s.href}" class="simulation-image" aria-label="${i18n.tr('Laborator interactiv')}: ${s.title}"><img src="${s.image}" alt="${s.alt}" loading="lazy" decoding="async"><span class="image-pill"><i></i> Laborator interactiv</span></a><div class="simulation-body"><div class="card-eyebrow">${chapters.find(c=>c.id===s.chapter).title.toLocaleUpperCase(i18n.locale)} <span>${String(simulations.filter(item=>item.chapter===s.chapter).indexOf(s)+1).padStart(2,'0')}</span></div><h3><a href="${s.href}">${s.title}</a></h3><p>${s.description}</p><div class="tags">${s.tags.map(t=>`<span>${t}</span>`).join('')}</div></div><div class="simulation-action"><a class="button primary" href="${s.href}">Deschide laboratorul <span aria-hidden="true">→</span></a><span>Revino la capitol din antet</span></div></article>`;
- $('simulations').innerHTML=home?chapters.filter(ch=>visible.some(s=>s.chapter===ch.id)).map(ch=>`<section class="simulation-chapter" aria-label="${ch.title}"><h3 class="simulation-chapter-title">${ch.title}</h3><div class="simulation-chapter-grid">${visible.filter(s=>s.chapter===ch.id).map(renderCard).join('')}</div></section>`).join(''):visible.map(renderCard).join('');
- $('home-more').hidden=!home;$('home-more').innerHTML=home?chapters.filter(chapter=>count(chapter.id)>2).map(chapter=>`<a class="button secondary" href="#capitol/${chapter.id}"><span>${chapter.title}</span><span>Vezi toate simulările →</span></a>`).join(''):'';
+ $('simulations').innerHTML=visible.map(renderCard).join('');
  $('empty-state').hidden=found.length>0;
  $('empty-state').innerHTML=query.trim()?'<span class="empty-symbol">⌕</span><h3>Nu am găsit o simulare.</h3><p>Încearcă „lentile”, „oglinzi” sau elimină filtrul de capitol.</p><button class="button secondary" id="reset-filters">Resetează căutarea și filtrele</button>':`<span class="empty-symbol">${c?icon(c):'✧'}</span><h3>Loc pentru următoarele experimente.</h3><p>Structura capitolului este pregătită. Simulările și conținutul vor fi adăugate pe parcurs.</p><a class="button secondary" href="#">Vezi toate capitolele →</a>`;
  $('reset-filters')?.addEventListener('click',()=>{$('search').value=query='';location.hash='';readRoute();});

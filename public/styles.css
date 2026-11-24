@@ -63,3 +63,39 @@ dialog{border:1px solid #d9e4dc;border-radius:15px;color:var(--ink);padding:25px
 /* Chapter landing pages must reflow with enlarged text. */
 .chapter-landing{overflow-wrap:anywhere}
 .chapter-landing .button{max-width:100%;white-space:normal}
+
+/* Compact home dashboard: chapters and recent labs replace the long preview feed. */
+.home-overview{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(280px,.9fr);align-items:start;gap:18px;margin:8px 0 24px}
+.home-overview[hidden],#simulations-section[hidden]{display:none!important}
+.home-overview>section{min-width:0;margin:0}
+.home-overview .section-heading{margin-bottom:10px}
+.home-overview .chapter-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.home-overview .chapter-card{min-width:0;min-height:82px;padding:13px 12px;gap:10px}
+.home-overview .chapter-card h3{font-size:14px;line-height:1.3}
+.home-overview .chapter-card>div>span{font-size:12px}
+#home-latest.home-latest{display:block;min-width:0;margin:0;padding:16px;background:var(--praxis-color-surface);border:1px solid var(--line);border-radius:var(--praxis-radius-card,12px)}
+#home-latest h2{margin:0 0 10px;font-size:16px;line-height:1.4;color:var(--ink)}
+#home-latest ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+#home-latest a{display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:52px;padding:8px;border-radius:7px;font-size:14px;line-height:1.4;overflow-wrap:anywhere}
+#home-latest a:hover{background:var(--praxis-color-primary-soft)}
+#home-latest time{font-size:12px;color:var(--muted)}
+@media(max-width:1250px){.home-overview{grid-template-columns:minmax(0,1fr)}#home-latest ol{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:850px){.home-overview{gap:14px;margin-top:2px}.home-overview .chapter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#home-latest ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.home-overview .chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#home-latest.home-latest{padding:12px}#home-latest ol{grid-template-columns:1fr}}
+
+/* Chapter lesson cards: keep the catalog scannable without hiding key details. */
+body[data-library-view="chapter"] #simulations.simulation-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body[data-library-view="chapter"] #simulations .simulation-card{grid-template-columns:minmax(0,1fr);grid-template-rows:118px 1fr auto;min-width:0;min-height:0}
+body[data-library-view="chapter"] #simulations .simulation-image{grid-row:auto;height:118px}
+body[data-library-view="chapter"] #simulations .simulation-image>img{height:100%;min-height:0;object-fit:contain}
+body[data-library-view="chapter"] #simulations .simulation-body{min-width:0;padding:13px 16px 8px}
+body[data-library-view="chapter"] #simulations .card-eyebrow{font-size:8px;gap:8px}
+body[data-library-view="chapter"] #simulations .simulation-body h3{font-size:19px;line-height:1.3;margin:6px 0}
+body[data-library-view="chapter"] #simulations .simulation-body p{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;font-size:12px;line-height:1.5}
+body[data-library-view="chapter"] #simulations .tags{gap:5px;margin-top:9px}
+body[data-library-view="chapter"] #simulations .tags span{font-size:9px;padding:3px 6px}
+body[data-library-view="chapter"] #simulations .simulation-action{grid-column:auto;align-items:stretch;gap:6px;padding:0 16px 13px}
+body[data-library-view="chapter"] #simulations .simulation-action>span{display:none}
+body[data-library-view="chapter"] #simulations .simulation-action .button{width:100%;min-height:42px;justify-content:space-between}
+@media(min-width:1700px){body[data-library-view="chapter"] #simulations.simulation-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:600px){body[data-library-view="chapter"] #simulations.simulation-grid{grid-template-columns:minmax(0,1fr)}body[data-library-view="chapter"] #simulations .simulation-card{grid-template-rows:108px 1fr auto}body[data-library-view="chapter"] #simulations .simulation-image{height:108px}}
