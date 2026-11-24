@@ -1,5 +1,11 @@
 # PROGRESS
 
+## Layout pentru tablă — Funcții trigonometrice — 2026-11-24
+
+- Pragul de layout compact a fost ridicat la 1100 px CSS; în ecrane înguste, panourile trec pe coloană, antetele controalelor se pot împacheta, iar valorile graficului se separă pe rânduri. Grilele folosesc coloane care se pot micșora fără să împingă conținutul în afara cardurilor.
+- Importul lecției reușește. Chrome DevTools: 1024×768 touch/DPR 2 și 1920×1080 fără overflow; sliderul animației schimbă viteza, pasul graficului și Reset funcționează. La 3840×2160 panourile rămân în două coloane. O redeschidere ulterioară a fișierului local a golit DOM-ul în harnessul Chrome și a produs erori în scripturile shared, deci consola acelei sesiuni nu este un rezultat valid pentru pagină.
+- `impeccable detect` nu a raportat probleme de contrast curente; a rămas doar recomandarea editorială pentru numărul de liniuțe de pauză. Buildul complet nu a pornit în acest worktree curat deoarece lipsește dependența instalată `esbuild`.
+
 ## Stabilizarea comenzilor animației din Grafice — 2026-11-23
 
 - Rândul „Parcurge graficul” / „Revino la x=0” rămâne într-o grilă cu două coloane, aliniate sus; schimbarea etichetei play/pauză nu mai împinge butonul de reset în jos.

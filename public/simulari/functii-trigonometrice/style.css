@@ -119,7 +119,7 @@
   @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
   /* ---------- cards ---------- */
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
   .card{
     background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
     padding:22px 24px;box-shadow:var(--shadow);
@@ -140,8 +140,9 @@
 
   /* ---------- controls ---------- */
   .ctl{margin-bottom:16px}
-  .ctl-head{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted);margin-bottom:7px}
-  .ctl-head b{color:var(--ink);font-size:15px;font-weight:650;white-space:nowrap}
+  .ctl-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:2px 12px;font-size:14px;color:var(--muted);margin-bottom:7px}
+  .ctl-head>span,.ctl-head>label{flex:1 1 16ch;min-width:0}
+  .ctl-head b{color:var(--ink);font-size:15px;font-weight:650;white-space:nowrap;flex:0 0 auto}
   .ctl-row{display:flex;align-items:center;gap:10px}
   .step{
     width:38px;height:34px;border:1px solid var(--btn-line);background:var(--btn);
@@ -169,7 +170,7 @@
   }
   .chip:hover{border-color:var(--green-2);color:var(--green-2)}
   .chip.active{background:var(--green);border-color:var(--green);color:#fff}
-  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .tile{background:var(--tile);border-radius:9px;padding:11px 14px;min-width:0}
   .tile span{display:block;font-size:12.5px;color:var(--muted);margin-bottom:2px}
   .tile b{font-size:17.5px;font-weight:650;display:block;overflow-wrap:anywhere}
@@ -191,12 +192,12 @@
     border:0;background:none;color:var(--muted);font-size:13.5px;font-weight:600;
     padding:7px 13px;border-radius:7px;cursor:pointer;
   }
-  .seg button:hover{color:var(--ink)}
+  .seg button:hover{background:var(--card);color:var(--ink)}
   .seg button.active{background:var(--card);color:var(--green-2);box-shadow:0 1px 3px rgba(0,0,0,.12)}
   :scope.board .seg button.active{color:#9fd8bd}
 
   /* ---------- theory blocks ---------- */
-  .theory-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:22px}
+  .theory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:22px}
   .theory-grid .card h2{font-size:17.5px}
   .theory-grid p{margin:8px 0;font-size:14.5px;color:var(--muted)}
   .theory-grid ul{margin:8px 0 0;padding-left:20px;font-size:14.5px;color:var(--muted)}
@@ -241,7 +242,7 @@
   .status b{font-weight:650}
   .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-top:12px}
   .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
-  .examples{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+  .examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:22px}
   .examples .card h2{font-size:16.5px}
   .examples p{font-size:14px;color:var(--muted);margin:8px 0}
   .examples .sol{background:var(--tile);border-radius:9px;padding:10px 14px;font-size:14px;margin-top:10px;line-height:1.7}
@@ -322,10 +323,18 @@
   svg{width:100%;height:auto;display:block}
   .svg-cap{text-align:center;font-size:13.5px;color:var(--muted);margin-top:6px}
 
-  @media (max-width:960px){
-    .grid2,.theory-grid,.examples{grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (max-width:1100px){
+    .grid2,.theory-grid,.examples{grid-template-columns:1fr}
     .banner h1{font-size:24px}
     .graph-card{padding:16px 12px}
+    .grid2>*,.theory-grid>* ,.examples>*{min-width:0}
+    .graph-value-expression{flex-direction:column;align-items:flex-start;justify-content:flex-start}
+    .graph-value-function,.graph-value-angle-pair{flex-wrap:wrap;white-space:normal}
+    .graph-value-angle,.graph-value-result{width:auto}
+  }
+  @media (max-width:640px){
+    .tiles{grid-template-columns:1fr}
+    .card{padding:18px 16px}
   }
 
 }
