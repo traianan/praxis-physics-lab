@@ -251,6 +251,42 @@
         ],
         "createdAt": "2026-11-21T18:47:13.285Z",
         "reason": "Agent: the reported Praxis petrol shadow is the offset 0 18px 50px elevation shadow on the light hero, not a zero-offset glow; the detector flags the brand color."
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "public/simulari/coarde-tuburi-sonore/index.html"
+        ],
+        "createdAt": "2026-11-24T17:36:45.603Z",
+        "reason": "Detectorul raportează combinații de tokenuri care nu apar la textul real; confirmat în Chrome: titlul este #fffefa și subtitlul #d1e2d8 pe petrol, cu contrast suficient."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "public/simulari/coarde-tuburi-sonore/index.html"
+        ],
+        "createdAt": "2026-11-24T17:36:49.331Z",
+        "reason": "Cele patru table-wrap au celule cu padding real 10px 12px; detectorul confundă lipsa paddingului containerului exterior cu text lipit de margine."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "public/simulari/coarde-tuburi-sonore/index.html"
+        ],
+        "createdAt": "2026-11-24T17:36:52.991Z",
+        "reason": "Fundalul #f7f5ee este tokenul de fildeș documentat al paletei Praxis, nu o alegere accidentală."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/simulari/coarde-tuburi-sonore/index.html"
+        ],
+        "createdAt": "2026-11-24T17:38:57.432Z",
+        "reason": "Semnalarea vine din umbra de elevare foarte transparentă a antetului comun, decalatǎ, nu dintr-un halou cromatic; sursa umbrei locale a fost neutralizată."
       }
     ]
   }

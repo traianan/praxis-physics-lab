@@ -225,7 +225,7 @@ a:hover { color: var(--petrol); }
     radial-gradient(700px 300px at 5% 120%, rgba(232, 184, 92, .12), transparent 60%),
     linear-gradient(118deg, #0d3834 0%, #103f3b 45%, #14524b 100%);
   color: #fff;
-  box-shadow: 0 18px 50px rgba(16, 63, 59, .18);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .14);
 }
 .hero::after {
   content: "";
