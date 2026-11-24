@@ -115,11 +115,11 @@ const integration = `(() => {
       card.append(page);
       return page;
     });
-    tabsFor(card, pages, label, key);
+  tabsFor(card, pages, label, key);
   }
   splitArticle(theoryCards[0], [[0,1,2],[3,4]], 'Ecranele noțiunilor de bază', 'basics-screen', ['Vibrația și frecvența','Unda sonoră']);
   splitArticle(theoryCards[1], [[0,1,2,3,4,5],[6],[7,8]], 'Ecranele corzii fixate', 'string-screen', ['Condiția de rezonanță','Modurile proprii','Moduri și frecvențe']);
-  splitArticle(theoryCards[3], [[0,1,2,3],[4,5,6,7,8]], 'Ecranele tuburilor sonore', 'pipes-screen', ['Tub deschis','Tub închis și corecții']);
+  splitArticle(theoryCards[3], [[0,1,2,3],[4,5,6,7,8]], 'Ecranele tuburilor sonore', 'pipes-screen', ['Tuburi deschise și închise','Tub închis și corecții']);
 
   function screen(title, nodes, before) {
     const page = document.createElement('div');

@@ -721,6 +721,9 @@
     "Volum player": "Player volume",
     "Instrument la redare": "Playback instrument",
     "Player didactic": "Audio player",
-    "Player audio": "Audio player"
+    "Player audio": "Audio player",
+    "Exemplu: coardă de chitară.": "Example: a guitar string.",
+    "Flaut: model deschis la ambele capete.": "Flute: modeled as open at both ends.",
+    "Clarinet: închis la muștiuc, deschis la pavilion.": "Clarinet: closed at the mouthpiece, open at the bell."
   }
 }
