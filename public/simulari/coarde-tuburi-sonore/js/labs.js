@@ -18,7 +18,7 @@
     const muKg = Math.max(0.00001, stringState.mu / 1000);
     const v = Math.sqrt(Math.max(0, stringState.T) / muKg);
     const f = stringState.n * v / (2 * stringState.L);
-    return { v, f, lambda: v / f, muKg };
+    return { v, f, lambda: 2 * stringState.L / stringState.n, muKg };
   }
 
   function readStringInputs() {
@@ -26,6 +26,8 @@
     stringState.T = parseFloat($('#str-T').value);
     stringState.mu = parseFloat($('#str-mu').value);
     stringState.envelope = $('#string-envelope').checked;
+    const selectedHarmonic = $('#str-n [data-n].active');
+    if (selectedHarmonic) stringState.n = Number(selectedHarmonic.dataset.n);
   }
 
   function setStringInputs(values) {
@@ -33,6 +35,7 @@
     if (values.T != null) $('#str-T').value = String(values.T);
     if (values.mu != null) $('#str-mu').value = String(values.mu);
     if (values.n != null) {
+      stringState.n = Number(values.n);
       $$('#str-n [data-n]').forEach((b) => b.classList.toggle('active', Number(b.dataset.n) === values.n));
       $('#str-n-out').textContent = String(values.n);
     }
@@ -496,6 +499,10 @@
   ═══════════════════════════════════════════════════════════════════════ */
   const timbreState = { amps: [100, 60, 35, 22, 14, 9, 6, 4], timers: [], voices: [] };
   const F0 = 220;
+  const timbreInstruments = {
+    pian: 'piano', vioara: 'violin', orga: 'organ', clarinet: 'clarinet',
+    flaut: 'flute', trompeta: 'trumpet'
+  };
 
   function readTimbre() {
     for (let i = 1; i <= 8; i++) {
@@ -578,7 +585,7 @@
   }
 
   function setTimbrePreset(name) {
-    const rec = audio.recipeFor(name);
+    const rec = audio.recipeFor(timbreInstruments[name] || name);
     for (let i = 0; i < 8; i++) {
       const input = document.getElementById('h' + (i + 1));
       if (input) input.value = String(Math.round((rec[i] || 0) * 100));
