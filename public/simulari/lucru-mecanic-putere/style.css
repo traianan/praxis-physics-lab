@@ -1661,24 +1661,24 @@
   margin-top: 5px;
   flex: none;
 }
-:where(#praxis-original) .lm-case-#praxis-original {
+:where(#praxis-original) .lm-case-copy {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 4px;
   flex: 1;
   min-width: 0;
 }
-:where(#praxis-original) .lm-case-#praxis-original b {
+:where(#praxis-original) .lm-case-copy b {
   font-size: 11px;
   font-weight: 600;
   color: var(--ink);
 }
-:where(#praxis-original) .lm-case-#praxis-original > span {
+:where(#praxis-original) .lm-case-copy > span {
   font-family: var(--mono);
   font-size: 8px;
   color: var(--ink-3);
 }
-:where(#praxis-original) .lm-case-#praxis-original em {
+:where(#praxis-original) .lm-case-copy em {
   font-style: normal;
   font-size: 9.5px;
   line-height: 1.4;
@@ -1763,23 +1763,23 @@
 :where(#praxis-original) .lm-caserail.is-on .cr-num {
   color: var(--teal-3);
 }
-:where(#praxis-original) .cr-#praxis-original {
+:where(#praxis-original) .cr-copy {
   display: flex;
   flex-direction: column;
   gap: 4px;
   min-width: 0;
   flex: 1;
 }
-:where(#praxis-original) .cr-#praxis-original b {
+:where(#praxis-original) .cr-copy b {
   font-size: 12px;
   font-weight: 600;
   color: var(--ink-2);
   line-height: 1.35;
 }
-:where(#praxis-original) .lm-caserail.is-on .cr-#praxis-original b {
+:where(#praxis-original) .lm-caserail.is-on .cr-copy b {
   color: var(--ink);
 }
-:where(#praxis-original) .cr-#praxis-original span {
+:where(#praxis-original) .cr-copy span {
   font-size: 11px;
   line-height: 1.35;
   letter-spacing: normal;
@@ -2451,14 +2451,14 @@
   --lm-type-data: .75rem;
   --lm-type-label: .71875rem;
 }
-:where(#praxis-original) .lm-lesson :is(p, .lm-small, .lm-note, .lm-insight, .lm-explain, .lm-tip, .lm-railnote p, .lm-case-#praxis-original em, .lm-card p, .lm-step p, .lm-guide-item p, .lm-check li, .lm-resultview p) {
+:where(#praxis-original) .lm-lesson :is(p, .lm-small, .lm-note, .lm-insight, .lm-explain, .lm-tip, .lm-railnote p, .lm-case-copy em, .lm-card p, .lm-step p, .lm-guide-item p, .lm-check li, .lm-resultview p) {
   font-size: var(--lm-type-copy) !important;
   line-height: 1.55;
 }
 :where(#praxis-original) .lm-lesson :is(button, a, label, output, .lm-tab, .lm-subbar .lm-next, .lm-btn, .lm-opt, .lm-case, .lm-preset, .lm-caserail, .lm-pitem, .lm-toc button) {
   font-size: var(--lm-type-control) !important;
 }
-:where(#praxis-original) .lm-lesson :is(.lm-word-sub, .lm-crumb, .lm-size button, .lm-size span, .lm-lang, .lm-eyebrow, .lm-hero-meta span, .fc-label, .lm-tabs-right, .lm-tag, .lm-ov, .lm-scene-note, .lm-badge, .ro-k, .lm-stat .k, .lm-stat .v small, .lm-table th, .lm-step .n, .lm-guide-item .gi, .lm-toc button span, .lm-legend, .lm-ctrl-l, .lm-ctrl-l output, .lm-readout .ro-k, .lm-readout .ro-formula, .lm-case-#praxis-original > span, .lm-case-val, .cmp-row b, .cmp-row span, .cr-num, .cr-#praxis-original b, .cr-#praxis-original span, .lm-railnote p, .lm-pgroup, .lm-pitem b, .lm-pitem span span, .pi-n, .lm-solver-progress, .lm-data span, .lm-answer span, .lm-answer em, .lm-resultbox span, .lm-quiz-top, .lm-quiz-foot, .lm-opt .ol, .lm-dot, .lm-check li, .lm-result-chips span, .lm-foot, .sb-lbls, .lm-prog) {
+:where(#praxis-original) .lm-lesson :is(.lm-word-sub, .lm-crumb, .lm-size button, .lm-size span, .lm-lang, .lm-eyebrow, .lm-hero-meta span, .fc-label, .lm-tabs-right, .lm-tag, .lm-ov, .lm-scene-note, .lm-badge, .ro-k, .lm-stat .k, .lm-stat .v small, .lm-table th, .lm-step .n, .lm-guide-item .gi, .lm-toc button span, .lm-legend, .lm-ctrl-l, .lm-ctrl-l output, .lm-readout .ro-k, .lm-readout .ro-formula, .lm-case-copy > span, .lm-case-val, .cmp-row b, .cmp-row span, .cr-num, .cr-copy b, .cr-copy span, .lm-railnote p, .lm-pgroup, .lm-pitem b, .lm-pitem span span, .pi-n, .lm-solver-progress, .lm-data span, .lm-answer span, .lm-answer em, .lm-resultbox span, .lm-quiz-top, .lm-quiz-foot, .lm-opt .ol, .lm-dot, .lm-check li, .lm-result-chips span, .lm-foot, .sb-lbls, .lm-prog) {
   font-size: var(--lm-type-label) !important;
 }
 :where(#praxis-original) .lm-lesson :is(.lm-mk, .lm-formula-card .fc-sub, .lm-table, .lm-table td, .lm-stat .v, .lm-data span, .lm-pitem span span, .lm-dots, .lm-result-chips span, .lm-step .f) {

@@ -290,6 +290,7 @@
     const L = $('#t1L'), sign = $('#t1Sign'), sub = $('#t1Sub');
     const force = $('#t1Force'), proj = $('#t1Proj'), drop = $('#t1Drop'), arc = $('#t1Arc');
     const alpha = $('#t1Alpha'), projLbl = $('#t1ProjLbl'), dArrow = $('#t1DArrow'), dLbl = $('#t1DLabel');
+    const dStartGuide = $('#t1DStartGuide'), dEndGuide = $('#t1DEndGuide');
     const ghost = $('#t1Ghost'), fLabel = $('#t1FLabel text');
 
     function update() {
@@ -322,7 +323,8 @@
 
       proj.setAttribute('x2', tipX.toFixed(2));
       proj.setAttribute('y2', by.toFixed(2));
-      proj.style.opacity = Math.abs(cos) < 0.12 ? 0 : 0.85;
+      const collinear = Math.abs(sin) < 0.12;
+      proj.style.opacity = Math.abs(cos) < 0.12 || collinear ? 0 : 0.85;
 
       drop.setAttribute('x1', tipX.toFixed(2));
       drop.setAttribute('y1', tipY.toFixed(2));
@@ -333,7 +335,7 @@
       const pmx = bx + (tipX - bx) * 0.55;
       projLbl.setAttribute('x', pmx.toFixed(2));
       projLbl.setAttribute('y', (by - 8).toFixed(2));
-      projLbl.style.opacity = Math.abs(cos) < 0.12 ? 0 : 1;
+      projLbl.style.opacity = Math.abs(cos) < 0.12 || collinear ? 0 : 1;
 
       const r = 40;
       if (av > 0.5 && av < 179.5) {
@@ -356,9 +358,15 @@
       $('#t1FLabel').style.opacity = Fv === 0 ? 0.3 : 1;
 
       const dPx = dv * 18;
-      dArrow.setAttribute('x2', (218 + dPx).toFixed(2));
+      const initialX = 218 - dPx;
+      dArrow.setAttribute('x1', initialX.toFixed(2));
+      dArrow.setAttribute('x2', '218');
       dArrow.style.opacity = dv === 0 ? 0.2 : 1;
-      dLbl.setAttribute('x', (218 + dPx / 2).toFixed(2));
+      dStartGuide.setAttribute('x1', initialX.toFixed(2));
+      dStartGuide.setAttribute('x2', initialX.toFixed(2));
+      dEndGuide.setAttribute('x1', '218');
+      dEndGuide.setAttribute('x2', '218');
+      dLbl.setAttribute('x', (initialX + dPx / 2).toFixed(2));
       dLbl.textContent = dv === 0 ? 'd = 0' : 'd';
 
       ghost.setAttribute('transform', 'translate(' + (-dPx).toFixed(2) + ' 0)');
@@ -670,7 +678,9 @@
     const force = $('#t5Force'), flbl = $('#t5Flbl');
     const weight = $('#t5Weight'), weightLbl = $('#t5WeightLbl');
     const gParallel = $('#t5GParallel'), gParallelLbl = $('#t5GParallelLbl');
+    const gParallelVectorMark = $('#t5GParallelVectorMark');
     const gNormal = $('#t5GNormal'), gNormalLbl = $('#t5GNormalLbl');
+    const gNormalVectorMark = $('#t5GNormalVectorMark');
     const friction = $('#t5Friction'), frictionLbl = $('#t5FrictionLbl');
     const fbdPlane = $('#t5FbdPlane'), fbdBlock = $('#t5FbdBlock');
 
@@ -740,11 +750,17 @@
       const normalX = sin, normalY = cos;
       const parallelLen = componentScale * sin, normalLen = componentScale * cos;
       vector(gParallel, fbdX, fbdY, fbdX + parallelLen * parallelX, fbdY + parallelLen * parallelY);
-      gParallelLbl.setAttribute('x', (fbdX + parallelLen * parallelX - 12).toFixed(2));
-      gParallelLbl.setAttribute('y', (fbdY + parallelLen * parallelY + 16).toFixed(2));
+      const parallelLabelX = fbdX + parallelLen * parallelX - 12;
+      const parallelLabelY = fbdY + parallelLen * parallelY + 16;
+      gParallelLbl.setAttribute('x', parallelLabelX.toFixed(2));
+      gParallelLbl.setAttribute('y', parallelLabelY.toFixed(2));
+      vector(gParallelVectorMark, parallelLabelX - 12, parallelLabelY - 14, parallelLabelX - 4, parallelLabelY - 14);
       vector(gNormal, fbdX, fbdY, fbdX + normalLen * normalX, fbdY + normalLen * normalY);
-      gNormalLbl.setAttribute('x', (fbdX + normalLen * normalX + 5).toFixed(2));
-      gNormalLbl.setAttribute('y', (fbdY + normalLen * normalY + 16).toFixed(2));
+      const normalLabelX = fbdX + normalLen * normalX + 5;
+      const normalLabelY = fbdY + normalLen * normalY + 16;
+      gNormalLbl.setAttribute('x', normalLabelX.toFixed(2));
+      gNormalLbl.setAttribute('y', normalLabelY.toFixed(2));
+      vector(gNormalVectorMark, normalLabelX + 1, normalLabelY - 14, normalLabelX + 9, normalLabelY - 14);
 
       const contactX = bx + 12 * sin, contactY = by + 12 * cos;
       const frictionLen = mu > 0 ? 30 + 12 * mu : 0;
@@ -755,7 +771,7 @@
 
       const sx = bx + 22 * cos - 13 * sin;
       const sy = by - 22 * sin - 13 * cos;
-      const flen = 40 + Fv * 0.5;
+      const flen = Math.min(58, 40 + Fv * 0.5);
       const fx = sx + flen * cos, fy = sy - flen * sin;
       force.setAttribute('x1', sx.toFixed(2));
       force.setAttribute('y1', sy.toFixed(2));

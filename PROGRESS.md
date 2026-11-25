@@ -5,6 +5,8 @@
 - Lecția sursă este integrată în catalogul Praxis, în distribuția locală și arhiva offline bilingvă. Include comanda reproductibilă `npm run import:work-power`.
 - Revizuite ilustrațiile raportorului, macaralelor, planului înclinat și cazului cu frecare; vectorii greutății, componentelor și frecării au fost verificați cu SymPy. Animația saniei și aspectul pentru touch/Mod tablă au fost verificate în Chrome.
 - Buildul a fost verificat. Utilizarea temporară a distribuției existente de pachete a ocolit doar regenerarea bibliotecilor opționale, care nu au fost modificate de această lecție.
+- 2026-11-25: Săgeata deplasării unește poziția inițială cu cea finală; proiecția nu mai acoperă eticheta forței la 0°/180°. Componentele greutății au săgeți vectoriale explicite, iar vectorul forței încape la unghiul maxim. Cadrul și desenul comparației drumului cu frecare sunt reduse cu 15%; descrierile cazurilor și etichetele din șină sunt separate după corectarea selectorilor CSS generați.
+- Verificare: catalog 11/11, sintaxă 454/454; Chrome DevTools la 390×844 touch fără overflow orizontal și comenzi de 52×52 px, 1920×1080 și 3840×2160 în modul tablă. Testate animația macaralelor/saniei, 5 cazuri, 7 probleme, evaluarea și suma vectorilor descompuși (eroare numerică 0 la 15°, 30°, 45°, 60°). Agent Browser CLI nu a putut porni deoarece socketul său implicit nu este accesibil în sandbox; verificarea a continuat prin Chrome DevTools.
 
 ## Layout pentru tablă — Funcții trigonometrice — 2026-11-24
 
