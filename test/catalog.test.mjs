@@ -5,9 +5,9 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
-  assert.deepEqual(latest.map(sim=>sim.id),['lucru-mecanic-putere','fourier-instrumente','coarde-tuburi-sonore']);
-  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-25','2026-11-24','2026-11-21']);
-  assert.equal(getLatestSimulations(1)[0].id,'lucru-mecanic-putere');
+  assert.deepEqual(latest.map(sim=>sim.id),['chitara-acustica-virtuala','lucru-mecanic-putere','fourier-instrumente']);
+  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-25','2026-11-25','2026-11-24']);
+  assert.equal(getLatestSimulations(1)[0].id,'chitara-acustica-virtuala');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
@@ -25,8 +25,8 @@ test('eight chapters including mathematical foundations, with unique stable ids'
  assert.equal(chapters.length,8); assert.equal(new Set(chapters.map(c=>c.id)).size,8);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite','elemente-de-matematica']);
 });
-test('forty-eight real local laboratories include the work-and-power lesson and existing science topics', async () => {
-  assert.equal(simulations.length,48);
+test('forty-nine real local laboratories include the guitar, work-and-power lessons and existing science topics', async () => {
+  assert.equal(simulations.length,49);
  assert.equal(simulations.find(s=>s.id==='functia-gradul-al-doilea').chapter,'elemente-de-matematica');
  assert.equal(simulations.find(s=>s.id==='miscarea-in-camp-gravitational').chapter,'miscare');
  assert.equal(simulations.find(s=>s.id==='polarizarea-luminii').chapter,'lumina-si-radiatii');
@@ -54,7 +54,7 @@ test('search is accent-insensitive and combines chapter and all search words',()
  assert.equal(findSimulations('','optica lentile').length,1);
  assert.equal(findSimulations('miscare','lentile').length,0);
  assert.equal(findSimulations('lumina-si-radiatii','oglinzi').length,1);
- assert.equal(findSimulations('','sunet').length,4);
+ assert.equal(findSimulations('','sunet').length,5);
 });
 test('chapter results contain their registered laboratories',()=>{
  assert.equal(findSimulations('miscare').length,9);

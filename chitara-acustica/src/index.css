@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Segoe UI", Arial, sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+}
+
+:root {
+  --lab-bg: #f5f7f5;
+  --lab-surface: #ffffff;
+  --lab-surface-muted: #edf3f0;
+  --lab-border: #d8e2dc;
+  --lab-forest: #0d4a3e;
+  --lab-forest-hover: #09382f;
+  --lab-copper: #b85d2b;
+  --lab-ink: #13221d;
+  --lab-ink-muted: #53665f;
+}
+
+#root {
+  font-family: var(--font-sans);
+  background-color: var(--lab-bg);
+  color: var(--lab-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 0;
+  width: 100%;
+}
+
+#root > .min-h-screen { min-height: 0; }
+#root .guitar-app-main { width: min(100%, 96rem); }
+#root .guitar-app-main .text-xs { font-size: .875rem; line-height: 1.4; }
+#root .guitar-app-main [class~="text-[10px]"],
+#root .guitar-app-main [class~="text-[11px]"] { font-size: .8125rem; line-height: 1.4; }
+#root .guitar-module-tab-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: .35rem;
+}
+#root .guitar-module-tab-grid > button {
+  min-width: 0;
+  min-height: 48px;
+  padding: .5rem .4rem;
+  white-space: normal;
+  line-height: 1.25;
+}
+#root .guitar-app-main button,
+#root .guitar-app-main select,
+#root .guitar-app-main input:not([type="range"]) { min-height: 44px; touch-action: manipulation; }
+#root .guitar-app-main input[type="range"] { min-height: 44px; touch-action: pan-x; }
+#root .guitar-app-main input[type="range"]::-webkit-slider-thumb { width: 26px; height: 26px; margin-top: -10px; }
+#root .guitar-app-main input[type="range"]::-moz-range-thumb { width: 26px; height: 26px; }
+@media (max-width: 1200px) {
+  #root .guitar-module-tab-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  #root .guitar-app-main { padding-inline: .75rem; }
+  #root .guitar-module-tab-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #root .guitar-module-tab-grid > button { min-height: 52px; }
+  #root .guitar-app-main button,
+  #root .guitar-app-main select,
+  #root .guitar-app-main input:not([type="range"]) { min-height: 48px; }
+}
+html[data-course-touch="true"] #root .guitar-app-main button,
+html[data-course-touch="true"] #root .guitar-app-main select,
+html[data-course-touch="true"] #root .guitar-app-main input:not([type="range"]) { min-height: 52px; }
+html[data-course-touch="true"] #root .guitar-app-main input[type="range"]::-webkit-slider-thumb { width: 32px; height: 32px; margin-top: -13px; }
+html[data-course-touch="true"] #root .guitar-app-main input[type="range"]::-moz-range-thumb { width: 32px; height: 32px; }
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom range slider styling matching the forest-green laboratory aesthetic */
+input[type="range"].lab-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: #d8e2dc;
+  outline: none;
+}
+
+input[type="range"].lab-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #0d4a3e;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(13, 74, 62, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type="range"].lab-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  background: #09382f;
+}
+
+input[type="range"].lab-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #0d4a3e;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(13, 74, 62, 0.35);
+  cursor: pointer;
+}
+
+/* Classroom / Board mode scaling */
+.board-mode {
+  font-size: 1.075rem;
+}
+
+.board-mode canvas {
+  filter: contrast(1.06);
+}

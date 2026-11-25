@@ -1,0 +1,7 @@
+{
+  "name": "Remix Chitara acustică virtuală",
+  "description": "Laborator interactiv în limba română despre corzi vibrante, note, armonice, acordaje, game, acorduri și analiză spectrală; include acordor, instrumente de măsurare audio și fișă PDF.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

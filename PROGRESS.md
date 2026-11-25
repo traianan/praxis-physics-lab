@@ -607,3 +607,9 @@ Dacă un pas eșuează, notează lecția, comanda și ce s-a întâmplat. O foto
 - Lecția a fost integrată în catalogul Praxis, cu șase taburi, teorie fragmentată pentru ecran, trei standuri interactive, Fourier, opt instrumente, player, exerciții și quiz; controalele sunt adaptate pentru touch și modul tablă. Copertă, traduceri RO/EN, import reproductibil și arhivă offline incluse.
 - Verificate în Chrome la ecrane mari și mobile: taburi, audio, frecvențe, quiz, timbru, redarea la comutarea subtaburilor și dialogul „Dezvăluie sursa”.
 - Remediată persistența limbii: `praxis-language` este cheie esențială și se salvează fără consimțământ opțional. Teste privacy 6/6 și build reușite; Chrome confirmă selectare RO → click către lecție → Refresh cu `navigator.language=en-US` păstrează RO.
+
+## Chitara acustică virtuală — stabilizare layout — 2026-11-25
+
+- Rândul de instrucțiuni al grifului are înălțime rezervată, iar mesajul de hover și butonul „Ciupire toate corzile” sunt plasate explicit în celule distincte; butonul nu își schimbă poziția sau dimensiunea când apare nota.
+- Barele de derulare sunt ascunse în lecție, păstrând derularea internă prin touch, rotiță și tastatură. Cadrele modulelor rămân cu dimensiuni fixe raportate la viewport.
+- Importul curăță bundle-urile JS/CSS generate depășite. Chrome DevTools a verificat Modulul 6 la 1920×1080, 3840×2160 touch, 1366×768, 1024×768 touch și 390×844 touch; geometria rândului rămâne stabilă la hover, iar documentul mobil nu depășește lățimea ecranului.

@@ -25,18 +25,25 @@ const moduleStyles=new Map([
  ['generator-electric','style.css'],
  ['pila-daniell','style.css'],
  ['unde-seismice','seismic.css'],
+ ['chitara-acustica-virtuala','style.css'],
 ]);
 if(requested){try{report.push(...JSON.parse(await readFile(path.join(root,'docs/offline-courses.json'),'utf8')).courses.filter(course=>course.id!==requested));}catch(error){if(error.code!=='ENOENT')throw error;}}
 for(const {metadata:{id},offline:{file:zipName},locales,inlineLocales}of selected){
  const source=path.join(root,'public/simulari',id),target=path.join(root,'outputs/offline-lessons',id);await mkdir(target,{recursive:true});
  const moduleStyle=moduleStyles.get(id);
- if(moduleStyle){
+ if(id==='chitara-acustica-virtuala')await cp(source,target,{recursive:true,filter:file=>!file.toLowerCase().endsWith('.zip')&&!/[/\\]assets[/\\]index-[^/\\]+\.js$/i.test(file)});
+ else if(moduleStyle){
   await cp(path.join(source,moduleStyle),path.join(target,moduleStyle));
   if(id==='fourier-instrumente')await cp(path.join(source,'audio'),path.join(target,'audio'),{recursive:true});
  }else await cp(source,target,{recursive:true,filter:file=>!file.toLowerCase().endsWith('.zip')});
  let html=withLinkPresentation(withFavicon(await readFile(path.join(source,'index.html'),'utf8')));
  if(id==='efectul-fotoelectric-extern')html=html.replace('</head>','<script src="../../vendor/lab-libraries/zod.min.js"></script></head>');
- if(moduleStyle)html=await inlineStandaloneModule(html,{id,source,root,namespaceList:locales,inlineLocales});
+ if(id==='chitara-acustica-virtuala'){
+  const script=html.match(/<script type="module" crossorigin src="([^"]+\.js)"><\/script>/);
+  if(!script)throw new Error('Vite entry missing for '+id);
+  const bundle=await readFile(path.join(source,script[1]),'utf8');
+  html=html.replace(script[0],()=>'<script type="module">'+bundle.replaceAll('</script','<\\x2fscript')+'</script>');
+ }else if(moduleStyle)html=await inlineStandaloneModule(html,{id,source,root,namespaceList:locales,inlineLocales});
  html=html.replace('</head>','<script src="../../shared/whiteboard.js"></script></head>');
  html=html.replace(/<a data-offline-download /g,'<a hidden ');
  for(const match of [...html.matchAll(/<link[^>]+href="\.\.\/\.\.\/([^"]+\.css)"[^>]*>/g)]){const css=await readFile(path.join(root,'public',match[1]),'utf8');html=html.replace(match[0],()=>'<style>'+css+'</style>');}

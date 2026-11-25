@@ -975,5 +975,25 @@ export const simulations = [
     "image": "./assets/functii-trigonometrice-cover-v3.svg",
     "keywords": "functii trigonometrice cerc unitate sinus cosinus tangenta cotangenta radiani grade grafice oscilatie armonica curent alternativ",
     "status": "available"
+  },
+  {
+    "id": "chitara-acustica-virtuala",
+    "addedOn": "2026-11-25",
+    "addedOrder": 2,
+    "chapter": "sunete-si-unde",
+    "title": "Chitara acustică virtuală",
+    "subtitle": "Corzi vibrante, armonice, note muzicale și analiză Fourier",
+    "description": "Explorează cele opt module despre note, corzi, armonice, temperament, game, acorduri și spectru; folosește acordorul, măsurătorile audio, provocările și instrumentele de laborator.",
+    "href": "./simulari/chitara-acustica-virtuala/index.html",
+    "image": "./assets/coarde-tuburi-sonore.svg",
+    "alt": "Coardă vibrantă și tuburi sonore reprezentate prin unde staționare",
+    "tags": [
+      "Coarde vibrante",
+      "Sunet",
+      "Armonice",
+      "Offline"
+    ],
+    "keywords": "chitara acustica coarda vibranta frecventa armonice note game acorduri acordor FFT spectru Fourier temperament misiuni",
+    "status": "available"
   }
 ];

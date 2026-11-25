@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-25T15:47:41.625Z",
+  "builtAt": "2026-11-25T20:20:50.183Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -511,6 +511,17 @@
       "id": "lucru-mecanic-putere",
       "file": "public/simulari/lucru-mecanic-putere/lucru-mecanic-putere.zip",
       "sha256": "bca5baf6297de8b555d220cab751146020327cf78e5bcaad70c95d38b67096a6",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "chitara-acustica-virtuala",
+      "file": "public/simulari/chitara-acustica-virtuala/chitara-acustica-virtuala.zip",
+      "sha256": "eb2b2e7c7dee751d410c5db91994c2846afe7c7e9dc66e1e69dd9de5fe2a23e9",
       "languages": [
         "ro",
         "en"

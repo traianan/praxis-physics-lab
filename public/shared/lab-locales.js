@@ -317,5 +317,10 @@ export const labNamespaces = {
     "chapters/elemente-de-matematica",
     "courses/shared",
     "courses/functii-trigonometrice/ui"
+  ],
+  "chitara-acustica-virtuala": [
+    "common",
+    "chapters/sunete-si-unde",
+    "courses/shared"
   ]
 };

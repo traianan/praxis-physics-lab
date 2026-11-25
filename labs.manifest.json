@@ -2406,6 +2406,45 @@
         "kind": "archive",
         "file": "functii-trigonometrice.zip"
       }
+    },
+    {
+      "metadata": {
+        "id": "chitara-acustica-virtuala",
+        "addedOn": "2026-11-25",
+        "addedOrder": 2,
+        "chapter": "sunete-si-unde",
+        "title": "Chitara acustică virtuală",
+        "subtitle": "Corzi vibrante, armonice, note muzicale și analiză Fourier",
+        "description": "Explorează cele opt module despre note, corzi, armonice, temperament, game, acorduri și spectru; folosește acordorul, măsurătorile audio, provocările și instrumentele de laborator.",
+        "href": "./simulari/chitara-acustica-virtuala/index.html",
+        "image": "./assets/coarde-tuburi-sonore.svg",
+        "alt": "Coardă vibrantă și tuburi sonore reprezentate prin unde staționare",
+        "tags": [
+          "Coarde vibrante",
+          "Sunet",
+          "Armonice",
+          "Offline"
+        ],
+        "keywords": "chitara acustica coarda vibranta frecventa armonice note game acorduri acordor FFT spectru Fourier temperament misiuni",
+        "status": "available"
+      },
+      "workspace": {
+        "workspaces": [
+          {
+            "selector": "#praxis-original",
+            "layout": "native"
+          }
+        ]
+      },
+      "locales": [
+        "common",
+        "chapters/sunete-si-unde",
+        "courses/shared"
+      ],
+      "offline": {
+        "kind": "archive",
+        "file": "chitara-acustica-virtuala.zip"
+      }
     }
   ]
 }

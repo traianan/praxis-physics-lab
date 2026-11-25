@@ -768,5 +768,13 @@
         "layout": "native"
       }
     ]
+  },
+  "chitara-acustica-virtuala": {
+    "workspaces": [
+      {
+        "selector": "#praxis-original",
+        "layout": "native"
+      }
+    ]
   }
 }

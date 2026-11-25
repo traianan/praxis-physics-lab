@@ -1,0 +1,30 @@
+{
+  "id": "chitara-acustica-virtuala",
+  "source": "chitara-acustica/src/main.tsx",
+  "sha256": "d55c3e2a6e5cdf41e5c2526cbe3167e11ab3bec1b1dd0741e66aab33faf284a3",
+  "languages": [
+    "ro",
+    "en"
+  ],
+  "sourceLanguage": "ro",
+  "modules": [
+    "notes",
+    "string",
+    "harmonics",
+    "temperament",
+    "scales",
+    "chords",
+    "spectrum",
+    "sandbox"
+  ],
+  "preservedResources": [
+    "public/assets/aistudio/laboratorul-chitarei_c3c42bc7.pdf",
+    "THREE-LICENSE.txt"
+  ],
+  "assetFiles": [
+    "aistudio",
+    "index-B4LS8nMX.js",
+    "index-CXDybz9Q.css"
+  ],
+  "boardWorkspace": "#praxis-original"
+}

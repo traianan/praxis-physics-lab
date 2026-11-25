@@ -54,7 +54,8 @@
     "import:trigonometry": "node scripts/import-trigonometry.mjs",
     "import:sound-strings": "node scripts/import-sound-strings.mjs",
     "import:fourier": "npm run registry:generate && node scripts/import-fourier-instrumente.mjs",
-    "import:work-power": "npm run registry:generate && node scripts/import-work-power.mjs"
+    "import:work-power": "npm run registry:generate && node scripts/import-work-power.mjs",
+    "import:guitar": "npm run registry:generate && npm run build --prefix chitara-acustica && node scripts/import-acoustic-guitar.mjs && node scripts/build-courses-offline.mjs --course=chitara-acustica-virtuala && npm run build"
   },
   "devDependencies": {
     "@xyflow/react": "^12.12.1",
