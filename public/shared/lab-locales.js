@@ -36,6 +36,12 @@ export const labNamespaces = {
     "courses/shared",
     "coulomb"
   ],
+  "lucru-mecanic-putere": [
+    "common",
+    "courses/shared",
+    "chapters/lucru-energie-putere",
+    "courses/lucru-mecanic-putere/ui"
+  ],
   "legea-lui-hooke": [
     "common",
     "courses/shared",

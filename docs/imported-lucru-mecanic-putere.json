@@ -1,0 +1,17 @@
+{
+  "id": "lucru-mecanic-putere",
+  "source": "Lucrul mecanic. Puterea/index.html",
+  "sha256": "4a52c1a492537ce1b98cfb6c2dd51e4635ae81de83b79d5056d4efc135f80584",
+  "languages": [
+    "ro",
+    "en"
+  ],
+  "activities": [
+    "teorie",
+    "laborator",
+    "cazuri",
+    "probleme",
+    "evaluare"
+  ],
+  "boardWorkspace": ".lm-workspace"
+}

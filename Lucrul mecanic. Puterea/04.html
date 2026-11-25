@@ -1,0 +1,214 @@
+  <!-- ================= LABORATOR ================= -->
+  <section class="lm-panel" id="panel-laborator" role="tabpanel" aria-labelledby="tab-laborator">
+    <div class="lm-subbar" data-group="lab" role="tablist" aria-label="Laborator">
+      <button role="tab" aria-selected="true" data-sub="plan">Randamentul planului înclinat</button>
+      <button role="tab" aria-selected="false" data-sub="frecare">Frecarea la alunecare</button>
+      <button class="lm-next" data-goto="cazuri">Mai departe: cazuri particulare <span aria-hidden="true">→</span></button>
+    </div>
+
+    <!-- LAB 1 -->
+    <div class="lm-sub is-on" data-subp="plan">
+      <div class="lm-g2" style="grid-template-columns:minmax(0,1.58fr) minmax(0,1fr)">
+        <div class="lm-card">
+          <div class="lm-card-h">
+            <div class="lm-card-t">Standul experimental <span>· ridicare uniformă</span></div>
+            <span class="lm-tag">d = 1,20 m</span>
+          </div>
+          <div class="lm-card-b">
+            <div class="lm-scene" style="aspect-ratio:620/340">
+              <span class="lm-scene-note">g = 10 m/s²</span>
+              <svg viewBox="0 0 620 340" role="img" aria-label="Plan înclinat reglabil cu un corp tras uniform cu dinamometrul">
+                <line x1="34" y1="300" x2="590" y2="300" stroke="#BFCBC1" stroke-width="1.4"/>
+                <path id="l1Tri" d="M80 300L426 300L426 100Z" fill="#F1F6EE" stroke="#B4C5B5" stroke-width="1.2"/>
+                <path id="l1Hyp" d="M80 300L426 100" stroke="#5F8072" stroke-width="2.8" stroke-linecap="round"/>
+                <line id="l1H" x1="426" y1="300" x2="426" y2="100" stroke="#AB7F36" stroke-width="1.3" stroke-dasharray="4 5"/>
+                <path id="l1Arc" d="M135 300A55 55 0 0 0 128 273" fill="none" stroke="#7D9B8E" stroke-width="1.1"/>
+                <text id="l1Albl" x="144" y="286" class="s-lbl" fill="#4E7167">30°</text>
+                <text id="l1Hlbl" x="434" y="206" class="s-lbl" fill="#8C6828">h</text>
+                <text id="l1Dlbl" x="238" y="178" class="s-lbl" fill="#5E7A6E" transform="rotate(-23 238 178)">d</text>
+                <g id="l1BlockG">
+                  <rect x="-25" y="-15" width="50" height="30" rx="2.5" fill="#E9DFC8" stroke="#A98A55" stroke-width="1.4"/>
+                  <path d="M-25 -5h50M-9 -15v30M9 -15v30" stroke="#C7AF84" stroke-width=".8"/>
+                </g>
+                <line id="l1Force" x1="0" y1="0" x2="0" y2="0" stroke="#17685A" stroke-width="2.3" stroke-linecap="round" marker-end="url(#ar-teal)"/>
+                <text id="l1Flbl" x="0" y="0" class="s-val" fill="#17685A" text-anchor="middle">F</text>
+                <g id="l1Dyn" transform="translate(0 0)">
+                  <rect x="-32" y="-11" width="64" height="22" rx="3" fill="#FFFDF7" stroke="#9DB3A4" stroke-width="1"/>
+                  <text id="l1Ftxt" x="0" y="4" class="s-val" text-anchor="middle" style="font-size:8.6px">2,0 N</text>
+                </g>
+                <circle cx="80" cy="300" r="2.8" fill="#405D54"/>
+              </svg>
+            </div>
+            <div class="lm-ctrl-row">
+              <div class="lm-ctrl">
+                <label class="lm-ctrl-l" for="l1a"><b>Unghiul α</b><output id="l1av">30°</output></label>
+                <input type="range" id="l1a" min="18" max="45" step="1" value="30">
+              </div>
+              <div class="lm-ctrl">
+                <label class="lm-ctrl-l" for="l1m"><b>Masa corpului</b><output id="l1mv">300 g</output></label>
+                <input type="range" id="l1m" min="100" max="600" step="50" value="300">
+              </div>
+              <div class="lm-ctrl">
+                <label class="lm-ctrl-l" for="l1mu"><b>Suprafața · μ</b><output id="l1muv">0,25</output></label>
+                <input type="range" id="l1mu" min="0.05" max="0.45" step="0.01" value="0.25">
+              </div>
+            </div>
+            <div class="lm-stats" style="grid-template-columns:repeat(6,minmax(0,1fr))">
+              <div class="lm-stat"><div class="k">G</div><div class="v" id="l1G">3,00 <small>N</small></div></div>
+              <div class="lm-stat"><div class="k">F tras.</div><div class="v" id="l1F">2,15 <small>N</small></div></div>
+              <div class="lm-stat"><div class="k">h</div><div class="v" id="l1h">0,60 <small>m</small></div></div>
+              <div class="lm-stat"><div class="k">L<sub>u</sub></div><div class="v" id="l1Lu">1,80 <small>J</small></div></div>
+              <div class="lm-stat"><div class="k">L<sub>c</sub></div><div class="v" id="l1Lc">2,58 <small>J</small></div></div>
+              <div class="lm-stat accent"><div class="k">η</div><div class="v" id="l1Eta">69,7<small>%</small></div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap">
+              <button class="lm-btn primary" id="l1Add">Înregistrează măsurarea</button>
+              <button class="lm-btn ghost" id="l1Clear">Golește tabelul</button>
+              <span class="lm-small" style="margin-left:auto">Schimbă α sau μ între măsurători.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lm-stack">
+          <div class="lm-card">
+            <div class="lm-card-h"><div class="lm-card-t">Mod de lucru</div><span class="lm-tag plain">echipă de 2–3</span></div>
+            <div class="lm-card-b" style="padding-bottom:9px">
+              <div class="lm-steps">
+                <div class="lm-step"><span class="n">1</span><p>Fixează o înclinare și măsoară greutatea corpului cu dinamometrul.</p></div>
+                <div class="lm-step"><span class="n">2</span><p>Trage <b>uniform</b> corpul pe plan, pe distanța <span class="lm-mk">d</span>, și citește forța de tracțiune <span class="lm-mk">F</span>.</p></div>
+                <div class="lm-step"><span class="n">3</span><p>Măsoară înălțimea <span class="lm-mk">h</span> și calculează <span class="lm-mk">η = G·h / (F·d)</span>.</p></div>
+                <div class="lm-step"><span class="n">4</span><p>Repetă pentru alt unghi sau altă suprafață; compară rezultatele.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="lm-card">
+            <div class="lm-card-h" style="min-height:30px"><div class="lm-card-t">Tabel de date</div><span class="lm-tag plain">max. 3</span></div>
+            <div class="lm-card-b" style="padding-bottom:7px">
+              <table class="lm-table">
+                <thead><tr><th>α</th><th>G (N)</th><th>F (N)</th><th>h (m)</th><th>η</th></tr></thead>
+                <tbody id="l1Tbody"><tr class="empty"><td colspan="5">Înregistrează prima măsurare.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="lm-card" style="flex:1">
+            <div class="lm-card-b pad" style="padding-top:10px">
+              <div class="lm-ov">Rezultat</div>
+              <div class="lm-resultbox">
+                <div><span>η mediu</span><b id="l1Mean">—</b></div>
+                <div><span>Δη mediu</span><b id="l1Err">—</b></div>
+              </div>
+              <p style="font-size:9.5px;color:#8B9792;margin-top:6px">Eroarea relativă: <span class="lm-mk" style="font-size:8px">Δη/η = ΔG/G + Δh/h + ΔF/F + Δd/d</span>. Pentru riglă: Δh = Δd = 0,5 mm; pentru dinamometru: ΔG = ΔF = 0,05 N.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAB 2 -->
+    <div class="lm-sub" data-subp="frecare">
+      <div class="lm-g2" style="grid-template-columns:minmax(0,1.58fr) minmax(0,1fr)">
+        <div class="lm-card">
+          <div class="lm-card-h">
+            <div class="lm-card-t">Tribometru <span>· frecare la alunecare</span></div>
+            <span class="lm-tag clay">lucru rezistent</span>
+          </div>
+          <div class="lm-card-b">
+            <div class="lm-scene" style="aspect-ratio:600/300">
+              <span class="lm-scene-note">mișcare rectilinie uniformă</span>
+              <svg viewBox="0 0 600 300" role="img" aria-label="Bloc tras cu un fir peste scripete, cu forța de frecare opusă">
+                <rect x="42" y="218" width="500" height="11" rx="2" fill="#E8DFC9" stroke="#B9A47C" stroke-width="1"/>
+                <path d="M80 240v40M500 240v40" stroke="#C6B48E" stroke-width="4"/>
+                <ellipse id="l2Glow" cx="190" cy="219" rx="52" ry="7" fill="#C79A4C" opacity="0"/>
+                <g id="l2BlockG">
+                  <rect x="150" y="178" width="80" height="40" rx="2" fill="#E7DCC3" stroke="#A98A55" stroke-width="1.4"/>
+                  <path d="M150 190h80M170 178v40M210 178v40" stroke="#C7AF84" stroke-width=".8"/>
+                  <text x="190" y="204" class="s-lbl" text-anchor="middle" fill="#7E6638">bloc</text>
+                  <line x1="150" y1="212" x2="102" y2="212" stroke="#A4533F" stroke-width="1.8" stroke-linecap="round" marker-end="url(#ar-clay)"/>
+                  <text x="118" y="226" class="s-lbl" fill="#A4533F">F<tspan baseline-shift="sub" font-size="6">f</tspan></text>
+                  <line x1="230" y1="194" x2="292" y2="194" stroke="#17685A" stroke-width="1.8" stroke-linecap="round" marker-end="url(#ar-teal)"/>
+                  <text x="256" y="186" class="s-lbl" fill="#17685A">F<tspan baseline-shift="sub" font-size="6">t</tspan></text>
+                </g>
+                <line id="l2String" x1="230" y1="196" x2="496" y2="216" stroke="#5E7A6E" stroke-width="1.2"/>
+                <circle cx="502" cy="226" r="12" fill="#F3F7F1" stroke="#6E8A7C" stroke-width="1.6"/>
+                <circle cx="502" cy="226" r="2.6" fill="#405D54"/>
+                <path d="M496 216a12 12 0 0 1 12 12" fill="none" stroke="#6E8A7C" stroke-width="1.2"/>
+                <g id="l2WeightG">
+                  <line x1="502" y1="238" x2="502" y2="247" stroke="#5E7A6E" stroke-width="1.2"/>
+                  <rect x="486" y="247" width="32" height="9" rx="2" fill="#CFDCCF" stroke="#6E8A7C" stroke-width="1"/>
+                  <rect x="486" y="256" width="32" height="9" rx="2" fill="#D9E4D6" stroke="#6E8A7C" stroke-width="1"/>
+                  <rect x="486" y="265" width="32" height="9" rx="2" fill="#E3EBDD" stroke="#6E8A7C" stroke-width="1"/>
+                </g>
+                <text x="530" y="270" class="s-lbl">mase marcate</text>
+                <text x="190" y="240" class="s-lbl" text-anchor="middle">N</text>
+                <line x1="274" y1="236" x2="330" y2="236" stroke="#AB7F36" stroke-width="1.3" stroke-linecap="round" marker-end="url(#ar-gold)"/>
+                <text x="302" y="250" class="s-lbl" fill="#8C6828" text-anchor="middle">d</text>
+              </svg>
+            </div>
+            <div class="lm-presets" style="margin-top:8px">
+              <span class="lm-small" style="margin-right:2px">Suprafață</span>
+              <button class="lm-preset is-on" data-mu="0.35">Lemn · μ 0,35</button>
+              <button class="lm-preset" data-mu="0.20">Metal · μ 0,20</button>
+              <button class="lm-preset" data-mu="0.60">Cauciuc · μ 0,60</button>
+            </div>
+            <div class="lm-ctrl-row" style="grid-template-columns:1fr 1fr;gap:18px;margin-top:8px">
+              <div class="lm-ctrl">
+                <label class="lm-ctrl-l" for="l2m"><b>Masa blocului</b><output id="l2mv">500 g</output></label>
+                <input type="range" id="l2m" min="200" max="1000" step="50" value="500">
+              </div>
+              <div class="lm-ctrl">
+                <label class="lm-ctrl-l" for="l2d"><b>Distanța trasă</b><output id="l2dv">1,0 m</output></label>
+                <input type="range" id="l2d" min="0.2" max="2" step="0.1" value="1">
+              </div>
+            </div>
+            <div class="lm-readout" style="margin-top:8px">
+              <div>
+                <div class="ro-k">Lucrul frecării</div>
+                <div class="ro-v neg" id="l2L">−1,7 <small>J</small></div>
+              </div>
+              <div class="ro-side">
+                <span class="lm-badge neg">rezistent</span>
+                <div class="ro-formula" id="l2Fml">L = −0,35 · 5,0 N · 1,0 m</div>
+              </div>
+            </div>
+            <div class="lm-stats" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+              <div class="lm-stat"><div class="k">Normală N</div><div class="v" id="l2N">5,0 <small>N</small></div></div>
+              <div class="lm-stat"><div class="k">Frecare F<sub>f</sub></div><div class="v" id="l2Ff">1,8 <small>N</small></div></div>
+              <div class="lm-stat"><div class="k">Căldură Q</div><div class="v" id="l2Q">1,7 <small>J</small></div></div>
+              <div class="lm-stat accent"><div class="k">Drum dublu</div><div class="v" id="l2x2">−3,5 <small>J</small></div></div>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:7px">
+              <button class="lm-btn primary" id="l2Pull">Trage blocul</button>
+              <button class="lm-btn ghost" id="l2Reset">Resetează</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lm-stack">
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Ce măsori</div>
+              <p style="font-size:11px">Pentru mișcare uniformă, forța de tracțiune echilibrează frecarea: <span class="lm-mk">F<sub>t</sub> = F<sub>f</sub></span>. Apoi <span class="lm-mk">F<sub>f</sub> = μN</span>, cu <span class="lm-mk">N = mg</span>.</p>
+              <div class="lm-formula sm" style="margin:6px 0 0">L<sub>Ff</sub> = −F<sub>f</sub> · d</div>
+            </div>
+          </div>
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Același drum, altă distanță?</div>
+              <table class="lm-table" style="margin-top:2px">
+                <thead><tr><th>d</th><th>|L<sub>f</sub>|</th><th>Q</th></tr></thead>
+                <tbody id="l2Mini"></tbody>
+              </table>
+              <p style="font-size:9.5px;color:#8B9792;margin-top:5px">Dublarea drumului dublează lucrul frecării. De aceea frecarea este <b>neconservativă</b>.</p>
+            </div>
+          </div>
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Observă</div>
+              <p style="font-size:10.5px">Frecarea nu „dispare”: lucrul mecanic negativ se regăsește în <strong>căldură</strong>. Dacă treci cu același bloc pe o traiectorie în zigzag până în același punct, <span class="lm-mk">|L|</span> crește.</p>
+              <div style="margin-top:6px"><button class="lm-ilink" data-goto="cazuri" data-goto-case="4">Compară drumul drept cu zigzagul <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

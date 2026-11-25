@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Lucru mecanic pe un plan înclinat</title>
+  <desc id="desc">Un bloc urcă pe rampă sub acțiunea unei forțe; deplasarea este marcată de-a lungul planului.</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f6f8f2"/><stop offset="1" stop-color="#e6eee6"/></linearGradient>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9z" fill="#17685a"/></marker>
+    <marker id="gold" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9z" fill="#ab7f36"/></marker>
+  </defs>
+  <rect width="640" height="400" rx="28" fill="url(#bg)"/>
+  <path d="M78 310h484" stroke="#c4d1c5" stroke-width="3" stroke-linecap="round"/>
+  <path d="M122 308 514 126v182z" fill="#e4ecdf" stroke="#688174" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M157 293 488 139" stroke="#17685a" stroke-width="3" stroke-dasharray="8 10" opacity=".38"/>
+  <g transform="translate(300 206) rotate(-25)" fill="#fff" stroke="#38594d" stroke-width="3">
+    <rect x="-45" y="-42" width="90" height="78" rx="12"/>
+    <path d="M-24 8h48M-24 20h33" stroke="#c1d3c6" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <path d="M294 191 382 150" stroke="#17685a" stroke-width="5" marker-end="url(#arrow)" stroke-linecap="round"/>
+  <path d="M300 253 391 211" stroke="#ab7f36" stroke-width="4" marker-end="url(#gold)" stroke-linecap="round"/>
+  <text x="345" y="162" fill="#17685a" font-family="Segoe UI,Arial,sans-serif" font-size="25" font-weight="700">F</text>
+  <text x="368" y="226" fill="#866322" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="700">d</text>
+  <path d="M153 308a48 48 0 0 1 41-47" fill="none" stroke="#ab7f36" stroke-width="3"/>
+  <text x="195" y="299" fill="#725a2d" font-family="Segoe UI,Arial,sans-serif" font-size="22">α</text>
+  <rect x="44" y="34" width="175" height="47" rx="14" fill="#fff" stroke="#d4e1d5"/>
+  <text x="67" y="65" fill="#17685a" font-family="Georgia,serif" font-size="26">L = F · d · cos α</text>
+</svg>

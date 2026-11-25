@@ -32,3 +32,11 @@ Finalizat: implementare, verificări locale/offline, publicare și repetarea cel
 3. Verifică formulele și comportamentul la zerouri/asimptote, toate cele patru selecții, randarea desktop/tabletă/touch și arhiva offline; publică remedierea pe main.
 
 Finalizat: graficele au explorare dedicată, valori și proprietăți specifice pentru fiecare funcție; animație și radiani verificate, textul din panoul de proprietăți localizat, contrastul hover clarificat, arhiva offline și build regenerate. SymPy confirmă perioadele și familiile de zerouri/asimptote.
+
+# Lecția Lucrul mecanic. Puterea — 2026-11-25
+
+1. Integrează lecția în catalogul Praxis și păstrează versiunea offline bilingvă.
+2. Corectează diagramele/vectorii și adaptează lecția la touch și tabla digitală.
+3. Verifică formulele, buildul și testele catalogului înainte de publicare.
+
+Finalizat: lecția a fost importată în aplicație și arhiva offline; vectorii și animațiile verificate, layoutul adaptat pentru tablă și touch.

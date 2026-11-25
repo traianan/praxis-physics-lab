@@ -1,0 +1,251 @@
+  <!-- ================= PROBLEME ================= -->
+  <section class="lm-panel" id="panel-probleme" role="tabpanel" aria-labelledby="tab-probleme">
+    <div class="lm-subbar" style="justify-content:space-between">
+      <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8B9792;font-weight:600">Rezolvări pas cu pas · 7 probleme</span>
+      <button class="lm-next" data-goto="evaluare">Mai departe: evaluare <span aria-hidden="true">→</span></button>
+    </div>
+
+    <div class="lm-problems">
+      <div class="lm-rail lm-prail">
+        <div class="lm-pgroup">Lucru mecanic</div>
+        <button class="lm-pitem is-on" data-prob="p1"><span class="pi-n">01</span><span><b>Sania pe orizontală</b><span>forță înclinată · cos α</span></span></button>
+        <button class="lm-pitem" data-prob="p2"><span class="pi-n">02</span><span><b>Forță variabilă</b><span>aria de sub grafic</span></span></button>
+        <button class="lm-pitem" data-prob="p3"><span class="pi-n">03</span><span><b>Dus și întors</b><span>greutatea · drum închis</span></span></button>
+        <button class="lm-pitem" data-prob="p4"><span class="pi-n">04</span><span><b>Resortul comprimat</b><span>energie elastică</span></span></button>
+        <button class="lm-pitem" data-prob="p5"><span class="pi-n">05</span><span><b>Două alungiri</b><span>diferență de pătrate</span></span></button>
+        <div class="lm-pgroup">Putere și randament</div>
+        <button class="lm-pitem" data-prob="p6"><span class="pi-n">06</span><span><b>Sania trasă de motor</b><span>putere constantă · v max</span></span></button>
+        <button class="lm-pitem" data-prob="p7"><span class="pi-n">07</span><span><b>Randamentul planului</b><span>L<sub>u</sub>, L<sub>c</sub>, η</span></span></button>
+        <div class="lm-railnote" style="margin-top:6px">
+          <span class="lm-ov" style="margin-bottom:3px">Metodă</span>
+          <p>Notează datele, scrie relația literară, înlocuiește numeric abia la final. Verifică unitatea și semnul rezultatului.</p>
+        </div>
+      </div>
+
+      <div class="lm-solver">
+        <div class="lm-solver-top">
+          <div class="lm-solver-progress"><span id="pbCounter">0 / 4 pași</span><span class="lm-prog" style="width:130px"><i id="pbBar" style="width:0%"></i></span></div>
+          <div class="lm-btns">
+            <button class="lm-btn" id="pbReset">Resetează</button>
+            <button class="lm-btn" id="pbAll">Arată tot</button>
+            <button class="lm-btn primary" id="pbNext">Pasul următor <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+
+        <!-- P1 -->
+        <article class="lm-prob is-on" data-prob-panel="p1">
+          <div class="lm-prob-top">
+            <div>
+              <div class="lm-ov">Problema 01 · lucru mecanic</div>
+              <p class="lm-statement">Un tânăr trage o sanie pe drum orizontal, pe distanța <b>d = 20 m</b>, exercitând o forță constantă <b>F = 50 N</b> prin intermediul unei sfori înclinate la <b>α = 60°</b> față de orizontală. Calculează lucrul mecanic al forței. Ce componentă „muncește”?</p>
+              <div class="lm-data"><span>F = 50 N</span><span>d = 20 m</span><span>α = 60°</span><span>L = ?</span></div>
+            </div>
+            <div class="lm-fig">
+              <svg viewBox="0 0 220 126" aria-hidden="true">
+                <line x1="10" y1="104" x2="210" y2="104" stroke="#BFCBC1" stroke-width="1.2"/>
+                <path d="M58 100h50" stroke="#3E544C" stroke-width="2.2" stroke-linecap="round"/>
+                <rect x="62" y="66" width="42" height="34" rx="3" fill="#E4EBDD" stroke="#3E544C" stroke-width="1.2"/>
+                <line x1="104" y1="70" x2="154" y2="30" stroke="#17685A" stroke-width="1.8" marker-end="url(#ar-teal)"/>
+                <path d="M124 70A22 22 0 0 1 115 54" fill="none" stroke="#6E8F83" stroke-width=".9"/>
+                <text x="115" y="60" class="s-lbl">60°</text>
+                <line x1="83" y1="114" x2="149" y2="114" stroke="#AB7F36" stroke-width="1.6" marker-end="url(#ar-gold)"/>
+                <text x="118" y="124" class="s-lbl" fill="#8C6828" text-anchor="middle">d</text>
+                <text x="156" y="28" class="s-val" fill="#17685A">F</text>
+              </svg>
+            </div>
+          </div>
+          <div class="lm-steps" data-steps>
+            <div class="lm-step pstep"><span class="n">1</span><p>Identificăm mărimile și unghiul dintre forță și deplasare: <span class="f">F = 50 N, d = 20 m, α = 60°</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">2</span><p>Aplicăm definiția lucrului mecanic: <span class="f">L = F · d · cos α</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">3</span><p>Înlocuim: <span class="f">L = 50 · 20 · cos 60° = 1000 · 0,5 = 500 J</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">4</span><p>Componenta orizontală <span class="f">F<sub>x</sub> = F cos α = 25 N</span> efectuează lucru; componenta verticală <span class="f">F<sub>y</sub> ≈ 43,3 N</span> este perpendiculară pe deplasare, deci <span class="f">L<sub>Fy</sub> = 0</span>.</p></div>
+          </div>
+          <div class="lm-answer panswer"><span>Răspuns</span><b>L = 500 J</b><em>lucru motor</em></div>
+        </article>
+
+        <!-- P2 -->
+        <article class="lm-prob" data-prob-panel="p2">
+          <div class="lm-prob-top">
+            <div>
+              <div class="lm-ov">Problema 02 · forță variabilă</div>
+              <p class="lm-statement">Un corp este deplasat pe axa <b>Ox</b>, de la <b>x = 0</b> la <b>x = 5 m</b>, sub acțiunea unei forțe paralele cu axa. Proiecția forței crește liniar de la <b>0</b> la <b>20 N</b> pe primii <b>2 m</b>, apoi rămâne constantă la <b>20 N</b>. Determină lucrul mecanic total.</p>
+              <div class="lm-data"><span>x: 0 → 2 m, liniar</span><span>x: 2 → 5 m, constant</span><span>F<sub>max</sub> = 20 N</span></div>
+            </div>
+            <div class="lm-fig">
+              <svg viewBox="0 0 220 126" aria-hidden="true">
+                <line x1="22" y1="106" x2="208" y2="106" stroke="#9FB2A6" stroke-width="1"/>
+                <line x1="22" y1="106" x2="22" y2="16" stroke="#9FB2A6" stroke-width="1"/>
+                <path d="M22 106L88 26H190V106Z" fill="#EAF2E7" stroke="none"/>
+                <path d="M22 106L88 26H190" fill="none" stroke="#17685A" stroke-width="1.8"/>
+                <line x1="88" y1="26" x2="88" y2="106" stroke="#7D9B8E" stroke-width=".8" stroke-dasharray="3 3"/>
+                <text x="88" y="119" class="s-lbl" text-anchor="middle">2</text>
+                <text x="190" y="119" class="s-lbl" text-anchor="middle">5</text>
+                <text x="14" y="29" class="s-lbl" text-anchor="end">20</text>
+                <text x="14" y="109" class="s-lbl" text-anchor="end">0</text>
+                <text x="120" y="18" class="s-lbl" fill="#5E7A6E">F (N)</text>
+                <text x="198" y="92" class="s-lbl">x (m)</text>
+              </svg>
+            </div>
+          </div>
+          <div class="lm-steps" data-steps>
+            <div class="lm-step pstep"><span class="n">1</span><p>Lucrul este <b>aria de sub grafic</b>. Împărțim suprafața în triunghi (0–2 m) și dreptunghi (2–5 m).</p></div>
+            <div class="lm-step pstep"><span class="n">2</span><p>Triunghi: <span class="f">L₁ = ½ · 2 m · 20 N = 20 J</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">3</span><p>Dreptunghi: <span class="f">L₂ = (5 − 2) m · 20 N = 60 J</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">4</span><p>Total: <span class="f">L = L₁ + L₂ = 80 J</span>.</p></div>
+          </div>
+          <div class="lm-answer panswer"><span>Răspuns</span><b>L = 80 J</b><em>aria totală</em></div>
+        </article>
+
+        <!-- P3 -->
+        <article class="lm-prob" data-prob-panel="p3">
+          <div class="lm-prob-top">
+            <div>
+              <div class="lm-ov">Problema 03 · greutatea</div>
+              <p class="lm-statement">Un corp de masă <b>m = 2 kg</b> este lansat de la baza unui plan înclinat fără frecare, care formează <b>30°</b> cu orizontala. Urcă până la înălțimea maximă <b>h = 1,5 m</b>, apoi coboară în punctul de plecare. Determină lucrul mecanic total al greutății.</p>
+              <div class="lm-data"><span>m = 2 kg</span><span>h = 1,5 m</span><span>g = 10 m/s²</span><span>L<sub>total</sub> = ?</span></div>
+            </div>
+            <div class="lm-fig">
+              <svg viewBox="0 0 220 126" aria-hidden="true">
+                <line x1="12" y1="104" x2="208" y2="104" stroke="#BFCBC1" stroke-width="1"/>
+                <path d="M34 104L150 104L150 32Z" fill="#F0F5ED" stroke="#B4C5B5" stroke-width="1"/>
+                <path d="M34 104L150 32" stroke="#5F8072" stroke-width="1.6"/>
+                <line x1="34" y1="104" x2="150" y2="32" stroke="#A4533F" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ar-clay)" opacity=".8"/>
+                <line x1="150" y1="32" x2="34" y2="104" stroke="#2E7754" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ar-teal)" opacity=".8"/>
+                <line x1="150" y1="32" x2="150" y2="104" stroke="#AB7F36" stroke-width="1" stroke-dasharray="2 3"/>
+                <text x="157" y="74" class="s-lbl" fill="#8C6828">h</text>
+                <text x="84" y="60" class="s-lbl" fill="#A4533F">urcare</text>
+                <text x="70" y="80" class="s-lbl" fill="#2E7754">coborâre</text>
+              </svg>
+            </div>
+          </div>
+          <div class="lm-steps" data-steps>
+            <div class="lm-step pstep"><span class="n">1</span><p>La urcare, greutatea se opune mișcării: <span class="f">L<sub>up</sub> = −mgh = −2 · 10 · 1,5 = −30 J</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">2</span><p>La coborâre, greutatea ajută mișcarea: <span class="f">L<sub>down</sub> = +mgh = +30 J</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">3</span><p>Suma: <span class="f">L<sub>total</sub> = −30 + 30 = 0 J</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">4</span><p>Poziția finală coincide cu cea inițială, deci <span class="f">Δh = 0</span>. Greutatea este o forță <b>conservativă</b>.</p></div>
+          </div>
+          <div class="lm-answer panswer"><span>Răspuns</span><b>L<sub>total</sub> = 0 J</b><em>drum închis</em></div>
+        </article>
+
+        <!-- P4 -->
+        <article class="lm-prob" data-prob-panel="p4">
+          <div class="lm-prob-top">
+            <div>
+              <div class="lm-ov">Problema 04 · forța elastică</div>
+              <p class="lm-statement">Un resort elastic cu constanta <b>k = 900 N/m</b> este comprimat cu <b>x = 2 cm</b>. Află lucrul mecanic necesar comprimării și lucrul mecanic efectuat de forța elastică.</p>
+              <div class="lm-data"><span>k = 900 N/m</span><span>x = 2 cm = 0,02 m</span><span>L<sub>ext</sub> = ?</span><span>L<sub>Fe</sub> = ?</span></div>
+            </div>
+            <div class="lm-fig">
+              <svg viewBox="0 0 220 126" aria-hidden="true">
+                <line x1="26" y1="34" x2="26" y2="100" stroke="#6E8A7C" stroke-width="2"/>
+                <path d="M26 66h14l6-10 8 20 8-20 8 20 8-20 8 20 8-20 8 20 8-20 8 20 8-20 8 20 8-20 8 20 8-20 6 10h6" fill="none" stroke="#6E8A7C" stroke-width="1.2"/>
+                <rect x="168" y="44" width="30" height="44" rx="2" fill="#E9DFC8" stroke="#A98A55" stroke-width="1.2"/>
+                <line x1="138" y1="34" x2="196" y2="34" stroke="#17685A" stroke-width="1.8" marker-end="url(#ar-teal)"/>
+                <text x="168" y="27" class="s-lbl" fill="#17685A">F</text>
+                <text x="183" y="112" class="s-lbl" text-anchor="middle">x</text>
+              </svg>
+            </div>
+          </div>
+          <div class="lm-steps" data-steps>
+            <div class="lm-step pstep"><span class="n">1</span><p>Transformăm în SI: <span class="f">x = 2 cm = 0,02 m</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">2</span><p>Forța elastică este variabilă, deci lucrul este aria triunghiului: <span class="f">L<sub>ext</sub> = ½kx²</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">3</span><p><span class="f">L<sub>ext</sub> = ½ · 900 · (0,02)² = ½ · 900 · 0,0004 = 0,18 J</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">4</span><p>Forța elastică se opune comprimării: <span class="f">L<sub>Fe</sub> = −0,18 J</span>. Modulul este același, semnul diferă.</p></div>
+          </div>
+          <div class="lm-answer panswer"><span>Răspuns</span><b>L<sub>ext</sub> = 0,18 J</b><em>L<sub>Fe</sub> = −0,18 J</em></div>
+        </article>
+
+        <!-- P5 -->
+        <article class="lm-prob" data-prob-panel="p5">
+          <div class="lm-prob-top">
+            <div>
+              <div class="lm-ov">Problema 05 · diferența de pătrate</div>
+              <p class="lm-statement">Un resort de constantă elastică <b>k</b> este deja alungit cu <b>x₁ = x<sub>max</sub>/5</b> și este întins până la <b>x₂ = 3x<sub>max</sub>/5</b>. Determină modulul lucrului mecanic efectuat de forța elastică.</p>
+              <div class="lm-data"><span>x₁ = x<sub>max</sub>/5</span><span>x₂ = 3x<sub>max</sub>/5</span><span>k necunoscut</span></div>
+            </div>
+            <div class="lm-fig">
+              <svg viewBox="0 0 220 126" aria-hidden="true">
+                <line x1="20" y1="38" x2="20" y2="94" stroke="#6E8A7C" stroke-width="2"/>
+                <path d="M20 66h12l5-9 7 18 7-18 7 18 7-18 7 18 7-18 7 18 7-18 7 18 7-18 7 18 7-18 7 18 7-18 5 9h8" fill="none" stroke="#6E8A7C" stroke-width="1.2"/>
+                <line x1="146" y1="52" x2="146" y2="80" stroke="#B4C5B5" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="178" y1="45" x2="178" y2="87" stroke="#AB7F36" stroke-width="1" stroke-dasharray="3 3"/>
+                <text x="146" y="104" class="s-lbl" text-anchor="middle">x₁</text>
+                <text x="178" y="104" class="s-lbl" text-anchor="middle">x₂</text>
+                <path d="M140 110h44" stroke="#C9D4CA" stroke-width="1"/>
+                <text x="162" y="122" class="s-lbl" text-anchor="middle">Δx</text>
+              </svg>
+            </div>
+          </div>
+          <div class="lm-steps" data-steps>
+            <div class="lm-step pstep"><span class="n">1</span><p>Lucrul forței elastice între două deformări: <span class="f">L<sub>Fe</sub> = −½k(x₂² − x₁²)</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">2</span><p>Calculăm diferența: <span class="f">x₂² − x₁² = (9/25 − 1/25)x<sub>max</sub>² = (8/25)x<sub>max</sub>²</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">3</span><p>Modulul: <span class="f">|L<sub>Fe</sub>| = ½k · (8/25)x<sub>max</sub>² = (4/25)k x<sub>max</sub>²</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">4</span><p>Lucrul este negativ: resortul se opune întinderii suplimentare. <span class="f">(4/25) ≈ 0,16</span>.</p></div>
+          </div>
+          <div class="lm-answer panswer"><span>Răspuns</span><b>|L| = (4/25) k x<sub>max</sub>²</b><em>≈ 0,16 k x<sub>max</sub>²</em></div>
+        </article>
+
+        <!-- P6 -->
+        <article class="lm-prob" data-prob-panel="p6">
+          <div class="lm-prob-top">
+            <div>
+              <div class="lm-ov">Problema 06 · putere constantă</div>
+              <p class="lm-statement">O sanie de masă <b>m = 50 kg</b> este trasă accelerat, plecând din repaus, de un motor care dezvoltă o putere constantă <b>P = 1 kW</b>. Coeficientul de frecare este <b>μ = 0,2</b>. Determină viteza maximă pe orizontală și pe un plan înclinat la <b>45°</b>.</p>
+              <div class="lm-data"><span>m = 50 kg</span><span>P = 1000 W</span><span>μ = 0,2</span><span>α = 45°</span></div>
+            </div>
+            <div class="lm-fig">
+              <svg viewBox="0 0 220 126" aria-hidden="true">
+                <line x1="12" y1="100" x2="208" y2="100" stroke="#BFCBC1" stroke-width="1"/>
+                <rect x="52" y="64" width="76" height="28" rx="5" fill="#E4EBDD" stroke="#3E544C" stroke-width="1.2"/>
+                <circle cx="72" cy="98" r="7" fill="#F7FAF4" stroke="#3E544C" stroke-width="1.2"/>
+                <circle cx="112" cy="98" r="7" fill="#F7FAF4" stroke="#3E544C" stroke-width="1.2"/>
+                <line x1="128" y1="78" x2="184" y2="78" stroke="#AB7F36" stroke-width="1.8" marker-end="url(#ar-gold)"/>
+                <text x="158" y="72" class="s-lbl" fill="#8C6828">v</text>
+                <text x="90" y="54" class="s-lbl" text-anchor="middle">P = 1 kW</text>
+                <path d="M36 92h-14M36 92l4-4M36 92l-4-4" stroke="#A4533F" stroke-width="1.2" opacity=".7"/>
+                <text x="30" y="112" class="s-lbl" fill="#A4533F" text-anchor="middle">F<tspan baseline-shift="sub" font-size="6">f</tspan></text>
+              </svg>
+            </div>
+          </div>
+          <div class="lm-steps" data-steps>
+            <div class="lm-step pstep"><span class="n">1</span><p>La viteza maximă, accelerația este nulă: forța de tracțiune egalează rezistența totală.</p></div>
+            <div class="lm-step pstep"><span class="n">2</span><p>Pe orizontală: <span class="f">F<sub>t</sub> = F<sub>f</sub> = μmg = 0,2 · 50 · 10 = 100 N</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">3</span><p><span class="f">v<sub>max</sub> = P / F<sub>t</sub> = 1000 / 100 = 10 m/s</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">4</span><p>La 45°: <span class="f">F<sub>t</sub> = mg(sin α + μ cos α) ≈ 500(0,707 + 0,141) ≈ 424 N</span>, deci <span class="f">v<sub>max</sub> ≈ 2,36 m/s</span>.</p></div>
+          </div>
+          <div class="lm-answer panswer"><span>Răspuns</span><b>10 m/s</b><em>pe plan înclinat: ≈ 2,36 m/s</em></div>
+        </article>
+
+        <!-- P7 -->
+        <article class="lm-prob" data-prob-panel="p7">
+          <div class="lm-prob-top">
+            <div>
+              <div class="lm-ov">Problema 07 · randament</div>
+              <p class="lm-statement">Un corp cu greutatea <b>G = 100 N</b> este urcat uniform pe un plan înclinat cu lungimea <b>d = 5 m</b> și înălțimea <b>h = 2 m</b>. Forța de tracțiune, paralelă cu planul, este <b>F = 60 N</b>. Calculează lucrul util, lucrul consumat și randamentul.</p>
+              <div class="lm-data"><span>G = 100 N</span><span>d = 5 m</span><span>h = 2 m</span><span>F = 60 N</span></div>
+            </div>
+            <div class="lm-fig">
+              <svg viewBox="0 0 220 126" aria-hidden="true">
+                <line x1="12" y1="102" x2="208" y2="102" stroke="#BFCBC1" stroke-width="1"/>
+                <path d="M36 102L166 102L166 40Z" fill="#F0F5ED" stroke="#B4C5B5" stroke-width="1"/>
+                <path d="M36 102L166 40" stroke="#5F8072" stroke-width="1.6"/>
+                <line x1="166" y1="40" x2="166" y2="102" stroke="#AB7F36" stroke-width="1" stroke-dasharray="2 3"/>
+                <text x="172" y="74" class="s-lbl" fill="#8C6828">h</text>
+                <text x="96" y="82" class="s-lbl" fill="#5E7A6E" transform="rotate(-25 96 82)">d</text>
+                <rect x="92" y="57" width="18" height="12" rx="1.5" fill="#E9DFC8" stroke="#A98A55" stroke-width="1" transform="rotate(-25 101 63)"/>
+                <line x1="104" y1="55" x2="134" y2="40" stroke="#17685A" stroke-width="1.5" marker-end="url(#ar-teal)"/>
+                <text x="128" y="34" class="s-lbl" fill="#17685A">F</text>
+              </svg>
+            </div>
+          </div>
+          <div class="lm-steps" data-steps>
+            <div class="lm-step pstep"><span class="n">1</span><p>Lucrul util ridică greutatea la înălțimea h: <span class="f">L<sub>u</sub> = G · h = 100 · 2 = 200 J</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">2</span><p>Lucrul consumat este cel al forței de tracțiune: <span class="f">L<sub>c</sub> = F · d = 60 · 5 = 300 J</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">3</span><p>Randamentul: <span class="f">η = L<sub>u</sub> / L<sub>c</sub> = 200 / 300 ≈ 0,667</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">4</span><p>Restul de <span class="f">100 J</span> s-a pierdut prin frecare, transformându-se în principal în căldură.</p></div>
+          </div>
+          <div class="lm-answer panswer"><span>Răspuns</span><b>η ≈ 66,7%</b><em>L<sub>u</sub> = 200 J · L<sub>c</sub> = 300 J</em></div>
+        </article>
+      </div>
+    </div>
+  </section>

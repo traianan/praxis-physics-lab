@@ -1,0 +1,94 @@
+  <!-- ================= EVALUARE ================= -->
+  <section class="lm-panel" id="panel-evaluare" role="tabpanel" aria-labelledby="tab-evaluare">
+    <div class="lm-subbar" style="justify-content:space-between">
+      <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8B9792;font-weight:600">8 întrebări · feedback după fiecare răspuns</span>
+      <button class="lm-next" data-goto="teorie">Reia teoria <span aria-hidden="true">↺</span></button>
+    </div>
+
+    <div class="lm-g2" style="grid-template-columns:minmax(0,1.62fr) minmax(0,1fr)">
+      <div class="lm-card lm-quiz" id="evCard">
+        <div class="lm-quiz-top">
+          <span id="evCount">Întrebarea 1 din 8</span>
+          <div class="lm-prog" style="width:150px"><i id="evBar" style="width:0%"></i></div>
+          <span id="evScore">0 corecte</span>
+        </div>
+        <h3 id="evQ">Se încarcă întrebarea…</h3>
+        <div class="lm-opts" id="evOpts"></div>
+        <div class="lm-explain" id="evExp" aria-live="polite"></div>
+        <div class="lm-quiz-foot">
+          <span id="evHint">Alege varianta corectă.</span>
+          <button id="evNext" class="lm-btn primary" disabled>Următoarea <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+
+      <div class="lm-stack">
+        <div class="lm-card">
+          <div class="lm-card-b pad">
+            <div class="lm-ov">Progres</div>
+            <div class="lm-dots" id="evDots"></div>
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:12px">
+              <div><div class="lm-small">Scor curent</div><div class="lm-eval-score" id="evScoreBig">0 / 8</div></div>
+              <div style="text-align:right"><div class="lm-small">Ultima</div><div class="lm-eval-last" id="evLast">—</div></div>
+            </div>
+            <div class="lm-note" style="margin-top:10px;padding:5px 8px">Răspunsurile greșite primesc explicația imediat, ca să corectezi pe loc.</div>
+          </div>
+        </div>
+        <div class="lm-card" style="flex:1">
+          <div class="lm-card-b pad">
+            <div class="lm-ov">Ce verifici</div>
+            <ul class="lm-check">
+              <li>relația L = F d cos α și semnul ei;</li>
+              <li>lucrul greutății și al frecării;</li>
+              <li>forța elastică și aria de sub grafic;</li>
+              <li>puterea, randamentul și unitățile.</li>
+            </ul>
+            <div class="lm-tip">Sfat: dacă ezitați între două variante, verificați mai întâi <b>semnul</b> și <b>unitatea</b>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="lm-foot">
+    <span><b>PRAXIS SCIENCE LAB</b> · Lucrul mecanic. Puterea · fizică, clasa a IX-a</span>
+    <span>model ideal · g = 10 m/s²<span class="dot">·</span>fără frecare de rostogolire<span class="dot">·</span>offline</span>
+  </footer>
+</div><!-- /lm-wrap -->
+
+<!-- ================= MODAL ================= -->
+<div class="lm-modal" id="guideModal" aria-hidden="true">
+  <div class="lm-modal-bg" data-close></div>
+  <div class="lm-modal-card" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+    <button class="lm-modal-close" data-close aria-label="Închide">✕</button>
+    <div class="lm-ov">Ghid rapid</div>
+    <h2 id="guideTitle">Cum folosești lecția</h2>
+    <p>Un singur fir: înțelegi, verifici, aplici. Fiecare secțiune încape într-un ecran; subtaburile păstrează ritmul.</p>
+    <div class="lm-guide">
+      <div class="lm-guide-item"><span class="gi">→</span><div><h3>Teorie pe cinci idei</h3><p>Definiție, semn, forțe și drumuri, putere, randament. Sliderele schimbă mărimile în timp real.</p></div></div>
+      <div class="lm-guide-item"><span class="gi">⚗</span><div><h3>Laborator virtual</h3><p>Măsoară randamentul planului înclinat și frecarea. Înregistrează trei măsurători și compară.</p></div></div>
+      <div class="lm-guide-item"><span class="gi">◇</span><div><h3>Cazuri particulare</h3><p>Cinci situații-limită: forța perpendiculară, corpul nemișcat, drumul închis, zigzagul, resortul.</p></div></div>
+      <div class="lm-guide-item"><span class="gi">∑</span><div><h3>Probleme și evaluare</h3><p>Dezvăluie rezolvarea pas cu pas, apoi testează-te cu opt întrebări cu feedback instant.</p></div></div>
+      <div class="lm-guide-item"><span class="gi">Aa</span><div><h3>Accesibilitate</h3><p>A− / A+ ajustează textul, „Mod tablă” ascunde antetul pentru proiector, iar sunetul se oprește dintr-un clic.</p></div></div>
+    </div>
+    <div style="margin-top:16px" class="lm-ov">Cuprins</div>
+    <div class="lm-toc">
+      <button data-goto="teorie" data-goto-sub="def">Definiție <span>teorie</span></button>
+      <button data-goto="teorie" data-goto-sub="semn">Semn și cazuri <span>teorie</span></button>
+      <button data-goto="teorie" data-goto-sub="forte">Forțe și drumuri <span>teorie</span></button>
+      <button data-goto="teorie" data-goto-sub="putere">Putere <span>teorie</span></button>
+      <button data-goto="teorie" data-goto-sub="randament">Randament <span>teorie</span></button>
+      <button data-goto="laborator" data-goto-sub="plan">Plan înclinat <span>laborator</span></button>
+      <button data-goto="laborator" data-goto-sub="frecare">Frecare <span>laborator</span></button>
+      <button data-goto="cazuri" data-goto-case="2">Corpul nemișcat <span>cazuri</span></button>
+      <button data-goto="probleme" data-goto-prob="p2">Forță variabilă <span>probleme</span></button>
+      <button data-goto="evaluare">Evaluare <span>8 itemi</span></button>
+    </div>
+    <p style="margin-top:14px;font-size:10px;color:#8B9792">Model didactic: forțe constante, resort ideal, frecare la alunecare constantă, g = 10 m/s². Rezultatele sunt rotunjite.</p>
+  </div>
+</div>
+
+<div class="lm-toast" id="lmToast" role="status" aria-live="polite"></div>
+
+<script src="lesson.js"></script>
+</body>
+</html>

@@ -92,6 +92,16 @@
       }
     ]
   },
+  "lucru-mecanic-putere": {
+    "workspaces": [
+      {
+        "selector": ".lm-workspace",
+        "scene": ".lm-panel.is-on .lm-scene",
+        "controls": ".lm-tabs",
+        "layout": "native"
+      }
+    ]
+  },
   "legea-lui-hooke": {
     "workspaces": [
       {

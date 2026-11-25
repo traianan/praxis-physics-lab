@@ -1,0 +1,200 @@
+    <!-- T2 -->
+    <div class="lm-sub" data-subp="semn">
+      <div class="lm-g2">
+        <div class="lm-card">
+          <div class="lm-card-h">
+            <div class="lm-card-t">Unghiul decide semnul <span>· 0° … 180°</span></div>
+            <span class="lm-tag ochre">cos α</span>
+          </div>
+          <div class="lm-card-b">
+            <div class="lm-scene" style="aspect-ratio:560/248">
+              <span class="lm-scene-note">raportor interactiv</span>
+              <svg viewBox="0 0 560 270" role="img" aria-label="Raportor care arată unghiul dintre forță și deplasare">
+                <path d="M120 232A150 150 0 0 1 420 232Z" fill="#F7FAF3" stroke="#E0E8DC" stroke-width="1"/>
+                <g id="t2Ticks"></g>
+                <path id="t2Wedge" d="M270 232L420 232A150 150 0 0 0 345 102Z" fill="#17685A" opacity=".055"/>
+                <line x1="270" y1="232" x2="432" y2="232" stroke="#AB7F36" stroke-width="2" stroke-linecap="round" marker-end="url(#ar-gold)"/>
+                <text x="436" y="235" class="s-val" fill="#8C6828">d</text>
+                <g id="t2Needle" style="transform-box:view-box;transform-origin:270px 232px;transition:transform .28s cubic-bezier(.2,.7,.3,1)">
+                  <line x1="270" y1="232" x2="410" y2="232" stroke="#17685A" stroke-width="2.3" stroke-linecap="round" marker-end="url(#ar-teal)"/>
+                </g>
+                <text id="t2FLbl" x="410" y="220" class="s-val" fill="#17685A" text-anchor="middle">F</text>
+                <path id="t2Arc" d="M322 232A52 52 0 0 0 296 187" fill="none" stroke="#5E8276" stroke-width="1.2"/>
+                <text id="t2Alpha" x="325" y="205" class="s-val" fill="#3F665C">60°</text>
+                <circle cx="270" cy="232" r="3" fill="#405D54"/>
+                <text x="264" y="251" class="s-lbl">O</text>
+                <text id="t2Hint" x="270" y="262" class="s-lbl" text-anchor="middle">α se măsoară de la direcția deplasării</text>
+              </svg>
+            </div>
+            <div class="lm-presets" style="margin-top:9px">
+              <span class="lm-small" style="margin-right:2px">Preseturi</span>
+              <button class="lm-preset" data-set-a="0">0°</button>
+              <button class="lm-preset" data-set-a="30">30°</button>
+              <button class="lm-preset" data-set-a="60">60°</button>
+              <button class="lm-preset" data-set-a="90">90°</button>
+              <button class="lm-preset" data-set-a="120">120°</button>
+              <button class="lm-preset" data-set-a="180">180°</button>
+            </div>
+            <div class="lm-ctrl" style="margin-top:7px">
+              <label class="lm-ctrl-l" for="t2a"><b>Unghiul α</b><output id="t2av">60°</output></label>
+              <input type="range" id="t2a" min="0" max="180" step="5" value="60">
+            </div>
+            <div class="lm-signbar" aria-hidden="true">
+              <div class="sb-axis"></div>
+              <div class="sb-fill" id="t2BarFill"></div>
+              <i class="sb-mark" id="t2BarMark"></i>
+              <span class="sb-zero"></span>
+            </div>
+            <div class="sb-lbls"><span>−1 · rezistent</span><span>0</span><span>motor · +1</span></div>
+            <div class="lm-readout" style="margin-top:8px">
+              <div>
+                <div class="ro-k">Lucru mecanic · F = 50 N, d = 4 m</div>
+                <div class="ro-v" id="t2L">100,0 <small>J</small></div>
+              </div>
+              <div class="ro-side">
+                <span class="lm-badge" id="t2Sign">motor</span>
+                <div class="ro-formula" id="t2Cos">cos 60° = +0,50</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lm-stack tight">
+          <button class="lm-case" data-set-a="30">
+            <span class="lm-case-dot" style="background:#2E7754"></span>
+            <span class="lm-case-body"><b>Lucru motor</b><span>α &lt; 90° → cos α &gt; 0</span><em>Forța are o componentă în sensul deplasării: tracțiunea, greutatea la coborâre.</em></span>
+            <span class="lm-case-val" style="color:#2E7754">L &gt; 0</span>
+          </button>
+          <button class="lm-case" data-set-a="90">
+            <span class="lm-case-dot" style="background:#8B9792"></span>
+            <span class="lm-case-body"><b>Lucru nul</b><span>α = 90° → cos α = 0</span><em>Forța e perpendiculară pe deplasare: normala, greutatea pe orizontală, forța centripetă.</em></span>
+            <span class="lm-case-val" style="color:#8B9792">L = 0</span>
+          </button>
+          <button class="lm-case" data-set-a="150">
+            <span class="lm-case-dot" style="background:#A4533F"></span>
+            <span class="lm-case-body"><b>Lucru rezistent</b><span>α &gt; 90° → cos α &lt; 0</span><em>Forța se opune mișcării: frecarea, greutatea la urcare.</em></span>
+            <span class="lm-case-val" style="color:#A4533F">L &lt; 0</span>
+          </button>
+          <div class="lm-card">
+            <div class="lm-card-b pad" style="padding-top:9px">
+              <div class="lm-ov">Rezultanta</div>
+              <div class="lm-formula sm" style="margin:3px 0 5px">L<sub>R</sub> = L<sub>1</sub> + L<sub>2</sub> + … + L<sub>n</sub></div>
+              <p style="font-size:10.5px">Lucrurile se adună <strong>algebric</strong>, cu semnul fiecărei forțe. Pe graficul <span class="lm-mk">F<sub>d</sub>(x)</span>, L este <strong>aria cu semn</strong> dintre curbă și axă.</p>
+              <div style="margin-top:5px"><button class="lm-ilink" data-goto="probleme" data-goto-prob="p2">Vezi problema cu forță variabilă <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- T3 -->
+    <div class="lm-sub" data-subp="forte">
+      <div class="lm-g2">
+        <div class="lm-card">
+          <div class="lm-card-h">
+            <div class="lm-card-t">Greutatea nu ține cont de drum <span>· același Δh</span></div>
+            <span class="lm-tag">3 trasee</span>
+          </div>
+          <div class="lm-card-b">
+            <div class="lm-scene" style="aspect-ratio:520/244">
+              <span class="lm-scene-note">L<sub>G</sub> = m g h</span>
+              <svg viewBox="0 0 520 252" role="img" aria-label="Trei trasee între același nivel superior și același nivel inferior">
+                <line x1="22" y1="42" x2="496" y2="42" stroke="#C9D4CA" stroke-width=".8" stroke-dasharray="4 6"/>
+                <line x1="22" y1="215" x2="496" y2="215" stroke="#BFCBC1" stroke-width="1.4"/>
+                <path d="M22 42h18M22 215h18" stroke="#9FB2A6" stroke-width="1"/>
+                <path d="M30 42v173" stroke="#9FB2A6" stroke-width="1"/>
+                <path d="M26 42l4-3 4 3M26 215l4 3 4-3" fill="none" stroke="#9FB2A6" stroke-width="1"/>
+                <text x="14" y="134" class="s-lbl" fill="#6F8479" transform="rotate(-90 14 134)" text-anchor="middle">h</text>
+                <rect x="34" y="52" width="100" height="7" rx="1.5" fill="#DDE6D8" stroke="#B7C6B2" stroke-width="1"/>
+                <path d="M50 59v156M118 59v156" stroke="#B7C6B2" stroke-width="2"/>
+                <path d="M42 208h84" stroke="#B7C6B2" stroke-width="1.5"/>
+                <path id="t3PathFall" d="M84 42V215" fill="none" stroke="#C9D5C9" stroke-width="1.4" stroke-dasharray="4 5"/>
+                <path id="t3PathSlide" d="M84 42L342 215" fill="none" stroke="#C9D5C9" stroke-width="1.4" stroke-dasharray="4 5"/>
+                <path id="t3PathStairs" d="M84 42h43v28.8h43v28.8h43v28.8h43v28.8h43v28.8h43V215" fill="none" stroke="#C9D5C9" stroke-width="1.4" stroke-dasharray="4 5"/>
+                <circle cx="84" cy="42" r="3.4" fill="#F5F8F2" stroke="#6E8A7C" stroke-width="1"/>
+                <circle cx="342" cy="215" r="3.4" fill="#F5F8F2" stroke="#6E8A7C" stroke-width="1"/>
+                <text x="73" y="36" class="s-val">A</text>
+                <text x="348" y="209" class="s-val">B</text>
+                <text x="106" y="88" class="s-lbl">cădere</text>
+                <text x="196" y="128" class="s-lbl">tobogan</text>
+                <text x="118" y="202" class="s-lbl">scară</text>
+                <circle id="t3Ball" cx="84" cy="42" r="5.6" fill="#C79A4C" stroke="#8C6828" stroke-width="1.4"/>
+                <circle id="t3BallHalo" cx="84" cy="42" r="9" fill="none" stroke="#C79A4C" stroke-width="1" opacity=".35"/>
+              </svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:8px">
+              <button class="lm-preset" data-route="fall">Cădere liberă</button>
+              <button class="lm-preset is-on" data-route="slide">Tobogan</button>
+              <button class="lm-preset" data-route="stairs">Scară</button>
+              <button class="lm-btn primary" id="t3Run" style="margin-left:auto;height:24px;font-size:9.5px">
+                <svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z" fill="currentColor" stroke="none"/></svg>Rulează
+              </button>
+            </div>
+            <div class="lm-ctrl-row" style="grid-template-columns:1fr 1fr;gap:16px;margin-top:9px">
+              <div class="lm-ctrl">
+                <label class="lm-ctrl-l" for="t3m"><b>Masa m</b><output id="t3mv">4 kg</output></label>
+                <input type="range" id="t3m" min="1" max="10" step="0.5" value="4">
+              </div>
+              <div class="lm-ctrl">
+                <label class="lm-ctrl-l" for="t3h"><b>Înălțimea h</b><output id="t3hv">4,0 m</output></label>
+                <input type="range" id="t3h" min="1" max="5" step="0.5" value="4">
+              </div>
+            </div>
+            <div class="lm-readout" style="margin-top:8px">
+              <div>
+                <div class="ro-k">Lucrul greutății, orice traseu</div>
+                <div class="ro-v" id="t3L">160 <small>J</small></div>
+              </div>
+              <div class="ro-side">
+                <span class="lm-badge">identic</span>
+                <div class="ro-formula" id="t3F">L = 4 · 10 · 4,0</div>
+              </div>
+            </div>
+            <p class="lm-small" style="margin-top:6px">La urcare: <b>L = −mgh</b>. Dus și întors: <b>0</b> — greutatea este o forță conservativă.</p>
+          </div>
+        </div>
+
+        <div class="lm-stack">
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+                <div class="lm-ov" style="margin:0">Frecarea la alunecare</div>
+                <svg width="62" height="30" viewBox="0 0 62 30" aria-hidden="true" style="margin-top:-3px">
+                  <path d="M3 24h9l5-12 6 12 6-12 6 12 6-12 6 12 6-12 4 12h4" fill="none" stroke="#B98A5C" stroke-width="1.4"/>
+                  <rect x="1" y="21" width="4" height="4" fill="#A4533F"/>
+                  <rect x="56" y="21" width="4" height="4" fill="#3F6B58"/>
+                </svg>
+              </div>
+              <div class="lm-formula sm" style="margin:4px 0 5px;text-align:left">L<sub>Ff</sub> = −μ · N · d</div>
+              <p style="font-size:10.5px">Se opune mișcării la fiecare metru. Depinde de <strong>drum</strong>, nu doar de capete, și se transformă în <strong>căldură</strong>.</p>
+              <div style="margin-top:5px"><button class="lm-ilink" data-goto="laborator" data-goto-sub="frecare">Măsoară în laborator <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+                <div class="lm-ov" style="margin:0">Forța elastică</div>
+                <svg width="74" height="26" viewBox="0 0 74 26" aria-hidden="true" style="margin-top:-1px">
+                  <path d="M2 13h7l4-8 5 16 5-16 5 16 5-16 5 16 5-16 5 16 4-8h10" fill="none" stroke="#7D9B8E" stroke-width="1.3"/>
+                  <path d="M68 4v18" stroke="#3F6B58" stroke-width="2"/>
+                  <rect x="60" y="4" width="6" height="18" fill="#DCE7DA" stroke="#3F6B58" stroke-width="1"/>
+                </svg>
+              </div>
+              <div class="lm-formula sm" style="margin:4px 0 5px;text-align:left">L<sub>Fe</sub> = −½ k (x<sub>2</sub>² − x<sub>1</sub>²)</div>
+              <p style="font-size:10.5px">Forța crește cu deformarea, deci nu e constantă: lucrul se calculează ca <strong>arie sub graficul F(x)</strong>.</p>
+              <div style="margin-top:5px"><button class="lm-ilink" data-goto="cazuri" data-goto-case="5">Deschide simularea <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Conservativ vs. neconservativ</div>
+              <div class="lm-cmp">
+                <div class="cmp-row"><span class="cmp-dot" style="background:#2E7754"></span><div><b>Greutatea</b><span>depinde doar de nivelurile inițial și final; pe drum închis L = 0.</span></div></div>
+                <div class="cmp-row"><span class="cmp-dot" style="background:#A4533F"></span><div><b>Frecarea</b><span>depinde de lungimea drumului; pe drum închis L &lt; 0.</span></div></div>
+              </div>
+              <p style="font-size:9.5px;color:#8B9792;margin-top:5px">Forțe conservative: greutatea, elastică, electrică. Neconservative: frecarea, tracțiunea.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

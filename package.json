@@ -53,7 +53,8 @@
     "import:conics": "node scripts/import-conics.mjs",
     "import:trigonometry": "node scripts/import-trigonometry.mjs",
     "import:sound-strings": "node scripts/import-sound-strings.mjs",
-    "import:fourier": "npm run registry:generate && node scripts/import-fourier-instrumente.mjs"
+    "import:fourier": "npm run registry:generate && node scripts/import-fourier-instrumente.mjs",
+    "import:work-power": "npm run registry:generate && node scripts/import-work-power.mjs"
   },
   "devDependencies": {
     "@xyflow/react": "^12.12.1",

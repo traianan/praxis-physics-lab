@@ -1,0 +1,184 @@
+    <!-- T4 -->
+    <div class="lm-sub" data-subp="putere">
+      <div class="lm-g2">
+        <div class="lm-card">
+          <div class="lm-card-h">
+            <div class="lm-card-t">Aceeași lucrare, alt ritm <span>· 1000 kg la 20 m</span></div>
+            <span class="lm-tag ochre">cursa macaralelor</span>
+          </div>
+          <div class="lm-card-b">
+            <div class="lm-scene" style="aspect-ratio:560/265">
+              <span class="lm-scene-note" id="t4Status">gata de start</span>
+              <svg viewBox="0 0 560 265" role="img" aria-label="Două macarale ridică aceeași greutate la aceeași înălțime">
+                <text x="280" y="17" class="s-lbl" text-anchor="middle" fill="#5E7A6E">L = m g h = 200 kJ pentru fiecare macara</text>
+                <path d="M32 78v154M28 78v154M32 78h5" stroke="#B9C7BC" stroke-width="1" fill="none"/>
+                <path d="M28 78l-3 4h6zM28 232l-3-4h6z" fill="#9FB2A6"/>
+                <text x="20" y="158" class="s-lbl" transform="rotate(-90 20 158)" text-anchor="middle">20 m</text>
+                <line x1="20" y1="242" x2="540" y2="242" stroke="#BFCBC1" stroke-width="1.4"/>
+                <g id="t4CraneA">
+                  <path d="M126 242V38M174 242V38" stroke="#9FB4A7" stroke-width="2"/>
+                  <path d="M126 70l48-16M126 102l48-16M126 134l48-16M126 166l48-16M126 198l48-16M126 230l48-16M174 70l-48-16M174 102l-48-16M174 134l-48-16M174 166l-48-16M174 198l-48-16M174 230l-48-16" stroke="#C4D2C5" stroke-width=".8"/>
+                  <path d="M96 38h108" stroke="#8FA598" stroke-width="2.4" stroke-linecap="round"/>
+                  <path d="M150 38v14" stroke="#8FA598" stroke-width="1.4"/>
+                  <rect x="138" y="51" width="24" height="12" rx="2" fill="#E6EDE1" stroke="#8FA598" stroke-width="1"/>
+                  <circle cx="150" cy="24" r="10" fill="#F4F8F2" stroke="#8FA598" stroke-width="1"/>
+                  <text x="150" y="27.5" class="s-val" text-anchor="middle" fill="#456458">A</text>
+                  <line id="t4CableA" x1="150" y1="63" x2="150" y2="202" stroke="#5E7A6E" stroke-width="1"/>
+                  <g id="t4CrateA">
+                    <rect x="124" y="202" width="52" height="30" rx="2.5" fill="#E9DFC9" stroke="#A98A55" stroke-width="1.3"/>
+                    <path d="M124 210h52M136 202v30M164 202v30" stroke="#C4AD82" stroke-width=".8"/>
+                    <text x="150" y="221" class="s-lbl" text-anchor="middle" fill="#7E6638">1 t</text>
+                  </g>
+                  <text id="t4TimeA" x="150" y="260" class="s-lbl" text-anchor="middle">0,0 s</text>
+                </g>
+                <g id="t4CraneB">
+                  <path d="M376 242V38M424 242V38" stroke="#9FB4A7" stroke-width="2"/>
+                  <path d="M376 70l48-16M376 102l48-16M376 134l48-16M376 166l48-16M376 198l48-16M376 230l48-16M424 70l-48-16M424 102l-48-16M424 134l-48-16M424 166l-48-16M424 198l-48-16M424 230l-48-16" stroke="#C4D2C5" stroke-width=".8"/>
+                  <path d="M346 38h108" stroke="#8FA598" stroke-width="2.4" stroke-linecap="round"/>
+                  <path d="M400 38v14" stroke="#8FA598" stroke-width="1.4"/>
+                  <rect x="388" y="51" width="24" height="12" rx="2" fill="#E6EDE1" stroke="#8FA598" stroke-width="1"/>
+                  <circle cx="400" cy="24" r="10" fill="#F4F8F2" stroke="#8FA598" stroke-width="1"/>
+                  <text x="400" y="27.5" class="s-val" text-anchor="middle" fill="#456458">B</text>
+                  <line id="t4CableB" x1="400" y1="63" x2="400" y2="202" stroke="#5E7A6E" stroke-width="1"/>
+                  <g id="t4CrateB">
+                    <rect x="374" y="202" width="52" height="30" rx="2.5" fill="#E9DFC9" stroke="#A98A55" stroke-width="1.3"/>
+                    <path d="M374 210h52M386 202v30M414 202v30" stroke="#C4AD82" stroke-width=".8"/>
+                    <text x="400" y="221" class="s-lbl" text-anchor="middle" fill="#7E6638">1 t</text>
+                  </g>
+                  <text id="t4TimeB" x="400" y="260" class="s-lbl" text-anchor="middle">0,0 s</text>
+                </g>
+              </svg>
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px">
+              <div class="lm-ctrl" style="flex:1;min-width:0">
+                <label class="lm-ctrl-l" for="t4t"><b>Timpul macaralei B</b><output id="t4tv">8 s</output></label>
+                <input type="range" id="t4t" min="4" max="40" step="1" value="8">
+              </div>
+              <button class="lm-btn primary" id="t4Start" style="height:27px;margin-bottom:1px">
+                <svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z" fill="currentColor" stroke="none"/></svg>Pornește
+              </button>
+            </div>
+            <div class="lm-stats">
+              <div class="lm-stat"><div class="k">Lucru mecanic (comun)</div><div class="v">200 <small>kJ</small></div></div>
+              <div class="lm-stat"><div class="k">Puterea A · 40 s</div><div class="v" id="t4PA">5,0 <small>kW</small></div></div>
+              <div class="lm-stat accent"><div class="k">Puterea B · <span id="t4tB2">8</span> s</div><div class="v" id="t4PB">25,0 <small>kW</small></div></div>
+            </div>
+            <p class="lm-small" style="margin-top:6px">Aceeași cantitate de lucru, împărțită la timpi diferiți → <b>puteri diferite</b>. Macaraua B ridică de 5 ori mai repede.</p>
+          </div>
+        </div>
+
+        <div class="lm-stack">
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Definiție</div>
+              <p><strong>Puterea mecanică</strong> este rapiditatea cu care se efectuează lucrul mecanic:</p>
+              <div class="lm-formula">P = <span style="font-style:normal">L</span> / Δt</div>
+              <p style="font-size:11px">Un <strong>watt</strong> este puterea la care se efectuează <strong>1 J în fiecare secundă</strong>.</p>
+              <div class="lm-formula sm" style="margin:5px 0 0">1 W = 1 J/s</div>
+            </div>
+          </div>
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Puterea instantanee</div>
+              <div class="lm-formula sm" style="margin:3px 0 5px">P = F · v · cos α</div>
+              <p style="font-size:11px">Când forța e paralelă cu viteza: <span class="lm-mk">P = F · v</span>. Aceeași putere poate însemna <strong>forță mare la viteză mică</strong> sau invers.</p>
+              <div class="lm-note" style="margin-top:6px;padding:5px 8px">Un motor de 1 kW care merge cu 10 m/s dezvoltă o forță de doar 100 N.</div>
+            </div>
+          </div>
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Repere</div>
+              <p style="font-size:11px"><strong>1 kW = 1000 W.</strong> În industria auto se folosește și <strong>calul-putere</strong>: <span class="lm-mk">1 CP ≈ 735,5 W</span>.</p>
+              <p style="font-size:10px;color:#8B9792;margin-top:4px">James Watt a comparat puterea motorului cu abur cu cea a cailor: 75 kg ridicate la 1 m în 1 s.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- T5 -->
+    <div class="lm-sub" data-subp="randament">
+      <div class="lm-g2">
+        <div class="lm-card">
+          <div class="lm-card-h">
+            <div class="lm-card-t">Cât din efort devine util? <span>· plan înclinat</span></div>
+            <span class="lm-tag">G = 100 N · d = 5 m</span>
+          </div>
+          <div class="lm-card-b">
+            <div class="lm-scene" style="aspect-ratio:540/248">
+              <span class="lm-scene-note">α și μ le alegi tu</span>
+              <svg viewBox="0 0 540 270" role="img" aria-label="Plan înclinat cu un corp urcat uniform">
+                <line x1="34" y1="240" x2="510" y2="240" stroke="#BFCBC1" stroke-width="1.4"/>
+                <path id="t5Tri" d="M70 235L320 235L320 170Z" fill="#F0F5ED" stroke="#A9BCAD" stroke-width="1.3"/>
+                <path id="t5Hyp" d="M70 235L320 170" stroke="#6E8A7C" stroke-width="2.4" stroke-linecap="round"/>
+                <line id="t5H" x1="320" y1="235" x2="320" y2="170" stroke="#AB7F36" stroke-width="1.3" stroke-dasharray="3 4"/>
+                <text id="t5Hlbl" x="327" y="205" class="s-lbl" fill="#8C6828">h</text>
+                <text id="t5Dlbl" x="190" y="196" class="s-lbl" fill="#5E7A6E">d = 5 m</text>
+                <path id="t5Arc" d="M112 235A42 42 0 0 0 106 211" fill="none" stroke="#7D9B8E" stroke-width="1"/>
+                <text id="t5Albl" x="118" y="222" class="s-lbl" fill="#4E7167">30°</text>
+                <g id="t5Block">
+                  <rect x="-21" y="-14" width="42" height="28" rx="2.5" fill="#E8DFCB" stroke="#A98A55" stroke-width="1.3"/>
+                  <path d="M-21 -4h42M-7 -14v28M7 -14v28" stroke="#C7AF84" stroke-width=".8"/>
+                </g>
+                <line id="t5Force" x1="0" y1="0" x2="0" y2="0" stroke="#17685A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#ar-teal)"/>
+                <text id="t5Flbl" x="0" y="0" class="s-val" fill="#17685A" text-anchor="middle">F</text>
+                <circle cx="70" cy="235" r="2.6" fill="#405D54"/>
+              </svg>
+            </div>
+            <div class="lm-ctrl-row" style="grid-template-columns:1fr 1fr;gap:18px">
+              <div class="lm-ctrl">
+                <label class="lm-ctrl-l" for="t5a"><b>Unghiul α</b><output id="t5av">30°</output></label>
+                <input type="range" id="t5a" min="15" max="60" step="1" value="30">
+              </div>
+              <div class="lm-ctrl">
+                <label class="lm-ctrl-l" for="t5mu"><b>Frecarea μ</b><output id="t5muv">0,20</output></label>
+                <input type="range" id="t5mu" min="0" max="0.5" step="0.01" value="0.2">
+              </div>
+            </div>
+            <div class="lm-readout" style="margin-top:9px">
+              <div>
+                <div class="ro-k">Randamentul planului</div>
+                <div class="ro-v" id="t5Eta">74,3<small>%</small></div>
+              </div>
+              <div class="ro-side" style="min-width:170px">
+                <div class="ro-formula" id="t5Fml">η = 1 / (1 + μ·ctg α)</div>
+                <div class="lm-bar" style="margin-top:5px"><i id="t5BarU" style="width:74%"></i><i class="loss" id="t5BarL" style="width:26%"></i></div>
+                <div style="display:flex;justify-content:space-between;font-size:7.5px;color:#8B9792;margin-top:3px"><span>util</span><span>pierdut</span></div>
+              </div>
+            </div>
+            <div class="lm-stats">
+              <div class="lm-stat"><div class="k">Lucru util L<sub>u</sub></div><div class="v" id="t5Lu">50 <small>J</small></div></div>
+              <div class="lm-stat"><div class="k">Lucru consumat L<sub>c</sub></div><div class="v" id="t5Lc">67,3 <small>J</small></div></div>
+              <div class="lm-stat"><div class="k">Pierdut prin frecare</div><div class="v" id="t5Lost">17,3 <small>J</small></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lm-stack">
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Definiție</div>
+              <p><strong>Randamentul</strong> arată cât din lucrul consumat se transformă în lucru util:</p>
+              <div class="lm-formula">η = L<sub>u</sub> / L<sub>c</sub> = P<sub>u</sub> / P<sub>c</sub></div>
+              <p style="font-size:11px">Este o mărime <strong>adimensională</strong>, de obicei exprimată în procente. Într-un sistem real <span class="lm-mk">0 &lt; η &lt; 1</span>.</p>
+            </div>
+          </div>
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Unde se duce restul?</div>
+              <p style="font-size:11px">Frecarea transformă o parte din lucru în <strong>căldură</strong>. De aceea η scade când μ crește și crește când planul devine mai abrupt.</p>
+              <div class="lm-note" style="margin-top:6px;padding:5px 8px">Cu cât unghiul α e mai mic, cu atât forța necesară e mai mică — dar drumul e mai lung, iar frecarea „mănâncă” mai mult.</div>
+            </div>
+          </div>
+          <div class="lm-card">
+            <div class="lm-card-b pad">
+              <div class="lm-ov">Planul înclinat</div>
+              <div class="lm-formula sm" style="margin:2px 0 5px;text-align:left">η = 1 / (1 + μ · ctg α)</div>
+              <p style="font-size:10.5px">Câștigi forță, dar pierzi drum. η = 100% doar în modelul ideal, fără frecare.</p>
+              <div style="margin-top:6px"><button class="lm-ilink" data-goto="laborator" data-goto-sub="plan">Verifică experimental <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

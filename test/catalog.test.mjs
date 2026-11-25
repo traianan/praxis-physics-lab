@@ -5,13 +5,13 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
-  assert.deepEqual(latest.map(sim=>sim.id),['fourier-instrumente','coarde-tuburi-sonore','functii-trigonometrice']);
-  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-24','2026-11-21','2026-11-21']);
-  assert.equal(getLatestSimulations(1)[0].id,'fourier-instrumente');
+  assert.deepEqual(latest.map(sim=>sim.id),['lucru-mecanic-putere','fourier-instrumente','coarde-tuburi-sonore']);
+  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-25','2026-11-24','2026-11-21']);
+  assert.equal(getLatestSimulations(1)[0].id,'lucru-mecanic-putere');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
- const home=getHomeSimulations();assert.equal(home.length,15);
+ const home=getHomeSimulations();assert.equal(home.length,16);
  for(const chapter of chapters)assert.ok(home.filter(sim=>sim.chapter===chapter.id).length<=2);
  assert.equal(findSimulations('miscare').length,9);assert.equal(findSimulations('','curbilinie osculator').length,1);
 });
@@ -25,8 +25,8 @@ test('eight chapters including mathematical foundations, with unique stable ids'
  assert.equal(chapters.length,8); assert.equal(new Set(chapters.map(c=>c.id)).size,8);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite','elemente-de-matematica']);
 });
-test('forty-seven real local laboratories include Fourier, strings, conics and the Compton effect', async () => {
-  assert.equal(simulations.length,47);
+test('forty-eight real local laboratories include the work-and-power lesson and existing science topics', async () => {
+  assert.equal(simulations.length,48);
  assert.equal(simulations.find(s=>s.id==='functia-gradul-al-doilea').chapter,'elemente-de-matematica');
  assert.equal(simulations.find(s=>s.id==='miscarea-in-camp-gravitational').chapter,'miscare');
  assert.equal(simulations.find(s=>s.id==='polarizarea-luminii').chapter,'lumina-si-radiatii');
@@ -58,7 +58,7 @@ test('search is accent-insensitive and combines chapter and all search words',()
 });
 test('chapter results contain their registered laboratories',()=>{
  assert.equal(findSimulations('miscare').length,9);
- assert.deepEqual(findSimulations('lucru-energie-putere').map(s=>s.id),['legea-lui-hooke']);
+ assert.deepEqual(findSimulations('lucru-energie-putere').map(s=>s.id),['lucru-mecanic-putere','legea-lui-hooke']);
  assert.deepEqual(findSimulations('fenomene-cuantice').map(s=>s.id).sort(),['dualismul-unda-corpuscul','efectul-compton','efectul-fotoelectric-extern']);
 });
 

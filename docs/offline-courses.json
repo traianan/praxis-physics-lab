@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-24T13:02:15.364Z",
+  "builtAt": "2026-11-25T14:14:20.460Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -500,6 +500,17 @@
       "id": "fourier-instrumente",
       "file": "public/simulari/fourier-instrumente/fourier-instrumente.zip",
       "sha256": "96e603aeb7c0d43b0084e68f3f4ddf6259f65f003a8368d961c56888737a661b",
+      "languages": [
+        "ro",
+        "en"
+      ],
+      "sharedDependencies": "inlined",
+      "localResources": true
+    },
+    {
+      "id": "lucru-mecanic-putere",
+      "file": "public/simulari/lucru-mecanic-putere/lucru-mecanic-putere.zip",
+      "sha256": "add82335d64c5fd14295cc14b77f5ec5699511a30f2c7adb0aa0927511c4e7c7",
       "languages": [
         "ro",
         "en"

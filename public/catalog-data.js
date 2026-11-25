@@ -171,6 +171,27 @@ export const simulations = [
     "status": "available"
   },
   {
+    "id": "lucru-mecanic-putere",
+    "addedOn": "2026-11-25",
+    "addedOrder": 1,
+    "chapter": "lucru-energie-putere",
+    "title": "Lucrul mecanic. Puterea",
+    "subtitle": "Lucru mecanic, putere și randament",
+    "description": "Înțelege semnul lucrului mecanic, explorează puterea și măsoară randamentul prin simulări, probleme ghidate și evaluare interactivă.",
+    "href": "./simulari/lucru-mecanic-putere/index.html",
+    "image": "./assets/lucru-mecanic-putere.svg",
+    "alt": "Un corp este tras pe un plan înclinat; vectorii forței și deplasării ilustrează lucrul mecanic.",
+    "tags": [
+      "Mecanică",
+      "Lucru mecanic",
+      "Putere",
+      "Randament",
+      "Touch"
+    ],
+    "keywords": "lucru mecanic putere randament forta deplasare unghi cosinus plan inclinat frecare eficienta munca mecanica",
+    "status": "available"
+  },
+  {
     "id": "legea-lui-hooke",
     "addedOn": "2026-11-04",
     "addedOrder": 3,

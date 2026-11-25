@@ -1,5 +1,11 @@
 # PROGRESS
 
+## Publicarea lecției Lucrul mecanic. Puterea — 2026-11-25
+
+- Lecția sursă este integrată în catalogul Praxis, în distribuția locală și arhiva offline bilingvă. Include comanda reproductibilă `npm run import:work-power`.
+- Revizuite ilustrațiile raportorului, macaralelor, planului înclinat și cazului cu frecare; vectorii greutății, componentelor și frecării au fost verificați cu SymPy. Animația saniei și aspectul pentru touch/Mod tablă au fost verificate în Chrome.
+- Buildul a fost verificat. Utilizarea temporară a distribuției existente de pachete a ocolit doar regenerarea bibliotecilor opționale, care nu au fost modificate de această lecție.
+
 ## Layout pentru tablă — Funcții trigonometrice — 2026-11-24
 
 - Pragul de layout compact a fost ridicat la 1100 px CSS; în ecrane înguste, panourile trec pe coloană, antetele controalelor se pot împacheta, iar valorile graficului se separă pe rânduri. Grilele folosesc coloane care se pot micșora fără să împingă conținutul în afara cardurilor.
