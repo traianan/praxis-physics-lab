@@ -689,6 +689,26 @@
   padding: 4px 6px;
   white-space: nowrap;
 }
+:where(#praxis-original) .lm-vector-symbol {
+  display: inline-block;
+  position: relative;
+  padding-top: .3em;
+  margin-inline: .04em;
+  line-height: 1;
+}
+:where(#praxis-original) .lm-vector-symbol svg {
+  position: absolute;
+  top: 0;
+  left: -.02em;
+  width: .9em;
+  height: .3em;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 :where(#praxis-original) .lm-mk.plain {
   background: none;
   border: 0;
@@ -802,6 +822,10 @@
 }
 :where(#praxis-original) .lm-scene.tall {
   min-height: 200px;
+}
+:where(#praxis-original) .lm-casestage .lm-scene {
+  width: 85%;
+  margin-inline: auto;
 }
 :where(#praxis-original) .lm-scene .glow {
   position: absolute;
@@ -1540,6 +1564,9 @@
   }
 }
 @media (max-width: 680px) {
+  :where(#praxis-original) .lm-casestage .lm-scene {
+    width: 100%;
+  }
   :where(#praxis-original) .lm-wrap,
   :where(#praxis-original) .lm-top-in {
     padding-left: 13px;

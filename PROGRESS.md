@@ -1,5 +1,12 @@
 # PROGRESS
 
+## Revizie animații și scene — 2026-11-25
+
+- Săgeata forței elastice este ancorată la marginea blocului, pe direcția de acțiune, și crește odată cu deformarea. În cazul C2, mașina, forța aplicată și săgeata deplasării se mișcă împreună; deplasarea unește pozițiile inițială și finală.
+- Toate cele cinci scene din „Cazuri particulare” sunt reduse la 85% pe ecrane mari și revin la lățimea disponibilă pe ecrane înguste. Descompunerea greutății are două ghidaje punctate, paralele și perpendiculare pe plan. Produsul scalar folosește săgeți SVG explicite.
+- Verificare Chrome: prag C2 la 400/410 N, alinierea săgeții elastice cu marginea blocului, raportul scenelor pe desktop și responsive, formula scalară pe mobil fără overflow. Verificarea simbolică pentru aria resortului și ortogonalitatea axelor a trecut.
+- `npm run check` a raportat erori în teste pentru fișiere-sursă absente din checkout și acces loopback blocat; verificările focalizate pentru catalog (11/11), sintaxa JS (454 fișiere) și buildul complet fără pasul opțional Konva au reușit. Buildul standard rămâne blocat de `node_modules/konva/package.json` absent.
+
 ## Publicarea lecției Lucrul mecanic. Puterea — 2026-11-25
 
 - Lecția sursă este integrată în catalogul Praxis, în distribuția locală și arhiva offline bilingvă. Include comanda reproductibilă `npm run import:work-power`.

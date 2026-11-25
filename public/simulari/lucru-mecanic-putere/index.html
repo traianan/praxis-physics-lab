@@ -165,7 +165,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
               <p>O forță efectuează <strong>lucru mecanic</strong> dacă își deplasează punctul de aplicație. Pentru o forță constantă, pe o traiectorie rectilinie:</p>
               <div class="lm-formula">L = F · d · cos α</div>
               <p style="font-size:11px">α este unghiul dintre <strong>vectorul forță</strong> și <strong>vectorul deplasare</strong>. L este o mărime <strong>scalară de proces</strong>: descrie transformarea, nu corpul.</p>
-              <p style="font-size:10px;color:#53635C;margin-top:6px">produs scalar: <span class="lm-mk">L = F⃗ · d⃗</span></p>
+              <p style="font-size:10px;color:#53635C;margin-top:6px">produs scalar: <span class="lm-mk lm-scalar-product" role="math" aria-label="L este produsul scalar al vectorilor F și d">L = <span class="lm-vector-symbol" aria-hidden="true">F<svg viewBox="0 0 16 6" focusable="false"><path d="M1 3h13m-3-2 3 2-3 2"/></svg></span> · <span class="lm-vector-symbol" aria-hidden="true">d<svg viewBox="0 0 16 6" focusable="false"><path d="M1 3h13m-3-2 3 2-3 2"/></svg></span></span></p>
             </div>
           </div>
           <div class="lm-card">
@@ -513,7 +513,8 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
                 <text id="t5Flbl" x="0" y="0" class="s-val" fill="#17685A" text-anchor="middle">F</text>
                 <rect x="366" y="52" width="162" height="160" rx="8" fill="#FBFCF8" stroke="#DCE5D9" stroke-width="1"/>
                 <text x="447" y="70" class="s-lbl up" text-anchor="middle">Descompunerea greutății</text>
-                <line id="t5FbdPlane" x1="398" y1="158" x2="482" y2="108" stroke="#6E8A7C" stroke-width="2.2" stroke-linecap="round"/>
+                <line id="t5FbdPlane" x1="398" y1="158" x2="482" y2="108" stroke="#8FA396" stroke-width="1" stroke-dasharray="2.5 3.5" stroke-linecap="round"/>
+                <line id="t5FbdNormal" x1="416" y1="91" x2="464" y2="175" stroke="#8FA396" stroke-width="1" stroke-dasharray="2.5 3.5" stroke-linecap="round"/>
                 <g id="t5FbdBlock" transform="translate(440 133) rotate(-30)">
                   <rect x="-14" y="-10" width="28" height="20" rx="2.5" fill="#E8DFCB" stroke="#A98A55" stroke-width="1.2"/>
                 </g>
@@ -909,6 +910,7 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
                 <svg viewBox="0 0 640 300" role="img" aria-label="O mașină împinsă, care rămâne pe loc sub pragul de frecare">
                   <line x1="30" y1="238" x2="610" y2="238" stroke="#BFCBC1" stroke-width="1.4"/>
                   <path d="M60 252h44M132 252h44M204 252h44M276 252h44M348 252h44M420 252h44M492 252h44M564 252h44" stroke="#D5DED4" stroke-width="2"/>
+                  <g id="c2MovingGroup">
                   <g id="c2Car">
                     <path d="M262 196c0-8 5-13 13-13h18l16-24c4-6 10-9 17-9h46c8 0 13 3 17 10l14 23h14c11 0 18 7 18 17v14c0 5-4 8-9 8H270c-5 0-8-3-8-8z" fill="#DFE9DA" stroke="#3F6157" stroke-width="1.6"/>
                     <path d="M310 183l13-20c2-3 5-5 9-5h33c4 0 7 2 9 5l11 20z" fill="#F6F9F2" stroke="#6E8A7C" stroke-width="1"/>
@@ -918,10 +920,11 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
                     <circle cx="404" cy="222" r="15" fill="#F8FAF5" stroke="#3F6157" stroke-width="2"/>
                     <circle cx="404" cy="222" r="5" fill="#8FA598"/>
                   </g>
-                  <line id="c2Push" x1="188" y1="192" x2="252" y2="192" stroke="#17685A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#ar-teal)"/>
-                  <text x="216" y="183" class="s-val" fill="#17685A" text-anchor="middle">F</text>
-                  <line id="c2Static" x1="340" y1="238" x2="292" y2="238" stroke="#A4533F" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar-clay)" opacity=".8"/>
-                  <text id="c2StaticLbl" x="318" y="254" class="s-lbl" fill="#A4533F" text-anchor="middle">frecare statică</text>
+                  <line id="c2Push" x1="194" y1="192" x2="260" y2="192" stroke="#17685A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#ar-teal)"/>
+                  <text id="c2PushLbl" x="227" y="183" class="s-val" fill="#17685A" text-anchor="middle">F</text>
+                  <line id="c2Static" x1="350" y1="238" x2="302" y2="238" stroke="#A4533F" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar-clay)" opacity=".8"/>
+                  <text id="c2StaticLbl" x="326" y="254" class="s-lbl" fill="#A4533F" text-anchor="middle">frecare statică</text>
+                  </g>
                   <line id="c2D" x1="262" y1="266" x2="402" y2="266" stroke="#73551F" stroke-width="1.6" stroke-linecap="round" marker-end="url(#ar-gold)" opacity=".25"/>
                   <text id="c2Dlbl" x="332" y="282" class="s-lbl" fill="#8C6828" text-anchor="middle" opacity=".35">d = 5 m</text>
                   <text x="320" y="44" class="s-lbl" text-anchor="middle" fill="#7C8B82">trage de forță: dacă nu învingi frecarea statică, d = 0</text>
@@ -995,10 +998,9 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
               <span class="lm-tag clay">neconservativă</span>
             </div>
             <div class="lm-card-b">
-              <div class="lm-scene" style="aspect-ratio:753/230">
+              <div class="lm-scene" style="aspect-ratio:640/230">
                 <span class="lm-scene-note">μ = 0,30 · m = 1 kg</span>
-                <svg viewBox="0 0 753 230" role="img" aria-label="Un corp se deplasează între A și B pe traseu drept sau în zigzag, cu frecare">
-                  <g transform="translate(56.5 0)">
+                <svg viewBox="0 0 640 230" role="img" aria-label="Un corp se deplasează între A și B pe traseu drept sau în zigzag, cu frecare">
                   <rect x="36" y="18" width="568" height="194" rx="8" fill="#FBFCF7" stroke="#E4EADD" stroke-width="1"/>
                   <text x="52" y="40" class="s-lbl up">vedere de sus</text>
                   <path id="c4Zig" d="M80 122L120 90L160 122L200 90L240 122L280 90L320 122L360 90L400 122L440 90L480 122L520 90L560 122" fill="none" stroke="#D8C3A0" stroke-width="1.4" stroke-dasharray="4 4" opacity=".8"/>
@@ -1020,7 +1022,6 @@ html body a[href]:is(.button.primary,.btn.primary,.tab.active,.tab[aria-selected
                     <text x="540" y="78" class="s-lbl" fill="#A4533F" text-anchor="middle">căldură</text>
                   </g>
                   <text x="320" y="195" class="s-lbl" text-anchor="middle">aceleași capete · același corp · aceeași suprafață</text>
-                  </g>
                 </svg>
               </div>
               <div class="lm-presets" style="margin-top:8px">

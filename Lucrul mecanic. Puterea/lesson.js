@@ -682,7 +682,7 @@
     const gNormal = $('#t5GNormal'), gNormalLbl = $('#t5GNormalLbl');
     const gNormalVectorMark = $('#t5GNormalVectorMark');
     const friction = $('#t5Friction'), frictionLbl = $('#t5FrictionLbl');
-    const fbdPlane = $('#t5FbdPlane'), fbdBlock = $('#t5FbdBlock');
+    const fbdPlane = $('#t5FbdPlane'), fbdNormal = $('#t5FbdNormal'), fbdBlock = $('#t5FbdBlock');
 
     function update() {
       const deg = parseFloat(aIn.value), mu = parseFloat(muIn.value);
@@ -737,11 +737,14 @@
 
       const componentScale = 56;
       const fbdX = 440, fbdY = 133;
+      const fbdGuideLen = 48;
       const vector = (line, x1, y1, x2, y2) => {
         line.setAttribute('x1', x1.toFixed(2)); line.setAttribute('y1', y1.toFixed(2));
         line.setAttribute('x2', x2.toFixed(2)); line.setAttribute('y2', y2.toFixed(2));
       };
       vector(fbdPlane, fbdX - 48 * cos, fbdY + 48 * sin, fbdX + 48 * cos, fbdY - 48 * sin);
+      vector(fbdNormal, fbdX - fbdGuideLen * sin, fbdY - fbdGuideLen * cos,
+        fbdX + fbdGuideLen * sin, fbdY + fbdGuideLen * cos);
       fbdBlock.setAttribute('transform', 'translate(' + fbdX + ' ' + fbdY + ') rotate(' + (-deg) + ')');
       vector(weight, fbdX, fbdY, fbdX, fbdY + componentScale);
       weightLbl.setAttribute('x', (fbdX + 5).toFixed(2)); weightLbl.setAttribute('y', (fbdY + componentScale + 12).toFixed(2));
@@ -1033,14 +1036,39 @@
     const slider = $('#c2F');
     if (!slider) return;
     const out = $('#c2Fv'), L = $('#c2L'), badge = $('#c2Badge'), formula = $('#c2Fml');
-    const car = $('#c2Car'), dArrow = $('#c2D'), dLbl = $('#c2Dlbl'), stat = $('#c2Static');
+    const motion = $('#c2MovingGroup'), push = $('#c2Push'), pushLbl = $('#c2PushLbl');
+    const dArrow = $('#c2D'), dLbl = $('#c2Dlbl'), stat = $('#c2Static'), statLbl = $('#c2StaticLbl');
     const status = $('#c2Status');
     const THRESHOLD = 400;
+    let motionFrame = 0, visualTravel = 0;
+
+    function moveBody(target) {
+      cancelAnimationFrame(motionFrame);
+      const start = visualTravel, began = performance.now();
+      const duration = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 260;
+      function frame(now) {
+        const t = duration ? Math.min((now - began) / duration, 1) : 1;
+        const eased = 1 - Math.pow(1 - t, 3);
+        visualTravel = start + (target - start) * eased;
+        const offset = visualTravel.toFixed(1);
+        motion.setAttribute('transform', 'translate(' + offset + ' 0)');
+        push.setAttribute('x1', (194 + visualTravel).toFixed(1));
+        push.setAttribute('x2', (260 + visualTravel).toFixed(1));
+        pushLbl.setAttribute('x', (227 + visualTravel).toFixed(1));
+        dArrow.setAttribute('x1', '342');
+        dArrow.setAttribute('x2', (342 + visualTravel).toFixed(1));
+        dLbl.setAttribute('x', (342 + visualTravel / 2).toFixed(1));
+        if (t < 1) motionFrame = requestAnimationFrame(frame);
+      }
+      motionFrame = requestAnimationFrame(frame);
+    }
 
     function update() {
       const Fv = parseFloat(slider.value);
       out.textContent = Fv + ' N';
-      const moving = Fv >= THRESHOLD;
+      const moving = Fv > THRESHOLD;
+      const travel = moving ? 60 : 0;
+      moveBody(travel);
       if (moving) {
         const dist = 5;
         L.innerHTML = pretty(Fv * dist) + ' <small>J</small>';
@@ -1051,21 +1079,25 @@
         if (status) status.textContent = 'se mișcă';
         dArrow.style.opacity = 1;
         dLbl.style.opacity = 1;
-        stat.style.opacity = 0.15;
-        if (car) car.style.transform = 'translate(' + ((Fv - THRESHOLD) / 300 * 44 + 8).toFixed(1) + 'px, 0)';
-        if (car) car.style.transition = 'transform .45s cubic-bezier(.2,.7,.3,1)';
+        stat.style.opacity = 0;
+        statLbl.style.opacity = 0;
       } else {
         L.innerHTML = '0 <small>J</small>';
         L.className = 'ro-v zero';
         badge.className = 'lm-badge zero';
         badge.textContent = 'nu se mișcă';
-        formula.textContent = 'prag ≈ ' + THRESHOLD + ' N · d = 0';
+        formula.textContent = 'F ≤ ' + THRESHOLD + ' N · d = 0';
         if (status) status.textContent = 'nu se mișcă';
         dArrow.style.opacity = 0.22;
         dLbl.style.opacity = 0.32;
-        stat.style.opacity = 0.8;
-        if (car) car.style.transform = 'translate(0, 0)';
+        dLbl.textContent = 'd = 0';
+        const frictionLen = 48 * Math.min(Fv / THRESHOLD, 1);
+        stat.setAttribute('x2', (350 - frictionLen).toFixed(1));
+        statLbl.setAttribute('x', (350 - frictionLen / 2).toFixed(1));
+        stat.style.opacity = Fv > 0 ? 0.8 : 0;
+        statLbl.style.opacity = Fv > 0 ? 1 : 0;
       }
+      if (moving) dLbl.textContent = 'd = 5 m';
       fillRange(slider);
     }
 
@@ -1274,16 +1306,16 @@
       spring.setAttribute('d', springPath(60, xEnd, 174, 16, 13));
       block.setAttribute('transform', 'translate(' + (-x * 10).toFixed(1) + ' 0)');
 
-      const sx = 334 - x * 10;
-      const flen = 12 + Fe * 4.6;
+      const sx = 272 - x * 10;
+      const flen = Math.min(56, Fe * 2.2);
       force.setAttribute('x1', sx.toFixed(1));
-      force.setAttribute('y1', 136);
+      force.setAttribute('y1', 174);
       force.setAttribute('x2', (sx + flen).toFixed(1));
-      force.setAttribute('y2', 136);
+      force.setAttribute('y2', 174);
       flbl.setAttribute('x', (sx + flen / 2).toFixed(1));
-      flbl.setAttribute('y', 127);
-      force.style.opacity = Fe === 0 ? 0.25 : 1;
-      flbl.style.opacity = Fe === 0 ? 0.3 : 1;
+      flbl.setAttribute('y', 162);
+      force.style.opacity = Fe === 0 ? 0 : 1;
+      flbl.style.opacity = Fe === 0 ? 0 : 1;
 
       const gx = 430 + x * 16;
       const gy = 258 - Fe * 7.5;
