@@ -287,6 +287,25 @@
         ],
         "createdAt": "2026-11-24T17:38:57.432Z",
         "reason": "Semnalarea vine din umbra de elevare foarte transparentă a antetului comun, decalatǎ, nu dintr-un halou cromatic; sursa umbrei locale a fost neutralizată."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "Lucrul mecanic. Puterea/index.html"
+        ],
+        "createdAt": "2026-11-25T15:15:42.339Z",
+        "reason": "Reviewed: tab labels align with the active underline and SVG scenes use the full coordinate canvas; badge content is centered in a 24px minimum-height capsule. Text cards and labels now have adequate inset."
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "Lucrul mecanic. Puterea/index.html",
+          "Lucrul mecanic. Puterea/lesson.css"
+        ],
+        "createdAt": "2026-11-25T15:16:02.849Z",
+        "reason": "Reviewed: the square grid is the coordinate surface of the physics diagrams and supports reading displacement, angle and distance; it is not a decorative page background."
       }
     ]
   }

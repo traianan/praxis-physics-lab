@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-25T14:54:29.191Z",
+  "builtAt": "2026-11-25T15:14:26.016Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -510,7 +510,7 @@
     {
       "id": "lucru-mecanic-putere",
       "file": "public/simulari/lucru-mecanic-putere/lucru-mecanic-putere.zip",
-      "sha256": "76fb01711fa4a593a686c0cd083df8d77d68393908b87413d112b5099a3f92ff",
+      "sha256": "1abcb3c6b3d8541be610679f3d6011710c7ba2fe2726026dd49a77fac340f389",
       "languages": [
         "ro",
         "en"

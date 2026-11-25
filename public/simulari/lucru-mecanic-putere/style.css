@@ -605,7 +605,7 @@
   background: var(--mint-2);
   border: 1px solid var(--mint-line);
   border-radius: 999px;
-  padding: 3px 7px;
+  padding: 5px 9px;
   white-space: nowrap;
 }
 :where(#praxis-original) .lm-tag.ochre {
@@ -665,13 +665,13 @@
   background: #F6F8F3;
   border: 1px solid #E6EBE1;
   border-radius: 6px;
-  padding: 7px 8px;
+  padding: 8px 10px;
   margin: 8px 0;
   letter-spacing: .005em;
 }
 :where(#praxis-original) .lm-formula.sm {
   font-size: 15px;
-  padding: 6px 7px;
+  padding: 8px 10px;
 }
 :where(#praxis-original) .lm-formula i {
   font-style: italic;
@@ -686,7 +686,7 @@
   background: #F2F5EF;
   border: 1px solid #E8EBE2;
   border-radius: 3px;
-  padding: 1px 4px;
+  padding: 4px 6px;
   white-space: nowrap;
 }
 :where(#praxis-original) .lm-mk.plain {
@@ -703,8 +703,8 @@
   border: 1px solid var(--mint-line);
   border-left: 1px solid #8FB49C;
   border-radius: 5px;
-  padding: 7px 9px;
-  font-size: 10.5px;
+  padding: 10px 12px;
+  font-size: 12px;
   line-height: 1.52;
   color: #456458;
 }
@@ -868,7 +868,7 @@
   color: #52645A;
   background: rgba(255, 255, 255, .72);
   border: 1px solid #E4EAE1;
-  padding: 2px 6px;
+  padding: 4px 8px;
   border-radius: 4px;
 }
 :where(#praxis-original) .lm-lesson .s-lbl {
@@ -952,7 +952,7 @@
   background: #F1F6F0;
   border: 1px solid #E6EDE4;
   border-radius: 3px;
-  padding: 1px 5px;
+  padding: 4px 8px;
   white-space: nowrap;
 }
 :where(#praxis-original) .lm-lesson input[type=range] {
@@ -1141,8 +1141,8 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  height: 20px;
-  padding: 0 7px;
+  min-height: 24px;
+  padding: 0 9px;
   border-radius: 999px;
   font-size: 8px;
   font-weight: 600;
