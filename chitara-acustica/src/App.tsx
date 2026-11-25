@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { BookMarked, BookOpen, CheckCircle2, Compass, RotateCcw, Sliders } from 'lucide-react';
+import { BookMarked, BookOpen, CheckCircle2, Compass, Play, RotateCcw, Sliders } from 'lucide-react';
 import { audioEngine } from './audio/AudioEngine';
 import { DictionaryView } from './components/DictionaryView';
 import { GuideView } from './components/GuideView';
@@ -37,6 +37,25 @@ const MODULES: Array<{ id: LabModuleId; label: string }> = [
   { id: 'spectrum', label: 'Spectru' },
   { id: 'sandbox', label: 'Laborator liber' },
 ];
+
+const QUICK_AUDIO_ACTIONS: Partial<Record<LabModuleId, Array<{ id: string; label: string; shortLabel?: string }>>> = {
+  notes: [{ id: 'note', label: 'Redă nota' }],
+  string: [{ id: 'string', label: 'Ciupește coarda' }],
+  harmonics: [{ id: 'harmonics', label: 'Ascultă sunetul compus' }],
+  temperament: [
+    { id: 'pure', label: 'Interval pur', shortLabel: 'Pur' },
+    { id: 'tempered', label: 'Temperat' },
+    { id: 'beats', label: 'Ascultă bătăile', shortLabel: 'Bătăi' },
+  ],
+  scales: [{ id: 'scale', label: 'Redă gama' }],
+  chords: [
+    { id: 'arpeggio', label: 'Arpegiat' },
+    { id: 'simultaneous', label: 'Simultan' },
+    { id: 'strum', label: 'Ciupire toate corzile', shortLabel: 'Ciupire' },
+  ],
+  spectrum: [{ id: 'spectrum', label: 'Ciupește coarda' }],
+  sandbox: [{ id: 'sandbox', label: 'Audiază nota' }],
+};
 
 function loadPreferences(): LabPreferences {
   try {
@@ -314,6 +333,22 @@ export default function App() {
 
             {/* Active Module Workspace */}
             <div id="module-panel" role="tabpanel" aria-labelledby={`module-tab-${prefs.activeModule}`} tabIndex={0}>
+              <div className="guitar-quick-actions" role="group" aria-label="Redare rapidă">
+                <span className="guitar-quick-actions-title">Redare rapidă</span>
+                {(QUICK_AUDIO_ACTIONS[prefs.activeModule] ?? []).map((action) => (
+                  <button
+                    key={action.id}
+                    type="button"
+                    aria-label={action.label}
+                    title={action.label}
+                    onClick={() => document.querySelector<HTMLButtonElement>(`#module-panel [data-guitar-quick-action="${action.id}"]`)?.click()}
+                    className="guitar-quick-action"
+                  >
+                    <Play className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    <span>{action.shortLabel ?? action.label}</span>
+                  </button>
+                ))}
+              </div>
               {prefs.activeModule === 'notes' && (
                 <Module1Notes
                   notation={prefs.notation}

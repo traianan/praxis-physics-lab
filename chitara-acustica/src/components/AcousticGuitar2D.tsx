@@ -561,6 +561,7 @@ export const AcousticGuitar2D: React.FC<AcousticGuitar2DProps> = ({
         {onStrumAll && (
           <button
             type="button"
+            data-guitar-quick-action="strum"
             onClick={onStrumAll}
             className="col-start-2 row-span-2 row-start-1 min-h-11 w-max whitespace-nowrap rounded-lg bg-[#0d4a3e] px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-[#09382f] cursor-pointer"
           >

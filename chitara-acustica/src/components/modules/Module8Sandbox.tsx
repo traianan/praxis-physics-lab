@@ -469,6 +469,7 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
               </span>
               <button
                 type="button"
+                data-guitar-quick-action="sandbox"
                 onClick={() => handlePluck(selectedStringId, activeFret, activeFreq)}
                 className="px-2.5 py-1 rounded-md bg-[#0d4a3e] hover:bg-[#09382f] text-white text-[11px] font-semibold flex items-center gap-1 shrink-0 cursor-pointer"
               >

@@ -257,6 +257,7 @@ export const Module1Notes: React.FC<Module1NotesProps> = ({
           <button
             type="button"
             data-sound="none"
+            data-guitar-quick-action="note"
             onClick={() => playCurrent()}
             className="w-full py-2.5 px-4 rounded-lg bg-[#0d4a3e] hover:bg-[#09382f] text-white text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >

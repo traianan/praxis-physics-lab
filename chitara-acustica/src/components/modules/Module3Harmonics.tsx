@@ -301,6 +301,7 @@ export const Module3Harmonics: React.FC<Module3HarmonicsProps> = ({
 
         <button
           type="button"
+          data-guitar-quick-action="harmonics"
           onClick={playHarmonicMix}
           className="w-full py-2.5 px-4 rounded-lg bg-[#0d4a3e] hover:bg-[#09382f] text-white text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
         >

@@ -137,6 +137,7 @@ export const Module6Chords: React.FC<Module6ChordsProps> = ({
         <div className="grid grid-cols-2 gap-2 pt-1">
           <button
             type="button"
+            data-guitar-quick-action="arpeggio"
             onClick={() => playChord(45)}
             className="py-2.5 px-3 rounded-lg bg-[#0d4a3e] hover:bg-[#09382f] text-white text-xs font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
           >
@@ -145,6 +146,7 @@ export const Module6Chords: React.FC<Module6ChordsProps> = ({
           </button>
           <button
             type="button"
+            data-guitar-quick-action="simultaneous"
             onClick={() => playChord(8)}
             className="py-2.5 px-3 rounded-lg border border-[#0d4a3e] bg-[#edf3f0] hover:bg-[#dce8e2] text-[#0d4a3e] text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
           >

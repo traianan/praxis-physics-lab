@@ -262,6 +262,7 @@ export const Module4Temperament: React.FC<Module4TemperamentProps> = ({ onComple
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
+              data-guitar-quick-action="pure"
               onClick={playPure}
               className="py-2 px-3 rounded-lg border border-[#d8e2dc] bg-[#edf3f0] hover:bg-[#dce8e2] text-xs font-semibold text-[#13221d] flex items-center justify-center gap-1.5 cursor-pointer"
             >
@@ -270,6 +271,7 @@ export const Module4Temperament: React.FC<Module4TemperamentProps> = ({ onComple
             </button>
             <button
               type="button"
+              data-guitar-quick-action="tempered"
               onClick={playTempered}
               className="py-2 px-3 rounded-lg border border-[#d8e2dc] bg-[#edf3f0] hover:bg-[#dce8e2] text-xs font-semibold text-[#13221d] flex items-center justify-center gap-1.5 cursor-pointer"
             >
@@ -279,6 +281,7 @@ export const Module4Temperament: React.FC<Module4TemperamentProps> = ({ onComple
           </div>
           <button
             type="button"
+            data-guitar-quick-action="beats"
             onClick={playBeatsComparison}
             className="w-full py-2.5 px-4 rounded-lg bg-[#0d4a3e] hover:bg-[#09382f] text-white text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >

@@ -128,6 +128,7 @@ export const Module5Scales: React.FC<Module5ScalesProps> = ({ strings, notation 
         <div className="flex gap-2 pt-1">
           <button
             type="button"
+            data-guitar-quick-action="scale"
             onClick={playScale}
             className="flex-1 py-2.5 px-4 rounded-lg bg-[#0d4a3e] hover:bg-[#09382f] text-white text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >

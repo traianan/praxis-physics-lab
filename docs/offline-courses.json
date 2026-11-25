@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-25T20:20:50.183Z",
+  "builtAt": "2026-11-25T20:37:54.852Z",
   "courses": [
     {
       "id": "legea-lui-ohm",
@@ -521,7 +521,7 @@
     {
       "id": "chitara-acustica-virtuala",
       "file": "public/simulari/chitara-acustica-virtuala/chitara-acustica-virtuala.zip",
-      "sha256": "eb2b2e7c7dee751d410c5db91994c2846afe7c7e9dc66e1e69dd9de5fe2a23e9",
+      "sha256": "bb02b062f9030134f11d4ab4871fb10df39c667dd929823cd112d81249b1df21",
       "languages": [
         "ro",
         "en"
