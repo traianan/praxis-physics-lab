@@ -1016,43 +1016,66 @@
      ============================================================ */
   function initCase2() {
     const slider = $('#c2F');
-    if (!slider) return;
+    const resistanceSlider = $('#c2R');
+    if (!slider || !resistanceSlider) return;
     const out = $('#c2Fv'), forceLabel = $('#c2ForceLabel');
+    const resistanceOut = $('#c2Rv'), lockNote = $('#c2LockNote');
     const friction = $('#c2Friction'), accel = $('#c2Accel'), speed = $('#c2Speed'), work = $('#c2L');
     const explanation = $('#c2Explanation'), status = $('#c2Status');
     const roadOnWheel = $('#c2Static'), wheelOnRoad = $('#c2Push');
     const roadLabel = $('#c2StaticLbl'), wheelLabel = $('#c2PushLbl');
+    const resistanceArrow = $('#c2ResistanceArrow');
     const torque = $('#c2Torque'), torqueLabel = $('#c2TorqueLbl');
     const wheels = [$('#c2WheelSpinA'), $('#c2WheelSpinB')];
     const modes = $$('[data-c2-mode]');
     const mass = 1000, distance = 5;
+    const savedForce = { accelerate: parseFloat(slider.value), brake: parseFloat(slider.value) };
     let mode = 'accelerate';
 
     function update() {
+      const resistance = parseFloat(resistanceSlider.value);
+      if (mode === 'steady') {
+        slider.min = '0';
+        slider.value = String(resistance);
+      }
+      else if (mode === 'accelerate') {
+        slider.min = String(resistance);
+        if (parseFloat(slider.value) < resistance) slider.value = String(resistance);
+      } else slider.min = '0';
       const force = parseFloat(slider.value);
       const braking = mode === 'brake';
       const direction = braking ? -1 : 1;
-      const signedForce = direction * force;
-      const netForce = mode === 'steady' ? 0 : signedForce;
+      const contactForce = mode === 'steady' ? resistance : force;
+      const netForce = mode === 'accelerate' ? force - resistance
+        : mode === 'steady' ? 0 : -force - resistance;
       const a = netForce / mass;
       const netWork = netForce * distance;
       const initialSpeed = mode === 'accelerate' ? 0 : 20;
       const finalSpeed = Math.sqrt(Math.max(0, initialSpeed ** 2 + 2 * a * distance));
+      resistanceOut.textContent = resistance + ' N';
       out.textContent = force + ' N';
       if (forceLabel) forceLabel.textContent = mode === 'accelerate'
-        ? 'Forța de tracțiune rezultantă Fₜ'
-        : mode === 'steady' ? 'Tracțiune = rezistențe R' : 'Forța de frânare prin contact |fₛ|';
-      if (friction) friction.textContent = (braking ? '−' : '+') + force + ' N';
+        ? 'Forța de tracțiune Fₜ'
+        : mode === 'steady' ? 'Tracțiune Fₜ = R'
+          : 'Forța de frânare Fᵦ';
+      slider.disabled = mode === 'steady';
+      if (lockNote) lockNote.hidden = mode !== 'steady';
+      if (friction) friction.textContent = (braking ? '−' : '+') + contactForce + ' N';
       if (accel) accel.textContent = minus(f(a, 2)) + ' m/s²';
       if (speed) speed.textContent = f(finalSpeed, 2) + ' m/s';
       if (work) work.textContent = (netWork < 0 ? '−' : '') + pretty(Math.abs(netWork), 0) + ' J';
-      if (status) status.textContent = mode === 'accelerate' ? 'accelerează · aderență'
-        : mode === 'steady' ? 'viteză constantă · aderență' : 'frânează · fără patinare';
+      if (status) status.textContent = mode === 'accelerate'
+        ? force === resistance ? 'Fₜ = R · a = 0' : 'accelerează · Fₜ > R'
+        : mode === 'steady' ? 'viteză constantă · aderență'
+          : force === 0 ? resistance > 0 ? 'rulare liberă · rezistențele încetinesc' : 'viteză constantă · fără forțe'
+            : 'frânează · fără patinare';
       if (explanation) explanation.innerHTML = mode === 'accelerate'
-        ? '<b>Accelerație.</b> Motorul aplică un cuplu roților motoare; anvelopa împinge drumul înapoi, iar drumul exercită frecarea statică înainte. Forța de tracțiune este rezultanta frecărilor statice pe roțile motoare: <b>Fₜ = Σfₛ</b>. Aici ignorăm rezistențele, deci <b>Fₜ = ma</b>.'
+        ? '<b>Accelerație.</b> Motorul aplică un cuplu roților motoare; anvelopa împinge drumul înapoi, iar drumul exercită frecarea statică înainte. <b>Fₜ = Σfₛ</b>, iar rezistențele R acționează înapoi: <b>Fₜ − R = ma</b>. Mașina accelerează numai când Fₜ > R; la egalitate, a = 0.'
         : mode === 'steady'
-          ? '<b>Rulare uniformă.</b> Frecarea statică înainte furnizează tracțiunea <b>Fₜ = Σfₛ</b>, care echilibrează rezistențele la înaintare <b>R</b>: <b>Fₜ = R</b> și <b>ΣFₓ = 0</b>. Lucrul pozitiv al tracțiunii și lucrul negativ al rezistențelor se compensează.'
-          : '<b>Frânare.</b> Frânele aplică roților un cuplu opus rotației; pentru roți care rulează fără să alunece, drumul exercită frecarea statică înapoi, iar automobilul încetinește. Dacă roata se blochează și alunecă, frecarea devine cinetică.';
+          ? '<b>Rulare uniformă.</b> Frecarea statică înainte furnizează tracțiunea <b>Fₜ = Σfₛ</b>, care echilibrează aceeași rezistență R: <b>Fₜ = R</b> și <b>ΣFₓ = 0</b>. Lucrul pozitiv al tracțiunii și lucrul negativ al rezistențelor se compensează.'
+          : force === 0
+            ? '<b>Rulare liberă.</b> Motorul nu aplică tracțiune, iar rezistențele R încetinesc automobilul: <b>ΣFₓ = −R = ma</b>. La rulare ideală fără rezistențe, viteza ar rămâne constantă.'
+            : '<b>Frânare.</b> Frânele aplică roților un cuplu opus rotației; drumul exercită frecarea statică înapoi, iar rezistențele R se adaugă frânării: <b>ΣFₓ = −(Fᵦ + R) = ma</b>. Dacă roata se blochează și alunecă, frecarea devine cinetică.';
       const arrowLength = force === 0 ? 0 : 48;
       if (roadOnWheel) {
         roadOnWheel.setAttribute('x2', (296 + direction * arrowLength).toString());
@@ -1062,21 +1085,34 @@
         wheelOnRoad.setAttribute('x2', (296 - direction * arrowLength * 0.75).toString());
         wheelOnRoad.style.opacity = force === 0 ? 0.2 : 0.85;
       }
+      if (resistanceArrow) {
+        resistanceArrow.setAttribute('x2', (470 - 36 * resistance / 2000).toString());
+        resistanceArrow.style.opacity = resistance === 0 ? 0.2 : 1;
+      }
       if (roadLabel) roadLabel.setAttribute('x', (296 + direction * 28).toString());
       if (wheelLabel) wheelLabel.setAttribute('x', (296 - direction * 22).toString());
       if (torque) torque.setAttribute('d', braking
         ? 'M301 191a22 22 0 0 0 -25 17'
         : 'M276 208a22 22 0 0 1 25-17');
-      if (torqueLabel) torqueLabel.textContent = braking ? 'τ frână' : 'τₘ';
-      wheels.forEach(wheel => wheel?.classList.toggle('is-rolling', force > 0));
+      if (torqueLabel) torqueLabel.textContent = braking ? force > 0 ? 'τ frână' : 'τ = 0' : 'τₘ';
+      wheels.forEach(wheel => wheel?.classList.toggle('is-rolling', mode === 'steady' ? finalSpeed > 0 : mode === 'brake' ? finalSpeed > 0 : force > resistance));
       modes.forEach(button => button.setAttribute('aria-pressed', button.dataset.c2Mode === mode ? 'true' : 'false'));
       fillRange(slider);
     }
 
-    slider.addEventListener('input', update);
+    slider.addEventListener('input', () => {
+      if (mode !== 'steady') savedForce[mode] = parseFloat(slider.value);
+      update();
+    });
+    resistanceSlider.addEventListener('input', update);
     slider.addEventListener('change', () => sfx.tick());
+    resistanceSlider.addEventListener('change', () => sfx.tick());
     modes.forEach(button => button.addEventListener('click', () => {
-      mode = button.dataset.c2Mode;
+      const nextMode = button.dataset.c2Mode;
+      if (mode !== 'steady') savedForce[mode] = parseFloat(slider.value);
+      mode = nextMode;
+      if (mode === 'steady') slider.value = resistanceSlider.value;
+      else slider.value = String(Math.min(6000, Math.max(mode === 'accelerate' ? parseFloat(resistanceSlider.value) : 0, savedForce[mode])));
       update();
       sfx.step();
     }));
