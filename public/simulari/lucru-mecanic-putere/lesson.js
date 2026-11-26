@@ -1012,79 +1012,74 @@
   }
 
   /* ============================================================
-     CASE 2 — pushing without motion
+     CASE 2 — static friction and a driven car wheel
      ============================================================ */
   function initCase2() {
     const slider = $('#c2F');
     if (!slider) return;
-    const out = $('#c2Fv'), L = $('#c2L'), badge = $('#c2Badge'), formula = $('#c2Fml');
-    const motion = $('#c2MovingGroup'), push = $('#c2Push'), pushLbl = $('#c2PushLbl');
-    const dArrow = $('#c2D'), dLbl = $('#c2Dlbl'), stat = $('#c2Static'), statLbl = $('#c2StaticLbl');
-    const status = $('#c2Status');
-    const THRESHOLD = 400;
-    let motionFrame = 0, visualTravel = 0;
-
-    function moveBody(target) {
-      cancelAnimationFrame(motionFrame);
-      const start = visualTravel, began = performance.now();
-      const duration = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 260;
-      function frame(now) {
-        const t = duration ? Math.min((now - began) / duration, 1) : 1;
-        const eased = 1 - Math.pow(1 - t, 3);
-        visualTravel = start + (target - start) * eased;
-        const offset = visualTravel.toFixed(1);
-        motion.setAttribute('transform', 'translate(' + offset + ' 0)');
-        push.setAttribute('x1', (194 + visualTravel).toFixed(1));
-        push.setAttribute('x2', (260 + visualTravel).toFixed(1));
-        pushLbl.setAttribute('x', (227 + visualTravel).toFixed(1));
-        dArrow.setAttribute('x1', '342');
-        dArrow.setAttribute('x2', (342 + visualTravel).toFixed(1));
-        dLbl.setAttribute('x', (342 + visualTravel / 2).toFixed(1));
-        if (t < 1) motionFrame = requestAnimationFrame(frame);
-      }
-      motionFrame = requestAnimationFrame(frame);
-    }
+    const out = $('#c2Fv'), forceLabel = $('#c2ForceLabel');
+    const friction = $('#c2Friction'), accel = $('#c2Accel'), speed = $('#c2Speed'), work = $('#c2L');
+    const explanation = $('#c2Explanation'), status = $('#c2Status');
+    const roadOnWheel = $('#c2Static'), wheelOnRoad = $('#c2Push');
+    const roadLabel = $('#c2StaticLbl'), wheelLabel = $('#c2PushLbl');
+    const torque = $('#c2Torque'), torqueLabel = $('#c2TorqueLbl');
+    const wheels = [$('#c2WheelSpinA'), $('#c2WheelSpinB')];
+    const modes = $$('[data-c2-mode]');
+    const mass = 1000, distance = 5;
+    let mode = 'accelerate';
 
     function update() {
-      const Fv = parseFloat(slider.value);
-      out.textContent = Fv + ' N';
-      const moving = Fv > THRESHOLD;
-      const travel = moving ? 60 : 0;
-      moveBody(travel);
-      if (moving) {
-        const dist = 5;
-        L.innerHTML = pretty(Fv * dist) + ' <small>J</small>';
-        L.className = 'ro-v';
-        badge.className = 'lm-badge';
-        badge.textContent = 'se mișcă';
-        formula.textContent = 'L = ' + Fv + ' · 5 = ' + pretty(Fv * 5) + ' J';
-        if (status) status.textContent = 'se mișcă';
-        dArrow.style.opacity = 1;
-        dLbl.style.opacity = 1;
-        stat.style.opacity = 0;
-        statLbl.style.opacity = 0;
-      } else {
-        L.innerHTML = '0 <small>J</small>';
-        L.className = 'ro-v zero';
-        badge.className = 'lm-badge zero';
-        badge.textContent = 'nu se mișcă';
-        formula.textContent = 'F ≤ ' + THRESHOLD + ' N · d = 0';
-        if (status) status.textContent = 'nu se mișcă';
-        dArrow.style.opacity = 0.22;
-        dLbl.style.opacity = 0.32;
-        dLbl.textContent = 'd = 0';
-        const frictionLen = 48 * Math.min(Fv / THRESHOLD, 1);
-        stat.setAttribute('x2', (350 - frictionLen).toFixed(1));
-        statLbl.setAttribute('x', (350 - frictionLen / 2).toFixed(1));
-        stat.style.opacity = Fv > 0 ? 0.8 : 0;
-        statLbl.style.opacity = Fv > 0 ? 1 : 0;
+      const force = parseFloat(slider.value);
+      const braking = mode === 'brake';
+      const direction = braking ? -1 : 1;
+      const signedForce = direction * force;
+      const netForce = mode === 'steady' ? 0 : signedForce;
+      const a = netForce / mass;
+      const netWork = netForce * distance;
+      const initialSpeed = mode === 'accelerate' ? 0 : 20;
+      const finalSpeed = Math.sqrt(Math.max(0, initialSpeed ** 2 + 2 * a * distance));
+      out.textContent = force + ' N';
+      if (forceLabel) forceLabel.textContent = mode === 'accelerate'
+        ? 'Forța de tracțiune rezultantă Fₜ'
+        : mode === 'steady' ? 'Tracțiune = rezistențe R' : 'Forța de frânare prin contact |fₛ|';
+      if (friction) friction.textContent = (braking ? '−' : '+') + force + ' N';
+      if (accel) accel.textContent = minus(f(a, 2)) + ' m/s²';
+      if (speed) speed.textContent = f(finalSpeed, 2) + ' m/s';
+      if (work) work.textContent = (netWork < 0 ? '−' : '') + pretty(Math.abs(netWork), 0) + ' J';
+      if (status) status.textContent = mode === 'accelerate' ? 'accelerează · aderență'
+        : mode === 'steady' ? 'viteză constantă · aderență' : 'frânează · fără patinare';
+      if (explanation) explanation.innerHTML = mode === 'accelerate'
+        ? '<b>Accelerație.</b> Motorul aplică un cuplu roților motoare; anvelopa împinge drumul înapoi, iar drumul exercită frecarea statică înainte. Forța de tracțiune este rezultanta frecărilor statice pe roțile motoare: <b>Fₜ = Σfₛ</b>. Aici ignorăm rezistențele, deci <b>Fₜ = ma</b>.'
+        : mode === 'steady'
+          ? '<b>Rulare uniformă.</b> Frecarea statică înainte furnizează tracțiunea <b>Fₜ = Σfₛ</b>, care echilibrează rezistențele la înaintare <b>R</b>: <b>Fₜ = R</b> și <b>ΣFₓ = 0</b>. Lucrul pozitiv al tracțiunii și lucrul negativ al rezistențelor se compensează.'
+          : '<b>Frânare.</b> Frânele aplică roților un cuplu opus rotației; pentru roți care rulează fără să alunece, drumul exercită frecarea statică înapoi, iar automobilul încetinește. Dacă roata se blochează și alunecă, frecarea devine cinetică.';
+      const arrowLength = force === 0 ? 0 : 48;
+      if (roadOnWheel) {
+        roadOnWheel.setAttribute('x2', (296 + direction * arrowLength).toString());
+        roadOnWheel.style.opacity = force === 0 ? 0.2 : 1;
       }
-      if (moving) dLbl.textContent = 'd = 5 m';
+      if (wheelOnRoad) {
+        wheelOnRoad.setAttribute('x2', (296 - direction * arrowLength * 0.75).toString());
+        wheelOnRoad.style.opacity = force === 0 ? 0.2 : 0.85;
+      }
+      if (roadLabel) roadLabel.setAttribute('x', (296 + direction * 28).toString());
+      if (wheelLabel) wheelLabel.setAttribute('x', (296 - direction * 22).toString());
+      if (torque) torque.setAttribute('d', braking
+        ? 'M301 191a22 22 0 0 0 -25 17'
+        : 'M276 208a22 22 0 0 1 25-17');
+      if (torqueLabel) torqueLabel.textContent = braking ? 'τ frână' : 'τₘ';
+      wheels.forEach(wheel => wheel?.classList.toggle('is-rolling', force > 0));
+      modes.forEach(button => button.setAttribute('aria-pressed', button.dataset.c2Mode === mode ? 'true' : 'false'));
       fillRange(slider);
     }
 
     slider.addEventListener('input', update);
     slider.addEventListener('change', () => sfx.tick());
+    modes.forEach(button => button.addEventListener('click', () => {
+      mode = button.dataset.c2Mode;
+      update();
+      sfx.step();
+    }));
     update();
   }
 

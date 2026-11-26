@@ -1860,6 +1860,61 @@
   color: var(--teal);
   font-weight: 600;
 }
+:where(#praxis-original) .c2-modes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 8px;
+}
+:where(#praxis-original) .c2-modes button {
+  min-height: 44px;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #FCFBF7;
+  color: var(--ink-2);
+  touch-action: manipulation;
+}
+:where(#praxis-original) .c2-modes button[aria-pressed=true] {
+  border-color: var(--teal-3);
+  background: var(--teal);
+  color: #fff;
+  box-shadow: inset 0 -2px 0 #C79A4C;
+}
+:where(#praxis-original) .c2-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+:where(#praxis-original) .c2-stats .v {
+  white-space: normal;
+}
+:where(#praxis-original) .c2-explanation {
+  margin-top: 8px;
+}
+:where(#praxis-original) .c2-limit {
+  margin-top: 7px;
+}
+:where(#praxis-original) .c2-wheel-spin {
+  transform-box: view-box;
+}
+:where(#praxis-original) #c2WheelSpinA {
+  transform-origin: 296px 222px;
+}
+:where(#praxis-original) #c2WheelSpinB {
+  transform-origin: 404px 222px;
+}
+:where(#praxis-original) .c2-wheel-spin.is-rolling {
+  animation: c2WheelRoll .9s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(#praxis-original) .c2-wheel-spin.is-rolling {
+    animation: none;
+  }
+}
+@media (max-width: 680px) {
+  :where(#praxis-original) .c2-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 :where(#praxis-original) .lm-problems {
   display: grid;
   grid-template-columns: 232px minmax(0, 1fr);
@@ -2617,6 +2672,7 @@
 @keyframes sPulse { 0% { opacity: .55; r: 3; } 70% { opacity: 0; r: 10; } 100% { opacity: 0; r: 10; } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes modalIn { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: none; } }
+@keyframes c2WheelRoll { to { transform: rotate(360deg); } }
 @keyframes sOrbit { to { transform: rotate(360deg); } }
 
 #praxis-original{width:100%;max-width:100%;margin:0 auto;padding:0;color:var(--praxis-color-ink);font-family:var(--praxis-font-ui,Segoe UI,Arial,sans-serif)}
