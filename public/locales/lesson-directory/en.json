@@ -1,0 +1,33 @@
+{
+  "locale": "en",
+  "namespace": "lesson-directory",
+  "messages": {
+    "Toate lecțiile": "All lessons",
+    "Toate lecțiile · Praxis Science Lab": "All lessons · Praxis Science Lab",
+    "Lecții și laboratoare interactive de fizică, organizate pe capitole.": "Interactive physics lessons and laboratories, organised by chapter.",
+    "Explorează laboratoarele și experimentele, organizate pe capitole.": "Explore the laboratories and experiments, organised by chapter.",
+    "capitole": "chapters",
+    "capitol": "chapter",
+    "Caută și navighează în lista lecțiilor": "Search and navigate the lesson list",
+    "Caută o lecție sau un capitol": "Search for a lesson or chapter",
+    "Extinde toate": "Expand all",
+    "Restrânge toate": "Collapse all",
+    "Salt la capitol": "Jump to chapter",
+    "Lecții organizate pe capitole": "Lessons organised by chapter",
+    "Nu am găsit lecții potrivite": "No matching lessons found",
+    "Încearcă un alt titlu, fenomen sau capitol.": "Try another title, phenomenon or chapter.",
+    "Șterge căutarea": "Clear search",
+    "capitol potrivit": "matching chapter",
+    "{count} capitole potrivite": "{count} matching chapters",
+    "{count} capitole": "{count} chapters",
+    "O lecție găsită": "One lesson found",
+    "{count} lecții găsite": "{count} lessons found",
+    "{lessons} lecții în {chapters} capitole": "{lessons} lessons across {chapters} chapters",
+    "O lecție": "One lesson",
+    "{count} lecții": "{count} lessons",
+    "Despre": "About",
+    "Contact": "Contact",
+    "Termeni și condiții": "Terms and conditions",
+    "Confidențialitate și cookies": "Privacy and cookies"
+  }
+}

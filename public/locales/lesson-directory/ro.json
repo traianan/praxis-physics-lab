@@ -1,0 +1,32 @@
+{
+  "locale": "ro",
+  "namespace": "lesson-directory",
+  "messages": {
+    "Toate lecțiile": "Toate lecțiile",
+    "Lecții și laboratoare interactive de fizică, organizate pe capitole.": "Lecții și laboratoare interactive de fizică, organizate pe capitole.",
+    "Explorează laboratoarele și experimentele, organizate pe capitole.": "Explorează laboratoarele și experimentele, organizate pe capitole.",
+    "capitole": "capitole",
+    "capitol": "capitol",
+    "Caută și navighează în lista lecțiilor": "Caută și navighează în lista lecțiilor",
+    "Caută o lecție sau un capitol": "Caută o lecție sau un capitol",
+    "Extinde toate": "Extinde toate",
+    "Restrânge toate": "Restrânge toate",
+    "Salt la capitol": "Salt la capitol",
+    "Lecții organizate pe capitole": "Lecții organizate pe capitole",
+    "Nu am găsit lecții potrivite": "Nu am găsit lecții potrivite",
+    "Încearcă un alt titlu, fenomen sau capitol.": "Încearcă un alt titlu, fenomen sau capitol.",
+    "Șterge căutarea": "Șterge căutarea",
+    "capitol potrivit": "capitol potrivit",
+    "{count} capitole potrivite": "{count} capitole potrivite",
+    "{count} capitole": "{count} capitole",
+    "O lecție găsită": "O lecție găsită",
+    "{count} lecții găsite": "{count} lecții găsite",
+    "{lessons} lecții în {chapters} capitole": "{lessons} lecții în {chapters} capitole",
+    "O lecție": "O lecție",
+    "{count} lecții": "{count} lecții",
+    "Despre": "Despre",
+    "Contact": "Contact",
+    "Termeni și condiții": "Termeni și condiții",
+    "Confidențialitate și cookies": "Confidențialitate și cookies"
+  }
+}

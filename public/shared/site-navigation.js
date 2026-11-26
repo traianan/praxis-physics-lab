@@ -20,6 +20,7 @@
   document.addEventListener('click',event=>{if(expanded&&!event.composedPath().includes(header))setOpen(false);});
   const hasLibrary=!!library;library ||= document.createElement('a');if(!hasLibrary)library.href=new URL('?home=1',base);library.classList.add('site-menu-control','site-library-link');
   if(location.pathname===base.pathname||location.pathname===new URL('index.html',base).pathname)library.setAttribute('aria-current','page');
+  const lessons=document.createElement('a');lessons.href=new URL('lectii/',base);lessons.className='site-menu-control site-lessons-link';if(location.pathname===new URL('lectii/',base).pathname||location.pathname===new URL('lectii/index.html',base).pathname)lessons.setAttribute('aria-current','page');
   guide ||= document.createElement('button');guide.type='button';guide.className='site-menu-control site-guide-button';
   let dialog=null;
   if(!document.getElementById('guide-dialog')){
@@ -32,10 +33,10 @@
   sound ||= window.PraxisSound.createToggle();sound.classList.add('site-menu-control','site-sound-button');
   language ||= window.PraxisI18n.createSelector();language.classList.add('site-menu-control','site-language');
   const adaptive=document.body.hasAttribute('data-praxis-adaptive-lab');
-  menu.append(library,guide,...(adaptive?[]:[board]),sound,language);row.append(logo,quickLanguage,toggle,menu);
+  menu.append(library,lessons,guide,...(adaptive?[]:[board]),sound,language);row.append(logo,quickLanguage,toggle,menu);
   function placeQuickControls(){(mobile.matches?quickLanguage:menu).append(sound,language);}
   placeQuickControls();
-  menu.addEventListener('click',event=>{if(event.target.closest('.site-library-link,.site-guide-button,.site-board-button'))setOpen(false);});
+  menu.addEventListener('click',event=>{if(event.target.closest('.site-library-link,.site-lessons-link,.site-guide-button,.site-board-button'))setOpen(false);});
   let infoHeading=null,infoCurrent=null;
   if(!context&&document.querySelector('.info-content h1')){
    infoHeading=document.querySelector('.info-content h1');
@@ -52,7 +53,7 @@
    extra?.remove();
   }
   header.replaceChildren(row);if(detail.childNodes.length)header.append(detail);
-  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;guide.textContent=t.guide;board.textContent=t.board;if(infoCurrent)infoCurrent.textContent=infoHeading.textContent;if(context)window.PraxisI18n.apply(context);if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.filter((_,index)=>!adaptive||index!==2).map(step=>`<li>${step}</li>`).join('')}</ol>`;}
+  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;lessons.textContent=lang()==='en'?'All lessons':'Toate lecțiile';guide.textContent=t.guide;board.textContent=t.board;if(infoCurrent)infoCurrent.textContent=infoHeading.textContent;if(context)window.PraxisI18n.apply(context);if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.filter((_,index)=>!adaptive||index!==2).map(step=>`<li>${step}</li>`).join('')}</ol>`;}
   render();setOpen(false);window.addEventListener('praxis-language-change',()=>{render();setOpen(expanded);});
   new ResizeObserver(()=>document.documentElement.style.setProperty('--praxis-header-height',header.getBoundingClientRect().height+'px')).observe(header);
   return header;
