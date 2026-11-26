@@ -1,5 +1,5 @@
 import {readFile,readdir,writeFile} from 'node:fs/promises';
-const css=await readFile(new URL('../public/design-system/links.css',import.meta.url),'utf8');
+const css=(await readFile(new URL('../public/design-system/links.css',import.meta.url),'utf8')).replaceAll('\r\n','\n');
 export function withLinkPresentation(html){
  const clean=html.replace(/<style\s+id="praxis-link-colors">[\s\S]*?<\/style>/g,'');
  // Skip script/style contents: exported lessons can contain HTML report templates.
