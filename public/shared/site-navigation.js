@@ -2,13 +2,15 @@
 (() => {
  if(window.PraxisNavigation)return;
  const base=new URL('../',document.currentScript.src);
- const text={ro:{library:'Bibliotecă',guide:'Cum folosești laboratorul',board:'Mod tablă',close:'Închide ghidul',title:'Din bibliotecă, în laborator.',steps:['Alege un capitol și deschide un laborator.','Explorează explicațiile și modifică parametrii simulărilor.','Folosește Mod tablă pentru prezentare și comenzile de afișare pentru lizibilitate.','Sunetul pornește inactiv. Îl poți activa sau opri din meniu.','Alege RO sau EN. Memorarea preferințelor depinde de acordul tău.'],navigation:'Navigare principală'},en:{library:'Library',guide:'How to use the laboratory',board:'Board mode',close:'Close guide',title:'From the library to the laboratory.',steps:['Choose a chapter and open a laboratory.','Explore explanations and change the simulation parameters.','Use Board mode for presenting and display controls for readability.','Sound starts muted. You can turn it on or off from the menu.','Choose RO or EN. Remembering preferences depends on your consent.'],navigation:'Main navigation'}};
+ const text={ro:{library:'Bibliotecă',guide:'Cum folosești laboratorul',board:'Mod tablă',hideHeader:'Ascunde antetul',showHeader:'Arată antetul',close:'Închide ghidul',title:'Din bibliotecă, în laborator.',steps:['Alege un capitol și deschide un laborator.','Explorează explicațiile și modifică parametrii simulărilor.','Folosește Mod tablă pentru prezentare și comenzile de afișare pentru lizibilitate.','Sunetul pornește inactiv. Îl poți activa sau opri din meniu.','Alege RO sau EN. Memorarea preferințelor depinde de acordul tău.'],navigation:'Navigare principală'},en:{library:'Library',guide:'How to use the laboratory',board:'Board mode',hideHeader:'Hide header',showHeader:'Show header',close:'Close guide',title:'From the library to the laboratory.',steps:['Choose a chapter and open a laboratory.','Explore explanations and change the parameters of the simulations.','Use Board mode for presenting and display controls for readability.','Sound starts muted. You can turn it on or off from the menu.','Choose RO or EN. Remembering preferences depends on your consent.'],navigation:'Main navigation'}};
  const lang=()=>window.PraxisI18n?.language==='en'?'en':'ro';
  function mount(header,{library,guide,board,sound,language,context,actions=[]}={}){
   if(!header||header.dataset.siteNavigation)return;
   header.dataset.siteNavigation='';header.classList.add('praxis-site-header');
   const row=document.createElement('div');row.className='praxis-site-row';
   const logo=document.createElement('a');logo.href=new URL('?home=1',base);logo.className='praxis-site-brand';logo.setAttribute('aria-label','Praxis Science Lab');logo.innerHTML=`<img src="${new URL('assets/favicon.svg',base)}" width="37" height="39" alt=""><span>praxis <small>SCIENCE LAB</small></span>`;
+  if(!header.id)header.id='praxis-site-header';
+  const headerVisibility=document.createElement('button');headerVisibility.type='button';headerVisibility.className='site-header-visibility';headerVisibility.dataset.noI18n='';headerVisibility.setAttribute('aria-controls',header.id);
   const menu=document.createElement('nav');menu.id='praxis-main-menu';menu.className='praxis-site-menu';menu.dataset.noI18n='';
   const toggle=document.createElement('button');toggle.type='button';toggle.className='site-menu-toggle';toggle.dataset.noI18n='';toggle.setAttribute('aria-controls',menu.id);toggle.setAttribute('aria-expanded','false');
   const quickLanguage=document.createElement('span');quickLanguage.className='site-quick-language';quickLanguage.dataset.noI18n='';
@@ -33,7 +35,7 @@
   sound ||= window.PraxisSound.createToggle();sound.classList.add('site-menu-control','site-sound-button');
   language ||= window.PraxisI18n.createSelector();language.classList.add('site-menu-control','site-language');
   const adaptive=document.body.hasAttribute('data-praxis-adaptive-lab');
-  menu.append(library,lessons,guide,...(adaptive?[]:[board]),sound,language);row.append(logo,quickLanguage,toggle,menu);
+  menu.append(library,lessons,guide,...(adaptive?[]:[board]),sound,language);row.append(logo,headerVisibility,quickLanguage,toggle,menu);
   function placeQuickControls(){(mobile.matches?quickLanguage:menu).append(sound,language);}
   placeQuickControls();
   menu.addEventListener('click',event=>{if(event.target.closest('.site-library-link,.site-lessons-link,.site-guide-button,.site-board-button'))setOpen(false);});
@@ -53,8 +55,13 @@
    extra?.remove();
   }
   header.replaceChildren(row);if(detail.childNodes.length)header.append(detail);
-  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;lessons.textContent=lang()==='en'?'All lessons':'Toate lecțiile';guide.textContent=t.guide;board.textContent=t.board;if(infoCurrent)infoCurrent.textContent=infoHeading.textContent;if(context)window.PraxisI18n.apply(context);if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.filter((_,index)=>!adaptive||index!==2).map(step=>`<li>${step}</li>`).join('')}</ol>`;}
-  render();setOpen(false);window.addEventListener('praxis-language-change',()=>{render();setOpen(expanded);});
+  let headerHidden=false;
+  try{headerHidden=localStorage.getItem('praxis-site-header-hidden')==='true';}catch{}
+  function setHeaderHidden(value,persist=true){headerHidden=!!value;document.documentElement.dataset.siteHeaderHidden=String(headerHidden);if(headerHidden){headerVisibility.dataset.detached='';document.body.append(headerVisibility);}else{delete headerVisibility.dataset.detached;row.insertBefore(headerVisibility,quickLanguage);}if(persist){try{localStorage.setItem('praxis-site-header-hidden',String(headerHidden));}catch{}}updateHeaderVisibilityLabel();}
+  function updateHeaderVisibilityLabel(){const t=text[lang()],label=headerHidden?t.showHeader:t.hideHeader;headerVisibility.innerHTML=`<span aria-hidden="true">${headerHidden?'⌄':'⌃'}</span><span>${label}</span>`;headerVisibility.setAttribute('aria-label',label);headerVisibility.setAttribute('title',label);headerVisibility.setAttribute('aria-expanded',String(!headerHidden));}
+  headerVisibility.addEventListener('click',()=>setHeaderHidden(!headerHidden));
+  function render(){const t=text[lang()];menu.setAttribute('aria-label',t.navigation);library.textContent=t.library;lessons.textContent=lang()==='en'?'All lessons':'Toate lecțiile';guide.textContent=t.guide;board.textContent=t.board;if(infoCurrent)infoCurrent.textContent=infoHeading.textContent;if(context)window.PraxisI18n.apply(context);if(dialog)dialog.innerHTML=`<header><h2 id="site-guide-heading">${t.title}</h2><button type="button" data-guide-close aria-label="${t.close}">×</button></header><ol>${t.steps.filter((_,index)=>!adaptive||index!==2).map(step=>`<li>${step}</li>`).join('')}</ol>`;updateHeaderVisibilityLabel();}
+  render();setOpen(false);setHeaderHidden(headerHidden,false);window.addEventListener('praxis-language-change',()=>{render();setOpen(expanded);});
   new ResizeObserver(()=>document.documentElement.style.setProperty('--praxis-header-height',header.getBoundingClientRect().height+'px')).observe(header);
   return header;
  }
