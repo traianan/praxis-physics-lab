@@ -1,2 +1,3 @@
 # Import snapshots are evidence: preserve their original bytes on every platform.
 sources/** -text whitespace=cr-at-eol
+public/simulari/chitara-acustica-virtuala/index.html text eol=lf
