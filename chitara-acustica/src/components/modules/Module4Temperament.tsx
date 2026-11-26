@@ -1,4 +1,3 @@
-import { LabStepper } from "../LabStepper";
 import React, { useEffect, useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import { audioEngine } from '../../audio/AudioEngine';
@@ -248,14 +247,15 @@ export const Module4Temperament: React.FC<Module4TemperamentProps> = ({ onComple
               {fineDetuneCents >= 0 ? '+' : ''}{fineDetuneCents} sutimi
             </span>
           </div>
-          <LabStepper
-  min={-40}
-  max={40}
-  step={1}
-  value={fineDetuneCents}
-  label="Deviație de acordaj"
-  onValueChange={(value) => setFineDetuneCents(Number(value))}
-/>
+          <input
+            type="range"
+            min={-40}
+            max={40}
+            step={1}
+            value={fineDetuneCents}
+            onChange={(e) => setFineDetuneCents(Number(e.target.value))}
+            className="lab-slider w-full"
+          />
         </div>
 
         <div className="space-y-2 pt-1">

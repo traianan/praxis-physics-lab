@@ -46,7 +46,10 @@
 }
 #root .guitar-app-main button,
 #root .guitar-app-main select,
-#root .guitar-app-main input { min-height: 44px; touch-action: manipulation; }
+#root .guitar-app-main input:not([type="range"]) { min-height: 44px; touch-action: manipulation; }
+#root .guitar-app-main input[type="range"] { min-height: 44px; touch-action: pan-x; }
+#root .guitar-app-main input[type="range"]::-webkit-slider-thumb { width: 26px; height: 26px; margin-top: -10px; }
+#root .guitar-app-main input[type="range"]::-moz-range-thumb { width: 26px; height: 26px; }
 @media (max-width: 1200px) {
   #root .guitar-module-tab-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
@@ -56,14 +59,54 @@
   #root .guitar-module-tab-grid > button { min-height: 52px; }
   #root .guitar-app-main button,
   #root .guitar-app-main select,
-  #root .guitar-app-main input { min-height: 48px; }
+  #root .guitar-app-main input:not([type="range"]) { min-height: 48px; }
 }
 html[data-course-touch="true"] #root .guitar-app-main button,
 html[data-course-touch="true"] #root .guitar-app-main select,
-html[data-course-touch="true"] #root .guitar-app-main input { min-height: 52px; }
+html[data-course-touch="true"] #root .guitar-app-main input:not([type="range"]) { min-height: 52px; }
+html[data-course-touch="true"] #root .guitar-app-main input[type="range"]::-webkit-slider-thumb { width: 32px; height: 32px; margin-top: -13px; }
+html[data-course-touch="true"] #root .guitar-app-main input[type="range"]::-moz-range-thumb { width: 32px; height: 32px; }
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+/* Custom range slider styling matching the forest-green laboratory aesthetic */
+input[type="range"].lab-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: #d8e2dc;
+  outline: none;
+}
+
+input[type="range"].lab-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #0d4a3e;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(13, 74, 62, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type="range"].lab-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  background: #09382f;
+}
+
+input[type="range"].lab-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #0d4a3e;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(13, 74, 62, 0.35);
+  cursor: pointer;
 }
 
 /* Classroom / Board mode scaling */

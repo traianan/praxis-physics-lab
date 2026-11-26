@@ -1,4 +1,3 @@
-import { LabStepper } from "../LabStepper";
 import React, { useEffect, useRef, useState } from 'react';
 import { Play, RotateCcw } from 'lucide-react';
 import { audioEngine } from '../../audio/AudioEngine';
@@ -251,7 +250,7 @@ export const Module2String: React.FC<Module2StringProps> = ({
           </div>
         </div>
 
-        {/* Fret controls */}
+        {/* Fret slider */}
         <div className="space-y-1.5">
           <div className="flex items-center justify-between text-xs">
             <span className="font-semibold text-[#13221d]">Fret apăsat</span>
@@ -259,14 +258,31 @@ export const Module2String: React.FC<Module2StringProps> = ({
               {fret === 0 ? '0 (coardă liberă)' : `Fret ${fret}`}
             </span>
           </div>
-          <LabStepper
-  min={0}
-  max={15}
-  step={1}
-  value={fret}
-  label="Poziție fret"
-  onValueChange={(value) => setFret(Number(value))}
-          />
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setFret((f) => Math.max(0, f - 1))}
+              className="w-8 h-8 rounded-lg border border-[#d8e2dc] bg-[#fafcfa] hover:bg-[#edf3f0] text-sm font-semibold cursor-pointer shrink-0"
+            >
+              −
+            </button>
+            <input
+              type="range"
+              min={0}
+              max={15}
+              step={1}
+              value={fret}
+              onChange={(e) => setFret(Number(e.target.value))}
+              className="lab-slider w-full"
+            />
+            <button
+              type="button"
+              onClick={() => setFret((f) => Math.min(15, f + 1))}
+              className="w-8 h-8 rounded-lg border border-[#d8e2dc] bg-[#fafcfa] hover:bg-[#edf3f0] text-sm font-semibold cursor-pointer shrink-0"
+            >
+              +
+            </button>
+          </div>
         </div>
 
         {/* Length L */}
@@ -275,14 +291,15 @@ export const Module2String: React.FC<Module2StringProps> = ({
             <span className="font-semibold text-[#13221d]">Lungimea corzii L</span>
             <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">{lengthM.toFixed(2)} m</span>
           </div>
-          <LabStepper
-  min={0.4}
-  max={0.85}
-  step={0.01}
-  value={lengthM}
-  label="Lungime coardă"
-  onValueChange={(value) => setLengthM(Number(value))}
-/>
+          <input
+            type="range"
+            min={0.4}
+            max={0.85}
+            step={0.01}
+            value={lengthM}
+            onChange={(e) => setLengthM(Number(e.target.value))}
+            className="lab-slider w-full"
+          />
         </div>
 
         {/* Tension T */}
@@ -291,14 +308,15 @@ export const Module2String: React.FC<Module2StringProps> = ({
             <span className="font-semibold text-[#13221d]">Tensiunea T (cheița de acordaj)</span>
             <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">{tensionN.toFixed(1)} N</span>
           </div>
-          <LabStepper
-  min={35}
-  max={160}
-  step={0.5}
-  value={tensionN}
-  label="Tensiune coardă"
-  onValueChange={(value) => setTensionN(Number(value))}
-/>
+          <input
+            type="range"
+            min={35}
+            max={160}
+            step={0.5}
+            value={tensionN}
+            onChange={(e) => setTensionN(Number(e.target.value))}
+            className="lab-slider w-full"
+          />
         </div>
 
         {/* Linear Density mu */}
@@ -307,14 +325,15 @@ export const Module2String: React.FC<Module2StringProps> = ({
             <span className="font-semibold text-[#13221d]">Densitate lineică μ (grosime)</span>
             <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">{densityGPerM.toFixed(2)} g/m</span>
           </div>
-          <LabStepper
-  min={0.35}
-  max={10.5}
-  step={0.05}
-  value={densityGPerM}
-  label="Densitate liniară coardă"
-  onValueChange={(value) => setDensityGPerM(Number(value))}
-/>
+          <input
+            type="range"
+            min={0.35}
+            max={10.5}
+            step={0.05}
+            value={densityGPerM}
+            onChange={(e) => setDensityGPerM(Number(e.target.value))}
+            className="lab-slider w-full"
+          />
         </div>
 
         <button

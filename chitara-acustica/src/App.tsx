@@ -1,6 +1,5 @@
-import { LabStepper } from "./components/LabStepper";
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { BookMarked, BookOpen, CheckCircle2, Compass, Play, RotateCcw, Settings2 } from 'lucide-react';
+import { BookMarked, BookOpen, CheckCircle2, Compass, Play, RotateCcw, Sliders } from 'lucide-react';
 import { audioEngine } from './audio/AudioEngine';
 import { DictionaryView } from './components/DictionaryView';
 import { GuideView } from './components/GuideView';
@@ -178,7 +177,7 @@ export default function App() {
                   : 'text-[#53665f] hover:text-[#13221d]'
               }`}
             >
-              <Settings2 className="w-3.5 h-3.5" />
+              <Sliders className="w-3.5 h-3.5" />
               <span>Laborator interactiv</span>
             </button>
             <button
@@ -246,14 +245,15 @@ export default function App() {
                     <span className="text-[#53665f]">Volum general</span>
                     <span className="font-mono font-semibold tabular-nums">{Math.round(prefs.volume * 100)}%</span>
                   </div>
-                  <LabStepper
-  min={0}
-  max={1}
-  step={0.05}
-  value={prefs.volume}
-  label="Volum general"
-  onValueChange={(value) => setPrefs((p) => ({ ...p, volume: Number(value) }))}
-/>
+                  <input
+                    type="range"
+                    min={0}
+                    max={1}
+                    step={0.05}
+                    value={prefs.volume}
+                    onChange={(e) => setPrefs((p) => ({ ...p, volume: Number(e.target.value) }))}
+                    className="lab-slider w-full"
+                  />
                 </div>
 
                 <div className="space-y-1">

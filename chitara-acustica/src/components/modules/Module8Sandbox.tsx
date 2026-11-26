@@ -310,24 +310,26 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
 
         {/* Pick position */}
         <div className="space-y-1.5">
-          <div className="flex items-center justify-between text-xs">
+          <div className="text-xs">
             <span className="font-semibold text-[#13221d]">Poziție pană / deget p</span>
-            <span className="font-mono font-semibold text-[#b85d2b] tabular-nums">{pickPosition.toFixed(2)} L</span>
           </div>
-          <LabStepper
-  min={0.06}
-  max={0.48}
-  step={0.01}
-  value={pickPosition}
-  label="Poziție ciupire"
-  onValueChange={(value) => setPickPosition(Number(value))}
-/>
+          <div className="flex items-center justify-start gap-2">
+            <span className="font-mono font-semibold text-[#b85d2b] tabular-nums">{pickPosition.toFixed(2)} L</span>
+            <LabStepper
+              min={0.06}
+              max={0.48}
+              step={0.01}
+              value={pickPosition}
+              label="Poziție ciupire"
+              onValueChange={(value) => setPickPosition(Number(value))}
+            />
+          </div>
         </div>
 
         {/* Optional Scale Overlay */}
         <div className="space-y-1.5">
           <label className="block text-xs font-semibold text-[#13221d]">Suprapunere gamă pe manșon</label>
-          <div className="grid grid-cols-[1fr_76px] gap-2">
+          <div className={overlayScale === 'none' ? 'grid grid-cols-1' : 'grid grid-cols-[minmax(0,1fr)_76px] gap-2'}>
             <select
               value={overlayScale}
               onChange={(e) => setOverlayScale(e.target.value as ScaleId | 'none')}
@@ -340,18 +342,20 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
                 </option>
               ))}
             </select>
-            <select
-              value={overlayRoot}
-              disabled={overlayScale === 'none'}
-              onChange={(e) => setOverlayRoot(Number(e.target.value))}
-              className="rounded-lg border border-[#d8e2dc] bg-[#fafcfa] px-2 py-2 text-xs text-[#13221d] disabled:opacity-40"
-            >
-              {ANGLO_NAMES.map((_, pc) => (
-                <option key={pc} value={pc}>
-                  {formatNoteName(pc, notation)}
-                </option>
-              ))}
-            </select>
+            {overlayScale !== 'none' && (
+              <select
+                value={overlayRoot}
+                onChange={(e) => setOverlayRoot(Number(e.target.value))}
+                aria-label="Tonalitatea gamei suprapuse"
+                className="rounded-lg border border-[#d8e2dc] bg-[#fafcfa] px-2 py-2 text-xs text-[#13221d]"
+              >
+                {ANGLO_NAMES.map((_, pc) => (
+                  <option key={pc} value={pc}>
+                    {formatNoteName(pc, notation)}
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
         </div>
 
@@ -386,63 +390,65 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
           </select>
 
           <div className="space-y-1">
-            <div className="flex items-center justify-between text-[11.5px]">
+            <div className="text-[11.5px]">
               <span className="font-medium text-[#13221d]">Lungime diapazon L</span>
-              <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">
-                {lengthM.toFixed(2)} m (L<sub>ef</sub> {(effectiveLengthM * 100).toFixed(1)} cm)
-              </span>
             </div>
-            <LabStepper
-  min={0.4}
-  max={0.85}
-  step={0.01}
-  value={lengthM}
-  label="Lungime diapazon"
-  onValueChange={(value) => {
+            <div className="flex items-center justify-start gap-2">
+              <span className="whitespace-nowrap font-mono text-[10px] font-semibold text-[#0d4a3e] tabular-nums">
+                {lengthM.toFixed(2)} m · L<sub>ef</sub> {(effectiveLengthM * 100).toFixed(0)} cm
+              </span>
+              <LabStepper
+                min={0.4}
+                max={0.85}
+                step={0.01}
+                value={lengthM}
+                label="Lungime diapazon"
+                onValueChange={(value) => {
                 setPhysicsPreset('custom');
                 setLengthM(Number(value));
               }}
-/>
+              />
+            </div>
           </div>
 
           <div className="space-y-1">
-            <div className="flex items-center justify-between text-[11.5px]">
+            <div className="text-[11.5px]">
               <span className="font-medium text-[#13221d]">Tensiune T</span>
-              <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">
-                {tensionN.toFixed(1)} N
-              </span>
             </div>
-            <LabStepper
-  min={35}
-  max={160}
-  step={0.5}
-  value={tensionN}
-  label="Tensiune coardă"
-  onValueChange={(value) => {
+            <div className="flex items-center justify-start gap-2">
+              <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">{tensionN.toFixed(1)} N</span>
+              <LabStepper
+                min={35}
+                max={160}
+                step={0.5}
+                value={tensionN}
+                label="Tensiune coardă"
+                onValueChange={(value) => {
                 setPhysicsPreset('custom');
                 setTensionN(Number(value));
               }}
-/>
+              />
+            </div>
           </div>
 
           <div className="space-y-1">
-            <div className="flex items-center justify-between text-[11.5px]">
+            <div className="text-[11.5px]">
               <span className="font-medium text-[#13221d]">Densitate liniară μ</span>
-              <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">
-                {densityGPerM.toFixed(2)} g/m
-              </span>
             </div>
-            <LabStepper
-  min={0.35}
-  max={10.5}
-  step={0.05}
-  value={densityGPerM}
-  label="Densitate liniară coardă"
-  onValueChange={(value) => {
+            <div className="flex items-center justify-start gap-2">
+              <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">{densityGPerM.toFixed(2)} g/m</span>
+              <LabStepper
+                min={0.35}
+                max={10.5}
+                step={0.05}
+                value={densityGPerM}
+                label="Densitate liniară coardă"
+                onValueChange={(value) => {
                 setPhysicsPreset('custom');
                 setDensityGPerM(Number(value));
               }}
-/>
+              />
+            </div>
           </div>
 
           <div className="rounded-lg bg-[#edf3f0] border border-[#dce6e1] p-2.5 space-y-1.5">

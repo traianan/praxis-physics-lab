@@ -747,8 +747,8 @@
   :where(#praxis-original) .grid-cols-8 {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
-  :where(#praxis-original) .grid-cols-\[1fr_76px\] {
-    grid-template-columns: 1fr 76px;
+  :where(#praxis-original) .grid-cols-\[minmax\(0\,1fr\)_76px\] {
+    grid-template-columns: minmax(0, 1fr) 76px;
   }
   :where(#praxis-original) .grid-cols-\[minmax\(0\,1fr\)_auto\] {
     grid-template-columns: minmax(0, 1fr) auto;
@@ -782,6 +782,9 @@
   }
   :where(#praxis-original) .justify-end {
     justify-content: flex-end;
+  }
+  :where(#praxis-original) .justify-start {
+    justify-content: flex-start;
   }
   :where(#praxis-original) .gap-0\.5 {
     gap: calc(var(--spacing) * .5);
@@ -1747,9 +1750,22 @@
 }
 :where(#praxis-original) #root .guitar-app-main button,
 :where(#praxis-original) #root .guitar-app-main select,
-:where(#praxis-original) #root .guitar-app-main input {
+:where(#praxis-original) #root .guitar-app-main input:not([type=range]) {
   touch-action: manipulation;
   min-height: 44px;
+}
+:where(#praxis-original) #root .guitar-app-main input[type=range] {
+  touch-action: pan-x;
+  min-height: 44px;
+}
+:where(#praxis-original) #root .guitar-app-main input[type=range]::-webkit-slider-thumb {
+  width: 26px;
+  height: 26px;
+  margin-top: -10px;
+}
+:where(#praxis-original) #root .guitar-app-main input[type=range]::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
 }
 @media (max-width: 1200px) {
   :where(#praxis-original) #root .guitar-module-tab-grid {
@@ -1768,17 +1784,57 @@
   }
   :where(#praxis-original) #root .guitar-app-main button,
   :where(#praxis-original) #root .guitar-app-main select,
-  :where(#praxis-original) #root .guitar-app-main input {
+  :where(#praxis-original) #root .guitar-app-main input:not([type=range]) {
     min-height: 48px;
   }
 }
 :where(#praxis-original) html[data-course-touch=true] #root .guitar-app-main button,
 :where(#praxis-original) html[data-course-touch=true] #root .guitar-app-main select,
-:where(#praxis-original) html[data-course-touch=true] #root .guitar-app-main input {
+:where(#praxis-original) html[data-course-touch=true] #root .guitar-app-main input:not([type=range]) {
   min-height: 52px;
+}
+:where(#praxis-original) html[data-course-touch=true] #root .guitar-app-main input[type=range]::-webkit-slider-thumb {
+  width: 32px;
+  height: 32px;
+  margin-top: -13px;
+}
+:where(#praxis-original) html[data-course-touch=true] #root .guitar-app-main input[type=range]::-moz-range-thumb {
+  width: 32px;
+  height: 32px;
 }
 :where(#praxis-original) .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+:where(#praxis-original) input[type=range].lab-slider {
+  appearance: none;
+  background: #d8e2dc;
+  border-radius: 9999px;
+  outline: none;
+  height: 6px;
+}
+:where(#praxis-original) input[type=range].lab-slider::-webkit-slider-thumb {
+  appearance: none;
+  cursor: pointer;
+  background: #0d4a3e;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+  width: 18px;
+  height: 18px;
+  transition: transform .15s, background-color .15s;
+  box-shadow: 0 1px 3px #0d4a3e59;
+}
+:where(#praxis-original) input[type=range].lab-slider::-webkit-slider-thumb:hover {
+  background: #09382f;
+  transform: scale(1.1);
+}
+:where(#praxis-original) input[type=range].lab-slider::-moz-range-thumb {
+  cursor: pointer;
+  background: #0d4a3e;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+  width: 18px;
+  height: 18px;
+  box-shadow: 0 1px 3px #0d4a3e59;
 }
 :where(#praxis-original) .board-mode {
   font-size: 1.075rem;
