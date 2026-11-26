@@ -236,6 +236,7 @@ export const Module1Notes: React.FC<Module1NotesProps> = ({
           <div className="grid grid-cols-2 gap-1 p-1 rounded-lg bg-[#edf3f0]">
             <button
               type="button"
+              aria-pressed={soundType === 'sine'}
               onClick={() => setSoundType('sine')}
               className={`py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                 soundType === 'sine' ? 'bg-[#0d4a3e] text-white' : 'text-[#53665f] hover:text-[#13221d]'
@@ -245,6 +246,7 @@ export const Module1Notes: React.FC<Module1NotesProps> = ({
             </button>
             <button
               type="button"
+              aria-pressed={soundType === 'guitar'}
               onClick={() => setSoundType('guitar')}
               className={`py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                 soundType === 'guitar' ? 'bg-[#0d4a3e] text-white' : 'text-[#53665f] hover:text-[#13221d]'
