@@ -60,7 +60,7 @@ const QUESTIONS: ChallengeQuestion[] = [
     correctIndex: 1,
     formulaHint: 'L_ef = L · 2^(−fret / 12) = L · 2⁻¹ = L / 2',
     explanation:
-      'La fretul 12 (12 semitonoane), lungimea efectivă devine exact jumătate din lungimea corzii libere. Deoarece f₁ ∝ 1/L_ef, frecvența se dublează.',
+      'La fretul 12 (12 semitonuri), lungimea efectivă devine exact jumătate din lungimea corzii libere. Deoarece f₁ ∝ 1/L_ef, frecvența se dublează.',
     demoAudio: {
       label: 'Ascultă E2 liber (82,4 Hz) vs Fret 12 (164,8 Hz)',
       play: () => {

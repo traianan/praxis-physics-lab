@@ -322,7 +322,7 @@ export const Module2String: React.FC<Module2StringProps> = ({
         {/* Linear Density mu */}
         <div className="space-y-1.5">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-semibold text-[#13221d]">Densitate lineică μ (grosime)</span>
+            <span className="font-semibold text-[#13221d]">Densitate liniară μ (grosime)</span>
             <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">{densityGPerM.toFixed(2)} g/m</span>
           </div>
           <input

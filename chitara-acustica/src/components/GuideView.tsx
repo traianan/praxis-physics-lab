@@ -20,7 +20,7 @@ export const GuideView: React.FC<GuideViewProps> = ({ onOpenModule }) => {
       title: '1. Nota muzicală și temperamentul egal',
       formula: 'fₙ = f₀ · 2^(n / 12)   |   A4 = 440 Hz',
       summary:
-        'Octava dublează frecvența (raport 2:1) și este împărțită în 12 semitonoane egale, fiecare multiplicând frecvența cu 2^(1/12) ≈ 1,05946.',
+        'Octava dublează frecvența (raport 2:1) și este împărțită în 12 semitonuri egale, fiecare multiplicând frecvența cu 2^(1/12) ≈ 1,05946.',
     },
     {
       moduleId: 'string',

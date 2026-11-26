@@ -225,7 +225,7 @@ export const SCALES: Record<ScaleId, ScaleDefinition> = {
     intervals: [0, 2, 4, 7, 9],
     stepFormula: 'T – T – 1½ – T – 1½',
     diatonicQualities: ['Maj', 'min', 'min', 'Maj', 'min'],
-    description: 'Scară de 5 note fără semitonoane, foarte folosită în folk și improvizație.',
+    description: 'Scară de 5 note fără semitonuri, foarte folosită în folk și improvizație.',
   },
   pentatonic_minor: {
     id: 'pentatonic_minor',
@@ -355,7 +355,7 @@ export const GUIDED_MISSIONS: Mission[] = [
     title: '2. Găsește La2 (110 Hz) pe coarda 6',
     description: 'Apasă fretul care produce nota A2 (110 Hz) pe coarda 6 (Mi grav) și ciupește coarda.',
     targetModule: 'string',
-    hint: 'Coarda 6 liberă este E2. Urcă 5 semitonoane până la fretul 5.',
+    hint: 'Coarda 6 liberă este E2. Urcă 5 semitonuri până la fretul 5.',
   },
   {
     id: 'm3_c_major',

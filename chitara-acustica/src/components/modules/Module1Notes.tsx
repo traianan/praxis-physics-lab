@@ -298,7 +298,7 @@ export const Module1Notes: React.FC<Module1NotesProps> = ({
             fₙ = 440 · 2^(n / 12)
           </div>
           <p className="text-xs text-[#53665f] leading-relaxed">
-            Fiecare octavă dublează frecvența (×2), iar cele 12 semitonoane egale au raportul 2^(1/12) ≈ 1,05946.
+            Fiecare octavă dublează frecvența (×2), iar cele 12 semitonuri egale au raportul 2^(1/12) ≈ 1,05946.
           </p>
         </div>
       </div>
