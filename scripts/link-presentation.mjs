@@ -1,7 +1,7 @@
 import {readFile,readdir,writeFile} from 'node:fs/promises';
 const css=(await readFile(new URL('../public/design-system/links.css',import.meta.url),'utf8')).replaceAll('\r\n','\n');
 export function withLinkPresentation(html){
- const clean=html.replace(/<style\s+id="praxis-link-colors">[\s\S]*?<\/style>/g,'');
+ const clean=html.replace(/\r\n?/g,'\n').replace(/<style\s+id="praxis-link-colors">[\s\S]*?<\/style>/g,'');
  // Skip script/style contents: exported lessons can contain HTML report templates.
  const tags=/<script\b[^>]*>[\s\S]*?<\/script\s*>|<style\b[^>]*>[\s\S]*?<\/style\s*>|<\/head\s*>/gi;
  let match;while((match=tags.exec(clean)))if(/^<\/head/i.test(match[0]))return clean.slice(0,match.index)+'<style id="praxis-link-colors">'+css+'</style>'+clean.slice(match.index);
