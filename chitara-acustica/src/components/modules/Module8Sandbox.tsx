@@ -389,7 +389,7 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
             <div className="flex items-center justify-between text-[11.5px]">
               <span className="font-medium text-[#13221d]">Lungime diapazon L</span>
               <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">
-                {lengthM.toFixed(2)} m (L_ef {(effectiveLengthM * 100).toFixed(1)} cm)
+                {lengthM.toFixed(2)} m (L<sub>ef</sub> {(effectiveLengthM * 100).toFixed(1)} cm)
               </span>
             </div>
             <input

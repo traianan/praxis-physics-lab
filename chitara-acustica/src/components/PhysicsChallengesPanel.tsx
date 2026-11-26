@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Award, CheckCircle2, HelpCircle, RotateCcw, Volume2, XCircle } from 'lucide-react';
 import { audioEngine } from '../audio/AudioEngine';
+import { formatScientificIndices } from './ScientificNotation';
 
 type ChallengeQuestion = {
   id: string;
@@ -391,7 +392,7 @@ export const PhysicsChallengesPanel: React.FC = () => {
         </div>
 
         <h4 className="text-sm sm:text-base font-semibold text-[#13221d] leading-snug">
-          {currentQuestion.question}
+                {formatScientificIndices(currentQuestion.question)}
         </h4>
 
         {/* Multiple-choice Options */}
@@ -434,7 +435,7 @@ export const PhysicsChallengesPanel: React.FC = () => {
                   >
                     {letter}
                   </span>
-                  <span>{opt}</span>
+                  <span>{formatScientificIndices(opt)}</span>
                 </div>
 
                 {isAnswered && isThisCorrect && (
@@ -474,10 +475,10 @@ export const PhysicsChallengesPanel: React.FC = () => {
                 )}
               </div>
               <span className="font-mono text-[11px] font-semibold text-[#53665f] bg-white/80 px-2 py-0.5 rounded border border-[#d8e2dc]">
-                {currentQuestion.formulaHint}
+                {formatScientificIndices(currentQuestion.formulaHint)}
               </span>
             </div>
-            <p className="text-xs text-[#31453e] leading-relaxed">{currentQuestion.explanation}</p>
+          <p className="text-xs text-[#31453e] leading-relaxed">{formatScientificIndices(currentQuestion.explanation)}</p>
           </div>
         ) : (
           <div className="flex items-center gap-2 text-[11.5px] text-[#53665f]">

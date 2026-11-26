@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { ArrowRight, BookMarked, Guitar, Music2, Search, Volume2, X } from 'lucide-react';
 import { audioEngine } from '../audio/AudioEngine';
 import { LabModuleId } from '../types/guitar';
+import { formatScientificIndices } from './ScientificNotation';
 
 type DictionaryViewProps = {
   onOpenModule: (id: LabModuleId) => void;
@@ -581,7 +582,7 @@ const MUSICAL_TERMS: MusicalTermEntry[] = [
     pluralOrForms: 'Amplificare selectivă a frecvențelor',
     category: 'physics',
     categoryLabel: 'Fizica sunetului',
-    formula: 'f_A0 = (c / 2π) · √(S / (V · L_eff))',
+    formula: 'f_A₀ = (c / 2π) · √(S / (V · L_eff))',
     definition:
       'Răspunsul amplificat al unui sistem mecanic sau cavitate de aer atunci când este excitat la una dintre frecvențele sale proprii de oscilație.',
     guitarContext:
@@ -766,7 +767,7 @@ const TermMiniGraphic: React.FC<{ type: MusicalTermEntry['visualType'] }> = ({ t
         <svg viewBox="0 0 180 56" className="w-full h-14 rounded-md bg-[#fafcfa] border border-[#e3ebe6]">
           <path d="M 8 28 Q 30 6 52 28 Q 74 50 96 28 Q 118 6 140 28 Q 156 44 172 28" fill="none" stroke="#b85d2b" strokeWidth="1.6" />
           <path d="M 8 28 Q 30 12 52 28 Q 74 12 96 28 Q 118 12 140 28 Q 156 16 172 28" fill="none" stroke="#0d4a3e" strokeWidth="1.4" strokeDasharray="2 2" />
-          <text x="12" y="12" fontSize="8" fill="#0d4a3e" fontFamily="Consolas, monospace">f_bătăi = |f₂ − f₁|</text>
+          <text x="12" y="12" fontSize="8" fill="#0d4a3e" fontFamily="Consolas, monospace">Δf = |f₂ − f₁|</text>
         </svg>
       );
     case 'adsr':
@@ -1371,15 +1372,15 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({ onOpenModule }) 
 
                     {item.formula && (
                       <div className="rounded-md bg-[#edf3f0] border border-[#dce6e1] px-2.5 py-1.5 font-mono text-[11px] font-semibold text-[#0d4a3e]">
-                        {item.formula}
+                        {formatScientificIndices(item.formula)}
                       </div>
                     )}
 
-                    <p className="text-xs text-[#13221d] leading-relaxed">{item.definition}</p>
+                    <p className="text-xs text-[#13221d] leading-relaxed">{formatScientificIndices(item.definition)}</p>
 
                     <p className="text-[11.5px] text-[#53665f] leading-relaxed">
                       <span className="font-semibold text-[#b85d2b]">Pe chitară: </span>
-                      {item.guitarContext}
+                      {formatScientificIndices(item.guitarContext)}
                     </p>
                   </div>
 

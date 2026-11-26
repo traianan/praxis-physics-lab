@@ -9,6 +9,7 @@ import {
   stringFundamentalFrequency,
 } from '../../utils/musicTheory';
 import { AcousticGuitar2D, StringPluckEvent } from '../AcousticGuitar2D';
+import { formatScientificIndices } from '../ScientificNotation';
 
 type Module2StringProps = {
   strings: StringState[];
@@ -190,7 +191,7 @@ export const Module2String: React.FC<Module2StringProps> = ({
       ctx.textAlign = 'center';
       ctx.fillStyle = '#0d4a3e';
       ctx.fillText(
-        `L_ef = ${(effectiveLength * 100).toFixed(1)} cm · Ventru central (mod n=1)`,
+        `L efectivă = ${(effectiveLength * 100).toFixed(1)} cm · Ventru central (modul 1)`,
         (activeStartX + bridgeX) / 2,
         h - 12
       );
@@ -348,7 +349,7 @@ export const Module2String: React.FC<Module2StringProps> = ({
         <div className="rounded-lg bg-[#edf3f0] border border-[#dce6e1] p-3.5 space-y-1.5">
           <div className="text-xs font-semibold text-[#0d4a3e]">Ecuația corzii fixate la capete</div>
           <div className="font-mono text-sm font-semibold text-[#13221d]">
-            f₁ = (1 / 2L_ef) · √(T / μ)
+            {formatScientificIndices('f₁ = 1 / (2L_ef) · √(T / μ)')}
           </div>
           <ul className="text-xs text-[#53665f] space-y-1 pt-1 list-disc list-inside">
             <li>Coardă mai scurtă (L ↓) → sunet mai înalt (f ↑)</li>

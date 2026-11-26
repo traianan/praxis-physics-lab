@@ -176,7 +176,7 @@ export const Module4Temperament: React.FC<Module4TemperamentProps> = ({ onComple
     ctx.fillStyle = '#53665f';
     ctx.font = '500 10.5px "Consolas", monospace';
     ctx.textAlign = 'right';
-    ctx.fillText(`Fereastră afișată: ${windowSec.toFixed(2)} s · f_bătăi = ${beatFreq.toFixed(2)} Hz`, w - 12, 16);
+    ctx.fillText(`Fereastră afișată: ${windowSec.toFixed(2)} s · Δf = ${beatFreq.toFixed(2)} Hz`, w - 12, 16);
 
     ctx.restore();
   }, [pureFreq, temperedFreq, beatFreq]);

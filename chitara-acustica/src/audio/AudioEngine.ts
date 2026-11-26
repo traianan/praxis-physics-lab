@@ -120,7 +120,7 @@ export const BODY_WOOD_PRESETS: Record<Exclude<BodyWoodId, 'custom'>, WoodPreset
     shortName: 'Cedru',
     subtitle: 'Densitate mică, amortizare internă mare · cald, bogat în joase, catifelat',
     acousticCharacter:
-      'Cedrul (Thuja plicata) răspunde rapid la ciupiri ușoare, accentuând rezonanța gravă a cutiei (A0/T1) și atenuând ușor vârfurile înalte pentru un timbru cald.',
+      'Cedrul (Thuja plicata) răspunde rapid la ciupiri ușoare, accentuând rezonanța gravă a cutiei (A₀/T₁) și atenuând ușor vârfurile înalte pentru un timbru cald.',
     config: {
       woodId: 'cedar',
       enabled: true,

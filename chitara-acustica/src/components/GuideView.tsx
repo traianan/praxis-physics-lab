@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { LabModuleId } from '../types/guitar';
 import { HARMONIC_DESCRIPTIONS } from '../utils/musicTheory';
+import { formatScientificIndices } from './ScientificNotation';
 
 type GuideViewProps = {
   onOpenModule: (id: LabModuleId) => void;
@@ -24,7 +25,7 @@ export const GuideView: React.FC<GuideViewProps> = ({ onOpenModule }) => {
     {
       moduleId: 'string',
       title: '2. Fizica corzii fixate la ambele capete',
-      formula: 'f₁ = (1 / 2L) · √(T / μ)   |   L_ef = L · 2^(-fret / 12)',
+      formula: 'f₁ = 1 / (2L) · √(T / μ)   |   L_ef = L · 2^(-fret / 12)',
       summary:
         'Frecvența fundamentală crește odată cu tensiunea T și scade cu lungimea L sau cu densitatea lineică μ. Apăsarea unui fret scurtează lungimea vibratoare efectivă.',
     },
@@ -87,7 +88,7 @@ export const GuideView: React.FC<GuideViewProps> = ({ onOpenModule }) => {
             <div className="space-y-2.5">
               <h3 className="text-base font-semibold text-[#13221d]">{sec.title}</h3>
               <div className="rounded-lg bg-[#edf3f0] border border-[#dce6e1] px-3 py-2 font-mono text-xs font-semibold text-[#0d4a3e]">
-                {sec.formula}
+                {formatScientificIndices(sec.formula)}
               </div>
               <p className="text-xs text-[#53665f] leading-relaxed">{sec.summary}</p>
             </div>
