@@ -1,3 +1,4 @@
+import { LabStepper } from "./LabStepper";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AudioLines, Play, RotateCcw } from 'lucide-react';
 import { audioEngine, BODY_WOOD_PRESETS } from '../audio/AudioEngine';
@@ -422,7 +423,7 @@ export const BodyResonancePanel: React.FC<BodyResonancePanelProps> = ({
         />
       </div>
 
-      {/* Parametric 4-Band EQ Sliders */}
+      {/* Parametric 4-Band EQ Controls */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
         {/* Band 1: Helmholtz A0 */}
         <div className="rounded-lg border border-[#e3ebe6] bg-[#fafcfa] p-3 space-y-2">
@@ -433,28 +434,26 @@ export const BodyResonancePanel: React.FC<BodyResonancePanelProps> = ({
               {config.helmholtz.gain.toFixed(1)} dB
             </span>
           </div>
-          <input
-            type="range"
-            min={-8}
-            max={8}
-            step={0.2}
-            value={config.helmholtz.gain}
-            onChange={(e) => updateBand('helmholtz', 'gain', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={-8}
+  max={8}
+  step={0.2}
+  value={config.helmholtz.gain}
+  label="Câștig rezonanță aer"
+  onValueChange={(value) => updateBand('helmholtz', 'gain', Number(value))}
+/>
           <div className="flex items-center justify-between text-[11px] text-[#53665f]">
             <span>Frecvență</span>
             <span className="font-mono tabular-nums">{config.helmholtz.frequency} Hz</span>
           </div>
-          <input
-            type="range"
-            min={80}
-            max={135}
-            step={1}
-            value={config.helmholtz.frequency}
-            onChange={(e) => updateBand('helmholtz', 'frequency', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={80}
+  max={135}
+  step={1}
+  value={config.helmholtz.frequency}
+  label="Frecvență rezonanță aer"
+  onValueChange={(value) => updateBand('helmholtz', 'frequency', Number(value))}
+/>
         </div>
 
         {/* Band 2: Top Plate T1 */}
@@ -466,28 +465,26 @@ export const BodyResonancePanel: React.FC<BodyResonancePanelProps> = ({
               {config.topPlate.gain.toFixed(1)} dB
             </span>
           </div>
-          <input
-            type="range"
-            min={-8}
-            max={8}
-            step={0.2}
-            value={config.topPlate.gain}
-            onChange={(e) => updateBand('topPlate', 'gain', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={-8}
+  max={8}
+  step={0.2}
+  value={config.topPlate.gain}
+  label="Câștig placă față"
+  onValueChange={(value) => updateBand('topPlate', 'gain', Number(value))}
+/>
           <div className="flex items-center justify-between text-[11px] text-[#53665f]">
             <span>Frecvență</span>
             <span className="font-mono tabular-nums">{config.topPlate.frequency} Hz</span>
           </div>
-          <input
-            type="range"
-            min={160}
-            max={260}
-            step={2}
-            value={config.topPlate.frequency}
-            onChange={(e) => updateBand('topPlate', 'frequency', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={160}
+  max={260}
+  step={2}
+  value={config.topPlate.frequency}
+  label="Frecvență placă față"
+  onValueChange={(value) => updateBand('topPlate', 'frequency', Number(value))}
+/>
         </div>
 
         {/* Band 3: Upper-mid Presence */}
@@ -499,28 +496,26 @@ export const BodyResonancePanel: React.FC<BodyResonancePanelProps> = ({
               {config.presence.gain.toFixed(1)} dB
             </span>
           </div>
-          <input
-            type="range"
-            min={-8}
-            max={8}
-            step={0.2}
-            value={config.presence.gain}
-            onChange={(e) => updateBand('presence', 'gain', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={-8}
+  max={8}
+  step={0.2}
+  value={config.presence.gain}
+  label="Câștig prezență"
+  onValueChange={(value) => updateBand('presence', 'gain', Number(value))}
+/>
           <div className="flex items-center justify-between text-[11px] text-[#53665f]">
             <span>Frecvență</span>
             <span className="font-mono tabular-nums">{config.presence.frequency} Hz</span>
           </div>
-          <input
-            type="range"
-            min={600}
-            max={3000}
-            step={50}
-            value={config.presence.frequency}
-            onChange={(e) => updateBand('presence', 'frequency', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={600}
+  max={3000}
+  step={50}
+  value={config.presence.frequency}
+  label="Frecvență prezență"
+  onValueChange={(value) => updateBand('presence', 'frequency', Number(value))}
+/>
         </div>
 
         {/* Band 4: High-shelf Treble */}
@@ -532,28 +527,26 @@ export const BodyResonancePanel: React.FC<BodyResonancePanelProps> = ({
               {config.brilliance.gain.toFixed(1)} dB
             </span>
           </div>
-          <input
-            type="range"
-            min={-8}
-            max={8}
-            step={0.2}
-            value={config.brilliance.gain}
-            onChange={(e) => updateBrilliance('gain', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={-8}
+  max={8}
+  step={0.2}
+  value={config.brilliance.gain}
+  label="Câștig amortizare înalte"
+  onValueChange={(value) => updateBrilliance('gain', Number(value))}
+/>
           <div className="flex items-center justify-between text-[11px] text-[#53665f]">
             <span>Prag raft</span>
             <span className="font-mono tabular-nums">{(config.brilliance.frequency / 1000).toFixed(1)} kHz</span>
           </div>
-          <input
-            type="range"
-            min={2400}
-            max={5600}
-            step={100}
-            value={config.brilliance.frequency}
-            onChange={(e) => updateBrilliance('frequency', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={2400}
+  max={5600}
+  step={100}
+  value={config.brilliance.frequency}
+  label="Prag amortizare înalte"
+  onValueChange={(value) => updateBrilliance('frequency', Number(value))}
+/>
         </div>
       </div>
 

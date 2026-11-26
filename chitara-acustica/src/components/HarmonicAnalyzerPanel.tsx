@@ -1,3 +1,4 @@
+import { LabStepper } from "./LabStepper";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AudioWaveform, Play, RefreshCw, Square, Volume2 } from 'lucide-react';
 import { audioEngine } from '../audio/AudioEngine';
@@ -86,7 +87,7 @@ export const HarmonicAnalyzerPanel: React.FC<HarmonicAnalyzerPanelProps> = ({
     };
   }, []);
 
-  // Update continuous drone whenever f0 or slider amplitudes change while drone is active
+  // Update continuous drone whenever f0 or harmonic amplitudes change while drone is active
   useEffect(() => {
     if (droneActive) {
       audioEngine.updateHarmonicDrone(activeFrequency, effectiveAmplitudes);
@@ -131,7 +132,7 @@ export const HarmonicAnalyzerPanel: React.FC<HarmonicAnalyzerPanelProps> = ({
     onChangeCustomHarmonics(next);
   };
 
-  const handleBandSlider = (idx: number, val: number) => {
+  const handleBandStep = (idx: number, val: number) => {
     const next = [...customHarmonics];
     next[idx] = val;
     if (val > 0 && !enabledBands[idx]) {
@@ -150,7 +151,7 @@ export const HarmonicAnalyzerPanel: React.FC<HarmonicAnalyzerPanelProps> = ({
     setPresetId('custom');
   };
 
-  const handleCaptureLiveToSliders = () => {
+  const handleCaptureLiveToSteppers = () => {
     const src = lastActiveMeasuredRef.current;
     const peak = Math.max(...src);
     if (peak < 0.05) {
@@ -162,7 +163,7 @@ export const HarmonicAnalyzerPanel: React.FC<HarmonicAnalyzerPanelProps> = ({
     setEnabledBands(normalized.map((v) => v >= 0.02));
     setPresetId('custom');
     onChangeCustomHarmonics(normalized);
-    setCaptureNotice('Coeficienții Fourier ai sunetului live au fost încărcați în cele 8 glisoare.');
+    setCaptureNotice('Coeficienții Fourier ai sunetului live au fost încărcați pentru cele 8 armonice.');
     window.setTimeout(() => setCaptureNotice(null), 3500);
   };
 
@@ -313,7 +314,7 @@ export const HarmonicAnalyzerPanel: React.FC<HarmonicAnalyzerPanelProps> = ({
             ctx.fill();
           }
 
-          // Paired bars at f₁..8f₁: Target Fourier Slider vs Live Measured FFT
+          // Paired bars at f₁..8f₁: Manual Fourier Target vs Live Measured FFT
           const barSlotW = Math.max(14, Math.min(34, plotW / 12));
           const halfW = barSlotW * 0.44;
 
@@ -367,7 +368,7 @@ export const HarmonicAnalyzerPanel: React.FC<HarmonicAnalyzerPanelProps> = ({
           ctx.fillStyle = '#0d4a3e';
           ctx.fillRect(padL, 8, 10, 8);
           ctx.fillStyle = '#13221d';
-          ctx.fillText('Țintă manuală (glisoare)', padL + 15, 12);
+          ctx.fillText('Țintă manuală (butoane ±)', padL + 15, 12);
 
           ctx.fillStyle = '#b85d2b';
           ctx.fillRect(padL + 155, 8, 10, 8);
@@ -618,9 +619,9 @@ export const HarmonicAnalyzerPanel: React.FC<HarmonicAnalyzerPanelProps> = ({
 
           <button
             type="button"
-            onClick={handleCaptureLiveToSliders}
+            onClick={handleCaptureLiveToSteppers}
             className="px-2.5 py-1.5 rounded-lg border border-[#d8e2dc] bg-white hover:bg-[#edf3f0] text-xs font-medium text-[#13221d] flex items-center gap-1.5 transition-colors cursor-pointer"
-            title="Copiază amplitudinile măsurate din ultimul sunet real în glisoare"
+            title="Copiază amplitudinile măsurate din ultimul sunet real în comenzile ±"
           >
             <RefreshCw className="w-3.5 h-3.5 text-[#0d4a3e]" />
             <span>Preia din sunet live</span>
@@ -724,7 +725,7 @@ export const HarmonicAnalyzerPanel: React.FC<HarmonicAnalyzerPanelProps> = ({
         {fourierFormula}
       </div>
 
-      {/* 8 Manual Harmonic Sliders Console */}
+      {/* 8 Manual Harmonic Controls */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5">
         {customHarmonics.slice(0, 8).map((amp, idx) => {
           const n = idx + 1;
@@ -761,16 +762,14 @@ export const HarmonicAnalyzerPanel: React.FC<HarmonicAnalyzerPanelProps> = ({
                 <div className="truncate">{HARMONIC_SHORT_INTERVALS[idx]}</div>
               </div>
 
-              <input
-                type="range"
-                min={0}
-                max={1}
-                step={0.01}
-                value={amp}
-                onChange={(e) => handleBandSlider(idx, Number(e.target.value))}
-                className="lab-slider w-full"
-                aria-label={`Amplitudine armonica ${n}`}
-              />
+              <LabStepper
+  min={0}
+  max={1}
+  step={0.01}
+  value={amp}
+  label={`Amplitudine armonica ${n}`}
+  onValueChange={(value) => handleBandStep(idx, Number(value))}
+/>
 
               {/* Live measured FFT bar indicator */}
               <div className="space-y-1">

@@ -1,3 +1,4 @@
+import { LabStepper } from "./LabStepper";
 import React, { useEffect, useRef, useState } from 'react';
 import { Play, Square } from 'lucide-react';
 import { audioEngine } from '../audio/AudioEngine';
@@ -226,7 +227,6 @@ export const MetronomePanel: React.FC = () => {
     }
   };
 
-  const clampBpm = (val: number) => Math.max(40, Math.min(208, val));
   const beatPeriodMs = 60000 / bpm;
 
   return (
@@ -311,7 +311,7 @@ export const MetronomePanel: React.FC = () => {
         </div>
       </div>
 
-      {/* Tempo Slider & Synchronized Beat Indicators */}
+      {/* Tempo Control & Synchronized Beat Indicators */}
       <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-4 items-center">
         <div className="space-y-3">
           <div className="space-y-1.5">
@@ -319,33 +319,14 @@ export const MetronomePanel: React.FC = () => {
               <span className="font-semibold text-[#13221d]">Reglaj tempo (40 – 208 BPM)</span>
               <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">{bpm} BPM</span>
             </div>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setBpm((b) => clampBpm(b - 1))}
-                aria-label="Scade tempo cu 1 BPM"
-                className="w-8 h-8 rounded-lg border border-[#d8e2dc] bg-[#fafcfa] hover:bg-[#edf3f0] text-sm font-semibold text-[#13221d] cursor-pointer shrink-0"
-              >
-                −
-              </button>
-              <input
-                type="range"
-                min={40}
-                max={208}
-                step={1}
-                value={bpm}
-                onChange={(e) => setBpm(Number(e.target.value))}
-                className="lab-slider w-full"
-              />
-              <button
-                type="button"
-                onClick={() => setBpm((b) => clampBpm(b + 1))}
-                aria-label="Crește tempo cu 1 BPM"
-                className="w-8 h-8 rounded-lg border border-[#d8e2dc] bg-[#fafcfa] hover:bg-[#edf3f0] text-sm font-semibold text-[#13221d] cursor-pointer shrink-0"
-              >
-                +
-              </button>
-            </div>
+            <LabStepper
+  min={40}
+  max={208}
+  step={1}
+  value={bpm}
+  label="Tempo metronom"
+  onValueChange={(value) => setBpm(Number(value))}
+            />
           </div>
 
           {/* Synchronized Beat Lights */}

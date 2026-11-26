@@ -1,3 +1,4 @@
+import { LabStepper } from "./LabStepper";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Pause, Play, RotateCcw, Waves } from 'lucide-react';
 import { audioEngine } from '../audio/AudioEngine';
@@ -685,15 +686,15 @@ export const Spectrogram2DPanel: React.FC<Spectrogram2DPanelProps> = ({
             <span className="font-mono font-semibold text-[#13221d] tabular-nums w-12">
               {floorDb} dB
             </span>
-            <input
-              type="range"
-              min={-100}
-              max={-68}
-              step={2}
-              value={floorDb}
-              onChange={(e) => setFloorDb(Number(e.target.value))}
-              className="lab-slider w-24"
-            />
+            <LabStepper
+  min={-100}
+  max={-68}
+  step={2}
+  value={floorDb}
+  label="Prag de zgomot spectrogramă"
+  className="w-24"
+  onValueChange={(value) => setFloorDb(Number(value))}
+/>
           </div>
 
           <label className="flex items-center gap-1.5 text-xs font-medium text-[#13221d] cursor-pointer select-none">

@@ -1,3 +1,4 @@
+import { LabStepper } from "./LabStepper";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -950,15 +951,14 @@ export const StringVibration3DPanel: React.FC<StringVibration3DPanelProps> = ({
               {slowMoFactor.toFixed(2)}×
             </span>
           </div>
-          <input
-            type="range"
-            min={0.25}
-            max={2.5}
-            step={0.05}
-            value={slowMoFactor}
-            onChange={(e) => setSlowMoFactor(Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={0.25}
+  max={2.5}
+  step={0.05}
+  value={slowMoFactor}
+  label="Viteză vizualizare lentă"
+  onValueChange={(value) => setSlowMoFactor(Number(value))}
+/>
         </div>
 
         <div className="space-y-1">
@@ -968,15 +968,14 @@ export const StringVibration3DPanel: React.FC<StringVibration3DPanelProps> = ({
               {amplitudeScale.toFixed(1)}×
             </span>
           </div>
-          <input
-            type="range"
-            min={0.4}
-            max={1.8}
-            step={0.1}
-            value={amplitudeScale}
-            onChange={(e) => setAmplitudeScale(Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={0.4}
+  max={1.8}
+  step={0.1}
+  value={amplitudeScale}
+  label="Amplitudine vizuală a corzii"
+  onValueChange={(value) => setAmplitudeScale(Number(value))}
+/>
         </div>
 
         <label className="flex items-center gap-2 text-xs font-medium text-[#13221d] cursor-pointer select-none">

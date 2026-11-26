@@ -1,3 +1,4 @@
+import { LabStepper } from "../LabStepper";
 import React, { useEffect, useRef, useState } from 'react';
 import { Play, Volume2 } from 'lucide-react';
 import { audioEngine } from '../../audio/AudioEngine';
@@ -48,11 +49,6 @@ export const Module1Notes: React.FC<Module1NotesProps> = ({
     const rounded = Number(freq.toFixed(2));
     setFrequency(rounded);
     playCurrent(rounded);
-  };
-
-  const stepFrequency = (deltaHz: number) => {
-    const next = Math.max(65, Math.min(1046.5, Number((frequency + deltaHz).toFixed(2))));
-    setFrequency(next);
   };
 
   // Draw logarithmic frequency axis (55 Hz - 1200 Hz)
@@ -191,39 +187,20 @@ export const Module1Notes: React.FC<Module1NotesProps> = ({
           </div>
         </div>
 
-        {/* Frequency slider with -/+ buttons */}
+        {/* Frequency controls */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
             <span className="font-semibold text-[#13221d]">Frecvență (Hz)</span>
             <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">{frequency.toFixed(2)} Hz</span>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => stepFrequency(-1)}
-              aria-label="Scade frecvența cu 1 Hz"
-              className="w-8 h-8 rounded-lg border border-[#d8e2dc] bg-[#fafcfa] hover:bg-[#edf3f0] text-sm font-semibold text-[#13221d] cursor-pointer shrink-0"
-            >
-              −
-            </button>
-            <input
-              type="range"
-              min={82.41}
-              max={880}
-              step={0.1}
-              value={frequency}
-              onChange={(e) => setFrequency(Number(e.target.value))}
-              className="lab-slider w-full"
-            />
-            <button
-              type="button"
-              onClick={() => stepFrequency(1)}
-              aria-label="Crește frecvența cu 1 Hz"
-              className="w-8 h-8 rounded-lg border border-[#d8e2dc] bg-[#fafcfa] hover:bg-[#edf3f0] text-sm font-semibold text-[#13221d] cursor-pointer shrink-0"
-            >
-              +
-            </button>
-          </div>
+          <LabStepper
+  min={82.41}
+  max={880}
+  step={0.1}
+  value={frequency}
+  label="Frecvență notă"
+  onValueChange={(value) => setFrequency(Number(value))}
+          />
           <div className="flex items-center justify-between text-[11px] text-[#53665f] font-mono tabular-nums">
             <span>82,4 Hz (E2)</span>
             <span>880 Hz (A5)</span>

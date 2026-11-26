@@ -1,5 +1,6 @@
+import { LabStepper } from "./LabStepper";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Play, RotateCcw, SlidersHorizontal, Volume2 } from 'lucide-react';
+import { Activity, Play, RotateCcw, Volume2 } from 'lucide-react';
 import { ADSR_PRESETS, audioEngine } from '../audio/AudioEngine';
 import { AdsrEnvelopeConfig, AdsrPresetId } from '../types/guitar';
 
@@ -434,7 +435,7 @@ export const AdsrEnvelopePanel: React.FC<AdsrEnvelopePanelProps> = ({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <div className="flex items-center gap-2">
-            <SlidersHorizontal className="w-4 h-4 text-[#0d4a3e]" />
+            <Activity className="w-4 h-4 text-[#0d4a3e]" />
             <h3 className="text-sm font-semibold text-[#13221d]">
               Plic Envelope (ADSR): Modelarea atacului și stingerii
             </h3>
@@ -582,7 +583,7 @@ export const AdsrEnvelopePanel: React.FC<AdsrEnvelopePanelProps> = ({
         />
       </div>
 
-      {/* 4 Primary ADSR Sliders + Sustain Gate Hold */}
+      {/* 4 Primary ADSR Controls + Sustain Gate Hold */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="rounded-lg border border-[#e3ebe6] bg-[#fafcfa] p-3.5 space-y-1.5">
           <div className="flex items-center justify-between text-xs">
@@ -591,15 +592,14 @@ export const AdsrEnvelopePanel: React.FC<AdsrEnvelopePanelProps> = ({
               {formatTimeLabel(config.attackSec)}
             </span>
           </div>
-          <input
-            type="range"
-            min={0.004}
-            max={1.0}
-            step={0.004}
-            value={config.attackSec}
-            onChange={(e) => updateParam('attackSec', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={0.004}
+  max={1.0}
+  step={0.004}
+  value={config.attackSec}
+  label="Timp de atac"
+  onValueChange={(value) => updateParam('attackSec', Number(value))}
+/>
           <p className="text-[11px] text-[#53665f]">
             Intervalul de la liniște (0%) la vârful de amplitudine (100%). Valori mici = atac percurent de pană; valori
             mari = intrare lină tip arcuș.
@@ -613,15 +613,14 @@ export const AdsrEnvelopePanel: React.FC<AdsrEnvelopePanelProps> = ({
               {formatTimeLabel(config.decaySec)}
             </span>
           </div>
-          <input
-            type="range"
-            min={0.04}
-            max={2.0}
-            step={0.02}
-            value={config.decaySec}
-            onChange={(e) => updateParam('decaySec', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={0.04}
+  max={2.0}
+  step={0.02}
+  value={config.decaySec}
+  label="Timp de cădere"
+  onValueChange={(value) => updateParam('decaySec', Number(value))}
+/>
           <p className="text-[11px] text-[#53665f]">
             Timpul în care energia scade exponențial de la vârful de atac până la nivelul stabil de Sustain.
           </p>
@@ -634,15 +633,14 @@ export const AdsrEnvelopePanel: React.FC<AdsrEnvelopePanelProps> = ({
               {Math.round(config.sustainLevel * 100)}%
             </span>
           </div>
-          <input
-            type="range"
-            min={0.02}
-            max={1.0}
-            step={0.01}
-            value={config.sustainLevel}
-            onChange={(e) => updateParam('sustainLevel', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={0.02}
+  max={1.0}
+  step={0.01}
+  value={config.sustainLevel}
+  label="Nivel de susținere"
+  onValueChange={(value) => updateParam('sustainLevel', Number(value))}
+/>
           <p className="text-[11px] text-[#53665f]">
             Nivelul relativ de amplitudine menținut cât timp nota rămâne activă înaintea eliberării (Note-Off).
           </p>
@@ -655,15 +653,14 @@ export const AdsrEnvelopePanel: React.FC<AdsrEnvelopePanelProps> = ({
               {formatTimeLabel(config.releaseSec)}
             </span>
           </div>
-          <input
-            type="range"
-            min={0.05}
-            max={3.5}
-            step={0.02}
-            value={config.releaseSec}
-            onChange={(e) => updateParam('releaseSec', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={0.05}
+  max={3.5}
+  step={0.02}
+  value={config.releaseSec}
+  label="Timp de stingere"
+  onValueChange={(value) => updateParam('releaseSec', Number(value))}
+/>
           <p className="text-[11px] text-[#53665f]">
             Durata stingerii corzii după punctul de eliberare: scurtă pentru palm-mute, lungă pentru rezonanță liberă.
           </p>
@@ -679,15 +676,14 @@ export const AdsrEnvelopePanel: React.FC<AdsrEnvelopePanelProps> = ({
           </span>
         </div>
         <div className="flex items-center gap-3 shrink-0 sm:w-64">
-          <input
-            type="range"
-            min={0.06}
-            max={1.5}
-            step={0.02}
-            value={config.holdSec}
-            onChange={(e) => updateParam('holdSec', Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={0.06}
+  max={1.5}
+  step={0.02}
+  value={config.holdSec}
+  label="Durată de menținere"
+  onValueChange={(value) => updateParam('holdSec', Number(value))}
+/>
           <span className="font-mono text-xs font-bold text-[#0d4a3e] tabular-nums w-14 text-right">
             {config.holdSec.toFixed(2)} s
           </span>

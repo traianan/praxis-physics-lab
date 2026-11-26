@@ -1,3 +1,4 @@
+import { LabStepper } from "../LabStepper";
 import React, { useEffect, useMemo, useState } from 'react';
 import { CheckCircle2, Circle, ArrowRight, Play, RotateCcw } from 'lucide-react';
 import { audioEngine } from '../../audio/AudioEngine';
@@ -313,15 +314,14 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
             <span className="font-semibold text-[#13221d]">Poziție pană / deget p</span>
             <span className="font-mono font-semibold text-[#b85d2b] tabular-nums">{pickPosition.toFixed(2)} L</span>
           </div>
-          <input
-            type="range"
-            min={0.06}
-            max={0.48}
-            step={0.01}
-            value={pickPosition}
-            onChange={(e) => setPickPosition(Number(e.target.value))}
-            className="lab-slider w-full"
-          />
+          <LabStepper
+  min={0.06}
+  max={0.48}
+  step={0.01}
+  value={pickPosition}
+  label="Poziție ciupire"
+  onValueChange={(value) => setPickPosition(Number(value))}
+/>
         </div>
 
         {/* Optional Scale Overlay */}
@@ -355,7 +355,7 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
           </div>
         </div>
 
-        {/* Physical String Parameters Selector & Sliders (L, T, mu) */}
+        {/* Physical String Parameters Selector & Controls (L, T, mu) */}
         <div className="pt-2 border-t border-[#e3ebe6] space-y-2.5">
           <div className="flex items-center justify-between gap-2">
             <label className="block text-xs font-semibold text-[#13221d]">
@@ -392,18 +392,17 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
                 {lengthM.toFixed(2)} m (L<sub>ef</sub> {(effectiveLengthM * 100).toFixed(1)} cm)
               </span>
             </div>
-            <input
-              type="range"
-              min={0.4}
-              max={0.85}
-              step={0.01}
-              value={lengthM}
-              onChange={(e) => {
+            <LabStepper
+  min={0.4}
+  max={0.85}
+  step={0.01}
+  value={lengthM}
+  label="Lungime diapazon"
+  onValueChange={(value) => {
                 setPhysicsPreset('custom');
-                setLengthM(Number(e.target.value));
+                setLengthM(Number(value));
               }}
-              className="lab-slider w-full"
-            />
+/>
           </div>
 
           <div className="space-y-1">
@@ -413,18 +412,17 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
                 {tensionN.toFixed(1)} N
               </span>
             </div>
-            <input
-              type="range"
-              min={35}
-              max={160}
-              step={0.5}
-              value={tensionN}
-              onChange={(e) => {
+            <LabStepper
+  min={35}
+  max={160}
+  step={0.5}
+  value={tensionN}
+  label="Tensiune coardă"
+  onValueChange={(value) => {
                 setPhysicsPreset('custom');
-                setTensionN(Number(e.target.value));
+                setTensionN(Number(value));
               }}
-              className="lab-slider w-full"
-            />
+/>
           </div>
 
           <div className="space-y-1">
@@ -434,18 +432,17 @@ export const Module8Sandbox: React.FC<Module8SandboxProps> = ({
                 {densityGPerM.toFixed(2)} g/m
               </span>
             </div>
-            <input
-              type="range"
-              min={0.35}
-              max={10.5}
-              step={0.05}
-              value={densityGPerM}
-              onChange={(e) => {
+            <LabStepper
+  min={0.35}
+  max={10.5}
+  step={0.05}
+  value={densityGPerM}
+  label="Densitate liniară coardă"
+  onValueChange={(value) => {
                 setPhysicsPreset('custom');
-                setDensityGPerM(Number(e.target.value));
+                setDensityGPerM(Number(value));
               }}
-              className="lab-slider w-full"
-            />
+/>
           </div>
 
           <div className="rounded-lg bg-[#edf3f0] border border-[#dce6e1] p-2.5 space-y-1.5">

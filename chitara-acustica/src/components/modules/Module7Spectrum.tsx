@@ -1,3 +1,4 @@
+import { LabStepper } from "../LabStepper";
 import React, { useEffect, useState } from 'react';
 import { Mic, MicOff, Play } from 'lucide-react';
 import { audioEngine } from '../../audio/AudioEngine';
@@ -155,15 +156,14 @@ export const Module7Spectrum: React.FC<Module7SpectrumProps> = ({ strings, notat
                 <span className="font-semibold text-[#13221d]">Poziție ciupire (atac)</span>
                 <span className="font-mono font-semibold text-[#b85d2b] tabular-nums">p = {pickPosition.toFixed(2)}</span>
               </div>
-              <input
-                type="range"
-                min={0.06}
-                max={0.48}
-                step={0.01}
-                value={pickPosition}
-                onChange={(e) => setPickPosition(Number(e.target.value))}
-                className="lab-slider w-full"
-              />
+              <LabStepper
+  min={0.06}
+  max={0.48}
+  step={0.01}
+  value={pickPosition}
+  label="Poziție de ciupire"
+  onValueChange={(value) => setPickPosition(Number(value))}
+/>
             </div>
 
             {synthMethod === 'karplus' && (
@@ -172,15 +172,14 @@ export const Module7Spectrum: React.FC<Module7SpectrumProps> = ({ strings, notat
                   <span className="font-semibold text-[#13221d]">Factor decaiere (sustain)</span>
                   <span className="font-mono font-semibold text-[#0d4a3e] tabular-nums">{damping.toFixed(4)}</span>
                 </div>
-                <input
-                  type="range"
-                  min={0.985}
-                  max={0.9985}
-                  step={0.0005}
-                  value={damping}
-                  onChange={(e) => setDamping(Number(e.target.value))}
-                  className="lab-slider w-full"
-                />
+                <LabStepper
+  min={0.985}
+  max={0.9985}
+  step={0.0005}
+  value={damping}
+  label="Factor de amortizare"
+  onValueChange={(value) => setDamping(Number(value))}
+/>
               </div>
             )}
 
