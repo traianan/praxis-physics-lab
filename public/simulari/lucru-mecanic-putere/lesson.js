@@ -1057,7 +1057,7 @@
       if (forceLabel) forceLabel.textContent = mode === 'accelerate'
         ? 'Forța de tracțiune Fₜ'
         : mode === 'steady' ? 'Tracțiune Fₜ = R'
-          : 'Forța de frânare Fᵦ';
+          : 'Magnitudinea forței statice |Fₛ|';
       slider.disabled = mode === 'steady';
       if (lockNote) lockNote.hidden = mode !== 'steady';
       if (friction) friction.textContent = (braking ? '−' : '+') + contactForce + ' N';
@@ -1070,12 +1070,12 @@
           : force === 0 ? resistance > 0 ? 'rulare liberă · rezistențele încetinesc' : 'viteză constantă · fără forțe'
             : 'frânează · fără patinare';
       if (explanation) explanation.innerHTML = mode === 'accelerate'
-        ? '<b>Accelerație.</b> Motorul aplică un cuplu roților motoare; anvelopa împinge drumul înapoi, iar drumul exercită frecarea statică înainte. <b>Fₜ = Σfₛ</b>, iar rezistențele R acționează înapoi: <b>Fₜ − R = ma</b>. Mașina accelerează numai când Fₜ > R; la egalitate, a = 0.'
+        ? '<b>Accelerație.</b> Motorul aplică un cuplu roților motoare; anvelopa împinge drumul înapoi, iar drumul exercită frecarea statică înainte. <b>Fₜ = ΣFₛ</b>, iar rezistențele R acționează înapoi: <b>Fₜ − R = ma</b>. Mașina accelerează numai când Fₜ > R; la egalitate, a = 0.'
         : mode === 'steady'
-          ? '<b>Rulare uniformă.</b> Frecarea statică înainte furnizează tracțiunea <b>Fₜ = Σfₛ</b>, care echilibrează aceeași rezistență R: <b>Fₜ = R</b> și <b>ΣFₓ = 0</b>. Lucrul pozitiv al tracțiunii și lucrul negativ al rezistențelor se compensează.'
+          ? '<b>Rulare uniformă.</b> Frecarea statică înainte furnizează tracțiunea <b>Fₜ = ΣFₛ</b>, care echilibrează aceeași rezistență R: <b>Fₜ = R</b> și <b>ΣFₓ = 0</b>. Lucrul pozitiv al tracțiunii și lucrul negativ al rezistențelor se compensează.'
           : force === 0
             ? '<b>Rulare liberă.</b> Motorul nu aplică tracțiune, iar rezistențele R încetinesc automobilul: <b>ΣFₓ = −R = ma</b>. La rulare ideală fără rezistențe, viteza ar rămâne constantă.'
-            : '<b>Frânare.</b> Frânele aplică roților un cuplu opus rotației; drumul exercită frecarea statică înapoi, iar rezistențele R se adaugă frânării: <b>ΣFₓ = −(Fᵦ + R) = ma</b>. Dacă roata se blochează și alunecă, frecarea devine cinetică.';
+            : '<b>Frânare.</b> Frânele aplică roților un cuplu opus rotației; drumul exercită asupra anvelopei frecarea statică înapoi. Notăm această forță cu semn: <b>Fₛ &lt; 0</b>, deci <b>ΣFₓ = Fₛ − R = ma</b>; magnitudinea forței de frânare la contact este |Fₛ|. Dacă roata se blochează și alunecă, frecarea devine cinetică.';
       const arrowLength = force === 0 ? 0 : 48;
       if (roadOnWheel) {
         roadOnWheel.setAttribute('x2', (296 + direction * arrowLength).toString());
@@ -1092,8 +1092,8 @@
       if (roadLabel) roadLabel.setAttribute('x', (296 + direction * 28).toString());
       if (wheelLabel) wheelLabel.setAttribute('x', (296 - direction * 22).toString());
       if (torque) torque.setAttribute('d', braking
-        ? 'M301 191a22 22 0 0 0 -25 17'
-        : 'M276 208a22 22 0 0 1 25-17');
+        ? 'M289 192a22 22 0 0 0 -25 17'
+        : 'M264 209a22 22 0 0 1 25-17');
       if (torqueLabel) torqueLabel.textContent = braking ? force > 0 ? 'τ frână' : 'τ = 0' : 'τₘ';
       wheels.forEach(wheel => wheel?.classList.toggle('is-rolling', mode === 'steady' ? finalSpeed > 0 : mode === 'brake' ? finalSpeed > 0 : force > resistance));
       modes.forEach(button => button.setAttribute('aria-pressed', button.dataset.c2Mode === mode ? 'true' : 'false'));
