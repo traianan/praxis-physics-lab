@@ -54,7 +54,7 @@ for (const [from, to] of Object.entries(textColors)) html = html.replaceAll(from
 // Share audio state and audio output with Praxis. Sound remains off until the user enables it.
 js = js.replace(/<h3 id="evQ">/g, '<h2 id="evQ">');
 js = js.replace("let soundOn = localStorage.getItem('lmSound') !== 'off';", "let soundOn = window.PraxisSound?.enabled ?? false;\n  window.addEventListener('praxis-sound-change', event => { soundOn = event.detail.enabled; });")
-  .replace(/function ac\(\) \{[\s\S]*?\n  \}\n\n  function tone\([\s\S]*?\n  \}\n\n  const sfx = \{/, `function tone(freq, dur = 0.08, type = 'sine', gain = 0.035, slide = null, delay = 0) {
+  .replace(/function ac\(\) \{[\s\S]*?\r?\n  \}\r?\n\r?\n  function tone\([\s\S]*?\r?\n  \}\r?\n\r?\n  const sfx = \{/, `function tone(freq, dur = 0.08, type = 'sine', gain = 0.035, slide = null, delay = 0) {
     if (!window.PraxisSound?.enabled) return;
     window.setTimeout(() => {
       if (!window.PraxisSound?.enabled) return;

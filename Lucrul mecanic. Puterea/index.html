@@ -69,7 +69,7 @@
     <aside class="lm-formula-card" aria-label="Formulele lecției">
       <div class="fc-label"><span>Formulele lecției</span><span class="lm-live-dot" title="actualizate în timp real"></span></div>
       <div class="fc-main">L = F · d · cos α</div>
-      <div class="fc-sub"><b>P</b> = L / Δt &nbsp;·&nbsp; <b>η</b> = L<sub>u</sub> / L<sub>c</sub></div>
+      <div class="fc-sub"><b>P<sub>med</sub></b> = L / Δt &nbsp;·&nbsp; <b>η</b> = L<sub>u</sub> / L<sub>c</sub></div>
       <div class="fc-sub" style="margin-top:5px;font-size:8.5px;color:#53635C">se consideră g = 10 m/s²</div>
     </aside>
   </section>
@@ -299,6 +299,8 @@
             <div class="lm-card-b pad" style="padding-top:9px">
               <div class="lm-ov">Rezultanta</div>
               <div class="lm-formula sm" style="margin:3px 0 5px">L<sub>R</sub> = L<sub>1</sub> + L<sub>2</sub> + … + L<sub>n</sub></div>
+              <div class="lm-formula sm" style="margin:3px 0 5px">L<sub>R</sub> = ΔE<sub>c</sub> = ½mv<sub>f</sub>² − ½mv<sub>i</sub>²</div>
+              <p class="lm-small">Pentru un corp cu masă constantă, lucrul mecanic rezultant schimbă energia cinetică.</p>
               <p style="font-size:10.5px">Lucrurile se adună <strong>algebric</strong>, cu semnul fiecărei forțe. Pe graficul <span class="lm-mk">F<sub>d</sub>(x)</span>, L este <strong>aria cu semn</strong> dintre curbă și axă.</p>
               <div style="margin-top:5px"><button class="lm-ilink" data-goto="probleme" data-goto-prob="p2">Vezi problema cu forță variabilă <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
             </div>
@@ -492,7 +494,8 @@
             <div class="lm-card-b pad">
               <div class="lm-ov">Definiție</div>
               <p><strong>Puterea mecanică</strong> este rapiditatea cu care se efectuează lucrul mecanic:</p>
-              <div class="lm-formula">P = <span style="font-style:normal">L</span> / Δt</div>
+              <div class="lm-formula">P<sub>med</sub> = <span style="font-style:normal">L</span> / Δt</div>
+              <p class="lm-small">Puterea medie pe intervalul Δt.</p>
               <p style="font-size:11px">Un <strong>watt</strong> este puterea la care se efectuează <strong>1 J în fiecare secundă</strong>.</p>
               <div class="lm-formula sm" style="margin:5px 0 0">1 W = 1 J/s</div>
             </div>
@@ -508,8 +511,8 @@
           <div class="lm-card">
             <div class="lm-card-b pad">
               <div class="lm-ov">Repere</div>
-              <p style="font-size:11px"><strong>1 kW = 1000 W.</strong> În industria auto se folosește și <strong>calul-putere</strong>: <span class="lm-mk">1 CP ≈ 735,5 W</span>.</p>
-              <p style="font-size:10px;color:#53635C;margin-top:4px">James Watt a comparat puterea motorului cu abur cu cea a cailor: 75 kg ridicate la 1 m în 1 s.</p>
+              <p style="font-size:11px"><strong>1 kW = 1000 W.</strong> Calul-putere metric (<strong>CP</strong>) este <span class="lm-mk">75 kgf·m/s ≈ 735,5 W</span>; calul-putere mecanic (<strong>hp</strong>) este <span class="lm-mk">550 ft·lbf/s ≈ 745,7 W</span>.</p>
+              <p style="font-size:10px;color:#53635C;margin-top:4px">Valoarea de 735,5 W aparține unității metrice; definiția istorică britanică a lui James Watt este 550 ft·lbf pe secundă, adică aproximativ 745,7 W.</p>
             </div>
           </div>
         </div>
@@ -700,7 +703,7 @@
                 <div class="lm-step"><span class="n">1</span><p>Fixează o înclinare și măsoară greutatea corpului cu dinamometrul.</p></div>
                 <div class="lm-step"><span class="n">2</span><p>Trage <b>uniform</b> corpul pe plan, pe distanța <span class="lm-mk">d</span>, și citește forța de tracțiune <span class="lm-mk">F</span>.</p></div>
                 <div class="lm-step"><span class="n">3</span><p>Măsoară înălțimea <span class="lm-mk">h</span> și calculează <span class="lm-mk">η = G·h / (F·d)</span>.</p></div>
-                <div class="lm-step"><span class="n">4</span><p>Repetă pentru alt unghi sau altă suprafață; compară rezultatele.</p></div>
+                <div class="lm-step"><span class="n">4</span><p>Repetă pentru alt unghi sau altă suprafață și compară intervalul valorilor η. Diferența dintre configurații nu este incertitudinea unei măsurări.</p></div>
               </div>
             </div>
           </div>
@@ -717,11 +720,12 @@
             <div class="lm-card-b pad" style="padding-top:10px">
               <div class="lm-ov">Rezultat</div>
               <div class="lm-resultbox">
-                <div><span>η mediu</span><b id="l1Mean">—</b></div>
-                <div><span>Δη mediu</span><b id="l1Err">—</b></div>
+                <div><span>Interval η</span><b id="l1Mean">—</b></div>
+                <div><span>Δη între configurații</span><b id="l1Err">—</b></div>
               </div>
-              <div class="lm-error-method" aria-label="Estimarea erorii relative">
-                <div class="lm-error-formula"><strong>Formula erorii relative</strong><span class="lm-mk">Δη/η = ΔG/G + Δh/h + ΔF/F + Δd/d</span></div>
+              <p class="lm-small">Δη este amplitudinea variației între configurațiile înregistrate, nu eroarea de măsurare.</p>
+              <div class="lm-error-method" aria-label="Estimarea conservatoare a incertitudinii instrumentale">
+                <div class="lm-error-formula"><strong>Estimare conservatoare, ordinul I</strong><span class="lm-mk">Δη/η ≲ ΔG/G + Δh/h + ΔF/F + Δd/d</span></div>
                 <div><strong>Pentru riglă</strong><span class="lm-mk">Δh = Δd = 0,5 mm</span></div>
                 <div><strong>Pentru dinamometru</strong><span class="lm-mk">ΔG = ΔF = 0,05 N</span></div>
               </div>
@@ -1320,7 +1324,7 @@
           <div class="lm-prob-top">
             <div>
               <div class="lm-ov">Problema 06 · putere constantă</div>
-              <p class="lm-statement">O sanie de masă <b>m = 50 kg</b> este trasă accelerat, plecând din repaus, de un motor care dezvoltă o putere constantă <b>P = 1 kW</b>. Coeficientul de frecare este <b>μ = 0,2</b>. Determină viteza maximă pe orizontală și pe un plan înclinat la <b>45°</b>.</p>
+              <p class="lm-statement">O sanie de masă <b>m = 50 kg</b> se deplasează sub acțiunea unui motor care furnizează puterea constantă <b>P = 1 kW</b>. Consideră coeficientul de frecare la alunecare <b>μ = 0,2</b> și neglijează rezistența aerului. Modelul descrie deplasarea după pornire, nu lansarea din repaus. Determină viteza-limită pe orizontală și pe un plan înclinat la <b>45°</b>.</p>
               <div class="lm-data"><span>m = 50 kg</span><span>P = 1000 W</span><span>μ = 0,2</span><span>α = 45°</span></div>
             </div>
             <div class="lm-fig">
@@ -1338,12 +1342,12 @@
             </div>
           </div>
           <div class="lm-steps" data-steps>
-            <div class="lm-step pstep"><span class="n">1</span><p>La viteza maximă, accelerația este nulă: forța de tracțiune egalează rezistența totală.</p></div>
+            <div class="lm-step pstep"><span class="n">1</span><p>În regimul-limită, accelerația tinde la zero, iar forța de tracțiune egalează rezistența totală. Puterea constantă nu descrie pornirea din repaus.</p></div>
             <div class="lm-step pstep"><span class="n">2</span><p>Pe orizontală: <span class="f">F<sub>t</sub> = F<sub>f</sub> = μmg = 0,2 · 50 · 10 = 100 N</span>.</p></div>
-            <div class="lm-step pstep"><span class="n">3</span><p><span class="f">v<sub>max</sub> = P / F<sub>t</sub> = 1000 / 100 = 10 m/s</span>.</p></div>
-            <div class="lm-step pstep"><span class="n">4</span><p>La 45°: <span class="f">F<sub>t</sub> = mg(sin α + μ cos α) ≈ 500(0,707 + 0,141) ≈ 424 N</span>, deci <span class="f">v<sub>max</sub> ≈ 2,36 m/s</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">3</span><p><span class="f">v<sub>lim</sub> = P / F<sub>t</sub> = 1000 / 100 = 10 m/s</span>.</p></div>
+            <div class="lm-step pstep"><span class="n">4</span><p>La 45°: <span class="f">F<sub>t</sub> = mg(sin α + μ cos α) ≈ 500(0,707 + 0,141) ≈ 424 N</span>, deci <span class="f">v<sub>lim</sub> ≈ 2,36 m/s</span>.</p></div>
           </div>
-          <div class="lm-answer panswer"><span>Răspuns</span><b>10 m/s</b><em>pe plan înclinat: ≈ 2,36 m/s</em></div>
+          <div class="lm-answer panswer"><span>Viteze-limită în model</span><b>10 m/s</b><em>pe plan înclinat: ≈ 2,36 m/s</em></div>
         </article>
 
         <!-- P7 -->

@@ -882,10 +882,9 @@
         '</td><td>' + f(r.h, 2) + '</td><td>' + f(r.eta * 100) + '%</td></tr>'
       ).join('');
       const etas = rows.map(r => r.eta * 100);
-      const mean = etas.reduce((s, v) => s + v, 0) / etas.length;
-      const dev = etas.reduce((s, v) => s + Math.abs(v - mean), 0) / etas.length;
-      if (meanOut) meanOut.textContent = f(mean) + '%';
-      if (errOut) errOut.textContent = '±' + f(dev) + '%';
+      const minEta = Math.min(...etas), maxEta = Math.max(...etas);
+      if (meanOut) meanOut.textContent = f(minEta) + '–' + f(maxEta) + '%';
+      if (errOut) errOut.textContent = f(maxEta - minEta) + '%';
     }
 
     [aIn, mIn, muIn].forEach(el => {
@@ -1442,7 +1441,7 @@
       q: 'La un plan înclinat, lucrul util este <b>200 J</b>, iar lucrul consumat este <b>250 J</b>. Randamentul este:',
       opts: ['50%', '80%', '125%', '20%'],
       correct: 1,
-      explain: '<b>η = L<sub>u</sub> / L<sub>c</sub> = 200 / 250 = 0,80 = 80%.</b> Restul de 50 J s-a pierdut prin frecare, în principal ca și căldură.'
+      explain: '<b>η = L<sub>u</sub> / L<sub>c</sub> = 200 / 250 = 0,80 = 80%.</b> Diferența este 50 J; în modelul idealizat în care frecarea este singura pierdere, ea se transformă în principal în căldură.'
     },
     {
       q: 'Aceeași lucrare mecanică este efectuată în <b>4 s</b>, respectiv în <b>8 s</b>. Raportul puterilor <b>P₁ / P₂</b> este:',
@@ -1458,7 +1457,7 @@
       <div class="lm-prog" style="width:150px"><i id="evBar" style="width:0%"></i></div>
       <span id="evScore">0 corecte</span>
     </div>
-    <h2 id="evQ">Se încarcă întrebarea…</h3>
+    <h2 id="evQ">Se încarcă întrebarea…</h2>
     <div class="lm-opts" id="evOpts"></div>
     <div class="lm-explain" id="evExp" aria-live="polite"></div>
     <div class="lm-quiz-foot">
