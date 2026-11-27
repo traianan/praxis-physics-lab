@@ -106,8 +106,8 @@ body[data-praxis-course="${id}"] .praxis-lab-nav{display:none}
  #root #module-panel>.guitar-quick-actions{gap:.25rem;padding:.2rem}
  #root .guitar-quick-action{flex:1 1 0;padding-inline:.3rem;font-size:.8125rem}
  #root #module-panel>.grid{grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr))}
- #root .guitar-module-tab-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- #root .guitar-module-tab-grid>button{min-height:52px}
+ #root .guitar-module-tab-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #root .guitar-module-tab-grid>button{min-height:52px;font-size:.75rem}
  #root .guitar-app-main [class~="lg:grid-cols-8"]{grid-template-columns:repeat(2,minmax(0,1fr))}
  #root .guitar-app-main button,#root .guitar-app-main select,#root .guitar-app-main input:not([type=range]){min-height:48px}
  #root .guitar-app-main>div:first-child>div:first-child{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;min-width:0;gap:.25rem;padding:.25rem}
@@ -119,7 +119,7 @@ html[data-course-touch="true"] #root .guitar-app-main input[type=range]::-moz-ra
 html[data-praxis-whiteboard="true"] #root{--guitar-module-panel-height:calc(100dvh - 12rem)}
 `;
 await writeFile(path.join(targetDir, 'integration.css'), integrationCSS, 'utf8');
-await writeFile(path.join(targetDir, 'index.html'), html.replace(/[\t ]+$/gm, ''), 'utf8');
+await writeFile(path.join(targetDir, 'index.html'), html.replace(/\r\n/g, '\n').replace(/[\t ]+$/gm, ''), 'utf8');
 await cp(path.join(sourceDir, 'node_modules/three/LICENSE'), path.join(targetDir, 'THREE-LICENSE.txt'));
 const assetFiles = await readdir(path.join(distDir, 'assets'));
 await writeFile(path.join(root, 'docs/imported-chitara-acustica-virtuala.json'), JSON.stringify({

@@ -517,6 +517,7 @@ export const AcousticGuitar2D: React.FC<AcousticGuitar2DProps> = ({
     if (!hit) return;
 
     if (hit.zone === 'fretboard') {
+      e.currentTarget.setPointerCapture(e.pointerId);
       setIsDraggingFret(true);
       onSelectFret?.(hit.stringId, hit.fret);
       onPluckString?.(hit.stringId, hit.fret, hit.freq);
@@ -543,8 +544,19 @@ export const AcousticGuitar2D: React.FC<AcousticGuitar2DProps> = ({
     }
   };
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
     setIsDraggingFret(false);
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+  };
+
+  const handlePointerCancel = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    setIsDraggingFret(false);
+    setHoverInfo(null);
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
   };
 
   return (
@@ -579,9 +591,10 @@ export const AcousticGuitar2D: React.FC<AcousticGuitar2DProps> = ({
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerCancel}
+          onLostPointerCapture={() => setIsDraggingFret(false)}
           onPointerLeave={() => {
             setHoverInfo(null);
-            setIsDraggingFret(false);
           }}
           className="block w-full cursor-pointer select-none touch-pan-y"
         />

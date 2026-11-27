@@ -55,8 +55,8 @@
 }
 @media (max-width: 640px) {
   #root .guitar-app-main { padding-inline: .75rem; }
-  #root .guitar-module-tab-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  #root .guitar-module-tab-grid > button { min-height: 52px; }
+  #root .guitar-module-tab-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #root .guitar-module-tab-grid > button { min-height: 52px; font-size: .75rem; }
   #root .guitar-app-main button,
   #root .guitar-app-main select,
   #root .guitar-app-main input:not([type="range"]) { min-height: 48px; }

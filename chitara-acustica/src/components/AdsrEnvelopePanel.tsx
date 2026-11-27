@@ -206,6 +206,11 @@ export const AdsrEnvelopePanel: React.FC<AdsrEnvelopePanelProps> = ({
     }
   };
 
+  const handlePointerCancel = () => {
+    setDragTarget(null);
+    setHoverTarget(null);
+  };
+
   // High-DPI Canvas render loop (active while playhead animates, static otherwise)
   useEffect(() => {
     let active = true;
@@ -573,9 +578,10 @@ export const AdsrEnvelopePanel: React.FC<AdsrEnvelopePanelProps> = ({
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerCancel}
+          onLostPointerCapture={handlePointerCancel}
           onPointerLeave={() => {
             setHoverTarget(null);
-            setDragTarget(null);
           }}
           className={`w-full h-[225px] block touch-none ${
             dragTarget ? 'cursor-grabbing' : hoverTarget ? 'cursor-grab' : 'cursor-default'

@@ -49,8 +49,8 @@ body[data-praxis-course="chitara-acustica-virtuala"] .praxis-lab-nav{display:non
  #root #module-panel>.guitar-quick-actions{gap:.25rem;padding:.2rem}
  #root .guitar-quick-action{flex:1 1 0;padding-inline:.3rem;font-size:.8125rem}
  #root #module-panel>.grid{grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr))}
- #root .guitar-module-tab-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- #root .guitar-module-tab-grid>button{min-height:52px}
+ #root .guitar-module-tab-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #root .guitar-module-tab-grid>button{min-height:52px;font-size:.75rem}
  #root .guitar-app-main [class~="lg:grid-cols-8"]{grid-template-columns:repeat(2,minmax(0,1fr))}
  #root .guitar-app-main button,#root .guitar-app-main select,#root .guitar-app-main input:not([type=range]){min-height:48px}
  #root .guitar-app-main>div:first-child>div:first-child{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;min-width:0;gap:.25rem;padding:.25rem}

@@ -1777,10 +1777,11 @@
     padding-inline: .75rem;
   }
   :where(#praxis-original) #root .guitar-module-tab-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   :where(#praxis-original) #root .guitar-module-tab-grid > button {
     min-height: 52px;
+    font-size: .75rem;
   }
   :where(#praxis-original) #root .guitar-app-main button,
   :where(#praxis-original) #root .guitar-app-main select,
