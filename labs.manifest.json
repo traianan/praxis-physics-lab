@@ -1833,7 +1833,12 @@
       },
       "workspace": {
         "react": true,
-        "workspaces": []
+        "workspaces": [
+          {
+            "selector": "#root",
+            "layout": "native"
+          }
+        ]
       },
       "locales": [
         "common",

@@ -559,7 +559,12 @@
   },
   "gruparea-rezistoarelor": {
     "react": true,
-    "workspaces": []
+    "workspaces": [
+      {
+        "selector": "#root",
+        "layout": "native"
+      }
+    ]
   },
   "polarizarea-luminii": {
     "workspaces": [

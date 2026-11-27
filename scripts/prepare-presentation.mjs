@@ -28,8 +28,11 @@ export async function preparePresentation(){
  const mathStart=runtime.indexOf('/* praxis:math-runtime */');
  if(mathStart<0)throw Error('Missing standalone mathematics boundary');
  const compactPrefix=(await transform(runtime.slice(0,mathStart),{loader:'js',target:'chrome100',minifyWhitespace:true,legalComments:'none'})).code;
+ const mathEnd=runtime.indexOf('/* /praxis:math-runtime */',mathStart);
+ if(mathEnd<0)throw Error('Missing standalone mathematics boundary end');
+ const compactMath=(await transform(runtime.slice(mathStart+'/* praxis:math-runtime */'.length,mathEnd),{loader:'js',target:'chrome100',minifyWhitespace:true,legalComments:'none'})).code;
  const compactWorkspace=(await transform(workspace,{loader:'js',target:'chrome100',minifyWhitespace:true,legalComments:'none'})).code;
- await write('public/shared/lab-header.js',header.trimEnd()+'\n/* praxis:content-types */\n'+compactPrefix+'\n'+runtime.slice(mathStart)+'\n'+compactWorkspace+'\n/* /praxis:content-types */\n');
+ await write('public/shared/lab-header.js',header.trimEnd()+'\n/* praxis:content-types */\n'+compactPrefix+'\n/* praxis:math-runtime */\n'+compactMath+'\n/* /praxis:math-runtime */\n'+compactWorkspace+'\n/* /praxis:content-types */\n');
  let index=await read('public/index.html');if(!index.includes('shared/content-types.bundle.js'))index=index.replace('</head>','<script src="./shared/content-types.bundle.js" defer></script></head>');
  const escape=text=>String(text).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
  const fallback='<noscript><section aria-labelledby="static-library-title"><h2 id="static-library-title">Laboratoare / Laboratories</h2><p>Activează JavaScript pentru simulări interactive. / Enable JavaScript for interactive simulations.</p><ul>'+simulations.map(lab=>'<li><a href="'+escape(lab.href)+'">'+escape(lab.title)+'</a></li>').join('')+'</ul></section></noscript>';
