@@ -557,6 +557,10 @@
       }
     ]
   },
+  "gruparea-rezistoarelor": {
+    "react": true,
+    "workspaces": []
+  },
   "polarizarea-luminii": {
     "workspaces": [
       {

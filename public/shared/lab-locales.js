@@ -252,6 +252,12 @@ export const labNamespaces = {
     "courses/shared",
     "courses/retele-electrice/ui"
   ],
+  "gruparea-rezistoarelor": [
+    "common",
+    "chapters/electricitate-magnetism-circuite",
+    "courses/shared",
+    "courses/gruparea-rezistoarelor/ui"
+  ],
   "polarizarea-luminii": [
     "common",
     "chapters/lumina-si-radiatii",
