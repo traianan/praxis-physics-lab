@@ -322,5 +322,10 @@ export const labNamespaces = {
     "common",
     "chapters/sunete-si-unde",
     "courses/shared"
+  ],
+  "modelul-atomic-bohr": [
+    "common",
+    "chapters/fenomene-cuantice",
+    "courses/shared"
   ]
 };

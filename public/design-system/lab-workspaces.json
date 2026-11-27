@@ -776,5 +776,14 @@
         "layout": "native"
       }
     ]
+  },
+  "modelul-atomic-bohr": {
+    "react": true,
+    "workspaces": [
+      {
+        "selector": "#root main",
+        "layout": "reading"
+      }
+    ]
   }
 }

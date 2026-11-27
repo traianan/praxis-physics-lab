@@ -995,5 +995,25 @@ export const simulations = [
     ],
     "keywords": "chitara acustica coarda vibranta frecventa armonice note game acorduri acordor FFT spectru Fourier temperament misiuni",
     "status": "available"
+  },
+  {
+    "id": "modelul-atomic-bohr",
+    "addedOn": "2026-11-27",
+    "addedOrder": 1,
+    "chapter": "fenomene-cuantice",
+    "title": "Modelul atomic Bohr",
+    "subtitle": "Postulate, orbite cuantificate și spectre atomice",
+    "description": "Înțelege postulatele lui Bohr, explorează tranzițiile și seriile spectrale, apoi exersează prin probleme, laborator și evaluare interactivă.",
+    "href": "./simulari/modelul-atomic-bohr/index.html",
+    "image": "./assets/modelul-atomic-bohr.png",
+    "alt": "Niels Bohr explicând cuantificarea momentului cinetic",
+    "tags": [
+      "Fizică atomică",
+      "Modelul Bohr",
+      "Spectre",
+      "Touch"
+    ],
+    "keywords": "model atomic Bohr atom hidrogen orbite cuantificate nivele energie spectru emisii absorbtie serii Lyman Balmer Paschen Franck Hertz",
+    "status": "available"
   }
 ];

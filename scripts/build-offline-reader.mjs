@@ -5,7 +5,7 @@ import {readManifest} from './lab-registry.mjs';
 export async function buildOfflineReader(base){
  const read=(file,encoding)=>readFile(new URL(file,base),encoding);
  const {labs}=await readManifest();
- const archives=await Promise.all(labs.map(async ({metadata,offline})=>{
+ const archives=await Promise.all(labs.filter(({offline})=>['archive','faraday'].includes(offline.kind)).map(async ({metadata,offline})=>{
   const path='simulari/'+metadata.id+'/'+offline.file;
   const bytes=await read(path);
   return {id:metadata.id,title:metadata.title,path,sha256:createHash('sha256').update(bytes).digest('hex')};
