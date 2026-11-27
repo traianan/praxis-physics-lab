@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-labelledby="title desc">
+  <title id="title">Gruparea rezistoarelor</title>
+  <desc id="desc">Un circuit serie și o ramură paralelă cu rezistoare etichetate cu indici.</desc>
+  <rect width="480" height="270" rx="24" fill="#F5F4ED"/>
+  <text x="28" y="43" fill="#18332F" font-family="Arial,sans-serif" font-size="19" font-weight="700">SERIE</text>
+  <path d="M36 104h54m80 0h36m80 0h38v48H36V104" fill="none" stroke="#247C70" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="90" y="91" width="80" height="26" rx="5" fill="#FFFEFA" stroke="#BD7440" stroke-width="4"/>
+  <text x="130" y="109" text-anchor="middle" fill="#18332F" font-family="Arial,sans-serif" font-size="16" font-weight="700">R₁</text>
+  <text x="298" y="109" text-anchor="middle" fill="#18332F" font-family="Arial,sans-serif" font-size="16" font-weight="700">R₂</text>
+  <text x="28" y="194" fill="#18332F" font-family="Arial,sans-serif" font-size="19" font-weight="700">PARALEL</text>
+  <path d="M36 222h68m80 0h70m0 0h60m-60 0v32h-64m-14 0H36v-32m128 0v32" fill="none" stroke="#247C70" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="104" y="209" width="80" height="26" rx="5" fill="#FFFEFA" stroke="#BD7440" stroke-width="4"/>
+  <rect x="176" y="241" width="64" height="24" rx="5" fill="#FFFEFA" stroke="#BD7440" stroke-width="4"/>
+  <text x="144" y="227" text-anchor="middle" fill="#18332F" font-family="Arial,sans-serif" font-size="16" font-weight="700">R₁</text>
+  <text x="208" y="258" text-anchor="middle" fill="#18332F" font-family="Arial,sans-serif" font-size="15" font-weight="700">R₂</text>
+  <circle cx="104" cy="222" r="4" fill="#0C4A42"/><circle cx="240" cy="222" r="4" fill="#0C4A42"/>
+</svg>

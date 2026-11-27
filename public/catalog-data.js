@@ -757,6 +757,26 @@ export const simulations = [
     "status": "available"
   },
   {
+    "id": "gruparea-rezistoarelor",
+    "addedOn": "2026-11-27",
+    "addedOrder": 2,
+    "chapter": "electricitate-magnetism-circuite",
+    "title": "Gruparea rezistoarelor",
+    "subtitle": "Legare în serie, paralel și mixtă, calculator echivalent, exemple practice și test interactiv — 7 module",
+    "description": "Lecție interactivă cu teoria rezistoarelor în serie, paralel și mixt, circuite animate, calculator, exemple practice, ghid cu formule și test final.",
+    "href": "./simulari/gruparea-rezistoarelor/index.html",
+    "image": "./assets/gruparea-rezistoarelor.svg",
+    "alt": "Scheme de rezistoare în serie și paralel, cu notații corecte ale indicilor",
+    "tags": [
+      "Circuite",
+      "Rezistoare",
+      "Experimente",
+      "Probleme"
+    ],
+    "keywords": "rezistoare serie paralel mixt rezistenta echivalenta divizor tensiune circuit calculator cod culori",
+    "status": "available"
+  },
+  {
     "id": "polarizarea-luminii",
     "addedOn": "2026-11-14",
     "addedOrder": 1,

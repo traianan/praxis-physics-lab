@@ -1,0 +1,17 @@
+
+html,body{min-width:0;min-height:100%;margin:0}
+#praxis-original{width:100%;max-width:100%;min-width:0;margin:0 auto;color:var(--praxis-color-ink);font-family:var(--praxis-font-ui,system-ui,sans-serif)}
+#praxis-original #root{width:100%;min-width:0}
+#praxis-original button,#praxis-original select,#praxis-original input{font-family:inherit;touch-action:manipulation}
+#praxis-original button{min-height:44px}
+#praxis-original input[type=range]{min-height:44px;touch-action:pan-x}
+#praxis-original input[type=range]::-webkit-slider-thumb{width:24px;height:24px}
+#praxis-original input[type=range]::-moz-range-thumb{width:24px;height:24px}
+#praxis-original [role=tablist]{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;touch-action:pan-x}
+#praxis-original [role=tab]{min-height:48px}
+#praxis-original [class~="text-xs"],#praxis-original [class~="text-[11px]"]{font-size:.875rem;line-height:1.4}
+#praxis-original [class~="text-[10px]"],#praxis-original [class~="text-[10.5px]"],#praxis-original [class~="text-[11px]"]{font-size:.75rem}
+#praxis-original .text-scale-lg{font-size:1.075rem}
+@media(max-width:700px){#praxis-original main{padding-inline:12px}#praxis-original [role=tablist]{width:100%;flex-wrap:nowrap}#praxis-original [role=tab]{flex:0 0 auto;padding-inline:12px}}
+@media(min-width:701px){html[data-praxis-whiteboard=true] #praxis-original{max-width:1440px}}
+html[data-praxis-whiteboard=true] #praxis-original{background:#fff}

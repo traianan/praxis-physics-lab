@@ -1,0 +1,18 @@
+{
+  "id": "gruparea-rezistoarelor",
+  "archive": "gruparea-rezistoarelor-electrice-praxis-science-lab-nov-27-2026-8-01-34-pm.zip",
+  "sha256": "ac87a440aaebe12d080d232c8459f2da2fc4014add215e5672ffeb201ba8bcad",
+  "source": "sources/gruparea-rezistoarelor",
+  "activities": [
+    "concepte",
+    "serie",
+    "paralel",
+    "mixt",
+    "calculator",
+    "practica",
+    "test",
+    "ghid",
+    "dictionar"
+  ],
+  "preservedContent": "All source modules and lesson activities are included; the shared Praxis shell replaces duplicate title, breadcrumb and preference chrome."
+}

@@ -613,3 +613,12 @@ Dacă un pas eșuează, notează lecția, comanda și ce s-a întâmplat. O foto
 - Rândul de instrucțiuni al grifului are înălțime rezervată, iar mesajul de hover și butonul „Ciupire toate corzile” sunt plasate explicit în celule distincte; butonul nu își schimbă poziția sau dimensiunea când apare nota.
 - Barele de derulare sunt ascunse în lecție, păstrând derularea internă prin touch, rotiță și tastatură. Cadrele modulelor rămân cu dimensiuni fixe raportate la viewport.
 - Importul curăță bundle-urile JS/CSS generate depășite. Chrome DevTools a verificat Modulul 6 la 1920×1080, 3840×2160 touch, 1366×768, 1024×768 touch și 390×844 touch; geometria rândului rămâne stabilă la hover, iar documentul mobil nu depășește lățimea ecranului.
+
+## Integrare lecție — Gruparea rezistoarelor — 2026-11-27
+
+- Integrată arhiva în aplicația Web, catalog și arhiva offline bilingvă; toate cele 7 module și activitățile din lecție sunt păstrate. Notațiile indicilor sunt tipografice (R₁, Rₑ etc.); căutarea sursei și a paginii generate nu găsește secvența literală `\_`.
+- Primul modul este împărțit în două subsecțiuni pentru tablă: circuit/măsurători și grafice/codul culorilor. Importatorul nu mai dezactivează tabla digitală; cursoarele cu butoane ± existente nu mai primesc duplicate.
+- Verificat simbolic cu SymPy seriile, paralelul și topologiile mixte; `npm run import:resistor-grouping` a regenerat integrarea și ZIP-ul offline, iar `npm run build` a reușit. Rămâne avertismentul Vite pentru bundle-ul lecției (~842 KB).
+- Chrome DevTools: toate cele 7 module navighează corect; tabla albă afișează ambele subsecțiuni la 1920×1080 și 3840×2160, fără decupare sau overflow orizontal. La 390×844 touch nu apare overflow, glisoarele și comenzile au ținte de 52 px, un pas de tensiune actualizează corect circuitul, iar consola nu are erori.
+- Audit geometric al schemei paralele: conductorul inițial lega direct cele două borne ale sursei sub simbolul bateriei. Traseul pozitiv este acum separat către nodul A, iar returul nodului B ajunge doar la borna negativă; animația curentului urmează aceleași trasee. Cu R₁ activ/R₂ activ, valorile sunt Rₑ=80 Ω și Iₜₒₜₐₗ=150 mA; la oprirea ramurii R₁, circuitul afișează Rₑ=240 Ω și Iₜₒₜₐₗ=50 mA, deci nu există cale de bypass. Eliminate și butoanele de pas duplicate pentru glisoarele R₁/R₂.
+- Reimportul final, ZIP-ul offline și build-ul au reușit după fix; browserul la 1440×1080 nu are overflow orizontal și consola nu raportează erori.
