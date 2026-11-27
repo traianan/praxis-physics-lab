@@ -62,6 +62,7 @@ await writeFile(path.join(target, 'index.html'), html, 'utf8');
 await writeFile(path.join(target, 'integration.css'), `
 html,body{min-width:0;min-height:100%;margin:0}
 #praxis-original{width:100%;max-width:100%;min-width:0;margin:0 auto;color:var(--praxis-color-ink);font-family:var(--praxis-font-ui,system-ui,sans-serif)}
+body[data-praxis-course="gruparea-rezistoarelor"] .praxis-lab-nav{display:none}
 #praxis-original #root{width:100%;min-width:0}
 #praxis-original button,#praxis-original select,#praxis-original input{font-family:inherit;touch-action:manipulation}
 #praxis-original button{min-height:44px}
