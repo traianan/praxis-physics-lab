@@ -10,10 +10,13 @@ test('manifest migration preserves every laboratory, chapter and workspace',asyn
  assert.deepEqual(manifest.labs.map(lab=>lab.metadata),simulations);
  assert.deepEqual(Object.fromEntries(manifest.labs.map(lab=>[lab.metadata.id,lab.workspace])),JSON.parse(await readFile(new URL('../public/design-system/lab-workspaces.json',import.meta.url),'utf8')));
 });
-test('every registered lesson ships an offline archive',async()=>{
+test('registered lessons ship the offline format declared by their manifest',async()=>{
  for(const {metadata,offline} of (await readManifest()).labs){
-  assert.ok(['archive','faraday'].includes(offline.kind),metadata.id);
-  await access(new URL('../public/simulari/'+metadata.id+'/'+offline.file,import.meta.url));
+  if(['archive','faraday'].includes(offline.kind)){
+   await access(new URL('../public/simulari/'+metadata.id+'/'+offline.file,import.meta.url));
+  }else if(offline.kind==='web-only'){
+   await access(new URL('../public/'+metadata.href,import.meta.url));
+  }else assert.fail('Unsupported offline format for '+metadata.id+': '+offline.kind);
  }
 });
 test('registry rejects duplicate ids, invalid chapters and unsafe paths',async()=>{
@@ -42,7 +45,7 @@ test('registry validates card details and publication order within a day',async(
 test('distributed embedded lessons use namespace ordering from the manifest',async()=>{
  for(const lab of (await readManifest()).labs){
   const html=await readFile(new URL('../public/'+lab.metadata.href,import.meta.url),'utf8');
-  const embedded=html.match(/"namespaceList":(\[[^\]]*\])/);
+  const embedded=html.match(/"namespaceList"\s*:\s*(\[[^\]]*\])/);
   if(embedded)assert.deepEqual(JSON.parse(embedded[1]),lab.locales,lab.metadata.id);
   else{
    const app=await readFile(new URL('../public/simulari/'+lab.metadata.id+'/app.js',import.meta.url),'utf8');

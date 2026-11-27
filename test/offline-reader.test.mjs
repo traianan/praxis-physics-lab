@@ -6,7 +6,7 @@ import {readManifest} from '../scripts/lab-registry.mjs';
 import {readPraxisZip} from '../public/offline/zip.js';
 
 test('the Android reader can unpack every distributed Praxis archive',async()=>{
- for(const {metadata,offline} of (await readManifest()).labs){
+ for(const {metadata,offline} of (await readManifest()).labs.filter(lab=>['archive','faraday'].includes(lab.offline.kind))){
   const bytes=await readFile(new URL('../public/simulari/'+metadata.id+'/'+offline.file,import.meta.url));
   let entry;
   for await(const {file,decoded} of readPraxisZip(new Uint8Array(bytes).buffer)){
@@ -29,7 +29,7 @@ test('the published offline catalog identifies only the exact distributed archiv
  assert.deepEqual(await readFile(new URL('../public/offline/archives.json',import.meta.url)),published);
  const catalog=JSON.parse(published);
  const {labs}=await readManifest();
- assert.deepEqual(catalog.archives.map(x=>x.id),labs.map(x=>x.metadata.id));
+ assert.deepEqual(catalog.archives.map(x=>x.id),labs.filter(lab=>['archive','faraday'].includes(lab.offline.kind)).map(x=>x.metadata.id));
  for(const {path,sha256} of catalog.archives){
   const body=await readFile(new URL('../dist/'+path,import.meta.url));
   assert.equal(sha256,createHash('sha256').update(body).digest('hex'),path);

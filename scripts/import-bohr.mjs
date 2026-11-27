@@ -3,6 +3,7 @@ import {existsSync} from 'node:fs';
 import {readFile, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {labNamespaces} from './lab-registry.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const viteCli = path.resolve(root, '..', 'Fizica-Interactiva', 'node_modules', 'vite', 'bin', 'vite.js');
@@ -35,7 +36,8 @@ const styles = [
 ].map((file) => `<link rel="stylesheet" href="../../${file}">`).join('\n');
 const runtime = [
   '<script src="../../shared/i18n.js"></script>',
-  '<script>window.PraxisBohrI18nReady=window.PraxisI18n.init({baseUrl:"../../locales/",namespaceList:["common"]});</script>',
+  `<script>window.PraxisBohrI18nReady=window.PraxisI18n.init({"baseUrl":"../../locales/","namespaceList":${JSON.stringify(await labNamespaces('modelul-atomic-bohr'))}});</script>`,
+  '<script src="../../shared/scientific-colors.js"></script>',
   '<script src="../../shared/sound.js"></script>',
   '<script src="../../shared/lab-header.js"></script>',
   '<script src="../../shared/site-navigation.js"></script>',

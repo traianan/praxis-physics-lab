@@ -5,9 +5,9 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
-  assert.deepEqual(latest.map(sim=>sim.id),['chitara-acustica-virtuala','lucru-mecanic-putere','fourier-instrumente']);
-  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-25','2026-11-25','2026-11-24']);
-  assert.equal(getLatestSimulations(1)[0].id,'chitara-acustica-virtuala');
+  assert.deepEqual(latest.map(sim=>sim.id),['modelul-atomic-bohr','chitara-acustica-virtuala','lucru-mecanic-putere']);
+  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-27','2026-11-25','2026-11-25']);
+  assert.equal(getLatestSimulations(1)[0].id,'modelul-atomic-bohr');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
@@ -25,8 +25,8 @@ test('eight chapters including mathematical foundations, with unique stable ids'
  assert.equal(chapters.length,8); assert.equal(new Set(chapters.map(c=>c.id)).size,8);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite','elemente-de-matematica']);
 });
-test('forty-nine real local laboratories include the guitar, work-and-power lessons and existing science topics', async () => {
-  assert.equal(simulations.length,49);
+test('fifty real local laboratories include Bohr, work-and-power and the existing science topics', async () => {
+  assert.equal(simulations.length,50);
  assert.equal(simulations.find(s=>s.id==='functia-gradul-al-doilea').chapter,'elemente-de-matematica');
  assert.equal(simulations.find(s=>s.id==='miscarea-in-camp-gravitational').chapter,'miscare');
  assert.equal(simulations.find(s=>s.id==='polarizarea-luminii').chapter,'lumina-si-radiatii');
@@ -59,7 +59,7 @@ test('search is accent-insensitive and combines chapter and all search words',()
 test('chapter results contain their registered laboratories',()=>{
  assert.equal(findSimulations('miscare').length,9);
  assert.deepEqual(findSimulations('lucru-energie-putere').map(s=>s.id),['lucru-mecanic-putere','legea-lui-hooke']);
- assert.deepEqual(findSimulations('fenomene-cuantice').map(s=>s.id).sort(),['dualismul-unda-corpuscul','efectul-compton','efectul-fotoelectric-extern']);
+ assert.deepEqual(findSimulations('fenomene-cuantice').map(s=>s.id).sort(),['dualismul-unda-corpuscul','efectul-compton','efectul-fotoelectric-extern','modelul-atomic-bohr']);
 });
 
 test('Ohm returns to its Romanian title and search results after RO → EN → RO',async()=>{
