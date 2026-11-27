@@ -1,0 +1,1 @@
+import{j as r}from"./index-CxpZ3ef2.js";const c=({text:n})=>{const i=[],t=/_([A-Za-z0-9∞]+)|_\{([^}]+)\}/g;let s=0,e;return r.jsx(r.Fragment,{children:(()=>{for(;(e=t.exec(n))!==null;)e.index>s&&i.push(n.slice(s,e.index)),i.push(r.jsx("sub",{children:e[1]??e[2]},e.index)),s=e.index+e[0].length;return s<n.length&&i.push(n.slice(s)),i})()})};export{c as P};
