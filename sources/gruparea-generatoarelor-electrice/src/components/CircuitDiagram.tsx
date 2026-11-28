@@ -422,11 +422,14 @@ export const CircuitDiagram: React.FC<CircuitDiagramProps> = ({
                         </g>
                       );
                     })}
+                    {/* Draw the shared collector rails over branch wires so the single node is unmistakable. */}
+                    <line x1={140} y1={topY} x2={140} y2={botBranchY} stroke="#0F4C3A" strokeWidth={4} />
+                    <line x1={420} y1={topY} x2={420} y2={botBranchY} stroke="#0F4C3A" strokeWidth={4} />
                     {/* Make every branch tap explicit: all left (and right) terminals share one collector node. */}
                     {branchYs.map((branchY) => (
                       <g key={`parallel-node-${branchY}`}>
-                        <circle cx={140} cy={branchY} r={4.5} fill="#0F4C3A" />
-                        <circle cx={420} cy={branchY} r={4.5} fill="#0F4C3A" />
+                        <circle cx={140} cy={branchY} r={5} fill="#0F4C3A" />
+                        <circle cx={420} cy={branchY} r={5} fill="#0F4C3A" />
                       </g>
                     ))}
                     {/* Node indicators A and B */}
@@ -520,11 +523,14 @@ export const CircuitDiagram: React.FC<CircuitDiagramProps> = ({
                         </g>
                       );
                     })}
+                    {/* Emphasized collector rails join the same end of every parallel series string. */}
+                    <line x1={95} y1={topY} x2={95} y2={botY} stroke="#0F4C3A" strokeWidth={4} />
+                    <line x1={455} y1={topY} x2={455} y2={botY} stroke="#0F4C3A" strokeWidth={4} />
                     {/* Each parallel string starts and ends at the same pair of common collector nodes. */}
                     {branchYs.map((branchY) => (
                       <g key={`mixed-node-${branchY}`}>
-                        <circle cx={95} cy={branchY} r={4.5} fill="#0F4C3A" />
-                        <circle cx={455} cy={branchY} r={4.5} fill="#0F4C3A" />
+                        <circle cx={95} cy={branchY} r={5} fill="#0F4C3A" />
+                        <circle cx={455} cy={branchY} r={5} fill="#0F4C3A" />
                       </g>
                     ))}
                     <circle cx={95} cy={110} r={4.5} fill="#0F4C3A" />
