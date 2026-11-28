@@ -5,7 +5,7 @@ import {withLinkPresentation} from './link-presentation.mjs';
 import {preparePresentation} from './prepare-presentation.mjs';
 import {inlineStandaloneModule} from './standalone-module.mjs';
 await preparePresentation();
-import {cp,readFile,writeFile,mkdir} from 'node:fs/promises';import {zipDirectory} from './zip.mjs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';import vm from 'node:vm';
+import {cp,readFile,writeFile,mkdir,rm} from 'node:fs/promises';import {zipDirectory} from './zip.mjs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';import vm from 'node:vm';
 const root=fileURLToPath(new URL('../',import.meta.url)),report=[];
 const courses=(await readManifest()).labs.filter(lab=>lab.offline.kind==='archive');
 const requested=process.argv.find(arg=>arg.startsWith('--course='))?.slice('--course='.length);
@@ -30,6 +30,10 @@ const moduleStyles=new Map([
 if(requested){try{report.push(...JSON.parse(await readFile(path.join(root,'docs/offline-courses.json'),'utf8')).courses.filter(course=>course.id!==requested));}catch(error){if(error.code!=='ENOENT')throw error;}}
 for(const {metadata:{id},offline:{file:zipName},locales,inlineLocales}of selected){
  const source=path.join(root,'public/simulari',id),target=path.join(root,'outputs/offline-lessons',id);await mkdir(target,{recursive:true});
+ if(id==='gruparea-generatoarelor-electrice'){
+  await rm(target,{recursive:true,force:true});
+  await mkdir(target,{recursive:true});
+ }
  const moduleStyle=moduleStyles.get(id);
  if(id==='chitara-acustica-virtuala')await cp(source,target,{recursive:true,filter:file=>!file.toLowerCase().endsWith('.zip')&&!/[/\\]assets[/\\]index-[^/\\]+\.js$/i.test(file)});
  else if(moduleStyle){
