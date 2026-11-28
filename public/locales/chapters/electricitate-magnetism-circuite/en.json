@@ -11,7 +11,8 @@
     "Legea lui Coulomb": "Coulomb’s law",
     "Condensatorul": "Capacitor",
     "Rezistența unui fir": "Resistance of a wire",
-    "Rețele electrice": "Electrical networks"
+    "Rețele electrice": "Electrical networks",
+    "Gruparea generatoarelor electrice": "Grouping electric generators"
   },
   "simulations": {
     "generator-electric": {
@@ -113,6 +114,19 @@
         "Offline"
       ],
       "keywords": "electrical networks kirchhoff junction branch loop series parallel generator resistor shunt ammeter voltmeter"
+    },
+    "gruparea-generatoarelor-electrice": {
+      "title": "Grouping electric generators",
+      "subtitle": "Real generators in series, parallel, opposition and mixed groups; calculator, applications, glossary and interactive quiz.",
+      "description": "Explore how electromotive force and internal resistance combine for identical or different sources. The lesson includes interactive experiments, practical examples, measurement log, formulas, dictionary and self-check.",
+      "tags": [
+        "Generators",
+        "Circuits",
+        "Experiments",
+        "Problems"
+      ],
+      "keywords": "electric generator grouping real source emf internal resistance series parallel opposition mixed Millman",
+      "alt": "Electric generator and source groupings for series, parallel and mixed circuits"
     }
   }
 }

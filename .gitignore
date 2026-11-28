@@ -38,6 +38,9 @@ __pycache__/
 
 !sources/rezistenta-unui-fir/
 !sources/legea-lui-ohm/
+!sources/gruparea-generatoarelor-electrice/
+!sources/gruparea-generatoarelor-electrice/**
+sources/gruparea-generatoarelor-electrice/dist/
 
 !sources/functia-gradul-al-doilea/
 

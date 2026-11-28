@@ -55,6 +55,7 @@
     "import:sound-strings": "node scripts/import-sound-strings.mjs",
     "import:fourier": "npm run registry:generate && node scripts/import-fourier-instrumente.mjs",
     "import:resistor-grouping": "npm run registry:generate && node scripts/import-resistor-grouping.mjs && node scripts/build-courses-offline.mjs --course=gruparea-rezistoarelor && npm run build",
+    "import:generator-grouping": "node scripts/configure-generator-grouping.mjs && npm run registry:generate && node scripts/import-generator-grouping.mjs && node scripts/build-courses-offline.mjs --course=gruparea-generatoarelor-electrice",
     "import:work-power": "npm run registry:generate && node scripts/import-work-power.mjs",
     "import:guitar": "npm run registry:generate && npm run build --prefix chitara-acustica && node scripts/import-acoustic-guitar.mjs && node scripts/build-courses-offline.mjs --course=chitara-acustica-virtuala && npm run build",
     "import:bohr": "node scripts/import-bohr.mjs && node scripts/generate-lab-registry.mjs"

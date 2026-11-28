@@ -1,0 +1,19 @@
+{
+  "locale": "ro",
+  "namespace": "courses/gruparea-generatoarelor-electrice",
+  "messages": {
+    "Laborator interactiv": "Laborator interactiv",
+    "Ghid și formule": "Ghid și formule",
+    "Dicționar": "Dicționar",
+    "Toți termenii": "Toți termenii",
+    "Teme de formule": "Teme de formule",
+    "Teme din dicționar": "Teme din dicționar",
+    "De bază": "De bază",
+    "Serie": "Serie",
+    "Paralel": "Paralel",
+    "Mixt": "Mixt",
+    "Aplicații": "Aplicații",
+    "Circuit și măsurători": "Circuit și măsurători",
+    "Grafice și caracteristica U(I)": "Grafice și caracteristica U(I)"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "gruparea-generatoarelor-electrice",
+  "archive": "gruparea-generatoarelor-electrice-nov-28-2026-10-00-36-am.zip",
+  "sha256": "f81599b41f9b838f370fc33c13e2914049b7a4d383eb7d14279898546160d226",
+  "source": "sources/gruparea-generatoarelor-electrice",
+  "activities": [
+    "concepte-de-baza",
+    "serie",
+    "paralel",
+    "mixt",
+    "calculator",
+    "exemple-practice",
+    "misiuni",
+    "tur-ghidat",
+    "jurnal-csv-json",
+    "test",
+    "ghid-cu-formule",
+    "dictionar"
+  ],
+  "preservedContent": "The complete React lesson from the source archive is included. The shared Praxis shell replaces duplicate brand, preference controls and breadcrumbs; all lesson activities remain available."
+}

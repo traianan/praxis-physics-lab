@@ -11,7 +11,8 @@
     "Legea lui Coulomb": "Legea lui Coulomb",
     "Condensatorul": "Condensatorul",
     "Rezistența unui fir": "Rezistența unui fir",
-    "Rețele electrice": "Rețele electrice"
+    "Rețele electrice": "Rețele electrice",
+    "Gruparea generatoarelor electrice": "Gruparea generatoarelor electrice"
   },
   "simulations": {
     "legea-lui-ohm": {
@@ -113,6 +114,19 @@
         "Offline"
       ],
       "keywords": "retele electrice kirchhoff nod latura ochi serie paralel generator rezistor sunt ampermetru voltmetru"
+    },
+    "gruparea-generatoarelor-electrice": {
+      "title": "Gruparea generatoarelor electrice",
+      "subtitle": "Generatoare reale în serie, paralel, opoziție și grupare mixtă; calculator, aplicații, glosar și test interactiv.",
+      "description": "Explorează cum se combină tensiunea electromotoare și rezistența internă pentru surse identice sau diferite. Lecția include experimente interactive, situații practice, jurnal de măsurători, formule, dicționar și autoevaluare.",
+      "tags": [
+        "Generatoare",
+        "Circuite",
+        "Experimente",
+        "Probleme"
+      ],
+      "keywords": "gruparea generatoarelor generator real tensiune electromotoare rezistenta interna serie paralel opozitie mixt Millman",
+      "alt": "Generator electric și grupări de surse pentru circuite în serie, paralel și mixt"
     }
   }
 }

@@ -1,0 +1,8 @@
+{
+  "name": "Remix Gruparea generatoarelor electrice",
+  "description": "Lecție interactivă de fizică și laborator virtual pentru gruparea generatoarelor electrice în serie, paralel, opoziție și mixtă, cu calculator echivalent, diagrame în timp real, export CSV/JSON și test interactiv.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

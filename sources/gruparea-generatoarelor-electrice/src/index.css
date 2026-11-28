@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-canvas: #f7f6f1;
+    --bg-surface: #ffffff;
+    --bg-muted: #f2f1eb;
+    --border-hairline: #e4e2d8;
+    --brand-forest: #0f4c3a;
+    --brand-forest-hover: #0a382b;
+    --text-primary: #17231e;
+    --text-secondary: #4e5d56;
+  }
+
+  html {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-mono,
+  code,
+  kbd {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom touch-friendly range slider matching Praxis Science Lab */
+input[type='range'].praxis-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: #d7ddd9;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type='range'].praxis-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2.5px solid #0f4c3a;
+  box-shadow: 0 1px 4px rgba(15, 76, 58, 0.25);
+  cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease;
+}
+
+input[type='range'].praxis-slider::-webkit-slider-thumb:hover,
+input[type='range'].praxis-slider:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.12);
+  background: #f0f7f4;
+}
+
+input[type='range'].praxis-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2.5px solid #0f4c3a;
+  box-shadow: 0 1px 4px rgba(15, 76, 58, 0.25);
+  cursor: pointer;
+}
+
+/* Board / high-contrast mode */
+.board-mode {
+  --bg-canvas: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-muted: #f4f6f5;
+  --border-hairline: #cbd5d0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-charge-flow {
+    animation: none !important;
+  }
+}
+
+/* Subtle custom scrollbar for horizontal tab strips on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -557,6 +557,15 @@
       }
     ]
   },
+  "gruparea-generatoarelor-electrice": {
+    "react": true,
+    "workspaces": [
+      {
+        "selector": "[data-workspace-layout]",
+        "layout": "native"
+      }
+    ]
+  },
   "gruparea-rezistoarelor": {
     "react": true,
     "workspaces": [

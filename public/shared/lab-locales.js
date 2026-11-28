@@ -252,6 +252,12 @@ export const labNamespaces = {
     "courses/shared",
     "courses/retele-electrice/ui"
   ],
+  "gruparea-generatoarelor-electrice": [
+    "common",
+    "chapters/electricitate-magnetism-circuite",
+    "courses/shared",
+    "courses/gruparea-generatoarelor-electrice"
+  ],
   "gruparea-rezistoarelor": [
     "common",
     "chapters/electricitate-magnetism-circuite",

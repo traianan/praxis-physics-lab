@@ -757,6 +757,26 @@ export const simulations = [
     "status": "available"
   },
   {
+    "id": "gruparea-generatoarelor-electrice",
+    "addedOn": "2026-11-28",
+    "addedOrder": 1,
+    "chapter": "electricitate-magnetism-circuite",
+    "title": "Gruparea generatoarelor electrice",
+    "subtitle": "Generatoare reale în serie, paralel, opoziție și grupare mixtă; calculator, aplicații, glosar și test interactiv.",
+    "description": "Explorează cum se combină tensiunea electromotoare și rezistența internă pentru surse identice sau diferite. Lecția include experimente interactive, situații practice, jurnal de măsurători, formule, dicționar și autoevaluare.",
+    "href": "./simulari/gruparea-generatoarelor-electrice/index.html",
+    "image": "./assets/generator-grouping.svg",
+    "alt": "Scheme de grupare a generatoarelor electrice în serie și paralel, cu noduri comune",
+    "tags": [
+      "Generatoare",
+      "Circuite",
+      "Experimente",
+      "Probleme"
+    ],
+    "keywords": "gruparea generatoarelor generator real tensiune electromotoare rezistenta interna serie paralel opozitie mixt Millman",
+    "status": "available"
+  },
+  {
     "id": "gruparea-rezistoarelor",
     "addedOn": "2026-11-27",
     "addedOrder": 2,
