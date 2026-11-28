@@ -5,9 +5,9 @@ import { chapters, simulations, findSimulations, getHomeSimulations, getLatestSi
 
 test('latest laboratories follow documented addition dates and the addition order within the same day',()=>{
  const original=simulations.map(sim=>sim.id),latest=getLatestSimulations();
-  assert.deepEqual(latest.map(sim=>sim.id),['gruparea-rezistoarelor','modelul-atomic-bohr','chitara-acustica-virtuala']);
-  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-27','2026-11-27','2026-11-25']);
-  assert.equal(getLatestSimulations(1)[0].id,'gruparea-rezistoarelor');
+  assert.deepEqual(latest.map(sim=>sim.id),['gruparea-generatoarelor-electrice','gruparea-rezistoarelor','modelul-atomic-bohr']);
+  assert.deepEqual(latest.map(sim=>sim.addedOn),['2026-11-28','2026-11-27','2026-11-27']);
+  assert.equal(getLatestSimulations(1)[0].id,'gruparea-generatoarelor-electrice');
  assert.deepEqual(simulations.map(sim=>sim.id),original);
 });
 test('home previews show at most two per chapter while chapter/search retain the full registry',()=>{
@@ -25,8 +25,8 @@ test('eight chapters including mathematical foundations, with unique stable ids'
  assert.equal(chapters.length,8); assert.equal(new Set(chapters.map(c=>c.id)).size,8);
  assert.deepEqual(chapters.map(c=>c.id),['miscare','sunete-si-unde','lucru-energie-putere','caldura-termodinamica','fenomene-cuantice','lumina-si-radiatii','electricitate-magnetism-circuite','elemente-de-matematica']);
 });
-test('fifty-one real local laboratories include resistor grouping, Bohr, work-and-power and the existing science topics', async () => {
-  assert.equal(simulations.length,51);
+test('fifty-two real local laboratories include generator grouping, resistor grouping, Bohr and the existing science topics', async () => {
+  assert.equal(simulations.length,52);
  assert.equal(simulations.find(s=>s.id==='functia-gradul-al-doilea').chapter,'elemente-de-matematica');
  assert.equal(simulations.find(s=>s.id==='miscarea-in-camp-gravitational').chapter,'miscare');
  assert.equal(simulations.find(s=>s.id==='polarizarea-luminii').chapter,'lumina-si-radiatii');
