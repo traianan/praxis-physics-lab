@@ -422,6 +422,13 @@ export const CircuitDiagram: React.FC<CircuitDiagramProps> = ({
                         </g>
                       );
                     })}
+                    {/* Make every branch tap explicit: all left (and right) terminals share one collector node. */}
+                    {branchYs.map((branchY) => (
+                      <g key={`parallel-node-${branchY}`}>
+                        <circle cx={140} cy={branchY} r={4.5} fill="#0F4C3A" />
+                        <circle cx={420} cy={branchY} r={4.5} fill="#0F4C3A" />
+                      </g>
+                    ))}
                     {/* Node indicators A and B */}
                     <circle cx={140} cy={110} r={4.5} fill="#0F4C3A" />
                     <circle cx={420} cy={110} r={4.5} fill="#0F4C3A" />
@@ -513,6 +520,13 @@ export const CircuitDiagram: React.FC<CircuitDiagramProps> = ({
                         </g>
                       );
                     })}
+                    {/* Each parallel string starts and ends at the same pair of common collector nodes. */}
+                    {branchYs.map((branchY) => (
+                      <g key={`mixed-node-${branchY}`}>
+                        <circle cx={95} cy={branchY} r={4.5} fill="#0F4C3A" />
+                        <circle cx={455} cy={branchY} r={4.5} fill="#0F4C3A" />
+                      </g>
+                    ))}
                     <circle cx={95} cy={110} r={4.5} fill="#0F4C3A" />
                     <circle cx={455} cy={110} r={4.5} fill="#0F4C3A" />
                   </>
